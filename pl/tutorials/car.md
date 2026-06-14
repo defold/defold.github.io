@@ -133,7 +133,7 @@ Defold udostępnia kilka funkcji cyklu życia do kodowania logiki gry. Przeczyta
 
 Na początek usuń funkcje `final`, `on_message` i `on_reload`, ponieważ w tym samouczku nie będą nam potrzebne.
 
-Następnie dodaj poniższe linie kodu przed początkiem funkcji init.
+Następnie dodaj poniższe linie kodu przed początkiem funkcji `init`.
 
 ```lua
 -- Constants
@@ -293,7 +293,7 @@ W sekcji stałych na początku skryptu dodaj następującą stałą:
 local drag = 1.1	        -- stała oporu <1>
 ```
 
-Następnie w funkcji update, tuż nad tym wierszem, dodaj poniższe linie i zapisz plik.
+Następnie w funkcji `update`, tuż nad tym wierszem, dodaj poniższe linie i zapisz plik.
 
 ```lua
 function update(self, dt)

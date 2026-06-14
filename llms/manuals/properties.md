@@ -47,9 +47,9 @@ All game objects, and some component types have properties that can be read and 
 | property   | description                            | type            |                  |
 | ---------- | -------------------------------------- | --------------- | ---------------- |
 | *position* | The local position of the game object. | `vector3`      | `get+set` |
-| *rotation* | Local rotation of game object, expressed as a quaternion.  | `quaternion` | `get+set` |
+| *rotation* | Local rotation of game object, expressed as a `quaternion`.  | `quaternion` | `get+set` |
 | *euler*    | Local rotation of game object, Euler angles. | `vector3` | `get+set` |
-| *scale*    | Local non uniform scale of the game object, expressed as a vector where each component contains a multiplier along each axis. To double the size in x and y, provide vmath.vector3(2.0, 2.0, 0) | `vector3` | `get+set` |
+| *scale*    | Local non uniform scale of the game object, expressed as a vector where each component contains a multiplier along each axis. To double the size in x and y, provide `vmath.vector3(2.0, 2.0, 0)` | `vector3` | `get+set` |
 | *scale.xy*    | Local non uniform scale of the game object, expressed as a vector where each component contains a multiplier along X and Y axis.| `vector3` | `get+set` |
 
 Specific functions for working with the game object transform also exist; they are `go.get_position()`, `go.set_position()`, `go.get_rotation()`, `go.set_rotation()`,  `go.get_scale()`, `go.set_scale()` and `go.set_scale_xy()`.
@@ -114,7 +114,7 @@ GUI nodes also contain properties, but they are read and written through special
 * `inner_radius` (or `gui.PROP_INNER_RADIUS`)
 * `slice9` (or `gui.PROP_SLICE9`)
 
-Note that all color values are encoded in a vector4 where the components correspond to the RGBA values:
+Note that all color values are encoded in a `vector4` where the components correspond to the RGBA values:
 
 `x`
 : The red color component

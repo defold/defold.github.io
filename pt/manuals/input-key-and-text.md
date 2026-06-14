@@ -33,7 +33,7 @@ end
 ```
 
 # Text Triggers
-Text triggers são usados para ler entrada de texto arbitrária. Há dois tipos de text triggers: text e marked text.
+Text triggers são usados para ler entrada de texto arbitrária. Há dois tipos de text triggers: `text` e `marked-text`.
 
 ![](/manuals/images/input/text_bindings.png)
 

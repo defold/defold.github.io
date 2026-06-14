@@ -93,7 +93,7 @@ Algumas dessas propriedades fornecem indicações sobre como o material deve ser
 
 ## Integração com shaders
 
-Os dados de material PBR são expostos aos shaders com base nos tipos e na convenção de nomes. O sistema de material PBR fornece todos os parâmetros de material analisados aos shaders por meio de um bloco uniforme estruturado chamado `PbrMaterial`. Cada extensão glTF suportada corresponde a uma struct dentro desse bloco, que pode ser compilada condicionalmente usando flags #define.
+Os dados de material PBR são expostos aos shaders com base nos tipos e na convenção de nomes. O sistema de material PBR fornece todos os parâmetros de material analisados aos shaders por meio de um bloco uniforme estruturado chamado `PbrMaterial`. Cada extensão glTF suportada corresponde a uma struct dentro desse bloco, que pode ser compilada condicionalmente usando flags `#define`.
 
 ```glsl
 uniform PbrMaterial
@@ -102,7 +102,7 @@ uniform PbrMaterial
 };
 ```
 
-Os vários recursos do material são especificados como structs fixas no shader. Os dados foram compactados tanto quanto possível em vec4's, pois é assim que constantes são definidas internamente no Defold. Nos casos em que os dados foram compactados, isso é indicado como comentários nos trechos de shader de cada recurso abaixo:
+Os vários recursos do material são especificados como structs fixas no shader. Os dados foram compactados tanto quanto possível em `vec4`'s, pois é assim que constantes são definidas internamente no Defold. Nos casos em que os dados foram compactados, isso é indicado como comentários nos trechos de shader de cada recurso abaixo:
 
 ```glsl
 struct PbrMetallicRoughness
@@ -186,7 +186,7 @@ struct PbrIridescence
 };
 ```
 
-As propriedades comuns são definidas no próprio uniform do material (e, mais uma vez, observe a compactação de dados em vec4).
+As propriedades comuns são definidas no próprio uniform do material (e, mais uma vez, observe a compactação de dados em `vec4`).
 
 ```glsl
 // Texturas comuns
@@ -209,7 +209,7 @@ uniform PbrMaterial
 
 ### Shader de exemplo
 
-Aqui está um shader de exemplo que contém todos os recursos e um esquema de nomes proposto para bindings de textura (novamente, isso deve ser tratado manualmente). Observe que você pode desativar recursos simplesmente usando defines ao redor de cada membro do próprio PbrMaterial, como mostrado no exemplo abaixo:
+Aqui está um shader de exemplo que contém todos os recursos e um esquema de nomes proposto para bindings de textura (novamente, isso deve ser tratado manualmente). Observe que você pode desativar recursos simplesmente usando `#define`s ao redor de cada membro do próprio `PbrMaterial`, como mostrado no exemplo abaixo:
 
 ```glsl
 // Flags de recursos; comente ou remova para reduzir o shader.

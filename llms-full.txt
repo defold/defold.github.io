@@ -1463,7 +1463,7 @@ Now, bullets can collide with targets and other bullets. For reference, we have 
 
 Note how the *Group* property is set to "target" and *Mask* is set to "bullet".
 
-In Flash, collision detection occurs only when explicitly called by the script. In Defold, collision detection occurs continuously in the background as long as a collision object remains enabled. When a collision occurs, messages are sent to all components of a game object (most relevantly, the script components). These are the [collision_response and contact_point_response](#manuals:physics-messages) messages, which contain all the information required to resolve the collision as desired.
+In Flash, collision detection occurs only when explicitly called by the script. In Defold, collision detection occurs continuously in the background as long as a collision object remains enabled. When a collision occurs, messages are sent to all components of a game object (most relevantly, the script components). These are the [`collision_response` and `contact_point_response`](#manuals:physics-messages) messages, which contain all the information required to resolve the collision as desired.
 
 The advantage of Defold collision detection is that it is more advanced than that of Flash, with the ability to detect collisions between relatively complex shapes with very little setup effort. Collision detection is automatic, meaning looping through the various objects in the different collision groups and explicitly performing hit tests is not required. The main drawback is that there is no equivalent to the Flash `shapeFlag`. However, for most uses combinations of the basic box and sphere shapes suffice. For more complex scenarios, custom shapes [are possible](//forum.defold.com/t/does-defold-support-only-three-shapes-for-collision-solved/1985).
 
@@ -2629,8 +2629,8 @@ In the top-right of the scene view there is a toolbar with commonly used tools a
 
   You can also select objects by:
 
-  - `Left Mouse Click` and `Drag` to select all objects inside the selection region.
-  - `Left Mouse Click` objects in the `Outline`, and while holding `⇧ Shift` you can expand selection or while holding `Ctrl`/`⌘ Cmd` you can (un)select clicked.
+- `Left Mouse Click` and `Drag` to select all objects inside the selection region.
+- `Left Mouse Click` objects in the `Outline`, and while holding `⇧ Shift` you can expand selection or while holding `Ctrl`/`⌘ Cmd` you can (un)select clicked.
 
 #### Move tool
 
@@ -4046,7 +4046,7 @@ Setting and clearing breakpoints
   To set or clear a breakpoint, click in the column just right of the line numbers in the code editor. You can also select `Edit ▸ Toggle Breakpoint` from the menu.
 
 Disabling and enabling breakpoints
-: Breakpoints can be temporarily disabled without removing them. When disabled, they are ignored during execution but can be re-enabled at any time. Right-click it in the code editor gutter, then toggle the Enabled checkbox. Disabled breakpoints appear hollowed out to indicate they are inactive.
+: Breakpoints can be temporarily disabled without removing them. When disabled, they are ignored during execution but can be re-enabled at any time. Right-click it in the code editor gutter, then toggle the `Enabled` checkbox. Disabled breakpoints appear hollowed out to indicate they are inactive.
 
 Setting conditional breakpoints
 : You can configure your breakpoint to contain a condition that needs to evaluate to true for the breakpoint to trigger. The condition can access local variables available at the line during code execution.
@@ -6124,7 +6124,7 @@ Defold uses an image specified in the *Collision* property to generate a _convex
 
 Often it is sensible to use the same image for collision as the one containing the actual graphics, but you are free to specify a separate image if you want collision shapes that differ from the visuals. When you specify a collision image, the preview is updated with an outline on each tile indicating the generated collision shapes.
 
-The tile source outline lists collision groups that you have added to the tile source. New tile source files will get one "default" collision group added. You can add new groups by `right clicking` the tile source root in the *Outline* and selecting `Add ▸ Collision Group`.
+The tile source *Outline* lists collision groups that you have added to the tile source. New tile source files will get one "default" collision group added. You can add new groups by `right clicking` the tile source root in the *Outline* and selecting `Add ▸ Collision Group`.
 
 To select the tile shapes that should belong to a certain group, select the group in th *Outline*, then click each tile that you wish to assign to the group. The outline of the tile and shape is colored with the group's color. The color is automatically assigned to the group in the editor.
 
@@ -6434,7 +6434,7 @@ Sprites
 GUI box nodes
 : To run an animation during runtime you use the [`gui.play_flipbook()`](https://defold.com/ref/gui/?q=play_flipbook#gui.play_flipbook:node-animation-[complete_function]-[play_properties]) function. See below for an example.
 
-The playback mode once ping-pong will play the animation until the last frame and then reverse the order and play back until the **second** frame of the animation, not back to the first frame. This is done so that chaining of animations becomes easier.
+The playback mode `Once Ping Pong` will play the animation until the last frame and then reverse the order and play back until the **second** frame of the animation, not back to the first frame. This is done so that chaining of animations becomes easier.
 
 ### Sprite example
 
@@ -6932,7 +6932,7 @@ The draw order of visual components depend on two things:
 Each component is assigned a [material](#manuals:material) and each material has one or more tags. The render script will in turn define a number of predicates, each matching one or more material tags. The render script [predicates are drawn one by one](#manuals:render) in the *update()* function of the render script and the components matching the tags defined in each predicate will be drawn. The default render script will first draw sprites and tilemaps in one pass, then particle effects in another pass, both in world space. The render script will then proceed to draw GUI components in a separate pass in screen space.
 
 ### Component z-value
-All game objects and components are positioned in 3D space with positions expressed as vector3 objects. When you view your game's graphics content in 2D, the X and Y value determine the position of an object along the "width" and "height" axis, and the Z position determines the position along the "depth" axis. The Z position allows you to control the visibility of overlapping objects: a sprite with a Z value of 1 will appear in front of a sprite at Z position 0. By default, Defold uses a coordinate system allowing Z values between -1 and 1:
+All game objects and components are positioned in 3D space with positions expressed as `vector3` objects. When you view your game's graphics content in 2D, the X and Y value determine the position of an object along the "width" and "height" axis, and the Z position determines the position along the "depth" axis. The Z position allows you to control the visibility of overlapping objects: a sprite with a Z value of 1 will appear in front of a sprite at Z position 0. By default, Defold uses a coordinate system allowing Z values between -1 and 1:
 
 The components matching a [render predicate](#manuals:render) are drawn together, and the order in which they are drawn depends on the final z-value of the component. The final z-value of a component is the sum of the z-values of the component itself, the game object it belongs to and the z-value of any parent game objects.
 
@@ -7330,7 +7330,7 @@ Collision Shape
 : This property is used for tile map geometry or convex shapes that does not use primitive shapes. See [Collision Shapes for more information](#manuals:physics-shapes).
 
 Type
-: The type of collision object: `Dynamic`, `Kinematic`, `Static` or `Trigger`. If you set the object to dynamic you _must_ set the *Mass* property to a non zero value. For dynamic or static objects you should also check that the *Friction* and *Restitution* values are good for your use-case.
+: The type of collision object: `Dynamic`, `Kinematic`, `Static` or `Trigger`. If you set the object to `Dynamic` you _must_ set the *Mass* property to a non zero value. For `Dynamic` or `Static` objects you should also check that the *Friction* and *Restitution* values are good for your use-case.
 
 Friction
 : Friction makes it possible for objects to slide realistically against each other. The friction value is usually set between `0` (no friction at all---a very slippery object) and `1` (strong friction---an abrasive object). However, any positive value is valid.
@@ -8258,7 +8258,7 @@ go.animate("#model", "tint", go.PLAYBACK_LOOP_PINGPONG, vmath.vector4(1,0,0,1), 
 ```
 
 `tint`
-: The color tint of the model (`vector4`). The vector4 is used to represent the tint with x, y, z, and w corresponding to the red, green, blue and alpha tint.
+: The color tint of the model (`vector4`). The `vector4` is used to represent the tint with x, y, z, and w corresponding to the red, green, blue and alpha tint.
 
 ## Rendering
 
@@ -8969,7 +8969,7 @@ go.animate("#tilemap", "tint", go.PLAYBACK_LOOP_PINGPONG, vmath.vector4(1,0,0,1)
 ```
 
 `tint`
-: The color tint of the tile map (`vector4`). The vector4 is used to represent the tint with x, y, z, and w corresponding to the red, green, blue and alpha tint.
+: The color tint of the tile map (`vector4`). The `vector4` is used to represent the tint with x, y, z, and w corresponding to the red, green, blue and alpha tint.
 
 ## Project configuration
 
@@ -9021,7 +9021,7 @@ Selecting the root "Gui" node in the *Outline* shows the *Properties* for the GU
 : The GUI script bound to this GUI component.
 
 *Material*
-: The material used when rendering this GUI. Note that it is also possible to add multiple materials to a Gui from the Outline panel and assign these to individual nodes.
+: The material used when rendering this GUI. Note that it is also possible to add multiple materials to a Gui from the *Outline* panel and assign these to individual nodes.
 
 *Adjust Reference*
 : Controls how each node's *Adjust Mode* should be calculated:
@@ -10793,7 +10793,7 @@ end
 ```
 
 # Text Triggers
-Text triggers are used to read arbitrary text input. There are two types of text triggers; text and marked text.
+Text triggers are used to read arbitrary text input. There are two types of text triggers; `text` and `marked-text`.
 
 ## Text
 The `text` captures normal text input. It sets the `text` field of the action table to a string containing the typed character. The action is only fired at the press of the button, no `release` or `repeated` action is sent.
@@ -10963,7 +10963,7 @@ end
 ```
 
 ## Multiple gamepads
-Defold supports multiple gamepads through the host operating system, actions set the `gamepad` field of the action table to the gamepad number the input originated from:
+Defold supports multiple gamepads through the host operating system, actions set the `gamepad` field of the `action` table to the gamepad number the input originated from:
 ```lua
 function on_input(self, action_id, action)
     if action_id == hash("gamepad_start") then
@@ -11021,7 +11021,7 @@ The tool will ask you to press different buttons on your connected controller. I
 
 When a gamepad is connected and no mapping exists for the gamepad the gamepad will only generate "connected", "disconnected" and "raw" actions. In this case you need to manually map the raw gamepad data to actions in your game.
 
-It is possible to check if an input action for a gamepad is from an unknown gamepad or not by reading the `gamepad_unknown` value from the action:
+It is possible to check if an input action for a gamepad is from an unknown gamepad or not by reading the `gamepad_unknown` value from the `action`:
 ```lua
 function on_input(self, action_id, action)
     if action_id == hash("connected") then
@@ -11053,7 +11053,7 @@ If your game is running from inside an `iframe` you must also make sure that the
 
 ### Standard gamepad
 
-If a connected gamepad is identified by the browser as a standard gamepad it will use the mapping for "Standard Gamepad" in the [gamepads settings file](#manuals:input-gamepads) (a Standard Gamepad mapping is included in the `default.gamepads` file in `/builtins`). A standard gamepad is defined as having 16 buttons and 2 analog sticks with a button layout similar to a PlayStation or Xbox controller (see the [W3C definition and button layout](https://w3c.github.io/gamepad/#dfn-standard-gamepad) for more information). If the connected gamepad is not identified as a standard gamepad Defold will look for a mapping matching the hardware gamepad type in the gamepad settings file.
+If a connected gamepad is identified by the browser as a standard gamepad it will use the mapping for "Standard Gamepad" in the [gamepads settings file](#manuals:input-gamepads) (a `Standard Gamepad` mapping is included in the `default.gamepads` file in `/builtins`). A standard gamepad is defined as having 16 buttons and 2 analog sticks with a button layout similar to a PlayStation or Xbox controller (see the [W3C definition and button layout](https://w3c.github.io/gamepad/#dfn-standard-gamepad) for more information). If the connected gamepad is not identified as a standard gamepad Defold will look for a mapping matching the hardware gamepad type in the gamepad settings file.
 
 ## Gamepads on Windows
 On Windows, only XBox 360 controllers are currently supported. To hook up your 360 controller to your Windows machine, [make sure it is setup correctly](http://www.wikihow.com/Use-Your-Xbox-360-Controller-for-Windows).
@@ -11143,7 +11143,7 @@ Render scripts
 
 Defold executes Lua scripts as part of the engine lifecycle and exposes the lifecycle through a set of predefined callback functions. When you add a script component to a game object the script becomes part of the game object's and its component(s) lifecycle. The script is evaluated in the Lua context when it is loaded, then the engine executes the following functions and passes a reference to the current script component instance as parameter. You can use this `self` reference to store state in the component instance.
 
-`self` is a userdata object that acts like a Lua table but you can't iterate over it with `pairs()` or `ipairs()` and you can't print it using `pprint()`.
+`self` is a `userdata` object that acts like a Lua table but you can't iterate over it with `pairs()` or `ipairs()` and you can't print it using `pprint()`.
 
 #### `init(self)`
 Called when the component is initialized.
@@ -11351,9 +11351,9 @@ All game objects, and some component types have properties that can be read and 
 | property   | description                            | type            |                  |
 | ---------- | -------------------------------------- | --------------- | ---------------- |
 | *position* | The local position of the game object. | `vector3`      | `get+set` |
-| *rotation* | Local rotation of game object, expressed as a quaternion.  | `quaternion` | `get+set` |
+| *rotation* | Local rotation of game object, expressed as a `quaternion`.  | `quaternion` | `get+set` |
 | *euler*    | Local rotation of game object, Euler angles. | `vector3` | `get+set` |
-| *scale*    | Local non uniform scale of the game object, expressed as a vector where each component contains a multiplier along each axis. To double the size in x and y, provide vmath.vector3(2.0, 2.0, 0) | `vector3` | `get+set` |
+| *scale*    | Local non uniform scale of the game object, expressed as a vector where each component contains a multiplier along each axis. To double the size in x and y, provide `vmath.vector3(2.0, 2.0, 0)` | `vector3` | `get+set` |
 | *scale.xy*    | Local non uniform scale of the game object, expressed as a vector where each component contains a multiplier along X and Y axis.| `vector3` | `get+set` |
 
 Specific functions for working with the game object transform also exist; they are `go.get_position()`, `go.set_position()`, `go.get_rotation()`, `go.set_rotation()`,  `go.get_scale()`, `go.set_scale()` and `go.set_scale_xy()`.
@@ -11418,7 +11418,7 @@ GUI nodes also contain properties, but they are read and written through special
 * `inner_radius` (or `gui.PROP_INNER_RADIUS`)
 * `slice9` (or `gui.PROP_SLICE9`)
 
-Note that all color values are encoded in a vector4 where the components correspond to the RGBA values:
+Note that all color values are encoded in a `vector4` where the components correspond to the RGBA values:
 
 `x`
 : The red color component
@@ -11811,7 +11811,7 @@ table
   ```
 
 userdata
-: Userdata is provided to allow arbitrary C data to be stored in Lua variables. Defold uses Lua userdata objects to store Hash values (hash), URL objects (url), Math objects (vector3, vector4, matrix4, quaternion), Game objects, GUI nodes (node), Render predicates (predicate), Render targets (render_target) and Render constant buffers (constant_buffer)
+: `userdata` is provided to allow arbitrary C data to be stored in Lua variables. Defold uses Lua `userdata` objects to store Hash values (hash), URL objects (url), Math objects (vector3, vector4, matrix4, quaternion), Game objects, GUI nodes (node), Render predicates (predicate), Render targets (render_target) and Render constant buffers (constant_buffer)
 
 thread
 : Threads represent independent threads of execution and are used to implement coroutines. See below for details.
@@ -11831,7 +11831,7 @@ Arithmetic operators
   ```
 
 Relational/comparison operators
-: `` (greater than), `=` (greater or equal), `==` (equal), `~=` (not equal). There operators always return `true` or `false`. Values of different types are considered different. If the types are the same, they are compared according to their value. Lua compares tables, userdata, and functions by reference. Two such values are considered equal only if they refer to the same object.
+: `` (greater than), `=` (greater or equal), `==` (equal), `~=` (not equal). There operators always return `true` or `false`. Values of different types are considered different. If the types are the same, they are compared according to their value. Lua compares tables, `userdata`, and functions by reference. Two such values are considered equal only if they refer to the same object.
   ```lua
   a = 5
   b = 6
@@ -11981,7 +11981,7 @@ break and return
 
 All variables that you declare are by default global, meaning that they are available through all parts of the Lua runtime context. You can explicitly declare variables `local`, meaning that the variable will only exist within the current scope.
 
-Each Lua source file defines a separate scope. Local declarations on the topmost level in a file mean the variable is local to the Lua script file. Each function creates another nested scope and each control structure block creates additional scopes. You can explicitly create a scope with the `do` and `end` keywords. Lua is lexically scoped, meaning that a scope has full access to _local_ variables from the enclosing scope. Note that the local variables must be declared before their use.
+Each Lua source file defines a separate scope. `local` declarations on the topmost level in a file mean the variable is local to the Lua script file. Each function creates another nested scope and each control structure block creates additional scopes. You can explicitly create a scope with the `do` and `end` keywords. Lua is lexically scoped, meaning that a scope has full access to _local_ variables from the enclosing scope. Note that the local variables must be declared before their use.
 ```lua
 function my_func(a, b)
     -- 'a' and 'b' are local to this function and available through its scope
@@ -12657,7 +12657,7 @@ For security reasons browsers (and by extension any JavaScript running in a brow
 | HTML5 support               | Yes                                       | Yes - but access through http and not file I/O |
 
 ### System file access
-Access to system files may be restricted by the operating system for security reasons. You can use the [`extension-directories`](https://defold.com/assets/extensiondirectories/) native extension to get the absolute path to some common system directories (ie documents, resource, temp). Once you have the absolute path of these files you can use the `io.*` and `os.*` functions to access the files (see above).
+Access to system files may be restricted by the operating system for security reasons. You can use the [`extension-directories`](https://defold.com/assets/extensiondirectories/) native extension to get the absolute path to some common system directories (ie `documents`, `resource`, `temp`). Once you have the absolute path of these files you can use the `io.*` and `os.*` functions to access the files (see above).
 
 For security reasons browsers (and by extension any JavaScript running in a browser) is prevented from accessing system files. File operations in HTML5 builds in Defold still work, but only on a "virtual file system" using the IndexedDB API in the browser. What this means is that there is no way to access system files in HTML5 builds.
 
@@ -12777,7 +12777,7 @@ Another use-case for loading large amounts of data over the network is sound str
 
 ### Request headers
 
-It is possible to set additional headers when sending a request. This can for instance be used to set an authorization header or content type to tell the server which format the
+It is possible to set additional headers when sending a request. This can for instance be used to set an `Authorization` header or `Content-Type` to tell the server which format the request body has.
 ```Lua
 local function handle_response(self, id, response)
 	print(response.status, response.response)
@@ -13161,7 +13161,7 @@ msg.post("@render:", "clear_color", { color = vmath.vector4(0.3, 0.4, 0.5, 0) })
 ```
 
 ## Render Resources
-To pass in certain engine resources into the render script, you can add these into the `Render Resources` table in the .render file assigned to the project:
+To pass in certain engine resources into the render script, you can add these into the `Render Resources` table in the `.render` file assigned to the project:
 
 Using these resources in a render script:
 ```lua
@@ -13194,7 +13194,7 @@ local my_texture_handle = resource.get_texture_info(my_texture_resource)
 msg.post("@render:", "set_texture", { handle = my_texture_handle.handle })
 ```
 
-In a .render_script file:
+In a `.render_script` file:
 ```lua
 function on_message(self, message_id, message)
     if message_id == hash("set_texture") then
@@ -13242,7 +13242,7 @@ end
 ```
 
 `"draw_line"`
-: Draw debug line. Use to visualize ray_casts, vectors and more. Lines are drawn with the `render.draw_debug3d()` call.
+: Draw debug line. Use to visualize `ray_casts`, vectors and more. Lines are drawn with the `render.draw_debug3d()` call.
 ```lua
 -- draw a white line
 local p1 = vmath.vector3(0, 0, 0)
@@ -13719,7 +13719,7 @@ render.dispatch_compute(32, 32, 32, {constants = constants})
 
 Currently, generating any type of output from a compute program can only be done via `storage textures`. A storage texture is similar to a "regular texture" except that they support more functionality and configurability. Storage textures, as the name implies, can be used as a generic buffer that you can read and write data to from a compute program. You can then bind the same buffer to a different shader program for reading.
 
-To create a storage texture in Defold, you need to do this from a regular .script file. Render scripts does not have this functionality as dynamic textures need to be created via the `resource` API which is only available in regular .script files.
+To create a storage texture in Defold, you need to do this from a regular `.script` file. Render scripts does not have this functionality as dynamic textures need to be created via the `resource` API which is only available in regular `.script` files.
 ```lua
 -- In a .script file:
 function init(self)
@@ -14333,7 +14333,7 @@ Some of these properties provides hints on how the material should be rendered. 
 
 ## Shader integration
 
-The PBR material data is exposed to the shaders based on types and name convention. The PBR material system provides all parsed material parameters to shaders via a structured uniform block named `PbrMaterial`. Each supported glTF extension corresponds to a struct within this block, which can be conditionally compiled using #define flags.
+The PBR material data is exposed to the shaders based on types and name convention. The PBR material system provides all parsed material parameters to shaders via a structured uniform block named `PbrMaterial`. Each supported glTF extension corresponds to a struct within this block, which can be conditionally compiled using `#define` flags.
 ```glsl
 uniform PbrMaterial
 {
@@ -14341,7 +14341,7 @@ uniform PbrMaterial
 };
 ```
 
-The various features of the material is specified as fixed structs in the shader. Data has been packed as much as possible in vec4's since that is how constants are set internally in Defold. In those cases where data has been packed, it is denoted as comments in the shader snippets for each feature below:
+The various features of the material is specified as fixed structs in the shader. Data has been packed as much as possible in `vec4`'s since that is how constants are set internally in Defold. In those cases where data has been packed, it is denoted as comments in the shader snippets for each feature below:
 ```glsl
 struct PbrMetallicRoughness
 {
@@ -14424,7 +14424,7 @@ struct PbrIridescence
 };
 ```
 
-The common properties are set on the material uniform itself (and once again, note the data packing into vec4).
+The common properties are set on the material uniform itself (and once again, note the data packing into `vec4`).
 ```glsl
 // Common textures
 uniform sampler2D PbrMaterial_normalTexture;
@@ -14446,7 +14446,7 @@ uniform PbrMaterial
 
 ### Example shader
 
-Here is an example shader that contains all features and a proposed naming scheme for texture bindings (again, this must be handled manually). Note that you can turn off features simply by using defines around each member of the PbrMaterial itself, as shown in the example below:
+Here is an example shader that contains all features and a proposed naming scheme for texture bindings (again, this must be handled manually). Note that you can turn off features simply by using `#define`s around each member of the `PbrMaterial` itself, as shown in the example below:
 ```glsl
 // Feature flags, comment or remove these to slim down the shader.
 #define PBR_METALLIC_ROUGHNESS
@@ -16848,7 +16848,7 @@ It is possible to specify additional engine arguments when the engine is configu
     }
 ```
 
-You can also add `--config=foo1=bar1, --config=foo2=bar2` to the engine arguments field in the HTML5 section of *game.project* and it will be injected into the generated `index.html` file.
+You can also add `--config=foo1=bar1, --config=foo2=bar2` to the *Engine Arguments* field in the HTML5 section of *game.project* and it will be injected into the generated `index.html` file.
 
 At runtime you get the values like this:
 ```lua
@@ -17595,7 +17595,7 @@ When creating an extension, there are a few things that help out in developing i
 
 There should only be one Lua API, and one implementation of it. This makes it a lot easier to have the same behaviour for all platforms.
 
-If the platform in question shouldn't support the extension, it is recommended to simply not registering a Lua module at all. That way you can detect support by checking for nil:
+If the platform in question shouldn't support the extension, it is recommended to simply not registering a Lua module at all. That way you can detect support by checking for `nil`:
 ```lua
     if myextension ~= nil then
         myextension.do_something()

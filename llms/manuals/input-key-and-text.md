@@ -17,7 +17,7 @@ end
 ```
 
 # Text Triggers
-Text triggers are used to read arbitrary text input. There are two types of text triggers; text and marked text.
+Text triggers are used to read arbitrary text input. There are two types of text triggers; `text` and `marked-text`.
 
 ## Text
 The `text` captures normal text input. It sets the `text` field of the action table to a string containing the typed character. The action is only fired at the press of the button, no `release` or `repeated` action is sent.

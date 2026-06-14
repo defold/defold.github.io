@@ -93,7 +93,7 @@ Niektóre z tych właściwości dostarczają wskazówek, jak materiał powinien 
 
 ## Integracja ze shaderami
 
-Dane materiału PBR są udostępniane shaderom na podstawie typów i konwencji nazewnictwa. System materiałów PBR przekazuje wszystkie odczytane parametry materiału do shaderów przez uporządkowany blok uniformów o nazwie `PbrMaterial`. Każde obsługiwane rozszerzenie glTF odpowiada strukturze w tym bloku, którą można kompilować warunkowo za pomocą znaczników #define.
+Dane materiału PBR są udostępniane shaderom na podstawie typów i konwencji nazewnictwa. System materiałów PBR przekazuje wszystkie odczytane parametry materiału do shaderów przez uporządkowany blok uniformów o nazwie `PbrMaterial`. Każde obsługiwane rozszerzenie glTF odpowiada strukturze w tym bloku, którą można kompilować warunkowo za pomocą znaczników `#define`.
 
 ```glsl
 uniform PbrMaterial
@@ -102,7 +102,7 @@ uniform PbrMaterial
 };
 ```
 
-Różne cechy materiału są w shaderze opisane jako stałe struktury. Dane zostały spakowane do vec4 w maksymalnym możliwym stopniu, ponieważ w ten sposób stałe są wewnętrznie ustawiane w Defold. W przypadkach, w których dane zostały spakowane, zostało to oznaczone komentarzami w przykładach shaderów dla każdej funkcji poniżej:
+Różne cechy materiału są w shaderze opisane jako stałe struktury. Dane zostały spakowane do `vec4` w maksymalnym możliwym stopniu, ponieważ w ten sposób stałe są wewnętrznie ustawiane w Defold. W przypadkach, w których dane zostały spakowane, zostało to oznaczone komentarzami w przykładach shaderów dla każdej funkcji poniżej:
 
 ```glsl
 struct PbrMetallicRoughness
@@ -186,7 +186,7 @@ struct PbrIridescence
 };
 ```
 
-Wspólne właściwości są ustawiane w samym uniformie materiału (i ponownie warto zwrócić uwagę na pakowanie danych do vec4).
+Wspólne właściwości są ustawiane w samym uniformie materiału (i ponownie warto zwrócić uwagę na pakowanie danych do `vec4`).
 
 ```glsl
 // Wspólne tekstury
@@ -209,7 +209,7 @@ uniform PbrMaterial
 
 ### Przykładowy shader
 
-Poniżej znajduje się przykład shadera zawierającego wszystkie funkcje oraz proponowany schemat nazewnictwa dla powiązań tekstur (tę część również trzeba obsłużyć ręcznie). Zwróć uwagę, że możesz wyłączyć poszczególne funkcje, używając #define wokół każdego elementu PbrMaterial, tak jak pokazano w przykładzie poniżej:
+Poniżej znajduje się przykład shadera zawierającego wszystkie funkcje oraz proponowany schemat nazewnictwa dla powiązań tekstur (tę część również trzeba obsłużyć ręcznie). Zwróć uwagę, że możesz wyłączyć poszczególne funkcje, używając `#define` wokół każdego elementu `PbrMaterial`, tak jak pokazano w przykładzie poniżej:
 
 ```glsl
 // Flagi funkcji, zakomentuj je lub usuń, aby odchudzić shader.

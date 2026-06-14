@@ -35,7 +35,7 @@ Skrypty renderowania
 Defold wykonuje skrypty Lua jako część cyklu życia silnika i udostępnia ten cykl za pomocą zestawu predefiniowanych funkcji wywołania zwrotnego. Gdy dodasz komponent skryptu do obiektu gry, skrypt staje się częścią cyklu życia tego obiektu oraz jego komponentów. Skrypt jest interpretowany w kontekście Lua podczas wczytywania, a następnie silnik wywołuje poniższe funkcje i przekazuje referencję do bieżącej instancji komponentu skryptu jako parametr. Możesz używać tej referencji `self` do przechowywania stanu w instancji komponentu.
 
 <div class='important' markdown='1'>
-`self` jest obiektem userdata, który zachowuje się jak tabela Lua, ale nie można po nim iterować za pomocą `pairs()` ani `ipairs()` i nie można go wypisać przez `pprint()`.
+`self` jest obiektem `userdata`, który zachowuje się jak tabela Lua, ale nie można po nim iterować za pomocą `pairs()` ani `ipairs()` i nie można go wypisać przez `pprint()`.
 </div>
 
 #### `init(self)`

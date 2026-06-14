@@ -65,8 +65,8 @@ In the top-right of the scene view there is a toolbar with commonly used tools a
 
   You can also select objects by:
 
-  - `Left Mouse Click` and `Drag` to select all objects inside the selection region.
-  - `Left Mouse Click` objects in the `Outline`, and while holding `⇧ Shift` you can expand selection or while holding `Ctrl`/`⌘ Cmd` you can (un)select clicked.
+- `Left Mouse Click` and `Drag` to select all objects inside the selection region.
+- `Left Mouse Click` objects in the `Outline`, and while holding `⇧ Shift` you can expand selection or while holding `Ctrl`/`⌘ Cmd` you can (un)select clicked.
 
 #### Move tool
 

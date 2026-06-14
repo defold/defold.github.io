@@ -10,7 +10,7 @@ When creating an extension, there are a few things that help out in developing i
 
 There should only be one Lua API, and one implementation of it. This makes it a lot easier to have the same behaviour for all platforms.
 
-If the platform in question shouldn't support the extension, it is recommended to simply not registering a Lua module at all. That way you can detect support by checking for nil:
+If the platform in question shouldn't support the extension, it is recommended to simply not registering a Lua module at all. That way you can detect support by checking for `nil`:
 ```lua
     if myextension ~= nil then
         myextension.do_something()

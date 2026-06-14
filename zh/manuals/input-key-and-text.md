@@ -33,7 +33,7 @@ end
 ```
 
 # 文本触发器
-文本触发器用于读取任意文本输入。有两种类型的文本触发器：文本和标记文本。
+文本触发器用于读取任意文本输入。有两种类型的文本触发器：`text` 和 `marked-text`。
 
 ![](/manuals/images/input/text_bindings.png)
 

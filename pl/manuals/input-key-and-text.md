@@ -33,7 +33,7 @@ end
 ```
 
 # Wyzwalacze tekstowe
-Wyzwalacze tekstowe służą do odczytywania dowolnego tekstu wprowadzanego za pomocą klawiatury. Istnieją dwa rodzaje wyzwalaczy tekstowych: text i marked text.
+Wyzwalacze tekstowe służą do odczytywania dowolnego tekstu wprowadzanego za pomocą klawiatury. Istnieją dwa rodzaje wyzwalaczy tekstowych: `text` i `marked-text`.
 
 ![](/manuals/images/input/text_bindings.png)
 

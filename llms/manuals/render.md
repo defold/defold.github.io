@@ -262,7 +262,7 @@ msg.post("@render:", "clear_color", { color = vmath.vector4(0.3, 0.4, 0.5, 0) })
 ```
 
 ## Render Resources
-To pass in certain engine resources into the render script, you can add these into the `Render Resources` table in the .render file assigned to the project:
+To pass in certain engine resources into the render script, you can add these into the `Render Resources` table in the `.render` file assigned to the project:
 
 Using these resources in a render script:
 ```lua
@@ -295,7 +295,7 @@ local my_texture_handle = resource.get_texture_info(my_texture_resource)
 msg.post("@render:", "set_texture", { handle = my_texture_handle.handle })
 ```
 
-In a .render_script file:
+In a `.render_script` file:
 ```lua
 function on_message(self, message_id, message)
     if message_id == hash("set_texture") then
@@ -343,7 +343,7 @@ end
 ```
 
 `"draw_line"`
-: Draw debug line. Use to visualize ray_casts, vectors and more. Lines are drawn with the `render.draw_debug3d()` call.
+: Draw debug line. Use to visualize `ray_casts`, vectors and more. Lines are drawn with the `render.draw_debug3d()` call.
 ```lua
 -- draw a white line
 local p1 = vmath.vector3(0, 0, 0)

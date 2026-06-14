@@ -96,7 +96,7 @@ go.animate("#tilemap", "tint", go.PLAYBACK_LOOP_PINGPONG, vmath.vector4(1,0,0,1)
 ```
 
 `tint`
-: The color tint of the tile map (`vector4`). The vector4 is used to represent the tint with x, y, z, and w corresponding to the red, green, blue and alpha tint.
+: The color tint of the tile map (`vector4`). The `vector4` is used to represent the tint with x, y, z, and w corresponding to the red, green, blue and alpha tint.
 
 ## Project configuration
 
