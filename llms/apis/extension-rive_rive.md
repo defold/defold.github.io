@@ -17,6 +17,7 @@ Lua wrapper for pointer movement.
 - `url` (url) - Component receiving the pointer move.
 - `x` (number) - Pointer x coordinate in component space.
 - `y` (number) - Pointer y coordinate in component space.
+- `pointer_id` (number | nil) - Optional stable pointer identifier for multitouch. Defaults to 0.
 
 ### rive.pointer_up
 *Type:* FUNCTION
@@ -27,6 +28,7 @@ Lua wrapper for pointer up events.
 - `url` (url) - Component receiving the pointer release.
 - `x` (number) - Pointer x coordinate.
 - `y` (number) - Pointer y coordinate.
+- `pointer_id` (number | nil) - Optional stable pointer identifier for multitouch. Defaults to 0.
 
 ### rive.pointer_down
 *Type:* FUNCTION
@@ -37,6 +39,7 @@ Lua wrapper for pointer down events.
 - `url` (url) - Component receiving the pointer press.
 - `x` (number) - Pointer x coordinate.
 - `y` (number) - Pointer y coordinate.
+- `pointer_id` (number | nil) - Optional stable pointer identifier for multitouch. Defaults to 0.
 
 ### rive.pointer_exit
 *Type:* FUNCTION
@@ -47,6 +50,7 @@ Lua wrapper for pointer exit events.
 - `url` (url) - Component receiving the pointer leave.
 - `x` (number) - Pointer x coordinate.
 - `y` (number) - Pointer y coordinate.
+- `pointer_id` (number | nil) - Optional stable pointer identifier for multitouch. Defaults to 0.
 
 ### rive.get_projection_matrix
 *Type:* FUNCTION
