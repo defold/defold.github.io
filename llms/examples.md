@@ -71,7 +71,7 @@ These are per-example files generated for LLM usage.
 - [8 ways movement](https://defold.com/llms/examples/input/move.md) - A very simple 8 ways movement setup with a single game object and a script that listens to input and updates the game object position accordingly
 - [Down duration](https://defold.com/llms/examples/input/down_duration.md) - Listens to input trigger "touch" and count mouse down duration in update method
 - [Entity Picking](https://defold.com/llms/examples/input/entity_picking.md) - This example demonstrates how to pick a game object from the 3D scene
-- [Mouse and touch events](https://defold.com/llms/examples/input/mouse_and_touch.md) - Shows how to read mouse/touch movement and mouse/touch button state
+- [Mouse and Touch Events](https://defold.com/llms/examples/input/mouse_and_touch.md) - Shows how to read mouse and/or touch movement and mouse button/touch state
 - [Text input](https://defold.com/llms/examples/input/text.md) - Listens to text input trigger "type" and modifies the game object label with the alien's speech according to input
 
 ## Material
