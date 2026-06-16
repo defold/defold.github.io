@@ -30,7 +30,7 @@ CODEPAD_ZIP = "codepad-master.zip"
 ASSETPORTAL_ZIP = "asset-portal-master.zip"
 GAMESSHOWCASE_ZIP = "games-showcase-master.zip"
 
-EXAMPLES_DEFOLD_CHANNEL = "beta"
+EXAMPLES_DEFOLD_CHANNEL = "alpha"
 EXAMPLES_BUILD_SERVER = "https://build-stage.defold.com/"
 EXAMPLE_CODE_FILE_PATTERNS = "*.script|*.gui_script|*.lua|*.vp|*.fp|*.cp|*.glsl|*.render_script"
 
