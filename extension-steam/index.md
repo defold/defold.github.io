@@ -1,8 +1,8 @@
 ---
 brief: This manual covers how to integrate a game with the Steamworks SDK.
 github: https://github.com/defold/extension-steam
-language: en
 layout: manual
+locale: en
 title: Defold Steam extension API documentation
 toc:
 - Defold Steam extension API documentation
