@@ -2,7 +2,7 @@
     "asset_url": "https://github.com/defold/asset-portal/blob/master/assets/pcgrandom.json",
     "author": "Selim Anaç",
     "author_id": "6100d3b33dfe49f042484ab76af0781e",
-    "description": "PCG Random Number Generator Native Extension.",
+    "description": "PCG Random Number Generator Native Extension for Defold. This extension allows you to generate random numbers using minimal C implementation of PCG (Permuted Congruential Generator) - a family of fast, space-efficient, and statistically high-quality pseudo-random number generators.",
     "id": "pcgrandom",
     "images": {
         "hero": "pcgrandom-hero.jpg",
@@ -22,6 +22,11 @@
     ],
     "project_url": "https://github.com/selimanac/defold-random",
     "release_tags": [
+        {
+            "published_at": "2026-06-23T12:15:48Z",
+            "version": "v1.2.8",
+            "zip": "https://github.com/selimanac/defold-random/archive/refs/tags/v1.2.8.zip"
+        },
         {
             "published_at": "2021-07-24T16:43:00Z",
             "version": "v1.2.6",
@@ -64,6 +69,12 @@
         }
     ],
     "releases": [
+        {
+            "message": "- Added `rnd.seed32(init_state, init_seq)` for exact deterministic unsigned 32-bit seeding from Lua.\n- Added batch generators:\n  - `rnd.numbers(count)`\n  - `rnd.ranges(count, min, max)`\n  - `rnd.doubles(count)`\n- Added probability helpers:\n  - `rnd.boolean()`\n  - `rnd.chance(probability)`\n- Added `rnd.shuffle(array)` for in-place Fisher-Yates table shuffling.\n- Added `pcgrandom/annotations.lua` \n- Added missing `rnd.dice()` documentation to `pcgrandom.script_api`.\n- Added entropy reseed logging showing whether OS entropy or fallback entropy was used.\n- `rnd.seed()` now reseeds from entropy only when called with no arguments.\n- `rnd.seed(0, seq)` is now valid deterministic seeding behavior.\n- `rnd.double_range(min, max)` now generates values in `[min, max)`, matching `rnd.double()` semantics.",
+            "published_at": "2026-06-23T12:15:48Z",
+            "tag": "v1.2.8",
+            "zip": "https://github.com/selimanac/defold-random/archive/refs/tags/v1.2.8.zip"
+        },
         {
             "message": "",
             "published_at": "2021-07-24T16:43:00Z",
