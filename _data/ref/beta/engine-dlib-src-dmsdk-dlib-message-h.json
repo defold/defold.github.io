@@ -463,6 +463,184 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "Post an message to a socket",
+            "description": "Post an message to a socket",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "Post",
+            "notes": [
+                "Message data is copied by value"
+            ],
+            "parameters": [
+                {
+                    "doc": "The sender URL if the receiver wants to respond. 0x0 is accepted",
+                    "is_optional": "False",
+                    "name": "sender",
+                    "types": [
+                        "dmMessage::URL*"
+                    ]
+                },
+                {
+                    "doc": "The receiver URL, must not be 0x0",
+                    "is_optional": "False",
+                    "name": "receiver",
+                    "types": [
+                        "dmMessage::URL*"
+                    ]
+                },
+                {
+                    "doc": "Message id",
+                    "is_optional": "False",
+                    "name": "message_id",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                },
+                {
+                    "doc": "User data that can be used when both the sender and receiver are known",
+                    "is_optional": "False",
+                    "name": "user_data1",
+                    "types": [
+                        "uintptr_t"
+                    ]
+                },
+                {
+                    "doc": "User data that can be used when both the sender and receiver are known.",
+                    "is_optional": "False",
+                    "name": "user_data2",
+                    "types": [
+                        "uintptr_t"
+                    ]
+                },
+                {
+                    "doc": "User specified descriptor of the message data",
+                    "is_optional": "False",
+                    "name": "descriptor",
+                    "types": [
+                        "uintptr_t"
+                    ]
+                },
+                {
+                    "doc": "Message data reference",
+                    "is_optional": "False",
+                    "name": "message_data",
+                    "types": [
+                        "void*"
+                    ]
+                },
+                {
+                    "doc": "Message data size in bytes",
+                    "is_optional": "False",
+                    "name": "message_data_size",
+                    "types": [
+                        "uint32_t"
+                    ]
+                },
+                {
+                    "doc": "if set, will be called after each message dispatch",
+                    "is_optional": "False",
+                    "name": "destroy_callback",
+                    "types": [
+                        "dmMessage::MessageDestroyCallback"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "if the message was posted",
+                    "name": "RESULT_OK",
+                    "types": [
+                        ""
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "post a ddf message to a socket",
+            "description": "Post a DDF message to a socket. A helper wrapper for Post()'ing a DDF message",
+            "error": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"c1\">// dmMessage::URL sender, receiver;</span>\n<span class=\"c1\">// dmGameObject::HInstance go;</span>\n\n<span class=\"n\">dmGameSystemDDF</span><span class=\"o\">::</span><span class=\"n\">PlayAnimation</span><span class=\"w\"> </span><span class=\"n\">msg</span><span class=\"p\">;</span><span class=\"w\"></span>\n<span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">m_Id</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"n\">animation_id</span><span class=\"p\">;</span><span class=\"w\"></span>\n<span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">m_Offset</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"n\">params</span><span class=\"p\">.</span><span class=\"n\">m_CursorStart</span><span class=\"p\">;</span><span class=\"w\"></span>\n<span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">m_PlaybackRate</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"n\">params</span><span class=\"p\">.</span><span class=\"n\">m_PlaybackRate</span><span class=\"p\">;</span><span class=\"w\"></span>\n\n<span class=\"n\">dmMessage</span><span class=\"o\">::</span><span class=\"n\">Result</span><span class=\"w\"> </span><span class=\"n\">result</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"n\">dmMessage</span><span class=\"o\">::</span><span class=\"n\">Post</span><span class=\"p\">(</span><span class=\"o\">&amp;</span><span class=\"n\">msg</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"o\">&amp;</span><span class=\"n\">sender</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"o\">&amp;</span><span class=\"n\">receiver</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"p\">(</span><span class=\"kt\">uintptr_t</span><span class=\"p\">)</span><span class=\"n\">go</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"mi\">0</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"mi\">0</span><span class=\"p\">));</span><span class=\"w\"></span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "PostDDF",
+            "notes": [
+                "Message data is copied by value"
+            ],
+            "parameters": [
+                {
+                    "doc": "Message data reference",
+                    "is_optional": "False",
+                    "name": "message",
+                    "types": [
+                        "T*"
+                    ]
+                },
+                {
+                    "doc": "The sender URL if the receiver wants to respond. 0x0 is accepted",
+                    "is_optional": "False",
+                    "name": "sender",
+                    "types": [
+                        "dmMessage::URL*"
+                    ]
+                },
+                {
+                    "doc": "The receiver URL, must not be 0x0",
+                    "is_optional": "False",
+                    "name": "receiver",
+                    "types": [
+                        "dmMessage::URL*"
+                    ]
+                },
+                {
+                    "doc": "User data that can be used when both the sender and receiver are known",
+                    "is_optional": "False",
+                    "name": "user_data1",
+                    "types": [
+                        "uintptr_t"
+                    ]
+                },
+                {
+                    "doc": "User data that can be used when both the sender and receiver are known.",
+                    "is_optional": "False",
+                    "name": "user_data2",
+                    "types": [
+                        "uintptr_t"
+                    ]
+                },
+                {
+                    "doc": "if set, will be called after each message dispatch",
+                    "is_optional": "False",
+                    "name": "destroy_callback",
+                    "types": [
+                        "dmMessage::MessageDestroyCallback"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "if the message was posted",
+                    "name": "RESULT_OK",
+                    "types": [
+                        ""
+                    ]
+                }
+            ],
+            "tparams": [
+                {
+                    "doc": "Must be a DDF type",
+                    "name": "T",
+                    "type": ""
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "Resets the given URL to default values.",
             "description": "Resets the given URL to default values.",
             "error": "",

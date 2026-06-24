@@ -305,6 +305,41 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "DEPRECATED! reset a shader constant for a model",
+            "description": "Resets a shader constant for a model component.\nThe constant must be defined in the material assigned to the model.\nResetting a constant through this function implies that the value defined in the material will be used.\nWhich model to reset a constant for is identified by the URL.",
+            "error": "",
+            "examples": "The following examples assumes that the model has id \"model\" and that the default-material in builtins is used, which defines the constant \"tint\".\nIf you assign a custom material to the model, you can reset the constants defined there in the same manner.\nHow to reset the tinting of a model:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"n\">model</span><span class=\"p\">.</span><span class=\"n\">reset_constant</span><span class=\"p\">(</span><span class=\"s2\">&quot;#model&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;tint&quot;</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "model.reset_constant",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the model that should have a constant reset.",
+                    "is_optional": "False",
+                    "name": "url",
+                    "types": [
+                        "string",
+                        "hash",
+                        "url"
+                    ]
+                },
+                {
+                    "doc": "name of the constant.",
+                    "is_optional": "False",
+                    "name": "constant",
+                    "types": [
+                        "string",
+                        "hash"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "set morph (blend shape) weights from a table",
             "description": "Copies numeric values from <code>weights</code> into each morph target slot for every mesh on the model that has morph targets.\nAt most as many weights are applied as each mesh has morph targets; extra entries in the table are ignored.\nMissing weights leave the tail zero-filled for meshes with more targets than entries.\nThe override is re-applied every frame after animations run, until cleared by omitting <code>weights</code> or passing <code>nil</code>.\nTo reset the weights, use <code>model.set_blend_weights(url)</code> or <code>model.set_blend_weights(url, nil)</code>.",
             "error": "",
