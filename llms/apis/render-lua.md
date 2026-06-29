@@ -348,8 +348,6 @@ Draws all 3d debug graphics such as lines drawn with "draw_line" messages and ph
 <li>render.FRUSTUM_PLANES_ALL : All sides of the frustum.</li>
 </ul>
 
-**Replaces:** render.draw_debug2d
-
 **Examples**
 
 ```
@@ -766,8 +764,8 @@ function init(self)
 end
 
 function update(self, dt)
-    -- enable target so all drawing is done to it
-    render.enable_render_target(self.my_render_target)
+    -- set target so all drawing is done to it
+    render.set_render_target(self.my_render_target)
 
     -- draw a predicate to the render target
     render.draw(self.my_pred)
@@ -777,6 +775,24 @@ end
 
 ### render.RENDER_TARGET_DEFAULT
 *Type:* CONSTANT
+
+### render.set_blend_equation_separate
+*Type:* FUNCTION
+Sets the blend equation with separate equations for the color and alpha channels.
+
+**Parameters**
+
+- `equation_color` (number) - color blend equation
+- `equation_alpha` (number) - alpha blend equation
+
+**Examples**
+
+Set add for color and reverse subtract for alpha:
+```
+render.set_blend_equation_separate(graphics.BLEND_EQUATION_ADD,
+                                   graphics.BLEND_EQUATION_REVERSE_SUBTRACT)
+
+```
 
 ### render.set_blend_func
 *Type:* FUNCTION
@@ -864,6 +880,28 @@ It is also useful for drawing antialiased points and lines in arbitrary order.
 Set the blend func to the most common one:
 ```
 render.set_blend_func(graphics.BLEND_FACTOR_SRC_ALPHA, graphics.BLEND_FACTOR_ONE_MINUS_SRC_ALPHA)
+
+```
+
+### render.set_blend_func_separate
+*Type:* FUNCTION
+Sets the blend function with separate blend factors for the color and alpha channels.
+
+**Parameters**
+
+- `source_factor_color` (number) - source color blend factor
+- `destination_factor_color` (number) - destination color blend factor
+- `source_factor_alpha` (number) - source alpha blend factor
+- `destination_factor_alpha` (number) - destination alpha blend factor
+
+**Examples**
+
+Set standard alpha blending with separate alpha:
+```
+render.set_blend_func_separate(graphics.BLEND_FACTOR_SRC_ALPHA,
+                               graphics.BLEND_FACTOR_ONE_MINUS_SRC_ALPHA,
+                               graphics.BLEND_FACTOR_ONE,
+                               graphics.BLEND_FACTOR_ONE_MINUS_SRC_ALPHA)
 
 ```
 

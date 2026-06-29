@@ -284,6 +284,7 @@ This document contains the Defold API reference, grouped by language.
 - [dmConnectionPool (Connection Pool)](#apis:engine-dlib-src-dmsdk-dlib-connection_pool-h) - Connection pool
 - [dmCrypt (Crypt)](#apis:engine-dlib-src-dmsdk-dlib-crypt-h) - Various hash and encode/decode functions
 - [dmDoubleLinkedList (Double linked list structs and functions)](#apis:engine-dlib-src-dmsdk-dlib-double_linked_list-h) - Double linked list structs and functions
+- [dmEndian (Endian)](#apis:engine-dlib-src-dmsdk-dlib-endian-hpp) - C++ overloads for endian conversion functions
 - [dmFileDescriptor (FileDescriptor)](#apis:engine-dlib-src-dmsdk-dlib-file_descriptor-h) - File Descriptor functions
 - [Hashtable](#apis:engine-dlib-src-dmsdk-dlib-hashtable-h) - Hash table
 - [dmHttpClient (Http Client)](#apis:engine-dlib-src-dmsdk-dlib-http_client-h) - Http client functions
@@ -305,6 +306,7 @@ This document contains the Defold API reference, grouped by language.
 - [dmThread (Thread)](#apis:engine-dlib-src-dmsdk-dlib-thread-h) - Thread functions
 - [dmTime (Time)](#apis:engine-dlib-src-dmsdk-dlib-time-h) - Time functions
 - [dmTransform (Transform)](#apis:engine-dlib-src-dmsdk-dlib-transform-h) - Api for transforms with rotation, scale and translation
+- [dmTrigLookup (TrigLookup)](#apis:engine-dlib-src-dmsdk-dlib-trig_lookup-h) - Api for trigonometrics using lookup tables
 - [dmURI (URI)](#apis:engine-dlib-src-dmsdk-dlib-uri-h) - URI functions
 - [dmUtf8 (Utf8)](#apis:engine-dlib-src-dmsdk-dlib-utf8-h) - Utf8 API documentation
 - [dmVMath (Vector Math)](#apis:engine-dlib-src-dmsdk-dlib-vmath-h) - Vector Math functions
@@ -344,6 +346,11 @@ This document contains the Defold API reference, grouped by language.
 
 - [b2d](#apis:b2d-lua) - Functions for interacting with Box2D
 - [b2d.body](#apis:b2d.body-lua) - Functions for interacting with Box2D bodies
+- [b2d.chain](#apis:b2d.chain-lua) - Functions for Box2D v3 chains
+- [b2d.fixture](#apis:b2d.fixture-lua) - Functions for interacting with fixtures attached to Box2D bodies
+- [b2d.joint](#apis:b2d.joint-lua) - Functions for interacting with native Box2D joints
+- [b2d.shape](#apis:b2d.shape-lua) - Constants for functional shape tables used with `b2d
+- [b2d.world](#apis:b2d.world-lua) - Query and cast functions for the Defold-owned Box2D v2 world
 - [base (Base)](#apis:base-lua) - Documentation for the Lua base standard library
 - [bit (BitOp)](#apis:bit-lua) - [Lua BitOp](http://bitop
 - [buffer (Buffer)](#apis:buffer-lua) - Functions for manipulating buffers and streams
@@ -351,6 +358,7 @@ This document contains the Defold API reference, grouped by language.
 - [camera (Camera)](#apis:camera-lua) - Messages to control camera components and camera focus
 - [collectionfactory (Collection factory)](#apis:collectionfactory-lua) - Functions for controlling collection factory components which are used to dynamically spawn collections into the runtime
 - [collectionproxy (Collection proxy)](#apis:collectionproxy-lua) - Messages for controlling and interacting with collection proxies which are used to dynamically load collections into the runtime
+- [compute (Compute)](#apis:compute-lua) - Functions for interacting with compute programs
 - [coroutine (Coroutine)](#apis:coroutine-lua) - Documentation for the Lua coroutine standard library
 - [crash (Crash)](#apis:crash-lua) - Native crash logging functions and constants
 - [debug (Debug)](#apis:debug-lua) - Documentation for the Lua debug standard library
@@ -367,6 +375,7 @@ This document contains the Defold API reference, grouped by language.
 - [json (JSON)](#apis:json-lua) - Manipulation of JSON data strings
 - [label (Label)](#apis:label-lua) - Functions to manipulate a label component
 - [liveupdate (LiveUpdate)](#apis:liveupdate-lua) - Functions and constants to access resources
+- [material (Material)](#apis:material-lua) - Functions for interacting with materials
 - [math (Math)](#apis:math-lua) - Documentation for the Lua math standard library
 - [model (Model)](#apis:model-lua) - Model API documentation
 - [msg (Message)](#apis:msg-lua) - Functions for passing messages and constructing URL objects
@@ -19902,6 +19911,19 @@ Result enumeration.
 - `dmConnectionPool::RESULT_HANDSHAKE_FAILED` - -3
 - `dmConnectionPool::RESULT_SHUT_DOWN` - -4
 
+### GetReuseCount
+*Type:* FUNCTION
+Get reuse count for a connection
+
+**Parameters**
+
+- `pool` (dmConnectionPool::HPool) - pool
+- `connection` (dmConnectionPool::HConnection)
+
+**Returns**
+
+- `reuse` - count
+
 ### GetSocket
 *Type:* FUNCTION
 Get socket for connection
@@ -20189,6 +20211,129 @@ If element is not in the list function doesn't affect linked list.
 - `list` (dmDoubleLinkedList::List*) - the list
 - `item` (dmDoubleLinkedList::ListNode*) - removed item
 
+<!-- engine-dlib-src-dmsdk-dlib-endian-hpp -->
+
+# Endian {#apis:engine-dlib-src-dmsdk-dlib-endian-hpp}
+
+**Namespace:** `dmEndian`
+**Language:** C++
+**Type:** Defold C++
+**File:** `endian.hpp`
+**Source:** `engine/dlib/src/dmsdk/dlib/endian.hpp`
+**Include:** `dmsdk/dlib/endian.hpp`
+
+C++ overloads for endian conversion functions.
+
+## API
+
+### dmEndian::ByteSwap
+*Type:* FUNCTION
+swap bytes in a 16-bit value
+
+**Parameters**
+
+- `x` (uint16_t) - Value to byte swap
+
+**Returns**
+
+- `value` (uint16_t) - Byte-swapped value
+
+### dmEndian::ByteSwap
+*Type:* FUNCTION
+swap bytes in a 32-bit value
+
+**Parameters**
+
+- `x` (uint32_t) - Value to byte swap
+
+**Returns**
+
+- `value` (uint32_t) - Byte-swapped value
+
+### dmEndian::ByteSwap
+*Type:* FUNCTION
+swap bytes in a 64-bit value
+
+**Parameters**
+
+- `x` (uint64_t) - Value to byte swap
+
+**Returns**
+
+- `value` (uint64_t) - Byte-swapped value
+
+### dmEndian::ToHost
+*Type:* FUNCTION
+Network byte order is big-endian.
+
+**Parameters**
+
+- `x` (uint16_t) - Network-order (big-endian) value
+
+**Returns**
+
+- `value` (uint16_t) - Host-order value
+
+### dmEndian::ToHost
+*Type:* FUNCTION
+Network byte order is big-endian.
+
+**Parameters**
+
+- `x` (uint32_t) - Network-order (big-endian) value
+
+**Returns**
+
+- `value` (uint32_t) - Host-order value
+
+### dmEndian::ToHost
+*Type:* FUNCTION
+Network byte order is big-endian.
+
+**Parameters**
+
+- `x` (uint64_t) - Network-order (big-endian) value
+
+**Returns**
+
+- `value` (uint64_t) - Host-order value
+
+### dmEndian::ToNetwork
+*Type:* FUNCTION
+Network byte order is big-endian.
+
+**Parameters**
+
+- `x` (uint16_t) - Host-order value
+
+**Returns**
+
+- `value` (uint16_t) - Network-order (big-endian) value
+
+### dmEndian::ToNetwork
+*Type:* FUNCTION
+Network byte order is big-endian.
+
+**Parameters**
+
+- `x` (uint32_t) - Host-order value
+
+**Returns**
+
+- `value` (uint32_t) - Network-order (big-endian) value
+
+### dmEndian::ToNetwork
+*Type:* FUNCTION
+Network byte order is big-endian.
+
+**Parameters**
+
+- `x` (uint64_t) - Host-order value
+
+**Returns**
+
+- `value` (uint64_t) - Network-order (big-endian) value
+
 <!-- engine-dlib-src-dmsdk-dlib-file_descriptor-h -->
 
 # FileDescriptor {#apis:engine-dlib-src-dmsdk-dlib-file_descriptor-h}
@@ -20340,7 +20485,7 @@ Creates a hashtable array with user allocated memory.
 
 **Parameters**
 
-- `user_allocated` (void*) - Pointer to user allocated continous data-block ((table_size<em>sizeof(uint32_t)) + (capacity</em>sizeof(dmHashTable::Entry))
+- `user_allocated` (void*) - Pointer to user allocated continous data-block (see dmHashTable::GetMemorySize)
 - `table_size` (uint32_t) - Hashtable size, ie number of buckets. table_size &lt; 0xffffffff
 - `capacity` (uint32_t) - Capacity. capacity &lt; 0xffffffff
 
@@ -20396,6 +20541,18 @@ Get pointer to value from key
 
 - `value` (T*) - Pointer to value. NULL if the key/value pair doesn't exist.
 
+### Get
+*Type:* FUNCTION
+Get pointer to value from key. "const" version.
+
+**Parameters**
+
+- `key` (KEY) - Key
+
+**Returns**
+
+- `value` (const T*) - Pointer to value. NULL if the key/value pair doesn't exist.
+
 ### GetIterator
 *Type:* FUNCTION
 Get an iterator for the key/value pairs
@@ -20414,6 +20571,19 @@ while(iter.Next())
 }
 
 ```
+
+### GetMemorySize
+*Type:* FUNCTION
+Returns the number of bytes needed for user allocated memory.
+
+**Parameters**
+
+- `table_size` (uint32_t) - Hashtable size, ie number of buckets. table_size &lt; 0xffffffff
+- `capacity` (uint32_t) - Capacity. capacity &lt; 0xffffffff
+
+**Returns**
+
+- `memory_size` (uint32_t) - Number of bytes needed.
 
 ### Iterate
 *Type:* FUNCTION
@@ -20465,6 +20635,14 @@ Set hashtable capacity. New capacity must be greater or equal to current capacit
 - `table_size` (uint32_t) - Hashtable size, ie number of buckets. table_size &lt; 0xffffffff
 - `capacity` (uint32_t) - Capacity. capacity &lt; 0xffffffff
 
+### SetCapacity
+*Type:* FUNCTION
+Set hashtable capacity. New capacity must be greater or equal to current capacity
+
+**Parameters**
+
+- `capacity` (uint32_t) - Capacity. capacity &lt; 0xffffffff
+
 ### Size
 *Type:* FUNCTION
 Number of entries stored in table. (not the actual hashtable size)
@@ -20480,6 +20658,14 @@ Swaps the contents of two hash tables
 **Parameters**
 
 - `other` (dmHashTable<KEY, T>&) - the other table
+
+### ~dmHashTable
+*Type:* FUNCTION
+Destructor.
+
+**Notes**
+
+- If user allocated, memory is not free'd
 
 <!-- engine-dlib-src-dmsdk-dlib-http_client-h -->
 
@@ -21267,6 +21453,70 @@ Convert a string to a URL struct
 - `-` - RESULT_OK on success
 - RESULT_MALFORMED_URL if the uri could not be parsed
 
+### Post
+*Type:* FUNCTION
+Post an message to a socket
+
+**Notes**
+
+- Message data is copied by value
+
+**Parameters**
+
+- `sender` (dmMessage::URL*) - The sender URL if the receiver wants to respond. 0x0 is accepted
+- `receiver` (dmMessage::URL*) - The receiver URL, must not be 0x0
+- `message_id` (dmhash_t) - Message id
+- `user_data1` (uintptr_t) - User data that can be used when both the sender and receiver are known
+- `user_data2` (uintptr_t) - User data that can be used when both the sender and receiver are known.
+- `descriptor` (uintptr_t) - User specified descriptor of the message data
+- `message_data` (void*) - Message data reference
+- `message_data_size` (uint32_t) - Message data size in bytes
+- `destroy_callback` (dmMessage::MessageDestroyCallback) - if set, will be called after each message dispatch
+
+**Returns**
+
+- `RESULT_OK` - if the message was posted
+
+### PostDDF
+*Type:* FUNCTION
+Post a DDF message to a socket. A helper wrapper for Post()'ing a DDF message
+
+**Notes**
+
+- Message data is copied by value
+
+**Template Parameters**
+
+- `T` - Must be a DDF type
+
+**Parameters**
+
+- `message` (T*) - Message data reference
+- `sender` (dmMessage::URL*) - The sender URL if the receiver wants to respond. 0x0 is accepted
+- `receiver` (dmMessage::URL*) - The receiver URL, must not be 0x0
+- `user_data1` (uintptr_t) - User data that can be used when both the sender and receiver are known
+- `user_data2` (uintptr_t) - User data that can be used when both the sender and receiver are known.
+- `destroy_callback` (dmMessage::MessageDestroyCallback) - if set, will be called after each message dispatch
+
+**Returns**
+
+- `RESULT_OK` - if the message was posted
+
+**Examples**
+
+```
+// dmMessage::URL sender, receiver;
+// dmGameObject::HInstance go;
+
+dmGameSystemDDF::PlayAnimation msg;
+msg.m_Id = animation_id;
+msg.m_Offset = params.m_CursorStart;
+msg.m_PlaybackRate = params.m_PlaybackRate;
+
+dmMessage::Result result = dmMessage::Post(&msg, &sender, &receiver, (uintptr_t)go, 0, 0));
+
+```
+
 ### ResetUrl
 *Type:* FUNCTION
 Resets the given URL to default values.
@@ -21345,6 +21595,18 @@ Deletes a HMutex.
 **Parameters**
 
 - `mutex` (dmMutex::HMutex) - Mutex handle to delete.
+
+### dmMutex::GetNativeHandle
+*Type:* FUNCTION
+Get the platform-specific native mutex handle.
+
+**Parameters**
+
+- `mutex` (dmMutex::HMutex) - Mutex handle.
+
+**Returns**
+
+- `handle` (void*) - Native mutex handle.
 
 ### dmMutex::HMutex
 *Type:* TYPEDEF
@@ -22948,6 +23210,19 @@ Result code. Similar to standard posix result codes
 - `dmSys::RESULT_NOTEMPTY` - -32
 - `dmSys::RESULT_UNKNOWN` - -1000
 
+### Stat
+*Type:* FUNCTION
+Remove directory tree structure and files within
+
+**Parameters**
+
+- `path` (const char*) - path to file or directory
+- `stat` (StatInfo*) - pointer to dmSys::StatInfo structure
+
+**Returns**
+
+- `result` (dmSys::Result) - RESULT_OK on success
+
 ### StatInfo
 *Type:* STRUCT
 Status info for a file or directory
@@ -22958,6 +23233,31 @@ Status info for a file or directory
 - `m_Mode` (uint32_t) - the flags of the path
 - `m_AccessTime` (uint32_t) - the last access time
 - `m_ModifiedTime` (uint32_t) - the last modified time
+
+### StatIsDir
+*Type:* FUNCTION
+Check if the path is a directory
+
+**Parameters**
+
+- `stat` (StatInfo*) - pointer to dmSys::StatInfo structure
+
+**Returns**
+
+- `result` (int) - 0 if check fails, non zero otherwise
+
+### StatIsFile
+*Type:* FUNCTION
+Check if the path is a file
+
+**Parameters**
+
+- `stat` - stat to check
+- `stat` (StatInfo*) - pointer to dmSys::StatInfo structure
+
+**Returns**
+
+- `result` (int) - 0 if check fails, non zero otherwise
 
 ### Unlink
 *Type:* FUNCTION
@@ -23407,6 +23707,46 @@ constructor
 - `translation` (dmVMath::Vector3)
 - `rotation` (dmVMath::Quat)
 - `scale` (dmVMath::Vector3)
+
+<!-- engine-dlib-src-dmsdk-dlib-trig_lookup-h -->
+
+# TrigLookup {#apis:engine-dlib-src-dmsdk-dlib-trig_lookup-h}
+
+**Namespace:** `dmTrigLookup`
+**Language:** C++
+**Type:** Defold C++
+**File:** `trig_lookup.h`
+**Source:** `engine/dlib/src/dmsdk/dlib/trig_lookup.h`
+**Include:** `dmsdk/dlib/trig_lookup.h`
+
+Api for trigonometrics using lookup tables. The precision is guaranteed to
+have an error less than 0.001f.
+
+## API
+
+### Cos
+*Type:* FUNCTION
+Returns the cosine of the given angle from a lookup table.
+
+**Parameters**
+
+- `radians` (float) - Radians of the angle
+
+**Returns**
+
+- `cosine` (float) - The cosine of the angle
+
+### Sin
+*Type:* FUNCTION
+Returns the sine of the given angle from a lookup table.
+
+**Parameters**
+
+- `radians` (float) - Radians of the angle
+
+**Returns**
+
+- `sine` (float) - The sine of the angle
 
 <!-- engine-dlib-src-dmsdk-dlib-uri-h -->
 
@@ -26013,6 +26353,19 @@ Retrieve the context for a component type
 
 - `context` (void*) - The pointer to the context, 0x0 if not found
 
+### GetGeneration
+*Type:* FUNCTION
+Get instance generation counter.
+The generation changes whenever a new game object instance is allocated, even if it later reuses the same identifier.
+
+**Parameters**
+
+- `instance` (dmGameObject::HInstance) - Gameobject instance
+
+**Returns**
+
+- `return` (uint32_t) - Generation counter for the instance.
+
 ### GetIdentifier
 *Type:* FUNCTION
 Get instance identifier
@@ -26614,6 +26967,17 @@ scene node property types
 - `dmGameObject::SCENE_NODE_PROPERTY_TYPE_BOOLEAN`
 - `dmGameObject::SCENE_NODE_PROPERTY_TYPE_TEXT`
 - `dmGameObject::SCENE_NODE_PROPERTY_TYPE_COUNT`
+
+### SceneNodeType
+*Type:* ENUM
+scene node types
+
+**Members**
+
+- `dmGameObject::SCENE_NODE_TYPE_COLLECTION`
+- `dmGameObject::SCENE_NODE_TYPE_GAMEOBJECT`
+- `dmGameObject::SCENE_NODE_TYPE_COMPONENT`
+- `dmGameObject::SCENE_NODE_TYPE_SUBCOMPONENT`
 
 ### SetBone
 *Type:* FUNCTION
@@ -27554,6 +27918,27 @@ set the constants of a render object
 - `ro` (dmRender::RenderObject*) - the render object
 - `constants` (dmGameSystem::HComponentRenderConstants) - the constants
 
+### GetMaterialConstant
+*Type:* FUNCTION
+Helper function to get material constants of components that use them: sprite, label, tile maps, spine and models
+Sprite and Label should not use value ptr. Deleting a gameobject (that included sprite(s) or label(s)) will rearrange the
+object pool for components (due to EraseSwap in the Free for the object pool). This result in the original animation value pointer will still point
+to the original memory location in the component object pool.
+
+**Parameters**
+
+- `material` (dmRender::HMaterial) - the material
+- `name_hash` (dmhash_t) - the name of the property
+- `value_index` (int32_t) - the index of the constant value to get, if it is an array
+- `out_desc` (dmGameObject::PropertyDesc&) - the property descriptor
+- `use_value_ptr` (bool) - should the property pointer be used (m_ValuePtr)
+- `callback` (CompGetConstantCallback) - callback to resolve property
+- `callback_user_data` (void*) - callback user data
+
+**Returns**
+
+- `result` (dmGameObject::PropertyResult) - the result
+
 ### GetRenderConstant
 *Type:* FUNCTION
 Destroys a render constants container
@@ -27613,6 +27998,23 @@ Found in hash.h
 ### HComponentRenderConstants
 *Type:* TYPEDEF
 Render constants handle
+
+### SetMaterialConstant
+*Type:* FUNCTION
+Helper function to set material constants of components that use them: sprite, label, tile maps, spine and models
+
+**Parameters**
+
+- `material` (dmRender::HMaterial) - the material
+- `name_hash` (dmhash_t) - the name of the property
+- `value_index` (uint32_t) - index of the constant value to set, if the material constant is an array
+- `var` (dmGameObject::PropertyVar) - the property
+- `callback` (CompGetConstantCallback) - the callback used to set the property
+- `callback_user_data` (void*) - callback user data
+
+**Returns**
+
+- `result` (dmGameObject::PropertyResult) - the result
 
 ### SetRenderConstant
 *Type:* FUNCTION
@@ -28246,6 +28648,19 @@ This should be called at the start of each frame.
 **Parameters**
 
 - `context` (dmGraphics::HContext) - Graphics context
+
+### BlendEquation
+*Type:* ENUM
+Blend equation operations.
+Determines how source and destination colors are combined during blending
+
+**Members**
+
+- `BLEND_EQUATION_ADD` -                 Source + Destination
+- `BLEND_EQUATION_SUBTRACT` -            Source - Destination
+- `BLEND_EQUATION_REVERSE_SUBTRACT` -    Destination - Source
+- `BLEND_EQUATION_MIN` -                 Min(Source, Destination)
+- `BLEND_EQUATION_MAX` -                 Max(Source, Destination)
 
 ### BlendFactor
 *Type:* ENUM
@@ -29342,6 +29757,16 @@ Attachment points for render targets
 - `rgb` (uint8_t*)
 - `rgba` (uint8_t*)
 
+### SetBlendEquationSeparate
+*Type:* FUNCTION
+Set separate blend equations for color and alpha channels.
+
+**Parameters**
+
+- `context` (dmGraphics::HContext)
+- `equation_color` (dmGraphics::BlendEquation)
+- `equation_alpha` (dmGraphics::BlendEquation)
+
 ### SetBlendFunc
 *Type:* FUNCTION
 
@@ -29350,6 +29775,18 @@ Attachment points for render targets
 - `context` (dmGraphics::HContext) - Graphics context
 - `source_factor` (gmGraphics::BlendFactor)
 - `destination_factor` (dmGraphics::BlendFactor)
+
+### SetBlendFuncSeparate
+*Type:* FUNCTION
+Set separate blend factors for color and alpha channels.
+
+**Parameters**
+
+- `context` (dmGraphics::HContext)
+- `src_factor_color` (dmGraphics::BlendFactor)
+- `dst_factor_color` (dmGraphics::BlendFactor)
+- `src_factor_alpha` (dmGraphics::BlendFactor)
+- `dst_factor_alpha` (dmGraphics::BlendFactor)
 
 ### SetColorMask
 *Type:* FUNCTION
@@ -30603,6 +31040,10 @@ Maximum number of gamepad buttons supported
 *Type:* CONSTANT
 Maximum number of gamepads supported
 
+### dmHID::MAX_GAMEPAD_GUID_LENGTH
+*Type:* CONSTANT
+max number of characters for a guid
+
 ### dmHID::MAX_GAMEPAD_HAT_COUNT [type: uint32_t]
 *Type:* CONSTANT
 Maximum number of gamepad hats supported
@@ -30622,6 +31063,31 @@ Maximum number of simultaneous touches supported
 ### dmHID::MAX_TOUCH_DEVICE_COUNT [type: uint32_t]
 *Type:* CONSTANT
 Maximum number of touch devices supported
+
+### FormatGamepadGuid
+*Type:* FUNCTION
+Formats a gamepad guid into the 32-character SDL hex representation.
+
+**Parameters**
+
+- `guid` (GamepadGuid*) - the parsed guid
+- `buffer` (char*) - output buffer of size dmHID::MAX_GAMEPAD_GUID_LENGTH + 1
+
+### GamepadGuid
+*Type:* STRUCT
+Parsed SDL-style gamepad guid.
+The struct matches SDL's 16-byte guid layout and can be converted back to
+the 32-character hexadecimal guid string with dmHID::FormatGamepadGuid().
+
+**Members**
+
+- `m_Bus` (uint16_t) - How device is communicating. E.g.0x0003 for USB devices and 0x0005 for Bluetooth devices.
+- `m_CRC16` (uint16_t) - SDL CRC16 signature, typically used when vendor and product ids are unavailable
+- `m_Vendor` (uint16_t) - USB vendor id. E.g. Nintendo 0x057e, Sony 0x054c, or Microsoft 0x045e
+- `m_Product` (uint16_t) - USB product id
+- `m_Version` (uint16_t) - Device or firmware version encoded in the guid
+- `m_DriverSignature` (uint8_t) - Driver signature byte from the SDL guid layout
+- `m_DriverData` (uint8_t) - Driver-specific data byte from the SDL guid layout
 
 ### GamepadPacket
 *Type:* STRUCT
@@ -30650,6 +31116,7 @@ gets a gamepad device handle
 
 **Parameters**
 
+- `context` (dmHID::HContext) - context in which to find the gamepad
 - `gamepad` (dmHID::HGamepad) - Handle to gamepad
 - `out` (void**) - Platform specific user id data
 
@@ -30669,6 +31136,20 @@ Convenience function to retrieve the state of a gamepad button from a gamepad pa
 **Returns**
 
 - `success` (bool) - True if the button is currently pressed down.
+
+### GetGamepadDeviceGuid
+*Type:* FUNCTION
+Retrieves the guid of a given gamepad.
+
+**Parameters**
+
+- `context` (dmHID::HContext) - context in which to find the gamepad
+- `gamepad` (dmHID::HGamepad) - Handle to gamepad
+- `guid` (GamepadGuid*) - (out) the guid
+
+**Returns**
+
+- `result` (boold) - true if the gamepad had a guid
 
 ### GetGamepadHat
 *Type:* FUNCTION
@@ -31012,7 +31493,6 @@ Data for a single touch, e.g. finger
 **Members**
 
 - `m_TapCount` (int32_t) - Single-click, double, etc
-- `m_Phase` (Phase) - Begin, end, etc
 - `m_X` (int32_t) - Current x
 - `m_Y` (int32_t) - Current y
 - `m_ScreenX` (int32_t) - Current x, in screen space
@@ -31022,6 +31502,7 @@ Data for a single touch, e.g. finger
 - `m_ScreenDX` (int32_t) - Current dx, in screen space
 - `m_ScreenDY` (int32_t) - Current dy, in screen space
 - `m_Id` (int32_t) - Touch id
+- `m_Phase` (Phase) - Begin, end, etc
 
 <!-- engine-physics-src-dmsdk-physics-physics-h -->
 
@@ -31856,6 +32337,18 @@ Gets the normalized resource path: "/my//icon.texturec" -> "/my/icon.texturec". 
 
 - `length` (uint32_t) - the length of the output string
 
+### GetExtFromPath
+*Type:* FUNCTION
+Get a resource extension from a path, i.e "resource.ext" will return "ext".
+
+**Parameters**
+
+- `path` (const char*) - The path to the resource
+
+**Returns**
+
+- `return` (const char*) - Pointer to extension string if success (same as buffer), 0 otherwise
+
 ### GetPath
 *Type:* FUNCTION
 Returns the canonical path hash of a resource
@@ -31930,6 +32423,24 @@ Get a loaded resource from factory
 - `result` (dmResource::Result) - RESULT_OK on success.
                                            RESULT_INVALID_FILE_EXTENSION if the path extension doesn't match the required extension.
 
+### IncRef
+*Type:* FUNCTION
+Increase resource reference count by 1.
+
+**Parameters**
+
+- `factory` (HFactory) - Factory handle
+- `resource` (void*) - The resource
+
+### IncRef
+*Type:* FUNCTION
+Increase resource reference count by 1.
+
+**Parameters**
+
+- `factory` (HFactory) - Factory handle
+- `rd` (HResourceDescriptor) - The resource handle
+
 ### PreloadHint
 *Type:* FUNCTION
 Hint the preloader what to load before Create is called on the resource.
@@ -31991,6 +32502,16 @@ Removes a previously registered file from the resource system
 **Returns**
 
 - `RESULT_OK` (dmResource::Result) - on success.
+
+### ResourceUnregisterReloadedCallback
+*Type:* FUNCTION
+Remove a registered callback function, O(n).
+
+**Parameters**
+
+- `factory` (dmResource::HFactory) - Handle of the factory from which the callback will be removed
+- `callback` (dmResource::FResourceReloadedCallback) - Callback function to remove
+- `user_data` (void*) - User data that was supplied when the callback was registered
 
 ### SetupType
 *Type:* FUNCTION
@@ -32565,6 +33086,19 @@ Keys must be strings
 
 - `result` (uint32_t) - Number of bytes used in buffer
 
+### CheckTableSize
+*Type:* FUNCTION
+Get the size of a table when serialized
+
+**Parameters**
+
+- `L` (lua_State*) - Lua state
+- `index` (int) - Index of the table
+
+**Returns**
+
+- `result` (uint32_t) - Number of bytes required for the serialized table
+
 ### CheckURL
 *Type:* FUNCTION
 Check if the value in the supplied index on the lua stack is a dmMessage::URL and returns it if so.
@@ -32956,6 +33490,7 @@ Convert a Json string to Lua table.
 **Parameters**
 
 - `L` (lua_State*) - lua state
+- `options_index` (int) - lua stack index to check for an options table
 - `json` (const char*) - json string
 - `json_len` (size_t) - length of json string
 
@@ -32969,11 +33504,13 @@ callback info struct that will hold the relevant info needed to make a callback 
 
 ### LuaToJson
 *Type:* FUNCTION
-Convert a Lua table to a Json string
+Convert the Lua value at the supplied stack index to a Json string
 
 **Parameters**
 
 - `L` (lua_State*) - lua state
+- `index` (int) - lua stack index of the value to encode
+- `options_index` (int) - lua stack index to check for an options table
 - `json` (char**) - [out] Pointer to char*, which will receive a newly allocated string. Use free().
 - `json_len` (size_t*) - length of json string
 
@@ -33033,6 +33570,16 @@ Push a quaternion value onto Lua stack. Will increase the stack by 1.
 
 - `L` (lua_State*) - Lua state
 - `quat` (dmVMath::Quat) - dmVMath::Quat value to push
+
+### PushTable
+*Type:* FUNCTION
+Push a serialized table to the supplied lua state, will increase the stack by 1.
+
+**Parameters**
+
+- `L` (lua_State*) - Lua state
+- `data` (const char*) - Buffer with serialized table to push
+- `data_size` (uint32_t) - Size of buffer of serialized data
 
 ### PushURL
 *Type:* FUNCTION
@@ -33406,6 +33953,14 @@ Get the Box2D body from a collision object
 
 - `body` (b2Body) - the body if successful. Otherwise <code>nil</code>.
 
+### b2d.get_version
+*Type:* FUNCTION
+Get the Box2D version information for the active backend.
+
+**Returns**
+
+- `info` (table) - version info with fields <code>version</code>, <code>major</code>, <code>middle</code>, and <code>minor</code>
+
 ### b2d.get_world
 *Type:* FUNCTION
 Get the Box2D world from the current collection
@@ -33429,8 +33984,8 @@ Box2D world
 **Namespace:** `b2d.body`
 **Language:** Lua
 **Type:** Defold Lua
-**File:** `script_box2d_body.cpp`
-**Source:** `engine/gamesys/src/gamesys/scripts/box2d/script_box2d_body.cpp`
+**File:** `script_box2d_body_v2.cpp`
+**Source:** `engine/gamesys/src/gamesys/scripts/box2d/v2/script_box2d_body_v2.cpp`
 
 Functions for interacting with Box2D bodies.
 
@@ -33528,6 +34083,15 @@ is not at the center of mass. This wakes up the body.
 - `impulse` (vector3) - the world impulse vector, usually in N-seconds or kg-m/s.
 - `point` (vector3) - the world position of the point of application.
 
+### b2d.body.apply_linear_impulse_to_center
+*Type:* FUNCTION
+Apply a linear impulse to the center of mass.
+
+**Parameters**
+
+- `body` (b2Body) - body
+- `impulse` (vector3) - world impulse vector
+
 ### b2d.body.apply_torque
 *Type:* FUNCTION
 Apply a torque. This affects the angular velocity
@@ -33573,6 +34137,163 @@ Static (immovable) body
 ### b2d.body.B2_STATIC_BODY
 *Type:* CONSTANT
 Static (immovable) body
+
+### b2d.body.compute_aabb
+*Type:* FUNCTION
+Compute the world AABB of all body shapes.
+
+**Parameters**
+
+- `body` (b2Body) - body
+
+**Returns**
+
+- `aabb` (table) - table with <code>lower</code> and <code>upper</code> vector3 fields
+
+### b2d.body.create_chain
+*Type:* FUNCTION
+Chains are one-sided connected segments with optional ghost vertices at
+the ends of open chains. Ghost vertices are creation-time chain data only and
+cannot be added to arbitrary shapes, bodies, or joints after creation.
+
+definition.vertices
+table array of local vector3 vertices. Open chains require at least 2 vertices. Loop chains require at least 4 vertices.
+definition.loop
+boolean true to create a closed loop chain.
+definition.prev_vertex
+vector3 optional ghost vertex before the first vertex for open chains.
+definition.next_vertex
+vector3 optional ghost vertex after the last vertex for open chains.
+definition.friction
+number optional friction.
+definition.restitution
+number optional restitution.
+definition.material
+number optional material id.
+definition.filter
+table optional filter with category_bits, mask_bits, and group_index.
+definition.enable_sensor_events
+boolean true to enable sensor events for chain segments.
+
+**Parameters**
+
+- `body` (b2Body) - body
+- `definition` (table) - the chain definition
+
+**Returns**
+
+- `chain` (b2Chain) - created chain handle
+- `segments` (table) - array of shape info tables for the chain segments
+
+**Examples**
+
+```
+local chain, segments = b2d.body.create_chain(body, {
+    vertices = {
+        vmath.vector3(-64, 0, 0),
+        vmath.vector3(0, 16, 0),
+        vmath.vector3(64, 0, 0),
+    },
+    prev_vertex = vmath.vector3(-96, 0, 0),
+    next_vertex = vmath.vector3(96, 0, 0),
+    friction = 0.6,
+})
+
+```
+
+### b2d.body.create_fixture
+*Type:* FUNCTION
+Creates a fixture and attach it to this body. Use this function if you need
+to set some fixture parameters, like friction. Otherwise you can create the
+fixture directly from a shape.
+If the density is non-zero, this function automatically updates the mass of the body.
+Contacts are not created until the next time step.
+
+**Parameters**
+
+- `body` (b2Body) - body
+- `definition` (table) - fixture definition table with:
+<code>shape</code> = shape table, <code>friction</code> = number, <code>restitution</code> = number,
+<code>density</code> = number, <code>sensor</code> = boolean, and optional <code>filter</code> table.
+Supported shape tables are:
+<code>circle</code> = <code>{ type = b2d.shape.SHAPE_TYPE_CIRCLE, radius = number, center = vector3_or_nil }</code>
+<code>edge</code> = <code>{ type = b2d.shape.SHAPE_TYPE_EDGE, v1 = vector3, v2 = vector3, v0 = vector3_or_nil, v3 = vector3_or_nil }</code>
+<code>polygon</code> = <code>{ type = b2d.shape.SHAPE_TYPE_POLYGON, vertices = { vector3, ... } }</code>
+<code>box</code> = <code>{ type = b2d.shape.SHAPE_TYPE_BOX, hx = number, hy = number, center = vector3_or_nil, angle = radians_or_nil }</code>
+<code>chain</code> = <code>{ type = b2d.shape.SHAPE_TYPE_CHAIN, vertices = { vector3, ... }, loop = boolean_or_nil, prev_vertex = vector3_or_nil, next_vertex = vector3_or_nil }</code>
+
+**Returns**
+
+- `fixture` (table) - fixture info table with <code>index</code>, <code>type</code>, <code>sensor</code>, <code>density</code>, <code>friction</code>, <code>restitution</code>, and <code>child_count</code>
+
+**Examples**
+
+```
+local body = b2d.get_body("#collisionobject")
+
+local triangle = b2d.body.create_fixture(body, {
+    density = 1.0,
+    friction = 0.3,
+    shape = {
+        type = b2d.shape.SHAPE_TYPE_POLYGON,
+        vertices = {
+            vmath.vector3(-16, -16, 0),
+            vmath.vector3( 16, -16, 0),
+            vmath.vector3(  0,  16, 0),
+        },
+    },
+})
+
+```
+
+### b2d.body.create_fixture
+*Type:* FUNCTION
+Creates a fixture from a shape and attach it to this body.
+This is a convenience function. Use b2FixtureDef if you need to set parameters
+like friction, restitution, user data, or filtering.
+If the density is non-zero, this function automatically updates the mass of the body.
+
+**Parameters**
+
+- `body` (b2Body) - body
+- `shape` (b2Shape) - the shape to be cloned.
+- `density` (number) - the shape density (set to zero for static bodies).
+
+### b2d.body.create_shape
+*Type:* FUNCTION
+Creates a shape and attaches it to this body.
+If the density is non-zero, this function automatically updates the mass of the body.
+Contacts are not created until the next time step.
+The definition may include density, friction, restitution, material,
+sensor or is_sensor, filter, and the shape table itself. The shape table
+can be in definition.shape or directly in definition.
+
+**Parameters**
+
+- `body` (b2Body) - body
+- `definition` (table) - the shape definition.
+
+### b2d.body.destroy_fixture
+*Type:* FUNCTION
+Destroy a fixture from a body.
+
+**Parameters**
+
+- `body` (b2Body) - body
+- `fixture_index` (number) - 1-based fixture index from <code>b2d.body.get_fixtures</code>
+
+### b2d.body.destroy_shape
+*Type:* FUNCTION
+Destroy a shape. This removes the shape from the broad-phase and
+destroys all contacts associated with this shape. This will
+automatically adjust the mass of the body if the body is dynamic and the
+shape has positive density.
+All shapes attached to a body are implicitly destroyed when the body is destroyed.
+
+**Parameters**
+
+- `body` (b2Body) - body
+- `shape_index` (number) - 1-based shape index from <code>b2d.body.get_shapes</code>
 
 ### b2d.body.dump
 *Type:* FUNCTION
@@ -33581,6 +34302,24 @@ Print the body representation to the log output
 **Parameters**
 
 - `body` (b2Body) - body
+
+### b2d.body.enable_contact_events
+*Type:* FUNCTION
+Enable or disable contact events on all body shapes.
+
+**Parameters**
+
+- `body` (b2Body) - body
+- `enable` (boolean) - true to enable contact events
+
+### b2d.body.enable_hit_events
+*Type:* FUNCTION
+Enable or disable hit events on all body shapes.
+
+**Parameters**
+
+- `body` (b2Body) - body
+- `enable` (boolean) - true to enable hit events
 
 ### b2d.body.enable_sleep
 *Type:* FUNCTION
@@ -33651,6 +34390,86 @@ Get the angular velocity.
 
 - `velocity` (number) - the angular velocity in radians/second.
 
+### b2d.body.get_contact_data
+*Type:* FUNCTION
+Get touching contact data for a body.
+
+**Parameters**
+
+- `body` (b2Body) - body
+
+**Returns**
+
+- `contacts` (table) - array of contact tables
+
+### b2d.body.get_contact_list
+*Type:* FUNCTION
+Get the list of all contacts attached to this body.
+
+**Parameters**
+
+- `body` (b2Body) - body
+
+**Returns**
+
+- `edge` (b2ContactEdge) - the first edge
+
+### b2d.body.get_contact_list
+*Type:* FUNCTION
+Get the list of all contacts attached to this body.
+
+**Parameters**
+
+- `body` (b2Body) - body
+
+**Returns**
+
+- `edge` (b2ContactEdge) - the first edge
+
+### b2d.body.get_fixtures
+*Type:* FUNCTION
+Get the fixtures attached to this body.
+
+**Parameters**
+
+- `body` (b2Body) - body
+
+**Returns**
+
+- `fixtures` (table) - array of fixture info tables with <code>index</code>, <code>type</code>, <code>sensor</code>, <code>density</code>, <code>friction</code>, <code>restitution</code>, and <code>child_count</code>
+
+### b2d.body.get_force
+*Type:* FUNCTION
+Get the total force currently applied on this object
+
+**Notes**
+
+- Defold Specific
+
+**Parameters**
+
+- `body` (b2Body) - body
+
+**Returns**
+
+- `force` (vector3)
+
+### b2d.body.get_force
+*Type:* FUNCTION
+Get the total force currently applied on this object
+
+**Notes**
+
+- Defold Specific
+
+**Parameters**
+
+- `body` (b2Body) - body
+
+**Returns**
+
+- `force` (vector3)
+
 ### b2d.body.get_gravity_scale
 *Type:* FUNCTION
 Get the gravity scale of the body.
@@ -33686,6 +34505,30 @@ Get the rotational inertia of the body about the local origin.
 **Returns**
 
 - `inertia` (number) - the rotational inertia, usually in kg-m^2.
+
+### b2d.body.get_joints
+*Type:* FUNCTION
+Get the joints attached to this body.
+
+**Parameters**
+
+- `body` (b2Body) - body
+
+**Returns**
+
+- `joints` (table) - array of <code>b2Joint</code> handles created by <code>b2d.joint</code>
+
+### b2d.body.get_joints
+*Type:* FUNCTION
+Get the joints attached to this body.
+
+**Parameters**
+
+- `body` (b2Body) - body
+
+**Returns**
+
+- `joints` (table) - array of <code>b2Joint</code> handles created by <code>b2d.joint</code>
 
 ### b2d.body.get_linear_damping
 *Type:* FUNCTION
@@ -33887,6 +34730,42 @@ Get the total mass of the body.
 
 - `mass` (number) - the mass, usually in kilograms (kg).
 
+### b2d.body.get_mass_data
+*Type:* FUNCTION
+Get the mass data of the body.
+
+**Parameters**
+
+- `body` (b2Body) - body
+
+**Returns**
+
+- `data` (table) - table with <code>mass</code>, <code>center</code> in local coordinates, and <code>inertia</code>.
+
+### b2d.body.get_mass_data
+*Type:* FUNCTION
+Get the mass data of the body.
+
+**Parameters**
+
+- `body` (b2Body) - body
+
+**Returns**
+
+- `data` (b2MassData) - a struct containing the mass, inertia and center of the body.
+
+### b2d.body.get_name
+*Type:* FUNCTION
+Get the body name.
+
+**Parameters**
+
+- `body` (b2Body) - body
+
+**Returns**
+
+- `name` (string) - body name, or nil if no name is set
+
 ### b2d.body.get_next
 *Type:* FUNCTION
 Get the next body in the world's body list.
@@ -33935,6 +34814,54 @@ Get the rotational inertia of the body about the local origin.
 
 - `inertia` (number) - the rotational inertia, usually in kg-m^2.
 
+### b2d.body.get_shapes
+*Type:* FUNCTION
+Get the list of all shapes attached to this body.
+
+**Parameters**
+
+- `body` (b2Body) - body
+
+**Returns**
+
+- `shapes` (table) - a table of shape info entries. Each entry includes <code>shape_id</code> for use with <code>b2d.shape</code> functions.
+
+### b2d.body.get_sleep_threshold
+*Type:* FUNCTION
+Get the sleep velocity threshold.
+
+**Parameters**
+
+- `body` (b2Body) - body
+
+**Returns**
+
+- `threshold` (number) - velocity threshold in Defold units per second
+
+### b2d.body.get_transform
+*Type:* FUNCTION
+Get the body transform for the body's origin.
+
+**Parameters**
+
+- `body` (b2Body) - body
+
+**Returns**
+
+- `transform` (table) - table with <code>position</code> and <code>angle</code> in radians.
+
+### b2d.body.get_transform
+*Type:* FUNCTION
+Get the body transform for the body's origin.
+
+**Parameters**
+
+- `body` (b2Body) - body
+
+**Returns**
+
+- `transform` (b2Transform) - the world position of the body's origin.
+
 ### b2d.body.get_type
 *Type:* FUNCTION
 Get the type of this body.
@@ -33958,6 +34885,18 @@ Get the type of this body.
 **Returns**
 
 - `type` (b2BodyType) - the body type
+
+### b2d.body.get_user_data
+*Type:* FUNCTION
+Get the user data pointer that was provided in the body definition.
+
+**Parameters**
+
+- `body` (b2Body) - body
+
+**Returns**
+
+- `id` (hash) - the game object id this body is connected to
 
 ### b2d.body.get_world
 *Type:* FUNCTION
@@ -34191,6 +35130,18 @@ Is this body allowed to sleep
 
 - `enabled` (boolean) - true if the body is allowed to sleep
 
+### b2d.body.is_valid
+*Type:* FUNCTION
+Validate a body handle.
+
+**Parameters**
+
+- `body` (b2Body) - body
+
+**Returns**
+
+- `valid` (boolean) - true if the body handle still refers to a live Box2D body
+
 ### b2d.body.reset_mass_data
 *Type:* FUNCTION
 This resets the mass properties to the sum of the mass properties of the fixtures.
@@ -34202,7 +35153,7 @@ This normally does not need to be called unless you called SetMassData to overri
 
 ### b2d.body.reset_mass_data
 *Type:* FUNCTION
-This resets the mass properties to the sum of the mass properties of the fixtures.
+This resets the mass properties to the sum of the mass properties of the shapes.
 This normally does not need to be called unless you called SetMassData to override
 
 **Parameters**
@@ -34234,13 +35185,13 @@ in the body list.
 *Type:* FUNCTION
 Set the active state of the body. An inactive body is not
 simulated and cannot be collided with or woken up.
-If you pass a flag of true, all fixtures will be added to the
+If you pass a flag of true, all shapes will be added to the
 broad-phase.
-If you pass a flag of false, all fixtures will be removed from
+If you pass a flag of false, all shapes will be removed from
 the broad-phase and all contacts will be destroyed.
-Fixtures and joints are otherwise unaffected. You may continue
-to create/destroy fixtures and joints on inactive bodies.
-Fixtures on an inactive body are implicitly inactive and will
+Shapes and joints are otherwise unaffected. You may continue
+to create/destroy shapes and joints on inactive bodies.
+Shapes on an inactive body are implicitly inactive and will
 not participate in collisions, ray-casts, or queries.
 Joints connected to an inactive body are implicitly inactive.
 An inactive body is still owned by a b2World object and remains
@@ -34394,6 +35345,54 @@ Set the linear velocity of the center of mass.
 
 - `body` (b2Body) - body
 - `velocity` (vector3) - the new linear velocity of the center of mass.
+
+### b2d.body.set_mass_data
+*Type:* FUNCTION
+Set the mass properties to override the mass properties of the fixtures.
+
+**Notes**
+
+- This function has no effect if the body isn't dynamic.
+- This changes the center of mass position.
+- Creating or destroying fixtures can also alter the mass.
+
+**Parameters**
+
+- `body` (b2Body) - body
+- `data` (table) - table with <code>mass</code>, <code>center</code> in local coordinates, and <code>inertia</code>.
+
+### b2d.body.set_mass_data
+*Type:* FUNCTION
+Set the mass properties to override the mass properties of the shapes.
+
+**Notes**
+
+- This function has no effect if the body isn't dynamic.
+- This changes the center of mass position.
+- Creating or destroying shapes can also alter the mass.
+
+**Parameters**
+
+- `body` (b2Body) - body
+- `data` (b2MassData) - the mass properties.
+
+### b2d.body.set_name
+*Type:* FUNCTION
+Set the body name.
+
+**Parameters**
+
+- `body` (b2Body) - body
+- `name` (string) - body name
+
+### b2d.body.set_sleep_threshold
+*Type:* FUNCTION
+Set the sleep velocity threshold.
+
+**Parameters**
+
+- `body` (b2Body) - body
+- `threshold` (number) - velocity threshold in Defold units per second
 
 ### b2d.body.set_sleeping_allowed
 *Type:* FUNCTION
@@ -34404,6 +35403,17 @@ You can disable sleeping on this body. If you disable sleeping, the body will be
 - `body` (b2Body) - body
 - `enable` (boolean) - if false, the body will never sleep, and consume more CPU
 
+### b2d.body.set_target_transform
+*Type:* FUNCTION
+Set velocity to reach a target transform.
+
+**Parameters**
+
+- `body` (b2Body) - body
+- `position` (vector3) - target world position
+- `angle` (number) - target world angle in radians
+- `time_step` (number) - time step used to compute velocity
+
 ### b2d.body.set_transform
 *Type:* FUNCTION
 Set the position of the body's origin and rotation.
@@ -34445,6 +35455,15 @@ Set the type of this body. This may alter the mass and velocity.
 
 - `body` (b2Body) - body
 - `type` (b2BodyType) - the body type
+
+### b2d.body.set_user_data
+*Type:* FUNCTION
+Set the user data. Use this to store your application specific data.
+
+**Parameters**
+
+- `body` (b2Body) - body
+- `id` (hash) - the game object id
 
 ### b2World
 *Type:* TYPEDEF
@@ -34453,6 +35472,3092 @@ Box2D world
 **Parameters**
 
 - `value` (userdata)
+
+<!-- b2d.chain-lua -->
+
+# b2d.chain {#apis:b2d.chain-lua}
+
+**Namespace:** `b2d.chain`
+**Language:** Lua
+**Type:** Defold Lua
+**File:** `script_box2d_chain_v3.cpp`
+**Source:** `engine/gamesys/src/gamesys/scripts/box2d/v3/script_box2d_chain_v3.cpp`
+
+Functions for Box2D v3 chains. A chain owns multiple connected segment
+shapes, so it is represented by a separate `b2Chain` handle.
+
+## API
+
+### b2Chain
+*Type:* TYPEDEF
+Box2D chain
+
+**Parameters**
+
+- `value` (userdata)
+
+### b2d.chain.destroy
+*Type:* FUNCTION
+Destroying a chain removes all segment shapes owned by the chain. Destroying
+any segment shape through b2d.body.destroy_shape also destroys its parent chain.
+
+**Parameters**
+
+- `chain` (b2Chain) - chain
+
+### b2d.chain.from_shape
+*Type:* FUNCTION
+Returns nil if the shape is not a chain segment.
+
+**Parameters**
+
+- `shape_id` (b2Shape) - shape handle from a shape info table, or pass <code>body, shape_index</code>
+
+**Returns**
+
+- `chain` (b2Chain | nil) - parent chain, or <code>nil</code> if the shape is not a chain segment
+
+### b2d.chain.get_friction
+*Type:* FUNCTION
+Get chain friction.
+
+**Parameters**
+
+- `chain` (b2Chain) - chain
+
+**Returns**
+
+- `friction` (number) - chain friction
+
+### b2d.chain.get_geometry
+*Type:* FUNCTION
+Returns a chain geometry table with loop, segment_count, and vertices.
+Open chains also include prev_vertex and next_vertex ghost vertices.
+
+**Parameters**
+
+- `chain` (b2Chain) - chain
+
+**Returns**
+
+- `geometry` (table) - chain geometry table
+
+### b2d.chain.get_material
+*Type:* FUNCTION
+Get chain material id.
+
+**Parameters**
+
+- `chain` (b2Chain) - chain
+
+**Returns**
+
+- `material` (number) - chain material id
+
+### b2d.chain.get_restitution
+*Type:* FUNCTION
+Get chain restitution.
+
+**Parameters**
+
+- `chain` (b2Chain) - chain
+
+**Returns**
+
+- `restitution` (number) - chain restitution
+
+### b2d.chain.get_segment_count
+*Type:* FUNCTION
+Get the number of segment shapes in a chain.
+
+**Parameters**
+
+- `chain` (b2Chain) - chain
+
+**Returns**
+
+- `count` (number) - segment count
+
+### b2d.chain.get_segments
+*Type:* FUNCTION
+Get the segment shapes owned by a chain.
+
+**Parameters**
+
+- `chain` (b2Chain) - chain
+
+**Returns**
+
+- `segments` (table) - array of shape info tables for the chain segments. Each entry includes <code>shape_id</code>.
+
+### b2d.chain.get_world
+*Type:* FUNCTION
+Get the world owning a chain.
+
+**Parameters**
+
+- `chain` (b2Chain) - chain
+
+**Returns**
+
+- `world` (b2World) - owning world
+
+### b2d.chain.is_valid
+*Type:* FUNCTION
+Validate a chain handle.
+
+**Parameters**
+
+- `chain` (b2Chain) - chain
+
+**Returns**
+
+- `valid` (boolean) - true if the chain handle still refers to a live Box2D chain
+
+### b2d.chain.set_friction
+*Type:* FUNCTION
+Set chain friction.
+
+**Parameters**
+
+- `chain` (b2Chain) - chain
+- `friction` (number) - chain friction
+
+### b2d.chain.set_material
+*Type:* FUNCTION
+Set chain material id.
+
+**Parameters**
+
+- `chain` (b2Chain) - chain
+- `material` (number) - chain material id
+
+### b2d.chain.set_restitution
+*Type:* FUNCTION
+Set chain restitution.
+
+**Parameters**
+
+- `chain` (b2Chain) - chain
+- `restitution` (number) - chain restitution
+
+<!-- b2d.fixture-lua -->
+
+# b2d.fixture {#apis:b2d.fixture-lua}
+
+**Namespace:** `b2d.fixture`
+**Language:** Lua
+**Type:** Defold Lua
+**File:** `script_box2d_fixture_v2.cpp`
+**Source:** `engine/gamesys/src/gamesys/scripts/box2d/v2/script_box2d_fixture_v2.cpp`
+
+Functions for interacting with fixtures attached to Box2D bodies.
+Fixtures are addressed functionally by `(body, fixture_index)` rather than persistent Lua handles.
+
+## API
+
+### b2d.fixture.get_aabb
+*Type:* FUNCTION
+Get fixture AABB for a child shape.
+
+**Parameters**
+
+- `body` (b2Body) - body
+- `fixture_index` (number) - 1-based fixture index from <code>b2d.body.get_fixtures</code>
+- `child_index` (number) - 1-based child shape index
+
+**Returns**
+
+- `aabb` (table) - table with <code>lower</code> and <code>upper</code>
+
+### b2d.fixture.get_density
+*Type:* FUNCTION
+Get fixture density.
+
+**Parameters**
+
+- `body` (b2Body) - body
+- `fixture_index` (number) - 1-based fixture index from <code>b2d.body.get_fixtures</code>
+
+**Returns**
+
+- `density` (number) - density in kg/m^2
+
+### b2d.fixture.get_filter_data
+*Type:* FUNCTION
+Get fixture filter data for a child shape.
+
+**Parameters**
+
+- `body` (b2Body) - body
+- `fixture_index` (number) - 1-based fixture index from <code>b2d.body.get_fixtures</code>
+- `child_index` (number) - 1-based child shape index
+
+**Returns**
+
+- `filter` (table) - table with <code>category_bits</code>, <code>mask_bits</code>, and <code>group_index</code>
+
+### b2d.fixture.get_friction
+*Type:* FUNCTION
+Get fixture friction.
+
+**Parameters**
+
+- `body` (b2Body) - body
+- `fixture_index` (number) - 1-based fixture index from <code>b2d.body.get_fixtures</code>
+
+**Returns**
+
+- `friction` (number)
+
+### b2d.fixture.get_restitution
+*Type:* FUNCTION
+Get fixture restitution.
+
+**Parameters**
+
+- `body` (b2Body) - body
+- `fixture_index` (number) - 1-based fixture index from <code>b2d.body.get_fixtures</code>
+
+**Returns**
+
+- `restitution` (number)
+
+### b2d.fixture.get_shape
+*Type:* FUNCTION
+Get the fixture shape as a functional shape table.
+
+**Parameters**
+
+- `body` (b2Body) - body
+- `fixture_index` (number) - 1-based fixture index from <code>b2d.body.get_fixtures</code>
+
+**Returns**
+
+- `shape` (table) - shape table with numeric <code>type</code> from <code>b2d.shape.SHAPE_TYPE_*</code>,
+suitable for reuse in <code>b2d.body.create_fixture</code>.
+Circle shapes use <code>radius</code> and <code>center</code>, edge shapes use <code>v1</code>, <code>v2</code>, optional <code>v0</code>, <code>v3</code>,
+polygon shapes use <code>vertices</code>, and chain shapes use <code>vertices</code>, <code>loop</code>, optional <code>prev_vertex</code>, and <code>next_vertex</code>.
+Any angle values are in radians.
+
+### b2d.fixture.get_type
+*Type:* FUNCTION
+Get the fixture type.
+
+**Parameters**
+
+- `body` (b2Body) - body
+- `fixture_index` (number) - 1-based fixture index from <code>b2d.body.get_fixtures</code>
+
+**Returns**
+
+- `type` (number)
+
+### b2d.fixture.is_sensor
+*Type:* FUNCTION
+Check if a fixture is a sensor.
+
+**Parameters**
+
+- `body` (b2Body) - body
+- `fixture_index` (number) - 1-based fixture index from <code>b2d.body.get_fixtures</code>
+
+**Returns**
+
+- `enabled` (boolean)
+
+### b2d.fixture.refilter
+*Type:* FUNCTION
+Refilter a fixture.
+
+**Parameters**
+
+- `body` (b2Body) - body
+- `fixture_index` (number) - 1-based fixture index from <code>b2d.body.get_fixtures</code>
+- `touch_proxies` (boolean) - if true, touch broad-phase proxies
+
+### b2d.fixture.set_density
+*Type:* FUNCTION
+Set fixture density.
+
+**Parameters**
+
+- `body` (b2Body) - body
+- `fixture_index` (number) - 1-based fixture index from <code>b2d.body.get_fixtures</code>
+- `density` (number) - density in kg/m^2
+- `update_mass` (boolean) - if true, reset body mass data after the change
+
+### b2d.fixture.set_filter_data
+*Type:* FUNCTION
+Set fixture filter data for a child shape.
+
+**Parameters**
+
+- `body` (b2Body) - body
+- `fixture_index` (number) - 1-based fixture index from <code>b2d.body.get_fixtures</code>
+- `child_index` (number) - 1-based child shape index
+- `filter` (table) - table with <code>category_bits</code>, <code>mask_bits</code>, and <code>group_index</code>
+
+### b2d.fixture.set_friction
+*Type:* FUNCTION
+Set fixture friction.
+
+**Parameters**
+
+- `body` (b2Body) - body
+- `fixture_index` (number) - 1-based fixture index from <code>b2d.body.get_fixtures</code>
+- `friction` (number)
+
+### b2d.fixture.set_restitution
+*Type:* FUNCTION
+Set fixture restitution.
+
+**Parameters**
+
+- `body` (b2Body) - body
+- `fixture_index` (number) - 1-based fixture index from <code>b2d.body.get_fixtures</code>
+- `restitution` (number)
+
+### b2d.fixture.set_sensor
+*Type:* FUNCTION
+Set sensor mode for a fixture.
+
+**Parameters**
+
+- `body` (b2Body) - body
+- `fixture_index` (number) - 1-based fixture index from <code>b2d.body.get_fixtures</code>
+- `enabled` (boolean)
+
+### b2d.fixture.set_shape
+*Type:* FUNCTION
+This updates the existing Box2D v2 shape using the same table format as
+b2d.body.create_fixture and b2d.fixture.get_shape.
+The shape type must match the current fixture shape type. Polygon updates must
+keep the same vertex count. Chain shape geometry cannot be updated in-place.
+The body mass is not updated unless update_mass is true.
+
+**Parameters**
+
+- `body` (b2Body) - body
+- `fixture_index` (number) - 1-based fixture index from <code>b2d.body.get_fixtures</code>
+- `shape` (table) - shape table with numeric <code>type</code> from <code>b2d.shape.SHAPE_TYPE_*</code>
+- `update_mass` (boolean) - if true, reset body mass data after the change
+
+**Examples**
+
+```
+local body = b2d.get_body("#collisionobject")
+
+-- Move a circle shape relative to the body origin.
+local circle = b2d.fixture.get_shape(body, 1)
+circle.center = vmath.vector3(24, 0, 0)
+b2d.fixture.set_shape(body, 1, circle, true)
+
+-- Replace an edge shape's local endpoints.
+b2d.fixture.set_shape(body, 2, {
+    type = b2d.shape.SHAPE_TYPE_EDGE,
+    v1 = vmath.vector3(-32, 0, 0),
+    v2 = vmath.vector3( 32, 0, 0),
+})
+
+-- Update a box shape using the polygon box convenience format.
+-- The existing polygon must already have four vertices.
+b2d.fixture.set_shape(body, 3, {
+    type = b2d.shape.SHAPE_TYPE_BOX,
+    hx = 16,
+    hy = 8,
+    center = vmath.vector3(0, 20, 0),
+    angle = math.rad(30),
+}, true)
+
+```
+
+### b2d.fixture.test_point
+*Type:* FUNCTION
+Test a point against a fixture.
+
+**Parameters**
+
+- `body` (b2Body) - body
+- `fixture_index` (number) - 1-based fixture index from <code>b2d.body.get_fixtures</code>
+- `point` (vector3) - point in world coordinates
+
+**Returns**
+
+- `hit` (boolean)
+
+<!-- b2d.joint-lua -->
+
+# b2d.joint {#apis:b2d.joint-lua}
+
+**Namespace:** `b2d.joint`
+**Language:** Lua
+**Type:** Defold Lua
+**File:** `script_box2d_joint_v2.cpp`
+**Source:** `engine/gamesys/src/gamesys/scripts/box2d/v2/script_box2d_joint_v2.cpp`
+
+Functions for interacting with native Box2D joints.
+
+## API
+
+### b2d.joint.create_distance
+*Type:* FUNCTION
+Create a distance joint.
+
+**Parameters**
+
+- `body_a` (b2Body) - first body
+- `body_b` (b2Body) - second body
+- `definition` (table) - optional definition with <code>local_anchor_a</code>, <code>local_anchor_b</code>, <code>length</code>, <code>frequency</code>, <code>damping_ratio</code>, and <code>collide_connected</code>
+
+**Returns**
+
+- `joint` (b2Joint) - created joint
+
+### b2d.joint.create_distance
+*Type:* FUNCTION
+Create a distance joint.
+
+**Parameters**
+
+- `body_a` (b2Body) - first body
+- `body_b` (b2Body) - second body
+- `definition` (table) - optional definition with <code>local_anchor_a</code>, <code>local_anchor_b</code>, <code>length</code>, <code>min_length</code>, <code>max_length</code>, <code>enable_spring</code>, <code>hertz</code> or <code>frequency</code>, <code>damping_ratio</code>, <code>enable_limit</code>, <code>enable_motor</code>, <code>max_motor_force</code>, <code>motor_speed</code>, and <code>collide_connected</code>
+
+**Returns**
+
+- `joint` (b2Joint) - created joint
+
+### b2d.joint.create_filter
+*Type:* FUNCTION
+Create a filter joint.
+
+**Parameters**
+
+- `body_a` (b2Body) - first body
+- `body_b` (b2Body) - second body
+- `definition` (table) - optional definition table
+
+**Returns**
+
+- `joint` (b2Joint) - created joint
+
+### b2d.joint.create_friction
+*Type:* FUNCTION
+Create a friction joint.
+
+**Parameters**
+
+- `body_a` (b2Body) - first body
+- `body_b` (b2Body) - second body
+- `definition` (table) - optional definition with <code>local_anchor_a</code>, <code>local_anchor_b</code>, <code>max_force</code>, <code>max_torque</code>, and <code>collide_connected</code>
+
+**Returns**
+
+- `joint` (b2Joint) - created joint
+
+### b2d.joint.create_gear
+*Type:* FUNCTION
+Create a gear joint.
+
+**Parameters**
+
+- `joint1` (b2Joint) - first revolute or prismatic joint
+- `joint2` (b2Joint) - second revolute or prismatic joint
+- `definition` (table) - optional definition with <code>ratio</code>
+
+**Returns**
+
+- `joint` (b2Joint) - created joint
+
+### b2d.joint.create_motor
+*Type:* FUNCTION
+Create a motor joint.
+
+**Parameters**
+
+- `body_a` (b2Body) - first body
+- `body_b` (b2Body) - second body
+- `definition` (table) - optional definition with <code>linear_offset</code>, <code>angular_offset</code>, <code>max_force</code>, <code>max_torque</code>, <code>correction_factor</code>, and <code>collide_connected</code>
+
+**Returns**
+
+- `joint` (b2Joint) - created joint
+
+### b2d.joint.create_mouse
+*Type:* FUNCTION
+Create a mouse joint.
+
+**Parameters**
+
+- `body_a` (b2Body) - first body
+- `body_b` (b2Body) - second body
+- `definition` (table) - optional definition with <code>target</code>, <code>max_force</code>, <code>frequency</code>, <code>damping_ratio</code>, and <code>collide_connected</code>
+
+**Returns**
+
+- `joint` (b2Joint) - created joint
+
+### b2d.joint.create_mouse
+*Type:* FUNCTION
+Create a mouse joint.
+
+**Parameters**
+
+- `body_a` (b2Body) - first body
+- `body_b` (b2Body) - second body
+- `definition` (table) - optional definition with <code>target</code>, <code>hertz</code> or <code>frequency</code>, <code>damping_ratio</code>, <code>max_force</code>, and <code>collide_connected</code>
+
+**Returns**
+
+- `joint` (b2Joint) - created joint
+
+### b2d.joint.create_prismatic
+*Type:* FUNCTION
+Create a prismatic joint.
+
+**Parameters**
+
+- `body_a` (b2Body) - first body
+- `body_b` (b2Body) - second body
+- `definition` (table) - optional definition with <code>local_anchor_a</code>, <code>local_anchor_b</code>, <code>local_axis_a</code>, <code>reference_angle</code>, <code>enable_limit</code>, <code>lower_translation</code>, <code>upper_translation</code>, <code>enable_motor</code>, <code>max_motor_force</code>, <code>motor_speed</code>, and <code>collide_connected</code>
+
+**Returns**
+
+- `joint` (b2Joint) - created joint
+
+### b2d.joint.create_prismatic
+*Type:* FUNCTION
+Create a prismatic joint.
+
+**Parameters**
+
+- `body_a` (b2Body) - first body
+- `body_b` (b2Body) - second body
+- `definition` (table) - optional definition with <code>local_anchor_a</code>, <code>local_anchor_b</code>, <code>local_axis_a</code>, <code>reference_angle</code>, <code>enable_spring</code>, <code>hertz</code> or <code>frequency</code>, <code>damping_ratio</code>, <code>enable_limit</code>, <code>lower_translation</code>, <code>upper_translation</code>, <code>enable_motor</code>, <code>max_motor_force</code>, <code>motor_speed</code>, and <code>collide_connected</code>
+
+**Returns**
+
+- `joint` (b2Joint) - created joint
+
+### b2d.joint.create_pulley
+*Type:* FUNCTION
+Create a pulley joint.
+
+**Parameters**
+
+- `body_a` (b2Body) - first body
+- `body_b` (b2Body) - second body
+- `definition` (table) - optional definition with <code>ground_anchor_a</code>, <code>ground_anchor_b</code>, <code>local_anchor_a</code>, <code>local_anchor_b</code>, <code>length_a</code>, <code>length_b</code>, <code>ratio</code>, and <code>collide_connected</code>
+
+**Returns**
+
+- `joint` (b2Joint) - created joint
+
+### b2d.joint.create_revolute
+*Type:* FUNCTION
+Create a revolute joint.
+
+**Parameters**
+
+- `body_a` (b2Body) - first body
+- `body_b` (b2Body) - second body
+- `definition` (table) - optional definition with <code>local_anchor_a</code>, <code>local_anchor_b</code>, <code>reference_angle</code>, <code>enable_limit</code>, <code>lower_angle</code>, <code>upper_angle</code>, <code>enable_motor</code>, <code>max_motor_torque</code>, <code>motor_speed</code>, and <code>collide_connected</code>
+
+**Returns**
+
+- `joint` (b2Joint) - created joint
+
+### b2d.joint.create_revolute
+*Type:* FUNCTION
+Create a revolute joint.
+
+**Parameters**
+
+- `body_a` (b2Body) - first body
+- `body_b` (b2Body) - second body
+- `definition` (table) - optional definition with <code>local_anchor_a</code>, <code>local_anchor_b</code>, <code>reference_angle</code>, <code>enable_spring</code>, <code>hertz</code> or <code>frequency</code>, <code>damping_ratio</code>, <code>enable_limit</code>, <code>lower_angle</code>, <code>upper_angle</code>, <code>enable_motor</code>, <code>max_motor_torque</code>, <code>motor_speed</code>, and <code>collide_connected</code>
+
+**Returns**
+
+- `joint` (b2Joint) - created joint
+
+### b2d.joint.create_rope
+*Type:* FUNCTION
+Create a rope joint.
+
+**Parameters**
+
+- `body_a` (b2Body) - first body
+- `body_b` (b2Body) - second body
+- `definition` (table) - optional definition with <code>local_anchor_a</code>, <code>local_anchor_b</code>, <code>max_length</code>, and <code>collide_connected</code>
+
+**Returns**
+
+- `joint` (b2Joint) - created joint
+
+### b2d.joint.create_weld
+*Type:* FUNCTION
+Create a weld joint.
+
+**Parameters**
+
+- `body_a` (b2Body) - first body
+- `body_b` (b2Body) - second body
+- `definition` (table) - optional definition with <code>local_anchor_a</code>, <code>local_anchor_b</code>, <code>reference_angle</code>, <code>frequency</code>, <code>damping_ratio</code>, and <code>collide_connected</code>
+
+**Returns**
+
+- `joint` (b2Joint) - created joint
+
+### b2d.joint.create_weld
+*Type:* FUNCTION
+Create a weld joint.
+
+**Parameters**
+
+- `body_a` (b2Body) - first body
+- `body_b` (b2Body) - second body
+- `definition` (table) - optional definition with <code>local_anchor_a</code>, <code>local_anchor_b</code>, <code>reference_angle</code>, <code>linear_hertz</code>, <code>angular_hertz</code>, <code>linear_damping_ratio</code>, <code>angular_damping_ratio</code>, and <code>collide_connected</code>
+
+**Returns**
+
+- `joint` (b2Joint) - created joint
+
+### b2d.joint.create_wheel
+*Type:* FUNCTION
+Create a wheel joint.
+
+**Parameters**
+
+- `body_a` (b2Body) - first body
+- `body_b` (b2Body) - second body
+- `definition` (table) - optional definition with <code>local_anchor_a</code>, <code>local_anchor_b</code>, <code>local_axis_a</code>, <code>enable_motor</code>, <code>max_motor_torque</code>, <code>motor_speed</code>, <code>frequency</code>, <code>damping_ratio</code>, and <code>collide_connected</code>
+
+**Returns**
+
+- `joint` (b2Joint) - created joint
+
+### b2d.joint.create_wheel
+*Type:* FUNCTION
+Create a wheel joint.
+
+**Parameters**
+
+- `body_a` (b2Body) - first body
+- `body_b` (b2Body) - second body
+- `definition` (table) - optional definition with <code>local_anchor_a</code>, <code>local_anchor_b</code>, <code>local_axis_a</code>, <code>enable_spring</code>, <code>hertz</code> or <code>frequency</code>, <code>damping_ratio</code>, <code>enable_limit</code>, <code>lower_translation</code>, <code>upper_translation</code>, <code>enable_motor</code>, <code>max_motor_torque</code>, <code>motor_speed</code>, and <code>collide_connected</code>
+
+**Returns**
+
+- `joint` (b2Joint) - created joint
+
+### b2d.joint.destroy
+*Type:* FUNCTION
+Destroy a joint created by b2d.joint.
+
+**Parameters**
+
+- `joint` (b2Joint) - joint
+
+### b2d.joint.destroy
+*Type:* FUNCTION
+Destroy a joint created by b2d.joint.
+
+**Parameters**
+
+- `joint` (b2Joint) - joint
+
+### b2d.joint.enable_limit
+*Type:* FUNCTION
+Enable or disable joint limits.
+
+**Parameters**
+
+- `joint` (b2Joint) - prismatic or revolute joint
+- `enable` (boolean) - true to enable limits
+
+### b2d.joint.enable_limit
+*Type:* FUNCTION
+Enable or disable joint limits.
+
+**Parameters**
+
+- `joint` (b2Joint) - distance, prismatic, revolute, or wheel joint
+- `enable` (boolean) - true to enable limits
+
+### b2d.joint.enable_motor
+*Type:* FUNCTION
+Enable or disable the joint motor.
+
+**Parameters**
+
+- `joint` (b2Joint) - prismatic, revolute, or wheel joint
+- `enable` (boolean) - true to enable the motor
+
+### b2d.joint.enable_motor
+*Type:* FUNCTION
+Enable or disable the joint motor.
+
+**Parameters**
+
+- `joint` (b2Joint) - distance, prismatic, revolute, or wheel joint
+- `enable` (boolean) - true to enable the motor
+
+### b2d.joint.enable_spring
+*Type:* FUNCTION
+Enable or disable joint spring behavior.
+
+**Parameters**
+
+- `joint` (b2Joint) - distance, prismatic, revolute, or wheel joint
+- `enable` (boolean) - true to enable the spring
+
+### b2d.joint.get_anchor_a
+*Type:* FUNCTION
+Get the world anchor on body A.
+
+**Parameters**
+
+- `joint` (b2Joint) - joint
+
+**Returns**
+
+- `anchor` (vector3) - world anchor
+
+### b2d.joint.get_anchor_a
+*Type:* FUNCTION
+Get the world anchor on body A.
+
+**Parameters**
+
+- `joint` (b2Joint) - joint
+
+**Returns**
+
+- `anchor` (vector3) - world anchor
+
+### b2d.joint.get_anchor_b
+*Type:* FUNCTION
+Get the world anchor on body B.
+
+**Parameters**
+
+- `joint` (b2Joint) - joint
+
+**Returns**
+
+- `anchor` (vector3) - world anchor
+
+### b2d.joint.get_anchor_b
+*Type:* FUNCTION
+Get the world anchor on body B.
+
+**Parameters**
+
+- `joint` (b2Joint) - joint
+
+**Returns**
+
+- `anchor` (vector3) - world anchor
+
+### b2d.joint.get_angular_damping_ratio
+*Type:* FUNCTION
+Get weld joint angular damping ratio.
+
+**Parameters**
+
+- `joint` (b2Joint) - weld joint
+
+**Returns**
+
+- `ratio` (number) - damping ratio
+
+### b2d.joint.get_angular_hertz
+*Type:* FUNCTION
+Get weld joint angular frequency.
+
+**Parameters**
+
+- `joint` (b2Joint) - weld joint
+
+**Returns**
+
+- `hertz` (number) - frequency in hertz
+
+### b2d.joint.get_angular_offset
+*Type:* FUNCTION
+Get motor joint angular offset.
+
+**Parameters**
+
+- `joint` (b2Joint) - motor joint
+
+**Returns**
+
+- `offset` (number) - angular offset in radians
+
+### b2d.joint.get_body_a
+*Type:* FUNCTION
+Get the first body connected to a joint.
+
+**Parameters**
+
+- `joint` (b2Joint) - joint
+
+**Returns**
+
+- `body` (b2Body) - body A
+
+### b2d.joint.get_body_a
+*Type:* FUNCTION
+Get the first body connected to a joint.
+
+**Parameters**
+
+- `joint` (b2Joint) - joint
+
+**Returns**
+
+- `body` (b2Body) - body A
+
+### b2d.joint.get_body_b
+*Type:* FUNCTION
+Get the second body connected to a joint.
+
+**Parameters**
+
+- `joint` (b2Joint) - joint
+
+**Returns**
+
+- `body` (b2Body) - body B
+
+### b2d.joint.get_body_b
+*Type:* FUNCTION
+Get the second body connected to a joint.
+
+**Parameters**
+
+- `joint` (b2Joint) - joint
+
+**Returns**
+
+- `body` (b2Body) - body B
+
+### b2d.joint.get_collide_connected
+*Type:* FUNCTION
+Get whether connected bodies can collide.
+
+**Parameters**
+
+- `joint` (b2Joint) - joint
+
+**Returns**
+
+- `collide` (boolean) - true if connected bodies can collide
+
+### b2d.joint.get_collide_connected
+*Type:* FUNCTION
+Get whether connected bodies can collide.
+
+**Parameters**
+
+- `joint` (b2Joint) - joint
+
+**Returns**
+
+- `collide` (boolean) - true if connected bodies can collide
+
+### b2d.joint.get_correction_factor
+*Type:* FUNCTION
+Get motor joint correction factor.
+
+**Parameters**
+
+- `joint` (b2Joint) - motor joint
+
+**Returns**
+
+- `factor` (number) - correction factor
+
+### b2d.joint.get_current_length
+*Type:* FUNCTION
+Get the current distance joint length.
+
+**Parameters**
+
+- `joint` (b2Joint) - distance joint
+
+**Returns**
+
+- `length` (number) - current length in project units
+
+### b2d.joint.get_damping_ratio
+*Type:* FUNCTION
+Get spring damping ratio.
+
+**Parameters**
+
+- `joint` (b2Joint) - distance, mouse, weld, or wheel joint
+
+**Returns**
+
+- `ratio` (number) - damping ratio
+
+### b2d.joint.get_damping_ratio
+*Type:* FUNCTION
+Alias for b2d.joint.get_spring_damping_ratio.
+
+**Parameters**
+
+- `joint` (b2Joint) - distance, mouse, prismatic, revolute, or wheel joint
+
+**Returns**
+
+- `ratio` (number) - damping ratio
+
+### b2d.joint.get_frequency
+*Type:* FUNCTION
+Get spring frequency.
+
+**Parameters**
+
+- `joint` (b2Joint) - distance, mouse, weld, or wheel joint
+
+**Returns**
+
+- `frequency` (number) - frequency in hertz
+
+### b2d.joint.get_frequency
+*Type:* FUNCTION
+Alias for b2d.joint.get_spring_hertz.
+
+**Parameters**
+
+- `joint` (b2Joint) - distance, mouse, prismatic, revolute, or wheel joint
+
+**Returns**
+
+- `frequency` (number) - frequency in hertz
+
+### b2d.joint.get_ground_anchor_a
+*Type:* FUNCTION
+Get pulley ground anchor A.
+
+**Parameters**
+
+- `joint` (b2Joint) - pulley joint
+
+**Returns**
+
+- `anchor` (vector3) - world anchor
+
+### b2d.joint.get_ground_anchor_b
+*Type:* FUNCTION
+Get pulley ground anchor B.
+
+**Parameters**
+
+- `joint` (b2Joint) - pulley joint
+
+**Returns**
+
+- `anchor` (vector3) - world anchor
+
+### b2d.joint.get_hertz
+*Type:* FUNCTION
+Alias for b2d.joint.get_frequency.
+
+**Parameters**
+
+- `joint` (b2Joint) - distance, mouse, weld, or wheel joint
+
+**Returns**
+
+- `hertz` (number) - frequency in hertz
+
+### b2d.joint.get_hertz
+*Type:* FUNCTION
+Alias for b2d.joint.get_spring_hertz.
+
+**Parameters**
+
+- `joint` (b2Joint) - distance, mouse, prismatic, revolute, or wheel joint
+
+**Returns**
+
+- `hertz` (number) - frequency in hertz
+
+### b2d.joint.get_joint1
+*Type:* FUNCTION
+Get the first joint connected to a gear joint.
+
+**Parameters**
+
+- `joint` (b2Joint) - gear joint
+
+**Returns**
+
+- `joint1` (b2Joint) - first connected joint
+
+### b2d.joint.get_joint2
+*Type:* FUNCTION
+Get the second joint connected to a gear joint.
+
+**Parameters**
+
+- `joint` (b2Joint) - gear joint
+
+**Returns**
+
+- `joint2` (b2Joint) - second connected joint
+
+### b2d.joint.get_joint_angle
+*Type:* FUNCTION
+Get revolute joint angle.
+
+**Parameters**
+
+- `joint` (b2Joint) - revolute joint
+
+**Returns**
+
+- `angle` (number) - angle in radians
+
+### b2d.joint.get_joint_angle
+*Type:* FUNCTION
+Get revolute joint angle.
+
+**Parameters**
+
+- `joint` (b2Joint) - revolute joint
+
+**Returns**
+
+- `angle` (number) - angle in radians
+
+### b2d.joint.get_joint_speed
+*Type:* FUNCTION
+Get joint speed.
+
+**Parameters**
+
+- `joint` (b2Joint) - prismatic, revolute, or wheel joint
+
+**Returns**
+
+- `speed` (number) - joint speed
+
+### b2d.joint.get_joint_speed
+*Type:* FUNCTION
+Get joint speed.
+
+**Parameters**
+
+- `joint` (b2Joint) - prismatic joint
+
+**Returns**
+
+- `speed` (number) - joint speed
+
+### b2d.joint.get_joint_translation
+*Type:* FUNCTION
+Get joint translation.
+
+**Parameters**
+
+- `joint` (b2Joint) - prismatic or wheel joint
+
+**Returns**
+
+- `translation` (number) - translation in project units
+
+### b2d.joint.get_joint_translation
+*Type:* FUNCTION
+Get joint translation.
+
+**Parameters**
+
+- `joint` (b2Joint) - prismatic joint
+
+**Returns**
+
+- `translation` (number) - translation in project units
+
+### b2d.joint.get_length
+*Type:* FUNCTION
+Get the distance joint length.
+
+**Parameters**
+
+- `joint` (b2Joint) - distance joint
+
+**Returns**
+
+- `length` (number) - length in project units
+
+### b2d.joint.get_length
+*Type:* FUNCTION
+Get the distance joint length.
+
+**Parameters**
+
+- `joint` (b2Joint) - distance joint
+
+**Returns**
+
+- `length` (number) - length in project units
+
+### b2d.joint.get_length_a
+*Type:* FUNCTION
+Get pulley segment length A.
+
+**Parameters**
+
+- `joint` (b2Joint) - pulley joint
+
+**Returns**
+
+- `length` (number) - length in project units
+
+### b2d.joint.get_length_b
+*Type:* FUNCTION
+Get pulley segment length B.
+
+**Parameters**
+
+- `joint` (b2Joint) - pulley joint
+
+**Returns**
+
+- `length` (number) - length in project units
+
+### b2d.joint.get_limit_state
+*Type:* FUNCTION
+Get rope limit state.
+
+**Parameters**
+
+- `joint` (b2Joint) - rope joint
+
+**Returns**
+
+- `state` (number) - one of the <code>LIMIT_STATE_*</code> constants
+
+### b2d.joint.get_linear_damping_ratio
+*Type:* FUNCTION
+Get weld joint linear damping ratio.
+
+**Parameters**
+
+- `joint` (b2Joint) - weld joint
+
+**Returns**
+
+- `ratio` (number) - damping ratio
+
+### b2d.joint.get_linear_hertz
+*Type:* FUNCTION
+Get weld joint linear frequency.
+
+**Parameters**
+
+- `joint` (b2Joint) - weld joint
+
+**Returns**
+
+- `hertz` (number) - frequency in hertz
+
+### b2d.joint.get_linear_offset
+*Type:* FUNCTION
+Get motor joint linear offset.
+
+**Parameters**
+
+- `joint` (b2Joint) - motor joint
+
+**Returns**
+
+- `offset` (vector3) - linear offset in project units
+
+### b2d.joint.get_local_anchor_a
+*Type:* FUNCTION
+Get the local anchor on body A.
+
+**Parameters**
+
+- `joint` (b2Joint) - joint
+
+**Returns**
+
+- `anchor` (vector3) - local anchor
+
+### b2d.joint.get_local_anchor_a
+*Type:* FUNCTION
+Get the local anchor on body A.
+
+**Parameters**
+
+- `joint` (b2Joint) - joint
+
+**Returns**
+
+- `anchor` (vector3) - local anchor
+
+### b2d.joint.get_local_anchor_b
+*Type:* FUNCTION
+Get the local anchor on body B.
+
+**Parameters**
+
+- `joint` (b2Joint) - joint
+
+**Returns**
+
+- `anchor` (vector3) - local anchor
+
+### b2d.joint.get_local_anchor_b
+*Type:* FUNCTION
+Get the local anchor on body B.
+
+**Parameters**
+
+- `joint` (b2Joint) - joint
+
+**Returns**
+
+- `anchor` (vector3) - local anchor
+
+### b2d.joint.get_local_axis_a
+*Type:* FUNCTION
+Get the local axis on body A.
+
+**Parameters**
+
+- `joint` (b2Joint) - prismatic or wheel joint
+
+**Returns**
+
+- `axis` (vector3) - local axis
+
+### b2d.joint.get_lower_limit
+*Type:* FUNCTION
+Get the lower joint limit.
+
+**Parameters**
+
+- `joint` (b2Joint) - prismatic or revolute joint
+
+**Returns**
+
+- `lower` (number) - lower limit
+
+### b2d.joint.get_lower_limit
+*Type:* FUNCTION
+Get the lower joint limit.
+
+**Parameters**
+
+- `joint` (b2Joint) - prismatic, revolute, or wheel joint
+
+**Returns**
+
+- `lower` (number) - lower limit
+
+### b2d.joint.get_max_force
+*Type:* FUNCTION
+Get maximum force.
+
+**Parameters**
+
+- `joint` (b2Joint) - mouse or friction joint
+
+**Returns**
+
+- `force` (number) - maximum force
+
+### b2d.joint.get_max_force
+*Type:* FUNCTION
+Get maximum force.
+
+**Parameters**
+
+- `joint` (b2Joint) - mouse or motor joint
+
+**Returns**
+
+- `force` (number) - maximum force
+
+### b2d.joint.get_max_length
+*Type:* FUNCTION
+Get rope maximum length.
+
+**Parameters**
+
+- `joint` (b2Joint) - rope joint
+
+**Returns**
+
+- `length` (number) - maximum length in project units
+
+### b2d.joint.get_max_length
+*Type:* FUNCTION
+Get the distance joint maximum length.
+
+**Parameters**
+
+- `joint` (b2Joint) - distance joint
+
+**Returns**
+
+- `length` (number) - maximum length in project units
+
+### b2d.joint.get_max_motor_force
+*Type:* FUNCTION
+Get maximum motor force.
+
+**Parameters**
+
+- `joint` (b2Joint) - prismatic joint
+
+**Returns**
+
+- `force` (number) - maximum motor force
+
+### b2d.joint.get_max_motor_force
+*Type:* FUNCTION
+Get maximum motor force.
+
+**Parameters**
+
+- `joint` (b2Joint) - distance or prismatic joint
+
+**Returns**
+
+- `force` (number) - maximum motor force
+
+### b2d.joint.get_max_motor_torque
+*Type:* FUNCTION
+Get maximum motor torque.
+
+**Parameters**
+
+- `joint` (b2Joint) - revolute or wheel joint
+
+**Returns**
+
+- `torque` (number) - maximum motor torque
+
+### b2d.joint.get_max_motor_torque
+*Type:* FUNCTION
+Get maximum motor torque.
+
+**Parameters**
+
+- `joint` (b2Joint) - revolute or wheel joint
+
+**Returns**
+
+- `torque` (number) - maximum motor torque
+
+### b2d.joint.get_max_torque
+*Type:* FUNCTION
+Get maximum torque.
+
+**Parameters**
+
+- `joint` (b2Joint) - friction joint
+
+**Returns**
+
+- `torque` (number) - maximum torque
+
+### b2d.joint.get_max_torque
+*Type:* FUNCTION
+Get maximum torque.
+
+**Parameters**
+
+- `joint` (b2Joint) - motor joint
+
+**Returns**
+
+- `torque` (number) - maximum torque
+
+### b2d.joint.get_min_length
+*Type:* FUNCTION
+Get the distance joint minimum length.
+
+**Parameters**
+
+- `joint` (b2Joint) - distance joint
+
+**Returns**
+
+- `length` (number) - minimum length in project units
+
+### b2d.joint.get_motor_force
+*Type:* FUNCTION
+Get current motor force.
+
+**Parameters**
+
+- `joint` (b2Joint) - prismatic joint
+- `inv_dt` (number) - inverse time step
+
+**Returns**
+
+- `force` (number) - motor force
+
+### b2d.joint.get_motor_force
+*Type:* FUNCTION
+Get current motor force.
+
+**Parameters**
+
+- `joint` (b2Joint) - distance or prismatic joint
+
+**Returns**
+
+- `force` (number) - motor force
+
+### b2d.joint.get_motor_speed
+*Type:* FUNCTION
+Get motor speed.
+
+**Parameters**
+
+- `joint` (b2Joint) - prismatic, revolute, or wheel joint
+
+**Returns**
+
+- `speed` (number) - motor speed
+
+### b2d.joint.get_motor_speed
+*Type:* FUNCTION
+Get motor speed.
+
+**Parameters**
+
+- `joint` (b2Joint) - distance, prismatic, revolute, or wheel joint
+
+**Returns**
+
+- `speed` (number) - motor speed
+
+### b2d.joint.get_motor_torque
+*Type:* FUNCTION
+Get current motor torque.
+
+**Parameters**
+
+- `joint` (b2Joint) - revolute or wheel joint
+- `inv_dt` (number) - inverse time step
+
+**Returns**
+
+- `torque` (number) - motor torque
+
+### b2d.joint.get_motor_torque
+*Type:* FUNCTION
+Get current motor torque.
+
+**Parameters**
+
+- `joint` (b2Joint) - revolute or wheel joint
+
+**Returns**
+
+- `torque` (number) - motor torque
+
+### b2d.joint.get_mouse_target
+*Type:* FUNCTION
+Get the target for a mouse joint.
+
+**Parameters**
+
+- `joint` (b2Joint) - mouse joint
+
+**Returns**
+
+- `target` (vector3) - world target
+
+### b2d.joint.get_mouse_target
+*Type:* FUNCTION
+Get the target for a mouse joint.
+
+**Parameters**
+
+- `joint` (b2Joint) - mouse joint
+
+**Returns**
+
+- `target` (vector3) - world target
+
+### b2d.joint.get_ratio
+*Type:* FUNCTION
+Get joint ratio.
+
+**Parameters**
+
+- `joint` (b2Joint) - pulley or gear joint
+
+**Returns**
+
+- `ratio` (number) - joint ratio
+
+### b2d.joint.get_reaction_force
+*Type:* FUNCTION
+Get reaction force.
+
+**Parameters**
+
+- `joint` (b2Joint) - joint
+- `inv_dt` (number) - inverse time step
+
+**Returns**
+
+- `force` (vector3) - reaction force
+
+### b2d.joint.get_reaction_force
+*Type:* FUNCTION
+Get reaction force.
+
+**Parameters**
+
+- `joint` (b2Joint) - joint
+
+**Returns**
+
+- `force` (vector3) - reaction force
+
+### b2d.joint.get_reaction_torque
+*Type:* FUNCTION
+Get reaction torque.
+
+**Parameters**
+
+- `joint` (b2Joint) - joint
+- `inv_dt` (number) - inverse time step
+
+**Returns**
+
+- `torque` (number) - reaction torque
+
+### b2d.joint.get_reaction_torque
+*Type:* FUNCTION
+Get reaction torque.
+
+**Parameters**
+
+- `joint` (b2Joint) - joint
+
+**Returns**
+
+- `torque` (number) - reaction torque
+
+### b2d.joint.get_reference_angle
+*Type:* FUNCTION
+Get the reference angle.
+
+**Parameters**
+
+- `joint` (b2Joint) - prismatic, revolute, or weld joint
+
+**Returns**
+
+- `angle` (number) - reference angle in radians
+
+### b2d.joint.get_reference_angle
+*Type:* FUNCTION
+Get weld joint reference angle.
+
+**Parameters**
+
+- `joint` (b2Joint) - weld joint
+
+**Returns**
+
+- `angle` (number) - reference angle in radians
+
+### b2d.joint.get_spring_damping_ratio
+*Type:* FUNCTION
+Alias for b2d.joint.get_damping_ratio.
+
+**Parameters**
+
+- `joint` (b2Joint) - distance, mouse, weld, or wheel joint
+
+**Returns**
+
+- `ratio` (number) - damping ratio
+
+### b2d.joint.get_spring_damping_ratio
+*Type:* FUNCTION
+Get spring damping ratio.
+
+**Parameters**
+
+- `joint` (b2Joint) - distance, mouse, prismatic, revolute, or wheel joint
+
+**Returns**
+
+- `ratio` (number) - damping ratio
+
+### b2d.joint.get_spring_hertz
+*Type:* FUNCTION
+Get spring frequency.
+
+**Parameters**
+
+- `joint` (b2Joint) - distance, mouse, prismatic, revolute, or wheel joint
+
+**Returns**
+
+- `hertz` (number) - frequency in hertz
+
+### b2d.joint.get_type
+*Type:* FUNCTION
+Get the joint type.
+
+**Parameters**
+
+- `joint` (b2Joint) - joint
+
+**Returns**
+
+- `type` (number) - one of the <code>JOINT_TYPE_*</code> constants
+
+### b2d.joint.get_type
+*Type:* FUNCTION
+Get the joint type.
+
+**Parameters**
+
+- `joint` (b2Joint) - joint
+
+**Returns**
+
+- `type` (number) - one of the <code>JOINT_TYPE_*</code> constants
+
+### b2d.joint.get_upper_limit
+*Type:* FUNCTION
+Get the upper joint limit.
+
+**Parameters**
+
+- `joint` (b2Joint) - prismatic or revolute joint
+
+**Returns**
+
+- `upper` (number) - upper limit
+
+### b2d.joint.get_upper_limit
+*Type:* FUNCTION
+Get the upper joint limit.
+
+**Parameters**
+
+- `joint` (b2Joint) - prismatic, revolute, or wheel joint
+
+**Returns**
+
+- `upper` (number) - upper limit
+
+### b2d.joint.get_world
+*Type:* FUNCTION
+Get the world owning a joint.
+
+**Parameters**
+
+- `joint` (b2Joint) - joint
+
+**Returns**
+
+- `world` (b2World) - owning world
+
+### b2d.joint.is_active
+*Type:* FUNCTION
+Get whether the joint is active.
+
+**Parameters**
+
+- `joint` (b2Joint) - joint
+
+**Returns**
+
+- `active` (boolean) - true if the joint is active
+
+### b2d.joint.is_limit_enabled
+*Type:* FUNCTION
+Get whether joint limits are enabled.
+
+**Parameters**
+
+- `joint` (b2Joint) - prismatic or revolute joint
+
+**Returns**
+
+- `enabled` (boolean) - true if limits are enabled
+
+### b2d.joint.is_limit_enabled
+*Type:* FUNCTION
+Get whether joint limits are enabled.
+
+**Parameters**
+
+- `joint` (b2Joint) - distance, prismatic, revolute, or wheel joint
+
+**Returns**
+
+- `enabled` (boolean) - true if limits are enabled
+
+### b2d.joint.is_motor_enabled
+*Type:* FUNCTION
+Get whether the joint motor is enabled.
+
+**Parameters**
+
+- `joint` (b2Joint) - prismatic, revolute, or wheel joint
+
+**Returns**
+
+- `enabled` (boolean) - true if the motor is enabled
+
+### b2d.joint.is_motor_enabled
+*Type:* FUNCTION
+Get whether the joint motor is enabled.
+
+**Parameters**
+
+- `joint` (b2Joint) - distance, prismatic, revolute, or wheel joint
+
+**Returns**
+
+- `enabled` (boolean) - true if the motor is enabled
+
+### b2d.joint.is_spring_enabled
+*Type:* FUNCTION
+Get whether joint spring behavior is enabled.
+
+**Parameters**
+
+- `joint` (b2Joint) - distance, prismatic, revolute, or wheel joint
+
+**Returns**
+
+- `enabled` (boolean) - true if the spring is enabled
+
+### b2d.joint.is_valid
+*Type:* FUNCTION
+Validate a joint handle.
+
+**Parameters**
+
+- `joint` (b2Joint) - joint
+
+**Returns**
+
+- `valid` (boolean) - true if the joint handle still refers to a live Box2D joint
+
+### b2d.joint.JOINT_TYPE_DISTANCE
+*Type:* CONSTANT
+Distance joint type.
+
+### b2d.joint.JOINT_TYPE_DISTANCE
+*Type:* CONSTANT
+Distance joint type.
+
+### b2d.joint.JOINT_TYPE_FILTER
+*Type:* CONSTANT
+Filter joint type.
+
+### b2d.joint.JOINT_TYPE_FRICTION
+*Type:* CONSTANT
+Friction joint type.
+
+### b2d.joint.JOINT_TYPE_GEAR
+*Type:* CONSTANT
+Gear joint type.
+
+### b2d.joint.JOINT_TYPE_MOTOR
+*Type:* CONSTANT
+Motor joint type.
+
+### b2d.joint.JOINT_TYPE_MOUSE
+*Type:* CONSTANT
+Mouse joint type.
+
+### b2d.joint.JOINT_TYPE_MOUSE
+*Type:* CONSTANT
+Mouse joint type.
+
+### b2d.joint.JOINT_TYPE_PRISMATIC
+*Type:* CONSTANT
+Prismatic joint type.
+
+### b2d.joint.JOINT_TYPE_PRISMATIC
+*Type:* CONSTANT
+Prismatic joint type.
+
+### b2d.joint.JOINT_TYPE_PULLEY
+*Type:* CONSTANT
+Pulley joint type.
+
+### b2d.joint.JOINT_TYPE_REVOLUTE
+*Type:* CONSTANT
+Revolute joint type.
+
+### b2d.joint.JOINT_TYPE_REVOLUTE
+*Type:* CONSTANT
+Revolute joint type.
+
+### b2d.joint.JOINT_TYPE_ROPE
+*Type:* CONSTANT
+Rope joint type.
+
+### b2d.joint.JOINT_TYPE_UNKNOWN
+*Type:* CONSTANT
+Unknown joint type.
+
+### b2d.joint.JOINT_TYPE_WELD
+*Type:* CONSTANT
+Weld joint type.
+
+### b2d.joint.JOINT_TYPE_WELD
+*Type:* CONSTANT
+Weld joint type.
+
+### b2d.joint.JOINT_TYPE_WHEEL
+*Type:* CONSTANT
+Wheel joint type.
+
+### b2d.joint.JOINT_TYPE_WHEEL
+*Type:* CONSTANT
+Wheel joint type.
+
+### b2d.joint.LIMIT_STATE_AT_LOWER
+*Type:* CONSTANT
+At lower limit state.
+
+### b2d.joint.LIMIT_STATE_AT_UPPER
+*Type:* CONSTANT
+At upper limit state.
+
+### b2d.joint.LIMIT_STATE_EQUAL
+*Type:* CONSTANT
+Equal limits state.
+
+### b2d.joint.LIMIT_STATE_INACTIVE
+*Type:* CONSTANT
+Inactive limit state.
+
+### b2d.joint.set_angular_damping_ratio
+*Type:* FUNCTION
+Set weld joint angular damping ratio.
+
+**Parameters**
+
+- `joint` (b2Joint) - weld joint
+- `ratio` (number) - damping ratio
+
+### b2d.joint.set_angular_hertz
+*Type:* FUNCTION
+Set weld joint angular frequency.
+
+**Parameters**
+
+- `joint` (b2Joint) - weld joint
+- `hertz` (number) - frequency in hertz
+
+### b2d.joint.set_angular_offset
+*Type:* FUNCTION
+Set motor joint angular offset.
+
+**Parameters**
+
+- `joint` (b2Joint) - motor joint
+- `offset` (number) - angular offset in radians
+
+### b2d.joint.set_collide_connected
+*Type:* FUNCTION
+Set whether connected bodies can collide.
+
+**Parameters**
+
+- `joint` (b2Joint) - joint
+- `collide` (boolean) - true if connected bodies can collide
+
+### b2d.joint.set_correction_factor
+*Type:* FUNCTION
+Set motor joint correction factor.
+
+**Parameters**
+
+- `joint` (b2Joint) - motor joint
+- `factor` (number) - correction factor
+
+### b2d.joint.set_damping_ratio
+*Type:* FUNCTION
+Set spring damping ratio.
+
+**Parameters**
+
+- `joint` (b2Joint) - distance, mouse, weld, or wheel joint
+- `ratio` (number) - damping ratio
+
+### b2d.joint.set_damping_ratio
+*Type:* FUNCTION
+Alias for b2d.joint.set_spring_damping_ratio.
+
+**Parameters**
+
+- `joint` (b2Joint) - distance, mouse, prismatic, revolute, or wheel joint
+- `ratio` (number) - damping ratio
+
+### b2d.joint.set_frequency
+*Type:* FUNCTION
+Set spring frequency.
+
+**Parameters**
+
+- `joint` (b2Joint) - distance, mouse, weld, or wheel joint
+- `frequency` (number) - frequency in hertz
+
+### b2d.joint.set_frequency
+*Type:* FUNCTION
+Alias for b2d.joint.set_spring_hertz.
+
+**Parameters**
+
+- `joint` (b2Joint) - distance, mouse, prismatic, revolute, or wheel joint
+- `frequency` (number) - frequency in hertz
+
+### b2d.joint.set_hertz
+*Type:* FUNCTION
+Alias for b2d.joint.set_frequency.
+
+**Parameters**
+
+- `joint` (b2Joint) - distance, mouse, weld, or wheel joint
+- `hertz` (number) - frequency in hertz
+
+### b2d.joint.set_hertz
+*Type:* FUNCTION
+Alias for b2d.joint.set_spring_hertz.
+
+**Parameters**
+
+- `joint` (b2Joint) - distance, mouse, prismatic, revolute, or wheel joint
+- `hertz` (number) - frequency in hertz
+
+### b2d.joint.set_length
+*Type:* FUNCTION
+Set the distance joint length.
+
+**Parameters**
+
+- `joint` (b2Joint) - distance joint
+- `length` (number) - length in project units
+
+### b2d.joint.set_length
+*Type:* FUNCTION
+Set the distance joint length.
+
+**Parameters**
+
+- `joint` (b2Joint) - distance joint
+- `length` (number) - length in project units
+
+### b2d.joint.set_length_range
+*Type:* FUNCTION
+Set the distance joint length range.
+
+**Parameters**
+
+- `joint` (b2Joint) - distance joint
+- `min_length` (number) - minimum length in project units
+- `max_length` (number) - maximum length in project units
+
+### b2d.joint.set_limits
+*Type:* FUNCTION
+Set joint limits.
+
+**Parameters**
+
+- `joint` (b2Joint) - prismatic or revolute joint
+- `lower` (number) - lower limit
+- `upper` (number) - upper limit
+
+### b2d.joint.set_limits
+*Type:* FUNCTION
+Set joint limits.
+
+**Parameters**
+
+- `joint` (b2Joint) - prismatic, revolute, or wheel joint
+- `lower` (number) - lower limit
+- `upper` (number) - upper limit
+
+### b2d.joint.set_linear_damping_ratio
+*Type:* FUNCTION
+Set weld joint linear damping ratio.
+
+**Parameters**
+
+- `joint` (b2Joint) - weld joint
+- `ratio` (number) - damping ratio
+
+### b2d.joint.set_linear_hertz
+*Type:* FUNCTION
+Set weld joint linear frequency.
+
+**Parameters**
+
+- `joint` (b2Joint) - weld joint
+- `hertz` (number) - frequency in hertz
+
+### b2d.joint.set_linear_offset
+*Type:* FUNCTION
+Set motor joint linear offset.
+
+**Parameters**
+
+- `joint` (b2Joint) - motor joint
+- `offset` (vector3) - linear offset in project units
+
+### b2d.joint.set_max_force
+*Type:* FUNCTION
+Set maximum force.
+
+**Parameters**
+
+- `joint` (b2Joint) - mouse or friction joint
+- `force` (number) - maximum force
+
+### b2d.joint.set_max_force
+*Type:* FUNCTION
+Set maximum force.
+
+**Parameters**
+
+- `joint` (b2Joint) - mouse or motor joint
+- `force` (number) - maximum force
+
+### b2d.joint.set_max_length
+*Type:* FUNCTION
+Set rope maximum length.
+
+**Parameters**
+
+- `joint` (b2Joint) - rope joint
+- `length` (number) - maximum length in project units
+
+### b2d.joint.set_max_length
+*Type:* FUNCTION
+Set the distance joint maximum length.
+
+**Parameters**
+
+- `joint` (b2Joint) - distance joint
+- `length` (number) - maximum length in project units
+
+### b2d.joint.set_max_motor_force
+*Type:* FUNCTION
+Set maximum motor force.
+
+**Parameters**
+
+- `joint` (b2Joint) - prismatic joint
+- `force` (number) - maximum motor force
+
+### b2d.joint.set_max_motor_force
+*Type:* FUNCTION
+Set maximum motor force.
+
+**Parameters**
+
+- `joint` (b2Joint) - distance or prismatic joint
+- `force` (number) - maximum motor force
+
+### b2d.joint.set_max_motor_torque
+*Type:* FUNCTION
+Set maximum motor torque.
+
+**Parameters**
+
+- `joint` (b2Joint) - revolute or wheel joint
+- `torque` (number) - maximum motor torque
+
+### b2d.joint.set_max_motor_torque
+*Type:* FUNCTION
+Set maximum motor torque.
+
+**Parameters**
+
+- `joint` (b2Joint) - revolute or wheel joint
+- `torque` (number) - maximum motor torque
+
+### b2d.joint.set_max_torque
+*Type:* FUNCTION
+Set maximum torque.
+
+**Parameters**
+
+- `joint` (b2Joint) - friction joint
+- `torque` (number) - maximum torque
+
+### b2d.joint.set_max_torque
+*Type:* FUNCTION
+Set maximum torque.
+
+**Parameters**
+
+- `joint` (b2Joint) - motor joint
+- `torque` (number) - maximum torque
+
+### b2d.joint.set_min_length
+*Type:* FUNCTION
+Set the distance joint minimum length.
+
+**Parameters**
+
+- `joint` (b2Joint) - distance joint
+- `length` (number) - minimum length in project units
+
+### b2d.joint.set_motor_speed
+*Type:* FUNCTION
+Set motor speed.
+
+**Parameters**
+
+- `joint` (b2Joint) - prismatic, revolute, or wheel joint
+- `speed` (number) - motor speed
+
+### b2d.joint.set_motor_speed
+*Type:* FUNCTION
+Set motor speed.
+
+**Parameters**
+
+- `joint` (b2Joint) - distance, prismatic, revolute, or wheel joint
+- `speed` (number) - motor speed
+
+### b2d.joint.set_mouse_target
+*Type:* FUNCTION
+Set the target for a mouse joint.
+
+**Parameters**
+
+- `joint` (b2Joint) - mouse joint
+- `target` (vector3) - world target
+
+### b2d.joint.set_mouse_target
+*Type:* FUNCTION
+Set the target for a mouse joint.
+
+**Parameters**
+
+- `joint` (b2Joint) - mouse joint
+- `target` (vector3) - world target
+
+### b2d.joint.set_ratio
+*Type:* FUNCTION
+Set gear joint ratio.
+
+**Parameters**
+
+- `joint` (b2Joint) - gear joint
+- `ratio` (number) - gear ratio
+
+### b2d.joint.set_reference_angle
+*Type:* FUNCTION
+Set weld joint reference angle.
+
+**Parameters**
+
+- `joint` (b2Joint) - weld joint
+- `angle` (number) - reference angle in radians
+
+### b2d.joint.set_spring_damping_ratio
+*Type:* FUNCTION
+Alias for b2d.joint.set_damping_ratio.
+
+**Parameters**
+
+- `joint` (b2Joint) - distance, mouse, weld, or wheel joint
+- `ratio` (number) - damping ratio
+
+### b2d.joint.set_spring_damping_ratio
+*Type:* FUNCTION
+Set spring damping ratio.
+
+**Parameters**
+
+- `joint` (b2Joint) - distance, mouse, prismatic, revolute, or wheel joint
+- `ratio` (number) - damping ratio
+
+### b2d.joint.set_spring_hertz
+*Type:* FUNCTION
+Set spring frequency.
+
+**Parameters**
+
+- `joint` (b2Joint) - distance, mouse, prismatic, revolute, or wheel joint
+- `hertz` (number) - frequency in hertz
+
+### b2d.joint.wake_bodies
+*Type:* FUNCTION
+Wake the bodies connected to a joint.
+
+**Parameters**
+
+- `joint` (b2Joint) - joint
+
+### b2Joint
+*Type:* TYPEDEF
+Box2D joint
+
+**Parameters**
+
+- `value` (userdata)
+
+### b2Joint
+*Type:* TYPEDEF
+Box2D joint
+
+**Parameters**
+
+- `value` (userdata)
+
+<!-- b2d.shape-lua -->
+
+# b2d.shape {#apis:b2d.shape-lua}
+
+**Namespace:** `b2d.shape`
+**Language:** Lua
+**Type:** Defold Lua
+**File:** `script_box2d_shape_v2.cpp`
+**Source:** `engine/gamesys/src/gamesys/scripts/box2d/v2/script_box2d_shape_v2.cpp`
+
+Constants for functional shape tables used with `b2d.body.create_fixture`
+and returned from `b2d.fixture.get_shape`.
+
+## API
+
+### b2d.shape.are_contact_events_enabled
+*Type:* FUNCTION
+Check if contact events are enabled for a shape.
+
+**Parameters**
+
+- `shape_id` (b2Shape) - shape handle from a shape info table, or pass <code>body, shape_index</code>
+
+**Returns**
+
+- `enabled` (boolean) - true if contact events are enabled
+
+### b2d.shape.are_hit_events_enabled
+*Type:* FUNCTION
+Check if hit events are enabled for a shape.
+
+**Parameters**
+
+- `shape_id` (b2Shape) - shape handle from a shape info table, or pass <code>body, shape_index</code>
+
+**Returns**
+
+- `enabled` (boolean) - true if hit events are enabled
+
+### b2d.shape.are_pre_solve_events_enabled
+*Type:* FUNCTION
+Check if pre-solve events are enabled for a shape.
+
+**Parameters**
+
+- `shape_id` (b2Shape) - shape handle from a shape info table, or pass <code>body, shape_index</code>
+
+**Returns**
+
+- `enabled` (boolean) - true if pre-solve events are enabled
+
+### b2d.shape.are_sensor_events_enabled
+*Type:* FUNCTION
+Check if sensor events are enabled for a shape.
+
+**Parameters**
+
+- `shape_id` (b2Shape) - shape handle from a shape info table, or pass <code>body, shape_index</code>
+
+**Returns**
+
+- `enabled` (boolean) - true if sensor events are enabled
+
+### b2d.shape.enable_contact_events
+*Type:* FUNCTION
+Enable or disable contact events for a shape.
+
+**Parameters**
+
+- `shape_id` (b2Shape) - shape handle from a shape info table, or pass <code>body, shape_index</code>
+- `enable` (boolean) - true to enable contact events
+
+### b2d.shape.enable_hit_events
+*Type:* FUNCTION
+Enable or disable hit events for a shape.
+
+**Parameters**
+
+- `shape_id` (b2Shape) - shape handle from a shape info table, or pass <code>body, shape_index</code>
+- `enable` (boolean) - true to enable hit events
+
+### b2d.shape.enable_pre_solve_events
+*Type:* FUNCTION
+Enable or disable pre-solve events for a shape.
+
+**Parameters**
+
+- `shape_id` (b2Shape) - shape handle from a shape info table, or pass <code>body, shape_index</code>
+- `enable` (boolean) - true to enable pre-solve events
+
+### b2d.shape.enable_sensor_events
+*Type:* FUNCTION
+Enable or disable sensor events for a shape.
+
+**Parameters**
+
+- `shape_id` (b2Shape) - shape handle from a shape info table, or pass <code>body, shape_index</code>
+- `enable` (boolean) - true to enable sensor events
+
+### b2d.shape.get_body
+*Type:* FUNCTION
+Get the body owning a shape.
+
+**Parameters**
+
+- `shape_id` (b2Shape) - shape handle from a shape info table, or pass <code>body, shape_index</code>
+
+**Returns**
+
+- `body` (b2Body) - owning body
+
+### b2d.shape.get_closest_point
+*Type:* FUNCTION
+Get the closest point on a shape.
+
+**Parameters**
+
+- `shape_id` (b2Shape) - shape handle from a shape info table, or pass <code>body, shape_index</code>
+- `target` (vector3) - world target point
+
+**Returns**
+
+- `point` (vector3) - closest world point on the shape
+
+### b2d.shape.get_contact_capacity
+*Type:* FUNCTION
+Get shape contact capacity.
+
+**Parameters**
+
+- `shape_id` (b2Shape) - shape handle from a shape info table, or pass <code>body, shape_index</code>
+
+**Returns**
+
+- `capacity` (number) - maximum contact data count
+
+### b2d.shape.get_contact_data
+*Type:* FUNCTION
+Get touching contact data for a shape.
+
+**Parameters**
+
+- `shape_id` (b2Shape) - shape handle from a shape info table, or pass <code>body, shape_index</code>
+
+**Returns**
+
+- `contacts` (table) - array of contact tables
+
+### b2d.shape.get_mass_data
+*Type:* FUNCTION
+Get mass data for a shape.
+
+**Parameters**
+
+- `shape_id` (b2Shape) - shape handle from a shape info table, or pass <code>body, shape_index</code>
+
+**Returns**
+
+- `data` (table) - table with <code>mass</code>, <code>center</code>, and <code>inertia</code>
+
+### b2d.shape.get_material
+*Type:* FUNCTION
+Get shape material id.
+
+**Parameters**
+
+- `shape_id` (b2Shape) - shape handle from a shape info table, or pass <code>body, shape_index</code>
+
+**Returns**
+
+- `material` (number) - shape material id
+
+### b2d.shape.get_sensor_capacity
+*Type:* FUNCTION
+Get sensor overlap capacity.
+
+**Parameters**
+
+- `shape_id` (b2Shape) - shape handle from a shape info table, or pass <code>body, shape_index</code>
+
+**Returns**
+
+- `capacity` (number) - maximum sensor overlap count
+
+### b2d.shape.get_sensor_overlaps
+*Type:* FUNCTION
+Get sensor overlaps.
+
+**Parameters**
+
+- `shape_id` (b2Shape) - shape handle from a shape info table, or pass <code>body, shape_index</code>
+
+**Returns**
+
+- `overlaps` (table) - array of shape info tables
+
+### b2d.shape.get_shape
+*Type:* FUNCTION
+Get a shape's geometry.
+
+**Parameters**
+
+- `shape_id` (b2Shape) - shape handle from a shape info table, or pass <code>body, shape_index</code>
+
+**Returns**
+
+- `shape` (table) - shape table with numeric <code>type</code> from <code>b2d.shape.SHAPE_TYPE_*</code>
+
+### b2d.shape.get_world
+*Type:* FUNCTION
+Get the world owning a shape.
+
+**Parameters**
+
+- `shape_id` (b2Shape) - shape handle from a shape info table, or pass <code>body, shape_index</code>
+
+**Returns**
+
+- `world` (b2World) - owning world
+
+### b2d.shape.is_valid
+*Type:* FUNCTION
+Validate a shape handle.
+
+**Parameters**
+
+- `shape_id` (b2Shape) - shape handle from a shape info table, or pass <code>body, shape_index</code>
+
+**Returns**
+
+- `valid` (boolean) - true if the shape handle still refers to a live Box2D shape
+
+### b2d.shape.ray_cast
+*Type:* FUNCTION
+Ray cast a shape directly.
+
+**Parameters**
+
+- `shape_id` (b2Shape) - shape handle from a shape info table, or pass <code>body, shape_index</code>
+- `origin` (vector3) - world ray origin
+- `translation` (vector3) - world ray translation
+- `max_fraction` (number) - optional maximum translation fraction, defaults to 1
+
+**Returns**
+
+- `hit` (table) - hit table with <code>point</code>, <code>normal</code>, <code>fraction</code>, and <code>iterations</code>, or nil
+
+### b2d.shape.set_material
+*Type:* FUNCTION
+Set shape material id.
+
+**Parameters**
+
+- `shape_id` (b2Shape) - shape handle from a shape info table, or pass <code>body, shape_index</code>
+- `material` (number) - shape material id
+
+### b2d.shape.set_shape
+*Type:* FUNCTION
+This updates the shape geometry using the same table format as
+b2d.body.create_shape and b2d.shape.get_shape. The body mass is not
+updated unless update_mass is true.
+
+**Parameters**
+
+- `shape_id` (b2Shape) - shape handle from a shape info table, or pass <code>body, shape_index</code>
+- `definition` (table) - shape table with numeric <code>type</code> from <code>b2d.shape.SHAPE_TYPE_*</code>
+- `update_mass` (boolean) - true to reset body mass from shapes
+
+**Examples**
+
+```
+local body = b2d.get_body("#collisionobject")
+
+-- Move a circle shape relative to the body origin.
+local circle = b2d.shape.get_shape(body, 1)
+circle.center = vmath.vector3(24, 0, 0)
+b2d.shape.set_shape(body, 1, circle, true)
+
+-- Replace a segment shape's local endpoints.
+b2d.shape.set_shape(body, 2, {
+    type = b2d.shape.SHAPE_TYPE_SEGMENT,
+    v1 = vmath.vector3(-32, 0, 0),
+    v2 = vmath.vector3( 32, 0, 0),
+})
+
+-- Update a box shape using the polygon box convenience format.
+b2d.shape.set_shape(body, 3, {
+    type = b2d.shape.SHAPE_TYPE_BOX,
+    hx = 16,
+    hy = 8,
+    center = vmath.vector3(0, 20, 0),
+    angle = math.rad(30),
+}, true)
+
+```
+
+### b2d.shape.SHAPE_TYPE_BOX
+*Type:* CONSTANT
+Uses the polygon enum value, but indicates the hx/hy box convenience format.
+
+### b2d.shape.SHAPE_TYPE_BOX
+*Type:* CONSTANT
+Uses the polygon enum value, but indicates the hx/hy box convenience format.
+
+### b2d.shape.SHAPE_TYPE_CAPSULE
+*Type:* CONSTANT
+Capsule shape type.
+
+### b2d.shape.SHAPE_TYPE_CHAIN
+*Type:* CONSTANT
+Chain shape type.
+
+### b2d.shape.SHAPE_TYPE_CIRCLE
+*Type:* CONSTANT
+Circle shape type.
+
+### b2d.shape.SHAPE_TYPE_CIRCLE
+*Type:* CONSTANT
+Circle shape type.
+
+### b2d.shape.SHAPE_TYPE_EDGE
+*Type:* CONSTANT
+Edge shape type.
+
+### b2d.shape.SHAPE_TYPE_EDGE
+*Type:* CONSTANT
+Compatibility alias for b2d.shape.SHAPE_TYPE_SEGMENT.
+
+### b2d.shape.SHAPE_TYPE_GRID
+*Type:* CONSTANT
+Grid shape type.
+
+### b2d.shape.SHAPE_TYPE_POLYGON
+*Type:* CONSTANT
+Polygon shape type.
+
+### b2d.shape.SHAPE_TYPE_POLYGON
+*Type:* CONSTANT
+Polygon shape type.
+
+### b2d.shape.SHAPE_TYPE_SEGMENT
+*Type:* CONSTANT
+Segment shape type.
+
+### b2Shape
+*Type:* TYPEDEF
+Box2D shape
+
+**Parameters**
+
+- `value` (userdata)
+
+<!-- b2d.world-lua -->
+
+# b2d.world {#apis:b2d.world-lua}
+
+**Namespace:** `b2d.world`
+**Language:** Lua
+**Type:** Defold Lua
+**File:** `script_box2d_world_v2.cpp`
+**Source:** `engine/gamesys/src/gamesys/scripts/box2d/v2/script_box2d_world_v2.cpp`
+
+Query and cast functions for the Defold-owned Box2D v2 world.
+
+## API
+
+### b2d.world.cast_mover
+*Type:* FUNCTION
+The capsule table has center1, center2, and radius fields. The return
+value is the fraction of translation that can be traveled before collision,
+or 1 if there is no hit.
+
+**Parameters**
+
+- `world` (b2World) - world
+- `capsule` (table) - capsule table with <code>center1</code>, <code>center2</code>, and <code>radius</code>
+- `translation` (vector3) - capsule displacement
+- `filter` (table) (optional) - optional query filter with <code>category_bits</code> and <code>mask_bits</code>
+
+**Returns**
+
+- `fraction` (number) - travel fraction before collision
+
+### b2d.world.cast_ray
+*Type:* FUNCTION
+Cast a ray.
+
+**Parameters**
+
+- `world` (b2World) - world from <code>b2d.get_world</code> or <code>b2d.body.get_world</code>
+- `origin` (vector3) - world ray origin
+- `translation` (vector3) - world ray translation
+- `filter` (table) - optional query filter with <code>category_bits</code>, <code>mask_bits</code>, and optional <code>group_index</code>
+- `max_results` (number) - optional maximum result count
+
+**Returns**
+
+- `hits` (table) - array of hit tables with <code>fixture</code>, <code>shape</code>, <code>point</code>, <code>normal</code>, and <code>fraction</code>
+- `stats` (table) - table with <code>node_visits</code> and <code>leaf_visits</code>
+
+### b2d.world.cast_ray
+*Type:* FUNCTION
+The translation is the ray displacement from origin. Result order is not
+guaranteed by Box2D.
+
+**Parameters**
+
+- `world` (b2World) - world
+- `origin` (vector3) - ray start position
+- `translation` (vector3) - ray displacement
+- `filter` (table) (optional) - optional query filter with <code>category_bits</code> and <code>mask_bits</code>
+- `max_results` (number) (optional) - optional maximum result count. Omit or pass 0 for unlimited results.
+
+**Returns**
+
+- `hits` (table) - array of cast hit tables
+- `stats` (table) - tree stats table
+
+### b2d.world.cast_ray_closest
+*Type:* FUNCTION
+Cast a ray and return the closest hit.
+
+**Parameters**
+
+- `world` (b2World) - world from <code>b2d.get_world</code> or <code>b2d.body.get_world</code>
+- `origin` (vector3) - world ray origin
+- `translation` (vector3) - world ray translation
+- `filter` (table) - optional query filter with <code>category_bits</code>, <code>mask_bits</code>, and optional <code>group_index</code>
+
+**Returns**
+
+- `hit` (table) - hit table with <code>fixture</code>, <code>shape</code>, <code>point</code>, <code>normal</code>, <code>fraction</code>, <code>node_visits</code>, and <code>leaf_visits</code>, or nil
+
+### b2d.world.cast_ray_closest
+*Type:* FUNCTION
+The translation is the ray displacement from origin.
+
+**Parameters**
+
+- `world` (b2World) - world
+- `origin` (vector3) - ray start position
+- `translation` (vector3) - ray displacement
+- `filter` (table) (optional) - optional query filter with <code>category_bits</code> and <code>mask_bits</code>
+
+**Returns**
+
+- `hit` (table | nil) - closest cast hit table with <code>node_visits</code> and <code>leaf_visits</code>, or <code>nil</code> on miss
+
+### b2d.world.cast_shape
+*Type:* FUNCTION
+Uses Box2D v2 time-of-impact for fixture child shapes that support distance proxies.
+Grid fixture children are skipped.
+
+**Parameters**
+
+- `world` (b2World) - world from <code>b2d.get_world</code> or <code>b2d.body.get_world</code>
+- `shape` (table) - shape table using the same format as the <code>shape</code> field in <code>b2d.body.create_fixture</code>
+- `translation` (vector3) - world shape translation
+- `filter` (table) - optional query filter with <code>category_bits</code>, <code>mask_bits</code>, and optional <code>group_index</code>
+- `max_results` (number) - optional maximum result count
+
+**Returns**
+
+- `hits` (table) - array of hit tables with <code>fixture</code>, <code>shape</code>, <code>point</code>, <code>normal</code>, and <code>fraction</code>
+- `stats` (table) - table with <code>node_visits</code> and <code>leaf_visits</code>
+
+### b2d.world.cast_shape
+*Type:* FUNCTION
+The shape table uses the same circle, capsule, segment, polygon, and box formats
+as b2d.body.create_shape. The translation is the shape displacement.
+
+**Parameters**
+
+- `world` (b2World) - world
+- `shape` (table) - shape table
+- `translation` (vector3) - shape displacement
+- `filter` (table) (optional) - optional query filter with <code>category_bits</code> and <code>mask_bits</code>
+- `max_results` (number) (optional) - optional maximum result count. Omit or pass 0 for unlimited results.
+
+**Returns**
+
+- `hits` (table) - array of cast hit tables
+- `stats` (table) - tree stats table
+
+### b2d.world.collide_mover
+*Type:* FUNCTION
+The capsule table has center1, center2, and radius fields. Plane result
+tables include shape, normal, offset, and hit.
+
+**Parameters**
+
+- `world` (b2World) - world
+- `capsule` (table) - capsule table with <code>center1</code>, <code>center2</code>, and <code>radius</code>
+- `filter` (table) (optional) - optional query filter with <code>category_bits</code> and <code>mask_bits</code>
+- `max_results` (number) (optional) - optional maximum result count. Omit or pass 0 for unlimited results.
+
+**Returns**
+
+- `planes` (table) - array of plane result tables
+
+### b2d.world.enable_continuous
+*Type:* FUNCTION
+Enable or disable continuous collision.
+
+**Parameters**
+
+- `world` (b2World) - world
+- `enable` (boolean) - true to enable continuous collision
+
+### b2d.world.enable_sleeping
+*Type:* FUNCTION
+Enable or disable world sleeping.
+
+**Parameters**
+
+- `world` (b2World) - world
+- `enable` (boolean) - true to allow sleeping
+
+### b2d.world.enable_speculative
+*Type:* FUNCTION
+Enable or disable speculative collision.
+
+**Parameters**
+
+- `world` (b2World) - world
+- `enable` (boolean) - true to enable speculative collision
+
+### b2d.world.enable_warm_starting
+*Type:* FUNCTION
+Enable or disable warm starting.
+
+**Parameters**
+
+- `world` (b2World) - world
+- `enable` (boolean) - true to enable warm starting
+
+### b2d.world.explode
+*Type:* FUNCTION
+The definition table requires position, radius, falloff, and
+impulse_per_length. It may also include mask_bits.
+
+**Parameters**
+
+- `world` (b2World) - world
+- `definition` (table) - explosion definition
+
+### b2d.world.get_awake_body_count
+*Type:* FUNCTION
+Get the number of awake bodies.
+
+**Parameters**
+
+- `world` (b2World) - world
+
+**Returns**
+
+- `count` (number) - awake body count
+
+### b2d.world.get_counters
+*Type:* FUNCTION
+The returned table contains body_count, shape_count, contact_count,
+joint_count, island_count, stack_used, static_tree_height,
+tree_height, byte_count, task_count, and color_counts.
+
+**Parameters**
+
+- `world` (b2World) - world
+
+**Returns**
+
+- `counters` (table) - world counters
+
+### b2d.world.get_gravity
+*Type:* FUNCTION
+Get world gravity.
+
+**Parameters**
+
+- `world` (b2World) - world
+
+**Returns**
+
+- `gravity` (vector3) - gravity vector
+
+### b2d.world.get_hit_event_threshold
+*Type:* FUNCTION
+Get the hit event threshold.
+
+**Parameters**
+
+- `world` (b2World) - world
+
+**Returns**
+
+- `threshold` (number) - hit event threshold in project units per second
+
+### b2d.world.get_maximum_linear_speed
+*Type:* FUNCTION
+Get the maximum linear speed.
+
+**Parameters**
+
+- `world` (b2World) - world
+
+**Returns**
+
+- `speed` (number) - maximum linear speed in project units per second
+
+### b2d.world.get_profile
+*Type:* FUNCTION
+The returned table contains Box2D timing fields including step, pairs,
+collide, solve, merge_islands, prepare_stages, solve_constraints,
+prepare_constraints, integrate_velocities, warm_start,
+solve_impulses, integrate_positions, relax_impulses,
+apply_restitution, store_impulses, split_islands, transforms,
+hit_events, refit, bullets, sleep_islands, and sensors.
+
+**Parameters**
+
+- `world` (b2World) - world
+
+**Returns**
+
+- `profile` (table) - world profiling data
+
+### b2d.world.get_restitution_threshold
+*Type:* FUNCTION
+Get the restitution threshold.
+
+**Parameters**
+
+- `world` (b2World) - world
+
+**Returns**
+
+- `threshold` (number) - restitution threshold in project units per second
+
+### b2d.world.is_continuous_enabled
+*Type:* FUNCTION
+Get whether continuous collision is enabled.
+
+**Parameters**
+
+- `world` (b2World) - world
+
+**Returns**
+
+- `enabled` (boolean) - true if continuous collision is enabled
+
+### b2d.world.is_locked
+*Type:* FUNCTION
+The world is locked during callbacks and some simulation phases. Functions
+marked as locked during callbacks cannot be called while this returns true.
+
+**Parameters**
+
+- `world` (b2World) - world
+
+**Returns**
+
+- `locked` (boolean) - true if the world is locked
+
+### b2d.world.is_sleeping_enabled
+*Type:* FUNCTION
+Get whether world sleeping is enabled.
+
+**Parameters**
+
+- `world` (b2World) - world
+
+**Returns**
+
+- `enabled` (boolean) - true if sleeping is enabled
+
+### b2d.world.is_valid
+*Type:* FUNCTION
+Check whether a world handle is valid.
+
+**Parameters**
+
+- `world` (b2World) - world
+
+**Returns**
+
+- `valid` (boolean) - true if the world handle is valid
+
+### b2d.world.is_warm_starting_enabled
+*Type:* FUNCTION
+Get whether warm starting is enabled.
+
+**Parameters**
+
+- `world` (b2World) - world
+
+**Returns**
+
+- `enabled` (boolean) - true if warm starting is enabled
+
+### b2d.world.overlap_aabb
+*Type:* FUNCTION
+Overlap an AABB.
+
+**Parameters**
+
+- `world` (b2World) - world from <code>b2d.get_world</code> or <code>b2d.body.get_world</code>
+- `aabb` (table) - table with <code>lower</code> and <code>upper</code> vector3 fields
+- `filter` (table) - optional query filter with <code>category_bits</code>, <code>mask_bits</code>, and optional <code>group_index</code>
+- `max_results` (number) - optional maximum result count
+
+**Returns**
+
+- `fixtures` (table) - array of fixture info tables
+- `stats` (table) - table with <code>node_visits</code> and <code>leaf_visits</code>
+
+### b2d.world.overlap_aabb
+*Type:* FUNCTION
+The AABB table has lower and upper vector3 fields.
+
+**Parameters**
+
+- `world` (b2World) - world
+- `aabb` (table) - AABB table with <code>lower</code> and <code>upper</code>
+- `filter` (table) (optional) - optional query filter with <code>category_bits</code> and <code>mask_bits</code>
+- `max_results` (number) (optional) - optional maximum result count. Omit or pass 0 for unlimited results.
+
+**Returns**
+
+- `hits` (table) - array of shape info tables
+- `stats` (table) - tree stats table
+
+### b2d.world.overlap_shape
+*Type:* FUNCTION
+Overlap a shape.
+
+**Parameters**
+
+- `world` (b2World) - world from <code>b2d.get_world</code> or <code>b2d.body.get_world</code>
+- `shape` (table) - shape table using the same format as the <code>shape</code> field in <code>b2d.body.create_fixture</code>
+- `filter` (table) - optional query filter with <code>category_bits</code>, <code>mask_bits</code>, and optional <code>group_index</code>
+- `max_results` (number) - optional maximum result count
+
+**Returns**
+
+- `fixtures` (table) - array of fixture info tables
+- `stats` (table) - table with <code>node_visits</code> and <code>leaf_visits</code>
+
+### b2d.world.overlap_shape
+*Type:* FUNCTION
+The shape table uses the same circle, capsule, segment, polygon, and box formats
+as b2d.body.create_shape.
+
+**Parameters**
+
+- `world` (b2World) - world
+- `shape` (table) - shape table
+- `filter` (table) (optional) - optional query filter with <code>category_bits</code> and <code>mask_bits</code>
+- `max_results` (number) (optional) - optional maximum result count. Omit or pass 0 for unlimited results.
+
+**Returns**
+
+- `hits` (table) - array of shape info tables
+- `stats` (table) - tree stats table
+
+### b2d.world.rebuild_static_tree
+*Type:* FUNCTION
+Rebuild the static broad-phase tree.
+
+**Parameters**
+
+- `world` (b2World) - world
+
+### b2d.world.set_contact_tuning
+*Type:* FUNCTION
+Set contact solver tuning.
+
+**Parameters**
+
+- `world` (b2World) - world
+- `hertz` (number) - contact stiffness frequency in hertz
+- `damping_ratio` (number) - contact damping ratio
+- `pushout` (number) - pushout velocity in project units per second
+
+### b2d.world.set_gravity
+*Type:* FUNCTION
+Set world gravity.
+
+**Parameters**
+
+- `world` (b2World) - world
+- `gravity` (vector3) - gravity vector
+
+### b2d.world.set_hit_event_threshold
+*Type:* FUNCTION
+Set the hit event threshold.
+
+**Parameters**
+
+- `world` (b2World) - world
+- `threshold` (number) - hit event threshold in project units per second
+
+### b2d.world.set_joint_tuning
+*Type:* FUNCTION
+Set joint solver tuning.
+
+**Parameters**
+
+- `world` (b2World) - world
+- `hertz` (number) - joint stiffness frequency in hertz
+- `damping_ratio` (number) - joint damping ratio
+
+### b2d.world.set_maximum_linear_speed
+*Type:* FUNCTION
+Set the maximum linear speed.
+
+**Parameters**
+
+- `world` (b2World) - world
+- `speed` (number) - maximum linear speed in project units per second
+
+### b2d.world.set_restitution_threshold
+*Type:* FUNCTION
+Collisions below this relative speed use inelastic collision response.
+
+**Parameters**
+
+- `world` (b2World) - world
+- `threshold` (number) - restitution threshold in project units per second
 
 <!-- base-lua -->
 
@@ -35618,6 +39723,21 @@ Messages to control camera components and camera focus.
 
 ## API
 
+### acquire_camera_focus
+*Type:* MESSAGE
+Post this message to a camera-component to activate it.
+Several cameras can be active at the same time, but only the camera that was last activated will be used for rendering.
+When the camera is deactivated (see release_camera_focus), the previously activated camera will again be used for rendering automatically.
+The reason it is called "camera focus" is the similarity to how acquiring input focus works (see acquire_input_focus).
+
+**Examples**
+
+In the examples, it is assumed that the instance of the script has a camera-component with id "camera".
+```
+msg.post("#camera", "acquire_camera_focus")
+
+```
+
 ### aspect_ratio
 *Type:* PROPERTY
 The ratio between the frustum width and height. Used when calculating the
@@ -35730,6 +39850,19 @@ get near z
 
 - `near_z` (number) - the near z.
 
+### camera.get_orthographic_auto_zoom
+*Type:* FUNCTION
+Gets the orthographic zoom calculated from the current window and project dimensions
+in auto-fit and auto-cover modes. Returns 1.0 in fixed mode.
+
+**Parameters**
+
+- `camera` (url | number | nil) - camera id
+
+**Returns**
+
+- `orthographic_auto_zoom` (number) - the calculated orthographic auto zoom.
+
 ### camera.get_orthographic_mode
 *Type:* FUNCTION
 get orthographic zoom mode
@@ -35745,7 +39878,8 @@ camera.ORTHO_MODE_AUTO_COVER
 
 ### camera.get_orthographic_zoom
 *Type:* FUNCTION
-get orthographic zoom
+Gets the positive user-controlled orthographic zoom multiplier. In auto-fit and auto-cover
+modes, this value is multiplied with camera.get_orthographic_auto_zoom(camera).
 
 **Parameters**
 
@@ -35753,7 +39887,7 @@ get orthographic zoom
 
 **Returns**
 
-- `orthographic_zoom` (number) - the zoom level when the camera uses orthographic projection.
+- `orthographic_zoom` (number) - the positive zoom multiplier when the camera uses orthographic projection.
 
 ### camera.get_projection
 *Type:* FUNCTION
@@ -35783,11 +39917,13 @@ get view matrix
 *Type:* CONSTANT
 Computes zoom so the original display area covers the entire window while preserving aspect ratio.
 Equivalent to using max(window_width/width, window_height/height).
+The result is multiplied by the user-controlled orthographic zoom.
 
 ### camera.ORTHO_MODE_AUTO_FIT
 *Type:* CONSTANT
 Computes zoom so the original display area (game.project width/height) fits inside the window
 while preserving aspect ratio. Equivalent to using min(window_width/width, window_height/height).
+The result is multiplied by the user-controlled orthographic zoom.
 
 ### camera.ORTHO_MODE_FIXED
 *Type:* CONSTANT
@@ -35915,12 +40051,13 @@ set orthographic zoom mode
 
 ### camera.set_orthographic_zoom
 *Type:* FUNCTION
-set orthographic zoom
+Sets the positive user-controlled orthographic zoom multiplier. In auto-fit and auto-cover
+modes, this value is multiplied with camera.get_orthographic_auto_zoom(camera).
 
 **Parameters**
 
 - `camera` (url | number | nil) - camera id
-- `orthographic_zoom` (number) - the zoom level when the camera uses orthographic projection.
+- `orthographic_zoom` (number) - the positive zoom multiplier when the camera uses orthographic projection.
 
 ### camera.world_to_screen
 *Type:* FUNCTION
@@ -35995,9 +40132,25 @@ end
 
 ```
 
+### orthographic_auto_zoom
+*Type:* PROPERTY
+READ ONLY The zoom calculated from the current window and project dimensions
+in auto fit and auto cover modes. The value is 1.0 in fixed mode.
+The type of the property is float.
+
+**Examples**
+
+```
+function init(self)
+  local orthographic_auto_zoom = go.get("#camera", "orthographic_auto_zoom")
+end
+
+```
+
 ### orthographic_zoom
 *Type:* PROPERTY
-Zoom level when using an orthographic projection.
+Positive zoom multiplier when using an orthographic projection. In auto fit and auto cover
+modes, this value is multiplied with the calculated orthographic_auto_zoom value.
 The type of the property is float.
 
 **Examples**
@@ -36025,6 +40178,19 @@ end
 
 ```
 
+### release_camera_focus
+*Type:* MESSAGE
+Post this message to a camera-component to deactivate it. The camera is then removed from the active cameras.
+See acquire_camera_focus for more information how the active cameras are used in rendering.
+
+**Examples**
+
+In the examples, it is assumed that the instance of the script has a camera-component with id "camera".
+```
+msg.post("#camera", "release_camera_focus")
+
+```
+
 ### set_camera
 *Type:* MESSAGE
 Post this message to a camera-component to set its properties at run-time.
@@ -36036,7 +40202,7 @@ Post this message to a camera-component to set its properties at run-time.
 - `near_z` (number) - position of the near clipping plane (distance from camera along relative z)
 - `far_z` (number) - position of the far clipping plane (distance from camera along relative z)
 - `orthographic_projection` (boolean) - set to use an orthographic projection
-- `orthographic_zoom` (number) - zoom level when the camera is using an orthographic projection
+- `orthographic_zoom` (number) - positive zoom multiplier when the camera is using an orthographic projection
 - `orthographic_mode` (number) - orthographic zoom behavior when orthographic_projection is enabled
 
 **Examples**
@@ -36556,6 +40722,343 @@ function on_message(self, message_id, message, sender)
         -- let unloader know
         msg.post(self.unloader, "level_ended")
     end
+end
+
+```
+
+<!-- compute-lua -->
+
+# Compute {#apis:compute-lua}
+
+**Namespace:** `compute`
+**Language:** Lua
+**Type:** Defold Lua
+**File:** `script_compute.cpp`
+**Source:** `engine/gamesys/src/gamesys/scripts/script_compute.cpp`
+
+Functions for interacting with compute programs.
+
+## API
+
+### compute.get_constants
+*Type:* FUNCTION
+Returns a table of all the shader constants in the compute program.
+
+**Parameters**
+
+- `path` (hash | string) - The path to the resource
+
+**Returns**
+
+- `table` (table) - A table of tables, where each entry contains info about the shader constants:
+<dl>
+<dt><code>name</code></dt>
+<dd><span class="type">hash</span> the hashed name of the constant</dd>
+<dt><code>type</code></dt>
+<dd><span class="type">number</span> the type of the constant. Supported values:</dd>
+</dl>
+<ul>
+<li><code>material.CONSTANT_TYPE_USER</code></li>
+<li><code>material.CONSTANT_TYPE_USER_MATRIX4</code></li>
+<li><code>material.CONSTANT_TYPE_VIEWPROJ</code></li>
+<li><code>material.CONSTANT_TYPE_WORLD</code></li>
+<li><code>material.CONSTANT_TYPE_TEXTURE</code></li>
+<li><code>material.CONSTANT_TYPE_VIEW</code></li>
+<li><code>material.CONSTANT_TYPE_PROJECTION</code></li>
+<li><code>material.CONSTANT_TYPE_NORMAL</code></li>
+<li><code>material.CONSTANT_TYPE_WORLDVIEW</code></li>
+<li><code>material.CONSTANT_TYPE_WORLDVIEWPROJ</code></li>
+<li><code>material.CONSTANT_TYPE_TIME</code></li>
+<li><code>material.CONSTANT_TYPE_WORLD_INVERSE</code></li>
+<li><code>material.CONSTANT_TYPE_VIEW_INVERSE</code></li>
+<li><code>material.CONSTANT_TYPE_PROJECTION_INVERSE</code></li>
+<li><code>material.CONSTANT_TYPE_VIEWPROJ_INVERSE</code></li>
+<li><code>material.CONSTANT_TYPE_WORLDVIEW_INVERSE</code></li>
+<li><code>material.CONSTANT_TYPE_WORLDVIEWPROJ_INVERSE</code></li>
+</ul>
+<dl>
+<dt><code>value</code></dt>
+<dd><span class="type">vmath.vector4 | vmath.matrix4</span> the value(s) of the constant. If the constant is an array, the value will be a table of vmath.vector4 or vmath.matrix4 if the type is <code>material.CONSTANT_TYPE_USER_MATRIX4</code>.</dd>
+</dl>
+
+**Examples**
+
+Get the shader constants from a compute program resource
+```
+function init(self)
+    local constants = compute.get_constants("/my_compute.computec")
+end
+
+```
+
+### compute.get_samplers
+*Type:* FUNCTION
+Returns a table of all the texture samplers in the compute program. This function will return all the texture samplers
+that are available, even the ones that have not been specified in the compute resource.
+
+**Parameters**
+
+- `path` (hash | string) - The path to the resource
+
+**Returns**
+
+- `table` (table) - A table of tables, where each entry contains info about the texture samplers:
+<dl>
+<dt><code>name</code></dt>
+<dd><span class="type">hash</span> the hashed name of the texture sampler</dd>
+<dt><code>u_wrap</code></dt>
+<dd><span class="type">number</span> the u wrap mode of the texture sampler. Supported values:</dd>
+</dl>
+<ul>
+<li><code>graphics.TEXTURE_WRAP_CLAMP_TO_BORDER</code></li>
+<li><code>graphics.TEXTURE_WRAP_CLAMP_TO_EDGE</code></li>
+<li><code>graphics.TEXTURE_WRAP_MIRRORED_REPEAT</code></li>
+<li><code>graphics.TEXTURE_WRAP_REPEAT</code></li>
+</ul>
+<dl>
+<dt><code>v_wrap</code></dt>
+<dd><span class="type">number</span> the v wrap mode of the texture sampler. Supported values:</dd>
+</dl>
+<ul>
+<li><code>graphics.TEXTURE_WRAP_CLAMP_TO_BORDER</code></li>
+<li><code>graphics.TEXTURE_WRAP_CLAMP_TO_EDGE</code></li>
+<li><code>graphics.TEXTURE_WRAP_MIRRORED_REPEAT</code></li>
+<li><code>graphics.TEXTURE_WRAP_REPEAT</code></li>
+</ul>
+<dl>
+<dt><code>min_filter</code></dt>
+<dd><span class="type">number</span> the min filter mode of the texture sampler. Supported values:</dd>
+</dl>
+<ul>
+<li><code>graphics.TEXTURE_FILTER_DEFAULT</code></li>
+<li><code>graphics.TEXTURE_FILTER_NEAREST</code></li>
+<li><code>graphics.TEXTURE_FILTER_LINEAR</code></li>
+<li><code>graphics.TEXTURE_FILTER_NEAREST_MIPMAP_NEAREST</code></li>
+<li><code>graphics.TEXTURE_FILTER_NEAREST_MIPMAP_LINEAR</code></li>
+<li><code>graphics.TEXTURE_FILTER_LINEAR_MIPMAP_NEAREST</code></li>
+<li><code>graphics.TEXTURE_FILTER_LINEAR_MIPMAP_LINEAR</code></li>
+</ul>
+<dl>
+<dt><code>mag_filter</code></dt>
+<dd><span class="type">number</span> the mag filter mode of the texture sampler</dd>
+</dl>
+<ul>
+<li><code>graphics.TEXTURE_FILTER_DEFAULT</code></li>
+<li><code>graphics.TEXTURE_FILTER_NEAREST</code></li>
+<li><code>graphics.TEXTURE_FILTER_LINEAR</code></li>
+</ul>
+<dl>
+<dt><code>max_anisotropy</code></dt>
+<dd><span class="type">number</span> the max anisotropy of the texture sampler</dd>
+</dl>
+
+**Examples**
+
+Get the texture samplers from a compute program resource
+```
+function init(self)
+    local samplers = compute.get_samplers("/my_compute.computec")
+end
+
+```
+
+### compute.get_textures
+*Type:* FUNCTION
+Returns a table of all the textures from the compute program.
+
+**Parameters**
+
+- `path` (hash | string) - The path to the resource
+
+**Returns**
+
+- `table` (table) - A table of tables, where each entry contains info about the compute textures:
+<dl>
+<dt><code>path</code></dt>
+<dd><span class="type">hash</span> the resource path of the texture. Only available if the texture is a resource.</dd>
+<dt><code>handle</code></dt>
+<dd><span class="type">hash</span> the runtime handle of the texture.</dd>
+<dt><code>width</code></dt>
+<dd><span class="type">number</span> the width of the texture</dd>
+<dt><code>height</code></dt>
+<dd><span class="type">number</span> the height of the texture</dd>
+<dt><code>depth</code></dt>
+<dd><span class="type">number</span> the depth of the texture. Corresponds to the number of layers in an array texture.</dd>
+<dt><code>mipmaps</code></dt>
+<dd><span class="type">number</span> the number of mipmaps in the texture</dd>
+<dt><code>type</code></dt>
+<dd><span class="type">number</span> the type of the texture. Supported values:</dd>
+</dl>
+<ul>
+<li><code>graphics.TEXTURE_TYPE_2D</code></li>
+<li><code>graphics.TEXTURE_TYPE_2D_ARRAY</code></li>
+<li><code>graphics.TEXTURE_TYPE_CUBE_MAP</code></li>
+<li><code>graphics.TEXTURE_TYPE_IMAGE_2D</code></li>
+<li><code>graphics.TEXTURE_TYPE_3D</code></li>
+<li><code>graphics.TEXTURE_TYPE_IMAGE_3D</code></li>
+</ul>
+<dl>
+<dt><code>flags</code></dt>
+<dd><span class="type">number</span> the flags of the texture. This field is a bit mask of these supported flags:</dd>
+</dl>
+<ul>
+<li><code>graphics.TEXTURE_USAGE_FLAG_SAMPLE</code></li>
+<li><code>graphics.TEXTURE_USAGE_FLAG_MEMORYLESS</code></li>
+<li><code>graphics.TEXTURE_USAGE_FLAG_STORAGE</code></li>
+<li><code>graphics.TEXTURE_USAGE_FLAG_INPUT</code></li>
+<li><code>graphics.TEXTURE_USAGE_FLAG_COLOR</code></li>
+</ul>
+
+**Examples**
+
+Get the textures from a compute program resource
+```
+function init(self)
+    local textures = compute.get_textures("/my_compute.computec")
+end
+
+```
+
+### compute.set_constants
+*Type:* FUNCTION
+Sets shader constants in a compute program, if the constants exist.
+
+**Parameters**
+
+- `path` (hash | string) - The path to the resource
+- `constants` (table) - A table keyed by constant name with args tables as values. Constants can be partially updated. Supported entries:
+<dl>
+<dt><code>type</code></dt>
+<dd><span class="type">number</span> the type of the constant. Supported values:</dd>
+</dl>
+<ul>
+<li><code>material.CONSTANT_TYPE_USER</code></li>
+<li><code>material.CONSTANT_TYPE_USER_MATRIX4</code></li>
+<li><code>material.CONSTANT_TYPE_VIEWPROJ</code></li>
+<li><code>material.CONSTANT_TYPE_WORLD</code></li>
+<li><code>material.CONSTANT_TYPE_TEXTURE</code></li>
+<li><code>material.CONSTANT_TYPE_VIEW</code></li>
+<li><code>material.CONSTANT_TYPE_PROJECTION</code></li>
+<li><code>material.CONSTANT_TYPE_NORMAL</code></li>
+<li><code>material.CONSTANT_TYPE_WORLDVIEW</code></li>
+<li><code>material.CONSTANT_TYPE_WORLDVIEWPROJ</code></li>
+<li><code>material.CONSTANT_TYPE_TIME</code></li>
+<li><code>material.CONSTANT_TYPE_WORLD_INVERSE</code></li>
+<li><code>material.CONSTANT_TYPE_VIEW_INVERSE</code></li>
+<li><code>material.CONSTANT_TYPE_PROJECTION_INVERSE</code></li>
+<li><code>material.CONSTANT_TYPE_VIEWPROJ_INVERSE</code></li>
+<li><code>material.CONSTANT_TYPE_WORLDVIEW_INVERSE</code></li>
+<li><code>material.CONSTANT_TYPE_WORLDVIEWPROJ_INVERSE</code></li>
+</ul>
+<dl>
+<dt><code>value</code></dt>
+<dd><span class="type">vmath.vector4 | vmath.vector3 | vmath.matrix4 | number | table</span> the value(s) of the constant. If the shader constant is an array, the amount of values to update depends on how many values that are passed in the 'value' field.</dd>
+</dl>
+
+**Examples**
+
+Set a shader constant in a compute program
+```
+function update(self)
+    -- update the 'tint' constant
+    compute.set_constants("/my_compute.computec", {
+        tint = { value = vmath.vector4(1, 0, 0, 1) }
+    })
+    -- change the type of the 'view_proj' constant to CONSTANT_TYPE_USER_MATRIX4 so the renderer can set our custom data
+    compute.set_constants("/my_compute.computec", {
+        view_proj = { value = self.my_view_proj, type = material.CONSTANT_TYPE_USER_MATRIX4 }
+    })
+end
+
+```
+
+### compute.set_samplers
+*Type:* FUNCTION
+Sets texture samplers in a compute program, if the samplers exist. Use this function to change the settings of texture samplers.
+To set actual textures that should be bound to the samplers, use the compute.set_textures function instead.
+
+**Parameters**
+
+- `path` (hash | string) - The path to the resource
+- `samplers` (table) - A table keyed by sampler name with args tables as values. Partial updates are supported. Supported entries:
+<dl>
+<dt><code>u_wrap</code></dt>
+<dd><span class="type">number</span> the u wrap mode of the texture sampler. Supported values:</dd>
+</dl>
+<ul>
+<li><code>graphics.TEXTURE_WRAP_CLAMP_TO_BORDER</code></li>
+<li><code>graphics.TEXTURE_WRAP_CLAMP_TO_EDGE</code></li>
+<li><code>graphics.TEXTURE_WRAP_MIRRORED_REPEAT</code></li>
+<li><code>graphics.TEXTURE_WRAP_REPEAT</code></li>
+</ul>
+<dl>
+<dt><code>v_wrap</code></dt>
+<dd><span class="type">number</span> the v wrap mode of the texture sampler. Supported values:</dd>
+</dl>
+<ul>
+<li><code>graphics.TEXTURE_WRAP_CLAMP_TO_BORDER</code></li>
+<li><code>graphics.TEXTURE_WRAP_CLAMP_TO_EDGE</code></li>
+<li><code>graphics.TEXTURE_WRAP_MIRRORED_REPEAT</code></li>
+<li><code>graphics.TEXTURE_WRAP_REPEAT</code></li>
+</ul>
+<dl>
+<dt><code>min_filter</code></dt>
+<dd><span class="type">number</span> the min filter mode of the texture sampler. Supported values:</dd>
+</dl>
+<ul>
+<li><code>graphics.TEXTURE_FILTER_DEFAULT</code></li>
+<li><code>graphics.TEXTURE_FILTER_NEAREST</code></li>
+<li><code>graphics.TEXTURE_FILTER_LINEAR</code></li>
+<li><code>graphics.TEXTURE_FILTER_NEAREST_MIPMAP_NEAREST</code></li>
+<li><code>graphics.TEXTURE_FILTER_NEAREST_MIPMAP_LINEAR</code></li>
+<li><code>graphics.TEXTURE_FILTER_LINEAR_MIPMAP_NEAREST</code></li>
+<li><code>graphics.TEXTURE_FILTER_LINEAR_MIPMAP_LINEAR</code></li>
+</ul>
+<dl>
+<dt><code>mag_filter</code></dt>
+<dd><span class="type">number</span> the mag filter mode of the texture sampler</dd>
+</dl>
+<ul>
+<li><code>graphics.TEXTURE_FILTER_DEFAULT</code></li>
+<li><code>graphics.TEXTURE_FILTER_NEAREST</code></li>
+<li><code>graphics.TEXTURE_FILTER_LINEAR</code></li>
+</ul>
+<dl>
+<dt><code>max_anisotropy</code></dt>
+<dd><span class="type">number</span> the max anisotropy of the texture sampler</dd>
+</dl>
+
+**Examples**
+
+Configures a sampler in a compute program
+```
+function init(self)
+    compute.set_samplers("/my_compute.computec", {
+        texture_sampler = { u_wrap = graphics.TEXTURE_WRAP_REPEAT, v_wrap = graphics.TEXTURE_WRAP_MIRRORED_REPEAT }
+    })
+end
+
+```
+
+### compute.set_textures
+*Type:* FUNCTION
+Sets textures in a compute program, if the samplers exist.
+
+**Parameters**
+
+- `path` (hash | string) - The path to the resource
+- `textures` (table) - A table keyed by sampler name with texture resources as values.
+
+**Examples**
+
+Set a texture in a compute program from a resource
+```
+go.property("my_texture", resource.texture())
+
+function init(self)
+    compute.set_textures("/my_compute.computec", {
+        my_texture = self.my_texture
+    })
 end
 
 ```
@@ -40310,8 +44813,14 @@ The index of the gamepad device that provided the input.
 userid
 Id of the user associated with the controller. Usually only relevant on consoles.
 
+gamepad_guid
+The guid of the gamepad controller. Only passed with "connected" action.
+
+gamepad_guid_info
+Parsed guid info table. Only passed with "connected" action. See table below.
+
 gamepad_unknown
-True if the inout originated from an unknown/unmapped gamepad.
+True if the input originated from an unknown/unmapped gamepad.
 
 gamepad_name
 Name of the gamepad
@@ -40362,6 +44871,27 @@ Accelerometer y value (if present).
 
 acc_z
 Accelerometer z value (if present).
+
+Guid info table:
+This info is only passed with a connected action.
+
+Field
+Description
+
+vendor
+USB vendor id. E.g. Nintendo 0x057e, Sony 0x054c, or Microsoft 0x045e
+
+product
+USB product id
+
+bus
+How device is communicating. E.g.0x0003 for USB devices and 0x0005 for Bluetooth devices.
+
+crc
+SDL CRC16 signature, typically used when vendor and product ids are unavailable
+
+version
+The device or firmware version
 
 **Parameters**
 
@@ -40632,6 +45162,21 @@ Graphics functions and constants.
 
 ## API
 
+### graphics.BLEND_EQUATION_ADD
+*Type:* CONSTANT
+
+### graphics.BLEND_EQUATION_MAX
+*Type:* CONSTANT
+
+### graphics.BLEND_EQUATION_MIN
+*Type:* CONSTANT
+
+### graphics.BLEND_EQUATION_REVERSE_SUBTRACT
+*Type:* CONSTANT
+
+### graphics.BLEND_EQUATION_SUBTRACT
+*Type:* CONSTANT
+
 ### graphics.BLEND_FACTOR_CONSTANT_ALPHA
 *Type:* CONSTANT
 
@@ -40737,6 +45282,44 @@ May be nil if multitarget rendering isn't supported
 ### graphics.COMPRESSION_TYPE_WEBP_LOSSY
 *Type:* CONSTANT
 
+### graphics.CONTEXT_FEATURE_3D_TEXTURES
+*Type:* CONSTANT
+Context feature flag indicating support for 3D (volume) textures.
+
+### graphics.CONTEXT_FEATURE_ASTC_ARRAY_TEXTURES
+*Type:* CONSTANT
+Context feature flag indicating support for ASTC compressed 2D array textures.
+Some WebGL/GLES drivers fail array texture ASTC uploads while 2D ASTC works.
+
+### graphics.CONTEXT_FEATURE_BLEND_EQUATION_MIN_MAX
+*Type:* CONSTANT
+Context feature flag indicating support for min/max blend equations.
+Requires GLES3+ or EXT_blend_minmax.
+
+### graphics.CONTEXT_FEATURE_COMPUTE_SHADER
+*Type:* CONSTANT
+Context feature flag indicating support for compute shaders.
+
+### graphics.CONTEXT_FEATURE_INSTANCING
+*Type:* CONSTANT
+Context feature flag indicating support for hardware instancing.
+
+### graphics.CONTEXT_FEATURE_MULTI_TARGET_RENDERING
+*Type:* CONSTANT
+Context feature flag indicating support for rendering to multiple color targets simultaneously.
+
+### graphics.CONTEXT_FEATURE_STORAGE_BUFFER
+*Type:* CONSTANT
+Context feature flag indicating support for storage buffers.
+
+### graphics.CONTEXT_FEATURE_TEXTURE_ARRAY
+*Type:* CONSTANT
+Context feature flag indicating support for texture arrays.
+
+### graphics.CONTEXT_FEATURE_VSYNC
+*Type:* CONSTANT
+Context feature flag indicating support for vertical sync (vsync).
+
 ### graphics.FACE_TYPE_BACK
 *Type:* CONSTANT
 
@@ -40745,6 +45328,60 @@ May be nil if multitarget rendering isn't supported
 
 ### graphics.FACE_TYPE_FRONT_AND_BACK
 *Type:* CONSTANT
+
+### graphics.get_adapter_info
+*Type:* FUNCTION
+Returns a table describing the active graphics context: the adapter family,
+its hardware limits, the list of driver-reported extensions, and the set of
+optional context features supported by the backend.
+
+**Returns**
+
+- `info` (table) - table with the following fields:
+<code>family</code>         <span class="type">string</span>   adapter family name (e.g. "opengl", "vulkan")
+  <code>version_major</code>  <span class="type">number</span>   adapter API major version (e.g. 1 for Vulkan 1.4)
+  <code>version_minor</code>  <span class="type">number</span>   adapter API minor version (e.g. 4 for Vulkan 1.4)
+<code>limits</code>         <span class="type">table</span>    hardware/driver limits:
+<div class="codehilite"><pre><span></span><code><span class="n n-Quoted">`max_texture_size_2d`</span><span class="w">              </span><span class="err">[</span><span class="k">type</span><span class="o">:</span><span class="k">number</span><span class="err">]</span><span class="w">  </span><span class="n">max</span><span class="w"> </span><span class="n">2D</span><span class="w"> </span><span class="n">texture</span><span class="w"> </span><span class="n">dimension</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">texels</span><span class="w"></span>
+<span class="n n-Quoted">`max_texture_size_3d`</span><span class="w">              </span><span class="err">[</span><span class="k">type</span><span class="o">:</span><span class="k">number</span><span class="err">]</span><span class="w">  </span><span class="n">max</span><span class="w"> </span><span class="n">3D</span><span class="w"> </span><span class="p">(</span><span class="n">volume</span><span class="p">)</span><span class="w"> </span><span class="n">texture</span><span class="w"> </span><span class="n">dimension</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">texels</span><span class="w"></span>
+<span class="n n-Quoted">`max_texture_size_cube`</span><span class="w">            </span><span class="err">[</span><span class="k">type</span><span class="o">:</span><span class="k">number</span><span class="err">]</span><span class="w">  </span><span class="n">max</span><span class="w"> </span><span class="k">cube</span><span class="w"> </span><span class="n">map</span><span class="w"> </span><span class="n">face</span><span class="w"> </span><span class="n">dimension</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">texels</span><span class="w"></span>
+<span class="n n-Quoted">`max_texture_array_layers`</span><span class="w">         </span><span class="err">[</span><span class="k">type</span><span class="o">:</span><span class="k">number</span><span class="err">]</span><span class="w">  </span><span class="n">max</span><span class="w"> </span><span class="n">layers</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">an</span><span class="w"> </span><span class="k">array</span><span class="w"> </span><span class="n">texture</span><span class="w"></span>
+<span class="n n-Quoted">`max_framebuffer_width`</span><span class="w">            </span><span class="err">[</span><span class="k">type</span><span class="o">:</span><span class="k">number</span><span class="err">]</span><span class="w">  </span><span class="n">max</span><span class="w"> </span><span class="n">framebuffer</span><span class="w"> </span><span class="n">width</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">pixels</span><span class="w"></span>
+<span class="n n-Quoted">`max_framebuffer_height`</span><span class="w">           </span><span class="err">[</span><span class="k">type</span><span class="o">:</span><span class="k">number</span><span class="err">]</span><span class="w">  </span><span class="n">max</span><span class="w"> </span><span class="n">framebuffer</span><span class="w"> </span><span class="n">height</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">pixels</span><span class="w"></span>
+<span class="n n-Quoted">`max_color_attachments`</span><span class="w">            </span><span class="err">[</span><span class="k">type</span><span class="o">:</span><span class="k">number</span><span class="err">]</span><span class="w">  </span><span class="n">max</span><span class="w"> </span><span class="n">simultaneous</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="n">attachments</span><span class="w"></span>
+<span class="n n-Quoted">`max_samplers_per_stage`</span><span class="w">           </span><span class="err">[</span><span class="k">type</span><span class="o">:</span><span class="k">number</span><span class="err">]</span><span class="w">  </span><span class="n">max</span><span class="w"> </span><span class="n">texture</span><span class="w"> </span><span class="n">samplers</span><span class="w"> </span><span class="n">per</span><span class="w"> </span><span class="n">shader</span><span class="w"> </span><span class="n">stage</span><span class="w"></span>
+<span class="n n-Quoted">`max_textures_per_stage`</span><span class="w">           </span><span class="err">[</span><span class="k">type</span><span class="o">:</span><span class="k">number</span><span class="err">]</span><span class="w">  </span><span class="n">max</span><span class="w"> </span><span class="n">sampled</span><span class="w"> </span><span class="n">textures</span><span class="w"> </span><span class="n">per</span><span class="w"> </span><span class="n">shader</span><span class="w"> </span><span class="n">stage</span><span class="w"></span>
+<span class="n n-Quoted">`max_vertex_attributes`</span><span class="w">            </span><span class="err">[</span><span class="k">type</span><span class="o">:</span><span class="k">number</span><span class="err">]</span><span class="w">  </span><span class="n">max</span><span class="w"> </span><span class="n">vertex</span><span class="w"> </span><span class="n">attributes</span><span class="w"></span>
+<span class="n n-Quoted">`max_vertex_buffers`</span><span class="w">               </span><span class="err">[</span><span class="k">type</span><span class="o">:</span><span class="k">number</span><span class="err">]</span><span class="w">  </span><span class="n">max</span><span class="w"> </span><span class="n">vertex</span><span class="w"> </span><span class="n">buffer</span><span class="w"> </span><span class="n">bindings</span><span class="w"></span>
+<span class="n n-Quoted">`max_compute_workgroup_size_x`</span><span class="w">     </span><span class="err">[</span><span class="k">type</span><span class="o">:</span><span class="k">number</span><span class="err">]</span><span class="w">  </span><span class="n">max</span><span class="w"> </span><span class="n">compute</span><span class="w"> </span><span class="n">workgroup</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="w"></span>
+<span class="n n-Quoted">`max_compute_workgroup_size_y`</span><span class="w">     </span><span class="err">[</span><span class="k">type</span><span class="o">:</span><span class="k">number</span><span class="err">]</span><span class="w">  </span><span class="n">max</span><span class="w"> </span><span class="n">compute</span><span class="w"> </span><span class="n">workgroup</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="p">(</span><span class="n">Y</span><span class="p">)</span><span class="w"></span>
+<span class="n n-Quoted">`max_compute_workgroup_size_z`</span><span class="w">     </span><span class="err">[</span><span class="k">type</span><span class="o">:</span><span class="k">number</span><span class="err">]</span><span class="w">  </span><span class="n">max</span><span class="w"> </span><span class="n">compute</span><span class="w"> </span><span class="n">workgroup</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="p">(</span><span class="n">Z</span><span class="p">)</span><span class="w"></span>
+<span class="n n-Quoted">`max_compute_workgroup_invocations`</span><span class="w"> </span><span class="err">[</span><span class="k">type</span><span class="o">:</span><span class="k">number</span><span class="err">]</span><span class="w"> </span><span class="n">max</span><span class="w"> </span><span class="n">invocations</span><span class="w"> </span><span class="n">per</span><span class="w"> </span><span class="n">compute</span><span class="w"> </span><span class="n">workgroup</span><span class="w"></span>
+<span class="n n-Quoted">`max_compute_shared_memory_size`</span><span class="w">   </span><span class="err">[</span><span class="k">type</span><span class="o">:</span><span class="k">number</span><span class="err">]</span><span class="w">  </span><span class="n">max</span><span class="w"> </span><span class="n">shared</span><span class="w"> </span><span class="k">memory</span><span class="w"> </span><span class="n">per</span><span class="w"> </span><span class="n">compute</span><span class="w"> </span><span class="n">workgroup</span><span class="w"> </span><span class="p">(</span><span class="n">bytes</span><span class="p">)</span><span class="w"></span>
+<span class="n n-Quoted">`max_uniform_buffer_range`</span><span class="w">         </span><span class="err">[</span><span class="k">type</span><span class="o">:</span><span class="k">number</span><span class="err">]</span><span class="w">  </span><span class="n">max</span><span class="w"> </span><span class="n">bindable</span><span class="w"> </span><span class="n">uniform</span><span class="w"> </span><span class="n">buffer</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="p">(</span><span class="n">bytes</span><span class="p">)</span><span class="w"></span>
+<span class="n n-Quoted">`max_storage_buffer_range`</span><span class="w">         </span><span class="err">[</span><span class="k">type</span><span class="o">:</span><span class="k">number</span><span class="err">]</span><span class="w">  </span><span class="n">max</span><span class="w"> </span><span class="n">bindable</span><span class="w"> </span><span class="k">storage</span><span class="w"> </span><span class="n">buffer</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="p">(</span><span class="n">bytes</span><span class="p">)</span><span class="w"></span>
+</code></pre></div>
+
+<code>extensions</code>     <span class="type">table</span>    array of driver-reported extension name strings
+<code>features</code>       <span class="type">table</span>    array of supported context feature ids:
+<div class="codehilite"><pre><span></span><code><span class="err">`</span><span class="n">graphics</span><span class="p">.</span><span class="n">CONTEXT_FEATURE_MULTI_TARGET_RENDERING</span><span class="err">`</span>  <span class="n">multi</span><span class="o">-</span><span class="n">target</span> <span class="n">rendering</span>
+<span class="err">`</span><span class="n">graphics</span><span class="p">.</span><span class="n">CONTEXT_FEATURE_TEXTURE_ARRAY</span><span class="err">`</span>           <span class="n">texture</span> <span class="n">arrays</span>
+<span class="err">`</span><span class="n">graphics</span><span class="p">.</span><span class="n">CONTEXT_FEATURE_COMPUTE_SHADER</span><span class="err">`</span>          <span class="n">compute</span> <span class="n">shaders</span>
+<span class="err">`</span><span class="n">graphics</span><span class="p">.</span><span class="n">CONTEXT_FEATURE_STORAGE_BUFFER</span><span class="err">`</span>          <span class="n">storage</span> <span class="n">buffers</span>
+<span class="err">`</span><span class="n">graphics</span><span class="p">.</span><span class="n">CONTEXT_FEATURE_VSYNC</span><span class="err">`</span>                   <span class="n">vertical</span> <span class="n">sync</span>
+<span class="err">`</span><span class="n">graphics</span><span class="p">.</span><span class="n">CONTEXT_FEATURE_INSTANCING</span><span class="err">`</span>              <span class="n">hardware</span> <span class="n">instancing</span>
+<span class="err">`</span><span class="n">graphics</span><span class="p">.</span><span class="n">CONTEXT_FEATURE_3D_TEXTURES</span><span class="err">`</span>             <span class="mi">3</span><span class="n">D</span> <span class="p">(</span><span class="n">volume</span><span class="p">)</span> <span class="n">textures</span>
+<span class="err">`</span><span class="n">graphics</span><span class="p">.</span><span class="n">CONTEXT_FEATURE_ASTC_ARRAY_TEXTURES</span><span class="err">`</span>     <span class="n">ASTC</span> <span class="n">compressed</span> <span class="mi">2</span><span class="n">D</span> <span class="n">array</span> <span class="n">textures</span>
+<span class="err">`</span><span class="n">graphics</span><span class="p">.</span><span class="n">CONTEXT_FEATURE_BLEND_EQUATION_MIN_MAX</span><span class="err">`</span>  <span class="n">min</span><span class="o">/</span><span class="n">max</span> <span class="n">blend</span> <span class="n">equations</span>
+</code></pre></div>
+
+### graphics.get_engine_adapters
+*Type:* FUNCTION
+get the list of graphics adapters that have been registered with the engine
+
+**Returns**
+
+- `adapters` (table) - array of adapter family name strings (e.g. "opengl", "vulkan", "webgpu")
 
 ### graphics.STATE_ALPHA_TEST
 *Type:* CONSTANT
@@ -44459,7 +49096,7 @@ A Lua error is raised for syntax errors.
 - `json` (string) - json data
 - `options` (table) (optional) - table with decode options
 <ul>
-<li><span class="type">boolean</span> <code>decode_null_as_userdata</code>: wether to decode a JSON null value as json.null or nil (default is nil)</li>
+<li><span class="type">boolean</span> <code>decode_null_as_userdata</code>: whether to decode a JSON null value as json.null or nil (default is nil)</li>
 </ul>
 
 **Returns**
@@ -44503,7 +49140,7 @@ A Lua error is raised for syntax errors.
 - `tbl` (table) - lua table to encode
 - `options` (table) (optional) - table with encode options
 <ul>
-<li><span class="type">string</span> <code>encode_empty_table_as_object</code>: wether to encode an empty table as an JSON object or array (default is object)</li>
+<li><span class="type">string</span> <code>encode_empty_table_as_object</code>: whether to encode an empty table as an JSON object or array (default is object)</li>
 </ul>
 
 **Returns**
@@ -44788,21 +49425,24 @@ Functions and constants to access resources.
 ### liveupdate.add_mount
 *Type:* FUNCTION
 Adds a resource mount to the resource system.
-The mounts are persisted between sessions.
 After the mount succeeded, the resources are available to load. (i.e. no reboot required)
 
 **Notes**
 
 - The request is asynchronous
-- Names cannot start with '_'
+- Mounts are active for the current session only
+- Names cannot be '_base' or '_builtin'
 - Priority must be >= 0
 
 **Parameters**
 
-- `name` (string) - Unique name of the mount
+- `name` (string | hash) - Unique name of the mount
 - `uri` (string) - The uri of the mount, including the scheme. Currently supported schemes are 'zip' and 'archive'.
 - `priority` (number) - Priority of mount. Larger priority takes prescedence
-- `callback` (function) - Callback after the asynchronous request completed
+- `callback` (function(self, name, uri, result)) - Callback after the asynchronous request completed
+- <code>name</code> <span class="type">hash</span> Unique name of the mount
+- <code>uri</code> <span class="type">string</span> The uri of the mount
+- <code>result</code> <span class="type">number</span> The result of the request
 
 **Returns**
 
@@ -44812,9 +49452,9 @@ After the mount succeeded, the resources are available to load. (i.e. no reboot 
 
 Add multiple mounts. Higher priority takes precedence.
 ```
-liveupdate.add_mount("common", "zip:/path/to/common_stuff.zip", 10, function (result) end) -- base pack
-liveupdate.add_mount("levelpack_1", "zip:/path/to/levels_1_to_20.zip", 20, function (result) end) -- level pack
-liveupdate.add_mount("season_pack_1", "zip:/path/to/easter_pack_1.zip", 30, function (result) end) -- season pack, overriding content in the other packs
+liveupdate.add_mount("common", "zip:/path/to/common_stuff.zip", 10, function (self, name, uri, result) end) -- base pack
+liveupdate.add_mount("levelpack_1", "zip:/path/to/levels_1_to_20.zip", 20, function (self, name, uri, result) end) -- level pack
+liveupdate.add_mount("season_pack_1", "zip:/path/to/easter_pack_1.zip", 30, function (self, name, uri, result) end) -- season pack, overriding content in the other packs
 
 ```
 
@@ -44840,16 +49480,38 @@ Give an output like:
 DEBUG:SCRIPT: MOUNTS,
 { --[[0x119667bf0]]
   1 = { --[[0x119667c50]]
-    name = "liveupdate",
+    name = hash: [liveupdate],
     uri = "zip:/device/path/to/acchives/liveupdate.zip",
     priority = 5
   },
   2 = { --[[0x119667d50]]
-    name = "_base",
+    name = hash: [_base],
     uri = "archive:build/default/game.dmanifest",
     priority = -10
   }
 }
+
+```
+
+### liveupdate.is_built_with_excluded_files
+*Type:* FUNCTION
+Checks if the bundled application was built with one or more resources
+excluded from the main bundle, through a collection proxy with
+Exclude enabled.
+This value is based on metadata in the bundled manifest. It does not check
+whether any live update archive has been mounted or whether the excluded
+resources are currently available on device.
+
+**Returns**
+
+- `is_built_with_excluded_files` (boolean) - true if the bundled application was built with excluded files
+
+**Examples**
+
+```
+if liveupdate.is_built_with_excluded_files() then
+    print("The bundle expects live update content.")
+end
 
 ```
 
@@ -44908,16 +49570,16 @@ Mismatch between manifest expected version and actual version.
 ### liveupdate.remove_mount
 *Type:* FUNCTION
 Remove a mount the resource system.
-The remaining mounts are persisted between sessions.
 Removing a mount does not affect any loaded resources.
 
 **Notes**
 
 - The call is synchronous
+- Names cannot be '_base' or '_builtin'
 
 **Parameters**
 
-- `name` (string) - Unique name of the mount
+- `name` (string | hash) - Unique name of the mount
 
 **Returns**
 
@@ -44928,6 +49590,493 @@ Removing a mount does not affect any loaded resources.
 Add multiple mounts. Higher priority takes precedence.
 ```
 liveupdate.remove_mount("season_pack_1")
+
+```
+
+<!-- material-lua -->
+
+# Material {#apis:material-lua}
+
+**Namespace:** `material`
+**Language:** Lua
+**Type:** Defold Lua
+**File:** `script_material.cpp`
+**Source:** `engine/gamesys/src/gamesys/scripts/script_material.cpp`
+
+Functions for interacting with materials.
+
+## API
+
+### material.get_constants
+*Type:* FUNCTION
+Returns a table of all the shader constants in the material. This function will return all the shader constants
+that are used in both the vertex and the fragment shaders.
+
+**Parameters**
+
+- `path` (hash | string) - The path to the resource
+
+**Returns**
+
+- `table` (table) - A table of tables, where each entry contains info about the shader constants:
+<dl>
+<dt><code>name</code></dt>
+<dd><span class="type">hash</span> the hashed name of the constant</dd>
+<dt><code>type</code></dt>
+<dd><span class="type">number</span> the type of the constant. Supported values:</dd>
+</dl>
+<ul>
+<li><code>material.CONSTANT_TYPE_USER</code></li>
+<li><code>material.CONSTANT_TYPE_USER_MATRIX4</code></li>
+<li><code>material.CONSTANT_TYPE_VIEWPROJ</code></li>
+<li><code>material.CONSTANT_TYPE_WORLD</code></li>
+<li><code>material.CONSTANT_TYPE_TEXTURE</code></li>
+<li><code>material.CONSTANT_TYPE_VIEW</code></li>
+<li><code>material.CONSTANT_TYPE_PROJECTION</code></li>
+<li><code>material.CONSTANT_TYPE_NORMAL</code></li>
+<li><code>material.CONSTANT_TYPE_WORLDVIEW</code></li>
+<li><code>material.CONSTANT_TYPE_WORLDVIEWPROJ</code></li>
+<li><code>material.CONSTANT_TYPE_TIME</code></li>
+<li><code>material.CONSTANT_TYPE_WORLD_INVERSE</code></li>
+<li><code>material.CONSTANT_TYPE_VIEW_INVERSE</code></li>
+<li><code>material.CONSTANT_TYPE_PROJECTION_INVERSE</code></li>
+<li><code>material.CONSTANT_TYPE_VIEWPROJ_INVERSE</code></li>
+<li><code>material.CONSTANT_TYPE_WORLDVIEW_INVERSE</code></li>
+<li><code>material.CONSTANT_TYPE_WORLDVIEWPROJ_INVERSE</code></li>
+</ul>
+<dl>
+<dt><code>value</code></dt>
+<dd><span class="type">vmath.vector4 | vmath.matrix4</span> the value(s) of the constant. If the constant is an array, the value will be a table of vmath.vector4 or vmath.matrix4 if the type is <code>material.CONSTANT_TYPE_USER_MATRIX4</code>.</dd>
+</dl>
+
+**Examples**
+
+Get the shader constants from a material specified as a resource property
+```
+go.property("my_material", resource.material())
+
+function init(self)
+    local constants = material.get_constants(self.my_material)
+end
+
+```
+
+### material.get_samplers
+*Type:* FUNCTION
+Returns a table of all the texture samplers in the material. This function will return all the texture samplers
+that are used in both the vertex and the fragment shaders.
+
+**Parameters**
+
+- `path` (hash | string) - The path to the resource
+
+**Returns**
+
+- `table` (table) - A table of tables, where each entry contains info about the texture samplers:
+<dl>
+<dt><code>name</code></dt>
+<dd><span class="type">hash</span> the hashed name of the texture sampler</dd>
+<dt><code>u_wrap</code></dt>
+<dd><span class="type">number</span> the u wrap mode of the texture sampler. Supported values:</dd>
+</dl>
+<ul>
+<li><code>graphics.TEXTURE_WRAP_CLAMP_TO_BORDER</code></li>
+<li><code>graphics.TEXTURE_WRAP_CLAMP_TO_EDGE</code></li>
+<li><code>graphics.TEXTURE_WRAP_MIRRORED_REPEAT</code></li>
+<li><code>graphics.TEXTURE_WRAP_REPEAT</code></li>
+</ul>
+<dl>
+<dt><code>v_wrap</code></dt>
+<dd><span class="type">number</span> the v wrap mode of the texture sampler. Supported values:</dd>
+</dl>
+<ul>
+<li><code>graphics.TEXTURE_WRAP_CLAMP_TO_BORDER</code></li>
+<li><code>graphics.TEXTURE_WRAP_CLAMP_TO_EDGE</code></li>
+<li><code>graphics.TEXTURE_WRAP_MIRRORED_REPEAT</code></li>
+<li><code>graphics.TEXTURE_WRAP_REPEAT</code></li>
+</ul>
+<dl>
+<dt><code>min_filter</code></dt>
+<dd><span class="type">number</span> the min filter mode of the texture sampler. Supported values:</dd>
+</dl>
+<ul>
+<li><code>graphics.TEXTURE_FILTER_DEFAULT</code></li>
+<li><code>graphics.TEXTURE_FILTER_NEAREST</code></li>
+<li><code>graphics.TEXTURE_FILTER_LINEAR</code></li>
+<li><code>graphics.TEXTURE_FILTER_NEAREST_MIPMAP_NEAREST</code></li>
+<li><code>graphics.TEXTURE_FILTER_NEAREST_MIPMAP_LINEAR</code></li>
+<li><code>graphics.TEXTURE_FILTER_LINEAR_MIPMAP_NEAREST</code></li>
+<li><code>graphics.TEXTURE_FILTER_LINEAR_MIPMAP_LINEAR</code></li>
+</ul>
+<dl>
+<dt><code>mag_filter</code></dt>
+<dd><span class="type">number</span> the mag filter mode of the texture sampler</dd>
+</dl>
+<ul>
+<li><code>graphics.TEXTURE_FILTER_DEFAULT</code></li>
+<li><code>graphics.TEXTURE_FILTER_NEAREST</code></li>
+<li><code>graphics.TEXTURE_FILTER_LINEAR</code></li>
+</ul>
+<dl>
+<dt><code>max_anisotropy</code></dt>
+<dd><span class="type">number</span> the max anisotropy of the texture sampler</dd>
+</dl>
+
+**Examples**
+
+Get the texture samplers from a material specified as a resource property
+```
+go.property("my_material", resource.material())
+
+function init(self)
+    local samplers = material.get_samplers(self.my_material)
+end
+
+```
+
+### material.get_textures
+*Type:* FUNCTION
+Returns a table of all the textures from the material.
+
+**Parameters**
+
+- `path` (hash | string) - The path to the resource
+
+**Returns**
+
+- `table` (table) - A table of tables, where each entry contains info about the material textures:
+<dl>
+<dt><code>path</code></dt>
+<dd><span class="type">hash</span> the resource path of the texture. Only available if the texture is a resource.</dd>
+<dt><code>handle</code></dt>
+<dd><span class="type">hash</span> the runtime handle of the texture.</dd>
+<dt><code>width</code></dt>
+<dd><span class="type">number</span> the width of the texture</dd>
+<dt><code>height</code></dt>
+<dd><span class="type">number</span> the height of the texture</dd>
+<dt><code>depth</code></dt>
+<dd><span class="type">number</span> the depth of the texture. Corresponds to the number of layers in an array texture.</dd>
+<dt><code>mipmaps</code></dt>
+<dd><span class="type">number</span> the number of mipmaps in the texture</dd>
+<dt><code>type</code></dt>
+<dd><span class="type">number</span> the type of the texture. Supported values:</dd>
+</dl>
+<ul>
+<li><code>graphics.TEXTURE_TYPE_2D</code></li>
+<li><code>graphics.TEXTURE_TYPE_2D_ARRAY</code></li>
+<li><code>graphics.TEXTURE_TYPE_CUBE_MAP</code></li>
+<li><code>graphics.TEXTURE_TYPE_IMAGE_2D</code></li>
+<li><code>graphics.TEXTURE_TYPE_3D</code></li>
+<li><code>graphics.TEXTURE_TYPE_IMAGE_3D</code></li>
+</ul>
+<dl>
+<dt><code>flags</code></dt>
+<dd><span class="type">number</span> the flags of the texture. This field is a bit mask of these supported flags:</dd>
+</dl>
+<ul>
+<li><code>graphics.TEXTURE_USAGE_FLAG_SAMPLE</code></li>
+<li><code>graphics.TEXTURE_USAGE_FLAG_MEMORYLESS</code></li>
+<li><code>graphics.TEXTURE_USAGE_FLAG_STORAGE</code></li>
+<li><code>graphics.TEXTURE_USAGE_FLAG_INPUT</code></li>
+<li><code>graphics.TEXTURE_USAGE_FLAG_COLOR</code></li>
+</ul>
+
+**Examples**
+
+Get the textures from a material specified as a resource property
+```
+go.property("my_material", resource.material())
+
+function init(self)
+    local textures = material.get_textures(self.my_material)
+end
+
+```
+
+### material.get_vertex_attributes
+*Type:* FUNCTION
+Returns a table of all the vertex attributes in the material. This function will return all the vertex attributes
+that are used in the vertex shader of the material.
+
+**Parameters**
+
+- `path` (hash | string) - The path to the resource
+
+**Returns**
+
+- `table` (table) - A table of tables, where each entry contains info about the vertex attributes:
+<dl>
+<dt><code>name</code></dt>
+<dd><span class="type">hash</span> the hashed name of the vertex attribute</dd>
+<dt><code>value</code></dt>
+<dd><span class="type">vmath.vector4 | vmath.vector3 | vmath.matrix4 | number | table</span> the value of the vertex attribute. Matrix attributes that do not map to <code>vmath.matrix4</code> are returned as a table of numbers.</dd>
+<dt><code>normalize</code></dt>
+<dd><span class="type">boolean</span> whether the value is normalized when passed into the shader</dd>
+<dt><code>data_type</code></dt>
+<dd><span class="type">number</span> the data type of the vertex attribute. Supported values:</dd>
+</dl>
+<ul>
+<li><code>graphics.DATA_TYPE_BYTE</code></li>
+<li><code>graphics.DATA_TYPE_UNSIGNED_BYTE</code></li>
+<li><code>graphics.DATA_TYPE_SHORT</code></li>
+<li><code>graphics.DATA_TYPE_UNSIGNED_SHORT</code></li>
+<li><code>graphics.DATA_TYPE_INT</code></li>
+<li><code>graphics.DATA_TYPE_UNSIGNED_INT</code></li>
+<li><code>graphics.DATA_TYPE_FLOAT</code></li>
+</ul>
+<dl>
+<dt><code>coordinate_space</code></dt>
+<dd><span class="type">number</span> the coordinate space of the vertex attribute. Supported values:</dd>
+</dl>
+<ul>
+<li><code>graphics.COORDINATE_SPACE_WORLD</code></li>
+<li><code>graphics.COORDINATE_SPACE_LOCAL</code></li>
+</ul>
+<dl>
+<dt><code>semantic_type</code></dt>
+<dd><span class="type">number</span> the semantic type of the vertex attribute. Supported values:</dd>
+</dl>
+<ul>
+<li><code>graphics.SEMANTIC_TYPE_NONE</code></li>
+<li><code>graphics.SEMANTIC_TYPE_POSITION</code></li>
+<li><code>graphics.SEMANTIC_TYPE_TEXCOORD</code></li>
+<li><code>graphics.SEMANTIC_TYPE_PAGE_INDEX</code></li>
+<li><code>graphics.SEMANTIC_TYPE_COLOR</code></li>
+<li><code>graphics.SEMANTIC_TYPE_NORMAL</code></li>
+<li><code>graphics.SEMANTIC_TYPE_TANGENT</code></li>
+<li><code>graphics.SEMANTIC_TYPE_WORLD_MATRIX</code></li>
+<li><code>graphics.SEMANTIC_TYPE_NORMAL_MATRIX</code></li>
+<li><code>graphics.SEMANTIC_TYPE_BONE_WEIGHTS</code></li>
+<li><code>graphics.SEMANTIC_TYPE_BONE_INDICES</code></li>
+<li><code>graphics.SEMANTIC_TYPE_TEXTURE_TRANSFORM_2D</code></li>
+</ul>
+
+**Examples**
+
+Get the vertex attributes from a material specified as a resource property
+```
+go.property("my_material", resource.material())
+
+function init(self)
+    local vertex_attributes = material.get_vertex_attributes(self.my_material)
+end
+
+```
+
+### material.set_constants
+*Type:* FUNCTION
+Sets shader constants in a material, if the constants exist.
+
+**Parameters**
+
+- `path` (hash | string) - The path to the resource
+- `constants` (table) - A table keyed by constant name with args tables as values. Constants can be partially updated. Supported entries:
+<dl>
+<dt><code>type</code></dt>
+<dd><span class="type">number</span> the type of the constant. Supported values:</dd>
+</dl>
+<ul>
+<li><code>material.CONSTANT_TYPE_USER</code></li>
+<li><code>material.CONSTANT_TYPE_USER_MATRIX4</code></li>
+<li><code>material.CONSTANT_TYPE_VIEWPROJ</code></li>
+<li><code>material.CONSTANT_TYPE_WORLD</code></li>
+<li><code>material.CONSTANT_TYPE_TEXTURE</code></li>
+<li><code>material.CONSTANT_TYPE_VIEW</code></li>
+<li><code>material.CONSTANT_TYPE_PROJECTION</code></li>
+<li><code>material.CONSTANT_TYPE_NORMAL</code></li>
+<li><code>material.CONSTANT_TYPE_WORLDVIEW</code></li>
+<li><code>material.CONSTANT_TYPE_WORLDVIEWPROJ</code></li>
+<li><code>material.CONSTANT_TYPE_TIME</code></li>
+<li><code>material.CONSTANT_TYPE_WORLD_INVERSE</code></li>
+<li><code>material.CONSTANT_TYPE_VIEW_INVERSE</code></li>
+<li><code>material.CONSTANT_TYPE_PROJECTION_INVERSE</code></li>
+<li><code>material.CONSTANT_TYPE_VIEWPROJ_INVERSE</code></li>
+<li><code>material.CONSTANT_TYPE_WORLDVIEW_INVERSE</code></li>
+<li><code>material.CONSTANT_TYPE_WORLDVIEWPROJ_INVERSE</code></li>
+</ul>
+<dl>
+<dt><code>value</code></dt>
+<dd><span class="type">vmath.vector4 | vmath.vector3 | vmath.matrix4 | number | table</span> the value(s) of the constant. If the shader constant is an array, the amount of values to update depends on how many values that are passed in the 'value' field.</dd>
+</dl>
+
+**Examples**
+
+Set a shader constant in a material specified as a resource property
+```
+go.property("my_material", resource.material())
+
+function update(self)
+    -- update the 'tint' constant
+    material.set_constants(self.my_material, {
+        tint = { value = vmath.vector4(1, 0, 0, 1) }
+    })
+    -- change the type of the 'view_proj' constant to CONSTANT_TYPE_USER_MATRIX4 so the renderer can set our custom data
+    material.set_constants(self.my_material, {
+        view_proj = { value = self.my_view_proj, type = material.CONSTANT_TYPE_USER_MATRIX4 }
+    })
+end
+
+```
+
+### material.set_samplers
+*Type:* FUNCTION
+Sets texture samplers in a material, if the samplers exist. Use this function to change the settings of texture samplers.
+To set actual textures that should be bound to the samplers, use the material.set_textures function instead.
+
+**Parameters**
+
+- `path` (hash | string) - The path to the resource
+- `samplers` (table) - A table keyed by sampler name with args tables as values. Partial updates are supported. Supported entries:
+<dl>
+<dt><code>u_wrap</code></dt>
+<dd><span class="type">number</span> the u wrap mode of the texture sampler. Supported values:</dd>
+</dl>
+<ul>
+<li><code>graphics.TEXTURE_WRAP_CLAMP_TO_BORDER</code></li>
+<li><code>graphics.TEXTURE_WRAP_CLAMP_TO_EDGE</code></li>
+<li><code>graphics.TEXTURE_WRAP_MIRRORED_REPEAT</code></li>
+<li><code>graphics.TEXTURE_WRAP_REPEAT</code></li>
+</ul>
+<dl>
+<dt><code>v_wrap</code></dt>
+<dd><span class="type">number</span> the v wrap mode of the texture sampler. Supported values:</dd>
+</dl>
+<ul>
+<li><code>graphics.TEXTURE_WRAP_CLAMP_TO_BORDER</code></li>
+<li><code>graphics.TEXTURE_WRAP_CLAMP_TO_EDGE</code></li>
+<li><code>graphics.TEXTURE_WRAP_MIRRORED_REPEAT</code></li>
+<li><code>graphics.TEXTURE_WRAP_REPEAT</code></li>
+</ul>
+<dl>
+<dt><code>min_filter</code></dt>
+<dd><span class="type">number</span> the min filter mode of the texture sampler. Supported values:</dd>
+</dl>
+<ul>
+<li><code>graphics.TEXTURE_FILTER_DEFAULT</code></li>
+<li><code>graphics.TEXTURE_FILTER_NEAREST</code></li>
+<li><code>graphics.TEXTURE_FILTER_LINEAR</code></li>
+<li><code>graphics.TEXTURE_FILTER_NEAREST_MIPMAP_NEAREST</code></li>
+<li><code>graphics.TEXTURE_FILTER_NEAREST_MIPMAP_LINEAR</code></li>
+<li><code>graphics.TEXTURE_FILTER_LINEAR_MIPMAP_NEAREST</code></li>
+<li><code>graphics.TEXTURE_FILTER_LINEAR_MIPMAP_LINEAR</code></li>
+</ul>
+<dl>
+<dt><code>mag_filter</code></dt>
+<dd><span class="type">number</span> the mag filter mode of the texture sampler</dd>
+</dl>
+<ul>
+<li><code>graphics.TEXTURE_FILTER_DEFAULT</code></li>
+<li><code>graphics.TEXTURE_FILTER_NEAREST</code></li>
+<li><code>graphics.TEXTURE_FILTER_LINEAR</code></li>
+</ul>
+<dl>
+<dt><code>max_anisotropy</code></dt>
+<dd><span class="type">number</span> the max anisotropy of the texture sampler</dd>
+</dl>
+
+**Examples**
+
+Configures a sampler in a material specified as a resource property
+```
+go.property("my_material", resource.material())
+
+function init(self)
+    material.set_samplers(self.my_material, {
+        texture_sampler = { u_wrap = graphics.TEXTURE_WRAP_REPEAT, v_wrap = graphics.TEXTURE_WRAP_MIRRORED_REPEAT }
+    })
+end
+
+```
+
+### material.set_textures
+*Type:* FUNCTION
+Sets textures in a material, if the samplers exist.
+
+**Parameters**
+
+- `path` (hash | string) - The path to the resource
+- `textures` (table) - A table keyed by sampler name with texture resources as values.
+
+**Examples**
+
+Set a texture in a material from a resource
+```
+go.property("my_material", resource.material())
+go.property("my_texture", resource.texture())
+
+function init(self)
+    material.set_textures(self.my_material, {
+        my_texture = self.my_texture
+    })
+end
+
+```
+
+### material.set_vertex_attributes
+*Type:* FUNCTION
+Sets vertex attributes in a material, if the vertex attributes exist.
+
+**Parameters**
+
+- `path` (hash | string) - The path to the resource
+- `attributes` (table) - A table keyed by vertex attribute name with args tables as values. Partial updates are supported. Supported entries:
+<dl>
+<dt><code>value</code></dt>
+<dd><span class="type">vmath.vector4 | vmath.vector3 | vmath.matrix4 | number | table</span> the value of the vertex attribute. Use a table of numbers for matrix attributes that do not map to <code>vmath.matrix4</code>.</dd>
+<dt><code>normalize</code></dt>
+<dd><span class="type">boolean</span> whether the value is normalized when passed into the shader</dd>
+<dt><code>data_type</code></dt>
+<dd><span class="type">number</span> the data type of the vertex attribute. Supported values:</dd>
+</dl>
+<ul>
+<li><code>graphics.DATA_TYPE_BYTE</code></li>
+<li><code>graphics.DATA_TYPE_UNSIGNED_BYTE</code></li>
+<li><code>graphics.DATA_TYPE_SHORT</code></li>
+<li><code>graphics.DATA_TYPE_UNSIGNED_SHORT</code></li>
+<li><code>graphics.DATA_TYPE_INT</code></li>
+<li><code>graphics.DATA_TYPE_UNSIGNED_INT</code></li>
+<li><code>graphics.DATA_TYPE_FLOAT</code></li>
+</ul>
+<dl>
+<dt><code>coordinate_space</code></dt>
+<dd><span class="type">number</span> the coordinate space of the vertex attribute. Supported values:</dd>
+</dl>
+<ul>
+<li><code>graphics.COORDINATE_SPACE_DEFAULT</code></li>
+<li><code>graphics.COORDINATE_SPACE_WORLD</code></li>
+<li><code>graphics.COORDINATE_SPACE_LOCAL</code></li>
+</ul>
+<dl>
+<dt><code>semantic_type</code></dt>
+<dd><span class="type">number</span> the semantic type of the vertex attribute. Supported values:</dd>
+</dl>
+<ul>
+<li><code>graphics.SEMANTIC_TYPE_NONE</code></li>
+<li><code>graphics.SEMANTIC_TYPE_POSITION</code></li>
+<li><code>graphics.SEMANTIC_TYPE_TEXCOORD</code></li>
+<li><code>graphics.SEMANTIC_TYPE_PAGE_INDEX</code></li>
+<li><code>graphics.SEMANTIC_TYPE_COLOR</code></li>
+<li><code>graphics.SEMANTIC_TYPE_NORMAL</code></li>
+<li><code>graphics.SEMANTIC_TYPE_TANGENT</code></li>
+<li><code>graphics.SEMANTIC_TYPE_WORLD_MATRIX</code></li>
+<li><code>graphics.SEMANTIC_TYPE_NORMAL_MATRIX</code></li>
+<li><code>graphics.SEMANTIC_TYPE_BONE_WEIGHTS</code></li>
+<li><code>graphics.SEMANTIC_TYPE_BONE_INDICES</code></li>
+<li><code>graphics.SEMANTIC_TYPE_TEXTURE_TRANSFORM_2D</code></li>
+</ul>
+
+**Examples**
+
+Configures a vertex attribute in a material specified as a resource property
+```
+go.property("my_material", resource.material())
+
+function init(self)
+    material.set_vertex_attributes(self.my_material, {
+        tint_attribute = { value = vmath.vec4(1, 0, 0, 1), semantic_type = graphics.SEMANTIC_TYPE_COLOR },
+        weights        = { value = vmath.vec4(0, 1, 0, 0), semantic_type = graphics.SEMANTIC_TYPE_NONE }
+    })
+end
 
 ```
 
@@ -45274,21 +50423,6 @@ end
 
 ```
 
-### material
-*Type:* PROPERTY
-The material used when rendering the model. The type of the property is hash.
-
-**Examples**
-
-How to set material using a script property (see resource.material):
-```
-go.property("my_material", resource.material("/material.material"))
-function init(self)
-  go.set("#model", "material", self.my_material)
-end
-
-```
-
 ### model.cancel
 *Type:* FUNCTION
 Cancels all animation on a model component.
@@ -45315,6 +50449,33 @@ AABB information return as a table with min and max fields, where min and max ha
 ```
 model.get_aabb("#model") -> { min = vmath.vector3(-2.5, -3.0, 0), max = vmath.vector3(1.5, 5.5, 0) }
 model.get_aabb("#empty") -> { min = vmath.vector3(0, 0, 0), max = vmath.vector3(0, 0, 0) }
+
+```
+
+### model.get_blend_weights
+*Type:* FUNCTION
+Returns a table of numbers with one entry per morph target on the first mesh of the model that has morph targets.
+Values reflect the rig state at call time (after animation, and any active script override from model.set_blend_weights).
+
+**Parameters**
+
+- `url` (string | hash | url) - the model component
+
+**Returns**
+
+- `weights` (table) - array of weight values, or empty table if the model has no morph targets
+
+**Examples**
+
+```
+local w = model.get_blend_weights("#model")
+for i = 1, #w do
+  print(i, w[i])
+end
+-- change the data in the table and then set the weights again
+w[1] = 0.75
+w[2] = 0.25
+model.set_blend_weights("#model", w)
 
 ```
 
@@ -45468,6 +50629,53 @@ function init(self)
     -- first blend during 0.1 sec into the jump, then during 0.2 s into the run animation
     model.play_anim(url, "jump", go.PLAYBACK_ONCE_FORWARD, play_properties, anim_done)
 end
+
+```
+
+### model.reset_constant
+*Type:* FUNCTION
+Resets a shader constant for a model component.
+The constant must be defined in the material assigned to the model.
+Resetting a constant through this function implies that the value defined in the material will be used.
+Which model to reset a constant for is identified by the URL.
+
+**Parameters**
+
+- `url` (string | hash | url) - the model that should have a constant reset.
+- `constant` (string | hash) - name of the constant.
+
+**Examples**
+
+The following examples assumes that the model has id "model" and that the default-material in builtins is used, which defines the constant "tint".
+If you assign a custom material to the model, you can reset the constants defined there in the same manner.
+How to reset the tinting of a model:
+```
+function init(self)
+    model.reset_constant("#model", "tint")
+end
+
+```
+
+### model.set_blend_weights
+*Type:* FUNCTION
+Copies numeric values from weights into each morph target slot for every mesh on the model that has morph targets.
+At most as many weights are applied as each mesh has morph targets; extra entries in the table are ignored.
+Missing weights leave the tail zero-filled for meshes with more targets than entries.
+The override is re-applied every frame after animations run, until cleared by omitting weights or passing nil.
+To reset the weights, use model.set_blend_weights(url) or model.set_blend_weights(url, nil).
+
+**Parameters**
+
+- `url` (string | hash | url) - the model component
+- `weights` (table | nil) - array of weight values (1-based indices). Omit or pass <code>nil</code> to clear the override and return morphs to animation only
+
+**Examples**
+
+```
+-- set the weights for the first 4 morph targets
+model.set_blend_weights("#model", { 0, 1, 0.5, 0 })
+-- clear the override, animation will continue if the weights are driven by an animation
+model.set_blend_weights("#model") -- clear script override
 
 ```
 
@@ -46450,7 +51658,7 @@ when the collision occurs, check for the collision_event event instead.
 How to take action when a contact point occurs:
 ```
 physics.set_event_listener(function(self, events)
-  for _,event in ipairs(events):
+  for _,event in ipairs(events) do
     if event['type'] == hash("contact_point_event") then
         pprint(event)
         -- {
@@ -46958,8 +52166,8 @@ Only one physics world event listener can be set at a time.
 
 ```
 local function physics_world_listener(self, events)
-  for _,event in ipairs(events):
-      local event_type = event['type']
+  for _,event in ipairs(events) do
+      local event_type = event["type"]
       if event_type == hash("contact_point_event") then
           pprint(event)
           -- {
@@ -46984,7 +52192,7 @@ local function physics_world_listener(self, events)
           --    relative_velocity = vmath.vector3(0, 0, 0),
           --  },
           -- }
-      elseif event == hash("collision_event") then
+      elseif event_type == hash("collision_event") then
           pprint(event)
           -- {
           --  a = {
@@ -46998,7 +52206,7 @@ local function physics_world_listener(self, events)
           --          id = hash: [/go2]
           --      }
           -- }
-      elseif event ==  hash("trigger_event") then
+      elseif event_type ==  hash("trigger_event") then
           pprint(event)
           -- {
           --  enter = true,
@@ -47011,7 +52219,7 @@ local function physics_world_listener(self, events)
           --      id = hash: [/go1]
           --  }
           -- },
-      elseif event ==  hash("ray_cast_response") then
+      elseif event_type ==  hash("ray_cast_response") then
           pprint(event)
           --{
           --  group = hash: [default],
@@ -47021,7 +52229,7 @@ local function physics_world_listener(self, events)
           --  normal = vmath.vector3(0, 1, 0),
           --  id = hash: [/go]
           -- }
-      elseif event ==  hash("ray_cast_missed") then
+      elseif event_type ==  hash("ray_cast_missed") then
           pprint(event)
           -- {
           --  request_id = 0
@@ -47405,8 +52613,7 @@ by checking track_cpu under profiler in the game.project file.
 
 ### profiler.get_memory_usage
 *Type:* FUNCTION
-Get the amount of memory used (resident/working set) by the application in bytes, as reported by the OS.
- This function is not available on  HTML5.
+Get the detailed amount of memory used by the application in bytes, as reported by the platform.
 The values are gathered from internal OS functions which correspond to the following;
 
 OS
@@ -47419,7 +52626,7 @@ Resident memory
 Working set
 
  HTML5
- Not available
+Allocated bytes reported by mallinfo().uordblks
 
 **Returns**
 
@@ -47971,8 +53178,6 @@ Draws all 3d debug graphics such as lines drawn with "draw_line" messages and ph
 <li>render.FRUSTUM_PLANES_ALL : All sides of the frustum.</li>
 </ul>
 
-**Replaces:** render.draw_debug2d
-
 **Examples**
 
 ```
@@ -48389,8 +53594,8 @@ function init(self)
 end
 
 function update(self, dt)
-    -- enable target so all drawing is done to it
-    render.enable_render_target(self.my_render_target)
+    -- set target so all drawing is done to it
+    render.set_render_target(self.my_render_target)
 
     -- draw a predicate to the render target
     render.draw(self.my_pred)
@@ -48400,6 +53605,24 @@ end
 
 ### render.RENDER_TARGET_DEFAULT
 *Type:* CONSTANT
+
+### render.set_blend_equation_separate
+*Type:* FUNCTION
+Sets the blend equation with separate equations for the color and alpha channels.
+
+**Parameters**
+
+- `equation_color` (number) - color blend equation
+- `equation_alpha` (number) - alpha blend equation
+
+**Examples**
+
+Set add for color and reverse subtract for alpha:
+```
+render.set_blend_equation_separate(graphics.BLEND_EQUATION_ADD,
+                                   graphics.BLEND_EQUATION_REVERSE_SUBTRACT)
+
+```
 
 ### render.set_blend_func
 *Type:* FUNCTION
@@ -48487,6 +53710,28 @@ It is also useful for drawing antialiased points and lines in arbitrary order.
 Set the blend func to the most common one:
 ```
 render.set_blend_func(graphics.BLEND_FACTOR_SRC_ALPHA, graphics.BLEND_FACTOR_ONE_MINUS_SRC_ALPHA)
+
+```
+
+### render.set_blend_func_separate
+*Type:* FUNCTION
+Sets the blend function with separate blend factors for the color and alpha channels.
+
+**Parameters**
+
+- `source_factor_color` (number) - source color blend factor
+- `destination_factor_color` (number) - destination color blend factor
+- `source_factor_alpha` (number) - source alpha blend factor
+- `destination_factor_alpha` (number) - destination alpha blend factor
+
+**Examples**
+
+Set standard alpha blending with separate alpha:
+```
+render.set_blend_func_separate(graphics.BLEND_FACTOR_SRC_ALPHA,
+                               graphics.BLEND_FACTOR_ONE_MINUS_SRC_ALPHA,
+                               graphics.BLEND_FACTOR_ONE,
+                               graphics.BLEND_FACTOR_ONE_MINUS_SRC_ALPHA)
 
 ```
 
@@ -49348,7 +54593,7 @@ The path must also be unique, attempting to create a buffer with the same name a
 <li>
 <dl>
 <dt><code>transfer_ownership</code></dt>
-<dd><span class="type">boolean</span> optional flag to determine wether or not the resource should take over ownership of the buffer object (default true)</dd>
+<dd><span class="type">boolean</span> optional flag to determine whether or not the resource should take over ownership of the buffer object (default true)</dd>
 </dl>
 </li>
 </ul>
@@ -49596,8 +54841,8 @@ function init(self)
         width  = 32,
         height = 32,
         depth  = 32,
-        format = resource.TEXTURE_FORMAT_RGBA32F,
-        flags  = resource.TEXTURE_USAGE_FLAG_STORAGE + resource.TEXTURE_USAGE_FLAG_SAMPLE,
+        format = graphics.TEXTURE_FORMAT_RGBA32F,
+        flags  = graphics.TEXTURE_USAGE_FLAG_STORAGE + graphics.TEXTURE_USAGE_FLAG_SAMPLE,
     })
 
     -- pass the backing texture to the render script
@@ -50392,7 +55637,7 @@ Note: When setting a buffer with transfer_ownership = true, the currently bound 
 <li>
 <dl>
 <dt><code>transfer_ownership</code></dt>
-<dd><span class="type">boolean</span> optional flag to determine wether or not the resource should take over ownership of the buffer object (default false)</dd>
+<dd><span class="type">boolean</span> optional flag to determine whether or not the resource should take over ownership of the buffer object (default false)</dd>
 </dl>
 </li>
 </ul>
@@ -50621,7 +55866,7 @@ function init(self)
         width  = 8,
         height = 8,
         depth  = 8,
-        format = resource.TEXTURE_FORMAT_RGBA32F
+        format = graphics.TEXTURE_FORMAT_RGBA32F
     }
 
     -- This expects that the texture resource "/my_3d_texture.texturec" already exists
@@ -52652,6 +57897,30 @@ end
 
 ```
 
+### sprite.reset_constant
+*Type:* FUNCTION
+Resets a shader constant for a sprite component.
+The constant must be defined in the material assigned to the sprite.
+Resetting a constant through this function implies that the value defined in the material will be used.
+Which sprite to reset a constant for is identified by the URL.
+
+**Parameters**
+
+- `url` (string | hash | url) - the sprite that should have a constant reset
+- `constant` (string | hash) - name of the constant
+
+**Examples**
+
+The following examples assumes that the sprite has id "sprite" and that the default-material in builtins is used, which defines the constant "tint".
+If you assign a custom material to the sprite, you can reset the constants defined there in the same manner.
+How to reset the tinting of a sprite:
+```
+function init(self)
+  sprite.reset_constant("#sprite", "tint")
+end
+
+```
+
 ### sprite.set_hflip
 *Type:* FUNCTION
 Sets horizontal flipping of the provided sprite's animations.
@@ -54528,6 +59797,30 @@ end
 ### tilemap.H_FLIP
 *Type:* CONSTANT
 flip tile horizontally
+
+### tilemap.reset_constant
+*Type:* FUNCTION
+Resets a shader constant for a tile map component.
+The constant must be defined in the material assigned to the tile map.
+Resetting a constant through this function implies that the value defined in the material will be used.
+Which tile map to reset a constant for is identified by the URL.
+
+**Parameters**
+
+- `url` (string | hash | url) - the tile map that should have a constant reset
+- `constant` (string | hash) - name of the constant
+
+**Examples**
+
+The following examples assumes that the tile map has id "tilemap" and that the default-material in builtins is used, which defines the constant "tint".
+If you assign a custom material to the tile map, you can reset the constants defined there in the same manner.
+How to reset the tinting of a tile map:
+```
+function init(self)
+    tilemap.reset_constant("#tilemap", "tint")
+end
+
+```
 
 ### tilemap.ROTATE_180
 *Type:* CONSTANT

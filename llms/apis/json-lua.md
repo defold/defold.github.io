@@ -20,7 +20,7 @@ A Lua error is raised for syntax errors.
 - `json` (string) - json data
 - `options` (table) (optional) - table with decode options
 <ul>
-<li><span class="type">boolean</span> <code>decode_null_as_userdata</code>: wether to decode a JSON null value as json.null or nil (default is nil)</li>
+<li><span class="type">boolean</span> <code>decode_null_as_userdata</code>: whether to decode a JSON null value as json.null or nil (default is nil)</li>
 </ul>
 
 **Returns**
@@ -64,7 +64,7 @@ A Lua error is raised for syntax errors.
 - `tbl` (table) - lua table to encode
 - `options` (table) (optional) - table with encode options
 <ul>
-<li><span class="type">string</span> <code>encode_empty_table_as_object</code>: wether to encode an empty table as an JSON object or array (default is object)</li>
+<li><span class="type">string</span> <code>encode_empty_table_as_object</code>: whether to encode an empty table as an JSON object or array (default is object)</li>
 </ul>
 
 **Returns**

@@ -1,0 +1,449 @@
+{
+    "elements": [
+        {
+            "brief": "Box2D chain",
+            "description": "Box2D chain",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2Chain",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "value",
+                    "types": [
+                        "userdata"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "Destroy a chain.",
+            "description": "Destroying a chain removes all segment shapes owned by the chain. Destroying\nany segment shape through <code>b2d.body.destroy_shape</code> also destroys its parent chain.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.chain.destroy",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "chain",
+                    "is_optional": "False",
+                    "name": "chain",
+                    "types": [
+                        "b2Chain"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get the parent chain for a chain segment shape.",
+            "description": "Returns <code>nil</code> if the shape is not a chain segment.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.chain.from_shape",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "shape handle from a shape info table, or pass <code>body, shape_index</code>",
+                    "is_optional": "False",
+                    "name": "shape_id",
+                    "types": [
+                        "b2Shape"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "parent chain, or <code>nil</code> if the shape is not a chain segment",
+                    "name": "chain",
+                    "types": [
+                        "b2Chain",
+                        "nil"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get chain friction.",
+            "description": "Get chain friction.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.chain.get_friction",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "chain",
+                    "is_optional": "False",
+                    "name": "chain",
+                    "types": [
+                        "b2Chain"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "chain friction",
+                    "name": "friction",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get the chain geometry.",
+            "description": "Returns a chain geometry table with <code>loop</code>, <code>segment_count</code>, and <code>vertices</code>.\nOpen chains also include <code>prev_vertex</code> and <code>next_vertex</code> ghost vertices.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.chain.get_geometry",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "chain",
+                    "is_optional": "False",
+                    "name": "chain",
+                    "types": [
+                        "b2Chain"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "chain geometry table",
+                    "name": "geometry",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get chain material id.",
+            "description": "Get chain material id.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.chain.get_material",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "chain",
+                    "is_optional": "False",
+                    "name": "chain",
+                    "types": [
+                        "b2Chain"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "chain material id",
+                    "name": "material",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get chain restitution.",
+            "description": "Get chain restitution.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.chain.get_restitution",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "chain",
+                    "is_optional": "False",
+                    "name": "chain",
+                    "types": [
+                        "b2Chain"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "chain restitution",
+                    "name": "restitution",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get the number of segment shapes in a chain.",
+            "description": "Get the number of segment shapes in a chain.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.chain.get_segment_count",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "chain",
+                    "is_optional": "False",
+                    "name": "chain",
+                    "types": [
+                        "b2Chain"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "segment count",
+                    "name": "count",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get the segment shapes owned by a chain.",
+            "description": "Get the segment shapes owned by a chain.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.chain.get_segments",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "chain",
+                    "is_optional": "False",
+                    "name": "chain",
+                    "types": [
+                        "b2Chain"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "array of shape info tables for the chain segments. Each entry includes <code>shape_id</code>.",
+                    "name": "segments",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get the world owning a chain.",
+            "description": "Get the world owning a chain.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.chain.get_world",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "chain",
+                    "is_optional": "False",
+                    "name": "chain",
+                    "types": [
+                        "b2Chain"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "owning world",
+                    "name": "world",
+                    "types": [
+                        "b2World"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Validate a chain handle.",
+            "description": "Validate a chain handle.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.chain.is_valid",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "chain",
+                    "is_optional": "False",
+                    "name": "chain",
+                    "types": [
+                        "b2Chain"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "true if the chain handle still refers to a live Box2D chain",
+                    "name": "valid",
+                    "types": [
+                        "boolean"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Set chain friction.",
+            "description": "Set chain friction.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.chain.set_friction",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "chain",
+                    "is_optional": "False",
+                    "name": "chain",
+                    "types": [
+                        "b2Chain"
+                    ]
+                },
+                {
+                    "doc": "chain friction",
+                    "is_optional": "False",
+                    "name": "friction",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Set chain material id.",
+            "description": "Set chain material id.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.chain.set_material",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "chain",
+                    "is_optional": "False",
+                    "name": "chain",
+                    "types": [
+                        "b2Chain"
+                    ]
+                },
+                {
+                    "doc": "chain material id",
+                    "is_optional": "False",
+                    "name": "material",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Set chain restitution.",
+            "description": "Set chain restitution.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.chain.set_restitution",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "chain",
+                    "is_optional": "False",
+                    "name": "chain",
+                    "types": [
+                        "b2Chain"
+                    ]
+                },
+                {
+                    "doc": "chain restitution",
+                    "is_optional": "False",
+                    "name": "restitution",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        }
+    ],
+    "info": {
+        "api_language": "Lua",
+        "brief": "Box2D b2Chain documentation",
+        "description": "Functions for Box2D v3 chains. A chain owns multiple connected segment\nshapes, so it is represented by a separate `b2Chain` handle.",
+        "description_html": "<p>Functions for Box2D v3 chains. A chain owns multiple connected segment\nshapes, so it is represented by a separate <code>b2Chain</code> handle.</p>",
+        "file": "script_box2d_chain_v3.cpp",
+        "name": "b2d.chain",
+        "namespace": "b2d.chain",
+        "notes": [],
+        "path": "engine/gamesys/src/gamesys/scripts/box2d/v3/script_box2d_chain_v3.cpp",
+        "type": "Defold Lua"
+    }
+}

@@ -144,6 +144,18 @@ Gets the normalized resource path: "/my//icon.texturec" -> "/my/icon.texturec". 
 
 - `length` (uint32_t) - the length of the output string
 
+### GetExtFromPath
+*Type:* FUNCTION
+Get a resource extension from a path, i.e "resource.ext" will return "ext".
+
+**Parameters**
+
+- `path` (const char*) - The path to the resource
+
+**Returns**
+
+- `return` (const char*) - Pointer to extension string if success (same as buffer), 0 otherwise
+
 ### GetPath
 *Type:* FUNCTION
 Returns the canonical path hash of a resource
@@ -218,6 +230,24 @@ Get a loaded resource from factory
 - `result` (dmResource::Result) - RESULT_OK on success.
                                            RESULT_INVALID_FILE_EXTENSION if the path extension doesn't match the required extension.
 
+### IncRef
+*Type:* FUNCTION
+Increase resource reference count by 1.
+
+**Parameters**
+
+- `factory` (HFactory) - Factory handle
+- `resource` (void*) - The resource
+
+### IncRef
+*Type:* FUNCTION
+Increase resource reference count by 1.
+
+**Parameters**
+
+- `factory` (HFactory) - Factory handle
+- `rd` (HResourceDescriptor) - The resource handle
+
 ### PreloadHint
 *Type:* FUNCTION
 Hint the preloader what to load before Create is called on the resource.
@@ -279,6 +309,16 @@ Removes a previously registered file from the resource system
 **Returns**
 
 - `RESULT_OK` (dmResource::Result) - on success.
+
+### ResourceUnregisterReloadedCallback
+*Type:* FUNCTION
+Remove a registered callback function, O(n).
+
+**Parameters**
+
+- `factory` (dmResource::HFactory) - Handle of the factory from which the callback will be removed
+- `callback` (dmResource::FResourceReloadedCallback) - Callback function to remove
+- `user_data` (void*) - User data that was supplied when the callback was registered
 
 ### SetupType
 *Type:* FUNCTION

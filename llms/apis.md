@@ -13,6 +13,7 @@ These are per-namespace API reference files generated for LLM usage.
 - [dmConnectionPool (Connection Pool)](https://defold.com/llms/apis/engine-dlib-src-dmsdk-dlib-connection_pool-h.md) - Connection pool
 - [dmCrypt (Crypt)](https://defold.com/llms/apis/engine-dlib-src-dmsdk-dlib-crypt-h.md) - Various hash and encode/decode functions
 - [dmDoubleLinkedList (Double linked list structs and functions)](https://defold.com/llms/apis/engine-dlib-src-dmsdk-dlib-double_linked_list-h.md) - Double linked list structs and functions
+- [dmEndian (Endian)](https://defold.com/llms/apis/engine-dlib-src-dmsdk-dlib-endian-hpp.md) - C++ overloads for endian conversion functions
 - [dmFileDescriptor (FileDescriptor)](https://defold.com/llms/apis/engine-dlib-src-dmsdk-dlib-file_descriptor-h.md) - File Descriptor functions
 - [Hashtable](https://defold.com/llms/apis/engine-dlib-src-dmsdk-dlib-hashtable-h.md) - Hash table
 - [dmHttpClient (Http Client)](https://defold.com/llms/apis/engine-dlib-src-dmsdk-dlib-http_client-h.md) - Http client functions
@@ -34,6 +35,7 @@ These are per-namespace API reference files generated for LLM usage.
 - [dmThread (Thread)](https://defold.com/llms/apis/engine-dlib-src-dmsdk-dlib-thread-h.md) - Thread functions
 - [dmTime (Time)](https://defold.com/llms/apis/engine-dlib-src-dmsdk-dlib-time-h.md) - Time functions
 - [dmTransform (Transform)](https://defold.com/llms/apis/engine-dlib-src-dmsdk-dlib-transform-h.md) - Api for transforms with rotation, scale and translation
+- [dmTrigLookup (TrigLookup)](https://defold.com/llms/apis/engine-dlib-src-dmsdk-dlib-trig_lookup-h.md) - Api for trigonometrics using lookup tables
 - [dmURI (URI)](https://defold.com/llms/apis/engine-dlib-src-dmsdk-dlib-uri-h.md) - URI functions
 - [dmUtf8 (Utf8)](https://defold.com/llms/apis/engine-dlib-src-dmsdk-dlib-utf8-h.md) - Utf8 API documentation
 - [dmVMath (Vector Math)](https://defold.com/llms/apis/engine-dlib-src-dmsdk-dlib-vmath-h.md) - Vector Math functions
@@ -73,6 +75,11 @@ These are per-namespace API reference files generated for LLM usage.
 
 - [b2d](https://defold.com/llms/apis/b2d-lua.md) - Functions for interacting with Box2D
 - [b2d.body](https://defold.com/llms/apis/b2d.body-lua.md) - Functions for interacting with Box2D bodies
+- [b2d.chain](https://defold.com/llms/apis/b2d.chain-lua.md) - Functions for Box2D v3 chains
+- [b2d.fixture](https://defold.com/llms/apis/b2d.fixture-lua.md) - Functions for interacting with fixtures attached to Box2D bodies
+- [b2d.joint](https://defold.com/llms/apis/b2d.joint-lua.md) - Functions for interacting with native Box2D joints
+- [b2d.shape](https://defold.com/llms/apis/b2d.shape-lua.md) - Constants for functional shape tables used with `b2d
+- [b2d.world](https://defold.com/llms/apis/b2d.world-lua.md) - Query and cast functions for the Defold-owned Box2D v2 world
 - [base (Base)](https://defold.com/llms/apis/base-lua.md) - Documentation for the Lua base standard library
 - [bit (BitOp)](https://defold.com/llms/apis/bit-lua.md) - [Lua BitOp](http://bitop
 - [buffer (Buffer)](https://defold.com/llms/apis/buffer-lua.md) - Functions for manipulating buffers and streams
@@ -80,6 +87,7 @@ These are per-namespace API reference files generated for LLM usage.
 - [camera (Camera)](https://defold.com/llms/apis/camera-lua.md) - Messages to control camera components and camera focus
 - [collectionfactory (Collection factory)](https://defold.com/llms/apis/collectionfactory-lua.md) - Functions for controlling collection factory components which are used to dynamically spawn collections into the runtime
 - [collectionproxy (Collection proxy)](https://defold.com/llms/apis/collectionproxy-lua.md) - Messages for controlling and interacting with collection proxies which are used to dynamically load collections into the runtime
+- [compute (Compute)](https://defold.com/llms/apis/compute-lua.md) - Functions for interacting with compute programs
 - [coroutine (Coroutine)](https://defold.com/llms/apis/coroutine-lua.md) - Documentation for the Lua coroutine standard library
 - [crash (Crash)](https://defold.com/llms/apis/crash-lua.md) - Native crash logging functions and constants
 - [debug (Debug)](https://defold.com/llms/apis/debug-lua.md) - Documentation for the Lua debug standard library
@@ -96,6 +104,7 @@ These are per-namespace API reference files generated for LLM usage.
 - [json (JSON)](https://defold.com/llms/apis/json-lua.md) - Manipulation of JSON data strings
 - [label (Label)](https://defold.com/llms/apis/label-lua.md) - Functions to manipulate a label component
 - [liveupdate (LiveUpdate)](https://defold.com/llms/apis/liveupdate-lua.md) - Functions and constants to access resources
+- [material (Material)](https://defold.com/llms/apis/material-lua.md) - Functions for interacting with materials
 - [math (Math)](https://defold.com/llms/apis/math-lua.md) - Documentation for the Lua math standard library
 - [model (Model)](https://defold.com/llms/apis/model-lua.md) - Model API documentation
 - [msg (Message)](https://defold.com/llms/apis/msg-lua.md) - Functions for passing messages and constructing URL objects

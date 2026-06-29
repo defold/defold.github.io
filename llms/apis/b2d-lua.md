@@ -30,6 +30,14 @@ Get the Box2D body from a collision object
 
 - `body` (b2Body) - the body if successful. Otherwise <code>nil</code>.
 
+### b2d.get_version
+*Type:* FUNCTION
+Get the Box2D version information for the active backend.
+
+**Returns**
+
+- `info` (table) - version info with fields <code>version</code>, <code>major</code>, <code>middle</code>, and <code>minor</code>
+
 ### b2d.get_world
 *Type:* FUNCTION
 Get the Box2D world from the current collection

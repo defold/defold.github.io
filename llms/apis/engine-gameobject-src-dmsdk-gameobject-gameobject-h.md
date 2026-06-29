@@ -178,6 +178,19 @@ Retrieve the context for a component type
 
 - `context` (void*) - The pointer to the context, 0x0 if not found
 
+### GetGeneration
+*Type:* FUNCTION
+Get instance generation counter.
+The generation changes whenever a new game object instance is allocated, even if it later reuses the same identifier.
+
+**Parameters**
+
+- `instance` (dmGameObject::HInstance) - Gameobject instance
+
+**Returns**
+
+- `return` (uint32_t) - Generation counter for the instance.
+
 ### GetIdentifier
 *Type:* FUNCTION
 Get instance identifier
@@ -779,6 +792,17 @@ scene node property types
 - `dmGameObject::SCENE_NODE_PROPERTY_TYPE_BOOLEAN`
 - `dmGameObject::SCENE_NODE_PROPERTY_TYPE_TEXT`
 - `dmGameObject::SCENE_NODE_PROPERTY_TYPE_COUNT`
+
+### SceneNodeType
+*Type:* ENUM
+scene node types
+
+**Members**
+
+- `dmGameObject::SCENE_NODE_TYPE_COLLECTION`
+- `dmGameObject::SCENE_NODE_TYPE_GAMEOBJECT`
+- `dmGameObject::SCENE_NODE_TYPE_COMPONENT`
+- `dmGameObject::SCENE_NODE_TYPE_SUBCOMPONENT`
 
 ### SetBone
 *Type:* FUNCTION

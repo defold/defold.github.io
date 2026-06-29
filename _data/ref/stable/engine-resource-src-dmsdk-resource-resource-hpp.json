@@ -395,6 +395,38 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "Get a resource extension from a path, i.e \"resourc...",
+            "description": "Get a resource extension from a path, i.e \"resource.ext\" will return \"ext\".",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetExtFromPath",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "The path to the resource",
+                    "is_optional": "False",
+                    "name": "path",
+                    "types": [
+                        "const char*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Pointer to extension string if success (same as buffer), 0 otherwise",
+                    "name": "",
+                    "types": [
+                        "const char*"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "Returns the canonical path hash of a resource",
             "description": "Returns the canonical path hash of a resource",
             "error": "",
@@ -651,6 +683,70 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "Increase resource reference count by 1.",
+            "description": "Increase resource reference count by 1.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "IncRef",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Factory handle",
+                    "is_optional": "False",
+                    "name": "factory",
+                    "types": [
+                        "HFactory"
+                    ]
+                },
+                {
+                    "doc": "The resource",
+                    "is_optional": "False",
+                    "name": "resource",
+                    "types": [
+                        "void*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Increase resource reference count by 1.",
+            "description": "Increase resource reference count by 1.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "IncRef",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Factory handle",
+                    "is_optional": "False",
+                    "name": "factory",
+                    "types": [
+                        "HFactory"
+                    ]
+                },
+                {
+                    "doc": "The resource handle",
+                    "is_optional": "False",
+                    "name": "rd",
+                    "types": [
+                        "HResourceDescriptor"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "Hint the preloader what to load before Create is c...",
             "description": "Hint the preloader what to load before Create is called on the resource.\nThe resources are not guaranteed to be loaded before Create is called.\nThis function can be called from a worker thread.",
             "error": "",
@@ -840,6 +936,46 @@
                     ]
                 }
             ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Remove a registered callback function, O(n).",
+            "description": "Remove a registered callback function, O(n).",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ResourceUnregisterReloadedCallback",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Handle of the factory from which the callback will be removed",
+                    "is_optional": "False",
+                    "name": "factory",
+                    "types": [
+                        "dmResource::HFactory"
+                    ]
+                },
+                {
+                    "doc": "Callback function to remove",
+                    "is_optional": "False",
+                    "name": "callback",
+                    "types": [
+                        "dmResource::FResourceReloadedCallback"
+                    ]
+                },
+                {
+                    "doc": "User data that was supplied when the callback was registered",
+                    "is_optional": "False",
+                    "name": "user_data",
+                    "types": [
+                        "void*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
             "tparams": [],
             "type": "FUNCTION"
         },

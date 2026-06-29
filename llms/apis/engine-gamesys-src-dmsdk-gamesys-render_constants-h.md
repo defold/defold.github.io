@@ -69,6 +69,27 @@ set the constants of a render object
 - `ro` (dmRender::RenderObject*) - the render object
 - `constants` (dmGameSystem::HComponentRenderConstants) - the constants
 
+### GetMaterialConstant
+*Type:* FUNCTION
+Helper function to get material constants of components that use them: sprite, label, tile maps, spine and models
+Sprite and Label should not use value ptr. Deleting a gameobject (that included sprite(s) or label(s)) will rearrange the
+object pool for components (due to EraseSwap in the Free for the object pool). This result in the original animation value pointer will still point
+to the original memory location in the component object pool.
+
+**Parameters**
+
+- `material` (dmRender::HMaterial) - the material
+- `name_hash` (dmhash_t) - the name of the property
+- `value_index` (int32_t) - the index of the constant value to get, if it is an array
+- `out_desc` (dmGameObject::PropertyDesc&) - the property descriptor
+- `use_value_ptr` (bool) - should the property pointer be used (m_ValuePtr)
+- `callback` (CompGetConstantCallback) - callback to resolve property
+- `callback_user_data` (void*) - callback user data
+
+**Returns**
+
+- `result` (dmGameObject::PropertyResult) - the result
+
 ### GetRenderConstant
 *Type:* FUNCTION
 Destroys a render constants container
@@ -128,6 +149,23 @@ Found in hash.h
 ### HComponentRenderConstants
 *Type:* TYPEDEF
 Render constants handle
+
+### SetMaterialConstant
+*Type:* FUNCTION
+Helper function to set material constants of components that use them: sprite, label, tile maps, spine and models
+
+**Parameters**
+
+- `material` (dmRender::HMaterial) - the material
+- `name_hash` (dmhash_t) - the name of the property
+- `value_index` (uint32_t) - index of the constant value to set, if the material constant is an array
+- `var` (dmGameObject::PropertyVar) - the property
+- `callback` (CompGetConstantCallback) - the callback used to set the property
+- `callback_user_data` (void*) - callback user data
+
+**Returns**
+
+- `result` (dmGameObject::PropertyResult) - the result
 
 ### SetRenderConstant
 *Type:* FUNCTION

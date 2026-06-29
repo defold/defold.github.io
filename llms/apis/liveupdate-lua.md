@@ -13,21 +13,24 @@ Functions and constants to access resources.
 ### liveupdate.add_mount
 *Type:* FUNCTION
 Adds a resource mount to the resource system.
-The mounts are persisted between sessions.
 After the mount succeeded, the resources are available to load. (i.e. no reboot required)
 
 **Notes**
 
 - The request is asynchronous
-- Names cannot start with '_'
+- Mounts are active for the current session only
+- Names cannot be '_base' or '_builtin'
 - Priority must be >= 0
 
 **Parameters**
 
-- `name` (string) - Unique name of the mount
+- `name` (string | hash) - Unique name of the mount
 - `uri` (string) - The uri of the mount, including the scheme. Currently supported schemes are 'zip' and 'archive'.
 - `priority` (number) - Priority of mount. Larger priority takes prescedence
-- `callback` (function) - Callback after the asynchronous request completed
+- `callback` (function(self, name, uri, result)) - Callback after the asynchronous request completed
+- <code>name</code> <span class="type">hash</span> Unique name of the mount
+- <code>uri</code> <span class="type">string</span> The uri of the mount
+- <code>result</code> <span class="type">number</span> The result of the request
 
 **Returns**
 
@@ -37,9 +40,9 @@ After the mount succeeded, the resources are available to load. (i.e. no reboot 
 
 Add multiple mounts. Higher priority takes precedence.
 ```
-liveupdate.add_mount("common", "zip:/path/to/common_stuff.zip", 10, function (result) end) -- base pack
-liveupdate.add_mount("levelpack_1", "zip:/path/to/levels_1_to_20.zip", 20, function (result) end) -- level pack
-liveupdate.add_mount("season_pack_1", "zip:/path/to/easter_pack_1.zip", 30, function (result) end) -- season pack, overriding content in the other packs
+liveupdate.add_mount("common", "zip:/path/to/common_stuff.zip", 10, function (self, name, uri, result) end) -- base pack
+liveupdate.add_mount("levelpack_1", "zip:/path/to/levels_1_to_20.zip", 20, function (self, name, uri, result) end) -- level pack
+liveupdate.add_mount("season_pack_1", "zip:/path/to/easter_pack_1.zip", 30, function (self, name, uri, result) end) -- season pack, overriding content in the other packs
 
 ```
 
@@ -65,16 +68,38 @@ Give an output like:
 DEBUG:SCRIPT: MOUNTS,
 { --[[0x119667bf0]]
   1 = { --[[0x119667c50]]
-    name = "liveupdate",
+    name = hash: [liveupdate],
     uri = "zip:/device/path/to/acchives/liveupdate.zip",
     priority = 5
   },
   2 = { --[[0x119667d50]]
-    name = "_base",
+    name = hash: [_base],
     uri = "archive:build/default/game.dmanifest",
     priority = -10
   }
 }
+
+```
+
+### liveupdate.is_built_with_excluded_files
+*Type:* FUNCTION
+Checks if the bundled application was built with one or more resources
+excluded from the main bundle, through a collection proxy with
+Exclude enabled.
+This value is based on metadata in the bundled manifest. It does not check
+whether any live update archive has been mounted or whether the excluded
+resources are currently available on device.
+
+**Returns**
+
+- `is_built_with_excluded_files` (boolean) - true if the bundled application was built with excluded files
+
+**Examples**
+
+```
+if liveupdate.is_built_with_excluded_files() then
+    print("The bundle expects live update content.")
+end
 
 ```
 
@@ -133,16 +158,16 @@ Mismatch between manifest expected version and actual version.
 ### liveupdate.remove_mount
 *Type:* FUNCTION
 Remove a mount the resource system.
-The remaining mounts are persisted between sessions.
 Removing a mount does not affect any loaded resources.
 
 **Notes**
 
 - The call is synchronous
+- Names cannot be '_base' or '_builtin'
 
 **Parameters**
 
-- `name` (string) - Unique name of the mount
+- `name` (string | hash) - Unique name of the mount
 
 **Returns**
 

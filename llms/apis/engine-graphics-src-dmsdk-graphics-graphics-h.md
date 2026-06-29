@@ -70,6 +70,19 @@ This should be called at the start of each frame.
 
 - `context` (dmGraphics::HContext) - Graphics context
 
+### BlendEquation
+*Type:* ENUM
+Blend equation operations.
+Determines how source and destination colors are combined during blending
+
+**Members**
+
+- `BLEND_EQUATION_ADD` -                 Source + Destination
+- `BLEND_EQUATION_SUBTRACT` -            Source - Destination
+- `BLEND_EQUATION_REVERSE_SUBTRACT` -    Destination - Source
+- `BLEND_EQUATION_MIN` -                 Min(Source, Destination)
+- `BLEND_EQUATION_MAX` -                 Max(Source, Destination)
+
 ### BlendFactor
 *Type:* ENUM
 Blend factors for color blending.
@@ -1165,6 +1178,16 @@ Attachment points for render targets
 - `rgb` (uint8_t*)
 - `rgba` (uint8_t*)
 
+### SetBlendEquationSeparate
+*Type:* FUNCTION
+Set separate blend equations for color and alpha channels.
+
+**Parameters**
+
+- `context` (dmGraphics::HContext)
+- `equation_color` (dmGraphics::BlendEquation)
+- `equation_alpha` (dmGraphics::BlendEquation)
+
 ### SetBlendFunc
 *Type:* FUNCTION
 
@@ -1173,6 +1196,18 @@ Attachment points for render targets
 - `context` (dmGraphics::HContext) - Graphics context
 - `source_factor` (gmGraphics::BlendFactor)
 - `destination_factor` (dmGraphics::BlendFactor)
+
+### SetBlendFuncSeparate
+*Type:* FUNCTION
+Set separate blend factors for color and alpha channels.
+
+**Parameters**
+
+- `context` (dmGraphics::HContext)
+- `src_factor_color` (dmGraphics::BlendFactor)
+- `dst_factor_color` (dmGraphics::BlendFactor)
+- `src_factor_alpha` (dmGraphics::BlendFactor)
+- `dst_factor_alpha` (dmGraphics::BlendFactor)
 
 ### SetColorMask
 *Type:* FUNCTION

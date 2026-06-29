@@ -73,6 +73,38 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "get native Mutex handle.",
+            "description": "Get the platform-specific native mutex handle.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "dmMutex::GetNativeHandle",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Mutex handle.",
+                    "is_optional": "False",
+                    "name": "mutex",
+                    "types": [
+                        "dmMutex::HMutex"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Native mutex handle.",
+                    "name": "handle",
+                    "types": [
+                        "void*"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "HMutex type definition",
             "description": "<div class=\"codehilite\"><pre><span></span><code><span class=\"k\">typedef</span><span class=\"w\"> </span><span class=\"k\">struct</span><span class=\"w\"> </span><span class=\"nc\">Mutex</span><span class=\"o\">*</span><span class=\"w\"> </span><span class=\"n\">HMutex</span><span class=\"p\">;</span><span class=\"w\"></span>\n</code></pre></div>",
             "error": "",

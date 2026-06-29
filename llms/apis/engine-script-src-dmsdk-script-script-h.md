@@ -89,6 +89,19 @@ Keys must be strings
 
 - `result` (uint32_t) - Number of bytes used in buffer
 
+### CheckTableSize
+*Type:* FUNCTION
+Get the size of a table when serialized
+
+**Parameters**
+
+- `L` (lua_State*) - Lua state
+- `index` (int) - Index of the table
+
+**Returns**
+
+- `result` (uint32_t) - Number of bytes required for the serialized table
+
 ### CheckURL
 *Type:* FUNCTION
 Check if the value in the supplied index on the lua stack is a dmMessage::URL and returns it if so.
@@ -480,6 +493,7 @@ Convert a Json string to Lua table.
 **Parameters**
 
 - `L` (lua_State*) - lua state
+- `options_index` (int) - lua stack index to check for an options table
 - `json` (const char*) - json string
 - `json_len` (size_t) - length of json string
 
@@ -493,11 +507,13 @@ callback info struct that will hold the relevant info needed to make a callback 
 
 ### LuaToJson
 *Type:* FUNCTION
-Convert a Lua table to a Json string
+Convert the Lua value at the supplied stack index to a Json string
 
 **Parameters**
 
 - `L` (lua_State*) - lua state
+- `index` (int) - lua stack index of the value to encode
+- `options_index` (int) - lua stack index to check for an options table
 - `json` (char**) - [out] Pointer to char*, which will receive a newly allocated string. Use free().
 - `json_len` (size_t*) - length of json string
 
@@ -557,6 +573,16 @@ Push a quaternion value onto Lua stack. Will increase the stack by 1.
 
 - `L` (lua_State*) - Lua state
 - `quat` (dmVMath::Quat) - dmVMath::Quat value to push
+
+### PushTable
+*Type:* FUNCTION
+Push a serialized table to the supplied lua state, will increase the stack by 1.
+
+**Parameters**
+
+- `L` (lua_State*) - Lua state
+- `data` (const char*) - Buffer with serialized table to push
+- `data_size` (uint32_t) - Size of buffer of serialized data
 
 ### PushURL
 *Type:* FUNCTION

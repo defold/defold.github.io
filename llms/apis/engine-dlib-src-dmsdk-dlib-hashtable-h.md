@@ -50,7 +50,7 @@ Creates a hashtable array with user allocated memory.
 
 **Parameters**
 
-- `user_allocated` (void*) - Pointer to user allocated continous data-block ((table_size<em>sizeof(uint32_t)) + (capacity</em>sizeof(dmHashTable::Entry))
+- `user_allocated` (void*) - Pointer to user allocated continous data-block (see dmHashTable::GetMemorySize)
 - `table_size` (uint32_t) - Hashtable size, ie number of buckets. table_size &lt; 0xffffffff
 - `capacity` (uint32_t) - Capacity. capacity &lt; 0xffffffff
 
@@ -106,6 +106,18 @@ Get pointer to value from key
 
 - `value` (T*) - Pointer to value. NULL if the key/value pair doesn't exist.
 
+### Get
+*Type:* FUNCTION
+Get pointer to value from key. "const" version.
+
+**Parameters**
+
+- `key` (KEY) - Key
+
+**Returns**
+
+- `value` (const T*) - Pointer to value. NULL if the key/value pair doesn't exist.
+
 ### GetIterator
 *Type:* FUNCTION
 Get an iterator for the key/value pairs
@@ -124,6 +136,19 @@ while(iter.Next())
 }
 
 ```
+
+### GetMemorySize
+*Type:* FUNCTION
+Returns the number of bytes needed for user allocated memory.
+
+**Parameters**
+
+- `table_size` (uint32_t) - Hashtable size, ie number of buckets. table_size &lt; 0xffffffff
+- `capacity` (uint32_t) - Capacity. capacity &lt; 0xffffffff
+
+**Returns**
+
+- `memory_size` (uint32_t) - Number of bytes needed.
 
 ### Iterate
 *Type:* FUNCTION
@@ -175,6 +200,14 @@ Set hashtable capacity. New capacity must be greater or equal to current capacit
 - `table_size` (uint32_t) - Hashtable size, ie number of buckets. table_size &lt; 0xffffffff
 - `capacity` (uint32_t) - Capacity. capacity &lt; 0xffffffff
 
+### SetCapacity
+*Type:* FUNCTION
+Set hashtable capacity. New capacity must be greater or equal to current capacity
+
+**Parameters**
+
+- `capacity` (uint32_t) - Capacity. capacity &lt; 0xffffffff
+
 ### Size
 *Type:* FUNCTION
 Number of entries stored in table. (not the actual hashtable size)
@@ -190,3 +223,11 @@ Swaps the contents of two hash tables
 **Parameters**
 
 - `other` (dmHashTable<KEY, T>&) - the other table
+
+### ~dmHashTable
+*Type:* FUNCTION
+Destructor.
+
+**Notes**
+
+- If user allocated, memory is not free'd

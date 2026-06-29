@@ -10,6 +10,21 @@ Messages to control camera components and camera focus.
 
 ## API
 
+### acquire_camera_focus
+*Type:* MESSAGE
+Post this message to a camera-component to activate it.
+Several cameras can be active at the same time, but only the camera that was last activated will be used for rendering.
+When the camera is deactivated (see release_camera_focus), the previously activated camera will again be used for rendering automatically.
+The reason it is called "camera focus" is the similarity to how acquiring input focus works (see acquire_input_focus).
+
+**Examples**
+
+In the examples, it is assumed that the instance of the script has a camera-component with id "camera".
+```
+msg.post("#camera", "acquire_camera_focus")
+
+```
+
 ### aspect_ratio
 *Type:* PROPERTY
 The ratio between the frustum width and height. Used when calculating the
@@ -122,6 +137,19 @@ get near z
 
 - `near_z` (number) - the near z.
 
+### camera.get_orthographic_auto_zoom
+*Type:* FUNCTION
+Gets the orthographic zoom calculated from the current window and project dimensions
+in auto-fit and auto-cover modes. Returns 1.0 in fixed mode.
+
+**Parameters**
+
+- `camera` (url | number | nil) - camera id
+
+**Returns**
+
+- `orthographic_auto_zoom` (number) - the calculated orthographic auto zoom.
+
 ### camera.get_orthographic_mode
 *Type:* FUNCTION
 get orthographic zoom mode
@@ -137,7 +165,8 @@ camera.ORTHO_MODE_AUTO_COVER
 
 ### camera.get_orthographic_zoom
 *Type:* FUNCTION
-get orthographic zoom
+Gets the positive user-controlled orthographic zoom multiplier. In auto-fit and auto-cover
+modes, this value is multiplied with camera.get_orthographic_auto_zoom(camera).
 
 **Parameters**
 
@@ -145,7 +174,7 @@ get orthographic zoom
 
 **Returns**
 
-- `orthographic_zoom` (number) - the zoom level when the camera uses orthographic projection.
+- `orthographic_zoom` (number) - the positive zoom multiplier when the camera uses orthographic projection.
 
 ### camera.get_projection
 *Type:* FUNCTION
@@ -175,11 +204,13 @@ get view matrix
 *Type:* CONSTANT
 Computes zoom so the original display area covers the entire window while preserving aspect ratio.
 Equivalent to using max(window_width/width, window_height/height).
+The result is multiplied by the user-controlled orthographic zoom.
 
 ### camera.ORTHO_MODE_AUTO_FIT
 *Type:* CONSTANT
 Computes zoom so the original display area (game.project width/height) fits inside the window
 while preserving aspect ratio. Equivalent to using min(window_width/width, window_height/height).
+The result is multiplied by the user-controlled orthographic zoom.
 
 ### camera.ORTHO_MODE_FIXED
 *Type:* CONSTANT
@@ -307,12 +338,13 @@ set orthographic zoom mode
 
 ### camera.set_orthographic_zoom
 *Type:* FUNCTION
-set orthographic zoom
+Sets the positive user-controlled orthographic zoom multiplier. In auto-fit and auto-cover
+modes, this value is multiplied with camera.get_orthographic_auto_zoom(camera).
 
 **Parameters**
 
 - `camera` (url | number | nil) - camera id
-- `orthographic_zoom` (number) - the zoom level when the camera uses orthographic projection.
+- `orthographic_zoom` (number) - the positive zoom multiplier when the camera uses orthographic projection.
 
 ### camera.world_to_screen
 *Type:* FUNCTION
@@ -387,9 +419,25 @@ end
 
 ```
 
+### orthographic_auto_zoom
+*Type:* PROPERTY
+READ ONLY The zoom calculated from the current window and project dimensions
+in auto fit and auto cover modes. The value is 1.0 in fixed mode.
+The type of the property is float.
+
+**Examples**
+
+```
+function init(self)
+  local orthographic_auto_zoom = go.get("#camera", "orthographic_auto_zoom")
+end
+
+```
+
 ### orthographic_zoom
 *Type:* PROPERTY
-Zoom level when using an orthographic projection.
+Positive zoom multiplier when using an orthographic projection. In auto fit and auto cover
+modes, this value is multiplied with the calculated orthographic_auto_zoom value.
 The type of the property is float.
 
 **Examples**
@@ -417,6 +465,19 @@ end
 
 ```
 
+### release_camera_focus
+*Type:* MESSAGE
+Post this message to a camera-component to deactivate it. The camera is then removed from the active cameras.
+See acquire_camera_focus for more information how the active cameras are used in rendering.
+
+**Examples**
+
+In the examples, it is assumed that the instance of the script has a camera-component with id "camera".
+```
+msg.post("#camera", "release_camera_focus")
+
+```
+
 ### set_camera
 *Type:* MESSAGE
 Post this message to a camera-component to set its properties at run-time.
@@ -428,7 +489,7 @@ Post this message to a camera-component to set its properties at run-time.
 - `near_z` (number) - position of the near clipping plane (distance from camera along relative z)
 - `far_z` (number) - position of the far clipping plane (distance from camera along relative z)
 - `orthographic_projection` (boolean) - set to use an orthographic projection
-- `orthographic_zoom` (number) - zoom level when the camera is using an orthographic projection
+- `orthographic_zoom` (number) - positive zoom multiplier when the camera is using an orthographic projection
 - `orthographic_mode` (number) - orthographic zoom behavior when orthographic_projection is enabled
 
 **Examples**

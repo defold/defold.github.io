@@ -74,8 +74,7 @@ by checking track_cpu under profiler in the game.project file.
 
 ### profiler.get_memory_usage
 *Type:* FUNCTION
-Get the amount of memory used (resident/working set) by the application in bytes, as reported by the OS.
- This function is not available on  HTML5.
+Get the detailed amount of memory used by the application in bytes, as reported by the platform.
 The values are gathered from internal OS functions which correspond to the following;
 
 OS
@@ -88,7 +87,7 @@ Resident memory
 Working set
 
  HTML5
- Not available
+Allocated bytes reported by mallinfo().uordblks
 
 **Returns**
 

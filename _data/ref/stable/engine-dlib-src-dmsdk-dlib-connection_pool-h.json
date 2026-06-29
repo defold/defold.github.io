@@ -274,6 +274,46 @@
             "type": "ENUM"
         },
         {
+            "brief": "Get reuse count for a connection",
+            "description": "Get reuse count for a connection",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetReuseCount",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "pool",
+                    "is_optional": "False",
+                    "name": "pool",
+                    "types": [
+                        "dmConnectionPool::HPool"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "connection",
+                    "types": [
+                        "dmConnectionPool::HConnection"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "count",
+                    "name": "reuse",
+                    "types": [
+                        ""
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "Get socket for connection",
             "description": "Get socket for connection",
             "error": "",

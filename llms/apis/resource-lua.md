@@ -314,7 +314,7 @@ The path must also be unique, attempting to create a buffer with the same name a
 <li>
 <dl>
 <dt><code>transfer_ownership</code></dt>
-<dd><span class="type">boolean</span> optional flag to determine wether or not the resource should take over ownership of the buffer object (default true)</dd>
+<dd><span class="type">boolean</span> optional flag to determine whether or not the resource should take over ownership of the buffer object (default true)</dd>
 </dl>
 </li>
 </ul>
@@ -562,8 +562,8 @@ function init(self)
         width  = 32,
         height = 32,
         depth  = 32,
-        format = resource.TEXTURE_FORMAT_RGBA32F,
-        flags  = resource.TEXTURE_USAGE_FLAG_STORAGE + resource.TEXTURE_USAGE_FLAG_SAMPLE,
+        format = graphics.TEXTURE_FORMAT_RGBA32F,
+        flags  = graphics.TEXTURE_USAGE_FLAG_STORAGE + graphics.TEXTURE_USAGE_FLAG_SAMPLE,
     })
 
     -- pass the backing texture to the render script
@@ -1358,7 +1358,7 @@ Note: When setting a buffer with transfer_ownership = true, the currently bound 
 <li>
 <dl>
 <dt><code>transfer_ownership</code></dt>
-<dd><span class="type">boolean</span> optional flag to determine wether or not the resource should take over ownership of the buffer object (default false)</dd>
+<dd><span class="type">boolean</span> optional flag to determine whether or not the resource should take over ownership of the buffer object (default false)</dd>
 </dl>
 </li>
 </ul>
@@ -1587,7 +1587,7 @@ function init(self)
         width  = 8,
         height = 8,
         depth  = 8,
-        format = resource.TEXTURE_FORMAT_RGBA32F
+        format = graphics.TEXTURE_FORMAT_RGBA32F
     }
 
     -- This expects that the texture resource "/my_3d_texture.texturec" already exists

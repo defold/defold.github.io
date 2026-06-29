@@ -221,6 +221,46 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "Get the size of a table when serialized",
+            "description": "Get the size of a table when serialized",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "CheckTableSize",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Lua state",
+                    "is_optional": "False",
+                    "name": "L",
+                    "types": [
+                        "lua_State*"
+                    ]
+                },
+                {
+                    "doc": "Index of the table",
+                    "is_optional": "False",
+                    "name": "index",
+                    "types": [
+                        "int"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Number of bytes required for the serialized table",
+                    "name": "result",
+                    "types": [
+                        "uint32_t"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "Check if the value in the supplied index on the lu...",
             "description": "Check if the value in the supplied index on the lua stack is a dmMessage::URL and returns it if so.",
             "error": "",
@@ -1020,6 +1060,14 @@
                     ]
                 },
                 {
+                    "doc": "lua stack index to check for an options table",
+                    "is_optional": "False",
+                    "name": "options_index",
+                    "types": [
+                        "int"
+                    ]
+                },
+                {
                     "doc": "json string",
                     "is_optional": "False",
                     "name": "json",
@@ -1066,7 +1114,7 @@
         },
         {
             "brief": "convert a Lua table to a Json string",
-            "description": "Convert a Lua table to a Json string",
+            "description": "Convert the Lua value at the supplied stack index to a Json string",
             "error": "",
             "examples": "",
             "language": "",
@@ -1080,6 +1128,22 @@
                     "name": "L",
                     "types": [
                         "lua_State*"
+                    ]
+                },
+                {
+                    "doc": "lua stack index of the value to encode",
+                    "is_optional": "False",
+                    "name": "index",
+                    "types": [
+                        "int"
+                    ]
+                },
+                {
+                    "doc": "lua stack index to check for an options table",
+                    "is_optional": "False",
+                    "name": "options_index",
+                    "types": [
+                        "int"
                     ]
                 },
                 {
@@ -1296,6 +1360,46 @@
                     "name": "quat",
                     "types": [
                         "dmVMath::Quat"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Push a serialized table to the supplied lua state,...",
+            "description": "Push a serialized table to the supplied lua state, will increase the stack by 1.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "PushTable",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Lua state",
+                    "is_optional": "False",
+                    "name": "L",
+                    "types": [
+                        "lua_State*"
+                    ]
+                },
+                {
+                    "doc": "Buffer with serialized table to push",
+                    "is_optional": "False",
+                    "name": "data",
+                    "types": [
+                        "const char*"
+                    ]
+                },
+                {
+                    "doc": "Size of buffer of serialized data",
+                    "is_optional": "False",
+                    "name": "data_size",
+                    "types": [
+                        "uint32_t"
                     ]
                 }
             ],

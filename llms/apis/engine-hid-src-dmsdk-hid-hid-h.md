@@ -84,6 +84,10 @@ Maximum number of gamepad buttons supported
 *Type:* CONSTANT
 Maximum number of gamepads supported
 
+### dmHID::MAX_GAMEPAD_GUID_LENGTH
+*Type:* CONSTANT
+max number of characters for a guid
+
 ### dmHID::MAX_GAMEPAD_HAT_COUNT [type: uint32_t]
 *Type:* CONSTANT
 Maximum number of gamepad hats supported
@@ -103,6 +107,31 @@ Maximum number of simultaneous touches supported
 ### dmHID::MAX_TOUCH_DEVICE_COUNT [type: uint32_t]
 *Type:* CONSTANT
 Maximum number of touch devices supported
+
+### FormatGamepadGuid
+*Type:* FUNCTION
+Formats a gamepad guid into the 32-character SDL hex representation.
+
+**Parameters**
+
+- `guid` (GamepadGuid*) - the parsed guid
+- `buffer` (char*) - output buffer of size dmHID::MAX_GAMEPAD_GUID_LENGTH + 1
+
+### GamepadGuid
+*Type:* STRUCT
+Parsed SDL-style gamepad guid.
+The struct matches SDL's 16-byte guid layout and can be converted back to
+the 32-character hexadecimal guid string with dmHID::FormatGamepadGuid().
+
+**Members**
+
+- `m_Bus` (uint16_t) - How device is communicating. E.g.0x0003 for USB devices and 0x0005 for Bluetooth devices.
+- `m_CRC16` (uint16_t) - SDL CRC16 signature, typically used when vendor and product ids are unavailable
+- `m_Vendor` (uint16_t) - USB vendor id. E.g. Nintendo 0x057e, Sony 0x054c, or Microsoft 0x045e
+- `m_Product` (uint16_t) - USB product id
+- `m_Version` (uint16_t) - Device or firmware version encoded in the guid
+- `m_DriverSignature` (uint8_t) - Driver signature byte from the SDL guid layout
+- `m_DriverData` (uint8_t) - Driver-specific data byte from the SDL guid layout
 
 ### GamepadPacket
 *Type:* STRUCT
@@ -131,6 +160,7 @@ gets a gamepad device handle
 
 **Parameters**
 
+- `context` (dmHID::HContext) - context in which to find the gamepad
 - `gamepad` (dmHID::HGamepad) - Handle to gamepad
 - `out` (void**) - Platform specific user id data
 
@@ -150,6 +180,20 @@ Convenience function to retrieve the state of a gamepad button from a gamepad pa
 **Returns**
 
 - `success` (bool) - True if the button is currently pressed down.
+
+### GetGamepadDeviceGuid
+*Type:* FUNCTION
+Retrieves the guid of a given gamepad.
+
+**Parameters**
+
+- `context` (dmHID::HContext) - context in which to find the gamepad
+- `gamepad` (dmHID::HGamepad) - Handle to gamepad
+- `guid` (GamepadGuid*) - (out) the guid
+
+**Returns**
+
+- `result` (boold) - true if the gamepad had a guid
 
 ### GetGamepadHat
 *Type:* FUNCTION
@@ -493,7 +537,6 @@ Data for a single touch, e.g. finger
 **Members**
 
 - `m_TapCount` (int32_t) - Single-click, double, etc
-- `m_Phase` (Phase) - Begin, end, etc
 - `m_X` (int32_t) - Current x
 - `m_Y` (int32_t) - Current y
 - `m_ScreenX` (int32_t) - Current x, in screen space
@@ -503,3 +546,4 @@ Data for a single touch, e.g. finger
 - `m_ScreenDX` (int32_t) - Current dx, in screen space
 - `m_ScreenDY` (int32_t) - Current dy, in screen space
 - `m_Id` (int32_t) - Touch id
+- `m_Phase` (Phase) - Begin, end, etc

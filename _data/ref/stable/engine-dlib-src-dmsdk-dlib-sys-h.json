@@ -261,6 +261,46 @@
             "type": "ENUM"
         },
         {
+            "brief": "Remove directory tree structure and files within",
+            "description": "Remove directory tree structure and files within",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "Stat",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "path to file or directory",
+                    "is_optional": "False",
+                    "name": "path",
+                    "types": [
+                        "const char*"
+                    ]
+                },
+                {
+                    "doc": "pointer to dmSys::StatInfo structure",
+                    "is_optional": "False",
+                    "name": "stat",
+                    "types": [
+                        "StatInfo*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "RESULT_OK on success",
+                    "name": "result",
+                    "types": [
+                        "dmSys::Result"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "Status info for a file or directory",
             "description": "Status info for a file or directory",
             "error": "",
@@ -295,6 +335,78 @@
             "returnvalues": [],
             "tparams": [],
             "type": "STRUCT"
+        },
+        {
+            "brief": "Check if the path is a directory",
+            "description": "Check if the path is a directory",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "StatIsDir",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "pointer to dmSys::StatInfo structure",
+                    "is_optional": "False",
+                    "name": "stat",
+                    "types": [
+                        "StatInfo*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "0 if check fails, non zero otherwise",
+                    "name": "result",
+                    "types": [
+                        "int"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Check if the path is a file",
+            "description": "Check if the path is a file",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "StatIsFile",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "stat to check",
+                    "is_optional": "False",
+                    "name": "stat",
+                    "types": [
+                        ""
+                    ]
+                },
+                {
+                    "doc": "pointer to dmSys::StatInfo structure",
+                    "is_optional": "False",
+                    "name": "stat",
+                    "types": [
+                        "StatInfo*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "0 if check fails, non zero otherwise",
+                    "name": "result",
+                    "types": [
+                        "int"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
         },
         {
             "brief": "Remove file",

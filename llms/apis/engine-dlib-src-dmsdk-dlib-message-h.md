@@ -170,6 +170,70 @@ Convert a string to a URL struct
 - `-` - RESULT_OK on success
 - RESULT_MALFORMED_URL if the uri could not be parsed
 
+### Post
+*Type:* FUNCTION
+Post an message to a socket
+
+**Notes**
+
+- Message data is copied by value
+
+**Parameters**
+
+- `sender` (dmMessage::URL*) - The sender URL if the receiver wants to respond. 0x0 is accepted
+- `receiver` (dmMessage::URL*) - The receiver URL, must not be 0x0
+- `message_id` (dmhash_t) - Message id
+- `user_data1` (uintptr_t) - User data that can be used when both the sender and receiver are known
+- `user_data2` (uintptr_t) - User data that can be used when both the sender and receiver are known.
+- `descriptor` (uintptr_t) - User specified descriptor of the message data
+- `message_data` (void*) - Message data reference
+- `message_data_size` (uint32_t) - Message data size in bytes
+- `destroy_callback` (dmMessage::MessageDestroyCallback) - if set, will be called after each message dispatch
+
+**Returns**
+
+- `RESULT_OK` - if the message was posted
+
+### PostDDF
+*Type:* FUNCTION
+Post a DDF message to a socket. A helper wrapper for Post()'ing a DDF message
+
+**Notes**
+
+- Message data is copied by value
+
+**Template Parameters**
+
+- `T` - Must be a DDF type
+
+**Parameters**
+
+- `message` (T*) - Message data reference
+- `sender` (dmMessage::URL*) - The sender URL if the receiver wants to respond. 0x0 is accepted
+- `receiver` (dmMessage::URL*) - The receiver URL, must not be 0x0
+- `user_data1` (uintptr_t) - User data that can be used when both the sender and receiver are known
+- `user_data2` (uintptr_t) - User data that can be used when both the sender and receiver are known.
+- `destroy_callback` (dmMessage::MessageDestroyCallback) - if set, will be called after each message dispatch
+
+**Returns**
+
+- `RESULT_OK` - if the message was posted
+
+**Examples**
+
+```
+// dmMessage::URL sender, receiver;
+// dmGameObject::HInstance go;
+
+dmGameSystemDDF::PlayAnimation msg;
+msg.m_Id = animation_id;
+msg.m_Offset = params.m_CursorStart;
+msg.m_PlaybackRate = params.m_PlaybackRate;
+
+dmMessage::Result result = dmMessage::Post(&msg, &sender, &receiver, (uintptr_t)go, 0, 0));
+
+```
+
 ### ResetUrl
 *Type:* FUNCTION
 Resets the given URL to default values.

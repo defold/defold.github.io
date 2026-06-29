@@ -94,7 +94,7 @@
             ],
             "parameters": [
                 {
-                    "doc": "Pointer to user allocated continous data-block ((table_size<em>sizeof(uint32_t)) + (capacity</em>sizeof(dmHashTable::Entry))",
+                    "doc": "Pointer to user allocated continous data-block (see dmHashTable::GetMemorySize)",
                     "is_optional": "False",
                     "name": "user_allocated",
                     "types": [
@@ -273,6 +273,38 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "Get pointer to value from key. \"const\" version.",
+            "description": "Get pointer to value from key. \"const\" version.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "Get",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Key",
+                    "is_optional": "False",
+                    "name": "key",
+                    "types": [
+                        "KEY"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Pointer to value. NULL if the key/value pair doesn't exist.",
+                    "name": "value",
+                    "types": [
+                        "const T*"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "Get an iterator for the key/value pairs",
             "description": "Get an iterator for the key/value pairs",
             "error": "",
@@ -289,6 +321,46 @@
                     "name": "iterator",
                     "types": [
                         "dmHashTable<T>::Iterator"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Returns the number of bytes needed for user alloca...",
+            "description": "Returns the number of bytes needed for user allocated memory.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetMemorySize",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Hashtable size, ie number of buckets. table_size &lt; 0xffffffff",
+                    "is_optional": "False",
+                    "name": "table_size",
+                    "types": [
+                        "uint32_t"
+                    ]
+                },
+                {
+                    "doc": "Capacity. capacity &lt; 0xffffffff",
+                    "is_optional": "False",
+                    "name": "capacity",
+                    "types": [
+                        "uint32_t"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Number of bytes needed.",
+                    "name": "memory_size",
+                    "types": [
+                        "uint32_t"
                     ]
                 }
             ],
@@ -448,6 +520,30 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "Set hashtable capacity. New capacity must be great...",
+            "description": "Set hashtable capacity. New capacity must be greater or equal to current capacity",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "SetCapacity",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Capacity. capacity &lt; 0xffffffff",
+                    "is_optional": "False",
+                    "name": "capacity",
+                    "types": [
+                        "uint32_t"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "Number of entries stored in table. (not the actual...",
             "description": "Number of entries stored in table. (not the actual hashtable size)",
             "error": "",
@@ -489,6 +585,23 @@
                     ]
                 }
             ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Destructor.",
+            "description": "Destructor.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "~dmHashTable",
+            "notes": [
+                "If user allocated, memory is not free'd"
+            ],
+            "parameters": [],
             "replaces": "",
             "returnvalues": [],
             "tparams": [],

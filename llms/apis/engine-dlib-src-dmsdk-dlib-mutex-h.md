@@ -36,6 +36,18 @@ Deletes a HMutex.
 
 - `mutex` (dmMutex::HMutex) - Mutex handle to delete.
 
+### dmMutex::GetNativeHandle
+*Type:* FUNCTION
+Get the platform-specific native mutex handle.
+
+**Parameters**
+
+- `mutex` (dmMutex::HMutex) - Mutex handle.
+
+**Returns**
+
+- `handle` (void*) - Native mutex handle.
+
 ### dmMutex::HMutex
 *Type:* TYPEDEF
 ```

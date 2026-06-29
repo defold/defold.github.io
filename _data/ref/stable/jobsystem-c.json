@@ -196,7 +196,7 @@
             "brief": "cancel a job (and its children)",
             "description": "cancel a job (and its children)",
             "error": "",
-            "examples": "How to wait until a job has been cancelled or finished\n<div class=\"codehilite\"><pre><span></span><code><span class=\"k\">enum</span><span class=\"w\"> </span><span class=\"n\">JobSystemResult</span><span class=\"w\"> </span><span class=\"n\">jr</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"n\">JobSystemCancelJob</span><span class=\"p\">(</span><span class=\"n\">job_context</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">hjob</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"k\">while</span><span class=\"w\"> </span><span class=\"p\">(</span><span class=\"n\">JOBSYSTEM_RESULT_PENDING</span><span class=\"w\"> </span><span class=\"o\">==</span><span class=\"w\"> </span><span class=\"n\">jr</span><span class=\"p\">)</span><span class=\"w\"></span>\n<span class=\"p\">{</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"n\">dmTime</span><span class=\"o\">::</span><span class=\"n\">Sleep</span><span class=\"p\">(</span><span class=\"mi\">1000</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"n\">jr</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"n\">JobSystemCancelJob</span><span class=\"p\">(</span><span class=\"n\">job_context</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">hjob</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"p\">}</span><span class=\"w\"></span>\n</code></pre></div>",
+            "examples": "How to wait until a job has been cancelled or finished\n<div class=\"codehilite\"><pre><span></span><code><span class=\"k\">enum</span><span class=\"w\"> </span><span class=\"n\">JobSystemResult</span><span class=\"w\"> </span><span class=\"n\">jr</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"n\">JobSystemCancelJob</span><span class=\"p\">(</span><span class=\"n\">job_context</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">hjob</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"k\">while</span><span class=\"w\"> </span><span class=\"p\">(</span><span class=\"n\">JOBSYSTEM_RESULT_PENDING</span><span class=\"w\"> </span><span class=\"o\">==</span><span class=\"w\"> </span><span class=\"n\">jr</span><span class=\"p\">)</span><span class=\"w\"></span>\n<span class=\"p\">{</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"n\">dmTime</span><span class=\"o\">::</span><span class=\"n\">Sleep</span><span class=\"p\">(</span><span class=\"mi\">1000</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"n\">jr</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"n\">JobSystemCancelJob</span><span class=\"p\">(</span><span class=\"n\">job_context</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">hjob</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"p\">}</span><span class=\"w\"></span>\n<span class=\"c1\">// If the loop observed PENDING before this point, INVALID_HANDLE means the</span>\n<span class=\"c1\">// job was flushed by JobSystemUpdate() between polls.</span>\n</code></pre></div>",
             "language": "",
             "members": [],
             "name": "JobSystemCancelJob",
@@ -224,7 +224,7 @@
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "Returns JOBSYSTEM_RESULT_OK if finished, JOBSYSTEM_RESULT_CANCELED if canceled, or JOBSYSTEM_RESULT_PENDING if the job (or any child) is still in flight",
+                    "doc": "Returns JOBSYSTEM_RESULT_CANCELED if canceled, JOBSYSTEM_RESULT_PENDING if the job (or any child) is still in flight, or JOBSYSTEM_RESULT_INVALID_HANDLE if the handle is invalid",
                     "name": "result",
                     "types": [
                         "JobSystemResult"
@@ -637,6 +637,11 @@
                 },
                 {
                     "doc": "5",
+                    "name": "JOBSYSTEM_STATUS_CALLBACK",
+                    "type": ""
+                },
+                {
+                    "doc": "6",
                     "name": "JOBSYSTEM_STATUS_CANCELED",
                     "type": ""
                 }

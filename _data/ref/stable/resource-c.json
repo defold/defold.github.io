@@ -741,6 +741,38 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "Increase resource reference count by 1.",
+            "description": "Increase resource reference count by 1.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ResourceDescriptorIncRef",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Factory handle",
+                    "is_optional": "False",
+                    "name": "factory",
+                    "types": [
+                        "HResourceFactory"
+                    ]
+                },
+                {
+                    "doc": "The resource handle",
+                    "is_optional": "False",
+                    "name": "rd",
+                    "types": [
+                        "HResourceDescriptor"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "set the previous resource data",
             "description": "set the previous resource data",
             "error": "",
@@ -1466,6 +1498,38 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "Increase resource reference count by 1.",
+            "description": "Increase resource reference count by 1.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ResourceIncRef",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Factory handle",
+                    "is_optional": "False",
+                    "name": "factory",
+                    "types": [
+                        "HResourceFactory"
+                    ]
+                },
+                {
+                    "doc": "The resource",
+                    "is_optional": "False",
+                    "name": "resource",
+                    "types": [
+                        "void*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "Parameters to ResourcePostCreate function of the r...",
             "description": "Parameters to ResourcePostCreate function of the resource type",
             "error": "",
@@ -1684,6 +1748,158 @@
                     "name": "decrypt_resource",
                     "types": [
                         "dmResource::FDecryptResource"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Register a callback function that will be called w...",
+            "description": "Register a callback function that will be called with the specified user data when a resource has been reloaded.\nThe callbacks will not necessarily be called in the order they were registered.\nThis has only effect when reloading is supported.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ResourceRegisterReloadedCallback",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Handle of the factory to which the callback will be registered",
+                    "is_optional": "False",
+                    "name": "factory",
+                    "types": [
+                        "HResourceFactory"
+                    ]
+                },
+                {
+                    "doc": "Callback function to register",
+                    "is_optional": "False",
+                    "name": "callback",
+                    "types": [
+                        "FResourceReloadedCallback"
+                    ]
+                },
+                {
+                    "doc": "User data that will be supplied to the callback when it is called",
+                    "is_optional": "False",
+                    "name": "user_data",
+                    "types": [
+                        "void*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "(Internal for now)",
+            "description": "Register a resource type",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ResourceRegisterType",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Factory handle",
+                    "is_optional": "False",
+                    "name": "factory",
+                    "types": [
+                        "HResourceFactory"
+                    ]
+                },
+                {
+                    "doc": "File extension for resource (e.g. \"collectionc\")",
+                    "is_optional": "False",
+                    "name": "extension",
+                    "types": [
+                        "const char*"
+                    ]
+                },
+                {
+                    "doc": "User context for this file type",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "void*"
+                    ]
+                },
+                {
+                    "doc": "(out) resource type. Valid if function returns RESOURCE_RESULT_OK",
+                    "is_optional": "False",
+                    "name": "type",
+                    "types": [
+                        "HResourceType*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "RESOURCE_RESULT_OK on success",
+                    "name": "result",
+                    "types": [
+                        "ResourceResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Internal",
+            "description": "Resource type creator desc bytesize declaration.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ResourceRegisterTypeCreatorDesc",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Pointer to allocated area.\n                          Must be valid throughout the application life cycle.",
+                    "is_optional": "False",
+                    "name": "desc",
+                    "types": [
+                        "void*"
+                    ]
+                },
+                {
+                    "doc": "Size of desc. Must be at least ResourceTypeCreatorDescBufferSize bytes",
+                    "is_optional": "False",
+                    "name": "size",
+                    "types": [
+                        "uint32_t"
+                    ]
+                },
+                {
+                    "doc": "Name of resoruce type (e.g. \"collectionc\")",
+                    "is_optional": "False",
+                    "name": "name",
+                    "types": [
+                        "const char*"
+                    ]
+                },
+                {
+                    "doc": "Type register function. Called at each reboot",
+                    "is_optional": "False",
+                    "name": "register_fn",
+                    "types": [
+                        "FResourceTypeRegister"
+                    ]
+                },
+                {
+                    "doc": "Type deregister function. Called at each reboot",
+                    "is_optional": "False",
+                    "name": "deregister_fn",
+                    "types": [
+                        "FResourceTypeDeregister"
                     ]
                 }
             ],
@@ -2228,6 +2444,46 @@
                     "name": "fn",
                     "types": [
                         "FResourceRecreate"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Remove a registered callback function, O(n).",
+            "description": "Remove a registered callback function, O(n).",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ResourceUnregisterReloadedCallback",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Handle of the factory from which the callback will be removed",
+                    "is_optional": "False",
+                    "name": "factory",
+                    "types": [
+                        "HResourceFactory"
+                    ]
+                },
+                {
+                    "doc": "Callback function to remove",
+                    "is_optional": "False",
+                    "name": "callback",
+                    "types": [
+                        "FResourceReloadedCallback"
+                    ]
+                },
+                {
+                    "doc": "User data that was supplied when the callback was registered",
+                    "is_optional": "False",
+                    "name": "user_data",
+                    "types": [
+                        "void*"
                     ]
                 }
             ],

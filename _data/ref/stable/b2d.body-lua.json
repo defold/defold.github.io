@@ -313,6 +313,38 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "Apply a linear impulse to the center of mass.",
+            "description": "Apply a linear impulse to the center of mass.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.body.apply_linear_impulse_to_center",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "body",
+                    "is_optional": "False",
+                    "name": "body",
+                    "types": [
+                        "b2Body"
+                    ]
+                },
+                {
+                    "doc": "world impulse vector",
+                    "is_optional": "False",
+                    "name": "impulse",
+                    "types": [
+                        "vector3"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "Apply a torque. This affects the angular velocity\n...",
             "description": "Apply a torque. This affects the angular velocity\nwithout affecting the linear velocity of the center of mass.\nThis wakes up the body.",
             "error": "",
@@ -465,6 +497,261 @@
             "returnvalues": [],
             "tparams": [],
             "type": "CONSTANT"
+        },
+        {
+            "brief": "Compute the world AABB of all body shapes.",
+            "description": "Compute the world AABB of all body shapes.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.body.compute_aabb",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "body",
+                    "is_optional": "False",
+                    "name": "body",
+                    "types": [
+                        "b2Body"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "table with <code>lower</code> and <code>upper</code> vector3 fields",
+                    "name": "aabb",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Create a chain and attach its segment shapes to this body.",
+            "description": "Chains are one-sided connected segments with optional ghost vertices at\nthe ends of open chains. Ghost vertices are creation-time chain data only and\ncannot be added to arbitrary shapes, bodies, or joints after creation.\n<dl>\n<dt><code>definition.vertices</code></dt>\n<dd><span class=\"type\">table</span> array of local <code>vector3</code> vertices. Open chains require at least 2 vertices. Loop chains require at least 4 vertices.</dd>\n<dt><code>definition.loop</code></dt>\n<dd><span class=\"type\">boolean</span> true to create a closed loop chain.</dd>\n<dt><code>definition.prev_vertex</code></dt>\n<dd><span class=\"type\">vector3</span> optional ghost vertex before the first vertex for open chains.</dd>\n<dt><code>definition.next_vertex</code></dt>\n<dd><span class=\"type\">vector3</span> optional ghost vertex after the last vertex for open chains.</dd>\n<dt><code>definition.friction</code></dt>\n<dd><span class=\"type\">number</span> optional friction.</dd>\n<dt><code>definition.restitution</code></dt>\n<dd><span class=\"type\">number</span> optional restitution.</dd>\n<dt><code>definition.material</code></dt>\n<dd><span class=\"type\">number</span> optional material id.</dd>\n<dt><code>definition.filter</code></dt>\n<dd><span class=\"type\">table</span> optional filter with <code>category_bits</code>, <code>mask_bits</code>, and <code>group_index</code>.</dd>\n<dt><code>definition.enable_sensor_events</code></dt>\n<dd><span class=\"type\">boolean</span> true to enable sensor events for chain segments.</dd>\n</dl>",
+            "error": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">chain</span><span class=\"p\">,</span> <span class=\"n\">segments</span> <span class=\"o\">=</span> <span class=\"n\">b2d</span><span class=\"p\">.</span><span class=\"n\">body</span><span class=\"p\">.</span><span class=\"n\">create_chain</span><span class=\"p\">(</span><span class=\"n\">body</span><span class=\"p\">,</span> <span class=\"p\">{</span>\n    <span class=\"n\">vertices</span> <span class=\"o\">=</span> <span class=\"p\">{</span>\n        <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"o\">-</span><span class=\"mi\">64</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">),</span>\n        <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">16</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">),</span>\n        <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">64</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">),</span>\n    <span class=\"p\">},</span>\n    <span class=\"n\">prev_vertex</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"o\">-</span><span class=\"mi\">96</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">),</span>\n    <span class=\"n\">next_vertex</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">96</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">),</span>\n    <span class=\"n\">friction</span> <span class=\"o\">=</span> <span class=\"mf\">0.6</span><span class=\"p\">,</span>\n<span class=\"p\">})</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "b2d.body.create_chain",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "body",
+                    "is_optional": "False",
+                    "name": "body",
+                    "types": [
+                        "b2Body"
+                    ]
+                },
+                {
+                    "doc": "the chain definition",
+                    "is_optional": "False",
+                    "name": "definition",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "created chain handle",
+                    "name": "chain",
+                    "types": [
+                        "b2Chain"
+                    ]
+                },
+                {
+                    "doc": "array of shape info tables for the chain segments",
+                    "name": "segments",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Creates a fixture and attach it to this body. Use ...",
+            "description": "Creates a fixture and attach it to this body. Use this function if you need\nto set some fixture parameters, like friction. Otherwise you can create the\nfixture directly from a shape.\nIf the density is non-zero, this function automatically updates the mass of the body.\nContacts are not created until the next time step.",
+            "error": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">body</span> <span class=\"o\">=</span> <span class=\"n\">b2d</span><span class=\"p\">.</span><span class=\"n\">get_body</span><span class=\"p\">(</span><span class=\"s2\">&quot;#collisionobject&quot;</span><span class=\"p\">)</span>\n\n<span class=\"kd\">local</span> <span class=\"n\">triangle</span> <span class=\"o\">=</span> <span class=\"n\">b2d</span><span class=\"p\">.</span><span class=\"n\">body</span><span class=\"p\">.</span><span class=\"n\">create_fixture</span><span class=\"p\">(</span><span class=\"n\">body</span><span class=\"p\">,</span> <span class=\"p\">{</span>\n    <span class=\"n\">density</span> <span class=\"o\">=</span> <span class=\"mf\">1.0</span><span class=\"p\">,</span>\n    <span class=\"n\">friction</span> <span class=\"o\">=</span> <span class=\"mf\">0.3</span><span class=\"p\">,</span>\n    <span class=\"n\">shape</span> <span class=\"o\">=</span> <span class=\"p\">{</span>\n        <span class=\"nb\">type</span> <span class=\"o\">=</span> <span class=\"n\">b2d</span><span class=\"p\">.</span><span class=\"n\">shape</span><span class=\"p\">.</span><span class=\"n\">SHAPE_TYPE_POLYGON</span><span class=\"p\">,</span>\n        <span class=\"n\">vertices</span> <span class=\"o\">=</span> <span class=\"p\">{</span>\n            <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"o\">-</span><span class=\"mi\">16</span><span class=\"p\">,</span> <span class=\"o\">-</span><span class=\"mi\">16</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">),</span>\n            <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span> <span class=\"mi\">16</span><span class=\"p\">,</span> <span class=\"o\">-</span><span class=\"mi\">16</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">),</span>\n            <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span>  <span class=\"mi\">0</span><span class=\"p\">,</span>  <span class=\"mi\">16</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">),</span>\n        <span class=\"p\">},</span>\n    <span class=\"p\">},</span>\n<span class=\"p\">})</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "b2d.body.create_fixture",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "body",
+                    "is_optional": "False",
+                    "name": "body",
+                    "types": [
+                        "b2Body"
+                    ]
+                },
+                {
+                    "doc": "fixture definition table with:\n<code>shape</code> = shape table, <code>friction</code> = number, <code>restitution</code> = number,\n<code>density</code> = number, <code>sensor</code> = boolean, and optional <code>filter</code> table.\nSupported shape tables are:\n<code>circle</code> = <code>{ type = b2d.shape.SHAPE_TYPE_CIRCLE, radius = number, center = vector3_or_nil }</code>\n<code>edge</code> = <code>{ type = b2d.shape.SHAPE_TYPE_EDGE, v1 = vector3, v2 = vector3, v0 = vector3_or_nil, v3 = vector3_or_nil }</code>\n<code>polygon</code> = <code>{ type = b2d.shape.SHAPE_TYPE_POLYGON, vertices = { vector3, ... } }</code>\n<code>box</code> = <code>{ type = b2d.shape.SHAPE_TYPE_BOX, hx = number, hy = number, center = vector3_or_nil, angle = radians_or_nil }</code>\n<code>chain</code> = <code>{ type = b2d.shape.SHAPE_TYPE_CHAIN, vertices = { vector3, ... }, loop = boolean_or_nil, prev_vertex = vector3_or_nil, next_vertex = vector3_or_nil }</code>",
+                    "is_optional": "False",
+                    "name": "definition",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "fixture info table with <code>index</code>, <code>type</code>, <code>sensor</code>, <code>density</code>, <code>friction</code>, <code>restitution</code>, and <code>child_count</code>",
+                    "name": "fixture",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Creates a fixture from a shape and attach it to th...",
+            "description": "Creates a fixture from a shape and attach it to this body.\nThis is a convenience function. Use b2FixtureDef if you need to set parameters\nlike friction, restitution, user data, or filtering.\nIf the density is non-zero, this function automatically updates the mass of the body.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.body.create_fixture",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "body",
+                    "is_optional": "False",
+                    "name": "body",
+                    "types": [
+                        "b2Body"
+                    ]
+                },
+                {
+                    "doc": "the shape to be cloned.",
+                    "is_optional": "False",
+                    "name": "shape",
+                    "types": [
+                        "b2Shape"
+                    ]
+                },
+                {
+                    "doc": "the shape density (set to zero for static bodies).",
+                    "is_optional": "False",
+                    "name": "density",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Creates a shape and attaches it to this body",
+            "description": "Creates a shape and attaches it to this body.\nIf the density is non-zero, this function automatically updates the mass of the body.\nContacts are not created until the next time step.\nThe definition may include <code>density</code>, <code>friction</code>, <code>restitution</code>, <code>material</code>,\n<code>sensor</code> or <code>is_sensor</code>, <code>filter</code>, and the shape table itself. The shape table\ncan be in <code>definition.shape</code> or directly in <code>definition</code>.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.body.create_shape",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "body",
+                    "is_optional": "False",
+                    "name": "body",
+                    "types": [
+                        "b2Body"
+                    ]
+                },
+                {
+                    "doc": "the shape definition.",
+                    "is_optional": "False",
+                    "name": "definition",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Destroy a fixture from a body.",
+            "description": "Destroy a fixture from a body.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.body.destroy_fixture",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "body",
+                    "is_optional": "False",
+                    "name": "body",
+                    "types": [
+                        "b2Body"
+                    ]
+                },
+                {
+                    "doc": "1-based fixture index from <code>b2d.body.get_fixtures</code>",
+                    "is_optional": "False",
+                    "name": "fixture_index",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Destroy a shape. This removes the shape from the b...",
+            "description": "Destroy a shape. This removes the shape from the broad-phase and\ndestroys all contacts associated with this shape. This will\nautomatically adjust the mass of the body if the body is dynamic and the\nshape has positive density.\nAll shapes attached to a body are implicitly destroyed when the body is destroyed.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.body.destroy_shape",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "body",
+                    "is_optional": "False",
+                    "name": "body",
+                    "types": [
+                        "b2Body"
+                    ]
+                },
+                {
+                    "doc": "1-based shape index from <code>b2d.body.get_shapes</code>",
+                    "is_optional": "False",
+                    "name": "shape_index",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
         },
         {
             "brief": "Print the body representation to the log output",
@@ -482,6 +769,70 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Enable or disable contact events on all body shapes.",
+            "description": "Enable or disable contact events on all body shapes.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.body.enable_contact_events",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "body",
+                    "is_optional": "False",
+                    "name": "body",
+                    "types": [
+                        "b2Body"
+                    ]
+                },
+                {
+                    "doc": "true to enable contact events",
+                    "is_optional": "False",
+                    "name": "enable",
+                    "types": [
+                        "boolean"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Enable or disable hit events on all body shapes.",
+            "description": "Enable or disable hit events on all body shapes.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.body.enable_hit_events",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "body",
+                    "is_optional": "False",
+                    "name": "body",
+                    "types": [
+                        "b2Body"
+                    ]
+                },
+                {
+                    "doc": "true to enable hit events",
+                    "is_optional": "False",
+                    "name": "enable",
+                    "types": [
+                        "boolean"
                     ]
                 }
             ],
@@ -683,6 +1034,202 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "Get touching contact data for a body.",
+            "description": "Get touching contact data for a body.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.body.get_contact_data",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "body",
+                    "is_optional": "False",
+                    "name": "body",
+                    "types": [
+                        "b2Body"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "array of contact tables",
+                    "name": "contacts",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get the list of all contacts attached to this body.",
+            "description": "Get the list of all contacts attached to this body.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.body.get_contact_list",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "body",
+                    "is_optional": "False",
+                    "name": "body",
+                    "types": [
+                        "b2Body"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "the first edge",
+                    "name": "edge",
+                    "types": [
+                        "b2ContactEdge"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get the list of all contacts attached to this body.",
+            "description": "Get the list of all contacts attached to this body.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.body.get_contact_list",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "body",
+                    "is_optional": "False",
+                    "name": "body",
+                    "types": [
+                        "b2Body"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "the first edge",
+                    "name": "edge",
+                    "types": [
+                        "b2ContactEdge"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get the fixtures attached to this body.",
+            "description": "Get the fixtures attached to this body.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.body.get_fixtures",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "body",
+                    "is_optional": "False",
+                    "name": "body",
+                    "types": [
+                        "b2Body"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "array of fixture info tables with <code>index</code>, <code>type</code>, <code>sensor</code>, <code>density</code>, <code>friction</code>, <code>restitution</code>, and <code>child_count</code>",
+                    "name": "fixtures",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get the total force currently applied on this object",
+            "description": "Get the total force currently applied on this object",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.body.get_force",
+            "notes": [
+                "Defold Specific"
+            ],
+            "parameters": [
+                {
+                    "doc": "body",
+                    "is_optional": "False",
+                    "name": "body",
+                    "types": [
+                        "b2Body"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "force",
+                    "types": [
+                        "vector3"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get the total force currently applied on this object",
+            "description": "Get the total force currently applied on this object",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.body.get_force",
+            "notes": [
+                "Defold Specific"
+            ],
+            "parameters": [
+                {
+                    "doc": "body",
+                    "is_optional": "False",
+                    "name": "body",
+                    "types": [
+                        "b2Body"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "force",
+                    "types": [
+                        "vector3"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "Get the gravity scale of the body.",
             "description": "Get the gravity scale of the body.",
             "error": "",
@@ -772,6 +1319,70 @@
                     "name": "inertia",
                     "types": [
                         "number"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get the joints attached to this body.",
+            "description": "Get the joints attached to this body.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.body.get_joints",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "body",
+                    "is_optional": "False",
+                    "name": "body",
+                    "types": [
+                        "b2Body"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "array of <code>b2Joint</code> handles created by <code>b2d.joint</code>",
+                    "name": "joints",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get the joints attached to this body.",
+            "description": "Get the joints attached to this body.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.body.get_joints",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "body",
+                    "is_optional": "False",
+                    "name": "body",
+                    "types": [
+                        "b2Body"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "array of <code>b2Joint</code> handles created by <code>b2d.joint</code>",
+                    "name": "joints",
+                    "types": [
+                        "table"
                     ]
                 }
             ],
@@ -1355,6 +1966,102 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "Get the mass data of the body.",
+            "description": "Get the mass data of the body.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.body.get_mass_data",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "body",
+                    "is_optional": "False",
+                    "name": "body",
+                    "types": [
+                        "b2Body"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "table with <code>mass</code>, <code>center</code> in local coordinates, and <code>inertia</code>.",
+                    "name": "data",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get the mass data of the body.",
+            "description": "Get the mass data of the body.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.body.get_mass_data",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "body",
+                    "is_optional": "False",
+                    "name": "body",
+                    "types": [
+                        "b2Body"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "a struct containing the mass, inertia and center of the body.",
+                    "name": "data",
+                    "types": [
+                        "b2MassData"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get the body name.",
+            "description": "Get the body name.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.body.get_name",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "body",
+                    "is_optional": "False",
+                    "name": "body",
+                    "types": [
+                        "b2Body"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "body name, or nil if no name is set",
+                    "name": "name",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "Get the next body in the world's body list.",
             "description": "Get the next body in the world's body list.",
             "error": "",
@@ -1483,6 +2190,134 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "Get the list of all shapes attached to this body.",
+            "description": "Get the list of all shapes attached to this body.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.body.get_shapes",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "body",
+                    "is_optional": "False",
+                    "name": "body",
+                    "types": [
+                        "b2Body"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "a table of shape info entries. Each entry includes <code>shape_id</code> for use with <code>b2d.shape</code> functions.",
+                    "name": "shapes",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get the sleep velocity threshold.",
+            "description": "Get the sleep velocity threshold.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.body.get_sleep_threshold",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "body",
+                    "is_optional": "False",
+                    "name": "body",
+                    "types": [
+                        "b2Body"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "velocity threshold in Defold units per second",
+                    "name": "threshold",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get the body transform for the body's origin.",
+            "description": "Get the body transform for the body's origin.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.body.get_transform",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "body",
+                    "is_optional": "False",
+                    "name": "body",
+                    "types": [
+                        "b2Body"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "table with <code>position</code> and <code>angle</code> in radians.",
+                    "name": "transform",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get the body transform for the body's origin.",
+            "description": "Get the body transform for the body's origin.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.body.get_transform",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "body",
+                    "is_optional": "False",
+                    "name": "body",
+                    "types": [
+                        "b2Body"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "the world position of the body's origin.",
+                    "name": "transform",
+                    "types": [
+                        "b2Transform"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "Get the type of this body.",
             "description": "Get the type of this body.",
             "error": "",
@@ -1540,6 +2375,38 @@
                     "name": "type",
                     "types": [
                         "b2BodyType"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get the user data pointer that was provided in the body definition.",
+            "description": "Get the user data pointer that was provided in the body definition.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.body.get_user_data",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "body",
+                    "is_optional": "False",
+                    "name": "body",
+                    "types": [
+                        "b2Body"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "the game object id this body is connected to",
+                    "name": "id",
+                    "types": [
+                        "hash"
                     ]
                 }
             ],
@@ -2187,6 +3054,38 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "Validate a body handle.",
+            "description": "Validate a body handle.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.body.is_valid",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "body",
+                    "is_optional": "False",
+                    "name": "body",
+                    "types": [
+                        "b2Body"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "true if the body handle still refers to a live Box2D body",
+                    "name": "valid",
+                    "types": [
+                        "boolean"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "This resets the mass properties to the sum of the ...",
             "description": "This resets the mass properties to the sum of the mass properties of the fixtures.\nThis normally does not need to be called unless you called SetMassData to override",
             "error": "",
@@ -2212,7 +3111,7 @@
         },
         {
             "brief": "This resets the mass properties to the sum of the ...",
-            "description": "This resets the mass properties to the sum of the mass properties of the fixtures.\nThis normally does not need to be called unless you called SetMassData to override",
+            "description": "This resets the mass properties to the sum of the mass properties of the shapes.\nThis normally does not need to be called unless you called SetMassData to override",
             "error": "",
             "examples": "",
             "language": "",
@@ -2268,7 +3167,7 @@
         },
         {
             "brief": "Set the active state of the body",
-            "description": "Set the active state of the body. An inactive body is not\nsimulated and cannot be collided with or woken up.\nIf you pass a flag of true, all fixtures will be added to the\nbroad-phase.\nIf you pass a flag of false, all fixtures will be removed from\nthe broad-phase and all contacts will be destroyed.\nFixtures and joints are otherwise unaffected. You may continue\nto create/destroy fixtures and joints on inactive bodies.\nFixtures on an inactive body are implicitly inactive and will\nnot participate in collisions, ray-casts, or queries.\nJoints connected to an inactive body are implicitly inactive.\nAn inactive body is still owned by a b2World object and remains\nin the body list.",
+            "description": "Set the active state of the body. An inactive body is not\nsimulated and cannot be collided with or woken up.\nIf you pass a flag of true, all shapes will be added to the\nbroad-phase.\nIf you pass a flag of false, all shapes will be removed from\nthe broad-phase and all contacts will be destroyed.\nShapes and joints are otherwise unaffected. You may continue\nto create/destroy shapes and joints on inactive bodies.\nShapes on an inactive body are implicitly inactive and will\nnot participate in collisions, ray-casts, or queries.\nJoints connected to an inactive body are implicitly inactive.\nAn inactive body is still owned by a b2World object and remains\nin the body list.",
             "error": "",
             "examples": "",
             "language": "",
@@ -2802,6 +3701,142 @@
                     "name": "velocity",
                     "types": [
                         "vector3"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Set the mass properties to override the mass prope...",
+            "description": "Set the mass properties to override the mass properties of the fixtures.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.body.set_mass_data",
+            "notes": [
+                "This function has no effect if the body isn't dynamic.",
+                "This changes the center of mass position.",
+                "Creating or destroying fixtures can also alter the mass."
+            ],
+            "parameters": [
+                {
+                    "doc": "body",
+                    "is_optional": "False",
+                    "name": "body",
+                    "types": [
+                        "b2Body"
+                    ]
+                },
+                {
+                    "doc": "table with <code>mass</code>, <code>center</code> in local coordinates, and <code>inertia</code>.",
+                    "is_optional": "False",
+                    "name": "data",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Set the mass properties to override the mass prope...",
+            "description": "Set the mass properties to override the mass properties of the shapes.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.body.set_mass_data",
+            "notes": [
+                "This function has no effect if the body isn't dynamic.",
+                "This changes the center of mass position.",
+                "Creating or destroying shapes can also alter the mass."
+            ],
+            "parameters": [
+                {
+                    "doc": "body",
+                    "is_optional": "False",
+                    "name": "body",
+                    "types": [
+                        "b2Body"
+                    ]
+                },
+                {
+                    "doc": "the mass properties.",
+                    "is_optional": "False",
+                    "name": "data",
+                    "types": [
+                        "b2MassData"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Set the body name.",
+            "description": "Set the body name.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.body.set_name",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "body",
+                    "is_optional": "False",
+                    "name": "body",
+                    "types": [
+                        "b2Body"
+                    ]
+                },
+                {
+                    "doc": "body name",
+                    "is_optional": "False",
+                    "name": "name",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Set the sleep velocity threshold.",
+            "description": "Set the sleep velocity threshold.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.body.set_sleep_threshold",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "body",
+                    "is_optional": "False",
+                    "name": "body",
+                    "types": [
+                        "b2Body"
+                    ]
+                },
+                {
+                    "doc": "velocity threshold in Defold units per second",
+                    "is_optional": "False",
+                    "name": "threshold",
+                    "types": [
+                        "number"
                     ]
                 }
             ],
@@ -2843,6 +3878,54 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "Set velocity to reach a target transform.",
+            "description": "Set velocity to reach a target transform.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.body.set_target_transform",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "body",
+                    "is_optional": "False",
+                    "name": "body",
+                    "types": [
+                        "b2Body"
+                    ]
+                },
+                {
+                    "doc": "target world position",
+                    "is_optional": "False",
+                    "name": "position",
+                    "types": [
+                        "vector3"
+                    ]
+                },
+                {
+                    "doc": "target world angle in radians",
+                    "is_optional": "False",
+                    "name": "angle",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "time step used to compute velocity",
+                    "is_optional": "False",
+                    "name": "time_step",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "Set the position of the body's origin and rotation",
             "description": "Set the position of the body's origin and rotation.\nThis breaks any contacts and wakes the other bodies.\nManipulating a body's transform may cause non-physical behavior.",
             "error": "",
@@ -2978,6 +4061,38 @@
                     "name": "type",
                     "types": [
                         "b2BodyType"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Set the user data. Use this to store your application specific data.",
+            "description": "Set the user data. Use this to store your application specific data.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.body.set_user_data",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "body",
+                    "is_optional": "False",
+                    "name": "body",
+                    "types": [
+                        "b2Body"
+                    ]
+                },
+                {
+                    "doc": "the game object id",
+                    "is_optional": "False",
+                    "name": "id",
+                    "types": [
+                        "hash"
                     ]
                 }
             ],
@@ -3016,11 +4131,11 @@
         "brief": "Box2D b2Body documentation",
         "description": "Functions for interacting with Box2D bodies.",
         "description_html": "<p>Functions for interacting with Box2D bodies.</p>",
-        "file": "script_box2d_body.cpp",
+        "file": "script_box2d_body_v2.cpp",
         "name": "b2d.body",
         "namespace": "b2d.body",
         "notes": [],
-        "path": "engine/gamesys/src/gamesys/scripts/box2d/script_box2d_body.cpp",
+        "path": "engine/gamesys/src/gamesys/scripts/box2d/v2/script_box2d_body_v2.cpp",
         "type": "Defold Lua"
     }
 }

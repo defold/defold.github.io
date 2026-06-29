@@ -1,0 +1,964 @@
+{
+    "elements": [
+        {
+            "brief": "Check if contact events are enabled for a shape.",
+            "description": "Check if contact events are enabled for a shape.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.shape.are_contact_events_enabled",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "shape handle from a shape info table, or pass <code>body, shape_index</code>",
+                    "is_optional": "False",
+                    "name": "shape_id",
+                    "types": [
+                        "b2Shape"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "true if contact events are enabled",
+                    "name": "enabled",
+                    "types": [
+                        "boolean"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Check if hit events are enabled for a shape.",
+            "description": "Check if hit events are enabled for a shape.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.shape.are_hit_events_enabled",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "shape handle from a shape info table, or pass <code>body, shape_index</code>",
+                    "is_optional": "False",
+                    "name": "shape_id",
+                    "types": [
+                        "b2Shape"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "true if hit events are enabled",
+                    "name": "enabled",
+                    "types": [
+                        "boolean"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Check if pre-solve events are enabled for a shape.",
+            "description": "Check if pre-solve events are enabled for a shape.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.shape.are_pre_solve_events_enabled",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "shape handle from a shape info table, or pass <code>body, shape_index</code>",
+                    "is_optional": "False",
+                    "name": "shape_id",
+                    "types": [
+                        "b2Shape"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "true if pre-solve events are enabled",
+                    "name": "enabled",
+                    "types": [
+                        "boolean"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Check if sensor events are enabled for a shape.",
+            "description": "Check if sensor events are enabled for a shape.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.shape.are_sensor_events_enabled",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "shape handle from a shape info table, or pass <code>body, shape_index</code>",
+                    "is_optional": "False",
+                    "name": "shape_id",
+                    "types": [
+                        "b2Shape"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "true if sensor events are enabled",
+                    "name": "enabled",
+                    "types": [
+                        "boolean"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Enable or disable contact events for a shape.",
+            "description": "Enable or disable contact events for a shape.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.shape.enable_contact_events",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "shape handle from a shape info table, or pass <code>body, shape_index</code>",
+                    "is_optional": "False",
+                    "name": "shape_id",
+                    "types": [
+                        "b2Shape"
+                    ]
+                },
+                {
+                    "doc": "true to enable contact events",
+                    "is_optional": "False",
+                    "name": "enable",
+                    "types": [
+                        "boolean"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Enable or disable hit events for a shape.",
+            "description": "Enable or disable hit events for a shape.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.shape.enable_hit_events",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "shape handle from a shape info table, or pass <code>body, shape_index</code>",
+                    "is_optional": "False",
+                    "name": "shape_id",
+                    "types": [
+                        "b2Shape"
+                    ]
+                },
+                {
+                    "doc": "true to enable hit events",
+                    "is_optional": "False",
+                    "name": "enable",
+                    "types": [
+                        "boolean"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Enable or disable pre-solve events for a shape.",
+            "description": "Enable or disable pre-solve events for a shape.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.shape.enable_pre_solve_events",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "shape handle from a shape info table, or pass <code>body, shape_index</code>",
+                    "is_optional": "False",
+                    "name": "shape_id",
+                    "types": [
+                        "b2Shape"
+                    ]
+                },
+                {
+                    "doc": "true to enable pre-solve events",
+                    "is_optional": "False",
+                    "name": "enable",
+                    "types": [
+                        "boolean"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Enable or disable sensor events for a shape.",
+            "description": "Enable or disable sensor events for a shape.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.shape.enable_sensor_events",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "shape handle from a shape info table, or pass <code>body, shape_index</code>",
+                    "is_optional": "False",
+                    "name": "shape_id",
+                    "types": [
+                        "b2Shape"
+                    ]
+                },
+                {
+                    "doc": "true to enable sensor events",
+                    "is_optional": "False",
+                    "name": "enable",
+                    "types": [
+                        "boolean"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get the body owning a shape.",
+            "description": "Get the body owning a shape.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.shape.get_body",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "shape handle from a shape info table, or pass <code>body, shape_index</code>",
+                    "is_optional": "False",
+                    "name": "shape_id",
+                    "types": [
+                        "b2Shape"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "owning body",
+                    "name": "body",
+                    "types": [
+                        "b2Body"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get the closest point on a shape.",
+            "description": "Get the closest point on a shape.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.shape.get_closest_point",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "shape handle from a shape info table, or pass <code>body, shape_index</code>",
+                    "is_optional": "False",
+                    "name": "shape_id",
+                    "types": [
+                        "b2Shape"
+                    ]
+                },
+                {
+                    "doc": "world target point",
+                    "is_optional": "False",
+                    "name": "target",
+                    "types": [
+                        "vector3"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "closest world point on the shape",
+                    "name": "point",
+                    "types": [
+                        "vector3"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get shape contact capacity.",
+            "description": "Get shape contact capacity.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.shape.get_contact_capacity",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "shape handle from a shape info table, or pass <code>body, shape_index</code>",
+                    "is_optional": "False",
+                    "name": "shape_id",
+                    "types": [
+                        "b2Shape"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "maximum contact data count",
+                    "name": "capacity",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get touching contact data for a shape.",
+            "description": "Get touching contact data for a shape.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.shape.get_contact_data",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "shape handle from a shape info table, or pass <code>body, shape_index</code>",
+                    "is_optional": "False",
+                    "name": "shape_id",
+                    "types": [
+                        "b2Shape"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "array of contact tables",
+                    "name": "contacts",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get mass data for a shape.",
+            "description": "Get mass data for a shape.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.shape.get_mass_data",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "shape handle from a shape info table, or pass <code>body, shape_index</code>",
+                    "is_optional": "False",
+                    "name": "shape_id",
+                    "types": [
+                        "b2Shape"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "table with <code>mass</code>, <code>center</code>, and <code>inertia</code>",
+                    "name": "data",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get shape material id.",
+            "description": "Get shape material id.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.shape.get_material",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "shape handle from a shape info table, or pass <code>body, shape_index</code>",
+                    "is_optional": "False",
+                    "name": "shape_id",
+                    "types": [
+                        "b2Shape"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "shape material id",
+                    "name": "material",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get sensor overlap capacity.",
+            "description": "Get sensor overlap capacity.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.shape.get_sensor_capacity",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "shape handle from a shape info table, or pass <code>body, shape_index</code>",
+                    "is_optional": "False",
+                    "name": "shape_id",
+                    "types": [
+                        "b2Shape"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "maximum sensor overlap count",
+                    "name": "capacity",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get sensor overlaps.",
+            "description": "Get sensor overlaps.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.shape.get_sensor_overlaps",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "shape handle from a shape info table, or pass <code>body, shape_index</code>",
+                    "is_optional": "False",
+                    "name": "shape_id",
+                    "types": [
+                        "b2Shape"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "array of shape info tables",
+                    "name": "overlaps",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get a shape's geometry.",
+            "description": "Get a shape's geometry.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.shape.get_shape",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "shape handle from a shape info table, or pass <code>body, shape_index</code>",
+                    "is_optional": "False",
+                    "name": "shape_id",
+                    "types": [
+                        "b2Shape"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "shape table with numeric <code>type</code> from <code>b2d.shape.SHAPE_TYPE_*</code>",
+                    "name": "shape",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get the world owning a shape.",
+            "description": "Get the world owning a shape.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.shape.get_world",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "shape handle from a shape info table, or pass <code>body, shape_index</code>",
+                    "is_optional": "False",
+                    "name": "shape_id",
+                    "types": [
+                        "b2Shape"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "owning world",
+                    "name": "world",
+                    "types": [
+                        "b2World"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Validate a shape handle.",
+            "description": "Validate a shape handle.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.shape.is_valid",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "shape handle from a shape info table, or pass <code>body, shape_index</code>",
+                    "is_optional": "False",
+                    "name": "shape_id",
+                    "types": [
+                        "b2Shape"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "true if the shape handle still refers to a live Box2D shape",
+                    "name": "valid",
+                    "types": [
+                        "boolean"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Ray cast a shape directly.",
+            "description": "Ray cast a shape directly.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.shape.ray_cast",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "shape handle from a shape info table, or pass <code>body, shape_index</code>",
+                    "is_optional": "False",
+                    "name": "shape_id",
+                    "types": [
+                        "b2Shape"
+                    ]
+                },
+                {
+                    "doc": "world ray origin",
+                    "is_optional": "False",
+                    "name": "origin",
+                    "types": [
+                        "vector3"
+                    ]
+                },
+                {
+                    "doc": "world ray translation",
+                    "is_optional": "False",
+                    "name": "translation",
+                    "types": [
+                        "vector3"
+                    ]
+                },
+                {
+                    "doc": "optional maximum translation fraction, defaults to 1",
+                    "is_optional": "False",
+                    "name": "max_fraction",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "hit table with <code>point</code>, <code>normal</code>, <code>fraction</code>, and <code>iterations</code>, or nil",
+                    "name": "hit",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Set shape material id.",
+            "description": "Set shape material id.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.shape.set_material",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "shape handle from a shape info table, or pass <code>body, shape_index</code>",
+                    "is_optional": "False",
+                    "name": "shape_id",
+                    "types": [
+                        "b2Shape"
+                    ]
+                },
+                {
+                    "doc": "shape material id",
+                    "is_optional": "False",
+                    "name": "material",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Set a shape's geometry.",
+            "description": "This updates the shape geometry using the same table format as\n<code>b2d.body.create_shape</code> and <code>b2d.shape.get_shape</code>. The body mass is not\nupdated unless <code>update_mass</code> is true.",
+            "error": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">body</span> <span class=\"o\">=</span> <span class=\"n\">b2d</span><span class=\"p\">.</span><span class=\"n\">get_body</span><span class=\"p\">(</span><span class=\"s2\">&quot;#collisionobject&quot;</span><span class=\"p\">)</span>\n\n<span class=\"c1\">-- Move a circle shape relative to the body origin.</span>\n<span class=\"kd\">local</span> <span class=\"n\">circle</span> <span class=\"o\">=</span> <span class=\"n\">b2d</span><span class=\"p\">.</span><span class=\"n\">shape</span><span class=\"p\">.</span><span class=\"n\">get_shape</span><span class=\"p\">(</span><span class=\"n\">body</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">)</span>\n<span class=\"n\">circle</span><span class=\"p\">.</span><span class=\"n\">center</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">24</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n<span class=\"n\">b2d</span><span class=\"p\">.</span><span class=\"n\">shape</span><span class=\"p\">.</span><span class=\"n\">set_shape</span><span class=\"p\">(</span><span class=\"n\">body</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"n\">circle</span><span class=\"p\">,</span> <span class=\"kc\">true</span><span class=\"p\">)</span>\n\n<span class=\"c1\">-- Replace a segment shape&#39;s local endpoints.</span>\n<span class=\"n\">b2d</span><span class=\"p\">.</span><span class=\"n\">shape</span><span class=\"p\">.</span><span class=\"n\">set_shape</span><span class=\"p\">(</span><span class=\"n\">body</span><span class=\"p\">,</span> <span class=\"mi\">2</span><span class=\"p\">,</span> <span class=\"p\">{</span>\n    <span class=\"nb\">type</span> <span class=\"o\">=</span> <span class=\"n\">b2d</span><span class=\"p\">.</span><span class=\"n\">shape</span><span class=\"p\">.</span><span class=\"n\">SHAPE_TYPE_SEGMENT</span><span class=\"p\">,</span>\n    <span class=\"n\">v1</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"o\">-</span><span class=\"mi\">32</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">),</span>\n    <span class=\"n\">v2</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span> <span class=\"mi\">32</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">),</span>\n<span class=\"p\">})</span>\n\n<span class=\"c1\">-- Update a box shape using the polygon box convenience format.</span>\n<span class=\"n\">b2d</span><span class=\"p\">.</span><span class=\"n\">shape</span><span class=\"p\">.</span><span class=\"n\">set_shape</span><span class=\"p\">(</span><span class=\"n\">body</span><span class=\"p\">,</span> <span class=\"mi\">3</span><span class=\"p\">,</span> <span class=\"p\">{</span>\n    <span class=\"nb\">type</span> <span class=\"o\">=</span> <span class=\"n\">b2d</span><span class=\"p\">.</span><span class=\"n\">shape</span><span class=\"p\">.</span><span class=\"n\">SHAPE_TYPE_BOX</span><span class=\"p\">,</span>\n    <span class=\"n\">hx</span> <span class=\"o\">=</span> <span class=\"mi\">16</span><span class=\"p\">,</span>\n    <span class=\"n\">hy</span> <span class=\"o\">=</span> <span class=\"mi\">8</span><span class=\"p\">,</span>\n    <span class=\"n\">center</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">20</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">),</span>\n    <span class=\"n\">angle</span> <span class=\"o\">=</span> <span class=\"nb\">math.rad</span><span class=\"p\">(</span><span class=\"mi\">30</span><span class=\"p\">),</span>\n<span class=\"p\">},</span> <span class=\"kc\">true</span><span class=\"p\">)</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "b2d.shape.set_shape",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "shape handle from a shape info table, or pass <code>body, shape_index</code>",
+                    "is_optional": "False",
+                    "name": "shape_id",
+                    "types": [
+                        "b2Shape"
+                    ]
+                },
+                {
+                    "doc": "shape table with numeric <code>type</code> from <code>b2d.shape.SHAPE_TYPE_*</code>",
+                    "is_optional": "False",
+                    "name": "definition",
+                    "types": [
+                        "table"
+                    ]
+                },
+                {
+                    "doc": "true to reset body mass from shapes",
+                    "is_optional": "False",
+                    "name": "update_mass",
+                    "types": [
+                        "boolean"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Box shape type alias.",
+            "description": "Uses the polygon enum value, but indicates the <code>hx</code>/<code>hy</code> box convenience format.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.shape.SHAPE_TYPE_BOX",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "CONSTANT"
+        },
+        {
+            "brief": "Box shape type alias.",
+            "description": "Uses the polygon enum value, but indicates the <code>hx</code>/<code>hy</code> box convenience format.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.shape.SHAPE_TYPE_BOX",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "CONSTANT"
+        },
+        {
+            "brief": "Capsule shape type.",
+            "description": "Capsule shape type.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.shape.SHAPE_TYPE_CAPSULE",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "CONSTANT"
+        },
+        {
+            "brief": "Chain shape type.",
+            "description": "Chain shape type.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.shape.SHAPE_TYPE_CHAIN",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "CONSTANT"
+        },
+        {
+            "brief": "Circle shape type.",
+            "description": "Circle shape type.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.shape.SHAPE_TYPE_CIRCLE",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "CONSTANT"
+        },
+        {
+            "brief": "Circle shape type.",
+            "description": "Circle shape type.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.shape.SHAPE_TYPE_CIRCLE",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "CONSTANT"
+        },
+        {
+            "brief": "Edge shape type.",
+            "description": "Edge shape type.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.shape.SHAPE_TYPE_EDGE",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "CONSTANT"
+        },
+        {
+            "brief": "Edge shape type alias.",
+            "description": "Compatibility alias for <code>b2d.shape.SHAPE_TYPE_SEGMENT</code>.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.shape.SHAPE_TYPE_EDGE",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "CONSTANT"
+        },
+        {
+            "brief": "Grid shape type.",
+            "description": "Grid shape type.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.shape.SHAPE_TYPE_GRID",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "CONSTANT"
+        },
+        {
+            "brief": "Polygon shape type.",
+            "description": "Polygon shape type.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.shape.SHAPE_TYPE_POLYGON",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "CONSTANT"
+        },
+        {
+            "brief": "Polygon shape type.",
+            "description": "Polygon shape type.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.shape.SHAPE_TYPE_POLYGON",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "CONSTANT"
+        },
+        {
+            "brief": "Segment shape type.",
+            "description": "Segment shape type.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.shape.SHAPE_TYPE_SEGMENT",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "CONSTANT"
+        },
+        {
+            "brief": "Box2D shape",
+            "description": "Box2D shape",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2Shape",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "value",
+                    "types": [
+                        "userdata"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "TYPEDEF"
+        }
+    ],
+    "info": {
+        "api_language": "Lua",
+        "brief": "Box2D b2Shape documentation",
+        "description": "Constants for functional shape tables used with `b2d.body.create_fixture`\nand returned from `b2d.fixture.get_shape`.",
+        "description_html": "<p>Constants for functional shape tables used with <code>b2d.body.create_fixture</code>\nand returned from <code>b2d.fixture.get_shape</code>.</p>",
+        "file": "script_box2d_shape_v2.cpp",
+        "name": "b2d.shape",
+        "namespace": "b2d.shape",
+        "notes": [],
+        "path": "engine/gamesys/src/gamesys/scripts/box2d/v2/script_box2d_shape_v2.cpp",
+        "type": "Defold Lua"
+    }
+}

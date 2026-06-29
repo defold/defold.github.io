@@ -55,21 +55,6 @@ end
 
 ```
 
-### material
-*Type:* PROPERTY
-The material used when rendering the model. The type of the property is hash.
-
-**Examples**
-
-How to set material using a script property (see resource.material):
-```
-go.property("my_material", resource.material("/material.material"))
-function init(self)
-  go.set("#model", "material", self.my_material)
-end
-
-```
-
 ### model.cancel
 *Type:* FUNCTION
 Cancels all animation on a model component.
@@ -96,6 +81,33 @@ AABB information return as a table with min and max fields, where min and max ha
 ```
 model.get_aabb("#model") -> { min = vmath.vector3(-2.5, -3.0, 0), max = vmath.vector3(1.5, 5.5, 0) }
 model.get_aabb("#empty") -> { min = vmath.vector3(0, 0, 0), max = vmath.vector3(0, 0, 0) }
+
+```
+
+### model.get_blend_weights
+*Type:* FUNCTION
+Returns a table of numbers with one entry per morph target on the first mesh of the model that has morph targets.
+Values reflect the rig state at call time (after animation, and any active script override from model.set_blend_weights).
+
+**Parameters**
+
+- `url` (string | hash | url) - the model component
+
+**Returns**
+
+- `weights` (table) - array of weight values, or empty table if the model has no morph targets
+
+**Examples**
+
+```
+local w = model.get_blend_weights("#model")
+for i = 1, #w do
+  print(i, w[i])
+end
+-- change the data in the table and then set the weights again
+w[1] = 0.75
+w[2] = 0.25
+model.set_blend_weights("#model", w)
 
 ```
 
@@ -249,6 +261,53 @@ function init(self)
     -- first blend during 0.1 sec into the jump, then during 0.2 s into the run animation
     model.play_anim(url, "jump", go.PLAYBACK_ONCE_FORWARD, play_properties, anim_done)
 end
+
+```
+
+### model.reset_constant
+*Type:* FUNCTION
+Resets a shader constant for a model component.
+The constant must be defined in the material assigned to the model.
+Resetting a constant through this function implies that the value defined in the material will be used.
+Which model to reset a constant for is identified by the URL.
+
+**Parameters**
+
+- `url` (string | hash | url) - the model that should have a constant reset.
+- `constant` (string | hash) - name of the constant.
+
+**Examples**
+
+The following examples assumes that the model has id "model" and that the default-material in builtins is used, which defines the constant "tint".
+If you assign a custom material to the model, you can reset the constants defined there in the same manner.
+How to reset the tinting of a model:
+```
+function init(self)
+    model.reset_constant("#model", "tint")
+end
+
+```
+
+### model.set_blend_weights
+*Type:* FUNCTION
+Copies numeric values from weights into each morph target slot for every mesh on the model that has morph targets.
+At most as many weights are applied as each mesh has morph targets; extra entries in the table are ignored.
+Missing weights leave the tail zero-filled for meshes with more targets than entries.
+The override is re-applied every frame after animations run, until cleared by omitting weights or passing nil.
+To reset the weights, use model.set_blend_weights(url) or model.set_blend_weights(url, nil).
+
+**Parameters**
+
+- `url` (string | hash | url) - the model component
+- `weights` (table | nil) - array of weight values (1-based indices). Omit or pass <code>nil</code> to clear the override and return morphs to animation only
+
+**Examples**
+
+```
+-- set the weights for the first 4 morph targets
+model.set_blend_weights("#model", { 0, 1, 0.5, 0 })
+-- clear the override, animation will continue if the weights are driven by an animation
+model.set_blend_weights("#model") -- clear script override
 
 ```
 

@@ -295,6 +295,30 @@ end
 
 ```
 
+### sprite.reset_constant
+*Type:* FUNCTION
+Resets a shader constant for a sprite component.
+The constant must be defined in the material assigned to the sprite.
+Resetting a constant through this function implies that the value defined in the material will be used.
+Which sprite to reset a constant for is identified by the URL.
+
+**Parameters**
+
+- `url` (string | hash | url) - the sprite that should have a constant reset
+- `constant` (string | hash) - name of the constant
+
+**Examples**
+
+The following examples assumes that the sprite has id "sprite" and that the default-material in builtins is used, which defines the constant "tint".
+If you assign a custom material to the sprite, you can reset the constants defined there in the same manner.
+How to reset the tinting of a sprite:
+```
+function init(self)
+  sprite.reset_constant("#sprite", "tint")
+end
+
+```
+
 ### sprite.set_hflip
 *Type:* FUNCTION
 Sets horizontal flipping of the provided sprite's animations.

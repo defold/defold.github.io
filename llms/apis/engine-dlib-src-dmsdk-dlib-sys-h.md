@@ -81,6 +81,19 @@ Result code. Similar to standard posix result codes
 - `dmSys::RESULT_NOTEMPTY` - -32
 - `dmSys::RESULT_UNKNOWN` - -1000
 
+### Stat
+*Type:* FUNCTION
+Remove directory tree structure and files within
+
+**Parameters**
+
+- `path` (const char*) - path to file or directory
+- `stat` (StatInfo*) - pointer to dmSys::StatInfo structure
+
+**Returns**
+
+- `result` (dmSys::Result) - RESULT_OK on success
+
 ### StatInfo
 *Type:* STRUCT
 Status info for a file or directory
@@ -91,6 +104,31 @@ Status info for a file or directory
 - `m_Mode` (uint32_t) - the flags of the path
 - `m_AccessTime` (uint32_t) - the last access time
 - `m_ModifiedTime` (uint32_t) - the last modified time
+
+### StatIsDir
+*Type:* FUNCTION
+Check if the path is a directory
+
+**Parameters**
+
+- `stat` (StatInfo*) - pointer to dmSys::StatInfo structure
+
+**Returns**
+
+- `result` (int) - 0 if check fails, non zero otherwise
+
+### StatIsFile
+*Type:* FUNCTION
+Check if the path is a file
+
+**Parameters**
+
+- `stat` - stat to check
+- `stat` (StatInfo*) - pointer to dmSys::StatInfo structure
+
+**Returns**
+
+- `result` (int) - 0 if check fails, non zero otherwise
 
 ### Unlink
 *Type:* FUNCTION

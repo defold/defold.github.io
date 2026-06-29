@@ -81,6 +81,19 @@ Result enumeration.
 - `dmConnectionPool::RESULT_HANDSHAKE_FAILED` - -3
 - `dmConnectionPool::RESULT_SHUT_DOWN` - -4
 
+### GetReuseCount
+*Type:* FUNCTION
+Get reuse count for a connection
+
+**Parameters**
+
+- `pool` (dmConnectionPool::HPool) - pool
+- `connection` (dmConnectionPool::HConnection)
+
+**Returns**
+
+- `reuse` - count
+
 ### GetSocket
 *Type:* FUNCTION
 Get socket for connection
