@@ -96,7 +96,7 @@ These are per-example files generated for LLM usage.
 
 - [AABB to frame objects with a camera](https://defold.com/llms/examples/model/aabb.md) - This example shows how to use `model
 - [Character - Skeletal Animation](https://defold.com/llms/examples/model/character.md) - This example shows how to play skeletal animations on a glTF character model and trigger them from GUI buttons
-- [Cubemap Reflection](https://defold.com/llms/examples/model/cubemap.md) - This example shows how to use a cubemap to draw environment reflections on a model
+- [Cubemap Reflection](https://defold.com/llms/examples/model/cubemap.md) - Shows how to sample a cubemap in a model shader to create environment reflections
 - [GLTF - Infinite Track](https://defold.com/llms/examples/model/gltf.md) - This example shows how to use glTF models to build an infinite scrolling track
 - [GPU Skinning](https://defold.com/llms/examples/model/skinning.md) - This example demonstrates GPU skinning
 - [Model Vertex Color](https://defold.com/llms/examples/model/modelvertexcolor.md) - This example demonstrates how to apply a vertex color shader using exported attributes from a 3D model
