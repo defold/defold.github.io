@@ -3,11 +3,12 @@
 
 {%- assign image_parts = rendered_content | split: "<img" -%}
 {%- for image_part in image_parts offset: 1 -%}
+	{%- assign image_tag = image_part | split: ">" | first -%}
 	{%- assign candidate = "" -%}
-	{%- if image_part contains 'src="' -%}
-		{%- assign candidate = image_part | split: 'src="' | last | split: '"' | first | strip -%}
-	{%- elsif image_part contains "src='" -%}
-		{%- assign candidate = image_part | split: "src='" | last | split: "'" | first | strip -%}
+	{%- if image_tag contains 'src="' -%}
+		{%- assign candidate = image_tag | split: 'src="' | last | split: '"' | first | strip -%}
+	{%- elsif image_tag contains "src='" -%}
+		{%- assign candidate = image_tag | split: "src='" | last | split: "'" | first | strip -%}
 	{%- endif -%}
 
 	{%- assign candidate_downcase = candidate | downcase -%}
