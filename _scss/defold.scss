@@ -3319,6 +3319,52 @@ a.page-text-panel.page-post-panel-link .page-post-preview-title {
 	margin-right: auto;
 }
 
+/*******************************************************************************
+* Newsletter media rows
+******************************************************************************/
+
+.post .newsletter-media-list {
+	display: flex;
+	flex-direction: column;
+	gap: 1.4rem;
+	margin: 1rem 0 2rem;
+}
+
+.post .newsletter-media-item {
+	display: flex;
+	align-items: flex-start;
+	gap: 1.25rem;
+}
+
+.post .newsletter-media-item img {
+	flex: 0 0 220px;
+	width: 220px;
+	max-width: 40%;
+	height: auto;
+	border-radius: 6px;
+}
+
+.post .newsletter-media-copy {
+	flex: 1 1 auto;
+	min-width: 0;
+}
+
+.post .newsletter-media-copy h3 {
+	margin-top: 0;
+}
+
+@media (max-width: 640px) {
+	.post .newsletter-media-item {
+		flex-direction: column;
+	}
+
+	.post .newsletter-media-item img {
+		flex-basis: auto;
+		width: 100%;
+		max-width: 100%;
+	}
+}
+
 .content-flow > iframe[src*="youtube.com/embed"],
 .content-flow > iframe[src*="youtube-nocookie.com/embed"] {
 	width: 100%;
