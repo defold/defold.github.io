@@ -48,7 +48,7 @@ A total of 495 games were submitted, of which 17 were made with Defold! We have 
 	<div class="newsletter-media-item">
 		<a href="https://play.google.com/store/apps/details?id=com.circlup.app"><img src="/images/posts/newsletter-june-2026/circlup.webp" alt="Circlup"></a>
 		<div class="newsletter-media-copy">
-			<h3><a href="https://play.google.com/store/apps/details?id=com.circlup.app">Circlup</a></h3>
+			<h5><a href="https://play.google.com/store/apps/details?id=com.circlup.app">Circlup</a></h5>
 			<p><em>by Son of a Byte</em></p>
 			<p>Minimalist experience where the primary task is to complete a circle across 50 unique challenges, now out:</p>
 			<p><a href="https://play.google.com/store/apps/details?id=com.circlup.app">Free on Google Play</a></p>
@@ -57,7 +57,7 @@ A total of 495 games were submitted, of which 17 were made with Defold! We have 
 	<div class="newsletter-media-item">
 		<a href="https://apps.apple.com/us/app/blocks-away-escape-puzzle/id6763660455"><img src="/images/posts/newsletter-june-2026/blocks_away.webp" alt="Blocks Away"></a>
 		<div class="newsletter-media-copy">
-			<h3><a href="https://apps.apple.com/us/app/blocks-away-escape-puzzle/id6763660455">Blocks Away</a></h3>
+			<h5><a href="https://apps.apple.com/us/app/blocks-away-escape-puzzle/id6763660455">Blocks Away</a></h5>
 			<p><em>by Denis Mikhaylov</em></p>
 			<p>Satisfying minimalist puzzle game where you tap the blocks to remove them from the board, play for free on mobile:</p>
 			<p><a href="https://apps.apple.com/us/app/blocks-away-escape-puzzle/id6763660455">Free on App Store</a></p>
@@ -66,7 +66,7 @@ A total of 495 games were submitted, of which 17 were made with Defold! We have 
 	<div class="newsletter-media-item">
 		<a href="https://on.itch.io/ona"><img src="/images/posts/newsletter-june-2026/ona.webp" alt="ONA"></a>
 		<div class="newsletter-media-copy">
-			<h3><a href="https://on.itch.io/ona">ONA</a></h3>
+			<h5><a href="https://on.itch.io/ona">ONA</a></h5>
 			<p><em>by on</em></p>
 			<p>Neon shapeshifting game made for Spark Game Jam 2026, where the player changes shape to overcome obstacles:</p>
 			<p><a href="https://on.itch.io/ona">Play for free on itch.io</a></p>
@@ -81,7 +81,7 @@ A total of 495 games were submitted, of which 17 were made with Defold! We have 
 	<div class="newsletter-media-item">
 		<a href="https://forum.defold.com/t/fmod-extension-for-defold-now-official/82973"><img src="/images/posts/newsletter-june-2026/fmod.webp" alt="FMOD official Defold extension"></a>
 		<div class="newsletter-media-copy">
-			<h3><a href="https://forum.defold.com/t/fmod-extension-for-defold-now-official/82973">FMOD official Defold extension</a></h3>
+			<h5><a href="https://forum.defold.com/t/fmod-extension-for-defold-now-official/82973">FMOD official Defold extension</a></h5>
 			<p>Over the past year we've maintained and updated the community library for FMOD to make it official now</p>
 			<p><em>by Defold Foundation</em></p>
 		</div>
@@ -89,7 +89,7 @@ A total of 495 games were submitted, of which 17 were made with Defold! We have 
 	<div class="newsletter-media-item">
 		<a href="https://forum.defold.com/t/firebase-crashlytics-for-defold/82884"><img src="/images/posts/newsletter-june-2026/firebase.webp" alt="Firebase Crashlytics Defold extension"></a>
 		<div class="newsletter-media-copy">
-			<h3><a href="https://forum.defold.com/t/firebase-crashlytics-for-defold/82884">Firebase Crashlytics Defold extension</a></h3>
+			<h5><a href="https://forum.defold.com/t/firebase-crashlytics-for-defold/82884">Firebase Crashlytics Defold extension</a></h5>
 			<p>Powerful extension for reporting native crashes on Android, iOS, and macOS is now available for Defold</p>
 			<p><em>by Defold Foundation</em></p>
 		</div>
@@ -97,7 +97,7 @@ A total of 495 games were submitted, of which 17 were made with Defold! We have 
 	<div class="newsletter-media-item">
 		<a href="https://forum.defold.com/t/spriteloop-defold-extension-development-log/82835"><img src="/images/posts/newsletter-june-2026/sprite_loop.webp" alt="Sprite Loop"></a>
 		<div class="newsletter-media-copy">
-			<h3><a href="https://forum.defold.com/t/spriteloop-defold-extension-development-log/82835">Sprite Loop</a></h3>
+			<h5><a href="https://forum.defold.com/t/spriteloop-defold-extension-development-log/82835">Sprite Loop</a></h5>
 			<p>Free lightweight 2D cut-out animation tool for games with a Defold native extension and Editor component support</p>
 			<p><em>by Balkan Ram Games</em></p>
 		</div>
@@ -105,21 +105,21 @@ A total of 495 games were submitted, of which 17 were made with Defold! We have 
 	<div class="newsletter-media-item">
 		<a href="https://forum.defold.com/t/defold-fake-real-glass/82734"><img src="/images/posts/newsletter-june-2026/glass.webp" alt="Defold Fake Real Glass"></a>
 		<div class="newsletter-media-copy">
-			<h3><a href="https://forum.defold.com/t/defold-fake-real-glass/82734">Defold Fake Real Glass</a></h3>
+			<h5><a href="https://forum.defold.com/t/defold-fake-real-glass/82734">Defold Fake Real Glass</a></h5>
 			<p>Multipass glass effect shader and rendering pipeline for Defold with different glass material properties</p>
 			<p><em>by Paweł Jarosz</em></p>
 		</div>
 	</div>
 </div>
 
-### [Defold Xoshiro 256](https://defold.com/assets/xoshiro256/)
+##### [Defold Xoshiro 256](https://defold.com/assets/xoshiro256/)
 
 A fast, high-quality procedural random number generator
 
 _by Glorius Silver_
 
 
-### [Defold VSCode Kit](https://forum.defold.com/t/defold-kit-visual-studio-code-extension/74119/75)
+##### [Defold VSCode Kit](https://forum.defold.com/t/defold-kit-visual-studio-code-extension/74119/75)
 
 Using Defold Kit you can now e.g. build or hot reload from VSCode
 
@@ -128,42 +128,42 @@ _by astrochili_
 
 ## Worth reading:
 
-### [Power Fantasies - interview with Alex from 8BitSkull on Skull Horde and more](https://defold.com/2026/05/15/8BitSkull-Skull-Horde-Interview/)
+##### [Power Fantasies - interview with Alex from 8BitSkull on Skull Horde and more](https://defold.com/2026/05/15/8BitSkull-Skull-Horde-Interview/)
 
 How is it to release 4 games and still run a sustainable game studio?
 
 _by Defold Foundation_
 
 
-### [Building Mad Skills Motocross 2 for Poki with Defold](https://defold.com/2026/06/02/Mad-Skills-Motocross-2/)
+##### [Building Mad Skills Motocross 2 for Poki with Defold](https://defold.com/2026/06/02/Mad-Skills-Motocross-2/)
 
 In this Creator Spotlight interview we discuss about porting MSM2 to web.
 
 _by Defold Foundation_
 
 
-### [Best Practices for Web Games Development](https://defold.com/2026/06/02/Best-practices-when-building-for-the-web/)
+##### [Best Practices for Web Games Development](https://defold.com/2026/06/02/Best-practices-when-building-for-the-web/)
 
 Practical, useful article for anyone targeting web and HTML5 distribution.
 
 _by Defold Foundation_
 
 
-### [Post-mortem inforgraphic for Perfect+1 - a jam winner game](https://forum.defold.com/t/perfect-1/81394/12)
+##### [Post-mortem inforgraphic for Perfect+1 - a jam winner game](https://forum.defold.com/t/perfect-1/81394/12)
 
 A nice article in a form of an infographic for a well designed puzzle game
 
 _by Hell Hog Games_
 
 
-### [Playgama Web Games Industry Market Map 2026](https://wiki.playgama.com/playgama/articles/introducing-the-web-games-industry-market-map-2026)
+##### [Playgama Web Games Industry Market Map 2026](https://wiki.playgama.com/playgama/articles/introducing-the-web-games-industry-market-map-2026)
 
 A great read for anyone following the web games market.
 
 _by Playgama_
 
 
-### [Deep Dive into Green Game Jam with Bounce Ball](https://www.linkedin.com/pulse/deep-dive-green-game-jamt-george-zarkua-xmwqf/)
+##### [Deep Dive into Green Game Jam with Bounce Ball](https://www.linkedin.com/pulse/deep-dive-green-game-jamt-george-zarkua-xmwqf/)
 
 Learn how it helped improving monetization, increasing revenue by 32%
 
@@ -176,7 +176,7 @@ _by George Zarkua_
 	<div class="newsletter-media-item">
 		<a href="https://www.youtube.com/watch?v=CyaWaNil50o"><img src="/images/posts/newsletter-june-2026/yt_gamefromscratch.webp" alt="New look at Defold"></a>
 		<div class="newsletter-media-copy">
-			<h3><a href="https://www.youtube.com/watch?v=CyaWaNil50o">New look at Defold</a></h3>
+			<h5><a href="https://www.youtube.com/watch?v=CyaWaNil50o">New look at Defold</a></h5>
 			<p><em>by Game From Scratch</em></p>
 			<p>Mike is looking at new 3D features in Defold and presenting it from scratch</p>
 		</div>
@@ -184,7 +184,7 @@ _by George Zarkua_
 	<div class="newsletter-media-item">
 		<a href="https://www.youtube.com/watch?v=2VWFJS42XHg"><img src="/images/posts/newsletter-june-2026/yt_asatte.webp" alt="Complete Tutorial"></a>
 		<div class="newsletter-media-copy">
-			<h3><a href="https://www.youtube.com/watch?v=2VWFJS42XHg">Complete Tutorial</a></h3>
+			<h5><a href="https://www.youtube.com/watch?v=2VWFJS42XHg">Complete Tutorial</a></h5>
 			<p><em>by Asatte Games</em></p>
 			<p>Learn how to build a complete incremental game in Defold</p>
 		</div>
@@ -192,7 +192,7 @@ _by George Zarkua_
 	<div class="newsletter-media-item">
 		<a href="https://www.youtube.com/watch?v=Jm-3fLr7AqE"><img src="/images/posts/newsletter-june-2026/yt_comparison.webp" alt="Comparison"></a>
 		<div class="newsletter-media-copy">
-			<h3><a href="https://www.youtube.com/watch?v=Jm-3fLr7AqE">Comparison</a></h3>
+			<h5><a href="https://www.youtube.com/watch?v=Jm-3fLr7AqE">Comparison</a></h5>
 			<p><em>by Paperclick</em></p>
 			<p>A straightforward and simple comparison of 3 game engines</p>
 		</div>
