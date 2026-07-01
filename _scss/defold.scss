@@ -3336,10 +3336,16 @@ a.page-text-panel.page-post-panel-link .page-post-preview-title {
 	gap: 1.25rem;
 }
 
-.post .newsletter-media-item img {
+.post .newsletter-media-item > a {
 	flex: 0 0 220px;
 	width: 220px;
 	max-width: 40%;
+	display: block;
+}
+
+.post .newsletter-media-item img {
+	width: 100%;
+	max-width: 100%;
 	height: auto;
 	border-radius: 6px;
 }
@@ -3359,6 +3365,11 @@ a.page-text-panel.page-post-panel-link .page-post-preview-title {
 	}
 
 	.post .newsletter-media-item img {
+		width: 100%;
+		max-width: 100%;
+	}
+
+	.post .newsletter-media-item > a {
 		flex-basis: auto;
 		width: 100%;
 		max-width: 100%;

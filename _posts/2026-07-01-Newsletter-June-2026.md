@@ -44,7 +44,7 @@ A total of 495 games were submitted, of which 17 were made with Defold! We have 
 
 ## New games made with Defold:
 
-<div class="newsletter-media-list">
+<div class="newsletter-media-list" markdown="0">
 	<div class="newsletter-media-item">
 		<a href="https://play.google.com/store/apps/details?id=com.circlup.app"><img src="/images/posts/newsletter-june-2026/circlup.webp" alt="Circlup"></a>
 		<div class="newsletter-media-copy">
@@ -77,7 +77,7 @@ A total of 495 games were submitted, of which 17 were made with Defold! We have 
 
 ## Assets, extensions and tools:
 
-<div class="newsletter-media-list">
+<div class="newsletter-media-list" markdown="0">
 	<div class="newsletter-media-item">
 		<a href="https://forum.defold.com/t/fmod-extension-for-defold-now-official/82973"><img src="/images/posts/newsletter-june-2026/fmod.webp" alt="FMOD official Defold extension"></a>
 		<div class="newsletter-media-copy">
@@ -172,7 +172,7 @@ _by George Zarkua_
 
 ## Worth watching:
 
-<div class="newsletter-media-list">
+<div class="newsletter-media-list" markdown="0">
 	<div class="newsletter-media-item">
 		<a href="https://www.youtube.com/watch?v=CyaWaNil50o"><img src="/images/posts/newsletter-june-2026/yt_gamefromscratch.webp" alt="New look at Defold"></a>
 		<div class="newsletter-media-copy">
