@@ -134,6 +134,7 @@ These are per-example files generated for LLM usage.
 - [Box2D Material Properties Tuning](https://defold.com/llms/examples/physics/box2d_material_tuning.md) - Tune Box2D density, friction, and restitution from script using Box2D V2 legacy and Box2D V3
 - [Box2D Motor Joint](https://defold.com/llms/examples/physics/box2d_motor_joint.md) - Create and control a motorized Box2D joint from script using Box2D V2 and V3
 - [Box2D Mouse Joint](https://defold.com/llms/examples/physics/box2d_mouse_joint.md) - Create a mouse joint that pulls dynamic bodies toward a moving target
+- [Box2D Queries](https://defold.com/llms/examples/physics/box2d_queries.md) - This example shows how to use Box2D world overlap and raycast queries
 - [Box2D Revolute Bridge](https://defold.com/llms/examples/physics/box2d_revolute_bridge.md) - Create a bridge from revolute joints between existing Defold collision objects
 - [Dynamic physics](https://defold.com/llms/examples/physics/dynamic.md) - This example shows a simple setup with dynamic physics objects
 - [Fixed timestep interpolation](https://defold.com/llms/examples/physics/interpolation.md) - This example shows how to smooth physics motion in fixed update mode by interpolating a visual sprite while keeping the physics body fixed-step
