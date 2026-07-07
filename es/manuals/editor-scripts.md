@@ -11,6 +11,7 @@ toc:
 - API del editor {editor-api}
 - Comandos {commands}
 - Usar comandos para cambiar el estado en memoria del editor {use-commands-to-change-the-in-memory-editor-state}
+- Usar comandos con la vista activa del editor {use-commands-with-the-active-editor-view}
 - Usar comandos de shell {use-shell-commands}
 - Hooks de ciclo de vida {lifecycle-hooks}
 - Servidores de lenguaje {language-servers}
@@ -157,6 +158,9 @@ El editor espera que `get_commands()` devuelva un array de tablas, cada una desc
       - `"outline"` — algo que puede mostrarse en Outline. En Outline es un elemento seleccionado; en la barra de menú es el archivo abierto actualmente;
       - `"scene"` — algo que puede renderizarse en Scene.
     - `cardinality` define cuántos elementos seleccionados debe haber. Si es `"one"`, la selección pasada al callback del comando será un solo id de nodo. Si es `"many"`, la selección pasada al callback del comando será un array de uno o más ids de nodo.
+  - `active_view` significa que este comando es válido cuando la vista activa del editor coincide con el tipo solicitado. La vista activa se pasa al callback del comando como `opts.active_view`.
+    - `type` es el tipo de vista activa en el que el comando está interesado: `"code"`, `"scene"`, `"html"` o `"form"`.
+    - La vista activa soporta las propiedades `"type"`, `"resource"` y `"dirty"`. Usa `editor.get(view, "resource")` para obtener el recurso mostrado en la vista, y `editor.get(view, "dirty")` para comprobar si tiene cambios sin guardar.
   - `argument` — argumento del comando. Actualmente, solo los comandos en la ubicación `"Bundle"` reciben un argumento, que es `true` cuando el comando de bundle se selecciona explícitamente y `false` al volver a crear el bundle.
 - `id` - string identificador del comando, usado por ejemplo para persistir el último comando de bundle usado en `prefs`
 - `active` - un callback que se ejecuta para comprobar que el comando está activo; se espera que devuelva un booleano. Si `locations` incluye `"Assets"`, `"Scene"` u `"Outline"`, `active` se llamará al mostrar el menú de contexto. Si `locations` incluye `"Edit"` o `"View"`, `active` se llamará en cada interacción del usuario, como escribir en el teclado o hacer click con el mouse, así que asegúrate de que `active` sea relativamente rápido.
@@ -185,6 +189,25 @@ Dentro del callback `run`, puedes consultar y cambiar el estado en memoria del e
     })
   end
 }
+```
+
+### Usar comandos con la vista activa del editor {#use-commands-with-the-active-editor-view}
+
+Los comandos en ubicaciones de menú como `"View"` pueden consultar la vista activa del editor. Esto es útil cuando un comando debe operar sobre el archivo o la escena que el usuario está viendo en ese momento:
+
+```lua
+editor.command({
+  label = "Print Active View",
+  locations = {"View"},
+  query = {active_view = {type = "code"}},
+  run = function(opts)
+    local view = opts.active_view
+    local resource = editor.get(view, "resource")
+    print(editor.get(view, "type"))
+    print(editor.get(resource, "path"))
+    print(editor.get(view, "dirty"))
+  end
+})
 ```
 
 #### Editar atlas {#editing-atlases}
