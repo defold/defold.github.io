@@ -575,8 +575,10 @@ This document contains Defold examples grouped by category.
 - [Box2D Material Properties Tuning](#examples:physics:box2d_material_tuning) - Tune Box2D density, friction, and restitution from script using Box2D V2 legacy and Box2D V3
 - [Box2D Motor Joint](#examples:physics:box2d_motor_joint) - Create and control a motorized Box2D joint from script using Box2D V2 and V3
 - [Box2D Mouse Joint](#examples:physics:box2d_mouse_joint) - Create a mouse joint that pulls dynamic bodies toward a moving target
+- [Box2D Prismatic Joint](#examples:physics:box2d_prismatic_joint) - Create a motorized Box2D prismatic joint with translation limits from script using Box2D
 - [Box2D Queries](#examples:physics:box2d_queries) - This example shows how to use Box2D world overlap and raycast queries
 - [Box2D Revolute Bridge](#examples:physics:box2d_revolute_bridge) - Create a bridge from revolute joints between existing Defold collision objects
+- [Box2D Sensors](#examples:physics:box2d_sensor_toggle) - Create Box2D sensors from static collision shapes
 - [Dynamic physics](#examples:physics:dynamic) - This example shows a simple setup with dynamic physics objects
 - [Fixed timestep interpolation](#examples:physics:interpolation) - This example shows how to smooth physics motion in fixed update mode by interpolating a visual sprite while keeping the physics body fixed-step
 - [Hinge joint physics](#examples:physics:hinge_joint) - This example shows a simple setup with a dynamic body physics object and two dynamic wheel physics object joined together with a joint of type "hinge"
@@ -85779,6 +85781,161 @@ end
 ]]
 ```
 
+<!-- physics/box2d_prismatic_joint -->
+
+# Box2D Prismatic Joint {#examples:physics:box2d_prismatic_joint}
+
+Create a motorized Box2D prismatic joint with translation limits from script using Box2D.
+
+[Project files](https://github.com/defold/examples/tree/master/physics/box2d_prismatic_joint)
+
+This example creates a Box2D prismatic joint at runtime.
+The blue dynamic body (slider) is constrained to a diagonal rail,
+moves between two translation limits, and reverses its motor when it reaches either end.
+
+Click or tap the window to reverse the motor manually.
+
+There are no differences in scripting between Box2D V2 and V3 in this example.
+
+## What You'll Learn
+
+- How to get Box2D body handles from Defold collision objects
+- How to create a prismatic joint with `b2d.joint.create_prismatic()`
+- How `local_axis_a`, `lower_translation`, and `upper_translation` define the slide rail
+- How to control a prismatic joint motor with `b2d.joint.set_motor_speed()`
+
+## Setup
+
+The collection contains:
+
+- `controller` game object with the main script and labels with informations
+- `rail` game object with static collision object for frame reference for the prismatic joint and a sprite rotated by 45 degrees around Z axis to indicate the "rail"
+- `slider` game object with a dynamic collision object and a sprite to indicate where the slider is
+
+The `rail` and `slider` bodies start at the same world position in the middle.
+
+The `game.project` of this example is configured to build with `/box2d_v3.appmanifest` by default.
+To test V2 locally after downloading the example, change `Native Extensions -> App Manifest` in `game.project` to `/box2d_v2.appmanifest`.
+
+## How It Works
+
+The script uses `b2d.get_body()` to fetch the Box2D bodies owned by the `rail` and `slider` collision objects.
+Then calls `b2d.joint.create_prismatic()` which creates the prismatic joint between them,
+with `local_axis_a` set to the same diagonal direction as the visible rail (rotated 45 degrees areound Z axis),
+enables limits from `-110` to `110` project units, and a motor, sets a maximum motor force, and starts the slider moving along the rail.
+
+The prismatic joint is a constraint solver - only defines *how* two bodies are allowed to move, not *why* they should move.
+So normally, the slider would fall in the gravity direction, but would be moving constrained like a slider along a rail.
+We enable the motor in the example to move in both direction along the rail.
+Motor applied on a prismatic joint moves the object along the joint axis at the given linear speed.
+
+During `update()`, the script reads `b2d.joint.get_joint_translation()`, which returns the position alongside the constraint,
+and reverses the motor when the translation reaches either limit.
+
+On input (touch or mouse click) the direction of the motor that applies force to the slider changes too.
+
+## Scripts
+
+### box2d_prismatic_joint.script
+
+```lua
+-- Unit vector for a 45 degree rail. This is the same direction as the rail sprite.
+local AXIS = vmath.vector3(0.70710678, 0.70710678, 0)
+
+-- Prismatic translation is measured along `local_axis_a`, in project units.
+-- Define farthest limits on both ends:
+local LOWER_TRANSLATION = -110
+local UPPER_TRANSLATION = 110
+
+-- Define motor speed that will be used to move the slider
+local MOTOR_SPEED = 50
+
+-- Some maximum motor force allows to apply a force on the slider to push it
+local MAX_MOTOR_FORCE = 1200
+
+function init(self)
+	-- This will be storing a current direction of the slider
+	self.direction = 1
+
+	-- Acquire input focus to handle inputs
+	msg.post(".", "acquire_input_focus")
+
+	-- `b2d.get_body()` returns the native Box2D body created by the given collision object.
+	local slider = b2d.get_body("/slider#collisionobject")
+	local anchor = b2d.get_body("/rail#collisionobject")
+
+	-- This creates a prismatic joint in runtime between the 2 bodies - an anchor and a slider.
+	-- The joint axis matches the visible diagonal rail in the collection.
+	self.joint = b2d.joint.create_prismatic(anchor, slider, {
+		-- Both bodies start at the same position, so zero local anchors share the same joint origin.
+		local_anchor_a = vmath.vector3(),
+		local_anchor_b = vmath.vector3(),
+
+		-- The axis is local to body A, the static anchor.
+		local_axis_a = AXIS,
+
+		-- Limits keep the dynamic body between the two ends of the rail.
+		enable_limit = true,
+		lower_translation = LOWER_TRANSLATION,
+		upper_translation = UPPER_TRANSLATION,
+
+		-- The motor pushes the slider along the axis without extra forces in update().
+		enable_motor = true,
+		max_motor_force = MAX_MOTOR_FORCE,
+		motor_speed = self.direction * MOTOR_SPEED,
+
+		-- The connected bodies do not need to collide with each other in this example.
+		collide_connected = false,
+	})
+end
+
+-- Helper function to reverse the motor direction
+local function reverse_motor(self)
+	-- Assign a negative direction to the current direction variable
+	self.direction = -self.direction
+
+	-- Positive and negative speed move the slider in opposite directions along the axis.
+	b2d.joint.set_motor_speed(self.joint, self.direction * MOTOR_SPEED)
+end
+
+function update(self, dt)
+	-- The function returns a translation on the defined joint in project units
+	local translation = b2d.joint.get_joint_translation(self.joint)
+
+	-- Reverse automatically when the slider reaches either translation limit.
+	if self.direction > 0 and translation > UPPER_TRANSLATION then
+		reverse_motor(self)
+	elseif self.direction < 0 and translation < LOWER_TRANSLATION then
+		reverse_motor(self)
+	end
+
+	-- Create a string describing the current direction
+	local direction_string = self.direction > 0 and "up-right" or "down-left"
+
+	-- Update the information on the label
+	label.set_text("#label", string.format("Motor: %s\nTranslation: %.0f", direction_string, translation))
+end
+
+function on_input(self, action_id, action)
+	-- The built-in touch action also covers mouse clicks in the built-in all.input_binding.
+	if action_id == hash("touch") and action.pressed then
+		-- When click or touch is pressed we reverse the motor direction
+		reverse_motor(self)
+	end
+end
+
+function final(self)
+	-- Joints created through b2d.joint should be explicitly destroyed.
+	if self.joint then
+		b2d.joint.destroy(self.joint)
+		self.joint = nil
+	end
+
+	-- Release input focus
+	msg.post(".", "release_input_focus")
+end
+```
+
 <!-- physics/box2d_queries -->
 
 # Box2D Queries {#examples:physics:box2d_queries}
@@ -86282,6 +86439,243 @@ end
 11. Reset the ball when the user clicks or taps. The built-in input binding may send mouse clicks as `mouse_button_left` or `touch`.
 12. Destroy the scripted joints when the collection is finalized.
 ]]
+```
+
+<!-- physics/box2d_sensor_toggle -->
+
+# Box2D Sensors {#examples:physics:box2d_sensor_toggle}
+
+Create Box2D sensors from static collision shapes.
+
+[Project files](https://github.com/defold/examples/tree/master/physics/box2d_sensor_toggle)
+
+This example shows how to utilize the Box2D scripting API to operate with sensors (triggers).
+It spawns dynamic physics balls from slightly different random positions near the top of the scene,
+and gravity pulls each ball down, and these pass through two collision objects.
+
+## What You'll Learn
+
+- How to get a Box2D body from a collision object with `b2d.get_body()`.
+- How to turn a Box2D V2 fixture into a sensor with `b2d.fixture.set_sensor()`.
+- How to recreate a Box2D V3 shape as a sensor with `b2d.body.create_shape()`.
+- How to count V2 sensor overlaps from `trigger_response` enter/exit messages.
+- How to poll V3 sensor overlaps with `b2d.shape.get_sensor_overlaps()`.
+
+## Setup
+
+The collection contains one `controller` game object with `spawn.script` and a `ball_factory`.
+The factory creates `ball.go` - a small prototype with one sprite and one dynamic circle collision object.
+
+The two sensor game objects both contain:
+
+- `sensor_box2d_v3.script` - for Box2D V3 example handling
+- `sensor_box2d_v2.script` - for Box2D V2 example handling
+- A sprite, label, and static collision object with component id `collisionobject`.
+
+The collision objects are of type `Static` in the editor.
+
+All sensors use the `sensor` collision group and mask the `ball` group.
+The spawned ball belongs to the `ball` collision group and masks the `sensor` group,
+so the sensor overlaps only include spawned balls.
+
+The `game.project` currently uses `/box2d_v3.appmanifest`.
+To test V2 locally, change `Native Extensions -> App Manifest` to `/box2d_v2.appmanifest`.
+Gravity set in `game.project` causes the falling motion.
+
+## How It Works
+
+The controller spawns a ball repeateadly with `factory.create()`.
+Each ball is spawned at a random X position near the center, and is deleted after a short delay.
+The spawned balls pass through the sensor's collision object shapes.
+
+Each sensor has two backend scripts (V2 and V3), but only one runs processing depending on a choosen Box2D version.
+Each script checks `b2d.get_version().major` in `init()` and returns immediately when the active backend does not match.
+
+At startup, the active Box2D script changes the static collision geometry into a sensor (trigger) through the `b2d` API.
+Box2D V2 and V3 expose this through different scripting APIs:
+
+- V2 uses fixtures and Defold trigger messages.
+- V3 uses shapes and can poll a sensor shape's current overlaps directly.
+
+In Box2D V2, `sensor_box2d_v2.script` gets the body with `b2d.get_body("#collisionobject")`,
+reads the first fixture with `b2d.body.get_fixtures()`, and calls `b2d.fixture.set_sensor()`,
+so the fixture no longer blocks the balls. V2 fixture sensors do not expose a `get_sensor_overlaps()` polling API.
+But Defold still sends `trigger_response` messages when another collision object enters or exits the sensor,
+and the script maintains a Lua table of current overlapping ball ids.
+
+In Box2D V3, `sensor_box2d_v3.script` uses the shape API.
+It reads the first editor-authored shape with `b2d.body.get_shapes()` and `b2d.shape.get_shape()`,
+destroys that solid shape, and creates a replacement with `b2d.body.create_shape()` using the same geometry and `sensor = true`.
+The V3 script then calls `b2d.shape.enable_sensor_events()` for the new sensor shape.
+In `update()`, it polls the current overlaps with `b2d.shape.get_sensor_overlaps()`.
+This returns shape info tables for the shapes currently overlapping the sensor.
+
+Both scripts gives us the same result: each sensor sprite scales up while at least one ball overlaps it,
+and the label shows the current overlap count reported by the active backend path.
+
+## Scripts
+
+### sensor_box2d_v3.script
+
+```lua
+-- Helper function to create a sensor from the collision object for scripting
+local function create_sensor_shape()
+	-- `b2d.get_body()` returns the native Box2D body created by this collision object.
+	local body = b2d.get_body("#collisionobject")
+
+	-- In Box2D V3, collision geometry is attached to a body as shapes.
+	-- Read the first editor-authored shape so the runtime sensor keeps the same size.
+	local shape = b2d.body.get_shapes(body)[1]
+	local shape_definition = b2d.shape.get_shape(body, shape.index)
+
+	-- The editor-authored shape is solid, so it would block the falling ball.
+	-- Remove it before creating the replacement sensor shape.
+	b2d.body.destroy_shape(body, shape.index)
+
+	-- A sensor shape reports overlaps without producing collision response.
+	-- The ball can pass through it, but Box2D still tracks which shapes overlap it.
+	local sensor = b2d.body.create_shape(body, {
+		shape = shape_definition,
+		friction = 0.0,
+		restitution = 0.0,
+		sensor = true,
+	})
+
+	-- V3 sensor overlap polling is opt-in. Without this call,
+	-- `get_sensor_overlaps()` would not return the current overlap list.
+	b2d.shape.enable_sensor_events(sensor.shape_id, true)
+	return sensor.shape_id
+end
+
+function init(self)
+	-- This script uses the Box2D V3 shape API.
+	self.active = b2d.get_version().major == 3
+
+	-- If Box2D V3 is not used, skip further processing
+	if not self.active then
+		return
+	end
+
+	self.sensor_shape = create_sensor_shape()
+	self.overlaps = {}
+end
+
+local NORMAL_SCALE = vmath.vector3(1.0)
+local LARGER_SCALE = vmath.vector3(1.1)
+
+function update(self, dt)
+	-- If Box2D V3 is not used, skip further processing
+	if not self.active then
+		return
+	end
+
+	-- V3 returns the shapes currently overlapping this sensor shape.
+	self.overlaps = b2d.shape.get_sensor_overlaps(self.sensor_shape)
+
+	-- Set the sprite scale to indicate the overlapping visually
+	if #self.overlaps > 0 then
+		go.set("#sprite", "scale", LARGER_SCALE)
+	else
+		go.set("#sprite", "scale", NORMAL_SCALE)
+	end
+
+	-- Update the label text to show the amount of overlaps
+	label.set_text("#label", "Overlaps: " .. #self.overlaps)
+end
+```
+
+### sensor_box2d_v2.script
+
+```lua
+-- Helper function to convert a collision object to a sensor (trigger) for scripting
+local function enable_sensor_fixture()
+	-- `b2d.get_body()` returns the native Box2D body created by this collision object.
+	local body = b2d.get_body("#collisionobject")
+
+	-- In Box2D V2, collision geometry and material data live in fixtures.
+	-- The collection-authored fixture starts solid, so the ball would collide with it.
+	local fixture = b2d.body.get_fixtures(body)[1]
+
+	-- Turning the fixture into a sensor disables physical collision response.
+	-- Box2D still reports trigger-style enter/exit interactions for overlaps.
+	b2d.fixture.set_sensor(body, fixture.index, true)
+end
+
+function init(self)
+	-- This script uses the Box2D V2 fixture API.
+	self.active = b2d.get_version().major == 2
+
+	-- If Box2D V2 is not used, skip further processing
+	if not self.active then
+		return
+	end
+
+	enable_sensor_fixture()
+	self.overlaps = {}
+end
+
+local NORMAL_SCALE = vmath.vector3(1.0)
+local LARGER_SCALE = vmath.vector3(1.1)
+
+function on_message(self, message_id, message, sender)
+	-- If Box2D V2 is not used, skip further processing
+	if not self.active then
+		return
+	end
+
+	-- Defold sends `trigger_response` when a sensor fixture starts or stops
+	-- overlapping another collision object allowed by the collision mask.
+	if message_id == hash("trigger_response") then
+
+		-- Store overlaps in a table or clear those that exited the sensor
+		if message.enter then
+			self.overlaps[message.other_id] = true
+		else
+			self.overlaps[message.other_id] = nil
+		end
+
+		-- Count overlaps
+		local count = 0
+		for i,v in pairs(self.overlaps) do count = count + 1 end
+
+		-- Set the sprite scale to indicate the overlapping visually
+		if count > 0 then
+			go.set("#sprite", "scale", LARGER_SCALE)
+		else
+			go.set("#sprite", "scale", NORMAL_SCALE)
+		end
+
+		-- Update the label text to show the amount of overlaps
+		label.set_text("#label", "Overlaps: " .. count)
+	end
+end
+```
+
+### spawn.script
+
+```lua
+-- Helper function to spawn a ball at random position on top and remove it after a moment
+local function spawn_ball()
+	-- X position is random between 200-600
+	local x = 400 + math.random(-200, 200)
+
+	-- Spawn the ball from the ball_factory, assign the random position
+	-- and store the created instance's id
+	local id = factory.create("#ball_factory", vmath.vector3(x, 600, 0.0))
+
+	-- After a moment remove the spawned ball
+	timer.delay(1.2, false, function()
+		go.delete(id)
+	end)
+end
+
+function init(self)
+	-- Initialize random number generator
+	math.randomseed(os.time())
+
+	-- Use the above helper function to spawn the ball every 0.5 second
+	timer.delay(0.2, true, spawn_ball)
+end
 ```
 
 <!-- physics/dynamic -->
