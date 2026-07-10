@@ -138,6 +138,7 @@ These are per-example files generated for LLM usage.
 - [Box2D Queries](https://defold.com/llms/examples/physics/box2d_queries.md) - This example shows how to use Box2D world overlap and raycast queries
 - [Box2D Revolute Bridge](https://defold.com/llms/examples/physics/box2d_revolute_bridge.md) - Create a bridge from revolute joints between existing Defold collision objects
 - [Box2D Sensors](https://defold.com/llms/examples/physics/box2d_sensor_toggle.md) - Create Box2D sensors from static collision shapes
+- [Box2D Weld Joint](https://defold.com/llms/examples/physics/box2d_weld_joint.md) - Create Box2D weld joints from script so separate dynamic bodies behave like one rigid assembly
 - [Dynamic physics](https://defold.com/llms/examples/physics/dynamic.md) - This example shows a simple setup with dynamic physics objects
 - [Fixed timestep interpolation](https://defold.com/llms/examples/physics/interpolation.md) - This example shows how to smooth physics motion in fixed update mode by interpolating a visual sprite while keeping the physics body fixed-step
 - [Hinge joint physics](https://defold.com/llms/examples/physics/hinge_joint.md) - This example shows a simple setup with a dynamic body physics object and two dynamic wheel physics object joined together with a joint of type "hinge"
