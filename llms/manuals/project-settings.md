@@ -395,9 +395,6 @@ Check if you want the graphics context to have a transparent backdrop.
 #### Settings
 Liveupdate settings resource file to use during bundling.
 
-#### Mount On Start
-Enables auto-mount of previously mounted resources when the application starts.
-
 ### Profiler
 
 #### Enabled

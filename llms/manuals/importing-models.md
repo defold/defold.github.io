@@ -15,6 +15,10 @@ glTF can be stored in two common ways:
 
 If the model should use a texture in Defold, import the texture image as a separate asset. Even when the source glTF/GLB file contains embedded images, textures must be assigned to the Model component through the component material texture properties.
 
+Starting with Defold 1.13.0, Defold preserves the positions and transforms from the imported glTF file and does not automatically re-center the model during import. The editor preview and runtime use the imported transforms consistently: skinned or bone-parented meshes preserve their local, skeleton-relative transforms, while rigid meshes retain their flattened world placement.
+
+If a model created with an older version of Defold changes position or orientation after being reimported, correct the transform in Blender or another authoring tool and export the *.gltf* or *.glb* file again.
+
 ## Using a model
 Once you have imported the model, use it in a [Model component](https://defold.com/llms/manuals/model.md):
 

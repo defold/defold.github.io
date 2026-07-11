@@ -35,6 +35,12 @@ Se o modelo deve usar uma textura no Defold, importe a imagem de textura como um
 
 ![Assets de modelo importados](/manuals/images/model/assets_gltf.png)
 
+<div class='sidenote' markdown='1'>
+A partir do Defold 1.13.0, o Defold preserva as posições e transformações do arquivo glTF importado e não recentraliza automaticamente o modelo durante a importação. A prévia do editor e o runtime usam as transformações importadas de forma consistente: malhas com skinning ou vinculadas a ossos preservam suas transformações locais relativas ao esqueleto, enquanto malhas rígidas mantêm seu posicionamento global achatado.
+
+Se um modelo criado com uma versão anterior do Defold mudar de posição ou orientação depois de ser reimportado, corrija a transformação no Blender ou em outra ferramenta de criação e exporte novamente o arquivo *.gltf* ou *.glb*.
+</div>
+
 ## Usando um modelo
 Depois de importar o modelo, use-o em um [componente de Modelo](/pt/manuals/model):
 

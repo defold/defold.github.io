@@ -1739,9 +1739,6 @@ Check if you want the graphics context to have a transparent backdrop.
 #### Settings
 Liveupdate settings resource file to use during bundling.
 
-#### Mount On Start
-Enables auto-mount of previously mounted resources when the application starts.
-
 ### Profiler
 
 #### Enabled
@@ -4953,6 +4950,10 @@ glTF can be stored in two common ways:
 
 If the model should use a texture in Defold, import the texture image as a separate asset. Even when the source glTF/GLB file contains embedded images, textures must be assigned to the Model component through the component material texture properties.
 
+Starting with Defold 1.13.0, Defold preserves the positions and transforms from the imported glTF file and does not automatically re-center the model during import. The editor preview and runtime use the imported transforms consistently: skinned or bone-parented meshes preserve their local, skeleton-relative transforms, while rigid meshes retain their flattened world placement.
+
+If a model created with an older version of Defold changes position or orientation after being reimported, correct the transform in Blender or another authoring tool and export the *.gltf* or *.glb* file again.
+
 ## Using a model
 Once you have imported the model, use it in a [Model component](#manuals:model):
 
@@ -5128,10 +5129,10 @@ When Defold creates an application bundle it needs to store any excluded resourc
 There are currently three ways that Defold can store the resources. Choose the method in the *Mode* dropdown in the settings window:
 
 `Zip`
-: This option tells Defold to create a Zip archive file with any excluded resources. The archive is saved at the location specified in the *Export path* setting.
+: This option tells Defold to create a Zip archive file with any excluded resources. The archive is saved at the location specified in the *Export path* setting and can be mounted at runtime using a `zip:` URI and `liveupdate.add_mount()`.
 
 `Folder`
-: This option tells Defold to create a folder with all the excluded resources. It works exactly the same way as Zip, but uses a directory instead of an archive. This may be useful in cases where you need to post-process files before uploading and plan to pack them into an archive yourself.
+: This option tells Defold to create a folder with all the excluded resources. It is useful when you need to post-process files before uploading or packaging them. A folder of individual compiled files laid out at their expected resource paths can be mounted at runtime using a `file:` URI.
 
 `Amazon`
 : This option tells Defold to automatically upload excluded resources to an Amazon Web Service (AWS) S3 bucket. Fill in your AWS *Credential profile* name, select the appropriate *Bucket* and provide a *Prefix* name.  You can read more on how to setup an AWS account in this [aws guide](#manuals:live-update-aws)
@@ -5187,8 +5188,8 @@ This means that both the game base archive and live update archive(s) need to be
 This behavior can be turned off with an options flag.
 When turned off, the content verification responsibility lies entirely with the developer, to guarantee that each live update archive will work with the running engine.
 
-We recommend storing some metadata for each mount, so that _directly upon startup_, the developer can decide if the mount/archive should be removed.
-One way to do so is to add an extra file to the zip archive after the game has been bundled. For instance by inserting a `metadata.json` with any relevant information that the game requires. Then, at startup, the game can retrieve with `sys.load_resource("/metadata.json")`. _Note that you will need a unique name for each mount's custom data, or the mounts will give you the file with the topmost priority_
+We recommend storing metadata for each mount so the application can decide whether the package should remain mounted. Validate it after adding the mount, including when the application re-adds its required mounts during startup.
+One way to do so is to add an extra file to the zip archive after the game has been bundled. For instance, insert a `metadata.json` with any information that the game requires, then retrieve it with `sys.load_resource("/metadata.json")` after mounting. _Use a unique resource path for each mount's custom data, or resource lookup will return the file from the mount with the highest priority._
 
 Failure to do so, you may end up in a situation where the content is not compatible with the engine at all, forcing it to quit.
 
@@ -5201,9 +5202,9 @@ If two archives have the same file `sprite.texturec`, the engine will load the f
 
 The engine doesn't keep a reference to any resource in a mount. Once a resource is loaded into memory, the archive may be unmounted. The resource will remain in memory until it is unloaded.
 
-The mounts are automatically re-added upon engine restart.
+Mounts are active for the current engine session only. The application must call `liveupdate.add_mount()` again for every package it needs after a restart. Store the package location, mount name and priority in application-managed persistent data if those choices need to survive between sessions.
 
-Mounting an archive doesn't copy or move the archive. The engine only stores the path to the archive. Thus, the developer can remove the archive at any time, and the mount will also be removed at next startup.
+Mounting a Zip archive or folder doesn't copy or move it. The mounted content must remain at the specified location for as long as the mount is in use.
 
 ## Scripting with Live Update
 
@@ -5218,9 +5219,7 @@ Debugging
   Now the game starts with a shell window that will output any `print()` statements:
 
 Forcing re-download of resources
-: The developer can download the content to any file/folder they wish, but often they're located under the application path. The location of the application support folder depends on the operating system. It can be found with `print(sys.get_save_file("", ""))`.
-
-  The file liveupdate.mounts is located under the "local storage", and it's path is output to the console at start "INFO:LIVEUPDATE: Live update folder located at: ..."
+: The developer can download the content to any file/folder they wish, but often it is located under the application path. The location of the application support folder depends on the operating system. It can be found with `print(sys.get_save_file("", ""))`. To force a download, remove the downloaded package and the corresponding entry from any application-managed state. There is no engine-managed mount list to delete; mounts do not persist across restarts.
 
 <!-- /manuals/atlas -->
 
@@ -7144,13 +7143,13 @@ Orthographic Projection
 : Set this to switch the camera to an orthographic projection (see below).
 
 Orthographic Zoom
-: (**Orthographic camera only**) - The zoom used for the orthographic projection (> 1 = zoom in, < 1 = zoom out).
+: (**Orthographic camera only**) - A user-controlled zoom multiplier (> 1 = zoom in, < 1 = zoom out). In `Fixed` mode it is the effective zoom. In `Auto Fit` and `Auto Cover` modes it is multiplied by the automatically calculated zoom, which makes it possible to add extra zoom without disabling automatic sizing.
 
 Orthographic Mode
 : (**Orthographic camera only**) - Controls how the orthographic camera determines zoom relative to the window size and your design resolution (the values in `game.project` → `display.width/height`).
   - `Fixed` (uses constant zoom): Uses the current `Orthographic Zoom` value as-is.
-  - `Auto Fit` (contain): Automatically adjusts zoom so the full design area fits inside the window. May show extra content on sides or top/bottom.
-  - `Auto Cover` (cover): Automatically adjusts zoom so the design area covers the entire window. May crop on sides or top/bottom.
+  - `Auto Fit` (contain): Automatically calculates zoom so the full design area fits inside the window, then multiplies it by `Orthographic Zoom`. May show extra content on sides or top/bottom.
+  - `Auto Cover` (cover): Automatically calculates zoom so the design area covers the entire window, then multiplies it by `Orthographic Zoom`. May crop on sides or top/bottom.
   Available only when `Orthographic Projection` is enabled.
 
 ## Using the camera
@@ -7185,6 +7184,8 @@ camera.get_aspect_ratio(camera) -- get aspect ratio
 camera.get_far_z(camera) -- get far z
 camera.get_fov(camera) -- get field of view
 camera.get_orthographic_mode(camera) -- get orthographic mode (one of camera.ORTHO_MODE_*)
+camera.get_orthographic_zoom(camera) -- get the user-controlled zoom multiplier
+camera.get_orthographic_auto_zoom(camera) -- get the automatically calculated zoom
 camera.set_aspect_ratio(camera, ratio) -- set aspect ratio
 camera.set_far_z(camera, far_z) -- set far z
 camera.set_near_z(camera, near_z) -- set near z
@@ -7252,9 +7253,25 @@ You pan/move the camera around the game world by moving the game object the came
 
 You can zoom in and out when using a perspective camera by moving the game object the camera is attached to along the z-axis. The camera component will automatically send an updated view matrix based on the current z-position of the camera.
 
-You can zoom in and out when using an orthographic camera by changing the *Orthographic Zoom* property of the camera:
+You can zoom in and out when using an orthographic camera by changing the *Orthographic Zoom* property of the camera, either in the editor or at runtime:
 ```lua
+-- In Fixed mode, this is the effective zoom.
 go.set("#camera", "orthographic_zoom", 2)
+```
+
+In `Auto Fit` and `Auto Cover` modes, *Orthographic Zoom* is applied on top of the automatically calculated zoom; it is not ignored. For example, set *Orthographic Mode* to `Auto Fit` and *Orthographic Zoom* to `1.25` in the editor to fit the design area to the window and then zoom in an additional 25%. The equivalent runtime setup is:
+```lua
+camera.set_orthographic_mode("#camera", camera.ORTHO_MODE_AUTO_FIT)
+go.set("#camera", "orthographic_zoom", 1.25)
+
+local auto_zoom = camera.get_orthographic_auto_zoom("#camera")
+local zoom_multiplier = camera.get_orthographic_zoom("#camera")
+local effective_zoom = auto_zoom * zoom_multiplier
+```
+
+`camera.get_orthographic_auto_zoom()` returns the zoom calculated from the current window and project dimensions in `Auto Fit` and `Auto Cover` modes. It returns `1.0` in `Fixed` mode. The same value is available through the read-only `orthographic_auto_zoom` component property:
+```lua
+local auto_zoom = go.get("#camera", "orthographic_auto_zoom")
 ```
 
 When using an orthographic camera you can also switch how zoom is determined using the `Orthographic Mode` setting or via script:
@@ -7268,7 +7285,7 @@ camera.set_orthographic_mode("#camera", camera.ORTHO_MODE_AUTO_FIT)
 -- switch to auto-cover to ensure the design area covers the window
 camera.set_orthographic_mode("#camera", camera.ORTHO_MODE_AUTO_COVER)
 
--- switch back to fixed mode to control zoom manually via orthographic_zoom
+-- switch to fixed mode to use orthographic_zoom without automatic sizing
 camera.set_orthographic_mode("#camera", camera.ORTHO_MODE_FIXED)
 ```
 
@@ -7310,7 +7327,7 @@ end
 
 A complete example of adaptive zoom can be seen in [this sample project](https://github.com/defold/sample-adaptive-zoom).
 
-Note: With an orthographic camera you can now achieve contain/cover behavior without custom code by setting `Orthographic Mode` to `Auto Fit` (contain) or `Auto Cover` (cover). In these modes the effective zoom is computed automatically based on window size and your design resolution.
+Note: With an orthographic camera you can now achieve contain/cover behavior without custom code by setting `Orthographic Mode` to `Auto Fit` (contain) or `Auto Cover` (cover). In these modes the zoom calculated from the window size and design resolution is multiplied by `Orthographic Zoom`.
 
 ### Following a game object
 
@@ -7365,7 +7382,10 @@ A camera has a number of different properties that can be manipulated using `go.
 : The camera far Z-value (`number`).
 
 `orthographic_zoom`
-: The orthographic camera zoom (`number`).
+: The user-controlled orthographic camera zoom multiplier. In `Auto Fit` and `Auto Cover` modes it is multiplied by `orthographic_auto_zoom`. (`number`).
+
+`orthographic_auto_zoom`
+: The calculated orthographic zoom for `Auto Fit` and `Auto Cover` modes, or `1.0` in `Fixed` mode. READ ONLY. (`number`).
 
 `aspect_ratio`
 : The ratio between the frustum width and height. Used when calculating the projection of a perspective camera. (`number`).
@@ -12727,6 +12747,21 @@ local mode = camera.get_orthographic_mode("main:/go#camera")
 
 The render API in Defold lets developers perform something called frustum culling. When frustum culling is enabled any graphics that lies outside of a defined bounding box or frustum will be ignored. In a large game world where only a portion is visible at a time, frustum culling can dramatically reduce the amount of data that needs to be sent to the GPU for rendering, thus increasing performance and saving battery (on mobile devices). It is common to use the view and projection of the camera to create the bounding box. The default render script uses the view and projection (from the camera) to calculate a frustum.
 
+Enable frustum culling for a draw call by passing a view-projection matrix in the `frustum` option to `render.draw()`:
+```lua
+local frustum = self.proj * self.view
+render.draw(predicates.particle, { frustum = frustum })
+```
+
+When rendering with a camera component, `render.set_camera()` can use the camera's view-projection matrix automatically for subsequent draw calls:
+```lua
+render.set_camera("main:/go#camera", { use_frustum = true })
+render.draw(predicates.particle)
+render.set_camera()
+```
+
+Particle FX emitters are culled against their bounds when either of these methods is used.
+
 Frustum culling is implemented in the engine per component type. Current status:
 
 | Component   | Supported |
@@ -12736,11 +12771,15 @@ Frustum culling is implemented in the engine per component type. Current status:
 | Mesh        | YES (1)   |
 | Label       | YES       |
 | Spine       | YES       |
-| Particle fx | NO        |
+| Particle fx | YES       |
 | Tilemap     | YES       |
 | Rive        | NO        |
 
 1 = Mesh bounding box needs to be set by the developer. [Learn more](#manuals:mesh).
+
+Starting with Defold 1.13.0, component primitives use counter-clockwise vertex winding, with the primitive normal pointing towards the camera. Sprites, GUI nodes, tilemaps (tilegrids), and Particle FX use the same winding as other component types, so the same face-culling settings can be used for all components.
+
+This may affect projects that set face culling for components other than models. If a component is unexpectedly culled, make sure back faces are selected with `render.set_cull_face(graphics.FACE_TYPE_BACK)`, or remove the `render.set_cull_face()` call to use the default `graphics.FACE_TYPE_BACK` mode.
 
 ## Coordinate systems
 
@@ -13544,9 +13583,24 @@ Defold currently supports compute shaders in the following graphics adapters:
 - OpenGL 4.3+
 - OpenGL ES 3.1+
 
-There is currently no way to check if the running client supports compute shaders.
-This means that there is no guarantee that the client supports running compute shaders if the graphics adapter is OpenGL, or OpenGL ES based.
-Vulkan and Metal support compute shaders from version 1.0. To use Vulkan, you need to create a custom manifest and select Vulkan as the backend.
+Use `graphics.get_adapter_info()` to check if the active graphics adapter supports compute shaders. The `features` field contains an array of the context feature constants supported by the adapter:
+```lua
+local function has_context_feature(feature)
+    local adapter_info = graphics.get_adapter_info()
+    for _, supported_feature in ipairs(adapter_info.features) do
+        if supported_feature == feature then
+            return true
+        end
+    end
+    return false
+end
+
+local compute_shaders_supported = has_context_feature(
+    graphics.CONTEXT_FEATURE_COMPUTE_SHADER
+)
+```
+
+Only supported features are included in the array; it is not a table keyed by the feature constants. Always perform this check before using compute shaders when the game can run with different graphics adapters or on devices with varying driver support. OpenGL and OpenGL ES support depends on the API version and driver. Vulkan and Metal via MoltenVK support compute shaders from version 1.0. Use an [application manifest](#manuals:app-manifest) to select Vulkan on platforms where it is not already the default graphics backend.
 
 <!-- /manuals/shader -->
 
