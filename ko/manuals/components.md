@@ -30,6 +30,7 @@ Defold는 다음 컴포넌트 타입을 지원합니다:
 * [Factory](/ko/manuals/factory) - 게임 오브젝트를 스폰합니다
 * [GUI](/ko/manuals/gui) - 그래픽 유저 인터페이스를 렌더링합니다
 * [Label](/ko/manuals/label) - 텍스트 조각을 렌더링합니다
+* [Light](/ko/manuals/light) - 쉐이더에 라이트 데이터를 추가합니다
 * [Mesh](/ko/manuals/mesh) 3D mesh를 표시합니다(런타임 생성 및 조작 포함)
 * [Model](/ko/manuals/model) 3D 모델을 표시합니다(선택적 애니메이션 포함)
 * [Particle FX](/ko/manuals/particlefx) - 파티클을 스폰합니다

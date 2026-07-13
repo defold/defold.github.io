@@ -30,6 +30,7 @@ O Defold oferece suporte aos seguintes tipos de componente:
 * [Fábrica](/pt/manuals/factory) - Cria objetos de jogo
 * [GUI](/pt/manuals/gui) - Renderiza uma interface gráfica de usuário
 * [Rótulo](/pt/manuals/label) - Renderiza um trecho de texto
+* [Luz](/pt/manuals/light) - Adiciona dados de luz para shaders
 * [Mesh](/pt/manuals/mesh) Mostra uma malha 3D (com criação e manipulação em runtime)
 * [Modelo](/pt/manuals/model) Mostra um modelo 3D (com animações opcionais)
 * [Particle FX](/pt/manuals/particlefx) -  Cria partículas

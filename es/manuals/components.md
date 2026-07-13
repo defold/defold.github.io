@@ -30,6 +30,7 @@ Defold admite los siguientes tipos de componentes:
 * [Factory](/es/manuals/factory) - Genera objetos de juego
 * [GUI](/es/manuals/gui) - Renderiza una interfaz gráfica de usuario
 * [Label](/es/manuals/label) - Renderiza un fragmento de texto
+* [Light](/es/manuals/light) - Añade datos de iluminación para los shaders
 * [Mesh](/es/manuals/mesh) Muestra un mesh 3D (con creación y manipulación en tiempo de ejecución)
 * [Model](/es/manuals/model) Muestra un modelo 3D (con animaciones opcionales)
 * [Particle FX](/es/manuals/particlefx) - Genera partículas
