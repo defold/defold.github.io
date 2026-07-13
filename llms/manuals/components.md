@@ -33,6 +33,7 @@ Defold supports the following component types:
 * [Factory](https://defold.com/llms/manuals/factory.md) - Spawn game objects
 * [GUI](https://defold.com/llms/manuals/gui.md) - Render a graphical user interface
 * [Label](https://defold.com/llms/manuals/label.md) - Render a piece of text
+* [Light](https://defold.com/llms/manuals/light.md) - Add light data for shaders
 * [Mesh](https://defold.com/llms/manuals/mesh.md) Show a 3D mesh (with run-time creation and manipulation)
 * [Model](https://defold.com/llms/manuals/model.md) Show a 3D model (with optional animations)
 * [Particle FX](https://defold.com/llms/manuals/particlefx.md) -  Spawn particles

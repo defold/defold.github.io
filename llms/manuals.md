@@ -72,6 +72,7 @@ These are per-manual files generated for LLM usage.
 - [Camera](https://defold.com/llms/manuals/camera.md)
 - [Factory](https://defold.com/llms/manuals/factory.md)
 - [Label](https://defold.com/llms/manuals/label.md)
+- [Light](https://defold.com/llms/manuals/light.md)
 - [Mesh](https://defold.com/llms/manuals/mesh.md)
 - [Model](https://defold.com/llms/manuals/model.md)
 - [Particle FX](https://defold.com/llms/manuals/particlefx.md)
