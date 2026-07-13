@@ -8,19 +8,26 @@ toc:
 - 프로파일링
 - 런타임 비주얼 프로파일러
 - 웹 프로파일러
-- 프레임 프로파일러
+- Remotery 프레임 프로파일러
 - 리소스 프로파일러
+- HTML5 브라우저 performance timeline
 - 빌드 리포트 {build-reports}
 - 외부 도구
 ---
 
 # 프로파일링
 
-Defold에는 엔진과 빌드 파이프라인에 통합된 프로파일링 도구 세트가 포함되어 있습니다. 이 도구들은 성능과 메모리 사용량 문제를 찾는 데 도움이 되도록 설계되었습니다. 내장 프로파일러는 디버그 빌드에서만 사용할 수 있습니다. Defold에서 사용하는 프레임 프로파일러는 [Celtoys의 Remotery 프로파일러](https://github.com/Celtoys/Remotery)입니다.
+Defold에는 엔진과 빌드 파이프라인에 통합된 프로파일링 도구가 포함되어 있습니다. 이 도구들은 성능, 메모리, 리소스 사용량 문제를 찾는 데 도움이 됩니다. 런타임 프로파일링 데이터는 여러 기능에서 사용할 수 있습니다.
+
+* 기본 프로파일러와 게임 내 비주얼 프로파일러는 모든 플랫폼에서 사용할 수 있습니다.
+* [Remotery 프로파일러](https://github.com/Celtoys/Remotery)와 대화형 웹 프레임 프로파일러는 데스크탑과 모바일 플랫폼에서 사용할 수 있습니다.
+* HTML5 빌드는 Defold scope를 브라우저의 Web Performance API에 게시할 수 있습니다.
+
+[App Manifest](/ko/manuals/app-manifest/#profiler)의 **Profiler** 설정은 프로파일러 코드를 빌드에 링크할지 제어합니다. 기본값은 **Debug Only**이며, **None**은 코드를 제외하고 **Always**는 디버그 빌드와 릴리스 빌드 모두에 포함합니다. *game.project*의 `profiler` 설정은 런타임 동작을 제어하지만 제외된 프로파일러 코드를 빌드에 다시 링크하지는 않습니다. 특히 **Track CPU**는 CPU 사용량 sampling을 제어하며 App Manifest 선택과는 별개입니다.
 
 ## 런타임 비주얼 프로파일러
 
-디버그 빌드에는 실행 중인 어플리케이션 위에 라이브 정보를 오버레이로 렌더링해 표시하는 런타임 비주얼 프로파일러가 포함되어 있습니다:
+프로파일러 지원을 포함한 빌드에는 실행 중인 어플리케이션 위에 라이브 정보를 오버레이로 표시하는 런타임 비주얼 프로파일러가 포함되어 있습니다:
 
 ```lua
 function on_reload(self)
@@ -43,9 +50,9 @@ profiler.view_recorded_frame()
 프로파일러 함수에 대한 자세한 내용은 [profiler API 레퍼런스](/ref/stable/profiler/)를 참조하세요.
 
 ## 웹 프로파일러
-게임의 디버그 빌드를 실행하는 동안, 브라우저를 통해 대화형 웹 기반 프로파일러에 접근할 수 있습니다.
+프로파일러 지원을 포함한 데스크탑 또는 모바일 빌드를 실행하는 동안 브라우저를 통해 대화형 프레임 및 리소스 프로파일러에 접근할 수 있습니다.
 
-### 프레임 프로파일러
+### Remotery 프레임 프로파일러
 프레임 프로파일러를 사용하면 실행 중인 게임을 샘플링하고 개별 프레임을 자세히 분석할 수 있습니다. 프로파일러에 접근하려면:
 
 1. 타겟 기기에서 게임을 시작합니다.
@@ -86,6 +93,10 @@ Global Properties
 LuaMem 값은 Lua 가비지 컬렉터가 보고한 Lua VM의 메모리 사용량을 킬로바이트 단위로 나타냅니다. Memory는 엔진이 사용한 메모리 양을 킬로바이트 단위로 나타냅니다.
 </div>
 
+<div class='important' markdown='1'>
+[Max Sample Count 설정](/ko/manuals/project-settings/#max-sample-count)은 thread마다 프레임마다 기록되는 프로파일러 sample 수를 제한합니다. 프로파일러에서 제한을 초과했다고 보고하면 먼저 네이티브 익스텐션 프로파일링 코드에 짝이 맞지 않는 scope begin/end 쌍이 있는지 확인하세요. 실제 프레임에 설정된 제한보다 많은 scope가 포함된 경우에만 상한을 높이세요.
+</div>
+
 ### 리소스 프로파일러
 리소스 프로파일러를 사용하면 실행 중인 게임을 검사하고 리소스 사용량을 자세히 분석할 수 있습니다. 프로파일러에 접근하려면:
 
@@ -101,6 +112,17 @@ LuaMem 값은 Lua 가비지 컬렉터가 보고한 Lua VM의 메모리 사용량
 
 리소스 뷰
 : 리소스 뷰는 현재 메모리에 로드된 모든 리소스와 각 리소스의 크기 및 참조 수를 표시합니다. 어플리케이션의 메모리 사용량을 최적화할 때 특정 시점에 무엇이 메모리에 로드되어 있는지 이해해야 하는 경우 유용합니다.
+
+## HTML5 브라우저 performance timeline
+
+HTML5는 브라우저 timeline에 Remotery 대신 Web Performance API를 사용합니다. Defold scope를 기록하려면 다음과 같이 합니다.
+
+1. 선택한 App Manifest profiler 모드가 실행 중인 빌드 variant에 프로파일러 지원을 포함하는지 확인합니다.
+2. *game.project*에서 **Performance Timeline Enabled**(`profiler.performance_timeline_enabled`)를 활성화합니다.
+3. HTML5 빌드를 실행하고 브라우저 개발자 도구를 엽니다.
+4. 브라우저의 **Performance** pane에서 세션을 기록하고 결과 timeline의 Defold scope를 확인합니다.
+
+이 브라우저 timeline은 게임 내 비주얼 프로파일러와 대화형 Remotery 웹 프로파일러 모두와 별개입니다.
 
 
 ## 빌드 리포트 {#build-reports}

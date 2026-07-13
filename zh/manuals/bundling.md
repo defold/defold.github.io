@@ -98,7 +98,7 @@ toc:
 
 创建应用程序包时，您可以选择创建debug或release包。这两种包之间的差异很小，但重要的是要记住：
 
-* Release构建不包含[性能分析器](/zh/manuals/profiling)
+* Release 构建默认不包含[性能分析器](/zh/manuals/profiling)。要在 Debug 和 Release 构建中都包含分析器支持，请在 [App Manifest](/zh/manuals/app-manifest/#profiler) 中将 **Profiler** 设置为 **Always**。
 * Release构建不包含[屏幕录制器](/ref/stable/sys/#start_record)
 * Release构建不显示任何对`print()`的调用的输出或任何原生扩展的输出
 * Release构建在`sys.get_engine_info()`中将`is_debug`值设置为`false`

@@ -1690,7 +1690,7 @@ Or from a finished Sample game:
 
 ### Adding the project to GitHub
 
-A local project has no integration with any version control system, meaning that the files reside only on your hard drive and there is no history from which to revert changes. Files deleted through the editor's Assets pane are moved to the system Trash or Recycle Bin when supported, but may be permanently deleted if that operation is unavailable or fails. Trash does not protect arbitrary edits or provide version history, so it is recommended to use a version control system such as Git to track changes to your files. This also makes it very easy to collaborate on a project with other people. Uploading a local project to GitHub can be done in just a few steps:
+A local project has no integration with any version control system, meaning that the files reside only on your hard drive and there is no history from which to revert changes. Files deleted through the editor's *Assets* pane are moved to the system Trash or Recycle Bin when supported, but may be permanently deleted if that operation is unavailable or fails. Trash does not protect arbitrary edits or provide version history, so it is recommended to use a version control system such as Git to track changes to your files. This also makes it very easy to collaborate on a project with other people. Uploading a local project to GitHub can be done in just a few steps:
 
 1. Create or login to an account on [GitHub](https://github.com/)
 2. Create a repository using the [New Repository](https://help.github.com/en/articles/creating-a-new-repository) option
@@ -2402,7 +2402,7 @@ Lists all the files and folders that are part of your project in a tree structur
    - `Drag and Drop` to add files from elsewhere on your disk to the project or move files and folders to new locations in the project.
    - `Right Mouse Click` to open a _Context Menu_ from where you can create new files or folders, rename, delete, track file dependencies and more.
 
-Files and folders deleted through the Assets pane are moved to the system Trash or Recycle Bin when the platform supports it. If moving an item to the trash is unsupported or fails, the editor permanently deletes it.
+Files and folders deleted through the *Assets* pane are moved to the system Trash or Recycle Bin when the platform supports it. If moving an item to the trash is unsupported or fails, the editor permanently deletes it.
 
 ### 2. Scene Editor pane {#the-scene-editor}
 
@@ -7750,7 +7750,7 @@ You can have the camera follow a game object by setting the game object the came
 
 An alternative way is to update the position of the game object the camera component is attached to every frame as the game object to follow moves.
 
-### Converting between screen and world coordinates
+### Converting between screen and world coordinates {#converting-mouse-to-world-coordinates}
 
 When a camera has panned, zoomed, or changed its projection, input coordinates no longer directly match world coordinates. Use the camera conversion functions with `action.screen_x` and `action.screen_y`. If the optional camera URL is omitted, the last enabled camera is used.
 
@@ -13765,7 +13765,7 @@ Shader constants, or "uniforms" are values that are passed from the engine to ve
 : A matrix to compute normal orientation. The world transform might include non-uniform scaling, which breaks the orthogonality of the combined world-view transform. The normal matrix is used to avoid issues with the direction when transforming normals. (The normal matrix is the transpose inverse of the world-view matrix).
 
 `CONSTANT_TYPE_TIME`
-: An engine-provided vector4 where `.x` is elapsed time since engine start, `.y` is the delta time from the previous frame, and `.z` and `.w` are currently zero. The engine updates this value automatically; it does not need to be updated with `go.set()`. See the [Shadertoy tutorial](/tutorials/shadertoy/#animation) for an example.
+: An engine-provided `vector4` where `.x` is elapsed time since engine start, `.y` is the delta time from the previous frame, and `.z` and `.w` are currently zero. The engine updates this value automatically; it does not need to be updated with `go.set()`. See the [Shadertoy tutorial](/tutorials/shadertoy/#animation) for an example.
 
   Declare a Time constant named `time` in a modern GLSL uniform block:
   ```glsl

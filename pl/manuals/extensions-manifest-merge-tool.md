@@ -47,7 +47,7 @@ Pełny zestaw instrukcji dotyczących modyfikowania manifestów Androida znajdzi
 
 <div class='important' markdown='1'>
 Jeśli w manifeście rozszerzenia nie ustawisz `android:targetSdkVersion` dla swojej aplikacji, automatycznie zostaną dodane następujące uprawnienia: `WRITE_EXTERNAL_STORAGE`, `READ_PHONE_STATE`, `READ_EXTERNAL_STORAGE`. Więcej na ten temat znajdziesz w oficjalnej dokumentacji [tutaj](https://developer.android.com/studio/build/manifest-merge#implicit_system_permissions).
-Zalecamy użycie: `<uses-sdk android:targetSdkVersion=“{% raw %}{{android.target_sdk_version}}{% endraw %}” />`
+Zalecamy użycie: `<uses-sdk android:targetSdkVersion="{% raw %}{{android.target_sdk_version}}{% endraw %}" />`
 </div>
 ### Przykład
 
@@ -61,7 +61,7 @@ Manifest bazowy
             android:versionName='1.0'
             android:installLocation='auto'>
         <uses-feature android:required='true' android:glEsVersion='0x00020000' />
-        <uses-sdk android:minSdkVersion='9' android:targetSdkVersion='26' />
+        <uses-sdk android:minSdkVersion='21' android:targetSdkVersion='26' />
         <application android:label='Test Project' android:hasCode='true'>
         </application>
         <uses-permission android:name='android.permission.VIBRATE' />
@@ -73,7 +73,7 @@ Manifest rozszerzenia
 ```xml
     <?xml version='1.0' encoding='utf-8'?>
     <manifest xmlns:android='http://schemas.android.com/apk/res/android' package='com.defold.testmerge'>
-         <uses-sdk android:targetSdkVersion=“{% raw %}{{android.target_sdk_version}}{% endraw %}” />
+         <uses-sdk android:targetSdkVersion="{% raw %}{{android.target_sdk_version}}{% endraw %}" />
         <uses-feature android:required='true' android:glEsVersion='0x00030000' />
         <application>
             <meta-data android:name='com.facebook.sdk.ApplicationName'
@@ -96,7 +96,7 @@ Wynik
         android:versionCode='14'
         android:versionName='1.0' >
         <uses-sdk
-            android:minSdkVersion='9'
+            android:minSdkVersion='21'
             android:targetSdkVersion='26' />
         <uses-permission android:name='android.permission.VIBRATE' />
         <uses-feature

@@ -9,6 +9,7 @@ toc:
 - Процесс подписи кода у Apple
 - Разработка с использованием бесплатного аккаунта Apple developer
 - Создание iOS application bundle {creating-an-ios-application-bundle}
+- Пользовательский Info.plist и обнаружение локальных целей
 - Установка и запуск бандла на подключенном iPhone
 - Создание storyboard {creating-a-storyboard}
 - Создание icon asset catalog
@@ -105,7 +106,7 @@ Device identifier (UDID)
 
 ![Signing iOS bundle](/manuals/images/ios/sign_bundle.png)
 
-Выберите свою code signing identity и укажите mobile provisioning file. Также выберите архитектуры (32-bit, 64-bit и iOS simulator), для которых нужно создать бандл, а также вариант сборки (Debug или Release). При необходимости можно снять флажок `Sign application`, чтобы пропустить процесс подписи и выполнить его вручную позже.
+Выберите свою code signing identity и укажите mobile provisioning file. Выберите архитектуру устройства `arm64-ios`, а при необходимости также архитектуру симулятора `x86_64-ios`, и вариант сборки (Debug или Release). При необходимости можно снять флажок `Sign application`, чтобы пропустить процесс подписи и выполнить его вручную позже.
 
 <div class='important' markdown='1'>
 При тестировании игры на iOS simulator флажок `Sign application` **обязательно** нужно снять. Приложение установится, но не запустится, если оставить подпись включенной.
@@ -116,6 +117,23 @@ Device identifier (UDID)
 ![ipa iOS application bundle](/manuals/images/ios/ipa_file.png)
 
 Иконку приложения, launch screen storyboard и другие параметры вы задаете в файле настроек проекта *game.project* в [разделе iOS](/ru/manuals/project-settings/#ios).
+
+### Пользовательский Info.plist и обнаружение локальных целей
+
+Встроенный iOS-файл `Info.plist` содержит службу Bonjour и описание использования локальной сети, необходимые для автоматического обнаружения целей редактором в нерелизных сборках. Пользовательский `Info.plist` заменяет этот встроенный базовый манифест. Если пользовательский манифест используется в отладочной сборке и вам нужны обнаружение целей, профилирование, hot reload или передача логов по локальной сети, добавьте следующие записи:
+
+```xml
+{% raw %}{{^variant_release}}{% endraw %}
+<key>NSBonjourServices</key>
+<array>
+    <string>_defold._tcp</string>
+</array>
+<key>NSLocalNetworkUsageDescription</key>
+<string>Discover Defold targets on the local network.</string>
+{% raw %}{{/variant_release}}{% endraw %}
+```
+
+Условие Mustache исключает записи обнаружения из релизных бандлов. Строка описания использования показывается пользователю iOS, поэтому её можно изменить или локализовать. Удаляйте условие только в том случае, если само релизное приложение использует ту же службу Bonjour и функциональность локальной сети.
 
 {% include shared/ru/build-variants.md %}
 
@@ -162,11 +180,7 @@ $ brew install ios-deploy
 
 ![](/manuals/images/ios/xcode_storyboard_select_image.png)
 
-Разместите изображение и внесите любые другие нужные изменения, например добавьте Label или другой UI-элемент. Когда все будет готово, установите активную схему "Build -> Any iOS Device (`arm64`, `armv7`)" (или "Generic iOS Device") и выберите Product -> Build. Дождитесь окончания сборки.
-
-<div class='sidenote' markdown='1'>
-Если у вас доступен только вариант "Any iOS Device (`arm64`)", измените `iOS Deployment target` на 10.3 в настройках "Project -> Basic -> Deployment". Это сделает ваш storyboard совместимым с устройствами `armv7` (например, iPhone5c).
-</div>
+Разместите изображение и внесите любые другие нужные изменения, например добавьте Label или другой UI-элемент. Когда всё будет готово, установите активную схему **Any iOS Device (arm64)** (или **Generic iOS Device**) и выберите **Product ▸ Build**. Defold поддерживает iOS 15.0 и новее на 64-битных устройствах, поэтому оставьте deployment target не ниже 15.0. Дождитесь окончания сборки.
 
 Если вы используете изображения в storyboard, они не будут автоматически включены в `LaunchScreen.storyboardc`. Используйте поле `Bundle Resources` в *game.project*, чтобы включить эти ресурсы.
 Например, создайте в проекте Defold папку `LaunchScreen` и внутри нее папку `ios` (`ios` нужна, чтобы включать эти файлы только в iOS-бандлы), затем положите файлы в `LaunchScreen/ios/`. Добавьте этот путь в `Bundle Resources`.

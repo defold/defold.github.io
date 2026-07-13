@@ -193,7 +193,7 @@ Un buen rendimiento es clave en los juegos, y es vital que puedas hacer profilin
 
 ## Sonido (Sound)
 
-![Sonido](/manuals/images/icons/sound.png) El componente sound es responsable de reproducir un sonido específico. Actualmente, Defold admite archivos de sonido en los formatos WAV y Ogg Vorbis. Consulta el [manual de Sound](/es/manuals/sound) para más información.
+![Sonido](/manuals/images/icons/sound.png) El componente sound es responsable de reproducir un sonido específico. Defold admite archivos WAV, Ogg Vorbis y Ogg Opus. El soporte para Opus debe activarse en el manifiesto de la aplicación. Consulta el [manual de Sound](/es/manuals/sound) para más información.
 
 ## Sprite
 

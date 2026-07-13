@@ -97,7 +97,7 @@ Se puede acceder a estos assets mediante la función [`sys.load_resource()`](htt
 
 Al crear un bundle de aplicación tienes la opción de crear un bundle debug o release. Las diferencias entre los dos bundles son pequeñas, pero es importante tenerlas en cuenta:
 
-* Las builds release no incluyen el [profiler](/es/manuals/profiling)
+* Las builds release no incluyen el [profiler](/es/manuals/profiling) de forma predeterminada. Define **Profiler** como **Always** en el [manifiesto de la aplicación](/es/manuals/app-manifest/#profiler) para incluir soporte para el profiler tanto en builds debug como release.
 * Las builds release no incluyen el [grabador de pantalla](/ref/stable/sys/#start_record)
 * Las builds release no muestran la salida de ninguna llamada a `print()` ni la salida de ninguna extensión nativa
 * Las builds release tienen el valor `is_debug` en `sys.get_engine_info()` establecido en `false`

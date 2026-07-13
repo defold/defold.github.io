@@ -76,6 +76,8 @@ usage: bob [options] [commands]
                                          target
     --exclude-build-folder <arg>         DEPRECATED! Use '.defignore' file
                                          instead
+    --experimental-path-minification     Minimizes resource path names in order
+                                         to save bundle size.
  -h,--help                               This help message
  -i,--input <arg>                        DEPRECATED! Use --root instead
     --identity <arg>                     Sign identity (iOS)
@@ -179,6 +181,9 @@ usage: bob [options] [commands]
 
 `x86_64-linux`
 : Linux 64 位
+
+`arm64-linux`
+: 用于树莓派和基于 Linux 的掌上设备的 Linux ARM64。
 
 `x86_64-ios`
 : iOS macOS 64 位 (iOS 模拟器)

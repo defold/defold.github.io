@@ -97,7 +97,7 @@ Esses assets podem ser acessados pela função [`sys.load_resource()`](https://d
 
 Ao criar um pacote de aplicação, você tem a opção de criar um pacote debug ou release. As diferenças entre os dois pacotes são pequenas, mas importantes:
 
-* Builds Release não incluem o [profiler](/pt/manuals/profiling)
+* Builds Release não incluem o [profiler](/pt/manuals/profiling) por padrão. Defina **Profiler** como **Always** no [Manifesto do aplicativo](/pt/manuals/app-manifest/#profiler) para incluir suporte ao profiler em builds debug e release.
 * Builds Release não incluem o [gravador de tela](/ref/stable/sys/#start_record)
 * Builds Release não mostram a saída de chamadas a `print()` nem a saída de extensões nativas
 * Builds Release têm o valor `is_debug` em `sys.get_engine_info()` definido como `false`

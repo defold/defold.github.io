@@ -7,31 +7,32 @@ title: 应用程序清单
 toc:
 - 应用程序清单
 - 应用清单
-- 物理
-- 物理 2D
+- 物理 2D {physics-2d}
+- 物理 3D
 - 骨骼 + 模型
 - 排除录制
-- 排除分析器
+- 分析器 {profiler}
+- 声音 {sound}
 - 排除声音
+- 排除声音解码器：WAV
+- 排除声音解码器：OGG
+- 包含声音解码器：Opus
 - 排除输入
 - 排除热更新
 - 排除图像
 - 排除类型
-- 排除 Basis Universal
+- 排除 Basis 转码器
 - 使用 Android 支持库
 - 图形
 - 使用完整文本布局系统
-- 最低 Safari 版本（仅适用于 wasm-web）
-- 最低 Firefox 版本（仅适用于 wasm-web）
-- 最低 Chrome 版本（仅适用于 wasm-web）
-- 初始内存（仅适用于 wasm-web）
-- 栈大小（仅适用于 wasm-web）
+- 最低浏览器版本
+- 初始内存（HTML5）
+- 栈大小（HTML5）
 ---
 
 # 应用程序清单
 
-应用程序清单用于排除或控制要在引擎中包含哪些功能。排除引擎中未使用的功能是推荐的最佳实践，因为它会减小游戏的最终二进制文件大小。
-此外，应用程序清单还包含一些用于控制 HTML5 平台代码编译的选项，如最低支持的浏览器版本/内存设置，这些也会影响结果二进制文件的大小。
+应用程序清单控制将哪些功能和后端链接到引擎中。建议排除未使用的功能，因为这会减小游戏最终二进制文件的大小。应用程序清单还包含构建时选项，例如 HTML5 支持的最低浏览器版本和 WebAssembly 内存设置。
 
 ![](/manuals/images/app_manifest/create-app-manifest.png)
 
@@ -41,13 +42,19 @@ toc:
 
 在 `game.project` 中，将清单分配给 `Native Extensions` -> `App Manifest`。
 
-## 物理
+## 物理 2D {#physics-2d}
 
-控制使用哪个物理引擎，或选择 None 来完全排除物理功能。
+选择要包含的 Box2D 实现：
 
-## 物理 2D
+* **Box2D Version 3** - 包含 Box2D 3。这是一个需要主动选择的选项，可能会产生与旧实现不同的模拟结果，因此现有项目可能需要重新调整物理设置。
+* **Box2D (Legacy Defold version)** - 包含旧版 Defold Box2D 实现。这是默认选项。
+* **None** - 排除 2D 物理功能。
 
-选择使用哪个版本的 Box2D。
+Box2D 求解器设置因版本而异。详情请参阅 [Box2D 项目设置](/zh/manuals/project-settings/#box2d)。
+
+## 物理 3D
+
+包含 Bullet 3D 物理实现。默认包含此实现；禁用该设置可排除 3D 物理功能。
 
 ## 骨骼 + 模型
 
@@ -57,13 +64,35 @@ toc:
 
 从引擎中排除视频录制功能（参见[`start_record`](https://defold.com/ref/stable/sys/#start_record)消息文档）。
 
-## 排除分析器
+## 分析器 {#profiler}
 
-从引擎中排除分析器。分析器用于收集性能和使用计数器。在[分析手册](/zh/manuals/profiling/)中学习如何使用分析器。
+控制何时将分析器功能链接到引擎中：
 
-## 排除声音
+* **Debug Only** - 仅在 Debug 构建中包含分析器。这是默认选项。
+* **None** - 从所有构建变体中排除分析器功能。
+* **Always** - 在 Debug 和 Release 构建中都包含分析器。
+
+App Manifest 设置控制是否将分析器代码链接到构建中。*game.project* 中 `profiler` 下的设置控制分析器的运行时行为。请参阅[性能分析手册](/zh/manuals/profiling/)了解如何使用相关功能。
+
+## 声音 {#sound}
+
+声音设置控制将哪些声音系统和解码器链接到引擎中。
+
+### 排除声音
 
 从引擎中排除所有声音播放功能。
+
+### 排除声音解码器：WAV
+
+排除对 WAV 声音资源的支持。
+
+### 排除声音解码器：OGG
+
+排除对 Ogg Vorbis 声音资源的支持。
+
+### 包含声音解码器：Opus
+
+包含对 Ogg Opus 声音资源的支持。默认排除 Opus 解码器，因此必须先启用此选项才能播放 `.opus` 资源。有关支持的格式，请参阅[声音手册](/zh/manuals/sound/)。
 
 ## 排除输入
 
@@ -81,7 +110,7 @@ toc:
 
 从引擎中排除`types`脚本模块[链接](https://defold.com/ref/stable/types/)。
 
-## 排除 Basis Universal
+## 排除 Basis 转码器
 
 从引擎中排除 Basis Universal[纹理压缩库](/zh/manuals/texture-profiles)。
 
@@ -91,43 +120,43 @@ toc:
 
 ## 图形
 
-选择使用哪个图形后端。
+选择每个平台要包含的图形后端。组合选项会同时包含两个后端，以便首选后端不可用时能够回退。
 
-* OpenGL - 仅包含 OpenGL。
-* Vulkan - 仅包含 Vulkan。
-* OpenGL and Vulkan - 同时包含 OpenGL 和 Vulkan。Vulkan 将是默认选项，如果 Vulkan 不可用则回退到 OpenGL。
+| 字段 | 平台 | 选项 | 默认值 |
+|---|---|---|---|
+| **Graphics** | Windows 和 Linux | OpenGL、Vulkan、OpenGL & Vulkan | OpenGL |
+| **Graphics (macOS)** | macOS | OpenGL、Metal、Vulkan、OpenGL & Metal、OpenGL & Vulkan | Vulkan |
+| **Graphics (iOS)** | iOS | OpenGL、Metal、Vulkan、OpenGL & Metal、OpenGL & Vulkan | OpenGL |
+| **Graphics (Android)** | Android | OpenGL+Vulkan、OpenGL、Vulkan | OpenGL+Vulkan |
+| **Graphics (HTML5)** | HTML5 | WebGL、WebGPU、WebGL & WebGPU | WebGL |
+
+在 Linux ARM64 上，**OpenGL** 选项使用 OpenGL ES 后端。Android 的默认组合选项会在 Vulkan 可用时优先使用 Vulkan，否则回退到 OpenGL ES。
 
 ## 使用完整文本布局系统
 
 启用后（`true`），在项目中使用 True Type 字体（`.ttf`）时，可以为 SDF 类型字体使用运行时生成。更多详细信息请阅读[字体手册](https://defold.com/zh/manuals/font/#enabling-runtime-fonts)。
 
-## 最低 Safari 版本（仅适用于 wasm-web）
-YAML 字段名称：**`minSafariVersion`**
-默认值：**90000**
+## 最低浏览器版本
 
-支持的最低 Safari 版本。不能低于 90000。更多信息请查看 Emscripten 编译器选项[链接](https://emscripten.org/docs/tools_reference/settings_reference.html?highlight=environment#min-safari-version)。
+YAML 字段 **`minSafariVersion`**、**`minFirefoxVersion`** 和 **`minChromeVersion`** 指定 Emscripten 针对的最低浏览器版本。非线程目标和线程目标当前的默认值及最低支持版本不同：
 
-## 最低 Firefox 版本（仅适用于 wasm-web）
-YAML 字段名称：**`minFirefoxVersion`**
-默认值：**34**
+| 目标 | Safari | Firefox | Chrome |
+|---|---:|---:|---:|
+| `wasm-web` | `101000` | `40` | `45` |
+| `wasm_pthread-web` | `150000` | `79` | `75` |
 
-支持的最低 Firefox 版本。不能低于 34。更多信息请查看 Emscripten 编译器选项[链接](https://emscripten.org/docs/tools_reference/settings_reference.html?highlight=environment#min-firefox-version)。
+请在相应目标的上下文中指定覆盖值。线程目标还有额外的[托管要求](/zh/manuals/html5/#creating-html5-bundle)。请参阅 Emscripten 设置参考中的 [`MIN_SAFARI_VERSION`](https://emscripten.org/docs/tools_reference/settings_reference.html#min-safari-version)、[`MIN_FIREFOX_VERSION`](https://emscripten.org/docs/tools_reference/settings_reference.html#min-firefox-version) 和 [`MIN_CHROME_VERSION`](https://emscripten.org/docs/tools_reference/settings_reference.html#min-chrome-version)。
 
-## 最低 Chrome 版本（仅适用于 wasm-web）
-YAML 字段名称：**`minChromeVersion`**
-默认值：**32**
-
-支持的最低 Chrome 版本。不能低于 32。更多信息请查看 Emscripten 编译器选项[链接](https://emscripten.org/docs/tools_reference/settings_reference.html?highlight=environment#min-chrome-version)。
-
-## 初始内存（仅适用于 wasm-web）
+## 初始内存（HTML5）
 YAML 字段名称：**`initialMemory`**
 默认值：**33554432**
 
-为 Web 应用程序分配的内存大小。如果 `ALLOW_MEMORY_GROWTH=0`，这是 Web 应用程序可以使用的内存总量。更多信息请查看[链接](https://emscripten.org/docs/tools_reference/settings_reference.html?highlight=environment#initial-memory)。单位为字节。注意该值必须是 WebAssembly 页面大小（64KiB）的倍数。
-该选项与 *game.project* 中的 `html5.heap_size` [相关](https://defold.com/zh/manuals/html5/#heap-size)。通过应用程序清单配置的选项在编译期间设置，并用作 `INITIAL_MEMORY` 选项的默认值。*game.project* 中的值会覆盖应用程序清单中的值，并在运行时使用。
+为 Web 应用程序分配的初始内存量，单位为字节。该值必须是 WebAssembly 页面大小（64 KiB）的倍数。请参阅 Emscripten 的 [`INITIAL_MEMORY`](https://emscripten.org/docs/tools_reference/settings_reference.html#initial-memory) 设置。
 
-## 栈大小（仅适用于 wasm-web）
+此选项提供编译时默认值。*game.project* 中的 [`html5.heap_size`](/zh/manuals/html5/#heap-size) 值会在运行时覆盖它。
+
+## 栈大小（HTML5）
 YAML 字段名称：**`stackSize`**
 默认值：**5242880**
 
-应用程序的栈大小。更多信息请查看[链接](https://emscripten.org/docs/tools_reference/settings_reference.html?highlight=environment#stack-size)。单位为字节。
+应用程序的栈大小，单位为字节。请参阅 Emscripten 的 [`STACK_SIZE`](https://emscripten.org/docs/tools_reference/settings_reference.html#stack-size) 设置。

@@ -193,7 +193,7 @@ Bom desempenho é essencial em jogos, e é vital que você consiga fazer profili
 
 ## Som
 
-![Som](/manuals/images/icons/sound.png) O componente de som é responsável por reproduzir um som específico. Atualmente, o Defold oferece suporte a arquivos de som nos formatos WAV e Ogg Vorbis. Consulte o [manual de som](/pt/manuals/sound) para mais informações.
+![Som](/manuals/images/icons/sound.png) O componente de som é responsável por reproduzir um som específico. O Defold oferece suporte a arquivos WAV, Ogg Vorbis e Ogg Opus. O suporte ao Opus deve ser ativado no Manifesto do aplicativo. Consulte o [manual de som](/pt/manuals/sound) para mais informações.
 
 ## Sprite
 

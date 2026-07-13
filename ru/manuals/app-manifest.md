@@ -7,31 +7,32 @@ title: App Manifest
 toc:
 - App Manifest
 - Применение манифеста
-- Physics
-- Physics 2d
+- Physics 2D
+- Physics 3D
 - Rig + Model
 - Exclude Record
-- Exclude Profiler
+- Profiler
+- Sound
 - Exclude Sound
+- 'Exclude Sound Decoder: WAV'
+- 'Exclude Sound Decoder: OGG'
+- 'Include Sound Decoder: Opus'
 - Exclude Input
 - Exclude Live Update
 - Exclude Image
 - Exclude Types
-- Exclude Basis Universal
+- Exclude Basis Transcoder
 - Use Android Support Lib
 - Graphics
 - Use full text layout system
-- Minimum Safari version (только для wasm-web)
-- Minimum Firefox version (только для wasm-web)
-- Minimum Chrome version (только для wasm-web)
-- Initial memory (только для wasm-web)
-- Stack size (только для wasm-web)
+- Минимальные версии браузеров
+- Initial memory (HTML5)
+- Stack size (HTML5)
 ---
 
 # App Manifest
 
-Манифест приложения используется для исключения возможностей движка или управления тем, какие функции должны быть включены в движок. Исключение неиспользуемых возможностей движка является рекомендуемой практикой, поскольку это уменьшает итоговый размер бинарного файла вашей игры.
-Кроме того, манифест приложения содержит ряд параметров для управления компиляцией кода для платформы HTML5, например минимально поддерживаемые версии браузеров и настройки памяти, что также может влиять на итоговый размер бинарного файла.
+Манифест приложения определяет, какие функции и бэкенды компонуются с движком. Неиспользуемые функции рекомендуется исключать, поскольку это уменьшает итоговый размер бинарного файла игры. Манифест приложения также содержит параметры времени сборки, например минимальные поддерживаемые версии браузеров HTML5 и настройки памяти WebAssembly.
 
 ![](/manuals/images/app_manifest/create-app-manifest.png)
 
@@ -41,13 +42,19 @@ toc:
 
 В `game.project` назначьте манифест в разделе `Native Extensions` -> `App Manifest`.
 
-## Physics
+## Physics 2D
 
-Позволяет выбрать, какой физический движок использовать, либо выбрать None, чтобы полностью исключить физику.
+Выберите реализацию Box2D, которую нужно включить:
 
-## Physics 2d
+* **Box2D Version 3** — включить Box2D 3. Эта реализация включается явно и может давать иные результаты симуляции по сравнению с прежней, поэтому в существующих проектах может потребоваться перенастроить параметры физики.
+* **Box2D (Legacy Defold version)** — включить прежнюю реализацию Box2D в Defold. Используется по умолчанию.
+* **None** — исключить 2D-физику.
 
-Позволяет выбрать, какую версию Box2D использовать.
+Параметры решателя Box2D зависят от версии. Подробнее см. в [настройках проекта Box2D](/ru/manuals/project-settings/#box2d).
+
+## Physics 3D
+
+Включает реализацию 3D-физики Bullet. Она включена по умолчанию; отключите этот параметр, чтобы исключить 3D-физику.
 
 ## Rig + Model
 
@@ -57,13 +64,35 @@ toc:
 
 Исключает из движка возможность записи видео. См. документацию по сообщению [`start_record`](https://defold.com/ref/stable/sys/#start_record).
 
-## Exclude Profiler
+## Profiler
 
-Исключает профилировщик из движка. Профилировщик используется для сбора счётчиков производительности и использования ресурсов. Подробнее см. в [руководстве по профилированию](/ru/manuals/profiling/).
+Определяет, когда функциональность профайлера компонуется с движком:
 
-## Exclude Sound
+* **Debug Only** — включать профайлер только в отладочные сборки. Значение по умолчанию.
+* **None** — исключить функциональность профайлера из всех вариантов сборки.
+* **Always** — включать профайлер как в отладочные, так и в релизные сборки.
+
+Параметр манифеста приложения определяет, будет ли код профайлера скомпонован со сборкой. Параметры раздела `profiler` в *game.project* управляют поведением профайлера во время выполнения. Доступные возможности описаны в [руководстве по профилированию](/ru/manuals/profiling/).
+
+## Sound
+
+Параметры звука определяют, какая звуковая система и какие декодеры компонуются с движком.
+
+### Exclude Sound
 
 Исключает из движка всю функциональность воспроизведения звука.
+
+### Exclude Sound Decoder: WAV
+
+Исключает поддержку звуковых ресурсов WAV.
+
+### Exclude Sound Decoder: OGG
+
+Исключает поддержку звуковых ресурсов Ogg Vorbis.
+
+### Include Sound Decoder: Opus
+
+Включает поддержку звуковых ресурсов Ogg Opus. Декодер Opus по умолчанию исключён, поэтому перед воспроизведением ресурсов `.opus` этот параметр необходимо включить. Поддерживаемые форматы перечислены в [руководстве по звуку](/ru/manuals/sound/).
 
 ## Exclude Input
 
@@ -81,7 +110,7 @@ toc:
 
 Исключает из движка скриптовый модуль `types`: [документация](https://defold.com/ref/stable/types/).
 
-## Exclude Basis Universal
+## Exclude Basis Transcoder
 
 Исключает из движка библиотеку сжатия текстур Basis Universal. Подробнее см. в [руководстве по профилям текстур](/ru/manuals/texture-profiles).
 
@@ -91,49 +120,45 @@ toc:
 
 ## Graphics
 
-Позволяет выбрать, какой графический backend использовать.
+Позволяет выбрать графические бэкенды, включаемые для каждой платформы. Комбинированный вариант включает оба бэкенда, чтобы при недоступности предпочтительного можно было использовать резервный.
 
-* OpenGL - включать только OpenGL.
-* Vulkan - включать только Vulkan.
-* OpenGL and Vulkan - включать одновременно OpenGL и Vulkan. Vulkan будет использоваться по умолчанию, а при его недоступности произойдёт откат на OpenGL.
+| Поле | Платформы | Варианты | По умолчанию |
+|---|---|---|---|
+| **Graphics** | Windows и Linux | OpenGL, Vulkan, OpenGL & Vulkan | OpenGL |
+| **Graphics (macOS)** | macOS | OpenGL, Metal, Vulkan, OpenGL & Metal, OpenGL & Vulkan | Vulkan |
+| **Graphics (iOS)** | iOS | OpenGL, Metal, Vulkan, OpenGL & Metal, OpenGL & Vulkan | OpenGL |
+| **Graphics (Android)** | Android | OpenGL+Vulkan, OpenGL, Vulkan | OpenGL+Vulkan |
+| **Graphics (HTML5)** | HTML5 | WebGL, WebGPU, WebGL & WebGPU | WebGL |
+
+В Linux ARM64 вариант **OpenGL** использует backend OpenGL ES. Комбинированный вариант Android по умолчанию предпочитает Vulkan, а если он недоступен, переходит на OpenGL ES.
 
 ## Use full text layout system
 
 Если включено (`true`), это позволит использовать генерацию во время выполнения для шрифтов типа SDF при использовании в проекте шрифтов True Type (`.ttf`). Подробнее см. в [руководстве по шрифтам](https://defold.com/ru/manuals/font/#enabling-runtime-fonts).
 
-## Minimum Safari version (только для wasm-web)
+## Минимальные версии браузеров
 
-Имя поля в YAML: **`minSafariVersion`**
-Значение по умолчанию: **90000**
+Поля YAML **`minSafariVersion`**, **`minFirefoxVersion`** и **`minChromeVersion`** задают минимальные версии браузеров, на которые ориентируется Emscripten. Текущие значения по умолчанию и минимальные поддерживаемые версии различаются для однопоточной и многопоточной целей:
 
-Минимально поддерживаемая версия Safari. Не может быть меньше 90000. Подробнее см. в параметрах компилятора Emscripten: [ссылка](https://emscripten.org/docs/tools_reference/settings_reference.html?highlight=environment#min-safari-version).
+| Цель | Safari | Firefox | Chrome |
+|---|---:|---:|---:|
+| `wasm-web` | `101000` | `40` | `45` |
+| `wasm_pthread-web` | `150000` | `79` | `75` |
 
-## Minimum Firefox version (только для wasm-web)
+Указывайте переопределения в контексте соответствующей цели. Для многопоточной цели также действуют дополнительные [требования к хостингу](/ru/manuals/html5/#creating-html5-bundle). См. справочник параметров Emscripten: [`MIN_SAFARI_VERSION`](https://emscripten.org/docs/tools_reference/settings_reference.html#min-safari-version), [`MIN_FIREFOX_VERSION`](https://emscripten.org/docs/tools_reference/settings_reference.html#min-firefox-version) и [`MIN_CHROME_VERSION`](https://emscripten.org/docs/tools_reference/settings_reference.html#min-chrome-version).
 
-Имя поля в YAML: **`minFirefoxVersion`**
-Значение по умолчанию: **34**
-
-Минимально поддерживаемая версия Firefox. Не может быть меньше 34. Подробнее см. в параметрах компилятора Emscripten: [ссылка](https://emscripten.org/docs/tools_reference/settings_reference.html?highlight=environment#min-firefox-version).
-
-## Minimum Chrome version (только для wasm-web)
-
-Имя поля в YAML: **`minChromeVersion`**
-Значение по умолчанию: **32**
-
-Минимально поддерживаемая версия Chrome. Не может быть меньше 32. Подробнее см. в параметрах компилятора Emscripten: [ссылка](https://emscripten.org/docs/tools_reference/settings_reference.html?highlight=environment#min-chrome-version).
-
-## Initial memory (только для wasm-web)
+## Initial memory (HTML5)
 
 Имя поля в YAML: **`initialMemory`**
 Значение по умолчанию: **33554432**
 
-Размер памяти, выделяемой для веб-приложения. Если `ALLOW_MEMORY_GROWTH=0`, это общий объём памяти, который может использовать веб-приложение. Подробнее см. [здесь](https://emscripten.org/docs/tools_reference/settings_reference.html?highlight=environment#initial-memory). Значение задаётся в байтах. Обратите внимание, что оно должно быть кратно размеру страницы WebAssembly (64KiB).
+Начальный объём памяти, выделяемой веб-приложению, в байтах. Значение должно быть кратно размеру страницы WebAssembly (64 КиБ). См. параметр Emscripten [`INITIAL_MEMORY`](https://emscripten.org/docs/tools_reference/settings_reference.html#initial-memory).
 
-Этот параметр связан с `html5.heap_size` в *game.project*: [ссылка](https://defold.com/ru/manuals/html5/#heap-size). Значение, настроенное через манифест приложения, задаётся во время компиляции и используется как значение по умолчанию для параметра `INITIAL_MEMORY`. Значение из *game.project* переопределяет значение из манифеста приложения и используется во время выполнения.
+Этот параметр задаёт значение по умолчанию во время компиляции. Значение [`html5.heap_size`](/ru/manuals/html5/#heap-size) в *game.project* переопределяет его во время выполнения.
 
-## Stack size (только для wasm-web)
+## Stack size (HTML5)
 
 Имя поля в YAML: **`stackSize`**
 Значение по умолчанию: **5242880**
 
-Размер стека приложения. Подробнее см. [здесь](https://emscripten.org/docs/tools_reference/settings_reference.html?highlight=environment#stack-size). Значение задаётся в байтах.
+Размер стека приложения в байтах. См. параметр Emscripten [`STACK_SIZE`](https://emscripten.org/docs/tools_reference/settings_reference.html#stack-size).
