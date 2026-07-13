@@ -28,7 +28,7 @@ end
 
 This will work as expected. When the game starts, the script component *addresses* the sprite component by its identifier "body" and uses that address to send it a *message* with the "disable". The effect of this special engine message is that the sprite component hides the sprite graphics. Schematically, the setup looks like this:
 
-The identifiers in the setup are arbitrary. Here we have chosen to give the game object the identifier "bean", its sprite component has been named "body", and the script component that controls the character has been named "controller".
+The identifiers in the setup are developer-defined and must be unique within their naming context. Here we have chosen to give the game object the identifier "bean", its sprite component has been named "body", and the script component that controls the character has been named "controller". Identifiers used in string URL addresses should not contain `:` or `#`, since URL syntax reserves `:` as the socket separator and `#` as the game-object/component separator. The URL parser does not otherwise reject punctuation.
 
 If you don't choose a name, the editor will. Whenever you create a new game object or component in the editor, a unique *Id* property is automatically set.
 

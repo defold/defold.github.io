@@ -90,7 +90,7 @@ The Tools pane is also used for interacting with the integrated debugger. Read m
 
 ### 6. Changed Files pane
 
-If your project uses the distributed version-control system Git this view lists any files that has been changed, added or deleted in your project. By synchronizing the project regularly you can bring your local copy in sync with what is stored in the project Git repository, that way you can collaborate within a team, and you won’t lose your work if disaster strikes. You can learn more about Git in our [Version Control manual](https://defold.com/llms/manuals/version-control.md). Some file oriented operations can be performed in this view:
+If your project uses Git, this view lists files that have been changed, added, renamed, or deleted locally compared with the current commit (`HEAD`). Use an external Git client or the command line to synchronize with a remote repository. You can learn more in the [Version Control manual](https://defold.com/llms/manuals/version-control.md). Some file-oriented operations can be performed in this view:
 
    - `Left Mouse Click` - to select a given file, and while holding `⇧ Shift` you can expand selection or while holding `Ctrl`/`⌘ Cmd` you can (un)select clicked. If a single changed file is selected you can click `Diff` to show the differences. You can click `Revert` to undo changes in all selected files.
    - `Double Left Mouse Click` a file to open a view of the file. The editor opens the file in a suitable editor, just like in the assets view.

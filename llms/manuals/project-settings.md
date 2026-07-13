@@ -29,7 +29,7 @@ It is possible to read values from *game.project* at runtime using [`sys.get_con
 ```lua
 local title = sys.get_config_string("project.title")
 local gravity_y = sys.get_config_number("physics.gravity_y")
-local vsync = sys.get_config_boolean("display.vsync", false)
+local fullscreen = sys.get_config_boolean("display.fullscreen", false)
 ```
 
 The key is a combination of the category and setting name, separated by a dot, and written in lowercase letters with any space characters replaced by underscores. Examples: The field "Title" from the "Project" category becomes `project.title` and the "Gravity Y" field from the "Physics" category becomes `physics.gravity_y`.

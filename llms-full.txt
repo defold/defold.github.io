@@ -1740,7 +1740,7 @@ It is possible to read values from *game.project* at runtime using [`sys.get_con
 ```lua
 local title = sys.get_config_string("project.title")
 local gravity_y = sys.get_config_number("physics.gravity_y")
-local vsync = sys.get_config_boolean("display.vsync", false)
+local fullscreen = sys.get_config_boolean("display.fullscreen", false)
 ```
 
 The key is a combination of the category and setting name, separated by a dot, and written in lowercase letters with any space characters replaced by underscores. Examples: The field "Title" from the "Project" category becomes `project.title` and the "Gravity Y" field from the "Physics" category becomes `physics.gravity_y`.
@@ -2451,7 +2451,7 @@ The Tools pane is also used for interacting with the integrated debugger. Read m
 
 ### 6. Changed Files pane
 
-If your project uses the distributed version-control system Git this view lists any files that has been changed, added or deleted in your project. By synchronizing the project regularly you can bring your local copy in sync with what is stored in the project Git repository, that way you can collaborate within a team, and you won’t lose your work if disaster strikes. You can learn more about Git in our [Version Control manual](#manuals:version-control). Some file oriented operations can be performed in this view:
+If your project uses Git, this view lists files that have been changed, added, renamed, or deleted locally compared with the current commit (`HEAD`). Use an external Git client or the command line to synchronize with a remote repository. You can learn more in the [Version Control manual](#manuals:version-control). Some file-oriented operations can be performed in this view:
 
    - `Left Mouse Click` - to select a given file, and while holding `⇧ Shift` you can expand selection or while holding `Ctrl`/`⌘ Cmd` you can (un)select clicked. If a single changed file is selected you can click `Diff` to show the differences. You can click `Revert` to undo changes in all selected files.
    - `Double Left Mouse Click` a file to open a view of the file. The editor opens the file in a suitable editor, just like in the assets view.
@@ -3487,7 +3487,7 @@ Existing lifecycle hooks that `/hooks.editor_script` may specify:
   - `platform` — same as in `on_build_started`
   - `success` — whether build is successful, either `true` or `false`
 - `on_bundle_started(opts)` — executed when you create a bundle or Build HTML5 version of a game. As with `on_build_started`, changes triggered by this hook will appear in a bundle, and errors will abort a bundle. `opts` will have these keys:
-  - `output_directory` — a file path pointing to a directory with bundle output, for example `"/path/to/project/build/default/__htmlLaunchDir"`
+  - `output_directory` — a file path pointing to a directory with bundle output. **Project ▸ Build HTML5** uses its own artifact tree, for example `"/path/to/project/build/default_html5/__htmlLaunchDir"`, separate from the normal Build output under `build/default`.
   - `platform` — platform the game is bundled for. See a list of possible platform values in [Bob manual](#manuals:bob).
   - `variant` — bundle variant, either `"debug"`, `"release"` or `"headless"`
 - `on_bundle_finished(opts)` — executed when bundle is finished, be it successful or not. `opts` is a table with the same data as `opts` in `on_bundle_started`, plus `success` key indicating whether build is successful.
@@ -4591,7 +4591,7 @@ end
 
 This will work as expected. When the game starts, the script component *addresses* the sprite component by its identifier "body" and uses that address to send it a *message* with the "disable". The effect of this special engine message is that the sprite component hides the sprite graphics. Schematically, the setup looks like this:
 
-The identifiers in the setup are arbitrary. Here we have chosen to give the game object the identifier "bean", its sprite component has been named "body", and the script component that controls the character has been named "controller".
+The identifiers in the setup are developer-defined and must be unique within their naming context. Here we have chosen to give the game object the identifier "bean", its sprite component has been named "body", and the script component that controls the character has been named "controller". Identifiers used in string URL addresses should not contain `:` or `#`, since URL syntax reserves `:` as the socket separator and `#` as the game-object/component separator. The URL parser does not otherwise reject punctuation.
 
 If you don't choose a name, the editor will. Whenever you create a new game object or component in the editor, a unique *Id* property is automatically set.
 
@@ -5556,9 +5556,9 @@ To bundle with Live update is easy. Select `Project ▸ Bundle ▸ ...` and then
 
 When bundling, any excluded resource will be left out of the application bundle. By checking the *Publish Live update content* checkbox, you tell Defold to either upload the excluded resources to Amazon or to create a Zip archive, depending on how you have set up your Live update settings (see above). The published Live Update content still includes `liveupdate.game.dmanifest`, which contains the full resource list needed for remote delivery.
 
-When publishing archive-based Live Update content, *Strip Live Update Entries from Main Manifest* (`liveupdate.exclude_entries_from_main_manifest`) is enabled by default. With this setting enabled, Live Update-only resources are removed from the bundled `game.dmanifest`, which reduces bundle size and runtime memory usage. Disable it only if you need the deprecated behavior where excluded entries remain in the bundled `game.dmanifest`.
+When publishing Live Update content, Defold automatically removes Live Update-only entries from the bundled `game.dmanifest`, while the published `liveupdate.game.dmanifest` retains the complete resource list. This reduces bundle size and runtime memory usage. The former `liveupdate.exclude_entries_from_main_manifest` setting has been removed; any remaining project entry is ignored.
 
-With the default setting enabled, `collectionproxy.get_resources()` returns `{}` until the relevant archive has been mounted. After mounting, it returns the resource hashes for that proxy.
+In the archive-based workflow, `collectionproxy.get_resources()` returns `{}` until the relevant archive has been mounted. After mounting, it returns the resource hashes for that proxy.
 
 Click *Package* and select a location for the application bundle. Now you can start the application and check that everything works as expected.
 
@@ -7246,7 +7246,7 @@ Collection proxies differ from [collection factory components](#manuals:collecti
 
 1. Add a collection proxy component to a game object by `right-clicking` a game object and selecting `Add Component ▸ Collection Proxy` from the context menu.
 
-2. Set the *Collection* property to reference a collection that you wish to dynamically load into the runtime at a later point. The reference is static and makes sure that all the content of the referenced collection end up in the final game.
+2. Set the *Collection* property to reference a collection that you wish to dynamically load into the runtime at a later point. This is a static build-time dependency: the referenced collection and its dependencies are compiled. Unless *Exclude* is checked, they are included in the main bundle. With *Exclude* checked, resources referenced only through excluded proxies can be omitted from the main bundle for Live Update, and the unloaded proxy can be redirected to another compiled collection at runtime as described below.
 
 (You can exclude the content in the build and download it with code instead by checking the *Exclude* box and using the [Live update feature](#manuals:live-update).)
 
@@ -7300,6 +7300,35 @@ end
 
 `"enable"`
 : This message tells the collection proxy component that all the game objects and components should be enabled. All sprite components begin to draw when enabled, for instance.
+
+## Changing an excluded proxy's collection
+
+[`collectionproxy.set_collection()`](https://defold.com/ref/collectionproxy/#collectionproxy.set_collection) can redirect an excluded, unloaded proxy to a compiled collection, which is useful after mounting a Live Update package. The proxy must have *Exclude* checked and must not be loaded or loading. The path must end in `.collectionc`. The collection and all of its dependencies must be available to the resource system when the proxy is loaded.
+
+Check the return value before loading the proxy. Initialize and enable the new world only after receiving `proxy_loaded`:
+```lua
+local function load_mounted_level()
+    local ok, result = collectionproxy.set_collection(
+        "#level_proxy",
+        "/level_pack/level_3.collectionc"
+    )
+
+    if ok then
+        msg.post("#level_proxy", "load")
+    else
+        print("Unable to change proxy collection", result)
+    end
+end
+
+function on_message(self, message_id, message, sender)
+    if message_id == hash("proxy_loaded") then
+        msg.post(sender, "init")
+        msg.post(sender, "enable")
+    end
+end
+```
+
+Call `collectionproxy.set_collection("#level_proxy", nil)` while the proxy is neither loaded nor loading to restore the collection assigned in the editor. See the [Live Update scripting manual](#manuals:live-update-scripting) for downloading and mounting content and the API reference for the `collectionproxy.RESULT_*` failure codes.
 
 ## Addressing into the new world
 
@@ -8045,9 +8074,15 @@ When the *Dynamic Prototype* option is set the collection component count cannot
 
 ## Instance limits
 
-The project setting *max_instances* in *Collection related settings* limits the total number of game object instances that can exist in a world (the main.collection loaded at startup or any world loaded via a collection proxy). All game objects that exist in the world are counted against that limit and it does not matter if they are placed by hand in the editor or spawned in runtime through a script.
+The *Max Instances* project setting under *Collection* is the upper bound on the number of game objects in each collection (world). At build time Defold may allocate a smaller capacity when it can determine that this is safe. All concurrently alive game objects in a world count toward the capacity, whether placed in the editor or spawned at runtime.
 
-If you set *max_instances* to 1024 and have 24 manually placed game objects in your main collection, you can spawn an additional 1000 game objects. As soon as you delete a game object, you are free to spawn another instance.
+The actual allocation depends on build-time analysis:
+
+* When the build can determine a fixed game-object count (typically when the collection has no factory or collection factory), the capacity is the compiled count, capped by *Max Instances*.
+* A collection containing a factory or collection factory uses *Max Instances* for game-object capacity. For a statically referenced prototype, the build identifies the component types that the factory can spawn. Those types use their respective project maximum counts, while unaffected component types can still use exact counts.
+* Enabling *Dynamic Prototype* disables component-count analysis for the owning collection, so it uses *Max Instances* and the configured per-component maximum counts.
+
+Plan *Max Instances* around the greatest number of game objects that may be alive at once in a dynamic world. See [Component max count optimizations](#manuals:project-settings) for how the other component limits are calculated.
 
 ## Pooling of game objects
 
@@ -10877,7 +10912,7 @@ You do this by:
 
 Here is an excerpt from the example project, using a `http.request()` to get the initial sound file.
 
-The web server you're loading content from has to support [HTTP range requests](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Range_requests).
+Actual streaming requires the web server to honor [HTTP range requests](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Range_requests) and return status `206`. If the server ignores the `Range` header and returns status `200`, the example below creates a normal non-streaming resource from the complete response instead.
 
 ```lua
 local function play_sound(self, hash)
@@ -10885,25 +10920,43 @@ local function play_sound(self, hash)
     sound.play(self.component)            -- start playing the sound
 end
 
-local function parse_range(s)
-    local _, _, rstart, rend, size = string.find(s, "(%d+)-(%d+)/(%d+)") -- "bytes 0-16383/103277"
-    return rstart, rend, size
+local function parse_content_range(value)
+    if not value then
+        return nil
+    end
+    local rstart, rend, filesize = value:match("^bytes%s+(%d+)%-(%d+)/(%d+)$")
+    return tonumber(rstart), tonumber(rend), tonumber(filesize)
 end
 
 -- Callback for the http response.
-local function http_result(self, _id, response, extra)
-    if response.status == 200 or response.status == 206 then
-        -- Successful request
-        local relative_path = self.filename
-        local range = response.headers['content-range'] -- content-range = "bytes 0-16383/103277"
-        local rstart, rend, filesize = parse_range(range)
-        -- Create the Defold resource
-        --   "partial" will enable the streaming mode
-        print("Creating resource", relative_path)
-        local hash = resource.create_sound_data(relative_path, { data = response.response, filesize = filesize, partial = true })
-        -- send "play_sound" to the component
-        play_sound(self, hash)
+local function http_result(self, _id, response)
+    if response.status ~= 200 and response.status ~= 206 then
+        return
     end
+
+    local options = {
+        data = response.response,
+    }
+
+    if response.status == 206 then
+        local rstart, _, filesize = parse_content_range(response.headers["content-range"])
+        if rstart ~= 0 or not filesize then
+            print("Invalid Content-Range response")
+            return
+        end
+
+        -- A partial resource enables streaming. filesize is the size of the
+        -- complete file, not only the returned range.
+        if #response.response < filesize then
+            options.filesize = filesize
+            options.partial = true
+        end
+    end
+
+    local relative_path = self.filename
+    print("Creating resource", relative_path)
+    local resource_hash = resource.create_sound_data(relative_path, options)
+    play_sound(self, resource_hash)
 end
 
 local function load_web_sound(base_url, relative_path)
@@ -11703,11 +11756,13 @@ local prop = hash("scale.x")
 go.set(url, prop, 2.0)
 ```
 
-For GUI nodes, the node identifier is provided as the first parameter to the property specific function:
+For GUI nodes, the node is provided as the first parameter to either a property-specific function or the generic `gui.get()` and `gui.set()` functions:
 ```lua
 -- Get the color of the button
 local node = gui.get_node("button")
 local color = gui.get_color(node)
+local same_color = gui.get(node, "color")
+gui.set(node, "color.x", 1)
 ```
 
 ## Game object and component properties
@@ -11779,10 +11834,13 @@ Specific functions for working with the game object transform also exist; they a
 
 ## GUI node properties
 
-GUI nodes also contain properties, but they are read and written through special getter and setter functions. For each property there exists one get- and one set- function. There is also a set of constants defined to use as reference to the properties when animating them. If you need to refer to separate property components you have to use the string name of the property, or a hash of the string name.
+GUI nodes have property-specific getter and setter functions, such as `gui.get_position()` and `gui.set_position()`. The built-in properties listed below can alternatively be read and written with `gui.get(node, property)` and `gui.set(node, property, value)`. Other node values may still require their dedicated functions. Material constants on GUI nodes also use the generic functions. To address one component of a vector property, append its name, for example `gui.set(node, "color.x", 1)`.
+
+The generic and property-specific functions do not always use identical value types. `gui.get()` returns a `vector4` for the complete `position`, `scale`, `size`, and `euler` properties, while the corresponding property-specific functions return a `vector3`. `gui.set()` accepts either a `vector3` or `vector4` for those properties. The generic `rotation` property uses a quaternion; use `euler` when setting rotation in degrees.
 
 * `position` (or `gui.PROP_POSITION`)
 * `rotation` (or `gui.PROP_ROTATION`)
+* `euler` (or `gui.PROP_EULER`)
 * `scale` (or `gui.PROP_SCALE`)
 * `color` (or `gui.PROP_COLOR`)
 * `outline` (or `gui.PROP_OUTLINE`)
@@ -11790,6 +11848,8 @@ GUI nodes also contain properties, but they are read and written through special
 * `size` (or `gui.PROP_SIZE`)
 * `fill_angle` (or `gui.PROP_FILL_ANGLE`)
 * `inner_radius` (or `gui.PROP_INNER_RADIUS`)
+* `leading` (or `gui.PROP_LEADING`)
+* `tracking` (or `gui.PROP_TRACKING`)
 * `slice9` (or `gui.PROP_SLICE9`)
 
 Note that all color values are encoded in a `vector4` where the components correspond to the RGBA values:
@@ -11813,12 +11873,15 @@ Note that all color values are encoded in a `vector4` where the components corre
 | *color*   | The face color of the node.            | `vector4`      | `gui.get_color()` `gui.set_color()` |
 | *outline* | The outline color of the node.         | `vector4`       | `gui.get_outline()` `gui.set_outline()` |
 | *position* | The position of the node. | `vector3` | `gui.get_position()` `gui.set_position()` |
-| *rotation* | The rotation of the node expressed as Euler angles--degrees rotated around each axis. | `vector3` | `gui.get_rotation()` `gui.set_rotation()` |
+| *rotation* | The node rotation. The getter returns a quaternion; the setter accepts a quaternion or Euler angles as a vector. | `quaternion`, `vector3`, or `vector4` | `gui.get_rotation()` `gui.set_rotation()` |
+| *euler* | The rotation of the node expressed as Euler angles in degrees. | `vector3` | `gui.get_euler()` `gui.set_euler()` |
 | *scale* | The scale of the node expressed as a multiplier along each axis. | `vector3` |`gui.get_scale()` `gui.set_scale()` |
 | *shadow* | The shadow color of the node. | `vector4` | `gui.get_shadow()` `gui.set_shadow()` |
 | *size* | The unscaled size of the node. | `vector3` | `gui.get_size()` `gui.set_size()` |
 | *fill_angle* | The fill angle of a pie node expressed as degrees counter-clockwise. | `number` | `gui.get_fill_angle()` `gui.set_fill_angle()` |
 | *inner_radius* | The inner radius of a pie node. | `number` | `gui.get_inner_radius()` `gui.set_inner_radius()` |
+| *leading* | The line-spacing scale of a text node. | `number` | `gui.get_leading()` `gui.set_leading()` |
+| *tracking* | The letter-spacing scale of a text node. | `number` | `gui.get_tracking()` `gui.set_tracking()` |
 | *slice9* | The edge distances of a slice9 node. | `vector4` | `gui.get_slice9()` `gui.set_slice9()` |
 
 <!-- /manuals/script-properties -->
@@ -14016,13 +14079,27 @@ Example:
 go.set("#sprite", "m", vmath.matrix4())
 ```
 
-In order for a material constant of type `CONSTANT_TYPE_USER` or `CONSTANT_TYPE_MATRIX4` to be available using `go.get()` and `go.set()` it has to be used in the shader program. If the constant is defined in the material but not used in the program it will be removed from the material and it will not be available at run-time.
+### GUI node material constants
+
+Inside a GUI script, read and write a node's material constants with `gui.get()` and `gui.set()` rather than the `go` functions. Vector components, matrix constants, and constant arrays are supported. Array indices in the options table are 1-based:
+```lua
+local node = gui.get_node("button")
+
+local tint = gui.get(node, "tint")
+gui.set(node, "tint.x", 0.5)
+gui.set(node, "light_matrix", vmath.matrix4())
+gui.set(node, "tint_array", vmath.vector4(1, 0, 0, 1), { index = 1 })
+```
+
+In order for a material constant of type `CONSTANT_TYPE_USER` or `CONSTANT_TYPE_USER_MATRIX4` to be available using `go.get()` and `go.set()`, or `gui.get()` and `gui.set()`, it has to be used in the shader program. If the constant is defined in the material but not used in the program it will be removed from the material and it will not be available at run-time.
 
 ## Samplers
 
 Samplers are used to sample the color information from a texture (a tile source or atlas). The color information can then be used for calculations in the shader program.
 
-Sprite, tilemap, GUI and particle effect components automatically gets a `sampler2D` set. The first declared `sampler2D` in the shader program is automatically bound to the image referenced in the graphics component. Therefore there is currently no need to specify any samplers in the materials file for those components. Furthermore, those component types currently only support a single texture. (If you need multiple textures in a shader, you can use [`render.enable_texture()`](https://defold.com/ref/render/#render.enable_texture) and set texture samplers manually from your render script.)
+Sprite, tilemap, GUI and particle effect components automatically bind their image texture to the first declared `sampler2D`. Sprite components also support multiple textures: every sampler declared in the material becomes a named image slot in the Sprite component. The first texture supplies the sprite's animation data and drives the frame sequence. For each frame, its image id is used to find the corresponding image in every additional texture, which supplies its own UVs. The assigned atlases or tile sources should therefore contain matching frame ids and similarly shaped images; differing polygon-packed shapes can cause texture bleeding. See [Multi textured sprites](#manuals:sprite) for details.
+
+For a component or render workflow that does not expose an additional texture slot, use [`render.enable_texture()`](https://defold.com/ref/render/#render.enable_texture) to bind extra texture samplers from the render script.
 
 ```glsl
 -- mysprite.fp
@@ -15244,17 +15321,30 @@ usage: bob [options] [commands]
     --build-artifacts <arg>              If left out, will default to
                                          build the engine. Choices:
                                          'engine', 'plugins', 'library'.
-                                         Comma separated list.
+                                         Comma separated list
+    --build-input <arg>                  Project resource path to build
+                                         instead of game.project. May be
+                                         specified more than once. More
+                                         than one occurrence is allowed
+    --build-input-file <arg>             File containing project resource
+                                         paths to build instead of
+                                         game.project. May be specified
+                                         more than once. More than one
+                                         occurrence is allowed
     --build-server <arg>                 The build server (when using
                                          native extensions)
     --build-server-header <arg>          Additional build server header to
-                                         set
+                                         set. More than one occurrence is
+                                         allowed
  -ce,--certificate <arg>                 DEPRECATED! Use --keystore
                                          instead
  -d,--debug                              DEPRECATED! Use --variant=debug
                                          instead
     --debug-ne-upload                    Outputs the files sent to build
                                          server as upload.zip
+    --debug-output-glsl <arg>            Force build GLSL shaders
+    --debug-output-hlsl <arg>            Force build HLSL shaders
+    --debug-output-msl <arg>             Force build Metal shaders
     --debug-output-spirv <arg>           Force build SPIR-V shaders
     --debug-output-wgsl <arg>            Force build WGSL shaders
     --defoldsdk <arg>                    What version of the defold sdk
@@ -15267,8 +15357,8 @@ usage: bob [options] [commands]
                                          target
     --exclude-build-folder <arg>         DEPRECATED! Use '.defignore' file
                                          instead
-    --experimental-path-minification     Minimizes resource path names in order
-                                         to save bundle size.
+    --experimental-path-minification     Minimizes resource path names in
+                                         order to save bundle size.
  -h,--help                               This help message
  -i,--input <arg>                        DEPRECATED! Use --root instead
     --identity <arg>                     Sign identity (iOS)
@@ -15289,7 +15379,7 @@ usage: bob [options] [commands]
     --ne-build-dir <arg>                 Specify a folder with includes or
                                          source, to build a specific
                                          library. More than one occurrence
-                                         is allowed.
+                                         is allowed
     --ne-output-name <arg>               Specify a library target name
  -o,--output <arg>                       Output directory. Default is
                                          "build/default"
@@ -15299,27 +15389,27 @@ usage: bob [options] [commands]
                                          instead
  -r,--root <arg>                         Build root directory. Default is
                                          current directory
-    --resource-cache-local <arg>         Path to local resource cache.
-    --resource-cache-remote <arg>        URL to remote resource cache.
+    --resource-cache-local <arg>         Path to local resource cache
+    --resource-cache-remote <arg>        URL to remote resource cache
     --resource-cache-remote-pass <arg>   Password/token to authenticate
                                          access to the remote resource
-                                         cache.
+                                         cache
     --resource-cache-remote-user <arg>   Username to authenticate access
-                                         to the remote resource cache.
+                                         to the remote resource cache
     --settings <arg>                     Path to a game project settings
-                                         file. More than one occurrence is
-                                         allowed. The settings files are
-                                         applied left to right.
+                                         file. The settings files are
+                                         applied left to right. More than
+                                         one occurrence is allowed
     --strip-executable                   Strip the dmengine of debug
                                          symbols (when bundling iOS or
                                          Android)
- -tc,--texture-compression <arg>         Use texture compression as
+ -tc,--texture-compression               Use texture compression as
                                          specified in texture profiles
  -tp,--texture-profiles <arg>            DEPRECATED! Use
                                          --texture-compression instead
  -u,--auth <arg>                         User auth token
     --use-async-build-server             DEPRECATED! Asynchronous build is
-                                         now the default.
+                                         now the default
     --use-lua-bytecode-delta             Use byte code delta compression
                                          when building for multiple
                                          architectures
@@ -15328,16 +15418,21 @@ usage: bob [options] [commands]
                                          code
     --use-vanilla-lua                    DEPRECATED! Use
                                          --use-uncompressed-lua-source
-                                         instead.
+                                         instead
  -v,--verbose                            Verbose output
     --variant <arg>                      Specify debug, release or
                                          headless version of dmengine
                                          (when bundling)
     --version                            Prints the version number to the
                                          output
+    --with-sha1                          Generate (and verify) sha1
+                                         signatures from build artifacts
+                                         (when bunding for web)
     --with-symbols                       Generate the symbol file (if
                                          applicable)
 ```
+
+`--texture-compression` is a switch with no value. Include it to enable the compression selected by the texture profiles; omit it to disable texture compression. The legacy `--texture-compression=true` form is still accepted. The legacy `--texture-compression=false` form is ignored and produces a warning; omit the switch instead.
 
 Available commands:
 
@@ -15348,7 +15443,7 @@ Available commands:
 : Delete all files in the build directory.
 
 `build`
-: Builds all project data. Add the `--archive` option to build a data archive file ("`game.darc`" in the build directory).
+: Builds the dependency graph reachable from the selected build roots. By default the root is `game.project`; `--build-input` and `--build-input-file` can specify alternative roots. Files are not built merely because they exist under the project root. When `game.project` is a build root, add `--archive` to build the game data archive in the build directory.
 
 `bundle`
 : Creates a platform specific application bundle. Bundling requires that a built archive is present (`build` with the `--archive` option) and that a target platform is specified (with the `--platform` option). Bob creates the bundle in the output directory unless a different directory is specified with the `--bundle-output` option. The bundle is named according to the project name setting in *game.project*. The `--variant` specifies which type of executable to build when bundling and it together with the `--strip-executable` option replaces the `--debug` option. If no `--variant` is specified you will get a release version of the engine (stripped of symbols on Android and iOS). Setting `--variant` to debug and omitting `--strip-executable` yields the same type of executable as `--debug` used to do.
@@ -15388,7 +15483,7 @@ Available platforms and architectures:
 `wasm-web`
 : HTML5 with available `wasm-web` and `wasm_pthread-web` architectures. By default, `--architectures` argument value is `wasm-web`.
 
-By default, Bob looks in the current directory for a project to build. If you change the current dir to a Defold project and invoke bob, it builds the data for the project in the default output directory *build/default*.
+By default, Bob looks in the current directory for a project and builds resources reachable from `game.project` into *build/default*. Unreferenced resources are not compiled. If code loads raw files by path at runtime, include them through the [Custom Resources project setting](#manuals:project-settings); other Defold resources need a reference reachable from a build root.
 ```sh
 $ cd /Applications/Defold-beta/branches/14/4/main
 $ java -jar bob.jar
@@ -15695,27 +15790,19 @@ The game does not start with a message about mismatching versions
 
 # Version control {#manuals:version-control}
 
-Defold is built intended for small teams that work in intense collaboration to create games. Team members can work in parallel on the same content with very little friction. Defold has built-in support for version control using [Git](https://git-scm.com). Git is designed for distributed collaborative work and it is an extremely powerful tool that allows for a wide range of workflows.
+Defold projects work well with [Git](https://git-scm.com), but synchronization is handled outside the editor. Use your preferred Git client or the command line to clone, fetch, pull, commit, push, create branches, and resolve conflicts.
 
 ## Changed files
 
-When you save changes in your local working copy, Defold tracks all changes in the *Changed Files* editor pane, listing each file that has either been added, deleted or modified.
+When the project directory is a Git working-tree root with at least one commit, Defold lists non-ignored files detected as added, modified, deleted, or renamed in the *Changed Files* editor pane. It derives these entries by comparing files on disk directly with the current commit (`HEAD`), so staging a change does not alter the list. Resolve merge conflicts in an external Git client.
 
-Select a file in the list and click `Diff` to view the changes that you have done to the file or `Revert` to undo all changes and restore the file to the state it had after the last synchronization.
+Select exactly one modified or renamed file and click `Diff` to view its text diff. Click `Revert` to discard the selected working-tree and index changes. Tracked files are restored to `HEAD`; files absent from `HEAD` are deleted, whether or not they are staged as additions; and renames delete the new path and restore the old path. This cannot be undone in the editor, so commit or back up work you may need.
 
 ## Git
 
-Git is built primarily to handle source code and text files and stores those types of files with a very low footprint. Only the changes between each version are stored, which means that you can keep an extensive history of changes to all your project files to a relatively small cost. Binary files such as image or sound files, however, does not benefit from Git's storage scheme. Each new version you check in and synchronize takes about the same space. That is usually not a major issue with final project assets (JPEG or PNG images, OGG sound files etc) but it can quickly become an issue with working project files (PSD files, Protools projects etc). These types of files often grow very large since you usually work in much higher resolution than the target assets. It is generally considered best to avoid putting large working files under the control of Git and instead use a separate storage and backup solution for those.
+Git stores Defold's text-based project files efficiently. Frequently changing large binary assets, such as PSD or audio-production files, can still make repository history grow quickly. Consider Git LFS or a separate storage and backup solution for large working files.
 
-There are many ways you can use Git in a team workflow. The one Defold uses is as follows. When you synchronize, the following happens:
-
-1. Any local changes are stashed so they can be restored if something fails later in the sync process.
-2. Server changes are pulled.
-3. The stash is applied (the local changes are restored), this may result in merge conflicts that need to be resolved.
-4. The user gets the option to commit any local file changes.
-5. If there are local commits, the user may choose to push these to the server. Again, it is possible that this leads to conflicts that need to be resolved.
-
-If you prefer a different workflow you can run Git from command line or through a third party application to perform pulls, pushes, commits and merges, working on several branches and so on.
+The *Changed Files* pane provides local status, diff, and revert operations only. It does not know whether commits have been pushed to a remote repository and does not fetch, pull, commit, or push changes. Perform those operations in an external Git client or from the command line. By default, Defold reloads external changes and refreshes the pane when it regains focus. If *Load External Changes on App Focus* is disabled, choose *File ▸ Load External Changes*.
 
 <!-- /manuals/working-offline -->
 
@@ -17312,21 +17399,21 @@ build-timestamp
 
 ## Extra parameters
 
-If you create your custom template, you can redefine set of parameters for the engine loader. To achieve that you need to add `` section and redefine values inside `CUSTOM_PARAMETERS`.
+If you create a custom template, you can change parameters for the engine loader by assigning values in the global `CUSTOM_PARAMETERS` object. The built-in template provides an intentionally empty `` block for these customizations.
 
-Your custom `` should be placed after `` section with reference to `dmloader.js` but before call `EngineLoader.load` function.
+Keep the `engine-setup` block after the script that loads `dmloader.js` and before the `engine-start` block that calls `EngineLoader.load()`.
 
 For example:
-```
-    <script id='custom_setup' type='text/javascript'>
-        CUSTOM_PARAMETERS['disable_context_menu'] = false;
-        CUSTOM_PARAMETERS['unsupported_webgl_callback'] = function() {
+```html
+    <script id="engine-setup" type="text/javascript">
+        CUSTOM_PARAMETERS.disable_context_menu = false;
+        CUSTOM_PARAMETERS.unsupported_webgl_callback = function() {
             console.log("Oh-oh. WebGL not supported...");
-        }
+        };
     </script>
 ```
 
-`CUSTOM_PARAMETERS` may contains following fields:
+`CUSTOM_PARAMETERS` may contain fields including:
 ```
 'archive_location_filter':
     Filter function that will run for each archive path.
@@ -17372,23 +17459,25 @@ It is sometimes necessary to provide additional arguments to a game before it or
 
 ### Engine arguments
 
-It is possible to specify additional engine arguments when the engine is configured and loaded. These extra engine arguments can at runtime be retrieved using `sys.get_config_string()`. To add the key-value pairs you modify the `engine_arguments` field of the `extra_params` object that is passed to the engine when loaded in `index.html`:
+It is possible to specify additional engine arguments when the engine is configured and loaded. These extra engine arguments can be retrieved at runtime using `sys.get_config_string()`. Assign the arguments directly to `CUSTOM_PARAMETERS.engine_arguments` in the `engine-setup` block of `index.html`:
 
-```
-    <script id='engine-setup' type='text/javascript'>
-    var extra_params = {
-        ...,
-        engine_arguments: ["--config=foo1=bar1","--config=foo2=bar2"],
-        ...
-    }
+```html
+    <script id="engine-setup" type="text/javascript">
+        CUSTOM_PARAMETERS.engine_arguments = [
+            "--config=example.foo1=bar1",
+            "--config=example.foo2=bar2"
+        ];
+    </script>
 ```
 
-You can also add `--config=foo1=bar1, --config=foo2=bar2` to the *Engine Arguments* field in the HTML5 section of *game.project* and it will be injected into the generated `index.html` file.
+Assigning a new array replaces any engine arguments configured in *game.project*. To preserve those arguments and add another, use `CUSTOM_PARAMETERS.engine_arguments.push("--config=example.foo3=bar3")` instead.
+
+You can also add `--config=example.foo1=bar1, --config=example.foo2=bar2` to the *Engine Arguments* field in the HTML5 section of *game.project*. The comma-separated values are added to `CUSTOM_PARAMETERS.engine_arguments` in the generated `dmloader.js`.
 
 At runtime you get the values like this:
 ```lua
-local foo1 = sys.get_config_string("foo1")
-local foo2 = sys.get_config_string("foo2")
+local foo1 = sys.get_config_string("example.foo1")
+local foo2 = sys.get_config_string("example.foo2")
 print(foo1) -- bar1
 print(foo2) -- bar2
 ```
@@ -17770,11 +17859,13 @@ screen_magnifier_present=true
 
 # Native extensions {#manuals:extensions}
 
-If you need custom interaction with external software or hardware on a low level where Lua won't suffice, the Defold SDK allows you to write extensions to the engine in C, C++, Objective C, Java or Javascript, depending on target platform. Typical use cases for native extensions are:
+If you need custom interaction with external software or hardware on a low level where Lua won't suffice, the Defold SDK allows you to write extensions to the engine in C, C++, C#, Objective-C, Java, or JavaScript, depending on the target platform. Typical use cases for native extensions are:
 
 - Interaction with specific hardware, for instance the camera on mobile phones.
 - Interaction with external low level APIs, for instance advertising network APIs that do not allow interaction through network APIs where Luasocket could be used.
 - High performance calculations and data processing.
+
+C# support is experimental and is intended for native extensions, not Defold script components. It uses .NET 9 NativeAOT to produce a static library; add `.cs` source files to an extension's `src` folder and the build service generates the project file. Target support follows the current NativeAOT and build-service capabilities. See the official [native-extension language example](https://github.com/defold/example-languages) for the current workflow and tested setup.
 
 ## The build server
 
@@ -18011,11 +18102,19 @@ The Defold SDK contains the required functionality to declare a native extension
 
 ## Usage
 
-You use the Defold SDK by including the `dmsdk/sdk.h` header file:
+C++ extensions can include the aggregate `dmsdk/sdk.h` header file:
+```cpp
+#include <dmsdk/sdk.h>
+```
 
-    #include
+The aggregate header includes C++ declarations and cannot be included from a C source file. C source files should include the individual C-compatible `.h` headers they require, for example:
+```c
+#include <dmsdk/extension/extension.h>
+#include <dmsdk/dlib/configfile.h>
+#include <dmsdk/resource/resource.h>
+```
 
-The available SDK functions and namespaces are documented in our [API reference](https://defold.com/ref/overview_cpp). The Defold SDK headers are included as a separate `defoldsdk_headers.zip` archive for each Defold [release on GitHub](https://github.com/defold/defold/releases). You can use these headers for code completion in your editor of choice.
+Only part of dmSDK currently has a pure-C interface; not every C++ subsystem has a C equivalent. The available functions and types are documented in the [C API overview](https://defold.com/ref/overview_defoldc/) and [C++ API overview](https://defold.com/ref/overview_defoldcpp/). The Defold SDK headers are included as a separate `defoldsdk_headers.zip` archive for each Defold [release on GitHub](https://github.com/defold/defold/releases). You can use these headers for code completion in your editor of choice.
 
 <!-- /manuals/extensions-gradle -->
 
