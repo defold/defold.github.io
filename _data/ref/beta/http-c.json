@@ -1,0 +1,1466 @@
+{
+    "elements": [
+        {
+            "brief": "invalid HTTP request handle",
+            "description": "invalid HTTP request handle",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "HTTP_REQUEST_HANDLE_INVALID",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "CONSTANT"
+        },
+        {
+            "brief": "HTTP service extension context name",
+            "description": "Name used when registering the HTTP service with dmExtension context params.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "HTTP_SERVICE_CONTEXT_NAME",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "CONSTANT"
+        },
+        {
+            "brief": "add a request header",
+            "description": "add a request header",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "HttpAddHeader",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Request object.",
+                    "is_optional": "False",
+                    "name": "request",
+                    "types": [
+                        "HttpRequest*"
+                    ]
+                },
+                {
+                    "doc": "Raw request header, eg \"Accept: application/json\".",
+                    "is_optional": "False",
+                    "name": "header",
+                    "types": [
+                        "const char*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "HTTP_RESULT_OK on success.",
+                    "name": "result",
+                    "types": [
+                        "HttpResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "HTTP callback result",
+            "description": "Return value from HttpResponseCallback.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "Continue processing the request.",
+                    "name": "HTTP_CALLBACK_RESULT_CONTINUE",
+                    "type": ""
+                },
+                {
+                    "doc": "Cancel the request. Ignored for HTTP_RESPONSE_EVENT_COMPLETE.",
+                    "name": "HTTP_CALLBACK_RESULT_CANCEL",
+                    "type": ""
+                }
+            ],
+            "name": "HttpCallbackResult",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "ENUM"
+        },
+        {
+            "brief": "request cancellation",
+            "description": "Marks a queued or running request as canceled. Cancellation is best effort.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "HttpCancelRequest",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "HTTP service object.",
+                    "is_optional": "False",
+                    "name": "service",
+                    "types": [
+                        "HttpService*"
+                    ]
+                },
+                {
+                    "doc": "Request handle returned by HttpPushRequest().",
+                    "is_optional": "False",
+                    "name": "request_handle",
+                    "types": [
+                        "HttpRequestHandle"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "HTTP_RESULT_OK on success.",
+                    "name": "result",
+                    "types": [
+                        "HttpResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "delete an HTTP request",
+            "description": "Only valid before HttpPushRequest() succeeds.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "HttpDeleteRequest",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Request object.",
+                    "is_optional": "False",
+                    "name": "request",
+                    "types": [
+                        "HttpRequest*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "create a new HTTP request",
+            "description": "create a new HTTP request",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "HttpNewRequest",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Request object on success.",
+                    "is_optional": "False",
+                    "name": "request",
+                    "types": [
+                        "HttpRequest**"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "HTTP_RESULT_OK on success.",
+                    "name": "result",
+                    "types": [
+                        "HttpResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "push a request to an HTTP service",
+            "description": "On success, ownership of request is transferred to the service and the caller\nmust not modify or delete it.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "HttpPushRequest",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "HTTP service object.",
+                    "is_optional": "False",
+                    "name": "service",
+                    "types": [
+                        "HttpService*"
+                    ]
+                },
+                {
+                    "doc": "Request object.",
+                    "is_optional": "False",
+                    "name": "request",
+                    "types": [
+                        "HttpRequest*"
+                    ]
+                },
+                {
+                    "doc": "Request handle on success.",
+                    "is_optional": "False",
+                    "name": "request_handle",
+                    "types": [
+                        "HttpRequestHandle*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "HTTP_RESULT_OK on success.",
+                    "name": "result",
+                    "types": [
+                        "HttpResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "HTTP request object",
+            "description": "The caller owns the request until HttpPushRequest() succeeds.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "HttpRequest",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "HTTP request handle",
+            "description": "Opaque service-local value identifying a request after ownership has been\ntransferred to the HTTP service.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "HttpRequestHandle",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "HTTP response callback",
+            "description": "Called from the HTTP client worker thread. HTTP_RESPONSE_EVENT_DATA events\nare sent as response chunks arrive; the receiver is responsible for\nprocessing or copying them before returning. The receiver is also responsible\nfor synchronizing with other threads. Pointers in HttpResponseInfo are valid\nonly for the duration of the callback. Returning HTTP_CALLBACK_RESULT_CANCEL\nfrom header, data, or progress events cancels the request.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "HttpResponseCallback",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Request object. Valid only for the duration of the callback.",
+                    "is_optional": "False",
+                    "name": "request",
+                    "types": [
+                        "HttpRequest*"
+                    ]
+                },
+                {
+                    "doc": "User data.",
+                    "is_optional": "False",
+                    "name": "user_data",
+                    "types": [
+                        "void*"
+                    ]
+                },
+                {
+                    "doc": "Response data.",
+                    "is_optional": "False",
+                    "name": "response",
+                    "types": [
+                        "const HttpResponseInfo*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "callback result.",
+                    "name": "result",
+                    "types": [
+                        "HttpCallbackResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "HTTP response event",
+            "description": "HTTP response event",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "Response header data is available.",
+                    "name": "HTTP_RESPONSE_EVENT_HEADER",
+                    "type": ""
+                },
+                {
+                    "doc": "Response body data is available.",
+                    "name": "HTTP_RESPONSE_EVENT_DATA",
+                    "type": ""
+                },
+                {
+                    "doc": "Request completed.",
+                    "name": "HTTP_RESPONSE_EVENT_COMPLETE",
+                    "type": ""
+                },
+                {
+                    "doc": "Request progress data is available.",
+                    "name": "HTTP_RESPONSE_EVENT_PROGRESS",
+                    "type": ""
+                }
+            ],
+            "name": "HttpResponseEvent",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "ENUM"
+        },
+        {
+            "brief": "get progress bytes received",
+            "description": "Valid for HTTP_RESPONSE_EVENT_PROGRESS.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "HttpResponseGetBytesReceived",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Response data.",
+                    "is_optional": "False",
+                    "name": "response",
+                    "types": [
+                        "const HttpResponseInfo*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Received byte count.",
+                    "name": "bytes_received",
+                    "types": [
+                        "uint32_t"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "get progress bytes sent",
+            "description": "Valid for HTTP_RESPONSE_EVENT_PROGRESS.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "HttpResponseGetBytesSent",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Response data.",
+                    "is_optional": "False",
+                    "name": "response",
+                    "types": [
+                        "const HttpResponseInfo*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Sent byte count.",
+                    "name": "bytes_sent",
+                    "types": [
+                        "uint32_t"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "get progress byte total",
+            "description": "Valid for HTTP_RESPONSE_EVENT_PROGRESS.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "HttpResponseGetBytesTotal",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Response data.",
+                    "is_optional": "False",
+                    "name": "response",
+                    "types": [
+                        "const HttpResponseInfo*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Total byte count, or -1 if unknown.",
+                    "name": "bytes_total",
+                    "types": [
+                        "int32_t"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "get response data",
+            "description": "Valid for HTTP_RESPONSE_EVENT_DATA.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "HttpResponseGetData",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Response data.",
+                    "is_optional": "False",
+                    "name": "response",
+                    "types": [
+                        "const HttpResponseInfo*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Response body chunk data.",
+                    "name": "data",
+                    "types": [
+                        "const void*"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "get response data size",
+            "description": "Valid for HTTP_RESPONSE_EVENT_DATA.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "HttpResponseGetDataSize",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Response data.",
+                    "is_optional": "False",
+                    "name": "response",
+                    "types": [
+                        "const HttpResponseInfo*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Response body chunk size.",
+                    "name": "size",
+                    "types": [
+                        "uint32_t"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "get response document size",
+            "description": "get response document size",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "HttpResponseGetDocumentSize",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Response data.",
+                    "is_optional": "False",
+                    "name": "response",
+                    "types": [
+                        "const HttpResponseInfo*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Full size of the requested file, when known.",
+                    "name": "document_size",
+                    "types": [
+                        "uint32_t"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "get response event",
+            "description": "get response event",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "HttpResponseGetEvent",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Response data.",
+                    "is_optional": "False",
+                    "name": "response",
+                    "types": [
+                        "const HttpResponseInfo*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Event type.",
+                    "name": "event",
+                    "types": [
+                        "HttpResponseEvent"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "get response header",
+            "description": "Valid for HTTP_RESPONSE_EVENT_HEADER. Returns the raw response header line\nas \"Name:Value\", without a trailing newline. The returned pointer is valid\nonly for the duration of the callback. Use HttpResponseGetHeaderSize() for\nthe number of bytes in the header line.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "HttpResponseGetHeader",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Response data.",
+                    "is_optional": "False",
+                    "name": "response",
+                    "types": [
+                        "const HttpResponseInfo*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Raw header line in \"Name:Value\" form.",
+                    "name": "header",
+                    "types": [
+                        "const char*"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "get response header size",
+            "description": "Valid for HTTP_RESPONSE_EVENT_HEADER.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "HttpResponseGetHeaderSize",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Response data.",
+                    "is_optional": "False",
+                    "name": "response",
+                    "types": [
+                        "const HttpResponseInfo*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Number of bytes returned by\nHttpResponseGetHeader(), excluding any null terminator.",
+                    "name": "size",
+                    "types": [
+                        "uint32_t"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "get response path",
+            "description": "get response path",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "HttpResponseGetPath",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Response data.",
+                    "is_optional": "False",
+                    "name": "response",
+                    "types": [
+                        "const HttpResponseInfo*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "User supplied response path.",
+                    "name": "path",
+                    "types": [
+                        "const char*"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "get response range end",
+            "description": "get response range end",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "HttpResponseGetRangeEnd",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Response data.",
+                    "is_optional": "False",
+                    "name": "response",
+                    "types": [
+                        "const HttpResponseInfo*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "End offset into the requested file, when known.",
+                    "name": "range_end",
+                    "types": [
+                        "uint32_t"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "get response range start",
+            "description": "get response range start",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "HttpResponseGetRangeStart",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Response data.",
+                    "is_optional": "False",
+                    "name": "response",
+                    "types": [
+                        "const HttpResponseInfo*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Start offset into the requested file, when known.",
+                    "name": "range_start",
+                    "types": [
+                        "uint32_t"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "get response result",
+            "description": "Valid for HTTP_RESPONSE_EVENT_COMPLETE.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "HttpResponseGetResult",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Response data.",
+                    "is_optional": "False",
+                    "name": "response",
+                    "types": [
+                        "const HttpResponseInfo*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Transfer result.",
+                    "name": "result",
+                    "types": [
+                        "HttpResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "get response status code",
+            "description": "get response status code",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "HttpResponseGetStatusCode",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Response data.",
+                    "is_optional": "False",
+                    "name": "response",
+                    "types": [
+                        "const HttpResponseInfo*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "HTTP status code, eg 200.",
+                    "name": "status_code",
+                    "types": [
+                        "int"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "get response URL",
+            "description": "get response URL",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "HttpResponseGetURL",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Response data.",
+                    "is_optional": "False",
+                    "name": "response",
+                    "types": [
+                        "const HttpResponseInfo*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Request URL.",
+                    "name": "url",
+                    "types": [
+                        "const char*"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "HTTP response information",
+            "description": "Opaque data passed to HttpResponseCallback.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "HttpResponseInfo",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "HTTP result values",
+            "description": "HTTP result values",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "= 1",
+                    "name": "HTTP_RESULT_NOT_200_OK",
+                    "type": ""
+                },
+                {
+                    "doc": "= 0",
+                    "name": "HTTP_RESULT_OK",
+                    "type": ""
+                },
+                {
+                    "doc": "= -1",
+                    "name": "HTTP_RESULT_SOCKET_ERROR",
+                    "type": ""
+                },
+                {
+                    "doc": "= -2",
+                    "name": "HTTP_RESULT_HTTP_HEADERS_ERROR",
+                    "type": ""
+                },
+                {
+                    "doc": "= -3",
+                    "name": "HTTP_RESULT_INVALID_RESPONSE",
+                    "type": ""
+                },
+                {
+                    "doc": "= -4",
+                    "name": "HTTP_RESULT_PARTIAL_CONTENT",
+                    "type": ""
+                },
+                {
+                    "doc": "= -5",
+                    "name": "HTTP_RESULT_UNSUPPORTED_TRANSFER_ENCODING",
+                    "type": ""
+                },
+                {
+                    "doc": "= -6",
+                    "name": "HTTP_RESULT_INVAL_ERROR",
+                    "type": ""
+                },
+                {
+                    "doc": "= -7",
+                    "name": "HTTP_RESULT_UNEXPECTED_EOF",
+                    "type": ""
+                },
+                {
+                    "doc": "= -8",
+                    "name": "HTTP_RESULT_IO_ERROR",
+                    "type": ""
+                },
+                {
+                    "doc": "= -9",
+                    "name": "HTTP_RESULT_HANDSHAKE_FAILED",
+                    "type": ""
+                },
+                {
+                    "doc": "= -10",
+                    "name": "HTTP_RESULT_INVAL",
+                    "type": ""
+                },
+                {
+                    "doc": "= -1000",
+                    "name": "HTTP_RESULT_UNKNOWN",
+                    "type": ""
+                }
+            ],
+            "name": "HttpResult",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "ENUM"
+        },
+        {
+            "brief": "HTTP service object",
+            "description": "HTTP service context provided by the engine.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "HttpService",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "set basic authentication credentials",
+            "description": "set basic authentication credentials",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "HttpSetBasicAuth",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Request object.",
+                    "is_optional": "False",
+                    "name": "request",
+                    "types": [
+                        "HttpRequest*"
+                    ]
+                },
+                {
+                    "doc": "User name.",
+                    "is_optional": "False",
+                    "name": "username",
+                    "types": [
+                        "const char*"
+                    ]
+                },
+                {
+                    "doc": "Password.",
+                    "is_optional": "False",
+                    "name": "password",
+                    "types": [
+                        "const char*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "HTTP_RESULT_OK on success.",
+                    "name": "result",
+                    "types": [
+                        "HttpResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "set bearer authentication token",
+            "description": "set bearer authentication token",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "HttpSetBearerAuth",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Request object.",
+                    "is_optional": "False",
+                    "name": "request",
+                    "types": [
+                        "HttpRequest*"
+                    ]
+                },
+                {
+                    "doc": "Bearer token.",
+                    "is_optional": "False",
+                    "name": "token",
+                    "types": [
+                        "const char*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "HTTP_RESULT_OK on success.",
+                    "name": "result",
+                    "types": [
+                        "HttpResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "set chunked transfer",
+            "description": "set chunked transfer",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "HttpSetChunkedTransfer",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Request object.",
+                    "is_optional": "False",
+                    "name": "request",
+                    "types": [
+                        "HttpRequest*"
+                    ]
+                },
+                {
+                    "doc": "Non-zero to allow chunked transfer encoding.",
+                    "is_optional": "False",
+                    "name": "chunked_transfer",
+                    "types": [
+                        "int"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "HTTP_RESULT_OK on success.",
+                    "name": "result",
+                    "types": [
+                        "HttpResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "set ignore cache",
+            "description": "set ignore cache",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "HttpSetIgnoreCache",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Request object.",
+                    "is_optional": "False",
+                    "name": "request",
+                    "types": [
+                        "HttpRequest*"
+                    ]
+                },
+                {
+                    "doc": "Non-zero to ignore the HTTP cache.",
+                    "is_optional": "False",
+                    "name": "ignore_cache",
+                    "types": [
+                        "int"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "HTTP_RESULT_OK on success.",
+                    "name": "result",
+                    "types": [
+                        "HttpResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "set request method",
+            "description": "set request method",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "HttpSetMethod",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Request object.",
+                    "is_optional": "False",
+                    "name": "request",
+                    "types": [
+                        "HttpRequest*"
+                    ]
+                },
+                {
+                    "doc": "HTTP method, eg \"GET\".",
+                    "is_optional": "False",
+                    "name": "method",
+                    "types": [
+                        "const char*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "HTTP_RESULT_OK on success.",
+                    "name": "result",
+                    "types": [
+                        "HttpResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "set proxy URL",
+            "description": "set proxy URL",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "HttpSetProxy",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Request object.",
+                    "is_optional": "False",
+                    "name": "request",
+                    "types": [
+                        "HttpRequest*"
+                    ]
+                },
+                {
+                    "doc": "Full proxy URL, or 0 to clear.",
+                    "is_optional": "False",
+                    "name": "proxy",
+                    "types": [
+                        "const char*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "HTTP_RESULT_OK on success.",
+                    "name": "result",
+                    "types": [
+                        "HttpResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "set progress reporting",
+            "description": "set progress reporting",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "HttpSetReportProgress",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Request object.",
+                    "is_optional": "False",
+                    "name": "request",
+                    "types": [
+                        "HttpRequest*"
+                    ]
+                },
+                {
+                    "doc": "Non-zero to receive HTTP_RESPONSE_EVENT_PROGRESS callbacks.",
+                    "is_optional": "False",
+                    "name": "report_progress",
+                    "types": [
+                        "int"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "HTTP_RESULT_OK on success.",
+                    "name": "result",
+                    "types": [
+                        "HttpResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "set request body",
+            "description": "Copies request body data into the request. Passing a zero size clears the body.\nThe current HTTP client sends request bodies for POST, PUT, and PATCH.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "HttpSetRequestBody",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Request object.",
+                    "is_optional": "False",
+                    "name": "request",
+                    "types": [
+                        "HttpRequest*"
+                    ]
+                },
+                {
+                    "doc": "Request body data.",
+                    "is_optional": "False",
+                    "name": "body",
+                    "types": [
+                        "const void*"
+                    ]
+                },
+                {
+                    "doc": "Request body size.",
+                    "is_optional": "False",
+                    "name": "body_size",
+                    "types": [
+                        "uint32_t"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "HTTP_RESULT_OK on success.",
+                    "name": "result",
+                    "types": [
+                        "HttpResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "set response callback",
+            "description": "set response callback",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "HttpSetResponseCallback",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Request object.",
+                    "is_optional": "False",
+                    "name": "request",
+                    "types": [
+                        "HttpRequest*"
+                    ]
+                },
+                {
+                    "doc": "Response callback.",
+                    "is_optional": "False",
+                    "name": "callback",
+                    "types": [
+                        "HttpResponseCallback"
+                    ]
+                },
+                {
+                    "doc": "User data.",
+                    "is_optional": "False",
+                    "name": "user_data",
+                    "types": [
+                        "void*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "HTTP_RESULT_OK on success.",
+                    "name": "result",
+                    "types": [
+                        "HttpResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "set response path",
+            "description": "Stores a user supplied path with the request. The HTTP API does not write the\nresponse to this path; it is returned in response callbacks for callers that\nwant to write response data themselves.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "HttpSetResponsePath",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Request object.",
+                    "is_optional": "False",
+                    "name": "request",
+                    "types": [
+                        "HttpRequest*"
+                    ]
+                },
+                {
+                    "doc": "Response path, or 0 to clear.",
+                    "is_optional": "False",
+                    "name": "path",
+                    "types": [
+                        "const char*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "HTTP_RESULT_OK on success.",
+                    "name": "result",
+                    "types": [
+                        "HttpResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "set request timeout",
+            "description": "set request timeout",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "HttpSetTimeout",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Request object.",
+                    "is_optional": "False",
+                    "name": "request",
+                    "types": [
+                        "HttpRequest*"
+                    ]
+                },
+                {
+                    "doc": "Timeout in microseconds.",
+                    "is_optional": "False",
+                    "name": "timeout_us",
+                    "types": [
+                        "uint32_t"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "HTTP_RESULT_OK on success.",
+                    "name": "result",
+                    "types": [
+                        "HttpResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "set request URL",
+            "description": "set request URL",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "HttpSetURL",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Request object.",
+                    "is_optional": "False",
+                    "name": "request",
+                    "types": [
+                        "HttpRequest*"
+                    ]
+                },
+                {
+                    "doc": "Full request URL.",
+                    "is_optional": "False",
+                    "name": "url",
+                    "types": [
+                        "const char*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "HTTP_RESULT_OK on success.",
+                    "name": "result",
+                    "types": [
+                        "HttpResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        }
+    ],
+    "info": {
+        "api_language": "C",
+        "brief": "HTTP API documentation",
+        "description": "HTTP service and request functions.",
+        "description_html": "<p>HTTP service and request functions.</p>",
+        "file": "http.h",
+        "include": "dmsdk/dlib/http.h",
+        "name": "HTTP",
+        "namespace": "HTTP",
+        "notes": [],
+        "path": "engine/dlib/src/dmsdk/dlib/http.h",
+        "type": "Defold C"
+    }
+}

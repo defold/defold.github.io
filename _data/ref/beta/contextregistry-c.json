@@ -1,0 +1,208 @@
+{
+    "elements": [
+        {
+            "brief": "Gets a context from the context registry using a s...",
+            "description": "Gets a context from the context registry using a specified name.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ContextRegistryGet",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the context registry",
+                    "is_optional": "False",
+                    "name": "registry",
+                    "types": [
+                        "HContextRegistry"
+                    ]
+                },
+                {
+                    "doc": "the context name",
+                    "is_optional": "False",
+                    "name": "name",
+                    "types": [
+                        "const char*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "The context, if it exists",
+                    "name": "context",
+                    "types": [
+                        "void*"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Gets a context from the context registry using a s...",
+            "description": "Gets a context from the context registry using a specified name hash.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ContextRegistryGetByHash",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the context registry",
+                    "is_optional": "False",
+                    "name": "registry",
+                    "types": [
+                        "HContextRegistry"
+                    ]
+                },
+                {
+                    "doc": "the context name hash",
+                    "is_optional": "False",
+                    "name": "name_hash",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "The context, if it exists",
+                    "name": "context",
+                    "types": [
+                        "void*"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Sets a context in the context registry using a spe...",
+            "description": "Sets a context in the context registry using a specified name.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ContextRegistrySet",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the context registry",
+                    "is_optional": "False",
+                    "name": "registry",
+                    "types": [
+                        "HContextRegistry"
+                    ]
+                },
+                {
+                    "doc": "the context name",
+                    "is_optional": "False",
+                    "name": "name",
+                    "types": [
+                        "const char*"
+                    ]
+                },
+                {
+                    "doc": "the context, or 0 to remove the context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "void*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "0 if successful",
+                    "name": "result",
+                    "types": [
+                        "int"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Sets a context in the context registry using a spe...",
+            "description": "Sets a context in the context registry using a specified name hash.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ContextRegistrySetByHash",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the context registry",
+                    "is_optional": "False",
+                    "name": "registry",
+                    "types": [
+                        "HContextRegistry"
+                    ]
+                },
+                {
+                    "doc": "the context name hash",
+                    "is_optional": "False",
+                    "name": "name_hash",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                },
+                {
+                    "doc": "the context, or 0 to remove the context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "void*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "0 if successful",
+                    "name": "result",
+                    "types": [
+                        "int"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Context registry handle.",
+            "description": "Context registry handle.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "HContextRegistry",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "TYPEDEF"
+        }
+    ],
+    "info": {
+        "api_language": "C",
+        "brief": "ContextRegistry API documentation",
+        "description": "A named registry for engine-owned context pointers.",
+        "description_html": "<p>A named registry for engine-owned context pointers.</p>",
+        "file": "context_registry.h",
+        "include": "dmsdk/dlib/context_registry.h",
+        "name": "ContextRegistry",
+        "namespace": "ContextRegistry",
+        "notes": [],
+        "path": "engine/dlib/src/dmsdk/dlib/context_registry.h",
+        "type": "Defold C"
+    }
+}
