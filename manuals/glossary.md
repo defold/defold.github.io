@@ -193,7 +193,7 @@ Good performance is key in games and it is vital that you are able to do perform
 
 ## Sound
 
-![Sound](../images/icons/sound.png) The sound component is responsible for playing a specific sound. Currently, Defold supports sound files in the WAV and Ogg Vorbis formats. See the [Sound manual](/manuals/sound) for more information.
+![Sound](../images/icons/sound.png) The sound component is responsible for playing a specific sound. Defold supports WAV, Ogg Vorbis, and Ogg Opus files. Opus support must be enabled in the App Manifest. See the [Sound manual](/manuals/sound) for more information.
 
 ## Sprite
 

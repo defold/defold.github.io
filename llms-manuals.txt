@@ -533,7 +533,7 @@ Good performance is key in games and it is vital that you are able to do perform
 
 ## Sound
 
- The sound component is responsible for playing a specific sound. Currently, Defold supports sound files in the WAV and Ogg Vorbis formats. See the [Sound manual](#manuals:sound) for more information.
+ The sound component is responsible for playing a specific sound. Defold supports WAV, Ogg Vorbis, and Ogg Opus files. Opus support must be enabled in the App Manifest. See the [Sound manual](#manuals:sound) for more information.
 
 ## Sprite
 
@@ -856,8 +856,11 @@ Check more details in the [Collection Factory manual](#manuals:collection-factor
 
 When calling `factory.create()` or `collectionfactory.create()` you can also specify optional parameters such as position, rotation, scale and script properties, so you can control exactly how and where the instance appears, and how it behaves e.g.:
 ```lua
-factory.create("#my_factory", my_position, my_rotation, my_scale, my_properties)
+local scale_2d = vmath.vector3(0.5, 0.5, 1.0)
+factory.create("#my_factory", my_position, my_rotation, my_properties, scale_2d)
 ```
+
+The optional argument order is properties followed by scale. Use a `vector3` with Z set explicitly to `1.0` when scaling only the X and Y axes of a 2D object; a numeric scale is applied uniformly to all three axes.
 
 #### Dynamic Loading
 
@@ -1324,7 +1327,7 @@ Or from a finished Sample game:
 
 ### Adding the project to GitHub
 
-A local project will have no integration with any version control system, meaning that the files reside only on your hard drive. Any changes you make to the files are permanent and there is no way to revert changes or recover deleted files. It is recommended to use a version control system such as Git to track changes to your files. This also makes it very easy to collaborate on a project with other people. Uploading a local project to GitHub can be done in just a few steps:
+A local project has no integration with any version control system, meaning that the files reside only on your hard drive and there is no history from which to revert changes. Files deleted through the editor's Assets pane are moved to the system Trash or Recycle Bin when supported, but may be permanently deleted if that operation is unavailable or fails. Trash does not protect arbitrary edits or provide version history, so it is recommended to use a version control system such as Git to track changes to your files. This also makes it very easy to collaborate on a project with other people. Uploading a local project to GitHub can be done in just a few steps:
 
 1. Create or login to an account on [GitHub](https://github.com/)
 2. Create a repository using the [New Repository](https://help.github.com/en/articles/creating-a-new-repository) option
@@ -1369,10 +1372,11 @@ which means that the setting *main_collection* belongs to the *bootstrap* catego
 
 ## Runtime access
 
-It is possible to read any value from *game.project* at runtime using [`sys.get_config_string(key)`](https://defold.com/ref/sys/#sys.get_config_string), [`sys.get_config_number(key)`](https://defold.com/ref/sys/#sys.get_config_number) and [`sys.get_config_int(key)`](https://defold.com/ref/sys/#sys.get_config_int). Examples:
+It is possible to read values from *game.project* at runtime using [`sys.get_config_string(key)`](https://defold.com/ref/sys/#sys.get_config_string), [`sys.get_config_number(key)`](https://defold.com/ref/sys/#sys.get_config_number), [`sys.get_config_int(key)`](https://defold.com/ref/sys/#sys.get_config_int), and [`sys.get_config_boolean(key)`](https://defold.com/ref/sys/#sys.get_config_boolean). Examples:
 ```lua
 local title = sys.get_config_string("project.title")
 local gravity_y = sys.get_config_number("physics.gravity_y")
+local vsync = sys.get_config_boolean("display.vsync", false)
 ```
 
 The key is a combination of the category and setting name, separated by a dot, and written in lowercase letters with any space characters replaced by underscores. Examples: The field "Title" from the "Project" category becomes `project.title` and the "Gravity Y" field from the "Physics" category becomes `physics.gravity_y`.
@@ -1557,6 +1561,12 @@ Max number of steps in the simulation when using fixed timestep (3D only).
 #### Exclude GLES 2.0
 Don't compile shaders for devices running OpenGLES 2.0 / WebGL 1.0.
 
+#### GLSL ES Default Precision Float
+`shader.glsl_es_default_precision_float` sets the default global precision qualifier for floating-point values in cross-compiled GLSL ES shaders. Valid values are `mediump` and `highp`; the default is `mediump`.
+
+#### GLSL ES Default Precision Int
+`shader.glsl_es_default_precision_int` sets the default global precision qualifier for integer values in cross-compiled GLSL ES shaders. Valid values are `mediump` and `highp`; the default is `highp`.
+
 ### Resource
 
 #### Http Cache
@@ -1651,7 +1661,7 @@ The bundle short name (15 characters) (see [`CFBundleName`](https://developer.ap
 The bundle version, either a number or x.y.z. (see [`CFBundleVersion`](https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html#//apple_ref/doc/uid/20001431-130430))
 
 #### Info.plist
-If specified, use this *`info.plist`* file when bundling your app.
+If specified, use this *`Info.plist`* file instead of the built-in iOS base manifest when bundling your app. The built-in manifest contains the local-network and Bonjour entries needed for Editor target discovery in non-release builds. If you supply a custom manifest and need target discovery, profiling, hot reload, or log streaming on a device, preserve those entries as described in the [iOS manual](#manuals:ios).
 
 #### Privacy Manifest
 The Apple Privacy Manifest for the application. The field will default to `/builtins/manifests/ios/PrivacyInfo.xcprivacy`.
@@ -1741,17 +1751,22 @@ Liveupdate settings resource file to use during bundling.
 
 ### Profiler
 
+The App Manifest **Profiler** setting controls whether profiler code is linked into debug and release builds. The settings below control the runtime behavior of profiler code that is present in the selected build. See the [Profiling manual](#manuals:profiling) for details.
+
 #### Enabled
 Enable the in-game profiler.
 
 #### Track Cpu
-If checked, enable CPU profiling in release versions of the builds. Normally, you can only access profiling information in debug builds.
+CPU usage sampling is enabled by default in debug builds. Enable this setting when CPU sampling is also needed in a release build that includes profiler support through the App Manifest.
 
 #### Sleep Between Server Updates
 Number of milliseconds to sleep between server updates.
 
 #### Performance Timeline Enabled
 Enable in-browser performance timeline (HTML5 only).
+
+#### Max Sample Count
+`profiler.max_sample_count` is the maximum number of profiler samples recorded per thread per frame. The default is `4096` and the minimum is `128`. Increase this only when a legitimate profile exceeds the limit; first check native-extension profiling code for mismatched scope begin/end calls.
 
 ---
 
@@ -1766,10 +1781,11 @@ $ dmengine --config=bootstrap.main_collection=/my.collectionc
 $ dmengine --config=test.my_value=4711 --config=test2.my_value2=foobar
 ```
 
-Custom values can---just like any other config value---be read with [`sys.get_config_string()`](https://defold.com/ref/sys/#sys.get_config_string) or [`sys.get_config_number()`](https://defold.com/ref/sys/#sys.get_config_number):
+Custom values can---just like any other config value---be read with the matching function described under [Runtime access](#runtime-access):
 ```lua
 local my_value = sys.get_config_number("test.my_value")
 local my_value2 = sys.get_config_string("test.my_value2")
+local my_flag = sys.get_config_boolean("test.my_flag", false)
 ```
 
 ## Component max count optimizations
@@ -1785,7 +1801,7 @@ To further optimize memory usage the Defold build process will analyse the conte
 
 ## Custom project settings
 
-It is possible to define custom settings for the main project or for a [native extension](#manuals:extensions). Custom settings for the main project must be defined in a `game.properties` file in the root of the project. For a native extension they should be defined in an `ext.properties` file next to the `ext.manifest` file.
+It is possible to define custom settings for the main project or for a [native extension](#manuals:extensions). Custom settings for the main project must be defined in a `game.properties` file in the project root. Files named `ext.properties` are discovered anywhere in the project and fetched library dependencies; they do not require a neighboring `ext.manifest`. All discovered extension metadata is merged, after which the root `game.properties` file is applied and can override it.
 
 The settings file uses the same INI format as *game.project* and property attributes are defined using a dot notation with a suffix:
 ```
@@ -1802,7 +1818,7 @@ The following attributes are currently available:
 // `type` - used for the value string parsing
 my_property.type = string // one of the following values: bool, string, number, integer, string_array, resource
 
-// `help` - used as help tip in the editor (not used for now)
+// `help` - displayed as a help tooltip in the editor
 my_property.help = string
 
 // `default` - value used as default if user didn't set value manually
@@ -1842,7 +1858,7 @@ title = My Awesome Extension
 help = Settings for My Awesome Extension
 ```
 
-At the moment meta properties are used only in `bob.jar` when bundling application, but later will be parsed by the editor and represented in the *game.project* viewer.
+Both Bob and the Editor parse these metadata files. The Editor uses them to create the corresponding fields, choices, validation, and help tooltips in the *game.project* viewer.
 
 <!-- /manuals/libraries -->
 
@@ -2022,6 +2038,8 @@ Lists all the files and folders that are part of your project in a tree structur
    - `Double Mouse Click` a file to open it in a specific editor for that file type.
    - `Drag and Drop` to add files from elsewhere on your disk to the project or move files and folders to new locations in the project.
    - `Right Mouse Click` to open a _Context Menu_ from where you can create new files or folders, rename, delete, track file dependencies and more.
+
+Files and folders deleted through the Assets pane are moved to the system Trash or Recycle Bin when the platform supports it. If moving an item to the trash is unsupported or fails, the editor permanently deletes it.
 
 ### 2. Scene Editor pane {#the-scene-editor}
 
@@ -2595,6 +2613,7 @@ You can interact with the editor using `editor` package that defines this API:
 - `editor.get(node_id, property)` — get a value of some node inside the editor. Nodes in the editor are various entities, such as script or collection files, game objects inside collections, json files loaded as resources, etc. `node_id` is a userdata that is passed to the editor script by the editor. Alternatively, you can pass resource path instead of node id, for example `"/main/game.script"`. `property` is a string. Currently these properties are supported:
   - `"path"` — file path from the project folder for *resources* — entities that exist as files or directories. Example of returned value: `"/main/game.script"`
   - `"children"` — list of children resource paths for directory resources
+  - `"parent"` — parent editor node for an Outline node that has a parent
   - `"text"` — text content of a resource editable as text (such as script files or json). Example of returned value: `"function init(self)\nend"`. Please note that this is not the same as reading file with `io.open()`, because you can edit a file without saving it, and these edits are available only when accessing `"text"` property.
   - for atlases: `images` (list of editor nodes for images in the atlas) and `animations` (list of animation nodes)
   - for atlas animations: `images` (same as `images` in atlas)
@@ -2603,7 +2622,7 @@ You can interact with the editor using `editor` package that defines this API:
   - for particlefx: `emitters` (list of emitter editor nodes) and `modifiers` (list of modifier editor nodes)
   - for particlefx emitters: `modifiers` (list of modifier editor nodes)
   - for collision objects: `shapes` (list of collision shape editor nodes)
-  - for GUI files: `layers` (list of layer editor nodes)
+  - for GUI files: node lists such as `layers`, `fonts`, `materials`, `textures`, `particlefxs`, `nodes`, and `layouts`
   - some properties that are shown in the Properties view when you have selected something in the Outline view. These types of outline properties supported:
     - `strings`
     - `booleans`
@@ -2612,6 +2631,7 @@ You can interact with the editor using `editor` package that defines this API:
     - `resources`
     - `curves`
     Please note that some of these properties might be read-only, and some might be unavailable in different contexts, so you should use `editor.can_get` before reading them and `editor.can_set` before making editor set them. Hover over property name in Properties view to see a tooltip with information about how this property is named in editor scripts. You can set resource properties to `nil` by supplying `""` value.
+- `editor.properties(node_id)` — return a sorted, context-sensitive list of property names that can be read from a node, for example `pprint(editor.properties("/game.project"))`. Use the `editor.can_*` functions to check whether a listed property can also be changed, reset, added to, or reordered.
 - `editor.can_get(node_id, property)` — check if you can get this property so `editor.get()` won't throw an error.
 - `editor.can_set(node_id, property)` — check if `editor.tx.set()` transaction step with this property won't throw an error.
 - `editor.create_directory(resource_path)` — create a directory if it does not exist, and all non-existent parent directories.
@@ -2623,11 +2643,11 @@ You can interact with the editor using `editor` package that defines this API:
 - `editor.ui.*` — various UI-related functions, see [UI manual](#manuals:editor-scripts-ui).
 - `editor.prefs.*` — functions for interacting with editor preferences, see [preferences](#preferences).
 
-You can find the full editor API reference [here](https://defold.com/ref/alpha/editor/).
+You can find the full editor API reference [here](https://defold.com/ref/stable/editor/).
 
 ## Commands
 
-If editor script module defines function `get_commands`, it will be called on extension reload, and returned commands will be available for use inside the editor in menu bar or in context menus in Assets and Outline panes. Example:
+If an editor script module defines `get_commands()`, it is called when extensions reload. The returned commands can appear in menu-bar menus and in the Assets, Outline, Scene, and Code context menus, depending on their `locations`. Example:
 ```lua
 local M = {}
 
@@ -2672,7 +2692,7 @@ return M
 Editor expects `get_commands()` to return an array of tables, each describing a separate command. Command description consists of:
 
 - `label` (required) — text on a menu item that will be displayed to the user
-- `locations` (required) — an array of either `"Edit"`, `"View"`, `"Project"`, `"Debug"`, `"Assets"`, `"Bundle"`, `"Scene"` or `"Outline"`, describes a place where this command should be available. `"Edit"`, `"View"`, `"Project"` and `"Debug"` mean menu bar at the top, `"Assets"` means context menu in Assets pane, `"Outline"` means context menu in Outline pane, and `"Bundle"` means **Project → Bundle** submenu.
+- `locations` (required) — an array describing where this command should be available. Supported values are `"Edit"`, `"View"`, `"Project"`, `"Debug"`, and `"Help"` for the corresponding menu-bar menus; `"Bundle"` for the **Project → Bundle** submenu; and `"Assets"`, `"Outline"`, `"Scene"`, and `"Code"` for the corresponding context menus.
 - `query` — a way for command to ask editor for relevant information and define what data it operates on. For every key in `query` table there will be corresponding key in `opts` table that `active` and `run` callbacks receive as argument. Supported keys:
   - `selection` means this command is valid when there is something selected, and it operates on this selection.
     - `type` is a type of selected nodes command is interested in, currently these types are allowed:
@@ -2690,7 +2710,7 @@ Editor expects `get_commands()` to return an array of tables, each describing a 
 
 ### Use commands to change the in-memory editor state
 
-Inside the `run` handler, you can query and change the in-memory editor state. Querying is done using `editor.get()` function, where you can ask the editor about the current state of files and selection (if using `query = {selection = ...}`). You can get the `"text"` property of script files, and also some properties shown in the Properties view — hover over property name to see a tooltip with information about how this property is named in editor scripts. Changing the editor state is done using `editor.transact()`, where you bundle 1 or more modifications in a single undoable step. For example, if you want to be able to reset transform of a game object, you could write a command like that:
+Inside the `run` handler, you can query and change the in-memory editor state. Querying is done using `editor.get()` function, where you can ask the editor about the current state of files and selection (if using `query = {selection = ...}`). You can get the `"text"` property of resources editable as text, and also some properties shown in the Properties view — hover over property name to see a tooltip with information about how this property is named in editor scripts. Changing the editor state is done using `editor.transact()`, where you bundle 1 or more modifications in a single undoable step. For example, if you want to be able to reset transform of a game object, you could write a command like that:
 ```lua
 {
   label = "Reset transform",
@@ -2889,9 +2909,15 @@ Shape's `type` property is required during creation and cannot be changed after 
 
 #### Editing GUI files
 
-In addition to outline properties, GUI nodes defines the following properties:
+In addition to outline properties, GUI files define several node-list properties:
+
 - `layers` — list of layer editor nodes (reorderable)
+- `fonts` — list of font editor nodes
 - `materials` — list of material editor nodes
+- `textures` — list of texture editor nodes
+- `particlefxs` — list of Particle FX editor nodes
+- `nodes` — list of GUI node editor nodes
+- `layouts` — list of GUI layout editor nodes
 
 It's possible to edit GUI layers using editor `layers` property, e.g.:
 ```lua
@@ -2912,7 +2938,7 @@ Similarly, fonts, materials, textures, and particlefxs are edited using `fonts`,
 editor.transact({
     editor.tx.add("/main.gui", "fonts", {font = "/main.font"}),
     editor.tx.add("/main.gui", "materials", {name = "shine", material = "/shine.material"}),
-    editor.tx.add("/main.gui", "particlefxs", {particlefx = "/confetti.material"}),
+    editor.tx.add("/main.gui", "particlefxs", {particlefx = "/confetti.particlefx"}),
     editor.tx.add("/main.gui", "textures", {texture = "/ui.atlas"})
 })
 ```
@@ -2996,7 +3022,7 @@ editor.transact({
     }),
     editor.tx.add("/npc.go", "components", {
         type = "component-reference",
-        path = "/npc.script"
+        path = "/npc.script",
         id = "controller",
         __hp = 100 -- set a go property defined in the script
     })
@@ -3016,13 +3042,13 @@ editor.transact({
             {
                 -- referenced game object
                 type = "go-reference",
-                path = "/char-view.go"
+                path = "/char-view.go",
                 id = "view"
             },
             {
                 -- referenced collection
                 type = "collection-reference",
-                path = "/body-attachments.collection"
+                path = "/body-attachments.collection",
                 id = "attachments"
             }
         },
@@ -3108,7 +3134,7 @@ Please note that lifecycle hooks currently are an editor-only feature, and they 
 
 ## Language servers
 
-The editor supports a subset [Language Server Protocol](https://microsoft.github.io/language-server-protocol/). While we aim to expand the editor's support for LSP features in the future, currently it can only show diagnostics (i.e. lints) in the edited files and provide completions.
+The editor supports a subset of the [Language Server Protocol](https://microsoft.github.io/language-server-protocol/): diagnostics (lints), completions, hover information, document symbols in the Structure pane, go to definition, find references, and symbol rename. Hover over a symbol to see information from the language server. With the cursor on a symbol, use `F2` to rename it, `F12` to go to its definition, or `Shift+F12` to find references. These actions are also available from the `Edit` menu.
 
 To define the language server, you need to edit your editor script's `get_language_servers` function like so:
 ```lua
@@ -3433,11 +3459,29 @@ The code above will produce the following dialog form:
 
 ### Data presentation components
 
-The editor defines 4 data presentation components:
+The editor defines the following data presentation components:
+
 - **`label`** — text label, intended to be used with form inputs.
 - **`icon`** — an icon; currently, it can only be used for presenting a small set of predefined icons, but we intend to allow more icons in the future.
+- **`image`** — an image loaded from a project resource path that starts with `/`, or from an external URL. The optional `width` and `height` props fit the image inside the specified dimensions while preserving its aspect ratio.
 - **`heading`** — text element intended for presenting a heading line of text in e.g. a form or a dialog. The `editor.ui.HEADING_STYLE` enum defines various heading styles that include HTML's `H1`-`H6` heading, as well as editor-specific `DIALOG` and `FORM`.
 - **`paragraph`** — text element intended for presenting a paragraph of text. The main difference with `label` is that paragraph supports word wrapping: if the assigned bounds are too small horizontally, the text will wrap, and possibly will be shortened with `"..."` if it can't fit in the view.
+
+For example, a UI can display both a project image and an image from the web:
+```lua
+editor.ui.vertical({
+    children = {
+        editor.ui.image({
+            image = "/builtins/assets/images/logo/logo_256.png",
+            width = 64,
+            height = 64
+        }),
+        editor.ui.image({
+            image = "https://defold.com/images/assets/monarch-hero.jpg"
+        })
+    }
+})
+```
 
 ### Input components
 
@@ -3856,6 +3900,9 @@ Code editor font
 
 Zoom on Scroll
 : Whether to change the font size when scrolling in the code editor while holding Cmd/Ctrl button.
+
+Auto-insert closing parens
+: Automatically inserts matching closing characters while editing code. This option is enabled by default.
 
 ### Open script files in Visual Studio Code
 
@@ -4961,7 +5008,7 @@ Once you have imported the model, use it in a [Model component](#manuals:model):
 2. Set the *Mesh* property to the imported *.gltf* or *.glb* file containing the mesh.
 3. For an animated model, set the *Skeleton* property to the *.gltf* or *.glb* file containing the skeleton. This is often the same file used for *Mesh* when mesh, skeleton and animations are exported together.
 4. Create an *Animation Set* file for the animations and assign it to the *Animations* property. Set *Default Animation* if you want an animation to start automatically.
-5. Set the *Material* property to a material suitable for the model. The built-in *model.material*, *model_instances.material*, *model_skinned.material* and *model_skinned_instances.material* files are useful starting points.
+5. Set the *Material* property to a material suitable for the model. The built-in *model.material*, *model_instanced.material*, *model_skinned.material* and *model_skinned_instanced.material* files are useful starting points. The skinned materials use local vertex space so skinning can run on the GPU; custom materials for GPU-skinned or instanced models should also use local vertex space. See the [Model manual](#manuals:model) for the graphics-adapter requirement.
 6. Set the material texture properties, such as *Texture*, to the imported texture image files. If the material uses multiple textures, assign each texture in the corresponding material texture field.
 
 ## Exporting to glTF
@@ -5394,8 +5441,7 @@ If the texture should be used on a [sprite component](#manuals:sprite) it first 
         id          = "my_animation",
         width       = width,
         height      = height,
-        frame_start = 1,
-        frame_end   = 2,
+        frames      = { 1 },
       }
     },
     geometries = {
@@ -5425,6 +5471,8 @@ If the texture should be used on a [sprite component](#manuals:sprite) it first 
   sprite.play_flipbook("#sprite", "my_animation")
 
 ```
+
+The `frames` entries are 1-based indices into the `geometries` table. A list can reuse, reorder or skip geometries, which cannot be represented by the deprecated `frame_start` and `frame_end` interval fields. `resource.get_atlas()` returns `frames`; use the same representation when passing atlas data to `resource.set_atlas()` or `resource.create_atlas()`. The interval fields are still accepted by the setter and creator for compatibility, but new code should use `frames`.
 
 <!-- /manuals/buffer -->
 
@@ -5657,19 +5705,24 @@ This is useful when a large font has been split up into multiple files for diffe
 Adding a font to a font collection doesn't automatically load or render all the glyphs.
 
 ```lua
--- get the main font
-local font_collection = go.get("#label", "font")
-font.add_font(font_collection, self.language_ttf_hash)
+function init(self)
+    -- Get the target font collection.
+    self.font_collection = go.get("#label", "font")
 
--- get the selected language font
-local font_collection_language = go.get("localization_japanese#label", "font")
-local font_info = font.get_info(font_collection_language)
-self.language_ttf_hash = font_info.fonts[1].path_hash -- get the first font (the one specified in the editor)
-font.add_font(self.font_collection, self.language_ttf_hash) -- increases the reference count to the font
+    -- Get the first font assigned to the selected language collection.
+    local language_collection = go.get("localization_japanese#label", "font")
+    local font_info = font.get_info(language_collection)
+    self.language_ttf_hash = font_info.fonts[1].path_hash
+
+    -- Associate it with the target collection and increase its reference count.
+    font.add_font(self.font_collection, self.language_ttf_hash)
+end
 ```
 ```lua
--- remove the font reference
-font.add_font(self.font_collection, self.language_ttf_hash)
+function final(self)
+    -- Remove the association and release the font reference.
+    font.remove_font(self.font_collection, self.language_ttf_hash)
+end
 ```
 
 ### Prewarming glyphs
@@ -6714,7 +6767,7 @@ The parent-child relationship between "bean" and "shield" is *not* reflected in 
 
 ```lua
 local bean_ids = collectionfactory.create("#bean_factory")
-go.set_scale(0.5, bean_ids[hash("/bean")])
+go.set_scale_xy(0.5, bean_ids[hash("/bean")])
 pprint(bean_ids)
 -- DEBUG:SCRIPT:
 -- {
@@ -6961,7 +7014,6 @@ end
 
 With a time step of 0.2, we get the following result in the console:
 ```txt
-INFO:DLIB: SSDP started (ssdp://192.168.0.102:54967, http://0.0.0.0:62162)
 INFO:ENGINE: Defold Engine 1.2.37 (6b3ae27)
 INFO:ENGINE: Loading data from: build/default
 DEBUG:SCRIPT: update() with timestep (dt) 0
@@ -7335,35 +7387,37 @@ You can have the camera follow a game object by setting the game object the came
 
 An alternative way is to update the position of the game object the camera component is attached to every frame as the game object to follow moves.
 
-### Converting mouse to world coordinates
+### Converting between screen and world coordinates
 
-When the camera has panned, zoomed or changed it's projection from the default orthographic Stretch projection the mouse coordinates provided in the `on_input()` lifecycle function will no longer match to the world coordinates of your game objects. You need to manually account for the change in view or projection. The code to convert from mouse/screen coordinates to world coordinates looks like this:
-```Lua
---- Convert screen to world coordinates taking into account
--- the view and projection of a specific camera
--- @param camera URL of camera to use for conversion
--- @param screen_x Screen x coordinate to convert
--- @param screen_y Screen y coordinate to convert
--- @param z optional z coordinate to pass through the conversion, defaults to 0
--- @return world_x The resulting world x coordinate of the screen coordinate
--- @return world_y The resulting world y coordinate of the screen coordinate
--- @return world_z The resulting world z coordinate of the screen coordinate
-function M.screen_to_world(camera, screen_x, screen_y, z)
-    local projection = go.get(camera, "projection")
-    local view = go.get(camera, "view")
-    local w, h = window.get_size()
+When a camera has panned, zoomed, or changed its projection, input coordinates no longer directly match world coordinates. Use the camera conversion functions with `action.screen_x` and `action.screen_y`. If the optional camera URL is omitted, the last enabled camera is used.
 
-    -- https://defold.com/manuals/camera/#converting-mouse-to-world-coordinates
-    local inv = vmath.inv(projection * view)
-    local x = (2 * screen_x / w) - 1
-    local y = (2 * screen_y / h) - 1
-    local x1 = x * inv.m00 + y * inv.m01 + z * inv.m02 + inv.m03
-    local y1 = x * inv.m10 + y * inv.m11 + z * inv.m12 + inv.m13
-    return x1, y1, z or 0
+For an orthographic camera, [`camera.screen_xy_to_world()`](https://defold.com/ref/camera/#camera.screen_xy_to_world:x-y-[camera]) returns the world-space point on the camera's near plane for a screen pixel:
+```lua
+function on_input(self, action_id, action)
+    if action_id == hash("touch") and action.pressed then
+        local world_position = camera.screen_xy_to_world(
+            action.screen_x, action.screen_y, "#camera")
+        go.set_position(world_position, "/marker")
+    end
 end
 ```
 
-Keep in mind that the values `action.screen_x` and `action.screen_y` from `on_input()` should be used as arguments for this function. Visit the [Examples page](https://defold.com/examples/render/screen_to_world/) to see screen to world coordinate conversion in action. There is also a [sample project](https://github.com/defold/sample-screen-to-world-coordinates/) showing how to do screen to world coordinate conversion.
+For a perspective camera, [`camera.screen_to_world()`](https://defold.com/ref/camera/#camera.screen_to_world:pos-[camera]) takes a `vector3` whose Z component is view depth in world units measured from the camera plane:
+```lua
+local depth = 10
+local world_position = camera.screen_to_world(
+    vmath.vector3(action.screen_x, action.screen_y, depth), "#camera")
+```
+
+[`camera.world_to_screen()`](https://defold.com/ref/camera/#camera.world_to_screen:world_pos-[camera]) performs the reverse conversion. It returns screen-pixel X and Y plus the same view-depth convention in Z, so its result can be passed back to `camera.screen_to_world()`:
+```lua
+-- Update the cached world transform first if the object moved this frame.
+go.update_world_transform("/marker")
+local world_position = go.get_world_position("/marker")
+local screen_position = camera.world_to_screen(world_position, "#camera")
+```
+
+Visit the [Examples page](https://defold.com/examples/render/screen_to_world/) to see coordinate conversion in action. There is also a [sample project](https://github.com/defold/sample-screen-to-world-coordinates/) showing the same APIs.
 
 The [third-party camera solutions mentioned in this manual](#manuals:camera) provides functions for converting to and from screen coordinates.
 
@@ -7908,9 +7962,9 @@ In addition to the properties above there will also be a field to assign a mater
 : Set this property to a material you have created that is suitable for a textured 3D object. There are a number of built-in materials that you can use as a starting point:
 
   * Use *model.material* for static non-instanced models
-  * Use *model_instances.material* for static instanced models
+  * Use *model_instanced.material* for static instanced models
   * Use *model_skinned.material* for skinned (animated) non-instanced models
-  * Use *model_skinned_instances.material* for skinned (animated) instanced models
+  * Use *model_skinned_instanced.material* for skinned (animated) instanced models
 
 Depending on the material there will be one or more texture properties:
 
@@ -7960,7 +8014,7 @@ A model also has a number of different properties that can be manipulated using 
 : The animation playback rate (`number`).
 
 `textureN`
-: The model textures where N is 0-7 (`hash`). You can change this using a texture resource property and `go.set()`. Refer to the [API reference for an example](https://defold.com/ref/model/#textureN).
+: The model textures where N is 0-15 (`hash`). You can read these properties with `go.get()` and change them using a texture resource property and `go.set()`. Defold supports at most 16 textures per draw, but the number usable by a shader may be lower on graphics adapters with a smaller texture-sampler limit.
 
 ## Material
 
@@ -7969,9 +8023,13 @@ A model also has a number of different properties that can be manipulated using 
 There are a number of built-in materials that you can use as a starting point:
 
   * Use *model.material* for static non-instanced models
-  * Use *model_instances.material* for static instanced models
+  * Use *model_instanced.material* for static instanced models
   * Use *model_skinned.material* for skinned (animated) non-instanced models
-  * Use *model_skinned_instances.material* for skinned (animated) instanced models
+  * Use *model_skinned_instanced.material* for skinned (animated) instanced models
+
+The built-in model materials use local vertex space. For skinned models, local vertex space allows the vertex shader to perform skinning on the GPU using a bone-matrix texture; local vertex space is also required for model instancing. A custom material intended for GPU-skinned or instanced models should therefore use the *Local* vertex-space setting.
+
+The bone-matrix cache uses an `RGBA32F` texture. If the active graphics adapter does not support that texture format, Defold cannot create an animated Model component that uses a local-space material. On OpenGL ES 2.0 and WebGL 1.0, support therefore depends on the adapter's floating-point texture extension. For compatibility with an adapter that lacks it, use a custom world-space material, which uses CPU skinning and cannot use model instancing. The cache dimensions can be adjusted with the [Model project settings](#manuals:project-settings).
 
 If you need to create custom materials for your models, see the [Material documentation](#manuals:material) for information. The [Shader manual](#manuals:shader) contains information on how shader programs work.
 
@@ -8261,7 +8319,7 @@ Sound components can only be instanced in-place in a game object. Create a new g
 The created component has a set of properties that should be set:
 
 *Sound*
-: Should be set to a sound file in your project. The file should be in _Wave_, _Ogg Vorbis_ or _Ogg Opus_ format. Defold supports sound files saved at 16bit bit depth.
+: Should be set to a sound file in your project. The file should be in _Wave_, _Ogg Vorbis_ or _Ogg Opus_ format. Defold supports 8-bit and 16-bit PCM Wave files. Ogg Opus playback is optional and requires **Include Sound Decoder: Opus** in the [App Manifest](#manuals:app-manifest); the Opus decoder is not included by default.
 
 *Looping*
 : If checked the sound will play back in _Loopcount_ times or until explicitly stopped.
@@ -8306,9 +8364,9 @@ The sound system has 4 levels of gain:
 - The gain set on the sound component.
 - The gain set when starting the sound via a call to `sound.play()` or when changing the gain on the voice via a call to `sound.set_gain()`.
 - The gain set on the group via a [`sound.set_group_gain()`](https://defold.com/ref/sound#sound.set_group_gain) function call.
-- The gain set on the "master" group. This can be altered by `sound.set_group_gain(hash("master"))`.
+- The gain set on the "master" group. This can be altered with `sound.set_group_gain(hash("master"), gain)`.
 
-The output gain is the result of these 4 gains multiplied. The default gain is 1.0 everywhere (0 dB).
+When **Use Linear Gain** is enabled in the [Sound project settings](#manuals:project-settings) (the default), the output gain is the result of these four gains multiplied. A gain of `1.0` is unity gain (0 dB). When linear gain is disabled, Defold applies a nonlinear curve during mixing, so the direct four-way multiplication and decibel conversion below do not describe the resulting output level.
 
 ## Sound groups
 
@@ -8328,7 +8386,7 @@ The groups are identified with a hash value. The string name can be retrieved wi
 
 You should not write code that relies on the string value of a sound group since they are not available in release builds.
 
-All values are linear between 0 and 1.0 (0 dB). To convert to decibel, simply use the standard formula:
+With **Use Linear Gain** enabled, convert a positive gain value to decibels with the standard formula:
 ```math
 db = 20 \times \log \left( gain \right)
 ```
@@ -8355,6 +8413,8 @@ end
 -- Set the master gain to +6 dB (math.pow(10, 6/20)).
 sound.set_group_gain("master", 1.995)
 ```
+
+Defold 1.10.2 corrected a long-standing attenuation of roughly 3 dB in the sound mixer. If an older project's mix compensated for that attenuation and sounds louder after upgrading, retune the global **Sound ▸ Gain** setting or the affected group gains.
 
 ## Gating sounds
 
@@ -8762,7 +8822,7 @@ Selecting the root "Gui" node in the *Outline* shows the *Properties* for the GU
 : The maximum number of nodes for this GUI.
 
 *Max Dynamic Textures*
-: The maximum number of textures that can be created using [`gui.new_texture()`](https://defold.com/ref/stable/gui/#gui.new_texture:texture_id-width-height-type-buffer-flip)
+: The maximum number of dynamic textures tracked by this GUI component, `128` by default. This includes textures created with [`gui.new_texture()`](https://defold.com/ref/stable/gui/#gui.new_texture:texture_id-width-height-type-buffer-flip) and external textures assigned to the GUI with `go.set(..., "textures", ...)` or `gui.set(msg.url(), "textures", ...)`. Projects that replace many external textures may need to raise this limit.
 
 ## Runtime manipulation
 
@@ -9596,7 +9656,9 @@ Note: If a GUI layout exists in the scene but is not present in Display Profiles
 
 # Physics {#manuals:physics}
 
-Defold includes a modified version of the [Box2D](http://www.box2d.org) physics engine (version 2.2.1) for 2D physics simulations and the Bullet physics engine (version 2.77) for 3D physics. It allows you to simulate Newtonian physics interactions between different types of _collision objects_. This manual explains how this works.
+Defold includes [Box2D](https://box2d.org/) for 2D physics simulations and Bullet for 3D physics. The [App Manifest's Physics 2D setting](#manuals:app-manifest) selects **Box2D Version 3**, **Box2D (Legacy Defold version)**, or **None**. The legacy implementation is the default; Box2D 3 is opt-in. Changing implementation can change simulation results and may require you to retune the version-specific [Box2D project settings](#manuals:project-settings).
+
+The component-oriented collision-object workflow and the `physics` module described by these manuals work with either Box2D implementation; selecting **None** removes 2D physics. Defold also exposes lower-level [`b2d`](https://defold.com/ref/stable/b2d/), `b2d.body`, `b2d.fixture`, `b2d.shape`, `b2d.joint`, `b2d.chain`, and `b2d.world` APIs for direct access to 2D bodies, shapes, joints, chains, and worlds. Not every low-level function is available in both Box2D implementations; check each function's generated API documentation against the implementation selected in the App Manifest.
 
 The main concepts of the physics engines used in Defold are:
 
@@ -11079,8 +11141,8 @@ All game objects, and some component types have properties that can be read and 
 | *position* | The local position of the game object. | `vector3`      | `get+set` |
 | *rotation* | Local rotation of game object, expressed as a `quaternion`.  | `quaternion` | `get+set` |
 | *euler*    | Local rotation of game object, Euler angles. | `vector3` | `get+set` |
-| *scale*    | Local non uniform scale of the game object, expressed as a vector where each component contains a multiplier along each axis. To double the size in x and y, provide `vmath.vector3(2.0, 2.0, 0)` | `vector3` | `get+set` |
-| *scale.xy*    | Local non uniform scale of the game object, expressed as a vector where each component contains a multiplier along X and Y axis.| `vector3` | `get+set` |
+| *scale*    | Local non uniform scale of the game object, expressed as a vector where each component contains a multiplier along each axis. To double the size in X and Y without changing Z, use `vmath.vector3(2.0, 2.0, 1.0)`. | `vector3` | `get+set` |
+| *scale.xy*    | Local non uniform scale of the game object along the X and Y axes. Use this property or `go.set_scale_xy()` when Z scaling is not intended. | `vector3` | `get+set` |
 
 Specific functions for working with the game object transform also exist; they are `go.get_position()`, `go.set_position()`, `go.get_rotation()`, `go.set_rotation()`,  `go.get_scale()`, `go.set_scale()` and `go.set_scale_xy()`.
 
@@ -11111,7 +11173,7 @@ Specific functions for working with the game object transform also exist; they a
 | property   | description                            | type            |                  |
 | ---------- | -------------------------------------- | --------------- | ---------------- |
 | *animation* | The current animation.                | `hash`          | `get`     |
-| *texture0* | The texture path hash of the model. | `hash` | `get`|
+| *texture0*--*texture15* | The texture path hashes of the model. | `hash` | `get+set`|
 | *cursor*  | Position (between 0--1) of playback cursor. | `number`   | `get+set` |
 | *playback_rate* | The playback rate of the animation. A multiplier to the animation playback rate. | `number` | `get+set` |
 | *material* | The material used by the model. | `hash` | `get+set`|
@@ -12304,9 +12366,16 @@ if not ok then
 end
 
 -- load the data
-local data = sys.load(path)
+local ok, data = pcall(sys.load, path)
+if not ok then
+	-- The file exists, but is corrupt, foreign, or uses an unsupported format.
+	print("Failed to load save data:", data)
+	data = {}
+end
 print(data.highscore) -- 100
 ```
+
+`sys.load()` returns an empty table if the file does not exist. If the file exists but was not created by `sys.save()`, is corrupt, or uses an unsupported serialized-table format, `sys.load()` raises a Lua error. Use `pcall()` as above when damaged or externally modified save data must be recoverable.
 
 ## File and folder locations
 File and folder locations can be divided into three categories:
@@ -13014,7 +13083,17 @@ Defold will try to batch render operation to reduce the number of draw calls acc
 
 ### Batch rules for non-GUI components
 
-Rendering is done based on z-order, from low to high. The engine will start by sorting the list of things to draw and iterate from low to high z-values. Each object in the list will be grouped into the same draw call as the previous object if the following conditions are met:
+Each `render.draw()` call controls how matching world-ordered entries are sorted. The default is `render.SORT_BACK_TO_FRONT`; use `render.SORT_FRONT_TO_BACK` for near-to-far rendering, or `render.SORT_NONE` to retain insertion order:
+```lua
+render.draw(self.opaque_predicate, {
+    sort_order = render.SORT_FRONT_TO_BACK
+})
+render.draw(self.transparent_predicate, {
+    sort_order = render.SORT_BACK_TO_FRONT
+})
+```
+
+The selected order determines which entries are adjacent and can therefore affect batching. In that ordered list, each object is grouped into the same draw call as the previous object if the following conditions are met:
 
 * Belongs to the same collection proxy
 * Is of the same component type (sprite, particle fx, tilemap etc)
@@ -13022,7 +13101,7 @@ Rendering is done based on z-order, from low to high. The engine will start by s
 * Has the same material
 * Has the same shader constants (such as tint)
 
-This means that if two sprite components in the same collection proxy has adjacent or the same z-value (and thus comes next to each other in the sorted list), use the same texture, material and constants they will be grouped into the same draw call.
+This means that if two sprite components in the same collection proxy are adjacent after the selected sort, and use the same texture, material, and constants, they will be grouped into the same draw call.
 
 ### Batch rules for GUI components
 
@@ -13167,6 +13246,15 @@ go.animate("#sprite", "tint", go.PLAYBACK_LOOP_PINGPONG, vmath.vector4(1,0,0,1),
 
 There are some caveats to updating the vertex attributes however, whether or not a component can use the value depends on the semantic type of the attribute. For example, a sprite component supports the `SEMANTIC_TYPE_POSITION` so if you update an attribute that has this semantic type, the component will ignore the overridden value since the semantic type dictates that the data should always be produced by the sprites position.
 
+Model components also expose custom material attributes through `go.get()`, `go.set()` and `go.animate()`. For example, after defining an attribute named `my_attribute` in the model material:
+```lua
+go.set("#model", "my_attribute", vmath.vector4(1, 0, 0, 1))
+go.animate("#model", "my_attribute", go.PLAYBACK_LOOP_PINGPONG,
+    vmath.vector4(0, 1, 0, 1), go.EASING_LINEAR, 2)
+```
+
+Only the first mesh in a model with multiple meshes can currently be addressed this way. Updating a non-instanced per-vertex attribute may also rebuild and upload vertex data proportional to the mesh size, so frequent updates can be expensive for large meshes.
+
 In cases where that a vertex attribute is either a scalar or a vector type other than a `Vec4` you can still set the data using `go.set`:
 ```lua
 -- The last two components in the vec4 will not be used!
@@ -13250,7 +13338,24 @@ To verify that the instancing works in this case, you can look at the web profil
 
 #### Backwards compatibility
 
-On OpenGL based graphics adapters, instancing requires at least OpenGL 3.1 for desktop and OpenGL ES 3.0 for mobile. This means that very old devices that are using OpenGL ES2 or older OpenGL versions might not support instancing. In this case, rendering will still work by default without any special care from the developer, but it may not be as performant as if actual instancing was used. Currently, there is no way of detecting if instancing is supported or not, but this functionality will be added in the future so that a cheaper material can be used, or things like foliage or clutter that typically would be good candidates for instancing, could be skipped completely.
+OpenGL 3.1 on desktop and OpenGL ES 3.0 on mobile provide instancing as a core feature. Older OpenGL ES and WebGL contexts may still support it through an extension such as `ANGLE_instanced_arrays`; other older adapters do not. When instancing is unavailable, rendering still works by default, but may be less performant.
+
+Use `graphics.get_adapter_info()` to detect support and select a cheaper material or omit instance-heavy content when necessary. The `features` field is an array of the supported feature constants, not a table keyed by those constants:
+```lua
+local function has_context_feature(feature)
+    local adapter_info = graphics.get_adapter_info()
+    for _, supported_feature in ipairs(adapter_info.features) do
+        if supported_feature == feature then
+            return true
+        end
+    end
+    return false
+end
+
+local instancing_supported = has_context_feature(
+    graphics.CONTEXT_FEATURE_INSTANCING
+)
+```
 
 ## Vertex and fragment constants
 
@@ -13274,8 +13379,37 @@ Shader constants, or "uniforms" are values that are passed from the engine to ve
 `CONSTANT_TYPE_WORLDVIEWPROJ`
 : A matrix with the world, view and projection matrices already multiplied.
 
+`CONSTANT_TYPE_WORLD_INVERSE`
+: The inverse of the world matrix. Use to transform from world space back into the object's local space.
+
+`CONSTANT_TYPE_VIEW_INVERSE`
+: The inverse of the view matrix. Use to transform from camera space back into world space.
+
+`CONSTANT_TYPE_PROJECTION_INVERSE`
+: The inverse of the projection matrix. Use to transform from clip space back into camera space.
+
+`CONSTANT_TYPE_VIEWPROJ_INVERSE`
+: The inverse of the combined view and projection matrices. Use to transform from clip space back into world space.
+
+`CONSTANT_TYPE_WORLDVIEW_INVERSE`
+: The inverse of the combined world and view matrices. Use to transform from camera space back into object-local space.
+
+`CONSTANT_TYPE_WORLDVIEWPROJ_INVERSE`
+: The inverse of the combined world, view and projection matrices. Use to transform from clip space back into object-local space. These inverse constants avoid calculating a matrix inverse in the shader.
+
 `CONSTANT_TYPE_NORMAL`
 : A matrix to compute normal orientation. The world transform might include non-uniform scaling, which breaks the orthogonality of the combined world-view transform. The normal matrix is used to avoid issues with the direction when transforming normals. (The normal matrix is the transpose inverse of the world-view matrix).
+
+`CONSTANT_TYPE_TIME`
+: An engine-provided vector4 where `.x` is elapsed time since engine start, `.y` is the delta time from the previous frame, and `.z` and `.w` are currently zero. The engine updates this value automatically; it does not need to be updated with `go.set()`. See the [Shadertoy tutorial](/tutorials/shadertoy/#animation) for an example.
+
+  Declare a Time constant named `time` in a modern GLSL uniform block:
+  ```glsl
+  uniform fragment_inputs
+  {
+      vec4 time;
+  };
+  ```
 
 `CONSTANT_TYPE_USER`
 : A vector4 constant that you can use for any custom data you want to pass into your shader programs. You can set the initial value of the constant in the constant definition, but it is mutable through the functions [go.set()](https://defold.com/ref/stable/go/#go.set) / [go.animate()](https://defold.com/ref/stable/go/#go.animate). You can also retrieve the value with [go.get()](https://defold.com/ref/stable/go/#go.get). Changing a material constant of a single component instance [breaks render batching and will result in additional draw calls](#manuals:render).
@@ -13664,7 +13798,9 @@ Constants
   - `CONSTANT_TYPE_WORLD` is the *world matrix* that maps from an object’s local coordinate space into world space.
   - `CONSTANT_TYPE_VIEW` is the *view matrix* that maps from world space to camera space.
   - `CONSTANT_TYPE_PROJECTION` is the *projection matrix* that maps from camera to screen space.
-  - Premultiplied $world * view$, $view * projection$ and $world * view * projection$ matrices are also available.
+  - `CONSTANT_TYPE_WORLDVIEW`, `CONSTANT_TYPE_VIEWPROJ` and `CONSTANT_TYPE_WORLDVIEWPROJ` provide the corresponding combined matrices.
+  - `CONSTANT_TYPE_WORLD_INVERSE`, `CONSTANT_TYPE_VIEW_INVERSE`, `CONSTANT_TYPE_PROJECTION_INVERSE`, `CONSTANT_TYPE_VIEWPROJ_INVERSE`, `CONSTANT_TYPE_WORLDVIEW_INVERSE` and `CONSTANT_TYPE_WORLDVIEWPROJ_INVERSE` provide inverse matrices without requiring the shader to calculate them.
+  - `CONSTANT_TYPE_TIME` is an engine-provided `vec4`: elapsed time since engine start in `.x`, frame delta time in `.y`, and zero in `.z` and `.w`.
   - `CONSTANT_TYPE_USER` is a `vec4` type constant that you can use as you wish.
 
   The [Material manual](#manuals:material) explains how to specify constants.
@@ -13795,7 +13931,9 @@ vec4 sampler_2d_array = texture(my_texture_array, vec3(uv, slice));
 
 ### Precision
 
-Setting explicit precision for variables, inputs, outputs and so forth was previously required in order to be compliant with OpenGL ES contexts. This is not required anymore, precision is now set automatically for platforms that support it.
+Defold generates global default precision qualifiers when cross-compiling shaders for GLSL ES. The defaults are `mediump` for floating-point values and `highp` for integers. They can be changed with the **GLSL ES Default Precision Float** (`shader.glsl_es_default_precision_float`) and **GLSL ES Default Precision Int** (`shader.glsl_es_default_precision_int`) [project settings](#manuals:project-settings); both accept `mediump` or `highp`.
+
+An explicit qualifier on a variable, input or output takes precedence over the generated global default. On OpenGL ES 2.0 and WebGL 1.0 fragment shaders, `highp` is not supported by every device. When `highp` is selected as a global default, Defold guards it with `GL_FRAGMENT_PRECISION_HIGH` and falls back to `mediump` on devices that do not support it.
 
 ### Putting it together
 
@@ -14467,7 +14605,7 @@ These assets can be accessed via the [`sys.load_resource()`](https://defold.com/
 
 When creating an application bundle you have an option of creating a debug or release bundle. The differences between the two bundles are small but important to keep in mind:
 
-* Release builds do not include the [profiler](#manuals:profiling)
+* Release builds do not include the [profiler](#manuals:profiling) by default. Set **Profiler** to **Always** in the [App Manifest](#manuals:app-manifest) to include profiler support in both debug and release builds.
 * Release builds do not include the [screen recorder](https://defold.com/ref/stable/sys/#start_record)
 * Release builds do not show the output of any calls to `print()` or the output from any native extensions
 * Release builds have the `is_debug` value in `sys.get_engine_info()` set to`false`
@@ -14542,6 +14680,8 @@ usage: bob [options] [commands]
                                          target
     --exclude-build-folder <arg>         DEPRECATED! Use '.defignore' file
                                          instead
+    --experimental-path-minification     Minimizes resource path names in order
+                                         to save bundle size.
  -h,--help                               This help message
  -i,--input <arg>                        DEPRECATED! Use --root instead
     --identity <arg>                     Sign identity (iOS)
@@ -14645,6 +14785,9 @@ Available platforms and architectures:
 
 `x86_64-linux`
 : Linux 64 bit
+
+`arm64-linux`
+: Linux ARM64 for Raspberry Pi and Linux-based handheld devices.
 
 `x86_64-ios`
 : iOS macOS 64 bit (iOS Simulator)
@@ -14869,7 +15012,11 @@ For mobile platforms either lock the screen orientation in *game.project* or mak
   * The vsync and swap interval in the Display section of *game.project*
 
 ## Mobile phones and notch and hole punch cameras
-It has become increasingly popular to use a small lens cut-out on the display screen to fit in the front camera and sensors (also known as a notch or hole punch camera). When porting a game to mobile it is recommended to make sure that no critical information is positioned where a notch (center of upper screen edge) or hole-punch (top left screen area) is typically found. It is also possible to use the [Safe Area extension](/extension-safearea) to restrict the game view to the area outside any notch or hole-punch camera.
+It has become increasingly popular to use a small lens cut-out on the display screen to fit in the front camera and sensors (also known as a notch or hole punch camera). When porting a game to mobile, make sure that critical information is kept within the platform safe area.
+
+Defold has built-in safe-area support on Android and iOS. Set `gui.safe_area_mode` in *game.project* to control which opposing safe-area insets affect GUI adjustment. `none` is the default and ignores the insets; `long` applies left/right in landscape and top/bottom in portrait; `short` applies the opposite pair; and `both` applies all four edges. A GUI script can override the project-wide mode for its scene with [`gui.set_safe_area_mode()`](https://defold.com/ref/gui/#gui.set_safe_area_mode). For custom GUI or rendering logic, [`window.get_safe_area()`](https://defold.com/ref/window/#window.get_safe_area) returns the safe rectangle and the individual edge insets. Platforms without built-in safe-area insets return the full window and zero insets.
+
+The [Safe Area extension](/extension-safearea) remains an alternative for legacy projects or workflows that need behavior beyond the built-in APIs; it is not required for standard Android and iOS safe-area handling.
 
 ## Platform specific guidelines
 
@@ -15105,7 +15252,7 @@ It is important that you match the correct engine with the callstack, otherwise 
 * Android - the `projecttitle.apk.symbols/lib/` bundle output folder contains the debug symbols for the target architectures.
 * Linux - the executable contain the debug symbols.
 * Windows - the `dmengine.pdb` file in `build/x86_64-win32` contains the debug symbols for Windows builds.
-* HTML5 - the `dmengine.js.symbols` file in `build/wasm-web` contains the debug symbols for HTML5 builds.
+* HTML5 - the `_symbols` directory alongside the HTML5 bundle contains `_wasm.js.symbols` and, when the `wasm_pthread-web` architecture is selected, `_pthread_wasm.js.symbols`.
 
 It is very important that your save the debug symbols somewhere for each public release you make of your game and that you know which release the debug symbols belong to. You will not be able to debug any native crashes if you do not have the debug symbols! Also, you should keep an `unstripped` version of the engine. This allows for the best symbolication of the callstack.
 
@@ -15426,7 +15573,6 @@ $ cd <path_to_android_sdk>/platform-tools/
 $ adb logcat -s defold
 --------- beginning of /dev/log/system
 --------- beginning of /dev/log/main
-I/defold  ( 6210): INFO:DLIB: SSDP started (ssdp://192.168.0.97:58089, http://0.0.0.0:38637)
 I/defold  ( 6210): INFO:ENGINE: Defold Engine 1.2.50 (8d1b912)
 I/defold  ( 6210): INFO:ENGINE: Loading data from:
 I/defold  ( 6210): INFO:ENGINE: Initialized sound device 'default'
@@ -15525,7 +15671,7 @@ Defold supports these formats:
 * .ogg
 * .opus
 
-Sounds files must be using 16-bit samples.
+Defold supports 8-bit and 16-bit PCM Wave files. Ogg Vorbis and Ogg Opus use their respective compressed formats rather than a PCM bit-depth requirement. The Opus decoder is not included by default; enable **Include Sound Decoder: Opus** in the [App Manifest](#manuals:app-manifest) before using `.opus` resources.
 Our sound decoders will up/downscale sounds sample rates as needed for the current sound device.
 
 Shorter sounds like sound effects are often compressed harder, whereas music files have less compression.
@@ -15639,7 +15785,7 @@ Reducing the time it takes to render a frame is needed if the profiler shows hig
 
 * Reduce draw calls - Read more about reducing draw calls in [this forum post](https://forum.defold.com/t/draw-calls-and-defold/4674)
 * Reduce overdraw
-* Reduce shader complexity - Read up on GLSL optimizations in [this Khronos article](https://www.khronos.org/opengl/wiki/GLSL_Optimizations). You can also modify the default shaders used by Defold (found in `builtins/materials`) and reduce shader precision to gain some speed on low end devices. All shaders are using `highp` precision and a change to for instance `mediump` can in some cases improve performance slightly.
+* Reduce shader complexity - Read up on GLSL optimizations in [this Khronos article](https://www.khronos.org/opengl/wiki/GLSL_Optimizations). You can also modify the default shaders used by Defold (found in `builtins/materials`) and choose lower precision where the shader does not need `highp`. Cross-compiled GLSL ES shaders default to `mediump` for floating-point values and `highp` for integers, and these defaults can be changed in the Shader project settings. Explicit per-variable qualifiers take precedence. See the [shader precision documentation](#manuals:shader).
 
 ## Reduce scene graph complexity
 Reducing the scene graph complexity is needed if the profiler shows high values in the `GameObject` scope and more specifically for the `UpdateTransform` sample. Some actions to take:
@@ -15717,11 +15863,17 @@ If the memory usage remains at 32 MB, that's great! If not, follow the steps to 
 
 # Profiling {#manuals:profiling}
 
-Defold includes a set of profiling tools that are integrated with the engine and the build pipeline. These are designed to help find problems with performance and memory usage. The built-in profilers are available on debug builds only. The frame profiler that is used in Defold is the [Remotery profiler by Celtoys](https://github.com/Celtoys/Remotery).
+Defold includes profiling tools integrated with the engine and build pipeline. They help find performance, memory, and resource-usage problems. Runtime profiling data can be consumed by several facilities:
+
+* The basic profiler and in-game visual profiler are available on all platforms.
+* The [Remotery profiler](https://github.com/Celtoys/Remotery) and interactive web frame profiler are available on desktop and mobile platforms.
+* HTML5 builds can publish Defold scopes to the browser's Web Performance API.
+
+The **Profiler** setting in the [App Manifest](#manuals:app-manifest) controls whether profiler code is linked into a build. **Debug Only** is the default, **None** excludes it, and **Always** includes it in both debug and release builds. The `profiler` settings in *game.project* control runtime behavior but do not link excluded profiler code back into a build. In particular, **Track CPU** controls CPU usage sampling; it is separate from the App Manifest choice.
 
 ## The runtime visual profiler
 
-Debug builds feature a runtime visual profiler that displays live information rendered overlaid on top of the running application:
+Builds that include profiler support feature a runtime visual profiler that displays live information overlaid on the running application:
 ```lua
 function on_reload(self)
     -- Toggle the visual profiler on hot reload.
@@ -15740,9 +15892,9 @@ profiler.view_recorded_frame()
 Refer to a the [profiler API reference](https://defold.com/ref/stable/profiler/) for more information about the profiler functions.
 
 ## The web profiler
-While running a debug build of the game, an interactive web-based profiler can be accessed through a browser.
+While running a desktop or mobile build that includes profiler support, interactive frame and resource profilers can be accessed through a browser.
 
-### Frame profiler
+### Remotery frame profiler
 The Frame profiler allows you to sample your game while it is running and analyze individual frames in detail. To access the profiler:
 
 1. Start your game on your target device.
@@ -15768,6 +15920,8 @@ Global Properties
 
 The LuaMem value is the amount of memory in kilobytes used by the Lua VM as reported by the Lua garbage collector. Memory is the amount of memory in kilobytes used by the engine.
 
+The [Max Sample Count setting](#manuals:project-settings) limits the number of profiler samples recorded per thread per frame. If the profiler reports that the limit was exceeded, first check native-extension profiling code for an unmatched scope begin/end pair. Raise the cap only when a legitimate frame contains more scopes than the configured limit.
+
 ### Resource profiler
 The Resource profiler allows you to inspect your game while it is running and analyze resource use in detail. To access the profiler:
 
@@ -15781,6 +15935,17 @@ Collection view
 
 Resources view
 : The resources view shows all resources currently loaded into memory, their size and the number of references to each resource. This is useful when optimizing memory usage in your application when you need to understand what is loaded into memory at any given time.
+
+## HTML5 browser performance timeline
+
+HTML5 uses the Web Performance API instead of Remotery for its browser timeline. To record Defold scopes:
+
+1. Make sure the selected App Manifest profiler mode includes profiler support in the build variant you are running.
+2. Enable **Performance Timeline Enabled** (`profiler.performance_timeline_enabled`) in *game.project*.
+3. Launch the HTML5 build and open the browser developer tools.
+4. Record a session in the browser's **Performance** panel and inspect the Defold scopes in the resulting timeline.
+
+This browser timeline is separate from both the in-game visual profiler and the interactive Remotery web profiler.
 
 ## Build reports
 When bundling your game there is an option to create a build report. This is very useful to get a grip on the size of all the assets that are part of your game bundle. Simply check the *Generate build report* checkbox when bundling the game.
@@ -16150,13 +16315,29 @@ When the provision expires, you need to build the app again in Xcode and get a n
 
 When you have the code signing identity and provisioning profile, you are ready to create a stand alone application bundle for your game from the editor. Simply select `Project ▸ Bundle... ▸ iOS Application...` from the menu.
 
-Select your code signing identity and browse for your mobile provisioning file. Select which architectures (32 bit, 64 bit and the iOS simulator) to bundle for as well as the variant (Debug or Release). You can optionally uncheck the `Sign application` checkbox to skip the signing process and then manually sign at a later stage.
+Select your code signing identity and browse for your mobile provisioning file. Select the `arm64-ios` device architecture and, when needed, the `x86_64-ios` simulator architecture, as well as the variant (Debug or Release). You can optionally uncheck the `Sign application` checkbox to skip the signing process and then manually sign at a later stage.
 
 You **must** uncheck the `Sign application` checkbox when testing your game on the iOS simulator. You will be able to install the application but it will not boot.
 
 Press *Create Bundle* and you will then be prompted to specify where on your computer the bundle will be created.
 
 You specify what icon to use for the app, the launch screen storyboard and so forth in the *game.project* project settings file in the [iOS section](#manuals:project-settings).
+
+### Custom Info.plist and local target discovery
+
+The built-in iOS `Info.plist` contains the Bonjour service and local-network usage description required for automatic Editor target discovery in non-release builds. A custom `Info.plist` replaces that built-in base manifest. If a custom manifest is used for a debug build and you need target discovery, profiling, hot reload, or log streaming over the local network, include these entries:
+```xml
+{% raw %}{{^variant_release}}{% endraw %}
+<key>NSBonjourServices</key>
+<array>
+    <string>_defold._tcp</string>
+</array>
+<key>NSLocalNetworkUsageDescription</key>
+<string>Discover Defold targets on the local network.</string>
+{% raw %}{{/variant_release}}{% endraw %}
+```
+
+The Mustache condition keeps the discovery entries out of release bundles. The usage-description string is shown to the user by iOS and can be adjusted or localized. Remove the condition only if the release application itself uses the same Bonjour service and local-network functionality.
 
 ## Build variants
 
@@ -16218,9 +16399,7 @@ Drag the Image View component onto the storyboard:
 
 Select the image you previously added to `Assets.xcassets` from the Image dropdown:
 
-Position the image and make any other adjustments you need, perhaps adding a Label or some other UI element. When you are done set the active scheme to "Build -> Any iOS Device (`arm64`, `armv7`)"(or "Generic iOS Device") and select Product -> Build. Wait for the build process to finish.
-
-If you have only `arm64` option in "Any iOS Device (arm64)" change `iOS Deployment target` to 10.3 in "Project -> Basic -> Deployment" settings. It will make your storyboard compatible with `armv7` devices (for example iPhone5c)
+Position the image and make any other adjustments you need, perhaps adding a Label or some other UI element. When you are done, set the active scheme to **Any iOS Device (arm64)** (or **Generic iOS Device**) and select **Product ▸ Build**. Defold supports iOS 15.0 and later on 64-bit devices, so keep the deployment target at 15.0 or later. Wait for the build process to finish.
 
 If you use images in the storyboard they will not be included in your `LaunchScreen.storyboardc` automatically. Use `Bundle Resources` field in *game.project* to include resources.
 For example, create folder `LaunchScreen` in Defold project and folder `ios` inside (`ios` folder needed to include these files only for ios bundles), then put your files in `LaunchScreen/ios/`. Add this path in `Bundle Resources`.
@@ -16426,19 +16605,28 @@ If you see a `"wasm streaming compile failed: TypeError: Failed to execute ‘co
 
 Creating HTML5 content with Defold is simple and follows the same pattern as all other supported platforms: select `Project ▸ Bundle... ▸ HTML5 Application...` from the menu:
 
-You can chose to include both an `asm.js` and a WebAssembly (wasm) version of the Defold engine in HTML5 bundle. In most cases it is enough to chose WebAssembly since [all modern browsers support WebAssembly](https://caniuse.com/wasm).
+HTML5 bundles support two WebAssembly architectures:
 
-Even if you include both `asm.js` and `wasm` versions of the engine only one of them will be downloaded by the browser when launching the game. The WebAssembly version will be downloaded if the browser supports WebAssembly and the `asm.js` version will be used as a fallback in the rare case that WebAssembly is not supported.
+* `wasm-web` - the regular, non-threaded WebAssembly engine.
+* `wasm_pthread-web` - a WebAssembly engine that can use threads.
+
+You can include either architecture or both. When both are included, the loader selects `wasm_pthread-web` when the browser and hosting environment support it and falls back to `wasm-web` otherwise. See the [Bob manual](#manuals:bob) for the canonical target names.
+
+The threaded engine requires `SharedArrayBuffer` in a secure, [cross-origin-isolated](https://developer.mozilla.org/en-US/docs/Web/API/Window/crossOriginIsolated) page. Serve the bundle over HTTPS (or localhost) and configure the server with compatible cross-origin isolation headers, commonly:
+```txt
+Cross-Origin-Opener-Policy: same-origin
+Cross-Origin-Embedder-Policy: require-corp
+```
+
+Cross-origin resources loaded by the page must also use compatible CORS or Cross-Origin-Resource-Policy headers. A bundle containing only `wasm_pthread-web` cannot run when these requirements are not met; include `wasm-web` as a fallback if the game may be hosted on a site that does not support cross-origin isolation.
+
+Defold HTML5 bundles require a modern browser with WebAssembly support. Internet Explorer 11 is not supported.
 
 When you click on the `Create bundle` button you will be prompted to select a folder in which to create your application. After the export process completes, you will find all of the files needed to run the application.
 
 ## Known issues and limitations
 
 * Hot Reload - Hot Reload doesn't work in HTML5 builds. Defold applications must run their own miniature web server in order to receive updates from the editor, which isn't possible in a HTML5 build.
-* Internet Explorer 11
-  * Audio - Defold handles audio playback using HTML5 _WebAudio_ (see http://www.w3.org/TR/webaudio), which is not currently supported by Internet Explorer 11. Applications will fall back to a null audio implementation when using this browser.
-  * WebGL - Microsoft has not completed work implementing the _WebGL_ API (see https://www.khronos.org/registry/webgl/specs/latest/). Therefore, it does not perform as well as other browsers.
-  * Full screen - Full screen mode is unreliable in the browser.
 * Chrome
   * Slow debug builds - In debug builds on HTML5 we verify all WebGL graphics calls to detect errors. This is unfortunately very slow when testing on Chrome. It is possible to disable this by setting the *Engine Arguments* field of *game.project* to `--verify-graphics-calls=false`.
 * Gamepad support - [Refer to the Gamepad documentation](#manuals:input-gamepads) for special considerations and steps you may need to take on HTML5.
@@ -17536,20 +17724,25 @@ For all the keywords, we apply white listing filter. This is to avoid illegal pa
 
 # App manifest {#manuals:app-manifest}
 
-The application manifest is used to exclude or control which features to include in the engine. Excluding unused features of the engine is a recommended best practice since it will decrease the final binary size of your game.
-Also application manifest contains some options to control compiling code for HTML5 platform like minimum browser supported version/memory settings that's also can affect on result binary size.
+The application manifest controls which features and backends are linked into the engine. Excluding unused features is recommended because it decreases the final binary size of your game. The application manifest also contains build-time options such as the minimum supported HTML5 browser versions and WebAssembly memory settings.
 
 # Applying the manifest
 
 In `game.project`, assign the manifest to `Native Extensions` -> `App Manifest`.
 
-## Physics
+## Physics 2D
 
-Control which physics engine to use, or select None to exclude physics completely.
+Select which Box2D implementation to include:
 
-## Physics 2d
+* **Box2D Version 3** - Include Box2D 3. This is opt-in and may produce different simulation results than the legacy implementation, so existing projects may need to retune their physics settings.
+* **Box2D (Legacy Defold version)** - Include the legacy Defold Box2D implementation. This is the default.
+* **None** - Exclude 2D physics.
 
-Select which version of Box2D to use.
+The Box2D solver settings are version-specific. See the [Box2D project settings](#manuals:project-settings) for details.
+
+## Physics 3D
+
+Include the Bullet 3D physics implementation. It is included by default; disable this setting to exclude 3D physics.
 
 ## Rig + Model
 
@@ -17559,13 +17752,35 @@ Control rig and model functionality, or select None to exclude model and rig com
 
 Excluded the video recording capability from the engine (see the [`start_record`](https://defold.com/ref/stable/sys/#start_record) message documentation).
 
-## Exclude Profiler
+## Profiler
 
-Exclude the profiler from the engine. The profiler is used for gathering performance and usage counters. Learn how to use the profiler in the [Profiling manual](#manuals:profiling).
+Control when profiler functionality is linked into the engine:
 
-## Exclude Sound
+* **Debug Only** - Include the profiler in debug builds only. This is the default.
+* **None** - Exclude profiler functionality from all build variants.
+* **Always** - Include the profiler in both debug and release builds.
+
+The app-manifest setting controls whether the profiler code is linked into a build. The settings under `profiler` in *game.project* control profiler behavior at runtime. Learn how to use the available facilities in the [Profiling manual](#manuals:profiling).
+
+## Sound
+
+The sound controls determine which sound system and decoders are linked into the engine.
+
+### Exclude Sound
 
 Exclude all sound playing capabilities from the engine.
+
+### Exclude Sound Decoder: WAV
+
+Exclude support for WAV sound resources.
+
+### Exclude Sound Decoder: OGG
+
+Exclude support for Ogg Vorbis sound resources.
+
+### Include Sound Decoder: Opus
+
+Include support for Ogg Opus sound resources. The Opus decoder is excluded by default, so this option must be enabled before `.opus` resources can be played. See the [Sound manual](#manuals:sound) for supported formats.
 
 ## Exclude Input
 
@@ -17583,7 +17798,7 @@ Exclude `image` script module [link](https://defold.com/ref/stable/image/) from 
 
 Exclude `types` script module [link](https://defold.com/ref/stable/types/) from the engine.
 
-## Exclude Basis Universal
+## Exclude Basis Transcoder
 
 Exclude the Basis Universal [texture compression library](#manuals:texture-profiles) from the engine.
 
@@ -17593,46 +17808,46 @@ Use the deprecated Android Support Library instead of Android X. [More info](#ma
 
 ## Graphics
 
-Select which graphics backend to use.
+Select which graphics backends to include for each platform. A combined choice includes both backends so the preferred backend can fall back when it is unavailable.
 
-* OpenGL - Include only OpenGL.
-* Vulkan - Include only Vulkan.
-* OpenGL and Vulkan - Include both OpenGL and Vulkan. Vulkan will be the default and fall back to OpenGL if Vulkan is not available.
+| Field | Platforms | Choices | Default |
+|---|---|---|---|
+| **Graphics** | Windows and Linux | OpenGL, Vulkan, OpenGL & Vulkan | OpenGL |
+| **Graphics (macOS)** | macOS | OpenGL, Metal, Vulkan, OpenGL & Metal, OpenGL & Vulkan | Vulkan |
+| **Graphics (iOS)** | iOS | OpenGL, Metal, Vulkan, OpenGL & Metal, OpenGL & Vulkan | OpenGL |
+| **Graphics (Android)** | Android | OpenGL+Vulkan, OpenGL, Vulkan | OpenGL+Vulkan |
+| **Graphics (HTML5)** | HTML5 | WebGL, WebGPU, WebGL & WebGPU | WebGL |
+
+On Linux ARM64, the **OpenGL** choice uses the OpenGL ES backend. The Android combined default prefers Vulkan when available and falls back to OpenGL ES.
 
 ## Use full text layout system
 
 If enabled (`true`), it will allow to use runtime generation for SDF type fonts, when using True Type Fonts (`.ttf`) in the project. Read more details in the [Font Manual](#manuals:font).
 
-## Minimum Safari version (wasm-web only)
-YAML field name: **`minSafariVersion`**
-Default value: **90000**
+## Minimum browser versions
 
-Minimum supported version of Safari. Cannot be less than 90000. For more information look Emscripten compiler options [link](https://emscripten.org/docs/tools_reference/settings_reference.html?highlight=environment#min-safari-version).
+The YAML fields **`minSafariVersion`**, **`minFirefoxVersion`**, and **`minChromeVersion`** specify the minimum browser versions targeted by Emscripten. The current defaults and minimum supported versions differ between the non-threaded and threaded targets:
 
-## Minimum Firefox version (wasm-web only)
-YAML field name: **`minFirefoxVersion`**
-Default value: **34**
+| Target | Safari | Firefox | Chrome |
+|---|---:|---:|---:|
+| `wasm-web` | `101000` | `40` | `45` |
+| `wasm_pthread-web` | `150000` | `79` | `75` |
 
-Minimum supported version of Firefox. Cannot be less than 34. For more information look Emscripten compiler options [link](https://emscripten.org/docs/tools_reference/settings_reference.html?highlight=environment#min-firefox-version).
+Specify overrides in the context for the relevant target. The threaded target also has additional [hosting requirements](#manuals:html5). See the Emscripten settings reference for [`MIN_SAFARI_VERSION`](https://emscripten.org/docs/tools_reference/settings_reference.html#min-safari-version), [`MIN_FIREFOX_VERSION`](https://emscripten.org/docs/tools_reference/settings_reference.html#min-firefox-version), and [`MIN_CHROME_VERSION`](https://emscripten.org/docs/tools_reference/settings_reference.html#min-chrome-version).
 
-## Minimum Chrome version (wasm-web only)
-YAML field name: **`minChromeVersion`**
-Default value: **32**
-
-Minimum supported version of Chrome. Cannot be less than 32. For more information look Emscripten compiler options [link](https://emscripten.org/docs/tools_reference/settings_reference.html?highlight=environment#min-chrome-version).
-
-## Initial memory (wasm-web only)
+## Initial memory (HTML5)
 YAML field name: **`initialMemory`**
 Default value: **33554432**
 
-The size of memory that allocated for web application. If `ALLOW_MEMORY_GROWTH=0`, this is the total amount of memory that web application can use. for more information look [link](https://emscripten.org/docs/tools_reference/settings_reference.html?highlight=environment#initial-memory). Value in bytes. Note that value must be a multiple of WebAssembly page size (64KiB).
-That options relates to `html5.heap_size` in *game.project* [link](#manuals:html5). Option that configured via application manifest is set during compilation and used as default value for `INITIAL_MEMORY` option. Value from *game.project* overrides value from application manifest and used in runtime.
+The initial amount of memory allocated for the web application, in bytes. The value must be a multiple of the WebAssembly page size (64 KiB). See Emscripten's [`INITIAL_MEMORY`](https://emscripten.org/docs/tools_reference/settings_reference.html#initial-memory) setting.
 
-## Stack size (wasm-web only)
+This option supplies the compile-time default. The [`html5.heap_size`](#manuals:html5) value in *game.project* overrides it at runtime.
+
+## Stack size (HTML5)
 YAML field name: **`stackSize`**
 Default value: **5242880**
 
-The stack size of application. For more information look [link](https://emscripten.org/docs/tools_reference/settings_reference.html?highlight=environment#stack-size). Value in bytes.
+The application stack size, in bytes. See Emscripten's [`STACK_SIZE`](https://emscripten.org/docs/tools_reference/settings_reference.html#stack-size) setting.
 
 <!-- /manuals/extensions-manifest-merge-tool -->
 
@@ -17666,7 +17881,7 @@ The Android platform already has a manifest merging tool (based on `ManifestMerg
 For a complete set of instructions on how to modify your Android manifests, please refer to [their documentation](https://developer.android.com/studio/build/manifest-merge)
 
 If you don't set your app's `android:targetSdkVersion` in your extension manifest, the following permissions will be added automatically:  `WRITE_EXTERNAL_STORAGE`, `READ_PHONE_STATE`, `READ_EXTERNAL_STORAGE`. You can read more about it in the official documentation [here](https://developer.android.com/studio/build/manifest-merge#implicit_system_permissions).
-We recommend to use: ``
+We recommend using: ``
 
 ### Example
 
@@ -17679,7 +17894,7 @@ Base manifest
             android:versionName='1.0'
             android:installLocation='auto'>
         <uses-feature android:required='true' android:glEsVersion='0x00020000' />
-        <uses-sdk android:minSdkVersion='9' android:targetSdkVersion='26' />
+        <uses-sdk android:minSdkVersion='21' android:targetSdkVersion='26' />
         <application android:label='Test Project' android:hasCode='true'>
         </application>
         <uses-permission android:name='android.permission.VIBRATE' />
@@ -17690,7 +17905,7 @@ Extension manifest:
 ```xml
     <?xml version='1.0' encoding='utf-8'?>
     <manifest xmlns:android='http://schemas.android.com/apk/res/android' package='com.defold.testmerge'>
-         <uses-sdk android:targetSdkVersion=“{% raw %}{{android.target_sdk_version}}{% endraw %}” />
+         <uses-sdk android:targetSdkVersion="{% raw %}{{android.target_sdk_version}}{% endraw %}" />
         <uses-feature android:required='true' android:glEsVersion='0x00030000' />
         <application>
             <meta-data android:name='com.facebook.sdk.ApplicationName'
@@ -17712,7 +17927,7 @@ Result
         android:versionCode='14'
         android:versionName='1.0' >
         <uses-sdk
-            android:minSdkVersion='9'
+            android:minSdkVersion='21'
             android:targetSdkVersion='26' />
         <uses-permission android:name='android.permission.VIBRATE' />
         <uses-feature

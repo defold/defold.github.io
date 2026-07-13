@@ -70,7 +70,7 @@ These assets can be accessed via the [`sys.load_resource()`](https://defold.com/
 
 When creating an application bundle you have an option of creating a debug or release bundle. The differences between the two bundles are small but important to keep in mind:
 
-* Release builds do not include the [profiler](https://defold.com/llms/manuals/profiling.md)
+* Release builds do not include the [profiler](https://defold.com/llms/manuals/profiling.md) by default. Set **Profiler** to **Always** in the [App Manifest](https://defold.com/llms/manuals/app-manifest.md) to include profiler support in both debug and release builds.
 * Release builds do not include the [screen recorder](https://defold.com/ref/stable/sys/#start_record)
 * Release builds do not show the output of any calls to `print()` or the output from any native extensions
 * Release builds have the `is_debug` value in `sys.get_engine_info()` set to`false`

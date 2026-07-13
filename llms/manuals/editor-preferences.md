@@ -48,6 +48,9 @@ Code editor font
 Zoom on Scroll
 : Whether to change the font size when scrolling in the code editor while holding Cmd/Ctrl button.
 
+Auto-insert closing parens
+: Automatically inserts matching closing characters while editing code. This option is enabled by default.
+
 ### Open script files in Visual Studio Code
 
 To open script files from the Defold Editor directly in Visual Studio Code, you must set the following settings by specifying the path to the executable file:

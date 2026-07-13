@@ -25,10 +25,11 @@ which means that the setting *main_collection* belongs to the *bootstrap* catego
 
 ## Runtime access
 
-It is possible to read any value from *game.project* at runtime using [`sys.get_config_string(key)`](https://defold.com/ref/sys/#sys.get_config_string), [`sys.get_config_number(key)`](https://defold.com/ref/sys/#sys.get_config_number) and [`sys.get_config_int(key)`](https://defold.com/ref/sys/#sys.get_config_int). Examples:
+It is possible to read values from *game.project* at runtime using [`sys.get_config_string(key)`](https://defold.com/ref/sys/#sys.get_config_string), [`sys.get_config_number(key)`](https://defold.com/ref/sys/#sys.get_config_number), [`sys.get_config_int(key)`](https://defold.com/ref/sys/#sys.get_config_int), and [`sys.get_config_boolean(key)`](https://defold.com/ref/sys/#sys.get_config_boolean). Examples:
 ```lua
 local title = sys.get_config_string("project.title")
 local gravity_y = sys.get_config_number("physics.gravity_y")
+local vsync = sys.get_config_boolean("display.vsync", false)
 ```
 
 The key is a combination of the category and setting name, separated by a dot, and written in lowercase letters with any space characters replaced by underscores. Examples: The field "Title" from the "Project" category becomes `project.title` and the "Gravity Y" field from the "Physics" category becomes `physics.gravity_y`.
@@ -213,6 +214,12 @@ Max number of steps in the simulation when using fixed timestep (3D only).
 #### Exclude GLES 2.0
 Don't compile shaders for devices running OpenGLES 2.0 / WebGL 1.0.
 
+#### GLSL ES Default Precision Float
+`shader.glsl_es_default_precision_float` sets the default global precision qualifier for floating-point values in cross-compiled GLSL ES shaders. Valid values are `mediump` and `highp`; the default is `mediump`.
+
+#### GLSL ES Default Precision Int
+`shader.glsl_es_default_precision_int` sets the default global precision qualifier for integer values in cross-compiled GLSL ES shaders. Valid values are `mediump` and `highp`; the default is `highp`.
+
 ### Resource
 
 #### Http Cache
@@ -307,7 +314,7 @@ The bundle short name (15 characters) (see [`CFBundleName`](https://developer.ap
 The bundle version, either a number or x.y.z. (see [`CFBundleVersion`](https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html#//apple_ref/doc/uid/20001431-130430))
 
 #### Info.plist
-If specified, use this *`info.plist`* file when bundling your app.
+If specified, use this *`Info.plist`* file instead of the built-in iOS base manifest when bundling your app. The built-in manifest contains the local-network and Bonjour entries needed for Editor target discovery in non-release builds. If you supply a custom manifest and need target discovery, profiling, hot reload, or log streaming on a device, preserve those entries as described in the [iOS manual](https://defold.com/llms/manuals/ios.md).
 
 #### Privacy Manifest
 The Apple Privacy Manifest for the application. The field will default to `/builtins/manifests/ios/PrivacyInfo.xcprivacy`.
@@ -397,17 +404,22 @@ Liveupdate settings resource file to use during bundling.
 
 ### Profiler
 
+The App Manifest **Profiler** setting controls whether profiler code is linked into debug and release builds. The settings below control the runtime behavior of profiler code that is present in the selected build. See the [Profiling manual](https://defold.com/llms/manuals/profiling.md) for details.
+
 #### Enabled
 Enable the in-game profiler.
 
 #### Track Cpu
-If checked, enable CPU profiling in release versions of the builds. Normally, you can only access profiling information in debug builds.
+CPU usage sampling is enabled by default in debug builds. Enable this setting when CPU sampling is also needed in a release build that includes profiler support through the App Manifest.
 
 #### Sleep Between Server Updates
 Number of milliseconds to sleep between server updates.
 
 #### Performance Timeline Enabled
 Enable in-browser performance timeline (HTML5 only).
+
+#### Max Sample Count
+`profiler.max_sample_count` is the maximum number of profiler samples recorded per thread per frame. The default is `4096` and the minimum is `128`. Increase this only when a legitimate profile exceeds the limit; first check native-extension profiling code for mismatched scope begin/end calls.
 
 ---
 
@@ -422,10 +434,11 @@ $ dmengine --config=bootstrap.main_collection=/my.collectionc
 $ dmengine --config=test.my_value=4711 --config=test2.my_value2=foobar
 ```
 
-Custom values can---just like any other config value---be read with [`sys.get_config_string()`](https://defold.com/ref/sys/#sys.get_config_string) or [`sys.get_config_number()`](https://defold.com/ref/sys/#sys.get_config_number):
+Custom values can---just like any other config value---be read with the matching function described under [Runtime access](#runtime-access):
 ```lua
 local my_value = sys.get_config_number("test.my_value")
 local my_value2 = sys.get_config_string("test.my_value2")
+local my_flag = sys.get_config_boolean("test.my_flag", false)
 ```
 
 ## Component max count optimizations
@@ -441,7 +454,7 @@ To further optimize memory usage the Defold build process will analyse the conte
 
 ## Custom project settings
 
-It is possible to define custom settings for the main project or for a [native extension](https://defold.com/llms/manuals/extensions.md). Custom settings for the main project must be defined in a `game.properties` file in the root of the project. For a native extension they should be defined in an `ext.properties` file next to the `ext.manifest` file.
+It is possible to define custom settings for the main project or for a [native extension](https://defold.com/llms/manuals/extensions.md). Custom settings for the main project must be defined in a `game.properties` file in the project root. Files named `ext.properties` are discovered anywhere in the project and fetched library dependencies; they do not require a neighboring `ext.manifest`. All discovered extension metadata is merged, after which the root `game.properties` file is applied and can override it.
 
 The settings file uses the same INI format as *game.project* and property attributes are defined using a dot notation with a suffix:
 ```
@@ -458,7 +471,7 @@ The following attributes are currently available:
 // `type` - used for the value string parsing
 my_property.type = string // one of the following values: bool, string, number, integer, string_array, resource
 
-// `help` - used as help tip in the editor (not used for now)
+// `help` - displayed as a help tooltip in the editor
 my_property.help = string
 
 // `default` - value used as default if user didn't set value manually
@@ -498,4 +511,4 @@ title = My Awesome Extension
 help = Settings for My Awesome Extension
 ```
 
-At the moment meta properties are used only in `bob.jar` when bundling application, but later will be parsed by the editor and represented in the *game.project* viewer.
+Both Bob and the Editor parse these metadata files. The Editor uses them to create the corresponding fields, choices, validation, and help tooltips in the *game.project* viewer.

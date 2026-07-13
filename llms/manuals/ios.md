@@ -64,13 +64,29 @@ When the provision expires, you need to build the app again in Xcode and get a n
 
 When you have the code signing identity and provisioning profile, you are ready to create a stand alone application bundle for your game from the editor. Simply select `Project ▸ Bundle... ▸ iOS Application...` from the menu.
 
-Select your code signing identity and browse for your mobile provisioning file. Select which architectures (32 bit, 64 bit and the iOS simulator) to bundle for as well as the variant (Debug or Release). You can optionally uncheck the `Sign application` checkbox to skip the signing process and then manually sign at a later stage.
+Select your code signing identity and browse for your mobile provisioning file. Select the `arm64-ios` device architecture and, when needed, the `x86_64-ios` simulator architecture, as well as the variant (Debug or Release). You can optionally uncheck the `Sign application` checkbox to skip the signing process and then manually sign at a later stage.
 
 You **must** uncheck the `Sign application` checkbox when testing your game on the iOS simulator. You will be able to install the application but it will not boot.
 
 Press *Create Bundle* and you will then be prompted to specify where on your computer the bundle will be created.
 
 You specify what icon to use for the app, the launch screen storyboard and so forth in the *game.project* project settings file in the [iOS section](https://defold.com/llms/manuals/project-settings.md).
+
+### Custom Info.plist and local target discovery
+
+The built-in iOS `Info.plist` contains the Bonjour service and local-network usage description required for automatic Editor target discovery in non-release builds. A custom `Info.plist` replaces that built-in base manifest. If a custom manifest is used for a debug build and you need target discovery, profiling, hot reload, or log streaming over the local network, include these entries:
+```xml
+{% raw %}{{^variant_release}}{% endraw %}
+<key>NSBonjourServices</key>
+<array>
+    <string>_defold._tcp</string>
+</array>
+<key>NSLocalNetworkUsageDescription</key>
+<string>Discover Defold targets on the local network.</string>
+{% raw %}{{/variant_release}}{% endraw %}
+```
+
+The Mustache condition keeps the discovery entries out of release bundles. The usage-description string is shown to the user by iOS and can be adjusted or localized. Remove the condition only if the release application itself uses the same Bonjour service and local-network functionality.
 
 ## Build variants
 
@@ -132,9 +148,7 @@ Drag the Image View component onto the storyboard:
 
 Select the image you previously added to `Assets.xcassets` from the Image dropdown:
 
-Position the image and make any other adjustments you need, perhaps adding a Label or some other UI element. When you are done set the active scheme to "Build -> Any iOS Device (`arm64`, `armv7`)"(or "Generic iOS Device") and select Product -> Build. Wait for the build process to finish.
-
-If you have only `arm64` option in "Any iOS Device (arm64)" change `iOS Deployment target` to 10.3 in "Project -> Basic -> Deployment" settings. It will make your storyboard compatible with `armv7` devices (for example iPhone5c)
+Position the image and make any other adjustments you need, perhaps adding a Label or some other UI element. When you are done, set the active scheme to **Any iOS Device (arm64)** (or **Generic iOS Device**) and select **Product ▸ Build**. Defold supports iOS 15.0 and later on 64-bit devices, so keep the deployment target at 15.0 or later. Wait for the build process to finish.
 
 If you use images in the storyboard they will not be included in your `LaunchScreen.storyboardc` automatically. Use `Bundle Resources` field in *game.project* to include resources.
 For example, create folder `LaunchScreen` in Defold project and folder `ios` inside (`ios` folder needed to include these files only for ios bundles), then put your files in `LaunchScreen/ios/`. Add this path in `Bundle Resources`.

@@ -1,10 +1,16 @@
 # Profiling {#manuals:profiling}
 
-Defold includes a set of profiling tools that are integrated with the engine and the build pipeline. These are designed to help find problems with performance and memory usage. The built-in profilers are available on debug builds only. The frame profiler that is used in Defold is the [Remotery profiler by Celtoys](https://github.com/Celtoys/Remotery).
+Defold includes profiling tools integrated with the engine and build pipeline. They help find performance, memory, and resource-usage problems. Runtime profiling data can be consumed by several facilities:
+
+* The basic profiler and in-game visual profiler are available on all platforms.
+* The [Remotery profiler](https://github.com/Celtoys/Remotery) and interactive web frame profiler are available on desktop and mobile platforms.
+* HTML5 builds can publish Defold scopes to the browser's Web Performance API.
+
+The **Profiler** setting in the [App Manifest](https://defold.com/llms/manuals/app-manifest.md) controls whether profiler code is linked into a build. **Debug Only** is the default, **None** excludes it, and **Always** includes it in both debug and release builds. The `profiler` settings in *game.project* control runtime behavior but do not link excluded profiler code back into a build. In particular, **Track CPU** controls CPU usage sampling; it is separate from the App Manifest choice.
 
 ## The runtime visual profiler
 
-Debug builds feature a runtime visual profiler that displays live information rendered overlaid on top of the running application:
+Builds that include profiler support feature a runtime visual profiler that displays live information overlaid on the running application:
 ```lua
 function on_reload(self)
     -- Toggle the visual profiler on hot reload.
@@ -23,9 +29,9 @@ profiler.view_recorded_frame()
 Refer to a the [profiler API reference](https://defold.com/ref/stable/profiler/) for more information about the profiler functions.
 
 ## The web profiler
-While running a debug build of the game, an interactive web-based profiler can be accessed through a browser.
+While running a desktop or mobile build that includes profiler support, interactive frame and resource profilers can be accessed through a browser.
 
-### Frame profiler
+### Remotery frame profiler
 The Frame profiler allows you to sample your game while it is running and analyze individual frames in detail. To access the profiler:
 
 1. Start your game on your target device.
@@ -51,6 +57,8 @@ Global Properties
 
 The LuaMem value is the amount of memory in kilobytes used by the Lua VM as reported by the Lua garbage collector. Memory is the amount of memory in kilobytes used by the engine.
 
+The [Max Sample Count setting](https://defold.com/llms/manuals/project-settings.md) limits the number of profiler samples recorded per thread per frame. If the profiler reports that the limit was exceeded, first check native-extension profiling code for an unmatched scope begin/end pair. Raise the cap only when a legitimate frame contains more scopes than the configured limit.
+
 ### Resource profiler
 The Resource profiler allows you to inspect your game while it is running and analyze resource use in detail. To access the profiler:
 
@@ -64,6 +72,17 @@ Collection view
 
 Resources view
 : The resources view shows all resources currently loaded into memory, their size and the number of references to each resource. This is useful when optimizing memory usage in your application when you need to understand what is loaded into memory at any given time.
+
+## HTML5 browser performance timeline
+
+HTML5 uses the Web Performance API instead of Remotery for its browser timeline. To record Defold scopes:
+
+1. Make sure the selected App Manifest profiler mode includes profiler support in the build variant you are running.
+2. Enable **Performance Timeline Enabled** (`profiler.performance_timeline_enabled`) in *game.project*.
+3. Launch the HTML5 build and open the browser developer tools.
+4. Record a session in the browser's **Performance** panel and inspect the Defold scopes in the resulting timeline.
+
+This browser timeline is separate from both the in-game visual profiler and the interactive Remotery web profiler.
 
 ## Build reports
 When bundling your game there is an option to create a build report. This is very useful to get a grip on the size of all the assets that are part of your game bundle. Simply check the *Generate build report* checkbox when bundling the game.

@@ -15,7 +15,7 @@ Sound components can only be instanced in-place in a game object. Create a new g
 The created component has a set of properties that should be set:
 
 *Sound*
-: Should be set to a sound file in your project. The file should be in _Wave_, _Ogg Vorbis_ or _Ogg Opus_ format. Defold supports sound files saved at 16bit bit depth.
+: Should be set to a sound file in your project. The file should be in _Wave_, _Ogg Vorbis_ or _Ogg Opus_ format. Defold supports 8-bit and 16-bit PCM Wave files. Ogg Opus playback is optional and requires **Include Sound Decoder: Opus** in the [App Manifest](https://defold.com/llms/manuals/app-manifest.md); the Opus decoder is not included by default.
 
 *Looping*
 : If checked the sound will play back in _Loopcount_ times or until explicitly stopped.
@@ -60,9 +60,9 @@ The sound system has 4 levels of gain:
 - The gain set on the sound component.
 - The gain set when starting the sound via a call to `sound.play()` or when changing the gain on the voice via a call to `sound.set_gain()`.
 - The gain set on the group via a [`sound.set_group_gain()`](https://defold.com/ref/sound#sound.set_group_gain) function call.
-- The gain set on the "master" group. This can be altered by `sound.set_group_gain(hash("master"))`.
+- The gain set on the "master" group. This can be altered with `sound.set_group_gain(hash("master"), gain)`.
 
-The output gain is the result of these 4 gains multiplied. The default gain is 1.0 everywhere (0 dB).
+When **Use Linear Gain** is enabled in the [Sound project settings](https://defold.com/llms/manuals/project-settings.md) (the default), the output gain is the result of these four gains multiplied. A gain of `1.0` is unity gain (0 dB). When linear gain is disabled, Defold applies a nonlinear curve during mixing, so the direct four-way multiplication and decibel conversion below do not describe the resulting output level.
 
 ## Sound groups
 
@@ -82,7 +82,7 @@ The groups are identified with a hash value. The string name can be retrieved wi
 
 You should not write code that relies on the string value of a sound group since they are not available in release builds.
 
-All values are linear between 0 and 1.0 (0 dB). To convert to decibel, simply use the standard formula:
+With **Use Linear Gain** enabled, convert a positive gain value to decibels with the standard formula:
 ```math
 db = 20 \times \log \left( gain \right)
 ```
@@ -109,6 +109,8 @@ end
 -- Set the master gain to +6 dB (math.pow(10, 6/20)).
 sound.set_group_gain("master", 1.995)
 ```
+
+Defold 1.10.2 corrected a long-standing attenuation of roughly 3 dB in the sound mixer. If an older project's mix compensated for that attenuation and sounds louder after upgrading, retune the global **Sound ▸ Gain** setting or the affected group gains.
 
 ## Gating sounds
 
