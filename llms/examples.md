@@ -151,6 +151,8 @@ These are per-example files generated for LLM usage.
 
 ## Render
 
+- [Basic Lights 2D](https://defold.com/llms/examples/render/basic_lights_2d.md) - This example shows how to make sprites respond to Defold Light components with a custom material in a basic setup
+- [Basic Lights 3D](https://defold.com/llms/examples/render/basic_lights_3d.md) - This example shows how ambient, directional, point, and spot lights affect 3D models that use built-in lit materials
 - [Camera](https://defold.com/llms/examples/render/camera.md) - This example shows how to use a camera component and have it follow a game object
 - [Orbit Camera](https://defold.com/llms/examples/render/orbit_camera.md) - This example demonstrates how to create script to control a 3D camera with the mouse
 - [Orthographic Zoom](https://defold.com/llms/examples/render/orthographic_zoom.md) - This example shows how to zoom an orthographic camera in and out by changing Orthographic Zoom while the camera is in Fixed mode

@@ -224,17 +224,17 @@ var FileLoader = {
 var EngineLoader = {
     arc_sha1: "",
     wasm_sha1: "",
-    wasm_size: 2836823,
+    wasm_size: 2838535,
     wasmjs_sha1: "",
     wasmjs_size: 289602,
     wasm_pthread_sha1: "",
     wasm_pthread_size: 2000000,
     wasmjs_pthread_sha1: "",
     wasmjs_pthread_size: 250000,
-    wasm_file: "/examples/wasm/f2197e1717ffbe09fd2550ff0be79ac2.wasm",
-    wasm_pthread_file: "/examples/wasm/f2197e1717ffbe09fd2550ff0be79ac2.wasm",
-    wasmjs_file: "/examples/wasm/d4a6909acc961d37833c8e7ac80314df.wasm.js",
-    wasmjs_pthread_file: "/examples/wasm/d4a6909acc961d37833c8e7ac80314df.wasm.js",
+    wasm_file: "/examples/wasm/1568c4d7d5c43297fb1b892b59665ee6.wasm",
+    wasm_pthread_file: "/examples/wasm/1568c4d7d5c43297fb1b892b59665ee6.wasm",
+    wasmjs_file: "/examples/wasm/dc9b7c8df2bb05aeaae58926bf771435.wasm.js",
+    wasmjs_pthread_file: "/examples/wasm/dc9b7c8df2bb05aeaae58926bf771435.wasm.js",
     wasm_instantiate_progress: 0,
 
     stream_wasm: "false" === "true",
@@ -896,8 +896,8 @@ var Progress = {
 /* ********************************************************************* */
 
 var Module = {
-    engineVersion: "1.13.1",
-    engineSdkSha1: "d2edbbd6291c08464a24e77f9f0229599d9b3e90",
+    engineVersion: "1.13.2",
+    engineSdkSha1: "5f6c7c633d6a241dcbb49bc188731fb50600a889",
     noInitialRun: true,
 
     _filesToPreload: [],
