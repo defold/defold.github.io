@@ -12,7 +12,7 @@ toc:
 - Constantes de material
 - Atributos de material
 - Configuración del proyecto
-- Sprites con múltiples texturas
+- Sprites con múltiples texturas {multi-textured-sprites}
 - Animaciones
 - UVs
 ---
@@ -99,7 +99,7 @@ Los atributos especificados en el material aparecerán como propiedades normales
 
 El archivo *game.project* tiene algunas [opciones de configuración del proyecto](/es/manuals/project-settings#sprite) relacionadas con los sprites.
 
-## Sprites con múltiples texturas
+## Sprites con múltiples texturas {#multi-textured-sprites}
 
 Cuando un sprite usa múltiples texturas, hay algunas cosas que conviene tener en cuenta.
 

@@ -45,7 +45,7 @@ toc:
 다음은 `http.request()`를 사용해 초기 사운드 파일을 가져오는 예제 프로젝트의 발췌입니다.
 
 <div class='sidenote' markdown='1'>
-컨텐츠를 로드하는 웹 서버는 [HTTP range requests](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Range_requests)를 지원해야 합니다.
+실제 스트리밍을 하려면 웹 서버가 [HTTP range requests](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Range_requests)를 준수하고 상태 `206`을 반환해야 합니다. 서버가 `Range` 헤더를 무시하고 상태 `200`을 반환하면 아래 예제는 전체 응답으로 일반적인 비스트리밍 리소스를 생성합니다.
 </div>
 
 ```lua
@@ -54,25 +54,43 @@ local function play_sound(self, hash)
     sound.play(self.component)            -- 사운드 재생을 시작합니다
 end
 
-local function parse_range(s)
-    local _, _, rstart, rend, size = string.find(s, "(%d+)-(%d+)/(%d+)") -- "bytes 0-16383/103277"
-    return rstart, rend, size
+local function parse_content_range(value)
+    if not value then
+        return nil
+    end
+    local rstart, rend, filesize = value:match("^bytes%s+(%d+)%-(%d+)/(%d+)$")
+    return tonumber(rstart), tonumber(rend), tonumber(filesize)
 end
 
 -- HTTP 응답을 위한 콜백입니다.
-local function http_result(self, _id, response, extra)
-    if response.status == 200 or response.status == 206 then
-        -- 요청 성공
-        local relative_path = self.filename
-        local range = response.headers['content-range'] -- content-range = "bytes 0-16383/103277"
-        local rstart, rend, filesize = parse_range(range)
-        -- Defold 리소스를 생성합니다
-        --   "partial"이 스트리밍 모드를 활성화합니다
-        print("Creating resource", relative_path)
-        local hash = resource.create_sound_data(relative_path, { data = response.response, filesize = filesize, partial = true })
-        -- 컴포넌트에 "play_sound"를 보냅니다
-        play_sound(self, hash)
+local function http_result(self, _id, response)
+    if response.status ~= 200 and response.status ~= 206 then
+        return
     end
+
+    local options = {
+        data = response.response,
+    }
+
+    if response.status == 206 then
+        local rstart, _, filesize = parse_content_range(response.headers["content-range"])
+        if rstart ~= 0 or not filesize then
+            print("Invalid Content-Range response")
+            return
+        end
+
+        -- 부분 리소스는 스트리밍을 활성화합니다. filesize는 반환된 범위만이
+        -- 아니라 전체 파일의 크기입니다.
+        if #response.response < filesize then
+            options.filesize = filesize
+            options.partial = true
+        end
+    end
+
+    local relative_path = self.filename
+    print("Creating resource", relative_path)
+    local resource_hash = resource.create_sound_data(relative_path, options)
+    play_sound(self, resource_hash)
 end
 
 local function load_web_sound(base_url, relative_path)

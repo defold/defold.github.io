@@ -53,7 +53,7 @@ Isso funcionará como esperado. Quando o jogo começa, o componente de script *e
 
 ![bean](/manuals/images/addressing/bean.png)
 
-Os identificadores na configuração são arbitrários. Aqui escolhemos dar ao objeto de jogo o identificador "bean"; seu componente de sprite foi chamado de "body"; e o componente de script que controla o personagem foi chamado de "controller".
+Os identificadores na configuração são definidos pelo desenvolvedor e precisam ser únicos dentro do contexto de nomenclatura em que são usados. Aqui escolhemos dar ao objeto de jogo o identificador "bean"; seu componente de sprite foi chamado de "body"; e o componente de script que controla o personagem foi chamado de "controller". Identificadores usados em endereços URL representados por strings não devem conter `:` nem `#`, pois a sintaxe de URL reserva `:` como separador de socket e `#` como separador entre objeto de jogo e componente. Fora isso, o analisador de URLs não rejeita sinais de pontuação.
 
 <div class='sidenote' markdown='1'>
 Se você não escolher um nome, o editor escolherá um. Sempre que você cria um novo objeto de jogo ou componente no editor, uma propriedade *Id* única é definida automaticamente.

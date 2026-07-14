@@ -12,7 +12,7 @@ toc:
 - 메터리얼 상수
 - 메터리얼 attribute
 - 프로젝트 설정
-- 다중 텍스쳐 스프라이트
+- 다중 텍스쳐 스프라이트 {multi-textured-sprites}
 - 애니메이션
 - UV
 ---
@@ -99,7 +99,7 @@ toc:
 
 *game.project* 파일에는 스프라이트와 관련된 몇 가지 [프로젝트 설정](/ko/manuals/project-settings#sprite)이 있습니다.
 
-## 다중 텍스쳐 스프라이트
+## 다중 텍스쳐 스프라이트 {#multi-textured-sprites}
 
 스프라이트가 여러 텍스쳐를 사용할 때 주의해야 할 몇 가지 사항이 있습니다.
 

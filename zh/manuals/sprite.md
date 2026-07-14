@@ -12,7 +12,7 @@ toc:
 - 材质常量
 - 材质属性
 - 项目配置
-- 多纹理精灵
+- 多纹理精灵 {multi-textured-sprites}
 - 动画
 - UV
 ---
@@ -99,7 +99,7 @@ toc:
 
 *game.project* 文件中有一些与精灵相关的[项目设置](/zh/manuals/project-settings#sprite)。
 
-## 多纹理精灵
+## 多纹理精灵 {#multi-textured-sprites}
 
 当精灵使用多个纹理时，有一些注意事项。
 

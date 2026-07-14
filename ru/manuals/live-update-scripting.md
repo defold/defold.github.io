@@ -12,17 +12,25 @@ toc:
 
 # Скриптование Live Update
 
-API состоит всего из нескольких функций:
+Основной процесс монтирования использует `liveupdate.add_mount()`, `liveupdate.remove_mount()` и `liveupdate.get_mounts()`. Полный список доступных функций см. в [справочнике API `liveupdate`](/ref/liveupdate/).
 
-* `liveupdate.add_mount()`
-* `liveupdate.remove_mount()`
-* `liveupdate.get_mounts()`
+Если коду необходимо определить, ожидает ли манифест сборки исключённый контент Live Update, используйте `liveupdate.is_built_with_excluded_files()`:
+
+```lua
+if liveupdate.is_built_with_excluded_files() then
+    print("The bundle expects excluded Live Update content")
+end
+```
+
+Функция сообщает только о метаданных манифеста сборки. Она не означает, что какой-либо архив сейчас смонтирован или что конкретный ресурс доступен. Для просмотра активных mount'ов используйте `liveupdate.get_mounts()`, а для просмотра записанных в манифесте хешей ресурсов Collection Proxy --- [`collectionproxy.get_resources()`](/ref/collectionproxy/#collectionproxy.get_resources).
 
 Рекомендуемый процесс --- скачать и смонтировать целый Zip-архив с URI `zip:`.
 
 ## Получение mount'ов
 
-`liveupdate.get_mounts()` возвращает mounts, активные в текущей сессии. Каждая запись содержит URI `mount.uri`, числовой приоритет `mount.priority` и хеш `mount.name`. Mounts не восстанавливаются после перезапуска; приложение должно сохранить нужные настройки и снова вызвать `liveupdate.add_mount()`.
+`liveupdate.get_mounts()` возвращает mount'ы, активные в текущей сессии. Каждая запись содержит строку `uri`, числовой `priority` и хеш `name`. Список также содержит базовые mount'ы движка, приоритет которых меньше нуля и которые невозможно удалить.
+
+Движок не восстанавливает mount'ы после перезапуска. Если приложению нужен ранее скачанный контент в следующей сессии, оно должно сохранить URI, имя и приоритет пакета в собственных данных сохранения и снова вызвать `liveupdate.add_mount()` при запуске.
 
 Поскольку `mount.name` является хешем, используйте его как ключ таблицы или сравнивайте с `hash("name")`; не добавляйте его к строке пути. Сопоставьте каждому хешу имени уникальный путь к метаданным:
 
@@ -60,12 +68,14 @@ end
 
 Collection proxy, исключенный из бандла, работает как обычный collection proxy, но с одним важным отличием. Если отправить ему сообщение `load`, пока часть его ресурсов недоступна в хранилище бандла, загрузка завершится ошибкой.
 
-В архивном сценарии вы обычно заранее определяете, какой архив или набор архивов нужен proxy, и монтируете их перед загрузкой. Если нужно проверить, есть ли у proxy исключенный контент, используйте `collectionproxy.get_resources()`.
+В архивном сценарии вы обычно заранее определяете, какой архив или набор архивов нужен proxy, и монтируете их перед загрузкой. Чтобы просмотреть записанные в манифесте хеши ресурсов известного исключённого proxy, используйте `collectionproxy.get_resources()`.
 
-Если включена опция *Strip Live Update Entries from Main Manifest*, а именно это значение используется по умолчанию при публикации архивного Live Update, то:
+После монтирования пакета исключённый и незагруженный прокси также можно перенаправить на другую скомпилированную коллекцию с помощью `collectionproxy.set_collection()`. Ограничения и порядок загрузки описаны в разделе [Изменение коллекции исключённого прокси](/ru/manuals/collection-proxy/#changing-an-excluded-proxys-collection).
 
-* если ни один смонтированный архив не содержит исключенный контент для proxy, `collectionproxy.get_resources("#proxy")` возвращает пустую таблицу `{}`;
-* после монтирования нужного архива `collectionproxy.get_resources("#proxy")` возвращает непустую таблицу с хешами ресурсов этого proxy, например:
+При сборке архива с публикацией контента Live Update основной манифест в бандле не содержит исключённых записей Live Update, а манифест опубликованного пакета сохраняет их. `collectionproxy.get_resources()` читает метаданные зависимостей из манифеста, но не проверяет доступность каждого указанного блока данных:
+
+* до монтирования манифеста пакета с исключёнными записями proxy вызов `collectionproxy.get_resources("#proxy")` возвращает пустую таблицу `{}`;
+* после монтирования соответствующего пакета функция возвращает непустую таблицу хешей ресурсов этого proxy, например:
 
 ```lua
 {
@@ -97,9 +107,9 @@ local function get_lu_info_for_level(level_name)
 end
 
 local function mount_zip(self, name, priority, path, callback)
-	liveupdate.add_mount(name, "zip:" .. path, priority, function(_self, _name, _uri, _result) -- <1>
-		callback(_name, _uri, _result)
-	end)
+    liveupdate.add_mount(name, "zip:" .. path, priority, function(_self, _name, _uri, _result) -- <1>
+        callback(_name, _uri, _result)
+    end)
 end
 
 local function has_mount(name)
@@ -126,9 +136,9 @@ function on_message(self, message_id, message, sender)
     if message_id == hash("load_level") then
         local proxy_resources = collectionproxy.get_resources("#" .. message.level) -- <5>
 
-        -- При включенном Strip Live Update Entries from Main Manifest эта таблица
-        -- остается пустой, пока нужный архив не будет смонтирован.
-        -- После монтирования в ней появляются хеши ресурсов proxy.
+        -- Сборка, публикующая контент Live Update, исключает соответствующие записи
+        -- из манифеста бандла, поэтому таблица пуста до монтирования манифеста
+        -- нужного пакета. После монтирования она содержит хеши ресурсов proxy.
         if message.info and #proxy_resources == 0 and not has_mount(message.info.name) then
             msg.post("#", "download_archive", message) -- <6>
         else
@@ -136,21 +146,36 @@ function on_message(self, message_id, message, sender)
         end
 
     elseif message_id == hash("download_archive") then
-		local zip_filename = message.info.name .. ".zip"
-		local download_path = sys.get_save_file("mygame", zip_filename)
+        local zip_filename = message.info.name .. ".zip"
+        local download_path = sys.get_save_file("mygame", zip_filename)
         local url = self.http_url .. "/" .. zip_filename
 
-        -- Выполняем запрос. При необходимости можно использовать учетные данные
-        http.request(url, "GET", function(self, id, response) -- <7>
-			if response.status == 200 or response.status == 304 then
-				mount_zip(self, message.info.name, message.info.priority, download_path, function(name, uri, result) -- <8>
-					msg.post("#", "load_level", message) -- пробуем загрузить уровень снова
-				end)
-
-			else
-				print("Не удалось скачать архив ", download_path, "из", url, ":", response.status)
-			end
-		end, nil, nil, {path=download_path})
+        -- Если архив уже существует, пробуем смонтировать его!
+        if sys.exists(download_path) then
+            mount_zip(self, message.info.name, message.info.priority, download_path, function(name, uri, result) -- <8>
+                if result == liveupdate.LIVEUPDATE_OK then
+                    msg.post("#", "load_level", message) -- пробуем загрузить уровень снова
+                else
+                    os.remove(download_path)             -- удаляем и пробуем
+                    msg.post("#", "load_level", message) -- скачать снова
+                end
+            end)
+        else
+            -- Выполняем запрос. При необходимости можно использовать учётные данные
+            http.request(url, "GET", function(self, id, response) -- <7>
+                if response.status == 200 or response.status == 304 then
+                    mount_zip(self, message.info.name, message.info.priority, download_path, function(name, uri, result) -- <8>
+                        if result == liveupdate.LIVEUPDATE_OK then
+                            msg.post("#", "load_level", message) -- пробуем загрузить уровень снова
+                        else
+                            print("Не удалось смонтировать архив", download_path, ":", result)
+                        end
+                    end)
+                else
+                    print("Не удалось скачать архив", download_path, "из", url, ":", response.status)
+                end
+            end, nil, nil, {path=download_path})
+        end
 
     elseif message_id == hash("proxy_loaded") then -- уровень загружен, и теперь его можно включить
         msg.post(sender, "init")
@@ -159,12 +184,11 @@ function on_message(self, message_id, message, sender)
 end
 ```
 
-1. `liveupdate.add_mount()` монтирует один архив, используя заданные имя, приоритет и zip-файл. После этого данные сразу доступны для загрузки, перезапускать движок не нужно.
-Mount активен только в текущей сессии. Сохраните путь к пакету и настройки mount в собственных постоянных данных приложения и после каждого перезапуска снова вызывайте `liveupdate.add_mount()`.
+1. `liveupdate.add_mount()` монтирует один архив, используя заданные имя, приоритет и zip-файл. После этого данные сразу доступны для загрузки, перезапускать движок не нужно. Mount активен только в текущей сессии. Сохраните путь к скачанному пакету и требуемые настройки mount в собственных данных сохранения и после каждого перезапуска снова вызывайте `liveupdate.add_mount()`.
 2. Архив нужно хранить онлайн, например на S3, откуда его можно будет скачать.
 3. По имени collection proxy нужно определить, какой архив или архивы нужно скачать и как их смонтировать.
 4. При запуске мы пытаемся загрузить уровень.
-5. С помощью `collectionproxy.get_resources()` проверяем исключенный контент proxy. При стандартной настройке stripped-manifest функция возвращает `{}` до монтирования нужного архива, а после монтирования возвращает непустую таблицу хешей ресурсов proxy.
+5. В этом сценарии публикации архива с помощью `collectionproxy.get_resources()` проверяем метаданные исключённого контента proxy. Функция возвращает `{}` до монтирования манифеста нужного пакета, а после монтирования --- непустую таблицу хешей ресурсов. Эти хеши описывают зависимости; результат сам по себе не подтверждает доступность каждого блока данных.
 6. Если proxy использует контент Live Update и соответствующий архив еще не смонтирован, мы скачиваем и монтируем его до загрузки proxy.
 7. Выполняем HTTP-запрос и скачиваем архив в `download_path`.
 8. Данные скачаны, и теперь их можно смонтировать в работающий движок.

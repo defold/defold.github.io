@@ -19,11 +19,15 @@ toc:
 
 # 原生扩展
 
-如果您需要与外部软件或硬件进行底层交互，而Lua无法满足需求，Defold SDK允许您使用C、C++、Objective C、Java或Javascript（取决于目标平台）为引擎编写扩展。原生扩展的典型用例包括：
+如果您需要与外部软件或硬件进行底层交互，而 Lua 无法满足需求，Defold SDK 允许您根据目标平台使用 C、C++、C#、Objective-C、Java 或 JavaScript 为引擎编写扩展。原生扩展的典型用例包括：
 
 - 与特定硬件交互，例如手机摄像头。
 - 与外部底层API交互，例如不允许通过网络API进行交互的广告网络API，而Luasocket本可以用于此类交互。
 - 高性能计算和数据处理。
+
+<div class='sidenote' markdown='1'>
+C# 支持是实验性的，用于原生扩展，而不是 Defold 脚本组件。它使用 .NET 9 NativeAOT 生成静态库；将 `.cs` 源文件添加到扩展的 `src` 文件夹，构建服务就会生成项目文件。目标平台支持取决于当前 NativeAOT 和构建服务的能力。最新工作流程和经测试的设置请参阅官方[原生扩展语言示例](https://github.com/defold/example-languages)。
+</div>
 
 ## 构建服务器
 

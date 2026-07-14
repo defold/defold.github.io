@@ -12,7 +12,7 @@ toc:
 - Stałe materiału
 - Atrybuty materiału
 - Konfiguracja projektu
-- Spritey z wieloma teksturami
+- Spritey z wieloma teksturami {multi-textured-sprites}
 - Animacje
 - UV
 ---
@@ -98,7 +98,7 @@ Atrybuty określone w materiale pojawią się w inspectorze jako zwykłe właśc
 
 Plik *game.project* zawiera kilka [ustawień projektu](/pl/manuals/project-settings#sprite) związanych ze sprite'ami.
 
-## Sprite'y z wieloma teksturami
+## Sprite'y z wieloma teksturami {#multi-textured-sprites}
 
 Gdy sprite korzysta z wielu tekstur, warto pamiętać o kilku rzeczach.
 
