@@ -1,8 +1,8 @@
 ---
 brief: Extension to query for and request application permissions from the user or operating system.
 github: https://github.com/defold/extension-permissions
-language: en
 layout: manual
+locale: en
 title: Defold Permissions documentation
 toc:
 - Defold Permissions documentation
@@ -17,6 +17,7 @@ toc:
 
 This extension provides functions to query for and request application permissions from the user or operating system.
 At the moment it supports only Android.
+Android API level 23 or newer is required.
 
 
 ## Installation
@@ -45,4 +46,6 @@ The API uses a callback based system where events and data coming from the OS ar
 The source code is available on [GitHub](https://github.com/defold/extension-permissions)
 
 
-## API reference[API Reference - permissions](/extension-permissions/permissions_api)
+## API reference
+## API reference
+[API Reference - permissions](/extension-permissions/permissions_api)
