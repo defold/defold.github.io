@@ -1,8 +1,8 @@
 ---
 brief: This manual covers how to setup and use iOS and Android native review and rating popups in Defold.
 github: https://github.com/defold/extension-review
-language: en
 layout: manual
+locale: en
 title: Defold review and rating extension API documentation
 toc:
 - Defold review and rating extension API documentation
