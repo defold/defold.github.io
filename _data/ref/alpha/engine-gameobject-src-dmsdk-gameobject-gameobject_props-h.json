@@ -111,6 +111,22 @@
                     "types": [
                         "int32_t"
                     ]
+                },
+                {
+                    "doc": "Number of items of type const char*",
+                    "is_optional": "False",
+                    "name": "m_TextCount",
+                    "types": [
+                        "int32_t"
+                    ]
+                },
+                {
+                    "doc": "Size of all text strings combined, including null terminators",
+                    "is_optional": "False",
+                    "name": "m_TextSize",
+                    "types": [
+                        "int32_t"
+                    ]
                 }
             ],
             "replaces": "",
@@ -430,6 +446,54 @@
                     "name": "values",
                     "types": [
                         "float*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Add a property of type text string to the containe...",
+            "description": "Add a property of type text string to the container",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "PropertyContainerPushText",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "The container builder",
+                    "is_optional": "False",
+                    "name": "builder",
+                    "types": [
+                        "HPropertyContainerBuilder"
+                    ]
+                },
+                {
+                    "doc": "The id of the property",
+                    "is_optional": "False",
+                    "name": "id",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                },
+                {
+                    "doc": "The zero-terminated value of the property",
+                    "is_optional": "False",
+                    "name": "value",
+                    "types": [
+                        "const char*"
+                    ]
+                },
+                {
+                    "doc": "The length of the property value in bytes, excluding the null terminator",
+                    "is_optional": "False",
+                    "name": "value_len",
+                    "types": [
+                        "uint32_t"
                     ]
                 }
             ],

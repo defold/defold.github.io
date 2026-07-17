@@ -2136,6 +2136,16 @@
                 },
                 {
                     "doc": "",
+                    "name": "dmGameObject::PROPERTY_TYPE_MATRIX4",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "dmGameObject::PROPERTY_TYPE_TEXT",
+                    "type": ""
+                },
+                {
+                    "doc": "",
                     "name": "dmGameObject::PROPERTY_TYPE_COUNT",
                     "type": ""
                 }
@@ -2210,6 +2220,11 @@
                     "doc": "A boolean value (union)",
                     "name": "m_Bool",
                     "type": "bool"
+                },
+                {
+                    "doc": "A borrowed text value (union). The caller owns the pointed-to memory.",
+                    "name": "m_Text",
+                    "type": "const char*"
                 }
             ],
             "name": "PropertyVar",
