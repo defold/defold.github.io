@@ -20,6 +20,8 @@ This extension allows you to interact with Firebase in a uniform way for games o
 * [Firebase Analytics](https://github.com/defold/extension-firebase-analytics)
 * [Firebase Remote Config](https://github.com/defold/extension-firebase-remoteconfig)
 
+Firebase Android SDK 34.x requires Android API level 23 or newer. Firebase Apple SDK 12.x requires iOS 15.0 or newer; the macOS extension manifest targets macOS 11.0 or newer.
+
 
 ## Setup
 ### 1. Firebase setup
