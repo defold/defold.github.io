@@ -1,8 +1,8 @@
 ---
 brief: This manual covers how to setup and use Google Play Game Services in Defold.
 github: https://github.com/defold/extension-gpgs
-language: en
 layout: manual
+locale: en
 title: Defold Google Play Game Services documentation
 toc:
 - Defold Google Play Game Services documentation
@@ -44,6 +44,8 @@ Once the application is registered you also need to enable Google Play Game Serv
 
 
 ## Defold Setup
+
+The current Google Play services dependencies require Android 6.0 (API level 23) or newer. Set `android.minimum_sdk_version` to `23` or higher in `game.project`.
 
 Add the following section into your `game.project` file (open and edit as a text file):
 
