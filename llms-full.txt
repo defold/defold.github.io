@@ -72112,7 +72112,7 @@ Send a request for push notifications. Note that the notifications table paramet
 - `notifications` (table) - The types of notifications to listen to. [icon:ios]
 - `callback` (function) - Register callback function.
   - `self` (object) - The current object.
-  - `token` (string) - The returned push token if registration is successful.
+  - `token` (string) - The APNs device token on iOS or Firebase Installation ID (FID) on Android if registration is successful.
   - `error` (table) - A table containing eventual error information.
 
 **Examples**
@@ -72149,9 +72149,9 @@ local function push_listener(self, payload, origin)
 end
 
 function init(self)
-     push.register({}, function (self, token, error)
-         if token then
-              print(token)
+     push.register({}, function (self, installation_id, error)
+         if installation_id then
+              print(installation_id)
               push.set_listener(push_listener)
          else
               -- Push registration failed.
