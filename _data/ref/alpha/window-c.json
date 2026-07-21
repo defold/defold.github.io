@@ -255,6 +255,11 @@
                     "doc": "Request high-DPI framebuffer support where available",
                     "name": "m_HighDPI",
                     "type": "uint8_t:1"
+                },
+                {
+                    "doc": "Focus the window when shown on desktop platforms (default: 1)",
+                    "name": "m_FocusOnShow",
+                    "type": "uint8_t:1"
                 }
             ],
             "name": "WindowCreateParams",
@@ -267,7 +272,7 @@
         },
         {
             "brief": "initialize window parameters",
-            "description": "Initializes a WindowCreateParams struct with default values.\nThe struct is first cleared to zero, then <code>m_Width</code> is set to 640,\n<code>m_Height</code> is set to 480, <code>m_Samples</code> is set to 1, and\n<code>m_Title</code> is set to \"Defold Application\".",
+            "description": "Initializes a WindowCreateParams struct with default values.\nThe struct is first cleared to zero, then <code>m_Width</code> is set to 640,\n<code>m_Height</code> is set to 480, <code>m_Samples</code> is set to 1,\n<code>m_Title</code> is set to \"Defold Application\", and <code>m_FocusOnShow</code> is set to 1.",
             "error": "",
             "examples": "",
             "language": "",
