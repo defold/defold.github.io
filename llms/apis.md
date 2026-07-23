@@ -144,7 +144,7 @@ These are per-namespace API reference files generated for LLM usage.
 - [fmod (extension-fmod)](https://defold.com/llms/apis/extension-fmod_fmod.md) - FMOD Low Level API for audio playback and manipulation
 - [fontgen (extension-fontgen)](https://defold.com/llms/apis/extension-fontgen_fontgen.md) - Functions to generate glyphs for fonts at runtime
 - [instantapp (extension-googleplayinstant)](https://defold.com/llms/apis/extension-googleplayinstant_instantapp.md) - Functions and constants for interacting with InstantApp APIs
-- [gpgs (extension-gpgs)](https://defold.com/llms/apis/extension-gpgs_gpgs.md) - Functions and constants for interacting with Google Play Game Services (GPGS) APIs
+- [gpgs (extension-gpgs)](https://defold.com/llms/apis/extension-gpgs_gpgs.md) - Functions and constants for interacting with Google Play Games Services (GPGS) APIs
 - [iac (extension-iac)](https://defold.com/llms/apis/extension-iac_iac.md) - Functions and constants for doing inter-app communication
 - [iap (extension-iap)](https://defold.com/llms/apis/extension-iap_iap.md) - Functions and constants for doing in-app purchases
 - [ironsource (extension-ironsource)](https://defold.com/llms/apis/extension-ironsource_ironsource.md) - Functions and constants for interacting with IronSource API

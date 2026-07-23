@@ -4,7 +4,7 @@
 **Language:** Lua
 **Type:** Extension
 
-Functions and constants for interacting with Google Play Game Services (GPGS) APIs
+Functions and constants for interacting with Google Play Games Services (GPGS) APIs
 
 ## API
 
@@ -92,12 +92,12 @@ end
 ### gpgs.get_server_auth_code
 *Type:* FUNCTION
 Returns a one-time server auth code to send to your web server which can be exchanged for access token
-Token can be retrieved only if `gpgs.request_server_auth_code` set to 1 and `gpgs.client` is set.
+A code can be retrieved only if `gpgs.request_server_auth_code` is set to 1 and `gpgs.client_id` is set.
 
 **Returns**
 
-- `string` - The server auth code for logged in account. Can be nil if operation is not completed yet.
-Auth token is avaliable after receiving message with id `gpgs.MSG_GET_SERVER_TOKEN` in callback set via `gpgs.set_callback`.
+- `string|nil` - The server auth code for logged in account. Can be nil if operation is not completed yet.
+The auth code is available after receiving a message with id `gpgs.MSG_GET_SERVER_AUTH_CODE` in callback set via `gpgs.set_callback`.
 
 **Examples**
 
@@ -139,7 +139,13 @@ Set callback for receiving messages from GPGS.
 - `gpgs.MSG_SHOW_SNAPSHOTS`
 - `gpgs.MSG_LOAD_SNAPSHOT`
 - `gpgs.MSG_SAVE_SNAPSHOT`
-  - `message` (table) - Contains information that depends on message_id.
+- `gpgs.MSG_GET_ACHIEVEMENTS`
+- `gpgs.MSG_GET_TOP_SCORES`
+- `gpgs.MSG_GET_PLAYER_CENTERED_SCORES`
+- `gpgs.MSG_GET_PLAYER_SCORE`
+- `gpgs.MSG_GET_EVENTS`
+- `gpgs.MSG_GET_SERVER_AUTH_CODE`
+  - `message` (table) - Contains information that depends on message_id. Successful achievement, event, top-score, and player-centered-score queries return arrays of JSON strings. Decode each string with `json.decode()`. A successful player-score query returns the score fields directly. Other operations include `status`.
     - `status` (number) - Status of the current operation. It can be one of the predefined constants below
 - `gpgs.STATUS_SUCCESS`
 - `gpgs.STATUS_FAILED`
@@ -154,6 +160,7 @@ Set callback for receiving messages from GPGS.
 - `gpgs.ERROR_STATUS_SNAPSHOT_FOLDER_UNAVAILABLE`
 - `gpgs.ERROR_STATUS_SNAPSHOT_NOT_FOUND`
 Or it can be ApiException.getStatusCode() (if ApiException was thrown)
+    - `code` (string) - The one-time server auth code. Available only when `message_id` is `gpgs.MSG_GET_SERVER_AUTH_CODE` and `status` is `gpgs.STATUS_SUCCESS`.
     - `metadata` (table) - Metadata of the loaded save. Available only if `message_id` is `gpgs.MSG_LOAD_SNAPSHOT`.
     - `conflictId` (string) - The conflict id. Available only if `status` is `gpgs.STATUS_CONFLICT`.
     - `conflictMetadata` (table) - The conflicting metadata. Available only if `status` is `gpgs.STATUS_CONFLICT`.
@@ -409,7 +416,7 @@ Submit a score to a leaderboard for the currently signed-in player.
 
 ### gpgs.leaderboard_get_top_scores
 *Type:* FUNCTION
-Asynchronously gets the top page of scores for a leaderboard.
+Asynchronously gets the top page of scores for a leaderboard. The callback receives an array of JSON strings with score data; decode each string with `json.decode()`.
 
 **Parameters**
 
@@ -420,7 +427,7 @@ Asynchronously gets the top page of scores for a leaderboard.
 
 ### gpgs.leaderboard_get_player_centered_scores
 *Type:* FUNCTION
-Asynchronously gets a player-centered page of scores for a leaderboard.
+Asynchronously gets a player-centered page of scores for a leaderboard. The callback receives an array of JSON strings with score data; decode each string with `json.decode()`.
 
 **Parameters**
 
@@ -446,7 +453,7 @@ Show the list of leaderboards.
 
 ### gpgs.leaderboard_get_player_score
 *Type:* FUNCTION
-Asynchronously gets a player-centered page of scores for a leaderboard.
+Asynchronously gets the current player's score for a leaderboard. The callback receives the score fields directly in the message table.
 
 **Parameters**
 
@@ -494,7 +501,7 @@ Show achivements
 
 ### gpgs.achievement_get
 *Type:* FUNCTION
-Get information about all achievement's state asynchronously. Result return to callback previously set by `gpgs.set_callback` with `message_id == gpgs.MSG_ACHIEVEMENTS`. Result is array of tables which contain following fields
+Get information about all achievement's state asynchronously. Result return to callback previously set by `gpgs.set_callback` with `message_id == gpgs.MSG_GET_ACHIEVEMENTS`. Result is an array of JSON strings. Decode each string with `json.decode()` to get a table containing the following fields
 - `id` - achievement id (from GP console)
 - `name` - achievement name
 - `description` - achievement description
@@ -516,7 +523,7 @@ Increments an event specified by `eventId` by the given number of steps
 
 ### gpgs.event_get
 *Type:* FUNCTION
-Get information about all events asynchronously. Result returns to callback previously set by `gpgs.set_callback` with `message_id == gpgs.MSG_GET_EVENTS`. Result is array of tables which contain following fields
+Get information about all events asynchronously. Result returns to callback previously set by `gpgs.set_callback` with `message_id == gpgs.MSG_GET_EVENTS`. Result is an array of JSON strings. Decode each string with `json.decode()` to get a table containing the following fields
 - `id` - event id
 - `formatted_value` - sum of all increments have been made to this event
 - `value` - the number of increments this user has made to this event
@@ -545,6 +552,26 @@ Official [GPGS documentation](https://developers.google.com/android/reference/co
 *Type:* VARIABLE
 Official [GPGS documentation](https://developers.google.com/android/reference/com/google/android/gms/games/SnapshotsClient.html#RESOLUTION_POLICY_HIGHEST_PROGRESS) for this constant
 
+### TIME_SPAN_DAILY
+*Type:* VARIABLE
+Select leaderboard scores from the current day.
+
+### TIME_SPAN_WEEKLY
+*Type:* VARIABLE
+Select leaderboard scores from the current week.
+
+### TIME_SPAN_ALL_TIME
+*Type:* VARIABLE
+Select leaderboard scores from all time.
+
+### COLLECTION_PUBLIC
+*Type:* VARIABLE
+Select scores from players who share their gameplay activity publicly.
+
+### COLLECTION_FRIENDS
+*Type:* VARIABLE
+Select scores from players in the current player's friends list. A score query may show a Google Play consent dialog the first time this collection is used.
+
 ### MSG_SIGN_IN
 *Type:* VARIABLE
 The message type that GPGS sends when finishing the asynchronous operation after calling `gpgs.login()`
@@ -565,9 +592,29 @@ The message type that GPGS sends when finishing the asynchronous operation after
 *Type:* VARIABLE
 The message type that GPGS sends when finishing the asynchronous operation after calling `gpgs.snapshot_commit_and_close()`
 
-### MSG_GET_SERVER_TOKEN
+### MSG_GET_ACHIEVEMENTS
 *Type:* VARIABLE
-The message type that GPGS sends when finishing the asynchronous operation of server token retrieval
+The message type that GPGS sends when finishing the asynchronous operation after calling `gpgs.achievement_get()`
+
+### MSG_GET_TOP_SCORES
+*Type:* VARIABLE
+The message type that GPGS sends when finishing the asynchronous operation after calling `gpgs.leaderboard_get_top_scores()`
+
+### MSG_GET_PLAYER_CENTERED_SCORES
+*Type:* VARIABLE
+The message type that GPGS sends when finishing the asynchronous operation after calling `gpgs.leaderboard_get_player_centered_scores()`
+
+### MSG_GET_PLAYER_SCORE
+*Type:* VARIABLE
+The message type that GPGS sends when finishing the asynchronous operation after calling `gpgs.leaderboard_get_player_score()`
+
+### MSG_GET_EVENTS
+*Type:* VARIABLE
+The message type that GPGS sends when finishing the asynchronous operation after calling `gpgs.event_get()`
+
+### MSG_GET_SERVER_AUTH_CODE
+*Type:* VARIABLE
+The message type that GPGS sends when finishing the asynchronous operation of server auth code retrieval
 
 ### STATUS_SUCCESS
 *Type:* VARIABLE
