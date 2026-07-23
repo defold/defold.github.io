@@ -1,7 +1,7 @@
 {
     "elements": [
         {
-            "description": "Initialize the Mobile Ads SDK. Warning: If you need to obtain consent from users in the European Economic Area (EEA), set any request-specific flags, or otherwise take action before loading ads, ensure you do so before initializing the Mobile Ads SDK.\nOriginal docs [Android](https://developers.google.com/admob/android/quick-start#initialize_the_mobile_ads_sdk), [iOS](https://developers.google.com/admob/ios/quick-start#initialize_the_mobile_ads_sdk)",
+            "description": "Initialize the Mobile Ads SDK. Warning: If you need to obtain consent from users in the European Economic Area (EEA), set any request-specific flags, or otherwise take action before loading ads, ensure you do so before initializing the Mobile Ads SDK. On Android, initialization starts automatically when `admob.app_open_android` is configured. Leave that setting empty and use `admob.load_appopen()` after initialization if consent or other configuration must be applied first.\nOriginal docs [Android](https://developers.google.com/admob/android/next-gen/quick-start#initialize_the_google_mobile_ads_sdk), [iOS](https://developers.google.com/admob/ios/quick-start#initialize_the_mobile_ads_sdk)",
             "examples": "",
             "name": "admob.initialize",
             "parameters": [],
@@ -71,7 +71,7 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Sets user privacy preferences (must be called before `admob.initialize()`). Original docs [Android](https://developers.google.com/admob/android/ccpa), [iOS](https://developers.google.com/admob/ios/ccpa)",
+            "description": "Sets user privacy preferences (must be called before `admob.initialize()`). Original docs [Android](https://developers.google.com/admob/android/next-gen/privacy/us-states), [iOS](https://developers.google.com/admob/ios/ccpa)",
             "examples": "",
             "name": "admob.set_privacy_settings",
             "parameters": [
@@ -95,7 +95,7 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Show Ad Inspector. This is an in-app overlay that enables authorized devices to perform realtime analysis of test ad requests directly within a mobile app. Ad Inspector only launces on [test devices](https://support.google.com/admob/answer/9691433). Original docs [Android](https://developers.google.com/admob/android/ad-inspector), [iOS](https://developers.google.com/admob/ios/ad-inspector)",
+            "description": "Show Ad Inspector. This is an in-app overlay that enables authorized devices to perform realtime analysis of test ad requests directly within a mobile app. Ad Inspector only launces on [test devices](https://support.google.com/admob/answer/9691433). Original docs [Android](https://developers.google.com/admob/android/next-gen/ad-inspector), [iOS](https://developers.google.com/admob/ios/ad-inspector)",
             "examples": "",
             "name": "admob.show_ad_inspector",
             "parameters": [],
@@ -103,12 +103,12 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Starts loading an AppOpen Ad, can only be called after `admob.MSG_INITIALIZATION` event Original docs [Android](https://developers.google.com/admob/android/app-open), [iOS](https://developers.google.com/admob/ios/app-open)",
+            "description": "Starts loading an App Open Ad, can only be called after `admob.MSG_INITIALIZATION` event. This is the manual alternative to configuring `admob.app_open_android` or `admob.app_open_ios`, which automatically loads and shows App Open ads. Original docs [Android](https://developers.google.com/admob/android/next-gen/app-open), [iOS](https://developers.google.com/admob/ios/app-open)",
             "examples": "",
             "name": "admob.load_appopen",
             "parameters": [
                 {
-                    "doc": "Ad unit ID, for test ads use on Android `\"ca-app-pub-3940256099942544/9257395921\"`, or on iOS `\"ca-app-pub-3940256099942544/5575463023\"` Original docs [Android](https://developers.google.com/admob/android/app-open), [iOS](https://developers.google.com/admob/ios/app-open)",
+                    "doc": "Ad unit ID, for test ads use on Android `\"ca-app-pub-3940256099942544/9257395921\"`, or on iOS `\"ca-app-pub-3940256099942544/5575463023\"` Original docs [Android](https://developers.google.com/admob/android/next-gen/app-open), [iOS](https://developers.google.com/admob/ios/app-open)",
                     "name": "ad_unit_id",
                     "types": [
                         "string"
@@ -119,7 +119,7 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Shows loaded AppOpen Ad, can only be called after `admob.EVENT_LOADED` Original docs [Android](https://developers.google.com/admob/android/app-open), [iOS](https://developers.google.com/admob/ios/app-open)",
+            "description": "Shows loaded App Open Ad, can only be called after `admob.EVENT_LOADED` Original docs [Android](https://developers.google.com/admob/android/next-gen/app-open), [iOS](https://developers.google.com/admob/ios/app-open)",
             "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">if</span> <span class=\"n\">admob</span> <span class=\"ow\">and</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">is_appopen_loaded</span><span class=\"p\">()</span> <span class=\"kr\">then</span>\n    <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">show_appopen</span><span class=\"p\">()</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
             "name": "admob.show_appopen",
             "parameters": [],
@@ -127,7 +127,7 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Checks if AppOpen Ad is loaded and ready to show Original docs [Android](https://developers.google.com/admob/android/app-open), [iOS](https://developers.google.com/admob/ios/app-open)",
+            "description": "Checks if an App Open Ad is loaded and ready to show Original docs [Android](https://developers.google.com/admob/android/next-gen/app-open), [iOS](https://developers.google.com/admob/ios/app-open)",
             "examples": "",
             "name": "admob.is_appopen_loaded",
             "parameters": [],
@@ -140,12 +140,12 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Starts loading an Interstitial Ad, can only be called after `admob.MSG_INITIALIZATION` event Original docs [Android](https://developers.google.com/admob/android/interstitial-fullscreen), [iOS](https://developers.google.com/admob/ios/interstitial)",
+            "description": "Starts loading an Interstitial Ad, can only be called after `admob.MSG_INITIALIZATION` event Original docs [Android](https://developers.google.com/admob/android/next-gen/interstitial), [iOS](https://developers.google.com/admob/ios/interstitial)",
             "examples": "",
             "name": "admob.load_interstitial",
             "parameters": [
                 {
-                    "doc": "Ad unit ID, for test ads use on Android `\"ca-app-pub-3940256099942544/1033173712\"`, or on iOS `\"ca-app-pub-3940256099942544/4411468910\"` Original docs [Android](https://developers.google.com/admob/android/interstitial-fullscreen), [iOS](https://developers.google.com/admob/ios/interstitial)",
+                    "doc": "Ad unit ID, for test ads use on Android `\"ca-app-pub-3940256099942544/1033173712\"`, or on iOS `\"ca-app-pub-3940256099942544/4411468910\"` Original docs [Android](https://developers.google.com/admob/android/next-gen/interstitial), [iOS](https://developers.google.com/admob/ios/interstitial)",
                     "name": "ad_unit_id",
                     "types": [
                         "string"
@@ -156,7 +156,7 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Shows loaded Interstitial Ad, can only be called after `admob.EVENT_LOADED` Original docs [Android](https://developers.google.com/admob/android/interstitial-fullscreen), [iOS](https://developers.google.com/admob/ios/interstitial)",
+            "description": "Shows loaded Interstitial Ad, can only be called after `admob.EVENT_LOADED` Original docs [Android](https://developers.google.com/admob/android/next-gen/interstitial), [iOS](https://developers.google.com/admob/ios/interstitial)",
             "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">if</span> <span class=\"n\">admob</span> <span class=\"ow\">and</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">is_interstitial_loaded</span><span class=\"p\">()</span> <span class=\"kr\">then</span>\n    <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">show_interstitial</span><span class=\"p\">()</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
             "name": "admob.show_interstitial",
             "parameters": [],
@@ -164,7 +164,7 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Checks if Interstitial Ad is loaded and ready to show Original docs [Android](https://developers.google.com/admob/android/interstitial-fullscreen), [iOS](https://developers.google.com/admob/ios/interstitial)",
+            "description": "Checks if Interstitial Ad is loaded and ready to show Original docs [Android](https://developers.google.com/admob/android/next-gen/interstitial), [iOS](https://developers.google.com/admob/ios/interstitial)",
             "examples": "",
             "name": "admob.is_interstitial_loaded",
             "parameters": [],
@@ -177,19 +177,19 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Starts loading a Rewarded Ad, can only be called after `admob.MSG_INITIALIZATION` event Original docs [Android](https://developers.google.com/admob/android/rewarded-fullscreen), [iOS](https://developers.google.com/admob/ios/rewarded-ads)",
+            "description": "Starts loading a Rewarded Ad, can only be called after `admob.MSG_INITIALIZATION` event Original docs [Android](https://developers.google.com/admob/android/next-gen/rewarded), [iOS](https://developers.google.com/admob/ios/rewarded-ads)",
             "examples": "",
             "name": "admob.load_rewarded",
             "parameters": [
                 {
-                    "doc": "Ad unit ID, for test ads use on Android `\"ca-app-pub-3940256099942544/1712485313\"`, or on iOS `\"ca-app-pub-3940256099942544/4411468910\"` Original docs [Android](https://developers.google.com/admob/android/rewarded-fullscreen), [iOS](https://developers.google.com/admob/ios/rewarded-ads)",
+                    "doc": "Ad unit ID, for test ads use on Android `\"ca-app-pub-3940256099942544/5224354917\"`, or on iOS `\"ca-app-pub-3940256099942544/1712485313\"` Original docs [Android](https://developers.google.com/admob/android/next-gen/rewarded), [iOS](https://developers.google.com/admob/ios/rewarded-ads)",
                     "name": "ad_unit_id",
                     "types": [
                         "string"
                     ]
                 },
                 {
-                    "doc": "ServerSideVerificationOptions [Android](https://developers.google.com/admob/android/rewarded#validate-ssv), [iOS](https://developers.google.com/admob/ios/rewarded#validate-ssv)",
+                    "doc": "ServerSideVerificationOptions [Android](https://developers.google.com/admob/android/next-gen/ssv), [iOS](https://developers.google.com/admob/ios/rewarded#validate-ssv)",
                     "name": "options",
                     "parameters": [
                         {
@@ -216,7 +216,7 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Shows loaded Rewarded Ad, can only be called after `admob.EVENT_LOADED` Original docs [Android](https://developers.google.com/admob/android/rewarded-fullscreen), [iOS](https://developers.google.com/admob/ios/rewarded-ads)",
+            "description": "Shows loaded Rewarded Ad, can only be called after `admob.EVENT_LOADED` Original docs [Android](https://developers.google.com/admob/android/next-gen/rewarded), [iOS](https://developers.google.com/admob/ios/rewarded-ads)",
             "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">if</span> <span class=\"n\">admob</span> <span class=\"ow\">and</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">is_rewarded_loaded</span><span class=\"p\">()</span> <span class=\"kr\">then</span>\n    <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">show_rewarded</span><span class=\"p\">()</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
             "name": "admob.show_rewarded",
             "parameters": [],
@@ -224,7 +224,7 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Checks if Rewarded Ad is loaded and ready to show Original docs [Android](https://developers.google.com/admob/android/rewarded-fullscreen), [iOS](https://developers.google.com/admob/ios/rewarded-ads)",
+            "description": "Checks if Rewarded Ad is loaded and ready to show Original docs [Android](https://developers.google.com/admob/android/next-gen/rewarded), [iOS](https://developers.google.com/admob/ios/rewarded-ads)",
             "examples": "",
             "name": "admob.is_rewarded_loaded",
             "parameters": [],
@@ -237,12 +237,12 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Starts loading a Rewarded Interstitial Ad, can only be called after `admob.MSG_INITIALIZATION` event Original docs [Android](https://developers.google.com/admob/android/rewarded-interstitial#load_an_ad), [iOS](https://developers.google.com/admob/ios/rewarded-interstitial#load_an_ad)",
+            "description": "Starts loading a Rewarded Interstitial Ad, can only be called after `admob.MSG_INITIALIZATION` event Original docs [Android](https://developers.google.com/admob/android/next-gen/rewarded-interstitial#load_an_ad), [iOS](https://developers.google.com/admob/ios/rewarded-interstitial#load_an_ad)",
             "examples": "",
             "name": "admob.load_rewarded_interstitial",
             "parameters": [
                 {
-                    "doc": "Ad unit ID, for test ads use on Android `\"ca-app-pub-3940256099942544/5354046379\"`, or on iOS `\"ca-app-pub-3940256099942544/6978759866\"` Original docs [Android](https://developers.google.com/admob/android/rewarded-interstitial#load_an_ad), [iOS](https://developers.google.com/admob/ios/rewarded-interstitial#load_an_ad)",
+                    "doc": "Ad unit ID, for test ads use on Android `\"ca-app-pub-3940256099942544/5354046379\"`, or on iOS `\"ca-app-pub-3940256099942544/6978759866\"` Original docs [Android](https://developers.google.com/admob/android/next-gen/rewarded-interstitial#load_an_ad), [iOS](https://developers.google.com/admob/ios/rewarded-interstitial#load_an_ad)",
                     "name": "ad_unit_id",
                     "types": [
                         "string"
@@ -253,7 +253,7 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Shows loaded Rewarded Interstitial Ad, can only be called after `admob.EVENT_LOADED` Original docs [Android](https://developers.google.com/admob/android/rewarded-interstitial#show_the_ad), [iOS](https://developers.google.com/admob/ios/rewarded-interstitial#display_the_ad_and_handle_the_reward_event)",
+            "description": "Shows loaded Rewarded Interstitial Ad, can only be called after `admob.EVENT_LOADED` Original docs [Android](https://developers.google.com/admob/android/next-gen/rewarded-interstitial#show_the_ad), [iOS](https://developers.google.com/admob/ios/rewarded-interstitial#display_the_ad_and_handle_the_reward_event)",
             "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">if</span> <span class=\"n\">admob</span> <span class=\"ow\">and</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">is_rewarded_interstitial_loaded</span><span class=\"p\">()</span> <span class=\"kr\">then</span>\n    <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">show_rewarded_interstitial</span><span class=\"p\">()</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
             "name": "admob.show_rewarded_interstitial",
             "parameters": [],
@@ -261,7 +261,7 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Checks if Rewarded Interstitial Ad is loaded and ready to show Original docs [Android](https://developers.google.com/admob/android/rewarded-interstitial), [iOS](https://developers.google.com/admob/ios/rewarded-interstitial)",
+            "description": "Checks if Rewarded Interstitial Ad is loaded and ready to show Original docs [Android](https://developers.google.com/admob/android/next-gen/rewarded-interstitial), [iOS](https://developers.google.com/admob/ios/rewarded-interstitial)",
             "examples": "",
             "name": "admob.is_rewarded_interstitial_loaded",
             "parameters": [],
@@ -274,19 +274,19 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Starts loading a Banner Ad, can only be called after `admob.MSG_INITIALIZATION` event Original docs [Android](https://developers.google.com/admob/android/banner), [iOS](https://developers.google.com/admob/ios/banner)",
+            "description": "Starts loading a Banner Ad, can only be called after `admob.MSG_INITIALIZATION` event Original docs [Android](https://developers.google.com/admob/android/next-gen/banner), [iOS](https://developers.google.com/admob/ios/banner)",
             "examples": "",
             "name": "admob.load_banner",
             "parameters": [
                 {
-                    "doc": "Ad unit ID, for test ads use on Android `\"ca-app-pub-3940256099942544/6300978111\"`, or on iOS `\"ca-app-pub-3940256099942544/2934735716\"` Original docs [Android](https://developers.google.com/admob/android/banner), [iOS](https://developers.google.com/admob/ios/banner)",
+                    "doc": "Ad unit ID, for adaptive banner test ads use on Android `\"ca-app-pub-3940256099942544/9214589741\"`, or on iOS `\"ca-app-pub-3940256099942544/2435281174\"` Original docs [Android](https://developers.google.com/admob/android/next-gen/banner), [iOS](https://developers.google.com/admob/ios/banner)",
                     "name": "ad_unit_id",
                     "types": [
                         "string"
                     ]
                 },
                 {
-                    "doc": "Requested Banner Ad size, possible values: `admob.SIZE_ADAPTIVE_BANNER` (default), `admob.SIZE_BANNER`, `admob.SIZE_FLUID`, `admob.SIZE_FULL_BANNER`, `admob.SIZE_LARGE_BANNER`, `admob.SIZE_LEADEARBOARD`, `admob.SIZE_MEDIUM_RECTANGLE`, `admob.SIZE_SMART_BANNER`, `admob.SIZE_LARGE_ADAPTIVE_BANNER` Original docs [Android](https://developers.google.com/admob/android/banner#banner_sizes), [iOS](https://developers.google.com/admob/ios/banner#banner_sizes)",
+                    "doc": "Requested Banner Ad size, possible values: `admob.SIZE_ADAPTIVE_BANNER` (default), `admob.SIZE_BANNER`, `admob.SIZE_FLUID`, `admob.SIZE_FULL_BANNER`, `admob.SIZE_LARGE_BANNER`, `admob.SIZE_LEADEARBOARD`, `admob.SIZE_MEDIUM_RECTANGLE`, `admob.SIZE_LARGE_ADAPTIVE_BANNER` Original docs [Android](https://developers.google.com/admob/android/next-gen/banner#banner_sizes), [iOS](https://developers.google.com/admob/ios/banner#banner_sizes)",
                     "name": "size",
                     "types": [
                         "number"
@@ -297,7 +297,7 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Shows loaded Banner Ad, can only be called after `admob.EVENT_LOADED` Original docs [Android](https://developers.google.com/admob/android/banner), [iOS](https://developers.google.com/admob/ios/banner)",
+            "description": "Shows loaded Banner Ad, can only be called after `admob.EVENT_LOADED` Original docs [Android](https://developers.google.com/admob/android/next-gen/banner), [iOS](https://developers.google.com/admob/ios/banner)",
             "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">if</span> <span class=\"n\">admob</span> <span class=\"ow\">and</span> <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">is_banner_loaded</span><span class=\"p\">()</span> <span class=\"kr\">then</span>\n    <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">show_banner</span><span class=\"p\">(</span><span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">POS_TOP_CENTER</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
             "name": "admob.show_banner",
             "parameters": [
@@ -313,7 +313,7 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Sets a maximum ad content rating. AdMob ads returned for your app will have a content rating at or below that level. Original docs [Android](https://developers.google.com/admob/android/targeting#ad_content_filtering), [iOS](https://developers.google.com/admob/ios/targeting#ad_content_filtering)",
+            "description": "Sets a maximum ad content rating. AdMob ads returned for your app will have a content rating at or below that level. Original docs [Android](https://developers.google.com/admob/android/next-gen/targeting#ad_content_filtering), [iOS](https://developers.google.com/admob/ios/targeting#ad_content_filtering)",
             "examples": "<div class=\"codehilite\"><pre><span></span><code>  <span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">set_max_ad_content_rating</span><span class=\"p\">(</span><span class=\"n\">admob</span><span class=\"p\">.</span><span class=\"n\">MAX_AD_CONTENT_RATING_PG</span><span class=\"p\">)</span>\n</code></pre></div>",
             "name": "admob.set_max_ad_content_rating",
             "parameters": [
@@ -329,7 +329,7 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Temporarily hides Banner Ad, banner can be shown again using `admob.show_banner()` Original docs [Android](https://developers.google.com/admob/android/banner), [iOS](https://developers.google.com/admob/ios/banner)",
+            "description": "Temporarily hides Banner Ad, banner can be shown again using `admob.show_banner()` Original docs [Android](https://developers.google.com/admob/android/next-gen/banner), [iOS](https://developers.google.com/admob/ios/banner)",
             "examples": "",
             "name": "admob.hide_banner",
             "parameters": [],
@@ -337,7 +337,7 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Checks if Banner Ad is loaded and ready to show Original docs [Android](https://developers.google.com/admob/android/banner), [iOS](https://developers.google.com/admob/ios/banner)",
+            "description": "Checks if Banner Ad is loaded and ready to show Original docs [Android](https://developers.google.com/admob/android/next-gen/banner), [iOS](https://developers.google.com/admob/ios/banner)",
             "examples": "",
             "name": "admob.is_banner_loaded",
             "parameters": [],
@@ -350,7 +350,7 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Hides and unloads Banner Ad (needs to call `admob.load_banner()` later to show Banner Ad) Original docs [Android](https://developers.google.com/admob/android/banner), [iOS](https://developers.google.com/admob/ios/banner)",
+            "description": "Hides and unloads Banner Ad (needs to call `admob.load_banner()` later to show Banner Ad) Original docs [Android](https://developers.google.com/admob/android/next-gen/banner), [iOS](https://developers.google.com/admob/ios/banner)",
             "examples": "",
             "name": "admob.destroy_banner",
             "parameters": [],
@@ -609,14 +609,6 @@
             "description": "",
             "examples": "",
             "name": "SIZE_MEDIUM_RECTANGLE",
-            "parameters": [],
-            "returnvalues": [],
-            "type": "VARIABLE"
-        },
-        {
-            "description": "",
-            "examples": "",
-            "name": "SIZE_SMART_BANNER",
             "parameters": [],
             "returnvalues": [],
             "type": "VARIABLE"
