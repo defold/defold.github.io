@@ -427,16 +427,16 @@
             "parameters": [
                 {
                     "doc": "",
-                    "name": "map",
+                    "name": "factory_url",
                     "types": [
-                        "number"
+                        "string"
                     ]
                 },
                 {
                     "doc": "",
-                    "name": "factory_url",
+                    "name": "map",
                     "types": [
-                        "string"
+                        "number"
                     ]
                 },
                 {
@@ -481,24 +481,10 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Change map.\n",
+            "description": "Add map.\n",
             "examples": "",
-            "name": "fusion.map_change",
+            "name": "fusion.map_add",
             "parameters": [
-                {
-                    "doc": "",
-                    "name": "index",
-                    "types": [
-                        "number"
-                    ]
-                },
-                {
-                    "doc": "",
-                    "name": "sequence",
-                    "types": [
-                        "number"
-                    ]
-                },
                 {
                     "doc": "",
                     "name": "data",
@@ -507,7 +493,70 @@
                     ]
                 }
             ],
+            "returnvalues": [
+                {
+                    "doc": "Id\n",
+                    "name": "number"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Change map.\n",
+            "examples": "",
+            "name": "fusion.map_change",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "data",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "Id\n",
+                    "name": "number"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Remove map.\n",
+            "examples": "",
+            "name": "fusion.map_remove",
+            "parameters": [
+                {
+                    "doc": "Id\n",
+                    "name": "Map",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
             "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Checkl if map is valid.\n",
+            "examples": "",
+            "name": "fusion.map_is_valid",
+            "parameters": [
+                {
+                    "doc": "Id\n",
+                    "name": "Map",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "If valid\n",
+                    "name": "boolean"
+                }
+            ],
             "type": "FUNCTION"
         },
         {
@@ -553,7 +602,7 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Subscribe to RPC broadcat event. The events will be delivered as messages.\n",
+            "description": "Subscribe to RPC broadcast event. The events will be delivered as messages.\n",
             "examples": "",
             "name": "fusion.subscribe_rpc",
             "parameters": [
@@ -723,6 +772,36 @@
                     "name": "id",
                     "types": [
                         "string"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Respond to a received ownership request\n",
+            "examples": "",
+            "name": "fusion.respond_to_ownership_request",
+            "parameters": [
+                {
+                    "doc": "Id of the object\n",
+                    "name": "object",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Requesting player id\n",
+                    "name": "requester",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "True if the request is granted\n",
+                    "name": "granted",
+                    "types": [
+                        "boolean"
                     ]
                 }
             ],
@@ -1246,6 +1325,30 @@
             "type": "VARIABLE"
         },
         {
+            "description": "FORCED_DISCONNECT_REASON_GENERIC\n",
+            "examples": "",
+            "name": "FORCED_DISCONNECT_REASON_GENERIC",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "FORCED_DISCONNECT_REASON_PROTOCOLINCOMPATIBLE\n",
+            "examples": "",
+            "name": "FORCED_DISCONNECT_REASON_PROTOCOLINCOMPATIBLE",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "FORCED_DISCONNECT_REASON_ROOMVERSIONMISMATCH\n",
+            "examples": "",
+            "name": "FORCED_DISCONNECT_REASON_ROOMVERSIONMISMATCH",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
             "description": "EVENT_OBJECT_READY\n",
             "examples": "",
             "name": "EVENT_OBJECT_READY",
@@ -1401,6 +1504,14 @@
             "description": "EVENT_DISCONNECTED\n",
             "examples": "",
             "name": "EVENT_DISCONNECTED",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "EVENT_DEFOLD_LOG_EVENT\n",
+            "examples": "",
+            "name": "EVENT_DEFOLD_LOG_EVENT",
             "parameters": [],
             "returnvalues": [],
             "type": "VARIABLE"
