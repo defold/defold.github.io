@@ -1,0 +1,1188 @@
+{
+    "elements": [
+        {
+            "description": "Sets the callback used for all LevelPlay events. Pass nil to remove it.",
+            "examples": "",
+            "name": "levelplay.set_callback",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "callback",
+                    "parameters": [
+                        {
+                            "doc": "The script instance that installed the callback.",
+                            "name": "self",
+                            "types": [
+                                "object"
+                            ]
+                        },
+                        {
+                            "doc": "One of MSG_INIT, MSG_INTERSTITIAL, MSG_REWARDED, MSG_BANNER, or MSG_TRACKING.",
+                            "name": "message_id",
+                            "types": [
+                                "number"
+                            ]
+                        },
+                        {
+                            "doc": "Event data. Every asynchronous SDK event contains `event`. Events from a created ad object also contain `handle`; pre-creation validation errors do not.",
+                            "name": "message",
+                            "parameters": [
+                                {
+                                    "doc": "An EVENT_* constant, or a TRACKING_STATUS_* constant for MSG_TRACKING.",
+                                    "name": "event",
+                                    "types": [
+                                        "number"
+                                    ]
+                                },
+                                {
+                                    "doc": "The ad object that emitted the event.",
+                                    "name": "handle",
+                                    "types": [
+                                        "number"
+                                    ]
+                                },
+                                {
+                                    "doc": "",
+                                    "name": "error_code",
+                                    "types": [
+                                        "number"
+                                    ]
+                                },
+                                {
+                                    "doc": "",
+                                    "name": "error_message",
+                                    "types": [
+                                        "string"
+                                    ]
+                                },
+                                {
+                                    "doc": "Native error domain when supplied by iOS.",
+                                    "name": "error_domain",
+                                    "types": [
+                                        "string"
+                                    ]
+                                },
+                                {
+                                    "doc": "Bridge operation associated with a validation error.",
+                                    "name": "operation",
+                                    "types": [
+                                        "string"
+                                    ]
+                                },
+                                {
+                                    "doc": "Serialization error detail for EVENT_JSON_ERROR.",
+                                    "name": "error",
+                                    "types": [
+                                        "string"
+                                    ]
+                                },
+                                {
+                                    "doc": "Whether Ad Quality is enabled, when reported during initialization.",
+                                    "name": "ad_quality_enabled",
+                                    "types": [
+                                        "boolean"
+                                    ]
+                                },
+                                {
+                                    "doc": "",
+                                    "name": "ad_id",
+                                    "types": [
+                                        "string"
+                                    ]
+                                },
+                                {
+                                    "doc": "",
+                                    "name": "ad_unit_id",
+                                    "types": [
+                                        "string"
+                                    ]
+                                },
+                                {
+                                    "doc": "",
+                                    "name": "ad_unit_name",
+                                    "types": [
+                                        "string"
+                                    ]
+                                },
+                                {
+                                    "doc": "",
+                                    "name": "ad_format",
+                                    "types": [
+                                        "string"
+                                    ]
+                                },
+                                {
+                                    "doc": "",
+                                    "name": "placement_name",
+                                    "types": [
+                                        "string"
+                                    ]
+                                },
+                                {
+                                    "doc": "",
+                                    "name": "auction_id",
+                                    "types": [
+                                        "string"
+                                    ]
+                                },
+                                {
+                                    "doc": "",
+                                    "name": "country",
+                                    "types": [
+                                        "string"
+                                    ]
+                                },
+                                {
+                                    "doc": "",
+                                    "name": "ab",
+                                    "types": [
+                                        "string"
+                                    ]
+                                },
+                                {
+                                    "doc": "",
+                                    "name": "segment_name",
+                                    "types": [
+                                        "string"
+                                    ]
+                                },
+                                {
+                                    "doc": "",
+                                    "name": "ad_network",
+                                    "types": [
+                                        "string"
+                                    ]
+                                },
+                                {
+                                    "doc": "",
+                                    "name": "instance_name",
+                                    "types": [
+                                        "string"
+                                    ]
+                                },
+                                {
+                                    "doc": "",
+                                    "name": "instance_id",
+                                    "types": [
+                                        "string"
+                                    ]
+                                },
+                                {
+                                    "doc": "",
+                                    "name": "revenue",
+                                    "types": [
+                                        "number"
+                                    ]
+                                },
+                                {
+                                    "doc": "",
+                                    "name": "precision",
+                                    "types": [
+                                        "string"
+                                    ]
+                                },
+                                {
+                                    "doc": "",
+                                    "name": "encrypted_cpm",
+                                    "types": [
+                                        "string"
+                                    ]
+                                },
+                                {
+                                    "doc": "",
+                                    "name": "creative_id",
+                                    "types": [
+                                        "string"
+                                    ]
+                                },
+                                {
+                                    "doc": "Conversion value when supplied by iOS.",
+                                    "name": "conversion_value",
+                                    "types": [
+                                        "number"
+                                    ]
+                                },
+                                {
+                                    "doc": "",
+                                    "name": "reward_name",
+                                    "types": [
+                                        "string"
+                                    ]
+                                },
+                                {
+                                    "doc": "",
+                                    "name": "reward_amount",
+                                    "types": [
+                                        "number"
+                                    ]
+                                },
+                                {
+                                    "doc": "",
+                                    "name": "ad_width",
+                                    "types": [
+                                        "number"
+                                    ]
+                                },
+                                {
+                                    "doc": "",
+                                    "name": "ad_height",
+                                    "types": [
+                                        "number"
+                                    ]
+                                },
+                                {
+                                    "doc": "",
+                                    "name": "ad_size_description",
+                                    "types": [
+                                        "string"
+                                    ]
+                                },
+                                {
+                                    "doc": "",
+                                    "name": "ad_size_is_adaptive",
+                                    "types": [
+                                        "boolean"
+                                    ]
+                                }
+                            ],
+                            "types": [
+                                "table"
+                            ]
+                        }
+                    ],
+                    "types": [
+                        "function"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Initializes LevelPlay. Configure privacy before calling this function. Create ad objects only after EVENT_INIT_SUCCEEDED.",
+            "examples": "",
+            "name": "levelplay.init",
+            "parameters": [
+                {
+                    "doc": "Application key from the LevelPlay dashboard. This is not an ad-unit ID.",
+                    "name": "app_key",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Stable application user ID included in the initialization request.",
+                    "name": "user_id",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Returns the native LevelPlay SDK version.",
+            "examples": "",
+            "name": "levelplay.get_sdk_version",
+            "parameters": [],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "string"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Sets the user's GDPR consent choice. Call before init and map the value to a choice collected by your consent flow.",
+            "examples": "",
+            "name": "levelplay.set_gdpr_consent",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "consent",
+                    "types": [
+                        "boolean"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Passes a US privacy \"do not sell or share\" choice. True means the user opted out. Call before init.",
+            "examples": "",
+            "name": "levelplay.set_ccpa",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "opted_out",
+                    "types": [
+                        "boolean"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Sets whether the user is child-directed for COPPA treatment. True flags the user as child-directed. Call before init.",
+            "examples": "",
+            "name": "levelplay.set_coppa",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "child_directed",
+                    "types": [
+                        "boolean"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Sets an SDK or mediated-network metadata value. Set network-required values before init.",
+            "examples": "",
+            "name": "levelplay.set_metadata",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "key",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "value",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Configures Meta Audience Network Limited Data Use before init. This calls Meta's SDK directly and returns false if the Meta adapter is not linked or initialization already started.",
+            "examples": "",
+            "name": "levelplay.set_meta_limited_data_use",
+            "parameters": [
+                {
+                    "doc": "True supplies the LDU option; false clears Meta data-processing options.",
+                    "name": "enabled",
+                    "types": [
+                        "boolean"
+                    ]
+                },
+                {
+                    "doc": "Meta country code. Zero, the default, asks Meta to geolocate.",
+                    "name": "country",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "Meta state code. Zero, the default, asks Meta to geolocate.",
+                    "name": "state",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "boolean"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Sets Meta Audience Network's iOS advertiser-tracking flag before init. Returns false on Android, when Meta is not linked, or after initialization starts.",
+            "examples": "",
+            "name": "levelplay.set_meta_advertiser_tracking",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "enabled",
+                    "types": [
+                        "boolean"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "boolean"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Sets the dynamic user ID used by server-to-server rewarded callbacks. The value must contain 1\u201364 alphanumeric characters. Call before showing the rewarded ad it should apply to.",
+            "examples": "",
+            "name": "levelplay.set_dynamic_user_id",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "user_id",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "boolean"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Enables or disables mediated-network debug logging. Disable it in production.",
+            "examples": "",
+            "name": "levelplay.set_adapters_debug",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "enabled",
+                    "types": [
+                        "boolean"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Runs the native LevelPlay integration validator.",
+            "examples": "",
+            "name": "levelplay.validate_integration",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Opens the LevelPlay integration test suite after initialization succeeds. Enable the is_test_suite metadata before init and call this before creating ad objects or invoking other LevelPlay SDK operations.",
+            "examples": "",
+            "name": "levelplay.launch_test_suite",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Requests App Tracking Transparency authorization on iOS 14 or newer. Request it before init when mediation partners should receive the IDFA. The result is sent through MSG_TRACKING. It is a no-op on Android and unsupported iOS versions.",
+            "examples": "",
+            "name": "levelplay.request_tracking_authorization",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Returns the current App Tracking Transparency state on iOS, or nil when unsupported.",
+            "examples": "",
+            "name": "levelplay.get_tracking_authorization_status",
+            "parameters": [],
+            "returnvalues": [
+                {
+                    "doc": "One of TRACKING_STATUS_NOT_DETERMINED, TRACKING_STATUS_RESTRICTED, TRACKING_STATUS_DENIED, or TRACKING_STATUS_AUTHORIZED.",
+                    "name": "number"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Creates a reusable interstitial ad object after successful initialization. Its ad-unit ID and optional bid floor are fixed for the object's lifetime. Create it once, then use the returned handle for multiple load/show cycles with the same ad-unit ID and creation configuration.",
+            "examples": "",
+            "name": "levelplay.create_interstitial_ad",
+            "parameters": [
+                {
+                    "doc": "Interstitial ad-unit ID from the LevelPlay dashboard.",
+                    "name": "ad_unit_id",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Optional minimum eCPM in USD. It applies to every load by this object; changing it requires destroying the handle and creating a new object.",
+                    "name": "bid_floor",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "Positive handle, or nil when native creation is rejected.",
+                    "name": "number"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Permanently releases an interstitial ad object, invalidates its handle, and stops callbacks for it. Do not destroy between ordinary impressions or during load/display when terminal callbacks are still required.",
+            "examples": "",
+            "name": "levelplay.destroy_interstitial_ad",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "handle",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Loads the next interstitial impression into an existing object. After an impression closes, call this again on the same handle instead of creating another object.",
+            "examples": "",
+            "name": "levelplay.load_interstitial_ad",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "handle",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Returns whether the interstitial object has an ad ready to display.",
+            "examples": "",
+            "name": "levelplay.is_interstitial_ad_ready",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "handle",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "boolean"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Shows one loaded interstitial impression. The optional placement is a dashboard presentation point, not an ad object, and can be selected separately on every show.",
+            "examples": "",
+            "name": "levelplay.show_interstitial_ad",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "handle",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "placement",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Returns whether the named interstitial placement has reached its configured cap.",
+            "examples": "",
+            "name": "levelplay.is_interstitial_placement_capped",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "placement",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "boolean"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Creates a reusable rewarded ad object after successful initialization. Its ad-unit ID and optional bid floor are fixed for the object's lifetime. Create it once, then use the returned handle for multiple load/show cycles with the same ad-unit ID and creation configuration.",
+            "examples": "",
+            "name": "levelplay.create_rewarded_ad",
+            "parameters": [
+                {
+                    "doc": "Rewarded ad-unit ID from the LevelPlay dashboard.",
+                    "name": "ad_unit_id",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Optional minimum eCPM in USD. It applies to every load by this object; changing it requires destroying the handle and creating a new object.",
+                    "name": "bid_floor",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "Positive handle, or nil when native creation is rejected.",
+                    "name": "number"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Permanently releases a rewarded ad object, invalidates its handle, and stops callbacks for it. Do not destroy between ordinary impressions, and never destroy a displayed rewarded ad before its reward and close callbacks are received.",
+            "examples": "",
+            "name": "levelplay.destroy_rewarded_ad",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "handle",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Loads the next rewarded impression into an existing object. After reward and close callbacks complete, call this again on the same handle instead of creating another object.",
+            "examples": "",
+            "name": "levelplay.load_rewarded_ad",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "handle",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Returns whether the rewarded object has an ad ready to display.",
+            "examples": "",
+            "name": "levelplay.is_rewarded_ad_ready",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "handle",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "boolean"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Shows one loaded rewarded impression. The optional placement is a dashboard presentation point, not an ad object, and can be selected separately on every show.",
+            "examples": "",
+            "name": "levelplay.show_rewarded_ad",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "handle",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "placement",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Returns whether the named rewarded placement has reached its configured cap.",
+            "examples": "",
+            "name": "levelplay.is_rewarded_placement_capped",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "placement",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "boolean"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Returns the configured reward for the object's default placement or for the supplied placement.",
+            "examples": "",
+            "name": "levelplay.get_reward",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "handle",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "placement",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "",
+                    "name": "table"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Creates a reusable banner ad view after successful initialization. Its ad-unit ID and all options are fixed for the view's lifetime. Create it once, then load, hide, show, and auto-refresh the same handle until it is permanently destroyed.",
+            "examples": "",
+            "name": "levelplay.create_banner_ad",
+            "parameters": [
+                {
+                    "doc": "Banner ad-unit ID from the LevelPlay dashboard.",
+                    "name": "ad_unit_id",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Creation-time banner configuration. These fields apply to every load and show; changing one requires destroying the handle and creating a new banner.",
+                    "name": "options",
+                    "parameters": [
+                        {
+                            "doc": "A BANNER_SIZE_* constant. Defaults to BANNER_SIZE_ADAPTIVE.",
+                            "name": "size",
+                            "types": [
+                                "number"
+                            ]
+                        },
+                        {
+                            "doc": "BANNER_POSITION_TOP or BANNER_POSITION_BOTTOM. Defaults to BANNER_POSITION_BOTTOM.",
+                            "name": "position",
+                            "types": [
+                                "number"
+                            ]
+                        },
+                        {
+                            "doc": "Dashboard placement used for reporting by this banner object.",
+                            "name": "placement",
+                            "types": [
+                                "string"
+                            ]
+                        },
+                        {
+                            "doc": "Minimum eCPM in USD applied to every load by this banner object.",
+                            "name": "bid_floor",
+                            "types": [
+                                "number"
+                            ]
+                        },
+                        {
+                            "doc": "Whether the banner avoids system bars and display cutouts. Defaults to true.",
+                            "name": "respect_safe_area",
+                            "types": [
+                                "boolean"
+                            ]
+                        }
+                    ],
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "returnvalues": [
+                {
+                    "doc": "Positive handle, or nil when native creation is rejected.",
+                    "name": "number"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Loads and displays a banner because the native LevelPlay banner view is visible by default.",
+            "examples": "",
+            "name": "levelplay.load_banner_ad",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "handle",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Makes the banner view visible.",
+            "examples": "",
+            "name": "levelplay.show_banner_ad",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "handle",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Hides the banner without destroying it.",
+            "examples": "",
+            "name": "levelplay.hide_banner_ad",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "handle",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Pauses automatic refresh for the banner.",
+            "examples": "",
+            "name": "levelplay.pause_banner_auto_refresh",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "handle",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Resumes automatic refresh for the banner.",
+            "examples": "",
+            "name": "levelplay.resume_banner_auto_refresh",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "handle",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Removes and destroys the banner view and invalidates its handle.",
+            "examples": "",
+            "name": "levelplay.destroy_banner_ad",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "handle",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Initialization events.",
+            "examples": "",
+            "name": "MSG_INIT",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "Interstitial-object events.",
+            "examples": "",
+            "name": "MSG_INTERSTITIAL",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "Rewarded-object events.",
+            "examples": "",
+            "name": "MSG_REWARDED",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "Banner-object events.",
+            "examples": "",
+            "name": "MSG_BANNER",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "App Tracking Transparency status events.",
+            "examples": "",
+            "name": "MSG_TRACKING",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "",
+            "examples": "",
+            "name": "EVENT_INIT_SUCCEEDED",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "",
+            "examples": "",
+            "name": "EVENT_INIT_FAILED",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "",
+            "examples": "",
+            "name": "EVENT_AD_LOADED",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "",
+            "examples": "",
+            "name": "EVENT_AD_LOAD_FAILED",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "",
+            "examples": "",
+            "name": "EVENT_AD_INFO_CHANGED",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "",
+            "examples": "",
+            "name": "EVENT_AD_DISPLAYED",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "",
+            "examples": "",
+            "name": "EVENT_AD_DISPLAY_FAILED",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "",
+            "examples": "",
+            "name": "EVENT_AD_CLICKED",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "",
+            "examples": "",
+            "name": "EVENT_AD_CLOSED",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "",
+            "examples": "",
+            "name": "EVENT_AD_REWARDED",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "",
+            "examples": "",
+            "name": "EVENT_AD_EXPANDED",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "",
+            "examples": "",
+            "name": "EVENT_AD_COLLAPSED",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "",
+            "examples": "",
+            "name": "EVENT_AD_LEFT_APPLICATION",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "",
+            "examples": "",
+            "name": "EVENT_JSON_ERROR",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "",
+            "examples": "",
+            "name": "TRACKING_STATUS_NOT_DETERMINED",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "",
+            "examples": "",
+            "name": "TRACKING_STATUS_RESTRICTED",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "",
+            "examples": "",
+            "name": "TRACKING_STATUS_DENIED",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "",
+            "examples": "",
+            "name": "TRACKING_STATUS_AUTHORIZED",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "",
+            "examples": "",
+            "name": "BANNER_SIZE_BANNER",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "",
+            "examples": "",
+            "name": "BANNER_SIZE_LARGE",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "",
+            "examples": "",
+            "name": "BANNER_SIZE_MEDIUM_RECTANGLE",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "",
+            "examples": "",
+            "name": "BANNER_SIZE_LEADERBOARD",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "",
+            "examples": "",
+            "name": "BANNER_SIZE_ADAPTIVE",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "",
+            "examples": "",
+            "name": "BANNER_POSITION_TOP",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "",
+            "examples": "",
+            "name": "BANNER_POSITION_BOTTOM",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        }
+    ],
+    "info": {
+        "api": "extension-levelplay/levelplay_api",
+        "api_language": "Lua",
+        "brief": "levelplay",
+        "description": "Functions and constants for Unity LevelPlay mediation on Android and iOS.",
+        "group": "EXTENSIONS",
+        "name": "extension-levelplay",
+        "namespace": "levelplay",
+        "type": "Extension"
+    }
+}

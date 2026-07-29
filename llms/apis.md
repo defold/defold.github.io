@@ -148,6 +148,7 @@ These are per-namespace API reference files generated for LLM usage.
 - [iac (extension-iac)](https://defold.com/llms/apis/extension-iac_iac.md) - Functions and constants for doing inter-app communication
 - [iap (extension-iap)](https://defold.com/llms/apis/extension-iap_iap.md) - Functions and constants for doing in-app purchases
 - [ironsource (extension-ironsource)](https://defold.com/llms/apis/extension-ironsource_ironsource.md) - Functions and constants for interacting with IronSource API
+- [levelplay (extension-levelplay)](https://defold.com/llms/apis/extension-levelplay_levelplay.md) - Functions and constants for Unity LevelPlay mediation on Android and iOS
 - [networkinfo (extension-network-info)](https://defold.com/llms/apis/extension-network-info_networkinfo.md) - Functions to get information about the network configuration of the device
 - [odin (extension-odin)](https://defold.com/llms/apis/extension-odin_odin.md) - Functions and constants for interacting with ODIN Voice
 - [pad (extension-pad)](https://defold.com/llms/apis/extension-pad_pad.md) - Functionality to work with Play Asset Delivery and the AssetPackManager
