@@ -25,7 +25,7 @@ Fusion RPCs are sent using `fusion.rpc()`, either to a specific player or to all
 ```lua
 -- set target_player to 0 to broadcast to all players
 local target_player = 0
-local target_object = 0
+local target_object = nil
 local event = hash("chat_message")
 local data = { text = "Hello" }
 fusion.rpc(target_player, target_object, event, data)
@@ -45,7 +45,7 @@ It is possible to target a specific player, all players (broadcast) or the owner
 ```lua
 -- broadcast to all players
 local target_player = 0
-local target_object = 0
+local target_object = nil
 local event = hash("chat_message")
 local data = { text = "Hello" }
 fusion.rpc(target_player, target_object, event, data)
@@ -53,7 +53,7 @@ fusion.rpc(target_player, target_object, event, data)
 
 -- send to a specific player
 local target_player = 1234
-local target_object = 0
+local target_object = nil
 local event = hash("chat_message")
 local data = { text = "Hello" }
 fusion.rpc(target_player, target_object, event, data)
@@ -61,7 +61,7 @@ fusion.rpc(target_player, target_object, event, data)
 
 -- send to the owner of an object
 local target_player = fusion.OBJECT_OWNER_PLAYER_ID
-local target_object = 1234
+local target_object = "/coin"
 local event = hash("chat_message")
 local data = { text = "Hello" }
 fusion.rpc(target_player, target_object, event, data)
