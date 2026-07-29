@@ -1,7 +1,7 @@
 {
     "elements": [
         {
-            "description": "",
+            "description": "Signals that gameplay has started.",
             "examples": "",
             "name": "poki_sdk.gameplay_start",
             "parameters": [],
@@ -9,7 +9,7 @@
             "type": "FUNCTION"
         },
         {
-            "description": "",
+            "description": "Signals that gameplay has stopped.",
             "examples": "",
             "name": "poki_sdk.gameplay_stop",
             "parameters": [],
@@ -17,7 +17,7 @@
             "type": "FUNCTION"
         },
         {
-            "description": "",
+            "description": "Requests a commercial break. The callback reports START if an ad starts and SUCCESS when Poki's commercial-break promise resolves.",
             "examples": "",
             "name": "poki_sdk.commercial_break",
             "parameters": [
@@ -49,15 +49,16 @@
             "type": "FUNCTION"
         },
         {
-            "description": "",
+            "description": "Requests a rewarded break. The size argument is optional and defaults to small. Call it as rewarded_break(callback) or rewarded_break(size, callback).",
             "examples": "",
             "name": "poki_sdk.rewarded_break",
             "parameters": [
                 {
-                    "doc": "The size of the reward. Accepted values are small, medium and large. Optional. Default is small.",
+                    "doc": "Optional reward size. Accepted values are small, medium, and large. Defaults to small.",
                     "name": "size",
                     "types": [
-                        "string"
+                        "string",
+                        "nil"
                     ]
                 },
                 {
@@ -88,7 +89,7 @@
             "type": "FUNCTION"
         },
         {
-            "description": "",
+            "description": "Enables or disables Poki SDK debug mode.",
             "examples": "",
             "name": "poki_sdk.set_debug",
             "parameters": [
@@ -104,7 +105,7 @@
             "type": "FUNCTION"
         },
         {
-            "description": "",
+            "description": "Captures and reports an error to Poki.",
             "examples": "",
             "name": "poki_sdk.capture_error",
             "parameters": [
@@ -120,12 +121,25 @@
             "type": "FUNCTION"
         },
         {
-            "description": "",
+            "description": "Deprecated: Poki no longer exposes ad-block detection. This compatibility function always returns false.",
+            "examples": "",
+            "name": "poki_sdk.is_ad_blocked",
+            "parameters": [],
+            "returnvalues": [
+                {
+                    "doc": "Always false.",
+                    "name": "boolean"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Generates a shareable URL with the supplied parameters.",
             "examples": "",
             "name": "poki_sdk.shareable_url",
             "parameters": [
                 {
-                    "doc": "",
+                    "doc": "String or number values to include in the generated URL.",
                     "name": "params",
                     "types": [
                         "table"
@@ -134,6 +148,22 @@
                 {
                     "doc": "",
                     "name": "callback",
+                    "parameters": [
+                        {
+                            "doc": "The calling script instance",
+                            "name": "self",
+                            "types": [
+                                "object"
+                            ]
+                        },
+                        {
+                            "doc": "The generated shareable URL.",
+                            "name": "url",
+                            "types": [
+                                "string"
+                            ]
+                        }
+                    ],
                     "types": [
                         "function"
                     ]
@@ -143,7 +173,7 @@
             "type": "FUNCTION"
         },
         {
-            "description": "",
+            "description": "Returns the URL parameter value provided by Poki. The Defold bridge maps a null or undefined result to nil.",
             "examples": "",
             "name": "poki_sdk.get_url_param",
             "parameters": [
@@ -155,11 +185,19 @@
                     ]
                 }
             ],
-            "returnvalues": [],
+            "returnvalues": [
+                {
+                    "doc": "The parameter value, or nil when the Poki result is null or undefined.",
+                    "name": [
+                        "string",
+                        "nil"
+                    ]
+                }
+            ],
             "type": "FUNCTION"
         },
         {
-            "description": "",
+            "description": "Sends a custom analytics event to Poki. Use start/complete/fail for progress, visible/interact for offer and UI engagement, or a custom action for other events. Do not duplicate commercial or rewarded ad playback and outcomes; Poki tracks those through the ad calls. The binding defaults omitted `what` and `action` to empty strings for compatibility.",
             "examples": "",
             "name": "poki_sdk.measure",
             "parameters": [
@@ -171,17 +209,19 @@
                     ]
                 },
                 {
-                    "doc": "",
+                    "doc": "Optional event subject. Defaults to an empty string when omitted.",
                     "name": "what",
                     "types": [
-                        "string"
+                        "string",
+                        "nil"
                     ]
                 },
                 {
-                    "doc": "",
+                    "doc": "Optional event action. Defaults to an empty string when omitted.",
                     "name": "action",
                     "types": [
-                        "string"
+                        "string",
+                        "nil"
                     ]
                 }
             ],
@@ -189,19 +229,19 @@
             "type": "FUNCTION"
         },
         {
-            "description": "",
+            "description": "Moves the Poki pill to a different vertical position.",
             "examples": "",
             "name": "poki_sdk.move_pill",
             "parameters": [
                 {
-                    "doc": "",
+                    "doc": "Position from the top in percent.",
                     "name": "topPercent",
                     "types": [
                         "number"
                     ]
                 },
                 {
-                    "doc": "",
+                    "doc": "Additional position offset in pixels.",
                     "name": "topPx",
                     "types": [
                         "number"
@@ -212,7 +252,7 @@
             "type": "FUNCTION"
         },
         {
-            "description": "",
+            "description": "Retrieves the currently logged-in Poki user.",
             "examples": "",
             "name": "poki_sdk.get_user",
             "parameters": [
@@ -228,17 +268,19 @@
                             ]
                         },
                         {
-                            "doc": "A table with the fields `username` and `avatar_url`, or `nil` if no user is logged in.",
+                            "doc": "A table with username and avatar_url, or nil if no user is logged in.",
                             "name": "user",
                             "types": [
-                                "table"
+                                "table",
+                                "nil"
                             ]
                         },
                         {
-                            "doc": "The rejection message if user accounts are unavailable, or `nil` otherwise.",
+                            "doc": "The rejection message, or nil if the request completed normally.",
                             "name": "error",
                             "types": [
-                                "string"
+                                "string",
+                                "nil"
                             ]
                         }
                     ],
@@ -251,7 +293,7 @@
             "type": "FUNCTION"
         },
         {
-            "description": "",
+            "description": "Retrieves the Poki auth token for the currently logged-in user.",
             "examples": "",
             "name": "poki_sdk.get_token",
             "parameters": [
@@ -267,17 +309,19 @@
                             ]
                         },
                         {
-                            "doc": "The Poki auth token, or `nil` if no user is logged in.",
+                            "doc": "The short-lived Poki auth token, or nil if no user is logged in.",
                             "name": "token",
                             "types": [
-                                "string"
+                                "string",
+                                "nil"
                             ]
                         },
                         {
-                            "doc": "The rejection message if user accounts are unavailable, or `nil` otherwise.",
+                            "doc": "The rejection message, or nil if the request completed normally.",
                             "name": "error",
                             "types": [
-                                "string"
+                                "string",
+                                "nil"
                             ]
                         }
                     ],
@@ -290,7 +334,7 @@
             "type": "FUNCTION"
         },
         {
-            "description": "",
+            "description": "Prompts the player to log in to their Poki account.",
             "examples": "",
             "name": "poki_sdk.login",
             "parameters": [
@@ -313,10 +357,11 @@
                             ]
                         },
                         {
-                            "doc": "The rejection message on failure, or `nil` on success.",
+                            "doc": "The rejection message on failure, or nil on success.",
                             "name": "error",
                             "types": [
-                                "string"
+                                "string",
+                                "nil"
                             ]
                         }
                     ],
@@ -329,7 +374,7 @@
             "type": "FUNCTION"
         },
         {
-            "description": "",
+            "description": "Opens an external link in a new browser tab for user-initiated external navigation.",
             "examples": "",
             "name": "poki_sdk.open_external_link",
             "parameters": [
@@ -345,7 +390,7 @@
             "type": "FUNCTION"
         },
         {
-            "description": "",
+            "description": "A commercial break finished or did not display.",
             "examples": "",
             "name": "COMMERCIAL_BREAK_SUCCESS",
             "parameters": [],
@@ -353,7 +398,7 @@
             "type": "VARIABLE"
         },
         {
-            "description": "",
+            "description": "A commercial break started.",
             "examples": "",
             "name": "COMMERCIAL_BREAK_START",
             "parameters": [],
@@ -361,7 +406,7 @@
             "type": "VARIABLE"
         },
         {
-            "description": "",
+            "description": "A rewarded break failed or the reward should not be granted.",
             "examples": "",
             "name": "REWARDED_BREAK_ERROR",
             "parameters": [],
@@ -369,7 +414,7 @@
             "type": "VARIABLE"
         },
         {
-            "description": "",
+            "description": "A rewarded break completed and the reward may be granted.",
             "examples": "",
             "name": "REWARDED_BREAK_SUCCESS",
             "parameters": [],
@@ -377,7 +422,7 @@
             "type": "VARIABLE"
         },
         {
-            "description": "",
+            "description": "A rewarded break started.",
             "examples": "",
             "name": "REWARDED_BREAK_START",
             "parameters": [],
