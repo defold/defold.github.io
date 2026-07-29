@@ -72567,7 +72567,7 @@ Requests a rewarded break. The size argument is optional and defaults to small. 
 
 **Parameters**
 
-- `size` (string | nil) - Optional reward size. Accepted values are small, medium, and large. Defaults to small.
+- `size` (string) - Optional reward size. Accepted values are small, medium, and large. Defaults to small.
 - `callback` (function)
   - `self` (object) - The calling script instance
   - `status` (number) - One of the statuses: `poki_sdk.REWARDED_BREAK_ERROR`, `poki_sdk.REWARDED_BREAK_START`, `poki_sdk.REWARDED_BREAK_SUCCESS`
@@ -72637,6 +72637,9 @@ Moves the Poki pill to a different vertical position.
 
 - `topPercent` (number) - Position from the top in percent.
 - `topPx` (number) - Additional position offset in pixels.
+
+### poki_sdk.get_device_info
+*Type:* FUNCTION
 
 ### poki_sdk.get_user
 *Type:* FUNCTION
