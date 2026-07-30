@@ -98,12 +98,60 @@
 
 			const totalCount = items.length;
 			const defaultTitle = catalog.dataset.defaultTitle || "All assets";
-			let selectedTag = normalizeTag(catalog.dataset.initialTag) || "all";
-			let sortOrder = normalize(catalog.dataset.initialSort) === "timestamp" ? "timestamp" : "stars";
+			const initialTag = normalizeTag(catalog.dataset.initialTag) || "all";
+			const initialSort = normalize(catalog.dataset.initialSort) === "timestamp" ? "timestamp" : "stars";
+			let selectedTag = initialTag;
+			let sortOrder = initialSort;
 
 			if (!findTagButton(tagButtons, selectedTag)) {
 				selectedTag = "all";
 			}
+
+			const readUrlState = () => {
+				const params = new URLSearchParams(window.location.search);
+				const urlTag = params.get("tag");
+				const urlSort = params.get("sort");
+
+				selectedTag = urlTag === null ? initialTag : normalizeTag(urlTag) || "all";
+				if (!findTagButton(tagButtons, selectedTag)) {
+					selectedTag = "all";
+				}
+
+				sortOrder = urlSort === null
+					? initialSort
+					: urlSort === "timestamp" ? "timestamp" : "stars";
+
+				if (searchInput) {
+					searchInput.value = params.get("q") || "";
+				}
+			};
+
+			const syncUrl = () => {
+				const params = new URLSearchParams(window.location.search);
+				const query = (searchInput?.value || "").trim();
+
+				if (query) {
+					params.set("q", query);
+				} else {
+					params.delete("q");
+				}
+
+				if (selectedTag !== initialTag) {
+					params.set("tag", selectedTag);
+				} else {
+					params.delete("tag");
+				}
+
+				if (sortOrder !== initialSort) {
+					params.set("sort", sortOrder);
+				} else {
+					params.delete("sort");
+				}
+
+				const search = params.toString();
+				const nextUrl = `${window.location.pathname}${search ? `?${search}` : ""}${window.location.hash}`;
+				window.history.replaceState(window.history.state, "", nextUrl);
+			};
 
 			const sortItems = () => {
 				const ordered = [...items].sort((a, b) => {
@@ -191,6 +239,7 @@
 				button.addEventListener("click", () => {
 					selectedTag = normalizeTag(button.dataset.assetTag) || "all";
 					applyState();
+					syncUrl();
 					trackEvent("asset_portal_tag_filter_select", {
 						tag: selectedTag,
 						sort_order: sortOrder
@@ -202,6 +251,7 @@
 				button.addEventListener("click", () => {
 					sortOrder = button.dataset.assetSort === "timestamp" ? "timestamp" : "stars";
 					applyState();
+					syncUrl();
 					trackEvent("asset_portal_sort_select", {
 						tag: selectedTag,
 						sort_order: sortOrder
@@ -210,11 +260,20 @@
 			});
 
 			if (searchInput) {
-				const onInput = () => applyState();
+				const onInput = () => {
+					applyState();
+					syncUrl();
+				};
 				searchInput.addEventListener("input", onInput);
 				searchInput.addEventListener("propertychange", onInput);
 			}
 
+			window.addEventListener("popstate", () => {
+				readUrlState();
+				applyState();
+			});
+
+			readUrlState();
 			applyState();
 		});
 	});
