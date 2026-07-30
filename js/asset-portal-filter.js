@@ -136,13 +136,13 @@
 					params.delete("q");
 				}
 
-				if (selectedTag !== "all") {
+				if (selectedTag !== initialTag) {
 					params.set("tag", selectedTag);
 				} else {
 					params.delete("tag");
 				}
 
-				if (sortOrder !== "stars") {
+				if (sortOrder !== initialSort) {
 					params.set("sort", sortOrder);
 				} else {
 					params.delete("sort");
