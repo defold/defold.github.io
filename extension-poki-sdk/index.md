@@ -405,18 +405,13 @@ The extension exposes `poki_sdk.open_external_link(url)` for user-initiated exte
 poki_sdk.open_external_link("https://developers.poki.com/")
 ```
 
-
 ## Example
 
 [Refer to the example project](https://github.com/defold/extension-poki-sdk/blob/main/example/poki-sdk.gui_script) to see a complete example of how the integration works.
 
-![Poki SDK example controls and status display](poki-example.png)
-
-
 ## Source code
 
 The source code is available on [GitHub](https://github.com/defold/extension-poki-sdk)
-
 
 ## API
 
