@@ -90,6 +90,7 @@
 	padding-left: 6%;
 	padding-top: 2%;
 	padding-right: 2%;
+	container-type: inline-size;
 }
 
 @media (max-width: 800px) {
@@ -189,9 +190,11 @@ html.theme-dark .apicontent div.dropdownmenu img {
 ******************************************************************************/
 
 .apicontent .type {
+	display: inline-block;
 	border: 1px solid #d0d3db;
 	color: #6a7480;
-	padding: 2px 6px;
+	padding: 0 3px;
+	line-height: 1.1;
 	background-color: #f2f3f5;
 }
 
@@ -211,21 +214,24 @@ html.theme-dark .apicontent div.dropdownmenu img {
 * Ref doc tables
 ******************************************************************************/
 
-/* Prefer content-sized metadata columns on wide API reference tables. */
-@media (min-width: 1100px) {
-	.apicontent table {
-		table-layout: auto;
-	}
+.apicontent table {
+	table-layout: auto;
+}
 
-	.apicontent table th:not(:last-child),
-	.apicontent table td:not(:last-child) {
+/* Prefer content-sized metadata columns when the API content itself is wide enough. */
+@container (min-width: 900px) {
+	.apicontent table > tbody > tr > th:not(:last-child),
+	.apicontent table > tbody > tr > td:not(:last-child) {
 		width: 1%;
 		white-space: nowrap;
 	}
 
-	.apicontent table th:last-child,
-	.apicontent table td:last-child {
+	.apicontent table > tbody > tr > th:last-child,
+	.apicontent table > tbody > tr > td:last-child {
 		width: auto;
+		min-width: 0;
+		white-space: normal;
+		overflow-wrap: anywhere;
 	}
 }
 
@@ -240,15 +246,15 @@ html.theme-dark .apicontent div.dropdownmenu img {
 		-webkit-overflow-scrolling: touch;
 	}
 
-	.apicontent table th:not(:last-child),
-	.apicontent table td:not(:last-child) {
+	.apicontent table > tbody > tr > th:not(:last-child),
+	.apicontent table > tbody > tr > td:not(:last-child) {
 		width: 1%;
 		min-width: 120px;
 		white-space: nowrap;
 	}
 
-	.apicontent table th:first-child,
-	.apicontent table td:first-child {
+	.apicontent table > tbody > tr > th:first-child,
+	.apicontent table > tbody > tr > td:first-child {
 		min-width: 150px;
 		max-width: 500px;
 		white-space: normal;
@@ -256,8 +262,8 @@ html.theme-dark .apicontent div.dropdownmenu img {
 		word-break: normal;
 	}
 
-	.apicontent table th:last-child,
-	.apicontent table td:last-child {
+	.apicontent table > tbody > tr > th:last-child,
+	.apicontent table > tbody > tr > td:last-child {
 		width: auto;
 		max-width: 500px;
 		white-space: normal;
