@@ -3927,12 +3927,14 @@ ul.page-checklist-negative li:before {
 	display: flex;
 	align-items: flex-start;
 	justify-content: space-between;
+	flex-wrap: wrap;
 	gap: 0.95rem;
 	width: 100%;
 }
 
 .asset-card-title-group {
 	display: grid;
+	flex: 1 1 13rem;
 	gap: 0.32rem;
 	min-width: 0;
 }
@@ -3982,6 +3984,43 @@ ul.page-checklist-negative li:before {
 }
 
 .asset-card-stars-icon .octicon svg {
+	display: block;
+	padding-top: 0;
+	padding-right: 0;
+}
+
+.asset-card-external-action-badge {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.42rem;
+	flex: 0 0 auto;
+	max-width: 100%;
+	padding: 0.36rem 0.68rem;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: 999px;
+	background: rgba(239, 90, 91, 0.14);
+	color: rgba(255, 255, 255, 0.84);
+	font-size: 1.01rem;
+	font-weight: 700;
+	line-height: 0.95;
+}
+
+.asset-card-external-action-icon {
+	width: 1.08em;
+	height: 1.08em;
+	font-size: 1.01rem;
+	color: rgba(255, 255, 255, 0.92);
+}
+
+.asset-card-external-action-icon .octicon {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+}
+
+.asset-card-external-action-icon .octicon svg {
 	display: block;
 	padding-top: 0;
 	padding-right: 0;

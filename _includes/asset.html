@@ -2,6 +2,19 @@
 {%- capture thumb_src -%}{% include asset_thumbnail_url.html asset=asset %}{%- endcapture -%}
 {%- assign asset_tag_classes = asset.tags | join: "%%" | replace: " ", "" | split: "%%" | join: " " | downcase -%}
 {%- assign asset_tag_values = asset.tags | join: "%%" | replace: " ", "" | split: "%%" | join: "|" | downcase -%}
+{%- assign external_actions = asset.external_actions | default: empty -%}
+{%- assign external_action_badge = "" -%}
+{%- if external_actions.size > 0 -%}
+	{%- assign first_external_action = external_actions | first -%}
+	{%- assign first_external_action_type = first_external_action.type | default: "external" | downcase -%}
+	{%- if first_external_action_type == "buy" -%}
+		{%- assign external_action_badge = "Paid" -%}
+	{%- elsif first_external_action_type == "support" or first_external_action_type == "donate" or first_external_action_type == "sponsor" -%}
+		{%- assign external_action_badge = "Support" -%}
+	{%- else -%}
+		{%- assign external_action_badge = "Creator link" -%}
+	{%- endif -%}
+{%- endif -%}
 {%- capture asset_tag_summary -%}
 	{%- for tag in asset.tags -%}
 		{%- assign tag_slug = tag | downcase | remove: " " -%}
@@ -25,6 +38,12 @@
 				<span class="asset-card-stars">
 					{% include site_icon.html name="star" class="asset-card-stars-icon" %}
 					<span>{{ asset.stars }}</span>
+				</span>
+				{%- endif -%}
+				{%- if external_action_badge.size > 0 -%}
+				<span class="asset-card-external-action-badge">
+					{% include site_icon.html name="heart" class="asset-card-external-action-icon" %}
+					<span>{{ external_action_badge }}</span>
 				</span>
 				{%- endif -%}
 			</span>

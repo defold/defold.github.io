@@ -30,6 +30,22 @@ stylesheets:
 		});
 
 		var name = document.getElementById("asset_name").value;
+		var externalActions = [];
+		var externalActionType = document.getElementById("asset_external_action_type").value;
+		var externalActionLabel = document.getElementById("asset_external_action_label").value.trim();
+		var externalActionUrl = document.getElementById("asset_external_action_url").value.trim();
+		if (externalActionLabel || externalActionUrl) {
+			if (!externalActionLabel || !externalActionUrl) {
+				alert("External action label and URL are both required when adding a creator action.");
+				return;
+			}
+			externalActions.push({
+				type: externalActionType,
+				label: externalActionLabel,
+				url: externalActionUrl
+			});
+		}
+
 		var asset = {
 			name: name,
 			description: document.getElementById("asset_description").value,
@@ -46,6 +62,9 @@ stylesheets:
 				thumb: ""
 			}
 		};
+		if (externalActions.length > 0) {
+			asset.external_actions = externalActions;
+		}
 
 		var instructions = "Please attach two images on GitHub if possible: " + name + "-hero.[png|jpg] (max 2400x666) and " + name + "-thumb.[png|jpg] (max 580x380).";
 		var url = "https://github.com/defold/asset-portal/issues/new"
@@ -103,6 +122,27 @@ stylesheets:
 					<div class="submit-form-field">
 						<label for="asset_license">License</label>
 						<input id="asset_license" type="text" name="license" required>
+					</div>
+
+					<div class="submit-form-field">
+						<label for="asset_external_action_type">Creator action type (optional)</label>
+						<select id="asset_external_action_type" name="external_action_type">
+							<option value="support">Support</option>
+							<option value="buy">Buy</option>
+							<option value="donate">Donate</option>
+							<option value="sponsor">Sponsor</option>
+							<option value="external">External link</option>
+						</select>
+					</div>
+
+					<div class="submit-form-field">
+						<label for="asset_external_action_label">Creator action label (optional)</label>
+						<input id="asset_external_action_label" type="text" name="external_action_label" maxlength="50" placeholder="Support on Ko-fi">
+					</div>
+
+					<div class="submit-form-field submit-form-field-full">
+						<label for="asset_external_action_url">Creator action URL (optional)</label>
+						<input id="asset_external_action_url" type="url" name="external_action_url" placeholder="https://ko-fi.com/creator">
 					</div>
 
 					<fieldset class="submit-form-field submit-form-field-full submit-form-fieldset">

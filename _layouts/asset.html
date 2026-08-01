@@ -8,6 +8,7 @@ layout: page
 {%- capture thumb_src -%}{% include asset_thumbnail_url.html asset=asset %}{%- endcapture -%}
 {%- assign project_link = asset.project_url | default: "" -%}
 {%- assign website_link = asset.website_url | default: "" -%}
+{%- assign external_actions = asset.external_actions | default: empty -%}
 {%- assign primary_link = "" -%}
 {%- assign primary_link_text = "" -%}
 {%- assign primary_link_icon = "browser" -%}
@@ -21,7 +22,7 @@ layout: page
 		{%- assign primary_link_text = "View Repository" -%}
 		{%- assign primary_link_description = "Open the project repository with all releases and instructions. ↗" -%}
 		{%- if project_link contains "github.com/" -%}
-			{%- assign primary_link_icon_image = "/images/icons/icon-github.svg" -%}
+			{%- assign primary_link_icon_image = "/images/icons/GitHub-Mark-Light-32px@3x.png" -%}
 		{%- endif -%}
 	{%- else -%}
 		{%- assign primary_link_text = "Open project page" -%}
@@ -64,7 +65,7 @@ layout: page
 	{%- endif -%}
 {%- endif -%}
 {%- assign has_action_cards = false -%}
-{%- if show_primary_link_card or learn_more_link.size > 0 or asset.forum_url.size > 0 or asset.asset_url.size > 0 -%}
+{%- if show_primary_link_card or learn_more_link.size > 0 or asset.forum_url.size > 0 or external_actions.size > 0 or asset.asset_url.size > 0 -%}
 	{%- assign has_action_cards = true -%}
 {%- endif -%}
 {%- assign has_release_panel = false -%}
@@ -224,6 +225,37 @@ layout: page
 					</a>
 					{%- endif -%}
 
+					{%- if external_actions.size > 0 -%}
+						{%- for action in external_actions -%}
+							{%- assign action_type = action.type | default: "external" | downcase -%}
+							{%- assign action_label = action.label | default: "External creator link" -%}
+							{%- assign action_url = action.url | default: "" -%}
+							{%- if action_url.size > 0 -%}
+					<a class="page-route-card asset-detail-action-card asset-detail-external-action-card" href="{{ action_url }}" target="_blank" rel="noopener nofollow sponsored">
+						<span class="page-route-card-icon" aria-hidden="true">
+								{%- if action_type == "buy" -%}
+							{% include site_icon.html name="credit-card" %}
+								{%- elsif action_type == "support" or action_type == "donate" or action_type == "sponsor" -%}
+							{% include site_icon.html name="heart" %}
+								{%- else -%}
+							{% include site_icon.html name="link-external" %}
+								{%- endif -%}
+						</span>
+						<span class="page-route-card-copy">
+							<h3>{{ action_label }}</h3>
+								{%- if action_type == "buy" -%}
+							<p>Buy this asset on an external marketplace. ↗</p>
+								{%- elsif action_type == "support" or action_type == "donate" or action_type == "sponsor" -%}
+							<p>Support the creator on an external platform. ↗</p>
+								{%- else -%}
+							<p>Open an external creator link. ↗</p>
+								{%- endif -%}
+						</span>
+					</a>
+							{%- endif -%}
+						{%- endfor -%}
+					{%- endif -%}
+
 					{%- if asset.asset_url.size > 0 -%}
 					<a class="page-route-card asset-detail-action-card" href="{{ asset.asset_url }}" target="_blank" rel="noopener">
 						<span class="page-route-card-icon" aria-hidden="true">
@@ -236,6 +268,9 @@ layout: page
 					</a>
 					{%- endif -%}
 				</div>
+				{%- if external_actions.size > 0 -%}
+				<p class="asset-detail-external-action-note">External links are provided by the asset creator. Defold does not process payments, provide refunds, or control availability, pricing, licensing, or support on third-party platforms.</p>
+				{%- endif -%}
 				{%- endif -%}
 			</article>
 
