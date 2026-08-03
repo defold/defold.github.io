@@ -1307,6 +1307,20 @@ def validate_asset_external_actions(asset_source_dir):
             details += "\n... and {} more".format(len(errors) - 50)
         raise ValueError("Invalid asset external_actions:\n{}".format(details))
 
+def validate_asset_paid_only(asset_source_dir):
+    errors = []
+    for filename in find_files(asset_source_dir, "*.json"):
+        asset_id = os.path.basename(filename).replace(".json", "")
+        asset = read_as_json(filename)
+        if "paid_only" in asset and not isinstance(asset["paid_only"], bool):
+            errors.append("{}: paid_only must be a boolean".format(asset_id))
+
+    if errors:
+        details = "\n".join(errors[:50])
+        if len(errors) > 50:
+            details += "\n... and {} more".format(len(errors) - 50)
+        raise ValueError("Invalid asset paid_only values:\n{}".format(details))
+
 def fix_platforms_case(platforms):
     if platforms:
         if platforms[0].lower() == "*":
@@ -1328,6 +1342,7 @@ def process_assets(tmp_dir):
     asset_source_dir = os.path.join(tmp_dir, "asset-portal-master", "assets")
     validate_asset_tags(asset_source_dir)
     validate_asset_external_actions(asset_source_dir)
+    validate_asset_paid_only(asset_source_dir)
 
     # Jekyll assets collection
     asset_collection_dir = "assets"

@@ -30,6 +30,7 @@ stylesheets:
 		});
 
 		var name = document.getElementById("asset_name").value;
+		var paidOnly = document.getElementById("asset_paid_only").checked;
 		var externalActions = [];
 		var externalActionType = document.getElementById("asset_external_action_type").value;
 		var externalActionLabel = document.getElementById("asset_external_action_label").value.trim();
@@ -64,6 +65,9 @@ stylesheets:
 		};
 		if (externalActions.length > 0) {
 			asset.external_actions = externalActions;
+		}
+		if (paidOnly) {
+			asset.paid_only = true;
 		}
 
 		var instructions = "Please attach two images on GitHub if possible: " + name + "-hero.[png|jpg] (max 2400x666) and " + name + "-thumb.[png|jpg] (max 580x380).";
@@ -123,6 +127,11 @@ stylesheets:
 						<label for="asset_license">License</label>
 						<input id="asset_license" type="text" name="license" required>
 					</div>
+
+					<fieldset class="submit-form-field submit-form-fieldset">
+						<legend>Availability</legend>
+						<label class="submit-form-check" for="asset_paid_only"><input id="asset_paid_only" type="checkbox" name="paid_only"><span>Paid only</span></label>
+					</fieldset>
 
 					<div class="submit-form-field">
 						<label for="asset_external_action_type">Creator action type (optional)</label>
