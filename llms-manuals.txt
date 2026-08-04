@@ -157,6 +157,14 @@ If you find any issues, please report them [as a GitHub issue](https://github.co
 - [Texture filtering](#manuals:texture-filtering)
 - [Physically Based Rendering](#manuals:physically-based-rendering)
 
+### Automation
+
+- [Overview](#manuals:automation)
+- [Editor HTTP API](#manuals:editor-http-api)
+- [Engine service](#manuals:engine-service)
+- [Automated testing](#manuals:automated-testing)
+- [AI coding agents](#manuals:ai-agents)
+
 ### Workflow
 
 - [Application security](#manuals:application-security)
@@ -14831,6 +14839,945 @@ See also:
 * [Shaders manual](#manuals:shader)
 * [Render manual](#manuals:render)
 * [glTF 2.0 specification](https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html)
+
+<!-- /manuals/automation -->
+
+# Automation in Defold {#manuals:automation}
+
+This manual provides the overall description and links to the separate manuals for each topic.
+
+Defold supports automation at several levels. Choosing an interface appropriate to the task is one of the most important aspects of effective automation. The table below can help you choose the simplest interface for a given action:
+
+| Layer | Purpose |
+| --- | --- |
+| [Editor Scripts](#manuals:editor-scripts) | Custom commands and Editor workflows or integrations to speed up testing and development, e.g. creation of levels, assets |
+| [Editor UI scripts](#manuals:editor-scripts-ui) | Custom visual tools, popups, configurators, or user interfaces utilizing Editor Scripts |
+| [Editor HTTP API](#manuals:editor-http-api) | Control the open game project in the Defold Editor via OpenAPI operations, project resources, builds, editor commands, previews, preferences, console output, or editor scripts for custom operations, external tools, IDE integrations, and test controllers |
+| [Bob CLI](#manuals:bob) | Building a project, creating data archives or standalone bundles from the command line, reports, CI |
+| [Lifecycle hooks](#manuals:editor-http-api#lifecycle-hooks) | Validation or generation before and after editor builds or bundling |
+| [Engine HTTP service](#manuals:engine-service) | Running Defold game engine (`dmengine`) inspection, development services, profiling, runtime messages, or extension-defined runtime automation APIs, external tools querying, sending commands to a running debug build |
+| [Automation Bridge](https://github.com/defold/extension-automation-bridge) | official Defold extension that provides additional engine runtime automation endpoints |
+| [Automated tests](#manuals:automated-tests) | Testing game logic, messages, components, input, physics, and engine behavior, scene inspection, visual feedback e.g. via [editor preview](#manuals:editor-http-api), injected input, live application state, [running test collections](#manuals:automated-testing) |
+| Shell scripts or task runners | Generation, formatting, validation, and repeatable tasks, ordinary file operations |
+| External platform-specific and web browser automation tools | Desktop testing tools, HTML5 interaction tests, screenshots, web integrations |
+| AI coding agents and multimodal models | Tasks where a deterministic approach is difficult or impossible to implement, semantic analysis of scenes, GUI layouts, or runtime screenshots |
+
+The most important distinction is between the Defold editor and a running game. They are separate processes with separate HTTP servers.
+
+## Deterministic automation or AI agents
+
+Prefer a deterministic solution when the sequence of operations is already known, like e.g. in a level validator, formatter, build job, or regression test. These should normally have stable inputs, outputs, timeouts, and exit codes. It is good for automated hooks and tests, that can be reliably run on CI. A deterministic solution for procedural resource creation for your projects is also preferred, e.g. a tool to convert gltf objects to models with a given material, populate a level with e.g. trees, etc. These procedures can be easily created for every project with Editor Scripts and UI. Read more about them in [the manual](#manuals:editor-scripts-ui).
+
+An agent can be useful when a task requires investigation or multimodal (e.g. including visual) analysis: locating relevant resources, selecting an implementation, modifying several files, interpreting errors, and iterating toward defined acceptance criteria. The agent should though still call deterministic interfaces and consume the same evidence as a local script or CI runner. See the manual on [using AI coding agents with Defold](#manuals:ai-agents).
+
+## The automation loop
+
+A reliable automation process forms a closed loop:
+
+1. Inspect - read project files, the current interface description, and relevant documentation.
+2. Change - use editor transactions, editor scripts, or file and shell tools.
+3. Verify - build, run focused tests, and gather logs, reports, state, or images.
+4. Evaluate - compare the evidence with acceptance criteria, then finish or retry.
+
+Verification should provide evidence from the actual environment. Suitable evidence includes:
+
+* a successful build result;
+* an explicitly completed test suite;
+* expected state from the running game;
+* a generated bundle or build report;
+* a deterministic image comparison;
+* a screenshot that satisfies defined visual criteria.
+
+Define the expected result before making changes. Also define a timeout and a maximum number of repair attempts. An unattended process should not continue indefinitely when it cannot satisfy the acceptance criteria.
+
+## Next steps
+
+Find more details on specific topics regarding automation workflows in the given manuals:
+
+* [Automating the Defold editor tasks with HTTP API](#manuals:editor-http-api)
+* [The engine service and runtime HTTP API](#manuals:engine-service)
+* [Automated testing and verification](#manuals:automated-testing)
+* [Using AI coding agents with Defold](#manuals:ai-agents)
+
+<!-- /manuals/editor-http-api -->
+
+# Automating the Defold editor {#manuals:editor-http-api}
+
+The Defold Editor opens up a special server for automated actions. HTTP API controls the opened project. Use it for editor commands, builds, project resources, previews, preferences, console output, documentation search, or editor-script integrations. To inspect or control the running game instead, use the [engine service or a runtime automation API](#manuals:engine-service).
+
+The editor HTTP API is experimental and may change between Defold versions. The `/openapi.json` document generated by the running editor is the source of truth for its available operations and schemes.
+
+## Starting the editor from an external tool
+
+An external tool needs the editor executable and the absolute path to the project's `game.project` file.
+
+Installed Defold versions can be located through `installations.json`, as described in the [Editor manual](#manuals:editor). Its `launcherPath` field contains the executable to start. Pass the `game.project` path as the first positional argument to open that project directly.
+
+The optional `--port` or `-p` argument selects the editor server port. Omitting it lets Defold choose an available port and is usually preferable when several projects may be open.
+```sh
+# Linux
+/path/to/Defold/Defold --port 8181 /absolute/path/to/project/game.project
+```
+```sh
+# macOS
+/path/to/Defold.app/Contents/MacOS/Defold --port 8181 /absolute/path/to/project/game.project
+```
+```powershell
+# Windows
+C:\path\to\Defold\Defold.exe --port 8181 C:\absolute\path\to\project\game.project
+```
+
+The editor is a graphical desktop application. Start it in an interactive user session with access to the display. Use [Bob](#manuals:bob) when a graphical session is unavailable, such as in headless CI, or for compile-only automation and creating standalone bundles.
+
+After starting the editor, wait until the project has opened and `.internal/editor.port` exists. Then poll `/openapi.json` until it returns a valid document. Do not assume that creating the process means the project is ready.
+
+## Locating the editor server
+
+The editor starts a local HTTP server while a project is open. Select `Help ▸ Open Editor Server` to open its home page in the default browser:
+
+The selected port is written inside the project to:
+```text
+.internal/editor.port
+```
+
+The examples and commands in this manual will from now on refer to these shell variables:
+```sh
+PORT="$(cat .internal/editor.port)"
+BASE_URL="http://127.0.0.1:$PORT"
+```
+
+The port file belongs to the current editor session. Read it again after restarting the editor.
+
+The editor server is a trusted local control interface. Do not expose it through a public address, port forward, or untrusted tunnel.
+
+## Discovering operations through OpenAPI
+
+The only Defold-specific bootstrap information an external tool should need is the editor port and the OpenAPI document:
+```sh
+curl -sS "http://127.0.0.1:$(cat .internal/editor.port)/openapi.json"
+```
+
+The returned OpenAPI 3.0.3 document describes the operations supported by the running editor version, including paths, methods, parameters, command names, request formats, responses, status codes, and authentication requirements.
+
+List the documented paths:
+```sh
+curl -sS "$BASE_URL/openapi.json" |
+  jq -r '.paths | keys[]'
+```
+
+List the available editor commands:
+```sh
+curl -sS "$BASE_URL/openapi.json" |
+  jq -r '
+    .paths["/command/{command}"].post.parameters[]
+    | select(.name == "command")
+    | .schema.enum[]
+  '
+```
+
+A version-aware integration should verify each required operation and configure requests from the returned schema. We advise against maintaining a supposedly exhaustive copy of endpoint or command names, as this can get outdated.
+
+Project-defined routes also appear in `/openapi.json` when their editor scripts provide an OpenAPI operation description.
+
+## Executing editor commands
+
+Editor commands are invoked through:
+```text
+POST /command/{command}
+```
+
+For example, the current `build` command compiles and runs the project:
+```sh
+curl -sS \
+  -X POST \
+  "$BASE_URL/command/build" |
+  jq
+```
+
+A successful build returns a structured result:
+```json
+{
+  "success": true,
+  "issues": []
+}
+```
+
+A failed build returns HTTP status `422` with issues such as:
+```json
+{
+  "success": false,
+  "issues": [
+    {
+      "message": "Example compiler message",
+      "severity": "error",
+      "resource": "/main/player.script",
+      "range": {
+        "start": {
+          "line": 12,
+          "character": 4
+        },
+        "end": {
+          "line": 12,
+          "character": 17
+        }
+      }
+    }
+  ]
+}
+```
+
+The available fields depend on the error. Use the resource path and source range when present, but also handle issues that contain only a message.
+
+Commonly useful commands, when listed by the running editor, include:
+
+`build`
+: Compile and run the project.
+
+`clean-build`
+: Clear the build cache, then compile and run. Use this only when an ordinary build behaves inconsistently or appears to miss changes.
+
+`build-html5`
+: Build the project for HTML5 and make the output available through the editor server.
+
+`fetch-libraries`
+: Download and reload project dependencies.
+
+`hot-reload`
+: Reload modified resources into a running game.
+
+`reload-extensions`
+: Reload editor scripts.
+
+`debugger-start`, `debugger-stop`, and the debugger step commands
+: Control a debug session and the running project.
+
+Exact names and availability depend on the editor version and current editor state; discover them from `/openapi.json`.
+
+Commands that operate on project resources synchronize external file changes before execution.
+
+### Command responses and asynchronous work
+
+The command operation documents response codes in the current OpenAPI schema.
+
+| Status | Meaning |
+| --- | --- |
+| `200` | The command completed and returned a result |
+| `202` | The command was accepted and continues asynchronously |
+| `403` | The command is not active in the current editor state |
+| `404` | The command is not available |
+| `422` | Build or validation failed |
+| `500` | An internal editor error occurred |
+
+An HTTP `202` response is not proof that the requested result exists. Wait for the relevant output, resource, console marker, or served URL and enforce a timeout.
+
+### Building HTML5
+
+If the current OpenAPI document lists `build-html5`, invoke it through the command operation:
+```sh
+curl -sS \
+  -X POST \
+  "$BASE_URL/command/build-html5"
+```
+
+The command runs asynchronously and normally returns HTTP `202`. After the build completes, the editor serves it at:
+```text
+http://127.0.0.1:<editor-port>/html5/
+```
+
+Wait until the URL is available before starting browser tests. See [Browser tests for HTML5](#manuals:automated-testing) for more details.
+
+## Searching API documentation
+
+When present in `/openapi.json`, the `/ref` operation searches API documentation included with the running editor version. It provides names and signatures that match that version.
+
+For example, to search for a function, use:
+```sh
+curl -sS \
+  --get \
+  --data-urlencode "q=go.animate" \
+  "$BASE_URL/ref" |
+  jq
+```
+
+Filter by environment and language:
+```sh
+curl -sS \
+  --get \
+  --data-urlencode "environment=runtime" \
+  --data-urlencode "language=Lua" \
+  --data-urlencode "q=collision message|raycast" \
+  "$BASE_URL/ref" |
+  jq
+```
+
+The search parameters are:
+
+`environment`
+: `editor`, `runtime`, or comma-separated values.
+
+`language`
+: `Lua`, `C`, `C++`, or comma-separated values.
+
+`q`
+: A case-insensitive expression. Whitespace represents AND, while `|` represents OR.
+
+The are also condensed documentation resources: [LLM documentation index](https://defold.com/llms.txt) links to official manuals, API namespaces, and examples and the [full LLM documentation](https://defold.com/llms-full.txt) lists complete documentation to support offline search and local indexing.
+
+AI agents should prefer though specified searches instead of retrieving an entire reference when only one API or message is needed, in order to save on tokens and have a better prepared and clean context for a given task.
+
+## Reading console output
+
+Read the editor console as JSON:
+```sh
+curl -sS "$BASE_URL/console" | jq
+```
+
+The response contains console text in `lines` and semantic regions in `regions`, including errors, evaluation results, and resource references.
+
+To follow console output continuously, use:
+```sh
+curl -N "$BASE_URL/console/stream"
+```
+
+The stream includes existing console lines and then remains open for new output. Close it after receiving a completion marker or error, detecting process termination, or reaching a timeout or line limit.
+
+For test-result framing and failure classification, see [Automated testing and verification](#manuals:automated-testing).
+
+## Rendering scene previews
+
+The Defold editor (since 1.13.1) can render a supported scene resource "screenshot" to PNG through command `/preview/{path}`:
+```sh
+mkdir -p build/automation
+
+curl -sS \
+  "$BASE_URL/preview/main/main.collection?width=1280&height=720" \
+  --output build/automation/main-preview.png
+```
+
+This renders the main collection from the open Basic 3D template project in a default initial view:
+
+You can use render to get previews of resources that utilise the visual scene editor, for example one can render a model component in the same way, that allows to verify it's look or e.g. shader correctness:
+```sh
+curl -sS \
+  "$BASE_URL/preview/assets/models/cube.model?width=1280&height=720" \
+  --output build/automation/cube-preview.png
+```
+
+The path after `/preview/` does not include a leading slash. The optional dimensions default to the project display size and must be between `1` and `4096`.
+
+| Status | Meaning |
+| --- | --- |
+| `200` | The preview was rendered |
+| `400` | The dimensions are invalid |
+| `404` | The resource was not found |
+| `422` | The resource is not loaded or does not support scene previews |
+
+Previews might be very useful for visual analysis of the project - checking level layouts, GUI layouts, shader and lighting setup, visual regressions, or create documentation thumbnails.
+
+An editor preview is not a screenshot of the running game. It does not verify dynamically created objects, runtime post-processing, or platform-specific rendering. Use a [runtime screenshot](#manuals:automated-testing) when those elements are needed.
+
+## Executing editor Lua
+
+The authenticated `POST /eval` operation executes Lua in the editor extension environment. The per-session bearer token is stored in:
+```text
+.internal/editor.token
+```
+
+Read the token and execute code:
+```sh
+TOKEN="$(cat .internal/editor.token)"
+
+curl -sS \
+  -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: text/plain" \
+  --data-binary 'print(editor.version) return editor.platform' \
+  "$BASE_URL/eval"
+```
+
+Printed output and return values are returned as text. Typical responses are:
+
+| Status | Meaning |
+| --- | --- |
+| `200` | The code was executed |
+| `401` | The bearer token is missing or invalid |
+| `422` | The Lua code could not be parsed or executed |
+| `503` | The editor extension environment is not ready |
+
+A client may retry after `503`, but it should use a bounded number of attempts. Correct the code before repeating a request that returned `422`.
+
+Evaluated code can use the [Editor API](https://defold.com/ref/editor-lua/) and the editor scripting environment. It cannot use game runtime APIs such as `go.*` to manipulate a running game. Use a runtime test, debugger, browser test, or [runtime automation API](#manuals:engine-service) for gameplay.
+
+### Modifying resources and files
+
+Many Defold source resources use text formats and can be edited via any text editing tool. For modifying Defold project structured resources prefer editor transactions.
+
+| Change | Preferred method |
+| --- | --- |
+| Lua, shader, JSON, or another known text format | Direct file modification |
+| Unsaved text in an open editor tab | `editor.get()` and `editor.transact()` |
+| Collection, game object, GUI, atlas, or another structured resource | Editor transaction |
+| Repeatedly generated content | Standalone generator |
+| Repeatable project operation | Editor command or custom HTTP endpoint |
+| CI-only transformation | Standalone script run before Bob |
+
+Inspect a resource before changing it:
+```sh
+curl -sS \
+  -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: text/plain" \
+  --data-binary '
+    local path = "/game.project"
+    pprint(editor.properties(path))
+    return editor.get(path, "path")
+  ' \
+  "$BASE_URL/eval"
+```
+
+Check `editor.can_get()`, `editor.can_set()`, and the other `editor.can_*()` functions before performing a transaction.
+
+Use `editor.execute()` in editor Lua to run a formatter, validator, or generator:
+```lua
+local output = editor.execute(
+  "python3",
+  "scripts/generate_levels.py",
+  {
+    out = "capture"
+  }
+)
+
+print(output)
+```
+
+When the command does not modify project resources, set `reload_resources = false` to avoid an unnecessary reload.
+
+Do not modify files in `.internal/` or generated content in `build/`.
+
+## Preferences
+
+Editor preferences can be read and written through the path documented in OpenAPI, currently `/prefs/{path}`.
+
+You can for example read the configured code font size:
+```sh
+curl -sS "$BASE_URL/prefs/code/font/size" | jq
+```
+
+Or set it to e.g. 16:
+```sh
+curl -sS \
+  -X POST \
+  -H "Content-Type: application/json" \
+  --data '16' \
+  "$BASE_URL/prefs/code/font/size"
+```
+
+The editor validates the value against its preference schema. An invalid path or value returns HTTP `400`.
+
+Preferences are persistent user or project-user settings, not project configuration stored in `game.project`. If automation needs to change a preference temporarily, save the previous value and restore it afterward.
+
+## Project-defined routes
+
+Editor scripts can define additional routes with [`get_http_server_routes()`](#manuals:editor-scripts). An optional OpenAPI operation table exposes a route through the same `/openapi.json` document as built-in operations.
+
+Project-defined routes can provide content generation, validation, reports, localization checks, resource analysis, project-specific tests, or a smaller interface for an IDE or external controller.
+
+A good route should perform one clearly named operation, validate its input, return a structured result, be idempotent where possible, and limit expensive work.
+
+Project-defined routes are not automatically protected by the `/eval` token. Add project-specific authentication and safety checks when a route performs sensitive operations.
+
+## Lifecycle hooks
+
+Hooks are functions that can be run before and after builds, before and after bundle creation, and when a game process starts or terminates. A project can contain one `hooks.editor_script` file in its root. Only the root hook file receives these events, giving the project one place to define their order.
+```lua
+local M = {}
+
+local function validate_project()
+  print(editor.execute(
+    "python3",
+    "scripts/validate_project.py",
+    {
+      out = "capture",
+      reload_resources = false
+    }
+  ))
+end
+
+function M.on_build_started(opts)
+  validate_project()
+end
+
+function M.on_build_finished(opts)
+  print("Build successful:", opts.success)
+end
+
+return M
+```
+
+An error raised from `on_build_started()` stops the editor build. Lifecycle hooks run only in the editor; put shared validation and generation logic in standalone scripts that can also be invoked from CI.
+
+## Security and compatibility
+
+Treat the entire editor server as a trusted local interface:
+
+* Do not expose the port access publicly.
+* Protect `.internal/editor.token`; it authorizes `/eval` for the current session.
+* Do not give outside unrestricted `/eval` access.
+* Keep the token in the local integration layer rather than prompts, reports, or logs.
+* Remember that project-defined routes do not inherit `/eval` authentication.
+* Use up-to-date `/openapi.json`.
+* Use bounded waits for asynchronous automatic commands and for editor startup.
+
+## Engine Server
+
+The editor server belongs to the editor process. A running game has a different port and different responsibilities, described in [the engine service and runtime HTTP API manual](#manuals:engine-service).
+
+<!-- /manuals/engine-service -->
+
+# The engine service and runtime HTTP APIs {#manuals:engine-service}
+
+Running a project in Debug mode creates a process for a given runtime instance of the engine with your game and a special engine service that can be accessed for development and profiling infrastructure, runtime logic and messages, engine state and extensions.
+
+The engine service is a development HTTP service owned by a running debug engine (`dmengine`).
+
+It is separate from the [editor server](#manuals:editor-http-api), which belongs to the Defold editor and controls the open project.
+
+The two services use different ports. A tool that connects to the editor port cannot call runtime extension routes there, and vice versa - a tool that connects to the engine service cannot call editor operations.
+
+The engine service is part of debug, development and profiling infrastructure. Release engine instances do not create the service.
+
+## Availability and port discovery
+
+When the editor starts a debug engine, it requests a dynamically assigned service port. The engine reports the selected port in `Console` (`and its log if run from a CLI):
+
+```text
+INFO:ENGINE: Engine service started on port <port>
+```
+
+The line appears in the editor console when the game was launched from the editor. A simple local controller can parse this line, but a reusable integration should let the editor or its wrapper track the engine instance and registered port. This avoids confusing an old port with a newly started or reused process.
+
+The engine also advertises development targets through service discovery on supported platforms. That mechanism is primarily used by Defold tooling and should not be replaced with a permanently hard-coded port.
+
+Server is accessible on localhost (`127.0.0.1`) at a given port:
+
+## Built-in endpoints
+
+The current debug engine registers a small set of core routes.
+
+| Endpoint | Purpose |
+| --- | --- |
+| `GET /ping` | Check that the engine service responds |
+| `GET /info` | Read engine version, platform, build identifier, and log-service information |
+| `GET /state` | Read development connection state used by Defold tooling |
+| `POST /post//` | Post a Protobuf-encoded Defold message to a named engine socket |
+
+For example:
+```sh
+curl -sS "$ENGINE_URL/ping"
+curl -sS "$ENGINE_URL/info" | jq
+curl -sS "$ENGINE_URL/state" | jq
+```
+
+The `/post` route is used by development operations such as hot reload, reboot, resize, and process control. Its body is a binary Protobuf message of the type named in the route; it is not a JSON message API.
+
+These routes are development infrastructure, and additional profiler and resource-inspection routes exist in the engine implementation.
+
+## Extension-defined runtime routes
+
+In debug builds, the native extension SDK can provide access to the engine web server. An extension can register a route prefix on that server and expose operations that depend on runtime data.
+
+This is useful for development tools because an extension can share the existing engine service instead of opening another HTTP server.
+
+An extension-defined runtime automation API should:
+
+* use a distinct, versioned route prefix;
+* expose supported capabilities;
+* return structured errors;
+* handle unavailable platform or engine features explicitly;
+* keep operations local to development and testing;
+* document whether it is omitted from release builds.
+
+## Automation Bridge extension
+
+The official Defold [Automation Bridge](https://github.com/defold/extension-automation-bridge) is a debug-only native extension built on the engine service. It registers a versioned runtime automation API under:
+```text
+http://127.0.0.1:<engine-service-port>/automation-bridge/v1
+```
+
+Its runtime API provides capabilities such as scene and node inspection, input, screen information, screenshots, recording, lifecycle information, and optional application-defined synchronization. Some operations include:
+
+| Operation | Action |
+| --- | --- |
+| `GET  /automation-bridge/v1/health` | health report, API capabilities and compatibility |
+| `POST /automation-bridge/v1/input/click` | for runtime input interactions |
+| `GET  /automation-bridge/v1/screenshot` | for runtime screenshots |
+
+Use the extension's [native API documentation](https://github.com/defold/extension-automation-bridge/tree/master/automation_bridge) and [Python helper documentation](https://github.com/defold/extension-automation-bridge/tree/master/automation_bridge/automation-bridge-python) for the version installed in the project.
+
+Automation Bridge exposes neither its HTTP API nor its Lua module in release builds.
+
+### Editor and runtime clients
+
+The Automation Bridge Python helpers illustrate the two-client architecture. Function `editor.open_project()` returns an editor project client, and `project.build_and_run()` returns a separate engine client.
+
+| Client | Purpose |
+| --- | --- |
+| Project | Editor HTTP API, commands, debugger, console, preferences, reference, previews, build, and port discovery |
+| Game - engine service | Scene, input, screenshots, runtime state, and synchronization |
+
+The division between `project` and `game` makes the process boundary explicit. Editor operations remain on the editor server, while observations and actions against the live game remain on the engine service.
+```python
+from automation_bridge import editor
+
+project = editor.open_project(".")
+game = project.build_and_run()
+```
+
+## Limitations and security
+
+The engine service and extension-defined routes are development tools, and should be treated as such.
+
+The engine service does not currently publish an OpenAPI document. Integrations should limit themselves to documented behavior or to an extension's versioned API.
+
+Runtime scripts, physics, input, dynamically created objects, and platform rendering require a running engine and should be verified through [automated runtime testing](#manuals:automated-testing).
+
+* Do not publish the service through a router, public interface, or untrusted tunnel.
+* Do not assume that engine service routes require authentication.
+* Runtime routes can vary by extension version, platform, graphics backend, and engine capabilities.
+* Use version or capability negotiation for extension-defined up-to-date APIs.
+
+<!-- /manuals/automated-testing -->
+
+# Automated testing and verification {#manuals:automated-testing}
+
+Automated testing verifies Defold code and content with explicit, machine-readable evidence. Use this manual to design tests that work with local scripts, CI (Continuous Integration) runners, and coding agents alike. It covers module tests, running collections, browser tests, runtime automation, visual checks, headless builds, and provides useful good practices.
+
+## Verification levels
+
+Good automated testing levels follow the testing pyramid framework, which divides tests into three main layers: unit tests, integration tests, and end-to-end (E2E) tests. In Defold you can separate tests into specific collections that can be loaded at boostrap. Usually, it's good to begin with the narrowest and fastest check that can detect the problem, then add runtime or platform tests where needed.
+
+| Level | Suitable evidence |
+| --- | --- |
+| Static validation | Parser, formatter, resource validator, or generated-file comparison |
+| Module test | Assertion results for reusable Lua logic with minimal engine dependencies |
+| Running collection | Messages, components, input, physics, lifecycle, and engine behavior |
+| Runtime automation | Live scene state, injected input, application state, and runtime screenshots |
+| HTML5 browser test | Canvas input, browser integration, viewport behavior, and web output |
+| Platform test | Behavior and rendering from the actual target platform |
+| Build and bundle | Bob exit status, build report, archive, and bundle artifacts |
+
+A successful compilation proves that the project builds, but it does not prove correct gameplay behavior. A screenshot does not prove complex transitions, animations, interactions, or gameplay flow, but it can be used by modern multimodal solutions to inspect what one frame looked like and if shaders and visual layout is correct. For automated tests though prefer deterministic assertions whenever the condition can be expressed directly.
+
+## Reusable and testable Lua code
+
+Keep reusable logic in Lua modules with minimal engine dependencies. Pure data transformations, rules, state machines, and calculations can then be exercised without constructing a complete game world.
+
+Separate engine-facing code from the logic it invokes. A script can translate messages and component state into calls to a module, while tests call the module directly with controlled inputs.
+
+See the [Writing Code manual](#manuals:writing-code) for more details.
+
+## Tests in a running collection
+
+Use a dedicated test collection when the behavior depends on game objects, components, messages, input, physics, or other engine systems.
+
+Each test should:
+
+1. establish a known state;
+2. execute one behavior;
+3. assert and assess the expected result;
+4. clean up created resources;
+5. emit a structured result description.
+
+Prefer isolated test collections for tests. A project can select a test bootstrap collection through a temporary project setting in `game.project`:
+```ini
+[bootstrap]
+main_collection = /test/test.collectionc
+```
+
+Do not leave a temporary test bootstrap in the project's normal configuration. In CI, prefer a dedicated settings file passed to Bob. CI can't change the state of the repository, it should only make temporary changes when needed.
+
+For complex games, you can create small "development room" collections with predefined scenarios and simple blockouts. They make mechanics reproducible and make development easier for testing without navigating through unrelated game state and sections.
+
+### Test frameworks
+
+Projects can implement a small runner or use a [community testing library](https://defold.com/assets/?tag=testing).
+
+For example, [DefTest](https://defold.com/assets/deftest/) is a unit-testing library based on Telescope. It supports suites, setup and teardown functions, assertions, name filtering, mocks for selected Defold APIs, and optional LuaCov coverage. Tests can run from a dedicated bootstrap collection, including in a headless bundle created with Bob.
+
+## Structured test results
+
+A framework's console/log summary can be useful to developers, but an unattended automatic controller still needs an explicit completion result. Add a small adapter around the framework callback or summary if necessary, for the controller to process the tests results easily.
+
+A simple results description can use a unique prefix followed by one JSON object on each physical console line:
+```text
+TEST {"run":"8f13","event":"suite_start","tests":2}
+TEST {"run":"8f13","event":"case","name":"player_moves","status":"pass","duration_ms":3}
+TEST {"run":"8f13","event":"case","name":"player_stops","status":"pass","duration_ms":2}
+TEST {"run":"8f13","event":"suite_end","status":"pass","passed":2,"failed":0}
+```
+
+A collector should process each line independently, find the `TEST` prefix, parse the JSON that follows, and ignore unrelated engine output.
+
+Include a unique run identifier so output from an old or concurrent process cannot complete the current run. Every suite should emit one unambiguous final event (like `Pass`, `Failure`, `Crash`, `Timeout` etc).
+
+### Collecting console output
+
+When a game runs from the editor, it provides both current console history and a continuous stream. Close the stream after a matching suite completion event, process termination, an error, or a configured timeout and line limit.
+
+Read more in the [editor HTTP API manual](#manuals:editor-http-api).
+
+### Persisted logs
+
+Defold can also persist the game log by enabling `Write Log File` in `game.project`. See [Game and system logs](#manuals:debugging-game-and-system-logs). File logging is useful for packaged applications and for testing target devices where the editor console is unavailable.
+
+The project can use built-in `print()` and `pprint()` functions, or e.g. any other [logging library](https://defold.com/assets/?tag=logging) from our Asset Portal.
+
+## Testing a running game through a runtime API
+
+A runtime automation API can inspect and control a live debug engine. It can be used when tests must find runtime objects, inject input, wait for visible state, or capture the rendered result.
+
+Read the [engine service manual](#manuals:engine-service) for more details.
+
+The following example uses the [Automation Bridge](https://github.com/defold/extension-automation-bridge) Python helper structure. The project must include a compatible version of the debug extension, expose an element with the given automation id, and publish the `screen` application state:
+```python
+from automation_bridge import editor
+
+project = editor.open_project(".")
+game = project.build_and_run()
+
+try:
+    play = game.element(automation_id="play_button")
+    game.click(play)
+    game.wait_for_state("screen", "gameplay", timeout=5.0)
+    screenshot = game.screenshot()
+    print(screenshot.path)
+finally:
+    game.close_engine()
+```
+
+Application-defined states and automation ids use Automation Bridge's optional debug-only Lua API, which the project must enable and publish. A fixed sleep is vulnerable to machine speed and frame timing; bounded polling for a defined state is more reliable.
+
+Automation Bridge is an extension, not part of the core engine. Consult its [Python API reference](https://github.com/defold/extension-automation-bridge/tree/master/automation_bridge/automation-bridge-python) for installed-version selectors, waits, state, events, screenshots, and diagnostics.
+
+## Browser tests for HTML5
+
+The editor can create and serve an HTML5 build through its current `build-html5` command, as described in the [editor HTTP API manual](#manuals:editor-http-api). Bob can also create an HTML5 bundle without the editor.
+
+External browser automation tools such as Playwright, Puppeteer, Selenium, WebdriverIO or Cypress can:
+
+* wait for the Defold canvas and application readiness;
+* send keyboard, mouse, and emulated touch input;
+* resize the viewport;
+* collect browser console output and JavaScript errors;
+* take screenshots and compare artifacts.
+
+Input directed at the canvas is processed through the project's normal input bindings and `on_input()` callbacks. Test both the game response and browser-specific integration points.
+
+The most reliable approach is to expose an explicit JavaScript testing bridge in the custom `index.html`. On the Defold side, HTML5 builds can execute JavaScript using `html5.run()`, which makes communication with such a browser-side bridge possible. For commands travelling from JavaScript back into Defold, use a dedicated JavaScript-to-engine bridge.
+
+Keep browser tests bounded. Distinguish a page-load failure, missing canvas, JavaScript error, test timeout, and failed game assertion in the final report.
+
+## Editor previews and runtime screenshots for visual inspection
+
+One can create screenshot of the resource files in the default scene view in the open editor or in a game in runtime.
+
+| Method | Purpose |
+| --- | --- |
+| [Editor preview](#manuals:editor-http-api) | Loaded resource layout e.g. level or GUI, atlas composition, tilemap inspection, static scene composition, editor rendering and shaders correctness, or making documentation thumbnails |
+| [Runtime screenshot](#manuals:engine-service) | The rendered state of a running build in a controlled scenario |
+
+You can use image comparison e.g. for regression tests. Store the difference image and comparison metrics when a check fails.
+
+A multimodal model can evaluate semantic conditions in visual inspection that are difficult to express otherwise, such as clipped text, overlapping controls, unclear selection states, or content outside a safe area. It is advised to treat that evaluation as an additional signal with explicit criteria, but not as a substitute for deterministic logic checks or image comparison.
+
+## Headless tests and CI
+
+Use Bob the builder CLI tool for editor-independent CI.
+
+You can use it to resolve dependencies, build a game, an archive, or a standalone bundle, and generate a JSON report:
+```sh
+mkdir -p build/reports
+
+java -jar bob.jar \
+  --root . \
+  --archive \
+  --build-report-json build/reports/build-report.json \
+  resolve build
+```
+
+Build a headless test bundle with dedicated settings:
+```sh
+java -jar bob.jar \
+  --root . \
+  --settings test/test.settings \
+  --platform x86_64-linux \
+  --variant headless \
+  --archive \
+  --bundle-output build/test-bundle \
+  resolve build bundle
+```
+
+Run the resulting executable with a platform-appropriate process controller. Capture its exit status and logs, enforce a timeout, and require the structured suite completion event.
+
+The [Bob manual](#manuals:bob) describes platforms, settings files, bundles, caches, native extensions, and build reports.
+
+## Failure reports and artifacts
+
+Good test results should retain enough evidence to reproduce and diagnose a failure:
+
+* test name, run identifier, and assertion details;
+* elapsed time and classified outcome;
+* complete console or process log;
+* Defold version, target platform, and relevant configuration;
+* Bob build report and process exit status;
+* runtime state or scene snapshot when available;
+* screenshots, baseline differences, recordings, or browser traces;
+* paths or links to all generated artifacts.
+
+The same format should be usable by a developer, local script, CI service, or [AI coding agent](#manuals:ai-agents). This keeps verification deterministic even when diagnosis or repair is delegated.
+
+<!-- /manuals/ai-agents -->
+
+# Using AI coding agents with Defold {#manuals:ai-agents}
+
+Coding agents utilising LLM and multimodal models can inspect, modify, and verify Defold projects by calling the same model-neutral interfaces used by developers, local scripts, IDE integrations, and CI. You can use an agent when the work requires investigation and adaptation.
+
+Defold does not depend on a particular model provider or agent protocol. Defold projects work well with either Claude Code, Codex, Cursor, or any other solution. An agent environment only needs the specific capabilities granted for the task, such as reading project files, executing selected commands, calling local HTTP operations, parsing JSON, or inspecting images. This is possible thanks to Defold's exposed automation interfaces for editor and a running game engine instance, and Defold project files being easy to parse text-based resource files.
+
+## When an AI agent is useful
+
+An agent can be useful when a task requires for example:
+
+* finding relevant resources and documentation;
+* selecting among possible implementations;
+* changing multiple related files;
+* interpreting build or test failures;
+* comparing a visual result with semantic acceptance criteria;
+* making a bounded repair attempt based on collected evidence.
+
+Agents are powerful for non-deterministic development, investigation and testing processes. They can help with creating diverse solutions and work very well with Defold.
+
+## Model-neutral Defold interfaces
+
+Defold offers several supported interfaces needed for the task to be performed using any available model:
+
+* Project files and shell tools provide direct inspection and text changes.
+* [Editor scripts](#manuals:editor-scripts) can provide project-specific resource operations and tooling.
+* [Editor HTTP API](#manuals:editor-http-api) provides editor commands, build results, console output, reference search, previews, preferences, and editor-script routes.
+* [Engine service and runtime automation APIs](#manuals:engine-service) provide live debug-engine state, input, screenshots, and extension-defined operations.
+* [Bob](#manuals:bob) provides command-line builds, reports, archives, and bundles.
+
+A model available only through a chat interface can suggest code changes, but it cannot independently inspect the local project or verify a running result. The additional surrounding integration determines what the agent can actually observe and do.
+
+## Integration layers
+
+An integration layer can be established to connect an agent to local Defold operations. It can be a shell wrapper, command-line program, IDE extension, OpenAPI client, test controller, or protocol adapter.
+
+Keep policy and credentials in this local layer. Each mutating operation should return structured results or lead to a deterministic verification step.
+
+For editor operations, discover the current interface through `/openapi.json` instead of providing the agent a permanently hard-coded copy of an API. For runtime extensions, check their health, API version, and capabilities.
+
+It might be practical to separate tools by privilege level:
+
+| Level        | Examples                                              |
+| ------------ | ----------------------------------------------------- |
+| Read-only    | Project inspection, OpenAPI, `/ref`, console, preview |
+| Verification | Compilation, tests, HTML5 builds, image comparisons   |
+| Modification | File changes, resource transactions                   |
+| Privileged   | `/eval`, external commands, dependency changes        |
+
+Keeping the adapter separate from the engine and editor means that the supported Defold interfaces remain independent of a model provider or agent protocol. An adapter can expose only operations appropriate for its environment, and permission and confirmation policies remain with the application hosting the agent.
+
+### Model Context Protocol
+
+[Model Context Protocol](https://modelcontextprotocol.io/) (MCP) is one optional adapter between an agent and an integration layer. An MCP server can expose Defold operations as tools and selected documentation as resources.
+
+Do not give every model unrestricted shell and `/eval` access.
+
+Defold does not currently require an MCP server because the core automation capabilities are already exposed through open, general-purpose interfaces. The editor provides a local HTTP API with an OpenAPI specification. Modern agents can call these interfaces directly or generate their own adapters.
+
+An official MCP would therefore mostly duplicate the existing API surface and create another integration layer that Defold would need to maintain. A better long-term strategy is to keep the underlying HTTP and runtime automation APIs stable, discoverable, and well documented, while allowing the community or individual tool vendors to build lightweight MCP wrappers when needed.
+
+Instead we provided an official [Automation Bridge extension](https://github.com/defold/extension-automation-bridge) for a running game to be controlled through an engine-side service.
+
+### Community MCP integrations
+
+Community-created MCP integrations include:
+
+* the [Fulviuus Defold MCP project](https://github.com/Fulviuus/defold-mcp);
+* the [ChadAragorn Defold MCP project](https://github.com/ChadAragorn/defold-mcp).
+
+These projects are not developed, audited, maintained, or officially supported by the Defold Foundation. Before installing any community integration, inspect its current source, dependencies, permissions, network behavior, and compatibility with the Defold version in use.
+
+## Project instructions
+
+Available Large Language Models used for agentic workflows generally perform better with good instructions. Therefore, agents markdown files describing their desired behaviour, or skills are often being added to projects. It is good to design and write your own instructions for each project separately for best results, but some common knowledge and rules could be re-used.
+
+A first file that many agents search for and read is a canonical file such as `AGENTS.md` that can describe:
+
+* project structure and important entry points;
+* formatting and naming conventions;
+* commands for builds, tests, and validation;
+* required completion events and artifact locations;
+* files or directories that must not be changed;
+* operations that require approval;
+* platform assumptions and known limitations.
+
+Some solutions may rely on separate markdown files for specific actions, or so called "skills".
+
+One community example of Defold-oriented instructions and skills is available in the [Defold forum here](https://forum.defold.com/t/agent-config-collection-of-agents-md-and-skills/82387).
+
+We recommend keeping your instructions in files such as AGENTS.md and skill definitions short, concise, easy to review and maintain, and keep them up to date. Project-specific instructions can be stored in version control, making changes traceable and helping improve workflow performance over time.
+
+It is also worth regularly testing how the latest models perform without these instructions. Newer models often no longer require guidance that was previously essential, and outdated skills or overly prescriptive instructions can sometimes reduce performance.
+
+Avoid building complex technical skills that require significant long-term maintenance. Instead, focus on developing tools and workflows that remain valuable regardless of how much the underlying models improve.
+
+## Documentation discovery
+
+Agents perform best with accurate, up-to-date documentation. Gather current information from:
+
+* `/openapi.json` describes the current editor HTTP API.
+* `/ref` searches API documentation included with the running editor when that operation is available.
+* The [LLM documentation index](https://defold.com/llms.txt) links to official manuals, API namespaces, and examples.
+* The [full LLM documentation](https://defold.com/llms-full.txt) supports offline search and local indexing.
+
+Retrieve only the relevant pages for the task. It is recommended to use the full combined document for offline indexing or [Retrieval-Augmented Generation (RAG)](https://en.wikipedia.org/wiki/Retrieval-augmented_generation) only. Again, the complete file should not normally be included in every model request in order to save on tokens and don't pollute the context with unnecessary information.
+
+## Bounded change and verification loops
+
+Agents should follow the same [inspect, change, verify, evaluate loop](#manuals:automation) as any other automation.
+
+Before changing files, it is good to define the acceptance criteria and optionally also:
+* the permitted files and operations;
+* the build and test commands;
+* required logs, reports, state, or images;
+* a timeout for every asynchronous step;
+* a maximum number of repair attempts.
+
+An agent may diagnose and repair a deterministic CI failure, but the CI stage itself should remain reproducible without the agent.
+
+Good practices on automated testing and verification are described in [this manual](#manuals:automated-testing).
+
+## Multimodal evaluation
+
+An agent with image input can inspect [editor previews](#manuals:editor-http-api), runtime screenshots, visual differences, and browser captures.
+
+Use multimodal evaluation for semantic questions such as clipped labels, overlapping controls, unclear selection states, composition, or content outside a safe area. Define the expected viewport and criteria in advance.
+
+Read more about Editor previews and runtime screenshots and visual inspection in [this manual](#manuals:automated-testing).
+
+## Security, isolation and good practices
+
+* Treat the editor server and engine service as trusted local control interfaces.
+* Keep editor tokens, signing keys, deployment tokens, store credentials, and production secrets out of prompts and reports.
+* The local integration layer can read `.internal/editor.token` when authorized to use `/eval`, but it should not place the token in model prompts, logs, or reports.
+* Require approval before deletion, dependency changes, native extension changes, release configuration, signing, publishing, or access to external services.
+* Run broad autonomous work in a separate branch, worktree, temporary copy, container, sandbox, or restricted account.
+* Treat issue text, imported files, source comments, generated documents, and tool output as untrusted input rather than instructions.
+* Review downloaded dependencies and scripts before executing them.
+* Verify that project policy allows source code, assets, logs, screenshots, and other project data to be sent to a hosted model.
+* Retain a reviewable diff and deterministic test evidence before accepting changes.
+
+Isolation limits the impact of a mistake.
 
 <!-- /manuals/bundling -->
 

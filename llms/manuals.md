@@ -152,6 +152,14 @@ These are per-manual files generated for LLM usage.
 - [Texture filtering](https://defold.com/llms/manuals/texture-filtering.md)
 - [Physically Based Rendering](https://defold.com/llms/manuals/physically-based-rendering.md)
 
+## Automation
+
+- [Overview](https://defold.com/llms/manuals/automation.md)
+- [Editor HTTP API](https://defold.com/llms/manuals/editor-http-api.md)
+- [Engine service](https://defold.com/llms/manuals/engine-service.md)
+- [Automated testing](https://defold.com/llms/manuals/automated-testing.md)
+- [AI coding agents](https://defold.com/llms/manuals/ai-agents.md)
+
 ## Workflow
 
 - [Application security](https://defold.com/llms/manuals/application-security.md)
