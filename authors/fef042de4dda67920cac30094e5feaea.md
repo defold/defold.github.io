@@ -1,5 +1,6 @@
 ---
 layout: author
 author: fef042de4dda67920cac30094e5feaea
-title: Playgama
+title: "Playgama"
+permalink: /authors/fef042de4dda67920cac30094e5feaea/
 ---

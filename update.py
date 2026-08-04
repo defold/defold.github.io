@@ -12,12 +12,12 @@ import tempfile
 import re
 import subprocess
 import requests
-import hashlib
 import yaml
 
 from llms import LLMS_DIR, generate_llms_manuals, generate_llms_apis, generate_llms_examples, path_to_manuals_anchor
 from utils import list_files, read_as_json, read_as_string, rmtree, write_as_string
 from scripts import dedupe_examples_wasm
+from scripts.author_profiles import AuthorRegistry, enrich_example, generate_author_outputs
 from argparse import ArgumentParser
 from contextlib import contextmanager
 from example_scripts import (
@@ -39,7 +39,6 @@ EXAMPLES_DEFOLD_CHANNEL = "alpha"
 EXAMPLES_BUILD_SERVER = "https://build-stage.defold.com/"
 ASSETINDEX_JSON = os.path.join("_data", "assetindex.json")
 GAMES_JSON = os.path.join("_data", "games.json")
-AUTHORINDEX_JSON = os.path.join("_data", "authorindex.json")
 TAGINDEX_JSON = os.path.join("_data", "tagindex.json")
 PLATFORMINDEX_JSON = os.path.join("_data", "platformindex.json")
 
@@ -53,13 +52,6 @@ title: {}
 description: {}
 opengraph_image: {}
 twitter_image: {}
----
-"""
-
-AUTHOR_MD_FRONTMATTER = """---
-layout: author
-author: {}
-title: {}
 ---
 """
 
@@ -1025,6 +1017,7 @@ def process_examples(download = False, examples_ref = "master", changed_examples
 
         data_index_file = os.path.join("_data", "examplesindex.json")
         examplesindex = []
+        author_registry = AuthorRegistry.load("author_profiles")
 
         category_dirs = os.listdir(unzipped_examples_dir)
         for category in category_dirs:
@@ -1082,6 +1075,7 @@ def process_examples(download = False, examples_ref = "master", changed_examples
                 fm["category"] = category
                 fm["path"] = example_path
                 fm["layout"] = "example"
+                fm = enrich_example(fm, author_registry)
                 if "thumbnail" in fm:
                     image_path = "https://www.defold.com/examples/%s/%s" % (fm["path"], fm["thumbnail"])
                     fm["opengraph_image"] = image_path
@@ -1121,6 +1115,9 @@ def process_examples(download = False, examples_ref = "master", changed_examples
             os.remove(data_index_file)
         examplesindex.sort(key=lambda x: x.get("path").lower())
         write_as_json(data_index_file, examplesindex)
+
+        print("...generating authors")
+        generate_author_outputs()
 
         print("...generating llms/examples")
         generate_llms_examples()
@@ -1335,17 +1332,9 @@ def process_assets(tmp_dir):
     asset_collection_dir = "assets"
     rmmkdir(asset_collection_dir)
 
-    # Jekyll authors collection
-    author_collection_dir = "authors"
-    rmmkdir(author_collection_dir)
-
     # Jekyll asset data
     asset_data_dir = os.path.join("_data", "assets")
     rmmkdir(asset_data_dir)
-
-    # Jekyll author data
-    author_data_dir = os.path.join("_data", "authors")
-    rmmkdir(author_data_dir)
 
     # Jekyll tag data
     tag_data_dir = os.path.join("_data", "tags")
@@ -1356,7 +1345,6 @@ def process_assets(tmp_dir):
     rmcopytree(os.path.join(asset_source_dir, "images"), image_dir)
 
     assetindex = []
-    authorindex = {}
     tagindex = {}
     platformindex = {}
     for filename in find_files(asset_source_dir, "*.json"):
@@ -1372,11 +1360,7 @@ def process_assets(tmp_dir):
         asset = read_as_json(asset_file)
         fix_tags_case(asset["tags"], asset_id)
         fix_platforms_case(asset["platforms"])
-        author_name = asset["author"]
         project_url = asset.get("project_url") or asset.get("github_url") or ""
-
-        author_id = hashlib.md5(author_name.encode('utf-8')).hexdigest()
-        asset["author_id"] = author_id
         asset["asset_url"] = "https://github.com/defold/asset-portal/blob/master/assets/%s.json" % asset_id
         asset["project_url"] = project_url
         asset.pop("github_url", None)
@@ -1421,19 +1405,6 @@ def process_assets(tmp_dir):
             })
             platformindex[platform]["assets"].sort(key=lambda x: x.get("id").lower())
 
-        # build author index
-        if not author_id in authorindex:
-            authorindex[author_id] = {
-                "id": author_id,
-                "name": author_name,
-                "assets": []
-            }
-        authorindex[author_id]["assets"].append({
-            "id": asset_id,
-            "stars": asset.get("stars") or 0
-        })
-        authorindex[author_id]["assets"].sort(key=lambda x: x.get("id").lower())
-
         # generate a dummy markdown page with some front matter for each asset
         with open(os.path.join(asset_collection_dir, basename.replace(".json", ".md")), "w") as f:
             asset_name = asset["name"]
@@ -1449,18 +1420,8 @@ def process_assets(tmp_dir):
     assetindex.sort(key=lambda x: x.get("id").lower())
     write_as_json(ASSETINDEX_JSON, assetindex, False)
 
-    # write author index
-    authorlist = authorindex.values()
-    authorlist = sorted(authorlist, key=lambda x: x.get("name").lower())
-    write_as_json(AUTHORINDEX_JSON, authorlist, False)
-
-    # write author data and a dummy markdown page with front matter
-    for author in authorlist:
-        author["assets"].sort(key=lambda x: x.get("id"))
-        filename = os.path.join(author_data_dir, author["id"] + ".json")
-        write_as_json(filename, author, False)
-        with open(os.path.join(author_collection_dir, author["id"] + ".md"), "w") as f:
-            f.write(AUTHOR_MD_FRONTMATTER.format(author["id"], author["name"]))
+    # Rebuild unified Asset Portal + Examples contributor profiles.
+    generate_author_outputs()
 
     # write tag index
     taglist = tagindex.values()

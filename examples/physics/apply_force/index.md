@@ -1,7 +1,14 @@
 ---
+author: Defold Foundation
+authors:
+- github: defold
+  id: f0ed797e86f7025f8ba5455479852ca5
+  name: Defold Foundation
 brief: This example demonstrates how to apply directional force to all dynamic blocks on touch/click and draws debug direction lines.
 category: physics
 layout: example
+license: CC0-1.0
+license_url: https://creativecommons.org/publicdomain/zero/1.0/
 opengraph_image: https://www.defold.com/examples/physics/apply_force/thumbnail.png
 path: physics/apply_force
 scripts: apply_force.script
@@ -9,7 +16,6 @@ tags: physics
 thumbnail: thumbnail.png
 title: Apply force
 twitter_image: https://www.defold.com/examples/physics/apply_force/thumbnail.png
-
 ---
 
 This example demonstrates how to apply directional force to all dynamic blocks on touch/click and draws debug direction lines.

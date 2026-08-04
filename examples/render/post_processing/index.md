@@ -1,8 +1,14 @@
 ---
 author: Defold Foundation
+authors:
+- github: defold
+  id: f0ed797e86f7025f8ba5455479852ca5
+  name: Defold Foundation
 brief: This example shows how to apply a post-processing effect by drawing to a render target and then to a fullscreen quad using a post processing shader.
 category: render
 layout: example
+license: CC0-1.0
+license_url: https://creativecommons.org/publicdomain/zero/1.0/
 opengraph_image: https://www.defold.com/examples/render/post_processing/postprocess_thumb.png
 path: render/post_processing
 scripts: postprocess.script, invert.fp, invert.vp
@@ -10,7 +16,6 @@ tags: render
 thumbnail: postprocess_thumb.png
 title: Post-processing
 twitter_image: https://www.defold.com/examples/render/post_processing/postprocess_thumb.png
-
 ---
 
 The basic principle of a full screen post processing effect is to first draw the entire game to a render target, then draw this render target to a full screen quad using a post processing shader to apply some kind of effect. This example shows a color invert effect and a CRT scanline effect.

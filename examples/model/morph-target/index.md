@@ -1,8 +1,14 @@
 ---
 author: Defold Foundation
+authors:
+- github: defold
+  id: f0ed797e86f7025f8ba5455479852ca5
+  name: Defold Foundation
 brief: Shows how to play glTF morph target animations with a morph-capable model material.
 category: model
 layout: example
+license: CC0-1.0
+license_url: https://creativecommons.org/publicdomain/zero/1.0/
 opengraph_image: https://www.defold.com/examples/model/morph-target/thumbnail.webp
 path: model/morph-target
 scripts: morph_target.script, morph_target.vp
@@ -10,7 +16,6 @@ tags: model, animation
 thumbnail: thumbnail.webp
 title: Morph Target Animation
 twitter_image: https://www.defold.com/examples/model/morph-target/thumbnail.webp
-
 ---
 
 This example plays morph target animations from a glTF model. The model uses a small custom material based on Defold's built-in model material, with the extra shader bindings needed to render morph target deformation.

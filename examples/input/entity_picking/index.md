@@ -1,13 +1,18 @@
 ---
 author: Artsiom Trubchyk
+authors:
+- github: aglitchman
+  id: 4fff661212c3b63631eb09266e26b456
+  name: Artsiom Trubchyk
 brief: This example demonstrates how to pick a game object from the 3D scene.
 category: input
 layout: example
+license: CC0-1.0
+license_url: https://creativecommons.org/publicdomain/zero/1.0/
 path: input/entity_picking
 scripts: entity_picking.script
 tags: input
 title: Entity Picking
-
 ---
 
 This example describes method of selecting a game object from the 3D scene on the click of the mouse using collision-based picking:

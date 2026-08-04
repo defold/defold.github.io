@@ -1,8 +1,14 @@
 ---
 author: Defold Foundation
+authors:
+- github: defold
+  id: f0ed797e86f7025f8ba5455479852ca5
+  name: Defold Foundation
 brief: Create Box2D sensors from static collision shapes.
 category: physics
 layout: example
+license: CC0-1.0
+license_url: https://creativecommons.org/publicdomain/zero/1.0/
 opengraph_image: https://www.defold.com/examples/physics/box2d_sensor_toggle/thumbnail.webp
 path: physics/box2d_sensor_toggle
 scripts: sensor_box2d_v3.script, sensor_box2d_v2.script, spawn.script
@@ -10,7 +16,6 @@ tags: physics, box2d
 thumbnail: thumbnail.webp
 title: Box2D Sensors
 twitter_image: https://www.defold.com/examples/physics/box2d_sensor_toggle/thumbnail.webp
-
 ---
 
 This example shows how to utilize the Box2D scripting API to operate with sensors (triggers).

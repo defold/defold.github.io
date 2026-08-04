@@ -1,8 +1,14 @@
 ---
 author: Defold Foundation
+authors:
+- github: defold
+  id: f0ed797e86f7025f8ba5455479852ca5
+  name: Defold Foundation
 brief: This example shows how to use collection proxies to show a splash screen while loading a game menu.
 category: collection
 layout: example
+license: CC0-1.0
+license_url: https://creativecommons.org/publicdomain/zero/1.0/
 opengraph_image: https://www.defold.com/examples/collection/splash/splash.png
 path: collection/splash
 scripts: controller.script
@@ -10,7 +16,6 @@ tags: collection
 thumbnail: splash.png
 title: Splash
 twitter_image: https://www.defold.com/examples/collection/splash/splash.png
-
 ---
 
 The setup consists of several collections and game objects.

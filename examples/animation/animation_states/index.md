@@ -1,8 +1,14 @@
 ---
 author: Defold Foundation
+authors:
+- github: defold
+  id: f0ed797e86f7025f8ba5455479852ca5
+  name: Defold Foundation
 brief: Shows how to build a small Finite State Machine module and use it to control character and animation states.
 category: animation
 layout: example
+license: CC0-1.0
+license_url: https://creativecommons.org/publicdomain/zero/1.0/
 opengraph_image: https://www.defold.com/examples/animation/animation_states/thumbnail.png
 path: animation/animation_states
 scripts: knight.script, control.gui_script, fsm.lua
@@ -10,7 +16,6 @@ tags: animation, sprite, architecture, input
 thumbnail: thumbnail.png
 title: Finite State Machines
 twitter_image: https://www.defold.com/examples/animation/animation_states/thumbnail.png
-
 ---
 
 You can control the example in two ways:

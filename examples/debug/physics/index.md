@@ -1,8 +1,14 @@
 ---
 author: Defold Foundation
+authors:
+- github: defold
+  id: f0ed797e86f7025f8ba5455479852ca5
+  name: Defold Foundation
 brief: This example allows you to toggle physics debug visualization as well as changing the time step so the simulation runs at one tenth of the speed.
 category: debug
 layout: example
+license: CC0-1.0
+license_url: https://creativecommons.org/publicdomain/zero/1.0/
 opengraph_image: https://www.defold.com/examples/debug/physics/thumbnail.png
 path: debug/physics
 scripts: physics.script, loader.script
@@ -10,7 +16,6 @@ tags: debug
 thumbnail: thumbnail.png
 title: Physics debug
 twitter_image: https://www.defold.com/examples/debug/physics/thumbnail.png
-
 ---
 
 With the physics visualization on, all collision object shapes are visible. In addition, at intersections the normals at the collision points are shown.

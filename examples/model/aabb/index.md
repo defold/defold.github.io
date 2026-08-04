@@ -1,8 +1,14 @@
 ---
 author: Artsiom Trubchyk
+authors:
+- github: aglitchman
+  id: 4fff661212c3b63631eb09266e26b456
+  name: Artsiom Trubchyk
 brief: This example shows how to use `model.get_aabb()` to frame moving 3D objects with a camera.
 category: model
 layout: example
+license: CC0-1.0
+license_url: https://creativecommons.org/publicdomain/zero/1.0/
 opengraph_image: https://www.defold.com/examples/model/aabb/thumbnail.webp
 path: model/aabb
 scripts: aabb.script
@@ -10,7 +16,6 @@ tags: model
 thumbnail: thumbnail.webp
 title: AABB to frame objects with a camera
 twitter_image: https://www.defold.com/examples/model/aabb/thumbnail.webp
-
 ---
 
 An axis-aligned bounding box, or AABB, is the smallest box aligned to the world X, Y, and Z axes that contains an object. Because it is described by only two corners, `min` and `max`, it is cheap to compare, combine, and use for visibility or spatial tests.

@@ -1,8 +1,13 @@
 ---
 author: JuLongZhiLu(巨龙之路)
+authors:
+- id: 8ce6b18f49fadbbf198cf2f6ec7243c6
+  name: JuLongZhiLu(巨龙之路)
 brief: Apply a linear impulse to a dynamic physics body on click or touch.
 category: physics
 layout: example
+license: CC0-1.0
+license_url: https://creativecommons.org/publicdomain/zero/1.0/
 opengraph_image: https://www.defold.com/examples/physics/apply_linear_impulse/thumbnail.png
 path: physics/apply_linear_impulse
 scripts: apply_linear_impulse.script
@@ -10,7 +15,6 @@ tags: physics
 thumbnail: thumbnail.png
 title: Apply Linear Impulse
 twitter_image: https://www.defold.com/examples/physics/apply_linear_impulse/thumbnail.png
-
 ---
 
 This example shows how a Box2D body can be pushed instantly with a linear impulse.

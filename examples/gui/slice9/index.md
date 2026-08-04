@@ -1,8 +1,14 @@
 ---
 author: Agustin R.
+authors:
+- github: FlexYourBrain
+  id: 3d50d039c078a00ce00628af22d57540
+  name: Agustin R.
 brief: This example demonstrates slice-9 scaling gui box node.
 category: gui
 layout: example
+license: CC0-1.0
+license_url: https://creativecommons.org/publicdomain/zero/1.0/
 opengraph_image: https://www.defold.com/examples/gui/slice9/slice9.png
 path: gui/slice9
 scripts: slice9.gui_script
@@ -10,7 +16,6 @@ tags: gui
 thumbnail: slice9.png
 title: Slice-9
 twitter_image: https://www.defold.com/examples/gui/slice9/slice9.png
-
 ---
 
 Overview : Using a small stylized image (90x91 pixels) we apply it to a gui node and set the slice-9 properties, we can then 

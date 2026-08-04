@@ -1,8 +1,14 @@
 ---
 author: Defold Foundation
+authors:
+- github: defold
+  id: f0ed797e86f7025f8ba5455479852ca5
+  name: Defold Foundation
 brief: Shows how to animate Euler rotation.
 category: animation
 layout: example
+license: CC0-1.0
+license_url: https://creativecommons.org/publicdomain/zero/1.0/
 opengraph_image: https://www.defold.com/examples/animation/euler_rotation/thumbnail.png
 path: animation/euler_rotation
 scripts: euler_rotation.script
@@ -10,7 +16,6 @@ tags: animation
 thumbnail: thumbnail.png
 title: Euler Rotation
 twitter_image: https://www.defold.com/examples/animation/euler_rotation/thumbnail.png
-
 ---
 
 This example rotates a spinner sprite continuously by tweening one Euler angle. It uses the Z axis because that is the axis pointing out of the screen in a 2D scene.

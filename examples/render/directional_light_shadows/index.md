@@ -1,8 +1,14 @@
 ---
 author: Defold Foundation
+authors:
+- github: defold
+  id: f0ed797e86f7025f8ba5455479852ca5
+  name: Defold Foundation
 brief: This example shows how to implement a configurable, PCF-filtered shadow map for a directional light.
 category: render
 layout: example
+license: CC0-1.0
+license_url: https://creativecommons.org/publicdomain/zero/1.0/
 opengraph_image: https://www.defold.com/examples/render/directional_light_shadows/thumbnail.webp
 path: render/directional_light_shadows
 scripts: directional_shadow.script, shadow_mapping.lua, directional_light_shadows.render_script, directional_shadow_depth.vp, directional_shadow_depth.fp, directional_shadow_receiver.vp, directional_shadow_receiver.fp, shadows.glsl
@@ -10,7 +16,6 @@ tags: render, 3d
 thumbnail: thumbnail.webp
 title: Directional Light Shadows with PCF Filtering
 twitter_image: https://www.defold.com/examples/render/directional_light_shadows/thumbnail.webp
-
 ---
 
 This example adds real-time shadows to a directional light and provides a custom render script for drawing shadows in a small 3D scene.

@@ -1,10 +1,997 @@
 {
+    "aliases": [
+        "Defold",
+        "The Defold Foundation"
+    ],
     "assets": [
         {
+            "id": "adinfo",
+            "stars": 2
+        },
+        {
+            "id": "admob-defold",
+            "stars": 54
+        },
+        {
+            "id": "adpf",
+            "stars": 4
+        },
+        {
+            "id": "automation-bridge",
+            "stars": 15
+        },
+        {
+            "id": "camera",
+            "stars": 9
+        },
+        {
+            "id": "crazygames",
+            "stars": 14
+        },
+        {
+            "id": "defold-fmod",
+            "stars": 12
+        },
+        {
             "id": "defold-pbr",
+            "stars": 2
+        },
+        {
+            "id": "endlessrunner",
+            "stars": 174
+        },
+        {
+            "id": "facebook",
+            "stars": 12
+        },
+        {
+            "id": "facebookinstantgames",
+            "stars": 40
+        },
+        {
+            "id": "firebase-crashlytics",
+            "stars": 5
+        },
+        {
+            "id": "firebase-remoteconfig",
+            "stars": 6
+        },
+        {
+            "id": "fontgen",
+            "stars": 8
+        },
+        {
+            "id": "gamedistribution",
+            "stars": 11
+        },
+        {
+            "id": "googleanalyticsforfirebase",
+            "stars": 21
+        },
+        {
+            "id": "googleplaygameservices",
+            "stars": 32
+        },
+        {
+            "id": "googleplayinstant",
+            "stars": 4
+        },
+        {
+            "id": "iac",
+            "stars": 7
+        },
+        {
+            "id": "iap",
+            "stars": 24
+        },
+        {
+            "id": "levelplay",
+            "stars": 17
+        },
+        {
+            "id": "lua-language-server",
+            "stars": 19
+        },
+        {
+            "id": "magiclinker",
+            "stars": 174
+        },
+        {
+            "id": "photon-realtime",
+            "stars": 8
+        },
+        {
+            "id": "platformertutorial",
+            "stars": 15
+        },
+        {
+            "id": "poki",
+            "stars": 37
+        },
+        {
+            "id": "prometheus",
+            "stars": 36
+        },
+        {
+            "id": "push",
+            "stars": 23
+        },
+        {
+            "id": "resource-encryption",
+            "stars": 15
+        },
+        {
+            "id": "review",
+            "stars": 15
+        },
+        {
+            "id": "rive",
+            "stars": 73
+        },
+        {
+            "id": "safearea",
+            "stars": 30
+        },
+        {
+            "id": "siwa",
+            "stars": 6
+        },
+        {
+            "id": "spine",
+            "stars": 45
+        },
+        {
+            "id": "steamworks",
+            "stars": 46
+        },
+        {
+            "id": "teal",
+            "stars": 55
+        },
+        {
+            "id": "texturepacker",
+            "stars": 22
+        },
+        {
+            "id": "videoplayernative",
+            "stars": 14
+        },
+        {
+            "id": "wavedash",
+            "stars": 4
+        },
+        {
+            "id": "webmonetization",
+            "stars": 5
+        },
+        {
+            "id": "websocket",
+            "stars": 49
+        },
+        {
+            "id": "xsolla",
             "stars": 3
         }
     ],
+    "avatar_url": "https://github.com/defold.png?size=240",
+    "examples": [
+        {
+            "author": "Defold Foundation",
+            "brief": "Learn how to play 3D animations from a GLB model using skinned model material.",
+            "category": "animation",
+            "image": "/examples/animation/3d_animations/thumbnail.webp",
+            "path": "animation/3d_animations",
+            "title": "3D Animations - Skinned Model"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "This example shows how to use the delay parameter of `go.animate()` to create a wave effect.",
+            "category": "animation",
+            "image": "/examples/animation/animation_delay/thumbnail.png",
+            "path": "animation/animation_delay",
+            "title": "Animation Delay - Wave"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "Shows how to build a small Finite State Machine module and use it to control character and animation states.",
+            "category": "animation",
+            "image": "/examples/animation/animation_states/thumbnail.png",
+            "path": "animation/animation_states",
+            "title": "Finite State Machines"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "This example shows how to tween animate the position of a game object.",
+            "category": "animation",
+            "image": "/examples/animation/basic_tween/basic_tween.png",
+            "path": "animation/basic_tween",
+            "title": "Tween animation"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "This example shows how to use `go.cancel_animations()` to stop a running animation and start a new one.",
+            "category": "animation",
+            "image": "/examples/animation/cancel_animation/setup.png",
+            "path": "animation/cancel_animation",
+            "title": "Cancel animation"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "This example shows how to chain two tween animations of the position of a game object. In addition, the scale and tint is animated separately.",
+            "category": "animation",
+            "image": "/examples/animation/chained_tween/chained_tween.png",
+            "path": "animation/chained_tween",
+            "title": "Tween animations chain"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "This example shows how to define a custom easing curve and use it when animating with `go.animate()` instead of a built-in easing constant.",
+            "category": "animation",
+            "image": "/examples/animation/custom_easing/setup.png",
+            "path": "animation/custom_easing",
+            "title": "Custom easing - square wave"
+        },
+        {
+            "author": "mikatuo, Defold Foundation",
+            "brief": "Demonstrates different easing functions available in Defold.",
+            "category": "animation",
+            "image": "/examples/animation/easing/thumbnail.webp",
+            "path": "animation/easing",
+            "title": "Easing Functions (Tweens)"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "Shows how to animate Euler rotation.",
+            "category": "animation",
+            "image": "/examples/animation/euler_rotation/thumbnail.png",
+            "path": "animation/euler_rotation",
+            "title": "Euler Rotation"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "This example shows how to use a flipbook animation in a sprite",
+            "category": "animation",
+            "image": "/examples/animation/flipbook/flipbook.png",
+            "path": "animation/flipbook",
+            "title": "Flipbook animation"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "This example shows Spine bone animation that blends when animation switches.",
+            "category": "animation",
+            "image": "/examples/animation/spine/spine.png",
+            "path": "animation/spine",
+            "title": "Spine animation"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "This example shows how a game object is rotated in discrete steps, matching the graphics of the progress spinner.",
+            "category": "animation",
+            "image": "/examples/animation/spinner/spinner.png",
+            "path": "animation/spinner",
+            "title": "Spinner animation"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "This example shows how to communicate between two script components in two separate game objects.",
+            "category": "basics",
+            "image": "/examples/basics/message_passing/message_passing.png",
+            "path": "basics/message_passing",
+            "title": "Message passing"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "This example shows how to child a game object to a parent.",
+            "category": "basics",
+            "image": "/examples/basics/parent_child/parent_child.png",
+            "path": "basics/parent_child",
+            "title": "Parent/child"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "This example shows how to generate pseudo-random numbers in Defold using built-in math API.",
+            "category": "basics",
+            "image": "/examples/basics/random_numbers/thumbnail.png",
+            "path": "basics/random_numbers",
+            "title": "Random numbers"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "This example shows how to put sprites in front and behind of eachother",
+            "category": "basics",
+            "image": "/examples/basics/z_order/z_order.png",
+            "path": "basics/z_order",
+            "title": "Z-order"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "This example shows how to use collection proxies to load and unload collections.",
+            "category": "collection",
+            "image": "/examples/collection/proxy/proxy.png",
+            "path": "collection/proxy",
+            "title": "Proxy"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "This example shows how to use collection proxies to show a splash screen while loading a game menu.",
+            "category": "collection",
+            "image": "/examples/collection/splash/splash.png",
+            "path": "collection/splash",
+            "title": "Splash"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "This example shows how to speed up or slow down animations in a collection proxy by changing the time step of the collection proxy.",
+            "category": "collection",
+            "image": "/examples/collection/timestep/thumbnail.png",
+            "path": "collection/timestep",
+            "title": "Time-step"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "This example allows you to toggle physics debug visualization as well as changing the time step so the simulation runs at one tenth of the speed.",
+            "category": "debug",
+            "image": "/examples/debug/physics/thumbnail.png",
+            "path": "debug/physics",
+            "title": "Physics debug"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "This example shows the on-screen profiler. It displays useful runtime information.",
+            "category": "debug",
+            "image": "/examples/debug/profile/profile.png",
+            "path": "debug/profile",
+            "title": "Visual profiler"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "This example shows how to dynamically spawn game objects with a factory component.",
+            "category": "factory",
+            "image": "/examples/factory/basic/basic.png",
+            "path": "factory/basic",
+            "title": "Spawn game object"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "This example shows how to dynamically spawn bullet game objects using a factory component.",
+            "category": "factory",
+            "image": "",
+            "path": "factory/bullets",
+            "title": "Shoot bullets"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "This example shows how to change the prototype game object used by a factory component.",
+            "category": "factory",
+            "image": "/examples/factory/dynamic/bullets_collection.png",
+            "path": "factory/dynamic",
+            "title": "Dynamic factories"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "This example shows how to spawn enemy game objects using a factory component and use a central manager to control movement and behavior of all enemies.",
+            "category": "factory",
+            "image": "/examples/factory/spawn_manager/thumbnail.png",
+            "path": "factory/spawn_manager",
+            "title": "Spawn enemies with central management"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "This example shows how to spawn enemy game objects using a factory component with different properties.",
+            "category": "factory",
+            "image": "/examples/factory/spawn_properties/thumbnail.png",
+            "path": "factory/spawn_properties",
+            "title": "Spawn enemies with script properties"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "This example shows how to save and load data using sys.save() and sys.load()",
+            "category": "file",
+            "image": "",
+            "path": "file/sys_save_load",
+            "title": "Save and Load"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "A GUI box node with an image texture and a script to make it act as a button.",
+            "category": "gui",
+            "image": "/examples/gui/button/button.png",
+            "path": "gui/button",
+            "title": "Button"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "This example shows how change the color of GUI nodes at run-time",
+            "category": "gui",
+            "image": "/examples/gui/color/color1.png",
+            "path": "gui/color",
+            "title": "GUI color"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "This example shows how to drag a GUI box node.",
+            "category": "gui",
+            "image": "",
+            "path": "gui/drag",
+            "title": "Drag"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "This example shows how to get and set a font resource on a gui component.",
+            "category": "gui",
+            "image": "",
+            "path": "gui/get_set_font",
+            "title": "Get and set a gui font resource"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "This example shows how to get and set a material resource on a gui component.",
+            "category": "gui",
+            "image": "",
+            "path": "gui/get_set_material",
+            "title": "Get and set a gui material resource"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "This example shows how to get and set a texture resource on a gui component.",
+            "category": "gui",
+            "image": "",
+            "path": "gui/get_set_texture",
+            "title": "Get and set a gui texture resource"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "This example demonstrates how to handle localization in games, Unicode text layout, RTL rendering, and runtime font switching for localization.",
+            "category": "gui",
+            "image": "/examples/gui/localization/thumbnail.png",
+            "path": "gui/localization",
+            "title": "Localization (RTL/LTR)"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "This example shows how to create various types of progress indicators",
+            "category": "gui",
+            "image": "/examples/gui/progress/progress.png",
+            "path": "gui/progress",
+            "title": "GUI progress indicators"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "A GUI box node with \"Clipping mode\" set to \"STENCIL\". This makes it mask its child node (which is called \"bunny\").",
+            "category": "gui",
+            "image": "/examples/gui/stencil/stencil.png",
+            "path": "gui/stencil",
+            "title": "Stencil"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "Shows how to read mouse and/or touch movement and mouse button/touch state.",
+            "category": "input",
+            "image": "/examples/input/mouse_and_touch/thumbnail.webp",
+            "path": "input/mouse_and_touch",
+            "title": "Mouse and Touch Events"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "A very simple 8 ways movement setup with a single game object and a script that listens to input and updates the game object position accordingly.",
+            "category": "input",
+            "image": "/examples/input/move/input_bindings.png",
+            "path": "input/move",
+            "title": "8 ways movement"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "Listens to text input trigger \"type\" and modifies the game object label with the alien's speech according to input. A \"backspace\" key trigger has also been added.",
+            "category": "input",
+            "image": "",
+            "path": "input/text",
+            "title": "Text input"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "This example shows how to make sprites and particle sprites face the camera using a custom vertex shader.",
+            "category": "material",
+            "image": "/examples/material/billboarding/thumbnail.png",
+            "path": "material/billboarding",
+            "title": "Billboarding"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "This example shows how to use a noise function to generate clouds, smoke or similar effect using a shader.",
+            "category": "material",
+            "image": "/examples/material/noise/stretched-mesh.png",
+            "path": "material/noise",
+            "title": "Noise shader"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "This example shows how to get local UV coordinates of a sprite regardless of sprite size",
+            "category": "material",
+            "image": "/examples/material/sprite_local_uv/example.png",
+            "path": "material/sprite_local_uv",
+            "title": "Sprite local UV"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "This example shows how to apply a basic shader to a full screen quad.",
+            "category": "material",
+            "image": "/examples/material/uvgradient/stretched-mesh.png",
+            "path": "material/uvgradient",
+            "title": "UV Gradient"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "This example shows how to create a textured mesh component in the shape of a rectangle.",
+            "category": "mesh",
+            "image": "",
+            "path": "mesh/textured",
+            "title": "Textured Mesh"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "This example shows how to create a basic mesh component in the shape of a triangle.",
+            "category": "mesh",
+            "image": "",
+            "path": "mesh/triangle",
+            "title": "Mesh"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "This example shows how to play skeletal animations on a glTF character model and trigger them from GUI buttons.",
+            "category": "model",
+            "image": "/examples/model/character/thumbnail.webp",
+            "path": "model/character",
+            "title": "Character - Skeletal Animation"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "Shows how to sample a cubemap in a model shader to create environment reflections.",
+            "category": "model",
+            "image": "/examples/model/cubemap/thumbnail.webp",
+            "path": "model/cubemap",
+            "title": "Cubemap Reflection"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "Shows how to play glTF morph target animations with a morph-capable model material.",
+            "category": "model",
+            "image": "/examples/model/morph-target/thumbnail.webp",
+            "path": "model/morph-target",
+            "title": "Morph Target Animation"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "Shows how to override morph target weights on a Model component with `model.set_blend_weights()`.",
+            "category": "model",
+            "image": "/examples/model/morph-target-weights/thumbnail.webp",
+            "path": "model/morph-target-weights",
+            "title": "Morph Target Weights"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "This example demonstrates GPU skinning.",
+            "category": "model",
+            "image": "/examples/model/skinning/skinning_thumb.png",
+            "path": "model/skinning",
+            "title": "GPU Skinning"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "This example shows how to create a skybox using a cubemap texture.",
+            "category": "model",
+            "image": "/examples/model/skybox/skybox.png",
+            "path": "model/skybox",
+            "title": "Skybox"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "Control a first-person camera using WASD and mouse to look with cursor lock.",
+            "category": "movement",
+            "image": "/examples/movement/3d_fps/collection.png",
+            "path": "movement/3d_fps",
+            "title": "First-person 3D camera and movement"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "This example shows how to make a game object continuously follow the mouse.",
+            "category": "movement",
+            "image": "/examples/movement/follow/follow.png",
+            "path": "movement/follow",
+            "title": "Follow input"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "This example shows how to rotate a game object to look at the mouse cursor",
+            "category": "movement",
+            "image": "",
+            "path": "movement/look_at",
+            "title": "Look at"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "This example shows how to move a game object in the direction it is rotated/facing.",
+            "category": "movement",
+            "image": "",
+            "path": "movement/move_forward",
+            "title": "Move forward"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "This example shows how to make a game object move to the position the user clicks.",
+            "category": "movement",
+            "image": "/examples/movement/move_to/move_to.png",
+            "path": "movement/move_to",
+            "title": "Move to target"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "This example shows how to move a game object with accelerating speed.",
+            "category": "movement",
+            "image": "",
+            "path": "movement/movement_speed",
+            "title": "Movement speed"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "This example shows how to move a game object.",
+            "category": "movement",
+            "image": "/examples/movement/simple_move/simple_move.png",
+            "path": "movement/simple_move",
+            "title": "Moving game object"
+        },
+        {
+            "author": "fysx, Defold Foundation",
+            "brief": "This example shows how to spawn firework rockets with separate trail and burst particle effects, including a small dip before the burst.",
+            "category": "particles",
+            "image": "/examples/particles/fireworks/thumbnail.png",
+            "path": "particles/fireworks",
+            "title": "Spawning Fireworks ParticleFX"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "This example shows particle effect modifiers. Modifiers are used to alter the path of emitted particles.",
+            "category": "particles",
+            "image": "/examples/particles/modifiers/modifiers.jpg",
+            "path": "particles/modifiers",
+            "title": "Modifiers"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "This example shows a simple particle effect. The particlefx component has all the values at default, except the image and animation used.",
+            "category": "particles",
+            "image": "/examples/particles/particlefx/particlefx.jpg",
+            "path": "particles/particlefx",
+            "title": "Particle effect"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "This example demonstrates the difference between local and world particle emission spaces. Two UFO objects move up and down, showing how particles behave differently when emitted in emitter space versus world space.",
+            "category": "particles",
+            "image": "/examples/particles/particlefx_emission_space/thumbnail.png",
+            "path": "particles/particlefx_emission_space",
+            "title": "Particle Effect Emission Space"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "This example shows how to get and set ParticleFX emitter image, animation, and material at runtime.",
+            "category": "particles",
+            "image": "/examples/particles/particlefx_set_get/thumbnail.png",
+            "path": "particles/particlefx_set_get",
+            "title": "ParticleFX emitter properties"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "This example shows how the Start Delay emitter property can be used to sequence two emitters inside a single ParticleFX and create a simple fountain effect.",
+            "category": "particles",
+            "image": "/examples/particles/particlefx_start_delay/thumbnail.png",
+            "path": "particles/particlefx_start_delay",
+            "title": "ParticleFX - Fountain - Start Delay"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "This example demonstrates how to apply directional force to all dynamic blocks on touch/click and draws debug direction lines.",
+            "category": "physics",
+            "image": "/examples/physics/apply_force/thumbnail.png",
+            "path": "physics/apply_force",
+            "title": "Apply force"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "Create Box2D chain terrain from script using Box2D V2 legacy and Box2D V3.",
+            "category": "physics",
+            "image": "/examples/physics/box2d_chain_terrain/thumbnail.webp",
+            "path": "physics/box2d_chain_terrain",
+            "title": "Box2D Chain Terrain"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "Resize dynamic Box2D collision shapes at runtime and recalculate body mass.",
+            "category": "physics",
+            "image": "/examples/physics/box2d_dynamic_scale/thumbnail.webp",
+            "path": "physics/box2d_dynamic_scale",
+            "title": "Box2D dynamic shape scale and mass"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "Tune Box2D density, friction, and restitution from script using Box2D V2 legacy and Box2D V3.",
+            "category": "physics",
+            "image": "/examples/physics/box2d_material_tuning/thumbnail.webp",
+            "path": "physics/box2d_material_tuning",
+            "title": "Box2D Material Properties Tuning"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "Create and control a motorized Box2D joint from script using Box2D V2 and V3.",
+            "category": "physics",
+            "image": "/examples/physics/box2d_motor_joint/thumbnail.webp",
+            "path": "physics/box2d_motor_joint",
+            "title": "Box2D Motor Joint"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "Create a mouse joint that pulls dynamic bodies toward a moving target.",
+            "category": "physics",
+            "image": "/examples/physics/box2d_mouse_joint/thumbnail.webp",
+            "path": "physics/box2d_mouse_joint",
+            "title": "Box2D Mouse Joint"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "Create a motorized Box2D prismatic joint with translation limits from script using Box2D.",
+            "category": "physics",
+            "image": "/examples/physics/box2d_prismatic_joint/thumbnail.webp",
+            "path": "physics/box2d_prismatic_joint",
+            "title": "Box2D Prismatic Joint"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "This example shows how to use Box2D world overlap and raycast queries.",
+            "category": "physics",
+            "image": "/examples/physics/box2d_queries/thumbnail.webp",
+            "path": "physics/box2d_queries",
+            "title": "Box2D Queries"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "Create a bridge from revolute joints between existing Defold collision objects.",
+            "category": "physics",
+            "image": "/examples/physics/box2d_revolute_bridge/thumbnail.webp",
+            "path": "physics/box2d_revolute_bridge",
+            "title": "Box2D Revolute Bridge"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "Create Box2D sensors from static collision shapes.",
+            "category": "physics",
+            "image": "/examples/physics/box2d_sensor_toggle/thumbnail.webp",
+            "path": "physics/box2d_sensor_toggle",
+            "title": "Box2D Sensors"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "Create Box2D weld joints from script so separate dynamic bodies behave like one rigid assembly.",
+            "category": "physics",
+            "image": "/examples/physics/box2d_weld_joint/thumbnail.webp",
+            "path": "physics/box2d_weld_joint",
+            "title": "Box2D Weld Joint"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "This example shows a simple setup with dynamic physics objects.",
+            "category": "physics",
+            "image": "/examples/physics/dynamic/dynamic.png",
+            "path": "physics/dynamic",
+            "title": "Dynamic physics"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "This example shows how to smooth physics motion in fixed update mode by interpolating a visual sprite while keeping the physics body fixed-step.",
+            "category": "physics",
+            "image": "/examples/physics/interpolation/thumbnail.png",
+            "path": "physics/interpolation",
+            "title": "Fixed timestep interpolation"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "This example shows a simple setup with a kinematic physics objects. The difference between dynamic objects, simulated by the physics engine, and kinematic objects, that are user controlled, is clearly seen here.",
+            "category": "physics",
+            "image": "/examples/physics/kinematic/kinematic.png",
+            "path": "physics/kinematic",
+            "title": "Kinematic physics"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "This example shows how to create a knockback effect when hit.",
+            "category": "physics",
+            "image": "/examples/physics/knockback/knockback_thumb.png",
+            "path": "physics/knockback",
+            "title": "Knockback"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "This example shows how to use physics raycasts to detect collisions along a straight line from a start point to an end point.",
+            "category": "physics",
+            "image": "/examples/physics/raycast/raycast.png",
+            "path": "physics/raycast",
+            "title": "Raycast"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "This example shows how a physics trigger is used to trigger an event. In this case the bunny sprite is disabled and enabled.",
+            "category": "physics",
+            "image": "/examples/physics/trigger/trigger.png",
+            "path": "physics/trigger",
+            "title": "Trigger"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "This example shows how to make sprites respond to Defold Light components with a custom material in a basic setup.",
+            "category": "render",
+            "image": "/examples/render/basic_lights_2d/thumbnail.webp",
+            "path": "render/basic_lights_2d",
+            "title": "Basic Lights 2D"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "This example shows how ambient, directional, point, and spot lights affect 3D models that use built-in lit materials.",
+            "category": "render",
+            "image": "/examples/render/basic_lights_3d/thumbnail.webp",
+            "path": "render/basic_lights_3d",
+            "title": "Basic Lights 3D"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "This example shows how to use a camera component and have it follow a game object. Click to toggle between following the game object and staying stationary.",
+            "category": "render",
+            "image": "/examples/render/camera/camera.png",
+            "path": "render/camera",
+            "title": "Camera"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "This example shows how to implement a configurable, PCF-filtered shadow map for a directional light.",
+            "category": "render",
+            "image": "/examples/render/directional_light_shadows/thumbnail.webp",
+            "path": "render/directional_light_shadows",
+            "title": "Directional Light Shadows with PCF Filtering"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "This example shows how to zoom an orthographic camera in and out by changing Orthographic Zoom while the camera is in Fixed mode.",
+            "category": "render",
+            "image": "/examples/render/orthographic_zoom/thumbnail.png",
+            "path": "render/orthographic_zoom",
+            "title": "Orthographic Zoom"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "This example shows how to apply a post-processing effect by drawing to a render target and then to a fullscreen quad using a post processing shader.",
+            "category": "render",
+            "image": "/examples/render/post_processing/postprocess_thumb.png",
+            "path": "render/post_processing",
+            "title": "Post-processing"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "This example shows how to convert from screen to world coordinates while using a camera.",
+            "category": "render",
+            "image": "",
+            "path": "render/screen_to_world",
+            "title": "Screen to World"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "This example shows how to create an atlas with two images and use it on a sprite and in a gui",
+            "category": "resource",
+            "image": "",
+            "path": "resource/create_atlas",
+            "title": "Create atlas"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "This example shows how to replace an image in an atlas",
+            "category": "resource",
+            "image": "",
+            "path": "resource/modify_atlas",
+            "title": "Modify atlas"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "This example shows how to change which sound a sound component plays",
+            "category": "sound",
+            "image": "/examples/sound/get_set_sound/game_project.png",
+            "path": "sound/get_set_sound",
+            "title": "Get and set sound"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "This example shows how to play a piece of music, stored as an .OGG file, with a sound component. The sound component is set to \"looping\" causing the music to never, ever stop.",
+            "category": "sound",
+            "image": "",
+            "path": "sound/music",
+            "title": "Music"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "This is a performance test for sprites",
+            "category": "sprite",
+            "image": "/examples/sprite/bunnymark/bunnymark_thumb.png",
+            "path": "sprite/bunnymark",
+            "title": "Bunnymark"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "This example shows how to change the image of a sprite",
+            "category": "sprite",
+            "image": "/examples/sprite/changeimage/changeimage_thumb.png",
+            "path": "sprite/changeimage",
+            "title": "Change sprite image"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "This example shows how to use the sprite animation cursor and frame count to manually select a specific frame",
+            "category": "sprite",
+            "image": "/examples/sprite/cursor/cursor_thumb.png",
+            "path": "sprite/cursor",
+            "title": "Sprite cursor"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "This example shows how to sample from more than one image when drawing a sprite",
+            "category": "sprite",
+            "image": "/examples/sprite/samplers/samplers_thumb.png",
+            "path": "sprite/samplers",
+            "title": "Multiple Sprite Samplers"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "This example shows how to get the size of a sprite at run-time",
+            "category": "sprite",
+            "image": "/examples/sprite/size/size_thumb.png",
+            "path": "sprite/size",
+            "title": "Sprite size"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "This example shows how scroll the texture in the runtime using Texture Transform 2D Vertex Attribute, without using the sprite in the world space.",
+            "category": "sprite",
+            "image": "/examples/sprite/texture_scrolling/thumbnail.png",
+            "path": "sprite/texture_scrolling",
+            "title": "Texture scrolling"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "This example shows how tint a sprite at run-time",
+            "category": "sprite",
+            "image": "/examples/sprite/tint/tint_thumb.png",
+            "path": "sprite/tint",
+            "title": "Sprite tint"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "This example shows how to detect collisions on tilemaps",
+            "category": "tilemap",
+            "image": "/examples/tilemap/collisions/tilesource.png",
+            "path": "tilemap/collisions",
+            "title": "Tilemap collisions"
+        },
+        {
+            "author": "Defold Foundation",
+            "brief": "This example shows how to get and set tiles of a tilemap",
+            "category": "tilemap",
+            "image": "",
+            "path": "tilemap/get_set_tile",
+            "title": "Get and set tiles"
+        }
+    ],
+    "github": "defold",
     "id": "f0ed797e86f7025f8ba5455479852ca5",
-    "name": "Defold Foundation"
+    "links": [
+        {
+            "type": "website",
+            "url": "https://defold.com"
+        }
+    ],
+    "name": "Defold Foundation",
+    "support": []
 }

@@ -1,8 +1,14 @@
 ---
 author: Defold Foundation
+authors:
+- github: defold
+  id: f0ed797e86f7025f8ba5455479852ca5
+  name: Defold Foundation
 brief: This example shows how to create a skybox using a cubemap texture.
 category: model
 layout: example
+license: CC0-1.0
+license_url: https://creativecommons.org/publicdomain/zero/1.0/
 opengraph_image: https://www.defold.com/examples/model/skybox/skybox.png
 path: model/skybox
 scripts: skybox.fp, skybox.vp
@@ -10,7 +16,6 @@ tags: model
 thumbnail: skybox.png
 title: Skybox
 twitter_image: https://www.defold.com/examples/model/skybox/skybox.png
-
 ---
 
 This example shows how to create a skybox. A skybox is a technique that makes the scene look bigger and more impressive by wrapping the viewer with a texture that goes around the camera 360 degrees.

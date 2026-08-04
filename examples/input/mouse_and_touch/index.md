@@ -1,8 +1,14 @@
 ---
 author: Defold Foundation
+authors:
+- github: defold
+  id: f0ed797e86f7025f8ba5455479852ca5
+  name: Defold Foundation
 brief: Shows how to read mouse and/or touch movement and mouse button/touch state.
 category: input
 layout: example
+license: CC0-1.0
+license_url: https://creativecommons.org/publicdomain/zero/1.0/
 opengraph_image: https://www.defold.com/examples/input/mouse_and_touch/thumbnail.webp
 path: input/mouse_and_touch
 scripts: mouse_and_touch.script
@@ -10,7 +16,6 @@ tags: input
 thumbnail: thumbnail.webp
 title: Mouse and Touch Events
 twitter_image: https://www.defold.com/examples/input/mouse_and_touch/thumbnail.webp
-
 ---
 
 This example shows how to receive mouse and touch input in a script and display the current pointer position and button state.

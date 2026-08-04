@@ -1,8 +1,14 @@
 ---
 author: Defold Foundation
+authors:
+- github: defold
+  id: f0ed797e86f7025f8ba5455479852ca5
+  name: Defold Foundation
 brief: This example demonstrates how to handle localization in games, Unicode text layout, RTL rendering, and runtime font switching for localization.
 category: gui
 layout: example
+license: CC0-1.0
+license_url: https://creativecommons.org/publicdomain/zero/1.0/
 opengraph_image: https://www.defold.com/examples/gui/localization/thumbnail.png
 path: gui/localization
 scripts: main.gui_script, localization_helper.lua, ui_helper.lua
@@ -10,7 +16,6 @@ tags: gui, font
 thumbnail: thumbnail.png
 title: Localization (RTL/LTR)
 twitter_image: https://www.defold.com/examples/gui/localization/thumbnail.png
-
 ---
 
 This example demonstrates how to handle localization in games, Unicode text layout, RTL rendering, and runtime font switching for localization.

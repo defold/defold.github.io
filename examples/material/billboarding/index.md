@@ -1,8 +1,14 @@
 ---
 author: Defold Foundation
+authors:
+- github: defold
+  id: f0ed797e86f7025f8ba5455479852ca5
+  name: Defold Foundation
 brief: This example shows how to make sprites and particle sprites face the camera using a custom vertex shader.
 category: material
 layout: example
+license: CC0-1.0
+license_url: https://creativecommons.org/publicdomain/zero/1.0/
 opengraph_image: https://www.defold.com/examples/material/billboarding/thumbnail.png
 path: material/billboarding
 scripts: billboard.vp
@@ -10,7 +16,6 @@ tags: particlefx, sprite, material, 3d
 thumbnail: thumbnail.png
 title: Billboarding
 twitter_image: https://www.defold.com/examples/material/billboarding/thumbnail.png
-
 ---
 
 This example shows how to render **camera-facing quads (billboards)** in 3D using Defold materials. The core idea is to keep using Defold's built-in sprite/particle fragment shader, but replace the vertex shader so that each quad is re-oriented towards the camera.

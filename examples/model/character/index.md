@@ -1,8 +1,14 @@
 ---
 author: Defold Foundation
+authors:
+- github: defold
+  id: f0ed797e86f7025f8ba5455479852ca5
+  name: Defold Foundation
 brief: This example shows how to play skeletal animations on a glTF character model and trigger them from GUI buttons.
 category: model
 layout: example
+license: CC0-1.0
+license_url: https://creativecommons.org/publicdomain/zero/1.0/
 opengraph_image: https://www.defold.com/examples/model/character/thumbnail.webp
 path: model/character
 scripts: player.script, orbit_camera.script, example.gui_script
@@ -10,7 +16,6 @@ tags: model, animation
 thumbnail: thumbnail.webp
 title: Character - Skeletal Animation
 twitter_image: https://www.defold.com/examples/model/character/thumbnail.webp
-
 ---
 
 This example uses a skinned glTF character with multiple animations and a simple orbit camera. The model contains both mesh and animation data, so the example can switch animations and visible mesh parts without loading any extra assets.

@@ -1,8 +1,14 @@
 ---
 author: Defold Foundation
+authors:
+- github: defold
+  id: f0ed797e86f7025f8ba5455479852ca5
+  name: Defold Foundation
 brief: Shows how to override morph target weights on a Model component with `model.set_blend_weights()`.
 category: model
 layout: example
+license: CC0-1.0
+license_url: https://creativecommons.org/publicdomain/zero/1.0/
 opengraph_image: https://www.defold.com/examples/model/morph-target-weights/thumbnail.webp
 path: model/morph-target-weights
 scripts: morph_target_set_weight.script, morph_target.vp
@@ -10,7 +16,6 @@ tags: model, animation, material
 thumbnail: thumbnail.webp
 title: Morph Target Weights
 twitter_image: https://www.defold.com/examples/model/morph-target-weights/thumbnail.webp
-
 ---
 
 This example lets you move the pointer left and right to blend a glTF model from a cube into a sphere. The morph target weight is controlled from Lua with `model.set_blend_weights()` instead of being driven by the model's built-in animation.

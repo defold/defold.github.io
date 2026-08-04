@@ -1,14 +1,19 @@
 ---
 author: Artsiom Trubchyk
+authors:
+- github: aglitchman
+  id: 4fff661212c3b63631eb09266e26b456
+  name: Artsiom Trubchyk
 brief: This example shows how to create a custom material with two textures that blend together to create a pattern effect using screen space coordinates.
 category: material
 layout: example
+license: CC0-1.0
+license_url: https://creativecommons.org/publicdomain/zero/1.0/
 name: Screenspace (3D)
 path: material/screenspace
 scripts: screenspace.script, screenspace.vp, screenspace.fp
 tags: material
 title: Screenspace
-
 ---
 
 In this example, we create a new material for 3D models in which we convert vertex coordinates to screenspace to get a special effect. It may be called "surface fill", "screenspace fill" and is used, most often in combination with outlines, to highlight objects in 3D games or indicate their status. 

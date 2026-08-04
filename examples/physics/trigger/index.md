@@ -1,8 +1,14 @@
 ---
 author: Defold Foundation
+authors:
+- github: defold
+  id: f0ed797e86f7025f8ba5455479852ca5
+  name: Defold Foundation
 brief: This example shows how a physics trigger is used to trigger an event. In this case the bunny sprite is disabled and enabled.
 category: physics
 layout: example
+license: CC0-1.0
+license_url: https://creativecommons.org/publicdomain/zero/1.0/
 opengraph_image: https://www.defold.com/examples/physics/trigger/trigger.png
 path: physics/trigger
 scripts: bunny.script
@@ -10,7 +16,6 @@ tags: physics
 thumbnail: trigger.png
 title: Trigger
 twitter_image: https://www.defold.com/examples/physics/trigger/trigger.png
-
 ---
 
 ![trigger](trigger.png)

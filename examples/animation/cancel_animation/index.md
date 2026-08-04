@@ -1,8 +1,14 @@
 ---
 author: Defold Foundation
+authors:
+- github: defold
+  id: f0ed797e86f7025f8ba5455479852ca5
+  name: Defold Foundation
 brief: This example shows how to use `go.cancel_animations()` to stop a running animation and start a new one.
 category: animation
 layout: example
+license: CC0-1.0
+license_url: https://creativecommons.org/publicdomain/zero/1.0/
 opengraph_image: https://www.defold.com/examples/animation/cancel_animation/setup.png
 path: animation/cancel_animation
 scripts: cancel_animation.script
@@ -10,7 +16,6 @@ tags: animation, input
 thumbnail: setup.png
 title: Cancel animation
 twitter_image: https://www.defold.com/examples/animation/cancel_animation/setup.png
-
 ---
 
 The collection contains two game objects:

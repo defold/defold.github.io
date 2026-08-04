@@ -1,8 +1,14 @@
 ---
 author: Defold Foundation
+authors:
+- github: defold
+  id: f0ed797e86f7025f8ba5455479852ca5
+  name: Defold Foundation
 brief: This example shows particle effect modifiers. Modifiers are used to alter the path of emitted particles.
 category: particles
 layout: example
+license: CC0-1.0
+license_url: https://creativecommons.org/publicdomain/zero/1.0/
 opengraph_image: https://www.defold.com/examples/particles/modifiers/modifiers.jpg
 path: particles/modifiers
 scripts: modifiers.script
@@ -10,7 +16,6 @@ tags: particles
 thumbnail: modifiers.jpg
 title: Modifiers
 twitter_image: https://www.defold.com/examples/particles/modifiers/modifiers.jpg
-
 ---
 
 ![particlefx](modifiers.jpg)

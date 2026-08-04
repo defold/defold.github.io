@@ -1,8 +1,14 @@
 ---
 author: Defold Foundation
+authors:
+- github: defold
+  id: f0ed797e86f7025f8ba5455479852ca5
+  name: Defold Foundation
 brief: This example shows how to generate pseudo-random numbers in Defold using built-in math API.
 category: basics
 layout: example
+license: CC0-1.0
+license_url: https://creativecommons.org/publicdomain/zero/1.0/
 opengraph_image: https://www.defold.com/examples/basics/random_numbers/thumbnail.png
 path: basics/random_numbers
 scripts: random_numbers.script
@@ -10,7 +16,6 @@ tags: basics
 thumbnail: thumbnail.png
 title: Random numbers
 twitter_image: https://www.defold.com/examples/basics/random_numbers/thumbnail.png
-
 ---
 
 In this example you'll learn how to generate pseudo-random numbers in Defold using built-in math API.

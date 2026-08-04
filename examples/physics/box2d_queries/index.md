@@ -1,8 +1,14 @@
 ---
 author: Defold Foundation
+authors:
+- github: defold
+  id: f0ed797e86f7025f8ba5455479852ca5
+  name: Defold Foundation
 brief: This example shows how to use Box2D world overlap and raycast queries.
 category: physics
 layout: example
+license: CC0-1.0
+license_url: https://creativecommons.org/publicdomain/zero/1.0/
 opengraph_image: https://www.defold.com/examples/physics/box2d_queries/thumbnail.webp
 path: physics/box2d_queries
 scripts: box2d_queries.script
@@ -10,7 +16,6 @@ tags: physics, box2d
 thumbnail: thumbnail.webp
 title: Box2D Queries
 twitter_image: https://www.defold.com/examples/physics/box2d_queries/thumbnail.webp
-
 ---
 
 This example places four static targets with box, circle, triangle, and diamond collision shapes, and user controllable AABB, circle, and raycast queries.

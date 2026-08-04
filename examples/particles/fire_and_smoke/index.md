@@ -1,8 +1,14 @@
 ---
 author: Paweł Jarosz
+authors:
+- github: paweljarosz
+  id: d54cdc4bc377adc6a3233368cc304107
+  name: Paweł Jarosz
 brief: This example shows a simple particle effect for imitating fire and smoke using two emitters and 3 modifiers in a single particlefx component.
 category: particles
 layout: example
+license: CC0-1.0
+license_url: https://creativecommons.org/publicdomain/zero/1.0/
 opengraph_image: https://www.defold.com/examples/particles/fire_and_smoke/thumbnail.png
 path: particles/fire_and_smoke
 scripts: fire_and_smoke.script
@@ -10,7 +16,6 @@ tags: particles
 thumbnail: thumbnail.png
 title: Particle effect example - fire and smoke
 twitter_image: https://www.defold.com/examples/particles/fire_and_smoke/thumbnail.png
-
 ---
 
 ## Setup

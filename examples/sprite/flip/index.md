@@ -1,8 +1,14 @@
 ---
 author: Agustin R.
+authors:
+- github: FlexYourBrain
+  id: 3d50d039c078a00ce00628af22d57540
+  name: Agustin R.
 brief: This example demonstrates flipping a sprite animation vertically and horizontally.
 category: sprite
 layout: example
+license: CC0-1.0
+license_url: https://creativecommons.org/publicdomain/zero/1.0/
 opengraph_image: https://www.defold.com/examples/sprite/flip/flip_thumb.png
 path: sprite/flip
 scripts: flip.script
@@ -10,7 +16,6 @@ tags: sprite
 thumbnail: flip_thumb.png
 title: Flip
 twitter_image: https://www.defold.com/examples/sprite/flip/flip_thumb.png
-
 ---
 
 Overview :  [sprite.set_hflip](https://defold.com/ref/beta/sprite/#sprite.set_hflip:url-flip) & [sprite.set_vflip](https://defold.com/ref/beta/sprite/#sprite.set_vflip:url-flip) uses a boolean to set if a sprite animation should be flipped.

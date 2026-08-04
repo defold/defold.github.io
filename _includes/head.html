@@ -10,7 +10,9 @@
 {%- assign site_url = site.url | default: "https://www.defold.com" -%}
 {%- assign page_url_path = page.url | default: "/" | remove: "index.html" -%}
 {%- assign canonical_url = page_url_path | absolute_url -%}
-{%- if page.pagefind_exclude -%}
+{%- if page.canonical -%}
+	{%- assign canonical_url = page.canonical | absolute_url -%}
+{%- elsif page.pagefind_exclude and page.ref -%}
 	{%- assign canonical_path = "/ref/" | append: page.branch | append: "/" | append: page.ref | append: "/" -%}
 	{%- assign canonical_url = canonical_path | absolute_url -%}
 {%- endif -%}
@@ -47,7 +49,7 @@
 {%- elsif asset and asset.description.size > 0 -%}
 	{%- assign page_description = asset.description -%}
 {%- elsif page.layout == "author" and author -%}
-	{%- assign page_description = "Browse Defold assets published by " | append: author.name | append: " in the Defold Asset Portal." -%}
+	{%- capture page_description -%}Explore {{ author.name }}'s {{ author.assets.size }} Defold asset{% unless author.assets.size == 1 %}s{% endunless %} and {{ author.examples.size }} example{% unless author.examples.size == 1 %}s{% endunless %}.{%- endcapture -%}
 {%- elsif page.layout == "assetportal" -%}
 	{%- assign page_description = "Browse Defold extensions, templates, tools, and reusable assets from the community." -%}
 {%- else -%}

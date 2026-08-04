@@ -1,14 +1,19 @@
 ---
 author: Agustin R.
+authors:
+- github: FlexYourBrain
+  id: 3d50d039c078a00ce00628af22d57540
+  name: Agustin R.
 brief: This example demonstrates how to apply a vertex color shader using exported attributes from a 3D model.
 category: model
 layout: example
+license: CC0-1.0
+license_url: https://creativecommons.org/publicdomain/zero/1.0/
 name: Vertex Color (3D model)
 path: model/modelvertexcolor
 scripts: vertexcolor.vp, vertexcolor.fp
 tags: model
 title: Model Vertex Color
-
 ---
 
 Vertex color attributes are usually made up as a vector4 of floats represented as rgba(red, green, blue, alpha) channels. They can be applied to 3d models and exported from many 3d editor applications and are commonly used in games for many effects. This example we are displaying a 3d model with vertex color attribute through a shader. No textures or uv's are used to display the colors.

@@ -1,8 +1,14 @@
 ---
 author: Defold Foundation
+authors:
+- github: defold
+  id: f0ed797e86f7025f8ba5455479852ca5
+  name: Defold Foundation
 brief: This example shows how ambient, directional, point, and spot lights affect 3D models that use built-in lit materials.
 category: render
 layout: example
+license: CC0-1.0
+license_url: https://creativecommons.org/publicdomain/zero/1.0/
 name: Basic Lights 3D
 opengraph_image: https://www.defold.com/examples/render/basic_lights_3d/thumbnail.webp
 path: render/basic_lights_3d
@@ -11,7 +17,6 @@ tags: render, 3d
 thumbnail: thumbnail.webp
 title: Basic Lights 3D
 twitter_image: https://www.defold.com/examples/render/basic_lights_3d/thumbnail.webp
-
 ---
 
 This example sets up a small 3D city scene with several light component types.

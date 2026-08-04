@@ -1,8 +1,14 @@
 ---
 author: Artsiom Trubchyk
+authors:
+- github: aglitchman
+  id: 4fff661212c3b63631eb09266e26b456
+  name: Artsiom Trubchyk
 brief: This example shows a simple particle effect to imitate confetti with multiple emitters and global multipliers for all of them.
 category: particles
 layout: example
+license: CC0-1.0
+license_url: https://creativecommons.org/publicdomain/zero/1.0/
 opengraph_image: https://www.defold.com/examples/particles/confetti/thumbnail.png
 path: particles/confetti
 scripts: confetti.script
@@ -10,7 +16,6 @@ tags: particles
 thumbnail: thumbnail.png
 title: ParticleFX - Confetti
 twitter_image: https://www.defold.com/examples/particles/confetti/thumbnail.png
-
 ---
 
 In this example we create a confetti fireworks effect. It is usually used on final screens to congratulate the player on successful completion of a level or game.

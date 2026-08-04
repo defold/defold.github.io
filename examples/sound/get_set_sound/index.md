@@ -1,8 +1,14 @@
 ---
 author: Defold Foundation
+authors:
+- github: defold
+  id: f0ed797e86f7025f8ba5455479852ca5
+  name: Defold Foundation
 brief: This example shows how to change which sound a sound component plays
 category: sound
 layout: example
+license: CC0-1.0
+license_url: https://creativecommons.org/publicdomain/zero/1.0/
 opengraph_image: https://www.defold.com/examples/sound/get_set_sound/game_project.png
 path: sound/get_set_sound
 scripts: get_set_sound.script
@@ -10,7 +16,6 @@ tags: sound,resource
 thumbnail: game_project.png
 title: Get and set sound
 twitter_image: https://www.defold.com/examples/sound/get_set_sound/game_project.png
-
 ---
 
 This example shows how to change which sound a sound component plays. Additional sounds are stored as individual .ogg files in the `sounds` folder and included in the build as [Custom Resources](https://defold.com/manuals/file-access/#custom-resources):

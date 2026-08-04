@@ -1,8 +1,13 @@
 ---
 author: Mathias Westerdahl
+authors:
+- id: ef6d5c21d75557d414343ab7c1bd79da
+  name: Mathias Westerdahl
 brief: This example shows how to set and animate a vertex attribute
 category: material
 layout: example
+license: CC0-1.0
+license_url: https://creativecommons.org/publicdomain/zero/1.0/
 opengraph_image: https://www.defold.com/examples/material/vertexcolor/vertexcolor-material.png
 path: material/vertexcolor
 scripts: vertexcolor.script, vertexcolor.vp, vertexcolor.fp
@@ -10,7 +15,6 @@ tags: material
 thumbnail: vertexcolor-material.png
 title: Sprite Vertex Color Attribute
 twitter_image: https://www.defold.com/examples/material/vertexcolor/vertexcolor-material.png
-
 ---
 
 The `vertexcolor.script` sets the vertex attribute "mycolor", which has been specified in the material.

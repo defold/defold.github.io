@@ -1,8 +1,14 @@
 ---
 author: Defold Foundation
+authors:
+- github: defold
+  id: f0ed797e86f7025f8ba5455479852ca5
+  name: Defold Foundation
 brief: This example shows how to detect collisions on tilemaps
 category: tilemap
 layout: example
+license: CC0-1.0
+license_url: https://creativecommons.org/publicdomain/zero/1.0/
 opengraph_image: https://www.defold.com/examples/tilemap/collisions/tilesource.png
 path: tilemap/collisions
 scripts: collisions.script
@@ -10,7 +16,6 @@ tags: tilemap
 thumbnail: tilesource.png
 title: Tilemap collisions
 twitter_image: https://www.defold.com/examples/tilemap/collisions/tilesource.png
-
 ---
 
 This example uses a tilesource with two collision groups: "ground" and "danger". The tilesource uses the `tilesheet_complete.png` image for the tiles and the collision shapes (traced as outlines around the transparent pixels of each tile).

@@ -1,8 +1,14 @@
 ---
 author: Defold Foundation
+authors:
+- github: defold
+  id: f0ed797e86f7025f8ba5455479852ca5
+  name: Defold Foundation
 brief: This example shows how to zoom an orthographic camera in and out by changing Orthographic Zoom while the camera is in Fixed mode.
 category: render
 layout: example
+license: CC0-1.0
+license_url: https://creativecommons.org/publicdomain/zero/1.0/
 opengraph_image: https://www.defold.com/examples/render/orthographic_zoom/thumbnail.png
 path: render/orthographic_zoom
 scripts: zoom.script
@@ -10,7 +16,6 @@ tags: render
 thumbnail: thumbnail.png
 title: Orthographic Zoom
 twitter_image: https://www.defold.com/examples/render/orthographic_zoom/thumbnail.png
-
 ---
 
 This example shows the recommended setup for gameplay zoom with an orthographic camera: keep the camera component in orthographic `Fixed` mode, then change `orthographic_zoom` from script.

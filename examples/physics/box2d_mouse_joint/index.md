@@ -1,8 +1,14 @@
 ---
 author: Defold Foundation
+authors:
+- github: defold
+  id: f0ed797e86f7025f8ba5455479852ca5
+  name: Defold Foundation
 brief: Create a mouse joint that pulls dynamic bodies toward a moving target.
 category: physics
 layout: example
+license: CC0-1.0
+license_url: https://creativecommons.org/publicdomain/zero/1.0/
 opengraph_image: https://www.defold.com/examples/physics/box2d_mouse_joint/thumbnail.webp
 path: physics/box2d_mouse_joint
 scripts: box2d_mouse_joint_v3.script, box2d_mouse_joint_v2.script
@@ -10,7 +16,6 @@ tags: physics, box2d
 thumbnail: thumbnail.webp
 title: Box2D Mouse Joint
 twitter_image: https://www.defold.com/examples/physics/box2d_mouse_joint/thumbnail.webp
-
 ---
 
 This example shows how to create and control Box2D mouse joints from Lua. A visible target point moves automatically until you move the mouse or drag a touch point. Two dynamic bodies follow the same target with different spring settings, making the softer joint stretch behind the target while the tighter joint follows more closely.

@@ -427,6 +427,277 @@ html.theme-dark .asset-hub-section.theme-page-bg-dark {
 	}
 }
 
+.author-profile-layout {
+	display: grid;
+	grid-template-columns: minmax(230px, 280px) minmax(0, 1fr);
+	gap: clamp(1.5rem, 3vw, 3rem);
+	align-items: start;
+}
+
+.author-profile-card {
+	position: sticky;
+	top: 2rem;
+	display: grid;
+	gap: 1.2rem;
+	padding: clamp(1.25rem, 2vw, 1.65rem);
+	border-radius: 14px;
+}
+
+.author-profile-avatar {
+	display: block;
+	width: min(100%, 220px);
+	aspect-ratio: 1;
+	margin: 0 auto;
+	border: 1px solid var(--surface-border);
+	border-radius: 18px;
+	background: rgba(12, 16, 20, 0.45);
+	object-fit: cover;
+}
+
+.author-profile-heading {
+	display: grid;
+	gap: 0.25rem;
+}
+
+.author-profile-heading h1 {
+	margin: 0;
+	color: var(--catalog-heading-color);
+	font-size: clamp(1.65rem, 3vw, 2.25rem);
+	line-height: 1.15;
+	overflow-wrap: anywhere;
+}
+
+.author-profile-handle,
+.author-profile-card a {
+	color: rgba(255, 255, 255, 0.76);
+}
+
+.author-profile-handle {
+	font-size: 1.05rem;
+	text-decoration: none;
+}
+
+.author-profile-handle:hover,
+.author-profile-handle:focus-visible,
+.author-profile-card a:hover,
+.author-profile-card a:focus-visible {
+	color: var(--lightest);
+}
+
+.author-profile-bio {
+	margin: 0;
+	color: var(--catalog-copy-color);
+	font-size: 1rem;
+	line-height: 1.55;
+}
+
+.author-profile-counts {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 0.65rem;
+}
+
+.author-profile-counts span {
+	display: grid;
+	gap: 0.1rem;
+	padding: 0.65rem;
+	border: 1px solid var(--surface-border);
+	border-radius: 9px;
+	background: rgba(255, 255, 255, 0.035);
+	color: var(--catalog-copy-color);
+	font-size: 0.78rem;
+	line-height: 1.2;
+	text-align: center;
+}
+
+.author-profile-counts strong {
+	color: var(--catalog-heading-color);
+	font-size: 1.2rem;
+}
+
+.author-profile-links {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.55rem;
+}
+
+.author-profile-links a,
+.author-profile-support a {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.4rem;
+	padding: 0.48rem 0.65rem;
+	border: 1px solid var(--surface-border);
+	border-radius: 8px;
+	background: rgba(255, 255, 255, 0.035);
+	font-size: 0.85rem;
+	font-weight: 700;
+	line-height: 1;
+	text-decoration: none;
+}
+
+.author-profile-links .site-icon,
+.author-profile-support .site-icon {
+	width: 1.05rem;
+	height: 1.05rem;
+}
+
+.author-profile-support {
+	display: grid;
+	gap: 0.55rem;
+	padding-top: 1rem;
+	border-top: 1px solid var(--surface-border);
+}
+
+.author-profile-support p {
+	margin: 0 0 0.15rem;
+	color: var(--catalog-copy-color);
+	font-size: 0.78rem;
+	font-weight: 700;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+}
+
+.author-profile-support a {
+	justify-content: center;
+	color: rgba(255, 255, 255, 0.88);
+}
+
+.author-contributions {
+	min-width: 0;
+}
+
+.author-contribution-section + .author-contribution-section {
+	margin-top: clamp(2.5rem, 5vw, 4.5rem);
+}
+
+.author-contribution-heading h2 {
+	display: flex;
+	align-items: center;
+	gap: 0.65rem;
+	margin: 0.2rem 0 0;
+	color: var(--catalog-heading-color);
+}
+
+.author-contribution-heading h2 span {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 1.9rem;
+	height: 1.9rem;
+	padding: 0 0.45rem;
+	border: 1px solid var(--surface-border);
+	border-radius: 999px;
+	color: var(--catalog-copy-color);
+	font-size: 0.9rem;
+}
+
+.author-contribution-grid {
+	margin-top: 1rem;
+}
+
+.author-directory-heading {
+	max-width: 48rem;
+	margin-bottom: clamp(1.7rem, 3vw, 2.5rem);
+}
+
+.author-directory-heading h1 {
+	margin: 0.2rem 0 0.65rem;
+	color: var(--catalog-heading-color);
+}
+
+.author-directory-heading > p:last-child {
+	margin: 0;
+	color: var(--catalog-copy-color);
+}
+
+.author-directory-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(min(100%, 270px), 1fr));
+	gap: 0.9rem;
+}
+
+.author-directory-card {
+	display: flex;
+	align-items: center;
+	gap: 0.9rem;
+	min-width: 0;
+	padding: 0.85rem;
+	border-radius: 11px;
+	color: var(--catalog-heading-color) !important;
+	text-decoration: none;
+	transition: border-color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+}
+
+.author-directory-card:hover,
+.author-directory-card:focus-visible {
+	border-color: var(--control-hover-border);
+	transform: translateY(var(--page-hover-lift));
+}
+
+.author-directory-card img {
+	flex: 0 0 auto;
+	width: 3.4rem;
+	height: 3.4rem;
+	border: 1px solid var(--surface-border);
+	border-radius: 10px;
+	background: rgba(12, 16, 20, 0.45);
+	object-fit: cover;
+}
+
+.author-directory-copy {
+	display: grid;
+	gap: 0.3rem;
+	min-width: 0;
+}
+
+.author-directory-copy strong {
+	overflow-wrap: anywhere;
+}
+
+.author-directory-copy > span {
+	color: var(--catalog-copy-color);
+	font-size: 0.83rem;
+}
+
+@media (max-width: 900px) {
+	.author-profile-layout {
+		grid-template-columns: 1fr;
+	}
+
+	.author-profile-card {
+		position: static;
+		grid-template-columns: 110px minmax(0, 1fr);
+		align-items: start;
+	}
+
+	.author-profile-avatar {
+		grid-row: span 3;
+		width: 110px;
+	}
+
+	.author-profile-links,
+	.author-profile-support {
+		grid-column: 1 / -1;
+	}
+}
+
+@media (max-width: 540px) {
+	.author-profile-card {
+		grid-template-columns: 76px minmax(0, 1fr);
+	}
+
+	.author-profile-avatar {
+		width: 76px;
+		border-radius: 12px;
+	}
+
+	.author-profile-counts,
+	.author-profile-bio {
+		grid-column: 1 / -1;
+	}
+}
+
 @mixin catalog-light-theme-content {
 	.learn-catalog-hero .page-hero-graphic {
 		filter: none;
@@ -484,6 +755,28 @@ html.theme-dark .asset-hub-section.theme-page-bg-dark {
 	.asset-hub-catalog-layout .page-feature-card-media-badge-overlay .page-feature-card-media .page-feature-card-badge {
 		background: rgba(255, 255, 255, 0.84);
 		box-shadow: 0 12px 24px rgba(18, 45, 75, 0.14);
+	}
+
+	.author-profile-card a,
+	.author-profile-handle,
+	.author-profile-support a {
+		color: rgba(20, 24, 28, 0.72);
+	}
+
+	.author-profile-card a:hover,
+	.author-profile-card a:focus-visible {
+		color: var(--darkest);
+	}
+
+	.author-profile-counts span,
+	.author-profile-links a,
+	.author-profile-support a {
+		background: rgba(27, 50, 74, 0.035);
+	}
+
+	.author-profile-avatar,
+	.author-directory-card img {
+		background: rgba(232, 238, 245, 0.96);
 	}
 }
 

@@ -1,8 +1,14 @@
 ---
 author: Defold Foundation
+authors:
+- github: defold
+  id: f0ed797e86f7025f8ba5455479852ca5
+  name: Defold Foundation
 brief: Learn how to play 3D animations from a GLB model using skinned model material.
 category: animation
 layout: example
+license: CC0-1.0
+license_url: https://creativecommons.org/publicdomain/zero/1.0/
 opengraph_image: https://www.defold.com/examples/animation/3d_animations/thumbnail.webp
 path: animation/3d_animations
 scripts: main.script, main.gui_script
@@ -10,7 +16,6 @@ tags: animation, model, gui, input, message-passing
 thumbnail: thumbnail.webp
 title: 3D Animations - Skinned Model
 twitter_image: https://www.defold.com/examples/animation/3d_animations/thumbnail.webp
-
 ---
 
 This example shows how to play skeletal animations from a skinned GLB model using `model.play_anim()`.

@@ -3,16 +3,108 @@ layout: page
 nav: floating
 ---
 {%- assign author = site.data.authors[page.author] -%}
+{%- assign asset_count = author.assets.size -%}
+{%- assign example_count = author.examples.size -%}
 
-<div class="section dark">
+<div class="section dark asset-hub-section author-profile-section">
 	<div class="container">
-		<div class="row">
-			<div class="columns two"><img src="/images/icons/community-assets-on-dark.svg" style="max-width: 150px" alt="Authors section icon" loading="lazy" decoding="async"/></div>
-			<div class="columns ten">
-				<h1>{{ author.name }}</h1>
-			</div>
+		<div class="author-profile-layout">
+			<aside class="author-profile-card page-surface-panel asset-hub-surface-panel" aria-label="{{ author.name }} profile">
+				<img class="author-profile-avatar" src="{{ author.avatar_url }}" alt="{{ author.name }} avatar" loading="eager" decoding="async"/>
+				<div class="author-profile-heading">
+					<h1>{{ author.name }}</h1>
+					{%- if author.github -%}
+					<a class="author-profile-handle" href="https://github.com/{{ author.github }}" target="_blank" rel="noopener noreferrer">@{{ author.github }}</a>
+					{%- endif -%}
+				</div>
+
+				{%- if author.bio -%}
+				<p class="author-profile-bio">{{ author.bio }}</p>
+				{%- endif -%}
+
+				<div class="author-profile-counts" aria-label="Contribution counts">
+					<span><strong>{{ asset_count }}</strong> asset{% unless asset_count == 1 %}s{% endunless %}</span>
+					<span><strong>{{ example_count }}</strong> example{% unless example_count == 1 %}s{% endunless %}</span>
+				</div>
+
+				{%- if author.github or author.links.size > 0 -%}
+				<nav class="author-profile-links" aria-label="Profile links">
+					{%- if author.github -%}
+					<a href="https://github.com/{{ author.github }}" target="_blank" rel="noopener noreferrer" aria-label="{{ author.name }} on GitHub">
+						{% include site_icon.html name="mark-github" %}<span>GitHub</span>
+					</a>
+					{%- endif -%}
+					{%- for link in author.links -%}
+						{%- assign link_icon = "link-external" -%}
+						{%- assign link_label = link.label | default: link.type | capitalize -%}
+						{%- if link.type == "website" -%}
+							{%- assign link_icon = "globe" -%}
+							{%- assign link_label = link.label | default: "Website" -%}
+						{%- elsif link.type == "x" -%}
+							{%- assign link_icon = "x" -%}
+							{%- assign link_label = link.label | default: "X" -%}
+						{%- endif -%}
+					<a href="{{ link.url }}" target="_blank" rel="noopener noreferrer" aria-label="{{ author.name }} — {{ link_label }}">
+						{% include site_icon.html name=link_icon %}<span>{{ link_label }}</span>
+					</a>
+					{%- endfor -%}
+				</nav>
+				{%- endif -%}
+
+				{%- if author.support.size > 0 -%}
+				<div class="author-profile-support">
+					<p>Support {{ author.name }}</p>
+					{%- for support in author.support -%}
+						{%- assign support_label = support.label | default: "Support" -%}
+						{%- if support.type == "github_sponsors" -%}
+							{%- assign support_label = support.label | default: "GitHub Sponsors" -%}
+						{%- elsif support.type == "ko_fi" -%}
+							{%- assign support_label = support.label | default: "Ko-fi" -%}
+						{%- elsif support.type == "buy_me_a_coffee" -%}
+							{%- assign support_label = support.label | default: "Buy me a coffee" -%}
+						{%- elsif support.type == "patreon" -%}
+							{%- assign support_label = support.label | default: "Patreon" -%}
+						{%- elsif support.type == "paypal" -%}
+							{%- assign support_label = support.label | default: "PayPal" -%}
+						{%- endif -%}
+					<a href="{{ support.url }}" target="_blank" rel="nofollow sponsored noopener noreferrer">
+						{% include site_icon.html name="heart" %}<span>{{ support_label }}</span>
+					</a>
+					{%- endfor -%}
+				</div>
+				{%- endif -%}
+			</aside>
+
+			<main class="author-contributions">
+				{%- if asset_count > 0 -%}
+				<section class="author-contribution-section" aria-labelledby="author-assets-heading">
+					<div class="author-contribution-heading">
+						<p class="asset-hub-filter-label">Contributions</p>
+						<h2 id="author-assets-heading">Assets <span>{{ asset_count }}</span></h2>
+					</div>
+					<div class="asset-hub-grid author-contribution-grid">
+						{%- for asset_contribution in author.assets -%}
+							{% include asset.html id=asset_contribution.id %}
+						{%- endfor -%}
+					</div>
+				</section>
+				{%- endif -%}
+
+				{%- if example_count > 0 -%}
+				<section class="author-contribution-section" aria-labelledby="author-examples-heading">
+					<div class="author-contribution-heading">
+						<p class="asset-hub-filter-label">Contributions</p>
+						<h2 id="author-examples-heading">Examples <span>{{ example_count }}</span></h2>
+					</div>
+					<div class="asset-hub-grid author-contribution-grid">
+						{%- for example in author.examples -%}
+							{%- assign example_link = "/examples/" | append: example.path | append: "/" -%}
+							{% include learn_card.html title=example.title description=example.brief link=example_link image=example.image author=example.author %}
+						{%- endfor -%}
+					</div>
+				</section>
+				{%- endif -%}
+			</main>
 		</div>
-		{%- assign assetids = author.assets | map: "id" -%}
-		{%- include assetgrid.html assetids=assetids title="Assets" -%}
 	</div>
 </div>

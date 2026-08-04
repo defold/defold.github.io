@@ -1,8 +1,14 @@
 ---
 author: Defold Foundation
+authors:
+- github: defold
+  id: f0ed797e86f7025f8ba5455479852ca5
+  name: Defold Foundation
 brief: Create a bridge from revolute joints between existing Defold collision objects.
 category: physics
 layout: example
+license: CC0-1.0
+license_url: https://creativecommons.org/publicdomain/zero/1.0/
 opengraph_image: https://www.defold.com/examples/physics/box2d_revolute_bridge/thumbnail.webp
 path: physics/box2d_revolute_bridge
 scripts: box2d_revolute_bridge_v3.script, box2d_revolute_bridge_v2.script
@@ -10,7 +16,6 @@ tags: physics, box2d
 thumbnail: thumbnail.webp
 title: Box2D Revolute Bridge
 twitter_image: https://www.defold.com/examples/physics/box2d_revolute_bridge/thumbnail.webp
-
 ---
 
 This example builds a simple rope bridge from rectangular dynamic bodies connected with Box2D revolute joints.

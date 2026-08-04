@@ -1,10 +1,16 @@
 ---
+author: fysx, Defold Foundation
 authors:
-- fysx
-- Defold Foundation
+- id: c31ddfee639bf824b30f4d6d2f472bdb
+  name: fysx
+- github: defold
+  id: f0ed797e86f7025f8ba5455479852ca5
+  name: Defold Foundation
 brief: This example shows how to spawn firework rockets with separate trail and burst particle effects, including a small dip before the burst.
 category: particles
 layout: example
+license: CC0-1.0
+license_url: https://creativecommons.org/publicdomain/zero/1.0/
 opengraph_image: https://www.defold.com/examples/particles/fireworks/thumbnail.png
 path: particles/fireworks
 scripts: fireworks.script
@@ -12,7 +18,6 @@ tags: particles
 thumbnail: thumbnail.png
 title: Spawning Fireworks ParticleFX
 twitter_image: https://www.defold.com/examples/particles/fireworks/thumbnail.png
-
 ---
 
 ## Setup

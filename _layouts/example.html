@@ -87,7 +87,33 @@ layout: page_with_learnnav
 				<div class="learn-detail-sidebar-stack">
 					{% include learn_detail_languages.html locales=current_example.locales path=current_example_link %}
 					<div class="learn-detail-panel learn-detail-actions page-surface-panel page-text-panel">
-						<p>This example was created by {{ page.author }}.</p>
+						{%- assign example_authors = page.authors | default: current_example.authors -%}
+						{%- assign example_license = page.license | default: current_example.license | default: "CC0-1.0" -%}
+						{%- assign example_license_url = page.license_url -%}
+						{%- unless page.license -%}
+							{%- assign example_license_url = current_example.license_url -%}
+						{%- endunless -%}
+						{%- if example_license == "CC0-1.0" and example_license_url == nil -%}
+							{%- assign example_license_url = "https://creativecommons.org/publicdomain/zero/1.0/" -%}
+						{%- endif -%}
+						<div class="example-meta">
+							<div class="example-meta-group">
+								<p class="example-meta-label">Created by</p>
+								<div class="example-author-links">
+									{%- for author in example_authors -%}
+									<a href="/authors/{{ author.id }}/">{{ author.name }}</a>{% unless forloop.last %}<span aria-hidden="true">,</span>{% endunless %}
+									{%- endfor -%}
+								</div>
+							</div>
+							<div class="example-meta-group">
+								<p class="example-meta-label">Licence</p>
+								{%- if example_license_url -%}
+								<a href="{{ example_license_url }}" target="_blank" rel="noopener noreferrer">{{ example_license }} ↗</a>
+								{%- else -%}
+								<span>{{ example_license }}</span>
+								{%- endif -%}
+							</div>
+						</div>
 						{% assign zip_name = page.path | replace: "/", "_" | append: ".zip" %}
 						{% assign zip_url = "https://www.github.com/defold/examples/releases/latest/download/" | append: zip_name %}
 

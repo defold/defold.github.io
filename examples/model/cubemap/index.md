@@ -1,8 +1,14 @@
 ---
 author: Defold Foundation
+authors:
+- github: defold
+  id: f0ed797e86f7025f8ba5455479852ca5
+  name: Defold Foundation
 brief: Shows how to sample a cubemap in a model shader to create environment reflections.
 category: model
 layout: example
+license: CC0-1.0
+license_url: https://creativecommons.org/publicdomain/zero/1.0/
 opengraph_image: https://www.defold.com/examples/model/cubemap/thumbnail.webp
 path: model/cubemap
 scripts: cubemap_model.vp, cubemap_model.fp, orbit_camera.script
@@ -10,7 +16,6 @@ tags: model, material, shader
 thumbnail: thumbnail.webp
 title: Cubemap Reflection
 twitter_image: https://www.defold.com/examples/model/cubemap/thumbnail.webp
-
 ---
 
 The example renders the Defold logo with a custom material that reflects an environment cubemap. Drag or touch to orbit around the model and use the mouse wheel to zoom.

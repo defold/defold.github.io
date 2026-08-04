@@ -1,8 +1,14 @@
 ---
 author: Defold Foundation
+authors:
+- github: defold
+  id: f0ed797e86f7025f8ba5455479852ca5
+  name: Defold Foundation
 brief: This example shows how the Start Delay emitter property can be used to sequence two emitters inside a single ParticleFX and create a simple fountain effect.
 category: particles
 layout: example
+license: CC0-1.0
+license_url: https://creativecommons.org/publicdomain/zero/1.0/
 opengraph_image: https://www.defold.com/examples/particles/particlefx_start_delay/thumbnail.png
 path: particles/particlefx_start_delay
 scripts: fountain.script
@@ -10,7 +16,6 @@ tags: particles
 thumbnail: thumbnail.png
 title: ParticleFX - Fountain - Start Delay
 twitter_image: https://www.defold.com/examples/particles/particlefx_start_delay/thumbnail.png
-
 ---
 
 This example shows how `Start Delay` can be used to coordinate multiple emitters inside a single ParticleFX. The effect is a simple fountain: one emitter shoots water droplets upward, and another emitter near the bottom creates a small splash when those droplets come back down.

@@ -1,14 +1,20 @@
 ---
+author: Defold Foundation
+authors:
+- github: defold
+  id: f0ed797e86f7025f8ba5455479852ca5
+  name: Defold Foundation
 brief: This example shows a simple setup with dynamic physics objects.
 category: physics
 layout: example
+license: CC0-1.0
+license_url: https://creativecommons.org/publicdomain/zero/1.0/
 opengraph_image: https://www.defold.com/examples/physics/dynamic/dynamic.png
 path: physics/dynamic
 tags: physics
 thumbnail: dynamic.png
 title: Dynamic physics
 twitter_image: https://www.defold.com/examples/physics/dynamic/dynamic.png
-
 ---
 
 ![dynamic](dynamic.png)

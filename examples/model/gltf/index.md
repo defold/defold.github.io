@@ -1,8 +1,14 @@
 ---
 author: Artsiom Trubchyk
+authors:
+- github: aglitchman
+  id: 4fff661212c3b63631eb09266e26b456
+  name: Artsiom Trubchyk
 brief: This example shows how to use glTF models to build an infinite scrolling track.
 category: model
 layout: example
+license: CC0-1.0
+license_url: https://creativecommons.org/publicdomain/zero/1.0/
 opengraph_image: https://www.defold.com/examples/model/gltf/thumbnail.webp
 path: model/gltf
 scripts: gltf.script
@@ -10,7 +16,6 @@ tags: model
 thumbnail: thumbnail.webp
 title: GLTF - Infinite Track
 twitter_image: https://www.defold.com/examples/model/gltf/thumbnail.webp
-
 ---
 
 This example uses three glTF model assets from Kenney's Toy Car Kit to build a small endless road scene. The car stays in place while the road segments move forward and loop behind it.

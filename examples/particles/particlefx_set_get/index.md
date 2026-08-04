@@ -1,8 +1,14 @@
 ---
 author: Defold Foundation
+authors:
+- github: defold
+  id: f0ed797e86f7025f8ba5455479852ca5
+  name: Defold Foundation
 brief: This example shows how to get and set ParticleFX emitter image, animation, and material at runtime.
 category: particles
 layout: example
+license: CC0-1.0
+license_url: https://creativecommons.org/publicdomain/zero/1.0/
 opengraph_image: https://www.defold.com/examples/particles/particlefx_set_get/thumbnail.png
 path: particles/particlefx_set_get
 scripts: particlefx_set_get.script, particlefx_glow.fp
@@ -10,7 +16,6 @@ tags: particles
 thumbnail: thumbnail.png
 title: ParticleFX emitter properties
 twitter_image: https://www.defold.com/examples/particles/particlefx_set_get/thumbnail.png
-
 ---
 
 Since Defold 1.12.2 you can use `go.get()` and `go.set()` on individual ParticleFX emitters by passing `keys = { "..." }`.

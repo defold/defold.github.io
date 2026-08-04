@@ -1,8 +1,14 @@
 ---
 author: Defold Foundation
+authors:
+- github: defold
+  id: f0ed797e86f7025f8ba5455479852ca5
+  name: Defold Foundation
 brief: This example shows how scroll the texture in the runtime using Texture Transform 2D Vertex Attribute, without using the sprite in the world space.
 category: sprite
 layout: example
+license: CC0-1.0
+license_url: https://creativecommons.org/publicdomain/zero/1.0/
 opengraph_image: https://www.defold.com/examples/sprite/texture_scrolling/thumbnail.png
 path: sprite/texture_scrolling
 scripts: scrolling.vp, scrolling.fp
@@ -10,7 +16,6 @@ tags: sprite
 thumbnail: thumbnail.png
 title: Texture scrolling
 twitter_image: https://www.defold.com/examples/sprite/texture_scrolling/thumbnail.png
-
 ---
 
 # Texture scrolling

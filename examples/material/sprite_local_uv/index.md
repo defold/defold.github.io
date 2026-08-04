@@ -1,8 +1,14 @@
 ---
 author: Defold Foundation
+authors:
+- github: defold
+  id: f0ed797e86f7025f8ba5455479852ca5
+  name: Defold Foundation
 brief: This example shows how to get local UV coordinates of a sprite regardless of sprite size
 category: material
 layout: example
+license: CC0-1.0
+license_url: https://creativecommons.org/publicdomain/zero/1.0/
 opengraph_image: https://www.defold.com/examples/material/sprite_local_uv/example.png
 path: material/sprite_local_uv
 scripts: sprite_local_uv.script, sprite_local_uv.vp, sprite_local_uv.fp
@@ -10,7 +16,6 @@ tags: sprite
 thumbnail: example.png
 title: Sprite local UV
 twitter_image: https://www.defold.com/examples/material/sprite_local_uv/example.png
-
 ---
 
 The example uses two game objects, each with a sprite component and a script.

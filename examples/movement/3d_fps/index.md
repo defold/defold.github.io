@@ -1,8 +1,14 @@
 ---
 author: Defold Foundation
+authors:
+- github: defold
+  id: f0ed797e86f7025f8ba5455479852ca5
+  name: Defold Foundation
 brief: Control a first-person camera using WASD and mouse to look with cursor lock.
 category: movement
 layout: example
+license: CC0-1.0
+license_url: https://creativecommons.org/publicdomain/zero/1.0/
 opengraph_image: https://www.defold.com/examples/movement/3d_fps/collection.png
 path: movement/3d_fps
 scripts: character_controller.script
@@ -10,7 +16,6 @@ tags: movement
 thumbnail: collection.png
 title: First-person 3D camera and movement
 twitter_image: https://www.defold.com/examples/movement/3d_fps/collection.png
-
 ---
 
 This example shows how to build a simple first-person controller for a 3D scene. You can look around with the mouse and move on the XZ plane using the keyboard (WSAD).

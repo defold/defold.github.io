@@ -1,10 +1,16 @@
 ---
+author: mikatuo, Defold Foundation
 authors:
-- mikatuo
-- Defold Foundation
+- id: 4e926871e9729ab5236b8ea2030e104e
+  name: mikatuo
+- github: defold
+  id: f0ed797e86f7025f8ba5455479852ca5
+  name: Defold Foundation
 brief: Demonstrates different easing functions available in Defold.
 category: animation
 layout: example
+license: CC0-1.0
+license_url: https://creativecommons.org/publicdomain/zero/1.0/
 opengraph_image: https://www.defold.com/examples/animation/easing/thumbnail.webp
 path: animation/easing
 scripts: animator.script, controller.script
@@ -12,7 +18,6 @@ tags: animation, easing, input
 thumbnail: thumbnail.webp
 title: Easing Functions (Tweens)
 twitter_image: https://www.defold.com/examples/animation/easing/thumbnail.webp
-
 ---
 
 This example compares the built-in easing constants that can be passed to `go.animate()`. Use the left and right arrow keys, or the on-screen buttons, to switch easing function and restart the same position, rotation, and scale animations.

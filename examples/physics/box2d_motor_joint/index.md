@@ -1,8 +1,14 @@
 ---
 author: Defold Foundation
+authors:
+- github: defold
+  id: f0ed797e86f7025f8ba5455479852ca5
+  name: Defold Foundation
 brief: Create and control a motorized Box2D joint from script using Box2D V2 and V3.
 category: physics
 layout: example
+license: CC0-1.0
+license_url: https://creativecommons.org/publicdomain/zero/1.0/
 opengraph_image: https://www.defold.com/examples/physics/box2d_motor_joint/thumbnail.webp
 path: physics/box2d_motor_joint
 scripts: box2d_motor_joint_v3.script, box2d_motor_joint_v2.script
@@ -10,7 +16,6 @@ tags: physics, box2d
 thumbnail: thumbnail.webp
 title: Box2D Motor Joint
 twitter_image: https://www.defold.com/examples/physics/box2d_motor_joint/thumbnail.webp
-
 ---
 
 This example creates a motorized Box2D joint at runtime. It works with both Box2D V2 and V3 by attaching one script for each backend. Each script checks `b2d.get_version()` during `init()` and becomes a no-op when the other backend is active.
