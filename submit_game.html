@@ -7,7 +7,7 @@ stylesheets:
   - submit
 ---
 
-{%- assign tags = site.asset_allowed_tags -%}
+{%- assign tags = site.asset_allowed_tags | default: site.data.tagindex -%}
 
 {%- capture page_hero_copy -%}
 <p>Want to feature your game in the Defold showcase? Fill in the details here and the site will open a prefilled GitHub issue for the showcase team.</p>
@@ -82,7 +82,9 @@ stylesheets:
 
 		var tags = [];
 		{%- for tag in tags -%}
-		if (document.getElementById("tag-{{ tag.id }}").checked) { tags.push({{ tag.name | jsonify }}); }
+		{%- assign tag_name = tag.name | default: tag -%}
+		{%- assign tag_id = tag.id | default: tag_name | slugify -%}
+		if (document.getElementById("tag-{{ tag_id }}").checked) { tags.push({{ tag_name | jsonify }}); }
 		{% endfor %}
 
 		var title = document.getElementById("game_title").value.trim();
@@ -209,7 +211,9 @@ stylesheets:
 						<legend>Tags (select 1-3 most fitting)</legend>
 						<div class="submit-form-check-grid">
 						{%- for tag in tags -%}
-							<label class="submit-form-check" for="tag-{{ tag.id }}"><input type="checkbox" name="tags" value="{{ tag.name }}" id="tag-{{ tag.id }}"><span>{{ tag.name }}</span></label>
+							{%- assign tag_name = tag.name | default: tag -%}
+							{%- assign tag_id = tag.id | default: tag_name | slugify -%}
+							<label class="submit-form-check" for="tag-{{ tag_id }}"><input type="checkbox" name="tags" value="{{ tag_name | escape }}" id="tag-{{ tag_id }}"><span>{{ tag_name | escape }}</span></label>
 						{%- endfor -%}
 						</div>
 					</fieldset>
