@@ -1,5 +1,5 @@
 ---
-author: The Defold Foundation
+author: Defold Foundation
 brief: Shows how to build a small Finite State Machine module and use it to control character and animation states.
 category: animation
 layout: example

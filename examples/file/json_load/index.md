@@ -1,5 +1,5 @@
 ---
-author: jerakin
+author: Jerakin
 brief: This example shows how to load json data using sys.load_resource().
 category: file
 layout: example

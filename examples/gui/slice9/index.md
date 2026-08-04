@@ -1,5 +1,5 @@
 ---
-author: FlexYourBrain
+author: Agustin R.
 brief: This example demonstrates slice-9 scaling gui box node.
 category: gui
 layout: example

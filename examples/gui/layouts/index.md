@@ -1,5 +1,5 @@
 ---
-author: agulev
+author: Alexey Gulev
 brief: This example demonstrates the use of layouts.
 category: gui
 layout: example

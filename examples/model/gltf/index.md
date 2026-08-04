@@ -1,5 +1,5 @@
 ---
-author: aglitchman
+author: Artsiom Trubchyk
 brief: This example shows how to use glTF models to build an infinite scrolling track.
 category: model
 layout: example

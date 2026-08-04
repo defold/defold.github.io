@@ -1,5 +1,5 @@
 ---
-author: AGulev
+author: Alexey Gulev
 brief: This example shows how to load and set a dynamic texture on a gui box node.
 category: gui
 layout: example

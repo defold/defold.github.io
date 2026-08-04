@@ -1,5 +1,5 @@
 ---
-author: FlexYourBrain
+author: Agustin R.
 brief: This example demonstrates flipping a sprite animation vertically and horizontally.
 category: sprite
 layout: example

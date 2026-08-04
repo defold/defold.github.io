@@ -1,5 +1,5 @@
 ---
-author: aglitchman
+author: Artsiom Trubchyk
 brief: This example shows how to create and apply an unlit material to a 3D model.
 category: material
 layout: example

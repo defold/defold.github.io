@@ -1,5 +1,5 @@
 ---
-author: Defold
+author: Defold Foundation
 brief: This example shows how to change which sound a sound component plays
 category: sound
 layout: example

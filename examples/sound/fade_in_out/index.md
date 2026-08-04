@@ -1,5 +1,5 @@
 ---
-author: AGulev
+author: Alexey Gulev
 brief: This example shows how to make Fade-In and fade Fade-Out music.
 category: sound
 layout: example

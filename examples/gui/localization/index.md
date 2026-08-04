@@ -1,5 +1,5 @@
 ---
-author: The Defold Foundation
+author: Defold Foundation
 brief: This example demonstrates how to handle localization in games, Unicode text layout, RTL rendering, and runtime font switching for localization.
 category: gui
 layout: example

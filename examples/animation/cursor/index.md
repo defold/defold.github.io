@@ -1,5 +1,5 @@
 ---
-author: Pawel Jarosz
+author: Paweł Jarosz
 brief: This example shows how to set and animate the normalized cursor value.
 category: animation
 layout: example
