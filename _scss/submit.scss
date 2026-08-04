@@ -48,6 +48,7 @@
 }
 
 .submit-form-layout input[type="text"],
+.submit-form-layout input[type="url"],
 .submit-form-layout input[type="number"],
 .submit-form-layout select,
 .submit-form-layout textarea {
@@ -69,12 +70,14 @@
 }
 
 .submit-form-layout input[type="text"]::placeholder,
+.submit-form-layout input[type="url"]::placeholder,
 .submit-form-layout input[type="number"]::placeholder,
 .submit-form-layout textarea::placeholder {
 	color: rgba(255, 255, 255, 0.42);
 }
 
 .submit-form-layout input[type="text"]:focus,
+.submit-form-layout input[type="url"]:focus,
 .submit-form-layout input[type="number"]:focus,
 .submit-form-layout select:focus,
 .submit-form-layout textarea:focus {
@@ -82,6 +85,13 @@
 	outline: none;
 	box-shadow: 0 0 0 3px rgba(57, 163, 228, 0.18);
 	background: linear-gradient(180deg, rgba(255, 255, 255, 0.09) 0%, rgba(255, 255, 255, 0.04) 100%);
+}
+
+.submit-form-help {
+	margin: 0;
+	color: rgba(255, 255, 255, 0.68);
+	font-size: 1.05rem;
+	line-height: 1.45;
 }
 
 .submit-form-layout select {
@@ -196,6 +206,7 @@
 	}
 
 	.submit-form-layout input[type="text"],
+	.submit-form-layout input[type="url"],
 	.submit-form-layout input[type="number"],
 	.submit-form-layout select,
 	.submit-form-layout textarea {
@@ -205,12 +216,14 @@
 	}
 
 	.submit-form-layout input[type="text"]::placeholder,
+	.submit-form-layout input[type="url"]::placeholder,
 	.submit-form-layout input[type="number"]::placeholder,
 	.submit-form-layout textarea::placeholder {
 		color: rgba(27, 50, 74, 0.46);
 	}
 
 	.submit-form-layout input[type="text"]:focus,
+	.submit-form-layout input[type="url"]:focus,
 	.submit-form-layout input[type="number"]:focus,
 	.submit-form-layout select:focus,
 	.submit-form-layout textarea:focus {
@@ -253,6 +266,10 @@
 
 	.submit-form-check input:checked + span {
 		color: var(--darkest);
+	}
+
+	.submit-form-help {
+		color: rgba(48, 38, 63, 0.68);
 	}
 }
 

@@ -11,7 +11,7 @@ stylesheets:
 
 {%- capture page_hero_copy -%}
 <p>Share your extension, template, tool, or sample with the Defold community. Fill in the key details here and the site will open a prefilled GitHub issue for the final submission.</p>
-<p>You can attach screenshots and additional context directly on GitHub after the issue opens.</p>
+<p>Provide a thumbnail URL now, or attach one image directly on GitHub after the issue opens.</p>
 {%- endcapture -%}
 
 {%- capture page_hero_panel -%}
@@ -31,6 +31,7 @@ stylesheets:
 
 		var name = document.getElementById("asset_name").value;
 		var paidOnly = document.getElementById("asset_paid_only").checked;
+		var thumbnailUrl = document.getElementById("asset_thumbnail_url").value.trim();
 		var externalActions = [];
 		var externalActionType = document.getElementById("asset_external_action_type").value;
 		var externalActionLabel = document.getElementById("asset_external_action_label").value.trim();
@@ -46,6 +47,21 @@ stylesheets:
 				url: externalActionUrl
 			});
 		}
+		if (thumbnailUrl) {
+			try {
+				var parsedThumbnailUrl = new URL(thumbnailUrl);
+				if (parsedThumbnailUrl.protocol !== "https:" || !parsedThumbnailUrl.hostname) {
+					throw new Error("Thumbnail URL must use HTTPS.");
+				}
+				if (!/\.(webp|png|jpe?g)$/i.test(parsedThumbnailUrl.pathname)) {
+					throw new Error("Thumbnail URL must point to a supported image format.");
+				}
+			}
+			catch (error) {
+				alert("Please enter a valid HTTPS URL ending in .webp, .png, .jpg, or .jpeg, or leave the field blank and attach the image on GitHub.");
+				return;
+			}
+		}
 
 		var asset = {
 			name: name,
@@ -59,8 +75,7 @@ stylesheets:
 			platforms: platforms,
 			tags: tags,
 			images: {
-				hero: "",
-				thumb: ""
+				thumb: thumbnailUrl
 			}
 		};
 		if (externalActions.length > 0) {
@@ -70,11 +85,25 @@ stylesheets:
 			asset.paid_only = true;
 		}
 
-		var instructions = "Please attach two images on GitHub if possible: " + name + "-hero.[png|jpg] (max 2400x666) and " + name + "-thumb.[png|jpg] (max 580x380).";
-		var url = "https://github.com/defold/asset-portal/issues/new"
-			+ "?title=" + encodeURI(asset.name)
-			+ "&body=" + encodeURI(instructions + "\n\n" + JSON.stringify(asset, null, 4));
-		window.open(url, "_blank");
+		var thumbnailInstructions;
+		if (thumbnailUrl) {
+			thumbnailInstructions = "## Thumbnail\n\n" +
+				"A thumbnail URL is included in the asset metadata below. No additional attachment is required.\n\n";
+		}
+		else {
+			thumbnailInstructions = "## Thumbnail\n\n" +
+				"Please drag and drop one thumbnail image below before submitting this issue.\n\n" +
+				"<!-- Attach the thumbnail image here -->\n\n" +
+				"Preferred format: WebP. PNG, JPG, and JPEG are also accepted. Recommended size: 900×600 pixels (3:2).\n\n";
+		}
+		thumbnailInstructions += "Maintainer note: normalize the submitted image to a 900×600 WebP file named `<asset-id>-thumb.webp` before merging.\n\n";
+
+		var body = thumbnailInstructions + "## Asset metadata\n\n```json\n" + JSON.stringify(asset, null, 4) + "\n```";
+		var issueUrl = new URL("https://github.com/defold/asset-portal/issues/new");
+		issueUrl.searchParams.set("template", "new-asset.md");
+		issueUrl.searchParams.set("title", asset.name);
+		issueUrl.searchParams.set("body", body);
+		window.open(issueUrl.toString(), "_blank", "noopener");
 	}
 </script>
 
@@ -152,6 +181,12 @@ stylesheets:
 					<div class="submit-form-field submit-form-field-full">
 						<label for="asset_external_action_url">Creator action URL (optional)</label>
 						<input id="asset_external_action_url" type="url" name="external_action_url" placeholder="https://ko-fi.com/creator">
+					</div>
+
+					<div class="submit-form-field submit-form-field-full">
+						<label for="asset_thumbnail_url">Thumbnail URL (optional)</label>
+						<input id="asset_thumbnail_url" type="url" inputmode="url" name="thumbnail_url" placeholder="https://example.com/thumbnail.webp">
+						<p class="submit-form-help">Use an HTTPS URL ending in WebP, PNG, JPG, or JPEG. Recommended size: 900×600 pixels (3:2). If the image is only on your computer, leave this blank and attach it on GitHub.</p>
 					</div>
 
 					<fieldset class="submit-form-field submit-form-field-full submit-form-fieldset">
