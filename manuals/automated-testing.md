@@ -15,7 +15,7 @@ toc:
 - Persisted logs
 - Testing a running game through a runtime API
 - Browser tests for HTML5
-- Editor previews and runtime screenshots for visual inspection
+- Editor previews and runtime screenshots for visual inspection {editor-previews-and-runtime-screenshots}
 - Headless tests and CI
 - Failure reports and artifacts
 ---
@@ -152,7 +152,7 @@ The most reliable approach is to expose an explicit JavaScript testing bridge in
 
 Keep browser tests bounded. Distinguish a page-load failure, missing canvas, JavaScript error, test timeout, and failed game assertion in the final report.
 
-## Editor previews and runtime screenshots for visual inspection
+## Editor previews and runtime screenshots for visual inspection {#editor-previews-and-runtime-screenshots}
 
 One can create screenshot of the resource files in the default scene view in the open editor or in a game in runtime.
 

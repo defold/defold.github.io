@@ -15,7 +15,7 @@ toc:
 - Использование shell-команд
 - Хуки жизненного цикла {lifecycle-hooks}
 - Языковые серверы
-- HTTP-сервер
+- HTTP-сервер {http-server}
 - Скрипты редактора в библиотеках {editor-scripts-in-libraries}
 - Предпочтения {preferences}
 - Режимы выполнения {execution-modes}
@@ -635,7 +635,7 @@ end
 - `command` (обязательно) — массив, содержащий команду и её аргументы;
 - `watched_files` — массив таблиц с ключом `pattern` (глоб-шаблон), которые вызовут уведомление сервера о [изменении отслеживаемых файлов](https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#workspace_didChangeWatchedFiles).
 
-## HTTP-сервер
+## HTTP-сервер {#http-server}
 
 Каждый запущенный экземпляр редактора включает в себя HTTP-сервер. Этот сервер можно расширить с помощью скриптов редактора. Чтобы расширить HTTP-сервер редактора, необходимо добавить функцию `get_http_server_routes` в ваш скрипт редактора — она должна возвращать дополнительные маршруты:
 ```lua

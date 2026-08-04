@@ -27,7 +27,7 @@ toc:
 - Настройки (Preferences)
 - Логи редактора (Editor Logs) {editor-logs}
 - Сервер редакторa (Editor Server)
-- Метаданные установки редактора (Editor Installation Metadata)
+- Метаданные установки редактора (Editor Installation Metadata) {editor-installation-metadata}
 - Оформление редактора (Editor Styling)
 - FAQ
 ---
@@ -294,7 +294,7 @@ $ > ./path/to/Defold.app/Contents/MacOS/Defold
 ./path/to/Defold.app/Contents/MacOS/Defold --port 8181
 ```
 
-## Метаданные установки редактора (Editor Installation Metadata)
+## Метаданные установки редактора (Editor Installation Metadata) {#editor-installation-metadata}
 
 При запуске редактор записывает информацию о launcher и путях установки в известное расположение. Интеграции со сторонними IDE и другие инструменты могут использовать это, чтобы находить установленные редакторы Defold:
 

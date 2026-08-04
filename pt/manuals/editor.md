@@ -27,7 +27,7 @@ toc:
 - Preferences
 - Logs do editor {editor-logs}
 - Servidor do editor
-- Metadados de instalação do editor
+- Metadados de instalação do editor {editor-installation-metadata}
 - Estilização do editor
 - FAQ
 ---
@@ -290,7 +290,7 @@ Além disso, o executável do editor tem a opção de linha de comando `--port` 
 ./path/to/Defold/Defold.app/Contents/MacOS/Defold --port 8181
 ```
 
-## Metadados de instalação do editor
+## Metadados de instalação do editor {#editor-installation-metadata}
 
 Quando o editor inicia, ele escreve informações sobre o launcher e os caminhos de instalação em um local conhecido. Integrações com IDEs de terceiros e outras ferramentas podem usar isso para encontrar editores Defold instalados:
 
