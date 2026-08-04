@@ -50,24 +50,24 @@
 					<h3 class="asset-card-title">{{ asset.name }}</h3>
 					<span class="asset-card-tags">{{ asset_tag_summary | strip | truncate: 40 }}</span>
 				</span>
-				<span class="asset-card-meta">
-					<span class="asset-card-status-badge asset-card-status-badge-{{ availability_badge_class }}">
-						{% include site_icon.html name=availability_badge_icon class="asset-card-status-icon" %}
-						<span>{{ availability_badge }}</span>
-					</span>
-					{%- if external_action_badge.size > 0 -%}
-					<span class="asset-card-status-badge asset-card-status-badge-{{ external_action_badge_class }}">
-						{% include site_icon.html name=external_action_badge_icon class="asset-card-status-icon" %}
-						<span>{{ external_action_badge }}</span>
-					</span>
-					{%- endif -%}
-					{%- if asset.stars.size > 0 -%}
-					<span class="asset-card-stars">
-						{% include site_icon.html name="star" class="asset-card-stars-icon" %}
-						<span>{{ asset.stars }}</span>
-					</span>
-					{%- endif -%}
+				{%- if asset.stars.size > 0 -%}
+				<span class="asset-card-stars">
+					{% include site_icon.html name="star" class="asset-card-stars-icon" %}
+					<span>{{ asset.stars }}</span>
 				</span>
+				{%- endif -%}
+			</span>
+			<span class="asset-card-meta">
+				<span class="asset-card-status-badge asset-card-status-badge-{{ availability_badge_class }}">
+					{% include site_icon.html name=availability_badge_icon class="asset-card-status-icon" %}
+					<span>{{ availability_badge }}</span>
+				</span>
+				{%- if external_action_badge.size > 0 -%}
+				<span class="asset-card-status-badge asset-card-status-badge-{{ external_action_badge_class }}">
+					{% include site_icon.html name=external_action_badge_icon class="asset-card-status-icon" %}
+					<span>{{ external_action_badge }}</span>
+				</span>
+				{%- endif -%}
 			</span>
 			<p class="asset-card-description">{{ asset_description_preview | truncate: 103 }}</p>
 		</span>

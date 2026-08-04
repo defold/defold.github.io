@@ -3990,14 +3990,12 @@ ul.page-checklist-negative li:before {
 }
 
 .asset-card-meta {
-	display: inline-flex;
+	display: flex;
 	align-items: center;
-	justify-content: flex-end;
-	flex: 0 1 auto;
+	justify-content: flex-start;
 	flex-wrap: wrap;
 	gap: 0.55rem;
-	max-width: 100%;
-	margin-left: auto;
+	width: 100%;
 }
 
 .asset-card-status-badge {
@@ -4047,13 +4045,6 @@ ul.page-checklist-negative li:before {
 	display: block;
 	padding-top: 0;
 	padding-right: 0;
-}
-
-@media (max-width: 480px) {
-	.asset-card-meta {
-		flex: 1 1 100%;
-		width: 100%;
-	}
 }
 
 .asset-card-link .asset-card-description {
