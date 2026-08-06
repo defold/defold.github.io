@@ -20,6 +20,11 @@ from utils import list_files, read_as_json, read_as_string, rmtree, write_as_str
 from scripts import dedupe_examples_wasm
 from argparse import ArgumentParser
 from contextlib import contextmanager
+from example_scripts import (
+    copy_example_scripts,
+    find_example_scripts,
+    resolve_example_scripts,
+)
 
 
 SHA1 = {}
@@ -32,8 +37,6 @@ GAMESSHOWCASE_ZIP = "games-showcase-master.zip"
 
 EXAMPLES_DEFOLD_CHANNEL = "alpha"
 EXAMPLES_BUILD_SERVER = "https://build-stage.defold.com/"
-EXAMPLE_CODE_FILE_PATTERNS = "*.script|*.gui_script|*.lua|*.vp|*.fp|*.cp|*.glsl|*.render_script"
-
 ASSETINDEX_JSON = os.path.join("_data", "assetindex.json")
 GAMES_JSON = os.path.join("_data", "games.json")
 AUTHORINDEX_JSON = os.path.join("_data", "authorindex.json")
@@ -206,17 +209,6 @@ def find_files(root_dir, file_patterns):
                     matches.append(os.path.join(root, filename))
     matches.sort()
     return matches
-
-def example_include_name(filename):
-    file, ext = os.path.splitext(os.path.basename(filename))
-    return file + "_" + ext.replace(".", "") + ".md"
-
-def split_example_scripts(scripts):
-    if isinstance(scripts, str):
-        return [s.strip() for s in scripts.split(",") if s.strip()]
-    if isinstance(scripts, list):
-        return [str(s).strip() for s in scripts if str(s).strip()]
-    return []
 
 def write_as_json(filename, data, ensure_ascii=True):
     with open(filename, "w") as f:
@@ -1052,6 +1044,15 @@ def process_examples(download = False, examples_ref = "master", changed_examples
                 if os.path.isfile(example_src_dir):
                     continue
 
+                md_file = os.path.join(example_src_dir, "example.md")
+                fm = load_frontmatter(md_file)
+                available_scripts = find_example_scripts(example_src_dir)
+                try:
+                    resolved_scripts = resolve_example_scripts(fm.get("scripts"), available_scripts)
+                except ValueError as error:
+                    print("ERROR: {}: {}".format(example_path, error))
+                    sys.exit(1)
+
                 print("..processing %s" % example)
                 if rebuild:
                     print("...building %s" % example)
@@ -1078,8 +1079,6 @@ def process_examples(download = False, examples_ref = "master", changed_examples
                     os.makedirs(example_dst_dir, exist_ok=True)
 
                 print("...parsing example.md")
-                md_file = os.path.join(example_src_dir, "example.md")
-                fm = load_frontmatter(md_file)
                 fm["category"] = category
                 fm["path"] = example_path
                 fm["layout"] = "example"
@@ -1102,23 +1101,9 @@ def process_examples(download = False, examples_ref = "master", changed_examples
                             fm["twitter_image"] = image_path
 
                 print("...copying example scripts")
-                os.makedirs(os.path.join(includes_dir, category, example), exist_ok=True)
-                copied_scripts = set()
-                for script in find_files(os.path.join(example_src_dir, "example"), EXAMPLE_CODE_FILE_PATTERNS):
-                    include_name = example_include_name(script)
-                    copied_scripts.add(include_name)
-                    tgt = os.path.join(includes_dir, category, example, include_name)
-                    shutil.copyfile(script, tgt)
-
-                frontmatter_scripts = split_example_scripts(fm.get("scripts"))
-                if frontmatter_scripts:
-                    missing_scripts = []
-                    for script in frontmatter_scripts:
-                        if script != os.path.basename(script) or example_include_name(script) not in copied_scripts:
-                            missing_scripts.append(script)
-                    if missing_scripts:
-                        print("ERROR: {} references missing example script(s): {}".format(fm["path"], ", ".join(missing_scripts)))
-                        sys.exit(1)
+                example_includes_dir = os.path.join(includes_dir, category, example)
+                os.makedirs(example_includes_dir, exist_ok=True)
+                copy_example_scripts(example_src_dir, example_includes_dir, resolved_scripts)
 
                 examplesindex.append(fm)
                 replace_frontmatter(md_file, fm)

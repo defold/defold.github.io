@@ -34,6 +34,9 @@ jobs:
           python-version: 3.10.5
           architecture: x64
 
+      - name: Test example script resolution
+        run: python -m unittest test_example_scripts.py
+
       - name: Build Jekyll site
         run: bundle exec jekyll build
 
