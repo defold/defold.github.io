@@ -87,7 +87,7 @@ layout: page_with_learnnav
 				<div class="learn-detail-sidebar-stack">
 					{% include learn_detail_languages.html locales=current_example.locales path=current_example_link %}
 					<div class="learn-detail-panel learn-detail-actions page-surface-panel page-text-panel">
-						{%- assign example_authors = page.authors | default: current_example.authors -%}
+						{%- assign example_authors = current_example.author_profiles -%}
 						{%- assign example_tags_value = page.tags | default: current_example.tags | default: "" -%}
 						{%- assign example_tags = example_tags_value | replace: ", ", "," | split: "," -%}
 						{%- assign example_license = page.license | default: current_example.license | default: "CC0-1.0" -%}

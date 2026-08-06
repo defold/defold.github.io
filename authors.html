@@ -14,9 +14,7 @@ stylesheets:
 		</header>
 
 		<div class="author-directory-grid">
-			{%- assign author_pages = site.pages | where: "author_profile", true | sort: "title" -%}
-			{%- for author_page in author_pages -%}
-				{%- assign author = site.data.authors | where: "name", author_page.author_name | first -%}
+			{%- for author in site.data.author_directory -%}
 				{%- assign author_avatar_url = author.avatar -%}
 				{%- unless author_avatar_url -%}
 					{%- if author.github -%}
@@ -25,11 +23,11 @@ stylesheets:
 						{%- assign author_avatar_url = "/images/people/avatar_user_profile_male.png" -%}
 					{%- endif -%}
 				{%- endunless -%}
-			<a class="author-directory-card page-surface-panel asset-hub-surface-panel" href="{{ author_page.url }}">
+			<a class="author-directory-card page-surface-panel asset-hub-surface-panel" href="{{ author.url }}">
 				<img src="{{ author_avatar_url }}" alt="" loading="lazy" decoding="async"/>
 				<span class="author-directory-copy">
-					<strong>{{ author_page.author_name }}</strong>
-					<span>{{ author_page.asset_count }} asset{% unless author_page.asset_count == 1 %}s{% endunless %} · {{ author_page.example_count }} example{% unless author_page.example_count == 1 %}s{% endunless %}</span>
+					<strong>{{ author.name }}</strong>
+					<span>{{ author.asset_count }} asset{% unless author.asset_count == 1 %}s{% endunless %} · {{ author.example_count }} example{% unless author.example_count == 1 %}s{% endunless %}</span>
 				</span>
 			</a>
 			{%- endfor -%}

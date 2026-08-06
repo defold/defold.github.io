@@ -2,8 +2,8 @@
 layout: page
 nav: floating
 ---
-{%- assign author = site.data.authors | where: "name", page.author_name | first -%}
-{%- assign author_name = author.name | default: page.author_name -%}
+{%- assign author = page.author_profile -%}
+{%- assign author_name = author.name -%}
 {%- assign author_avatar_url = author.avatar -%}
 {%- unless author_avatar_url -%}
 	{%- if author.github -%}
@@ -110,28 +110,16 @@ nav: floating
 				</div>
 
 				<div class="asset-hub-grid author-contribution-grid" id="author-contribution-grid" data-author-grid>
-					{%- for asset_entry in site.data.assetindex -%}
-						{%- assign asset_contribution = site.data.assets[asset_entry.id] -%}
-						{%- if asset_contribution.author_id == page.author_id -%}
-							{% include asset.html id=asset_entry.id contribution_type="assets" %}
-						{%- endif -%}
+					{%- for asset_id in page.asset_ids -%}
+						{% include asset.html id=asset_id contribution_type="assets" %}
 					{%- endfor -%}
-					{%- for example in site.data.examplesindex -%}
-						{%- assign is_author_example = false -%}
-						{%- for example_author in example.authors -%}
-							{%- if example_author.id == page.author_id -%}
-								{%- assign is_author_example = true -%}
-								{%- break -%}
-							{%- endif -%}
-						{%- endfor -%}
-						{%- if is_author_example -%}
-							{%- assign example_link = "/examples/" | append: example.path | append: "/" -%}
-							{%- assign example_image = "" -%}
-							{%- if example.thumbnail -%}
-								{%- assign example_image = example_link | append: example.thumbnail -%}
-							{%- endif -%}
-							{% include learn_card.html title=example.title description=example.brief link=example_link image=example_image author=example.author class="author-example-card" contribution_type="examples" %}
+					{%- for example in page.examples -%}
+						{%- assign example_link = "/examples/" | append: example.path | append: "/" -%}
+						{%- assign example_image = "" -%}
+						{%- if example.thumbnail -%}
+							{%- assign example_image = example_link | append: example.thumbnail -%}
 						{%- endif -%}
+						{% include learn_card.html title=example.title description=example.brief link=example_link image=example_image author=example.author class="author-example-card" contribution_type="examples" %}
 					{%- endfor -%}
 				</div>
 				<p class="author-contribution-empty page-surface-panel" data-author-empty hidden>No contributions match this filter.</p>

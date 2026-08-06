@@ -17,7 +17,6 @@ import yaml
 from llms import LLMS_DIR, generate_llms_manuals, generate_llms_apis, generate_llms_examples, path_to_manuals_anchor
 from utils import list_files, read_as_json, read_as_string, rmtree, write_as_string
 from scripts import dedupe_examples_wasm
-from scripts.author_profiles import AuthorRegistry, enrich_example, generate_author_outputs
 from argparse import ArgumentParser
 from contextlib import contextmanager
 from example_scripts import (
@@ -1017,8 +1016,6 @@ def process_examples(download = False, examples_ref = "master", changed_examples
 
         data_index_file = os.path.join("_data", "examplesindex.json")
         examplesindex = []
-        author_registry = AuthorRegistry.load(os.path.join("_data", "authors.json"))
-
         category_dirs = os.listdir(unzipped_examples_dir)
         for category in category_dirs:
             category_src_dir = os.path.join(unzipped_examples_dir, category)
@@ -1075,7 +1072,6 @@ def process_examples(download = False, examples_ref = "master", changed_examples
                 fm["category"] = category
                 fm["path"] = example_path
                 fm["layout"] = "example"
-                fm = enrich_example(fm, author_registry)
                 if "thumbnail" in fm:
                     image_path = "https://www.defold.com/examples/%s/%s" % (fm["path"], fm["thumbnail"])
                     fm["opengraph_image"] = image_path
@@ -1115,9 +1111,6 @@ def process_examples(download = False, examples_ref = "master", changed_examples
             os.remove(data_index_file)
         examplesindex.sort(key=lambda x: x.get("path").lower())
         write_as_json(data_index_file, examplesindex)
-
-        print("...generating author pages")
-        generate_author_outputs()
 
         print("...generating llms/examples")
         generate_llms_examples()
@@ -1419,9 +1412,6 @@ def process_assets(tmp_dir):
     # write asset index
     assetindex.sort(key=lambda x: x.get("id").lower())
     write_as_json(ASSETINDEX_JSON, assetindex, False)
-
-    # Rebuild lightweight author pages after asset metadata changes.
-    generate_author_outputs()
 
     # write tag index
     taglist = tagindex.values()
@@ -1799,9 +1789,9 @@ if "all" in args.commands:
     commands.extend(ALL_COMMANDS)
     commands.remove("all")
     commands.remove("help")
-    # make sure commit is the last command
+    # Publishing is deliberately separate: CI validates the complete generated
+    # site before invoking the commit command.
     commands.remove("commit")
-    commands.append("commit")
     args.commands = commands
 
 for command in args.commands:
