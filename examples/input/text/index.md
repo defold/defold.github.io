@@ -1,9 +1,9 @@
 ---
-author: Defold Foundation
+author: The Defold Foundation
 authors:
 - github: defold
-  id: f0ed797e86f7025f8ba5455479852ca5
-  name: Defold Foundation
+  id: 41055a22bd3f5b94c6182d496d7083e7
+  name: The Defold Foundation
 brief: Listens to text input trigger "type" and modifies the game object label with the alien's speech according to input. A "backspace" key trigger has also been added.
 category: input
 layout: example

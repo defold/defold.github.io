@@ -1,11 +1,11 @@
 ---
-author: fysx, Defold Foundation
+author: fysx, The Defold Foundation
 authors:
 - id: c31ddfee639bf824b30f4d6d2f472bdb
   name: fysx
 - github: defold
-  id: f0ed797e86f7025f8ba5455479852ca5
-  name: Defold Foundation
+  id: 41055a22bd3f5b94c6182d496d7083e7
+  name: The Defold Foundation
 brief: This example shows how to spawn firework rockets with separate trail and burst particle effects, including a small dip before the burst.
 category: particles
 layout: example

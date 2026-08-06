@@ -1017,7 +1017,7 @@ def process_examples(download = False, examples_ref = "master", changed_examples
 
         data_index_file = os.path.join("_data", "examplesindex.json")
         examplesindex = []
-        author_registry = AuthorRegistry.load("author_profiles")
+        author_registry = AuthorRegistry.load(os.path.join("_data", "authors.json"))
 
         category_dirs = os.listdir(unzipped_examples_dir)
         for category in category_dirs:
@@ -1116,7 +1116,7 @@ def process_examples(download = False, examples_ref = "master", changed_examples
         examplesindex.sort(key=lambda x: x.get("path").lower())
         write_as_json(data_index_file, examplesindex)
 
-        print("...generating authors")
+        print("...generating author pages")
         generate_author_outputs()
 
         print("...generating llms/examples")
@@ -1420,7 +1420,7 @@ def process_assets(tmp_dir):
     assetindex.sort(key=lambda x: x.get("id").lower())
     write_as_json(ASSETINDEX_JSON, assetindex, False)
 
-    # Rebuild unified Asset Portal + Examples contributor profiles.
+    # Rebuild lightweight author pages after asset metadata changes.
     generate_author_outputs()
 
     # write tag index

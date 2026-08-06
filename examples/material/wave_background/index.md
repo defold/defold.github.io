@@ -13,7 +13,7 @@ license: CC0-1.0
 license_url: https://creativecommons.org/publicdomain/zero/1.0/
 opengraph_image: https://www.defold.com/examples/material/wave_background/thumbnail.png
 path: material/wave_background
-scripts: wave_background.fp
+scripts: example/wave_background.fp
 tags: material
 thumbnail: thumbnail.png
 title: Wave Background

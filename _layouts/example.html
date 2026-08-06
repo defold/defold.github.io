@@ -88,6 +88,8 @@ layout: page_with_learnnav
 					{% include learn_detail_languages.html locales=current_example.locales path=current_example_link %}
 					<div class="learn-detail-panel learn-detail-actions page-surface-panel page-text-panel">
 						{%- assign example_authors = page.authors | default: current_example.authors -%}
+						{%- assign example_tags_value = page.tags | default: current_example.tags | default: "" -%}
+						{%- assign example_tags = example_tags_value | replace: ", ", "," | split: "," -%}
 						{%- assign example_license = page.license | default: current_example.license | default: "CC0-1.0" -%}
 						{%- assign example_license_url = page.license_url -%}
 						{%- unless page.license -%}
@@ -96,23 +98,35 @@ layout: page_with_learnnav
 						{%- if example_license == "CC0-1.0" and example_license_url == nil -%}
 							{%- assign example_license_url = "https://creativecommons.org/publicdomain/zero/1.0/" -%}
 						{%- endif -%}
-						<div class="example-meta">
+						<div class="example-meta page-surface-panel">
 							<div class="example-meta-group">
-								<p class="example-meta-label">Created by</p>
+								<h2 class="example-meta-title">Author</h2>
 								<div class="example-author-links">
 									{%- for author in example_authors -%}
-									<a href="/authors/{{ author.id }}/">{{ author.name }}</a>{% unless forloop.last %}<span aria-hidden="true">,</span>{% endunless %}
+									<a class="button secondary example-author-button" href="/authors/{{ author.id }}/">{{ author.name }}</a>
 									{%- endfor -%}
 								</div>
 							</div>
 							<div class="example-meta-group">
-								<p class="example-meta-label">Licence</p>
+								<h2 class="example-meta-title">License</h2>
 								{%- if example_license_url -%}
-								<a href="{{ example_license_url }}" target="_blank" rel="noopener noreferrer">{{ example_license }} ↗</a>
+								<a class="button secondary example-license-button" href="{{ example_license_url }}" target="_blank" rel="noopener noreferrer">{{ example_license }} ↗</a>
 								{%- else -%}
-								<span>{{ example_license }}</span>
+								<span class="button secondary example-license-button" aria-disabled="true">{{ example_license }}</span>
 								{%- endif -%}
 							</div>
+							{%- if example_tags.size > 0 -%}
+							<div class="example-meta-group">
+								<h2 class="example-meta-title">Tags</h2>
+								<div class="example-tag-links">
+									{%- for example_tag in example_tags -%}
+										{%- assign example_tag_label = example_tag | strip -%}
+										{%- assign example_tag_slug = example_tag_label | slugify -%}
+									<a href="/examples/?tag={{ example_tag_slug | url_encode }}">{{ example_tag_label }}</a>{% unless forloop.last %}<span aria-hidden="true">,</span>{% endunless %}
+									{%- endfor -%}
+								</div>
+							</div>
+							{%- endif -%}
 						</div>
 						{% assign zip_name = page.path | replace: "/", "_" | append: ".zip" %}
 						{% assign zip_url = "https://www.github.com/defold/examples/releases/latest/download/" | append: zip_name %}

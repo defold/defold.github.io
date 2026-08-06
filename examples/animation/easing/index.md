@@ -1,11 +1,11 @@
 ---
-author: mikatuo, Defold Foundation
+author: mikatuo, The Defold Foundation
 authors:
 - id: 4e926871e9729ab5236b8ea2030e104e
   name: mikatuo
 - github: defold
-  id: f0ed797e86f7025f8ba5455479852ca5
-  name: Defold Foundation
+  id: 41055a22bd3f5b94c6182d496d7083e7
+  name: The Defold Foundation
 brief: Demonstrates different easing functions available in Defold.
 category: animation
 layout: example

@@ -1,9 +1,9 @@
 ---
-author: Defold Foundation
+author: The Defold Foundation
 authors:
 - github: defold
-  id: f0ed797e86f7025f8ba5455479852ca5
-  name: Defold Foundation
+  id: 41055a22bd3f5b94c6182d496d7083e7
+  name: The Defold Foundation
 brief: This example shows how ambient, directional, point, and spot lights affect 3D models that use built-in lit materials.
 category: render
 layout: example

@@ -34,8 +34,8 @@
 	{%- assign asset = site.data.assets[page.asset] -%}
 {%- endif -%}
 {%- assign author = nil -%}
-{%- if page.author and site.data.authors -%}
-	{%- assign author = site.data.authors[page.author] -%}
+{%- if page.layout == "author" and page.author_name and site.data.authors -%}
+	{%- assign author = site.data.authors | where: "name", page.author_name | first -%}
 {%- endif -%}
 
 {%- if page.description.size > 0 -%}
@@ -48,8 +48,9 @@
 	{%- assign page_description = asset.description_long -%}
 {%- elsif asset and asset.description.size > 0 -%}
 	{%- assign page_description = asset.description -%}
-{%- elsif page.layout == "author" and author -%}
-	{%- capture page_description -%}Explore {{ author.name }}'s {{ author.assets.size }} Defold asset{% unless author.assets.size == 1 %}s{% endunless %} and {{ author.examples.size }} example{% unless author.examples.size == 1 %}s{% endunless %}.{%- endcapture -%}
+{%- elsif page.layout == "author" -%}
+	{%- assign author_name = author.name | default: page.author_name -%}
+	{%- capture page_description -%}Explore {{ author_name }}'s {{ page.asset_count }} Defold asset{% unless page.asset_count == 1 %}s{% endunless %} and {{ page.example_count }} example{% unless page.example_count == 1 %}s{% endunless %}.{%- endcapture -%}
 {%- elsif page.layout == "assetportal" -%}
 	{%- assign page_description = "Browse Defold extensions, templates, tools, and reusable assets from the community." -%}
 {%- else -%}
@@ -64,7 +65,7 @@
 {%- assign seo_language = page.language | default: "en" -%}
 {%- assign og_type = "website" -%}
 {%- assign schema_type = "WebPage" -%}
-{%- assign article_author_name = page.author | default: "Defold Foundation" -%}
+{%- assign article_author_name = page.author_name | default: page.author | default: "Defold Foundation" -%}
 {%- assign article_author_type = "Person" -%}
 {%- assign article_author_name_downcase = article_author_name | downcase -%}
 {%- if article_author_name_downcase contains "defold foundation" -%}

@@ -126,7 +126,7 @@ stylesheets:
 						<label for="asset_author">Author</label>
 						<input id="asset_author" type="text" name="author" list="asset-author-suggestions" autocomplete="name" required>
 						<datalist id="asset-author-suggestions">
-							{%- for author in site.data.authorindex -%}
+							{%- for author in site.data.authors -%}
 							<option value="{{ author.name | escape }}"></option>
 							{%- endfor -%}
 						</datalist>

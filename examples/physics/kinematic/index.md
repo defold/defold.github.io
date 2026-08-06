@@ -1,9 +1,9 @@
 ---
-author: Defold Foundation
+author: The Defold Foundation
 authors:
 - github: defold
-  id: f0ed797e86f7025f8ba5455479852ca5
-  name: Defold Foundation
+  id: 41055a22bd3f5b94c6182d496d7083e7
+  name: The Defold Foundation
 brief: This example shows a simple setup with a kinematic physics objects. The difference between dynamic objects, simulated by the physics engine, and kinematic objects, that are user controlled, is clearly seen here.
 category: physics
 layout: example

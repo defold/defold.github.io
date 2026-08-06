@@ -1,8 +1,9 @@
-"""Author identity resolution and generated author profile data.
+"""Author identity resolution and generated author profile pages.
 
-The hand-maintained profile registry lives in ``author_profiles``.  This
-module deliberately has no dependency on ``update.py`` so its identity and
-aggregation rules can be unit tested without running a website import.
+The hand-maintained profile registry is ``_data/authors.json``, which is also
+read directly by Jekyll. This module deliberately has no dependency on
+``update.py`` so its identity and page-generation rules can be unit tested
+without running a website import.
 """
 
 from __future__ import annotations
@@ -22,15 +23,18 @@ import yaml
 DEFAULT_EXAMPLE_LICENSE = "CC0-1.0"
 DEFAULT_EXAMPLE_LICENSE_URL = "https://creativecommons.org/publicdomain/zero/1.0/"
 DEFAULT_EXAMPLE_AUTHOR = "Defold Foundation"
-DEFAULT_AVATAR = "/images/icons/community-assets-on-dark.svg"
-MAX_BIO_LENGTH = 280
+DEFAULT_AVATAR = "/images/people/avatar_user_profile_male.png"
+MAX_BIO_LENGTH = 400
 
 ALLOWED_LINK_TYPES = {
     "website",
+    "github",
+    "external",
     "x",
     "bluesky",
     "mastodon",
     "linkedin",
+    "youtube"
 }
 SUPPORT_DESTINATIONS = {
     "github_sponsors": ("github.com", "/sponsors/"),
@@ -40,6 +44,7 @@ SUPPORT_DESTINATIONS = {
     "paypal": ("paypal.me", "/"),
 }
 GITHUB_USERNAME_RE = re.compile(r"^[A-Za-z0-9](?:[A-Za-z0-9-]{0,37}[A-Za-z0-9])?$")
+AUTHOR_ID_RE = re.compile(r"^[0-9a-f]{32}$")
 
 
 class AuthorProfileValidationError(ValueError):
@@ -148,15 +153,24 @@ def _normalise_profile(raw: object, source: str) -> dict:
         raise AuthorProfileValidationError(f"{source}: profile must be an object")
 
     name = _clean_name(raw.get("name"), f"{source}: name")
-    allowed_fields = {"name", "github", "aliases", "bio", "avatar", "links", "support"}
+    allowed_fields = {"id", "name", "github", "aliases", "bio", "avatar", "links", "support"}
     unknown_fields = sorted(set(raw) - allowed_fields)
     if unknown_fields:
         raise AuthorProfileValidationError(
             f"{source}: unknown profile field(s): {', '.join(unknown_fields)}"
         )
 
+    author_id = raw.get("id")
+    if author_id is not None:
+        if not isinstance(author_id, str) or not AUTHOR_ID_RE.fullmatch(author_id):
+            raise AuthorProfileValidationError(
+                f"{name}: id must be a lowercase 32-character hexadecimal hash"
+            )
+    else:
+        author_id = canonical_author_id(name)
+
     profile = {
-        "id": canonical_author_id(name),
+        "id": author_id,
         "name": name,
         "aliases": [],
         "links": _validate_links(raw.get("links"), name),
@@ -198,24 +212,25 @@ def _normalise_profile(raw: object, source: str) -> dict:
     return profile
 
 
-def load_profile_records(profile_dir: os.PathLike | str) -> list[dict]:
-    """Load and validate every JSON registry file in ``profile_dir``."""
+def load_profile_records(profile_source: os.PathLike | str) -> list[dict]:
+    """Load and validate the author registry JSON file."""
 
-    profile_dir = Path(profile_dir)
-    if not profile_dir.is_dir():
-        raise AuthorProfileValidationError(f"Author profile directory does not exist: {profile_dir}")
+    profile_source = Path(profile_source)
+    if not profile_source.is_file():
+        raise AuthorProfileValidationError(
+            f"Author profile file does not exist: {profile_source}"
+        )
 
     profiles = []
-    for path in sorted(profile_dir.glob("*.json")):
-        try:
-            data = json.loads(path.read_text(encoding="utf-8"))
-        except (OSError, json.JSONDecodeError) as error:
-            raise AuthorProfileValidationError(f"{path}: invalid JSON: {error}") from error
-        records = data if isinstance(data, list) else [data]
-        for index, record in enumerate(records):
-            profiles.append(_normalise_profile(record, f"{path}[{index}]"))
+    try:
+        data = json.loads(profile_source.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as error:
+        raise AuthorProfileValidationError(f"{profile_source}: invalid JSON: {error}") from error
+    records = data if isinstance(data, list) else [data]
+    for index, record in enumerate(records):
+        profiles.append(_normalise_profile(record, f"{profile_source}[{index}]"))
     if not profiles:
-        raise AuthorProfileValidationError(f"No author profiles found in {profile_dir}")
+        raise AuthorProfileValidationError(f"No author profiles found in {profile_source}")
     return profiles
 
 
@@ -226,8 +241,16 @@ class AuthorRegistry:
         self.profiles = [copy.deepcopy(profile) for profile in profiles]
         self._lookup: dict[str, dict] = {}
         self._unknown: dict[str, dict] = {}
+        profiles_by_id: dict[str, dict] = {}
 
         for profile in self.profiles:
+            existing_id = profiles_by_id.get(profile["id"])
+            if existing_id:
+                raise AuthorProfileValidationError(
+                    f"Duplicate author id {profile['id']!r} belongs to both "
+                    f"{existing_id['name']!r} and {profile['name']!r}"
+                )
+            profiles_by_id[profile["id"]] = profile
             identities = [profile["name"], profile.get("github"), *profile.get("aliases", [])]
             for identity in identities:
                 if not identity:
@@ -242,8 +265,8 @@ class AuthorRegistry:
                 self._lookup[key] = profile
 
     @classmethod
-    def load(cls, profile_dir: os.PathLike | str) -> "AuthorRegistry":
-        return cls(load_profile_records(profile_dir))
+    def load(cls, profile_source: os.PathLike | str) -> "AuthorRegistry":
+        return cls(load_profile_records(profile_source))
 
     def find(self, name: object) -> dict | None:
         if not isinstance(name, str) or not name.strip():
@@ -373,11 +396,14 @@ def _replace_frontmatter(path: Path, data: dict) -> None:
 
 
 def _author_page(author: dict, page_id: str, compatibility: bool = False) -> str:
-    author_data_id = page_id if compatibility else author["id"]
     lines = [
         "---",
         "layout: author",
-        f"author: {author_data_id}",
+        f"author_profile: {'false' if compatibility else 'true'}",
+        f"author_id: {author['id']}",
+        f"author_name: {json.dumps(author['name'], ensure_ascii=False)}",
+        f"asset_count: {author['asset_count']}",
+        f"example_count: {author['example_count']}",
         f"title: {json.dumps(author['name'], ensure_ascii=False)}",
         f"permalink: /authors/{page_id}/",
     ]
@@ -393,15 +419,16 @@ def _author_page(author: dict, page_id: str, compatibility: bool = False) -> str
 
 
 def generate_author_outputs(root: os.PathLike | str = ".", sync_example_pages: bool = True) -> list[dict]:
-    """Aggregate Asset Portal and Examples contributors and write Jekyll data.
+    """Enrich contributor references and generate lightweight author pages.
 
     This pass is intentionally safe to run after either importer.  It consumes
-    whichever generated asset and example data currently exists, enriches both
-    sources, and then replaces the author collection as one coherent output.
+    whichever generated asset and example data currently exists. Author
+    metadata remains exclusively in ``_data/authors.json``; contributions stay
+    in their existing asset and example records and are joined by Liquid.
     """
 
     root = Path(root)
-    registry = AuthorRegistry.load(root / "author_profiles")
+    registry = AuthorRegistry.load(root / "_data" / "authors.json")
     authors: dict[str, dict] = {}
     compatibility_names: dict[str, set[str]] = {}
     seen_assets: dict[str, set[str]] = {}
@@ -411,9 +438,6 @@ def generate_author_outputs(root: os.PathLike | str = ".", sync_example_pages: b
         author = authors.get(profile["id"])
         if author is None:
             author = copy.deepcopy(profile)
-            author["avatar_url"] = _avatar_url(profile)
-            author["assets"] = []
-            author["examples"] = []
             authors[profile["id"]] = author
             compatibility_names[profile["id"]] = set(profile.get("aliases", []))
             seen_assets[profile["id"]] = set()
@@ -427,16 +451,13 @@ def generate_author_outputs(root: os.PathLike | str = ".", sync_example_pages: b
             raw_name = _clean_name(asset.get("author"))
             profile = registry.resolve(raw_name)
             author = ensure_author(profile)
-            # Asset Portal author ids have historically been the MD5 of the
-            # exact upstream author string. Keep that value stable even when
-            # the registry resolves the name to a richer canonical profile.
-            asset["author_id"] = canonical_author_id(raw_name)
+            # Upstream repositories may still use an old name or GitHub
+            # handle. Treat those values as input aliases only: generated
+            # website data always exposes the registry's canonical identity.
+            asset["author"] = profile["name"]
+            asset["author_id"] = profile["id"]
             _write_json(asset_path, asset)
-            if asset_path.stem not in seen_assets[profile["id"]]:
-                author["assets"].append(
-                    {"id": asset_path.stem, "stars": asset.get("stars") or 0}
-                )
-                seen_assets[profile["id"]].add(asset_path.stem)
+            seen_assets[profile["id"]].add(asset_path.stem)
             if raw_name != profile["name"]:
                 compatibility_names[profile["id"]].add(raw_name)
 
@@ -449,22 +470,9 @@ def generate_author_outputs(root: os.PathLike | str = ".", sync_example_pages: b
         enriched_examples.append(enriched)
         for raw_name in raw_names:
             profile = registry.resolve(raw_name)
-            author = ensure_author(profile)
+            ensure_author(profile)
             path = enriched.get("path")
-            if path and path not in seen_examples[profile["id"]]:
-                image = ""
-                if enriched.get("thumbnail"):
-                    image = f"/examples/{path}/{enriched['thumbnail']}"
-                author["examples"].append(
-                    {
-                        "author": enriched["author"],
-                        "brief": enriched.get("brief") or "",
-                        "category": enriched.get("category") or "",
-                        "image": image,
-                        "path": path,
-                        "title": enriched.get("title") or path,
-                    }
-                )
+            if path:
                 seen_examples[profile["id"]].add(path)
             if raw_name != profile["name"]:
                 compatibility_names[profile["id"]].add(raw_name)
@@ -475,20 +483,28 @@ def generate_author_outputs(root: os.PathLike | str = ".", sync_example_pages: b
     if examples_path.is_file() or enriched_examples:
         _write_json(examples_path, enriched_examples)
 
-    author_list = sorted(authors.values(), key=lambda author: author["name"].casefold())
-    for author in author_list:
-        author["assets"].sort(key=lambda item: item["id"].casefold())
-        author["examples"].sort(key=lambda item: item["path"].casefold())
+    author_list = []
+    for author in authors.values():
+        author["asset_count"] = len(seen_assets[author["id"]])
+        author["example_count"] = len(seen_examples[author["id"]])
+        author_list.append(author)
+    author_list.sort(key=lambda author: author["name"].casefold())
 
-    author_data_dir = root / "_data" / "authors"
+    # Remove the former duplicated author data. These paths contain generated
+    # output only; the author registry above is never rewritten here.
+    legacy_author_data_dir = root / "_data" / "authors"
+    if legacy_author_data_dir.exists():
+        shutil.rmtree(legacy_author_data_dir)
+    legacy_author_index = root / "_data" / "authorindex.json"
+    if legacy_author_index.exists():
+        legacy_author_index.unlink()
+
     author_collection_dir = root / "authors"
-    for directory in (author_data_dir, author_collection_dir):
-        if directory.exists():
-            shutil.rmtree(directory)
-        directory.mkdir(parents=True)
+    if author_collection_dir.exists():
+        shutil.rmtree(author_collection_dir)
+    author_collection_dir.mkdir(parents=True)
 
     for author in author_list:
-        _write_json(author_data_dir / f"{author['id']}.json", author)
         (author_collection_dir / f"{author['id']}.md").write_text(
             _author_page(author, author["id"]), encoding="utf-8"
         )
@@ -496,12 +512,8 @@ def generate_author_outputs(root: os.PathLike | str = ".", sync_example_pages: b
             alias_id = canonical_author_id(alias)
             if alias_id == author["id"]:
                 continue
-            compatibility_author = copy.deepcopy(author)
-            compatibility_author["id"] = alias_id
-            _write_json(author_data_dir / f"{alias_id}.json", compatibility_author)
             (author_collection_dir / f"{alias_id}.md").write_text(
                 _author_page(author, alias_id, compatibility=True), encoding="utf-8"
             )
 
-    _write_json(root / "_data" / "authorindex.json", author_list)
     return author_list

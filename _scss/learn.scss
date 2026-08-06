@@ -272,34 +272,54 @@ html.theme-dark .learn-detail-shell.theme-page-bg-dark {
 
 .example-meta {
 	display: grid;
-	gap: 1rem;
-	padding-bottom: 1.2rem;
+	gap: 1.1rem;
+	padding: clamp(1.2rem, 2vw, 1.5rem);
 	margin-bottom: 1.2rem;
-	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .example-meta-group {
 	display: grid;
-	gap: 0.3rem;
+	gap: 0.7rem;
 }
 
-.example-meta-label {
+.example-meta-group + .example-meta-group {
+	padding-top: 1.1rem;
+	border-top: 1px solid var(--surface-border);
+}
+
+.example-meta-title {
 	margin: 0;
-	color: var(--theme-muted-color);
-	font-size: 0.72rem;
+	color: var(--theme-heading-color);
+	font-size: clamp(1.32rem, 2vw, 1.56rem);
 	font-weight: 700;
-	letter-spacing: 0.05em;
-	text-transform: uppercase;
+	line-height: 1.25;
 }
 
 .example-author-links {
+	display: grid;
+	gap: 0.5rem;
+}
+
+.example-tag-links {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 0.15rem 0.3rem;
 }
 
-.example-meta a,
-.example-meta span {
+.example-author-button.button,
+.example-license-button.button {
+	width: 100%;
+	min-height: 54px !important;
+	margin: 0;
+	padding: 0.9rem 1rem !important;
+	font-size: clamp(1.15rem, 1.8vw, 1.36rem);
+	line-height: 1.23;
+	white-space: normal !important;
+	overflow-wrap: anywhere;
+}
+
+.example-tag-links a,
+.example-tag-links span {
 	font-size: 0.92rem;
 	line-height: 1.35;
 }

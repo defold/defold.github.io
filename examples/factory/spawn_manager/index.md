@@ -1,9 +1,9 @@
 ---
-author: Defold Foundation
+author: The Defold Foundation
 authors:
 - github: defold
-  id: f0ed797e86f7025f8ba5455479852ca5
-  name: Defold Foundation
+  id: 41055a22bd3f5b94c6182d496d7083e7
+  name: The Defold Foundation
 brief: This example shows how to spawn enemy game objects using a factory component and use a central manager to control movement and behavior of all enemies.
 category: factory
 layout: example

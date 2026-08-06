@@ -1,4 +1,4 @@
-<div class="learn-tag-filter asset-hub-toolbar page-surface-panel" data-learn-tag-filter data-filter-singular="{{ include.filter_singular | default: 'tag' }}" data-result-items="{{ include.result_items | default: 'resources' }}" data-filter-excluded-tags="{{ include.exclude_tags | default: '' }}">
+<div class="learn-tag-filter asset-hub-toolbar page-surface-panel" data-learn-tag-filter data-filter-singular="{{ include.filter_singular | default: 'tag' }}" data-result-items="{{ include.result_items | default: 'resources' }}" data-filter-excluded-tags="{{ include.exclude_tags | default: '' }}"{% if include.force_generated_chips %} data-force-generated-chips="true"{% endif %}>
 	{%- assign excluded_tag_slugs = include.exclude_tags | default: "" | downcase | split: "|" -%}
 	{%- assign child_property = include.child_property | default: "" -%}
 	{%- assign search_suffix = include.result_items | default: "resources" | slugify -%}
