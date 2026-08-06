@@ -10,7 +10,7 @@ Example uses a Fragment Constant of type `Time` introduced in Defold 1.12.3.
 
 ## Scripts
 
-### wave_background.fp
+### example/wave_background.fp
 
 ```glsl
 #version 140
