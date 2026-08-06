@@ -2,6 +2,7 @@ import html
 import os
 import re
 
+from example_scripts import example_include_name, split_example_scripts
 from utils import list_files, read_as_json, read_as_string, rmtree, write_as_string
 
 
@@ -738,17 +739,8 @@ def generate_llms_examples():
             content = rewrite_example_links(content, path)
             content = clean_markdown(content)
             entry["llms_scripts"] = []
-            scripts_value = entry.get("scripts") or ""
-            if isinstance(scripts_value, list):
-                scripts_list = scripts_value
-            else:
-                scripts_list = [s.strip() for s in str(scripts_value).split(",") if s.strip()]
-            for script_name in scripts_list:
-                include_name = script_name
-                include_name = include_name.replace(".script", "_script.md")
-                include_name = include_name.replace(".gui_script", "_gui_script.md")
-                include_name = include_name.replace(".vp", "_vp.md")
-                include_name = include_name.replace(".fp", "_fp.md")
+            for script_name in split_example_scripts(entry.get("scripts")):
+                include_name = example_include_name(script_name)
                 include_path = os.path.join("_includes", "examples", path, include_name)
                 if not os.path.exists(include_path):
                     continue
