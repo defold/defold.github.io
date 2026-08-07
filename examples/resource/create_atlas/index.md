@@ -8,7 +8,6 @@ path: resource/create_atlas
 scripts: create_atlas.script, create_atlas.gui_script
 tags: resource
 title: Create atlas
-
 ---
 
 The example creates a texture and an atlas with two images and uses the two images on a sprite and a gui box node.

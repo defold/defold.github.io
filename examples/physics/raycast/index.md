@@ -11,7 +11,6 @@ tags: physics
 thumbnail: raycast.png
 title: Raycast
 twitter_image: https://www.defold.com/examples/physics/raycast/raycast.png
-
 ---
 
 ![raycast](raycast.png)

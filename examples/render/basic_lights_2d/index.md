@@ -11,7 +11,6 @@ tags: render, material, sprite
 thumbnail: thumbnail.webp
 title: Basic Lights 2D
 twitter_image: https://www.defold.com/examples/render/basic_lights_2d/thumbnail.webp
-
 ---
 
 The example shows how to utilise Light components (introduced in Defold 1.13.1)

@@ -11,7 +11,6 @@ tags: animation, model, gui, input, message-passing
 thumbnail: thumbnail.webp
 title: 3D Animations - Skinned Model
 twitter_image: https://www.defold.com/examples/animation/3d_animations/thumbnail.webp
-
 ---
 
 This example shows how to play skeletal animations from a skinned GLB model using `model.play_anim()`.

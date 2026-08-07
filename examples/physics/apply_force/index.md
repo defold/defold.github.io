@@ -11,7 +11,6 @@ tags: physics
 thumbnail: thumbnail.png
 title: Apply force
 twitter_image: https://www.defold.com/examples/physics/apply_force/thumbnail.png
-
 ---
 
 This example demonstrates how to apply directional force to all dynamic blocks on touch/click and draws debug direction lines.

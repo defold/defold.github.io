@@ -11,7 +11,6 @@ tags: render
 thumbnail: camera.png
 title: Camera
 twitter_image: https://www.defold.com/examples/render/camera/camera.png
-
 ---
 
 ![camera](camera.png)

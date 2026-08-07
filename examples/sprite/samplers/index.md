@@ -11,7 +11,6 @@ tags: sprite
 thumbnail: samplers_thumb.png
 title: Multiple Sprite Samplers
 twitter_image: https://www.defold.com/examples/sprite/samplers/samplers_thumb.png
-
 ---
 
 The example uses a sprite with a material with two samplers:

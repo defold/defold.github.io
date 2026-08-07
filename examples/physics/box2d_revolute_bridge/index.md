@@ -11,7 +11,6 @@ tags: physics, box2d
 thumbnail: thumbnail.webp
 title: Box2D Revolute Bridge
 twitter_image: https://www.defold.com/examples/physics/box2d_revolute_bridge/thumbnail.webp
-
 ---
 
 This example builds a simple rope bridge from rectangular dynamic bodies connected with Box2D revolute joints.

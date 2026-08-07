@@ -11,7 +11,6 @@ tags: debug
 thumbnail: profile.png
 title: Visual profiler
 twitter_image: https://www.defold.com/examples/debug/profile/profile.png
-
 ---
 
 For more in-depth analysis, the web profiler is usually more suitable. See [the debug manual](/manuals/debugging) for more information.

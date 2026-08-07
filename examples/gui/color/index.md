@@ -11,7 +11,6 @@ tags: gui
 thumbnail: color1.png
 title: GUI color
 twitter_image: https://www.defold.com/examples/gui/color/color1.png
-
 ---
 
 The example shows how to change the color of GUI nodes using `gui.set_color()` and `gui.animate()`.

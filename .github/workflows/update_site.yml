@@ -64,27 +64,27 @@ jobs:
 
       - if: env.ACTION == 'asset-portal'
         name: Update assets
-        run: python update.py --download asset-portal commit
+        run: python update.py --download asset-portal
 
       - if: env.ACTION == 'games-showcase'
         name: Update games
-        run: python update.py --download games-showcase commit
+        run: python update.py --download games-showcase
 
       - if: env.ACTION == 'docs'
         name: Update docs
-        run: python update.py --download docs commit
+        run: python update.py --download docs
 
       - if: env.ACTION == 'refdoc'
         name: Update refdoc
-        run: python update.py --download refdoc commit
+        run: python update.py --download refdoc
 
       - if: env.ACTION == 'examples'
         name: Update examples
-        run: python update.py --download --examples-ref "$EXAMPLES_REF" examples commit
+        run: python update.py --download --examples-ref "$EXAMPLES_REF" examples
 
       - if: env.ACTION == 'codepad'
         name: Update codepad
-        run: python update.py --download codepad commit
+        run: python update.py --download codepad
 
       - if: env.ACTION == 'all'
         name: Update everything
@@ -92,7 +92,7 @@ jobs:
 
       - if: startsWith(env.ACTION, 'extension-')
         name: Update extension
-        run: python update.py --download --extension "$ACTION" extensions refdoc commit
+        run: python update.py --download --extension "$ACTION" extensions refdoc
 
       - name: Build Jekyll site
         run: bundle exec jekyll build
@@ -102,6 +102,9 @@ jobs:
 
       - name: Index site with Pagefind
         run: python3 -m pagefind
+
+      - name: Commit generated site
+        run: python update.py commit
 
       - if: github.ref == 'refs/heads/master'
         name: Upload Pages artifact

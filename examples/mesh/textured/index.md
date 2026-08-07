@@ -8,7 +8,6 @@ path: mesh/textured
 scripts: texturedmesh.fp, texturedmesh.vp
 tags: mesh
 title: Textured Mesh
-
 ---
 
 This example contains a game object with a mesh component in the shape of a rectangle (quad). The quad is defined in `quad.buffer` as the four points (triangle strip) in the `position` stream. The triangle also defines the texture coordinate (UV) at each point.

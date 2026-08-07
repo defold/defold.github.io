@@ -11,7 +11,6 @@ tags: model
 thumbnail: thumbnail.webp
 title: GLTF - Infinite Track
 twitter_image: https://www.defold.com/examples/model/gltf/thumbnail.webp
-
 ---
 
 This example uses three glTF model assets from Kenney's Toy Car Kit to build a small endless road scene. The car stays in place while the road segments move forward and loop behind it.

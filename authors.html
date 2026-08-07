@@ -1,27 +1,36 @@
 ---
 layout: page
 title: Authors
-description: Browse authors and contributors behind assets and community resources published on the Defold website.
+description: Browse the people and teams behind Defold community assets and open-source examples.
+stylesheets:
+  - catalog
 ---
-<div class="section">
+<div class="section dark asset-hub-section author-directory-section">
 	<div class="container">
-		<div class="row">
-			<div class="columns two"><img src="/images/icons/community-assets-on-dark.svg" style="max-width: 150px" alt="Authors section icon" loading="lazy" decoding="async"/></div>
-			<div class="columns ten">
-				<h1>Authors</h1>
-				<p>The creators of all things great!</p>
-			</div>
-		</div>
-		<div class="row" style="margin-bottom: 30px;">
-		</div>
-		<div class="row" style="margin-bottom: 30px;">
-			<div class="columns twelve">
-				<div class="grid-200">
-					{%- for author in site.data.authorindex -%}
-						<div><a href="/authors/{{ author.id }}">{{ author.name }}</a>&nbsp;({{ author.assets.size }})</div>
-					{%- endfor -%}
-				</div>
-			</div>
+		<header class="author-directory-heading">
+			<p class="asset-hub-filter-label">Defold community</p>
+			<h1>Authors</h1>
+			<p>Meet the people and teams sharing reusable assets and practical examples with the Defold community.</p>
+		</header>
+
+		<div class="author-directory-grid">
+			{%- for author in site.data.author_directory -%}
+				{%- assign author_avatar_url = author.avatar -%}
+				{%- unless author_avatar_url -%}
+					{%- if author.github -%}
+						{%- capture author_avatar_url -%}https://github.com/{{ author.github }}.png?size=240{%- endcapture -%}
+					{%- else -%}
+						{%- assign author_avatar_url = "/images/people/avatar_user_profile_male.png" -%}
+					{%- endif -%}
+				{%- endunless -%}
+			<a class="author-directory-card page-surface-panel asset-hub-surface-panel" href="{{ author.url }}">
+				<img src="{{ author_avatar_url }}" alt="" loading="lazy" decoding="async"/>
+				<span class="author-directory-copy">
+					<strong>{{ author.name }}</strong>
+					<span>{{ author.asset_count }} asset{% unless author.asset_count == 1 %}s{% endunless %} · {{ author.example_count }} example{% unless author.example_count == 1 %}s{% endunless %}</span>
+				</span>
+			</a>
+			{%- endfor -%}
 		</div>
 	</div>
 </div>

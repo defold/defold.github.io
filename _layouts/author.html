@@ -2,17 +2,132 @@
 layout: page
 nav: floating
 ---
-{%- assign author = site.data.authors[page.author] -%}
+{%- assign author = page.author_profile -%}
+{%- assign author_name = author.name -%}
+{%- assign author_avatar_url = author.avatar -%}
+{%- unless author_avatar_url -%}
+	{%- if author.github -%}
+		{%- capture author_avatar_url -%}https://github.com/{{ author.github }}.png?size=240{%- endcapture -%}
+	{%- else -%}
+		{%- assign author_avatar_url = "/images/people/avatar_user_profile_male.png" -%}
+	{%- endif -%}
+{%- endunless -%}
+{%- assign asset_count = page.asset_count | default: 0 -%}
+{%- assign example_count = page.example_count | default: 0 -%}
+{%- assign total_count = asset_count | plus: example_count -%}
 
-<div class="section dark">
+<div class="section dark page-dark-section gradient-background-top-dark author-profile-section">
 	<div class="container">
-		<div class="row">
-			<div class="columns two"><img src="/images/icons/community-assets-on-dark.svg" style="max-width: 150px" alt="Authors section icon" loading="lazy" decoding="async"/></div>
-			<div class="columns ten">
-				<h1>{{ author.name }}</h1>
+		<main class="author-contributions asset-hub-catalog-layout" data-author-catalog data-total-count="{{ total_count }}">
+			<aside class="asset-hub-sidebar author-profile-sidebar">
+				<header class="author-profile-header page-surface-panel asset-hub-surface-panel" aria-label="{{ author_name }} profile">
+					<img class="author-profile-avatar" src="{{ author_avatar_url }}" alt="{{ author_name }} avatar" loading="eager" decoding="async"/>
+					<div class="author-profile-copy">
+						<p class="author-profile-eyebrow">Defold contributor</p>
+						<div class="author-profile-heading">
+							<h1>{{ author_name }}</h1>
+							{%- if author.github -%}
+							<span class="author-profile-handle">@{{ author.github }}</span>
+							{%- endif -%}
+						</div>
+
+						{%- if author.bio -%}
+						<p class="author-profile-bio">{{ author.bio }}</p>
+						{%- endif -%}
+
+						{%- if author.github or author.links.size > 0 or author.support.size > 0 -%}
+						<nav class="author-profile-actions" aria-label="{{ author_name }} links">
+							{%- if author.github -%}
+							<a class="button secondary author-profile-action" href="https://github.com/{{ author.github }}" target="_blank" rel="noopener noreferrer" aria-label="{{ author_name }} on GitHub">
+								{% include site_icon.html name="mark-github" %}<span>GitHub</span>
+							</a>
+							{%- endif -%}
+							{%- for link in author.links -%}
+								{%- assign link_icon = "link-external" -%}
+								{%- assign link_label = link.label | default: link.type | capitalize -%}
+								{%- if link.type == "github" -%}
+									{%- assign link_icon = "mark-github" -%}
+									{%- assign link_label = link.label | default: "GitHub" -%}
+								{%- elsif link.type == "website" -%}
+									{%- assign link_icon = "globe" -%}
+									{%- assign link_label = link.label | default: "Website" -%}
+								{%- elsif link.type == "x" -%}
+									{%- assign link_icon = "x" -%}
+									{%- assign link_label = link.label | default: "X" -%}
+								{%- endif -%}
+							<a class="button secondary author-profile-action" href="{{ link.url }}" target="_blank" rel="noopener noreferrer" aria-label="{{ author_name }} — {{ link_label }}">
+								{% include site_icon.html name=link_icon %}<span>{{ link_label }}</span>
+							</a>
+							{%- endfor -%}
+							{%- for support in author.support -%}
+								{%- assign support_label = support.label | default: "Support" -%}
+								{%- assign support_icon = "heart" -%}
+								{%- if support.type == "github_sponsors" -%}
+									{%- assign support_label = support.label | default: "GitHub Sponsors" -%}
+									{%- assign support_icon = "mark-github" -%}
+								{%- elsif support.type == "ko_fi" -%}
+									{%- assign support_label = support.label | default: "Ko-fi" -%}
+								{%- elsif support.type == "buy_me_a_coffee" -%}
+									{%- assign support_label = support.label | default: "Buy me a coffee" -%}
+								{%- elsif support.type == "patreon" -%}
+									{%- assign support_label = support.label | default: "Patreon" -%}
+								{%- elsif support.type == "paypal" -%}
+									{%- assign support_label = support.label | default: "PayPal" -%}
+								{%- endif -%}
+							<a class="button secondary author-profile-action author-profile-action-support" href="{{ support.url }}" target="_blank" rel="nofollow sponsored noopener noreferrer">
+								{% include site_icon.html name=support_icon %}<span>{{ support_label }}</span>
+							</a>
+							{%- endfor -%}
+						</nav>
+						{%- endif -%}
+					</div>
+				</header>
+			</aside>
+
+			<div class="asset-hub-main author-contribution-main">
+			<div class="author-contribution-controls page-surface-panel asset-hub-surface-panel">
+				<div class="author-contribution-filter-group">
+					<p class="asset-hub-filter-label">Show</p>
+					<div class="author-contribution-filters asset-hub-filter-grid" aria-label="Filter contributions">
+						<button type="button" class="filter active" data-author-filter="all" aria-controls="author-contribution-grid" aria-pressed="true">All <span>{{ total_count }}</span></button>
+						<button type="button" class="filter" data-author-filter="assets" aria-controls="author-contribution-grid" aria-pressed="false"{% if asset_count == 0 %} disabled{% endif %}>Assets <span>{{ asset_count }}</span></button>
+						<button type="button" class="filter" data-author-filter="examples" aria-controls="author-contribution-grid" aria-pressed="false"{% if example_count == 0 %} disabled{% endif %}>Examples <span>{{ example_count }}</span></button>
+					</div>
+				</div>
+				<div class="author-contribution-search">
+					<p class="asset-hub-filter-label">Filter</p>
+					{% include catalog_search_field.html id="author-contribution-search" input_class="author-contribution-search-input" data_attribute_name="data-author-search" field_type="filter" icon_name="filter" placeholder="Filter by title or description" aria_label="Filter contributions by title or description" %}
+				</div>
 			</div>
-		</div>
-		{%- assign assetids = author.assets | map: "id" -%}
-		{%- include assetgrid.html assetids=assetids title="Assets" -%}
+
+			<div class="asset-hub-results author-contribution-results">
+				<div class="asset-hub-results-header">
+					<div class="asset-hub-results-copy">
+						<p class="asset-hub-filter-label">Contributions</p>
+						<h2 data-author-results-title>All contributions</h2>
+						<p class="compact asset-hub-results-summary" data-author-results-summary aria-live="polite">Showing {{ total_count }} of {{ total_count }} contributions.</p>
+					</div>
+				</div>
+
+				<div class="asset-hub-grid author-contribution-grid" id="author-contribution-grid" data-author-grid>
+					{%- for asset_id in page.asset_ids -%}
+						{% include asset.html id=asset_id contribution_type="assets" %}
+					{%- endfor -%}
+					{%- for example in page.examples -%}
+						{%- assign example_link = "/examples/" | append: example.path | append: "/" -%}
+						{%- assign example_author_names = example.author_profiles | map: "name" | join: ", " -%}
+						{%- assign example_image = "" -%}
+						{%- if example.thumbnail -%}
+							{%- assign example_image = example_link | append: example.thumbnail -%}
+						{%- endif -%}
+						{% include learn_card.html title=example.title description=example.brief link=example_link image=example_image author=example_author_names class="author-example-card" contribution_type="examples" %}
+					{%- endfor -%}
+				</div>
+				<p class="author-contribution-empty page-surface-panel" data-author-empty hidden>No contributions match this filter.</p>
+			</div>
+			</div>
+		</main>
 	</div>
 </div>
+
+<script src="/js/author-profile.js" defer></script>

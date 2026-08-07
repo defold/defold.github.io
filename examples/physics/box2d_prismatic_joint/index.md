@@ -11,7 +11,6 @@ tags: physics, box2d
 thumbnail: thumbnail.webp
 title: Box2D Prismatic Joint
 twitter_image: https://www.defold.com/examples/physics/box2d_prismatic_joint/thumbnail.webp
-
 ---
 
 This example creates a Box2D prismatic joint at runtime.

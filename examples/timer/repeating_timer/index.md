@@ -11,7 +11,6 @@ tags: timer
 thumbnail: repeating_timer.png
 title: Repeating timer example
 twitter_image: https://www.defold.com/examples/timer/repeating_timer/repeating_timer.png
-
 ---
 
 The example shows how to use Defold built-in timer and uses two indicators:

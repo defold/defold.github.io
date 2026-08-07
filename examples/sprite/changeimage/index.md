@@ -11,7 +11,6 @@ tags: sprite
 thumbnail: changeimage_thumb.png
 title: Change sprite image
 twitter_image: https://www.defold.com/examples/sprite/changeimage/changeimage_thumb.png
-
 ---
 
 The example shows a game object with a sprite and a script with three script properties to reference different tilesource images. The script lets the user change which image to use on the sprite.

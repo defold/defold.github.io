@@ -11,7 +11,6 @@ tags: physics
 thumbnail: thumbnail.png
 title: Fixed timestep interpolation
 twitter_image: https://www.defold.com/examples/physics/interpolation/thumbnail.png
-
 ---
 
 This example demonstrates two rendering paths while physics runs at a fixed frequency:

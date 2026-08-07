@@ -11,7 +11,6 @@ tags: input
 thumbnail: input_bindings.png
 title: 8 ways movement
 twitter_image: https://www.defold.com/examples/input/move/input_bindings.png
-
 ---
 
 ![input bindings](input_bindings.png)

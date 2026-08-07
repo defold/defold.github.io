@@ -10,7 +10,6 @@ tags: physics
 thumbnail: dynamic.png
 title: Dynamic physics
 twitter_image: https://www.defold.com/examples/physics/dynamic/dynamic.png
-
 ---
 
 ![dynamic](dynamic.png)

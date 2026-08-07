@@ -11,7 +11,6 @@ tags: animation, delay
 thumbnail: thumbnail.png
 title: Animation Delay - Wave
 twitter_image: https://www.defold.com/examples/animation/animation_delay/thumbnail.png
-
 ---
 
 This example shows how to use the `delay` parameter of `go.animate()` (or `gui.animate()`) to create a wave effect.

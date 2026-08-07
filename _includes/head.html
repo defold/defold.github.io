@@ -10,7 +10,9 @@
 {%- assign site_url = site.url | default: "https://www.defold.com" -%}
 {%- assign page_url_path = page.url | default: "/" | remove: "index.html" -%}
 {%- assign canonical_url = page_url_path | absolute_url -%}
-{%- if page.pagefind_exclude -%}
+{%- if page.canonical -%}
+	{%- assign canonical_url = page.canonical | absolute_url -%}
+{%- elsif page.pagefind_exclude and page.ref -%}
 	{%- assign canonical_path = "/ref/" | append: page.branch | append: "/" | append: page.ref | append: "/" -%}
 	{%- assign canonical_url = canonical_path | absolute_url -%}
 {%- endif -%}
@@ -32,8 +34,8 @@
 	{%- assign asset = site.data.assets[page.asset] -%}
 {%- endif -%}
 {%- assign author = nil -%}
-{%- if page.author and site.data.authors -%}
-	{%- assign author = site.data.authors[page.author] -%}
+{%- if page.layout == "author" and page.author_profile -%}
+	{%- assign author = page.author_profile -%}
 {%- endif -%}
 
 {%- if page.description.size > 0 -%}
@@ -46,8 +48,9 @@
 	{%- assign page_description = asset.description_long -%}
 {%- elsif asset and asset.description.size > 0 -%}
 	{%- assign page_description = asset.description -%}
-{%- elsif page.layout == "author" and author -%}
-	{%- assign page_description = "Browse Defold assets published by " | append: author.name | append: " in the Defold Asset Portal." -%}
+{%- elsif page.layout == "author" -%}
+	{%- assign author_name = author.name -%}
+	{%- capture page_description -%}Explore {{ author_name }}'s {{ page.asset_count }} Defold asset{% unless page.asset_count == 1 %}s{% endunless %} and {{ page.example_count }} example{% unless page.example_count == 1 %}s{% endunless %}.{%- endcapture -%}
 {%- elsif page.layout == "assetportal" -%}
 	{%- assign page_description = "Browse Defold extensions, templates, tools, and reusable assets from the community." -%}
 {%- else -%}
@@ -62,7 +65,7 @@
 {%- assign seo_language = page.language | default: "en" -%}
 {%- assign og_type = "website" -%}
 {%- assign schema_type = "WebPage" -%}
-{%- assign article_author_name = page.author | default: "Defold Foundation" -%}
+{%- assign article_author_name = author.name | default: page.author | default: "Defold Foundation" -%}
 {%- assign article_author_type = "Person" -%}
 {%- assign article_author_name_downcase = article_author_name | downcase -%}
 {%- if article_author_name_downcase contains "defold foundation" -%}

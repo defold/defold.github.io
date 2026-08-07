@@ -11,7 +11,6 @@ tags: animation
 thumbnail: thumbnail.png
 title: Euler Rotation
 twitter_image: https://www.defold.com/examples/animation/euler_rotation/thumbnail.png
-
 ---
 
 This example rotates a spinner sprite continuously by tweening one Euler angle. It uses the Z axis because that is the axis pointing out of the screen in a 2D scene.

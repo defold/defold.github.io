@@ -8,6 +8,5 @@ path: gui/get_set_font
 scripts: get_set_font.script
 tags: gui
 title: Get and set a gui font resource
-
 ---
 

@@ -11,7 +11,6 @@ tags: gui, font
 thumbnail: thumbnail.png
 title: Localization (RTL/LTR)
 twitter_image: https://www.defold.com/examples/gui/localization/thumbnail.png
-
 ---
 
 This example demonstrates how to handle localization in games, Unicode text layout, RTL rendering, and runtime font switching for localization.

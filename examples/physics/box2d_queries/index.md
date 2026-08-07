@@ -11,7 +11,6 @@ tags: physics, box2d
 thumbnail: thumbnail.webp
 title: Box2D Queries
 twitter_image: https://www.defold.com/examples/physics/box2d_queries/thumbnail.webp
-
 ---
 
 This example places four static targets with box, circle, triangle, and diamond collision shapes, and user controllable AABB, circle, and raycast queries.

@@ -51,9 +51,10 @@
 	{%- else -%}
 		{%- assign image = "" -%}
 	{%- endif -%}
-	{%- assign example_category = example.category | split: "|" -%}
+	{%- assign example_tags_csv = example.tags | append: "," | append: example.category | replace: ", ", "," -%}
+	{%- assign example_tags = example_tags_csv | split: "," | uniq -%}
 	{%- assign example_link = "/examples/" | append: example.path -%}
-	{% include learn_card.html title=example.title description=example.brief link=example_link image=image tags=example_category %}
+	{% include learn_card.html title=example.title description=example.brief link=example_link image=image tags=example_tags %}
 
 {%- when "videos" -%}
 	{%- assign video = hub_item -%}

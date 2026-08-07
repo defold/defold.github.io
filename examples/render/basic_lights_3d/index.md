@@ -12,7 +12,6 @@ tags: render, 3d
 thumbnail: thumbnail.webp
 title: Basic Lights 3D
 twitter_image: https://www.defold.com/examples/render/basic_lights_3d/thumbnail.webp
-
 ---
 
 This example sets up a small 3D city scene with several light component types.

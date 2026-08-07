@@ -11,7 +11,6 @@ tags: physics
 thumbnail: pendulum.png
 title: Pendulum physics
 twitter_image: https://www.defold.com/examples/physics/pendulum/pendulum.png
-
 ---
 
 ![pendulum](pendulum.png)

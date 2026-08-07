@@ -8,7 +8,6 @@ path: sound/music
 scripts: music.script
 tags: sound
 title: Music
-
 ---
 
 ![music](music.jpg)

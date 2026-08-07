@@ -11,7 +11,6 @@ tags: model, animation
 thumbnail: thumbnail.webp
 title: Character - Skeletal Animation
 twitter_image: https://www.defold.com/examples/model/character/thumbnail.webp
-
 ---
 
 This example uses a skinned glTF character with multiple animations and a simple orbit camera. The model contains both mesh and animation data, so the example can switch animations and visible mesh parts without loading any extra assets.

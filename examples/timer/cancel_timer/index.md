@@ -11,7 +11,6 @@ tags: timer
 thumbnail: cancel_timer.png
 title: Cancel timer example
 twitter_image: https://www.defold.com/examples/timer/cancel_timer/cancel_timer.png
-
 ---
 
 The example shows how to use Defold built-in timer and uses two indicators:

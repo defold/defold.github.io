@@ -56,7 +56,6 @@ The script accepts the following commands:
 * `games-showcase` - Import Showcase content from github.com/defold/games-showcase
 * `commit` - Commit changes to GitHub (for CI use)
 
-
 # HOW TO TEST THE SITE LOCALLY
 It is recommended that you generate and test the site locally before pushing the changes to the repository. You generate and test the site locally by running `serve.sh`.
 
@@ -194,6 +193,16 @@ The site search is powered by [Pagefind](https://pagefind.app), a static site se
 
 ## Page search
 Functionality for searching and marking within a single page using [Mark.js](https://markjs.io/).
+
+# Author profiles
+
+All website-owned author information lives in: `_data/authors.json`.
+
+You can change a contributor's canonical name, GitHub account, aliases, bio, avatar, links, or support links. Asset and example attribution remains in the upstream `defold/asset-portal` and `defold/examples` repositories.
+
+Running either the `asset-portal` or `examples` update resolves those upstream names through `_data/authors.json`, writes the canonical name and id into the generated asset and example data, and rebuilds the lightweight pages under `authors/`. Author pages read their asset and example cards from the existing generated catalogs at Jekyll build time, so no contribution lists are copied into author profile data.
+
+Aliases are accepted only while importing upstream attribution. They preserve old author URLs and let renamed contributors resolve to one canonical profile; they are not emitted as public author names. An optional `id` should only be used when a renamed profile must retain an existing hash URL; normally the id is derived automatically from `name`.
 
 
 # Credits

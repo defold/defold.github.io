@@ -11,7 +11,6 @@ tags: animation
 thumbnail: spinner.png
 title: Spinner animation
 twitter_image: https://www.defold.com/examples/animation/spinner/spinner.png
-
 ---
 
 ![spinner](spinner.png)

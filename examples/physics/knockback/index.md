@@ -11,7 +11,6 @@ tags: physics
 thumbnail: knockback_thumb.png
 title: Knockback
 twitter_image: https://www.defold.com/examples/physics/knockback/knockback_thumb.png
-
 ---
 
 This example shows how to create a knockback effect when hit. The setup consists of three game objects; one for the player, one for the enemy and one for the bullet that is spawned using a factory (see example on how to spawn bullets).

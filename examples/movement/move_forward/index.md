@@ -8,6 +8,5 @@ path: movement/move_forward
 scripts: move_forward.script
 tags: movement
 title: Move forward
-
 ---
 

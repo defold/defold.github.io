@@ -11,7 +11,6 @@ tags: particles
 thumbnail: thumbnail.png
 title: Particle effect example - fire and smoke
 twitter_image: https://www.defold.com/examples/particles/fire_and_smoke/thumbnail.png
-
 ---
 
 ## Setup

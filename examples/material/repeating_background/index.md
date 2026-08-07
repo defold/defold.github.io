@@ -11,7 +11,6 @@ tags: material
 thumbnail: thumbnail.webp
 title: Repeating Background
 twitter_image: https://www.defold.com/examples/material/repeating_background/thumbnail.webp
-
 ---
 
 A repeating, scrolling texture is useful for reward screens, menu backgrounds, water, clouds, stars, and other effects where a small tile should fill a large area. This example uses a Model component with Defold's built-in `/builtins/assets/gltf/quad.gltf` mesh, a custom material, and a texture sampler set to repeat.

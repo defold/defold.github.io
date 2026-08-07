@@ -24,7 +24,7 @@
 			{%- assign external_action_badge_class = "paid" -%}
 		{%- endunless -%}
 	{%- elsif first_external_action_type == "support" or first_external_action_type == "donate" or first_external_action_type == "sponsor" -%}
-		{%- assign external_action_badge = "Support" -%}
+		{%- assign external_action_badge = "Sponsor" -%}
 		{%- assign external_action_badge_icon = "heart" -%}
 		{%- assign external_action_badge_class = "support" -%}
 	{%- else -%}
@@ -39,7 +39,7 @@
 	{%- endfor -%}
 {%- endcapture -%}
 {%- assign asset_description_preview = asset.description | strip_newlines | strip -%}
-<article class='asset asset-card {{ asset_tag_classes }}' data-asset-item="true" data-name="{{ asset.name | escape }}" data-description="{{ asset.description | escape }}" data-asset-tags="{{ asset_tag_values }}" data-asset-stars="{{ asset.stars | default: 0 }}" data-asset-timestamp="{{ asset.timestamp | default: 0 }}">
+<article class='asset asset-card {{ asset_tag_classes }}' data-asset-item="true" data-name="{{ asset.name | escape }}" data-description="{{ asset.description | escape }}" data-asset-tags="{{ asset_tag_values }}" data-asset-stars="{{ asset.stars | default: 0 }}" data-asset-timestamp="{{ asset.timestamp | default: 0 }}"{% if include.contribution_type %} data-author-contribution="true" data-author-contribution-type="{{ include.contribution_type }}"{% endif %}>
 	<a class="page-feature-card page-feature-card-no-badge asset-card-link" href="/assets/{{ include.id }}">
 		<span class="page-feature-card-media asset-card-media" aria-hidden="true">
 			<img src="{{ thumb_src | strip }}" alt="{{ asset.name }} preview image" loading="lazy" decoding="async"/>

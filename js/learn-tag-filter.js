@@ -12,7 +12,9 @@
 	const toLabel = (tag) => {
 		const map = {
 			"ui-art": "UI / Art",
+			"2d": "2D",
 			"two-d": "2D",
+			"3d": "3D",
 			"three-d": "3D",
 			"gui": "GUI",
 			"ios": "iOS"
@@ -207,27 +209,71 @@
 			const filterSingular = filterRoot.dataset.filterSingular || "tag";
 			const resultItems = filterRoot.dataset.resultItems || "resources";
 			const defaultTitle = catalog.dataset.defaultTitle || `All ${resultItems}`;
+			const initialSort = normalize(catalog.dataset.initialSort) || (sortButtons[0]?.dataset.learnSort || "");
 			let selectedTag = "all";
-			let sortOrder = normalize(catalog.dataset.initialSort) || (sortButtons[0]?.dataset.learnSort || "");
-			let requestedTag = "";
+			let sortOrder = initialSort;
 			const preRenderedChips = Array.from(chipRow.querySelectorAll(".learn-tag-chip"));
 			const hasPreRenderedTagChips = preRenderedChips.some((chip) => (chip.dataset.tag || "") !== "all");
 			const forceGeneratedTagChips = filterRoot.dataset.forceGeneratedChips === "true";
 
-			try {
-				const params = new URLSearchParams(window.location.search);
-				requestedTag = toSlug(
-					params.get("tag") ||
-					params.get(filterSingular) ||
-					window.location.hash.replace(/^#/, "")
-				);
-			} catch (error) {
-				requestedTag = toSlug(window.location.hash.replace(/^#/, ""));
-			}
+			const readUrlState = () => {
+				let requestedTag = "";
+				try {
+					const params = new URLSearchParams(window.location.search);
+					requestedTag = toSlug(
+						params.get("tag") ||
+						params.get(filterSingular) ||
+						window.location.hash.replace(/^#/, "")
+					);
+					if (searchInput) {
+						searchInput.value = params.get("q") || "";
+					}
 
-			if (requestedTag && (requestedTag === "all" || tagStats.has(requestedTag))) {
-				selectedTag = requestedTag;
-			}
+					const requestedSort = normalize(params.get("sort"));
+					sortOrder = sortButtons.some((button) => button.dataset.learnSort === requestedSort)
+						? requestedSort
+						: initialSort;
+				} catch (error) {
+					requestedTag = toSlug(window.location.hash.replace(/^#/, ""));
+					sortOrder = initialSort;
+				}
+
+				selectedTag = requestedTag && (requestedTag === "all" || tagStats.has(requestedTag))
+					? requestedTag
+					: "all";
+			};
+
+			const syncUrl = () => {
+				const params = new URLSearchParams(window.location.search);
+				const query = (searchInput?.value || "").trim();
+
+				if (selectedTag === "all") {
+					params.delete("tag");
+				} else {
+					params.set("tag", selectedTag);
+				}
+				if (filterSingular !== "tag") {
+					params.delete(filterSingular);
+				}
+
+				if (query) {
+					params.set("q", query);
+				} else {
+					params.delete("q");
+				}
+
+				if (sortOrder && sortOrder !== initialSort) {
+					params.set("sort", sortOrder);
+				} else {
+					params.delete("sort");
+				}
+
+				const search = params.toString();
+				const hashTag = toSlug(window.location.hash.replace(/^#/, ""));
+				const hash = hashTag && (hashTag === "all" || tagStats.has(hashTag)) ? "" : window.location.hash;
+				const nextUrl = `${window.location.pathname}${search ? `?${search}` : ""}${hash}`;
+				window.history.replaceState(window.history.state, "", nextUrl);
+			};
 
 			const sortItems = () => {
 				if (!sortGrid || !sortButtons.length) {
@@ -305,7 +351,7 @@
 					chip.setAttribute("aria-pressed", active ? "true" : "false");
 				});
 
-				sortButtons.forEach((button) => {
+			sortButtons.forEach((button) => {
 					const active = button.dataset.learnSort === sortOrder;
 					button.classList.toggle("active", active);
 					button.setAttribute("aria-pressed", active ? "true" : "false");
@@ -322,6 +368,7 @@
 				updateResultLabel(resultEl, visibleCount, totalCount, selectedTag, filterSingular, resultItems, rawQuery);
 			};
 
+			readUrlState();
 			renderChips();
 			chipRow.addEventListener("click", (event) => {
 				const chip = event.target.closest(".learn-tag-chip");
@@ -330,6 +377,7 @@
 				}
 				selectedTag = chip.dataset.tag || "all";
 				applyFilter();
+				syncUrl();
 
 				trackEvent("learn_tag_filter_select", {
 					tag: selectedTag,
@@ -339,10 +387,11 @@
 				});
 			});
 
-			sortButtons.forEach((button) => {
+				sortButtons.forEach((button) => {
 				button.addEventListener("click", () => {
 					sortOrder = button.dataset.learnSort || sortOrder;
 					applyFilter();
+					syncUrl();
 
 					trackEvent("learn_tag_sort_select", {
 						tag: selectedTag,
@@ -354,10 +403,18 @@
 			});
 
 			if (searchInput) {
-				const onInput = () => applyFilter();
+				const onInput = () => {
+					applyFilter();
+					syncUrl();
+				};
 				searchInput.addEventListener("input", onInput);
 				searchInput.addEventListener("propertychange", onInput);
 			}
+
+			window.addEventListener("popstate", () => {
+				readUrlState();
+				applyFilter();
+			});
 
 			applyFilter();
 		});

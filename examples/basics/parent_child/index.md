@@ -11,7 +11,6 @@ tags: basics
 thumbnail: parent_child.png
 title: Parent/child
 twitter_image: https://www.defold.com/examples/basics/parent_child/parent_child.png
-
 ---
 
 ![parent child](parent_child.png)

@@ -11,7 +11,6 @@ tags: basics
 thumbnail: thumbnail.png
 title: Random numbers
 twitter_image: https://www.defold.com/examples/basics/random_numbers/thumbnail.png
-
 ---
 
 In this example you'll learn how to generate pseudo-random numbers in Defold using built-in math API.

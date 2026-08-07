@@ -11,7 +11,6 @@ tags: movement
 thumbnail: collection.png
 title: First-person 3D camera and movement
 twitter_image: https://www.defold.com/examples/movement/3d_fps/collection.png
-
 ---
 
 This example shows how to build a simple first-person controller for a 3D scene. You can look around with the mouse and move on the XZ plane using the keyboard (WSAD).

@@ -11,7 +11,6 @@ tags: model, animation
 thumbnail: thumbnail.webp
 title: Morph Target Animation
 twitter_image: https://www.defold.com/examples/model/morph-target/thumbnail.webp
-
 ---
 
 This example plays morph target animations from a glTF model. The model uses a small custom material based on Defold's built-in model material, with the extra shader bindings needed to render morph target deformation.

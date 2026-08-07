@@ -270,6 +270,60 @@ html.theme-dark .learn-detail-shell.theme-page-bg-dark {
 	padding: clamp(1.55rem, 2.6vw, 1.95rem);
 }
 
+.example-meta {
+	display: grid;
+	gap: 1.1rem;
+	padding: clamp(1.2rem, 2vw, 1.5rem);
+	margin-bottom: 1.2rem;
+}
+
+.example-meta-group {
+	display: grid;
+	gap: 0.7rem;
+}
+
+.example-meta-group + .example-meta-group {
+	padding-top: 1.1rem;
+	border-top: 1px solid var(--surface-border);
+}
+
+.example-meta-title {
+	margin: 0;
+	color: var(--theme-heading-color);
+	font-size: clamp(1.32rem, 2vw, 1.56rem);
+	font-weight: 700;
+	line-height: 1.25;
+}
+
+.example-author-links {
+	display: grid;
+	gap: 0.5rem;
+}
+
+.example-tag-links {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.15rem 0.3rem;
+}
+
+.example-author-button.button,
+.example-license-button.button {
+	width: 100%;
+	min-height: 54px !important;
+	margin: 0;
+	padding: 0.9rem 1rem !important;
+	font-size: clamp(1.15rem, 1.8vw, 1.36rem);
+	line-height: 1.23;
+	white-space: normal !important;
+	overflow-wrap: anywhere;
+}
+
+.example-tag-links a,
+.example-tag-links span {
+	font-size: 0.92rem;
+	line-height: 1.35;
+}
+
 .learn-sidebar-panel,
 .learn-sidebar-mobile {
 	margin-top: 0;

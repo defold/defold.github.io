@@ -11,7 +11,6 @@ tags: render, 3d
 thumbnail: thumbnail.webp
 title: Directional Light Shadows with PCF Filtering
 twitter_image: https://www.defold.com/examples/render/directional_light_shadows/thumbnail.webp
-
 ---
 
 This example adds real-time shadows to a directional light and provides a custom render script for drawing shadows in a small 3D scene.

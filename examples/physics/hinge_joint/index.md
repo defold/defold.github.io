@@ -11,7 +11,6 @@ tags: physics
 thumbnail: hinge_joint.png
 title: Hinge joint physics
 twitter_image: https://www.defold.com/examples/physics/hinge_joint/hinge_joint.png
-
 ---
 
 ![hinge_joint](hinge_joint.png)

@@ -11,7 +11,6 @@ tags: movement
 thumbnail: move_to.png
 title: Move to target
 twitter_image: https://www.defold.com/examples/movement/move_to/move_to.png
-
 ---
 
 ![move_to](move_to.png)

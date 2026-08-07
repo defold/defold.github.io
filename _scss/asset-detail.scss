@@ -50,11 +50,11 @@
 	min-width: 0;
 }
 
-.asset-detail-layout-has-releases {
+.asset-detail-layout-has-sidebar {
 	grid-template-columns: minmax(240px, 320px) minmax(0, 1fr);
 	grid-template-areas:
 		"media main"
-		"releases main"
+		"sidebar main"
 		"meta main";
 }
 
@@ -63,8 +63,8 @@
 	min-width: 0;
 }
 
-.asset-detail-releases {
-	grid-area: releases;
+.asset-detail-sidebar-card {
+	grid-area: sidebar;
 	width: 100%;
 	max-width: 100%;
 	min-width: 0;
@@ -295,6 +295,36 @@
 	line-height: 1.63;
 }
 
+.asset-detail-badges {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 0.55rem;
+}
+
+.asset-detail-badges-after-releases {
+	padding-top: 1.2rem;
+	margin-top: 1.2rem;
+	border-top: 1px solid var(--surface-border);
+}
+
+.asset-sidebar-author-section {
+	padding-top: 1.2rem;
+	margin-top: 1.2rem;
+	border-top: 1px solid var(--surface-border);
+}
+
+.asset-detail-author-button.button {
+	width: 100%;
+	min-height: 54px !important;
+	margin: 0;
+	padding: 0.95rem 1.05rem !important;
+	font-size: 1.42rem;
+	line-height: 1.23;
+	white-space: normal !important;
+	overflow-wrap: anywhere;
+}
+
 .asset-detail-meta table {
 	margin: 0;
 	width: 100%;
@@ -340,10 +370,10 @@
 		gap: clamp(1.6rem, 4.8vw, 2.2rem);
 	}
 
-	.asset-detail-layout-has-releases {
+	.asset-detail-layout-has-sidebar {
 		grid-template-areas:
 			"media"
-			"releases"
+			"sidebar"
 			"main"
 			"meta";
 	}

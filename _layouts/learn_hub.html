@@ -36,7 +36,7 @@ layout: page_with_learnnav
 				{%- when "tutorials" -%}
 					{% include learn_tag_filter.html label=filter_label result_items=result_items exclude_tags=exclude_tags items=site.data.learnindex.navigation.tutorials %}
 				{%- when "examples" -%}
-					{% include learn_tag_filter.html label=filter_label filter_singular=filter_singular result_items=result_items items=site.data.examplesindex tag_property=tag_property %}
+					{% include learn_tag_filter.html label=filter_label filter_singular=filter_singular result_items=result_items items=site.data.examplesindex tag_property=tag_property force_generated_chips=true %}
 				{%- when "videos" -%}
 					{% include learn_tag_filter.html label=filter_label result_items=result_items exclude_tags=exclude_tags items=site.data.learnindex.navigation.videos %}
 				{%- when "courses" -%}

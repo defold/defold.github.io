@@ -11,7 +11,6 @@ tags: collection
 thumbnail: splash.png
 title: Splash
 twitter_image: https://www.defold.com/examples/collection/splash/splash.png
-
 ---
 
 The setup consists of several collections and game objects.

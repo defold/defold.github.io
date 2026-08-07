@@ -11,7 +11,6 @@ tags: factory
 thumbnail: thumbnail.png
 title: Spawn enemies with central management
 twitter_image: https://www.defold.com/examples/factory/spawn_manager/thumbnail.png
-
 ---
 
 This example shows how to dynamically spawn enemy game objects using a factory component and use a central manager to control movement and behavior of all enemies. The setup consists of three main components: a player ship, enemy spawner, and different enemy types with customizable properties.

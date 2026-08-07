@@ -11,7 +11,6 @@ tags: sound
 thumbnail: panning.png
 title: Panning
 twitter_image: https://www.defold.com/examples/sound/panning/panning.png
-
 ---
 
 Overview : A coin bounces around the screen and on collision detection we get the coins x position then normalize that value for use in the sound components pan property. As the API states "The pan on the sound-component. The valid range is from -1.0 to 1.0, representing -45 degrees left, to +45 degrees right." we can use this information along with our x value from our coin object and normalize it into the correct range. 

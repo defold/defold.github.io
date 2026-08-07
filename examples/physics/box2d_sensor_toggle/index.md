@@ -11,7 +11,6 @@ tags: physics, box2d
 thumbnail: thumbnail.webp
 title: Box2D Sensors
 twitter_image: https://www.defold.com/examples/physics/box2d_sensor_toggle/thumbnail.webp
-
 ---
 
 This example shows how to utilize the Box2D scripting API to operate with sensors (triggers).

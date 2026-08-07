@@ -11,7 +11,6 @@ tags: gui
 thumbnail: button.jpg
 title: Pointer over
 twitter_image: https://www.defold.com/examples/gui/pointer_over/button.jpg
-
 ---
 
 ![button](button.jpg)

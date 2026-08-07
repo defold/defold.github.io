@@ -11,7 +11,6 @@ tags: physics, box2d
 thumbnail: thumbnail.webp
 title: Box2D dynamic shape scale and mass
 twitter_image: https://www.defold.com/examples/physics/box2d_dynamic_scale/thumbnail.webp
-
 ---
 
 This example shows how to change bodies shapes and mass in runtime.

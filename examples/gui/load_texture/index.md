@@ -11,7 +11,6 @@ tags: gui
 thumbnail: load_texture.png
 title: Load texture
 twitter_image: https://www.defold.com/examples/gui/load_texture/load_texture.png
-
 ---
 
 ![button](load_texture.png)

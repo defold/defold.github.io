@@ -11,7 +11,6 @@ tags: sprite
 thumbnail: example.png
 title: Sprite local UV
 twitter_image: https://www.defold.com/examples/material/sprite_local_uv/example.png
-
 ---
 
 The example uses two game objects, each with a sprite component and a script.

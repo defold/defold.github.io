@@ -11,7 +11,6 @@ tags: particles
 thumbnail: thumbnail.png
 title: Particle Effect Emission Space
 twitter_image: https://www.defold.com/examples/particles/particlefx_emission_space/thumbnail.png
-
 ---
 
 This example shows how particle emission space affects particle behavior when the emitter object moves. The setup consists of two UFO objects with identical particle effects, but different emission space settings.

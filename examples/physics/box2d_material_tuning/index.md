@@ -11,7 +11,6 @@ tags: physics, box2d
 thumbnail: thumbnail.webp
 title: Box2D Material Properties Tuning
 twitter_image: https://www.defold.com/examples/physics/box2d_material_tuning/thumbnail.webp
-
 ---
 
 This example compares three dynamic balls whose Box2D material properties are tuned from script. It works with both Box2D V2 legacy and Box2D V3 by attaching one script for each backend. Each script checks `b2d.get_version()` during `init()` and becomes a no-op when the other backend is active.

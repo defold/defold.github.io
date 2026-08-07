@@ -11,7 +11,6 @@ tags: sprite
 thumbnail: tint_thumb.png
 title: Sprite tint
 twitter_image: https://www.defold.com/examples/sprite/tint/tint_thumb.png
-
 ---
 
 The example uses a script to tint (color) sprites in a couple of different ways. The tint is a fragment constant on the sprite material and it is used in the sprite.fp fragment shader program to modify the color sampled from the texture.

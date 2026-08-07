@@ -11,7 +11,6 @@ tags: model
 thumbnail: thumbnail.webp
 title: AABB to frame objects with a camera
 twitter_image: https://www.defold.com/examples/model/aabb/thumbnail.webp
-
 ---
 
 An axis-aligned bounding box, or AABB, is the smallest box aligned to the world X, Y, and Z axes that contains an object. Because it is described by only two corners, `min` and `max`, it is cheap to compare, combine, and use for visibility or spatial tests.

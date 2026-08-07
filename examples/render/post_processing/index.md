@@ -11,7 +11,6 @@ tags: render
 thumbnail: postprocess_thumb.png
 title: Post-processing
 twitter_image: https://www.defold.com/examples/render/post_processing/postprocess_thumb.png
-
 ---
 
 The basic principle of a full screen post processing effect is to first draw the entire game to a render target, then draw this render target to a full screen quad using a post processing shader to apply some kind of effect. This example shows a color invert effect and a CRT scanline effect.

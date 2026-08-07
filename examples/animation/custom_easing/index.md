@@ -11,7 +11,6 @@ tags: animation, easing
 thumbnail: setup.png
 title: Custom easing - square wave
 twitter_image: https://www.defold.com/examples/animation/custom_easing/setup.png
-
 ---
 
 This example uses the square-wave easing curve. The logo alternates between its starting height and the target height, and the animation system interpolates the positions between the low and high positions when animating.

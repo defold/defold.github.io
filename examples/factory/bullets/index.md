@@ -8,7 +8,6 @@ path: factory/bullets
 scripts: player.script
 tags: factory
 title: Shoot bullets
-
 ---
 
 This example shows how to dynamically spawn bullet game objects using a factory component and how to also move and delete the bullets. The setup consists of two game objects; one for the player and one for the bullet that is spawned using a factory component.
