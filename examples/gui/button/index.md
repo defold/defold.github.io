@@ -11,6 +11,7 @@ tags: gui
 thumbnail: button.png
 title: Button
 twitter_image: https://www.defold.com/examples/gui/button/button.png
+
 ---
 
 ![button](button.png)

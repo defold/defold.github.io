@@ -11,6 +11,7 @@ tags: render
 thumbnail: thumbnail.png
 title: Orthographic Zoom
 twitter_image: https://www.defold.com/examples/render/orthographic_zoom/thumbnail.png
+
 ---
 
 This example shows the recommended setup for gameplay zoom with an orthographic camera: keep the camera component in orthographic `Fixed` mode, then change `orthographic_zoom` from script.

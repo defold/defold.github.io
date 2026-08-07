@@ -11,6 +11,7 @@ tags: model
 thumbnail: skybox.png
 title: Skybox
 twitter_image: https://www.defold.com/examples/model/skybox/skybox.png
+
 ---
 
 This example shows how to create a skybox. A skybox is a technique that makes the scene look bigger and more impressive by wrapping the viewer with a texture that goes around the camera 360 degrees.

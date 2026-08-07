@@ -11,6 +11,7 @@ tags: material
 thumbnail: vertexcolor-material.png
 title: Sprite Vertex Color Attribute
 twitter_image: https://www.defold.com/examples/material/vertexcolor/vertexcolor-material.png
+
 ---
 
 The `vertexcolor.script` sets the vertex attribute "mycolor", which has been specified in the material.

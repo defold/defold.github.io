@@ -11,6 +11,7 @@ tags: sprite
 thumbnail: cursor_thumb.png
 title: Sprite cursor
 twitter_image: https://www.defold.com/examples/sprite/cursor/cursor_thumb.png
+
 ---
 
 The example contains a sprite with a tilesource animation of a walking robot. The animation consists of 8 frames:

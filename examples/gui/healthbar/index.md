@@ -11,6 +11,7 @@ tags: gui
 thumbnail: healthbar.png
 title: Health Bar
 twitter_image: https://www.defold.com/examples/gui/healthbar/healthbar.png
+
 ---
 
 Overview : Example shows 3 pairs of nodes each forming a "health bar" with different pivots.

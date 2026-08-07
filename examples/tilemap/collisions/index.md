@@ -11,6 +11,7 @@ tags: tilemap
 thumbnail: tilesource.png
 title: Tilemap collisions
 twitter_image: https://www.defold.com/examples/tilemap/collisions/tilesource.png
+
 ---
 
 This example uses a tilesource with two collision groups: "ground" and "danger". The tilesource uses the `tilesheet_complete.png` image for the tiles and the collision shapes (traced as outlines around the transparent pixels of each tile).

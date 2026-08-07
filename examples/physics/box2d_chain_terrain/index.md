@@ -11,6 +11,7 @@ tags: physics, box2d
 thumbnail: thumbnail.webp
 title: Box2D Chain Terrain
 twitter_image: https://www.defold.com/examples/physics/box2d_chain_terrain/thumbnail.webp
+
 ---
 
 ----------------------

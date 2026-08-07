@@ -12,6 +12,7 @@ tags: material
 thumbnail: thumbnail.png
 title: Wave Background
 twitter_image: https://www.defold.com/examples/material/wave_background/thumbnail.png
+
 ---
 
 This example contains a game object with a sprite component. The `Image` and `Default Animation properties` of the sprite component cannot be left empty, otherwise an error will occur. In the example the built-in `/builtins/graphics/particle_blob.tilesource` is used and animation is set to `anim`. You can adjust the size of the wave background by modifying the `Size` property of the sprite component.

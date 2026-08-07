@@ -12,6 +12,7 @@ tags: particles
 thumbnail: thumbnail.png
 title: Spawning Fireworks ParticleFX
 twitter_image: https://www.defold.com/examples/particles/fireworks/thumbnail.png
+
 ---
 
 ## Setup

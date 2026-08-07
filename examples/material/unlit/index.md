@@ -12,6 +12,7 @@ tags: material, model
 thumbnail: thumbnail.webp
 title: Unlit
 twitter_image: https://www.defold.com/examples/material/unlit/thumbnail.webp
+
 ---
 
 An unlit material renders a surface without any lighting calculation. It does not react to lights, normals, shadows, or specular highlights. The final color comes directly from the material inputs, usually a texture and a tint.

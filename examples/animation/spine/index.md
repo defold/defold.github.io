@@ -11,6 +11,7 @@ tags: animation
 thumbnail: spine.png
 title: Spine animation
 twitter_image: https://www.defold.com/examples/animation/spine/spine.png
+
 ---
 
 ![spine](spine.png)

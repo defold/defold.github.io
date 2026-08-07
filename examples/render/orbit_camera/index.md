@@ -9,6 +9,7 @@ path: render/orbit_camera
 scripts: orbit_camera.script
 tags: render
 title: Orbit Camera
+
 ---
 
 In this example, we create a script to control a 3D camera using the mouse and mouse scroll wheel.

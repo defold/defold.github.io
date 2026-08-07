@@ -11,6 +11,7 @@ tags: particles
 thumbnail: thumbnail.png
 title: ParticleFX - Confetti
 twitter_image: https://www.defold.com/examples/particles/confetti/thumbnail.png
+
 ---
 
 In this example we create a confetti fireworks effect. It is usually used on final screens to congratulate the player on successful completion of a level or game.

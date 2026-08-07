@@ -11,6 +11,7 @@ tags: basics
 thumbnail: message_passing.png
 title: Message passing
 twitter_image: https://www.defold.com/examples/basics/message_passing/message_passing.png
+
 ---
 
 ![message passing](message_passing.png)

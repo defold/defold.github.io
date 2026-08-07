@@ -11,6 +11,7 @@ tags: render
 thumbnail: thumbnail.png
 title: World to Screen
 twitter_image: https://www.defold.com/examples/render/world_to_screen/thumbnail.png
+
 ---
 
 This example shows how to convert world positions to screen coordinates for UI positioning. It features:

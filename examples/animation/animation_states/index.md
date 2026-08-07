@@ -11,6 +11,7 @@ tags: animation, sprite, architecture, input
 thumbnail: thumbnail.png
 title: Finite State Machines
 twitter_image: https://www.defold.com/examples/animation/animation_states/thumbnail.png
+
 ---
 
 You can control the example in two ways:

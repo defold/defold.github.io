@@ -11,6 +11,7 @@ tags: physics, box2d
 thumbnail: thumbnail.webp
 title: Box2D Weld Joint
 twitter_image: https://www.defold.com/examples/physics/box2d_weld_joint/thumbnail.webp
+
 ---
 
 This example creates two Box2D weld joints at runtime between three separate dynamic square bodies.

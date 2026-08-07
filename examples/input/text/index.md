@@ -8,6 +8,7 @@ path: input/text
 scripts: text.script
 tags: input
 title: Text input
+
 ---
 
 ![input bindings text](input_bindings.png)

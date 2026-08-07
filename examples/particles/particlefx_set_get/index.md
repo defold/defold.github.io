@@ -11,6 +11,7 @@ tags: particles
 thumbnail: thumbnail.png
 title: ParticleFX emitter properties
 twitter_image: https://www.defold.com/examples/particles/particlefx_set_get/thumbnail.png
+
 ---
 
 Since Defold 1.12.2 you can use `go.get()` and `go.set()` on individual ParticleFX emitters by passing `keys = { "..." }`.

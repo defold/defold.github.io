@@ -11,6 +11,7 @@ tags: gui
 thumbnail: outline.png
 title: Layouts
 twitter_image: https://www.defold.com/examples/gui/layouts/outline.png
+
 ---
 
 Overview : A small UI panel that changes its position depending on the screen size (canvas size in HTML5) using the Defold layouts system. [:More on Layouts with Defold:](https://defold.com/manuals/gui-layouts/#layouts)

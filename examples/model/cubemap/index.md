@@ -11,6 +11,7 @@ tags: model, material, shader
 thumbnail: thumbnail.webp
 title: Cubemap Reflection
 twitter_image: https://www.defold.com/examples/model/cubemap/thumbnail.webp
+
 ---
 
 The example renders the Defold logo with a custom material that reflects an environment cubemap. Drag or touch to orbit around the model and use the mouse wheel to zoom.

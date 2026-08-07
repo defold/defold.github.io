@@ -11,6 +11,7 @@ tags: gui
 thumbnail: progress.png
 title: GUI progress indicators
 twitter_image: https://www.defold.com/examples/gui/progress/progress.png
+
 ---
 
 The example shows three different types of progress indicators:

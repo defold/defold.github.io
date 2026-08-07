@@ -11,6 +11,7 @@ tags: gui
 thumbnail: stencil.png
 title: Stencil
 twitter_image: https://www.defold.com/examples/gui/stencil/stencil.png
+
 ---
 
 ![stencil](stencil.png)

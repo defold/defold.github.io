@@ -11,6 +11,7 @@ tags: input
 thumbnail: input_binding.png
 title: Down duration
 twitter_image: https://www.defold.com/examples/input/down_duration/input_binding.png
+
 ---
 
 ![input bindings](input_binding.png)

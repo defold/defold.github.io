@@ -11,6 +11,7 @@ tags: collection
 thumbnail: proxy.png
 title: Proxy
 twitter_image: https://www.defold.com/examples/collection/proxy/proxy.png
+
 ---
 
 The setup consists of several collections and game objects.

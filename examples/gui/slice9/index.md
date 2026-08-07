@@ -11,6 +11,7 @@ tags: gui
 thumbnail: slice9.png
 title: Slice-9
 twitter_image: https://www.defold.com/examples/gui/slice9/slice9.png
+
 ---
 
 Overview : Using a small stylized image (90x91 pixels) we apply it to a gui node and set the slice-9 properties, we can then 

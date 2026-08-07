@@ -12,6 +12,7 @@ tags: animation, easing, input
 thumbnail: thumbnail.webp
 title: Easing Functions (Tweens)
 twitter_image: https://www.defold.com/examples/animation/easing/thumbnail.webp
+
 ---
 
 This example compares the built-in easing constants that can be passed to `go.animate()`. Use the left and right arrow keys, or the on-screen buttons, to switch easing function and restart the same position, rotation, and scale animations.

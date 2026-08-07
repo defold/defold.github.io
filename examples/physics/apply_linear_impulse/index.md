@@ -11,6 +11,7 @@ tags: physics
 thumbnail: thumbnail.png
 title: Apply Linear Impulse
 twitter_image: https://www.defold.com/examples/physics/apply_linear_impulse/thumbnail.png
+
 ---
 
 This example shows how a Box2D body can be pushed instantly with a linear impulse.

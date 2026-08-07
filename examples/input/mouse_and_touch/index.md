@@ -11,6 +11,7 @@ tags: input
 thumbnail: thumbnail.webp
 title: Mouse and Touch Events
 twitter_image: https://www.defold.com/examples/input/mouse_and_touch/thumbnail.webp
+
 ---
 
 This example shows how to receive mouse and touch input in a script and display the current pointer position and button state.

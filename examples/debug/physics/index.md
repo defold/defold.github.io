@@ -11,6 +11,7 @@ tags: debug
 thumbnail: thumbnail.png
 title: Physics debug
 twitter_image: https://www.defold.com/examples/debug/physics/thumbnail.png
+
 ---
 
 With the physics visualization on, all collision object shapes are visible. In addition, at intersections the normals at the collision points are shown.

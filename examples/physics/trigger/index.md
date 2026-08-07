@@ -11,6 +11,7 @@ tags: physics
 thumbnail: trigger.png
 title: Trigger
 twitter_image: https://www.defold.com/examples/physics/trigger/trigger.png
+
 ---
 
 ![trigger](trigger.png)

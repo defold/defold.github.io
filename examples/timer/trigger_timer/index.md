@@ -11,6 +11,7 @@ tags: timer
 thumbnail: trigger_timer.png
 title: Trigger timer example
 twitter_image: https://www.defold.com/examples/timer/trigger_timer/trigger_timer.png
+
 ---
 
 The example shows how to use Defold built-in timer and trigger it asynchronously and uses two indicators:

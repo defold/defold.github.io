@@ -11,6 +11,7 @@ tags: model
 thumbnail: skinning_thumb.png
 title: GPU Skinning
 twitter_image: https://www.defold.com/examples/model/skinning/skinning_thumb.png
+
 ---
 
 This example shows how the `model_skinned_instanced.material` is used to render and animate many instances of the same model efficiently using instancing and GPU skinning.

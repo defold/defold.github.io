@@ -11,6 +11,7 @@ tags: collection
 thumbnail: thumbnail.png
 title: Time-step
 twitter_image: https://www.defold.com/examples/collection/timestep/thumbnail.png
+
 ---
 
 The setup consists of a `timestep.collection` and a `game.collection`.

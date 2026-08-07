@@ -10,6 +10,7 @@ tags: animation
 thumbnail: flipbook.png
 title: Flipbook animation
 twitter_image: https://www.defold.com/examples/animation/flipbook/flipbook.png
+
 ---
 
 ![flipbook](flipbook.png)

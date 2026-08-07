@@ -11,6 +11,7 @@ tags: animation, input
 thumbnail: setup.png
 title: Cancel animation
 twitter_image: https://www.defold.com/examples/animation/cancel_animation/setup.png
+
 ---
 
 The collection contains two game objects:

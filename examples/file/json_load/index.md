@@ -11,6 +11,7 @@ tags: file
 thumbnail: set_custom_resource.png
 title: Load JSON data
 twitter_image: https://www.defold.com/examples/file/json_load/set_custom_resource.png
+
 ---
 
 The example will load a json file. This can be useful for something like level data.

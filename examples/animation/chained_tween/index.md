@@ -11,6 +11,7 @@ tags: animation
 thumbnail: chained_tween.png
 title: Tween animations chain
 twitter_image: https://www.defold.com/examples/animation/chained_tween/chained_tween.png
+
 ---
 
 ![tween](chained_tween.png)

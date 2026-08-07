@@ -11,6 +11,7 @@ tags: movement
 thumbnail: simple_move.png
 title: Moving game object
 twitter_image: https://www.defold.com/examples/movement/simple_move/simple_move.png
+
 ---
 
 ![simple move](simple_move.png)

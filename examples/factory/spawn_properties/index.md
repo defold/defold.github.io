@@ -11,6 +11,7 @@ tags: factory
 thumbnail: thumbnail.png
 title: Spawn enemies with script properties
 twitter_image: https://www.defold.com/examples/factory/spawn_properties/thumbnail.png
+
 ---
 
 This example shows how to dynamically spawn enemy game objects using a factory component with different properties. The setup consists of three main components: a player ship, enemy spawner, and different enemy types with customizable properties.

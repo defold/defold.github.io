@@ -11,6 +11,7 @@ tags: factory
 thumbnail: basic.png
 title: Spawn game object
 twitter_image: https://www.defold.com/examples/factory/basic/basic.png
+
 ---
 
 ![basic](basic.png)

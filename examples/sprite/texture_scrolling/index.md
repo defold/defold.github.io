@@ -11,6 +11,7 @@ tags: sprite
 thumbnail: thumbnail.png
 title: Texture scrolling
 twitter_image: https://www.defold.com/examples/sprite/texture_scrolling/thumbnail.png
+
 ---
 
 # Texture scrolling

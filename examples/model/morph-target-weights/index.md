@@ -11,6 +11,7 @@ tags: model, animation, material
 thumbnail: thumbnail.webp
 title: Morph Target Weights
 twitter_image: https://www.defold.com/examples/model/morph-target-weights/thumbnail.webp
+
 ---
 
 This example lets you move the pointer left and right to blend a glTF model from a cube into a sphere. The morph target weight is controlled from Lua with `model.set_blend_weights()` instead of being driven by the model's built-in animation.
