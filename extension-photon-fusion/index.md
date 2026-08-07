@@ -74,7 +74,10 @@ local id = fusion.spawn(factory_url, position, rotation, map, owner_mode)
 * [Physics Replication](physics-replication) — Forecast smoothing for rigid bodies
 * [Large Scenes](large-scenes) - pre-placed networked nodes
 
+* [Fusion Core docs](https://doc.photonengine.com/fusion-core/v3/fusion-core-intro) - The official Fusion C++ SDK documentation.
+
+
 ## Example
-[Refer to the example project](https://github.com/defold/extension-photon-fusion/blob/master/example) to see a complete example of how the integration works.
+[Refer to the example project](https://github.com/defold/game-platformer-fusion) to see a complete example of how the integration works.
 ## API reference
 [API Reference - fusion](/extension-photon-fusion/fusion_api)
