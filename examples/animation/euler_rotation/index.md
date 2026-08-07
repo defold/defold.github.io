@@ -1,5 +1,6 @@
 ---
-author: Defold Foundation
+author_ids:
+- defold-foundation
 brief: Shows how to animate Euler rotation.
 category: animation
 layout: example

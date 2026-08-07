@@ -1,5 +1,6 @@
 ---
-author: Defold Foundation
+author_ids:
+- defold-foundation
 brief: A very simple 8 ways movement setup with a single game object and a script that listens to input and updates the game object position accordingly.
 category: input
 layout: example

@@ -1,5 +1,6 @@
 ---
-author: Defold Foundation
+author_ids:
+- defold-foundation
 brief: This example allows you to toggle physics debug visualization as well as changing the time step so the simulation runs at one tenth of the speed.
 category: debug
 layout: example

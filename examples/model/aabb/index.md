@@ -1,5 +1,6 @@
 ---
-author: Artsiom Trubchyk
+author_ids:
+- artsiom-trubchyk
 brief: This example shows how to use `model.get_aabb()` to frame moving 3D objects with a camera.
 category: model
 layout: example

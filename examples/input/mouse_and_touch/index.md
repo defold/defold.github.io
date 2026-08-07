@@ -1,5 +1,6 @@
 ---
-author: Defold Foundation
+author_ids:
+- defold-foundation
 brief: Shows how to read mouse and/or touch movement and mouse button/touch state.
 category: input
 layout: example

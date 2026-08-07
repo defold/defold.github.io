@@ -1,5 +1,6 @@
 ---
-author: Defold Foundation
+author_ids:
+- defold-foundation
 brief: This example shows how to create a knockback effect when hit.
 category: physics
 layout: example

@@ -1,5 +1,6 @@
 ---
-author: Defold Foundation
+author_ids:
+- defold-foundation
 brief: Control a first-person camera using WASD and mouse to look with cursor lock.
 category: movement
 layout: example

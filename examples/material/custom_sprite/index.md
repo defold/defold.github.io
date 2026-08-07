@@ -1,5 +1,6 @@
 ---
-author: Agustin R.
+author_ids:
+- agustin-r
 brief: This example demonstrates a simple way to create and apply a custom sprite shader for changing colors and customizing an outline.
 category: material
 layout: example

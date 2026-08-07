@@ -1,5 +1,6 @@
 ---
-author: Defold Foundation
+author_ids:
+- defold-foundation
 brief: This example shows Spine bone animation that blends when animation switches.
 category: animation
 layout: example

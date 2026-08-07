@@ -1,5 +1,6 @@
 ---
-author: Defold Foundation
+author_ids:
+- defold-foundation
 brief: This example shows how to rotate a game object to look at the mouse cursor
 category: movement
 layout: example

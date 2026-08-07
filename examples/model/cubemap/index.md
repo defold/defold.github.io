@@ -1,5 +1,6 @@
 ---
-author: Defold Foundation
+author_ids:
+- defold-foundation
 brief: Shows how to sample a cubemap in a model shader to create environment reflections.
 category: model
 layout: example

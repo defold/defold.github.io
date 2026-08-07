@@ -1,5 +1,6 @@
 ---
-author: Defold Foundation
+author_ids:
+- defold-foundation
 brief: Create a mouse joint that pulls dynamic bodies toward a moving target.
 category: physics
 layout: example

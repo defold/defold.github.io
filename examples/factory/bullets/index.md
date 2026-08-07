@@ -1,5 +1,6 @@
 ---
-author: Defold Foundation
+author_ids:
+- defold-foundation
 brief: This example shows how to dynamically spawn bullet game objects using a factory component.
 category: factory
 layout: example

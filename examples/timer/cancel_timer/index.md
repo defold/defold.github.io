@@ -1,5 +1,6 @@
 ---
-author: Paweł Jarosz
+author_ids:
+- pawel-jarosz
 brief: This example shows how to create timer and cancel it anytime, using built-in timer API.
 category: timer
 layout: example

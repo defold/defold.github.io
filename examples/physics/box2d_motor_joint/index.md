@@ -1,5 +1,6 @@
 ---
-author: Defold Foundation
+author_ids:
+- defold-foundation
 brief: Create and control a motorized Box2D joint from script using Box2D V2 and V3.
 category: physics
 layout: example

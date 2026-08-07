@@ -1,5 +1,6 @@
 ---
-author: Defold Foundation
+author_ids:
+- defold-foundation
 brief: This example shows how to play skeletal animations on a glTF character model and trigger them from GUI buttons.
 category: model
 layout: example

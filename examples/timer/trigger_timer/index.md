@@ -1,5 +1,6 @@
 ---
-author: Paweł Jarosz
+author_ids:
+- pawel-jarosz
 brief: This example shows how to create timer that triggers counting every 1s and can be triggered manually and asynchronously as a reaction to user input.
 category: timer
 layout: example

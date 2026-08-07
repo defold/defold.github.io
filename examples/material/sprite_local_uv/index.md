@@ -1,5 +1,6 @@
 ---
-author: Defold Foundation
+author_ids:
+- defold-foundation
 brief: This example shows how to get local UV coordinates of a sprite regardless of sprite size
 category: material
 layout: example

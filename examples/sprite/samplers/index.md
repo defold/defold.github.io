@@ -1,5 +1,6 @@
 ---
-author: Defold Foundation
+author_ids:
+- defold-foundation
 brief: This example shows how to sample from more than one image when drawing a sprite
 category: sprite
 layout: example

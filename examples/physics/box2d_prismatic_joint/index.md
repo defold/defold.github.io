@@ -1,5 +1,6 @@
 ---
-author: Defold Foundation
+author_ids:
+- defold-foundation
 brief: Create a motorized Box2D prismatic joint with translation limits from script using Box2D.
 category: physics
 layout: example

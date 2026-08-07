@@ -1,5 +1,6 @@
 ---
-author: Defold Foundation
+author_ids:
+- defold-foundation
 brief: This example shows how to make sprites respond to Defold Light components with a custom material in a basic setup.
 category: render
 layout: example

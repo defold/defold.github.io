@@ -1,5 +1,6 @@
 ---
-author: Defold Foundation
+author_ids:
+- defold-foundation
 brief: This example shows how to create an atlas with two images and use it on a sprite and in a gui
 category: resource
 layout: example

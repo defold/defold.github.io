@@ -1,5 +1,6 @@
 ---
-author: Defold Foundation
+author_ids:
+- defold-foundation
 brief: This example shows how to smooth physics motion in fixed update mode by interpolating a visual sprite while keeping the physics body fixed-step.
 category: physics
 layout: example

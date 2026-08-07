@@ -1,5 +1,6 @@
 ---
-author: Paweł Jarosz
+author_ids:
+- pawel-jarosz
 brief: This example shows how to create timer that repeats endlessly every second
 category: timer
 layout: example

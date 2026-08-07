@@ -1,5 +1,6 @@
 ---
-author: Defold Foundation
+author_ids:
+- defold-foundation
 brief: This example shows how to make sprites and particle sprites face the camera using a custom vertex shader.
 category: material
 layout: example

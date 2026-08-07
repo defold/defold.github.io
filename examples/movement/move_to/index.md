@@ -1,5 +1,6 @@
 ---
-author: Defold Foundation
+author_ids:
+- defold-foundation
 brief: This example shows how to make a game object move to the position the user clicks.
 category: movement
 layout: example

@@ -1,5 +1,6 @@
 ---
-author: Defold Foundation
+author_ids:
+- defold-foundation
 brief: This example shows how to use the delay parameter of `go.animate()` to create a wave effect.
 category: animation
 layout: example

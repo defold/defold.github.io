@@ -1,5 +1,6 @@
 ---
-author: Artsiom Trubchyk
+author_ids:
+- artsiom-trubchyk
 brief: This example shows how to create a custom material with two textures that blend together to create a pattern effect using screen space coordinates.
 category: material
 layout: example

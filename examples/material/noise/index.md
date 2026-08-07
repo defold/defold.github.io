@@ -1,5 +1,6 @@
 ---
-author: Defold Foundation
+author_ids:
+- defold-foundation
 brief: This example shows how to use a noise function to generate clouds, smoke or similar effect using a shader.
 category: material
 layout: example

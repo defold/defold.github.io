@@ -1,5 +1,6 @@
 ---
-author: Artsiom Trubchyk
+author_ids:
+- artsiom-trubchyk
 brief: This example demonstrates how to create script to control a 3D camera with the mouse. Scroll wheel is used to zoom in and out.
 category: render
 layout: example

@@ -1,5 +1,6 @@
 ---
-author: Defold Foundation
+author_ids:
+- defold-foundation
 brief: Create a bridge from revolute joints between existing Defold collision objects.
 category: physics
 layout: example

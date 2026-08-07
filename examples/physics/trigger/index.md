@@ -1,5 +1,6 @@
 ---
-author: Defold Foundation
+author_ids:
+- defold-foundation
 brief: This example shows how a physics trigger is used to trigger an event. In this case the bunny sprite is disabled and enabled.
 category: physics
 layout: example

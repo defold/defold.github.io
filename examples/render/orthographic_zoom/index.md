@@ -1,5 +1,6 @@
 ---
-author: Defold Foundation
+author_ids:
+- defold-foundation
 brief: This example shows how to zoom an orthographic camera in and out by changing Orthographic Zoom while the camera is in Fixed mode.
 category: render
 layout: example

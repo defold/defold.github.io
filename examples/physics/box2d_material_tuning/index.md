@@ -1,5 +1,6 @@
 ---
-author: Defold Foundation
+author_ids:
+- defold-foundation
 brief: Tune Box2D density, friction, and restitution from script using Box2D V2 legacy and Box2D V3.
 category: physics
 layout: example

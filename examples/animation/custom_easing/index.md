@@ -1,5 +1,6 @@
 ---
-author: Defold Foundation
+author_ids:
+- defold-foundation
 brief: This example shows how to define a custom easing curve and use it when animating with `go.animate()` instead of a built-in easing constant.
 category: animation
 layout: example

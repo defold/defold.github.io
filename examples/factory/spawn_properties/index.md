@@ -1,5 +1,6 @@
 ---
-author: Defold Foundation
+author_ids:
+- defold-foundation
 brief: This example shows how to spawn enemy game objects using a factory component with different properties.
 category: factory
 layout: example

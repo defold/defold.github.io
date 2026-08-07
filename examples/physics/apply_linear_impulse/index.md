@@ -1,5 +1,6 @@
 ---
-author: JuLongZhiLu(巨龙之路)
+author_ids:
+- julongzhilu
 brief: Apply a linear impulse to a dynamic physics body on click or touch.
 category: physics
 layout: example

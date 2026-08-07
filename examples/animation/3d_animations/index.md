@@ -1,5 +1,6 @@
 ---
-author: Defold Foundation
+author_ids:
+- defold-foundation
 brief: Learn how to play 3D animations from a GLB model using skinned model material.
 category: animation
 layout: example

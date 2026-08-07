@@ -1,5 +1,6 @@
 ---
-author: Defold Foundation
+author_ids:
+- defold-foundation
 brief: This example shows how to make a game object continuously follow the mouse.
 category: movement
 layout: example

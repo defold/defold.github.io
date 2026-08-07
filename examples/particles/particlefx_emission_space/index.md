@@ -1,5 +1,6 @@
 ---
-author: Defold Foundation
+author_ids:
+- defold-foundation
 brief: This example demonstrates the difference between local and world particle emission spaces. Two UFO objects move up and down, showing how particles behave differently when emitted in emitter space versus world space.
 category: particles
 layout: example

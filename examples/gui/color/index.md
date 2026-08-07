@@ -1,5 +1,6 @@
 ---
-author: Defold Foundation
+author_ids:
+- defold-foundation
 brief: This example shows how change the color of GUI nodes at run-time
 category: gui
 layout: example

@@ -1,5 +1,6 @@
 ---
-author: Defold Foundation
+author_ids:
+- defold-foundation
 brief: This example shows how to create a textured mesh component in the shape of a rectangle.
 category: mesh
 layout: example

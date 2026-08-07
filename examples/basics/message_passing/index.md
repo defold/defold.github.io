@@ -1,5 +1,6 @@
 ---
-author: Defold Foundation
+author_ids:
+- defold-foundation
 brief: This example shows how to communicate between two script components in two separate game objects.
 category: basics
 layout: example

@@ -1,5 +1,6 @@
 ---
-author: Defold Foundation
+author_ids:
+- defold-foundation
 brief: Create Box2D chain terrain from script using Box2D V2 legacy and Box2D V3.
 category: physics
 layout: example

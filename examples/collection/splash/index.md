@@ -1,5 +1,6 @@
 ---
-author: Defold Foundation
+author_ids:
+- defold-foundation
 brief: This example shows how to use collection proxies to show a splash screen while loading a game menu.
 category: collection
 layout: example

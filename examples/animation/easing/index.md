@@ -1,7 +1,7 @@
 ---
-authors:
+author_ids:
 - mikatuo
-- Defold Foundation
+- defold-foundation
 brief: Demonstrates different easing functions available in Defold.
 category: animation
 layout: example

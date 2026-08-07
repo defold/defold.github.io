@@ -1,4 +1,6 @@
 ---
+author_ids:
+- defold-foundation
 brief: This example shows how to use a flipbook animation in a sprite
 category: animation
 layout: example

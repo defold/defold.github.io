@@ -1,5 +1,6 @@
 ---
-author: Defold Foundation
+author_ids:
+- defold-foundation
 brief: This is a performance test for sprites
 category: sprite
 layout: example

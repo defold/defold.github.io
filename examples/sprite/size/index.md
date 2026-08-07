@@ -1,5 +1,6 @@
 ---
-author: Defold Foundation
+author_ids:
+- defold-foundation
 brief: This example shows how to get the size of a sprite at run-time
 category: sprite
 layout: example

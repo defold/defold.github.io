@@ -1,5 +1,6 @@
 ---
-author: Defold Foundation
+author_ids:
+- defold-foundation
 brief: This example shows how to move a game object in the direction it is rotated/facing.
 category: movement
 layout: example

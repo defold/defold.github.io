@@ -1,5 +1,6 @@
 ---
-author: Defold Foundation
+author_ids:
+- defold-foundation
 brief: Shows how to play glTF morph target animations with a morph-capable model material.
 category: model
 layout: example

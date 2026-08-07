@@ -1,5 +1,6 @@
 ---
-author: Defold Foundation
+author_ids:
+- defold-foundation
 brief: This example shows how to generate pseudo-random numbers in Defold using built-in math API.
 category: basics
 layout: example

@@ -1,5 +1,6 @@
 ---
-author: Artsiom Trubchyk
+author_ids:
+- artsiom-trubchyk
 brief: This example demonstrates how to pick a game object from the 3D scene.
 category: input
 layout: example

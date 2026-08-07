@@ -1,5 +1,6 @@
 ---
-author: Defold Foundation
+author_ids:
+- defold-foundation
 brief: This example shows how to change the prototype game object used by a factory component.
 category: factory
 layout: example

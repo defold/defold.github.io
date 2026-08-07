@@ -1,5 +1,6 @@
 ---
-author: Alexey Gulev
+author_ids:
+- alexey-gulev
 brief: A GUI box node with an image texture and a script that react when pointer over this node.
 category: gui
 layout: example

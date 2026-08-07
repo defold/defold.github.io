@@ -1,4 +1,6 @@
 ---
+author_ids:
+- defold-foundation
 brief: This example shows a simple setup with dynamic physics objects.
 category: physics
 layout: example

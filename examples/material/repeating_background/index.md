@@ -1,5 +1,6 @@
 ---
-author: Artsiom Trubchyk
+author_ids:
+- artsiom-trubchyk
 brief: Create a full-screen scrolling background using a repeated texture on a glTF quad.
 category: material
 layout: example

@@ -1,5 +1,6 @@
 ---
-author: Agustin R.
+author_ids:
+- agustin-r
 brief: This example demonstrates how to apply a vertex color shader using exported attributes from a 3D model.
 category: model
 layout: example

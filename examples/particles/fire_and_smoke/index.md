@@ -1,5 +1,6 @@
 ---
-author: Paweł Jarosz
+author_ids:
+- pawel-jarosz
 brief: This example shows a simple particle effect for imitating fire and smoke using two emitters and 3 modifiers in a single particlefx component.
 category: particles
 layout: example

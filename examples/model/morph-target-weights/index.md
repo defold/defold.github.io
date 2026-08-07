@@ -1,5 +1,6 @@
 ---
-author: Defold Foundation
+author_ids:
+- defold-foundation
 brief: Shows how to override morph target weights on a Model component with `model.set_blend_weights()`.
 category: model
 layout: example

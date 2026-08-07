@@ -1,5 +1,6 @@
 ---
-author: Artsiom Trubchyk
+author_ids:
+- artsiom-trubchyk
 brief: This example shows a simple particle effect to imitate confetti with multiple emitters and global multipliers for all of them.
 category: particles
 layout: example

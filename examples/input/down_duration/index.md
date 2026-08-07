@@ -1,5 +1,6 @@
 ---
-author: Alexey Gulev
+author_ids:
+- alexey-gulev
 brief: Listens to input trigger "touch" and count mouse down duration in update method.
 category: input
 layout: example

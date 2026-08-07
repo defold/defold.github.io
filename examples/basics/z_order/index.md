@@ -1,5 +1,6 @@
 ---
-author: Defold Foundation
+author_ids:
+- defold-foundation
 brief: This example shows how to put sprites in front and behind of eachother
 category: basics
 layout: example

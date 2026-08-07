@@ -1,5 +1,6 @@
 ---
-author: Defold Foundation
+author_ids:
+- defold-foundation
 brief: This example shows how to save and load data using sys.save() and sys.load()
 category: file
 layout: example

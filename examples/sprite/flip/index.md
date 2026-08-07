@@ -1,5 +1,6 @@
 ---
-author: Agustin R.
+author_ids:
+- agustin-r
 brief: This example demonstrates flipping a sprite animation vertically and horizontally.
 category: sprite
 layout: example

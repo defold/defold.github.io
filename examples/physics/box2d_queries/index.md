@@ -1,5 +1,6 @@
 ---
-author: Defold Foundation
+author_ids:
+- defold-foundation
 brief: This example shows how to use Box2D world overlap and raycast queries.
 category: physics
 layout: example

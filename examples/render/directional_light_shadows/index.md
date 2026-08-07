@@ -1,5 +1,6 @@
 ---
-author: Defold Foundation
+author_ids:
+- defold-foundation
 brief: This example shows how to implement a configurable, PCF-filtered shadow map for a directional light.
 category: render
 layout: example

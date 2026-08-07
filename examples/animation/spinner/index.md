@@ -1,5 +1,6 @@
 ---
-author: Defold Foundation
+author_ids:
+- defold-foundation
 brief: This example shows how a game object is rotated in discrete steps, matching the graphics of the progress spinner.
 category: animation
 layout: example

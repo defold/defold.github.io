@@ -1,5 +1,6 @@
 ---
-author: Artsiom Trubchyk
+author_ids:
+- artsiom-trubchyk
 brief: This example demonstrates how to convert 3D world coordinates to 2D screen coordinates using camera transformations.
 category: render
 layout: example

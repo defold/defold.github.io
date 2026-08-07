@@ -1,5 +1,6 @@
 ---
-author: Defold Foundation
+author_ids:
+- defold-foundation
 brief: This example shows how to spawn enemy game objects using a factory component and use a central manager to control movement and behavior of all enemies.
 category: factory
 layout: example

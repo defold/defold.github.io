@@ -1,5 +1,6 @@
 ---
-author: Defold Foundation
+author_ids:
+- defold-foundation
 brief: This example shows how to apply a post-processing effect by drawing to a render target and then to a fullscreen quad using a post processing shader.
 category: render
 layout: example

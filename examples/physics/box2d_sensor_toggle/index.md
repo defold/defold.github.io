@@ -1,5 +1,6 @@
 ---
-author: Defold Foundation
+author_ids:
+- defold-foundation
 brief: Create Box2D sensors from static collision shapes.
 category: physics
 layout: example

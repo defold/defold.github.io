@@ -1,5 +1,6 @@
 ---
-author: Defold Foundation
+author_ids:
+- defold-foundation
 brief: Resize dynamic Box2D collision shapes at runtime and recalculate body mass.
 category: physics
 layout: example

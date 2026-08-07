@@ -1,5 +1,6 @@
 ---
-author: Defold Foundation
+author_ids:
+- defold-foundation
 brief: This example shows how ambient, directional, point, and spot lights affect 3D models that use built-in lit materials.
 category: render
 layout: example

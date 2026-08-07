@@ -1,5 +1,6 @@
 ---
-author: Defold Foundation
+author_ids:
+- defold-foundation
 brief: Create Box2D weld joints from script so separate dynamic bodies behave like one rigid assembly.
 category: physics
 layout: example

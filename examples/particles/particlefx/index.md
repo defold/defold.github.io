@@ -1,5 +1,6 @@
 ---
-author: Defold Foundation
+author_ids:
+- defold-foundation
 brief: This example shows a simple particle effect. The particlefx component has all the values at default, except the image and animation used.
 category: particles
 layout: example

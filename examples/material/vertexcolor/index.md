@@ -1,5 +1,6 @@
 ---
-author: Mathias Westerdahl
+author_ids:
+- mathias-westerdahl
 brief: This example shows how to set and animate a vertex attribute
 category: material
 layout: example

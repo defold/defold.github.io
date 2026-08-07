@@ -1,5 +1,6 @@
 ---
-author: Defold Foundation
+author_ids:
+- defold-foundation
 brief: This example shows how to chain two tween animations of the position of a game object. In addition, the scale and tint is animated separately.
 category: animation
 layout: example

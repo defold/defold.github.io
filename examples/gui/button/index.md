@@ -1,5 +1,6 @@
 ---
-author: Defold Foundation
+author_ids:
+- defold-foundation
 brief: A GUI box node with an image texture and a script to make it act as a button.
 category: gui
 layout: example

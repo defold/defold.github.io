@@ -1,5 +1,6 @@
 ---
-author: Defold Foundation
+author_ids:
+- defold-foundation
 brief: This example shows how to create a skybox using a cubemap texture.
 category: model
 layout: example

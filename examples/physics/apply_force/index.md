@@ -1,4 +1,6 @@
 ---
+author_ids:
+- defold-foundation
 brief: This example demonstrates how to apply directional force to all dynamic blocks on touch/click and draws debug direction lines.
 category: physics
 layout: example

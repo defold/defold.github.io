@@ -1,7 +1,7 @@
 ---
-authors:
-- JuLongZhiLu(巨龙之路)
-- Brian Kramer
+author_ids:
+- julongzhilu
+- brian-kramer
 brief: Shows how to use a Time shader constant to achieve a moving wave effect
 category: material
 layout: example

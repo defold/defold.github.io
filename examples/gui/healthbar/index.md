@@ -1,5 +1,6 @@
 ---
-author: Paweł Jarosz
+author_ids:
+- pawel-jarosz
 brief: This example demonstrates how to add different health bars.
 category: gui
 layout: example

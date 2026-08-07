@@ -1,5 +1,6 @@
 ---
-author: Defold Foundation
+author_ids:
+- defold-foundation
 brief: This example shows how to use the sprite animation cursor and frame count to manually select a specific frame
 category: sprite
 layout: example

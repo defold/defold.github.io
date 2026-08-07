@@ -1,5 +1,6 @@
 ---
-author: Defold Foundation
+author_ids:
+- defold-foundation
 brief: This example shows how to use `go.cancel_animations()` to stop a running animation and start a new one.
 category: animation
 layout: example

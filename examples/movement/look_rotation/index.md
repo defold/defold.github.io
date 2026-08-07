@@ -1,5 +1,6 @@
 ---
-author: Artsiom Trubchyk
+author_ids:
+- artsiom-trubchyk
 brief: This example shows how to rotate a game object to look at the object in 3D space.
 category: movement
 layout: example

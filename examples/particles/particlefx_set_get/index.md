@@ -1,5 +1,6 @@
 ---
-author: Defold Foundation
+author_ids:
+- defold-foundation
 brief: This example shows how to get and set ParticleFX emitter image, animation, and material at runtime.
 category: particles
 layout: example

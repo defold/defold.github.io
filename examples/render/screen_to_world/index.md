@@ -1,5 +1,6 @@
 ---
-author: Defold Foundation
+author_ids:
+- defold-foundation
 brief: This example shows how to convert from screen to world coordinates while using a camera.
 category: render
 layout: example

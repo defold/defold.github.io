@@ -1,5 +1,6 @@
 ---
-author: Defold Foundation
+author_ids:
+- defold-foundation
 brief: This example shows how to apply a basic shader to a full screen quad.
 category: material
 layout: example

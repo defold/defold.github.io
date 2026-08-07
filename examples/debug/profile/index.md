@@ -1,5 +1,6 @@
 ---
-author: Defold Foundation
+author_ids:
+- defold-foundation
 brief: This example shows the on-screen profiler. It displays useful runtime information.
 category: debug
 layout: example

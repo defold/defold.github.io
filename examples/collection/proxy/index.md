@@ -1,5 +1,6 @@
 ---
-author: Defold Foundation
+author_ids:
+- defold-foundation
 brief: This example shows how to use collection proxies to load and unload collections.
 category: collection
 layout: example

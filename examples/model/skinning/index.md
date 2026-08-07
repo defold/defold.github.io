@@ -1,5 +1,6 @@
 ---
-author: Defold Foundation
+author_ids:
+- defold-foundation
 brief: This example demonstrates GPU skinning.
 category: model
 layout: example
