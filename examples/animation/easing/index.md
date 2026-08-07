@@ -1,16 +1,10 @@
 ---
-author: mikatuo, The Defold Foundation
-authors:
-- id: 4e926871e9729ab5236b8ea2030e104e
-  name: mikatuo
-- github: defold
-  id: 41055a22bd3f5b94c6182d496d7083e7
-  name: The Defold Foundation
+author_ids:
+- mikatuo
+- defold-foundation
 brief: Demonstrates different easing functions available in Defold.
 category: animation
 layout: example
-license: CC0-1.0
-license_url: https://creativecommons.org/publicdomain/zero/1.0/
 opengraph_image: https://www.defold.com/examples/animation/easing/thumbnail.webp
 path: animation/easing
 scripts: animator.script, controller.script

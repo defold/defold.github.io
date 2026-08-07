@@ -1,4 +1,5 @@
 import ast
+import json
 import unittest
 from pathlib import Path
 
@@ -18,6 +19,25 @@ def function_source(name: str) -> str:
 
 
 class UpdateImportBoundaryTests(unittest.TestCase):
+    def test_generated_catalogs_preserve_only_stable_attribution(self):
+        assets = [
+            json.loads(path.read_text(encoding="utf-8"))
+            for path in (ROOT / "_data" / "assets").glob("*.json")
+        ]
+        examples = json.loads(
+            (ROOT / "_data" / "examplesindex.json").read_text(encoding="utf-8")
+        )
+
+        self.assertEqual(316, len(assets))
+        self.assertEqual(133, len(examples))
+        self.assertTrue(all("author_id" in asset for asset in assets))
+        self.assertTrue(all("author" not in asset for asset in assets))
+        self.assertTrue(all(item.get("author_ids") for item in examples))
+        self.assertTrue(
+            all("author" not in item and "authors" not in item for item in examples)
+        )
+        self.assertTrue(all("license_url" not in item for item in examples))
+
     def test_author_enrichment_is_not_part_of_imports(self):
         self.assertNotIn("author_profiles", UPDATE_SOURCE)
         self.assertNotIn("enrich_example", UPDATE_SOURCE)

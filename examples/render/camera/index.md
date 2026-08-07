@@ -1,14 +1,9 @@
 ---
-author: The Defold Foundation
-authors:
-- github: defold
-  id: 41055a22bd3f5b94c6182d496d7083e7
-  name: The Defold Foundation
+author_ids:
+- defold-foundation
 brief: This example shows how to use a camera component and have it follow a game object. Click to toggle between following the game object and staying stationary.
 category: render
 layout: example
-license: CC0-1.0
-license_url: https://creativecommons.org/publicdomain/zero/1.0/
 opengraph_image: https://www.defold.com/examples/render/camera/camera.png
 path: render/camera
 scripts: bee.script, camera.script

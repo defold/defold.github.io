@@ -1,14 +1,9 @@
 ---
-author: Artsiom Trubchyk
-authors:
-- github: aglitchman
-  id: 4fff661212c3b63631eb09266e26b456
-  name: Artsiom Trubchyk
+author_ids:
+- artsiom-trubchyk
 brief: Create a full-screen scrolling background using a repeated texture on a glTF quad.
 category: material
 layout: example
-license: CC0-1.0
-license_url: https://creativecommons.org/publicdomain/zero/1.0/
 opengraph_image: https://www.defold.com/examples/material/repeating_background/thumbnail.webp
 path: material/repeating_background
 scripts: repeating_background.script, repeating_background.vp, repeating_background.fp

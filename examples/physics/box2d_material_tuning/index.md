@@ -1,14 +1,9 @@
 ---
-author: The Defold Foundation
-authors:
-- github: defold
-  id: 41055a22bd3f5b94c6182d496d7083e7
-  name: The Defold Foundation
+author_ids:
+- defold-foundation
 brief: Tune Box2D density, friction, and restitution from script using Box2D V2 legacy and Box2D V3.
 category: physics
 layout: example
-license: CC0-1.0
-license_url: https://creativecommons.org/publicdomain/zero/1.0/
 opengraph_image: https://www.defold.com/examples/physics/box2d_material_tuning/thumbnail.webp
 path: physics/box2d_material_tuning
 scripts: box2d_material_tuning_v3.script, box2d_material_tuning_v2.script

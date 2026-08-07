@@ -1,14 +1,9 @@
 ---
-author: Artsiom Trubchyk
-authors:
-- github: aglitchman
-  id: 4fff661212c3b63631eb09266e26b456
-  name: Artsiom Trubchyk
+author_ids:
+- artsiom-trubchyk
 brief: This example shows how to create and apply an unlit material to a 3D model.
 category: material
 layout: example
-license: CC0-1.0
-license_url: https://creativecommons.org/publicdomain/zero/1.0/
 name: Unlit Material (3D)
 opengraph_image: https://www.defold.com/examples/material/unlit/thumbnail.webp
 path: material/unlit

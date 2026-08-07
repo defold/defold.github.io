@@ -1,14 +1,9 @@
 ---
-author: Artsiom Trubchyk
-authors:
-- github: aglitchman
-  id: 4fff661212c3b63631eb09266e26b456
-  name: Artsiom Trubchyk
+author_ids:
+- artsiom-trubchyk
 brief: This example shows how to rotate a game object to look at the object in 3D space.
 category: movement
 layout: example
-license: CC0-1.0
-license_url: https://creativecommons.org/publicdomain/zero/1.0/
 name: Look rotation (3D)
 path: movement/look_rotation
 scripts: look_rotation.script

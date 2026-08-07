@@ -1,14 +1,9 @@
 ---
-author: Alexey Gulev
-authors:
-- github: AGulev
-  id: 70ac2d222a9f2f33cab587a655c69601
-  name: Alexey Gulev
+author_ids:
+- alexey-gulev
 brief: A GUI box node with an image texture and a script that react when pointer over this node.
 category: gui
 layout: example
-license: CC0-1.0
-license_url: https://creativecommons.org/publicdomain/zero/1.0/
 opengraph_image: https://www.defold.com/examples/gui/pointer_over/button.jpg
 path: gui/pointer_over
 scripts: pointer_over.gui_script

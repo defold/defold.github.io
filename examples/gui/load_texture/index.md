@@ -1,14 +1,9 @@
 ---
-author: Alexey Gulev
-authors:
-- github: AGulev
-  id: 70ac2d222a9f2f33cab587a655c69601
-  name: Alexey Gulev
+author_ids:
+- alexey-gulev
 brief: This example shows how to load and set a dynamic texture on a gui box node.
 category: gui
 layout: example
-license: CC0-1.0
-license_url: https://creativecommons.org/publicdomain/zero/1.0/
 opengraph_image: https://www.defold.com/examples/gui/load_texture/load_texture.png
 path: gui/load_texture
 scripts: load_texture.gui_script

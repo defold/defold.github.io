@@ -1,14 +1,9 @@
 ---
-author: The Defold Foundation
-authors:
-- github: defold
-  id: 41055a22bd3f5b94c6182d496d7083e7
-  name: The Defold Foundation
+author_ids:
+- defold-foundation
 brief: Create a motorized Box2D prismatic joint with translation limits from script using Box2D.
 category: physics
 layout: example
-license: CC0-1.0
-license_url: https://creativecommons.org/publicdomain/zero/1.0/
 opengraph_image: https://www.defold.com/examples/physics/box2d_prismatic_joint/thumbnail.webp
 path: physics/box2d_prismatic_joint
 scripts: box2d_prismatic_joint.script

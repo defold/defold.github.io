@@ -1,14 +1,9 @@
 ---
-author: Agustin R.
-authors:
-- github: FlexYourBrain
-  id: 3d50d039c078a00ce00628af22d57540
-  name: Agustin R.
+author_ids:
+- agustin-r
 brief: This example demonstrates how to apply a vertex color shader using exported attributes from a 3D model.
 category: model
 layout: example
-license: CC0-1.0
-license_url: https://creativecommons.org/publicdomain/zero/1.0/
 name: Vertex Color (3D model)
 path: model/modelvertexcolor
 scripts: vertexcolor.vp, vertexcolor.fp

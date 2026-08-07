@@ -1,14 +1,9 @@
 ---
-author: Artsiom Trubchyk
-authors:
-- github: aglitchman
-  id: 4fff661212c3b63631eb09266e26b456
-  name: Artsiom Trubchyk
+author_ids:
+- artsiom-trubchyk
 brief: This example demonstrates how to convert 3D world coordinates to 2D screen coordinates using camera transformations.
 category: render
 layout: example
-license: CC0-1.0
-license_url: https://creativecommons.org/publicdomain/zero/1.0/
 opengraph_image: https://www.defold.com/examples/render/world_to_screen/thumbnail.png
 path: render/world_to_screen
 scripts: player.script

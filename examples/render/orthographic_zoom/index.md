@@ -1,14 +1,9 @@
 ---
-author: The Defold Foundation
-authors:
-- github: defold
-  id: 41055a22bd3f5b94c6182d496d7083e7
-  name: The Defold Foundation
+author_ids:
+- defold-foundation
 brief: This example shows how to zoom an orthographic camera in and out by changing Orthographic Zoom while the camera is in Fixed mode.
 category: render
 layout: example
-license: CC0-1.0
-license_url: https://creativecommons.org/publicdomain/zero/1.0/
 opengraph_image: https://www.defold.com/examples/render/orthographic_zoom/thumbnail.png
 path: render/orthographic_zoom
 scripts: zoom.script

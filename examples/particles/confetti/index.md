@@ -1,14 +1,9 @@
 ---
-author: Artsiom Trubchyk
-authors:
-- github: aglitchman
-  id: 4fff661212c3b63631eb09266e26b456
-  name: Artsiom Trubchyk
+author_ids:
+- artsiom-trubchyk
 brief: This example shows a simple particle effect to imitate confetti with multiple emitters and global multipliers for all of them.
 category: particles
 layout: example
-license: CC0-1.0
-license_url: https://creativecommons.org/publicdomain/zero/1.0/
 opengraph_image: https://www.defold.com/examples/particles/confetti/thumbnail.png
 path: particles/confetti
 scripts: confetti.script

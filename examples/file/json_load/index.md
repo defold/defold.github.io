@@ -1,14 +1,9 @@
 ---
-author: Jerakin
-authors:
-- github: Jerakin
-  id: 3b89011fffbcab1dac524ed65dbfa3ec
-  name: Jerakin
+author_ids:
+- jerakin
 brief: This example shows how to load json data using sys.load_resource().
 category: file
 layout: example
-license: CC0-1.0
-license_url: https://creativecommons.org/publicdomain/zero/1.0/
 opengraph_image: https://www.defold.com/examples/file/json_load/set_custom_resource.png
 path: file/json_load
 scripts: json_load.script

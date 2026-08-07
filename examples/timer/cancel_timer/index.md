@@ -1,14 +1,9 @@
 ---
-author: Paweł Jarosz
-authors:
-- github: paweljarosz
-  id: d54cdc4bc377adc6a3233368cc304107
-  name: Paweł Jarosz
+author_ids:
+- pawel-jarosz
 brief: This example shows how to create timer and cancel it anytime, using built-in timer API.
 category: timer
 layout: example
-license: CC0-1.0
-license_url: https://creativecommons.org/publicdomain/zero/1.0/
 opengraph_image: https://www.defold.com/examples/timer/cancel_timer/cancel_timer.png
 path: timer/cancel_timer
 scripts: cancel_timer.gui_script

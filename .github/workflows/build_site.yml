@@ -39,7 +39,7 @@ jobs:
 
       - name: Test author profiles and import boundaries
         run: |
-          bundle exec ruby tests/test_author_profiles.rb
+          bundle exec ruby -I_plugins/defold-author-profiles/lib tests/test_author_profiles.rb
           python -m unittest tests/test_update_imports.py
 
       - name: Build Jekyll site

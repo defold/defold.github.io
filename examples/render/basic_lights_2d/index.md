@@ -1,14 +1,9 @@
 ---
-author: The Defold Foundation
-authors:
-- github: defold
-  id: 41055a22bd3f5b94c6182d496d7083e7
-  name: The Defold Foundation
+author_ids:
+- defold-foundation
 brief: This example shows how to make sprites respond to Defold Light components with a custom material in a basic setup.
 category: render
 layout: example
-license: CC0-1.0
-license_url: https://creativecommons.org/publicdomain/zero/1.0/
 opengraph_image: https://www.defold.com/examples/render/basic_lights_2d/thumbnail.webp
 path: render/basic_lights_2d
 scripts: lit_sprite.vp, lit_sprite.fp, follow_cursor.script

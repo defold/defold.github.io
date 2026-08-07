@@ -1,13 +1,9 @@
 ---
-author: Mathias Westerdahl
-authors:
-- id: ef6d5c21d75557d414343ab7c1bd79da
-  name: Mathias Westerdahl
+author_ids:
+- mathias-westerdahl
 brief: This example shows how to set and animate a vertex attribute
 category: material
 layout: example
-license: CC0-1.0
-license_url: https://creativecommons.org/publicdomain/zero/1.0/
 opengraph_image: https://www.defold.com/examples/material/vertexcolor/vertexcolor-material.png
 path: material/vertexcolor
 scripts: vertexcolor.script, vertexcolor.vp, vertexcolor.fp

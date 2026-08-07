@@ -1,14 +1,9 @@
 ---
-author: Agustin R.
-authors:
-- github: FlexYourBrain
-  id: 3d50d039c078a00ce00628af22d57540
-  name: Agustin R.
+author_ids:
+- agustin-r
 brief: This example demonstrates a simple way to create and apply a custom sprite shader for changing colors and customizing an outline.
 category: material
 layout: example
-license: CC0-1.0
-license_url: https://creativecommons.org/publicdomain/zero/1.0/
 name: CustomSprite
 path: material/custom_sprite
 scripts: set_color.script, recolor.fp, recolor.vp

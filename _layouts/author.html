@@ -88,7 +88,7 @@ nav: floating
 			<div class="author-contribution-controls page-surface-panel asset-hub-surface-panel">
 				<div class="author-contribution-filter-group">
 					<p class="asset-hub-filter-label">Show</p>
-					<div class="author-contribution-filters" aria-label="Filter contributions">
+					<div class="author-contribution-filters asset-hub-filter-grid" aria-label="Filter contributions">
 						<button type="button" class="filter active" data-author-filter="all" aria-controls="author-contribution-grid" aria-pressed="true">All <span>{{ total_count }}</span></button>
 						<button type="button" class="filter" data-author-filter="assets" aria-controls="author-contribution-grid" aria-pressed="false"{% if asset_count == 0 %} disabled{% endif %}>Assets <span>{{ asset_count }}</span></button>
 						<button type="button" class="filter" data-author-filter="examples" aria-controls="author-contribution-grid" aria-pressed="false"{% if example_count == 0 %} disabled{% endif %}>Examples <span>{{ example_count }}</span></button>
@@ -115,11 +115,12 @@ nav: floating
 					{%- endfor -%}
 					{%- for example in page.examples -%}
 						{%- assign example_link = "/examples/" | append: example.path | append: "/" -%}
+						{%- assign example_author_names = example.author_profiles | map: "name" | join: ", " -%}
 						{%- assign example_image = "" -%}
 						{%- if example.thumbnail -%}
 							{%- assign example_image = example_link | append: example.thumbnail -%}
 						{%- endif -%}
-						{% include learn_card.html title=example.title description=example.brief link=example_link image=example_image author=example.author class="author-example-card" contribution_type="examples" %}
+						{% include learn_card.html title=example.title description=example.brief link=example_link image=example_image author=example_author_names class="author-example-card" contribution_type="examples" %}
 					{%- endfor -%}
 				</div>
 				<p class="author-contribution-empty page-surface-panel" data-author-empty hidden>No contributions match this filter.</p>

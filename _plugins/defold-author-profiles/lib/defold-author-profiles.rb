@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require "set"
 require "uri"
 
 module Defold
@@ -10,7 +9,7 @@ module Defold
     ID_PATTERN = /\A[a-z0-9]+(?:-[a-z0-9]+)*\z/
     GITHUB_PATTERN = /\A[A-Za-z0-9](?:[A-Za-z0-9-]{0,37}[A-Za-z0-9])?\z/
     MAX_BIO_LENGTH = 400
-    PROFILE_FIELDS = %w[id name github aliases bio avatar links support].freeze
+    PROFILE_FIELDS = %w[id name github bio avatar links support].freeze
     LINK_TYPES = %w[website github external x bluesky mastodon linkedin youtube].freeze
     SUPPORT_DESTINATIONS = {
       "github_sponsors" => ["github.com", "/sponsors/"],
@@ -28,26 +27,15 @@ module Defold
 
       @profiles = []
       @by_id = {}
-      @by_identity = {}
       records.each_with_index { |record, index| add_profile(record, index) }
     end
 
     def fetch(author_id, context)
+      unless author_id.is_a?(String) && ID_PATTERN.match?(author_id)
+        fail_with("#{context}: author_id must use lowercase ASCII kebab-case")
+      end
       profile = @by_id[author_id]
       fail_with("#{context}: unknown author_id #{author_id.inspect}") unless profile
-      profile
-    end
-
-    def find(author_id)
-      @by_id[author_id]
-    end
-
-    # Temporary rollout bridge. It is deliberately confined to the generator
-    # and never persisted back to imported catalog data.
-    def resolve_legacy(identity, context)
-      key = clean_string(identity, "#{context}: author identity").downcase
-      profile = @by_identity[key]
-      fail_with("#{context}: unknown legacy author #{identity.inspect}") unless profile
       profile
     end
 
@@ -75,23 +63,9 @@ module Defold
       validate_avatar(profile)
       profile["links"] = validate_links(profile["links"], profile["name"])
       profile["support"] = validate_support(profile["support"], profile["name"])
-      aliases = profile.fetch("aliases", [])
-      fail_with("#{profile['name']}: aliases must be an array") unless aliases.is_a?(Array)
-      profile["aliases"] = aliases.map.with_index do |alias_name, alias_index|
-        clean_string(alias_name, "#{profile['name']}: aliases[#{alias_index}]")
-      end
 
       @profiles << profile
       @by_id[profile["id"]] = profile
-      identities = [profile["name"], profile["github"], *profile["aliases"]].compact
-      identities.each do |identity|
-        key = identity.downcase
-        existing = @by_identity[key]
-        if existing && existing["id"] != profile["id"]
-          fail_with("Duplicate author identity #{identity.inspect}")
-        end
-        @by_identity[key] = profile
-      end
     end
 
     def validate_github(profile)
@@ -210,8 +184,6 @@ module Defold
     safe true
     priority :highest
 
-    DEFAULT_EXAMPLE_AUTHOR_ID = "defold-foundation"
-
     def generate(site)
       registry = AuthorRegistry.new(site.data["authors"])
       assets_by_author = Hash.new { |hash, key| hash[key] = [] }
@@ -249,8 +221,6 @@ module Defold
         profile = resolve_profile(asset, registry, context)
         asset["id"] = asset_id
         asset["author_profile"] = profile
-        asset["author_id"] = profile["id"]
-        asset["author"] = profile["name"]
         assets_by_author[profile["id"]] << asset_id
       end
     end
@@ -265,37 +235,30 @@ module Defold
         profiles = example_profiles(example, registry, context).uniq { |profile| profile["id"] }
         raise AuthorProfileError, "#{context}: author_ids must not be empty" if profiles.empty?
         example["author_profiles"] = profiles
-        example["author_ids"] = profiles.map { |profile| profile["id"] }
-        example["authors"] = profiles
-        example["author"] = profiles.map { |profile| profile["name"] }.join(", ")
         profiles.each { |profile| examples_by_author[profile["id"]] << example }
       end
     end
 
     def resolve_profile(record, registry, context)
-      author_id = record["author_id"]
-      profile = registry.find(author_id)
-      return profile if profile
-      registry.resolve_legacy(record["author"], context)
+      if record.key?("author")
+        raise AuthorProfileError, "#{context}: legacy author field is not supported"
+      end
+      registry.fetch(record["author_id"], context)
     end
 
     def example_profiles(example, registry, context)
-      author_ids = example["author_ids"]
-      if author_ids.is_a?(Array) && !author_ids.empty?
-        return author_ids.map.with_index { |author_id, index| registry.fetch(author_id, "#{context} author_ids[#{index}]") }
+      legacy_fields = %w[author authors].select { |field| example.key?(field) }
+      unless legacy_fields.empty?
+        raise AuthorProfileError, "#{context}: legacy #{legacy_fields.join(' and ')} field is not supported"
       end
-
-      legacy_authors = example["authors"]
-      identities = if legacy_authors.is_a?(Array) && !legacy_authors.empty?
-                     legacy_authors.map { |author| author.is_a?(Hash) ? author["name"] : author }
-                   elsif example["author"].is_a?(Array)
-                     example["author"]
-                   elsif example["author"].is_a?(String) && !example["author"].strip.empty?
-                     [example["author"]]
-                   else
-                     return [registry.fetch(DEFAULT_EXAMPLE_AUTHOR_ID, context)]
-                   end
-      identities.map.with_index { |identity, index| registry.resolve_legacy(identity, "#{context} author[#{index}]") }
+      author_ids = example["author_ids"]
+      unless author_ids.is_a?(Array) && !author_ids.empty?
+        raise AuthorProfileError, "#{context}: author_ids must be a non-empty array"
+      end
+      if author_ids.length != author_ids.uniq.length
+        raise AuthorProfileError, "#{context}: author_ids must not contain duplicates"
+      end
+      author_ids.map.with_index { |author_id, index| registry.fetch(author_id, "#{context} author_ids[#{index}]") }
     end
   end
 end

@@ -1,14 +1,9 @@
 ---
-author: The Defold Foundation
-authors:
-- github: defold
-  id: 41055a22bd3f5b94c6182d496d7083e7
-  name: The Defold Foundation
+author_ids:
+- defold-foundation
 brief: Create and control a motorized Box2D joint from script using Box2D V2 and V3.
 category: physics
 layout: example
-license: CC0-1.0
-license_url: https://creativecommons.org/publicdomain/zero/1.0/
 opengraph_image: https://www.defold.com/examples/physics/box2d_motor_joint/thumbnail.webp
 path: physics/box2d_motor_joint
 scripts: box2d_motor_joint_v3.script, box2d_motor_joint_v2.script

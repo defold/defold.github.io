@@ -4,7 +4,7 @@ require "json"
 require "minitest/autorun"
 require "tmpdir"
 require "jekyll"
-require_relative "../_plugins/author_profiles"
+require "defold-author-profiles"
 
 class AuthorProfilesTest < Minitest::Test
   def self.site
@@ -36,6 +36,7 @@ class AuthorProfilesTest < Minitest::Test
     assert_includes ids, "defold-foundation"
     assert_includes ids, "insality"
     assert_includes ids, "moon-active"
+    refute profiles.any? { |profile| profile.key?("aliases") }
   end
 
   def test_registry_rejects_duplicate_and_malformed_ids
@@ -69,14 +70,45 @@ class AuthorProfilesTest < Minitest::Test
   def test_generator_resolves_every_catalog_record
     assert_equal 316, site.data.fetch("assets").length
     assert_equal 133, site.data.fetch("examplesindex").length
+    profiles_by_id = site.data.fetch("authors").to_h do |profile|
+      [profile.fetch("id"), profile]
+    end
 
     site.data.fetch("assets").each_value do |asset|
       assert_equal asset.fetch("author_profile").fetch("id"), asset.fetch("author_id")
-      assert_equal asset.fetch("author_profile").fetch("name"), asset.fetch("author")
+      assert_equal profiles_by_id.fetch(asset.fetch("author_id")).fetch("name"),
+                   asset.fetch("author_profile").fetch("name")
+      refute asset.key?("author")
     end
     site.data.fetch("examplesindex").each do |example|
-      assert_equal example.fetch("author_profiles").map { |profile| profile.fetch("id") }, example.fetch("author_ids")
-      assert_equal example.fetch("author_profiles").map { |profile| profile.fetch("name") }.join(", "), example.fetch("author")
+      assert_equal example.fetch("author_profiles").map { |profile| profile.fetch("id") },
+                   example.fetch("author_ids")
+      example.fetch("author_profiles").each do |profile|
+        assert_equal profiles_by_id.fetch(profile.fetch("id")).fetch("name"),
+                     profile.fetch("name")
+      end
+      refute example.key?("author")
+      refute example.key?("authors")
+    end
+  end
+
+  def test_generator_rejects_legacy_and_invalid_catalog_attribution
+    registry = Defold::AuthorRegistry.new(
+      [{ "id" => "alice", "name" => "Alice" }]
+    )
+    generator = Defold::AuthorProfilesGenerator.new
+
+    assert_raises(Defold::AuthorProfileError) do
+      generator.send(:resolve_profile, { "author" => "Alice" }, registry, "asset test")
+    end
+    assert_raises(Defold::AuthorProfileError) do
+      generator.send(:resolve_profile, { "author_id" => "Not Valid" }, registry, "asset test")
+    end
+    assert_raises(Defold::AuthorProfileError) do
+      generator.send(:example_profiles, { "authors" => ["Alice"] }, registry, "example test")
+    end
+    assert_raises(Defold::AuthorProfileError) do
+      generator.send(:example_profiles, { "author_ids" => %w[alice alice] }, registry, "example test")
     end
   end
 
@@ -105,5 +137,6 @@ class AuthorProfilesTest < Minitest::Test
     assert_includes urls, "/authors/defold-foundation/"
     refute urls.any? { |url| %r{/authors/[0-9a-f]{32}/}.match?(url) }
     refute urls.any? { |url| url.include?("maxim-tuprikov") }
+    assert_empty Dir[File.join(File.expand_path("..", __dir__), "authors", "*.md")]
   end
 end

@@ -1,14 +1,9 @@
 ---
-author: Artsiom Trubchyk
-authors:
-- github: aglitchman
-  id: 4fff661212c3b63631eb09266e26b456
-  name: Artsiom Trubchyk
+author_ids:
+- artsiom-trubchyk
 brief: This example demonstrates how to create script to control a 3D camera with the mouse. Scroll wheel is used to zoom in and out.
 category: render
 layout: example
-license: CC0-1.0
-license_url: https://creativecommons.org/publicdomain/zero/1.0/
 name: Orbit Camera (3D)
 path: render/orbit_camera
 scripts: orbit_camera.script

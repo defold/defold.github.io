@@ -1,14 +1,9 @@
 ---
-author: Agustin R.
-authors:
-- github: FlexYourBrain
-  id: 3d50d039c078a00ce00628af22d57540
-  name: Agustin R.
+author_ids:
+- agustin-r
 brief: This example demonstrates flipping a sprite animation vertically and horizontally.
 category: sprite
 layout: example
-license: CC0-1.0
-license_url: https://creativecommons.org/publicdomain/zero/1.0/
 opengraph_image: https://www.defold.com/examples/sprite/flip/flip_thumb.png
 path: sprite/flip
 scripts: flip.script
