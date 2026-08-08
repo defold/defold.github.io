@@ -3959,10 +3959,10 @@ ul.page-checklist-negative li:before {
 	gap: 0.42rem;
 	flex: 0 0 auto;
 	padding: 0.36rem 0.68rem;
-	border: 1px solid rgba(255, 255, 255, 0.08);
+	border: 1px solid var(--asset-card-stars-border, rgba(255, 255, 255, 0.08));
 	border-radius: 999px;
-	background: rgba(255, 255, 255, 0.04);
-	color: rgba(255, 255, 255, 0.78);
+	background: var(--asset-card-stars-background, rgba(255, 255, 255, 0.04));
+	color: var(--asset-card-stars-color, rgba(255, 255, 255, 0.78));
 	font-size: 1.11rem;
 	font-weight: 700;
 	line-height: 0.95;
@@ -3972,7 +3972,7 @@ ul.page-checklist-negative li:before {
 	width: 1.08em;
 	height: 1.08em;
 	font-size: 1.11rem;
-	color: rgba(255, 255, 255, 0.9);
+	color: var(--asset-card-stars-icon-color, rgba(255, 255, 255, 0.9));
 }
 
 .asset-card-stars-icon .octicon {
@@ -4005,32 +4005,38 @@ ul.page-checklist-negative li:before {
 	flex: 0 0 auto;
 	max-width: 100%;
 	padding: 0.36rem 0.68rem;
-	border: 1px solid rgba(255, 255, 255, 0.1);
+	border: 1px solid var(--asset-card-status-border, rgba(255, 255, 255, 0.1));
 	border-radius: 999px;
-	background: rgba(255, 255, 255, 0.06);
-	color: rgba(255, 255, 255, 0.84);
+	background: var(--asset-card-status-background, rgba(255, 255, 255, 0.06));
+	color: var(--asset-card-status-color, rgba(255, 255, 255, 0.84));
 	font-size: 1.01rem;
 	font-weight: 700;
 	line-height: 0.95;
 }
 
 .asset-card-status-badge-free {
-	background: rgba(76, 187, 125, 0.16);
+	border-color: var(--asset-card-status-free-border, rgba(255, 255, 255, 0.1));
+	background: var(--asset-card-status-free-background, rgba(76, 187, 125, 0.16));
+	color: var(--asset-card-status-free-color, rgba(255, 255, 255, 0.84));
 }
 
 .asset-card-status-badge-paid {
-	background: rgba(253, 130, 35, 0.18);
+	border-color: var(--asset-card-status-paid-border, rgba(255, 255, 255, 0.1));
+	background: var(--asset-card-status-paid-background, rgba(253, 130, 35, 0.18));
+	color: var(--asset-card-status-paid-color, rgba(255, 255, 255, 0.84));
 }
 
 .asset-card-status-badge-support {
-	background: rgba(239, 90, 91, 0.14);
+	border-color: var(--asset-card-status-support-border, rgba(255, 255, 255, 0.1));
+	background: var(--asset-card-status-support-background, rgba(239, 90, 91, 0.14));
+	color: var(--asset-card-status-support-color, rgba(255, 255, 255, 0.84));
 }
 
 .asset-card-status-icon {
 	width: 1.08em;
 	height: 1.08em;
 	font-size: 1.01rem;
-	color: rgba(255, 255, 255, 0.92);
+	color: var(--asset-card-status-icon-color, rgba(255, 255, 255, 0.92));
 }
 
 .asset-card-status-icon .octicon {
@@ -4488,6 +4494,23 @@ ul.page-checklist-negative li:before {
 	--media-surface-bg: rgba(232, 238, 245, 0.96);
 	--media-overlay-bg: rgba(255, 255, 255, 0.94);
 	--media-overlay-shadow: 0 12px 24px rgba(18, 45, 75, 0.14);
+	--asset-card-stars-border: rgba(117, 85, 0, 0.28);
+	--asset-card-stars-background: rgba(224, 167, 0, 0.14);
+	--asset-card-stars-color: #594300;
+	--asset-card-stars-icon-color: #755800;
+	--asset-card-status-border: rgba(27, 50, 74, 0.22);
+	--asset-card-status-background: rgba(27, 50, 74, 0.08);
+	--asset-card-status-color: #263746;
+	--asset-card-status-icon-color: currentColor;
+	--asset-card-status-free-border: rgba(21, 105, 64, 0.28);
+	--asset-card-status-free-background: rgba(33, 142, 85, 0.13);
+	--asset-card-status-free-color: #155f3d;
+	--asset-card-status-paid-border: rgba(151, 75, 0, 0.28);
+	--asset-card-status-paid-background: rgba(226, 112, 0, 0.13);
+	--asset-card-status-paid-color: #814100;
+	--asset-card-status-support-border: rgba(152, 43, 66, 0.26);
+	--asset-card-status-support-background: rgba(207, 59, 88, 0.12);
+	--asset-card-status-support-color: #8b2c40;
 }
 
 @mixin defold-light-theme-content {
