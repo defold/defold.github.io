@@ -13,6 +13,7 @@ These are per-example files generated for LLM usage.
 - [Euler Rotation](https://defold.com/llms/examples/animation/euler_rotation.md) - Shows how to animate Euler rotation
 - [Finite State Machines](https://defold.com/llms/examples/animation/animation_states.md) - Shows how to build a small Finite State Machine module and use it to control character and animation states
 - [Flipbook animation](https://defold.com/llms/examples/animation/flipbook.md) - This example shows how to use a flipbook animation in a sprite
+- [Infinite Scroll Animation](https://defold.com/llms/examples/animation/infinite-scroll-animation.md) - Learn how to make infinite scroll for all objects on your level with only two scripts
 - [Spine animation](https://defold.com/llms/examples/animation/spine.md) - This example shows Spine bone animation that blends when animation switches
 - [Spinner animation](https://defold.com/llms/examples/animation/spinner.md) - This example shows how a game object is rotated in discrete steps, matching the graphics of the progress spinner
 - [Tween animation](https://defold.com/llms/examples/animation/basic_tween.md) - This example shows how to tween animate the position of a game object
