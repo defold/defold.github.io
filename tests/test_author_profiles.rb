@@ -30,7 +30,7 @@ class AuthorProfilesTest < Minitest::Test
     profiles = site.data.fetch("authors")
     ids = profiles.map { |profile| profile.fetch("id") }
 
-    assert_equal 113, profiles.length
+    assert_equal 114, profiles.length
     assert_equal ids.length, ids.uniq.length
     assert ids.all? { |author_id| Defold::AuthorRegistry::ID_PATTERN.match?(author_id) }
     assert_includes ids, "defold-foundation"
