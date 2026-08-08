@@ -39,6 +39,13 @@ module Defold
       profile
     end
 
+    def fetch_by_name(name, context)
+      name = clean_string(name, "#{context}: author")
+      profile = @profiles.find { |candidate| candidate["name"] == name }
+      fail_with("#{context}: unknown author name #{name.inspect}") unless profile
+      profile
+    end
+
     private
 
     def add_profile(record, index)
@@ -247,10 +254,20 @@ module Defold
     end
 
     def example_profiles(example, registry, context)
-      legacy_fields = %w[author authors].select { |field| example.key?(field) }
-      unless legacy_fields.empty?
-        raise AuthorProfileError, "#{context}: legacy #{legacy_fields.join(' and ')} field is not supported"
+      if example.key?("authors")
+        raise AuthorProfileError, "#{context}: legacy authors field is not supported"
       end
+
+      if example.key?("author")
+        if example.key?("author_ids")
+          raise AuthorProfileError, "#{context}: use author_ids or legacy author, not both"
+        end
+        profile = registry.fetch_by_name(example["author"], context)
+        example["author_ids"] = [profile["id"]]
+        example.delete("author")
+        return [profile]
+      end
+
       author_ids = example["author_ids"]
       unless author_ids.is_a?(Array) && !author_ids.empty?
         raise AuthorProfileError, "#{context}: author_ids must be a non-empty array"

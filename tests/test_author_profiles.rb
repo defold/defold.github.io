@@ -92,15 +92,26 @@ class AuthorProfilesTest < Minitest::Test
     end
   end
 
-  def test_generator_rejects_legacy_and_invalid_catalog_attribution
+  def test_generator_resolves_legacy_example_author
+    registry = Defold::AuthorRegistry.new(
+      [{ "id" => "alice", "name" => "Alice" }]
+    )
+    generator = Defold::AuthorProfilesGenerator.new
+    example = { "author" => "Alice" }
+
+    profiles = generator.send(:example_profiles, example, registry, "example test")
+
+    assert_equal %w[alice], profiles.map { |profile| profile.fetch("id") }
+    assert_equal %w[alice], example.fetch("author_ids")
+    refute example.key?("author")
+  end
+
+  def test_generator_rejects_invalid_catalog_attribution
     registry = Defold::AuthorRegistry.new(
       [{ "id" => "alice", "name" => "Alice" }]
     )
     generator = Defold::AuthorProfilesGenerator.new
 
-    assert_raises(Defold::AuthorProfileError) do
-      generator.send(:resolve_profile, { "author" => "Alice" }, registry, "asset test")
-    end
     assert_raises(Defold::AuthorProfileError) do
       generator.send(:resolve_profile, { "author_id" => "Not Valid" }, registry, "asset test")
     end
