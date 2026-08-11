@@ -1,16 +1,16 @@
 {
     "elements": [
         {
-            "brief": "associates a ttf resource to a .fontc file.",
-            "description": "associates a ttf resource to a .fontc file.",
+            "brief": "associates a TTF or OTF resource to a .fontc file.",
+            "description": "associates a TTF or OTF resource to a .fontc file.",
             "error": "",
             "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">font_hash</span> <span class=\"o\">=</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;/assets/fonts/roboto.fontc&quot;</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">ttf_hash</span> <span class=\"o\">=</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;/assets/fonts/Roboto/Roboto-Bold.ttf&quot;</span><span class=\"p\">)</span>\n<span class=\"n\">font</span><span class=\"p\">.</span><span class=\"n\">add_font</span><span class=\"p\">(</span><span class=\"n\">font_hash</span><span class=\"p\">,</span> <span class=\"n\">ttf_hash</span><span class=\"p\">)</span>\n</code></pre></div>",
             "language": "",
             "members": [],
             "name": "font.add_font",
             "notes": [
-                "The ttf font is loaded via the resource system. There are a few ways it can be accessed:\n    - It was already loaded in the resource system\n    - It is bundled via our game data\n    - It is accessible via a live update mount",
-                "The reference count will increase for the .ttf font"
+                "The font is loaded via the resource system. There are a few ways it can be accessed:\n    - It was already loaded in the resource system\n    - It is bundled via our game data\n    - It is accessible via a live update mount",
+                "The reference count will increase for the .ttf or .otf font"
             ],
             "parameters": [
                 {
@@ -23,9 +23,9 @@
                     ]
                 },
                 {
-                    "doc": "The path to the .ttf resource",
+                    "doc": "The path to the .ttf or .otf resource",
                     "is_optional": "False",
-                    "name": "ttf",
+                    "name": "font",
                     "types": [
                         "string",
                         "hash"
@@ -60,7 +60,7 @@
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "the information table contains these fields:\n<dl>\n<dt><code>path</code></dt>\n<dd><span class=\"type\">hash</span> The path hash of the current file.</dd>\n<dt><code>fonts</code></dt>\n<dd>\n<span class=\"type\">table</span> An array of associated font (e.g. .ttf) files. Each item is a table that contains:\n<dl>\n<dt><code>path</code></dt>\n<dd><span class=\"type\">string</span> The path of the font file</dd>\n<dt><code>path_hash</code></dt>\n<dd><span class=\"type\">hash</span> The path of the font file</dd>\n</dl>\n</dd>\n</dl>",
+                    "doc": "the information table contains these fields:\n<dl>\n<dt><code>path</code></dt>\n<dd><span class=\"type\">hash</span> The path hash of the current file.</dd>\n<dt><code>fonts</code></dt>\n<dd>\n<span class=\"type\">table</span> An array of associated font (<code>.ttf</code> or <code>.otf</code>) files. Each item is a table that contains:\n<dl>\n<dt><code>path</code></dt>\n<dd><span class=\"type\">string</span> The path of the font file</dd>\n<dt><code>path_hash</code></dt>\n<dd><span class=\"type\">hash</span> The path of the font file</dd>\n</dl>\n</dd>\n</dl>",
                     "name": "info",
                     "types": [
                         "table"
@@ -120,15 +120,15 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "associates a ttf resource to a .fontc file",
-            "description": "associates a ttf resource to a .fontc file",
+            "brief": "associates a TTF or OTF resource to a .fontc file",
+            "description": "associates a TTF or OTF resource to a .fontc file",
             "error": "",
             "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">font_hash</span> <span class=\"o\">=</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;/assets/fonts/roboto.fontc&quot;</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">ttf_hash</span> <span class=\"o\">=</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;/assets/fonts/Roboto/Roboto-Bold.ttf&quot;</span><span class=\"p\">)</span>\n<span class=\"n\">font</span><span class=\"p\">.</span><span class=\"n\">remove_font</span><span class=\"p\">(</span><span class=\"n\">font_hash</span><span class=\"p\">,</span> <span class=\"n\">ttf_hash</span><span class=\"p\">)</span>\n</code></pre></div>",
             "language": "",
             "members": [],
             "name": "font.remove_font",
             "notes": [
-                "The reference count will decrease for the .ttf font"
+                "The reference count will decrease for the .ttf or .otf font"
             ],
             "parameters": [
                 {
@@ -141,9 +141,9 @@
                     ]
                 },
                 {
-                    "doc": "The path to the .ttf resource",
+                    "doc": "The path to the .ttf or .otf resource",
                     "is_optional": "False",
-                    "name": "ttf",
+                    "name": "font",
                     "types": [
                         "string",
                         "hash"
