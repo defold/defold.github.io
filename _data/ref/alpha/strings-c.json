@@ -271,6 +271,54 @@
             ],
             "tparams": [],
             "type": "FUNCTION"
+        },
+        {
+            "brief": "Trim a string",
+            "description": "Copies a string while removing leading and trailing whitespace. Internal\nwhitespace is preserved. The source and destination may be the same buffer.\nThe destination is null-terminated when <code>dst_size</code> is greater than zero.",
+            "error": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kt\">char</span><span class=\"w\"> </span><span class=\"n\">dst</span><span class=\"p\">[</span><span class=\"mi\">4</span><span class=\"p\">];</span><span class=\"w\"></span>\n<span class=\"n\">dmStrTrim</span><span class=\"p\">(</span><span class=\"n\">dst</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"k\">sizeof</span><span class=\"p\">(</span><span class=\"n\">dst</span><span class=\"p\">),</span><span class=\"w\"> </span><span class=\"s\">&quot;  foo  &quot;</span><span class=\"p\">);</span><span class=\"w\"> </span><span class=\"c1\">// dst = &quot;foo&quot;</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "dmStrTrim",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Destination buffer",
+                    "is_optional": "False",
+                    "name": "dst",
+                    "types": [
+                        "char*"
+                    ]
+                },
+                {
+                    "doc": "Size of the destination buffer",
+                    "is_optional": "False",
+                    "name": "dst_size",
+                    "types": [
+                        "size_t"
+                    ]
+                },
+                {
+                    "doc": "Null-terminated source string",
+                    "is_optional": "False",
+                    "name": "src",
+                    "types": [
+                        "const char*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "of the trimmed source string. If the return value is greater\nthan or equal to <code>dst_size</code>, the destination was truncated.",
+                    "name": "Length",
+                    "types": [
+                        ""
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
         }
     ],
     "info": {
