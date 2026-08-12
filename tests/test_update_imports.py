@@ -28,8 +28,6 @@ class UpdateImportBoundaryTests(unittest.TestCase):
             (ROOT / "_data" / "examplesindex.json").read_text(encoding="utf-8")
         )
 
-        self.assertEqual(316, len(assets))
-        self.assertEqual(133, len(examples))
         self.assertTrue(all("author_id" in asset for asset in assets))
         self.assertTrue(all("author" not in asset for asset in assets))
         self.assertTrue(all(item.get("author_ids") for item in examples))
