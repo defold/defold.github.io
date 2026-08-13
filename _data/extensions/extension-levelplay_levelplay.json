@@ -295,7 +295,7 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Sets the user's GDPR consent choice. Call before init and map the value to a choice collected by your consent flow.",
+            "description": "Passes the user's GDPR consent choice to LevelPlay and supported mediated networks. It does not display a consent form or read another extension's private state. For a custom or non-compatible CMP, call it before init with the collected choice. LevelPlay SDK 7.7.0 and newer automatically reads Google UMP and compatible Google Additional Consent signals, so do not also pass the same choice with this function in that setup.",
             "examples": "",
             "name": "levelplay.set_gdpr_consent",
             "parameters": [

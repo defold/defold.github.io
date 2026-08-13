@@ -134,7 +134,33 @@ Replace every value with credentials from your own LevelPlay dashboard before re
 
 ## Privacy before initialization
 
-Collect privacy choices in your own consent flow and apply them before initialization. The sample values below are placeholders, not a consent-management implementation:
+`levelplay.set_gdpr_consent()` does not display a consent form or collect a
+choice. It passes a Boolean choice to LevelPlay, which shares it with mediated
+networks whose adapters support the consent API. It also does not read values
+stored privately by another Defold extension.
+
+Whether you need to call it depends on the consent platform:
+
+- With Google UMP, or a compatible CMP that supports Google's Additional
+  Consent specification, LevelPlay SDK 7.7.0 and newer automatically reads and
+  shares the consent signals, so you normally do not need to pass the same
+  choice through `set_gdpr_consent()`. Configure the applicable custom ad
+  partners listed by Unity in the CMP's Additional Consent setup.
+- With a custom or other external consent extension, retrieve the user's final
+  choice from that extension and call `set_gdpr_consent()` before `init()`.
+  Merely showing a consent form or saving the result in the other extension is
+  not enough.
+- With another IAB TCF CMP, registered TCF vendors can read the TCF string.
+  Follow the CMP's instructions for non-registered vendors and pass the choice
+  to LevelPlay when the CMP does not provide Google Additional Consent support.
+
+See Unity's official [LevelPlay legal resources](https://docs.unity.com/en-us/grow/levelplay/platform/legal-resources)
+and its GDPR compliance page for the current CMP requirements and supported
+mediated networks.
+
+For the custom or external consent path, collect privacy choices in your own
+consent flow and apply them before initialization. The sample values below are
+placeholders, not a consent-management implementation:
 
 ```lua
 levelplay.set_gdpr_consent(user_granted_gdpr_consent)
