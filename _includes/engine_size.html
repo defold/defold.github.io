@@ -1,33 +1,184 @@
-	<table>
-		<tr>
-			<th>PLATFORM</th>
-			<th>DEFOLD 1.12.4</th>
-			<th>UNITY 6 (6000.0.23f1)</th>
-			<th>GODOT 4.3</th>
-		</tr>
-		<tr>
-			<td>Android (arm64-v8a)</td>
-			<td> 1.97MB</td>
-			<td>24.33MB</td>
-			<td>24.29MB</td>
-		</tr>
-		<tr>
-			<td>iOS (arm64)</td>
-			<td> 1.49MB</td>
-			<td>18.03MB</td>
-			<td>19.59MB</td>
-		</tr>
-		<tr>
-			<td>HTML5 (wasm, gzip)</td>
-			<td>1.06MB</td>
-			<td> 8.1MB</td>
-			<td> 9.0MB</td>
-		</tr>
-		<tr>
-			<td>Windows</td>
-			<td> 2.87MB</td>
-			<td>91.1MB</td>
-			<td>84.1MB</td>
-		</tr>
-	</table>
-	<p>Test made using an empty project. Exported to target platform using default settings. Release builds. The iOS, Android and Windows numbers represent the size on disk while the HTML5 number is uncached download size when gzipped. No optimizations. Release mode.</p>
+<div class="build-size-comparison">
+
+	<div class="build-size-header">
+		<h3>Empty Project Build Size</h3>
+		<p>Release builds · Default settings · No optimizations</p>
+	</div>
+
+	<div class="build-size-legend">
+		<span><i class="legend-color defold"></i> Defold 1.13.0</span>
+		<span><i class="legend-color unity"></i> Unity 6.5 (6000.5.7f1)</span>
+		<span><i class="legend-color godot"></i> Godot 4.7.1</span>
+	</div>
+
+	<div class="build-size-platform-grid">
+
+		<!-- Android -->
+		<div class="platform-chart">
+
+			<h4>Android <small>arm64</small></h4>
+
+		<div class="bar-row">
+			<div class="engine">Defold</div>
+			<div class="bar-track">
+				<div class="bar defold" style="--size: 2.56;"></div>
+			</div>
+			<div class="value">2.56 MB</div>
+		</div>
+
+		<div class="bar-row">
+			<div class="engine">Unity</div>
+			<div class="bar-track">
+				<div class="bar unity" style="--size: 31.75;"></div>
+			</div>
+			<div class="value">31.75 MB</div>
+		</div>
+
+		<div class="bar-row">
+			<div class="engine">Godot</div>
+			<div class="bar-track">
+				<div class="bar godot" style="--size: 25.29;"></div>
+			</div>
+			<div class="value">25.29 MB</div>
+		</div>
+
+			<div class="chart-axis">
+				<span>0</span>
+				<span>10 MB</span>
+				<span>20 MB</span>
+				<span>30 MB</span>
+				<span>40 MB</span>
+			</div>
+
+		</div>
+
+
+		<!-- iOS -->
+		<div class="platform-chart">
+
+		<h4>iOS <small>arm64, .ipa</small></h4>
+
+		<div class="bar-row">
+			<div class="engine">Defold</div>
+			<div class="bar-track">
+				<div class="bar defold" style="--size: 1.35;"></div>
+			</div>
+			<div class="value">1.35 MB</div>
+		</div>
+
+		<div class="bar-row">
+			<div class="engine">Unity</div>
+			<div class="bar-track">
+				<div class="bar unity" style="--size: 36.81;"></div>
+			</div>
+			<div class="value">36.81 MB</div>
+		</div>
+
+		<div class="bar-row">
+			<div class="engine">Godot</div>
+			<div class="bar-track">
+				<div class="bar godot" style="--size: 25.29;"></div>
+			</div>
+			<div class="value">25.29 MB</div>
+		</div>
+
+			<div class="chart-axis">
+				<span>0</span>
+				<span>10 MB</span>
+				<span>20 MB</span>
+				<span>30 MB</span>
+				<span>40 MB</span>
+			</div>
+
+		</div>
+
+
+		<!-- HTML5 -->
+		<div class="platform-chart">
+
+		<h4>HTML5 <small>Wasm, Brotli</small></h4>
+
+		<div class="bar-row">
+			<div class="engine">Defold</div>
+			<div class="bar-track">
+				<div class="bar defold" style="--size: 0.83;"></div>
+			</div>
+			<div class="value">0.83 MB</div>
+		</div>
+
+		<div class="bar-row">
+			<div class="engine">Unity</div>
+			<div class="bar-track">
+				<div class="bar unity" style="--size: 11.73;"></div>
+			</div>
+			<div class="value">11.73 MB</div>
+		</div>
+
+		<div class="bar-row">
+			<div class="engine">Godot</div>
+			<div class="bar-track">
+				<div class="bar godot" style="--size: 6.68;"></div>
+			</div>
+			<div class="value">6.68 MB</div>
+		</div>
+
+			<div class="chart-axis">
+				<span>0</span>
+				<span>10 MB</span>
+				<span>20 MB</span>
+				<span>30 MB</span>
+				<span>40 MB</span>
+			</div>
+
+		</div>
+
+
+		<!-- Windows -->
+		<div class="platform-chart">
+
+		<h4>Windows</h4>
+
+		<div class="bar-row">
+			<div class="engine">Defold</div>
+			<div class="bar-track">
+				<div class="bar defold" style="--size: 2.92;"></div>
+			</div>
+			<div class="value">2.92 MB</div>
+		</div>
+
+		<div class="bar-row">
+			<div class="engine">Unity</div>
+			<div class="bar-track">
+				<div class="bar unity" style="--size: 37.45;"></div>
+			</div>
+			<div class="value">37.45 MB</div>
+		</div>
+
+		<div class="bar-row">
+			<div class="engine">Godot</div>
+			<div class="bar-track">
+				<div class="bar godot" style="--size: 36.29;"></div>
+			</div>
+			<div class="value">36.29 MB</div>
+		</div>
+
+			<div class="chart-axis">
+				<span>0</span>
+				<span>10 MB</span>
+				<span>20 MB</span>
+				<span>30 MB</span>
+				<span>40 MB</span>
+			</div>
+
+		</div>
+
+	</div>
+
+	<p class="build-size-note">
+		Test made using an empty project. Exported to the target platform using
+		default settings. Release builds with no additional optimizations.
+		Android and iOS values represent exported package size.
+		The HTML5 value represents uncached download size when compressed with gzip.
+	</p>
+
+</div>

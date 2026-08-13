@@ -1,0 +1,607 @@
+---
+layout: page
+title: Defold at gamescom 2026
+description: Meet the Defold team at gamescom 2026 and learn more about the Defold game engine. Schedule a meeting through gamescom biz or MeetToMatch.
+nav: floating
+heatmap: false
+preload_image: /images/gamescom2025/gamescom_logo.png
+preload_image_type: image/png
+opengraph_image: /images/gamescom2025/gamescom_logo.png
+opengraph_image_alt: Defold at gamescom 2026
+twitter_image: /images/gamescom2025/gamescom_logo.png
+stylesheets:
+  - frontpage
+  - frontpage-carousel
+  - frontpage-carousel-enhancements
+  - newsletter
+  - pages
+---
+
+{%- assign gamescom_utm = "utm_campaign=gamescom-2026" -%}
+{%- assign download_link = "/download?" | append: gamescom_utm -%}
+{%- assign product_link = "/product?" | append: gamescom_utm -%}
+{%- assign why_link = "/why?" | append: gamescom_utm -%}
+{%- assign showcase_link = "/showcase?" | append: gamescom_utm -%}
+{%- assign open_link = "/open?" | append: gamescom_utm -%}
+{%- assign license_link = "/license?" | append: gamescom_utm -%}
+{%- assign publishers_link = "/publishers?" | append: gamescom_utm -%}
+{%- assign partnerships_link = "/corporate-partnerships?" | append: gamescom_utm -%}
+{%- assign gamescom_biz_link = "https://bizcommunity.gamescom.global/event/gamescom-biz-2026/people/RXZlbnRWaWV3XzEyNTYxNzY=?search=defold" | append: gamescom_utm -%}
+{%- assign meettomatch_link = "https://app.meettomatch.com/cologne2026/company/details/MTkxMjU3MTQ/?" | append: gamescom_utm -%}
+{%- assign defold_x_link = "https://x.com/defold?" | append: gamescom_utm -%}
+{%- assign defold_linkedin_link = "https://www.linkedin.com/company/defold-foundation?" | append: gamescom_utm -%}
+
+{%- capture page_hero_panel -%}
+<div class="page-surface-panel gamescom-logo-lockup">
+	<span class="gamescom-event-label">Cologne · August 26-30</span>
+	<div class="gamescom-logo-pair">
+		<img class="gamescom-event-logo" src="/images/gamescom2025/gamescom_logo.png" alt="gamescom" loading="eager" fetchpriority="high" decoding="async">
+		<span class="gamescom-logo-divider" aria-hidden="true"></span>
+		<img class="gamescom-defold-logo" src="/images/logo/defold/logo_with_text_tagline/logo-hor-classic-white-tagline-500.png" alt="Defold - The ultimate game engine for Web and Mobile" loading="eager" fetchpriority="high" decoding="async">
+	</div>
+</div>
+{%- endcapture -%}
+
+{%- capture page_hero_copy -%}
+<p>Defold is a turn-key, free and source available game engine with the editor, scripting, tools, and deployment flow working together out of the box for seamless development of cross-platform games for PC, consoles, web, and mobile.</p>
+{%- endcapture -%}
+
+{%- capture page_hero_actions -%}
+<a class="button primary" href="#meet-defold" data-gc2026-cta="connect-hero">Meet the team</a>
+<a class="button secondary" href="{{ download_link }}" data-gc2026-cta="download-hero">Download Defold</a>
+{%- endcapture -%}
+
+{% include page_hub_hero.html
+	hero_class="gamescom-hub-hero"
+	layout_class="page-hero-layout-stack"
+	copy_class="page-hero-copy-centered"
+	panel_class="page-hero-panel-stack"
+	title="Meet Defold at gamescom 2026"
+	copy=page_hero_copy
+	actions=page_hero_actions
+	panel=page_hero_panel
+	panel_position="top"
+	aria_label="gamescom and Defold logos"
+%}
+
+<div class="section dark page-dark-section gradient-background-top-dark gamescom-section" id="defold-at-a-glance">
+	<div class="container">
+		<div class="page-section-heading">
+			<h2>Defold Overview</h2>
+		</div>
+
+		<div class="product-hub-feature-stack gamescom-feature-stack">
+			<div class="row feature-row-spaced product-hub-feature-row">
+				<div class="column one-half">
+					<div class="product-hub-feature-copy">
+						<h3 class="feature-heading">
+							<img class="feature-heading-icon" src="/images/icons/ic-no-setup.svg" alt="" aria-hidden="true" loading="lazy" decoding="async"/>
+							Works out of the box
+						</h3>
+						<p>There is nothing more tedious than keeping tools and SDKs updated with the latest changes and requirements, especially when all you want to do is create a game. You should never have to do more than download and install Defold once. Nothing else.</p>
+						<p>You do not need Xcode to make an iOS or macOS build, neither Android Studio, nor Visual Studio. Everything's set up for you, and you can still control the build process through our command-line tools if you want to.</p>
+					</div>
+				</div>
+				<div class="column one-half">
+					<div class="product-hub-visual product-hub-visual-right" aria-hidden="true">
+						{% include webp_picture.html src="/images/editor/nosetup-editor@2x.webp" alt="Defold editor ready to use without additional SDK setup" class="product-hub-visual-image product-hub-visual-image-wide slideinright is-visible" loading="lazy" %}
+					</div>
+				</div>
+			</div>
+
+			<div class="row feature-row-spaced product-hub-feature-row">
+				<div class="column one-half">
+					<div class="product-hub-visual product-hub-visual-left" aria-hidden="true">
+						{% include webp_picture.html src="/images/editor/editor-2-screenshot-left@2x.webp" alt="Defold editor with visual, animation, and game development tools" class="product-hub-visual-image product-hub-visual-image-wide slideinleft" loading="lazy" %}
+					</div>
+				</div>
+				<div class="column one-half">
+					<div class="product-hub-feature-copy">
+						<h3 class="feature-heading">
+							<img class="feature-heading-icon" src="/images/icons/ic-64-2d3d-blue.svg" alt="" aria-hidden="true" loading="lazy" decoding="async"/>
+							Build 2D and 3D games
+						</h3>
+						<p>Defold shines especially bright for 2D game development, yet does not limit you to two dimensions. Built from the ground up as a modern 3D game engine, it provides a capable foundation for fast, lightweight, performant games. Customize the rendering for your need - for PBR, stylized lighting or other special effects.</p>
+						<div class="twocolumnlist">
+							<ul class="checkmark">
+								<li>Visual Scene and GUI editors</li>
+								<li>Particle FX editor</li>
+								<li>Integrated Code editor with a debugger</li>
+								<li>Customisable rendering pipeline </li>
+								<li>Animation tools and support for Rive, Spine, SpriteLoop, DragonBones, 3D, or property animations</li>
+								<li>Built-in Tilemap editor and support for Tiled, Tilesetter, or Sprite Fusion</li>
+								<li>Atlas and Tile Source editors, and support for e.g. TexturePacker</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row feature-row-spaced product-hub-feature-row">
+				<div class="column one-half">
+					<div class="product-hub-feature-copy">
+						<h3 class="feature-heading">
+							<img class="feature-heading-icon" src="/images/icons/icon-cross-platform.svg" alt="" aria-hidden="true" loading="lazy" decoding="async"/>
+							Cross-platform deployment
+						</h3>
+						<p>The Defold APIs work across supported platforms, so you do not need to manage render pipelines or input methods - one code base works for all. We offer official Native Extensions for platform-specific integrations, e.g. for in-app purchases, add mediation services, networking solutions, and more.</p>
+						<div class="twocolumnlist">
+							<ul class="checkmark">
+								<li>One-click deployment to all target platforms from the same code base</li>
+								<li>Deploy to desktop, mobile, web, or consoles</li>
+								<li>Additional platforms such as Poki or Facebook via extensions</li>
+								<li>Editor and tools running on macOS, Windows and Linux</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="column one-half">
+					<div class="product-hub-visual product-hub-visual-right">
+						<div class="gamescom-platforms-visual slideinright">
+							{%- include platforms.html minmax=80 class="gamescom-platforms-grid" -%}
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row feature-row-spaced product-hub-feature-row">
+				<div class="column one-half">
+					<div class="product-hub-visual product-hub-visual-left" aria-hidden="true">
+						<div class="product-hub-gif-shell product-hub-visual-frame product-hub-visual-frame-hot-reload slideinleft">
+							<div class="page-media-frame page-surface-panel product-hub-gif-card product-hub-gif-card-left">
+								<img class="product-hub-visual-image product-hub-gif-image" src="/images/animations/hot-reload.gif" alt="Hot reload updating a running Defold game" loading="lazy" decoding="async">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="column one-half">
+					<div class="product-hub-feature-copy">
+						<h3 class="feature-heading">
+							<img class="feature-heading-icon" src="/images/icons/icon-rapid.svg" alt="" aria-hidden="true" loading="lazy" decoding="async"/>
+							Rapid workflow
+						</h3>
+						<p>We believe speed is key to productivity, and nothing should stand in your way. Defold builds take usually only a couple of seconds. You can even push new or updated content and logic to an already running game on your device.</p>
+						<div class="twocolumnlist">
+							<ul class="checkmark">
+								<li><a href="/manuals/hot-reload">Hot reloading</a> of updated assets and logic with custom hooks</li>
+								<li>Wireless hot reloading, profiling, and debugging on target device</li>
+								<li>Fast build times. All build targets, even HTML5, are completed in seconds</li>
+								<li><a href="/manuals/automation">Automation workflows</a> for testing or <a href="/manuals/ai-agents">AI-assisted development</a></li>
+								<li>Customisable editor with <a href="manuals/editor-scripts">editor scripts and UI interfaces</a> for own development tools</li>
+								<li>Custom <a href="/manuals/editor-templates">editor templates</a> for faster projects development</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row feature-row-spaced product-hub-feature-row">
+				<div class="column one-half">
+					<div class="product-hub-feature-copy">
+						<h3 class="feature-heading">
+							<img class="feature-heading-icon" src="/images/icons/icon-toolbox.svg" alt="" aria-hidden="true" loading="lazy" decoding="async"/>
+							Native extensions
+						</h3>
+						<p>The Defold SDK lets you write <a href="/manuals/native-extensions">engine extensions</a> in C, C++, C# or JavaScript without building a separate engine workflow around your project. Typical use cases include high-performance calculations, hardware access such as mobile cameras, and integrating external SDKs for ads, analytics, and services.</p>
+						<div class="twocolumnlist">
+							<ul class="checkmark">
+								<li>Develop extensions directly in Defold</li>
+								<li>No extra compiler setup needed for the common cloud-build path</li>
+								<li>Custom engine builds in cloud or local builder</li>
+								<li>Reach mobile hardware, native APIs, and platform features beyond the core runtime</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="column one-half">
+					<div class="product-hub-visual product-hub-visual-right" aria-hidden="true">
+						{% include webp_picture.html src="/images/editor/image-extensions.webp" alt="Defold project using extensions and external SDK integrations" class="product-hub-visual-image product-hub-visual-image-wide slideinright" loading="lazy" %}
+					</div>
+				</div>
+			</div>
+
+			<div class="row feature-row-spaced product-hub-feature-row" id="free-and-source-available">
+				<div class="column one-half">
+					<div class="product-hub-feature-copy">
+						<h3 class="feature-heading">
+							<img class="feature-heading-icon" src="/images/icons/ic-64-free.svg" alt="" aria-hidden="true" loading="lazy" decoding="async"/>
+							Free. Forever.
+						</h3>
+						<p>Defold gives you full access with no up-front costs, royalties, or licensing fees — <strong>even for supported console ports</strong>. Keep your revenue, keep your freedom, and focus on what matters: creating exceptional games.</p>
+						<div class="twocolumnlist gamescom-single-column-list">
+							<ul class="checkmark">
+								<li>No subscriptions, seat licenses, royalties, or runtime fees</li>
+								<li>Console ports are provided at no cost to approved console developers</li>
+								<li>You retain ownership of the games and extensions you create</li>
+							</ul>
+						</div>
+						<div class="page-text-panel-actions">
+							<a class="button tertiary" href="{{ license_link }}" data-gc2026-cta="read-license">Read the license</a>
+						</div>
+					</div>
+				</div>
+				<div class="column one-half">
+					<div class="product-hub-feature-copy">
+						<h3 class="feature-heading">
+							<img class="feature-heading-icon" src="/images/icons/ic-64-opensource-blue.svg" alt="" aria-hidden="true" loading="lazy" decoding="async"/>
+							Source available
+						</h3>
+						<p>The source code of the Defold engine, editor, and building tools is available on GitHub. Examples, tutorials, and many officially supported extensions are open sourced in the Defold GitHub organization.</p>
+						<div class="twocolumnlist gamescom-single-column-list">
+							<ul class="checkmark">
+								<li>Inspect, customize, and extend the engine and editor</li>
+								<li>Follow issues, releases, and development in the open</li>
+								<li>Developer-friendly license derived from Apache 2.0</li>
+							</ul>
+						</div>
+						<div class="page-text-panel-actions">
+							<a class="button tertiary" href="{{ open_link }}" data-gc2026-cta="source-available">Learn more</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+<div class="section dark page-dark-section gradient-background-bottom-dark product-hub-section gamescom-size-section" id="engine-size">
+	<div class="container">
+		<div class="product-hub-section-heading-split">
+			<div class="product-hub-section-heading-icon" aria-hidden="true">
+				<img src="/images/icons/ic-64-performance-blue.svg" alt="" loading="lazy" decoding="async">
+			</div>
+			<div class="page-section-heading">
+				<h2>Optimized and lightweight</h2>
+				<p>Defold has a very small engine runtime and performs really well even on older hardware. We spend a significant amount of effort making sure it stays that way. The engine is designed from the ground up to conserve memory, take up little disk space, and not waste CPU cycles.</p>
+				<p>Keeping the engine small allows you to release games on platforms that many other engines are unable to support.</p>
+			</div>
+		</div>
+		<div class="product-hub-table-shell gamescom-size-table-shell">
+			<div class="product-engine-size-table">
+				{%- include engine_size.html -%}
+			</div>
+		</div>
+
+		<div class="page-text-panel-actions gamescom-feature-actions">
+			<a class="button secondary" href="{{ product_link }}" data-gc2026-cta="all-features">Defold Overview</a>
+			<a class="button tertiary" href="{{ why_link }}" data-gc2026-cta="why-defold">Why Defold?</a>
+		</div>
+	</div>
+</div>
+
+<div class="section dark page-dark-section gradient-background-top-dark product-hub-section gamescom-showcase-section" id="games-made-with-defold">
+	<div class="container">
+		<div class="page-section-heading">
+			<h2>Production ready</h2>
+			<p>Production games have been shipped by studios worldwide across web, mobile, desktop, and consoles. Defold games reached more than 600 million plays on Poki in 2024.</p>
+		</div>
+	</div>
+	<div class="gamescom-showcase-carousel-shell">
+		{% include showcase_carousel.html
+			label="Games made with Defold"
+			action_link=showcase_link
+			action_text="View all games"
+			wrapper_class="gamescom-showcase-carousel"
+			carousel_class="frontpage-hero-carousel gamescom-fullwidth-carousel"
+			initial_limit=4
+			max_games=12
+			source_location="gamescom_2026"
+			card_click_source="gamescom_2026_showcase"
+			more_button_source="gamescom_2026_showcase_all"
+		%}
+	</div>
+</div>
+
+<div class="section dark page-dark-section gradient-background-bottom-dark gamescom-section" id="gamescom-team">
+	<div class="container">
+		<div class="page-section-heading">
+			<h2>The Defold team at gamescom</h2>
+			<p>Björn, Mathias, Vlad, and Paweł will attend gamescom 2026. Contact us to schedule a meeting.</p>
+		</div>
+
+		<div class="gamescom-attendee-grid">
+			<article class="gamescom-attendee-card">
+				<div class="gamescom-attendee-media">
+					<img src="/images/foundation/thumbs/Bjorn Ritzl_2020_RW.jpg" alt="Portrait of Björn Ritzl" loading="lazy" decoding="async">
+				</div>
+				<div class="gamescom-attendee-copy">
+					<p class="gamescom-attendee-role">Chairperson · Product Owner · Developer</p>
+					<h3>Björn Ritzl</h3>
+					<p>Veteran game developer starting in pre-smartphones mobile era, prominent advocate for browser gaming, speaker, with Defold since 2015 as Product Owner, Developer and now a chairperson at the Defold Foundation and co-founder of Refold Games studio.</p>
+					<nav class="gamescom-attendee-socials" aria-label="Björn Ritzl social profiles">
+						<a href="https://x.com/bjornritzl" target="_blank" rel="noopener" data-gc2026-cta="profile-bjorn-x"><img class="gamescom-social-icon" src="/images/icons/x_icon.svg" alt="" aria-hidden="true" loading="lazy" decoding="async"></a>
+						<a href="https://www.linkedin.com/in/bjornritzl" target="_blank" rel="noopener" data-gc2026-cta="profile-bjorn-linkedin"><img class="gamescom-social-icon" src="/images/icons/linkedin_icon.svg" alt="" aria-hidden="true" loading="lazy" decoding="async"></a>
+						<a href="https://github.com/britzl" target="_blank" rel="noopener" data-gc2026-cta="profile-bjorn-github"><img class="gamescom-social-icon" src="/images/icons/github_icon.svg" alt="" aria-hidden="true" loading="lazy" decoding="async"></a>
+					</nav>
+				</div>
+			</article>
+
+			<article class="gamescom-attendee-card">
+				<div class="gamescom-attendee-media">
+					<img src="/images/foundation/thumbs/Mathias Westerdahl_2020_RW.jpg" alt="Portrait of Mathias Westerdahl" loading="lazy" decoding="async">
+				</div>
+				<div class="gamescom-attendee-copy">
+					<p class="gamescom-attendee-role">Chairperson · Engine Developer</p>
+					<h3>Mathias Westerdahl</h3>
+					<p>In games industry since 2001, over a decade at Avalanche studios working on Just Cause or Mad Max, experienced engine and tools programmer, lead engine developer of Defold, CTO and board member at Defold Foundation, co-founder of Refold Games studio.</p>
+					<nav class="gamescom-attendee-socials" aria-label="Mathias Westerdahl social profiles">
+						<a href="https://x.com/mwesterdahl76" target="_blank" rel="noopener" data-gc2026-cta="profile-mathias-x"><img class="gamescom-social-icon" src="/images/icons/x_icon.svg" alt="" aria-hidden="true" loading="lazy" decoding="async"></a>
+						<a href="https://www.linkedin.com/in/jcash" target="_blank" rel="noopener" data-gc2026-cta="profile-mathias-linkedin"><img class="gamescom-social-icon" src="/images/icons/linkedin_icon.svg" alt="" aria-hidden="true" loading="lazy" decoding="async"></a>
+						<a href="https://github.com/JCash" target="_blank" rel="noopener" data-gc2026-cta="profile-mathias-github"><img class="gamescom-social-icon" src="/images/icons/github_icon.svg" alt="" aria-hidden="true" loading="lazy" decoding="async"></a>
+					</nav>
+				</div>
+			</article>
+
+			<article class="gamescom-attendee-card">
+				<div class="gamescom-attendee-media">
+					<img class="gamescom-attendee-photo-vlad" src="/images/people/vlad-protsenko.png" alt="Portrait of Vlad Protsenko" loading="lazy" decoding="async">
+				</div>
+				<div class="gamescom-attendee-copy">
+					<p class="gamescom-attendee-role">Editor Developer</p>
+					<h3>Vlad Protsenko</h3>
+					<p>Specialist in Clojure and JavaFX - the technologies behind Defold's editor, speaker in the related communities, long time Defold editor developer responsible for editor customisation and automation tools.</p>
+					<nav class="gamescom-attendee-socials" aria-label="Vlad Protsenko social profiles">
+						<a href="https://x.com/v1aaad" target="_blank" rel="noopener" data-gc2026-cta="profile-vlad-x"><img class="gamescom-social-icon" src="/images/icons/x_icon.svg" alt="" aria-hidden="true" loading="lazy" decoding="async"></a>
+						<a href="https://www.linkedin.com/in/vlad-protsenko-0999b2163" target="_blank" rel="noopener" data-gc2026-cta="profile-vlad-linkedin"><img class="gamescom-social-icon" src="/images/icons/linkedin_icon.svg" alt="" aria-hidden="true" loading="lazy" decoding="async"></a>
+						<a href="https://github.com/vlaaad" target="_blank" rel="noopener" data-gc2026-cta="profile-vlad-github"><img class="gamescom-social-icon" src="/images/icons/github_icon.svg" alt="" aria-hidden="true" loading="lazy" decoding="async"></a>
+					</nav>
+				</div>
+			</article>
+
+			<article class="gamescom-attendee-card">
+				<div class="gamescom-attendee-media">
+					<img class="gamescom-attendee-photo-pawel" src="/images/people/pawel-jarosz.png" alt="Portrait of Paweł Jarosz" loading="lazy" decoding="async">
+				</div>
+				<div class="gamescom-attendee-copy">
+					<p class="gamescom-attendee-role">Community &amp; Content Manager</p>
+					<h3>Paweł Jarosz</h3>
+					<p>Long time Defold user, now responsible for community and content for Defold, organising Defold Game Jam in September, indie game developer, speaker, running a Youtube channel about game development.</p>
+					<nav class="gamescom-attendee-socials" aria-label="Paweł Jarosz social profiles">
+						<a href="https://x.com/pawel_developer" target="_blank" rel="noopener" data-gc2026-cta="profile-pawel-x"><img class="gamescom-social-icon" src="/images/icons/x_icon.svg" alt="" aria-hidden="true" loading="lazy" decoding="async"></a>
+						<a href="https://www.linkedin.com/in/pawe%C5%82-jarosz-47282799/" target="_blank" rel="noopener" data-gc2026-cta="profile-pawel-linkedin"><img class="gamescom-social-icon" src="/images/icons/linkedin_icon.svg" alt="" aria-hidden="true" loading="lazy" decoding="async"></a>
+						<a href="https://github.com/paweljarosz" target="_blank" rel="noopener" data-gc2026-cta="profile-pawel-github"><img class="gamescom-social-icon" src="/images/icons/github_icon.svg" alt="" aria-hidden="true" loading="lazy" decoding="async"></a>
+					</nav>
+				</div>
+			</article>
+		</div>
+	</div>
+</div>
+
+<div class="section dark page-dark-section gradient-background-top-dark gamescom-section gamescom-reasons-section" id="reasons-to-meet">
+	<div class="container">
+		<div class="page-section-heading">
+			<h2>Reasons to meet</h2>
+		</div>
+
+		<div class="gamescom-reasons-tabs" data-gamescom-reasons-tabs>
+			<div class="gamescom-reasons-tablist" role="tablist" aria-label="Reasons to meet the Defold team">
+				<button class="gamescom-reasons-tab" id="gamescom-tab-publishers" type="button" role="tab" aria-selected="true" aria-controls="gamescom-panel-publishers" tabindex="0" data-gamescom-reason="publishers">
+					<img src="/images/icons/ic-64-ship.svg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+					<span>Publishers</span>
+				</button>
+				<button class="gamescom-reasons-tab" id="gamescom-tab-partners" type="button" role="tab" aria-selected="false" aria-controls="gamescom-panel-partners" tabindex="-1" data-gamescom-reason="partners">
+					<img src="/images/icons/ic-64-rocket.svg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+					<span>Technology</span>
+				</button>
+				<button class="gamescom-reasons-tab" id="gamescom-tab-developers" type="button" role="tab" aria-selected="false" aria-controls="gamescom-panel-developers" tabindex="-1" data-gamescom-reason="developers">
+					<img src="/images/icons/ic-64-2d3d.svg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+					<span>Developers</span>
+				</button>
+			</div>
+
+			<section class="page-surface-panel gamescom-reasons-panel" id="gamescom-panel-publishers" role="tabpanel" aria-labelledby="gamescom-tab-publishers" tabindex="0">
+				<div class="gamescom-reasons-panel-intro">
+					<p>We’re looking to meet with publishers to demonstrate why Defold is a trusted, fully featured engine with all the essential services you need to successfully publish games built with Defold.</p>
+				</div>
+				<ul class="checkmark page-checklist gamescom-reasons-points">
+					<li><strong>Production ready.</strong> Defold is battle-tested, with a proven track record of shipped games across web, mobile, desktop, and consoles.</li>
+					<li><strong>Trusted technology.</strong> Studios and indies use Defold worldwide, with an engine and toolchain built for predictable releases on every major platform.</li>
+					<li><strong>Essential services.</strong> Use battle-tested integrations for analytics, app economy, monetization, platform services, and game services.</li>
+					<li><strong>Support.</strong> Get help with technical issues, integrations, and platform requirements during and after publishing.</li>
+				</ul>
+				<div class="page-text-panel-actions gamescom-reasons-actions">
+					<a class="button secondary" href="{{ publishers_link }}" data-gc2026-cta="reasons-publishers">Publisher overview</a>
+					<a class="button tertiary" href="#meet-defold" data-gc2026-cta="reasons-publishers-meet">Schedule a meeting</a>
+				</div>
+			</section>
+
+			<section class="page-surface-panel gamescom-reasons-panel" id="gamescom-panel-partners" role="tabpanel" aria-labelledby="gamescom-tab-partners" tabindex="0" hidden>
+				<div class="gamescom-reasons-panel-intro">
+					<p>Finally, we’d love to talk with game technology and service providers about how we can integrate your products and services into the Defold ecosystem, bringing even more value to our developer community.</p>
+				</div>
+				<ul class="checkmark page-checklist gamescom-reasons-points">
+					<li><strong>Native integrations.</strong> Bring SDKs and platform services into Defold through native extensions for C, C++, Objective-C, Java, and JavaScript.</li>
+					<li><strong>Developer reach.</strong> Make reusable integrations available to studios and indie developers through the Defold ecosystem and Asset Portal.</li>
+					<li><strong>Dedicated collaboration.</strong> Work with the Defold team on engine, editor, workflow, or ecosystem functionality important to your product.</li>
+					<li><strong>Prominent visibility.</strong> Partnerships can include visibility across the website, editor, blog, newsletter, events, and Defold marketing channels.</li>
+				</ul>
+				<div class="page-text-panel-actions gamescom-reasons-actions">
+					<a class="button secondary" href="{{ partnerships_link }}" data-gc2026-cta="reasons-partners">Partnership options</a>
+					<a class="button tertiary" href="#meet-defold" data-gc2026-cta="reasons-partners-meet">Schedule a meeting</a>
+				</div>
+			</section>
+
+			<section class="page-surface-panel gamescom-reasons-panel" id="gamescom-panel-developers" role="tabpanel" aria-labelledby="gamescom-tab-developers" tabindex="0" hidden>
+				<div class="gamescom-reasons-panel-intro">
+					<p>We’re excited to connect with game studios and indie developers to show how Defold can be the perfect engine for your next project — lightweight, powerful, and production-ready.</p>
+				</div>
+				<ul class="checkmark page-checklist gamescom-reasons-points">
+					<li><strong>Stable releases.</strong> A four-week release cycle and two-week beta period deliver predictable updates with exceptionally rare breaking changes.</li>
+					<li><strong>Artist friendly.</strong> Assemble levels, characters, screens, user interfaces, particles, and other game content in the visual editor.</li>
+					<li><strong>Fully scriptable.</strong> Build game logic in Lua, customize rendering and editor workflows, and add native functionality when needed.</li>
+					<li><strong>Performance and stability.</strong> Minimize memory use, disk space, and CPU load with a compact engine designed for web, mobile, desktop, and consoles.</li>
+				</ul>
+				<div class="page-text-panel-actions gamescom-reasons-actions">
+					<a class="button secondary" href="{{ product_link }}" data-gc2026-cta="reasons-developers">Product overview</a>
+					<a class="button tertiary" href="#meet-defold" data-gc2026-cta="reasons-developers-meet">Schedule a meeting</a>
+				</div>
+			</section>
+		</div>
+	</div>
+</div>
+
+<div class="section dark page-dark-section gradient-background-bottom-dark gamescom-section" id="meet-defold">
+	<div class="container">
+		<div class="page-text-panel page-surface-panel page-split-panel gamescom-meeting-panel">
+			<div class="page-split-panel-media" aria-hidden="true">
+				<img src="/images/icons/handshake_icon.svg" alt="" loading="lazy" decoding="async">
+			</div>
+			<div class="page-split-panel-copy">
+				<p class="gamescom-section-eyebrow">No fixed stand this year</p>
+				<h2>Let's meet in Cologne</h2>
+				<p>Use the official gamescom biz app or MeetToMatch to schedule a meeting with the Defold team.</p>
+				<p>You can also contact us on X or LinkedIn, or email <a href="mailto:business@defold.se" data-gc2026-cta="business-email">business@defold.se</a>.</p>
+				<div class="page-button-grid page-grid-four gamescom-meeting-actions">
+					<a class="button primary" href="{{ meettomatch_link }}" target="_blank" rel="noopener" data-gc2026-cta="meettomatch"><img class="gamescom-button-icon" src="/images/icons/meettomatch_icon.svg" alt="" aria-hidden="true" loading="lazy" decoding="async"><span>MeetToMatch</span></a>
+					<a class="button tertiary" href="{{ gamescom_biz_link }}" target="_blank" rel="noopener" data-gc2026-cta="gamescom-biz"><img class="gamescom-button-icon" src="/images/icons/gamescom_icon.svg" alt="" aria-hidden="true" loading="lazy" decoding="async"><span>gamescom biz</span></a>
+					<a class="button tertiary" href="{{ defold_x_link }}" target="_blank" rel="noopener" data-gc2026-cta="defold-x"><img class="gamescom-button-icon" src="/images/icons/x_icon.svg" alt="" aria-hidden="true" loading="lazy" decoding="async"><span>Message us</span></a>
+					<a class="button tertiary" href="{{ defold_linkedin_link }}" target="_blank" rel="noopener" data-gc2026-cta="defold-linkedin"><img class="gamescom-button-icon" src="/images/icons/linkedin_icon.svg" alt="" aria-hidden="true" loading="lazy" decoding="async"><span>Connect</span></a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% include newsletter_section.html %}
+
+{% include download_cta_section.html
+	button_link=download_link
+%}
+
+{% include donors_and_partners.html button=true %}
+
+<script>
+(function () {
+	var campaignName = "gamescom-2026";
+	var basePayload = {
+		event_category: "event_landing",
+		event_label: "gamescom 2026",
+		event_location: "Cologne, Germany",
+		event_dates: "2026-08-26/2026-08-30",
+		page_path: window.location.pathname,
+		transport_type: "beacon"
+	};
+
+	function trackGamescomEvent(eventName, details) {
+		var payload = Object.assign({}, basePayload, details || {});
+
+		if (typeof window.gtag === "function") {
+			window.gtag("event", eventName, payload);
+			return;
+		}
+
+		if (Array.isArray(window.dataLayer)) {
+			window.dataLayer.push(Object.assign({ event: eventName }, payload));
+		}
+	}
+
+	function decorateGamescomLinks() {
+		document.querySelectorAll("#pagecontent a[href]").forEach(function (link) {
+			var originalHref = link.getAttribute("href");
+
+			if (!originalHref || originalHref.charAt(0) === "#" || originalHref.indexOf("javascript:") === 0) {
+				return;
+			}
+
+			try {
+				var url = new URL(originalHref, window.location.href);
+
+				if (url.protocol !== "http:" && url.protocol !== "https:" && url.protocol !== "mailto:") {
+					return;
+				}
+
+				url.searchParams.set("utm_campaign", campaignName);
+
+				if (url.origin === window.location.origin && originalHref.charAt(0) === "/") {
+					link.setAttribute("href", url.pathname + url.search + url.hash);
+				} else {
+					link.setAttribute("href", url.toString());
+				}
+			} catch (error) {
+			}
+		});
+	}
+
+	function bindReasonsTabs() {
+		var tabsRoot = document.querySelector("[data-gamescom-reasons-tabs]");
+
+		if (!tabsRoot) {
+			return;
+		}
+
+		var tabs = Array.prototype.slice.call(tabsRoot.querySelectorAll('[role="tab"]'));
+		var panels = Array.prototype.slice.call(tabsRoot.querySelectorAll('[role="tabpanel"]'));
+
+		function activateTab(tab, moveFocus, trackSelection) {
+			var panelId = tab.getAttribute("aria-controls");
+
+			tabs.forEach(function (candidate) {
+				var isActive = candidate === tab;
+				candidate.setAttribute("aria-selected", isActive ? "true" : "false");
+				candidate.tabIndex = isActive ? 0 : -1;
+			});
+
+			panels.forEach(function (panel) {
+				panel.hidden = panel.id !== panelId;
+			});
+
+			if (moveFocus) {
+				tab.focus();
+			}
+
+			if (trackSelection) {
+				trackGamescomEvent("gamescom_2026_reason_tab", {
+					event_label: tab.getAttribute("data-gamescom-reason")
+				});
+			}
+		}
+
+		tabs.forEach(function (tab, index) {
+			tab.addEventListener("click", function () {
+				activateTab(tab, false, true);
+			});
+
+			tab.addEventListener("keydown", function (event) {
+				var targetIndex = index;
+
+				if (event.key === "ArrowRight") {
+					targetIndex = (index + 1) % tabs.length;
+				} else if (event.key === "ArrowLeft") {
+					targetIndex = (index - 1 + tabs.length) % tabs.length;
+				} else if (event.key === "Home") {
+					targetIndex = 0;
+				} else if (event.key === "End") {
+					targetIndex = tabs.length - 1;
+				} else {
+					return;
+				}
+
+				event.preventDefault();
+				activateTab(tabs[targetIndex], true, true);
+			});
+		});
+	}
+
+	function bindGamescomTracking() {
+		bindReasonsTabs();
+		decorateGamescomLinks();
+		trackGamescomEvent("gamescom_2026_landing_view");
+
+		document.querySelectorAll("[data-gc2026-cta]").forEach(function (link) {
+			link.addEventListener("click", function () {
+				trackGamescomEvent("gamescom_2026_cta_click", {
+					event_label: link.getAttribute("data-gc2026-cta"),
+					link_url: link.href
+				});
+			});
+		});
+	}
+
+	if (document.readyState === "loading") {
+		document.addEventListener("DOMContentLoaded", bindGamescomTracking, { once: true });
+	} else {
+		bindGamescomTracking();
+	}
+})();
+</script>
