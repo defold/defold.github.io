@@ -1315,6 +1315,21 @@ def fix_platforms_case(platforms):
                 platforms[i] = platform.capitalize()
     return platforms
 
+
+def sort_asset_release_entries(asset):
+    """Order release metadata explicitly instead of trusting API array order."""
+    for field in ("releases", "release_tags"):
+        entries = asset.get(field)
+        if not isinstance(entries, list):
+            continue
+        asset[field] = sorted(
+            entries,
+            key=lambda entry: entry.get("published_at") or "",
+            reverse=True,
+        )
+    return asset
+
+
 def process_assets(tmp_dir):
     asset_source_dir = os.path.join(tmp_dir, "asset-portal-master", "assets")
     validate_asset_tags(asset_source_dir)
@@ -1351,6 +1366,7 @@ def process_assets(tmp_dir):
 
         # read asset and add additional data
         asset = read_as_json(asset_file)
+        sort_asset_release_entries(asset)
         fix_tags_case(asset["tags"], asset_id)
         fix_platforms_case(asset["platforms"])
         project_url = asset.get("project_url") or asset.get("github_url") or ""

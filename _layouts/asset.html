@@ -72,6 +72,9 @@ layout: page
 {%- if release_entries.size == 0 -%}
 	{%- assign release_entries = asset.releases -%}
 {%- endif -%}
+{%- if release_entries.size > 0 -%}
+	{%- assign release_entries = release_entries | sort: "published_at" | reverse -%}
+{%- endif -%}
 {%- assign latest_release_link = "" -%}
 {%- for release in release_entries -%}
 	{%- assign release_url = release.zip | default: "" -%}
