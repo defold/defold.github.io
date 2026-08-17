@@ -26,6 +26,7 @@ Identifies the type of graphics backend used by the rendering system
 - `ADAPTER_FAMILY_VENDOR` -    Vendor-specific backend. A placeholder for proprietary or experimental APIs tied to a particular GPU vendor.
 - `ADAPTER_FAMILY_WEBGPU` -    WebGPU backend. Modern web graphics API designed as the successor to WebGL
 - `ADAPTER_FAMILY_DIRECTX` -   DirectX backend. Microsoft’s graphics API used on Windows and Xbox
+- `ADAPTER_FAMILY_METAL` -     Metal backend. Apples graphics API used on OSX and iOS
 
 ### AddVertexStream
 *Type:* FUNCTION
@@ -857,6 +858,10 @@ Return the width of the opened window, if any.
 **Returns**
 
 - `window_width` (uint32_t) - Width of the window. If no window is opened, 0 is always returned
+
+### GRAPHICS_CONTEXT_NAME
+*Type:* CONSTANT
+Name used when registering the graphics context with the engine context registry.
 
 ### HandleResult
 *Type:* ENUM

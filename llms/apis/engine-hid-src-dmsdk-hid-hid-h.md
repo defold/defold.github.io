@@ -88,6 +88,10 @@ Maximum number of gamepads supported
 *Type:* CONSTANT
 max number of characters for a guid
 
+### dmHID::MAX_GAMEPAD_GUID_LENGTH
+*Type:* CONSTANT
+max number of characters for a guid
+
 ### dmHID::MAX_GAMEPAD_HAT_COUNT [type: uint32_t]
 *Type:* CONSTANT
 Maximum number of gamepad hats supported
@@ -195,6 +199,16 @@ Retrieves the guid of a given gamepad.
 
 - `result` (boold) - true if the gamepad had a guid
 
+### GetGamepadDeviceName
+*Type:* FUNCTION
+Retrieves the platform-specific device name of a given gamepad.
+
+**Parameters**
+
+- `context` (dmHID::HContext) - context in which to find the gamepad
+- `gamepad` (dmHID::HGamepad) - Handle to gamepad
+- `buffer` (char*) - a pointer to memory where the name should be stored (size dmHID::MAX_GAMEPAD_NAME_LENGTH)
+
 ### GetGamepadHat
 *Type:* FUNCTION
 Convenience function to retrieve the state of a gamepad hat from a gamepad packet.
@@ -286,6 +300,10 @@ gets a touch device handle
 **Returns**
 
 - `device` (dmHID::HTouchDevice) - Handle to touch device. dmHID::INVALID_TOUCH_DEVICE_HANDLE if not available
+
+### HID_CONTEXT_NAME
+*Type:* CONSTANT
+Name used when registering the HID context with the engine context registry.
 
 ### Key
 *Type:* ENUM

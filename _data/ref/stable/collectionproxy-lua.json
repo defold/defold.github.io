@@ -48,6 +48,49 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "load a collection proxy",
+            "description": "Loads the collection referenced by a collection proxy. The proxy is also\ninitialized and the callback receives <code>proxy_loading</code>, <code>proxy_ready</code>, or\n<code>proxy_error</code> messages.",
+            "error": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">collectionproxy</span><span class=\"p\">.</span><span class=\"n\">load</span><span class=\"p\">(</span><span class=\"s2\">&quot;#proxy&quot;</span><span class=\"p\">,</span> <span class=\"kc\">nil</span><span class=\"p\">,</span> <span class=\"kr\">function</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">message_id</span><span class=\"p\">,</span> <span class=\"n\">message</span><span class=\"p\">,</span> <span class=\"n\">sender</span><span class=\"p\">)</span>\n    <span class=\"kr\">if</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;proxy_ready&quot;</span><span class=\"p\">)</span> <span class=\"kr\">then</span>\n        <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;proxy is ready&quot;</span><span class=\"p\">)</span>\n    <span class=\"kr\">elseif</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;proxy_loading&quot;</span><span class=\"p\">)</span> <span class=\"kr\">then</span>\n        <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;progress&quot;</span><span class=\"p\">,</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">progress</span><span class=\"p\">)</span>\n    <span class=\"kr\">elseif</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;proxy_error&quot;</span><span class=\"p\">)</span> <span class=\"kr\">then</span>\n        <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;error&quot;</span><span class=\"p\">,</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">code</span><span class=\"p\">)</span>\n    <span class=\"kr\">end</span>\n<span class=\"kr\">end</span><span class=\"p\">)</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "collectionproxy.load",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the collection proxy component",
+                    "is_optional": "False",
+                    "name": "url",
+                    "types": [
+                        "string",
+                        "hash",
+                        "url"
+                    ]
+                },
+                {
+                    "doc": "options table, currently unused",
+                    "is_optional": "False",
+                    "name": "options",
+                    "types": [
+                        "table",
+                        "nil"
+                    ]
+                },
+                {
+                    "doc": "callback",
+                    "is_optional": "False",
+                    "name": "callback",
+                    "types": [
+                        "function(self, message_id, message, sender)"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "collection proxy is already loaded",
             "description": "It's impossible to change the collection if the collection is already loaded.",
             "error": "",

@@ -163,3 +163,7 @@ Set response status code.
 **Returns**
 
 - `return` (Result) - RESULT_OK on success
+
+### WEBSERVER_CONTEXT_NAME
+*Type:* CONSTANT
+Name used when registering the web server with the engine context registry.

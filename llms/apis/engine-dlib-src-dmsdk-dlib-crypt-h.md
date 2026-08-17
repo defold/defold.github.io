@@ -26,6 +26,7 @@ Base64 decode a buffer
 **Notes**
 
 - Call this function with *dst_len = 0 to obtain the required buffer size in *dst_len
+- An empty input (src_len = 0) decodes into zero bytes: the function returns true with *dst_len = 0
 
 **Parameters**
 
@@ -45,6 +46,7 @@ Base64 encode a buffer
 **Notes**
 
 - Call this function with *dst_len = 0 to obtain the required buffer size in *dst_len
+- An empty input (src_len = 0) still requires one byte for the terminating null, and encodes into *dst_len = 0
 
 **Parameters**
 

@@ -299,6 +299,21 @@
             "type": "CONSTANT"
         },
         {
+            "brief": "max number of characters for a guid",
+            "description": "max number of characters for a guid",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "dmHID::MAX_GAMEPAD_GUID_LENGTH",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "CONSTANT"
+        },
+        {
             "brief": "Maximum number of gamepad hats supported",
             "description": "Maximum number of gamepad hats supported",
             "error": "",
@@ -650,6 +665,46 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "Retrieves the platform-specific device name of a g...",
+            "description": "Retrieves the platform-specific device name of a given gamepad.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetGamepadDeviceName",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "context in which to find the gamepad",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmHID::HContext"
+                    ]
+                },
+                {
+                    "doc": "Handle to gamepad",
+                    "is_optional": "False",
+                    "name": "gamepad",
+                    "types": [
+                        "dmHID::HGamepad"
+                    ]
+                },
+                {
+                    "doc": "a pointer to memory where the name should be stored (size dmHID::MAX_GAMEPAD_NAME_LENGTH)",
+                    "is_optional": "False",
+                    "name": "buffer",
+                    "types": [
+                        "char*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "Convenience function to retrieve the state of a ga...",
             "description": "Convenience function to retrieve the state of a gamepad hat from a gamepad packet.",
             "error": "",
@@ -936,6 +991,21 @@
             ],
             "tparams": [],
             "type": "FUNCTION"
+        },
+        {
+            "brief": "HID extension context name",
+            "description": "Name used when registering the HID context with the engine context registry.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "HID_CONTEXT_NAME",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "CONSTANT"
         },
         {
             "brief": "keyboard key enumeration",

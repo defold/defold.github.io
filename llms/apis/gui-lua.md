@@ -1761,16 +1761,37 @@ Safe area mode that applies insets only on the short edges.
 
 ### gui.screen_to_local
 *Type:* FUNCTION
-Convert the screen position to the local position of supplied node
+Converts a screen-space position to the local position value for the supplied node.
+The conversion takes the parent transform, anchors, adjust mode, and adjust reference into account.
 
 **Parameters**
 
-- `node` (node) - node used for getting local transformation matrix
-- `screen_position` (vector3) - screen position
+- `node` (node) - node whose local position space should be used
+- `screen_position` (vector3) - screen-space position
 
 **Returns**
 
-- `local_position` (vector3) - local position
+- `local_position` (vector3) - local position value for the node
+
+**Examples**
+
+Animate a node to the pressed pointer position:
+```
+function init(self)
+    msg.post(".", "acquire_input_focus")
+    self.marker = gui.get_node("marker")
+end
+
+function on_input(self, action_id, action)
+    if action_id == hash("touch") and action.pressed then
+        local screen_position = vmath.vector3(action.screen_x, action.screen_y, 0)
+        local target_position = gui.screen_to_local(self.marker, screen_position)
+        gui.animate(self.marker, gui.PROP_POSITION, target_position, gui.EASING_OUTQUAD, 0.2)
+        return true
+    end
+end
+
+```
 
 ### gui.set
 *Type:* FUNCTION
@@ -1808,7 +1829,7 @@ If the material has a constant array called 'tint_array' specified in the materi
 
 - `node` (node | url) - node to set the property for, or msg.url() to the gui itself
 - `property` (string | hash | constant) - the property to set
-- `value` (number | vector4 | vector3 | quaternion) - the property to set
+- `value` (number | vector4 | vector3 | quaternion | nil) - the property to set. <code>nil</code> is only supported for removing runtime texture mappings with <code>gui.set(msg.url(), "textures", nil, {key = ...})</code>.
 - `options` (table) (optional) - optional options table (only applicable for material constants)
 - <code>index</code> <span class="type">number</span> index into array property (1 based)
 - <code>key</code> <span class="type">hash</span> name of internal property
@@ -1867,6 +1888,18 @@ function on_message(self, message_id, message, sender)
        gui.play_flipbook(gui.get_node("box"), "logo_256")
    end
 end
+
+```
+
+Remove a named runtime texture resource mapping:
+```
+local atlas_id = resource.create_atlas("/runtime.texturesetc", atlas_params)
+gui.set(msg.url(), "textures", atlas_id, {key = "runtime_texture"})
+gui.set_texture(gui.get_node("box"), "runtime_texture")
+
+-- Later, remove the GUI mapping before releasing the atlas resource.
+gui.set(msg.url(), "textures", nil, {key = "runtime_texture"})
+resource.release(atlas_id)
 
 ```
 

@@ -58,6 +58,78 @@
             "type": "ENUM"
         },
         {
+            "brief": "Custom GUI node property value",
+            "description": "Custom GUI node property value.\nString values returned from GetNodeCustomProperty() are owned by the GUI\nscene and must not be freed by the caller. String values passed to\nSetNodeCustomProperty() are copied.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "the value type",
+                    "name": "m_Type",
+                    "type": "dmGui::CustomPropertyType"
+                }
+            ],
+            "name": "CustomProperty",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "",
+            "description": "",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "",
+                    "name": "CUSTOM_PROPERTY_TYPE_NUMBER",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "CUSTOM_PROPERTY_TYPE_BOOLEAN",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "CUSTOM_PROPERTY_TYPE_HASH",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "CUSTOM_PROPERTY_TYPE_STRING",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "CUSTOM_PROPERTY_TYPE_VECTOR3",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "CUSTOM_PROPERTY_TYPE_VECTOR4",
+                    "type": ""
+                },
+                {
+                    "doc": "",
+                    "name": "CUSTOM_PROPERTY_TYPE_QUAT",
+                    "type": ""
+                }
+            ],
+            "name": "CustomPropertyType",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "ENUM"
+        },
+        {
             "brief": "Defer delete a node",
             "description": "Defer delete a node",
             "error": "",
@@ -243,6 +315,62 @@
                     "name": "data",
                     "types": [
                         "void*"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get a custom property from a GUI node",
+            "description": "Get a custom property from a GUI node.\nString values returned in the output property are owned by the GUI scene\nand must not be freed by the caller.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetNodeCustomProperty",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "scene",
+                    "is_optional": "False",
+                    "name": "scene",
+                    "types": [
+                        "dmGui::HScene"
+                    ]
+                },
+                {
+                    "doc": "node",
+                    "is_optional": "False",
+                    "name": "node",
+                    "types": [
+                        "dmGui::HNode"
+                    ]
+                },
+                {
+                    "doc": "property name hash",
+                    "is_optional": "False",
+                    "name": "key",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                },
+                {
+                    "doc": "output property",
+                    "is_optional": "False",
+                    "name": "prop",
+                    "types": [
+                        "dmGui::CustomProperty*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "RESULT_OK on success",
+                    "name": "result",
+                    "types": [
+                        "dmGui::Result"
                     ]
                 }
             ],
@@ -1006,6 +1134,62 @@
             ],
             "replaces": "",
             "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Set a custom property on a GUI node",
+            "description": "Set a custom property on a GUI node.\nString values are copied, and the caller retains ownership of the input\nstring.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "SetNodeCustomProperty",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "scene",
+                    "is_optional": "False",
+                    "name": "scene",
+                    "types": [
+                        "dmGui::HScene"
+                    ]
+                },
+                {
+                    "doc": "node",
+                    "is_optional": "False",
+                    "name": "node",
+                    "types": [
+                        "dmGui::HNode"
+                    ]
+                },
+                {
+                    "doc": "property name hash",
+                    "is_optional": "False",
+                    "name": "key",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                },
+                {
+                    "doc": "property value",
+                    "is_optional": "False",
+                    "name": "prop",
+                    "types": [
+                        "const dmGui::CustomProperty*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "RESULT_OK on success",
+                    "name": "result",
+                    "types": [
+                        "dmGui::Result"
+                    ]
+                }
+            ],
             "tparams": [],
             "type": "FUNCTION"
         },

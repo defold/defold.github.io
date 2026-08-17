@@ -408,6 +408,38 @@
             "type": "TYPEDEF"
         },
         {
+            "brief": "get the context registry from the component type create context",
+            "description": "Use the returned registry with ContextRegistryGet and ContextRegistrySet to access named engine contexts.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ComponentGetContextRegistry",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "component type create context",
+                    "is_optional": "False",
+                    "name": "ctx",
+                    "types": [
+                        "const ComponentTypeCreateCtx*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "engine context registry",
+                    "name": "registry",
+                    "types": [
+                        "HContextRegistry"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "Parameters to ComponentGet callback.",
             "description": "Parameters to ComponentGet callback.",
             "error": "",
@@ -1302,9 +1334,14 @@
                     "type": "dmScript::HContext"
                 },
                 {
-                    "doc": "Mappings between names and contextx",
+                    "doc": "Mappings between names and contexts",
                     "name": "m_Contexts",
                     "type": "dmHashTable64<void*>"
+                },
+                {
+                    "doc": "Opaque implementation data",
+                    "name": "m_Impl",
+                    "type": "dmGameObject::ComponentTypeCreateCtxImpl*"
                 }
             ],
             "name": "ComponentTypeCreateCtx",

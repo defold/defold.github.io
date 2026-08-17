@@ -252,6 +252,7 @@ that are used in the vertex shader of the material.
 <li><code>graphics.SEMANTIC_TYPE_BONE_WEIGHTS</code></li>
 <li><code>graphics.SEMANTIC_TYPE_BONE_INDICES</code></li>
 <li><code>graphics.SEMANTIC_TYPE_TEXTURE_TRANSFORM_2D</code></li>
+<li><code>graphics.SEMANTIC_TYPE_MORPH_TARGET_WEIGHTS</code></li>
 </ul>
 
 **Examples**
@@ -466,6 +467,7 @@ Sets vertex attributes in a material, if the vertex attributes exist.
 <li><code>graphics.SEMANTIC_TYPE_BONE_WEIGHTS</code></li>
 <li><code>graphics.SEMANTIC_TYPE_BONE_INDICES</code></li>
 <li><code>graphics.SEMANTIC_TYPE_TEXTURE_TRANSFORM_2D</code></li>
+<li><code>graphics.SEMANTIC_TYPE_MORPH_TARGET_WEIGHTS</code></li>
 </ul>
 
 **Examples**

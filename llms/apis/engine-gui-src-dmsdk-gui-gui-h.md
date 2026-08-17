@@ -28,6 +28,30 @@ Defold GUI system
 - `ADJUST_REFERENCE_PARENT`
 - `ADJUST_REFERENCE_DISABLED`
 
+### CustomProperty
+*Type:* STRUCT
+Custom GUI node property value.
+String values returned from GetNodeCustomProperty() are owned by the GUI
+scene and must not be freed by the caller. String values passed to
+SetNodeCustomProperty() are copied.
+
+**Members**
+
+- `m_Type` (dmGui::CustomPropertyType) - the value type
+
+### CustomPropertyType
+*Type:* ENUM
+
+**Members**
+
+- `CUSTOM_PROPERTY_TYPE_NUMBER`
+- `CUSTOM_PROPERTY_TYPE_BOOLEAN`
+- `CUSTOM_PROPERTY_TYPE_HASH`
+- `CUSTOM_PROPERTY_TYPE_STRING`
+- `CUSTOM_PROPERTY_TYPE_VECTOR3`
+- `CUSTOM_PROPERTY_TYPE_VECTOR4`
+- `CUSTOM_PROPERTY_TYPE_QUAT`
+
 ### DeleteNode
 *Type:* FUNCTION
 Defer delete a node
@@ -88,6 +112,23 @@ get node custom data
 **Returns**
 
 - `data` (void*) - the custom data created per node by the gui node type extension
+
+### GetNodeCustomProperty
+*Type:* FUNCTION
+Get a custom property from a GUI node.
+String values returned in the output property are owned by the GUI scene
+and must not be freed by the caller.
+
+**Parameters**
+
+- `scene` (dmGui::HScene) - scene
+- `node` (dmGui::HNode) - node
+- `key` (dmhash_t) - property name hash
+- `prop` (dmGui::CustomProperty*) - output property
+
+**Returns**
+
+- `result` (dmGui::Result) - RESULT_OK on success
 
 ### GetNodeId
 *Type:* FUNCTION
@@ -297,6 +338,23 @@ Set adjust mode
 - `scene` (dmGui::HScene) - scene
 - `node` (dmGui::HNode) - node
 - `adjust_mode` (AdjustMode) - the adjust mode
+
+### SetNodeCustomProperty
+*Type:* FUNCTION
+Set a custom property on a GUI node.
+String values are copied, and the caller retains ownership of the input
+string.
+
+**Parameters**
+
+- `scene` (dmGui::HScene) - scene
+- `node` (dmGui::HNode) - node
+- `key` (dmhash_t) - property name hash
+- `prop` (const dmGui::CustomProperty*) - property value
+
+**Returns**
+
+- `result` (dmGui::Result) - RESULT_OK on success
 
 ### SetNodeId
 *Type:* FUNCTION

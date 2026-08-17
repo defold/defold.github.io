@@ -367,6 +367,10 @@ Removes a named constant from the buffer
 - `buffer` (dmRender::HNamedConstantBuffer) - the constants buffer
 - `name_hash` (dmhash_t) - the name of the constant
 
+### RENDER_CONTEXT_NAME
+*Type:* CONSTANT
+Name used when registering the render context with the engine context registry.
+
 ### RenderListAlloc
 *Type:* FUNCTION
 Allocates an array of render entries

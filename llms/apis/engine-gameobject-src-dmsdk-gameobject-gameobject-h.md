@@ -79,6 +79,10 @@ The order of deletion is depth-first, so that the children are deleted before th
 
 - `parent` (HInstance) - Parent instance of the hierarchy
 
+### GAMEOBJECT_CONTEXT_NAME
+*Type:* CONSTANT
+Name used when registering the game object context with the engine context registry.
+
 ### GetAbsoluteIdentifier
 *Type:* FUNCTION
 Get absolute identifier relative to instance. The returned identifier is the

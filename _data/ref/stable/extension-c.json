@@ -291,7 +291,9 @@
             "language": "",
             "members": [],
             "name": "ExtensionAppParamsGetContext",
-            "notes": [],
+            "notes": [
+                "Deprecated. Use [ref:ContextRegistryGetByHash] on [ref:HContextRegistry] instead."
+            ],
             "parameters": [
                 {
                     "doc": "the params",
@@ -331,7 +333,9 @@
             "language": "",
             "members": [],
             "name": "ExtensionAppParamsGetContextByName",
-            "notes": [],
+            "notes": [
+                "Deprecated. Use [ref:ContextRegistryGet] on [ref:HContextRegistry] instead."
+            ],
             "parameters": [
                 {
                     "doc": "the params",
@@ -357,6 +361,38 @@
                     "name": "context",
                     "types": [
                         "void*"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Gets the context registry used by the extension ap...",
+            "description": "Gets the context registry used by the extension app params.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ExtensionAppParamsGetContextRegistry",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the params",
+                    "is_optional": "False",
+                    "name": "params",
+                    "types": [
+                        "ExtensionAppParams*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "the context registry",
+                    "name": "context_registry",
+                    "types": [
+                        "HContextRegistry"
                     ]
                 }
             ],
@@ -395,7 +431,9 @@
             "language": "",
             "members": [],
             "name": "ExtensionAppParamsSetContext",
-            "notes": [],
+            "notes": [
+                "Deprecated. Use [ref:ContextRegistrySet] on [ref:HContextRegistry] instead."
+            ],
             "parameters": [
                 {
                     "doc": "the params",
@@ -606,7 +644,9 @@
             "language": "",
             "members": [],
             "name": "ExtensionParamsGetContext",
-            "notes": [],
+            "notes": [
+                "Deprecated. Use [ref:ContextRegistryGetByHash] on [ref:HContextRegistry] instead."
+            ],
             "parameters": [
                 {
                     "doc": "the params",
@@ -646,7 +686,9 @@
             "language": "",
             "members": [],
             "name": "ExtensionParamsGetContextByName",
-            "notes": [],
+            "notes": [
+                "Deprecated. Use [ref:ContextRegistryGet] on [ref:HContextRegistry] instead."
+            ],
             "parameters": [
                 {
                     "doc": "the params",
@@ -672,6 +714,38 @@
                     "name": "context",
                     "types": [
                         "void*"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Gets the context registry used by the extension pa...",
+            "description": "Gets the context registry used by the extension params.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ExtensionParamsGetContextRegistry",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the params",
+                    "is_optional": "False",
+                    "name": "params",
+                    "types": [
+                        "ExtensionParams*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "the context registry",
+                    "name": "context_registry",
+                    "types": [
+                        "HContextRegistry"
                     ]
                 }
             ],
@@ -710,14 +784,16 @@
             "language": "",
             "members": [],
             "name": "ExtensionParamsSetContext",
-            "notes": [],
+            "notes": [
+                "Deprecated. Use [ref:ContextRegistrySet] on [ref:HContextRegistry] instead."
+            ],
             "parameters": [
                 {
                     "doc": "the params",
                     "is_optional": "False",
                     "name": "params",
                     "types": [
-                        "ExtensionAppParams"
+                        "ExtensionParams"
                     ]
                 },
                 {

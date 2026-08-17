@@ -146,6 +146,18 @@ A simple way to get the component instance from the user_data (which was set dur
 
 - `component` (void*) - The internal component pointer
 
+### ComponentGetContextRegistry
+*Type:* FUNCTION
+Use the returned registry with ContextRegistryGet and ContextRegistrySet to access named engine contexts.
+
+**Parameters**
+
+- `ctx` (const ComponentTypeCreateCtx*) - component type create context
+
+**Returns**
+
+- `registry` (HContextRegistry) - engine context registry
+
 ### ComponentGetParams
 *Type:* STRUCT
 Parameters to ComponentGet callback.
@@ -445,7 +457,8 @@ Context used when registering a new component type
 - `m_Factory` (dmResource::HFactory) - The resource factory
 - `m_Register` (dmGameObject::HRegister) - The game object registry
 - `m_Script` (dmScript::HContext) - The shared script context
-- `m_Contexts` (dmHashTable64<void*>) - Mappings between names and contextx
+- `m_Contexts` (dmHashTable64<void*>) - Mappings between names and contexts
+- `m_Impl` (dmGameObject::ComponentTypeCreateCtxImpl*) - Opaque implementation data
 
 ### ComponentTypeGetContext
 *Type:* FUNCTION

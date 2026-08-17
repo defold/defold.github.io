@@ -19,13 +19,21 @@ Will lock a Spinlock and automatically unlock it at the end of the scope.
 
 - `mutex` (dmSpinlock::Spinlock) - Spinlock reference to lock.
 
-### dmSpinlock::Init
+### dmSpinlock::Create
 *Type:* FUNCTION
 Initialize a Spinlock
 
 **Parameters**
 
 - `spinlock` (dmSpinlock::Spinlock*) - spinlock to initialize.
+
+### dmSpinlock::Destroy
+*Type:* FUNCTION
+Destroy a Spinlock
+
+**Parameters**
+
+- `spinlock` (dmSpinlock::Spinlock*) - spinlock to destroy.
 
 ### dmSpinlock::Lock
 *Type:* FUNCTION
@@ -36,9 +44,9 @@ Lock a Spinlock
 - `spinlock` (dmSpinlock::Spinlock*) - spinlock to lock.
 
 ### dmSpinlock::Spinlock
-*Type:* TYPEDEF
+*Type:* STRUCT
 ```
-typedef  Spinlock;
+struct Spinlock;
 
 ```
 

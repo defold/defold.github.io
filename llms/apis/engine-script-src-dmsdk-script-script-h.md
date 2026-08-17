@@ -501,6 +501,10 @@ Convert a Json string to Lua table.
 
 - `int` (int) - 1 if it succeeds. Throws a Lua error if it fails
 
+### LUA_CONTEXT_NAME
+*Type:* CONSTANT
+Name used when registering the Lua state with the engine context registry.
+
 ### LuaCallbackInfo
 *Type:* STRUCT
 callback info struct that will hold the relevant info needed to make a callback into Lua
@@ -677,6 +681,10 @@ It also gets the current (caller) url if the a pointer is passed to out_default_
 **Returns**
 
 - `result` (int) - 0 if successful. Throws Lua error on failure
+
+### SCRIPT_CONTEXT_NAME
+*Type:* CONSTANT
+Name used when registering the script context with the engine context registry.
 
 ### SetInstance
 *Type:* FUNCTION

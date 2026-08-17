@@ -21636,6 +21636,7 @@ Base64 decode a buffer
 **Notes**
 
 - Call this function with *dst_len = 0 to obtain the required buffer size in *dst_len
+- An empty input (src_len = 0) decodes into zero bytes: the function returns true with *dst_len = 0
 
 **Parameters**
 
@@ -21655,6 +21656,7 @@ Base64 encode a buffer
 **Notes**
 
 - Call this function with *dst_len = 0 to obtain the required buffer size in *dst_len
+- An empty input (src_len = 0) still requires one byte for the terminating null, and encodes into *dst_len = 0
 
 **Parameters**
 
@@ -24527,13 +24529,21 @@ Will lock a Spinlock and automatically unlock it at the end of the scope.
 
 - `mutex` (dmSpinlock::Spinlock) - Spinlock reference to lock.
 
-### dmSpinlock::Init
+### dmSpinlock::Create
 *Type:* FUNCTION
 Initialize a Spinlock
 
 **Parameters**
 
 - `spinlock` (dmSpinlock::Spinlock*) - spinlock to initialize.
+
+### dmSpinlock::Destroy
+*Type:* FUNCTION
+Destroy a Spinlock
+
+**Parameters**
+
+- `spinlock` (dmSpinlock::Spinlock*) - spinlock to destroy.
 
 ### dmSpinlock::Lock
 *Type:* FUNCTION
@@ -24544,9 +24554,9 @@ Lock a Spinlock
 - `spinlock` (dmSpinlock::Spinlock*) - spinlock to lock.
 
 ### dmSpinlock::Spinlock
-*Type:* TYPEDEF
+*Type:* STRUCT
 ```
-typedef  Spinlock;
+struct Spinlock;
 
 ```
 
@@ -26257,6 +26267,10 @@ Set response status code.
 
 - `return` (Result) - RESULT_OK on success
 
+### WEBSERVER_CONTEXT_NAME
+*Type:* CONSTANT
+Name used when registering the web server with the engine context registry.
+
 <!-- engine-engine-src-dmsdk-engine-extension-hpp -->
 
 # Engine {#apis:engine-engine-src-dmsdk-engine-extension-hpp}
@@ -27208,6 +27222,18 @@ A simple way to get the component instance from the user_data (which was set dur
 
 - `component` (void*) - The internal component pointer
 
+### ComponentGetContextRegistry
+*Type:* FUNCTION
+Use the returned registry with ContextRegistryGet and ContextRegistrySet to access named engine contexts.
+
+**Parameters**
+
+- `ctx` (const ComponentTypeCreateCtx*) - component type create context
+
+**Returns**
+
+- `registry` (HContextRegistry) - engine context registry
+
 ### ComponentGetParams
 *Type:* STRUCT
 Parameters to ComponentGet callback.
@@ -27507,7 +27533,8 @@ Context used when registering a new component type
 - `m_Factory` (dmResource::HFactory) - The resource factory
 - `m_Register` (dmGameObject::HRegister) - The game object registry
 - `m_Script` (dmScript::HContext) - The shared script context
-- `m_Contexts` (dmHashTable64<void*>) - Mappings between names and contextx
+- `m_Contexts` (dmHashTable64<void*>) - Mappings between names and contexts
+- `m_Impl` (dmGameObject::ComponentTypeCreateCtxImpl*) - Opaque implementation data
 
 ### ComponentTypeGetContext
 *Type:* FUNCTION
@@ -27856,6 +27883,10 @@ The order of deletion is depth-first, so that the children are deleted before th
 **Parameters**
 
 - `parent` (HInstance) - Parent instance of the hierarchy
+
+### GAMEOBJECT_CONTEXT_NAME
+*Type:* CONSTANT
+Name used when registering the game object context with the engine context registry.
 
 ### GetAbsoluteIdentifier
 *Type:* FUNCTION
@@ -29907,7 +29938,7 @@ Helper types and accessors for the light resource type (`.lightc`).
 ### GetLightPrototype
 *Type:* FUNCTION
 Returns the dmRender::HLightPrototype handle created from the .lightc data.
-The pointer remains valid until the resource is released.
+The handle remains valid until the resource is released.
 
 **Parameters**
 
@@ -29915,7 +29946,7 @@ The pointer remains valid until the resource is released.
 
 **Returns**
 
-- `prototype` (dmRender::HLightPrototype*) - Prototype pointer
+- `prototype` (dmRender::HLightPrototype) - Prototype handle
 
 ### LightResource
 *Type:* STRUCT
@@ -30208,6 +30239,7 @@ Identifies the type of graphics backend used by the rendering system
 - `ADAPTER_FAMILY_VENDOR` -    Vendor-specific backend. A placeholder for proprietary or experimental APIs tied to a particular GPU vendor.
 - `ADAPTER_FAMILY_WEBGPU` -    WebGPU backend. Modern web graphics API designed as the successor to WebGL
 - `ADAPTER_FAMILY_DIRECTX` -   DirectX backend. Microsoft’s graphics API used on Windows and Xbox
+- `ADAPTER_FAMILY_METAL` -     Metal backend. Apples graphics API used on OSX and iOS
 
 ### AddVertexStream
 *Type:* FUNCTION
@@ -31039,6 +31071,10 @@ Return the width of the opened window, if any.
 **Returns**
 
 - `window_width` (uint32_t) - Width of the window. If no window is opened, 0 is always returned
+
+### GRAPHICS_CONTEXT_NAME
+*Type:* CONSTANT
+Name used when registering the graphics context with the engine context registry.
 
 ### HandleResult
 *Type:* ENUM
@@ -32214,6 +32250,30 @@ Defold GUI system
 - `ADJUST_REFERENCE_PARENT`
 - `ADJUST_REFERENCE_DISABLED`
 
+### CustomProperty
+*Type:* STRUCT
+Custom GUI node property value.
+String values returned from GetNodeCustomProperty() are owned by the GUI
+scene and must not be freed by the caller. String values passed to
+SetNodeCustomProperty() are copied.
+
+**Members**
+
+- `m_Type` (dmGui::CustomPropertyType) - the value type
+
+### CustomPropertyType
+*Type:* ENUM
+
+**Members**
+
+- `CUSTOM_PROPERTY_TYPE_NUMBER`
+- `CUSTOM_PROPERTY_TYPE_BOOLEAN`
+- `CUSTOM_PROPERTY_TYPE_HASH`
+- `CUSTOM_PROPERTY_TYPE_STRING`
+- `CUSTOM_PROPERTY_TYPE_VECTOR3`
+- `CUSTOM_PROPERTY_TYPE_VECTOR4`
+- `CUSTOM_PROPERTY_TYPE_QUAT`
+
 ### DeleteNode
 *Type:* FUNCTION
 Defer delete a node
@@ -32274,6 +32334,23 @@ get node custom data
 **Returns**
 
 - `data` (void*) - the custom data created per node by the gui node type extension
+
+### GetNodeCustomProperty
+*Type:* FUNCTION
+Get a custom property from a GUI node.
+String values returned in the output property are owned by the GUI scene
+and must not be freed by the caller.
+
+**Parameters**
+
+- `scene` (dmGui::HScene) - scene
+- `node` (dmGui::HNode) - node
+- `key` (dmhash_t) - property name hash
+- `prop` (dmGui::CustomProperty*) - output property
+
+**Returns**
+
+- `result` (dmGui::Result) - RESULT_OK on success
 
 ### GetNodeId
 *Type:* FUNCTION
@@ -32484,6 +32561,23 @@ Set adjust mode
 - `node` (dmGui::HNode) - node
 - `adjust_mode` (AdjustMode) - the adjust mode
 
+### SetNodeCustomProperty
+*Type:* FUNCTION
+Set a custom property on a GUI node.
+String values are copied, and the caller retains ownership of the input
+string.
+
+**Parameters**
+
+- `scene` (dmGui::HScene) - scene
+- `node` (dmGui::HNode) - node
+- `key` (dmhash_t) - property name hash
+- `prop` (const dmGui::CustomProperty*) - property value
+
+**Returns**
+
+- `result` (dmGui::Result) - RESULT_OK on success
+
 ### SetNodeId
 *Type:* FUNCTION
 Set the id of a node.
@@ -32647,6 +32741,10 @@ Maximum number of gamepads supported
 *Type:* CONSTANT
 max number of characters for a guid
 
+### dmHID::MAX_GAMEPAD_GUID_LENGTH
+*Type:* CONSTANT
+max number of characters for a guid
+
 ### dmHID::MAX_GAMEPAD_HAT_COUNT [type: uint32_t]
 *Type:* CONSTANT
 Maximum number of gamepad hats supported
@@ -32754,6 +32852,16 @@ Retrieves the guid of a given gamepad.
 
 - `result` (boold) - true if the gamepad had a guid
 
+### GetGamepadDeviceName
+*Type:* FUNCTION
+Retrieves the platform-specific device name of a given gamepad.
+
+**Parameters**
+
+- `context` (dmHID::HContext) - context in which to find the gamepad
+- `gamepad` (dmHID::HGamepad) - Handle to gamepad
+- `buffer` (char*) - a pointer to memory where the name should be stored (size dmHID::MAX_GAMEPAD_NAME_LENGTH)
+
 ### GetGamepadHat
 *Type:* FUNCTION
 Convenience function to retrieve the state of a gamepad hat from a gamepad packet.
@@ -32845,6 +32953,10 @@ gets a touch device handle
 **Returns**
 
 - `device` (dmHID::HTouchDevice) - Handle to touch device. dmHID::INVALID_TOUCH_DEVICE_HANDLE if not available
+
+### HID_CONTEXT_NAME
+*Type:* CONSTANT
+Name used when registering the HID context with the engine context registry.
 
 ### Key
 *Type:* ENUM
@@ -33500,6 +33612,10 @@ Removes a named constant from the buffer
 
 - `buffer` (dmRender::HNamedConstantBuffer) - the constants buffer
 - `name_hash` (dmhash_t) - the name of the constant
+
+### RENDER_CONTEXT_NAME
+*Type:* CONSTANT
+Name used when registering the render context with the engine context registry.
 
 ### RenderListAlloc
 *Type:* FUNCTION
@@ -35101,6 +35217,10 @@ Convert a Json string to Lua table.
 
 - `int` (int) - 1 if it succeeds. Throws a Lua error if it fails
 
+### LUA_CONTEXT_NAME
+*Type:* CONSTANT
+Name used when registering the Lua state with the engine context registry.
+
 ### LuaCallbackInfo
 *Type:* STRUCT
 callback info struct that will hold the relevant info needed to make a callback into Lua
@@ -35277,6 +35397,10 @@ It also gets the current (caller) url if the a pointer is passed to out_default_
 **Returns**
 
 - `result` (int) - 0 if successful. Throws Lua error on failure
+
+### SCRIPT_CONTEXT_NAME
+*Type:* CONSTANT
+Name used when registering the script context with the engine context registry.
 
 ### SetInstance
 *Type:* FUNCTION
@@ -42083,6 +42207,33 @@ end
 
 ```
 
+### collectionproxy.load
+*Type:* FUNCTION
+Loads the collection referenced by a collection proxy. The proxy is also
+initialized and the callback receives proxy_loading, proxy_ready, or
+proxy_error messages.
+
+**Parameters**
+
+- `url` (string | hash | url) - the collection proxy component
+- `options` (table | nil) - options table, currently unused
+- `callback` (function(self, message_id, message, sender)) - callback
+
+**Examples**
+
+```
+collectionproxy.load("#proxy", nil, function(self, message_id, message, sender)
+    if message_id == hash("proxy_ready") then
+        print("proxy is ready")
+    elseif message_id == hash("proxy_loading") then
+        print("progress", message.progress)
+    elseif message_id == hash("proxy_error") then
+        print("error", message.code)
+    end
+end)
+
+```
+
 ### collectionproxy.RESULT_ALREADY_LOADED
 *Type:* CONSTANT
 It's impossible to change the collection if the collection is already loaded.
@@ -43201,8 +43352,6 @@ to start the traceback
 **Namespace:** `editor`
 **Language:** Lua
 **Type:** Defold Lua
-**File:** `editor.apidoc`
-**Source:** `engine/docs/editor.apidoc`
 
 Editor scripting documentation
 
@@ -43258,7 +43407,7 @@ Open a URL in the default browser or a registered application
 
 ### editor.can_add
 *Type:* FUNCTION
-Check if editor.tx.add() (as well as editor.tx.clear() and editor.tx.remove()) transaction with this property won't throw an error
+Check whether this list property supports add, clear, and remove operations on the supplied node.
 
 **Parameters**
 
@@ -43271,7 +43420,7 @@ Check if editor.tx.add() (as well as editor.tx.clear() and editor.tx.remove()) t
 
 ### editor.can_get
 *Type:* FUNCTION
-Check if you can get this property so editor.get() won't throw an error
+Check whether this property is exposed for reading on the supplied node or resource.
 
 **Parameters**
 
@@ -43284,7 +43433,7 @@ Check if you can get this property so editor.get() won't throw an error
 
 ### editor.can_reorder
 *Type:* FUNCTION
-Check if editor.tx.reorder() transaction with this property won't throw an error
+Check whether this list property supports reordering on the supplied node.
 
 **Parameters**
 
@@ -43297,7 +43446,7 @@ Check if editor.tx.reorder() transaction with this property won't throw an error
 
 ### editor.can_reset
 *Type:* FUNCTION
-Check if editor.tx.reset() transaction with this property won't throw an error
+Check whether this property supports reset on the supplied node.
 
 **Parameters**
 
@@ -43310,7 +43459,7 @@ Check if editor.tx.reset() transaction with this property won't throw an error
 
 ### editor.can_set
 *Type:* FUNCTION
-Check if editor.tx.set() transaction with this property won't throw an error
+Check whether this property is exposed for setting on the supplied node.
 
 **Parameters**
 
@@ -43327,7 +43476,7 @@ Create an editor command
 
 **Parameters**
 
-- `opts` (table) - A table with the following keys:<dl><dt><code>label <small>string, message</small></code></dt><dd>required, user-visible command name, either a string or a localization message</dd><dt><code>locations <small>string[]</small></code></dt><dd>required, a non-empty list of locations where the command is displayed in the editor, values are either <code>"Edit"</code>, <code>"View"</code>, <code>"Project"</code>, <code>"Debug"</code> (the editor menubar), <code>"Assets"</code> (the assets pane), or <code>"Outline"</code> (the outline pane)</dd><dt><code>query <small>table</small></code></dt><dd>optional, a query that both controls the command availability and provides additional information to the command handler functions; a table with the following keys:<dl><dt><code>selection <small>table</small></code></dt><dd>current selection, a table with the following keys:<dl><dt><code>type <small>string</small></code></dt><dd>either <code>"resource"</code> (selected resource) or <code>"outline"</code> (selected outline node)</dd><dt><code>cardinality <small>string</small></code></dt><dd>either <code>"one"</code> (will use first selected item) or <code>"many"</code> (will use all selected items)</dd></dl></dd><dt><code>argument <small>table</small></code></dt><dd>the command argument</dd></dl></dd><dt><code>id <small>string</small></code></dt><dd>optional, keyword identifier that may be used for assigning a shortcut to a command; should be a dot-separated identifier string, e.g. <code>"my-extension.do-stuff"</code></dd><dt><code>active <small>function</small></code></dt><dd>optional function that additionally checks if a command is active in the current context; will receive opts table with values populated by the query; should be fast to execute since the editor might invoke it in response to UI interactions (on key typed, mouse clicked)</dd><dt><code>run <small>function</small></code></dt><dd>optional function that is invoked when the user decides to execute the command; will receive opts table with values populated by the query</dd></dl>
+- `opts` (table) - A table with the following keys:<dl><dt><code>label <small>string, message</small></code></dt><dd>required, user-visible command name, either a string or a localization message</dd><dt><code>locations <small>string[]</small></code></dt><dd>required, a non-empty list of locations where the command is displayed in the editor, values are either <code>"Edit"</code>, <code>"View"</code>, <code>"Project"</code>, <code>"Debug"</code> (the editor menubar), <code>"Assets"</code> (the assets pane), <code>"Outline"</code> (the outline pane), <code>"Scene"</code> (the scene view), or <code>"Code"</code> (the code editor)</dd><dt><code>query <small>table</small></code></dt><dd>optional, a query that both controls the command availability and provides additional information to the command handler functions; a table with the following keys:<dl><dt><code>selection <small>table</small></code></dt><dd>current selection, a table with the following keys:<dl><dt><code>type <small>string</small></code></dt><dd>either <code>"resource"</code> (selected resource), <code>"outline"</code> (selected outline node), or <code>"scene"</code> (selected scene node)</dd><dt><code>cardinality <small>string</small></code></dt><dd>either <code>"one"</code> (will use first selected item) or <code>"many"</code> (will use all selected items)</dd></dl></dd><dt><code>active_view <small>table</small></code></dt><dd>current active editor view, a table with the following keys:<dl><dt><code>type <small>string</small></code></dt><dd>either <code>"code"</code>, <code>"scene"</code>, <code>"html"</code>, or <code>"form"</code></dd></dl></dd><dt><code>argument <small>table</small></code></dt><dd>the command argument</dd></dl></dd><dt><code>id <small>string</small></code></dt><dd>optional, keyword identifier that may be used for assigning a shortcut to a command; should be a dot-separated identifier string, e.g. <code>"my-extension.do-stuff"</code></dd><dt><code>active <small>function</small></code></dt><dd>optional function that additionally checks if a command is active in the current context; will receive opts table with values populated by the query; should be fast to execute since the editor might invoke it in response to UI interactions (on key typed, mouse clicked)</dd><dt><code>run <small>function</small></code></dt><dd>optional function that is invoked when the user decides to execute the command; will receive opts table with values populated by the query</dd></dl>
 
 **Returns**
 
@@ -43477,6 +43626,11 @@ Query information about file system path
 **Returns**
 
 - `attributes` (table) - A table with the following keys:<dl>                                                  <dt><code>path <small>string</small></code></dt>                                                  <dd>resolved file path</dd>                                                  <dt><code>exists <small>boolean</small></code></dt>                                                  <dd>whether there is a file system entry at the path</dd>                                                  <dt><code>is_file <small>boolean</small></code></dt>                                                  <dd>whether the path corresponds to a file</dd>                                                  <dt><code>is_directory <small>boolean</small></code></dt>                                                  <dd>whether the path corresponds to a directory</dd>                                                </dl>
+
+### editor.fetch_libraries
+*Type:* FUNCTION
+Download the latest version of the project library dependencies and reload library-provided editor scripts.
+This function may replace library-provided editor commands, hooks, routes, and UI contributed by editor scripts, so it should typically be the last operation performed by a command.
 
 ### editor.get
 *Type:* FUNCTION
@@ -43882,7 +44036,7 @@ Check box with a label
 
 **Parameters**
 
-- `props` (table) - Optional props: <dl><dt><code>value <small>boolean</small></code></dt><dd>determines if the checkbox should appear checked</dd><dt><code>on_value_changed <small>function</small></code></dt><dd>change callback, will receive the new value</dd><dt><code>text <small>string, message</small></code></dt><dd>the text, either a string or a localization message</dd><dt><code>text_alignment <small>string</small></code></dt><dd>text alignment within paragraph bounds; either: <ul><li><code>editor.ui.TEXT_ALIGNMENT.LEFT</code></li><li><code>editor.ui.TEXT_ALIGNMENT.CENTER</code></li><li><code>editor.ui.TEXT_ALIGNMENT.RIGHT</code></li><li><code>editor.ui.TEXT_ALIGNMENT.JUSTIFY</code></li></ul></dd><dt><code>issue <small>table</small></code></dt><dd>issue related to the input; table with the following keys (all required):<dl><dt><code>severity <small>string</small></code></dt><dd>either <code>editor.ui.ISSUE_SEVERITY.WARNING</code> or <code>editor.ui.ISSUE_SEVERITY.ERROR</code></dd><dt><code>message <small>string, message</small></code></dt><dd>issue message that will be shown in a tooltip; either a string or a localization message</dd></dl></dd><dt><code>tooltip <small>string, message</small></code></dt><dd>tooltip message shown on hover; either a string or a localization message</dd><dt><code>enabled <small>boolean</small></code></dt><dd>determines if the input component can be interacted with</dd><dt><code>alignment <small>string</small></code></dt><dd>alignment of the component content within its assigned bounds, defaults to <code>editor.ui.ALIGNMENT.TOP_LEFT</code>; either: <ul><li><code>editor.ui.ALIGNMENT.TOP_LEFT</code></li><li><code>editor.ui.ALIGNMENT.TOP</code></li><li><code>editor.ui.ALIGNMENT.TOP_RIGHT</code></li><li><code>editor.ui.ALIGNMENT.LEFT</code></li><li><code>editor.ui.ALIGNMENT.CENTER</code></li><li><code>editor.ui.ALIGNMENT.RIGHT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_LEFT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_RIGHT</code></li></ul></dd><dt><code>grow <small>boolean</small></code></dt><dd>determines if the component should grow to fill available space in a <code>horizontal</code> or <code>vertical</code> layout container</dd><dt><code>row_span <small>integer</small></code></dt><dd>how many rows the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd><dt><code>column_span <small>integer</small></code></dt><dd>how many columns the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd></dl>
+- `props` (table) - Optional props: <dl><dt><code>value <small>boolean</small></code></dt><dd>determines if the checkbox should appear checked</dd><dt><code>on_value_changed <small>function</small></code></dt><dd>change callback, will receive the new value</dd><dt><code>indeterminate <small>boolean</small></code></dt><dd>determines if the checkbox should appear in the mixed state</dd><dt><code>text <small>string, message</small></code></dt><dd>the text, either a string or a localization message</dd><dt><code>text_alignment <small>string</small></code></dt><dd>text alignment within paragraph bounds; either: <ul><li><code>editor.ui.TEXT_ALIGNMENT.LEFT</code></li><li><code>editor.ui.TEXT_ALIGNMENT.CENTER</code></li><li><code>editor.ui.TEXT_ALIGNMENT.RIGHT</code></li><li><code>editor.ui.TEXT_ALIGNMENT.JUSTIFY</code></li></ul></dd><dt><code>issue <small>table</small></code></dt><dd>issue related to the input; table with the following keys (all required):<dl><dt><code>severity <small>string</small></code></dt><dd>either <code>editor.ui.ISSUE_SEVERITY.WARNING</code> or <code>editor.ui.ISSUE_SEVERITY.ERROR</code></dd><dt><code>message <small>string, message</small></code></dt><dd>issue message that will be shown in a tooltip; either a string or a localization message</dd></dl></dd><dt><code>tooltip <small>string, message</small></code></dt><dd>tooltip message shown on hover; either a string or a localization message</dd><dt><code>enabled <small>boolean</small></code></dt><dd>determines if the input component can be interacted with</dd><dt><code>alignment <small>string</small></code></dt><dd>alignment of the component content within its assigned bounds, defaults to <code>editor.ui.ALIGNMENT.TOP_LEFT</code>; either: <ul><li><code>editor.ui.ALIGNMENT.TOP_LEFT</code></li><li><code>editor.ui.ALIGNMENT.TOP</code></li><li><code>editor.ui.ALIGNMENT.TOP_RIGHT</code></li><li><code>editor.ui.ALIGNMENT.LEFT</code></li><li><code>editor.ui.ALIGNMENT.CENTER</code></li><li><code>editor.ui.ALIGNMENT.RIGHT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_LEFT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_RIGHT</code></li></ul></dd><dt><code>grow <small>boolean</small></code></dt><dd>determines if the component should grow to fill available space in a <code>horizontal</code> or <code>vertical</code> layout container</dd><dt><code>row_span <small>integer</small></code></dt><dd>how many rows the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd><dt><code>column_span <small>integer</small></code></dt><dd>how many columns the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd></dl>
 
 **Returns**
 
@@ -43928,7 +44082,7 @@ Dialog component, a top-level window component that can't be used as a child of 
 
 **Parameters**
 
-- `props` (table) - Required props: <dl><dt><code>title <small>string, message</small></code></dt><dd>OS dialog window title, either a string or a localization message</dd></dl>  Optional props: <dl><dt><code>header <small>component</small></code></dt><dd>top part of the dialog, defaults to <code>editor.ui.heading({text = props.title})</code></dd><dt><code>content <small>component</small></code></dt><dd>content of the dialog</dd><dt><code>buttons <small>component[]</small></code></dt><dd>array of <code>editor.ui.dialog_button(...)</code> components, footer of the dialog. Defaults to a single Close button</dd></dl>
+- `props` (table) - Required props: <dl><dt><code>title <small>string, message</small></code></dt><dd>OS dialog window title, either a string or a localization message</dd></dl>  Optional props: <dl><dt><code>header <small>component</small></code></dt><dd>top part of the dialog, defaults to <code>editor.ui.heading({text = props.title})</code></dd><dt><code>content <small>component</small></code></dt><dd>content of the dialog</dd><dt><code>width <small>number</small></code></dt><dd>initial width of the dialog window in pixels</dd><dt><code>height <small>number</small></code></dt><dd>initial height of the dialog window in pixels</dd><dt><code>resizable <small>boolean</small></code></dt><dd>determines if the dialog window can be resized by the user</dd><dt><code>buttons <small>component[]</small></code></dt><dd>array of <code>editor.ui.dialog_button(...)</code> components, footer of the dialog. Defaults to a single Close button</dd><dt><code>modal <small>boolean</small></code></dt><dd>if set to <code>false</code>, the dialog window stays on top but does not block interaction with the editor</dd></dl>
 
 **Returns**
 
@@ -44204,7 +44358,7 @@ Thin line for visual content separation, by default horizontal and aligned to ce
 
 ### editor.ui.show_dialog
 *Type:* FUNCTION
-Show a modal dialog and await a result
+Show a dialog and await a result
 
 **Parameters**
 
@@ -44273,6 +44427,30 @@ String input component based on a text field, reports changes on commit (Enter o
 **Parameters**
 
 - `props` (table) - Optional props: <dl><dt><code>value <small>any</small></code></dt><dd>value</dd><dt><code>on_value_changed <small>function</small></code></dt><dd>value change callback, will receive the new value</dd><dt><code>issue <small>table</small></code></dt><dd>issue related to the input; table with the following keys (all required):<dl><dt><code>severity <small>string</small></code></dt><dd>either <code>editor.ui.ISSUE_SEVERITY.WARNING</code> or <code>editor.ui.ISSUE_SEVERITY.ERROR</code></dd><dt><code>message <small>string, message</small></code></dt><dd>issue message that will be shown in a tooltip; either a string or a localization message</dd></dl></dd><dt><code>tooltip <small>string, message</small></code></dt><dd>tooltip message shown on hover; either a string or a localization message</dd><dt><code>enabled <small>boolean</small></code></dt><dd>determines if the input component can be interacted with</dd><dt><code>alignment <small>string</small></code></dt><dd>alignment of the component content within its assigned bounds, defaults to <code>editor.ui.ALIGNMENT.TOP_LEFT</code>; either: <ul><li><code>editor.ui.ALIGNMENT.TOP_LEFT</code></li><li><code>editor.ui.ALIGNMENT.TOP</code></li><li><code>editor.ui.ALIGNMENT.TOP_RIGHT</code></li><li><code>editor.ui.ALIGNMENT.LEFT</code></li><li><code>editor.ui.ALIGNMENT.CENTER</code></li><li><code>editor.ui.ALIGNMENT.RIGHT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_LEFT</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM</code></li><li><code>editor.ui.ALIGNMENT.BOTTOM_RIGHT</code></li></ul></dd><dt><code>grow <small>boolean</small></code></dt><dd>determines if the component should grow to fill available space in a <code>horizontal</code> or <code>vertical</code> layout container</dd><dt><code>row_span <small>integer</small></code></dt><dd>how many rows the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd><dt><code>column_span <small>integer</small></code></dt><dd>how many columns the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd></dl>
+
+**Returns**
+
+- `value` (component) - UI component
+
+### editor.ui.tab
+*Type:* FUNCTION
+Tab used in the tabs prop of editor.ui.tabs(...)
+
+**Parameters**
+
+- `props` (table) - Required props: <dl><dt><code>text <small>string, message</small></code></dt><dd>tab header text, either a string or a localization message</dd></dl>  Optional props: <dl><dt><code>content <small>component</small></code></dt><dd>tab content component</dd><dt><code>icon <small>component</small></code></dt><dd>tab header icon component</dd><dt><code>enabled <small>boolean</small></code></dt><dd>determines if the tab can be selected</dd></dl>
+
+**Returns**
+
+- `value` (component) - UI component
+
+### editor.ui.tabs
+*Type:* FUNCTION
+Layout container that shows one selected tab content at a time
+
+**Parameters**
+
+- `props` (table) - Optional props: <dl><dt><code>tabs <small>component[]</small></code></dt><dd>array of <code>editor.ui.tab(...)</code> components</dd><dt><code>grow <small>boolean</small></code></dt><dd>determines if the component should grow to fill available space in a <code>horizontal</code> or <code>vertical</code> layout container</dd><dt><code>row_span <small>integer</small></code></dt><dd>how many rows the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd><dt><code>column_span <small>integer</small></code></dt><dd>how many columns the component spans inside a grid container, must be positive. This prop is only useful for components inside a <code>grid</code> container.</dd></dl>
 
 **Returns**
 
@@ -44387,11 +44565,11 @@ Perform an HTTP request
 **Parameters**
 
 - `url` (string) - request URL
-- `opts` (table) (optional) - Additional request options, a table with the following keys:<dl><dt><code>method <small>string</small></code></dt><dd>request method, defaults to <code>"GET"</code></dd><dt><code>headers <small>table</small></code></dt><dd>request headers, a table with string keys and values</dd><dt><code>body <small>string</small></code></dt><dd>request body</dd><dt><code>as <small>string</small></code></dt><dd>response body converter, either <code>"string"</code> or <code>"json"</code></dd></dl>
+- `opts` (table) (optional) - Additional request options, a table with the following keys:<dl><dt><code>method <small>string</small></code></dt><dd>request method, defaults to <code>"GET"</code></dd><dt><code>headers <small>table</small></code></dt><dd>request headers, a table with string keys and values</dd><dt><code>body <small>string</small></code></dt><dd>request body</dd><dt><code>as <small>string</small></code></dt><dd>response body converter, either <code>"string"</code> or <code>"json"</code>; mutually exclusive with <code>path</code></dd><dt><code>path <small>string</small></code></dt><dd>destination file path, resolved against project root if relative; mutually exclusive with <code>as</code></dd></dl>
 
 **Returns**
 
-- `response` (table) - HTTP response, a table with the following keys:<dl><dt><code>status <small>integer</small></code></dt><dd>response code</dd><dt><code>headers <small>table</small></code></dt><dd>response headers, a table where each key is a lower-cased string, and each value is either a string or an array of strings if the header was repeated</dd><dt><code>body <small>string, any, nil</small></code></dt><dd>response body, present only when <code>as</code> option was provided, either a string or a parsed json value</dd></dl>
+- `response` (table) - HTTP response, a table with the following keys:<dl><dt><code>status <small>integer</small></code></dt><dd>response code</dd><dt><code>headers <small>table</small></code></dt><dd>response headers, a table where each key is a lower-cased string, and each value is either a string or an array of strings if the header was repeated</dd><dt><code>body <small>string, any, nil</small></code></dt><dd>response body, present only when <code>as</code> option was provided, either a string or a parsed json value</dd><dt><code>path <small>string, nil</small></code></dt><dd>resolved absolute destination path, present only after a successful response was written when the <code>path</code> option was provided</dd></dl>
 
 ### http.server.external_file_response
 *Type:* FUNCTION
@@ -44519,6 +44697,73 @@ http.server.route(
 ### http.server.url
 *Type:* VARIABLE
 Editor's HTTP server url
+
+### image.load_file
+*Type:* FUNCTION
+Load an image file for reading
+
+**Parameters**
+
+- `path` (string) - External file path, resolved against project root if relative
+
+**Returns**
+
+- `image` (image) - image userdata
+
+### image.pixel
+*Type:* FUNCTION
+Return the color of a pixel from a loaded image.
+Coordinates are 1-based, with 1, 1 at the top-left corner.
+
+**Parameters**
+
+- `image` (image) - image userdata returned by <code>image.load_file()</code>
+- `x` (integer) - 1-based horizontal pixel coordinate
+- `y` (integer) - 1-based vertical pixel coordinate
+
+**Returns**
+
+- `r` (integer) - red channel, 0-255
+- `g` (integer) - green channel, 0-255
+- `b` (integer) - blue channel, 0-255
+- `a` (integer) - alpha channel, 0-255
+
+### image.pixels
+*Type:* FUNCTION
+Iterate over pixels in a loaded image.
+The iterator returns pixels row by row from top-left to bottom-right. Coordinates are 1-based.
+
+**Parameters**
+
+- `image` (image) - image userdata returned by <code>image.load_file()</code>
+
+**Returns**
+
+- `iterator` (function) - iterator function returning <code>x, y, r, g, b, a</code> for each pixel
+
+**Examples**
+
+```
+local img = image.load_file("assets/source.png")
+local width, height = image.size(img)
+for x, y, r, g, b, a in image.pixels(img) do
+  print(x, y, r, g, b, a)
+end
+
+```
+
+### image.size
+*Type:* FUNCTION
+Return the width and height of a loaded image.
+
+**Parameters**
+
+- `image` (image) - image userdata returned by <code>image.load_file()</code>
+
+**Returns**
+
+- `width` (integer) - image width in pixels
+- `height` (integer) - image height in pixels
 
 ### json.decode
 *Type:* FUNCTION
@@ -48997,16 +49242,37 @@ Safe area mode that applies insets only on the short edges.
 
 ### gui.screen_to_local
 *Type:* FUNCTION
-Convert the screen position to the local position of supplied node
+Converts a screen-space position to the local position value for the supplied node.
+The conversion takes the parent transform, anchors, adjust mode, and adjust reference into account.
 
 **Parameters**
 
-- `node` (node) - node used for getting local transformation matrix
-- `screen_position` (vector3) - screen position
+- `node` (node) - node whose local position space should be used
+- `screen_position` (vector3) - screen-space position
 
 **Returns**
 
-- `local_position` (vector3) - local position
+- `local_position` (vector3) - local position value for the node
+
+**Examples**
+
+Animate a node to the pressed pointer position:
+```
+function init(self)
+    msg.post(".", "acquire_input_focus")
+    self.marker = gui.get_node("marker")
+end
+
+function on_input(self, action_id, action)
+    if action_id == hash("touch") and action.pressed then
+        local screen_position = vmath.vector3(action.screen_x, action.screen_y, 0)
+        local target_position = gui.screen_to_local(self.marker, screen_position)
+        gui.animate(self.marker, gui.PROP_POSITION, target_position, gui.EASING_OUTQUAD, 0.2)
+        return true
+    end
+end
+
+```
 
 ### gui.set
 *Type:* FUNCTION
@@ -49044,7 +49310,7 @@ If the material has a constant array called 'tint_array' specified in the materi
 
 - `node` (node | url) - node to set the property for, or msg.url() to the gui itself
 - `property` (string | hash | constant) - the property to set
-- `value` (number | vector4 | vector3 | quaternion) - the property to set
+- `value` (number | vector4 | vector3 | quaternion | nil) - the property to set. <code>nil</code> is only supported for removing runtime texture mappings with <code>gui.set(msg.url(), "textures", nil, {key = ...})</code>.
 - `options` (table) (optional) - optional options table (only applicable for material constants)
 - <code>index</code> <span class="type">number</span> index into array property (1 based)
 - <code>key</code> <span class="type">hash</span> name of internal property
@@ -49103,6 +49369,18 @@ function on_message(self, message_id, message, sender)
        gui.play_flipbook(gui.get_node("box"), "logo_256")
    end
 end
+
+```
+
+Remove a named runtime texture resource mapping:
+```
+local atlas_id = resource.create_atlas("/runtime.texturesetc", atlas_params)
+gui.set(msg.url(), "textures", atlas_id, {key = "runtime_texture"})
+gui.set_texture(gui.get_node("box"), "runtime_texture")
+
+-- Later, remove the GUI mapping before releasing the atlas resource.
+gui.set(msg.url(), "textures", nil, {key = "runtime_texture"})
+resource.release(atlas_id)
 
 ```
 
@@ -51452,6 +51730,7 @@ that are used in the vertex shader of the material.
 <li><code>graphics.SEMANTIC_TYPE_BONE_WEIGHTS</code></li>
 <li><code>graphics.SEMANTIC_TYPE_BONE_INDICES</code></li>
 <li><code>graphics.SEMANTIC_TYPE_TEXTURE_TRANSFORM_2D</code></li>
+<li><code>graphics.SEMANTIC_TYPE_MORPH_TARGET_WEIGHTS</code></li>
 </ul>
 
 **Examples**
@@ -51666,6 +51945,7 @@ Sets vertex attributes in a material, if the vertex attributes exist.
 <li><code>graphics.SEMANTIC_TYPE_BONE_WEIGHTS</code></li>
 <li><code>graphics.SEMANTIC_TYPE_BONE_INDICES</code></li>
 <li><code>graphics.SEMANTIC_TYPE_TEXTURE_TRANSFORM_2D</code></li>
+<li><code>graphics.SEMANTIC_TYPE_MORPH_TARGET_WEIGHTS</code></li>
 </ul>
 
 **Examples**

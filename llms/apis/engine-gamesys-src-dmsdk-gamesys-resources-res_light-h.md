@@ -14,7 +14,7 @@ Helper types and accessors for the light resource type (`.lightc`).
 ### GetLightPrototype
 *Type:* FUNCTION
 Returns the dmRender::HLightPrototype handle created from the .lightc data.
-The pointer remains valid until the resource is released.
+The handle remains valid until the resource is released.
 
 **Parameters**
 
@@ -22,7 +22,7 @@ The pointer remains valid until the resource is released.
 
 **Returns**
 
-- `prototype` (dmRender::HLightPrototype*) - Prototype pointer
+- `prototype` (dmRender::HLightPrototype) - Prototype handle
 
 ### LightResource
 *Type:* STRUCT

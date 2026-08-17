@@ -67,6 +67,33 @@ end
 
 ```
 
+### collectionproxy.load
+*Type:* FUNCTION
+Loads the collection referenced by a collection proxy. The proxy is also
+initialized and the callback receives proxy_loading, proxy_ready, or
+proxy_error messages.
+
+**Parameters**
+
+- `url` (string | hash | url) - the collection proxy component
+- `options` (table | nil) - options table, currently unused
+- `callback` (function(self, message_id, message, sender)) - callback
+
+**Examples**
+
+```
+collectionproxy.load("#proxy", nil, function(self, message_id, message, sender)
+    if message_id == hash("proxy_ready") then
+        print("proxy is ready")
+    elseif message_id == hash("proxy_loading") then
+        print("progress", message.progress)
+    elseif message_id == hash("proxy_error") then
+        print("error", message.code)
+    end
+end)
+
+```
+
 ### collectionproxy.RESULT_ALREADY_LOADED
 *Type:* CONSTANT
 It's impossible to change the collection if the collection is already loaded.
