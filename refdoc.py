@@ -23,7 +23,9 @@ _LUA_MANUAL_TYPE_HREFS = {
 }
 _LUA_TYPE_IDENTIFIER_RE = re.compile(
     r"[A-Za-z_][A-Za-z0-9_]*(?:\.[A-Za-z_][A-Za-z0-9_]*)*")
-_LUA_TYPE_SPAN_RE = re.compile(r'<span class="type">([^<]*)</span>')
+_LUA_TYPE_SPAN_RE = re.compile(
+    r'<span class="type">((?:(?!</span>).)*?)</span>',
+    re.DOTALL)
 _LUA_TYPE_DEFINITION_RE = re.compile(
     r'<dt><code>([^<]*)</code></dt>\s*'
     r'<dd>\s*<span class="type">((?:(?!</span>).)*?)</span>(\]*)\s*'

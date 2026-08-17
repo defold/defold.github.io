@@ -201,6 +201,22 @@ class RefdocFormatTests(unittest.TestCase):
             '<a href="#b2Body">b2Body</a>',
             refdoc.link_lua_type("b2Body", "b2d-lua", targets))
 
+    def test_links_and_escapes_generic_type_spans(self):
+        linked = refdoc._link_lua_type_spans(
+            '<span class="type">table<string, string></span>',
+            "http-lua",
+            {})
+
+        self.assertEqual(
+            '<span class="type">'
+            '<a href="../../../manuals/lua/#variables-and-data-types">'
+            'table</a>&lt;'
+            '<a href="../../../manuals/lua/#variables-and-data-types">'
+            'string</a>, '
+            '<a href="../../../manuals/lua/#variables-and-data-types">'
+            'string</a>&gt;</span>',
+            linked)
+
     def test_formats_structured_table_types_at_top_level_only(self):
         self.assertEqual(
             "function(\n"
