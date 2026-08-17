@@ -12,6 +12,7 @@ import tempfile
 import re
 import subprocess
 import requests
+import refdoc
 import yaml
 
 from llms import LLMS_DIR, generate_llms_manuals, generate_llms_apis, generate_llms_examples, path_to_manuals_anchor
@@ -1571,6 +1572,7 @@ def process_refdoc(download = False):
             files = list_files(os.path.join(tmp_dir, "doc"), ".json", sort = True)
             for file in files:
                 api = read_as_json(os.path.join(tmp_dir, "doc", file))
+                refdoc.format_version(api, file)
                 # ignore empty APIs (such as those moved to extensions)
                 if len(api["elements"]) > 0:
                     namespace = api["info"]["namespace"]
@@ -1628,6 +1630,8 @@ def process_refdoc(download = False):
                     if not namespace_key in namespaces:
                         namespaces[namespace_key] = api
                     else:
+                        refdoc.require_matching_format_versions(
+                            namespaces[namespace_key], api, namespace_key, file)
                         # extend info
                         info = namespaces[namespace_key]["info"]
                         if not info["namespace"]: info["namespace"] = api["info"]["namespace"]
@@ -1642,6 +1646,7 @@ def process_refdoc(download = False):
 
             # do per namespace processing and generate index and dummy file per namespace
             md = create_markdown()
+            lua_type_targets = refdoc.lua_type_targets(namespaces)
             for namespace_key in namespaces:
                 api = namespaces[namespace_key]
 
@@ -1649,6 +1654,9 @@ def process_refdoc(download = False):
                 api["info"]["description_html"] = md.convert(api["info"]["description"])
 
                 api["elements"].sort(key=lambda x: x.get("name").lower())
+                if api["info"]["api_language"] == "Lua":
+                    refdoc.prepare_lua_v2(
+                        api, namespace_key, lua_type_targets)
 
                 json_out_name = namespace_key
                 json_out_file = json_out_name + ".json"

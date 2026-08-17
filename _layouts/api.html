@@ -204,7 +204,11 @@ layout: base
 			{%- elsif ref_api_language == "C++" -%}
 				{%- include api_c.html ref=ref -%}
 			{%- elsif ref_api_language == "Lua" -%}
-				{%- include api_lua.html ref=ref -%}
+				{%- if ref.format_version == 2 -%}
+					{%- include api_lua_v2.html ref=ref -%}
+				{%- else -%}
+					{%- include api_lua.html ref=ref -%}
+				{%- endif -%}
 			{%- else -%}
 				{%- include api_c.html ref=ref -%}
 			{%- endif -%}
