@@ -288,6 +288,23 @@ html.theme-dark .apicontent div.dropdownmenu img {
 		white-space: normal;
 		overflow-wrap: anywhere;
 	}
+
+	/* Native indexes show complete C/C++ signatures, unlike the short Lua names. */
+	.apicontent table.api-native-summary {
+		table-layout: fixed;
+	}
+
+	.apicontent table.api-native-summary > tbody > tr > th:first-child,
+	.apicontent table.api-native-summary > tbody > tr > td:first-child {
+		width: 65%;
+		white-space: normal;
+		overflow-wrap: anywhere;
+	}
+
+	.apicontent table.api-native-summary > tbody > tr > th:last-child,
+	.apicontent table.api-native-summary > tbody > tr > td:last-child {
+		width: 35%;
+	}
 }
 
 /* Let medium-width API tables scroll while keeping names and descriptions readable. */
