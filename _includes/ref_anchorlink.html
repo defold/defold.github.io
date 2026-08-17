@@ -1,22 +1,22 @@
-{%- assign element=include.element -%}
+{%- assign element = include.element -%}
 {%- if element.type == "FUNCTION" -%}
-{{ element.name }}:{% for param in element.parameters %}{{ param.name }}{% if forloop.last != true %}-{% endif %}{% endfor %}
+{{- element.name -}}:{%- for param in element.parameters -%}{{- param.name -}}{%- unless forloop.last -%}-{%- endunless -%}{%- endfor -%}
 {%- elsif element.type == "VARIABLE" -%}
-{{ element.name }}
+{{- element.name -}}
 {%- elsif element.type == "CONSTANT" -%}
-{{ element.name }}
+{{- element.name -}}
 {%- elsif element.type == "MESSAGE" -%}
-{{ element.name }}
+{{- element.name -}}
 {%- elsif element.type == "PROPERTY" -%}
-{{ element.name }}
+{{- element.name -}}
 {%- elsif element.type == "MACRO" -%}
-{{ element.name }}
+{{- element.name -}}
 {%- elsif element.type == "ENUM" -%}
-{{ element.name }}
+{{- element.name -}}
 {%- elsif element.type == "STRUCT" -%}
-{{ element.name }}
+{{- element.name -}}
 {%- elsif element.type == "CLASS" -%}
-{{ element.name }}
+{{- element.name -}}
 {%- elsif element.type == "TYPEDEF" -%}
-{{ element.name }}
+{{- element.name -}}
 {%- endif -%}

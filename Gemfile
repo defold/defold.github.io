@@ -2,17 +2,18 @@
 
 source "https://rubygems.org"
 
-git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
-
-gem "bundler"
-gem "webrick"
-gem "jekyll"
-gem "liquid-c"
-gem "csv"
+gem "jekyll", "~> 4.4.1"
+# Jekyll 4 uses Liquid 4, while liquid-c 4.1 and newer require Liquid 5.
+gem "liquid-c", "~> 4.0.1"
 gem "logger"
+
 group :jekyll_plugins do
-  gem 'github-pages'
-  # GitHub Pages forces safe mode and disables repository-local _plugins.
-  # Loading this path gem through Bundler keeps the build-time generator active.
-  gem 'defold-author-profiles', path: '_plugins/defold-author-profiles'
+  gem "defold-author-profiles", path: "_plugins/defold-author-profiles"
+  gem "jekyll-default-layout"
+  gem "jekyll-optional-front-matter"
+  gem "jekyll-titles-from-headings"
+end
+
+group :test do
+  gem "minitest", "~> 6.0"
 end
