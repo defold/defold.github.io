@@ -76,6 +76,14 @@ def lua_type_targets(namespaces):
             candidates = targets.setdefault(name, [])
             if target not in candidates:
                 candidates.append(target)
+            if element.get("type") == "MESSAGE":
+                namespace = api.get("info", {}).get("namespace")
+                if namespace:
+                    message_type = "message.%s.%s" % (
+                        namespace, name.rsplit(".", 1)[-1])
+                    message_candidates = targets.setdefault(message_type, [])
+                    if target not in message_candidates:
+                        message_candidates.append(target)
     return targets
 
 

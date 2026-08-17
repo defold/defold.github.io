@@ -17,6 +17,18 @@
 	text-decoration: none;
 }
 
+.manual,
+.tutorial {
+	--learnnav-sticky-offset: 53px;
+}
+
+.manual [id],
+.manual a[name],
+.tutorial [id],
+.tutorial a[name] {
+	scroll-margin-top: calc(var(--topnav-sticky-offset) + var(--learnnav-sticky-offset) + 1rem);
+}
+
 .section.learn-detail-shell.has-left-nav {
 	padding-top: clamp(1.2rem, 2.2vw, 1.8rem);
 	padding-bottom: clamp(1.2rem, 2.2vw, 1.8rem);

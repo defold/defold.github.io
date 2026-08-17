@@ -214,6 +214,11 @@ html.theme-dark .apicontent div.dropdownmenu img {
 * Version 2 Lua reference additions
 ******************************************************************************/
 
+.apicontent [id],
+.apicontent a[name] {
+	scroll-margin-top: calc(var(--topnav-sticky-offset) + 1rem);
+}
+
 .api-lua-v2-signature,
 .apicontent .api-lua-v2-fields td:nth-child(2) code {
 	white-space: normal;
@@ -227,7 +232,7 @@ html.theme-dark .apicontent div.dropdownmenu img {
 
 .apicontent .api-lua-v2-fields td:nth-child(2) {
 	width: auto;
-	min-width: 14rem;
+	min-width: 18rem;
 	white-space: normal;
 }
 
@@ -248,6 +253,16 @@ html.theme-dark .apicontent div.dropdownmenu img {
 .apicontent .api-lua-v2-fields td > dl dt.api-lua-v2-type-definition + dd {
 	margin-top: 0.15rem;
 	margin-left: 1rem;
+}
+
+.apicontent .api-lua-v2-fields td:last-child > ul {
+	margin-bottom: 0.75rem;
+	padding-left: 1.5rem;
+	list-style-position: outside;
+}
+
+.apicontent .api-lua-v2-fields td:last-child > ul > li {
+	margin-bottom: 0.2rem;
 }
 
 /*******************************************************************************

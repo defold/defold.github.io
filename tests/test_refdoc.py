@@ -122,8 +122,15 @@ class RefdocFormatTests(unittest.TestCase):
             },
             "vmath-lua": {
                 "format_version": 2,
-                "info": {"api_language": "Lua"},
+                "info": {"api_language": "Lua", "namespace": "vmath"},
                 "elements": [{"type": "CLASS", "name": "vector3"}],
+            },
+            "physics-lua": {
+                "format_version": 2,
+                "info": {"api_language": "Lua", "namespace": "physics"},
+                "elements": [
+                    {"type": "MESSAGE", "name": "contact_point_event"},
+                ],
             },
         }
         targets = refdoc.lua_type_targets(namespaces)
@@ -174,6 +181,11 @@ class RefdocFormatTests(unittest.TestCase):
         self.assertEqual(
             '<a href="../vmath-lua/#vector3">vector3</a>[]',
             refdoc.link_lua_type("vector3[]", "go-lua", targets))
+        self.assertEqual(
+            '<a href="../physics-lua/#contact_point_event">'
+            'message.physics.contact_point_event</a>',
+            refdoc.link_lua_type(
+                "message.physics.contact_point_event", "go-lua", targets))
 
     def test_does_not_guess_between_ambiguous_type_targets(self):
         targets = {
