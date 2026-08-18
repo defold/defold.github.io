@@ -32,9 +32,9 @@
         },
         {
             "brief": "gets the text for a label",
-            "description": "Gets the text from a label component",
+            "description": "Gets the text from a label component\n<span class=\"icon-attention\"></span> This function is deprecated. Use <code>go.get(\"#label\", \"text\")</code> instead.",
             "error": "",
-            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"kd\">local</span> <span class=\"n\">text</span> <span class=\"o\">=</span> <span class=\"n\">label</span><span class=\"p\">.</span><span class=\"n\">get_text</span><span class=\"p\">(</span><span class=\"s2\">&quot;#label&quot;</span><span class=\"p\">)</span>\n    <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">text</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"kd\">local</span> <span class=\"n\">text</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">&quot;#label&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;text&quot;</span><span class=\"p\">)</span>\n    <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">text</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
             "language": "",
             "members": [],
             "name": "label.get_text",
@@ -55,7 +55,7 @@
             "returnvalues": [
                 {
                     "doc": "the label text",
-                    "name": "metrics",
+                    "name": "text",
                     "types": [
                         "string"
                     ]
@@ -66,9 +66,9 @@
         },
         {
             "brief": "set the text for a label",
-            "description": "Sets the text of a label component\n<span class=\"icon-attention\"></span> This method uses the message passing that means the value will be set after <code>dispatch messages</code> step.\nMore information is available in the <a href=\"/manuals/application-lifecycle\">Application Lifecycle manual</a>.",
+            "description": "Sets the text of a label component\n<span class=\"icon-attention\"></span> This function is deprecated. Use <code>go.set(\"#label\", \"text\", value)</code> instead.\n<span class=\"icon-attention\"></span> This method uses the message passing that means the value will be set after <code>dispatch messages</code> step.\nMore information is available in the <a href=\"/manuals/application-lifecycle\">Application Lifecycle manual</a>.",
             "error": "",
-            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"n\">label</span><span class=\"p\">.</span><span class=\"n\">set_text</span><span class=\"p\">(</span><span class=\"s2\">&quot;#label&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;Hello World!&quot;</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"s2\">&quot;#label&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;text&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;Hello World!&quot;</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
             "language": "",
             "members": [],
             "name": "label.set_text",
@@ -197,6 +197,21 @@
             "language": "",
             "members": [],
             "name": "size",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "PROPERTY"
+        },
+        {
+            "brief": "<span class=\"type\">string</span> label text",
+            "description": "The text of the label.",
+            "error": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"s2\">&quot;#label&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;text&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;Hello World!&quot;</span><span class=\"p\">)</span>\n    <span class=\"kd\">local</span> <span class=\"n\">text</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">&quot;#label&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;text&quot;</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "text",
             "notes": [],
             "parameters": [],
             "replaces": "",
