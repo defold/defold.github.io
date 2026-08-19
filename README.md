@@ -64,8 +64,7 @@ You need to make sure you have the following dependencies installed before attem
 
 * Ruby
 * bundler gem
-* jekyll
-* github-pages gem
+* Jekyll 4 (installed by Bundler)
 * Pagefind (for search indexing)
 
 ### 1 Install Ruby
@@ -124,7 +123,7 @@ bundle config set --local path 'vendor/bundle'
 bundle install
 ```
 
-**Note:** If you encounter errors related to missing `csv` or `logger` gems (common with Ruby 3.4+), these have been added to the Gemfile and will be installed automatically with `bundle install`.
+**Note:** Jekyll supplies its required `csv` dependency. The `logger` gem is listed explicitly for compatibility with Ruby versions where it is no longer part of the default installation.
 
 ### 3 Install Pagefind
 The site uses Pagefind for search functionality. Install it using:
