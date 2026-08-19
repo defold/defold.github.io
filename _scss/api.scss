@@ -211,6 +211,61 @@ html.theme-dark .apicontent div.dropdownmenu img {
 }
 
 /*******************************************************************************
+* Version 2 Lua reference additions
+******************************************************************************/
+
+.apicontent [id],
+.apicontent a[name] {
+	scroll-margin-top: calc(var(--topnav-sticky-offset) + 1rem);
+}
+
+.api-lua-v2-signature,
+.apicontent .api-lua-v2-fields td:nth-child(2) code {
+	white-space: normal;
+	overflow-wrap: anywhere;
+}
+
+.apicontent .api-lua-v2-fields td:nth-child(2) code.api-lua-v2-table-type {
+	white-space: pre-wrap;
+	tab-size: 2;
+}
+
+.apicontent .api-lua-v2-fields td:nth-child(2) {
+	width: auto;
+	min-width: 18rem;
+	white-space: normal;
+}
+
+.apicontent .api-lua-v2-fields td > dl {
+	display: block;
+}
+
+.apicontent .api-lua-v2-fields td > dl dt,
+.apicontent .api-lua-v2-fields td > dl dd {
+	display: block;
+	margin-left: 0;
+}
+
+.apicontent .api-lua-v2-fields td > dl dt:not(:first-child) {
+	margin-top: 0.5rem;
+}
+
+.apicontent .api-lua-v2-fields td > dl dt.api-lua-v2-type-definition + dd {
+	margin-top: 0.15rem;
+	margin-left: 1rem;
+}
+
+.apicontent .api-lua-v2-fields td:last-child > ul {
+	margin-bottom: 0.75rem;
+	padding-left: 1.5rem;
+	list-style-position: outside;
+}
+
+.apicontent .api-lua-v2-fields td:last-child > ul > li {
+	margin-bottom: 0.2rem;
+}
+
+/*******************************************************************************
 * Ref doc tables
 ******************************************************************************/
 
@@ -232,6 +287,23 @@ html.theme-dark .apicontent div.dropdownmenu img {
 		min-width: 0;
 		white-space: normal;
 		overflow-wrap: anywhere;
+	}
+
+	/* Native indexes show complete C/C++ signatures, unlike the short Lua names. */
+	.apicontent table.api-native-summary {
+		table-layout: fixed;
+	}
+
+	.apicontent table.api-native-summary > tbody > tr > th:first-child,
+	.apicontent table.api-native-summary > tbody > tr > td:first-child {
+		width: 65%;
+		white-space: normal;
+		overflow-wrap: anywhere;
+	}
+
+	.apicontent table.api-native-summary > tbody > tr > th:last-child,
+	.apicontent table.api-native-summary > tbody > tr > td:last-child {
+		width: 35%;
 	}
 }
 
@@ -329,6 +401,10 @@ html.theme-dark .apicontent div.dropdownmenu img {
 		white-space: normal;
 		overflow-wrap: anywhere;
 		word-break: normal;
+	}
+
+	.apicontent .api-lua-v2-fields td:nth-child(2) {
+		min-width: 0;
 	}
 
 	.apicontent table.compact tr:has(> th:first-child:not(:empty)) th:first-child {

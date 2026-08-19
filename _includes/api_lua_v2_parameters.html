@@ -1,0 +1,15 @@
+{%- assign parameters = include.parameters -%}
+
+<table class="api-lua-v2-fields">
+	{%- for parameter in parameters -%}
+	<tr>
+		<td><code>{%- if parameter.is_optional == "True" or parameter.is_optional == true -%}[{{ parameter.name }}]{%- else -%}{{ parameter.name }}{%- endif -%}</code></td>
+		<td>{%- for type_html in parameter.types_table_html -%}<code class="api-lua-v2-table-type">{{ type_html }}</code><br/>{%- endfor -%}</td>
+		<td>{{ parameter.doc }}
+			{%- if parameter.parameters -%}
+				{% include api_lua_v2_parameters.html parameters=parameter.parameters %}
+			{%- endif -%}
+		</td>
+	</tr>
+	{%- endfor -%}
+</table>

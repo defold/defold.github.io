@@ -1,0 +1,15 @@
+{%- assign items = include.items -%}
+{%- if items.size > 0 -%}
+<table class="compact">
+	<tr>
+		<th>{{ include.title }}</th>
+		<th></th>
+	</tr>
+	{%- for item in items -%}
+	<tr>
+		<td><a href="#{% include ref_anchorlink.html element=item %}">{{ item.name }}{%- if item.type == "FUNCTION" -%}(){%- endif -%}</a></td>
+		<td>{{ item.brief }}</td>
+	</tr>
+	{%- endfor -%}
+</table>
+{%- endif -%}
