@@ -133,6 +133,11 @@
                 },
                 {
                     "doc": "",
+                    "name": "dmGameObject::CREATE_RESULT_TOO_MANY_COMPONENTS",
+                    "type": ""
+                },
+                {
+                    "doc": "",
                     "name": "dmGameObject::CREATE_RESULT_UNKNOWN_ERROR",
                     "type": ""
                 }
@@ -960,6 +965,62 @@
                     "name": "out_value",
                     "types": [
                         "dmVMath::Quat*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "if the out-parameter was written",
+                    "name": "PROPERTY_RESULT_OK",
+                    "types": [
+                        ""
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Retrieve a text property from a component",
+            "description": "Retrieve a text property from a component.\nThe returned pointer is borrowed from the component and must not be freed. Its lifetime is controlled by the component.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetPropertyAsText",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Instance of the game object",
+                    "is_optional": "False",
+                    "name": "instance",
+                    "types": [
+                        "HInstance"
+                    ]
+                },
+                {
+                    "doc": "Id of the component",
+                    "is_optional": "False",
+                    "name": "component_id",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                },
+                {
+                    "doc": "Id of the property",
+                    "is_optional": "False",
+                    "name": "property_id",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                },
+                {
+                    "doc": "The retrieved property value",
+                    "is_optional": "False",
+                    "name": "out_value",
+                    "types": [
+                        "const char**"
                     ]
                 }
             ],
@@ -2474,9 +2535,7 @@
                 }
             ],
             "name": "SceneNodePropertyType",
-            "notes": [
-                "Since we don't support text properties, we'll keep a separate enum here for now"
-            ],
+            "notes": [],
             "parameters": [],
             "replaces": "",
             "returnvalues": [],
@@ -2951,6 +3010,62 @@
                     "name": "value",
                     "types": [
                         "dmVMath::Quat"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "if the value could be set",
+                    "name": "PROPERTY_RESULT_OK",
+                    "types": [
+                        ""
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Sets the value of a text property on a component",
+            "description": "Sets the value of a text property on a component.\nThe component must copy the value if it needs to retain it after this function returns.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "SetPropertyFromText",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Instance of the game object",
+                    "is_optional": "False",
+                    "name": "instance",
+                    "types": [
+                        "HInstance"
+                    ]
+                },
+                {
+                    "doc": "Id of the component",
+                    "is_optional": "False",
+                    "name": "component_id",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                },
+                {
+                    "doc": "Id of the property",
+                    "is_optional": "False",
+                    "name": "property_id",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                },
+                {
+                    "doc": "Null-terminated UTF-8 value of the property",
+                    "is_optional": "False",
+                    "name": "value",
+                    "types": [
+                        "const char*"
                     ]
                 }
             ],
