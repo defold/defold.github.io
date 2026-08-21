@@ -16433,7 +16433,7 @@ Available platforms and architectures:
 : iOS 64 bit. By default, `--architectures` argument value is `arm64-ios`.
 
 `armv7-android`
-: Android with available 32 bit `armv7-android` and 64 bit `arm64-android` architectures. By default, `--architectures` argument value is `armv7-android,arm64-android`.
+: Android with available 32 bit `armv7-android`, 64 bit `arm64-android` and 64 bit `x86_64-android` architectures. By default, `--architectures` argument value is `armv7-android,arm64-android`. The `x86_64-android` architecture is opt-in (mainly useful for Android emulators, ChromeOS and Windows Subsystem for Android) and must be added explicitly.
 
 `wasm-web`
 : HTML5 with available `wasm-web` and `wasm_pthread-web` architectures. By default, `--architectures` argument value is `wasm-web`.
@@ -16886,7 +16886,7 @@ It is important that you match the correct engine with the callstack, otherwise 
 It is very important that your save the debug symbols somewhere for each public release you make of your game and that you know which release the debug symbols belong to. You will not be able to debug any native crashes if you do not have the debug symbols! Also, you should keep an `unstripped` version of the engine. This allows for the best symbolication of the callstack.
 
 ### Uploading symbols to Google Play
-You can [upload the debug symbols to Google Play](https://developer.android.com/studio/build/shrink-code#android_gradle_plugin_version_40_or_earlier_and_other_build_systems) so that any crashes logged in Google Play will show symbolicated call stacks. Zip the contents of the `projecttitle.apk.symbols/lib/` bundle output folder. The folder includes one or more sub folders with architecture names such as `arm64-v8a` and `armeabi-v7a`.
+You can [upload the debug symbols to Google Play](https://developer.android.com/studio/build/shrink-code#android_gradle_plugin_version_40_or_earlier_and_other_build_systems) so that any crashes logged in Google Play will show symbolicated call stacks. Zip the contents of the `projecttitle.apk.symbols/lib/` bundle output folder. The folder includes one or more sub folders with architecture names such as `arm64-v8a`, `armeabi-v7a` and `x86_64`.
 
 ### Symbolicate an Android callstack
 
@@ -17341,6 +17341,8 @@ Excluded content can be anything from entire levels to unlockable characters, sk
 
 ## Android specific size optimizations
 Android builds must support both 32-bit and 64-bit CPU architectures. When you [bundle for Android](#manuals:android) you can specify which CPU architectures to include:
+
+By default a bundle includes the `armv7-android` and `arm64-android` architectures. A third architecture, `x86_64-android`, is available but not included by default since it is mainly useful for Android emulators, ChromeOS and Windows Subsystem for Android rather than for physical devices. Leave it unchecked to keep the bundle size down unless you specifically need to target one of those environments.
 
 Google Play has support for [multiple APKs](https://developer.android.com/google/play/publishing/multiple-apks) per release of a game, which means that you can reduce the application size by generating two APKs, one per CPU architecture, and uploading both to Google Play.
 
@@ -19231,7 +19233,7 @@ In certain places, the platform architecture is used as a folder name, to know w
 
 The current list is:
 
-    arm64-ios, armv7-ios, x86_64-ios, arm64-android, armv7-android, x86_64-linux, x86_64-osx, x86_64-win32, x86-win32
+    arm64-ios, armv7-ios, x86_64-ios, arm64-android, armv7-android, x86_64-android, x86_64-linux, x86_64-osx, x86_64-win32, x86-win32
 
 So for instance, put platform specific libraries under:
 
@@ -19247,7 +19249,9 @@ In the Defold source, C++ is used very sparingly and most code is very C-like. T
 
 ### C++ version
 
-The Defold source is built with the default C++ version of each compiler. The Defold source itself uses no C++ version higher than C++98. While it is possible to use a higher version to build an extension, a higher version might come with ABI changes. This might make it impossible to use one extension in conjunction with an extensions in the engine or from the [asset portal](https://defold.com/assets).
+When building the core engine, we use C++11, but on Windows we use C++14. Console builds generally require C++14 or above now.
+
+For native extensions, we don't use a pinned C++ version but rely on the default version of the platform toolchain.
 
 The Defold source avoids using the latest features or versions of C++. Mostly because there is no need for new features when building a game engine, but also because keeping track of the latest features of C++ is a time consuming task, and to really master those features will require a lot of precious time.
 

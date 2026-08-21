@@ -80,7 +80,7 @@ En ciertos lugares, la arquitectura de la plataforma se usa como nombre de carpe
 
 La lista actual es:
 
-    arm64-ios, armv7-ios, x86_64-ios, arm64-android, armv7-android, x86_64-linux, x86_64-osx, x86_64-win32, x86-win32
+    arm64-ios, armv7-ios, x86_64-ios, arm64-android, armv7-android, x86_64-android, x86_64-linux, x86_64-osx, x86_64-win32, x86-win32
 
 Por ejemplo, coloca las bibliotecas específicas de plataforma en:
 
@@ -97,7 +97,9 @@ En el código fuente de Defold, C++ se usa con mucha moderación y la mayor part
 
 ### Versión de C++
 
-El código fuente de Defold se compila con la versión de C++ predeterminada de cada compilador. El propio código fuente de Defold no usa ninguna versión de C++ superior a C++98. Aunque es posible usar una versión superior para compilar una extensión, una versión superior podría traer cambios de ABI. Esto podría hacer imposible usar una extensión junto con extensiones del motor o del [Asset Portal](/assets).
+Al compilar el motor principal, usamos C++11, pero en Windows usamos C++14. Las compilaciones para consolas generalmente requieren C++14 o superior actualmente.
+
+Para las extensiones nativas, no usamos una versión de C++ fija, sino que dependemos de la versión predeterminada de la cadena de herramientas de la plataforma.
 
 El código fuente de Defold evita usar las últimas funcionalidades o versiones de C++. Principalmente porque no hacen falta funcionalidades nuevas al crear un motor de videojuegos, pero también porque seguir las últimas funcionalidades de C++ lleva mucho tiempo, y dominar realmente esas funcionalidades requerirá mucho tiempo valioso.
 
