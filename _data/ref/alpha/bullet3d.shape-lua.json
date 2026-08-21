@@ -1,0 +1,475 @@
+{
+    "elements": [
+        {
+            "brief": "Bullet collision shape",
+            "description": "Shape handles identify logical child slots and resolve the current native\nshape on every call.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "btCollisionShape",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "value",
+                    "types": [
+                        "userdata"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "Get one attached shape by one-based index.",
+            "description": "Get one attached shape by one-based index.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.collision_object.get_shape",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "collision object",
+                    "is_optional": "False",
+                    "name": "object",
+                    "types": [
+                        "btCollisionObject"
+                    ]
+                },
+                {
+                    "doc": "one-based shape index",
+                    "is_optional": "False",
+                    "name": "shape_index",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "borrowed logical shape handle",
+                    "name": "shape",
+                    "types": [
+                        "btCollisionShape"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get the number of shapes attached to a collision object.",
+            "description": "Get the number of shapes attached to a collision object.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.collision_object.get_shape_count",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "collision object",
+                    "is_optional": "False",
+                    "name": "object",
+                    "types": [
+                        "btCollisionObject"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "shape count",
+                    "name": "count",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get all attached shapes.",
+            "description": "Get all attached shapes.",
+            "error": "",
+            "examples": "Enumerate the logical shapes attached to a collision object:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"kd\">local</span> <span class=\"n\">object</span> <span class=\"o\">=</span> <span class=\"n\">bullet3d</span><span class=\"p\">.</span><span class=\"n\">get_collision_object</span><span class=\"p\">(</span><span class=\"s2\">&quot;#collisionobject&quot;</span><span class=\"p\">)</span>\n    <span class=\"kr\">for</span> <span class=\"n\">_</span><span class=\"p\">,</span> <span class=\"n\">shape</span> <span class=\"kr\">in</span> <span class=\"nb\">ipairs</span><span class=\"p\">(</span><span class=\"n\">bullet3d</span><span class=\"p\">.</span><span class=\"n\">collision_object</span><span class=\"p\">.</span><span class=\"n\">get_shapes</span><span class=\"p\">(</span><span class=\"n\">object</span><span class=\"p\">))</span> <span class=\"kr\">do</span>\n        <span class=\"kd\">local</span> <span class=\"n\">index</span> <span class=\"o\">=</span> <span class=\"n\">bullet3d</span><span class=\"p\">.</span><span class=\"n\">shape</span><span class=\"p\">.</span><span class=\"n\">get_index</span><span class=\"p\">(</span><span class=\"n\">shape</span><span class=\"p\">)</span>\n        <span class=\"kd\">local</span> <span class=\"n\">data</span> <span class=\"o\">=</span> <span class=\"n\">bullet3d</span><span class=\"p\">.</span><span class=\"n\">shape</span><span class=\"p\">.</span><span class=\"n\">get_shape</span><span class=\"p\">(</span><span class=\"n\">shape</span><span class=\"p\">)</span>\n        <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;shape&quot;</span><span class=\"p\">,</span> <span class=\"n\">index</span><span class=\"p\">,</span> <span class=\"s2\">&quot;type&quot;</span><span class=\"p\">,</span> <span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">type</span><span class=\"p\">)</span>\n    <span class=\"kr\">end</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.collision_object.get_shapes",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "collision object",
+                    "is_optional": "False",
+                    "name": "object",
+                    "types": [
+                        "btCollisionObject"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "array of borrowed shape handles",
+                    "name": "shapes",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get the owning collision object.",
+            "description": "Get the owning collision object.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.shape.get_collision_object",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "shape handle",
+                    "is_optional": "False",
+                    "name": "shape",
+                    "types": [
+                        "btCollisionShape"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "owning collision object",
+                    "name": "object",
+                    "types": [
+                        "btCollisionObject"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get the one-based child index.",
+            "description": "Get the one-based child index.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.shape.get_index",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "shape handle",
+                    "is_optional": "False",
+                    "name": "shape",
+                    "types": [
+                        "btCollisionShape"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "one-based shape index",
+                    "name": "shape_index",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get a compound child's local transform.",
+            "description": "Get a compound child's local transform.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.shape.get_local_transform",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "shape handle",
+                    "is_optional": "False",
+                    "name": "shape",
+                    "types": [
+                        "btCollisionShape"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "local position",
+                    "name": "position",
+                    "types": [
+                        "vector3"
+                    ]
+                },
+                {
+                    "doc": "local rotation",
+                    "name": "rotation",
+                    "types": [
+                        "quaternion"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get shape geometry data.",
+            "description": "The returned table always contains <code>type</code>, one of <code>bullet3d.shape.SHAPE_TYPE_*</code>.\nA sphere also contains numeric <code>diameter</code>; a box contains vector3\n<code>dimensions</code>; a capsule contains numeric <code>diameter</code> and cylindrical-section\n<code>height</code>; and a hull contains a <code>vertices</code> array of vector3 values. The table\nuses Defold units and can be passed to a <code>bullet3d.world</code> shape query after\nadding the desired <code>position</code> and optional <code>rotation</code> fields.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.shape.get_shape",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "shape handle",
+                    "is_optional": "False",
+                    "name": "shape",
+                    "types": [
+                        "btCollisionShape"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "typed shape geometry in Defold units",
+                    "name": "data",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get the normalized Defold shape type.",
+            "description": "Get the normalized Defold shape type.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.shape.get_type",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "shape handle",
+                    "is_optional": "False",
+                    "name": "shape",
+                    "types": [
+                        "btCollisionShape"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "one of <code>bullet3d.shape.SHAPE_TYPE_*</code>",
+                    "name": "type",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Test whether a shape handle and its owner still exist.",
+            "description": "Test whether a shape handle and its owner still exist.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.shape.is_valid",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "shape handle",
+                    "is_optional": "False",
+                    "name": "shape",
+                    "types": [
+                        "btCollisionShape"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "validity",
+                    "name": "valid",
+                    "types": [
+                        "boolean"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Set a compound child's local transform.",
+            "description": "Set a compound child's local transform.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.shape.set_local_transform",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "shape handle",
+                    "is_optional": "False",
+                    "name": "shape",
+                    "types": [
+                        "btCollisionShape"
+                    ]
+                },
+                {
+                    "doc": "finite local position",
+                    "is_optional": "False",
+                    "name": "position",
+                    "types": [
+                        "vector3"
+                    ]
+                },
+                {
+                    "doc": "finite non-zero local rotation",
+                    "is_optional": "False",
+                    "name": "rotation",
+                    "types": [
+                        "quaternion"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Set shape geometry data.",
+            "description": "The table uses the same format as <code>get_shape</code>. Its <code>type</code> must match the\nexisting shape because changing native shape type is not supported. Primitive\ndimensions must be finite and greater than zero. Hulls require at least four\nfinite vertices.",
+            "error": "",
+            "examples": "Increase the dimensions of the first box shape by 50 percent for this instance:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"kd\">local</span> <span class=\"n\">object</span> <span class=\"o\">=</span> <span class=\"n\">bullet3d</span><span class=\"p\">.</span><span class=\"n\">get_collision_object</span><span class=\"p\">(</span><span class=\"s2\">&quot;#collisionobject&quot;</span><span class=\"p\">)</span>\n    <span class=\"kd\">local</span> <span class=\"n\">shape</span> <span class=\"o\">=</span> <span class=\"n\">bullet3d</span><span class=\"p\">.</span><span class=\"n\">collision_object</span><span class=\"p\">.</span><span class=\"n\">get_shape</span><span class=\"p\">(</span><span class=\"n\">object</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">)</span>\n    <span class=\"kd\">local</span> <span class=\"n\">data</span> <span class=\"o\">=</span> <span class=\"n\">bullet3d</span><span class=\"p\">.</span><span class=\"n\">shape</span><span class=\"p\">.</span><span class=\"n\">get_shape</span><span class=\"p\">(</span><span class=\"n\">shape</span><span class=\"p\">)</span>\n\n    <span class=\"kr\">if</span> <span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">type</span> <span class=\"o\">==</span> <span class=\"n\">bullet3d</span><span class=\"p\">.</span><span class=\"n\">shape</span><span class=\"p\">.</span><span class=\"n\">SHAPE_TYPE_BOX</span> <span class=\"kr\">then</span>\n        <span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">dimensions</span> <span class=\"o\">=</span> <span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">dimensions</span> <span class=\"o\">*</span> <span class=\"mf\">1.5</span>\n        <span class=\"n\">bullet3d</span><span class=\"p\">.</span><span class=\"n\">shape</span><span class=\"p\">.</span><span class=\"n\">set_shape</span><span class=\"p\">(</span><span class=\"n\">shape</span><span class=\"p\">,</span> <span class=\"n\">data</span><span class=\"p\">)</span>\n    <span class=\"kr\">end</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.shape.set_shape",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "shape handle",
+                    "is_optional": "False",
+                    "name": "shape",
+                    "types": [
+                        "btCollisionShape"
+                    ]
+                },
+                {
+                    "doc": "typed shape geometry in Defold units",
+                    "is_optional": "False",
+                    "name": "data",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Box shape type",
+            "description": "Value <code>1</code>. Shape data contains positive vector3 <code>dimensions</code> in Defold units.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.shape.SHAPE_TYPE_BOX",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "CONSTANT"
+        },
+        {
+            "brief": "Capsule shape type",
+            "description": "Value <code>2</code>. Shape data contains a positive numeric <code>diameter</code> and positive\nnumeric cylindrical-section <code>height</code> in Defold units.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.shape.SHAPE_TYPE_CAPSULE",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "CONSTANT"
+        },
+        {
+            "brief": "Convex hull shape type",
+            "description": "Value <code>3</code>. Shape data contains a <code>vertices</code> array with at least four finite\nvector3 values in Defold units.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.shape.SHAPE_TYPE_HULL",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "CONSTANT"
+        },
+        {
+            "brief": "Sphere shape type",
+            "description": "Value <code>0</code>. Shape data contains a positive numeric <code>diameter</code> in Defold units.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.shape.SHAPE_TYPE_SPHERE",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "CONSTANT"
+        }
+    ],
+    "info": {
+        "api_language": "Lua",
+        "brief": "Bullet collision shape API",
+        "description": "Borrowed shape handles identify a one-based child slot on a Defold-owned\ncollision object. They remain attached to that logical slot when its native\nshape is replaced and become invalid with their owning collision object.\nShape mutation is copy-on-write, so instances sharing a collision resource\nare not modified together. Lengths use Defold world units.",
+        "description_html": "<p>Borrowed shape handles identify a one-based child slot on a Defold-owned\ncollision object. They remain attached to that logical slot when its native\nshape is replaced and become invalid with their owning collision object.\nShape mutation is copy-on-write, so instances sharing a collision resource\nare not modified together. Lengths use Defold world units.</p>",
+        "file": "script_bullet3d_shape.cpp",
+        "name": "bullet3d.shape",
+        "namespace": "bullet3d.shape",
+        "notes": [],
+        "path": "engine/gamesys/src/gamesys/scripts/bullet3d/script_bullet3d_shape.cpp",
+        "type": "Defold Lua"
+    }
+}

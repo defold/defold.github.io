@@ -1,0 +1,2627 @@
+{
+    "elements": [
+        {
+            "brief": "Bullet typed constraint",
+            "description": "Bullet typed constraint",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "btTypedConstraint",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "opaque constraint handle",
+                    "is_optional": "False",
+                    "name": "value",
+                    "types": [
+                        "userdata"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "Cone-twist constraint type",
+            "description": "Cone-twist constraint type",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.constraint.CONSTRAINT_TYPE_CONE_TWIST",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "CONSTANT"
+        },
+        {
+            "brief": "Generic 6-DOF constraint type",
+            "description": "Generic 6-DOF constraint type",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.constraint.CONSTRAINT_TYPE_GENERIC_6DOF",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "CONSTANT"
+        },
+        {
+            "brief": "Generic spring 6-DOF constraint type",
+            "description": "Generic spring 6-DOF constraint type",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.constraint.CONSTRAINT_TYPE_GENERIC_6DOF_SPRING",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "CONSTANT"
+        },
+        {
+            "brief": "Hinge constraint type",
+            "description": "Hinge constraint type",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.constraint.CONSTRAINT_TYPE_HINGE",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "CONSTANT"
+        },
+        {
+            "brief": "Hinge2 constraint type",
+            "description": "Hinge2 constraint type",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.constraint.CONSTRAINT_TYPE_HINGE2",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "CONSTANT"
+        },
+        {
+            "brief": "Point-to-point constraint type",
+            "description": "Point-to-point constraint type",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.constraint.CONSTRAINT_TYPE_POINT_TO_POINT",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "CONSTANT"
+        },
+        {
+            "brief": "Slider constraint type",
+            "description": "Slider constraint type",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.constraint.CONSTRAINT_TYPE_SLIDER",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "CONSTANT"
+        },
+        {
+            "brief": "Universal constraint type",
+            "description": "Universal constraint type",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.constraint.CONSTRAINT_TYPE_UNIVERSAL",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "CONSTANT"
+        },
+        {
+            "brief": "Create a cone-twist constraint",
+            "description": "The params table uses the same local-frame fields as a hinge and optionally\naccepts <code>angular_only</code> and <code>collide_connected</code>. The world is derived from\n<code>body_a</code>.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.constraint.create_cone_twist",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "first body",
+                    "is_optional": "False",
+                    "name": "body_a",
+                    "types": [
+                        "btRigidBody"
+                    ]
+                },
+                {
+                    "doc": "second body or world",
+                    "is_optional": "False",
+                    "name": "body_b",
+                    "types": [
+                        "btRigidBody",
+                        "nil"
+                    ]
+                },
+                {
+                    "doc": "local frames and options",
+                    "is_optional": "False",
+                    "name": "params",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "cone-twist constraint",
+                    "name": "constraint",
+                    "types": [
+                        "btTypedConstraint"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Create a generic six-degree-of-freedom constraint",
+            "description": "The params table requires local frame A and, for a two-body constraint,\nlocal frame B. It optionally accepts\n<code>collide_connected</code>. The world is derived from <code>body_a</code>. Bullet 2.77's active 6-DOF\nsolver ignores its legacy linear-reference-frame selector, so that field is\nrejected rather than silently accepted.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.constraint.create_generic_6dof",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "first body",
+                    "is_optional": "False",
+                    "name": "body_a",
+                    "types": [
+                        "btRigidBody"
+                    ]
+                },
+                {
+                    "doc": "second body or world",
+                    "is_optional": "False",
+                    "name": "body_b",
+                    "types": [
+                        "btRigidBody",
+                        "nil"
+                    ]
+                },
+                {
+                    "doc": "local frames and options",
+                    "is_optional": "False",
+                    "name": "params",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "generic 6-DOF constraint",
+                    "name": "constraint",
+                    "types": [
+                        "btTypedConstraint"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Create a generic spring six-degree-of-freedom constraint",
+            "description": "Both bodies and both local frames are required. The params table optionally\naccepts <code>collide_connected</code>. The world is derived from <code>body_a</code>. Bullet 2.77's active\nspring 6-DOF solver ignores its legacy linear-reference-frame selector, so\nthat field is rejected rather than silently accepted.",
+            "error": "",
+            "examples": "Create a spring that moves along its first linear axis:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"kd\">local</span> <span class=\"n\">body_a</span> <span class=\"o\">=</span> <span class=\"n\">bullet3d</span><span class=\"p\">.</span><span class=\"n\">get_rigid_body</span><span class=\"p\">(</span><span class=\"s2\">&quot;/body_a#collisionobject&quot;</span><span class=\"p\">)</span>\n    <span class=\"kd\">local</span> <span class=\"n\">body_b</span> <span class=\"o\">=</span> <span class=\"n\">bullet3d</span><span class=\"p\">.</span><span class=\"n\">get_rigid_body</span><span class=\"p\">(</span><span class=\"s2\">&quot;/body_b#collisionobject&quot;</span><span class=\"p\">)</span>\n    <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">spring</span> <span class=\"o\">=</span> <span class=\"n\">bullet3d</span><span class=\"p\">.</span><span class=\"n\">constraint</span><span class=\"p\">.</span><span class=\"n\">create_generic_6dof_spring</span><span class=\"p\">(</span><span class=\"n\">body_a</span><span class=\"p\">,</span> <span class=\"n\">body_b</span><span class=\"p\">,</span> <span class=\"p\">{</span>\n        <span class=\"n\">frame_a_position</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(),</span>\n        <span class=\"n\">frame_a_rotation</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">quat</span><span class=\"p\">(),</span>\n        <span class=\"n\">frame_b_position</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(),</span>\n        <span class=\"n\">frame_b_rotation</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">quat</span><span class=\"p\">(),</span>\n    <span class=\"p\">})</span>\n    <span class=\"n\">bullet3d</span><span class=\"p\">.</span><span class=\"n\">constraint</span><span class=\"p\">.</span><span class=\"n\">set_limit</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">spring</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"o\">-</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">)</span>\n    <span class=\"n\">bullet3d</span><span class=\"p\">.</span><span class=\"n\">constraint</span><span class=\"p\">.</span><span class=\"n\">enable_spring</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">spring</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"kc\">true</span><span class=\"p\">)</span>\n    <span class=\"n\">bullet3d</span><span class=\"p\">.</span><span class=\"n\">constraint</span><span class=\"p\">.</span><span class=\"n\">set_spring_stiffness</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">spring</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">20</span><span class=\"p\">)</span>\n    <span class=\"n\">bullet3d</span><span class=\"p\">.</span><span class=\"n\">constraint</span><span class=\"p\">.</span><span class=\"n\">set_spring_damping</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">spring</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mf\">0.5</span><span class=\"p\">)</span>\n    <span class=\"n\">bullet3d</span><span class=\"p\">.</span><span class=\"n\">constraint</span><span class=\"p\">.</span><span class=\"n\">set_spring_equilibrium_point</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">spring</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n\n<span class=\"kr\">function</span> <span class=\"nf\">final</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"kr\">if</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">spring</span> <span class=\"ow\">and</span> <span class=\"n\">bullet3d</span><span class=\"p\">.</span><span class=\"n\">constraint</span><span class=\"p\">.</span><span class=\"n\">is_valid</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">spring</span><span class=\"p\">)</span> <span class=\"kr\">then</span>\n        <span class=\"n\">bullet3d</span><span class=\"p\">.</span><span class=\"n\">constraint</span><span class=\"p\">.</span><span class=\"n\">destroy</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">spring</span><span class=\"p\">)</span>\n    <span class=\"kr\">end</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.constraint.create_generic_6dof_spring",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "first body",
+                    "is_optional": "False",
+                    "name": "body_a",
+                    "types": [
+                        "btRigidBody"
+                    ]
+                },
+                {
+                    "doc": "second body",
+                    "is_optional": "False",
+                    "name": "body_b",
+                    "types": [
+                        "btRigidBody"
+                    ]
+                },
+                {
+                    "doc": "local frames and options",
+                    "is_optional": "False",
+                    "name": "params",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "spring 6-DOF constraint",
+                    "name": "constraint",
+                    "types": [
+                        "btTypedConstraint"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Create a hinge constraint",
+            "description": "The params table requires <code>frame_a_position</code> and <code>frame_a_rotation</code>, plus\nthe corresponding frame B fields for a two-body constraint. It optionally\naccepts <code>use_reference_frame_a</code>, <code>angular_only</code>, and\n<code>collide_connected</code>. The world is derived from <code>body_a</code>.",
+            "error": "",
+            "examples": "Create a motorized hinge with a 90-degree range:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"kd\">local</span> <span class=\"n\">body_a</span> <span class=\"o\">=</span> <span class=\"n\">bullet3d</span><span class=\"p\">.</span><span class=\"n\">get_rigid_body</span><span class=\"p\">(</span><span class=\"s2\">&quot;/door#collisionobject&quot;</span><span class=\"p\">)</span>\n    <span class=\"kd\">local</span> <span class=\"n\">body_b</span> <span class=\"o\">=</span> <span class=\"n\">bullet3d</span><span class=\"p\">.</span><span class=\"n\">get_rigid_body</span><span class=\"p\">(</span><span class=\"s2\">&quot;/frame#collisionobject&quot;</span><span class=\"p\">)</span>\n    <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">hinge</span> <span class=\"o\">=</span> <span class=\"n\">bullet3d</span><span class=\"p\">.</span><span class=\"n\">constraint</span><span class=\"p\">.</span><span class=\"n\">create_hinge</span><span class=\"p\">(</span><span class=\"n\">body_a</span><span class=\"p\">,</span> <span class=\"n\">body_b</span><span class=\"p\">,</span> <span class=\"p\">{</span>\n        <span class=\"n\">frame_a_position</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"o\">-</span><span class=\"mf\">0.5</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">),</span>\n        <span class=\"n\">frame_a_rotation</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">quat</span><span class=\"p\">(),</span>\n        <span class=\"n\">frame_b_position</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mf\">0.5</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">),</span>\n        <span class=\"n\">frame_b_rotation</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">quat</span><span class=\"p\">(),</span>\n    <span class=\"p\">})</span>\n    <span class=\"n\">bullet3d</span><span class=\"p\">.</span><span class=\"n\">constraint</span><span class=\"p\">.</span><span class=\"n\">set_hinge_limits</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">hinge</span><span class=\"p\">,</span> <span class=\"o\">-</span><span class=\"nb\">math.pi</span> <span class=\"o\">/</span> <span class=\"mi\">4</span><span class=\"p\">,</span> <span class=\"nb\">math.pi</span> <span class=\"o\">/</span> <span class=\"mi\">4</span><span class=\"p\">)</span>\n    <span class=\"n\">bullet3d</span><span class=\"p\">.</span><span class=\"n\">constraint</span><span class=\"p\">.</span><span class=\"n\">set_hinge_motor</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">hinge</span><span class=\"p\">,</span> <span class=\"kc\">true</span><span class=\"p\">,</span> <span class=\"mf\">1.5</span><span class=\"p\">,</span> <span class=\"mf\">2.5</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n\n<span class=\"kr\">function</span> <span class=\"nf\">final</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"kr\">if</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">hinge</span> <span class=\"ow\">and</span> <span class=\"n\">bullet3d</span><span class=\"p\">.</span><span class=\"n\">constraint</span><span class=\"p\">.</span><span class=\"n\">is_valid</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">hinge</span><span class=\"p\">)</span> <span class=\"kr\">then</span>\n        <span class=\"n\">bullet3d</span><span class=\"p\">.</span><span class=\"n\">constraint</span><span class=\"p\">.</span><span class=\"n\">destroy</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">hinge</span><span class=\"p\">)</span>\n    <span class=\"kr\">end</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.constraint.create_hinge",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "first body",
+                    "is_optional": "False",
+                    "name": "body_a",
+                    "types": [
+                        "btRigidBody"
+                    ]
+                },
+                {
+                    "doc": "second body or world",
+                    "is_optional": "False",
+                    "name": "body_b",
+                    "types": [
+                        "btRigidBody",
+                        "nil"
+                    ]
+                },
+                {
+                    "doc": "local frames and options",
+                    "is_optional": "False",
+                    "name": "params",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "hinge constraint",
+                    "name": "constraint",
+                    "types": [
+                        "btTypedConstraint"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Create a hinge2 constraint",
+            "description": "Both bodies are required. The params table requires a world-space <code>anchor</code>\nand non-zero, orthogonal <code>axis1</code> and <code>axis2</code> vectors. Its initial linear\nsuspension travel is one Defold unit in either direction. It optionally\naccepts <code>collide_connected</code>. The world is derived from <code>body_a</code>.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.constraint.create_hinge2",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "first body",
+                    "is_optional": "False",
+                    "name": "body_a",
+                    "types": [
+                        "btRigidBody"
+                    ]
+                },
+                {
+                    "doc": "second body",
+                    "is_optional": "False",
+                    "name": "body_b",
+                    "types": [
+                        "btRigidBody"
+                    ]
+                },
+                {
+                    "doc": "anchor, axes, and options",
+                    "is_optional": "False",
+                    "name": "params",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "hinge2 constraint",
+                    "name": "constraint",
+                    "types": [
+                        "btTypedConstraint"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Create a point-to-point constraint",
+            "description": "<code>params.pivot_a</code> is required. <code>params.pivot_b</code> is required with <code>body_b</code>;\nfor a one-body constraint it is an optional world-space anchor. The params\ntable also accepts <code>collide_connected</code>, which defaults to <code>false</code>. The world\nis derived from <code>body_a</code>; both bodies must belong to that same world.",
+            "error": "",
+            "examples": "Join two bodies at matching local pivots and explicitly destroy the\nconstraint when the script is finalized:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"kd\">local</span> <span class=\"n\">body_a</span> <span class=\"o\">=</span> <span class=\"n\">bullet3d</span><span class=\"p\">.</span><span class=\"n\">get_rigid_body</span><span class=\"p\">(</span><span class=\"s2\">&quot;/body_a#collisionobject&quot;</span><span class=\"p\">)</span>\n    <span class=\"kd\">local</span> <span class=\"n\">body_b</span> <span class=\"o\">=</span> <span class=\"n\">bullet3d</span><span class=\"p\">.</span><span class=\"n\">get_rigid_body</span><span class=\"p\">(</span><span class=\"s2\">&quot;/body_b#collisionobject&quot;</span><span class=\"p\">)</span>\n    <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">constraint</span> <span class=\"o\">=</span> <span class=\"n\">bullet3d</span><span class=\"p\">.</span><span class=\"n\">constraint</span><span class=\"p\">.</span><span class=\"n\">create_point_to_point</span><span class=\"p\">(</span><span class=\"n\">body_a</span><span class=\"p\">,</span> <span class=\"n\">body_b</span><span class=\"p\">,</span> <span class=\"p\">{</span>\n        <span class=\"n\">pivot_a</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mf\">0.5</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">),</span>\n        <span class=\"n\">pivot_b</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"o\">-</span><span class=\"mf\">0.5</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">),</span>\n    <span class=\"p\">})</span>\n<span class=\"kr\">end</span>\n\n<span class=\"kr\">function</span> <span class=\"nf\">final</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"kr\">if</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">constraint</span> <span class=\"ow\">and</span> <span class=\"n\">bullet3d</span><span class=\"p\">.</span><span class=\"n\">constraint</span><span class=\"p\">.</span><span class=\"n\">is_valid</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">constraint</span><span class=\"p\">)</span> <span class=\"kr\">then</span>\n        <span class=\"n\">bullet3d</span><span class=\"p\">.</span><span class=\"n\">constraint</span><span class=\"p\">.</span><span class=\"n\">destroy</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">constraint</span><span class=\"p\">)</span>\n    <span class=\"kr\">end</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.constraint.create_point_to_point",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "first body",
+                    "is_optional": "False",
+                    "name": "body_a",
+                    "types": [
+                        "btRigidBody"
+                    ]
+                },
+                {
+                    "doc": "second body or world",
+                    "is_optional": "False",
+                    "name": "body_b",
+                    "types": [
+                        "btRigidBody",
+                        "nil"
+                    ]
+                },
+                {
+                    "doc": "pivots and options",
+                    "is_optional": "False",
+                    "name": "params",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "point-to-point constraint",
+                    "name": "constraint",
+                    "types": [
+                        "btTypedConstraint"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Create a slider constraint",
+            "description": "The params table requires local frame A and, for a two-body constraint,\nlocal frame B. It optionally accepts <code>use_linear_reference_frame_a</code> and\n<code>collide_connected</code>. The world is derived from <code>body_a</code>.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.constraint.create_slider",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "first body",
+                    "is_optional": "False",
+                    "name": "body_a",
+                    "types": [
+                        "btRigidBody"
+                    ]
+                },
+                {
+                    "doc": "second body or world",
+                    "is_optional": "False",
+                    "name": "body_b",
+                    "types": [
+                        "btRigidBody",
+                        "nil"
+                    ]
+                },
+                {
+                    "doc": "local frames and options",
+                    "is_optional": "False",
+                    "name": "params",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "slider constraint",
+                    "name": "constraint",
+                    "types": [
+                        "btTypedConstraint"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Create a universal constraint",
+            "description": "Both bodies are required. The params table requires a world-space <code>anchor</code>\nand non-zero, orthogonal <code>axis1</code> and <code>axis2</code> vectors. It optionally accepts\n<code>collide_connected</code>. The world is derived from <code>body_a</code>.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.constraint.create_universal",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "first body",
+                    "is_optional": "False",
+                    "name": "body_a",
+                    "types": [
+                        "btRigidBody"
+                    ]
+                },
+                {
+                    "doc": "second body",
+                    "is_optional": "False",
+                    "name": "body_b",
+                    "types": [
+                        "btRigidBody"
+                    ]
+                },
+                {
+                    "doc": "anchor, axes, and options",
+                    "is_optional": "False",
+                    "name": "params",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "universal constraint",
+                    "name": "constraint",
+                    "types": [
+                        "btTypedConstraint"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Destroy a constraint",
+            "description": "Destroy a constraint",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.constraint.destroy",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "constraint",
+                    "is_optional": "False",
+                    "name": "constraint",
+                    "types": [
+                        "btTypedConstraint"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Enable or disable the cone-twist motor",
+            "description": "Enable or disable the cone-twist motor",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.constraint.enable_cone_twist_motor",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "cone-twist constraint",
+                    "is_optional": "False",
+                    "name": "constraint",
+                    "types": [
+                        "btTypedConstraint"
+                    ]
+                },
+                {
+                    "doc": "motor state",
+                    "is_optional": "False",
+                    "name": "enabled",
+                    "types": [
+                        "boolean"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Enable or disable a spring axis",
+            "description": "Enable or disable a spring axis",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.constraint.enable_spring",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "spring 6-DOF or hinge2 constraint",
+                    "is_optional": "False",
+                    "name": "constraint",
+                    "types": [
+                        "btTypedConstraint"
+                    ]
+                },
+                {
+                    "doc": "one-based axis from 1 to 6",
+                    "is_optional": "False",
+                    "name": "axis",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "spring state",
+                    "is_optional": "False",
+                    "name": "enabled",
+                    "types": [
+                        "boolean"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get a current 6-DOF angle",
+            "description": "Get a current 6-DOF angle",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.constraint.get_6dof_angle",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "6-DOF-derived constraint",
+                    "is_optional": "False",
+                    "name": "constraint",
+                    "types": [
+                        "btTypedConstraint"
+                    ]
+                },
+                {
+                    "doc": "one-based angular-axis index from 1 to 3",
+                    "is_optional": "False",
+                    "name": "axis",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "current angle in radians",
+                    "name": "angle",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get a current 6-DOF angular axis",
+            "description": "Get a current 6-DOF angular axis",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.constraint.get_6dof_axis",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "6-DOF-derived constraint",
+                    "is_optional": "False",
+                    "name": "constraint",
+                    "types": [
+                        "btTypedConstraint"
+                    ]
+                },
+                {
+                    "doc": "one-based angular-axis index from 1 to 3",
+                    "is_optional": "False",
+                    "name": "axis",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "world-space unit axis",
+                    "name": "direction",
+                    "types": [
+                        "vector3"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get 6-DOF motor settings",
+            "description": "Axes 1-3 are linear and axes 4-6 are angular. Bounce is zero for linear\nmotors because Bullet only implements it for angular motors.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.constraint.get_6dof_motor",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "6-DOF-derived constraint",
+                    "is_optional": "False",
+                    "name": "constraint",
+                    "types": [
+                        "btTypedConstraint"
+                    ]
+                },
+                {
+                    "doc": "one-based axis from 1 to 6",
+                    "is_optional": "False",
+                    "name": "axis",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "motor state",
+                    "name": "enabled",
+                    "types": [
+                        "boolean"
+                    ]
+                },
+                {
+                    "doc": "target velocity",
+                    "name": "target_velocity",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "maximum motor impulse",
+                    "name": "max_impulse",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "angular bounce from 0 to 1",
+                    "name": "bounce",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get a current 6-DOF linear position",
+            "description": "Get a current 6-DOF linear position",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.constraint.get_6dof_position",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "6-DOF-derived constraint",
+                    "is_optional": "False",
+                    "name": "constraint",
+                    "types": [
+                        "btTypedConstraint"
+                    ]
+                },
+                {
+                    "doc": "one-based linear-axis index from 1 to 3",
+                    "is_optional": "False",
+                    "name": "axis",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "relative position in Defold units",
+                    "name": "position",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get universal or hinge2 anchors",
+            "description": "Get universal or hinge2 anchors",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.constraint.get_anchors",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "universal or hinge2 constraint",
+                    "is_optional": "False",
+                    "name": "constraint",
+                    "types": [
+                        "btTypedConstraint"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "world-space anchor on body A",
+                    "name": "anchor_a",
+                    "types": [
+                        "vector3"
+                    ]
+                },
+                {
+                    "doc": "world-space anchor on body B",
+                    "name": "anchor_b",
+                    "types": [
+                        "vector3"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get universal or hinge2 angles",
+            "description": "Get universal or hinge2 angles",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.constraint.get_angles",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "universal or hinge2 constraint",
+                    "is_optional": "False",
+                    "name": "constraint",
+                    "types": [
+                        "btTypedConstraint"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "first angle in radians",
+                    "name": "angle_1",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "second angle in radians",
+                    "name": "angle_2",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get universal or hinge2 axes",
+            "description": "Get universal or hinge2 axes",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.constraint.get_axes",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "universal or hinge2 constraint",
+                    "is_optional": "False",
+                    "name": "constraint",
+                    "types": [
+                        "btTypedConstraint"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "first world-space unit axis",
+                    "name": "axis_1",
+                    "types": [
+                        "vector3"
+                    ]
+                },
+                {
+                    "doc": "second world-space unit axis",
+                    "name": "axis_2",
+                    "types": [
+                        "vector3"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get the first linked body",
+            "description": "Get the first linked body",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.constraint.get_body_a",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "constraint",
+                    "is_optional": "False",
+                    "name": "constraint",
+                    "types": [
+                        "btTypedConstraint"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "first body",
+                    "name": "body",
+                    "types": [
+                        "btRigidBody"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get the second linked body",
+            "description": "Get the second linked body",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.constraint.get_body_b",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "constraint",
+                    "is_optional": "False",
+                    "name": "constraint",
+                    "types": [
+                        "btTypedConstraint"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "second body, or nil for a world constraint",
+                    "name": "body",
+                    "types": [
+                        "btRigidBody",
+                        "nil"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get whether connected bodies can collide",
+            "description": "Get whether connected bodies can collide",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.constraint.get_collide_connected",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "constraint",
+                    "is_optional": "False",
+                    "name": "constraint",
+                    "types": [
+                        "btTypedConstraint"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "whether connected bodies can collide",
+                    "name": "collide",
+                    "types": [
+                        "boolean"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get cone-twist angular spans",
+            "description": "Get cone-twist angular spans",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.constraint.get_cone_twist_limits",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "cone-twist constraint",
+                    "is_optional": "False",
+                    "name": "constraint",
+                    "types": [
+                        "btTypedConstraint"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "first swing span in radians",
+                    "name": "swing_span_1",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "second swing span in radians",
+                    "name": "swing_span_2",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "twist span in radians",
+                    "name": "twist_span",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get local frame A",
+            "description": "Returns position and rotation. For one-body generic 6-DOF and slider\nconstraints this is the user-body frame, despite Bullet storing it as its\nnative frame B.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.constraint.get_frame_a",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "framed constraint",
+                    "is_optional": "False",
+                    "name": "constraint",
+                    "types": [
+                        "btTypedConstraint"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "local position",
+                    "name": "position",
+                    "types": [
+                        "vector3"
+                    ]
+                },
+                {
+                    "doc": "local rotation",
+                    "name": "rotation",
+                    "types": [
+                        "quaternion"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get local frame B",
+            "description": "Get local frame B",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.constraint.get_frame_b",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "framed constraint",
+                    "is_optional": "False",
+                    "name": "constraint",
+                    "types": [
+                        "btTypedConstraint"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "local position or world frame position",
+                    "name": "position",
+                    "types": [
+                        "vector3"
+                    ]
+                },
+                {
+                    "doc": "local rotation or world frame rotation",
+                    "name": "rotation",
+                    "types": [
+                        "quaternion"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get the current hinge angle",
+            "description": "Get the current hinge angle",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.constraint.get_hinge_angle",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "hinge constraint",
+                    "is_optional": "False",
+                    "name": "constraint",
+                    "types": [
+                        "btTypedConstraint"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "angle in radians",
+                    "name": "angle",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get hinge angular limits",
+            "description": "Get hinge angular limits",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.constraint.get_hinge_limits",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "hinge constraint",
+                    "is_optional": "False",
+                    "name": "constraint",
+                    "types": [
+                        "btTypedConstraint"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "lower angle in radians",
+                    "name": "lower",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "upper angle in radians",
+                    "name": "upper",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get hinge motor settings",
+            "description": "Get hinge motor settings",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.constraint.get_hinge_motor",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "hinge constraint",
+                    "is_optional": "False",
+                    "name": "constraint",
+                    "types": [
+                        "btTypedConstraint"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "motor state",
+                    "name": "enabled",
+                    "types": [
+                        "boolean"
+                    ]
+                },
+                {
+                    "doc": "angular target velocity",
+                    "name": "target_velocity",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "maximum angular motor impulse",
+                    "name": "max_impulse",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get a 6-DOF axis limit",
+            "description": "Axes 1-3 return linear limits in Defold units. Axes 4-6 return angular\nlimits in radians.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.constraint.get_limit",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "6-DOF-derived constraint",
+                    "is_optional": "False",
+                    "name": "constraint",
+                    "types": [
+                        "btTypedConstraint"
+                    ]
+                },
+                {
+                    "doc": "one-based axis from 1 to 6",
+                    "is_optional": "False",
+                    "name": "axis",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "lower limit",
+                    "name": "lower",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "upper limit",
+                    "name": "upper",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get point-to-point pivots",
+            "description": "Get point-to-point pivots",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.constraint.get_pivots",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "point-to-point constraint",
+                    "is_optional": "False",
+                    "name": "constraint",
+                    "types": [
+                        "btTypedConstraint"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "local body-A pivot",
+                    "name": "pivot_a",
+                    "types": [
+                        "vector3"
+                    ]
+                },
+                {
+                    "doc": "local body-B pivot or world anchor",
+                    "name": "pivot_b",
+                    "types": [
+                        "vector3"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get slider limits",
+            "description": "Get slider limits",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.constraint.get_slider_limits",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "slider constraint",
+                    "is_optional": "False",
+                    "name": "constraint",
+                    "types": [
+                        "btTypedConstraint"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "lower linear limit in Defold units",
+                    "name": "lower_linear",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "upper linear limit in Defold units",
+                    "name": "upper_linear",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "lower angular limit in radians",
+                    "name": "lower_angular",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "upper angular limit in radians",
+                    "name": "upper_angular",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get slider motor settings",
+            "description": "Get slider motor settings",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.constraint.get_slider_motor",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "slider constraint",
+                    "is_optional": "False",
+                    "name": "constraint",
+                    "types": [
+                        "btTypedConstraint"
+                    ]
+                },
+                {
+                    "doc": "<code>linear</code> or <code>angular</code>",
+                    "is_optional": "False",
+                    "name": "motor",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "motor state",
+                    "name": "enabled",
+                    "types": [
+                        "boolean"
+                    ]
+                },
+                {
+                    "doc": "target velocity",
+                    "name": "target_velocity",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "maximum motor force",
+                    "name": "max_force",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get the current slider position",
+            "description": "Get the current slider position",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.constraint.get_slider_position",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "slider constraint",
+                    "is_optional": "False",
+                    "name": "constraint",
+                    "types": [
+                        "btTypedConstraint"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "current linear position in Defold units",
+                    "name": "position",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get the current cone-twist twist angle",
+            "description": "Get the current cone-twist twist angle",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.constraint.get_twist_angle",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "cone-twist constraint",
+                    "is_optional": "False",
+                    "name": "constraint",
+                    "types": [
+                        "btTypedConstraint"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "twist angle in radians",
+                    "name": "angle",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get the constraint type",
+            "description": "Get the constraint type",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.constraint.get_type",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "constraint",
+                    "is_optional": "False",
+                    "name": "constraint",
+                    "types": [
+                        "btTypedConstraint"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "one of the <code>bullet3d.constraint.CONSTRAINT_TYPE_*</code> constants",
+                    "name": "type",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get the constraint type name",
+            "description": "Returns a stable lowercase diagnostic name such as <code>\"hinge\"</code> or\n<code>\"generic_6dof_spring\"</code>.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.constraint.get_type_name",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "constraint",
+                    "is_optional": "False",
+                    "name": "constraint",
+                    "types": [
+                        "btTypedConstraint"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "constraint type name",
+                    "name": "name",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get the slider linear reference-frame choice",
+            "description": "Get the slider linear reference-frame choice",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.constraint.get_use_linear_reference_frame_a",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "slider constraint",
+                    "is_optional": "False",
+                    "name": "constraint",
+                    "types": [
+                        "btTypedConstraint"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "true when linear calculations reference frame A",
+                    "name": "use_frame_a",
+                    "types": [
+                        "boolean"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get the owning world",
+            "description": "Get the owning world",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.constraint.get_world",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "constraint",
+                    "is_optional": "False",
+                    "name": "constraint",
+                    "types": [
+                        "btTypedConstraint"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "owning world",
+                    "name": "world",
+                    "types": [
+                        "btDiscreteDynamicsWorld"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Test whether a constraint is active in its world",
+            "description": "Test whether a constraint is active in its world",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.constraint.is_active",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "constraint",
+                    "is_optional": "False",
+                    "name": "constraint",
+                    "types": [
+                        "btTypedConstraint"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "false while a linked body is disabled",
+                    "name": "active",
+                    "types": [
+                        "boolean"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Test angular-only mode",
+            "description": "Test angular-only mode",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.constraint.is_angular_only",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "hinge or cone-twist constraint",
+                    "is_optional": "False",
+                    "name": "constraint",
+                    "types": [
+                        "btTypedConstraint"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "angular-only state",
+                    "name": "angular_only",
+                    "types": [
+                        "boolean"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Test whether a 6-DOF axis is limited",
+            "description": "Test whether a 6-DOF axis is limited",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.constraint.is_limited",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "6-DOF-derived constraint",
+                    "is_optional": "False",
+                    "name": "constraint",
+                    "types": [
+                        "btTypedConstraint"
+                    ]
+                },
+                {
+                    "doc": "one-based axis from 1 to 6",
+                    "is_optional": "False",
+                    "name": "axis",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "limit state",
+                    "name": "limited",
+                    "types": [
+                        "boolean"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Test whether a cone-twist is past its swing limit",
+            "description": "Test whether a cone-twist is past its swing limit",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.constraint.is_past_swing_limit",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "cone-twist constraint",
+                    "is_optional": "False",
+                    "name": "constraint",
+                    "types": [
+                        "btTypedConstraint"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "swing-limit state",
+                    "name": "past_limit",
+                    "types": [
+                        "boolean"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Test whether a constraint handle is valid",
+            "description": "Test whether a constraint handle is valid",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.constraint.is_valid",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "constraint handle",
+                    "is_optional": "False",
+                    "name": "constraint",
+                    "types": [
+                        "btTypedConstraint"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "true while the native constraint exists",
+                    "name": "valid",
+                    "types": [
+                        "boolean"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Set 6-DOF motor settings",
+            "description": "Set 6-DOF motor settings",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.constraint.set_6dof_motor",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "6-DOF-derived constraint",
+                    "is_optional": "False",
+                    "name": "constraint",
+                    "types": [
+                        "btTypedConstraint"
+                    ]
+                },
+                {
+                    "doc": "one-based axis from 1 to 6",
+                    "is_optional": "False",
+                    "name": "axis",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "motor state",
+                    "is_optional": "False",
+                    "name": "enabled",
+                    "types": [
+                        "boolean"
+                    ]
+                },
+                {
+                    "doc": "target velocity",
+                    "is_optional": "False",
+                    "name": "target_velocity",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "non-negative maximum motor impulse",
+                    "is_optional": "False",
+                    "name": "max_impulse",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "optional angular bounce from 0 to 1",
+                    "is_optional": "False",
+                    "name": "bounce",
+                    "types": [
+                        "number",
+                        "nil"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Set angular-only mode",
+            "description": "Set angular-only mode",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.constraint.set_angular_only",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "hinge or cone-twist constraint",
+                    "is_optional": "False",
+                    "name": "constraint",
+                    "types": [
+                        "btTypedConstraint"
+                    ]
+                },
+                {
+                    "doc": "angular-only state",
+                    "is_optional": "False",
+                    "name": "angular_only",
+                    "types": [
+                        "boolean"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Set cone-twist angular spans",
+            "description": "Set cone-twist angular spans",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.constraint.set_cone_twist_limits",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "cone-twist constraint",
+                    "is_optional": "False",
+                    "name": "constraint",
+                    "types": [
+                        "btTypedConstraint"
+                    ]
+                },
+                {
+                    "doc": "non-negative first swing span",
+                    "is_optional": "False",
+                    "name": "swing_span_1",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "non-negative second swing span",
+                    "is_optional": "False",
+                    "name": "swing_span_2",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "non-negative twist span",
+                    "is_optional": "False",
+                    "name": "twist_span",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "optional softness from 0 to 1",
+                    "is_optional": "False",
+                    "name": "softness",
+                    "types": [
+                        "number",
+                        "nil"
+                    ]
+                },
+                {
+                    "doc": "optional bias from 0 to 1",
+                    "is_optional": "False",
+                    "name": "bias",
+                    "types": [
+                        "number",
+                        "nil"
+                    ]
+                },
+                {
+                    "doc": "optional relaxation from 0 to 1",
+                    "is_optional": "False",
+                    "name": "relaxation",
+                    "types": [
+                        "number",
+                        "nil"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Set the cone-twist motor target",
+            "description": "Set the cone-twist motor target",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.constraint.set_cone_twist_motor_target",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "cone-twist constraint",
+                    "is_optional": "False",
+                    "name": "constraint",
+                    "types": [
+                        "btTypedConstraint"
+                    ]
+                },
+                {
+                    "doc": "target orientation",
+                    "is_optional": "False",
+                    "name": "target",
+                    "types": [
+                        "quaternion"
+                    ]
+                },
+                {
+                    "doc": "target is already in constraint space",
+                    "is_optional": "False",
+                    "name": "constraint_space",
+                    "types": [
+                        "boolean",
+                        "nil"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Set local frame A",
+            "description": "Set local frame A",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.constraint.set_frame_a",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "mutable framed constraint",
+                    "is_optional": "False",
+                    "name": "constraint",
+                    "types": [
+                        "btTypedConstraint"
+                    ]
+                },
+                {
+                    "doc": "local position",
+                    "is_optional": "False",
+                    "name": "position",
+                    "types": [
+                        "vector3"
+                    ]
+                },
+                {
+                    "doc": "local rotation",
+                    "is_optional": "False",
+                    "name": "rotation",
+                    "types": [
+                        "quaternion"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Set local frame B",
+            "description": "Set local frame B",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.constraint.set_frame_b",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "mutable framed constraint",
+                    "is_optional": "False",
+                    "name": "constraint",
+                    "types": [
+                        "btTypedConstraint"
+                    ]
+                },
+                {
+                    "doc": "local position or world frame position",
+                    "is_optional": "False",
+                    "name": "position",
+                    "types": [
+                        "vector3"
+                    ]
+                },
+                {
+                    "doc": "local rotation or world frame rotation",
+                    "is_optional": "False",
+                    "name": "rotation",
+                    "types": [
+                        "quaternion"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Set the one-body hinge axis",
+            "description": "This function only supports hinges attached to the world. For a two-body\nhinge, change both local frames with <code>set_frame_a</code> and <code>set_frame_b</code>.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.constraint.set_hinge_axis",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "one-body hinge constraint",
+                    "is_optional": "False",
+                    "name": "constraint",
+                    "types": [
+                        "btTypedConstraint"
+                    ]
+                },
+                {
+                    "doc": "non-zero axis in body-A space",
+                    "is_optional": "False",
+                    "name": "axis",
+                    "types": [
+                        "vector3"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Set hinge angular limits",
+            "description": "Set hinge angular limits",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.constraint.set_hinge_limits",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "hinge constraint",
+                    "is_optional": "False",
+                    "name": "constraint",
+                    "types": [
+                        "btTypedConstraint"
+                    ]
+                },
+                {
+                    "doc": "lower angle in radians",
+                    "is_optional": "False",
+                    "name": "lower",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "upper angle in radians",
+                    "is_optional": "False",
+                    "name": "upper",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "optional limit bias from 0 to 1",
+                    "is_optional": "False",
+                    "name": "bias",
+                    "types": [
+                        "number",
+                        "nil"
+                    ]
+                },
+                {
+                    "doc": "optional relaxation from 0 to 1",
+                    "is_optional": "False",
+                    "name": "relaxation",
+                    "types": [
+                        "number",
+                        "nil"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Set hinge motor settings",
+            "description": "Set hinge motor settings",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.constraint.set_hinge_motor",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "hinge constraint",
+                    "is_optional": "False",
+                    "name": "constraint",
+                    "types": [
+                        "btTypedConstraint"
+                    ]
+                },
+                {
+                    "doc": "motor state",
+                    "is_optional": "False",
+                    "name": "enabled",
+                    "types": [
+                        "boolean"
+                    ]
+                },
+                {
+                    "doc": "angular target velocity",
+                    "is_optional": "False",
+                    "name": "target_velocity",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "non-negative maximum angular motor impulse",
+                    "is_optional": "False",
+                    "name": "max_impulse",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Set a hinge motor angle target",
+            "description": "Set a hinge motor angle target",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.constraint.set_hinge_motor_target",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "hinge constraint",
+                    "is_optional": "False",
+                    "name": "constraint",
+                    "types": [
+                        "btTypedConstraint"
+                    ]
+                },
+                {
+                    "doc": "target angle in radians",
+                    "is_optional": "False",
+                    "name": "target_angle",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "positive step duration in seconds",
+                    "is_optional": "False",
+                    "name": "time_step",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Set a 6-DOF axis limit",
+            "description": "Set a 6-DOF axis limit",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.constraint.set_limit",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "6-DOF-derived constraint",
+                    "is_optional": "False",
+                    "name": "constraint",
+                    "types": [
+                        "btTypedConstraint"
+                    ]
+                },
+                {
+                    "doc": "one-based axis from 1 to 6",
+                    "is_optional": "False",
+                    "name": "axis",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "lower limit",
+                    "is_optional": "False",
+                    "name": "lower",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "upper limit",
+                    "is_optional": "False",
+                    "name": "upper",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Set point-to-point pivots",
+            "description": "Set point-to-point pivots",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.constraint.set_pivots",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "point-to-point constraint",
+                    "is_optional": "False",
+                    "name": "constraint",
+                    "types": [
+                        "btTypedConstraint"
+                    ]
+                },
+                {
+                    "doc": "local body-A pivot",
+                    "is_optional": "False",
+                    "name": "pivot_a",
+                    "types": [
+                        "vector3"
+                    ]
+                },
+                {
+                    "doc": "local body-B pivot or world anchor",
+                    "is_optional": "False",
+                    "name": "pivot_b",
+                    "types": [
+                        "vector3"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Set slider limits",
+            "description": "Set slider limits",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.constraint.set_slider_limits",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "slider constraint",
+                    "is_optional": "False",
+                    "name": "constraint",
+                    "types": [
+                        "btTypedConstraint"
+                    ]
+                },
+                {
+                    "doc": "lower linear limit in Defold units",
+                    "is_optional": "False",
+                    "name": "lower_linear",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "upper linear limit in Defold units",
+                    "is_optional": "False",
+                    "name": "upper_linear",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "lower angular limit in radians",
+                    "is_optional": "False",
+                    "name": "lower_angular",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "upper angular limit in radians",
+                    "is_optional": "False",
+                    "name": "upper_angular",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Set slider motor settings",
+            "description": "Set slider motor settings",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.constraint.set_slider_motor",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "slider constraint",
+                    "is_optional": "False",
+                    "name": "constraint",
+                    "types": [
+                        "btTypedConstraint"
+                    ]
+                },
+                {
+                    "doc": "<code>linear</code> or <code>angular</code>",
+                    "is_optional": "False",
+                    "name": "motor",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "motor state",
+                    "is_optional": "False",
+                    "name": "enabled",
+                    "types": [
+                        "boolean"
+                    ]
+                },
+                {
+                    "doc": "target velocity",
+                    "is_optional": "False",
+                    "name": "target_velocity",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "non-negative maximum motor force",
+                    "is_optional": "False",
+                    "name": "max_force",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Set spring damping",
+            "description": "Set spring damping",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.constraint.set_spring_damping",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "spring 6-DOF or hinge2 constraint",
+                    "is_optional": "False",
+                    "name": "constraint",
+                    "types": [
+                        "btTypedConstraint"
+                    ]
+                },
+                {
+                    "doc": "one-based axis from 1 to 6",
+                    "is_optional": "False",
+                    "name": "axis",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "damping from 0 to 1",
+                    "is_optional": "False",
+                    "name": "damping",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Set spring equilibrium points",
+            "description": "With no axis, captures all current transforms. With an axis and no value,\ncaptures that axis. Linear values use Defold units and angular values use\nradians.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.constraint.set_spring_equilibrium_point",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "spring 6-DOF or hinge2 constraint",
+                    "is_optional": "False",
+                    "name": "constraint",
+                    "types": [
+                        "btTypedConstraint"
+                    ]
+                },
+                {
+                    "doc": "optional one-based axis from 1 to 6",
+                    "is_optional": "False",
+                    "name": "axis",
+                    "types": [
+                        "number",
+                        "nil"
+                    ]
+                },
+                {
+                    "doc": "optional explicit equilibrium value",
+                    "is_optional": "False",
+                    "name": "value",
+                    "types": [
+                        "number",
+                        "nil"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Set spring stiffness",
+            "description": "Stiffness is Bullet's solver tuning coefficient, not a force or torque\nvalue, and is therefore independent of <code>physics.scale</code> for every axis.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.constraint.set_spring_stiffness",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "spring 6-DOF or hinge2 constraint",
+                    "is_optional": "False",
+                    "name": "constraint",
+                    "types": [
+                        "btTypedConstraint"
+                    ]
+                },
+                {
+                    "doc": "one-based axis from 1 to 6",
+                    "is_optional": "False",
+                    "name": "axis",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "non-negative stiffness",
+                    "is_optional": "False",
+                    "name": "stiffness",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        }
+    ],
+    "info": {
+        "api_language": "Lua",
+        "brief": "Bullet constraint API",
+        "description": "Creates and controls Bullet constraints between Defold rigid bodies. A\nconstraint belongs to the supplied world and is destroyed automatically\nwith either body, with the world, or when the module is finalized. It is\ntemporarily removed from the native world while either linked body is\ndisabled and is restored when both bodies are enabled again. Dropping its\nLua userdata does not destroy the native constraint; call `destroy` for\nearly release.\n\nCreator positions and all other linear values use Defold units and are\nconverted with `physics.scale`. Angles are radians. Axes are one-based in\nLua: axes 1-3 are linear and axes 4-6 are angular. Mutating functions cannot\nbe called while the physics world is stepping.\n\n`CONSTRAINT_TYPE_*` values identify the concrete constraint exposed by this\nbinding. This deliberately distinguishes universal, hinge2, and spring 6-DOF\nconstraints even though Bullet 2.77 reports their native base type as 6-DOF.",
+        "description_html": "<p>Creates and controls Bullet constraints between Defold rigid bodies. A\nconstraint belongs to the supplied world and is destroyed automatically\nwith either body, with the world, or when the module is finalized. It is\ntemporarily removed from the native world while either linked body is\ndisabled and is restored when both bodies are enabled again. Dropping its\nLua userdata does not destroy the native constraint; call <code>destroy</code> for\nearly release.</p>\n<p>Creator positions and all other linear values use Defold units and are\nconverted with <code>physics.scale</code>. Angles are radians. Axes are one-based in\nLua: axes 1-3 are linear and axes 4-6 are angular. Mutating functions cannot\nbe called while the physics world is stepping.</p>\n<p><code>CONSTRAINT_TYPE_*</code> values identify the concrete constraint exposed by this\nbinding. This deliberately distinguishes universal, hinge2, and spring 6-DOF\nconstraints even though Bullet 2.77 reports their native base type as 6-DOF.</p>",
+        "file": "script_bullet3d_constraint.cpp",
+        "name": "bullet3d.constraint",
+        "namespace": "bullet3d.constraint",
+        "notes": [],
+        "path": "engine/gamesys/src/gamesys/scripts/bullet3d/script_bullet3d_constraint.cpp",
+        "type": "Defold Lua"
+    }
+}
