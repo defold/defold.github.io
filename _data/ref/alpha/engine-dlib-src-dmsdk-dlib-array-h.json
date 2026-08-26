@@ -341,6 +341,32 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "allocate and set size",
+            "description": "Set size of the array, allocate if necessary",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "EnsureSize",
+            "notes": [
+                "May grow but not shrink capacity"
+            ],
+            "parameters": [
+                {
+                    "doc": "size of the array",
+                    "is_optional": "False",
+                    "name": "size",
+                    "types": [
+                        "uint32_t"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "array eraseswap",
             "description": "Remove the element at the specified index.\nThe removed element is replaced by the element at the end (if any), thus potentially altering the order.\nWhile operation changes the array size, it is guaranteed to be O(1).",
             "error": "",
