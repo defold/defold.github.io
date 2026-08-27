@@ -28,14 +28,10 @@ class RefdocFormatTests(unittest.TestCase):
                     "type": "ENUM",
                     "name": "go.EASING",
                     "parameters": [],
-                    "members": [],
-                },
-                {
-                    "type": "CONSTANT",
-                    "name": "go.EASING_LINEAR",
-                    "brief": "linear easing",
-                    "description": "",
-                    "parameters": [],
+                    "members": [{
+                        "name": "go.EASING_LINEAR",
+                        "doc": "Use <code>linear</code> easing.",
+                    }],
                 },
                 {
                     "type": "CONSTANT",
@@ -50,24 +46,81 @@ class RefdocFormatTests(unittest.TestCase):
                 {
                     "type": "STRUCT",
                     "name": "on_input.action",
-                    "members": [{"name": "pressed?", "type": "boolean"}],
+                    "members": [{
+                        "name": "pressed?",
+                        "type": "boolean",
+                        "doc": "Use <code>true</code> when pressed.",
+                    }],
                 },
             ],
         }
 
         prepared = refdoc.prepare_lua_v2(copy.deepcopy(api))
-        enum, enum_constant, standalone, alias, record = prepared["elements"]
+        enum, standalone, alias, record = prepared["elements"]
 
         self.assertEqual("integer", enum["value_type"])
         self.assertEqual(
-            [{"name": "go.EASING_LINEAR", "doc": "linear easing"}],
+            [{
+                "name": "go.EASING_LINEAR",
+                "doc": "Use <code>linear</code> easing.",
+            }],
             enum["members"])
-        self.assertTrue(enum_constant["is_enum_member"])
-        self.assertEqual("go.EASING", enum_constant["value_type"])
         self.assertFalse(standalone["is_enum_member"])
         self.assertEqual("string | url", alias["target_type"])
         self.assertEqual("pressed", record["members"][0]["display_name"])
         self.assertTrue(record["members"][0]["is_optional"])
+        self.assertEqual(
+            "Use <code>true</code> when pressed.",
+            record["members"][0]["doc"])
+
+    def test_v2_enum_requires_explicit_members(self):
+        api = {
+            "format_version": 2,
+            "info": {"api_language": "Lua"},
+            "elements": [
+                {
+                    "type": "ENUM",
+                    "name": "go.EASING",
+                    "parameters": [],
+                    "members": [],
+                },
+                {
+                    "type": "CONSTANT",
+                    "name": "go.EASING_LINEAR",
+                    "parameters": [],
+                },
+            ],
+        }
+
+        with self.assertRaisesRegex(
+                ValueError,
+                r"enum go\.EASING must declare at least one explicit member"):
+            refdoc.prepare_lua_v2(api)
+
+    def test_v2_enum_rejects_duplicate_standalone_member(self):
+        api = {
+            "format_version": 2,
+            "info": {"api_language": "Lua"},
+            "elements": [
+                {
+                    "type": "ENUM",
+                    "name": "go.EASING",
+                    "parameters": [],
+                    "members": [{"name": "go.EASING_LINEAR", "doc": ""}],
+                },
+                {
+                    "type": "CONSTANT",
+                    "name": "go.EASING_LINEAR",
+                    "parameters": [],
+                },
+            ],
+        }
+
+        with self.assertRaisesRegex(
+                ValueError,
+                r"enum go\.EASING member go\.EASING_LINEAR is also declared "
+                r"as a standalone constant"):
+            refdoc.prepare_lua_v2(api)
 
     def test_links_documented_and_builtin_types(self):
         namespaces = {
@@ -75,7 +128,14 @@ class RefdocFormatTests(unittest.TestCase):
                 "format_version": 2,
                 "info": {"api_language": "Lua"},
                 "elements": [
-                    {"type": "ENUM", "name": "go.PLAYBACK"},
+                    {
+                        "type": "ENUM",
+                        "name": "go.PLAYBACK",
+                        "members": [{
+                            "name": "go.PLAYBACK_ONCE_FORWARD",
+                            "doc": "Play once.",
+                        }],
+                    },
                     {
                         "type": "FUNCTION",
                         "name": "go.animate",

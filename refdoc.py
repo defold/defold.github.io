@@ -363,29 +363,22 @@ def prepare_lua_v2(api, current_page="", targets=None):
         }
         member_names = list(documented_members)
         if not member_names:
-            prefixes = (enum_name + "_", enum_name + ".")
-            member_names = sorted(
-                name for name in constants if name.startswith(prefixes))
+            raise ValueError(
+                "enum %s must declare at least one explicit member"
+                % enum_name)
 
         resolved_members = []
         for member_name in member_names:
             constant = constants.get(member_name)
             if constant:
-                previous_enum = constant.get("enum")
-                if previous_enum and previous_enum != enum_name:
-                    raise ValueError(
-                        "constant %s belongs to both %s and %s"
-                        % (member_name, previous_enum, enum_name))
-                constant["enum"] = enum_name
-                constant["is_enum_member"] = True
-                constant["value_type"] = enum_name
+                raise ValueError(
+                    "enum %s member %s is also declared as a standalone "
+                    "constant" % (enum_name, member_name))
             documented = documented_members.get(member_name, {})
             resolved_members.append({
                 "name": member_name,
                 "doc": _link_lua_type_spans((
                     documented.get("doc")
-                    or (constant or {}).get("description")
-                    or (constant or {}).get("brief")
                     or ""), current_page, targets),
             })
         enum["members"] = resolved_members

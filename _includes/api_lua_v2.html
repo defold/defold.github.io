@@ -32,7 +32,7 @@
 	{% include ref_anchor_target.html element=alias %}
 	<div data-pagefind-weight="8">
 		<h4 id="{% include ref_anchorlink.html element=alias %}">{{ alias.name }}<a href="#{% include ref_anchorlink.html element=alias %}" class="anchor-link"></a></h4>
-		<p><code>{{ alias.name | escape }} = {{ alias.target_type_html }}</code></p>
+		<p><code class="api-lua-v2-signature">{{ alias.name | escape }} = {{ alias.target_type_html }}</code></p>
 		<p>{{ alias.description }}</p>
 
 		{%- if alias.examples.size > 0 -%}
