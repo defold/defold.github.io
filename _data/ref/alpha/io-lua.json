@@ -47,7 +47,7 @@
         },
         {
             "brief": "reads the file according to the specified formats",
-            "description": "Reads the file file,\naccording to the given formats, which specify what to read.\nFor each format,\nthe function returns a string (or a number) with the characters read,\nor <span class=\"type\"> nil</span> if it cannot read data with the specified format.\nWhen called without formats,\nit uses a default format that reads the entire next line\n(see below).\nThe available formats are\n<dl>\n<dt>\"*n\"</dt>\n<dd>reads a number;\nthis is the only format that returns a number instead of a string.</dd>\n<dt>\"*a\"</dt>\n<dd>reads the whole file, starting at the current position.\nOn end of file, it returns the empty string.</dd>\n<dt>\"*l\"</dt>\n<dd>reads the next line (skipping the end of line),\nreturning <span class=\"type\"> nil</span> on end of file.\nThis is the default format.</dd>\n<dt><em>number</em></dt>\n<dd>reads a string with up to this number of characters,\nreturning <span class=\"type\"> nil</span> on end of file.\nIf number is zero,\nit reads nothing and returns an empty string,\nor <span class=\"type\"> nil</span> on end of file.</dd>\n</dl>",
+            "description": "Reads the file file,\naccording to the given formats, which specify what to read.\nFor each format,\nthe function returns a string (or a number) with the characters read,\nor <span class=\"type\"> <a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a></span> if it cannot read data with the specified format.\nWhen called without formats,\nit uses a default format that reads the entire next line\n(see below).\nThe available formats are\n<dl>\n<dt>\"*n\"</dt>\n<dd>reads a number;\nthis is the only format that returns a number instead of a string.</dd>\n<dt>\"*a\"</dt>\n<dd>reads the whole file, starting at the current position.\nOn end of file, it returns the empty string.</dd>\n<dt>\"*l\"</dt>\n<dd>reads the next line (skipping the end of line),\nreturning <span class=\"type\"> <a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a></span> on end of file.\nThis is the default format.</dd>\n<dt><em>number</em></dt>\n<dd>reads a string with up to this number of characters,\nreturning <span class=\"type\"> <a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a></span> on end of file.\nIf number is zero,\nit reads nothing and returns an empty string,\nor <span class=\"type\"> <a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a></span> on end of file.</dd>\n</dl>",
             "error": "",
             "examples": "",
             "language": "",
@@ -60,7 +60,13 @@
                     "is_optional": "False",
                     "name": "...",
                     "types": [
-                        ""
+                        "any"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>"
                     ]
                 }
             ],
@@ -71,7 +77,7 @@
         },
         {
             "brief": "sets and gets the current file position",
-            "description": "Sets and gets the file position,\nmeasured from the beginning of the file,\nto the position given by offset plus a base\nspecified by the string whence, as follows:\n<dl>\n<dt>\"set\"</dt>\n<dd>base is position 0 (beginning of the file);</dd>\n<dt>\"cur\"</dt>\n<dd>base is current position;</dd>\n<dt>\"end\"</dt>\n<dd>base is end of file;</dd>\n</dl>\nIn case of success, function seek returns the final file position,\nmeasured in bytes from the beginning of the file.\nIf this function fails, it returns <span class=\"type\"> nil</span>,\nplus a string describing the error.\nThe default value for whence is <code>\"cur\"</code>,\nand for offset is 0.\nTherefore, the call <code>file:seek()</code> returns the current\nfile position, without changing it;\nthe call <code>file:seek(\"set\")</code> sets the position to the\nbeginning of the file (and returns 0);\nand the call <code>file:seek(\"end\")</code> sets the position to the\nend of the file, and returns its size.",
+            "description": "Sets and gets the file position,\nmeasured from the beginning of the file,\nto the position given by offset plus a base\nspecified by the string whence, as follows:\n<dl>\n<dt>\"set\"</dt>\n<dd>base is position 0 (beginning of the file);</dd>\n<dt>\"cur\"</dt>\n<dd>base is current position;</dd>\n<dt>\"end\"</dt>\n<dd>base is end of file;</dd>\n</dl>\nIn case of success, function seek returns the final file position,\nmeasured in bytes from the beginning of the file.\nIf this function fails, it returns <span class=\"type\"> <a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a></span>,\nplus a string describing the error.\nThe default value for whence is <code>\"cur\"</code>,\nand for offset is 0.\nTherefore, the call <code>file:seek()</code> returns the current\nfile position, without changing it;\nthe call <code>file:seek(\"set\")</code> sets the position to the\nbeginning of the file (and returns 0);\nand the call <code>file:seek(\"end\")</code> sets the position to the\nend of the file, and returns its size.",
             "error": "",
             "examples": "",
             "language": "",
@@ -85,6 +91,12 @@
                     "name": "whence",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 },
                 {
@@ -93,6 +105,12 @@
                     "name": "offset",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -117,6 +135,12 @@
                     "name": "mode",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 },
                 {
@@ -125,6 +149,12 @@
                     "name": "size",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -148,7 +178,13 @@
                     "is_optional": "False",
                     "name": "...",
                     "types": [
-                        ""
+                        "any"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>"
                     ]
                 }
             ],
@@ -174,6 +210,14 @@
                     "types": [
                         "file",
                         "nil"
+                    ],
+                    "types_html": [
+                        "file",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "file",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 }
             ],
@@ -214,6 +258,14 @@
                     "types": [
                         "string",
                         "file"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "file"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "file"
                     ]
                 }
             ],
@@ -224,7 +276,7 @@
         },
         {
             "brief": "returns an iterator function for reading a named file line-by-line",
-            "description": "Opens the given file name in read mode\nand returns an iterator function that,\neach time it is called,\nreturns a new line from the file.\nTherefore, the construction\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">for</span> <span class=\"n\">line</span> <span class=\"kr\">in</span> <span class=\"nb\">io.lines</span><span class=\"p\">(</span><span class=\"n\">filename</span><span class=\"p\">)</span> <span class=\"kr\">do</span> <span class=\"n\">body</span> <span class=\"kr\">end</span>\n</code></pre></div>\n\nwill iterate over all lines of the file.\nWhen the iterator function detects the end of file,\nit returns <span class=\"type\"> nil</span> (to finish the loop) and automatically closes the file.\nThe call <code>io.lines()</code> (with no file name) is equivalent\nto <code>io.input():lines()</code>;\nthat is, it iterates over the lines of the default input file.\nIn this case it does not close the file when the loop ends.",
+            "description": "Opens the given file name in read mode\nand returns an iterator function that,\neach time it is called,\nreturns a new line from the file.\nTherefore, the construction\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">for</span> <span class=\"n\">line</span> <span class=\"kr\">in</span> <span class=\"nb\">io.lines</span><span class=\"p\">(</span><span class=\"n\">filename</span><span class=\"p\">)</span> <span class=\"kr\">do</span> <span class=\"n\">body</span> <span class=\"kr\">end</span>\n</code></pre></div>\n\nwill iterate over all lines of the file.\nWhen the iterator function detects the end of file,\nit returns <span class=\"type\"> <a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a></span> (to finish the loop) and automatically closes the file.\nThe call <code>io.lines()</code> (with no file name) is equivalent\nto <code>io.input():lines()</code>;\nthat is, it iterates over the lines of the default input file.\nIn this case it does not close the file when the loop ends.",
             "error": "",
             "examples": "",
             "language": "",
@@ -238,6 +290,12 @@
                     "name": "filename",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 }
             ],
@@ -248,7 +306,7 @@
         },
         {
             "brief": "opens a file",
-            "description": "This function opens a file,\nin the mode specified in the string mode.\nIt returns a new file handle,\nor, in case of errors, <span class=\"type\"> nil</span> plus an error message.\nThe mode string can be any of the following:\n<dl>\n<dt>\"r\"</dt>\n<dd>read mode (the default);</dd>\n<dt>\"w\"</dt>\n<dd>write mode;</dd>\n<dt>\"a\"</dt>\n<dd>append mode;</dd>\n<dt>\"r+\"</dt>\n<dd>update mode, all previous data is preserved;</dd>\n<dt>\"w+\"</dt>\n<dd>update mode, all previous data is erased;</dd>\n<dt>\"a+\"</dt>\n<dd>append update mode, previous data is preserved,\n  writing is only allowed at the end of file.</dd>\n</dl>\nThe mode string can also have a 'b' at the end,\nwhich is needed in some systems to open the file in binary mode.\nThis string is exactly what is used in the\nstandard C function fopen.",
+            "description": "This function opens a file,\nin the mode specified in the string mode.\nIt returns a new file handle,\nor, in case of errors, <span class=\"type\"> <a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a></span> plus an error message.\nThe mode string can be any of the following:\n<dl>\n<dt>\"r\"</dt>\n<dd>read mode (the default);</dd>\n<dt>\"w\"</dt>\n<dd>write mode;</dd>\n<dt>\"a\"</dt>\n<dd>append mode;</dd>\n<dt>\"r+\"</dt>\n<dd>update mode, all previous data is preserved;</dd>\n<dt>\"w+\"</dt>\n<dd>update mode, all previous data is erased;</dd>\n<dt>\"a+\"</dt>\n<dd>append update mode, previous data is preserved,\n  writing is only allowed at the end of file.</dd>\n</dl>\nThe mode string can also have a 'b' at the end,\nwhich is needed in some systems to open the file in binary mode.\nThis string is exactly what is used in the\nstandard C function fopen.",
             "error": "",
             "examples": "",
             "language": "",
@@ -262,6 +320,12 @@
                     "name": "filename",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 },
                 {
@@ -270,6 +334,12 @@
                     "name": "mode",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 }
             ],
@@ -293,6 +363,12 @@
                     "is_optional": "True",
                     "name": "file",
                     "types": [
+                        "file"
+                    ],
+                    "types_html": [
+                        "file"
+                    ],
+                    "types_table_html": [
                         "file"
                     ]
                 }
@@ -318,6 +394,12 @@
                     "name": "prog",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 },
                 {
@@ -326,6 +408,12 @@
                     "name": "mode",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 }
             ],
@@ -349,7 +437,13 @@
                     "is_optional": "False",
                     "name": "...",
                     "types": [
-                        ""
+                        "any"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>"
                     ]
                 }
             ],
@@ -375,7 +469,7 @@
         },
         {
             "brief": "returns type of file handle",
-            "description": "Checks whether obj is a valid file handle.\nReturns the string <code>\"file\"</code> if obj is an open file handle,\n<code>\"closed file\"</code> if obj is a closed file handle,\nor <span class=\"type\"> nil</span> if obj is not a file handle.",
+            "description": "Checks whether obj is a valid file handle.\nReturns the string <code>\"file\"</code> if obj is an open file handle,\n<code>\"closed file\"</code> if obj is a closed file handle,\nor <span class=\"type\"> <a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a></span> if obj is not a file handle.",
             "error": "",
             "examples": "",
             "language": "",
@@ -388,6 +482,12 @@
                     "is_optional": "False",
                     "name": "obj",
                     "types": [
+                        "file"
+                    ],
+                    "types_html": [
+                        "file"
+                    ],
+                    "types_table_html": [
                         "file"
                     ]
                 }
@@ -412,7 +512,13 @@
                     "is_optional": "False",
                     "name": "...",
                     "types": [
-                        ""
+                        "any"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>"
                     ]
                 }
             ],
@@ -422,6 +528,7 @@
             "type": "FUNCTION"
         }
     ],
+    "format_version": 2,
     "info": {
         "api_language": "Lua",
         "brief": "Lua io standard library",

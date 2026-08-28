@@ -16,137 +16,187 @@
                     "name": "value",
                     "types": [
                         "userdata"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">userdata</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">userdata</a>"
                     ]
                 }
             ],
             "replaces": "",
             "returnvalues": [],
+            "target_type": "userdata",
+            "target_type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">userdata</a>",
             "tparams": [],
             "type": "TYPEDEF"
         },
         {
-            "brief": "Cone-twist constraint type",
-            "description": "Cone-twist constraint type",
+            "brief": "Universal and hinge2 constraint parameters",
+            "description": "Universal and hinge2 constraint parameters",
             "error": "",
             "examples": "",
             "language": "",
-            "members": [],
-            "name": "bullet3d.constraint.CONSTRAINT_TYPE_CONE_TWIST",
+            "members": [
+                {
+                    "display_name": "anchor",
+                    "doc": "world-space anchor",
+                    "is_optional": false,
+                    "name": "anchor",
+                    "type": "vector3",
+                    "type_html": "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                },
+                {
+                    "display_name": "axis1",
+                    "doc": "first non-zero world-space axis",
+                    "is_optional": false,
+                    "name": "axis1",
+                    "type": "vector3",
+                    "type_html": "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                },
+                {
+                    "display_name": "axis2",
+                    "doc": "second non-zero world-space axis, orthogonal to <code>axis1</code>",
+                    "is_optional": false,
+                    "name": "axis2",
+                    "type": "vector3",
+                    "type_html": "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                },
+                {
+                    "display_name": "collide_connected",
+                    "doc": "whether connected bodies can collide; defaults to <code>false</code>",
+                    "is_optional": true,
+                    "name": "collide_connected?",
+                    "type": "boolean",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                }
+            ],
+            "name": "bullet3d.constraint.anchor_axes_params",
             "notes": [],
             "parameters": [],
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "CONSTANT"
+            "type": "STRUCT"
         },
         {
-            "brief": "Generic 6-DOF constraint type",
-            "description": "Generic 6-DOF constraint type",
+            "brief": "Cone-twist constraint parameters",
+            "description": "The frame-B fields are required for a two-body constraint.",
             "error": "",
             "examples": "",
             "language": "",
-            "members": [],
-            "name": "bullet3d.constraint.CONSTRAINT_TYPE_GENERIC_6DOF",
+            "members": [
+                {
+                    "display_name": "frame_a_position",
+                    "doc": "local body-A frame position",
+                    "is_optional": false,
+                    "name": "frame_a_position",
+                    "type": "vector3",
+                    "type_html": "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                },
+                {
+                    "display_name": "frame_a_rotation",
+                    "doc": "local body-A frame rotation",
+                    "is_optional": false,
+                    "name": "frame_a_rotation",
+                    "type": "quaternion",
+                    "type_html": "<a href=\"../vmath-lua/#quaternion\">quaternion</a>"
+                },
+                {
+                    "display_name": "frame_b_position",
+                    "doc": "local body-B frame position",
+                    "is_optional": true,
+                    "name": "frame_b_position?",
+                    "type": "vector3",
+                    "type_html": "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                },
+                {
+                    "display_name": "frame_b_rotation",
+                    "doc": "local body-B frame rotation",
+                    "is_optional": true,
+                    "name": "frame_b_rotation?",
+                    "type": "quaternion",
+                    "type_html": "<a href=\"../vmath-lua/#quaternion\">quaternion</a>"
+                },
+                {
+                    "display_name": "angular_only",
+                    "doc": "whether to constrain angular motion only",
+                    "is_optional": true,
+                    "name": "angular_only?",
+                    "type": "boolean",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                },
+                {
+                    "display_name": "collide_connected",
+                    "doc": "whether connected bodies can collide; defaults to <code>false</code>",
+                    "is_optional": true,
+                    "name": "collide_connected?",
+                    "type": "boolean",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                }
+            ],
+            "name": "bullet3d.constraint.cone_twist_params",
             "notes": [],
             "parameters": [],
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "CONSTANT"
+            "type": "STRUCT"
         },
         {
-            "brief": "Generic spring 6-DOF constraint type",
-            "description": "Generic spring 6-DOF constraint type",
+            "brief": "Constraint types",
+            "description": "Constraint types",
             "error": "",
             "examples": "",
             "language": "",
-            "members": [],
-            "name": "bullet3d.constraint.CONSTRAINT_TYPE_GENERIC_6DOF_SPRING",
+            "members": [
+                {
+                    "doc": "Cone-twist constraint type",
+                    "name": "bullet3d.constraint.CONSTRAINT_TYPE_CONE_TWIST"
+                },
+                {
+                    "doc": "Generic 6-DOF constraint type",
+                    "name": "bullet3d.constraint.CONSTRAINT_TYPE_GENERIC_6DOF"
+                },
+                {
+                    "doc": "Generic spring 6-DOF constraint type",
+                    "name": "bullet3d.constraint.CONSTRAINT_TYPE_GENERIC_6DOF_SPRING"
+                },
+                {
+                    "doc": "Hinge constraint type",
+                    "name": "bullet3d.constraint.CONSTRAINT_TYPE_HINGE"
+                },
+                {
+                    "doc": "Hinge2 constraint type",
+                    "name": "bullet3d.constraint.CONSTRAINT_TYPE_HINGE2"
+                },
+                {
+                    "doc": "Point-to-point constraint type",
+                    "name": "bullet3d.constraint.CONSTRAINT_TYPE_POINT_TO_POINT"
+                },
+                {
+                    "doc": "Slider constraint type",
+                    "name": "bullet3d.constraint.CONSTRAINT_TYPE_SLIDER"
+                },
+                {
+                    "doc": "Universal constraint type",
+                    "name": "bullet3d.constraint.CONSTRAINT_TYPE_UNIVERSAL"
+                }
+            ],
+            "name": "bullet3d.constraint.CONSTRAINT_TYPE",
             "notes": [],
             "parameters": [],
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "Hinge constraint type",
-            "description": "Hinge constraint type",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "bullet3d.constraint.CONSTRAINT_TYPE_HINGE",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "Hinge2 constraint type",
-            "description": "Hinge2 constraint type",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "bullet3d.constraint.CONSTRAINT_TYPE_HINGE2",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "Point-to-point constraint type",
-            "description": "Point-to-point constraint type",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "bullet3d.constraint.CONSTRAINT_TYPE_POINT_TO_POINT",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "Slider constraint type",
-            "description": "Slider constraint type",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "bullet3d.constraint.CONSTRAINT_TYPE_SLIDER",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "Universal constraint type",
-            "description": "Universal constraint type",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "bullet3d.constraint.CONSTRAINT_TYPE_UNIVERSAL",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
+            "type": "ENUM",
+            "value_type": "integer",
+            "value_type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
         },
         {
             "brief": "Create a cone-twist constraint",
-            "description": "The params table uses the same local-frame fields as a hinge and optionally\naccepts <code>angular_only</code> and <code>collide_connected</code>. The world is derived from\n<code>body_a</code>.",
+            "description": "The world is derived from <code>body_a</code>.",
             "error": "",
             "examples": "",
             "language": "",
@@ -160,6 +210,12 @@
                     "name": "body_a",
                     "types": [
                         "btRigidBody"
+                    ],
+                    "types_html": [
+                        "<a href=\"../bullet3d-lua/#btRigidBody\">btRigidBody</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../bullet3d-lua/#btRigidBody\">btRigidBody</a>"
                     ]
                 },
                 {
@@ -169,6 +225,14 @@
                     "types": [
                         "btRigidBody",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../bullet3d-lua/#btRigidBody\">btRigidBody</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../bullet3d-lua/#btRigidBody\">btRigidBody</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 },
                 {
@@ -176,7 +240,13 @@
                     "is_optional": "False",
                     "name": "params",
                     "types": [
-                        "table"
+                        "bullet3d.constraint.cone_twist_params"
+                    ],
+                    "types_html": [
+                        "<a href=\"#bullet3d.constraint.cone_twist_params\">bullet3d.constraint.cone_twist_params</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#bullet3d.constraint.cone_twist_params\">bullet3d.constraint.cone_twist_params</a>"
                     ]
                 }
             ],
@@ -187,6 +257,12 @@
                     "name": "constraint",
                     "types": [
                         "btTypedConstraint"
+                    ],
+                    "types_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
                     ]
                 }
             ],
@@ -195,7 +271,7 @@
         },
         {
             "brief": "Create a generic six-degree-of-freedom constraint",
-            "description": "The params table requires local frame A and, for a two-body constraint,\nlocal frame B. It optionally accepts\n<code>collide_connected</code>. The world is derived from <code>body_a</code>. Bullet 2.77's active 6-DOF\nsolver ignores its legacy linear-reference-frame selector, so that field is\nrejected rather than silently accepted.",
+            "description": "The world is derived from <code>body_a</code>. Bullet 2.77's active 6-DOF\nsolver ignores its legacy linear-reference-frame selector, so that field is\nrejected rather than silently accepted.",
             "error": "",
             "examples": "",
             "language": "",
@@ -209,6 +285,12 @@
                     "name": "body_a",
                     "types": [
                         "btRigidBody"
+                    ],
+                    "types_html": [
+                        "<a href=\"../bullet3d-lua/#btRigidBody\">btRigidBody</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../bullet3d-lua/#btRigidBody\">btRigidBody</a>"
                     ]
                 },
                 {
@@ -218,6 +300,14 @@
                     "types": [
                         "btRigidBody",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../bullet3d-lua/#btRigidBody\">btRigidBody</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../bullet3d-lua/#btRigidBody\">btRigidBody</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 },
                 {
@@ -225,7 +315,13 @@
                     "is_optional": "False",
                     "name": "params",
                     "types": [
-                        "table"
+                        "bullet3d.constraint.generic_6dof_params"
+                    ],
+                    "types_html": [
+                        "<a href=\"#bullet3d.constraint.generic_6dof_params\">bullet3d.constraint.generic_6dof_params</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#bullet3d.constraint.generic_6dof_params\">bullet3d.constraint.generic_6dof_params</a>"
                     ]
                 }
             ],
@@ -236,6 +332,12 @@
                     "name": "constraint",
                     "types": [
                         "btTypedConstraint"
+                    ],
+                    "types_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
                     ]
                 }
             ],
@@ -244,7 +346,7 @@
         },
         {
             "brief": "Create a generic spring six-degree-of-freedom constraint",
-            "description": "Both bodies and both local frames are required. The params table optionally\naccepts <code>collide_connected</code>. The world is derived from <code>body_a</code>. Bullet 2.77's active\nspring 6-DOF solver ignores its legacy linear-reference-frame selector, so\nthat field is rejected rather than silently accepted.",
+            "description": "The world is derived from <code>body_a</code>. Bullet 2.77's active\nspring 6-DOF solver ignores its legacy linear-reference-frame selector, so\nthat field is rejected rather than silently accepted.",
             "error": "",
             "examples": "Create a spring that moves along its first linear axis:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"kd\">local</span> <span class=\"n\">body_a</span> <span class=\"o\">=</span> <span class=\"n\">bullet3d</span><span class=\"p\">.</span><span class=\"n\">get_rigid_body</span><span class=\"p\">(</span><span class=\"s2\">&quot;/body_a#collisionobject&quot;</span><span class=\"p\">)</span>\n    <span class=\"kd\">local</span> <span class=\"n\">body_b</span> <span class=\"o\">=</span> <span class=\"n\">bullet3d</span><span class=\"p\">.</span><span class=\"n\">get_rigid_body</span><span class=\"p\">(</span><span class=\"s2\">&quot;/body_b#collisionobject&quot;</span><span class=\"p\">)</span>\n    <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">spring</span> <span class=\"o\">=</span> <span class=\"n\">bullet3d</span><span class=\"p\">.</span><span class=\"n\">constraint</span><span class=\"p\">.</span><span class=\"n\">create_generic_6dof_spring</span><span class=\"p\">(</span><span class=\"n\">body_a</span><span class=\"p\">,</span> <span class=\"n\">body_b</span><span class=\"p\">,</span> <span class=\"p\">{</span>\n        <span class=\"n\">frame_a_position</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(),</span>\n        <span class=\"n\">frame_a_rotation</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">quat</span><span class=\"p\">(),</span>\n        <span class=\"n\">frame_b_position</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(),</span>\n        <span class=\"n\">frame_b_rotation</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">quat</span><span class=\"p\">(),</span>\n    <span class=\"p\">})</span>\n    <span class=\"n\">bullet3d</span><span class=\"p\">.</span><span class=\"n\">constraint</span><span class=\"p\">.</span><span class=\"n\">set_limit</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">spring</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"o\">-</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">)</span>\n    <span class=\"n\">bullet3d</span><span class=\"p\">.</span><span class=\"n\">constraint</span><span class=\"p\">.</span><span class=\"n\">enable_spring</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">spring</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"kc\">true</span><span class=\"p\">)</span>\n    <span class=\"n\">bullet3d</span><span class=\"p\">.</span><span class=\"n\">constraint</span><span class=\"p\">.</span><span class=\"n\">set_spring_stiffness</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">spring</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">20</span><span class=\"p\">)</span>\n    <span class=\"n\">bullet3d</span><span class=\"p\">.</span><span class=\"n\">constraint</span><span class=\"p\">.</span><span class=\"n\">set_spring_damping</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">spring</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mf\">0.5</span><span class=\"p\">)</span>\n    <span class=\"n\">bullet3d</span><span class=\"p\">.</span><span class=\"n\">constraint</span><span class=\"p\">.</span><span class=\"n\">set_spring_equilibrium_point</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">spring</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n\n<span class=\"kr\">function</span> <span class=\"nf\">final</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"kr\">if</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">spring</span> <span class=\"ow\">and</span> <span class=\"n\">bullet3d</span><span class=\"p\">.</span><span class=\"n\">constraint</span><span class=\"p\">.</span><span class=\"n\">is_valid</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">spring</span><span class=\"p\">)</span> <span class=\"kr\">then</span>\n        <span class=\"n\">bullet3d</span><span class=\"p\">.</span><span class=\"n\">constraint</span><span class=\"p\">.</span><span class=\"n\">destroy</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">spring</span><span class=\"p\">)</span>\n    <span class=\"kr\">end</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
             "language": "",
@@ -258,6 +360,12 @@
                     "name": "body_a",
                     "types": [
                         "btRigidBody"
+                    ],
+                    "types_html": [
+                        "<a href=\"../bullet3d-lua/#btRigidBody\">btRigidBody</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../bullet3d-lua/#btRigidBody\">btRigidBody</a>"
                     ]
                 },
                 {
@@ -266,6 +374,12 @@
                     "name": "body_b",
                     "types": [
                         "btRigidBody"
+                    ],
+                    "types_html": [
+                        "<a href=\"../bullet3d-lua/#btRigidBody\">btRigidBody</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../bullet3d-lua/#btRigidBody\">btRigidBody</a>"
                     ]
                 },
                 {
@@ -273,7 +387,13 @@
                     "is_optional": "False",
                     "name": "params",
                     "types": [
-                        "table"
+                        "bullet3d.constraint.generic_6dof_spring_params"
+                    ],
+                    "types_html": [
+                        "<a href=\"#bullet3d.constraint.generic_6dof_spring_params\">bullet3d.constraint.generic_6dof_spring_params</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#bullet3d.constraint.generic_6dof_spring_params\">bullet3d.constraint.generic_6dof_spring_params</a>"
                     ]
                 }
             ],
@@ -284,6 +404,12 @@
                     "name": "constraint",
                     "types": [
                         "btTypedConstraint"
+                    ],
+                    "types_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
                     ]
                 }
             ],
@@ -292,7 +418,7 @@
         },
         {
             "brief": "Create a hinge constraint",
-            "description": "The params table requires <code>frame_a_position</code> and <code>frame_a_rotation</code>, plus\nthe corresponding frame B fields for a two-body constraint. It optionally\naccepts <code>use_reference_frame_a</code>, <code>angular_only</code>, and\n<code>collide_connected</code>. The world is derived from <code>body_a</code>.",
+            "description": "The world is derived from <code>body_a</code>.",
             "error": "",
             "examples": "Create a motorized hinge with a 90-degree range:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"kd\">local</span> <span class=\"n\">body_a</span> <span class=\"o\">=</span> <span class=\"n\">bullet3d</span><span class=\"p\">.</span><span class=\"n\">get_rigid_body</span><span class=\"p\">(</span><span class=\"s2\">&quot;/door#collisionobject&quot;</span><span class=\"p\">)</span>\n    <span class=\"kd\">local</span> <span class=\"n\">body_b</span> <span class=\"o\">=</span> <span class=\"n\">bullet3d</span><span class=\"p\">.</span><span class=\"n\">get_rigid_body</span><span class=\"p\">(</span><span class=\"s2\">&quot;/frame#collisionobject&quot;</span><span class=\"p\">)</span>\n    <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">hinge</span> <span class=\"o\">=</span> <span class=\"n\">bullet3d</span><span class=\"p\">.</span><span class=\"n\">constraint</span><span class=\"p\">.</span><span class=\"n\">create_hinge</span><span class=\"p\">(</span><span class=\"n\">body_a</span><span class=\"p\">,</span> <span class=\"n\">body_b</span><span class=\"p\">,</span> <span class=\"p\">{</span>\n        <span class=\"n\">frame_a_position</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"o\">-</span><span class=\"mf\">0.5</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">),</span>\n        <span class=\"n\">frame_a_rotation</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">quat</span><span class=\"p\">(),</span>\n        <span class=\"n\">frame_b_position</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mf\">0.5</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">),</span>\n        <span class=\"n\">frame_b_rotation</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">quat</span><span class=\"p\">(),</span>\n    <span class=\"p\">})</span>\n    <span class=\"n\">bullet3d</span><span class=\"p\">.</span><span class=\"n\">constraint</span><span class=\"p\">.</span><span class=\"n\">set_hinge_limits</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">hinge</span><span class=\"p\">,</span> <span class=\"o\">-</span><span class=\"nb\">math.pi</span> <span class=\"o\">/</span> <span class=\"mi\">4</span><span class=\"p\">,</span> <span class=\"nb\">math.pi</span> <span class=\"o\">/</span> <span class=\"mi\">4</span><span class=\"p\">)</span>\n    <span class=\"n\">bullet3d</span><span class=\"p\">.</span><span class=\"n\">constraint</span><span class=\"p\">.</span><span class=\"n\">set_hinge_motor</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">hinge</span><span class=\"p\">,</span> <span class=\"kc\">true</span><span class=\"p\">,</span> <span class=\"mf\">1.5</span><span class=\"p\">,</span> <span class=\"mf\">2.5</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n\n<span class=\"kr\">function</span> <span class=\"nf\">final</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"kr\">if</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">hinge</span> <span class=\"ow\">and</span> <span class=\"n\">bullet3d</span><span class=\"p\">.</span><span class=\"n\">constraint</span><span class=\"p\">.</span><span class=\"n\">is_valid</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">hinge</span><span class=\"p\">)</span> <span class=\"kr\">then</span>\n        <span class=\"n\">bullet3d</span><span class=\"p\">.</span><span class=\"n\">constraint</span><span class=\"p\">.</span><span class=\"n\">destroy</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">hinge</span><span class=\"p\">)</span>\n    <span class=\"kr\">end</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
             "language": "",
@@ -306,6 +432,12 @@
                     "name": "body_a",
                     "types": [
                         "btRigidBody"
+                    ],
+                    "types_html": [
+                        "<a href=\"../bullet3d-lua/#btRigidBody\">btRigidBody</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../bullet3d-lua/#btRigidBody\">btRigidBody</a>"
                     ]
                 },
                 {
@@ -315,6 +447,14 @@
                     "types": [
                         "btRigidBody",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../bullet3d-lua/#btRigidBody\">btRigidBody</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../bullet3d-lua/#btRigidBody\">btRigidBody</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 },
                 {
@@ -322,7 +462,13 @@
                     "is_optional": "False",
                     "name": "params",
                     "types": [
-                        "table"
+                        "bullet3d.constraint.hinge_params"
+                    ],
+                    "types_html": [
+                        "<a href=\"#bullet3d.constraint.hinge_params\">bullet3d.constraint.hinge_params</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#bullet3d.constraint.hinge_params\">bullet3d.constraint.hinge_params</a>"
                     ]
                 }
             ],
@@ -333,6 +479,12 @@
                     "name": "constraint",
                     "types": [
                         "btTypedConstraint"
+                    ],
+                    "types_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
                     ]
                 }
             ],
@@ -341,7 +493,7 @@
         },
         {
             "brief": "Create a hinge2 constraint",
-            "description": "Both bodies are required. The params table requires a world-space <code>anchor</code>\nand non-zero, orthogonal <code>axis1</code> and <code>axis2</code> vectors. Its initial linear\nsuspension travel is one Defold unit in either direction. It optionally\naccepts <code>collide_connected</code>. The world is derived from <code>body_a</code>.",
+            "description": "Both bodies are required. Its initial linear suspension travel is one Defold\nunit in either direction. The world is derived from <code>body_a</code>.",
             "error": "",
             "examples": "",
             "language": "",
@@ -355,6 +507,12 @@
                     "name": "body_a",
                     "types": [
                         "btRigidBody"
+                    ],
+                    "types_html": [
+                        "<a href=\"../bullet3d-lua/#btRigidBody\">btRigidBody</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../bullet3d-lua/#btRigidBody\">btRigidBody</a>"
                     ]
                 },
                 {
@@ -363,6 +521,12 @@
                     "name": "body_b",
                     "types": [
                         "btRigidBody"
+                    ],
+                    "types_html": [
+                        "<a href=\"../bullet3d-lua/#btRigidBody\">btRigidBody</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../bullet3d-lua/#btRigidBody\">btRigidBody</a>"
                     ]
                 },
                 {
@@ -370,7 +534,13 @@
                     "is_optional": "False",
                     "name": "params",
                     "types": [
-                        "table"
+                        "bullet3d.constraint.anchor_axes_params"
+                    ],
+                    "types_html": [
+                        "<a href=\"#bullet3d.constraint.anchor_axes_params\">bullet3d.constraint.anchor_axes_params</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#bullet3d.constraint.anchor_axes_params\">bullet3d.constraint.anchor_axes_params</a>"
                     ]
                 }
             ],
@@ -381,6 +551,12 @@
                     "name": "constraint",
                     "types": [
                         "btTypedConstraint"
+                    ],
+                    "types_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
                     ]
                 }
             ],
@@ -389,7 +565,7 @@
         },
         {
             "brief": "Create a point-to-point constraint",
-            "description": "<code>params.pivot_a</code> is required. <code>params.pivot_b</code> is required with <code>body_b</code>;\nfor a one-body constraint it is an optional world-space anchor. The params\ntable also accepts <code>collide_connected</code>, which defaults to <code>false</code>. The world\nis derived from <code>body_a</code>; both bodies must belong to that same world.",
+            "description": "The world is derived from <code>body_a</code>; both bodies must belong to that same world.",
             "error": "",
             "examples": "Join two bodies at matching local pivots and explicitly destroy the\nconstraint when the script is finalized:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"kd\">local</span> <span class=\"n\">body_a</span> <span class=\"o\">=</span> <span class=\"n\">bullet3d</span><span class=\"p\">.</span><span class=\"n\">get_rigid_body</span><span class=\"p\">(</span><span class=\"s2\">&quot;/body_a#collisionobject&quot;</span><span class=\"p\">)</span>\n    <span class=\"kd\">local</span> <span class=\"n\">body_b</span> <span class=\"o\">=</span> <span class=\"n\">bullet3d</span><span class=\"p\">.</span><span class=\"n\">get_rigid_body</span><span class=\"p\">(</span><span class=\"s2\">&quot;/body_b#collisionobject&quot;</span><span class=\"p\">)</span>\n    <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">constraint</span> <span class=\"o\">=</span> <span class=\"n\">bullet3d</span><span class=\"p\">.</span><span class=\"n\">constraint</span><span class=\"p\">.</span><span class=\"n\">create_point_to_point</span><span class=\"p\">(</span><span class=\"n\">body_a</span><span class=\"p\">,</span> <span class=\"n\">body_b</span><span class=\"p\">,</span> <span class=\"p\">{</span>\n        <span class=\"n\">pivot_a</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mf\">0.5</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">),</span>\n        <span class=\"n\">pivot_b</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"o\">-</span><span class=\"mf\">0.5</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">),</span>\n    <span class=\"p\">})</span>\n<span class=\"kr\">end</span>\n\n<span class=\"kr\">function</span> <span class=\"nf\">final</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"kr\">if</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">constraint</span> <span class=\"ow\">and</span> <span class=\"n\">bullet3d</span><span class=\"p\">.</span><span class=\"n\">constraint</span><span class=\"p\">.</span><span class=\"n\">is_valid</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">constraint</span><span class=\"p\">)</span> <span class=\"kr\">then</span>\n        <span class=\"n\">bullet3d</span><span class=\"p\">.</span><span class=\"n\">constraint</span><span class=\"p\">.</span><span class=\"n\">destroy</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">constraint</span><span class=\"p\">)</span>\n    <span class=\"kr\">end</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
             "language": "",
@@ -403,6 +579,12 @@
                     "name": "body_a",
                     "types": [
                         "btRigidBody"
+                    ],
+                    "types_html": [
+                        "<a href=\"../bullet3d-lua/#btRigidBody\">btRigidBody</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../bullet3d-lua/#btRigidBody\">btRigidBody</a>"
                     ]
                 },
                 {
@@ -412,6 +594,14 @@
                     "types": [
                         "btRigidBody",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../bullet3d-lua/#btRigidBody\">btRigidBody</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../bullet3d-lua/#btRigidBody\">btRigidBody</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 },
                 {
@@ -419,7 +609,13 @@
                     "is_optional": "False",
                     "name": "params",
                     "types": [
-                        "table"
+                        "bullet3d.constraint.point_to_point_params"
+                    ],
+                    "types_html": [
+                        "<a href=\"#bullet3d.constraint.point_to_point_params\">bullet3d.constraint.point_to_point_params</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#bullet3d.constraint.point_to_point_params\">bullet3d.constraint.point_to_point_params</a>"
                     ]
                 }
             ],
@@ -430,6 +626,12 @@
                     "name": "constraint",
                     "types": [
                         "btTypedConstraint"
+                    ],
+                    "types_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
                     ]
                 }
             ],
@@ -438,7 +640,7 @@
         },
         {
             "brief": "Create a slider constraint",
-            "description": "The params table requires local frame A and, for a two-body constraint,\nlocal frame B. It optionally accepts <code>use_linear_reference_frame_a</code> and\n<code>collide_connected</code>. The world is derived from <code>body_a</code>.",
+            "description": "The world is derived from <code>body_a</code>.",
             "error": "",
             "examples": "",
             "language": "",
@@ -452,6 +654,12 @@
                     "name": "body_a",
                     "types": [
                         "btRigidBody"
+                    ],
+                    "types_html": [
+                        "<a href=\"../bullet3d-lua/#btRigidBody\">btRigidBody</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../bullet3d-lua/#btRigidBody\">btRigidBody</a>"
                     ]
                 },
                 {
@@ -461,6 +669,14 @@
                     "types": [
                         "btRigidBody",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../bullet3d-lua/#btRigidBody\">btRigidBody</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../bullet3d-lua/#btRigidBody\">btRigidBody</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 },
                 {
@@ -468,7 +684,13 @@
                     "is_optional": "False",
                     "name": "params",
                     "types": [
-                        "table"
+                        "bullet3d.constraint.slider_params"
+                    ],
+                    "types_html": [
+                        "<a href=\"#bullet3d.constraint.slider_params\">bullet3d.constraint.slider_params</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#bullet3d.constraint.slider_params\">bullet3d.constraint.slider_params</a>"
                     ]
                 }
             ],
@@ -479,6 +701,12 @@
                     "name": "constraint",
                     "types": [
                         "btTypedConstraint"
+                    ],
+                    "types_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
                     ]
                 }
             ],
@@ -487,7 +715,7 @@
         },
         {
             "brief": "Create a universal constraint",
-            "description": "Both bodies are required. The params table requires a world-space <code>anchor</code>\nand non-zero, orthogonal <code>axis1</code> and <code>axis2</code> vectors. It optionally accepts\n<code>collide_connected</code>. The world is derived from <code>body_a</code>.",
+            "description": "Both bodies are required. The world is derived from <code>body_a</code>.",
             "error": "",
             "examples": "",
             "language": "",
@@ -501,6 +729,12 @@
                     "name": "body_a",
                     "types": [
                         "btRigidBody"
+                    ],
+                    "types_html": [
+                        "<a href=\"../bullet3d-lua/#btRigidBody\">btRigidBody</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../bullet3d-lua/#btRigidBody\">btRigidBody</a>"
                     ]
                 },
                 {
@@ -509,6 +743,12 @@
                     "name": "body_b",
                     "types": [
                         "btRigidBody"
+                    ],
+                    "types_html": [
+                        "<a href=\"../bullet3d-lua/#btRigidBody\">btRigidBody</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../bullet3d-lua/#btRigidBody\">btRigidBody</a>"
                     ]
                 },
                 {
@@ -516,7 +756,13 @@
                     "is_optional": "False",
                     "name": "params",
                     "types": [
-                        "table"
+                        "bullet3d.constraint.anchor_axes_params"
+                    ],
+                    "types_html": [
+                        "<a href=\"#bullet3d.constraint.anchor_axes_params\">bullet3d.constraint.anchor_axes_params</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#bullet3d.constraint.anchor_axes_params\">bullet3d.constraint.anchor_axes_params</a>"
                     ]
                 }
             ],
@@ -527,6 +773,12 @@
                     "name": "constraint",
                     "types": [
                         "btTypedConstraint"
+                    ],
+                    "types_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
                     ]
                 }
             ],
@@ -549,6 +801,12 @@
                     "name": "constraint",
                     "types": [
                         "btTypedConstraint"
+                    ],
+                    "types_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
                     ]
                 }
             ],
@@ -573,6 +831,12 @@
                     "name": "constraint",
                     "types": [
                         "btTypedConstraint"
+                    ],
+                    "types_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
                     ]
                 },
                 {
@@ -581,6 +845,12 @@
                     "name": "enabled",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
@@ -605,6 +875,12 @@
                     "name": "constraint",
                     "types": [
                         "btTypedConstraint"
+                    ],
+                    "types_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
                     ]
                 },
                 {
@@ -612,7 +888,13 @@
                     "is_optional": "False",
                     "name": "axis",
                     "types": [
-                        "number"
+                        "integer"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
                     ]
                 },
                 {
@@ -621,6 +903,12 @@
                     "name": "enabled",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
@@ -628,6 +916,118 @@
             "returnvalues": [],
             "tparams": [],
             "type": "FUNCTION"
+        },
+        {
+            "brief": "Generic 6-DOF constraint parameters",
+            "description": "The frame-B fields are required for a two-body constraint.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "frame_a_position",
+                    "doc": "local body-A frame position",
+                    "is_optional": false,
+                    "name": "frame_a_position",
+                    "type": "vector3",
+                    "type_html": "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                },
+                {
+                    "display_name": "frame_a_rotation",
+                    "doc": "local body-A frame rotation",
+                    "is_optional": false,
+                    "name": "frame_a_rotation",
+                    "type": "quaternion",
+                    "type_html": "<a href=\"../vmath-lua/#quaternion\">quaternion</a>"
+                },
+                {
+                    "display_name": "frame_b_position",
+                    "doc": "local body-B frame position",
+                    "is_optional": true,
+                    "name": "frame_b_position?",
+                    "type": "vector3",
+                    "type_html": "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                },
+                {
+                    "display_name": "frame_b_rotation",
+                    "doc": "local body-B frame rotation",
+                    "is_optional": true,
+                    "name": "frame_b_rotation?",
+                    "type": "quaternion",
+                    "type_html": "<a href=\"../vmath-lua/#quaternion\">quaternion</a>"
+                },
+                {
+                    "display_name": "collide_connected",
+                    "doc": "whether connected bodies can collide; defaults to <code>false</code>",
+                    "is_optional": true,
+                    "name": "collide_connected?",
+                    "type": "boolean",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                }
+            ],
+            "name": "bullet3d.constraint.generic_6dof_params",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Generic spring 6-DOF constraint parameters",
+            "description": "Generic spring 6-DOF constraint parameters",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "frame_a_position",
+                    "doc": "local body-A frame position",
+                    "is_optional": false,
+                    "name": "frame_a_position",
+                    "type": "vector3",
+                    "type_html": "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                },
+                {
+                    "display_name": "frame_a_rotation",
+                    "doc": "local body-A frame rotation",
+                    "is_optional": false,
+                    "name": "frame_a_rotation",
+                    "type": "quaternion",
+                    "type_html": "<a href=\"../vmath-lua/#quaternion\">quaternion</a>"
+                },
+                {
+                    "display_name": "frame_b_position",
+                    "doc": "local body-B frame position",
+                    "is_optional": false,
+                    "name": "frame_b_position",
+                    "type": "vector3",
+                    "type_html": "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                },
+                {
+                    "display_name": "frame_b_rotation",
+                    "doc": "local body-B frame rotation",
+                    "is_optional": false,
+                    "name": "frame_b_rotation",
+                    "type": "quaternion",
+                    "type_html": "<a href=\"../vmath-lua/#quaternion\">quaternion</a>"
+                },
+                {
+                    "display_name": "collide_connected",
+                    "doc": "whether connected bodies can collide; defaults to <code>false</code>",
+                    "is_optional": true,
+                    "name": "collide_connected?",
+                    "type": "boolean",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                }
+            ],
+            "name": "bullet3d.constraint.generic_6dof_spring_params",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
         },
         {
             "brief": "Get a current 6-DOF angle",
@@ -645,6 +1045,12 @@
                     "name": "constraint",
                     "types": [
                         "btTypedConstraint"
+                    ],
+                    "types_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
                     ]
                 },
                 {
@@ -652,7 +1058,13 @@
                     "is_optional": "False",
                     "name": "axis",
                     "types": [
-                        "number"
+                        "integer"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
                     ]
                 }
             ],
@@ -663,6 +1075,12 @@
                     "name": "angle",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -685,6 +1103,12 @@
                     "name": "constraint",
                     "types": [
                         "btTypedConstraint"
+                    ],
+                    "types_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
                     ]
                 },
                 {
@@ -692,7 +1116,13 @@
                     "is_optional": "False",
                     "name": "axis",
                     "types": [
-                        "number"
+                        "integer"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
                     ]
                 }
             ],
@@ -703,6 +1133,12 @@
                     "name": "direction",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 }
             ],
@@ -725,6 +1161,12 @@
                     "name": "constraint",
                     "types": [
                         "btTypedConstraint"
+                    ],
+                    "types_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
                     ]
                 },
                 {
@@ -732,7 +1174,13 @@
                     "is_optional": "False",
                     "name": "axis",
                     "types": [
-                        "number"
+                        "integer"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
                     ]
                 }
             ],
@@ -743,6 +1191,12 @@
                     "name": "enabled",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 },
                 {
@@ -750,6 +1204,12 @@
                     "name": "target_velocity",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -757,6 +1217,12 @@
                     "name": "max_impulse",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -764,6 +1230,12 @@
                     "name": "bounce",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -786,6 +1258,12 @@
                     "name": "constraint",
                     "types": [
                         "btTypedConstraint"
+                    ],
+                    "types_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
                     ]
                 },
                 {
@@ -793,7 +1271,13 @@
                     "is_optional": "False",
                     "name": "axis",
                     "types": [
-                        "number"
+                        "integer"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
                     ]
                 }
             ],
@@ -804,6 +1288,12 @@
                     "name": "position",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -826,6 +1316,12 @@
                     "name": "constraint",
                     "types": [
                         "btTypedConstraint"
+                    ],
+                    "types_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
                     ]
                 }
             ],
@@ -836,6 +1332,12 @@
                     "name": "anchor_a",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 },
                 {
@@ -843,6 +1345,12 @@
                     "name": "anchor_b",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 }
             ],
@@ -865,6 +1373,12 @@
                     "name": "constraint",
                     "types": [
                         "btTypedConstraint"
+                    ],
+                    "types_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
                     ]
                 }
             ],
@@ -875,6 +1389,12 @@
                     "name": "angle_1",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -882,6 +1402,12 @@
                     "name": "angle_2",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -904,6 +1430,12 @@
                     "name": "constraint",
                     "types": [
                         "btTypedConstraint"
+                    ],
+                    "types_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
                     ]
                 }
             ],
@@ -914,6 +1446,12 @@
                     "name": "axis_1",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 },
                 {
@@ -921,6 +1459,12 @@
                     "name": "axis_2",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 }
             ],
@@ -943,6 +1487,12 @@
                     "name": "constraint",
                     "types": [
                         "btTypedConstraint"
+                    ],
+                    "types_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
                     ]
                 }
             ],
@@ -953,6 +1503,12 @@
                     "name": "body",
                     "types": [
                         "btRigidBody"
+                    ],
+                    "types_html": [
+                        "<a href=\"../bullet3d-lua/#btRigidBody\">btRigidBody</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../bullet3d-lua/#btRigidBody\">btRigidBody</a>"
                     ]
                 }
             ],
@@ -975,6 +1531,12 @@
                     "name": "constraint",
                     "types": [
                         "btTypedConstraint"
+                    ],
+                    "types_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
                     ]
                 }
             ],
@@ -986,6 +1548,14 @@
                     "types": [
                         "btRigidBody",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../bullet3d-lua/#btRigidBody\">btRigidBody</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../bullet3d-lua/#btRigidBody\">btRigidBody</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 }
             ],
@@ -1008,6 +1578,12 @@
                     "name": "constraint",
                     "types": [
                         "btTypedConstraint"
+                    ],
+                    "types_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
                     ]
                 }
             ],
@@ -1018,6 +1594,12 @@
                     "name": "collide",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
@@ -1040,6 +1622,12 @@
                     "name": "constraint",
                     "types": [
                         "btTypedConstraint"
+                    ],
+                    "types_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
                     ]
                 }
             ],
@@ -1050,6 +1638,12 @@
                     "name": "swing_span_1",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -1057,6 +1651,12 @@
                     "name": "swing_span_2",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -1064,6 +1664,12 @@
                     "name": "twist_span",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -1086,6 +1692,12 @@
                     "name": "constraint",
                     "types": [
                         "btTypedConstraint"
+                    ],
+                    "types_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
                     ]
                 }
             ],
@@ -1096,6 +1708,12 @@
                     "name": "position",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 },
                 {
@@ -1103,6 +1721,12 @@
                     "name": "rotation",
                     "types": [
                         "quaternion"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#quaternion\">quaternion</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#quaternion\">quaternion</a>"
                     ]
                 }
             ],
@@ -1125,6 +1749,12 @@
                     "name": "constraint",
                     "types": [
                         "btTypedConstraint"
+                    ],
+                    "types_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
                     ]
                 }
             ],
@@ -1135,6 +1765,12 @@
                     "name": "position",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 },
                 {
@@ -1142,6 +1778,12 @@
                     "name": "rotation",
                     "types": [
                         "quaternion"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#quaternion\">quaternion</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#quaternion\">quaternion</a>"
                     ]
                 }
             ],
@@ -1164,6 +1806,12 @@
                     "name": "constraint",
                     "types": [
                         "btTypedConstraint"
+                    ],
+                    "types_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
                     ]
                 }
             ],
@@ -1174,6 +1822,12 @@
                     "name": "angle",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -1196,6 +1850,12 @@
                     "name": "constraint",
                     "types": [
                         "btTypedConstraint"
+                    ],
+                    "types_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
                     ]
                 }
             ],
@@ -1206,6 +1866,12 @@
                     "name": "lower",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -1213,6 +1879,12 @@
                     "name": "upper",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -1235,6 +1907,12 @@
                     "name": "constraint",
                     "types": [
                         "btTypedConstraint"
+                    ],
+                    "types_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
                     ]
                 }
             ],
@@ -1245,6 +1923,12 @@
                     "name": "enabled",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 },
                 {
@@ -1252,6 +1936,12 @@
                     "name": "target_velocity",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -1259,6 +1949,12 @@
                     "name": "max_impulse",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -1281,6 +1977,12 @@
                     "name": "constraint",
                     "types": [
                         "btTypedConstraint"
+                    ],
+                    "types_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
                     ]
                 },
                 {
@@ -1288,7 +1990,13 @@
                     "is_optional": "False",
                     "name": "axis",
                     "types": [
-                        "number"
+                        "integer"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
                     ]
                 }
             ],
@@ -1299,6 +2007,12 @@
                     "name": "lower",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -1306,6 +2020,12 @@
                     "name": "upper",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -1328,6 +2048,12 @@
                     "name": "constraint",
                     "types": [
                         "btTypedConstraint"
+                    ],
+                    "types_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
                     ]
                 }
             ],
@@ -1338,6 +2064,12 @@
                     "name": "pivot_a",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 },
                 {
@@ -1345,6 +2077,12 @@
                     "name": "pivot_b",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 }
             ],
@@ -1367,6 +2105,12 @@
                     "name": "constraint",
                     "types": [
                         "btTypedConstraint"
+                    ],
+                    "types_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
                     ]
                 }
             ],
@@ -1377,6 +2121,12 @@
                     "name": "lower_linear",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -1384,6 +2134,12 @@
                     "name": "upper_linear",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -1391,6 +2147,12 @@
                     "name": "lower_angular",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -1398,6 +2160,12 @@
                     "name": "upper_angular",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -1420,6 +2188,12 @@
                     "name": "constraint",
                     "types": [
                         "btTypedConstraint"
+                    ],
+                    "types_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
                     ]
                 },
                 {
@@ -1428,6 +2202,12 @@
                     "name": "motor",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 }
             ],
@@ -1438,6 +2218,12 @@
                     "name": "enabled",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 },
                 {
@@ -1445,6 +2231,12 @@
                     "name": "target_velocity",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -1452,6 +2244,12 @@
                     "name": "max_force",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -1474,6 +2272,12 @@
                     "name": "constraint",
                     "types": [
                         "btTypedConstraint"
+                    ],
+                    "types_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
                     ]
                 }
             ],
@@ -1484,6 +2288,12 @@
                     "name": "position",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -1506,6 +2316,12 @@
                     "name": "constraint",
                     "types": [
                         "btTypedConstraint"
+                    ],
+                    "types_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
                     ]
                 }
             ],
@@ -1516,6 +2332,12 @@
                     "name": "angle",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -1538,16 +2360,28 @@
                     "name": "constraint",
                     "types": [
                         "btTypedConstraint"
+                    ],
+                    "types_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
                     ]
                 }
             ],
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "one of the <code>bullet3d.constraint.CONSTRAINT_TYPE_*</code> constants",
+                    "doc": "constraint type",
                     "name": "type",
                     "types": [
-                        "number"
+                        "bullet3d.constraint.CONSTRAINT_TYPE"
+                    ],
+                    "types_html": [
+                        "<a href=\"#bullet3d.constraint.CONSTRAINT_TYPE\">bullet3d.constraint.CONSTRAINT_TYPE</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#bullet3d.constraint.CONSTRAINT_TYPE\">bullet3d.constraint.CONSTRAINT_TYPE</a>"
                     ]
                 }
             ],
@@ -1570,6 +2404,12 @@
                     "name": "constraint",
                     "types": [
                         "btTypedConstraint"
+                    ],
+                    "types_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
                     ]
                 }
             ],
@@ -1580,6 +2420,12 @@
                     "name": "name",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 }
             ],
@@ -1602,6 +2448,12 @@
                     "name": "constraint",
                     "types": [
                         "btTypedConstraint"
+                    ],
+                    "types_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
                     ]
                 }
             ],
@@ -1612,6 +2464,12 @@
                     "name": "use_frame_a",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
@@ -1634,6 +2492,12 @@
                     "name": "constraint",
                     "types": [
                         "btTypedConstraint"
+                    ],
+                    "types_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
                     ]
                 }
             ],
@@ -1644,11 +2508,89 @@
                     "name": "world",
                     "types": [
                         "btDiscreteDynamicsWorld"
+                    ],
+                    "types_html": [
+                        "<a href=\"../bullet3d-lua/#btDiscreteDynamicsWorld\">btDiscreteDynamicsWorld</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../bullet3d-lua/#btDiscreteDynamicsWorld\">btDiscreteDynamicsWorld</a>"
                     ]
                 }
             ],
             "tparams": [],
             "type": "FUNCTION"
+        },
+        {
+            "brief": "Hinge constraint parameters",
+            "description": "The frame-B fields are required for a two-body constraint.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "frame_a_position",
+                    "doc": "local body-A frame position",
+                    "is_optional": false,
+                    "name": "frame_a_position",
+                    "type": "vector3",
+                    "type_html": "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                },
+                {
+                    "display_name": "frame_a_rotation",
+                    "doc": "local body-A frame rotation",
+                    "is_optional": false,
+                    "name": "frame_a_rotation",
+                    "type": "quaternion",
+                    "type_html": "<a href=\"../vmath-lua/#quaternion\">quaternion</a>"
+                },
+                {
+                    "display_name": "frame_b_position",
+                    "doc": "local body-B frame position",
+                    "is_optional": true,
+                    "name": "frame_b_position?",
+                    "type": "vector3",
+                    "type_html": "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                },
+                {
+                    "display_name": "frame_b_rotation",
+                    "doc": "local body-B frame rotation",
+                    "is_optional": true,
+                    "name": "frame_b_rotation?",
+                    "type": "quaternion",
+                    "type_html": "<a href=\"../vmath-lua/#quaternion\">quaternion</a>"
+                },
+                {
+                    "display_name": "use_reference_frame_a",
+                    "doc": "whether angular calculations reference frame A",
+                    "is_optional": true,
+                    "name": "use_reference_frame_a?",
+                    "type": "boolean",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                },
+                {
+                    "display_name": "angular_only",
+                    "doc": "whether to constrain angular motion only",
+                    "is_optional": true,
+                    "name": "angular_only?",
+                    "type": "boolean",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                },
+                {
+                    "display_name": "collide_connected",
+                    "doc": "whether connected bodies can collide; defaults to <code>false</code>",
+                    "is_optional": true,
+                    "name": "collide_connected?",
+                    "type": "boolean",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                }
+            ],
+            "name": "bullet3d.constraint.hinge_params",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
         },
         {
             "brief": "Test whether a constraint is active in its world",
@@ -1666,6 +2608,12 @@
                     "name": "constraint",
                     "types": [
                         "btTypedConstraint"
+                    ],
+                    "types_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
                     ]
                 }
             ],
@@ -1676,6 +2624,12 @@
                     "name": "active",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
@@ -1698,6 +2652,12 @@
                     "name": "constraint",
                     "types": [
                         "btTypedConstraint"
+                    ],
+                    "types_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
                     ]
                 }
             ],
@@ -1708,6 +2668,12 @@
                     "name": "angular_only",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
@@ -1730,6 +2696,12 @@
                     "name": "constraint",
                     "types": [
                         "btTypedConstraint"
+                    ],
+                    "types_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
                     ]
                 },
                 {
@@ -1737,7 +2709,13 @@
                     "is_optional": "False",
                     "name": "axis",
                     "types": [
-                        "number"
+                        "integer"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
                     ]
                 }
             ],
@@ -1748,6 +2726,12 @@
                     "name": "limited",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
@@ -1770,6 +2754,12 @@
                     "name": "constraint",
                     "types": [
                         "btTypedConstraint"
+                    ],
+                    "types_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
                     ]
                 }
             ],
@@ -1780,6 +2770,12 @@
                     "name": "past_limit",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
@@ -1802,6 +2798,12 @@
                     "name": "constraint",
                     "types": [
                         "btTypedConstraint"
+                    ],
+                    "types_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
                     ]
                 }
             ],
@@ -1812,11 +2814,57 @@
                     "name": "valid",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
             "tparams": [],
             "type": "FUNCTION"
+        },
+        {
+            "brief": "Point-to-point constraint parameters",
+            "description": "<code>pivot_b</code> is required for a two-body constraint. For a one-body constraint,\nit is an optional world-space anchor.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "pivot_a",
+                    "doc": "local body-A pivot",
+                    "is_optional": false,
+                    "name": "pivot_a",
+                    "type": "vector3",
+                    "type_html": "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                },
+                {
+                    "display_name": "pivot_b",
+                    "doc": "local body-B pivot or world-space anchor",
+                    "is_optional": true,
+                    "name": "pivot_b?",
+                    "type": "vector3",
+                    "type_html": "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                },
+                {
+                    "display_name": "collide_connected",
+                    "doc": "whether connected bodies can collide; defaults to <code>false</code>",
+                    "is_optional": true,
+                    "name": "collide_connected?",
+                    "type": "boolean",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                }
+            ],
+            "name": "bullet3d.constraint.point_to_point_params",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
         },
         {
             "brief": "Set 6-DOF motor settings",
@@ -1834,6 +2882,12 @@
                     "name": "constraint",
                     "types": [
                         "btTypedConstraint"
+                    ],
+                    "types_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
                     ]
                 },
                 {
@@ -1841,7 +2895,13 @@
                     "is_optional": "False",
                     "name": "axis",
                     "types": [
-                        "number"
+                        "integer"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
                     ]
                 },
                 {
@@ -1850,6 +2910,12 @@
                     "name": "enabled",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 },
                 {
@@ -1858,6 +2924,12 @@
                     "name": "target_velocity",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -1866,15 +2938,29 @@
                     "name": "max_impulse",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
                     "doc": "optional angular bounce from 0 to 1",
-                    "is_optional": "False",
+                    "is_optional": "True",
                     "name": "bounce",
                     "types": [
                         "number",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 }
             ],
@@ -1899,6 +2985,12 @@
                     "name": "constraint",
                     "types": [
                         "btTypedConstraint"
+                    ],
+                    "types_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
                     ]
                 },
                 {
@@ -1907,6 +2999,12 @@
                     "name": "angular_only",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
@@ -1931,6 +3029,12 @@
                     "name": "constraint",
                     "types": [
                         "btTypedConstraint"
+                    ],
+                    "types_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
                     ]
                 },
                 {
@@ -1939,6 +3043,12 @@
                     "name": "swing_span_1",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -1947,6 +3057,12 @@
                     "name": "swing_span_2",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -1955,33 +3071,63 @@
                     "name": "twist_span",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
                     "doc": "optional softness from 0 to 1",
-                    "is_optional": "False",
+                    "is_optional": "True",
                     "name": "softness",
                     "types": [
                         "number",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 },
                 {
                     "doc": "optional bias from 0 to 1",
-                    "is_optional": "False",
+                    "is_optional": "True",
                     "name": "bias",
                     "types": [
                         "number",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 },
                 {
                     "doc": "optional relaxation from 0 to 1",
-                    "is_optional": "False",
+                    "is_optional": "True",
                     "name": "relaxation",
                     "types": [
                         "number",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 }
             ],
@@ -2006,6 +3152,12 @@
                     "name": "constraint",
                     "types": [
                         "btTypedConstraint"
+                    ],
+                    "types_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
                     ]
                 },
                 {
@@ -2014,15 +3166,29 @@
                     "name": "target",
                     "types": [
                         "quaternion"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#quaternion\">quaternion</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#quaternion\">quaternion</a>"
                     ]
                 },
                 {
                     "doc": "target is already in constraint space",
-                    "is_optional": "False",
+                    "is_optional": "True",
                     "name": "constraint_space",
                     "types": [
                         "boolean",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 }
             ],
@@ -2047,6 +3213,12 @@
                     "name": "constraint",
                     "types": [
                         "btTypedConstraint"
+                    ],
+                    "types_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
                     ]
                 },
                 {
@@ -2055,6 +3227,12 @@
                     "name": "position",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 },
                 {
@@ -2063,6 +3241,12 @@
                     "name": "rotation",
                     "types": [
                         "quaternion"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#quaternion\">quaternion</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#quaternion\">quaternion</a>"
                     ]
                 }
             ],
@@ -2087,6 +3271,12 @@
                     "name": "constraint",
                     "types": [
                         "btTypedConstraint"
+                    ],
+                    "types_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
                     ]
                 },
                 {
@@ -2095,6 +3285,12 @@
                     "name": "position",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 },
                 {
@@ -2103,6 +3299,12 @@
                     "name": "rotation",
                     "types": [
                         "quaternion"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#quaternion\">quaternion</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#quaternion\">quaternion</a>"
                     ]
                 }
             ],
@@ -2127,6 +3329,12 @@
                     "name": "constraint",
                     "types": [
                         "btTypedConstraint"
+                    ],
+                    "types_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
                     ]
                 },
                 {
@@ -2135,6 +3343,12 @@
                     "name": "axis",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 }
             ],
@@ -2159,6 +3373,12 @@
                     "name": "constraint",
                     "types": [
                         "btTypedConstraint"
+                    ],
+                    "types_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
                     ]
                 },
                 {
@@ -2167,6 +3387,12 @@
                     "name": "lower",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -2175,24 +3401,46 @@
                     "name": "upper",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
                     "doc": "optional limit bias from 0 to 1",
-                    "is_optional": "False",
+                    "is_optional": "True",
                     "name": "bias",
                     "types": [
                         "number",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 },
                 {
                     "doc": "optional relaxation from 0 to 1",
-                    "is_optional": "False",
+                    "is_optional": "True",
                     "name": "relaxation",
                     "types": [
                         "number",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 }
             ],
@@ -2217,6 +3465,12 @@
                     "name": "constraint",
                     "types": [
                         "btTypedConstraint"
+                    ],
+                    "types_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
                     ]
                 },
                 {
@@ -2225,6 +3479,12 @@
                     "name": "enabled",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 },
                 {
@@ -2233,6 +3493,12 @@
                     "name": "target_velocity",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -2241,6 +3507,12 @@
                     "name": "max_impulse",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -2265,6 +3537,12 @@
                     "name": "constraint",
                     "types": [
                         "btTypedConstraint"
+                    ],
+                    "types_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
                     ]
                 },
                 {
@@ -2273,6 +3551,12 @@
                     "name": "target_angle",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -2281,6 +3565,12 @@
                     "name": "time_step",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -2305,6 +3595,12 @@
                     "name": "constraint",
                     "types": [
                         "btTypedConstraint"
+                    ],
+                    "types_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
                     ]
                 },
                 {
@@ -2312,7 +3608,13 @@
                     "is_optional": "False",
                     "name": "axis",
                     "types": [
-                        "number"
+                        "integer"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
                     ]
                 },
                 {
@@ -2321,6 +3623,12 @@
                     "name": "lower",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -2329,6 +3637,12 @@
                     "name": "upper",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -2353,6 +3667,12 @@
                     "name": "constraint",
                     "types": [
                         "btTypedConstraint"
+                    ],
+                    "types_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
                     ]
                 },
                 {
@@ -2361,6 +3681,12 @@
                     "name": "pivot_a",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 },
                 {
@@ -2369,6 +3695,12 @@
                     "name": "pivot_b",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 }
             ],
@@ -2393,6 +3725,12 @@
                     "name": "constraint",
                     "types": [
                         "btTypedConstraint"
+                    ],
+                    "types_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
                     ]
                 },
                 {
@@ -2401,6 +3739,12 @@
                     "name": "lower_linear",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -2409,6 +3753,12 @@
                     "name": "upper_linear",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -2417,6 +3767,12 @@
                     "name": "lower_angular",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -2425,6 +3781,12 @@
                     "name": "upper_angular",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -2449,6 +3811,12 @@
                     "name": "constraint",
                     "types": [
                         "btTypedConstraint"
+                    ],
+                    "types_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
                     ]
                 },
                 {
@@ -2457,6 +3825,12 @@
                     "name": "motor",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 },
                 {
@@ -2465,6 +3839,12 @@
                     "name": "enabled",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 },
                 {
@@ -2473,6 +3853,12 @@
                     "name": "target_velocity",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -2481,6 +3867,12 @@
                     "name": "max_force",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -2505,6 +3897,12 @@
                     "name": "constraint",
                     "types": [
                         "btTypedConstraint"
+                    ],
+                    "types_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
                     ]
                 },
                 {
@@ -2512,7 +3910,13 @@
                     "is_optional": "False",
                     "name": "axis",
                     "types": [
-                        "number"
+                        "integer"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
                     ]
                 },
                 {
@@ -2521,6 +3925,12 @@
                     "name": "damping",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -2545,24 +3955,46 @@
                     "name": "constraint",
                     "types": [
                         "btTypedConstraint"
+                    ],
+                    "types_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
                     ]
                 },
                 {
                     "doc": "optional one-based axis from 1 to 6",
-                    "is_optional": "False",
+                    "is_optional": "True",
                     "name": "axis",
                     "types": [
-                        "number",
+                        "integer",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 },
                 {
                     "doc": "optional explicit equilibrium value",
-                    "is_optional": "False",
+                    "is_optional": "True",
                     "name": "value",
                     "types": [
                         "number",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 }
             ],
@@ -2587,6 +4019,12 @@
                     "name": "constraint",
                     "types": [
                         "btTypedConstraint"
+                    ],
+                    "types_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#btTypedConstraint\">btTypedConstraint</a>"
                     ]
                 },
                 {
@@ -2594,7 +4032,13 @@
                     "is_optional": "False",
                     "name": "axis",
                     "types": [
-                        "number"
+                        "integer"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
                     ]
                 },
                 {
@@ -2603,6 +4047,12 @@
                     "name": "stiffness",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -2610,8 +4060,73 @@
             "returnvalues": [],
             "tparams": [],
             "type": "FUNCTION"
+        },
+        {
+            "brief": "Slider constraint parameters",
+            "description": "The frame-B fields are required for a two-body constraint.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "frame_a_position",
+                    "doc": "local body-A frame position",
+                    "is_optional": false,
+                    "name": "frame_a_position",
+                    "type": "vector3",
+                    "type_html": "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                },
+                {
+                    "display_name": "frame_a_rotation",
+                    "doc": "local body-A frame rotation",
+                    "is_optional": false,
+                    "name": "frame_a_rotation",
+                    "type": "quaternion",
+                    "type_html": "<a href=\"../vmath-lua/#quaternion\">quaternion</a>"
+                },
+                {
+                    "display_name": "frame_b_position",
+                    "doc": "local body-B frame position",
+                    "is_optional": true,
+                    "name": "frame_b_position?",
+                    "type": "vector3",
+                    "type_html": "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                },
+                {
+                    "display_name": "frame_b_rotation",
+                    "doc": "local body-B frame rotation",
+                    "is_optional": true,
+                    "name": "frame_b_rotation?",
+                    "type": "quaternion",
+                    "type_html": "<a href=\"../vmath-lua/#quaternion\">quaternion</a>"
+                },
+                {
+                    "display_name": "use_linear_reference_frame_a",
+                    "doc": "whether linear calculations reference frame A",
+                    "is_optional": true,
+                    "name": "use_linear_reference_frame_a?",
+                    "type": "boolean",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                },
+                {
+                    "display_name": "collide_connected",
+                    "doc": "whether connected bodies can collide; defaults to <code>false</code>",
+                    "is_optional": true,
+                    "name": "collide_connected?",
+                    "type": "boolean",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                }
+            ],
+            "name": "bullet3d.constraint.slider_params",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
         }
     ],
+    "format_version": 2,
     "info": {
         "api_language": "Lua",
         "brief": "Bullet constraint API",

@@ -1,6 +1,70 @@
 {
     "elements": [
         {
+            "brief": "ASTC image header",
+            "description": "ASTC image header",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "width",
+                    "doc": "Image width.",
+                    "is_optional": false,
+                    "name": "width",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "height",
+                    "doc": "Image height.",
+                    "is_optional": false,
+                    "name": "height",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "depth",
+                    "doc": "Image depth.",
+                    "is_optional": false,
+                    "name": "depth",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "block_size_x",
+                    "doc": "Block size on the x-axis.",
+                    "is_optional": false,
+                    "name": "block_size_x",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "block_size_y",
+                    "doc": "Block size on the y-axis.",
+                    "is_optional": false,
+                    "name": "block_size_y",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "block_size_z",
+                    "doc": "Block size on the z-axis.",
+                    "is_optional": false,
+                    "name": "block_size_z",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                }
+            ],
+            "name": "image.astc_header",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
             "brief": "get the header of an .astc buffer",
             "description": "get the header of an .astc buffer",
             "error": "",
@@ -16,17 +80,31 @@
                     "name": "buffer",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 }
             ],
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "header or <code>nil</code> if buffer is not a valid .astc. The header has these fields:\n<ul>\n<li><span class=\"type\">number</span> <code>width</code>: image width</li>\n<li><span class=\"type\">number</span> <code>height</code>: image height</li>\n<li><span class=\"type\">number</span> <code>depth</code>: image depth</li>\n<li><span class=\"type\">number</span> <code>block_size_x</code>: block size x</li>\n<li><span class=\"type\">number</span> <code>block_size_y</code>: block size y</li>\n<li><span class=\"type\">number</span> <code>block_size_z</code>: block size z</li>\n</ul>",
-                    "name": "table",
+                    "doc": "header, or <code>nil</code> if the buffer is not a valid ASTC image",
+                    "name": "header",
                     "types": [
-                        "table",
+                        "image.astc_header",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"#image.astc_header\">image.astc_header</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#image.astc_header\">image.astc_header</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 }
             ],
@@ -49,25 +127,48 @@
                     "name": "buffer",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 },
                 {
-                    "doc": "An optional table containing parameters for loading the image. Supported entries:\n<dl>\n<dt><code>premultiply_alpha</code></dt>\n<dd><span class=\"type\">boolean</span> True if alpha should be premultiplied into the color components. Defaults to <code>false</code>.</dd>\n<dt><code>flip_vertically</code></dt>\n<dd><span class=\"type\">boolean</span> True if the image contents should be flipped vertically. Defaults to <code>false</code>.</dd>\n</dl>",
+                    "doc": "Optional loading parameters. A boolean is accepted for backwards compatibility and controls <code>premultiply_alpha</code>.",
                     "is_optional": "True",
                     "name": "options",
                     "types": [
-                        "table"
+                        "boolean",
+                        "image.load_options"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>",
+                        "<a href=\"#image.load_options\">image.load_options</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>",
+                        "<a href=\"#image.load_options\">image.load_options</a>"
                     ]
                 }
             ],
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "object or <code>nil</code> if loading fails. The object is a table with the following fields:\n<ul>\n<li><span class=\"type\">number</span> <code>width</code>: image width</li>\n<li><span class=\"type\">number</span> <code>height</code>: image height</li>\n<li><span class=\"type\">constant</span> <code>type</code>: image type<ul>\n<li><code>image.TYPE_RGB</code></li>\n<li><code>image.TYPE_RGBA</code></li>\n<li><code>image.TYPE_LUMINANCE</code></li>\n<li><code>image.TYPE_LUMINANCE_ALPHA</code></li>\n</ul>\n</li>\n<li><span class=\"type\">string</span> <code>buffer</code>: the raw image data</li>\n</ul>",
+                    "doc": "loaded image, or <code>nil</code> if loading fails",
                     "name": "image",
                     "types": [
-                        "table",
+                        "image.load_result",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"#image.load_result\">image.load_result</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#image.load_result\">image.load_result</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 }
             ],
@@ -90,25 +191,48 @@
                     "name": "buffer",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 },
                 {
-                    "doc": "An optional table containing parameters for loading the image. Supported entries:\n<dl>\n<dt><code>premultiply_alpha</code></dt>\n<dd><span class=\"type\">boolean</span> True if alpha should be premultiplied into the color components. Defaults to <code>false</code>.</dd>\n<dt><code>flip_vertically</code></dt>\n<dd><span class=\"type\">boolean</span> True if the image contents should be flipped vertically. Defaults to <code>false</code>.</dd>\n</dl>",
+                    "doc": "Optional loading parameters. A boolean is accepted for backwards compatibility and controls <code>premultiply_alpha</code>.",
                     "is_optional": "True",
                     "name": "options",
                     "types": [
-                        "table"
+                        "boolean",
+                        "image.load_options"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>",
+                        "<a href=\"#image.load_options\">image.load_options</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>",
+                        "<a href=\"#image.load_options\">image.load_options</a>"
                     ]
                 }
             ],
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "object or <code>nil</code> if loading fails. The object is a table with the following fields:\n<ul>\n<li><span class=\"type\">number</span> <code>width</code>: image width</li>\n<li><span class=\"type\">number</span> <code>height</code>: image height</li>\n<li><span class=\"type\">constant</span> <code>type</code>: image type<ul>\n<li><code>image.TYPE_RGB</code></li>\n<li><code>image.TYPE_RGBA</code></li>\n<li><code>image.TYPE_LUMINANCE</code></li>\n<li><code>image.TYPE_LUMINANCE_ALPHA</code></li>\n</ul>\n</li>\n<li><span class=\"type\">buffer</span> <code>buffer</code>: the script buffer that holds the decompressed image data. See <a href=\"/ref/buffer#buffer.create\">buffer.create</a> how to use the buffer.</li>\n</ul>",
+                    "doc": "loaded image, or <code>nil</code> if loading fails",
                     "name": "image",
                     "types": [
-                        "table",
+                        "image.load_buffer_result",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"#image.load_buffer_result\">image.load_buffer_result</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#image.load_buffer_result\">image.load_buffer_result</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 }
             ],
@@ -116,66 +240,184 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "luminance image type",
-            "description": "luminance image type",
+            "brief": "Loaded buffer image data",
+            "description": "Loaded buffer image data",
             "error": "",
             "examples": "",
             "language": "",
-            "members": [],
-            "name": "image.TYPE_LUMINANCE",
+            "members": [
+                {
+                    "display_name": "width",
+                    "doc": "Image width.",
+                    "is_optional": false,
+                    "name": "width",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "height",
+                    "doc": "Image height.",
+                    "is_optional": false,
+                    "name": "height",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "type",
+                    "doc": "Image type.",
+                    "is_optional": false,
+                    "name": "type",
+                    "type": "image.TYPE",
+                    "type_html": "<a href=\"#image.TYPE\">image.TYPE</a>"
+                },
+                {
+                    "display_name": "buffer",
+                    "doc": "Script buffer containing the decompressed image data.",
+                    "is_optional": false,
+                    "name": "buffer",
+                    "type": "buffer_data",
+                    "type_html": "<a href=\"../buffer-lua/#buffer_data\">buffer_data</a>"
+                }
+            ],
+            "name": "image.load_buffer_result",
             "notes": [],
             "parameters": [],
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "CONSTANT"
+            "type": "STRUCT"
         },
         {
-            "brief": "luminance image type",
-            "description": "luminance image type",
+            "brief": "Image loading options",
+            "description": "Image loading options",
             "error": "",
             "examples": "",
             "language": "",
-            "members": [],
-            "name": "image.TYPE_LUMINANCE_ALPHA",
+            "members": [
+                {
+                    "display_name": "premultiply_alpha",
+                    "doc": "Whether to premultiply alpha into the color components. Defaults to <code>false</code>.",
+                    "is_optional": true,
+                    "name": "premultiply_alpha?",
+                    "type": "boolean",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                },
+                {
+                    "display_name": "flip_vertically",
+                    "doc": "Whether to flip the image contents vertically. Defaults to <code>false</code>.",
+                    "is_optional": true,
+                    "name": "flip_vertically?",
+                    "type": "boolean",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                }
+            ],
+            "name": "image.load_options",
             "notes": [],
             "parameters": [],
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "CONSTANT"
+            "type": "STRUCT"
         },
         {
-            "brief": "RGB image type",
-            "description": "RGB image type",
+            "brief": "Loaded string image data",
+            "description": "Loaded string image data",
             "error": "",
             "examples": "",
             "language": "",
-            "members": [],
-            "name": "image.TYPE_RGB",
+            "members": [
+                {
+                    "display_name": "width",
+                    "doc": "Image width.",
+                    "is_optional": false,
+                    "name": "width",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "height",
+                    "doc": "Image height.",
+                    "is_optional": false,
+                    "name": "height",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "type",
+                    "doc": "Image type.",
+                    "is_optional": false,
+                    "name": "type",
+                    "type": "image.TYPE",
+                    "type_html": "<a href=\"#image.TYPE\">image.TYPE</a>"
+                },
+                {
+                    "display_name": "buffer",
+                    "doc": "Raw image data.",
+                    "is_optional": false,
+                    "name": "buffer",
+                    "type": "string",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                }
+            ],
+            "name": "image.load_result",
             "notes": [],
             "parameters": [],
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "CONSTANT"
+            "type": "STRUCT"
         },
         {
-            "brief": "RGBA image type",
-            "description": "RGBA image type",
+            "brief": "Image types",
+            "description": "Image types",
             "error": "",
             "examples": "",
             "language": "",
-            "members": [],
-            "name": "image.TYPE_RGBA",
+            "members": [
+                {
+                    "doc": "RGB image type.",
+                    "name": "image.TYPE_RGB"
+                },
+                {
+                    "doc": "RGBA image type.",
+                    "name": "image.TYPE_RGBA"
+                },
+                {
+                    "doc": "Luminance image type.",
+                    "name": "image.TYPE_LUMINANCE"
+                },
+                {
+                    "doc": "Luminance-alpha image type.",
+                    "name": "image.TYPE_LUMINANCE_ALPHA"
+                }
+            ],
+            "name": "image.TYPE",
             "notes": [],
-            "parameters": [],
+            "parameters": [
+                {
+                    "doc": "image type",
+                    "is_optional": "False",
+                    "name": "value",
+                    "types": [
+                        "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ]
+                }
+            ],
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "CONSTANT"
+            "type": "ENUM",
+            "value_type": "string",
+            "value_type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
         }
     ],
+    "format_version": 2,
     "info": {
         "api_language": "Lua",
         "brief": "Image API documentation",

@@ -17,7 +17,7 @@
         },
         {
             "brief": "<span class=\"type\">vector3</span> collision object angular velocity",
-            "description": "The current angular velocity of the collision object component as a <span class=\"type\">vector3</span>.\nThe velocity is measured as a rotation around the vector with a speed equivalent to the vector length\nin radians/s.",
+            "description": "The current angular velocity of the collision object component as a <span class=\"type\"><a href=\"../vmath-lua/#vector3\">vector3</a></span>.\nThe velocity is measured as a rotation around the vector with a speed equivalent to the vector length\nin radians/s.",
             "error": "",
             "examples": "How to query and modify a collision object component's angular velocity:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"c1\">-- get angular velocity from collision object &quot;collisionobject&quot; in gameobject &quot;boulder&quot;</span>\n<span class=\"kd\">local</span> <span class=\"n\">velocity</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">&quot;boulder#collisionobject&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;angular_velocity&quot;</span><span class=\"p\">)</span>\n<span class=\"c1\">-- do something interesting</span>\n<span class=\"kr\">if</span> <span class=\"n\">velocity</span><span class=\"p\">.</span><span class=\"n\">z</span> <span class=\"o\">&lt;</span> <span class=\"mi\">0</span> <span class=\"kr\">then</span>\n    <span class=\"c1\">-- clockwise rotation</span>\n    <span class=\"p\">...</span>\n<span class=\"kr\">else</span>\n    <span class=\"c1\">-- counter clockwise rotation</span>\n    <span class=\"p\">...</span>\n<span class=\"kr\">end</span>\n<span class=\"c1\">-- decrease it by 10%</span>\n<span class=\"n\">velocity</span><span class=\"p\">.</span><span class=\"n\">z</span> <span class=\"o\">=</span> <span class=\"n\">velocity</span><span class=\"p\">.</span><span class=\"n\">z</span> <span class=\"o\">*</span> <span class=\"mf\">0.9</span>\n<span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"s2\">&quot;boulder#collisionobject&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;angular_velocity&quot;</span><span class=\"p\">,</span> <span class=\"n\">velocity</span> <span class=\"o\">*</span> <span class=\"mf\">0.9</span><span class=\"p\">)</span>\n</code></pre></div>",
             "language": "",
@@ -46,6 +46,12 @@
                     "name": "force",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 },
                 {
@@ -54,6 +60,12 @@
                     "name": "position",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 }
             ],
@@ -73,19 +85,31 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "collision information for object A\n<dl>\n<dt><code>position</code></dt>\n<dd><span class=\"type\">vector3</span> The world position of object A</dd>\n<dt><code>id</code></dt>\n<dd><span class=\"type\">hash</span> The ID of object A</dd>\n<dt><code>group</code></dt>\n<dd><span class=\"type\">hash</span> The collision group of object A</dd>\n</dl>",
+                    "doc": "collision information for object A",
                     "is_optional": "False",
                     "name": "a",
                     "types": [
-                        "table"
+                        "message.physics.collision_info"
+                    ],
+                    "types_html": [
+                        "<a href=\"#message.physics.collision_info\">message.physics.collision_info</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#message.physics.collision_info\">message.physics.collision_info</a>"
                     ]
                 },
                 {
-                    "doc": "collision information for object B\n<dl>\n<dt><code>position</code></dt>\n<dd><span class=\"type\">vector3</span> The world position of object B</dd>\n<dt><code>id</code></dt>\n<dd><span class=\"type\">hash</span> The ID of object B</dd>\n<dt><code>group</code></dt>\n<dd><span class=\"type\">hash</span> The collision group of object B</dd>\n</dl>",
+                    "doc": "collision information for object B",
                     "is_optional": "False",
                     "name": "b",
                     "types": [
-                        "table"
+                        "message.physics.collision_info"
+                    ],
+                    "types_html": [
+                        "<a href=\"#message.physics.collision_info\">message.physics.collision_info</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#message.physics.collision_info\">message.physics.collision_info</a>"
                     ]
                 }
             ],
@@ -110,6 +134,12 @@
                     "name": "other_id",
                     "types": [
                         "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
                     ]
                 },
                 {
@@ -118,6 +148,12 @@
                     "name": "other_position",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 },
                 {
@@ -126,6 +162,12 @@
                     "name": "other_group",
                     "types": [
                         "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
                     ]
                 },
                 {
@@ -134,6 +176,12 @@
                     "name": "own_group",
                     "types": [
                         "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
                     ]
                 }
             ],
@@ -158,6 +206,12 @@
                     "name": "applied_impulse",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -166,22 +220,40 @@
                     "name": "distance",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
-                    "doc": "contact point information for object A\n<dl>\n<dt><code>position</code></dt>\n<dd><span class=\"type\">vector3</span> The world position of object A</dd>\n<dt><code>id</code></dt>\n<dd><span class=\"type\">hash</span> The ID of object A</dd>\n<dt><code>group</code></dt>\n<dd><span class=\"type\">hash</span> The collision group of object A</dd>\n<dt><code>relative_velocity</code></dt>\n<dd><span class=\"type\">vector3</span> The relative velocity of the collision object A as observed from B object</dd>\n<dt><code>mass</code></dt>\n<dd><span class=\"type\">number</span> The mass of the collision object A in kg</dd>\n<dt><code>normal</code></dt>\n<dd><span class=\"type\">vector3</span> normal in world space of the contact point, which points from B object towards A object</dd>\n</dl>",
+                    "doc": "contact point information for object A",
                     "is_optional": "False",
                     "name": "a",
                     "types": [
-                        "table"
+                        "message.physics.contact_point_info"
+                    ],
+                    "types_html": [
+                        "<a href=\"#message.physics.contact_point_info\">message.physics.contact_point_info</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#message.physics.contact_point_info\">message.physics.contact_point_info</a>"
                     ]
                 },
                 {
-                    "doc": "contact point information for object B\n<dl>\n<dt><code>position</code></dt>\n<dd><span class=\"type\">vector3</span> The world position of object B</dd>\n<dt><code>id</code></dt>\n<dd><span class=\"type\">hash</span> The ID of object B</dd>\n<dt><code>group</code></dt>\n<dd><span class=\"type\">hash</span> The collision group of object B</dd>\n<dt><code>relative_velocity</code></dt>\n<dd><span class=\"type\">vector3</span> The relative velocity of the collision object B as observed from A object</dd>\n<dt><code>mass</code></dt>\n<dd><span class=\"type\">number</span> The mass of the collision object B in kg</dd>\n<dt><code>normal</code></dt>\n<dd><span class=\"type\">vector3</span> normal in world space of the contact point, which points from A object towards B object</dd>\n</dl>",
+                    "doc": "contact point information for object B",
                     "is_optional": "False",
                     "name": "b",
                     "types": [
-                        "table"
+                        "message.physics.contact_point_info"
+                    ],
+                    "types_html": [
+                        "<a href=\"#message.physics.contact_point_info\">message.physics.contact_point_info</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#message.physics.contact_point_info\">message.physics.contact_point_info</a>"
                     ]
                 }
             ],
@@ -206,6 +278,12 @@
                     "name": "position",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 },
                 {
@@ -214,6 +292,12 @@
                     "name": "normal",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 },
                 {
@@ -222,6 +306,12 @@
                     "name": "relative_velocity",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 },
                 {
@@ -230,6 +320,12 @@
                     "name": "distance",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -238,6 +334,12 @@
                     "name": "applied_impulse",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -246,6 +348,12 @@
                     "name": "life_time",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -254,6 +362,12 @@
                     "name": "mass",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -262,6 +376,12 @@
                     "name": "other_mass",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -270,6 +390,12 @@
                     "name": "other_id",
                     "types": [
                         "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
                     ]
                 },
                 {
@@ -278,6 +404,12 @@
                     "name": "other_position",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 },
                 {
@@ -286,6 +418,12 @@
                     "name": "other_group",
                     "types": [
                         "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
                     ]
                 },
                 {
@@ -294,6 +432,12 @@
                     "name": "own_group",
                     "types": [
                         "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
                     ]
                 }
             ],
@@ -348,6 +492,150 @@
             "type": "PROPERTY"
         },
         {
+            "brief": "collision object information",
+            "description": "collision object information",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "position",
+                    "doc": "object position in world space",
+                    "is_optional": false,
+                    "name": "position",
+                    "type": "vector3",
+                    "type_html": "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                },
+                {
+                    "display_name": "id",
+                    "doc": "object identifier",
+                    "is_optional": false,
+                    "name": "id",
+                    "type": "hash",
+                    "type_html": "<a href=\"../builtins-lua/#hash\">hash</a>"
+                },
+                {
+                    "display_name": "group",
+                    "doc": "object collision group",
+                    "is_optional": false,
+                    "name": "group",
+                    "type": "hash",
+                    "type_html": "<a href=\"../builtins-lua/#hash\">hash</a>"
+                }
+            ],
+            "name": "message.physics.collision_info",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "contact-point object information",
+            "description": "contact-point object information",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "position",
+                    "doc": "contact point position in world space",
+                    "is_optional": false,
+                    "name": "position",
+                    "type": "vector3",
+                    "type_html": "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                },
+                {
+                    "display_name": "instance_position",
+                    "doc": "object position in world space",
+                    "is_optional": false,
+                    "name": "instance_position",
+                    "type": "vector3",
+                    "type_html": "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                },
+                {
+                    "display_name": "normal",
+                    "doc": "contact normal pointing from the other object toward this object",
+                    "is_optional": false,
+                    "name": "normal",
+                    "type": "vector3",
+                    "type_html": "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                },
+                {
+                    "display_name": "relative_velocity",
+                    "doc": "object velocity relative to the other object",
+                    "is_optional": false,
+                    "name": "relative_velocity",
+                    "type": "vector3",
+                    "type_html": "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                },
+                {
+                    "display_name": "mass",
+                    "doc": "object mass in kilograms",
+                    "is_optional": false,
+                    "name": "mass",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "id",
+                    "doc": "object identifier",
+                    "is_optional": false,
+                    "name": "id",
+                    "type": "hash",
+                    "type_html": "<a href=\"../builtins-lua/#hash\">hash</a>"
+                },
+                {
+                    "display_name": "group",
+                    "doc": "object collision group",
+                    "is_optional": false,
+                    "name": "group",
+                    "type": "hash",
+                    "type_html": "<a href=\"../builtins-lua/#hash\">hash</a>"
+                }
+            ],
+            "name": "message.physics.contact_point_info",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "trigger interaction object information",
+            "description": "trigger interaction object information",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "id",
+                    "doc": "object identifier",
+                    "is_optional": false,
+                    "name": "id",
+                    "type": "hash",
+                    "type_html": "<a href=\"../builtins-lua/#hash\">hash</a>"
+                },
+                {
+                    "display_name": "group",
+                    "doc": "object collision group",
+                    "is_optional": false,
+                    "name": "group",
+                    "type": "hash",
+                    "type_html": "<a href=\"../builtins-lua/#hash\">hash</a>"
+                }
+            ],
+            "name": "message.physics.trigger_info",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
             "brief": "create a physics joint",
             "description": "Create a physics joint between two collision object components.\nNote: Currently only supported in 2D physics.",
             "error": "",
@@ -362,7 +650,13 @@
                     "is_optional": "False",
                     "name": "joint_type",
                     "types": [
-                        "number"
+                        "physics.JOINT_TYPE"
+                    ],
+                    "types_html": [
+                        "<a href=\"#physics.JOINT_TYPE\">physics.JOINT_TYPE</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#physics.JOINT_TYPE\">physics.JOINT_TYPE</a>"
                     ]
                 },
                 {
@@ -373,6 +667,16 @@
                         "string",
                         "hash",
                         "url"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
                     ]
                 },
                 {
@@ -382,6 +686,14 @@
                     "types": [
                         "string",
                         "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
                     ]
                 },
                 {
@@ -390,6 +702,12 @@
                     "name": "position_a",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 },
                 {
@@ -400,6 +718,16 @@
                         "string",
                         "hash",
                         "url"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
                     ]
                 },
                 {
@@ -408,14 +736,26 @@
                     "name": "position_b",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 },
                 {
-                    "doc": "optional joint specific properties table\nSee each joint type for possible properties field. The one field that is accepted for all joint types is:\n- <span class=\"type\">boolean</span> <code>collide_connected</code>: Set this flag to true if the attached bodies should collide.",
+                    "doc": "optional joint-specific properties",
                     "is_optional": "True",
                     "name": "properties",
                     "types": [
-                        "table"
+                        "physics.joint_properties"
+                    ],
+                    "types_html": [
+                        "<a href=\"#physics.joint_properties\">physics.joint_properties</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#physics.joint_properties\">physics.joint_properties</a>"
                     ]
                 }
             ],
@@ -442,6 +782,16 @@
                         "string",
                         "hash",
                         "url"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
                     ]
                 },
                 {
@@ -451,6 +801,14 @@
                     "types": [
                         "string",
                         "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
                     ]
                 }
             ],
@@ -458,6 +816,50 @@
             "returnvalues": [],
             "tparams": [],
             "type": "FUNCTION"
+        },
+        {
+            "brief": "Physics world event",
+            "description": "An event delivered to a physics world listener. Inspect its <code>type</code> field to\ndetermine which event-specific fields are available.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "physics.event",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "physics event data",
+                    "is_optional": "False",
+                    "name": "value",
+                    "types": [
+                        "message.physics.contact_point_event",
+                        "message.physics.collision_event",
+                        "message.physics.trigger_event",
+                        "message.physics.ray_cast_response",
+                        "message.physics.ray_cast_missed"
+                    ],
+                    "types_html": [
+                        "<a href=\"#contact_point_event\">message.physics.contact_point_event</a>",
+                        "<a href=\"#collision_event\">message.physics.collision_event</a>",
+                        "<a href=\"#trigger_event\">message.physics.trigger_event</a>",
+                        "<a href=\"#ray_cast_response\">message.physics.ray_cast_response</a>",
+                        "<a href=\"#ray_cast_missed\">message.physics.ray_cast_missed</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#contact_point_event\">message.physics.contact_point_event</a>",
+                        "<a href=\"#collision_event\">message.physics.collision_event</a>",
+                        "<a href=\"#trigger_event\">message.physics.trigger_event</a>",
+                        "<a href=\"#ray_cast_response\">message.physics.ray_cast_response</a>",
+                        "<a href=\"#ray_cast_missed\">message.physics.ray_cast_missed</a>"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "target_type": "message.physics.contact_point_event | message.physics.collision_event | message.physics.trigger_event | message.physics.ray_cast_response | message.physics.ray_cast_missed",
+            "target_type_html": "<a href=\"#contact_point_event\">message.physics.contact_point_event</a> | <a href=\"#collision_event\">message.physics.collision_event</a> | <a href=\"#trigger_event\">message.physics.trigger_event</a> | <a href=\"#ray_cast_response\">message.physics.ray_cast_response</a> | <a href=\"#ray_cast_missed\">message.physics.ray_cast_missed</a>",
+            "tparams": [],
+            "type": "TYPEDEF"
         },
         {
             "brief": "get the gravity for collection",
@@ -476,6 +878,12 @@
                     "name": "gravity",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 }
             ],
@@ -486,7 +894,7 @@
             "brief": "returns the group of a collision object",
             "description": "Returns the group name of a collision object as a hash.",
             "error": "",
-            "examples": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"kr\">function</span> <span class=\"nf\">check_is_enemy</span><span class=\"p\">()</span>\n    <span class=\"kd\">local</span> <span class=\"n\">group</span> <span class=\"o\">=</span> <span class=\"n\">physics</span><span class=\"p\">.</span><span class=\"n\">get_group</span><span class=\"p\">(</span><span class=\"s2\">&quot;#collisionobject&quot;</span><span class=\"p\">)</span>\n    <span class=\"kr\">return</span> <span class=\"n\">group</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;enemy&quot;</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
             "language": "",
             "members": [],
             "name": "physics.get_group",
@@ -500,16 +908,32 @@
                         "string",
                         "hash",
                         "url"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
                     ]
                 }
             ],
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "hash value of the group.\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"kr\">function</span> <span class=\"nf\">check_is_enemy</span><span class=\"p\">()</span>\n    <span class=\"kd\">local</span> <span class=\"n\">group</span> <span class=\"o\">=</span> <span class=\"n\">physics</span><span class=\"p\">.</span><span class=\"n\">get_group</span><span class=\"p\">(</span><span class=\"s2\">&quot;#collisionobject&quot;</span><span class=\"p\">)</span>\n    <span class=\"kr\">return</span> <span class=\"n\">group</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;enemy&quot;</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+                    "doc": "hash value of the group.",
                     "name": "group",
                     "types": [
                         "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
                     ]
                 }
             ],
@@ -534,6 +958,16 @@
                         "string",
                         "hash",
                         "url"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
                     ]
                 },
                 {
@@ -543,16 +977,30 @@
                     "types": [
                         "string",
                         "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
                     ]
                 }
             ],
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "properties table. See the joint types for what fields are available, the only field available for all types is:\n<ul>\n<li><span class=\"type\">boolean</span> <code>collide_connected</code>: Set this flag to true if the attached bodies should collide.</li>\n</ul>",
+                    "doc": "joint properties",
                     "name": "properties",
                     "types": [
-                        "table"
+                        "physics.joint_properties_info"
+                    ],
+                    "types_html": [
+                        "<a href=\"#physics.joint_properties_info\">physics.joint_properties_info</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#physics.joint_properties_info\">physics.joint_properties_info</a>"
                     ]
                 }
             ],
@@ -577,6 +1025,16 @@
                         "string",
                         "hash",
                         "url"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
                     ]
                 },
                 {
@@ -586,6 +1044,14 @@
                     "types": [
                         "string",
                         "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
                     ]
                 }
             ],
@@ -596,6 +1062,12 @@
                     "name": "force",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 }
             ],
@@ -620,6 +1092,16 @@
                         "string",
                         "hash",
                         "url"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
                     ]
                 },
                 {
@@ -629,6 +1111,14 @@
                     "types": [
                         "string",
                         "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
                     ]
                 }
             ],
@@ -639,6 +1129,12 @@
                     "name": "torque",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -649,7 +1145,7 @@
             "brief": "checks the presense of a group in the mask (maskbit) of a collision object",
             "description": "Returns true if the specified group is set in the mask of a collision\nobject, false otherwise.",
             "error": "",
-            "examples": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"kr\">function</span> <span class=\"nf\">is_invincible</span><span class=\"p\">()</span>\n    <span class=\"c1\">-- check if the collisionobject would collide with the &quot;bullet&quot; group</span>\n    <span class=\"kd\">local</span> <span class=\"n\">invincible</span> <span class=\"o\">=</span> <span class=\"n\">physics</span><span class=\"p\">.</span><span class=\"n\">get_maskbit</span><span class=\"p\">(</span><span class=\"s2\">&quot;#collisionobject&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;bullet&quot;</span><span class=\"p\">)</span>\n    <span class=\"kr\">return</span> <span class=\"n\">invincible</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
             "language": "",
             "members": [],
             "name": "physics.get_maskbit",
@@ -663,6 +1159,16 @@
                         "string",
                         "hash",
                         "url"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
                     ]
                 },
                 {
@@ -671,16 +1177,28 @@
                     "name": "group",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 }
             ],
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "boolean value of the maskbit. 'true' if present, 'false' otherwise.\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"kr\">function</span> <span class=\"nf\">is_invincible</span><span class=\"p\">()</span>\n    <span class=\"c1\">-- check if the collisionobject would collide with the &quot;bullet&quot; group</span>\n    <span class=\"kd\">local</span> <span class=\"n\">invincible</span> <span class=\"o\">=</span> <span class=\"n\">physics</span><span class=\"p\">.</span><span class=\"n\">get_maskbit</span><span class=\"p\">(</span><span class=\"s2\">&quot;#collisionobject&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;bullet&quot;</span><span class=\"p\">)</span>\n    <span class=\"kr\">return</span> <span class=\"n\">invincible</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+                    "doc": "boolean value of the maskbit. 'true' if present, 'false' otherwise.",
                     "name": "maskbit",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
@@ -691,7 +1209,7 @@
             "brief": "get collision shape info",
             "description": "Gets collision shape data from a collision object",
             "error": "",
-            "examples": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"kr\">function</span> <span class=\"nf\">get_shape_meta</span><span class=\"p\">()</span>\n    <span class=\"kd\">local</span> <span class=\"n\">sphere</span> <span class=\"o\">=</span> <span class=\"n\">physics</span><span class=\"p\">.</span><span class=\"n\">get_shape</span><span class=\"p\">(</span><span class=\"s2\">&quot;#collisionobject&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;my_sphere_shape&quot;</span><span class=\"p\">)</span>\n    <span class=\"c1\">-- returns a table with sphere.diameter</span>\n    <span class=\"kr\">return</span> <span class=\"n\">sphere</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
             "language": "",
             "members": [],
             "name": "physics.get_shape",
@@ -705,6 +1223,16 @@
                         "string",
                         "hash",
                         "url"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
                     ]
                 },
                 {
@@ -714,16 +1242,30 @@
                     "types": [
                         "string",
                         "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
                     ]
                 }
             ],
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "A table containing meta data about the physics shape\n<dl>\n<dt><code>type</code></dt>\n<dd><span class=\"type\">number</span> The shape type. Supported values:</dd>\n</dl>\n<ul>\n<li><code>physics.SHAPE_TYPE_SPHERE</code></li>\n<li><code>physics.SHAPE_TYPE_BOX</code></li>\n<li><code>physics.SHAPE_TYPE_CAPSULE</code> <em>Only supported for 3D physics</em></li>\n<li><code>physics.SHAPE_TYPE_HULL</code></li>\n</ul>\nThe returned table contains different fields depending on which type the shape is.\nIf the shape is a sphere:\n<dl>\n<dt><code>diameter</code></dt>\n<dd><span class=\"type\">number</span> the diameter of the sphere shape</dd>\n</dl>\nIf the shape is a box:\n<dl>\n<dt><code>dimensions</code></dt>\n<dd><span class=\"type\">vector3</span> a <code>vmath.vector3</code> of the box dimensions</dd>\n</dl>\nIf the shape is a capsule:\n<dl>\n<dt><code>diameter</code></dt>\n<dd><span class=\"type\">number</span> the diameter of the capsule poles</dd>\n<dt><code>height</code></dt>\n<dd><span class=\"type\">number</span> the height of the capsule</dd>\n</dl>\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"kr\">function</span> <span class=\"nf\">get_shape_meta</span><span class=\"p\">()</span>\n    <span class=\"kd\">local</span> <span class=\"n\">sphere</span> <span class=\"o\">=</span> <span class=\"n\">physics</span><span class=\"p\">.</span><span class=\"n\">get_shape</span><span class=\"p\">(</span><span class=\"s2\">&quot;#collisionobject&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;my_sphere_shape&quot;</span><span class=\"p\">)</span>\n    <span class=\"c1\">-- returns a table with sphere.diameter</span>\n    <span class=\"kr\">return</span> <span class=\"n\">sphere</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+                    "doc": "collision shape data",
                     "name": "table",
                     "types": [
-                        "table"
+                        "physics.shape_data"
+                    ],
+                    "types_html": [
+                        "<a href=\"#physics.shape_data\">physics.shape_data</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#physics.shape_data\">physics.shape_data</a>"
                     ]
                 }
             ],
@@ -731,372 +1273,358 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "fixed joint type",
-            "description": "The following properties are available when connecting a joint of <code>JOINT_TYPE_FIXED</code> type:",
+            "brief": "configurable joint properties",
+            "description": "The available fields depend on the joint type.",
             "error": "",
             "examples": "",
             "language": "",
-            "members": [],
-            "name": "physics.JOINT_TYPE_FIXED",
-            "notes": [],
-            "parameters": [
+            "members": [
                 {
-                    "doc": "The maximum length of the rope.",
-                    "is_optional": "False",
-                    "name": "max_length",
-                    "types": [
-                        "number"
-                    ]
+                    "display_name": "collide_connected",
+                    "doc": "whether the connected objects should collide",
+                    "is_optional": true,
+                    "name": "collide_connected?",
+                    "type": "boolean",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                },
+                {
+                    "display_name": "length",
+                    "doc": "Natural spring length between the anchor points.",
+                    "is_optional": true,
+                    "name": "length?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "frequency",
+                    "doc": "Mass-spring-damper frequency in Hertz; zero disables softness.",
+                    "is_optional": true,
+                    "name": "frequency?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "damping",
+                    "doc": "Damping ratio, where zero is no damping and one is critical damping.",
+                    "is_optional": true,
+                    "name": "damping?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "max_length",
+                    "doc": "Maximum fixed-joint rope length.",
+                    "is_optional": true,
+                    "name": "max_length?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "local_axis_a",
+                    "doc": "Local translation unit axis in the first body.",
+                    "is_optional": true,
+                    "name": "local_axis_a?",
+                    "type": "vector3",
+                    "type_html": "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                },
+                {
+                    "display_name": "reference_angle",
+                    "doc": "Angle of the second body relative to the first body, in radians.",
+                    "is_optional": true,
+                    "name": "reference_angle?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "lower_angle",
+                    "doc": "Lower angular limit in radians.",
+                    "is_optional": true,
+                    "name": "lower_angle?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "upper_angle",
+                    "doc": "Upper angular limit in radians.",
+                    "is_optional": true,
+                    "name": "upper_angle?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "lower_translation",
+                    "doc": "Lower translation limit, usually in meters.",
+                    "is_optional": true,
+                    "name": "lower_translation?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "upper_translation",
+                    "doc": "Upper translation limit, usually in meters.",
+                    "is_optional": true,
+                    "name": "upper_translation?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "max_motor_torque",
+                    "doc": "Maximum motor torque used to reach the desired speed, usually in N-m.",
+                    "is_optional": true,
+                    "name": "max_motor_torque?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "max_motor_force",
+                    "doc": "Maximum motor force used to reach the desired speed.",
+                    "is_optional": true,
+                    "name": "max_motor_force?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "motor_speed",
+                    "doc": "Desired motor speed.",
+                    "is_optional": true,
+                    "name": "motor_speed?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "enable_limit",
+                    "doc": "Whether joint limits are enabled.",
+                    "is_optional": true,
+                    "name": "enable_limit?",
+                    "type": "boolean",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                },
+                {
+                    "display_name": "enable_motor",
+                    "doc": "Whether the joint motor is enabled.",
+                    "is_optional": true,
+                    "name": "enable_motor?",
+                    "type": "boolean",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                 }
             ],
+            "name": "physics.joint_properties",
+            "notes": [],
+            "parameters": [],
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "CONSTANT"
+            "type": "STRUCT"
         },
         {
-            "brief": "hinge joint type",
-            "description": "The following properties are available when connecting a joint of <code>JOINT_TYPE_HINGE</code> type:",
+            "brief": "returned joint properties",
+            "description": "The available optional fields depend on the joint type.",
             "error": "",
             "examples": "",
             "language": "",
-            "members": [],
-            "name": "physics.JOINT_TYPE_HINGE",
-            "notes": [],
-            "parameters": [
+            "members": [
                 {
-                    "doc": "The bodyB angle minus bodyA angle in the reference state (radians).",
-                    "is_optional": "False",
-                    "name": "reference_angle",
-                    "types": [
-                        "number"
-                    ]
+                    "display_name": "collide_connected",
+                    "doc": "whether the connected objects collide",
+                    "is_optional": false,
+                    "name": "collide_connected",
+                    "type": "boolean",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                 },
                 {
-                    "doc": "The lower angle for the joint limit (radians).",
-                    "is_optional": "False",
-                    "name": "lower_angle",
-                    "types": [
-                        "number"
-                    ]
+                    "display_name": "length",
+                    "doc": "spring length",
+                    "is_optional": true,
+                    "name": "length?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                 },
                 {
-                    "doc": "The upper angle for the joint limit (radians).",
-                    "is_optional": "False",
-                    "name": "upper_angle",
-                    "types": [
-                        "number"
-                    ]
+                    "display_name": "frequency",
+                    "doc": "spring frequency",
+                    "is_optional": true,
+                    "name": "frequency?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                 },
                 {
-                    "doc": "The maximum motor torque used to achieve the desired motor speed. Usually in N-m.",
-                    "is_optional": "False",
-                    "name": "max_motor_torque",
-                    "types": [
-                        "number"
-                    ]
+                    "display_name": "damping",
+                    "doc": "damping ratio",
+                    "is_optional": true,
+                    "name": "damping?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                 },
                 {
-                    "doc": "The desired motor speed. Usually in radians per second.",
-                    "is_optional": "False",
-                    "name": "motor_speed",
-                    "types": [
-                        "number"
-                    ]
+                    "display_name": "max_length",
+                    "doc": "fixed-joint maximum length",
+                    "is_optional": true,
+                    "name": "max_length?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                 },
                 {
-                    "doc": "A flag to enable joint limits.",
-                    "is_optional": "False",
-                    "name": "enable_limit",
-                    "types": [
-                        "boolean"
-                    ]
+                    "display_name": "local_axis_a",
+                    "doc": "local joint axis",
+                    "is_optional": true,
+                    "name": "local_axis_a?",
+                    "type": "vector3",
+                    "type_html": "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                 },
                 {
-                    "doc": "A flag to enable the joint motor.",
-                    "is_optional": "False",
-                    "name": "enable_motor",
-                    "types": [
-                        "boolean"
-                    ]
+                    "display_name": "reference_angle",
+                    "doc": "reference angle",
+                    "is_optional": true,
+                    "name": "reference_angle?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                 },
                 {
-                    "doc": "<span class=\"mark\">READ ONLY</span>Current joint angle in radians.\n(Read only field, available from <code>physics.get_joint_properties()</code>)",
-                    "is_optional": "False",
-                    "name": "joint_angle",
-                    "types": [
-                        "number"
-                    ]
+                    "display_name": "lower_angle",
+                    "doc": "lower angular limit",
+                    "is_optional": true,
+                    "name": "lower_angle?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                 },
                 {
-                    "doc": "<span class=\"mark\">READ ONLY</span>Current joint angle speed in radians per second.\n(Read only field, available from <code>physics.get_joint_properties()</code>)",
-                    "is_optional": "False",
-                    "name": "joint_speed",
-                    "types": [
-                        "number"
-                    ]
+                    "display_name": "upper_angle",
+                    "doc": "upper angular limit",
+                    "is_optional": true,
+                    "name": "upper_angle?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "lower_translation",
+                    "doc": "lower translation limit",
+                    "is_optional": true,
+                    "name": "lower_translation?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "upper_translation",
+                    "doc": "upper translation limit",
+                    "is_optional": true,
+                    "name": "upper_translation?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "max_motor_torque",
+                    "doc": "maximum motor torque",
+                    "is_optional": true,
+                    "name": "max_motor_torque?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "max_motor_force",
+                    "doc": "maximum motor force",
+                    "is_optional": true,
+                    "name": "max_motor_force?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "motor_speed",
+                    "doc": "motor speed",
+                    "is_optional": true,
+                    "name": "motor_speed?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "enable_limit",
+                    "doc": "whether limits are enabled",
+                    "is_optional": true,
+                    "name": "enable_limit?",
+                    "type": "boolean",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                },
+                {
+                    "display_name": "enable_motor",
+                    "doc": "whether the motor is enabled",
+                    "is_optional": true,
+                    "name": "enable_motor?",
+                    "type": "boolean",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                },
+                {
+                    "display_name": "joint_angle",
+                    "doc": "Read-only current hinge angle in radians.",
+                    "is_optional": true,
+                    "name": "joint_angle?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "joint_speed",
+                    "doc": "Read-only current hinge angular speed or slider/wheel translation speed.",
+                    "is_optional": true,
+                    "name": "joint_speed?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "joint_translation",
+                    "doc": "Read-only current slider or wheel translation, usually in meters.",
+                    "is_optional": true,
+                    "name": "joint_translation?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                 }
             ],
+            "name": "physics.joint_properties_info",
+            "notes": [],
+            "parameters": [],
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "CONSTANT"
+            "type": "STRUCT"
         },
         {
-            "brief": "slider joint type",
-            "description": "The following properties are available when connecting a joint of <code>JOINT_TYPE_SLIDER</code> type:",
+            "brief": "Joint types",
+            "description": "Joint types",
             "error": "",
             "examples": "",
             "language": "",
-            "members": [],
-            "name": "physics.JOINT_TYPE_SLIDER",
-            "notes": [],
-            "parameters": [
+            "members": [
                 {
-                    "doc": "The local translation unit axis in bodyA.",
-                    "is_optional": "False",
-                    "name": "local_axis_a",
-                    "types": [
-                        "vector3"
-                    ]
+                    "doc": "Fixed joint; uses <code>max_length</code> from <a href=\"/ref/physics#physics.joint_properties\">physics.joint_properties</a>.",
+                    "name": "physics.JOINT_TYPE_FIXED"
                 },
                 {
-                    "doc": "The constrained angle between the bodies: bodyB_angle - bodyA_angle.",
-                    "is_optional": "False",
-                    "name": "reference_angle",
-                    "types": [
-                        "number"
-                    ]
+                    "doc": "Hinge joint; uses the angular-limit and motor fields from <a href=\"/ref/physics#physics.joint_properties\">physics.joint_properties</a>.",
+                    "name": "physics.JOINT_TYPE_HINGE"
                 },
                 {
-                    "doc": "Enable/disable the joint limit.",
-                    "is_optional": "False",
-                    "name": "enable_limit",
-                    "types": [
-                        "boolean"
-                    ]
+                    "doc": "Slider joint; uses the translation-limit and motor fields from <a href=\"/ref/physics#physics.joint_properties\">physics.joint_properties</a>.",
+                    "name": "physics.JOINT_TYPE_SLIDER"
                 },
                 {
-                    "doc": "The lower translation limit, usually in meters.",
-                    "is_optional": "False",
-                    "name": "lower_translation",
-                    "types": [
-                        "number"
-                    ]
+                    "doc": "Spring joint; uses <code>length</code>, <code>frequency</code>, and <code>damping</code> from <a href=\"/ref/physics#physics.joint_properties\">physics.joint_properties</a>.",
+                    "name": "physics.JOINT_TYPE_SPRING"
                 },
                 {
-                    "doc": "The upper translation limit, usually in meters.",
-                    "is_optional": "False",
-                    "name": "upper_translation",
-                    "types": [
-                        "number"
-                    ]
+                    "doc": "Weld joint; uses <code>reference_angle</code>, <code>frequency</code>, and <code>damping</code> from <a href=\"/ref/physics#physics.joint_properties\">physics.joint_properties</a>.",
+                    "name": "physics.JOINT_TYPE_WELD"
                 },
                 {
-                    "doc": "Enable/disable the joint motor.",
-                    "is_optional": "False",
-                    "name": "enable_motor",
-                    "types": [
-                        "boolean"
-                    ]
-                },
-                {
-                    "doc": "The maximum motor torque, usually in N-m.",
-                    "is_optional": "False",
-                    "name": "max_motor_force",
-                    "types": [
-                        "number"
-                    ]
-                },
-                {
-                    "doc": "The desired motor speed in radians per second.",
-                    "is_optional": "False",
-                    "name": "motor_speed",
-                    "types": [
-                        "number"
-                    ]
-                },
-                {
-                    "doc": "<span class=\"mark\">READ ONLY</span>Current joint translation, usually in meters.\n(Read only field, available from <code>physics.get_joint_properties()</code>)",
-                    "is_optional": "False",
-                    "name": "joint_translation",
-                    "types": [
-                        "number"
-                    ]
-                },
-                {
-                    "doc": "<span class=\"mark\">READ ONLY</span>Current joint translation speed, usually in meters per second.\n(Read only field, available from <code>physics.get_joint_properties()</code>)",
-                    "is_optional": "False",
-                    "name": "joint_speed",
-                    "types": [
-                        "number"
-                    ]
+                    "doc": "Wheel joint; uses the axis, motor, frequency, and damping fields from <a href=\"/ref/physics#physics.joint_properties\">physics.joint_properties</a>.",
+                    "name": "physics.JOINT_TYPE_WHEEL"
                 }
             ],
+            "name": "physics.JOINT_TYPE",
+            "notes": [],
+            "parameters": [],
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "spring joint type",
-            "description": "The following properties are available when connecting a joint of <code>JOINT_TYPE_SPRING</code> type:",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "physics.JOINT_TYPE_SPRING",
-            "notes": [],
-            "parameters": [
-                {
-                    "doc": "The natural length between the anchor points.",
-                    "is_optional": "False",
-                    "name": "length",
-                    "types": [
-                        "number"
-                    ]
-                },
-                {
-                    "doc": "The mass-spring-damper frequency in Hertz. A value of 0 disables softness.",
-                    "is_optional": "False",
-                    "name": "frequency",
-                    "types": [
-                        "number"
-                    ]
-                },
-                {
-                    "doc": "The damping ratio. 0 = no damping, 1 = critical damping.",
-                    "is_optional": "False",
-                    "name": "damping",
-                    "types": [
-                        "number"
-                    ]
-                }
-            ],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "weld joint type",
-            "description": "The following properties are available when connecting a joint of <code>JOINT_TYPE_WELD</code> type:",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "physics.JOINT_TYPE_WELD",
-            "notes": [],
-            "parameters": [
-                {
-                    "doc": "<span class=\"mark\">READ ONLY</span>The bodyB angle minus bodyA angle in the reference state (radians).",
-                    "is_optional": "False",
-                    "name": "reference_angle",
-                    "types": [
-                        "number"
-                    ]
-                },
-                {
-                    "doc": "The mass-spring-damper frequency in Hertz. Rotation only. Disable softness with a value of 0.",
-                    "is_optional": "False",
-                    "name": "frequency",
-                    "types": [
-                        "number"
-                    ]
-                },
-                {
-                    "doc": "The damping ratio. 0 = no damping, 1 = critical damping.",
-                    "is_optional": "False",
-                    "name": "damping",
-                    "types": [
-                        "number"
-                    ]
-                }
-            ],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "wheel joint type",
-            "description": "The following properties are available when connecting a joint of <code>JOINT_TYPE_WHEEL</code> type:",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "physics.JOINT_TYPE_WHEEL",
-            "notes": [],
-            "parameters": [
-                {
-                    "doc": "The local translation unit axis in bodyA.",
-                    "is_optional": "False",
-                    "name": "local_axis_a",
-                    "types": [
-                        "vector3"
-                    ]
-                },
-                {
-                    "doc": "The maximum motor torque used to achieve the desired motor speed. Usually in N-m.",
-                    "is_optional": "False",
-                    "name": "max_motor_torque",
-                    "types": [
-                        "number"
-                    ]
-                },
-                {
-                    "doc": "The desired motor speed in radians per second.",
-                    "is_optional": "False",
-                    "name": "motor_speed",
-                    "types": [
-                        "number"
-                    ]
-                },
-                {
-                    "doc": "Enable/disable the joint motor.",
-                    "is_optional": "False",
-                    "name": "enable_motor",
-                    "types": [
-                        "boolean"
-                    ]
-                },
-                {
-                    "doc": "The mass-spring-damper frequency in Hertz. Rotation only. Disable softness with a value of 0.",
-                    "is_optional": "False",
-                    "name": "frequency",
-                    "types": [
-                        "number"
-                    ]
-                },
-                {
-                    "doc": "The spring damping ratio. 0 = no damping, 1 = critical damping.",
-                    "is_optional": "False",
-                    "name": "damping",
-                    "types": [
-                        "number"
-                    ]
-                },
-                {
-                    "doc": "<span class=\"mark\">READ ONLY</span>Current joint translation, usually in meters.\n(Read only field, available from <code>physics.get_joint_properties()</code>)",
-                    "is_optional": "False",
-                    "name": "joint_translation",
-                    "types": [
-                        "number"
-                    ]
-                },
-                {
-                    "doc": "<span class=\"mark\">READ ONLY</span>Current joint translation speed, usually in meters per second.\n(Read only field, available from <code>physics.get_joint_properties()</code>)",
-                    "is_optional": "False",
-                    "name": "joint_speed",
-                    "types": [
-                        "number"
-                    ]
-                }
-            ],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
+            "type": "ENUM",
+            "value_type": "integer",
+            "value_type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
         },
         {
             "brief": "requests a ray cast to be performed",
@@ -1114,6 +1642,12 @@
                     "name": "from",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 },
                 {
@@ -1122,6 +1656,12 @@
                     "name": "to",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 },
                 {
@@ -1129,15 +1669,27 @@
                     "is_optional": "False",
                     "name": "groups",
                     "types": [
-                        "table"
+                        "hash[]"
+                    ],
+                    "types_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>[]"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>[]"
                     ]
                 },
                 {
-                    "doc": "a lua table containing options for the raycast.\n<dl>\n<dt><code>all</code></dt>\n<dd><span class=\"type\">boolean</span> Set to <code>true</code> to return all ray cast hits. If <code>false</code>, it will only return the closest hit.</dd>\n</dl>",
+                    "doc": "optional ray-cast options",
                     "is_optional": "True",
                     "name": "options",
                     "types": [
-                        "table"
+                        "physics.raycast_options"
+                    ],
+                    "types_html": [
+                        "<a href=\"#physics.raycast_options\">physics.raycast_options</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#physics.raycast_options\">physics.raycast_options</a>"
                     ]
                 }
             ],
@@ -1147,8 +1699,19 @@
                     "doc": "It returns a list. If missed it returns <code>nil</code>. See <a href=\"#ray_cast_response\">ray_cast_response</a> for details on the returned values.",
                     "name": "result",
                     "types": [
-                        "table",
+                        "message.physics.ray_cast_response[]",
+                        "message.physics.ray_cast_response",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"#ray_cast_response\">message.physics.ray_cast_response</a>[]",
+                        "<a href=\"#ray_cast_response\">message.physics.ray_cast_response</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#ray_cast_response\">message.physics.ray_cast_response</a>[]",
+                        "<a href=\"#ray_cast_response\">message.physics.ray_cast_response</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 }
             ],
@@ -1171,6 +1734,12 @@
                     "name": "from",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 },
                 {
@@ -1179,6 +1748,12 @@
                     "name": "to",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 },
                 {
@@ -1186,7 +1761,13 @@
                     "is_optional": "False",
                     "name": "groups",
                     "types": [
-                        "table"
+                        "hash[]"
+                    ],
+                    "types_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>[]"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>[]"
                     ]
                 },
                 {
@@ -1194,7 +1775,13 @@
                     "is_optional": "True",
                     "name": "request_id",
                     "types": [
-                        "number"
+                        "integer"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
                     ]
                 }
             ],
@@ -1202,6 +1789,30 @@
             "returnvalues": [],
             "tparams": [],
             "type": "FUNCTION"
+        },
+        {
+            "brief": "Ray-cast options",
+            "description": "Ray-cast options",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "all",
+                    "doc": "Return every hit instead of only the closest hit.",
+                    "is_optional": true,
+                    "name": "all?",
+                    "type": "boolean",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                }
+            ],
+            "name": "physics.raycast_options",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
         },
         {
             "brief": "Sets a physics world event listener. If a function is set, physics messages will no longer be sent to on_message.",
@@ -1214,12 +1825,20 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "A callback that receives information about all physics interactions in this physics world. Pass <code>nil</code> to remove the listener.\n<dl>\n<dt><code>self</code></dt>\n<dd><span class=\"type\">object</span> The calling script</dd>\n<dt><code>events</code></dt>\n<dd><span class=\"type\">table</span> An array of event tables. Each event table contains a <code>type</code> field with the hashed name of one of these messages, together with fields specific to that event type:</dd>\n</dl>\n<ul>\n<li><a href=\"#contact_point_event\">contact_point_event</a></li>\n<li><a href=\"#collision_event\">collision_event</a></li>\n<li><a href=\"#trigger_event\">trigger_event</a></li>\n<li><a href=\"#ray_cast_response\">ray_cast_response</a></li>\n<li><a href=\"#ray_cast_missed\">ray_cast_missed</a></li>\n</ul>",
+                    "doc": "A callback that receives information about all physics interactions in this physics world. Pass <code>nil</code> to remove the listener.\n<dl>\n<dt class=\"api-lua-v2-type-definition\"><code>self:<a href=\"../builtins-lua/#script_instance\">script_instance</a></code></dt>\n<dd>The calling script instance</dd>\n<dt class=\"api-lua-v2-type-definition\"><code>events:<a href=\"#physics.event\">physics.event</a>[]</code></dt>\n<dd>An array of event tables. Each event table contains a <code>type</code> field with the hashed name of one of these messages, together with fields specific to that event type:</dd>\n</dl>\n<ul>\n<li><a href=\"#contact_point_event\">contact_point_event</a></li>\n<li><a href=\"#collision_event\">collision_event</a></li>\n<li><a href=\"#trigger_event\">trigger_event</a></li>\n<li><a href=\"#ray_cast_response\">ray_cast_response</a></li>\n<li><a href=\"#ray_cast_missed\">ray_cast_missed</a></li>\n</ul>",
                     "is_optional": "False",
                     "name": "callback",
                     "types": [
-                        "function(self, events)",
+                        "fun(self:script_instance, events:physics.event[])",
                         "nil"
+                    ],
+                    "types_html": [
+                        "fun(self:<a href=\"../builtins-lua/#script_instance\">script_instance</a>, events:<a href=\"#physics.event\">physics.event</a>[])",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">function</a>(\n\tself:<a href=\"../builtins-lua/#script_instance\">script_instance</a>,\n\tevents:<a href=\"#physics.event\">physics.event</a>[])",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 }
             ],
@@ -1244,6 +1863,12 @@
                     "name": "gravity",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 }
             ],
@@ -1256,7 +1881,7 @@
             "brief": "change the group of a collision object",
             "description": "Updates the group property of a collision object to the specified\nstring value. The group name should exist i.e. have been used in\na collision object in the editor.",
             "error": "",
-            "examples": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"kr\">function</span> <span class=\"nf\">change_collision_group</span><span class=\"p\">()</span>\n     <span class=\"n\">physics</span><span class=\"p\">.</span><span class=\"n\">set_group</span><span class=\"p\">(</span><span class=\"s2\">&quot;#collisionobject&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;enemy&quot;</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
             "language": "",
             "members": [],
             "name": "physics.set_group",
@@ -1270,14 +1895,30 @@
                         "string",
                         "hash",
                         "url"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
                     ]
                 },
                 {
-                    "doc": "the new group name to be assigned.\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"kr\">function</span> <span class=\"nf\">change_collision_group</span><span class=\"p\">()</span>\n     <span class=\"n\">physics</span><span class=\"p\">.</span><span class=\"n\">set_group</span><span class=\"p\">(</span><span class=\"s2\">&quot;#collisionobject&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;enemy&quot;</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+                    "doc": "the new group name to be assigned.",
                     "is_optional": "False",
                     "name": "group",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 }
             ],
@@ -1304,6 +1945,16 @@
                         "string",
                         "hash",
                         "url"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
                     ]
                 },
                 {
@@ -1312,6 +1963,12 @@
                     "name": "flip",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
@@ -1338,6 +1995,16 @@
                         "string",
                         "hash",
                         "url"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
                     ]
                 },
                 {
@@ -1347,6 +2014,14 @@
                     "types": [
                         "string",
                         "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
                     ]
                 },
                 {
@@ -1354,7 +2029,13 @@
                     "is_optional": "False",
                     "name": "properties",
                     "types": [
-                        "table"
+                        "physics.joint_properties"
+                    ],
+                    "types_html": [
+                        "<a href=\"#physics.joint_properties\">physics.joint_properties</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#physics.joint_properties\">physics.joint_properties</a>"
                     ]
                 }
             ],
@@ -1367,7 +2048,7 @@
             "brief": "updates the mask of a collision object",
             "description": "Sets or clears the masking of a group (maskbit) in a collision object.",
             "error": "",
-            "examples": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"kr\">function</span> <span class=\"nf\">make_invincible</span><span class=\"p\">()</span>\n    <span class=\"c1\">-- no longer collide with the &quot;bullet&quot; group</span>\n    <span class=\"n\">physics</span><span class=\"p\">.</span><span class=\"n\">set_maskbit</span><span class=\"p\">(</span><span class=\"s2\">&quot;#collisionobject&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;bullet&quot;</span><span class=\"p\">,</span> <span class=\"kc\">false</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
             "language": "",
             "members": [],
             "name": "physics.set_maskbit",
@@ -1381,6 +2062,16 @@
                         "string",
                         "hash",
                         "url"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
                     ]
                 },
                 {
@@ -1389,14 +2080,26 @@
                     "name": "group",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 },
                 {
-                    "doc": "boolean value of the new maskbit. 'true' to enable, 'false' to disable.\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"kr\">function</span> <span class=\"nf\">make_invincible</span><span class=\"p\">()</span>\n    <span class=\"c1\">-- no longer collide with the &quot;bullet&quot; group</span>\n    <span class=\"n\">physics</span><span class=\"p\">.</span><span class=\"n\">set_maskbit</span><span class=\"p\">(</span><span class=\"s2\">&quot;#collisionobject&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;bullet&quot;</span><span class=\"p\">,</span> <span class=\"kc\">false</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+                    "doc": "boolean value of the new maskbit. 'true' to enable, 'false' to disable.",
                     "is_optional": "False",
                     "name": "maskbit",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
@@ -1409,7 +2112,7 @@
             "brief": "set collision shape data",
             "description": "Sets collision shape data for a collision object. Please note that updating data in 3D\ncan be quite costly for box and capsules. Because of the physics engine, the cost\ncomes from having to recreate the shape objects when certain shapes needs to be updated.",
             "error": "",
-            "examples": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"kr\">function</span> <span class=\"nf\">set_shape_data</span><span class=\"p\">()</span>\n    <span class=\"c1\">-- set capsule shape data</span>\n    <span class=\"kd\">local</span> <span class=\"n\">data</span> <span class=\"o\">=</span> <span class=\"p\">{}</span>\n    <span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">type</span> <span class=\"o\">=</span> <span class=\"n\">physics</span><span class=\"p\">.</span><span class=\"n\">SHAPE_TYPE_CAPSULE</span>\n    <span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">diameter</span> <span class=\"o\">=</span> <span class=\"mi\">10</span>\n    <span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">height</span> <span class=\"o\">=</span> <span class=\"mi\">20</span>\n    <span class=\"n\">physics</span><span class=\"p\">.</span><span class=\"n\">set_shape</span><span class=\"p\">(</span><span class=\"s2\">&quot;#collisionobject&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;my_capsule_shape&quot;</span><span class=\"p\">,</span> <span class=\"n\">data</span><span class=\"p\">)</span>\n\n    <span class=\"c1\">-- set sphere shape data</span>\n    <span class=\"n\">data</span> <span class=\"o\">=</span> <span class=\"p\">{}</span>\n    <span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">type</span> <span class=\"o\">=</span> <span class=\"n\">physics</span><span class=\"p\">.</span><span class=\"n\">SHAPE_TYPE_SPHERE</span>\n    <span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">diameter</span> <span class=\"o\">=</span> <span class=\"mi\">10</span>\n    <span class=\"n\">physics</span><span class=\"p\">.</span><span class=\"n\">set_shape</span><span class=\"p\">(</span><span class=\"s2\">&quot;#collisionobject&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;my_sphere_shape&quot;</span><span class=\"p\">,</span> <span class=\"n\">data</span><span class=\"p\">)</span>\n\n    <span class=\"c1\">-- set box shape data</span>\n    <span class=\"n\">data</span> <span class=\"o\">=</span> <span class=\"p\">{}</span>\n    <span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">type</span> <span class=\"o\">=</span> <span class=\"n\">physics</span><span class=\"p\">.</span><span class=\"n\">SHAPE_TYPE_BOX</span>\n    <span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">dimensions</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">10</span><span class=\"p\">,</span> <span class=\"mi\">10</span><span class=\"p\">,</span> <span class=\"mi\">5</span><span class=\"p\">)</span>\n    <span class=\"n\">physics</span><span class=\"p\">.</span><span class=\"n\">set_shape</span><span class=\"p\">(</span><span class=\"s2\">&quot;#collisionobject&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;my_box_shape&quot;</span><span class=\"p\">,</span> <span class=\"n\">data</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
             "language": "",
             "members": [],
             "name": "physics.set_shape",
@@ -1423,6 +2126,16 @@
                         "string",
                         "hash",
                         "url"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
                     ]
                 },
                 {
@@ -1432,14 +2145,28 @@
                     "types": [
                         "string",
                         "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
                     ]
                 },
                 {
-                    "doc": "the shape data to update the shape with.\nSee <a href=\"/ref/physics#physics.get_shape\">physics.get_shape</a> for a detailed description of each field in the data table.\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"kr\">function</span> <span class=\"nf\">set_shape_data</span><span class=\"p\">()</span>\n    <span class=\"c1\">-- set capsule shape data</span>\n    <span class=\"kd\">local</span> <span class=\"n\">data</span> <span class=\"o\">=</span> <span class=\"p\">{}</span>\n    <span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">type</span> <span class=\"o\">=</span> <span class=\"n\">physics</span><span class=\"p\">.</span><span class=\"n\">SHAPE_TYPE_CAPSULE</span>\n    <span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">diameter</span> <span class=\"o\">=</span> <span class=\"mi\">10</span>\n    <span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">height</span> <span class=\"o\">=</span> <span class=\"mi\">20</span>\n    <span class=\"n\">physics</span><span class=\"p\">.</span><span class=\"n\">set_shape</span><span class=\"p\">(</span><span class=\"s2\">&quot;#collisionobject&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;my_capsule_shape&quot;</span><span class=\"p\">,</span> <span class=\"n\">data</span><span class=\"p\">)</span>\n\n    <span class=\"c1\">-- set sphere shape data</span>\n    <span class=\"n\">data</span> <span class=\"o\">=</span> <span class=\"p\">{}</span>\n    <span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">type</span> <span class=\"o\">=</span> <span class=\"n\">physics</span><span class=\"p\">.</span><span class=\"n\">SHAPE_TYPE_SPHERE</span>\n    <span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">diameter</span> <span class=\"o\">=</span> <span class=\"mi\">10</span>\n    <span class=\"n\">physics</span><span class=\"p\">.</span><span class=\"n\">set_shape</span><span class=\"p\">(</span><span class=\"s2\">&quot;#collisionobject&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;my_sphere_shape&quot;</span><span class=\"p\">,</span> <span class=\"n\">data</span><span class=\"p\">)</span>\n\n    <span class=\"c1\">-- set box shape data</span>\n    <span class=\"n\">data</span> <span class=\"o\">=</span> <span class=\"p\">{}</span>\n    <span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">type</span> <span class=\"o\">=</span> <span class=\"n\">physics</span><span class=\"p\">.</span><span class=\"n\">SHAPE_TYPE_BOX</span>\n    <span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">dimensions</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">10</span><span class=\"p\">,</span> <span class=\"mi\">10</span><span class=\"p\">,</span> <span class=\"mi\">5</span><span class=\"p\">)</span>\n    <span class=\"n\">physics</span><span class=\"p\">.</span><span class=\"n\">set_shape</span><span class=\"p\">(</span><span class=\"s2\">&quot;#collisionobject&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;my_box_shape&quot;</span><span class=\"p\">,</span> <span class=\"n\">data</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+                    "doc": "updated collision shape data",
                     "is_optional": "False",
                     "name": "table",
                     "types": [
-                        "table"
+                        "physics.shape_data"
+                    ],
+                    "types_html": [
+                        "<a href=\"#physics.shape_data\">physics.shape_data</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#physics.shape_data\">physics.shape_data</a>"
                     ]
                 }
             ],
@@ -1466,6 +2193,16 @@
                         "string",
                         "hash",
                         "url"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
                     ]
                 },
                 {
@@ -1474,6 +2211,12 @@
                     "name": "flip",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
@@ -1483,64 +2226,86 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "",
-            "description": "",
+            "brief": "Collision shape data",
+            "description": "The available geometry fields depend on <code>type</code>.",
             "error": "",
             "examples": "",
             "language": "",
-            "members": [],
-            "name": "physics.SHAPE_TYPE_BOX",
+            "members": [
+                {
+                    "display_name": "type",
+                    "doc": "shape type",
+                    "is_optional": false,
+                    "name": "type",
+                    "type": "physics.SHAPE_TYPE",
+                    "type_html": "<a href=\"#physics.SHAPE_TYPE\">physics.SHAPE_TYPE</a>"
+                },
+                {
+                    "display_name": "diameter",
+                    "doc": "sphere diameter or capsule pole diameter",
+                    "is_optional": true,
+                    "name": "diameter?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "dimensions",
+                    "doc": "box dimensions",
+                    "is_optional": true,
+                    "name": "dimensions?",
+                    "type": "vector3",
+                    "type_html": "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                },
+                {
+                    "display_name": "height",
+                    "doc": "capsule height",
+                    "is_optional": true,
+                    "name": "height?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                }
+            ],
+            "name": "physics.shape_data",
             "notes": [],
             "parameters": [],
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "CONSTANT"
+            "type": "STRUCT"
         },
         {
-            "brief": "",
-            "description": "",
+            "brief": "Shape types",
+            "description": "Shape types",
             "error": "",
             "examples": "",
             "language": "",
-            "members": [],
-            "name": "physics.SHAPE_TYPE_CAPSULE",
+            "members": [
+                {
+                    "doc": "Box shape.",
+                    "name": "physics.SHAPE_TYPE_BOX"
+                },
+                {
+                    "doc": "Capsule shape; supported only by 3D physics.",
+                    "name": "physics.SHAPE_TYPE_CAPSULE"
+                },
+                {
+                    "doc": "Convex hull shape.",
+                    "name": "physics.SHAPE_TYPE_HULL"
+                },
+                {
+                    "doc": "Sphere shape.",
+                    "name": "physics.SHAPE_TYPE_SPHERE"
+                }
+            ],
+            "name": "physics.SHAPE_TYPE",
             "notes": [],
             "parameters": [],
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "",
-            "description": "",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "physics.SHAPE_TYPE_HULL",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "",
-            "description": "",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "physics.SHAPE_TYPE_SPHERE",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
+            "type": "ENUM",
+            "value_type": "integer",
+            "value_type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
         },
         {
             "brief": "updates the mass of a dynamic 2D collision object in the physics world.",
@@ -1560,6 +2325,16 @@
                         "string",
                         "hash",
                         "url"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
                     ]
                 },
                 {
@@ -1568,6 +2343,12 @@
                     "name": "mass",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -1580,20 +2361,30 @@
             "brief": "explicitly wakeup a collision object",
             "description": "Collision objects tend to fall asleep when inactive for a small period of time for\nefficiency reasons. This function wakes them up.",
             "error": "",
-            "examples": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">on_input</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">action_id</span><span class=\"p\">,</span> <span class=\"n\">action</span><span class=\"p\">)</span>\n    <span class=\"kr\">if</span> <span class=\"n\">action_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;test&quot;</span><span class=\"p\">)</span> <span class=\"ow\">and</span> <span class=\"n\">action</span><span class=\"p\">.</span><span class=\"n\">pressed</span> <span class=\"kr\">then</span>\n        <span class=\"n\">physics</span><span class=\"p\">.</span><span class=\"n\">wakeup</span><span class=\"p\">(</span><span class=\"s2\">&quot;#collisionobject&quot;</span><span class=\"p\">)</span>\n    <span class=\"kr\">end</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
             "language": "",
             "members": [],
             "name": "physics.wakeup",
             "notes": [],
             "parameters": [
                 {
-                    "doc": "the collision object to wake.\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">on_input</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">action_id</span><span class=\"p\">,</span> <span class=\"n\">action</span><span class=\"p\">)</span>\n    <span class=\"kr\">if</span> <span class=\"n\">action_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;test&quot;</span><span class=\"p\">)</span> <span class=\"ow\">and</span> <span class=\"n\">action</span><span class=\"p\">.</span><span class=\"n\">pressed</span> <span class=\"kr\">then</span>\n        <span class=\"n\">physics</span><span class=\"p\">.</span><span class=\"n\">wakeup</span><span class=\"p\">(</span><span class=\"s2\">&quot;#collisionobject&quot;</span><span class=\"p\">)</span>\n    <span class=\"kr\">end</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+                    "doc": "the collision object to wake.",
                     "is_optional": "False",
                     "name": "url",
                     "types": [
                         "string",
                         "hash",
                         "url"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
                     ]
                 }
             ],
@@ -1617,7 +2408,13 @@
                     "is_optional": "False",
                     "name": "request_id",
                     "types": [
-                        "number"
+                        "integer"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
                     ]
                 }
             ],
@@ -1642,6 +2439,12 @@
                     "name": "fraction",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -1650,6 +2453,12 @@
                     "name": "position",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 },
                 {
@@ -1658,6 +2467,12 @@
                     "name": "normal",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 },
                 {
@@ -1666,6 +2481,12 @@
                     "name": "id",
                     "types": [
                         "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
                     ]
                 },
                 {
@@ -1674,6 +2495,12 @@
                     "name": "group",
                     "types": [
                         "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
                     ]
                 },
                 {
@@ -1681,7 +2508,13 @@
                     "is_optional": "False",
                     "name": "request_id",
                     "types": [
-                        "number"
+                        "integer"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
                     ]
                 }
             ],
@@ -1706,22 +2539,40 @@
                     "name": "enter",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 },
                 {
-                    "doc": "<dl>\n<dt>interaction information for object A</dt>\n<dt><code>id</code></dt>\n<dd><span class=\"type\">hash</span> The ID of object A</dd>\n<dt><code>group</code></dt>\n<dd><span class=\"type\">hash</span> The collision group of object A</dd>\n</dl>",
+                    "doc": "interaction information for object A",
                     "is_optional": "False",
                     "name": "a",
                     "types": [
-                        "table"
+                        "message.physics.trigger_info"
+                    ],
+                    "types_html": [
+                        "<a href=\"#message.physics.trigger_info\">message.physics.trigger_info</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#message.physics.trigger_info\">message.physics.trigger_info</a>"
                     ]
                 },
                 {
-                    "doc": "collision information for object B\n<dl>\n<dt><code>id</code></dt>\n<dd><span class=\"type\">hash</span> The ID of object B</dd>\n<dt><code>group</code></dt>\n<dd><span class=\"type\">hash</span> The collision group of object B</dd>\n</dl>",
+                    "doc": "interaction information for object B",
                     "is_optional": "False",
                     "name": "b",
                     "types": [
-                        "table"
+                        "message.physics.trigger_info"
+                    ],
+                    "types_html": [
+                        "<a href=\"#message.physics.trigger_info\">message.physics.trigger_info</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#message.physics.trigger_info\">message.physics.trigger_info</a>"
                     ]
                 }
             ],
@@ -1746,6 +2597,12 @@
                     "name": "other_id",
                     "types": [
                         "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
                     ]
                 },
                 {
@@ -1754,6 +2611,12 @@
                     "name": "enter",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 },
                 {
@@ -1762,6 +2625,12 @@
                     "name": "other_group",
                     "types": [
                         "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
                     ]
                 },
                 {
@@ -1770,6 +2639,12 @@
                     "name": "own_group",
                     "types": [
                         "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
                     ]
                 }
             ],
@@ -1779,6 +2654,7 @@
             "type": "MESSAGE"
         }
     ],
+    "format_version": 2,
     "info": {
         "api_language": "Lua",
         "brief": "Collision object physics API documentation",

@@ -16,6 +16,12 @@
                     "name": "color",
                     "types": [
                         "vector4"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector4\">vector4</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector4\">vector4</a>"
                     ]
                 }
             ],
@@ -26,25 +32,33 @@
         },
         {
             "brief": "Constant buffer",
-            "description": "Constant buffer",
+            "description": "A mutable collection of shader constants created with\n<a href=\"/ref/render#render.constant_buffer\">render.constant_buffer</a>. Assign constants by name using <span class=\"type\"><a href=\"../vmath-lua/#vector4\">vector4</a></span>\nor <span class=\"type\"><a href=\"../vmath-lua/#matrix4\">matrix4</a></span> values, or arrays of those values, then pass the buffer in\nthe <code>constants</code> option to <a href=\"/ref/render#render.draw\">render.draw</a>. Constant buffers are Lua\nuserdata and cannot be iterated with <code>pairs()</code> or <code>ipairs()</code>.",
             "error": "",
-            "examples": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">constants</span> <span class=\"o\">=</span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">constant_buffer</span><span class=\"p\">()</span>\n<span class=\"n\">constants</span><span class=\"p\">.</span><span class=\"n\">tint</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector4</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mf\">0.5</span><span class=\"p\">,</span> <span class=\"mf\">0.5</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">)</span>\n<span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">draw</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">model_predicate</span><span class=\"p\">,</span> <span class=\"p\">{</span> <span class=\"n\">constants</span> <span class=\"o\">=</span> <span class=\"n\">constants</span> <span class=\"p\">})</span>\n</code></pre></div>",
             "language": "",
             "members": [],
             "name": "constant_buffer",
             "notes": [],
             "parameters": [
                 {
-                    "doc": "",
+                    "doc": "shader constant buffer",
                     "is_optional": "False",
                     "name": "value",
                     "types": [
                         "userdata"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">userdata</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">userdata</a>"
                     ]
                 }
             ],
             "replaces": "",
             "returnvalues": [],
+            "target_type": "userdata",
+            "target_type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">userdata</a>",
             "tparams": [],
             "type": "TYPEDEF"
         },
@@ -64,6 +78,12 @@
                     "name": "position",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 },
                 {
@@ -72,6 +92,12 @@
                     "name": "text",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 },
                 {
@@ -80,6 +106,12 @@
                     "name": "color",
                     "types": [
                         "vector4"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector4\">vector4</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector4\">vector4</a>"
                     ]
                 }
             ],
@@ -104,6 +136,12 @@
                     "name": "start_point",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 },
                 {
@@ -112,6 +150,12 @@
                     "name": "end_point",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 },
                 {
@@ -120,6 +164,12 @@
                     "name": "color",
                     "types": [
                         "vector4"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector4\">vector4</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector4\">vector4</a>"
                     ]
                 }
             ],
@@ -127,6 +177,30 @@
             "returnvalues": [],
             "tparams": [],
             "type": "MESSAGE"
+        },
+        {
+            "brief": "Render-camera options",
+            "description": "Render-camera options",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "use_frustum",
+                    "doc": "Use the camera view-projection matrix for frustum culling. The default is false.",
+                    "is_optional": true,
+                    "name": "use_frustum?",
+                    "type": "boolean",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                }
+            ],
+            "name": "render.camera_options",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
         },
         {
             "brief": "clears the active render target",
@@ -143,7 +217,13 @@
                     "is_optional": "False",
                     "name": "buffers",
                     "types": [
-                        "table"
+                        "table<graphics.BUFFER_TYPE, number|vector4>"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">table</a>&lt;<a href=\"../graphics-lua/#graphics.BUFFER_TYPE\">graphics.BUFFER_TYPE</a>, <a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>|<a href=\"../vmath-lua/#vector4\">vector4</a>&gt;"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">table</a>&lt;<a href=\"../graphics-lua/#graphics.BUFFER_TYPE\">graphics.BUFFER_TYPE</a>, <a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>|<a href=\"../vmath-lua/#vector4\">vector4</a>&gt;"
                     ]
                 }
             ],
@@ -169,11 +249,75 @@
                     "name": "buffer",
                     "types": [
                         "constant_buffer"
+                    ],
+                    "types_html": [
+                        "<a href=\"#constant_buffer\">constant_buffer</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#constant_buffer\">constant_buffer</a>"
                     ]
                 }
             ],
             "tparams": [],
             "type": "FUNCTION"
+        },
+        {
+            "brief": "Render context events",
+            "description": "Render context events",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "rendering context was lost; rendering pauses and graphics resources become invalid",
+                    "name": "render.CONTEXT_EVENT_CONTEXT_LOST"
+                },
+                {
+                    "doc": "rendering context was restored; rendering remains paused while resources can be reloaded",
+                    "name": "render.CONTEXT_EVENT_CONTEXT_RESTORED"
+                }
+            ],
+            "name": "render.CONTEXT_EVENT",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "ENUM",
+            "value_type": "integer",
+            "value_type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+        },
+        {
+            "brief": "Debug-draw options",
+            "description": "Debug-draw options",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "frustum",
+                    "doc": "Frustum matrix used for culling renderable items.",
+                    "is_optional": true,
+                    "name": "frustum?",
+                    "type": "matrix4",
+                    "type_html": "<a href=\"../vmath-lua/#matrix4\">matrix4</a>"
+                },
+                {
+                    "display_name": "frustum_planes",
+                    "doc": "Frustum planes used for culling. The default is <a href=\"/ref/render#render.FRUSTUM_PLANES_SIDES\">render.FRUSTUM_PLANES_SIDES</a>.",
+                    "is_optional": true,
+                    "name": "frustum_planes?",
+                    "type": "render.FRUSTUM_PLANES",
+                    "type_html": "<a href=\"#render.FRUSTUM_PLANES\">render.FRUSTUM_PLANES</a>"
+                }
+            ],
+            "name": "render.debug_draw_options",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
         },
         {
             "brief": "deletes a render target",
@@ -191,6 +335,12 @@
                     "name": "render_target",
                     "types": [
                         "render_target"
+                    ],
+                    "types_html": [
+                        "<a href=\"#render_target\">render_target</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#render_target\">render_target</a>"
                     ]
                 }
             ],
@@ -229,7 +379,13 @@
                     "is_optional": "False",
                     "name": "state",
                     "types": [
-                        "constant"
+                        "graphics.STATE"
+                    ],
+                    "types_html": [
+                        "<a href=\"../graphics-lua/#graphics.STATE\">graphics.STATE</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../graphics-lua/#graphics.STATE\">graphics.STATE</a>"
                     ]
                 }
             ],
@@ -256,6 +412,16 @@
                         "texture",
                         "string",
                         "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"#texture\">texture</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#texture\">texture</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
                     ]
                 }
             ],
@@ -279,7 +445,13 @@
                     "is_optional": "False",
                     "name": "x",
                     "types": [
-                        "number"
+                        "integer"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
                     ]
                 },
                 {
@@ -287,7 +459,13 @@
                     "is_optional": "False",
                     "name": "y",
                     "types": [
-                        "number"
+                        "integer"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
                     ]
                 },
                 {
@@ -295,15 +473,27 @@
                     "is_optional": "False",
                     "name": "z",
                     "types": [
-                        "number"
+                        "integer"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
                     ]
                 },
                 {
-                    "doc": "optional table with properties:\n<dl>\n<dt><code>constants</code></dt>\n<dd><span class=\"type\">constant_buffer</span> optional constants to use while dispatching. The values are copied when <code>render.dispatch_compute()</code> is called.</dd>\n</dl>",
+                    "doc": "optional compute-dispatch options",
                     "is_optional": "True",
                     "name": "options",
                     "types": [
-                        "table"
+                        "render.dispatch_options"
+                    ],
+                    "types_html": [
+                        "<a href=\"#render.dispatch_options\">render.dispatch_options</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#render.dispatch_options\">render.dispatch_options</a>"
                     ]
                 }
             ],
@@ -311,6 +501,30 @@
             "returnvalues": [],
             "tparams": [],
             "type": "FUNCTION"
+        },
+        {
+            "brief": "Compute-dispatch options",
+            "description": "Compute-dispatch options",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "constants",
+                    "doc": "Constants used by the compute program. The values are copied when <code>render.dispatch_compute()</code> is called.",
+                    "is_optional": true,
+                    "name": "constants?",
+                    "type": "constant_buffer",
+                    "type_html": "<a href=\"#constant_buffer\">constant_buffer</a>"
+                }
+            ],
+            "name": "render.dispatch_options",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
         },
         {
             "brief": "draws all objects matching a predicate",
@@ -327,15 +541,27 @@
                     "is_optional": "False",
                     "name": "predicate",
                     "types": [
-                        "number"
+                        "render_predicate"
+                    ],
+                    "types_html": [
+                        "<a href=\"#render_predicate\">render_predicate</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#render_predicate\">render_predicate</a>"
                     ]
                 },
                 {
-                    "doc": "optional table with properties:\n<dl>\n<dt><code>frustum</code></dt>\n<dd><span class=\"type\">matrix4</span> A frustum matrix used to cull renderable items. (E.g. <code>local frustum = proj * view</code>). default=nil</dd>\n<dt><code>frustum_planes</code></dt>\n<dd><span class=\"type\">int</span> Determines which sides of the frustum will be used. Default is render.FRUSTUM_PLANES_SIDES.</dd>\n</dl>\n<ul>\n<li>render.FRUSTUM_PLANES_SIDES : The left, right, top and bottom sides of the frustum.</li>\n<li>render.FRUSTUM_PLANES_ALL : All 6 sides of the frustum.</li>\n</ul>\n<dl>\n<dt><code>constants</code></dt>\n<dd><span class=\"type\">constant_buffer</span> optional constants to use while rendering. The values are copied when <code>render.draw()</code> is called.</dd>\n<dt><code>sort_order</code></dt>\n<dd><span class=\"type\">int</span> How to sort draw order for world-ordered entries. Default uses the renderer's preferred world sorting (back-to-front).</dd>\n</dl>",
+                    "doc": "optional draw options",
                     "is_optional": "True",
                     "name": "options",
                     "types": [
-                        "table"
+                        "render.draw_options"
+                    ],
+                    "types_html": [
+                        "<a href=\"#render.draw_options\">render.draw_options</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#render.draw_options\">render.draw_options</a>"
                     ]
                 }
             ],
@@ -355,11 +581,17 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "optional table with properties:\n<dl>\n<dt><code>frustum</code></dt>\n<dd><span class=\"type\">matrix4</span> A frustum matrix used to cull renderable items. (E.g. <code>local frustum = proj * view</code>). May be nil.</dd>\n<dt><code>frustum_planes</code></dt>\n<dd><span class=\"type\">int</span> Determines which sides of the frustum will be used. Default is render.FRUSTUM_PLANES_SIDES.</dd>\n</dl>\n<ul>\n<li>render.FRUSTUM_PLANES_SIDES : The left, right, top and bottom sides of the frustum.</li>\n<li>render.FRUSTUM_PLANES_ALL : All sides of the frustum.</li>\n</ul>",
+                    "doc": "optional debug-draw options",
                     "is_optional": "True",
                     "name": "options",
                     "types": [
-                        "table"
+                        "render.debug_draw_options"
+                    ],
+                    "types_html": [
+                        "<a href=\"#render.debug_draw_options\">render.debug_draw_options</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#render.debug_draw_options\">render.debug_draw_options</a>"
                     ]
                 }
             ],
@@ -367,6 +599,54 @@
             "returnvalues": [],
             "tparams": [],
             "type": "FUNCTION"
+        },
+        {
+            "brief": "Render draw options",
+            "description": "Render draw options",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "frustum",
+                    "doc": "Frustum matrix used for culling renderable items.",
+                    "is_optional": true,
+                    "name": "frustum?",
+                    "type": "matrix4",
+                    "type_html": "<a href=\"../vmath-lua/#matrix4\">matrix4</a>"
+                },
+                {
+                    "display_name": "frustum_planes",
+                    "doc": "Frustum planes used for culling. The default is <a href=\"/ref/render#render.FRUSTUM_PLANES_SIDES\">render.FRUSTUM_PLANES_SIDES</a>.",
+                    "is_optional": true,
+                    "name": "frustum_planes?",
+                    "type": "render.FRUSTUM_PLANES",
+                    "type_html": "<a href=\"#render.FRUSTUM_PLANES\">render.FRUSTUM_PLANES</a>"
+                },
+                {
+                    "display_name": "constants",
+                    "doc": "Constants used while rendering. The values are copied when <code>render.draw()</code> is called.",
+                    "is_optional": true,
+                    "name": "constants?",
+                    "type": "constant_buffer",
+                    "type_html": "<a href=\"#constant_buffer\">constant_buffer</a>"
+                },
+                {
+                    "display_name": "sort_order",
+                    "doc": "World-entry sort order. The default is the renderer's preferred back-to-front order.",
+                    "is_optional": true,
+                    "name": "sort_order?",
+                    "type": "render.SORT",
+                    "type_html": "<a href=\"#render.SORT\">render.SORT</a>"
+                }
+            ],
+            "name": "render.draw_options",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
         },
         {
             "brief": "enables a material",
@@ -385,6 +665,14 @@
                     "types": [
                         "string",
                         "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
                     ]
                 }
             ],
@@ -408,7 +696,13 @@
                     "is_optional": "False",
                     "name": "state",
                     "types": [
-                        "constant"
+                        "graphics.STATE"
+                    ],
+                    "types_html": [
+                        "<a href=\"../graphics-lua/#graphics.STATE\">graphics.STATE</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../graphics-lua/#graphics.STATE\">graphics.STATE</a>"
                     ]
                 }
             ],
@@ -435,6 +729,16 @@
                         "number",
                         "string",
                         "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
                     ]
                 },
                 {
@@ -445,19 +749,30 @@
                         "texture",
                         "string",
                         "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"#texture\">texture</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#texture\">texture</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
                     ]
                 },
                 {
-                    "doc": "optional buffer type from which to enable the texture. Note that this argument only applies to render targets. Defaults to <code>graphics.BUFFER_TYPE_COLOR0_BIT</code>. These values are supported:\n<ul>\n<li><code>graphics.BUFFER_TYPE_COLOR0_BIT</code></li>\n</ul>\nIf The render target has been created as depth and/or stencil textures, these buffer types can be used:\n<ul>\n<li><code>graphics.BUFFER_TYPE_DEPTH_BIT</code></li>\n<li><code>graphics.BUFFER_TYPE_STENCIL_BIT</code></li>\n</ul>\nIf the render target has been created with multiple color attachments, these buffer types can be used\nto enable those textures as well. Currently 4 color attachments are supported:\n<ul>\n<li><code>graphics.BUFFER_TYPE_COLOR0_BIT</code></li>\n<li><code>graphics.BUFFER_TYPE_COLOR1_BIT</code></li>\n<li><code>graphics.BUFFER_TYPE_COLOR2_BIT</code></li>\n<li><code>graphics.BUFFER_TYPE_COLOR3_BIT</code></li>\n</ul>",
+                    "doc": "optional render-target attachment. Defaults to <code>graphics.BUFFER_TYPE_COLOR0_BIT</code>. Depth and stencil attachments must have been created as textures; color attachments beyond the first require a render target with multiple color attachments (up to four are supported).",
                     "is_optional": "True",
                     "name": "buffer_type",
                     "types": [
-                        "graphics.BUFFER_TYPE_COLOR0_BIT",
-                        "graphics.BUFFER_TYPE_COLOR1_BIT",
-                        "graphics.BUFFER_TYPE_COLOR2_BIT",
-                        "graphics.BUFFER_TYPE_COLOR3_BIT",
-                        "graphics.BUFFER_TYPE_DEPTH_BIT",
-                        "graphics.BUFFER_TYPE_STENCIL_BIT"
+                        "graphics.BUFFER_TYPE"
+                    ],
+                    "types_html": [
+                        "<a href=\"../graphics-lua/#graphics.BUFFER_TYPE\">graphics.BUFFER_TYPE</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../graphics-lua/#graphics.BUFFER_TYPE\">graphics.BUFFER_TYPE</a>"
                     ]
                 }
             ],
@@ -467,34 +782,30 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "",
-            "description": "",
+            "brief": "Frustum plane selections",
+            "description": "Frustum plane selections",
             "error": "",
             "examples": "",
             "language": "",
-            "members": [],
-            "name": "render.FRUSTUM_PLANES_ALL",
+            "members": [
+                {
+                    "doc": "All six frustum planes.",
+                    "name": "render.FRUSTUM_PLANES_ALL"
+                },
+                {
+                    "doc": "Left, right, top, and bottom frustum planes.",
+                    "name": "render.FRUSTUM_PLANES_SIDES"
+                }
+            ],
+            "name": "render.FRUSTUM_PLANES",
             "notes": [],
             "parameters": [],
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "",
-            "description": "",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "render.FRUSTUM_PLANES_SIDES",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
+            "type": "ENUM",
+            "value_type": "integer",
+            "value_type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
         },
         {
             "brief": "gets the window height, as specified for the project",
@@ -512,7 +823,13 @@
                     "doc": "specified window height",
                     "name": "height",
                     "types": [
-                        "number"
+                        "integer"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
                     ]
                 }
             ],
@@ -534,7 +851,19 @@
                     "is_optional": "False",
                     "name": "render_target",
                     "types": [
-                        "render_target"
+                        "render_target",
+                        "string",
+                        "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"#render_target\">render_target</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#render_target\">render_target</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
                     ]
                 },
                 {
@@ -542,12 +871,13 @@
                     "is_optional": "False",
                     "name": "buffer_type",
                     "types": [
-                        "graphics.BUFFER_TYPE_COLOR0_BIT",
-                        "graphics.BUFFER_TYPE_COLOR1_BIT",
-                        "graphics.BUFFER_TYPE_COLOR2_BIT",
-                        "graphics.BUFFER_TYPE_COLOR3_BIT",
-                        "graphics.BUFFER_TYPE_DEPTH_BIT",
-                        "graphics.BUFFER_TYPE_STENCIL_BIT"
+                        "graphics.BUFFER_TYPE"
+                    ],
+                    "types_html": [
+                        "<a href=\"../graphics-lua/#graphics.BUFFER_TYPE\">graphics.BUFFER_TYPE</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../graphics-lua/#graphics.BUFFER_TYPE\">graphics.BUFFER_TYPE</a>"
                     ]
                 }
             ],
@@ -557,7 +887,13 @@
                     "doc": "the height of the render target buffer texture",
                     "name": "height",
                     "types": [
-                        "number"
+                        "integer"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
                     ]
                 }
             ],
@@ -579,7 +915,19 @@
                     "is_optional": "False",
                     "name": "render_target",
                     "types": [
-                        "render_target"
+                        "render_target",
+                        "string",
+                        "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"#render_target\">render_target</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#render_target\">render_target</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
                     ]
                 },
                 {
@@ -587,12 +935,13 @@
                     "is_optional": "False",
                     "name": "buffer_type",
                     "types": [
-                        "graphics.BUFFER_TYPE_COLOR0_BIT",
-                        "graphics.BUFFER_TYPE_COLOR1_BIT",
-                        "graphics.BUFFER_TYPE_COLOR2_BIT",
-                        "graphics.BUFFER_TYPE_COLOR3_BIT",
-                        "graphics.BUFFER_TYPE_DEPTH_BIT",
-                        "graphics.BUFFER_TYPE_STENCIL_BIT"
+                        "graphics.BUFFER_TYPE"
+                    ],
+                    "types_html": [
+                        "<a href=\"../graphics-lua/#graphics.BUFFER_TYPE\">graphics.BUFFER_TYPE</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../graphics-lua/#graphics.BUFFER_TYPE\">graphics.BUFFER_TYPE</a>"
                     ]
                 }
             ],
@@ -602,7 +951,13 @@
                     "doc": "the width of the render target buffer texture",
                     "name": "width",
                     "types": [
-                        "number"
+                        "integer"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
                     ]
                 }
             ],
@@ -622,10 +977,16 @@
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "specified window width (number)",
+                    "doc": "specified window width",
                     "name": "width",
                     "types": [
-                        "number"
+                        "integer"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
                     ]
                 }
             ],
@@ -648,7 +1009,13 @@
                     "doc": "actual window height",
                     "name": "height",
                     "types": [
-                        "number"
+                        "integer"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
                     ]
                 }
             ],
@@ -671,7 +1038,13 @@
                     "doc": "actual window width",
                     "name": "width",
                     "types": [
-                        "number"
+                        "integer"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
                     ]
                 }
             ],
@@ -682,7 +1055,7 @@
             "brief": "creates a new render predicate",
             "description": "This function returns a new render predicate for objects with materials matching\nthe provided material tags. The provided tags are combined into a bit mask\nfor the predicate. If multiple tags are provided, the predicate matches materials\nwith all tags ANDed together.\nThe current limit to the number of tags that can be defined is <code>64</code>.",
             "error": "",
-            "examples": "Create a new render predicate containing all visual objects that\nhave a material with material tags \"opaque\" AND \"smoke\".\n<div class=\"codehilite\"><pre><span></span><code>local p = render.predicate({hash(&quot;opaque&quot;), hash(&quot;smoke&quot;)})\n</code></pre></div>",
+            "examples": "Create a new render predicate containing all visual objects that\nhave a material with material tags \"opaque\" AND \"smoke\".\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">p</span> <span class=\"o\">=</span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">predicate</span><span class=\"p\">({</span><span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;opaque&quot;</span><span class=\"p\">),</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;smoke&quot;</span><span class=\"p\">)})</span>\n</code></pre></div>",
             "language": "",
             "members": [],
             "name": "render.predicate",
@@ -693,7 +1066,13 @@
                     "is_optional": "False",
                     "name": "tags",
                     "types": [
-                        "table"
+                        "(string|hash)[]"
+                    ],
+                    "types_html": [
+                        "(<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>|<a href=\"../builtins-lua/#hash\">hash</a>)[]"
+                    ],
+                    "types_table_html": [
+                        "(<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>|<a href=\"../builtins-lua/#hash\">hash</a>)[]"
                     ]
                 }
             ],
@@ -703,7 +1082,13 @@
                     "doc": "new predicate",
                     "name": "predicate",
                     "types": [
-                        "number"
+                        "render_predicate"
+                    ],
+                    "types_html": [
+                        "<a href=\"#render_predicate\">render_predicate</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#render_predicate\">render_predicate</a>"
                     ]
                 }
             ],
@@ -712,7 +1097,7 @@
         },
         {
             "brief": "creates a new render target",
-            "description": "Creates a new render target according to the supplied\nspecification table.\nThe table should contain keys specifying which buffers should be created\nwith what parameters. Each buffer key should have a table value consisting\nof parameters. The following parameter keys are available:\n<table>\n<thead>\n<tr>\n<th>Key</th>\n<th>Values</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><code>format</code></td>\n<td><code>graphics.TEXTURE_FORMAT_LUMINANCE</code><br/><code>graphics.TEXTURE_FORMAT_RGB</code><br/><code>graphics.TEXTURE_FORMAT_RGBA</code><br/><code>graphics.TEXTURE_FORMAT_DEPTH</code><br/><code>graphics.TEXTURE_FORMAT_STENCIL</code><br/><code>graphics.TEXTURE_FORMAT_RGBA32F</code><br/><code>graphics.TEXTURE_FORMAT_RGBA16F</code><br/></td>\n</tr>\n<tr>\n<td><code>width</code></td>\n<td>number</td>\n</tr>\n<tr>\n<td><code>height</code></td>\n<td>number</td>\n</tr>\n<tr>\n<td><code>min_filter</code> (optional)</td>\n<td><code>graphics.TEXTURE_FILTER_LINEAR</code><br/><code>graphics.TEXTURE_FILTER_NEAREST</code></td>\n</tr>\n<tr>\n<td><code>mag_filter</code> (optional)</td>\n<td><code>graphics.TEXTURE_FILTER_LINEAR</code><br/><code>graphics.TEXTURE_FILTER_NEAREST</code></td>\n</tr>\n<tr>\n<td><code>u_wrap</code>     (optional)</td>\n<td><code>graphics.TEXTURE_WRAP_CLAMP_TO_BORDER</code><br/><code>graphics.TEXTURE_WRAP_CLAMP_TO_EDGE</code><br/><code>graphics.TEXTURE_WRAP_MIRRORED_REPEAT</code><br/><code>graphics.TEXTURE_WRAP_REPEAT</code><br/></td>\n</tr>\n<tr>\n<td><code>v_wrap</code>     (optional)</td>\n<td><code>graphics.TEXTURE_WRAP_CLAMP_TO_BORDER</code><br/><code>graphics.TEXTURE_WRAP_CLAMP_TO_EDGE</code><br/><code>graphics.TEXTURE_WRAP_MIRRORED_REPEAT</code><br/><code>graphics.TEXTURE_WRAP_REPEAT</code></td>\n</tr>\n<tr>\n<td><code>flags</code>      (optional)</td>\n<td><code>render.TEXTURE_BIT</code> (only applicable to depth and stencil buffers)</td>\n</tr>\n</tbody>\n</table>\nThe top-level <code>sample_count</code> key optionally specifies the multisample count for the entire render target.\nIt defaults to 1 and the graphics adapter normalizes it to a supported power-of-two value.\nThe render target can be created to support multiple color attachments. Each attachment can have different format settings and texture filters,\nbut attachments must be added in sequence, meaning you cannot create a render target at slot 0 and 3.\nInstead it has to be created with all four buffer types ranging from [0..3] (as denoted by graphics.BUFFER_TYPE_COLORX_BIT where 'X' is the attachment you want to create).\nIt is not guaranteed that the device running the script can support creating render targets with multiple color attachments. To check if the device can support multiple attachments,\nyou can check if the <code>render</code> table contains any of the <code>BUFFER_TYPE_COLOR1_BIT</code>, <code>BUFFER_TYPE_COLOR2_BIT</code> or <code>BUFFER_TYPE_COLOR3_BIT</code> constants:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"kr\">if</span> <span class=\"n\">graphics</span><span class=\"p\">.</span><span class=\"n\">BUFFER_TYPE_COLOR1_BIT</span> <span class=\"o\">==</span> <span class=\"kc\">nil</span> <span class=\"kr\">then</span>\n        <span class=\"c1\">-- this devices does not support multiple color attachments</span>\n    <span class=\"kr\">end</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+            "description": "Creates a new render target according to the supplied\nspecification table.\nThe render target can be created to support multiple color attachments. Each attachment can have different format settings and texture filters,\nbut attachments must be added in sequence, meaning you cannot create a render target at slot 0 and 3.\nInstead it has to be created with all four buffer types ranging from [0..3] (as denoted by graphics.BUFFER_TYPE_COLORX_BIT where 'X' is the attachment you want to create).\nIt is not guaranteed that the device running the script can support creating render targets with multiple color attachments. To check if the device can support multiple attachments,\nyou can check if the <code>render</code> table contains any of the <code>BUFFER_TYPE_COLOR1_BIT</code>, <code>BUFFER_TYPE_COLOR2_BIT</code> or <code>BUFFER_TYPE_COLOR3_BIT</code> constants:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"kr\">if</span> <span class=\"n\">graphics</span><span class=\"p\">.</span><span class=\"n\">BUFFER_TYPE_COLOR1_BIT</span> <span class=\"o\">==</span> <span class=\"kc\">nil</span> <span class=\"kr\">then</span>\n        <span class=\"c1\">-- this devices does not support multiple color attachments</span>\n    <span class=\"kr\">end</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
             "error": "",
             "examples": "How to create a new render target and draw to it:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"c1\">-- render target buffer parameters</span>\n    <span class=\"kd\">local</span> <span class=\"n\">color_params</span> <span class=\"o\">=</span> <span class=\"p\">{</span> <span class=\"n\">format</span> <span class=\"o\">=</span> <span class=\"n\">graphics</span><span class=\"p\">.</span><span class=\"n\">TEXTURE_FORMAT_RGBA</span><span class=\"p\">,</span>\n                           <span class=\"n\">width</span> <span class=\"o\">=</span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">get_window_width</span><span class=\"p\">(),</span>\n                           <span class=\"n\">height</span> <span class=\"o\">=</span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">get_window_height</span><span class=\"p\">(),</span>\n                           <span class=\"n\">min_filter</span> <span class=\"o\">=</span> <span class=\"n\">graphics</span><span class=\"p\">.</span><span class=\"n\">TEXTURE_FILTER_LINEAR</span><span class=\"p\">,</span>\n                           <span class=\"n\">mag_filter</span> <span class=\"o\">=</span> <span class=\"n\">graphics</span><span class=\"p\">.</span><span class=\"n\">TEXTURE_FILTER_LINEAR</span><span class=\"p\">,</span>\n                           <span class=\"n\">u_wrap</span> <span class=\"o\">=</span> <span class=\"n\">graphics</span><span class=\"p\">.</span><span class=\"n\">TEXTURE_WRAP_CLAMP_TO_EDGE</span><span class=\"p\">,</span>\n                           <span class=\"n\">v_wrap</span> <span class=\"o\">=</span> <span class=\"n\">graphics</span><span class=\"p\">.</span><span class=\"n\">TEXTURE_WRAP_CLAMP_TO_EDGE</span> <span class=\"p\">}</span>\n    <span class=\"kd\">local</span> <span class=\"n\">depth_params</span> <span class=\"o\">=</span> <span class=\"p\">{</span> <span class=\"n\">format</span> <span class=\"o\">=</span> <span class=\"n\">graphics</span><span class=\"p\">.</span><span class=\"n\">TEXTURE_FORMAT_DEPTH</span><span class=\"p\">,</span>\n                           <span class=\"n\">width</span> <span class=\"o\">=</span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">get_window_width</span><span class=\"p\">(),</span>\n                           <span class=\"n\">height</span> <span class=\"o\">=</span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">get_window_height</span><span class=\"p\">(),</span>\n                           <span class=\"n\">u_wrap</span> <span class=\"o\">=</span> <span class=\"n\">graphics</span><span class=\"p\">.</span><span class=\"n\">TEXTURE_WRAP_CLAMP_TO_EDGE</span><span class=\"p\">,</span>\n                           <span class=\"n\">v_wrap</span> <span class=\"o\">=</span> <span class=\"n\">graphics</span><span class=\"p\">.</span><span class=\"n\">TEXTURE_WRAP_CLAMP_TO_EDGE</span> <span class=\"p\">}</span>\n    <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_render_target</span> <span class=\"o\">=</span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">render_target</span><span class=\"p\">({</span><span class=\"n\">sample_count</span> <span class=\"o\">=</span> <span class=\"mi\">4</span><span class=\"p\">,</span> <span class=\"p\">[</span><span class=\"n\">graphics</span><span class=\"p\">.</span><span class=\"n\">BUFFER_TYPE_COLOR0_BIT</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"n\">color_params</span><span class=\"p\">,</span> <span class=\"p\">[</span><span class=\"n\">graphics</span><span class=\"p\">.</span><span class=\"n\">BUFFER_TYPE_DEPTH_BIT</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"n\">depth_params</span> <span class=\"p\">})</span>\n<span class=\"kr\">end</span>\n\n<span class=\"kr\">function</span> <span class=\"nf\">update</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">dt</span><span class=\"p\">)</span>\n    <span class=\"c1\">-- enable target so all drawing is done to it</span>\n    <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">set_render_target</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_render_target</span><span class=\"p\">)</span>\n\n    <span class=\"c1\">-- draw a predicate to the render target</span>\n    <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">draw</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_pred</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>\n\nHow to create a render target with multiple outputs:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"c1\">-- render target buffer parameters</span>\n    <span class=\"kd\">local</span> <span class=\"n\">color_params_rgba</span> <span class=\"o\">=</span> <span class=\"p\">{</span> <span class=\"n\">format</span> <span class=\"o\">=</span> <span class=\"n\">graphics</span><span class=\"p\">.</span><span class=\"n\">TEXTURE_FORMAT_RGBA</span><span class=\"p\">,</span>\n                                <span class=\"n\">width</span> <span class=\"o\">=</span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">get_window_width</span><span class=\"p\">(),</span>\n                                <span class=\"n\">height</span> <span class=\"o\">=</span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">get_window_height</span><span class=\"p\">(),</span>\n                                <span class=\"n\">min_filter</span> <span class=\"o\">=</span> <span class=\"n\">graphics</span><span class=\"p\">.</span><span class=\"n\">TEXTURE_FILTER_LINEAR</span><span class=\"p\">,</span>\n                                <span class=\"n\">mag_filter</span> <span class=\"o\">=</span> <span class=\"n\">graphics</span><span class=\"p\">.</span><span class=\"n\">TEXTURE_FILTER_LINEAR</span><span class=\"p\">,</span>\n                                <span class=\"n\">u_wrap</span> <span class=\"o\">=</span> <span class=\"n\">graphics</span><span class=\"p\">.</span><span class=\"n\">TEXTURE_WRAP_CLAMP_TO_EDGE</span><span class=\"p\">,</span>\n                                <span class=\"n\">v_wrap</span> <span class=\"o\">=</span> <span class=\"n\">graphics</span><span class=\"p\">.</span><span class=\"n\">TEXTURE_WRAP_CLAMP_TO_EDGE</span> <span class=\"p\">}</span>\n    <span class=\"kd\">local</span> <span class=\"n\">color_params_float</span> <span class=\"o\">=</span> <span class=\"p\">{</span> <span class=\"n\">format</span> <span class=\"o\">=</span> <span class=\"n\">graphics</span><span class=\"p\">.</span><span class=\"n\">TEXTURE_FORMAT_RG32F</span><span class=\"p\">,</span>\n                           <span class=\"n\">width</span> <span class=\"o\">=</span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">get_window_width</span><span class=\"p\">(),</span>\n                           <span class=\"n\">height</span> <span class=\"o\">=</span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">get_window_height</span><span class=\"p\">(),</span>\n                           <span class=\"n\">min_filter</span> <span class=\"o\">=</span> <span class=\"n\">graphics</span><span class=\"p\">.</span><span class=\"n\">TEXTURE_FILTER_LINEAR</span><span class=\"p\">,</span>\n                           <span class=\"n\">mag_filter</span> <span class=\"o\">=</span> <span class=\"n\">graphics</span><span class=\"p\">.</span><span class=\"n\">TEXTURE_FILTER_LINEAR</span><span class=\"p\">,</span>\n                           <span class=\"n\">u_wrap</span> <span class=\"o\">=</span> <span class=\"n\">graphics</span><span class=\"p\">.</span><span class=\"n\">TEXTURE_WRAP_CLAMP_TO_EDGE</span><span class=\"p\">,</span>\n                           <span class=\"n\">v_wrap</span> <span class=\"o\">=</span> <span class=\"n\">graphics</span><span class=\"p\">.</span><span class=\"n\">TEXTURE_WRAP_CLAMP_TO_EDGE</span> <span class=\"p\">}</span>\n\n\n    <span class=\"c1\">-- Create a render target with three color attachments</span>\n    <span class=\"c1\">-- Note: No depth buffer is attached here</span>\n    <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_render_target</span> <span class=\"o\">=</span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">render_target</span><span class=\"p\">({</span>\n           <span class=\"p\">[</span><span class=\"n\">graphics</span><span class=\"p\">.</span><span class=\"n\">BUFFER_TYPE_COLOR0_BIT</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"n\">color_params_rgba</span><span class=\"p\">,</span>\n           <span class=\"p\">[</span><span class=\"n\">graphics</span><span class=\"p\">.</span><span class=\"n\">BUFFER_TYPE_COLOR1_BIT</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"n\">color_params_rgba</span><span class=\"p\">,</span>\n           <span class=\"p\">[</span><span class=\"n\">graphics</span><span class=\"p\">.</span><span class=\"n\">BUFFER_TYPE_COLOR2_BIT</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"n\">color_params_float</span><span class=\"p\">,</span> <span class=\"p\">})</span>\n<span class=\"kr\">end</span>\n\n<span class=\"kr\">function</span> <span class=\"nf\">update</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">dt</span><span class=\"p\">)</span>\n    <span class=\"c1\">-- set target so all drawing is done to it</span>\n    <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">set_render_target</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_render_target</span><span class=\"p\">)</span>\n\n    <span class=\"c1\">-- draw a predicate to the render target</span>\n    <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">draw</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_pred</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
             "language": "",
@@ -721,19 +1106,17 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "render target name",
-                    "is_optional": "False",
-                    "name": "name",
-                    "types": [
-                        "string"
-                    ]
-                },
-                {
-                    "doc": "table of buffer parameters, see the description for available keys and values",
+                    "doc": "render-target parameters",
                     "is_optional": "False",
                     "name": "parameters",
                     "types": [
-                        "table"
+                        "render.render_target_params"
+                    ],
+                    "types_html": [
+                        "<a href=\"#render.render_target_params\">render.render_target_params</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#render.render_target_params\">render.render_target_params</a>"
                     ]
                 }
             ],
@@ -744,6 +1127,12 @@
                     "name": "render_target",
                     "types": [
                         "render_target"
+                    ],
+                    "types_html": [
+                        "<a href=\"#render_target\">render_target</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#render_target\">render_target</a>"
                     ]
                 }
             ],
@@ -751,19 +1140,170 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "",
-            "description": "",
+            "brief": "Render-target attachment parameters",
+            "description": "Render-target attachment parameters",
             "error": "",
             "examples": "",
             "language": "",
-            "members": [],
-            "name": "render.RENDER_TARGET_DEFAULT",
+            "members": [
+                {
+                    "display_name": "format",
+                    "doc": "Attachment texture format.",
+                    "is_optional": false,
+                    "name": "format",
+                    "type": "graphics.TEXTURE_FORMAT",
+                    "type_html": "<a href=\"../graphics-lua/#graphics.TEXTURE_FORMAT\">graphics.TEXTURE_FORMAT</a>"
+                },
+                {
+                    "display_name": "width",
+                    "doc": "Attachment width.",
+                    "is_optional": false,
+                    "name": "width",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "height",
+                    "doc": "Attachment height.",
+                    "is_optional": false,
+                    "name": "height",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "min_filter",
+                    "doc": "Minification filter.",
+                    "is_optional": true,
+                    "name": "min_filter?",
+                    "type": "graphics.TEXTURE_FILTER",
+                    "type_html": "<a href=\"../graphics-lua/#graphics.TEXTURE_FILTER\">graphics.TEXTURE_FILTER</a>"
+                },
+                {
+                    "display_name": "mag_filter",
+                    "doc": "Magnification filter.",
+                    "is_optional": true,
+                    "name": "mag_filter?",
+                    "type": "graphics.TEXTURE_FILTER",
+                    "type_html": "<a href=\"../graphics-lua/#graphics.TEXTURE_FILTER\">graphics.TEXTURE_FILTER</a>"
+                },
+                {
+                    "display_name": "u_wrap",
+                    "doc": "Horizontal wrap mode.",
+                    "is_optional": true,
+                    "name": "u_wrap?",
+                    "type": "graphics.TEXTURE_WRAP",
+                    "type_html": "<a href=\"../graphics-lua/#graphics.TEXTURE_WRAP\">graphics.TEXTURE_WRAP</a>"
+                },
+                {
+                    "display_name": "v_wrap",
+                    "doc": "Vertical wrap mode.",
+                    "is_optional": true,
+                    "name": "v_wrap?",
+                    "type": "graphics.TEXTURE_WRAP",
+                    "type_html": "<a href=\"../graphics-lua/#graphics.TEXTURE_WRAP\">graphics.TEXTURE_WRAP</a>"
+                },
+                {
+                    "display_name": "flags",
+                    "doc": "Attachment creation flags, applicable only to depth and stencil buffers.",
+                    "is_optional": true,
+                    "name": "flags?",
+                    "type": "render.RENDER_TARGET_FLAG",
+                    "type_html": "<a href=\"#render.RENDER_TARGET_FLAG\">render.RENDER_TARGET_FLAG</a>"
+                }
+            ],
+            "name": "render.render_target_buffer_params",
             "notes": [],
             "parameters": [],
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "CONSTANT"
+            "type": "STRUCT"
+        },
+        {
+            "brief": "",
+            "description": "",
+            "error": "",
+            "examples": "",
+            "is_enum_member": false,
+            "language": "",
+            "members": [],
+            "name": "render.RENDER_TARGET_DEFAULT",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "value",
+                    "types": [
+                        "render_target"
+                    ],
+                    "types_html": [
+                        "<a href=\"#render_target\">render_target</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#render_target\">render_target</a>"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "CONSTANT",
+            "value_type": "render_target"
+        },
+        {
+            "brief": "Render-target creation flags",
+            "description": "Render-target creation flags",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "Create a texture-backed depth or stencil attachment.",
+                    "name": "render.TEXTURE_BIT"
+                }
+            ],
+            "name": "render.RENDER_TARGET_FLAG",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "ENUM",
+            "value_type": "integer",
+            "value_type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+        },
+        {
+            "brief": "Render-target parameters",
+            "description": "<code>sample_count</code> defaults to 1 and is normalized by the graphics adapter to\na supported power-of-two value.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "render.render_target_params",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Attachments keyed by buffer type, with an optional multisample count.",
+                    "is_optional": "False",
+                    "name": "value",
+                    "types": [
+                        "{ sample_count?:integer, [graphics.BUFFER_TYPE]:render.render_target_buffer_params }"
+                    ],
+                    "types_html": [
+                        "{ sample_count?:<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>, [<a href=\"../graphics-lua/#graphics.BUFFER_TYPE\">graphics.BUFFER_TYPE</a>]:<a href=\"#render.render_target_buffer_params\">render.render_target_buffer_params</a> }"
+                    ],
+                    "types_table_html": [
+                        "{sample_count?:<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>,\n[<a href=\"../graphics-lua/#graphics.BUFFER_TYPE\">graphics.BUFFER_TYPE</a>]:<a href=\"#render.render_target_buffer_params\">render.render_target_buffer_params</a>}"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "target_type": "{ sample_count?:integer, [graphics.BUFFER_TYPE]:render.render_target_buffer_params }",
+            "target_type_html": "{ sample_count?:<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>, [<a href=\"../graphics-lua/#graphics.BUFFER_TYPE\">graphics.BUFFER_TYPE</a>]:<a href=\"#render.render_target_buffer_params\">render.render_target_buffer_params</a> }",
+            "tparams": [],
+            "type": "TYPEDEF"
         },
         {
             "brief": "sets the blend equation with separate equations for color and alpha",
@@ -780,7 +1320,13 @@
                     "is_optional": "False",
                     "name": "equation_color",
                     "types": [
-                        "number"
+                        "graphics.BLEND_EQUATION"
+                    ],
+                    "types_html": [
+                        "<a href=\"../graphics-lua/#graphics.BLEND_EQUATION\">graphics.BLEND_EQUATION</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../graphics-lua/#graphics.BLEND_EQUATION\">graphics.BLEND_EQUATION</a>"
                     ]
                 },
                 {
@@ -788,7 +1334,13 @@
                     "is_optional": "False",
                     "name": "equation_alpha",
                     "types": [
-                        "number"
+                        "graphics.BLEND_EQUATION"
+                    ],
+                    "types_html": [
+                        "<a href=\"../graphics-lua/#graphics.BLEND_EQUATION\">graphics.BLEND_EQUATION</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../graphics-lua/#graphics.BLEND_EQUATION\">graphics.BLEND_EQUATION</a>"
                     ]
                 }
             ],
@@ -799,7 +1351,7 @@
         },
         {
             "brief": "sets the blending function",
-            "description": "Specifies the arithmetic used when computing pixel values that are written to the frame\nbuffer. In RGBA mode, pixels can be drawn using a function that blends the source RGBA\npixel values with the destination pixel values already in the frame buffer.\nBlending is initially disabled.\n<code>source_factor</code> specifies which method is used to scale the source color components.\n<code>destination_factor</code> specifies which method is used to scale the destination color\ncomponents.\nSource color components are referred to as (R<sub>s</sub>,G<sub>s</sub>,B<sub>s</sub>,A<sub>s</sub>).\nDestination color components are referred to as (R<sub>d</sub>,G<sub>d</sub>,B<sub>d</sub>,A<sub>d</sub>).\nThe color specified by setting the blendcolor is referred to as (R<sub>c</sub>,G<sub>c</sub>,B<sub>c</sub>,A<sub>c</sub>).\nThe source scale factor is referred to as (s<sub>R</sub>,s<sub>G</sub>,s<sub>B</sub>,s<sub>A</sub>).\nThe destination scale factor is referred to as (d<sub>R</sub>,d<sub>G</sub>,d<sub>B</sub>,d<sub>A</sub>).\nThe color values have integer values between 0 and (k<sub>R</sub>,k<sub>G</sub>,k<sub>B</sub>,k<sub>A</sub>), where k<sub>c</sub> = 2<sup>m<sub>c</sub></sup> - 1 and m<sub>c</sub> is the number of bitplanes for that color. I.e for 8 bit color depth, color values are between <code>0</code> and <code>255</code>.\nAvailable factor constants and corresponding scale factors:\n<table>\n<thead>\n<tr>\n<th>Factor constant</th>\n<th>Scale factor (f<sub>R</sub>,f<sub>G</sub>,f<sub>B</sub>,f<sub>A</sub>)</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><code>graphics.BLEND_FACTOR_ZERO</code></td>\n<td>(0,0,0,0)</td>\n</tr>\n<tr>\n<td><code>graphics.BLEND_FACTOR_ONE</code></td>\n<td>(1,1,1,1)</td>\n</tr>\n<tr>\n<td><code>graphics.BLEND_FACTOR_SRC_COLOR</code></td>\n<td>(R<sub>s</sub>/k<sub>R</sub>,G<sub>s</sub>/k<sub>G</sub>,B<sub>s</sub>/k<sub>B</sub>,A<sub>s</sub>/k<sub>A</sub>)</td>\n</tr>\n<tr>\n<td><code>graphics.BLEND_FACTOR_ONE_MINUS_SRC_COLOR</code></td>\n<td>(1,1,1,1) - (R<sub>s</sub>/k<sub>R</sub>,G<sub>s</sub>/k<sub>G</sub>,B<sub>s</sub>/k<sub>B</sub>,A<sub>s</sub>/k<sub>A</sub>)</td>\n</tr>\n<tr>\n<td><code>graphics.BLEND_FACTOR_DST_COLOR</code></td>\n<td>(R<sub>d</sub>/k<sub>R</sub>,G<sub>d</sub>/k<sub>G</sub>,B<sub>d</sub>/k<sub>B</sub>,A<sub>d</sub>/k<sub>A</sub>)</td>\n</tr>\n<tr>\n<td><code>graphics.BLEND_FACTOR_ONE_MINUS_DST_COLOR</code></td>\n<td>(1,1,1,1) - (R<sub>d</sub>/k<sub>R</sub>,G<sub>d</sub>/k<sub>G</sub>,B<sub>d</sub>/k<sub>B</sub>,A<sub>d</sub>/k<sub>A</sub>)</td>\n</tr>\n<tr>\n<td><code>graphics.BLEND_FACTOR_SRC_ALPHA</code></td>\n<td>(A<sub>s</sub>/k<sub>A</sub>,A<sub>s</sub>/k<sub>A</sub>,A<sub>s</sub>/k<sub>A</sub>,A<sub>s</sub>/k<sub>A</sub>)</td>\n</tr>\n<tr>\n<td><code>graphics.BLEND_FACTOR_ONE_MINUS_SRC_ALPHA</code></td>\n<td>(1,1,1,1) - (A<sub>s</sub>/k<sub>A</sub>,A<sub>s</sub>/k<sub>A</sub>,A<sub>s</sub>/k<sub>A</sub>,A<sub>s</sub>/k<sub>A</sub>)</td>\n</tr>\n<tr>\n<td><code>graphics.BLEND_FACTOR_DST_ALPHA</code></td>\n<td>(A<sub>d</sub>/k<sub>A</sub>,A<sub>d</sub>/k<sub>A</sub>,A<sub>d</sub>/k<sub>A</sub>,A<sub>d</sub>/k<sub>A</sub>)</td>\n</tr>\n<tr>\n<td><code>graphics.BLEND_FACTOR_ONE_MINUS_DST_ALPHA</code></td>\n<td>(1,1,1,1) - (A<sub>d</sub>/k<sub>A</sub>,A<sub>d</sub>/k<sub>A</sub>,A<sub>d</sub>/k<sub>A</sub>,A<sub>d</sub>/k<sub>A</sub>)</td>\n</tr>\n<tr>\n<td><code>graphics.BLEND_FACTOR_CONSTANT_COLOR</code></td>\n<td>(R<sub>c</sub>,G<sub>c</sub>,B<sub>c</sub>,A<sub>c</sub>)</td>\n</tr>\n<tr>\n<td><code>graphics.BLEND_FACTOR_ONE_MINUS_CONSTANT_COLOR</code></td>\n<td>(1,1,1,1) - (R<sub>c</sub>,G<sub>c</sub>,B<sub>c</sub>,A<sub>c</sub>)</td>\n</tr>\n<tr>\n<td><code>graphics.BLEND_FACTOR_CONSTANT_ALPHA</code></td>\n<td>(A<sub>c</sub>,A<sub>c</sub>,A<sub>c</sub>,A<sub>c</sub>)</td>\n</tr>\n<tr>\n<td><code>graphics.BLEND_FACTOR_ONE_MINUS_CONSTANT_ALPHA</code></td>\n<td>(1,1,1,1) - (A<sub>c</sub>,A<sub>c</sub>,A<sub>c</sub>,A<sub>c</sub>)</td>\n</tr>\n<tr>\n<td><code>graphics.BLEND_FACTOR_SRC_ALPHA_SATURATE</code></td>\n<td>(i,i,i,1) where i = min(A<sub>s</sub>, k<sub>A</sub> - A<sub>d</sub>) /k<sub>A</sub></td>\n</tr>\n</tbody>\n</table>\nThe blended RGBA values of a pixel comes from the following equations:\n<ul>\n<li>R<sub>d</sub> = min(k<sub>R</sub>, R<sub>s</sub> * s<sub>R</sub> + R<sub>d</sub> * d<sub>R</sub>)</li>\n<li>G<sub>d</sub> = min(k<sub>G</sub>, G<sub>s</sub> * s<sub>G</sub> + G<sub>d</sub> * d<sub>G</sub>)</li>\n<li>B<sub>d</sub> = min(k<sub>B</sub>, B<sub>s</sub> * s<sub>B</sub> + B<sub>d</sub> * d<sub>B</sub>)</li>\n<li>A<sub>d</sub> = min(k<sub>A</sub>, A<sub>s</sub> * s<sub>A</sub> + A<sub>d</sub> * d<sub>A</sub>)</li>\n</ul>\nBlend function <code>(graphics.BLEND_FACTOR_SRC_ALPHA, graphics.BLEND_FACTOR_ONE_MINUS_SRC_ALPHA)</code> is useful for\ndrawing with transparency when the drawn objects are sorted from farthest to nearest.\nIt is also useful for drawing antialiased points and lines in arbitrary order.",
+            "description": "Specifies the arithmetic used when computing pixel values that are written to the frame\nbuffer. In RGBA mode, pixels can be drawn using a function that blends the source RGBA\npixel values with the destination pixel values already in the frame buffer.\nBlending is initially disabled.\n<code>source_factor</code> specifies which method is used to scale the source color components.\n<code>destination_factor</code> specifies which method is used to scale the destination color\ncomponents.\nSource color components are referred to as (R<sub>s</sub>,G<sub>s</sub>,B<sub>s</sub>,A<sub>s</sub>).\nDestination color components are referred to as (R<sub>d</sub>,G<sub>d</sub>,B<sub>d</sub>,A<sub>d</sub>).\nThe color specified by setting the blendcolor is referred to as (R<sub>c</sub>,G<sub>c</sub>,B<sub>c</sub>,A<sub>c</sub>).\nThe source scale factor is referred to as (s<sub>R</sub>,s<sub>G</sub>,s<sub>B</sub>,s<sub>A</sub>).\nThe destination scale factor is referred to as (d<sub>R</sub>,d<sub>G</sub>,d<sub>B</sub>,d<sub>A</sub>).\nThe color values have integer values between 0 and (k<sub>R</sub>,k<sub>G</sub>,k<sub>B</sub>,k<sub>A</sub>), where k<sub>c</sub> = 2<sup>m<sub>c</sub></sup> - 1 and m<sub>c</sub> is the number of bitplanes for that color. I.e for 8 bit color depth, color values are between <code>0</code> and <code>255</code>.\nThe blended RGBA values of a pixel comes from the following equations:\n<ul>\n<li>R<sub>d</sub> = min(k<sub>R</sub>, R<sub>s</sub> * s<sub>R</sub> + R<sub>d</sub> * d<sub>R</sub>)</li>\n<li>G<sub>d</sub> = min(k<sub>G</sub>, G<sub>s</sub> * s<sub>G</sub> + G<sub>d</sub> * d<sub>G</sub>)</li>\n<li>B<sub>d</sub> = min(k<sub>B</sub>, B<sub>s</sub> * s<sub>B</sub> + B<sub>d</sub> * d<sub>B</sub>)</li>\n<li>A<sub>d</sub> = min(k<sub>A</sub>, A<sub>s</sub> * s<sub>A</sub> + A<sub>d</sub> * d<sub>A</sub>)</li>\n</ul>\nBlend function <code>(graphics.BLEND_FACTOR_SRC_ALPHA, graphics.BLEND_FACTOR_ONE_MINUS_SRC_ALPHA)</code> is useful for\ndrawing with transparency when the drawn objects are sorted from farthest to nearest.\nIt is also useful for drawing antialiased points and lines in arbitrary order.",
             "error": "",
             "examples": "Set the blend func to the most common one:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">set_blend_func</span><span class=\"p\">(</span><span class=\"n\">graphics</span><span class=\"p\">.</span><span class=\"n\">BLEND_FACTOR_SRC_ALPHA</span><span class=\"p\">,</span> <span class=\"n\">graphics</span><span class=\"p\">.</span><span class=\"n\">BLEND_FACTOR_ONE_MINUS_SRC_ALPHA</span><span class=\"p\">)</span>\n</code></pre></div>",
             "language": "",
@@ -812,7 +1364,13 @@
                     "is_optional": "False",
                     "name": "source_factor",
                     "types": [
-                        "number"
+                        "graphics.BLEND_FACTOR"
+                    ],
+                    "types_html": [
+                        "<a href=\"../graphics-lua/#graphics.BLEND_FACTOR\">graphics.BLEND_FACTOR</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../graphics-lua/#graphics.BLEND_FACTOR\">graphics.BLEND_FACTOR</a>"
                     ]
                 },
                 {
@@ -820,7 +1378,13 @@
                     "is_optional": "False",
                     "name": "destination_factor",
                     "types": [
-                        "number"
+                        "graphics.BLEND_FACTOR"
+                    ],
+                    "types_html": [
+                        "<a href=\"../graphics-lua/#graphics.BLEND_FACTOR\">graphics.BLEND_FACTOR</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../graphics-lua/#graphics.BLEND_FACTOR\">graphics.BLEND_FACTOR</a>"
                     ]
                 }
             ],
@@ -845,6 +1409,12 @@
                     "name": "source_factor_color",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -853,6 +1423,12 @@
                     "name": "destination_factor_color",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -861,6 +1437,12 @@
                     "name": "source_factor_alpha",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -869,6 +1451,12 @@
                     "name": "destination_factor_alpha",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -895,14 +1483,30 @@
                         "url",
                         "number",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../msg-lua/#url\">url</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../msg-lua/#url\">url</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 },
                 {
-                    "doc": "optional table with properties:\n<dl>\n<dt><code>use_frustum</code></dt>\n<dd><span class=\"type\">boolean</span> If true, the renderer will use the cameras view-projection matrix for frustum culling (default: false)</dd>\n</dl>",
+                    "doc": "optional camera options",
                     "is_optional": "True",
                     "name": "options",
                     "types": [
-                        "table"
+                        "render.camera_options"
+                    ],
+                    "types_html": [
+                        "<a href=\"#render.camera_options\">render.camera_options</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#render.camera_options\">render.camera_options</a>"
                     ]
                 }
             ],
@@ -927,6 +1531,12 @@
                     "name": "red",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 },
                 {
@@ -935,6 +1545,12 @@
                     "name": "green",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 },
                 {
@@ -943,6 +1559,12 @@
                     "name": "blue",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 },
                 {
@@ -951,6 +1573,12 @@
                     "name": "alpha",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
@@ -977,6 +1605,16 @@
                         "string",
                         "hash",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 }
             ],
@@ -996,11 +1634,17 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "face type\n<ul>\n<li><code>graphics.FACE_TYPE_FRONT</code></li>\n<li><code>graphics.FACE_TYPE_BACK</code></li>\n<li><code>graphics.FACE_TYPE_FRONT_AND_BACK</code></li>\n</ul>",
+                    "doc": "face type",
                     "is_optional": "False",
                     "name": "face_type",
                     "types": [
-                        "number"
+                        "graphics.FACE_TYPE"
+                    ],
+                    "types_html": [
+                        "<a href=\"../graphics-lua/#graphics.FACE_TYPE\">graphics.FACE_TYPE</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../graphics-lua/#graphics.FACE_TYPE\">graphics.FACE_TYPE</a>"
                     ]
                 }
             ],
@@ -1011,7 +1655,7 @@
         },
         {
             "brief": "sets the depth test function",
-            "description": "Specifies the function that should be used to compare each incoming pixel\ndepth value with the value present in the depth buffer.\nThe comparison is performed only if depth testing is enabled and specifies\nthe conditions under which a pixel will be drawn.\nFunction constants:\n<ul>\n<li><code>graphics.COMPARE_FUNC_NEVER</code> (never passes)</li>\n<li><code>graphics.COMPARE_FUNC_LESS</code> (passes if the incoming depth value is less than the stored value)</li>\n<li><code>graphics.COMPARE_FUNC_LEQUAL</code> (passes if the incoming depth value is less than or equal to the stored value)</li>\n<li><code>graphics.COMPARE_FUNC_GREATER</code> (passes if the incoming depth value is greater than the stored value)</li>\n<li><code>graphics.COMPARE_FUNC_GEQUAL</code> (passes if the incoming depth value is greater than or equal to the stored value)</li>\n<li><code>graphics.COMPARE_FUNC_EQUAL</code> (passes if the incoming depth value is equal to the stored value)</li>\n<li><code>graphics.COMPARE_FUNC_NOTEQUAL</code> (passes if the incoming depth value is not equal to the stored value)</li>\n<li><code>graphics.COMPARE_FUNC_ALWAYS</code> (always passes)</li>\n</ul>\nThe depth function is initially set to <code>graphics.COMPARE_FUNC_LESS</code>.",
+            "description": "Specifies the function that should be used to compare each incoming pixel\ndepth value with the value present in the depth buffer.\nThe comparison is performed only if depth testing is enabled and specifies\nthe conditions under which a pixel will be drawn.\nThe depth function is initially set to <code>graphics.COMPARE_FUNC_LESS</code>.",
             "error": "",
             "examples": "Enable depth test and set the depth test function to \"not equal\".\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">enable_state</span><span class=\"p\">(</span><span class=\"n\">graphics</span><span class=\"p\">.</span><span class=\"n\">STATE_DEPTH_TEST</span><span class=\"p\">)</span>\n<span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">set_depth_func</span><span class=\"p\">(</span><span class=\"n\">graphics</span><span class=\"p\">.</span><span class=\"n\">COMPARE_FUNC_NOTEQUAL</span><span class=\"p\">)</span>\n</code></pre></div>",
             "language": "",
@@ -1024,7 +1668,13 @@
                     "is_optional": "False",
                     "name": "func",
                     "types": [
-                        "number"
+                        "graphics.COMPARE_FUNC"
+                    ],
+                    "types_html": [
+                        "<a href=\"../graphics-lua/#graphics.COMPARE_FUNC\">graphics.COMPARE_FUNC</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../graphics-lua/#graphics.COMPARE_FUNC\">graphics.COMPARE_FUNC</a>"
                     ]
                 }
             ],
@@ -1049,6 +1699,12 @@
                     "name": "depth",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
@@ -1059,7 +1715,7 @@
         },
         {
             "brief": "set render's event listener",
-            "description": "Set or remove listener. Currenly only only two type of events can arrived:\n<code>render.CONTEXT_EVENT_CONTEXT_LOST</code> - when rendering context lost. Rending paused and all graphics resources become invalid.\n<code>render.CONTEXT_EVENT_CONTEXT_RESTORED</code> - when rendering context was restored. Rendering still paused and graphics resources still\ninvalid but can be reloaded.",
+            "description": "Set or remove the rendering-context event listener.",
             "error": "",
             "examples": "Set listener and handle render context events.\n<div class=\"codehilite\"><pre><span></span><code><span class=\"c1\">--- custom.render_script</span>\n<span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n   <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">set_listener</span><span class=\"p\">(</span><span class=\"kr\">function</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">event_type</span><span class=\"p\">)</span>\n       <span class=\"kr\">if</span> <span class=\"n\">event_type</span> <span class=\"o\">==</span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">CONTEXT_EVENT_CONTEXT_LOST</span> <span class=\"kr\">then</span>\n           <span class=\"c1\">--- Some stuff when rendering context is lost</span>\n       <span class=\"kr\">elseif</span> <span class=\"n\">event_type</span> <span class=\"o\">==</span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">CONTEXT_EVENT_CONTEXT_RESTORED</span> <span class=\"kr\">then</span>\n           <span class=\"c1\">--- Start reload resources, reload game, etc.</span>\n       <span class=\"kr\">end</span>\n   <span class=\"kr\">end</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
             "language": "",
@@ -1068,12 +1724,20 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "A callback that receives all render related events.\nPass <code>nil</code> if want to remove listener.\n<dl>\n<dt><code>self</code></dt>\n<dd><span class=\"type\">object</span> The render script</dd>\n<dt><code>event_type</code></dt>\n<dd><span class=\"type\">string</span> Rendering event. Possible values: <code>render.CONTEXT_EVENT_CONTEXT_LOST</code>, <code>render.CONTEXT_EVENT_CONTEXT_RESTORED</code></dd>\n</dl>",
+                    "doc": "A callback that receives all render related events.\nPass <code>nil</code> if want to remove listener.",
                     "is_optional": "False",
                     "name": "callback",
                     "types": [
-                        "function(self, event_type)",
+                        "fun(self:script_instance, event_type:render.CONTEXT_EVENT)",
                         "nil"
+                    ],
+                    "types_html": [
+                        "fun(self:<a href=\"../builtins-lua/#script_instance\">script_instance</a>, event_type:<a href=\"#render.CONTEXT_EVENT\">render.CONTEXT_EVENT</a>)",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">function</a>(\n\tself:<a href=\"../builtins-lua/#script_instance\">script_instance</a>,\n\tevent_type:<a href=\"#render.CONTEXT_EVENT\">render.CONTEXT_EVENT</a>)",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 }
             ],
@@ -1098,6 +1762,12 @@
                     "name": "factor",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -1106,6 +1776,12 @@
                     "name": "units",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -1130,6 +1806,12 @@
                     "name": "matrix",
                     "types": [
                         "matrix4"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#matrix4\">matrix4</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#matrix4\">matrix4</a>"
                     ]
                 }
             ],
@@ -1149,19 +1831,40 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "render target to set. render.RENDER_TARGET_DEFAULT to set the default render target",
-                    "is_optional": "False",
+                    "doc": "render target to set. Omit it, pass <code>nil</code>, or use render.RENDER_TARGET_DEFAULT to set the default render target",
+                    "is_optional": "True",
                     "name": "render_target",
                     "types": [
-                        "render_target"
+                        "render_target",
+                        "string",
+                        "hash",
+                        "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"#render_target\">render_target</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#render_target\">render_target</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 },
                 {
-                    "doc": "optional table with behaviour parameters\n<dl>\n<dt><code>transient</code></dt>\n<dd><span class=\"type\">table</span> Transient frame buffer types are only valid while the render target is active, i.e becomes undefined when a new target is set by a subsequent call to set_render_target.\n Default is all non-transient. Be aware that some hardware uses a combined depth stencil buffer and when this is the case both are considered non-transient if exclusively selected!\n A buffer type defined that doesn't exist in the render target is silently ignored.</dd>\n</dl>\n<ul>\n<li><code>graphics.BUFFER_TYPE_COLOR0_BIT</code></li>\n<li><code>graphics.BUFFER_TYPE_DEPTH_BIT</code></li>\n<li><code>graphics.BUFFER_TYPE_STENCIL_BIT</code></li>\n</ul>",
+                    "doc": "optional render-target activation options",
                     "is_optional": "True",
                     "name": "options",
                     "types": [
-                        "table"
+                        "render.set_render_target_options"
+                    ],
+                    "types_html": [
+                        "<a href=\"#render.set_render_target_options\">render.set_render_target_options</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#render.set_render_target_options\">render.set_render_target_options</a>"
                     ]
                 }
             ],
@@ -1169,6 +1872,30 @@
             "returnvalues": [],
             "tparams": [],
             "type": "FUNCTION"
+        },
+        {
+            "brief": "Render-target activation options",
+            "description": "Render-target activation options",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "transient",
+                    "doc": "Buffers whose contents become undefined after the target is deactivated. Missing buffers are ignored; combined depth-stencil buffers remain non-transient unless both are selected.",
+                    "is_optional": true,
+                    "name": "transient?",
+                    "type": "graphics.BUFFER_TYPE[]",
+                    "type_html": "<a href=\"../graphics-lua/#graphics.BUFFER_TYPE\">graphics.BUFFER_TYPE</a>[]"
+                }
+            ],
+            "name": "render.set_render_target_options",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
         },
         {
             "brief": "sets the render target size",
@@ -1185,7 +1912,19 @@
                     "is_optional": "False",
                     "name": "render_target",
                     "types": [
-                        "render_target"
+                        "render_target",
+                        "string",
+                        "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"#render_target\">render_target</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#render_target\">render_target</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
                     ]
                 },
                 {
@@ -1193,7 +1932,13 @@
                     "is_optional": "False",
                     "name": "width",
                     "types": [
-                        "number"
+                        "integer"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
                     ]
                 },
                 {
@@ -1201,7 +1946,13 @@
                     "is_optional": "False",
                     "name": "height",
                     "types": [
-                        "number"
+                        "integer"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
                     ]
                 }
             ],
@@ -1212,7 +1963,7 @@
         },
         {
             "brief": "sets the stencil test function",
-            "description": "Stenciling is similar to depth-buffering as it enables and disables drawing on a\nper-pixel basis. First, GL drawing primitives are drawn into the stencil planes.\nSecond, geometry and images are rendered but using the stencil planes to mask out\nwhere to draw.\nThe stencil test discards a pixel based on the outcome of a comparison between the\nreference value <code>ref</code> and the corresponding value in the stencil buffer.\n<code>func</code> specifies the comparison function. See the table below for values.\nThe initial value is <code>graphics.COMPARE_FUNC_ALWAYS</code>.\n<code>ref</code> specifies the reference value for the stencil test. The value is clamped to\nthe range [0, 2<sup>n</sup>-1], where n is the number of bitplanes in the stencil buffer.\nThe initial value is <code>0</code>.\n<code>mask</code> is ANDed with both the reference value and the stored stencil value when the test\nis done. The initial value is all <code>1</code>'s.\nFunction constant:\n<ul>\n<li><code>graphics.COMPARE_FUNC_NEVER</code> (never passes)</li>\n<li><code>graphics.COMPARE_FUNC_LESS</code> (passes if (ref &amp; mask) &lt; (stencil &amp; mask))</li>\n<li><code>graphics.COMPARE_FUNC_LEQUAL</code> (passes if (ref &amp; mask) &lt;= (stencil &amp; mask))</li>\n<li><code>graphics.COMPARE_FUNC_GREATER</code> (passes if (ref &amp; mask) &gt; (stencil &amp; mask))</li>\n<li><code>graphics.COMPARE_FUNC_GEQUAL</code> (passes if (ref &amp; mask) &gt;= (stencil &amp; mask))</li>\n<li><code>graphics.COMPARE_FUNC_EQUAL</code> (passes if (ref &amp; mask) = (stencil &amp; mask))</li>\n<li><code>graphics.COMPARE_FUNC_NOTEQUAL</code> (passes if (ref &amp; mask) != (stencil &amp; mask))</li>\n<li><code>graphics.COMPARE_FUNC_ALWAYS</code> (always passes)</li>\n</ul>",
+            "description": "Stenciling is similar to depth-buffering as it enables and disables drawing on a\nper-pixel basis. First, GL drawing primitives are drawn into the stencil planes.\nSecond, geometry and images are rendered but using the stencil planes to mask out\nwhere to draw.\nThe stencil test discards a pixel based on the outcome of a comparison between the\nreference value <code>ref</code> and the corresponding value in the stencil buffer.\n<code>func</code> specifies the comparison function.\nThe initial value is <code>graphics.COMPARE_FUNC_ALWAYS</code>.\n<code>ref</code> specifies the reference value for the stencil test. The value is clamped to\nthe range [0, 2<sup>n</sup>-1], where n is the number of bitplanes in the stencil buffer.\nThe initial value is <code>0</code>.\n<code>mask</code> is ANDed with both the reference value and the stored stencil value when the test\nis done. The initial value is all <code>1</code>'s.",
             "error": "",
             "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"c1\">-- let only 0&#39;s pass the stencil test</span>\n<span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">set_stencil_func</span><span class=\"p\">(</span><span class=\"n\">graphics</span><span class=\"p\">.</span><span class=\"n\">COMPARE_FUNC_EQUAL</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">)</span>\n</code></pre></div>",
             "language": "",
@@ -1225,7 +1976,13 @@
                     "is_optional": "False",
                     "name": "func",
                     "types": [
-                        "number"
+                        "graphics.COMPARE_FUNC"
+                    ],
+                    "types_html": [
+                        "<a href=\"../graphics-lua/#graphics.COMPARE_FUNC\">graphics.COMPARE_FUNC</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../graphics-lua/#graphics.COMPARE_FUNC\">graphics.COMPARE_FUNC</a>"
                     ]
                 },
                 {
@@ -1234,6 +1991,12 @@
                     "name": "ref",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -1242,6 +2005,12 @@
                     "name": "mask",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -1266,6 +2035,12 @@
                     "name": "mask",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -1276,7 +2051,7 @@
         },
         {
             "brief": "sets the stencil operator",
-            "description": "The stencil test discards a pixel based on the outcome of a comparison between the\nreference value <code>ref</code> and the corresponding value in the stencil buffer.\nTo control the test, call <a href=\"/ref/render#render.set_stencil_func\">render.set_stencil_func</a>.\nThis function takes three arguments that control what happens to the stored stencil\nvalue while stenciling is enabled. If the stencil test fails, no change is made to the\npixel's color or depth buffers, and <code>sfail</code> specifies what happens to the stencil buffer\ncontents.\nOperator constants:\n<ul>\n<li><code>graphics.STENCIL_OP_KEEP</code> (keeps the current value)</li>\n<li><code>graphics.STENCIL_OP_ZERO</code> (sets the stencil buffer value to 0)</li>\n<li><code>graphics.STENCIL_OP_REPLACE</code> (sets the stencil buffer value to <code>ref</code>, as specified by <a href=\"/ref/render#render.set_stencil_func\">render.set_stencil_func</a>)</li>\n<li><code>graphics.STENCIL_OP_INCR</code> (increments the stencil buffer value and clamp to the maximum representable unsigned value)</li>\n<li><code>graphics.STENCIL_OP_INCR_WRAP</code> (increments the stencil buffer value and wrap to zero when incrementing the maximum representable unsigned value)</li>\n<li><code>graphics.STENCIL_OP_DECR</code> (decrements the current stencil buffer value and clamp to 0)</li>\n<li><code>graphics.STENCIL_OP_DECR_WRAP</code> (decrements the current stencil buffer value and wrap to the maximum representable unsigned value when decrementing zero)</li>\n<li><code>graphics.STENCIL_OP_INVERT</code> (bitwise inverts the current stencil buffer value)</li>\n</ul>\n<code>dppass</code> and <code>dpfail</code> specify the stencil buffer actions depending on whether subsequent\ndepth buffer tests succeed (dppass) or fail (dpfail).\nThe initial value for all operators is <code>graphics.STENCIL_OP_KEEP</code>.",
+            "description": "The stencil test discards a pixel based on the outcome of a comparison between the\nreference value <code>ref</code> and the corresponding value in the stencil buffer.\nTo control the test, call <a href=\"/ref/render#render.set_stencil_func\">render.set_stencil_func</a>.\nThis function takes three arguments that control what happens to the stored stencil\nvalue while stenciling is enabled. If the stencil test fails, no change is made to the\npixel's color or depth buffers, and <code>sfail</code> specifies what happens to the stencil buffer\ncontents.\n<code>dppass</code> and <code>dpfail</code> specify the stencil buffer actions depending on whether subsequent\ndepth buffer tests succeed (dppass) or fail (dpfail).\nThe initial value for all operators is <code>graphics.STENCIL_OP_KEEP</code>.",
             "error": "",
             "examples": "Set the stencil function to never pass and operator to always draw 1's\non test fail.\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">set_stencil_func</span><span class=\"p\">(</span><span class=\"n\">graphics</span><span class=\"p\">.</span><span class=\"n\">COMPARE_FUNC_NEVER</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mh\">0xFF</span><span class=\"p\">)</span>\n<span class=\"c1\">-- always draw 1&#39;s on test fail</span>\n<span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">set_stencil_op</span><span class=\"p\">(</span><span class=\"n\">graphics</span><span class=\"p\">.</span><span class=\"n\">STENCIL_OP_REPLACE</span><span class=\"p\">,</span> <span class=\"n\">graphics</span><span class=\"p\">.</span><span class=\"n\">STENCIL_OP_KEEP</span><span class=\"p\">,</span> <span class=\"n\">graphics</span><span class=\"p\">.</span><span class=\"n\">STENCIL_OP_KEEP</span><span class=\"p\">)</span>\n</code></pre></div>",
             "language": "",
@@ -1289,7 +2064,13 @@
                     "is_optional": "False",
                     "name": "sfail",
                     "types": [
-                        "number"
+                        "graphics.STENCIL_OP"
+                    ],
+                    "types_html": [
+                        "<a href=\"../graphics-lua/#graphics.STENCIL_OP\">graphics.STENCIL_OP</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../graphics-lua/#graphics.STENCIL_OP\">graphics.STENCIL_OP</a>"
                     ]
                 },
                 {
@@ -1297,7 +2078,13 @@
                     "is_optional": "False",
                     "name": "dpfail",
                     "types": [
-                        "number"
+                        "graphics.STENCIL_OP"
+                    ],
+                    "types_html": [
+                        "<a href=\"../graphics-lua/#graphics.STENCIL_OP\">graphics.STENCIL_OP</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../graphics-lua/#graphics.STENCIL_OP\">graphics.STENCIL_OP</a>"
                     ]
                 },
                 {
@@ -1305,7 +2092,13 @@
                     "is_optional": "False",
                     "name": "dppass",
                     "types": [
-                        "number"
+                        "graphics.STENCIL_OP"
+                    ],
+                    "types_html": [
+                        "<a href=\"../graphics-lua/#graphics.STENCIL_OP\">graphics.STENCIL_OP</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../graphics-lua/#graphics.STENCIL_OP\">graphics.STENCIL_OP</a>"
                     ]
                 }
             ],
@@ -1330,6 +2123,12 @@
                     "name": "matrix",
                     "types": [
                         "matrix4"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#matrix4\">matrix4</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#matrix4\">matrix4</a>"
                     ]
                 }
             ],
@@ -1353,7 +2152,13 @@
                     "is_optional": "False",
                     "name": "x",
                     "types": [
-                        "number"
+                        "integer"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
                     ]
                 },
                 {
@@ -1361,7 +2166,13 @@
                     "is_optional": "False",
                     "name": "y",
                     "types": [
-                        "number"
+                        "integer"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
                     ]
                 },
                 {
@@ -1369,7 +2180,13 @@
                     "is_optional": "False",
                     "name": "width",
                     "types": [
-                        "number"
+                        "integer"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
                     ]
                 },
                 {
@@ -1377,7 +2194,13 @@
                     "is_optional": "False",
                     "name": "height",
                     "types": [
-                        "number"
+                        "integer"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
                     ]
                 }
             ],
@@ -1387,71 +2210,96 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "Depth sort far-to-near (default; good for transpar...",
-            "description": "Depth sort far-to-near (default; good for transparent passes).",
+            "brief": "Render sort orders",
+            "description": "Render sort orders",
             "error": "",
             "examples": "",
             "language": "",
-            "members": [],
-            "name": "render.SORT_BACK_TO_FRONT",
+            "members": [
+                {
+                    "doc": "Depth sort far-to-near (default; good for transparent passes).",
+                    "name": "render.SORT_BACK_TO_FRONT"
+                },
+                {
+                    "doc": "Depth sort near-to-far (good for opaque passes to reduce overdraw).",
+                    "name": "render.SORT_FRONT_TO_BACK"
+                },
+                {
+                    "doc": "No per-call sorting; draw entries in insertion order.",
+                    "name": "render.SORT_NONE"
+                }
+            ],
+            "name": "render.SORT",
             "notes": [],
             "parameters": [],
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "CONSTANT"
+            "type": "ENUM",
+            "value_type": "integer",
+            "value_type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
         },
         {
-            "brief": "Depth sort near-to-far (good for opaque passes to ...",
-            "description": "Depth sort near-to-far (good for opaque passes to reduce overdraw).",
+            "brief": "Material-tag render filter",
+            "description": "An opaque filter that selects renderable objects by material tag. Create a\npredicate with <a href=\"/ref/render#render.predicate\">render.predicate</a> and pass it to <a href=\"/ref/render#render.draw\">render.draw</a>. When\nmultiple tags are supplied, an object's material must contain all of them.\nPredicates are intended for use in render scripts.",
             "error": "",
-            "examples": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">opaque</span> <span class=\"o\">=</span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">predicate</span><span class=\"p\">({</span> <span class=\"s2\">&quot;opaque&quot;</span> <span class=\"p\">})</span>\n<span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">draw</span><span class=\"p\">(</span><span class=\"n\">opaque</span><span class=\"p\">)</span>\n</code></pre></div>",
             "language": "",
             "members": [],
-            "name": "render.SORT_FRONT_TO_BACK",
+            "name": "render_predicate",
             "notes": [],
-            "parameters": [],
+            "parameters": [
+                {
+                    "doc": "material-tag render filter",
+                    "is_optional": "False",
+                    "name": "value",
+                    "types": [
+                        "userdata"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">userdata</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">userdata</a>"
+                    ]
+                }
+            ],
             "replaces": "",
             "returnvalues": [],
+            "target_type": "userdata",
+            "target_type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">userdata</a>",
             "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "No per-call sorting; draw entries in insertion ord...",
-            "description": "No per-call sorting; draw entries in insertion order.",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "render.SORT_NONE",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
+            "type": "TYPEDEF"
         },
         {
             "brief": "Render target",
-            "description": "Render target",
+            "description": "An opaque graphics handle identifying an off-screen render target. Create\none with <a href=\"/ref/render#render.render_target\">render.render_target</a>, draw into it with\n<a href=\"/ref/render#render.set_render_target\">render.set_render_target</a>, and release dynamically created targets with\n<a href=\"/ref/render#render.delete_render_target\">render.delete_render_target</a>. A render-target resource handle can also\nbe obtained from <a href=\"/ref/resource#resource.get_render_target_info\">resource.get_render_target_info</a>.",
             "error": "",
-            "examples": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"kd\">local</span> <span class=\"n\">color_params</span> <span class=\"o\">=</span> <span class=\"p\">{</span>\n        <span class=\"n\">format</span> <span class=\"o\">=</span> <span class=\"n\">graphics</span><span class=\"p\">.</span><span class=\"n\">TEXTURE_FORMAT_RGBA</span><span class=\"p\">,</span>\n        <span class=\"n\">width</span> <span class=\"o\">=</span> <span class=\"mi\">320</span><span class=\"p\">,</span>\n        <span class=\"n\">height</span> <span class=\"o\">=</span> <span class=\"mi\">180</span><span class=\"p\">,</span>\n    <span class=\"p\">}</span>\n    <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">target</span> <span class=\"o\">=</span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">render_target</span><span class=\"p\">({</span>\n        <span class=\"p\">[</span><span class=\"n\">graphics</span><span class=\"p\">.</span><span class=\"n\">BUFFER_TYPE_COLOR0_BIT</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"n\">color_params</span><span class=\"p\">,</span>\n    <span class=\"p\">})</span>\n<span class=\"kr\">end</span>\n\n<span class=\"kr\">function</span> <span class=\"nf\">update</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"kr\">if</span> <span class=\"ow\">not</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">target</span> <span class=\"kr\">then</span>\n        <span class=\"kr\">return</span>\n    <span class=\"kr\">end</span>\n    <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">set_render_target</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">target</span><span class=\"p\">)</span>\n    <span class=\"c1\">-- Draw off-screen content here.</span>\n    <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">set_render_target</span><span class=\"p\">(</span><span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">RENDER_TARGET_DEFAULT</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n\n<span class=\"kr\">function</span> <span class=\"nf\">on_message</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">message_id</span><span class=\"p\">)</span>\n    <span class=\"kr\">if</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;release_render_target&quot;</span><span class=\"p\">)</span> <span class=\"ow\">and</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">target</span> <span class=\"kr\">then</span>\n        <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">delete_render_target</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">target</span><span class=\"p\">)</span>\n        <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">target</span> <span class=\"o\">=</span> <span class=\"kc\">nil</span>\n    <span class=\"kr\">end</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
             "language": "",
             "members": [],
             "name": "render_target",
             "notes": [],
             "parameters": [
                 {
-                    "doc": "",
+                    "doc": "opaque render-target handle",
                     "is_optional": "False",
                     "name": "value",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
             "replaces": "",
             "returnvalues": [],
+            "target_type": "number",
+            "target_type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
             "tparams": [],
             "type": "TYPEDEF"
         },
@@ -1471,6 +2319,12 @@
                     "name": "height",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -1479,6 +2333,12 @@
                     "name": "width",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -1489,25 +2349,33 @@
         },
         {
             "brief": "Texture handle",
-            "description": "Texture handle",
+            "description": "An opaque graphics handle identifying a texture. Texture handles are\nreturned by APIs such as <a href=\"/ref/resource#resource.get_texture_info\">resource.get_texture_info</a>,\n<a href=\"/ref/material#material.get_textures\">material.get_textures</a>, and <a href=\"/ref/compute#compute.get_textures\">compute.get_textures</a>. Pass a handle\nto <a href=\"/ref/render#render.enable_texture\">render.enable_texture</a> to bind the texture in a render script. The\nresource or render target that owns the texture controls its lifetime.",
             "error": "",
-            "examples": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">texture_info</span> <span class=\"o\">=</span> <span class=\"n\">resource</span><span class=\"p\">.</span><span class=\"n\">get_texture_info</span><span class=\"p\">(</span><span class=\"s2\">&quot;/assets/logo.texturec&quot;</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">texture_handle</span> <span class=\"o\">=</span> <span class=\"n\">texture_info</span><span class=\"p\">.</span><span class=\"n\">handle</span>\n<span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">enable_texture</span><span class=\"p\">(</span><span class=\"s2\">&quot;texture_sampler&quot;</span><span class=\"p\">,</span> <span class=\"n\">texture_handle</span><span class=\"p\">)</span>\n</code></pre></div>",
             "language": "",
             "members": [],
             "name": "texture",
             "notes": [],
             "parameters": [
                 {
-                    "doc": "",
+                    "doc": "opaque texture handle",
                     "is_optional": "False",
                     "name": "value",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
             "replaces": "",
             "returnvalues": [],
+            "target_type": "number",
+            "target_type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
             "tparams": [],
             "type": "TYPEDEF"
         },
@@ -1527,6 +2395,12 @@
                     "name": "height",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -1535,6 +2409,12 @@
                     "name": "width",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -1544,6 +2424,7 @@
             "type": "MESSAGE"
         }
     ],
+    "format_version": 2,
     "info": {
         "api_language": "Lua",
         "brief": "Rendering API documentation",

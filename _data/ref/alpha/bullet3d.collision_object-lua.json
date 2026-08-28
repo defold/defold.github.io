@@ -16,6 +16,12 @@
                     "name": "object",
                     "types": [
                         "btCollisionObject"
+                    ],
+                    "types_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
                     ]
                 },
                 {
@@ -24,6 +30,12 @@
                     "name": "force",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
@@ -33,229 +45,88 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "Active simulation state",
-            "description": "Active simulation state",
+            "brief": "Collision object activation states",
+            "description": "Collision object activation states",
             "error": "",
             "examples": "",
             "language": "",
-            "members": [],
-            "name": "bullet3d.collision_object.ACTIVE_TAG",
+            "members": [
+                {
+                    "doc": "Active simulation state.",
+                    "name": "bullet3d.collision_object.ACTIVE_TAG"
+                },
+                {
+                    "doc": "Sleeping simulation state.",
+                    "name": "bullet3d.collision_object.ISLAND_SLEEPING"
+                },
+                {
+                    "doc": "Wants-deactivation simulation state.",
+                    "name": "bullet3d.collision_object.WANTS_DEACTIVATION"
+                },
+                {
+                    "doc": "Disable automatic deactivation.",
+                    "name": "bullet3d.collision_object.DISABLE_DEACTIVATION"
+                },
+                {
+                    "doc": "Disable simulation.",
+                    "name": "bullet3d.collision_object.DISABLE_SIMULATION"
+                }
+            ],
+            "name": "bullet3d.collision_object.ACTIVATION_STATE",
             "notes": [],
             "parameters": [],
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "CONSTANT"
+            "type": "ENUM",
+            "value_type": "integer",
+            "value_type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
         },
         {
-            "brief": "Character collision object flag",
-            "description": "Character collision object flag",
+            "brief": "Collision object flags",
+            "description": "Collision object flags",
             "error": "",
             "examples": "",
             "language": "",
-            "members": [],
-            "name": "bullet3d.collision_object.CF_CHARACTER_OBJECT",
+            "members": [
+                {
+                    "doc": "Static collision object flag.",
+                    "name": "bullet3d.collision_object.CF_STATIC_OBJECT"
+                },
+                {
+                    "doc": "Kinematic collision object flag.",
+                    "name": "bullet3d.collision_object.CF_KINEMATIC_OBJECT"
+                },
+                {
+                    "doc": "Disable contact response flag.",
+                    "name": "bullet3d.collision_object.CF_NO_CONTACT_RESPONSE"
+                },
+                {
+                    "doc": "Custom material callback flag.",
+                    "name": "bullet3d.collision_object.CF_CUSTOM_MATERIAL_CALLBACK"
+                },
+                {
+                    "doc": "Character collision object flag.",
+                    "name": "bullet3d.collision_object.CF_CHARACTER_OBJECT"
+                },
+                {
+                    "doc": "Disable debug visualization flag.",
+                    "name": "bullet3d.collision_object.CF_DISABLE_VISUALIZE_OBJECT"
+                },
+                {
+                    "doc": "Disable SPU collision processing flag.",
+                    "name": "bullet3d.collision_object.CF_DISABLE_SPU_COLLISION_PROCESSING"
+                }
+            ],
+            "name": "bullet3d.collision_object.COLLISION_FLAG",
             "notes": [],
             "parameters": [],
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "Custom material callback flag",
-            "description": "Custom material callback flag",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "bullet3d.collision_object.CF_CUSTOM_MATERIAL_CALLBACK",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "Disable SPU collision processing flag",
-            "description": "Disable SPU collision processing flag",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "bullet3d.collision_object.CF_DISABLE_SPU_COLLISION_PROCESSING",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "Disable debug visualization flag",
-            "description": "Disable debug visualization flag",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "bullet3d.collision_object.CF_DISABLE_VISUALIZE_OBJECT",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "Kinematic collision object flag",
-            "description": "Kinematic collision object flag",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "bullet3d.collision_object.CF_KINEMATIC_OBJECT",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "Disable contact response flag",
-            "description": "Disable contact response flag",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "bullet3d.collision_object.CF_NO_CONTACT_RESPONSE",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "Static collision object flag",
-            "description": "Static collision object flag",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "bullet3d.collision_object.CF_STATIC_OBJECT",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "Generic collision object type",
-            "description": "Generic collision object type",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "bullet3d.collision_object.CO_COLLISION_OBJECT",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "Ghost collision object type",
-            "description": "Ghost collision object type",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "bullet3d.collision_object.CO_GHOST_OBJECT",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "Height-field fluid collision object type",
-            "description": "Height-field fluid collision object type",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "bullet3d.collision_object.CO_HF_FLUID",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "Rigid body collision object type",
-            "description": "Rigid body collision object type",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "bullet3d.collision_object.CO_RIGID_BODY",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "Soft body collision object type",
-            "description": "Soft body collision object type",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "bullet3d.collision_object.CO_SOFT_BODY",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "Disable automatic deactivation",
-            "description": "Disable automatic deactivation",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "bullet3d.collision_object.DISABLE_DEACTIVATION",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "Disable simulation",
-            "description": "Disable simulation",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "bullet3d.collision_object.DISABLE_SIMULATION",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
+            "type": "ENUM",
+            "value_type": "integer",
+            "value_type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
         },
         {
             "brief": "Force the activation state",
@@ -273,6 +144,12 @@
                     "name": "object",
                     "types": [
                         "btCollisionObject"
+                    ],
+                    "types_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
                     ]
                 },
                 {
@@ -280,7 +157,13 @@
                     "is_optional": "False",
                     "name": "state",
                     "types": [
-                        "number"
+                        "bullet3d.collision_object.ACTIVATION_STATE"
+                    ],
+                    "types_html": [
+                        "<a href=\"#bullet3d.collision_object.ACTIVATION_STATE\">bullet3d.collision_object.ACTIVATION_STATE</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#bullet3d.collision_object.ACTIVATION_STATE\">bullet3d.collision_object.ACTIVATION_STATE</a>"
                     ]
                 }
             ],
@@ -305,16 +188,28 @@
                     "name": "object",
                     "types": [
                         "btCollisionObject"
+                    ],
+                    "types_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
                     ]
                 }
             ],
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "one of the activation constants",
+                    "doc": "activation state",
                     "name": "state",
                     "types": [
-                        "number"
+                        "bullet3d.collision_object.ACTIVATION_STATE"
+                    ],
+                    "types_html": [
+                        "<a href=\"#bullet3d.collision_object.ACTIVATION_STATE\">bullet3d.collision_object.ACTIVATION_STATE</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#bullet3d.collision_object.ACTIVATION_STATE\">bullet3d.collision_object.ACTIVATION_STATE</a>"
                     ]
                 }
             ],
@@ -337,6 +232,12 @@
                     "name": "object",
                     "types": [
                         "btCollisionObject"
+                    ],
+                    "types_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
                     ]
                 }
             ],
@@ -347,6 +248,12 @@
                     "name": "threshold",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -369,6 +276,12 @@
                     "name": "object",
                     "types": [
                         "btCollisionObject"
+                    ],
+                    "types_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
                     ]
                 }
             ],
@@ -379,6 +292,12 @@
                     "name": "radius",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -401,6 +320,12 @@
                     "name": "object",
                     "types": [
                         "btCollisionObject"
+                    ],
+                    "types_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
                     ]
                 }
             ],
@@ -410,7 +335,13 @@
                     "doc": "raw unsigned 16-bit collision filter group",
                     "name": "group",
                     "types": [
-                        "number"
+                        "integer"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
                     ]
                 }
             ],
@@ -433,6 +364,12 @@
                     "name": "object",
                     "types": [
                         "btCollisionObject"
+                    ],
+                    "types_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
                     ]
                 }
             ],
@@ -442,7 +379,13 @@
                     "doc": "raw unsigned 16-bit collision filter mask",
                     "name": "mask",
                     "types": [
-                        "number"
+                        "integer"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
                     ]
                 }
             ],
@@ -465,6 +408,12 @@
                     "name": "object",
                     "types": [
                         "btCollisionObject"
+                    ],
+                    "types_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
                     ]
                 }
             ],
@@ -474,7 +423,13 @@
                     "doc": "bit field of <code>CF_*</code> constants",
                     "name": "flags",
                     "types": [
-                        "number"
+                        "integer"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
                     ]
                 }
             ],
@@ -497,6 +452,12 @@
                     "name": "object",
                     "types": [
                         "btCollisionObject"
+                    ],
+                    "types_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
                     ]
                 }
             ],
@@ -507,6 +468,12 @@
                     "name": "threshold",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -529,6 +496,12 @@
                     "name": "object",
                     "types": [
                         "btCollisionObject"
+                    ],
+                    "types_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
                     ]
                 }
             ],
@@ -539,6 +512,12 @@
                     "name": "seconds",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -561,6 +540,12 @@
                     "name": "object",
                     "types": [
                         "btCollisionObject"
+                    ],
+                    "types_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
                     ]
                 }
             ],
@@ -571,6 +556,12 @@
                     "name": "friction",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -593,16 +584,28 @@
                     "name": "object",
                     "types": [
                         "btCollisionObject"
+                    ],
+                    "types_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
                     ]
                 }
             ],
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "one of the <code>CO_*</code> constants",
+                    "doc": "native collision object type",
                     "name": "type",
                     "types": [
-                        "number"
+                        "bullet3d.collision_object.INTERNAL_TYPE"
+                    ],
+                    "types_html": [
+                        "<a href=\"#bullet3d.collision_object.INTERNAL_TYPE\">bullet3d.collision_object.INTERNAL_TYPE</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#bullet3d.collision_object.INTERNAL_TYPE\">bullet3d.collision_object.INTERNAL_TYPE</a>"
                     ]
                 }
             ],
@@ -625,6 +628,12 @@
                     "name": "object",
                     "types": [
                         "btCollisionObject"
+                    ],
+                    "types_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
                     ]
                 }
             ],
@@ -635,6 +644,12 @@
                     "name": "position",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 }
             ],
@@ -657,6 +672,12 @@
                     "name": "object",
                     "types": [
                         "btCollisionObject"
+                    ],
+                    "types_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
                     ]
                 }
             ],
@@ -667,6 +688,12 @@
                     "name": "restitution",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -689,6 +716,12 @@
                     "name": "object",
                     "types": [
                         "btCollisionObject"
+                    ],
+                    "types_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
                     ]
                 }
             ],
@@ -699,6 +732,12 @@
                     "name": "rotation",
                     "types": [
                         "quaternion"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#quaternion\">quaternion</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#quaternion\">quaternion</a>"
                     ]
                 }
             ],
@@ -721,6 +760,12 @@
                     "name": "object",
                     "types": [
                         "btCollisionObject"
+                    ],
+                    "types_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
                     ]
                 }
             ],
@@ -731,6 +776,12 @@
                     "name": "position",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 },
                 {
@@ -738,6 +789,12 @@
                     "name": "rotation",
                     "types": [
                         "quaternion"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#quaternion\">quaternion</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#quaternion\">quaternion</a>"
                     ]
                 }
             ],
@@ -760,6 +817,12 @@
                     "name": "object",
                     "types": [
                         "btCollisionObject"
+                    ],
+                    "types_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
                     ]
                 },
                 {
@@ -767,7 +830,13 @@
                     "is_optional": "False",
                     "name": "flag",
                     "types": [
-                        "number"
+                        "integer"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
                     ]
                 }
             ],
@@ -778,6 +847,12 @@
                     "name": "set",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
@@ -800,6 +875,12 @@
                     "name": "object",
                     "types": [
                         "btCollisionObject"
+                    ],
+                    "types_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
                     ]
                 }
             ],
@@ -810,11 +891,55 @@
                     "name": "result",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
             "tparams": [],
             "type": "FUNCTION"
+        },
+        {
+            "brief": "Native collision object types",
+            "description": "Native collision object types",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "Generic collision object type.",
+                    "name": "bullet3d.collision_object.CO_COLLISION_OBJECT"
+                },
+                {
+                    "doc": "Rigid body collision object type.",
+                    "name": "bullet3d.collision_object.CO_RIGID_BODY"
+                },
+                {
+                    "doc": "Ghost collision object type.",
+                    "name": "bullet3d.collision_object.CO_GHOST_OBJECT"
+                },
+                {
+                    "doc": "Soft body collision object type.",
+                    "name": "bullet3d.collision_object.CO_SOFT_BODY"
+                },
+                {
+                    "doc": "Height-field fluid collision object type.",
+                    "name": "bullet3d.collision_object.CO_HF_FLUID"
+                }
+            ],
+            "name": "bullet3d.collision_object.INTERNAL_TYPE",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "ENUM",
+            "value_type": "integer",
+            "value_type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
         },
         {
             "brief": "Test whether a collision object is active",
@@ -832,6 +957,12 @@
                     "name": "object",
                     "types": [
                         "btCollisionObject"
+                    ],
+                    "types_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
                     ]
                 }
             ],
@@ -842,6 +973,12 @@
                     "name": "active",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
@@ -864,6 +1001,12 @@
                     "name": "object",
                     "types": [
                         "btCollisionObject"
+                    ],
+                    "types_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
                     ]
                 }
             ],
@@ -874,6 +1017,12 @@
                     "name": "awake",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
@@ -896,6 +1045,12 @@
                     "name": "object",
                     "types": [
                         "btCollisionObject"
+                    ],
+                    "types_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
                     ]
                 }
             ],
@@ -906,6 +1061,12 @@
                     "name": "result",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
@@ -928,6 +1089,12 @@
                     "name": "object",
                     "types": [
                         "btCollisionObject"
+                    ],
+                    "types_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
                     ]
                 }
             ],
@@ -938,6 +1105,12 @@
                     "name": "kinematic",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
@@ -960,6 +1133,12 @@
                     "name": "object",
                     "types": [
                         "btCollisionObject"
+                    ],
+                    "types_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
                     ]
                 }
             ],
@@ -970,6 +1149,12 @@
                     "name": "result",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
@@ -992,6 +1177,12 @@
                     "name": "object",
                     "types": [
                         "btCollisionObject"
+                    ],
+                    "types_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
                     ]
                 }
             ],
@@ -1002,6 +1193,12 @@
                     "name": "static",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
@@ -1024,6 +1221,12 @@
                     "name": "object",
                     "types": [
                         "btCollisionObject"
+                    ],
+                    "types_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
                     ]
                 }
             ],
@@ -1034,6 +1237,12 @@
                     "name": "result",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
@@ -1056,6 +1265,12 @@
                     "name": "object",
                     "types": [
                         "btCollisionObject"
+                    ],
+                    "types_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
                     ]
                 }
             ],
@@ -1066,26 +1281,17 @@
                     "name": "valid",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
             "tparams": [],
             "type": "FUNCTION"
-        },
-        {
-            "brief": "Sleeping simulation state",
-            "description": "Sleeping simulation state",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "bullet3d.collision_object.ISLAND_SLEEPING",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
         },
         {
             "brief": "Set the activation state",
@@ -1103,6 +1309,12 @@
                     "name": "object",
                     "types": [
                         "btCollisionObject"
+                    ],
+                    "types_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
                     ]
                 },
                 {
@@ -1110,7 +1322,13 @@
                     "is_optional": "False",
                     "name": "state",
                     "types": [
-                        "number"
+                        "bullet3d.collision_object.ACTIVATION_STATE"
+                    ],
+                    "types_html": [
+                        "<a href=\"#bullet3d.collision_object.ACTIVATION_STATE\">bullet3d.collision_object.ACTIVATION_STATE</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#bullet3d.collision_object.ACTIVATION_STATE\">bullet3d.collision_object.ACTIVATION_STATE</a>"
                     ]
                 }
             ],
@@ -1135,6 +1353,12 @@
                     "name": "object",
                     "types": [
                         "btCollisionObject"
+                    ],
+                    "types_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
                     ]
                 },
                 {
@@ -1143,6 +1367,12 @@
                     "name": "awake",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
@@ -1167,6 +1397,12 @@
                     "name": "object",
                     "types": [
                         "btCollisionObject"
+                    ],
+                    "types_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
                     ]
                 },
                 {
@@ -1175,6 +1411,12 @@
                     "name": "threshold",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -1199,6 +1441,12 @@
                     "name": "object",
                     "types": [
                         "btCollisionObject"
+                    ],
+                    "types_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
                     ]
                 },
                 {
@@ -1207,6 +1455,12 @@
                     "name": "radius",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -1231,6 +1485,12 @@
                     "name": "object",
                     "types": [
                         "btCollisionObject"
+                    ],
+                    "types_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
                     ]
                 },
                 {
@@ -1239,6 +1499,12 @@
                     "name": "threshold",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -1263,6 +1529,12 @@
                     "name": "object",
                     "types": [
                         "btCollisionObject"
+                    ],
+                    "types_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
                     ]
                 },
                 {
@@ -1271,6 +1543,12 @@
                     "name": "seconds",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -1295,6 +1573,12 @@
                     "name": "object",
                     "types": [
                         "btCollisionObject"
+                    ],
+                    "types_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
                     ]
                 },
                 {
@@ -1303,6 +1587,12 @@
                     "name": "friction",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -1327,6 +1617,12 @@
                     "name": "object",
                     "types": [
                         "btCollisionObject"
+                    ],
+                    "types_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
                     ]
                 },
                 {
@@ -1335,6 +1631,12 @@
                     "name": "position",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 }
             ],
@@ -1359,6 +1661,12 @@
                     "name": "object",
                     "types": [
                         "btCollisionObject"
+                    ],
+                    "types_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
                     ]
                 },
                 {
@@ -1367,6 +1675,12 @@
                     "name": "restitution",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -1391,6 +1705,12 @@
                     "name": "object",
                     "types": [
                         "btCollisionObject"
+                    ],
+                    "types_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
                     ]
                 },
                 {
@@ -1399,6 +1719,12 @@
                     "name": "rotation",
                     "types": [
                         "quaternion"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#quaternion\">quaternion</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#quaternion\">quaternion</a>"
                     ]
                 }
             ],
@@ -1423,6 +1749,12 @@
                     "name": "object",
                     "types": [
                         "btCollisionObject"
+                    ],
+                    "types_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
                     ]
                 },
                 {
@@ -1431,6 +1763,12 @@
                     "name": "position",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 },
                 {
@@ -1439,6 +1777,12 @@
                     "name": "rotation",
                     "types": [
                         "quaternion"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#quaternion\">quaternion</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#quaternion\">quaternion</a>"
                     ]
                 }
             ],
@@ -1446,23 +1790,9 @@
             "returnvalues": [],
             "tparams": [],
             "type": "FUNCTION"
-        },
-        {
-            "brief": "Wants-deactivation simulation state",
-            "description": "Wants-deactivation simulation state",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "bullet3d.collision_object.WANTS_DEACTIVATION",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
         }
     ],
+    "format_version": 2,
     "info": {
         "api_language": "Lua",
         "brief": "Bullet collision object API",

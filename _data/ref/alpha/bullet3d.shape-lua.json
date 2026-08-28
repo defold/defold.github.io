@@ -16,11 +16,19 @@
                     "name": "value",
                     "types": [
                         "userdata"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">userdata</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">userdata</a>"
                     ]
                 }
             ],
             "replaces": "",
             "returnvalues": [],
+            "target_type": "userdata",
+            "target_type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">userdata</a>",
             "tparams": [],
             "type": "TYPEDEF"
         },
@@ -40,6 +48,12 @@
                     "name": "object",
                     "types": [
                         "btCollisionObject"
+                    ],
+                    "types_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
                     ]
                 },
                 {
@@ -47,7 +61,13 @@
                     "is_optional": "False",
                     "name": "shape_index",
                     "types": [
-                        "number"
+                        "integer"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
                     ]
                 }
             ],
@@ -58,6 +78,12 @@
                     "name": "shape",
                     "types": [
                         "btCollisionShape"
+                    ],
+                    "types_html": [
+                        "<a href=\"#btCollisionShape\">btCollisionShape</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#btCollisionShape\">btCollisionShape</a>"
                     ]
                 }
             ],
@@ -80,6 +106,12 @@
                     "name": "object",
                     "types": [
                         "btCollisionObject"
+                    ],
+                    "types_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
                     ]
                 }
             ],
@@ -89,7 +121,13 @@
                     "doc": "shape count",
                     "name": "count",
                     "types": [
-                        "number"
+                        "integer"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
                     ]
                 }
             ],
@@ -112,6 +150,12 @@
                     "name": "object",
                     "types": [
                         "btCollisionObject"
+                    ],
+                    "types_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
                     ]
                 }
             ],
@@ -121,12 +165,59 @@
                     "doc": "array of borrowed shape handles",
                     "name": "shapes",
                     "types": [
-                        "table"
+                        "btCollisionShape[]"
+                    ],
+                    "types_html": [
+                        "<a href=\"#btCollisionShape\">btCollisionShape</a>[]"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#btCollisionShape\">btCollisionShape</a>[]"
                     ]
                 }
             ],
             "tparams": [],
             "type": "FUNCTION"
+        },
+        {
+            "brief": "Bullet collision shape definition",
+            "description": "A sphere has <code>diameter</code>; a box has <code>dimensions</code>; a capsule has <code>diameter</code>\nand cylindrical-section <code>height</code>; and a convex hull has <code>vertices</code>.\nQuery functions also accept optional <code>position</code>, <code>rotation</code>, and\n<code>target_rotation</code> fields. Lengths use Defold units.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.shape.definition",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "collision shape definition",
+                    "is_optional": "False",
+                    "name": "value",
+                    "types": [
+                        "{ type:bullet3d.shape.SHAPE_TYPE, diameter:number, position?:vector3, rotation?:quaternion, target_rotation?:quaternion }",
+                        "{ type:bullet3d.shape.SHAPE_TYPE, dimensions:vector3, position?:vector3, rotation?:quaternion, target_rotation?:quaternion }",
+                        "{ type:bullet3d.shape.SHAPE_TYPE, diameter:number, height:number, position?:vector3, rotation?:quaternion, target_rotation?:quaternion }",
+                        "{ type:bullet3d.shape.SHAPE_TYPE, vertices:vector3[], position?:vector3, rotation?:quaternion, target_rotation?:quaternion }"
+                    ],
+                    "types_html": [
+                        "{ type:<a href=\"#bullet3d.shape.SHAPE_TYPE\">bullet3d.shape.SHAPE_TYPE</a>, diameter:<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>, position?:<a href=\"../vmath-lua/#vector3\">vector3</a>, rotation?:<a href=\"../vmath-lua/#quaternion\">quaternion</a>, target_rotation?:<a href=\"../vmath-lua/#quaternion\">quaternion</a> }",
+                        "{ type:<a href=\"#bullet3d.shape.SHAPE_TYPE\">bullet3d.shape.SHAPE_TYPE</a>, dimensions:<a href=\"../vmath-lua/#vector3\">vector3</a>, position?:<a href=\"../vmath-lua/#vector3\">vector3</a>, rotation?:<a href=\"../vmath-lua/#quaternion\">quaternion</a>, target_rotation?:<a href=\"../vmath-lua/#quaternion\">quaternion</a> }",
+                        "{ type:<a href=\"#bullet3d.shape.SHAPE_TYPE\">bullet3d.shape.SHAPE_TYPE</a>, diameter:<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>, height:<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>, position?:<a href=\"../vmath-lua/#vector3\">vector3</a>, rotation?:<a href=\"../vmath-lua/#quaternion\">quaternion</a>, target_rotation?:<a href=\"../vmath-lua/#quaternion\">quaternion</a> }",
+                        "{ type:<a href=\"#bullet3d.shape.SHAPE_TYPE\">bullet3d.shape.SHAPE_TYPE</a>, vertices:<a href=\"../vmath-lua/#vector3\">vector3</a>[], position?:<a href=\"../vmath-lua/#vector3\">vector3</a>, rotation?:<a href=\"../vmath-lua/#quaternion\">quaternion</a>, target_rotation?:<a href=\"../vmath-lua/#quaternion\">quaternion</a> }"
+                    ],
+                    "types_table_html": [
+                        "{type:<a href=\"#bullet3d.shape.SHAPE_TYPE\">bullet3d.shape.SHAPE_TYPE</a>,\ndiameter:<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>,\nposition?:<a href=\"../vmath-lua/#vector3\">vector3</a>,\nrotation?:<a href=\"../vmath-lua/#quaternion\">quaternion</a>,\ntarget_rotation?:<a href=\"../vmath-lua/#quaternion\">quaternion</a>}",
+                        "{type:<a href=\"#bullet3d.shape.SHAPE_TYPE\">bullet3d.shape.SHAPE_TYPE</a>,\ndimensions:<a href=\"../vmath-lua/#vector3\">vector3</a>,\nposition?:<a href=\"../vmath-lua/#vector3\">vector3</a>,\nrotation?:<a href=\"../vmath-lua/#quaternion\">quaternion</a>,\ntarget_rotation?:<a href=\"../vmath-lua/#quaternion\">quaternion</a>}",
+                        "{type:<a href=\"#bullet3d.shape.SHAPE_TYPE\">bullet3d.shape.SHAPE_TYPE</a>,\ndiameter:<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>,\nheight:<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>,\nposition?:<a href=\"../vmath-lua/#vector3\">vector3</a>,\nrotation?:<a href=\"../vmath-lua/#quaternion\">quaternion</a>,\ntarget_rotation?:<a href=\"../vmath-lua/#quaternion\">quaternion</a>}",
+                        "{type:<a href=\"#bullet3d.shape.SHAPE_TYPE\">bullet3d.shape.SHAPE_TYPE</a>,\nvertices:<a href=\"../vmath-lua/#vector3\">vector3</a>[],\nposition?:<a href=\"../vmath-lua/#vector3\">vector3</a>,\nrotation?:<a href=\"../vmath-lua/#quaternion\">quaternion</a>,\ntarget_rotation?:<a href=\"../vmath-lua/#quaternion\">quaternion</a>}"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "target_type": "{ type:bullet3d.shape.SHAPE_TYPE, diameter:number, position?:vector3, rotation?:quaternion, target_rotation?:quaternion } | { type:bullet3d.shape.SHAPE_TYPE, dimensions:vector3, position?:vector3, rotation?:quaternion, target_rotation?:quaternion } | { type:bullet3d.shape.SHAPE_TYPE, diameter:number, height:number, position?:vector3, rotation?:quaternion, target_rotation?:quaternion } | { type:bullet3d.shape.SHAPE_TYPE, vertices:vector3[], position?:vector3, rotation?:quaternion, target_rotation?:quaternion }",
+            "target_type_html": "{ type:<a href=\"#bullet3d.shape.SHAPE_TYPE\">bullet3d.shape.SHAPE_TYPE</a>, diameter:<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>, position?:<a href=\"../vmath-lua/#vector3\">vector3</a>, rotation?:<a href=\"../vmath-lua/#quaternion\">quaternion</a>, target_rotation?:<a href=\"../vmath-lua/#quaternion\">quaternion</a> } | { type:<a href=\"#bullet3d.shape.SHAPE_TYPE\">bullet3d.shape.SHAPE_TYPE</a>, dimensions:<a href=\"../vmath-lua/#vector3\">vector3</a>, position?:<a href=\"../vmath-lua/#vector3\">vector3</a>, rotation?:<a href=\"../vmath-lua/#quaternion\">quaternion</a>, target_rotation?:<a href=\"../vmath-lua/#quaternion\">quaternion</a> } | { type:<a href=\"#bullet3d.shape.SHAPE_TYPE\">bullet3d.shape.SHAPE_TYPE</a>, diameter:<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>, height:<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>, position?:<a href=\"../vmath-lua/#vector3\">vector3</a>, rotation?:<a href=\"../vmath-lua/#quaternion\">quaternion</a>, target_rotation?:<a href=\"../vmath-lua/#quaternion\">quaternion</a> } | { type:<a href=\"#bullet3d.shape.SHAPE_TYPE\">bullet3d.shape.SHAPE_TYPE</a>, vertices:<a href=\"../vmath-lua/#vector3\">vector3</a>[], position?:<a href=\"../vmath-lua/#vector3\">vector3</a>, rotation?:<a href=\"../vmath-lua/#quaternion\">quaternion</a>, target_rotation?:<a href=\"../vmath-lua/#quaternion\">quaternion</a> }",
+            "tparams": [],
+            "type": "TYPEDEF"
         },
         {
             "brief": "Get the owning collision object.",
@@ -144,6 +235,12 @@
                     "name": "shape",
                     "types": [
                         "btCollisionShape"
+                    ],
+                    "types_html": [
+                        "<a href=\"#btCollisionShape\">btCollisionShape</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#btCollisionShape\">btCollisionShape</a>"
                     ]
                 }
             ],
@@ -154,6 +251,12 @@
                     "name": "object",
                     "types": [
                         "btCollisionObject"
+                    ],
+                    "types_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../bullet3d-lua/#btCollisionObject\">btCollisionObject</a>"
                     ]
                 }
             ],
@@ -176,6 +279,12 @@
                     "name": "shape",
                     "types": [
                         "btCollisionShape"
+                    ],
+                    "types_html": [
+                        "<a href=\"#btCollisionShape\">btCollisionShape</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#btCollisionShape\">btCollisionShape</a>"
                     ]
                 }
             ],
@@ -185,7 +294,13 @@
                     "doc": "one-based shape index",
                     "name": "shape_index",
                     "types": [
-                        "number"
+                        "integer"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
                     ]
                 }
             ],
@@ -208,6 +323,12 @@
                     "name": "shape",
                     "types": [
                         "btCollisionShape"
+                    ],
+                    "types_html": [
+                        "<a href=\"#btCollisionShape\">btCollisionShape</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#btCollisionShape\">btCollisionShape</a>"
                     ]
                 }
             ],
@@ -218,6 +339,12 @@
                     "name": "position",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 },
                 {
@@ -225,6 +352,12 @@
                     "name": "rotation",
                     "types": [
                         "quaternion"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#quaternion\">quaternion</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#quaternion\">quaternion</a>"
                     ]
                 }
             ],
@@ -247,6 +380,12 @@
                     "name": "shape",
                     "types": [
                         "btCollisionShape"
+                    ],
+                    "types_html": [
+                        "<a href=\"#btCollisionShape\">btCollisionShape</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#btCollisionShape\">btCollisionShape</a>"
                     ]
                 }
             ],
@@ -256,7 +395,13 @@
                     "doc": "typed shape geometry in Defold units",
                     "name": "data",
                     "types": [
-                        "table"
+                        "bullet3d.shape.definition"
+                    ],
+                    "types_html": [
+                        "<a href=\"#bullet3d.shape.definition\">bullet3d.shape.definition</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#bullet3d.shape.definition\">bullet3d.shape.definition</a>"
                     ]
                 }
             ],
@@ -279,16 +424,28 @@
                     "name": "shape",
                     "types": [
                         "btCollisionShape"
+                    ],
+                    "types_html": [
+                        "<a href=\"#btCollisionShape\">btCollisionShape</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#btCollisionShape\">btCollisionShape</a>"
                     ]
                 }
             ],
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "one of <code>bullet3d.shape.SHAPE_TYPE_*</code>",
+                    "doc": "collision shape type",
                     "name": "type",
                     "types": [
-                        "number"
+                        "bullet3d.shape.SHAPE_TYPE"
+                    ],
+                    "types_html": [
+                        "<a href=\"#bullet3d.shape.SHAPE_TYPE\">bullet3d.shape.SHAPE_TYPE</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#bullet3d.shape.SHAPE_TYPE\">bullet3d.shape.SHAPE_TYPE</a>"
                     ]
                 }
             ],
@@ -311,6 +468,12 @@
                     "name": "shape",
                     "types": [
                         "btCollisionShape"
+                    ],
+                    "types_html": [
+                        "<a href=\"#btCollisionShape\">btCollisionShape</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#btCollisionShape\">btCollisionShape</a>"
                     ]
                 }
             ],
@@ -321,6 +484,12 @@
                     "name": "valid",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
@@ -343,6 +512,12 @@
                     "name": "shape",
                     "types": [
                         "btCollisionShape"
+                    ],
+                    "types_html": [
+                        "<a href=\"#btCollisionShape\">btCollisionShape</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#btCollisionShape\">btCollisionShape</a>"
                     ]
                 },
                 {
@@ -351,6 +526,12 @@
                     "name": "position",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 },
                 {
@@ -359,6 +540,12 @@
                     "name": "rotation",
                     "types": [
                         "quaternion"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#quaternion\">quaternion</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#quaternion\">quaternion</a>"
                     ]
                 }
             ],
@@ -383,6 +570,12 @@
                     "name": "shape",
                     "types": [
                         "btCollisionShape"
+                    ],
+                    "types_html": [
+                        "<a href=\"#btCollisionShape\">btCollisionShape</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#btCollisionShape\">btCollisionShape</a>"
                     ]
                 },
                 {
@@ -390,7 +583,13 @@
                     "is_optional": "False",
                     "name": "data",
                     "types": [
-                        "table"
+                        "bullet3d.shape.definition"
+                    ],
+                    "types_html": [
+                        "<a href=\"#bullet3d.shape.definition\">bullet3d.shape.definition</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#bullet3d.shape.definition\">bullet3d.shape.definition</a>"
                     ]
                 }
             ],
@@ -400,66 +599,41 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "Box shape type",
-            "description": "Value <code>1</code>. Shape data contains positive vector3 <code>dimensions</code> in Defold units.",
+            "brief": "Collision shape types",
+            "description": "Collision shape types",
             "error": "",
             "examples": "",
             "language": "",
-            "members": [],
-            "name": "bullet3d.shape.SHAPE_TYPE_BOX",
+            "members": [
+                {
+                    "doc": "Box shape type Value <code>1</code>. Shape data contains positive vector3 <code>dimensions</code> in Defold units.",
+                    "name": "bullet3d.shape.SHAPE_TYPE_BOX"
+                },
+                {
+                    "doc": "Capsule shape type Value <code>2</code>. Shape data contains a positive numeric <code>diameter</code> and positive numeric cylindrical-section <code>height</code> in Defold units.",
+                    "name": "bullet3d.shape.SHAPE_TYPE_CAPSULE"
+                },
+                {
+                    "doc": "Convex hull shape type Value <code>3</code>. Shape data contains a <code>vertices</code> array with at least four finite vector3 values in Defold units.",
+                    "name": "bullet3d.shape.SHAPE_TYPE_HULL"
+                },
+                {
+                    "doc": "Sphere shape type Value <code>0</code>. Shape data contains a positive numeric <code>diameter</code> in Defold units.",
+                    "name": "bullet3d.shape.SHAPE_TYPE_SPHERE"
+                }
+            ],
+            "name": "bullet3d.shape.SHAPE_TYPE",
             "notes": [],
             "parameters": [],
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "Capsule shape type",
-            "description": "Value <code>2</code>. Shape data contains a positive numeric <code>diameter</code> and positive\nnumeric cylindrical-section <code>height</code> in Defold units.",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "bullet3d.shape.SHAPE_TYPE_CAPSULE",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "Convex hull shape type",
-            "description": "Value <code>3</code>. Shape data contains a <code>vertices</code> array with at least four finite\nvector3 values in Defold units.",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "bullet3d.shape.SHAPE_TYPE_HULL",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "Sphere shape type",
-            "description": "Value <code>0</code>. Shape data contains a positive numeric <code>diameter</code> in Defold units.",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "bullet3d.shape.SHAPE_TYPE_SPHERE",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
+            "type": "ENUM",
+            "value_type": "integer",
+            "value_type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
         }
     ],
+    "format_version": 2,
     "info": {
         "api_language": "Lua",
         "brief": "Bullet collision shape API",

@@ -20,6 +20,14 @@
                     "types": [
                         "string",
                         "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
                     ]
                 },
                 {
@@ -29,6 +37,14 @@
                     "types": [
                         "string",
                         "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
                     ]
                 }
             ],
@@ -36,6 +52,38 @@
             "returnvalues": [],
             "tparams": [],
             "type": "FUNCTION"
+        },
+        {
+            "brief": "Associated font file information",
+            "description": "Associated font file information",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "path",
+                    "doc": "path to the <code>.ttf</code> or <code>.otf</code> font file",
+                    "is_optional": false,
+                    "name": "path",
+                    "type": "string",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                },
+                {
+                    "display_name": "path_hash",
+                    "doc": "hashed font-file path",
+                    "is_optional": false,
+                    "name": "path_hash",
+                    "type": "hash",
+                    "type_html": "<a href=\"../builtins-lua/#hash\">hash</a>"
+                }
+            ],
+            "name": "font.file_info",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
         },
         {
             "brief": "Gets information about a font, such as the associa...",
@@ -54,21 +102,67 @@
                     "types": [
                         "string",
                         "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
                     ]
                 }
             ],
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "the information table contains these fields:\n<dl>\n<dt><code>path</code></dt>\n<dd><span class=\"type\">hash</span> The path hash of the current file.</dd>\n<dt><code>fonts</code></dt>\n<dd>\n<span class=\"type\">table</span> An array of associated font (<code>.ttf</code> or <code>.otf</code>) files. Each item is a table that contains:\n<dl>\n<dt><code>path</code></dt>\n<dd><span class=\"type\">string</span> The path of the font file</dd>\n<dt><code>path_hash</code></dt>\n<dd><span class=\"type\">hash</span> The path of the font file</dd>\n</dl>\n</dd>\n</dl>",
+                    "doc": "font resource information",
                     "name": "info",
                     "types": [
-                        "table"
+                        "font.info"
+                    ],
+                    "types_html": [
+                        "<a href=\"#font.info\">font.info</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#font.info\">font.info</a>"
                     ]
                 }
             ],
             "tparams": [],
             "type": "FUNCTION"
+        },
+        {
+            "brief": "Font resource information",
+            "description": "Font resource information",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "path",
+                    "doc": "path hash of the <code>.fontc</code> resource",
+                    "is_optional": false,
+                    "name": "path",
+                    "type": "hash",
+                    "type_html": "<a href=\"../builtins-lua/#hash\">hash</a>"
+                },
+                {
+                    "display_name": "fonts",
+                    "doc": "associated font files",
+                    "is_optional": false,
+                    "name": "fonts",
+                    "type": "font.file_info[]",
+                    "type_html": "<a href=\"#font.file_info\">font.file_info</a>[]"
+                }
+            ],
+            "name": "font.info",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
         },
         {
             "brief": "prepopulates the font glyph cache with rasterised ...",
@@ -87,6 +181,14 @@
                     "types": [
                         "string",
                         "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
                     ]
                 },
                 {
@@ -95,14 +197,26 @@
                     "name": "text",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 },
                 {
-                    "doc": "(optional) A callback function that is called after the request is finished\n<dl>\n<dt><code>self</code></dt>\n<dd><span class=\"type\">object</span> The current object.</dd>\n<dt><code>request_id</code></dt>\n<dd><span class=\"type\">number</span> The request id</dd>\n<dt><code>result</code></dt>\n<dd><span class=\"type\">boolean</span> True if request was succesful</dd>\n<dt><code>errstring</code></dt>\n<dd><span class=\"type\">string</span> <code>nil</code> if the request was successful</dd>\n</dl>",
+                    "doc": "(optional) A callback function that is called after the request is finished\n<dl>\n<dt class=\"api-lua-v2-type-definition\"><code>self:<a href=\"../builtins-lua/#script_instance\">script_instance</a></code></dt>\n<dd>The current script instance.</dd>\n<dt class=\"api-lua-v2-type-definition\"><code>request_id:<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a></code></dt>\n<dd>The request id</dd>\n<dt class=\"api-lua-v2-type-definition\"><code>result:<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a></code></dt>\n<dd>True if request was succesful</dd>\n<dt class=\"api-lua-v2-type-definition\"><code>errstring:<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a></code></dt>\n<dd><code>nil</code> if the request was successful</dd>\n</dl>",
                     "is_optional": "True",
                     "name": "callback",
                     "types": [
-                        "function(self, request_id, result, errstring)"
+                        "fun(self:script_instance, request_id:integer, result:boolean, errstring?:string)"
+                    ],
+                    "types_html": [
+                        "fun(self:<a href=\"../builtins-lua/#script_instance\">script_instance</a>, request_id:<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>, result:<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>, errstring?:<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>)"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">function</a>(\n\tself:<a href=\"../builtins-lua/#script_instance\">script_instance</a>,\n\trequest_id:<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>,\n\tresult:<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>,\n\terrstring?:<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>)"
                     ]
                 }
             ],
@@ -112,7 +226,13 @@
                     "doc": "Returns the asynchronous request id",
                     "name": "request_id",
                     "types": [
-                        "number"
+                        "integer"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
                     ]
                 }
             ],
@@ -138,6 +258,14 @@
                     "types": [
                         "string",
                         "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
                     ]
                 },
                 {
@@ -147,6 +275,14 @@
                     "types": [
                         "string",
                         "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
                     ]
                 }
             ],
@@ -156,6 +292,7 @@
             "type": "FUNCTION"
         }
     ],
+    "format_version": 2,
     "info": {
         "api_language": "Lua",
         "brief": "Font API documentation",

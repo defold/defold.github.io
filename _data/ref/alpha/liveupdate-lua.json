@@ -22,6 +22,14 @@
                     "types": [
                         "string",
                         "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
                     ]
                 },
                 {
@@ -30,6 +38,12 @@
                     "name": "uri",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 },
                 {
@@ -37,15 +51,27 @@
                     "is_optional": "False",
                     "name": "priority",
                     "types": [
-                        "number"
+                        "integer"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
                     ]
                 },
                 {
-                    "doc": "Callback after the asynchronous request completed\n- <code>name</code> <span class=\"type\">hash</span> Unique name of the mount\n- <code>uri</code> <span class=\"type\">string</span> The uri of the mount\n- <code>result</code> <span class=\"type\">number</span> The result of the request",
+                    "doc": "Callback after the asynchronous request completed\n- <code>name</code> <span class=\"type\"><a href=\"../builtins-lua/#hash\">hash</a></span> Unique name of the mount\n- <code>uri</code> <span class=\"type\"><a href=\"../../../manuals/lua/#variables-and-data-types\">string</a></span> The uri of the mount\n- <code>result</code> <span class=\"type\"><a href=\"#liveupdate.LIVEUPDATE\">liveupdate.LIVEUPDATE</a></span> The result of the request",
                     "is_optional": "False",
                     "name": "callback",
                     "types": [
-                        "function(self, name, uri, result)"
+                        "fun(self:script_instance, name:hash, uri:string, result:liveupdate.LIVEUPDATE)"
+                    ],
+                    "types_html": [
+                        "fun(self:<a href=\"../builtins-lua/#script_instance\">script_instance</a>, name:<a href=\"../builtins-lua/#hash\">hash</a>, uri:<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>, result:<a href=\"#liveupdate.LIVEUPDATE\">liveupdate.LIVEUPDATE</a>)"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">function</a>(\n\tself:<a href=\"../builtins-lua/#script_instance\">script_instance</a>,\n\tname:<a href=\"../builtins-lua/#hash\">hash</a>,\n\turi:<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>,\n\tresult:<a href=\"#liveupdate.LIVEUPDATE\">liveupdate.LIVEUPDATE</a>)"
                     ]
                 }
             ],
@@ -55,7 +81,13 @@
                     "doc": "The result of the request",
                     "name": "result",
                     "types": [
-                        "number"
+                        "liveupdate.LIVEUPDATE"
+                    ],
+                    "types_html": [
+                        "<a href=\"#liveupdate.LIVEUPDATE\">liveupdate.LIVEUPDATE</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#liveupdate.LIVEUPDATE\">liveupdate.LIVEUPDATE</a>"
                     ]
                 }
             ],
@@ -70,7 +102,9 @@
             "language": "",
             "members": [],
             "name": "liveupdate.get_mounts",
-            "notes": [],
+            "notes": [
+                "Any mount with priority < 0 is considered a base archive and it cannot be removed. All other mounts are considered \"live update\" content"
+            ],
             "parameters": [],
             "replaces": "",
             "returnvalues": [
@@ -78,7 +112,13 @@
                     "doc": "Array of mounts",
                     "name": "mounts",
                     "types": [
-                        "table"
+                        "{ name:hash, uri:string, priority:integer }[]"
+                    ],
+                    "types_html": [
+                        "{ name:<a href=\"../builtins-lua/#hash\">hash</a>, uri:<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>, priority:<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a> }[]"
+                    ],
+                    "types_table_html": [
+                        "{name:<a href=\"../builtins-lua/#hash\">hash</a>,\nuri:<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>,\npriority:<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>}[]"
                     ]
                 }
             ],
@@ -102,6 +142,12 @@
                     "name": "is_built_with_excluded_files",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
@@ -109,199 +155,74 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "LIVEUPDATE_BUNDLED_RESOURCE_MISMATCH",
-            "description": "Mismatch between between expected bundled resources and actual bundled resources. The manifest expects a resource to be in the bundle, but it was not found in the bundle. This is typically the case when a non-excluded resource was modified between publishing the bundle and publishing the manifest.",
+            "brief": "LiveUpdate values",
+            "description": "LiveUpdate values",
             "error": "",
             "examples": "",
             "language": "",
-            "members": [],
-            "name": "liveupdate.LIVEUPDATE_BUNDLED_RESOURCE_MISMATCH",
+            "members": [
+                {
+                    "doc": "Mismatch between between expected bundled resources and actual bundled resources. The manifest expects a resource to be in the bundle, but it was not found in the bundle. This is typically the case when a non-excluded resource was modified between publishing the bundle and publishing the manifest.",
+                    "name": "liveupdate.LIVEUPDATE_BUNDLED_RESOURCE_MISMATCH"
+                },
+                {
+                    "doc": "Mismatch between running engine version and engine versions supported by manifest.",
+                    "name": "liveupdate.LIVEUPDATE_ENGINE_VERSION_MISMATCH"
+                },
+                {
+                    "doc": "Failed to parse manifest data buffer. The manifest was probably produced by a different engine version.",
+                    "name": "liveupdate.LIVEUPDATE_FORMAT_ERROR"
+                },
+                {
+                    "doc": "Argument was invalid",
+                    "name": "liveupdate.LIVEUPDATE_INVAL"
+                },
+                {
+                    "doc": "The handled resource is invalid.",
+                    "name": "liveupdate.LIVEUPDATE_INVALID_HEADER"
+                },
+                {
+                    "doc": "The header of the resource is invalid.",
+                    "name": "liveupdate.LIVEUPDATE_INVALID_RESOURCE"
+                },
+                {
+                    "doc": "I/O operation failed",
+                    "name": "liveupdate.LIVEUPDATE_IO_ERROR"
+                },
+                {
+                    "doc": "Memory wasn't allocated",
+                    "name": "liveupdate.LIVEUPDATE_MEM_ERROR"
+                },
+                {
+                    "doc": "Operation completed successfully.",
+                    "name": "liveupdate.LIVEUPDATE_OK"
+                },
+                {
+                    "doc": "Mismatch between scheme used to load resources. Resources are loaded with a different scheme than from manifest, for example over HTTP or directly from file. This is typically the case when running the game directly from the editor instead of from a bundle.",
+                    "name": "liveupdate.LIVEUPDATE_SCHEME_MISMATCH"
+                },
+                {
+                    "doc": "Mismatch between expected and actual integrity data for legacy liveupdate verification.",
+                    "name": "liveupdate.LIVEUPDATE_SIGNATURE_MISMATCH"
+                },
+                {
+                    "doc": "Unspecified error",
+                    "name": "liveupdate.LIVEUPDATE_UNKNOWN"
+                },
+                {
+                    "doc": "Mismatch between manifest expected version and actual version.",
+                    "name": "liveupdate.LIVEUPDATE_VERSION_MISMATCH"
+                }
+            ],
+            "name": "liveupdate.LIVEUPDATE",
             "notes": [],
             "parameters": [],
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "LIVEUPDATE_ENGINE_VERSION_MISMATCH",
-            "description": "Mismatch between running engine version and engine versions supported by manifest.",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "liveupdate.LIVEUPDATE_ENGINE_VERSION_MISMATCH",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "LIVEUPDATE_FORMAT_ERROR",
-            "description": "Failed to parse manifest data buffer. The manifest was probably produced by a different engine version.",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "liveupdate.LIVEUPDATE_FORMAT_ERROR",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "LIVEUPDATE_INVAL",
-            "description": "Argument was invalid",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "liveupdate.LIVEUPDATE_INVAL",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "LIVEUPDATE_INVALID_HEADER",
-            "description": "The handled resource is invalid.",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "liveupdate.LIVEUPDATE_INVALID_HEADER",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "LIVEUPDATE_INVALID_RESOURCE",
-            "description": "The header of the resource is invalid.",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "liveupdate.LIVEUPDATE_INVALID_RESOURCE",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "LIVEUPDATE_IO_ERROR",
-            "description": "I/O operation failed",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "liveupdate.LIVEUPDATE_IO_ERROR",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "LIVEUPDATE_MEM_ERROR",
-            "description": "Memory wasn't allocated",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "liveupdate.LIVEUPDATE_MEM_ERROR",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "LIVEUPDATE_OK",
-            "description": "LIVEUPDATE_OK",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "liveupdate.LIVEUPDATE_OK",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "LIVEUPDATE_SCHEME_MISMATCH",
-            "description": "Mismatch between scheme used to load resources. Resources are loaded with a different scheme than from manifest, for example over HTTP or directly from file. This is typically the case when running the game directly from the editor instead of from a bundle.",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "liveupdate.LIVEUPDATE_SCHEME_MISMATCH",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "LIVEUPDATE_SIGNATURE_MISMATCH",
-            "description": "Mismatch between expected and actual integrity data for legacy liveupdate verification.",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "liveupdate.LIVEUPDATE_SIGNATURE_MISMATCH",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "LIVEUPDATE_UNKNOWN",
-            "description": "Unspecified error",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "liveupdate.LIVEUPDATE_UNKNOWN",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "LIVEUPDATE_VERSION_MISMATCH",
-            "description": "Mismatch between manifest expected version and actual version.",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "liveupdate.LIVEUPDATE_VERSION_MISMATCH",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
+            "type": "ENUM",
+            "value_type": "integer",
+            "value_type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
         },
         {
             "brief": "Remove resource mount",
@@ -323,6 +244,14 @@
                     "types": [
                         "string",
                         "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
                     ]
                 }
             ],
@@ -332,7 +261,13 @@
                     "doc": "The result of the call",
                     "name": "result",
                     "types": [
-                        "number"
+                        "liveupdate.LIVEUPDATE"
+                    ],
+                    "types_html": [
+                        "<a href=\"#liveupdate.LIVEUPDATE\">liveupdate.LIVEUPDATE</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#liveupdate.LIVEUPDATE\">liveupdate.LIVEUPDATE</a>"
                     ]
                 }
             ],
@@ -340,6 +275,7 @@
             "type": "FUNCTION"
         }
     ],
+    "format_version": 2,
     "info": {
         "api_language": "Lua",
         "brief": "LiveUpdate API documentation",

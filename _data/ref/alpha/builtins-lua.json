@@ -1,6 +1,38 @@
 {
     "elements": [
         {
+            "brief": "Hashed identifier",
+            "description": "Defold represents resource paths, message names, object ids, and many other\nidentifiers as 64-bit hash values. Create one from a string with <a href=\"#hash\">hash</a>,\nor receive one from an engine API. Hashes can be compared for equality and\nused as table keys, but the original string is not generally recoverable in\nrelease builds.",
+            "error": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">damage_message</span> <span class=\"o\">=</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;take_damage&quot;</span><span class=\"p\">)</span>\n\n<span class=\"kr\">function</span> <span class=\"nf\">on_message</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">message_id</span><span class=\"p\">,</span> <span class=\"n\">message</span><span class=\"p\">,</span> <span class=\"n\">sender</span><span class=\"p\">)</span>\n    <span class=\"kr\">if</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">damage_message</span> <span class=\"kr\">then</span>\n        <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">health</span> <span class=\"o\">=</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">health</span> <span class=\"o\">-</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">amount</span>\n    <span class=\"kr\">end</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "hash",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "hashed identifier",
+                    "is_optional": "False",
+                    "name": "value",
+                    "types": [
+                        "userdata"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">userdata</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">userdata</a>"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "target_type": "userdata",
+            "target_type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">userdata</a>",
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
             "brief": "hashes a string",
             "description": "All ids in the engine are represented as hashes, so a string needs to be hashed\nbefore it can be compared with an id.",
             "error": "",
@@ -16,6 +48,12 @@
                     "name": "s",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 }
             ],
@@ -26,6 +64,12 @@
                     "name": "hash",
                     "types": [
                         "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#hash\">hash</a>"
                     ]
                 }
             ],
@@ -48,6 +92,12 @@
                     "name": "h",
                     "types": [
                         "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#hash\">hash</a>"
                     ]
                 }
             ],
@@ -58,6 +108,12 @@
                     "name": "hex",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 }
             ],
@@ -75,11 +131,17 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "value to print",
+                    "doc": "values to print",
                     "is_optional": "False",
-                    "name": "v",
+                    "name": "...",
                     "types": [
                         "any"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>"
                     ]
                 }
             ],
@@ -87,8 +149,41 @@
             "returnvalues": [],
             "tparams": [],
             "type": "FUNCTION"
+        },
+        {
+            "brief": "Script instance",
+            "description": "An engine-created state container passed as <code>self</code> to script lifecycle\nfunctions and callbacks. Each script component, GUI script, and render\nscript has its own instance. Values assigned to the instance remain\navailable for that instance's lifetime.\nScript instances cannot be created directly. Store state by assigning\nfields to the <code>self</code> value supplied by the engine.",
+            "error": "",
+            "examples": "Initialize state and access it from an engine callback:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">health</span> <span class=\"o\">=</span> <span class=\"mi\">100</span>\n\n    <span class=\"n\">timer</span><span class=\"p\">.</span><span class=\"n\">delay</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"kc\">false</span><span class=\"p\">,</span> <span class=\"kr\">function</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">handle</span><span class=\"p\">,</span> <span class=\"n\">time_elapsed</span><span class=\"p\">)</span>\n        <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">health</span> <span class=\"o\">=</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">health</span> <span class=\"o\">-</span> <span class=\"mi\">10</span>\n        <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">health</span><span class=\"p\">)</span>\n    <span class=\"kr\">end</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "script_instance",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "script instance state",
+                    "is_optional": "False",
+                    "name": "value",
+                    "types": [
+                        "userdata"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">userdata</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">userdata</a>"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "target_type": "userdata",
+            "target_type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">userdata</a>",
+            "tparams": [],
+            "type": "TYPEDEF"
         }
     ],
+    "format_version": 2,
     "info": {
         "api_language": "Lua",
         "brief": "Built-ins API documentation",

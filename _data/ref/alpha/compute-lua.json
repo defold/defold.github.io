@@ -17,16 +17,30 @@
                     "types": [
                         "hash",
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 }
             ],
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "A table of tables, where each entry contains info about the shader constants:\n<dl>\n<dt><code>name</code></dt>\n<dd><span class=\"type\">hash</span> the hashed name of the constant</dd>\n<dt><code>type</code></dt>\n<dd><span class=\"type\">number</span> the type of the constant. Supported values:</dd>\n</dl>\n<ul>\n<li><code>material.CONSTANT_TYPE_USER</code></li>\n<li><code>material.CONSTANT_TYPE_USER_COLOR</code></li>\n<li><code>material.CONSTANT_TYPE_USER_MATRIX4</code></li>\n<li><code>material.CONSTANT_TYPE_VIEWPROJ</code></li>\n<li><code>material.CONSTANT_TYPE_WORLD</code></li>\n<li><code>material.CONSTANT_TYPE_TEXTURE</code></li>\n<li><code>material.CONSTANT_TYPE_VIEW</code></li>\n<li><code>material.CONSTANT_TYPE_PROJECTION</code></li>\n<li><code>material.CONSTANT_TYPE_NORMAL</code></li>\n<li><code>material.CONSTANT_TYPE_WORLDVIEW</code></li>\n<li><code>material.CONSTANT_TYPE_WORLDVIEWPROJ</code></li>\n<li><code>material.CONSTANT_TYPE_TIME</code></li>\n<li><code>material.CONSTANT_TYPE_WORLD_INVERSE</code></li>\n<li><code>material.CONSTANT_TYPE_VIEW_INVERSE</code></li>\n<li><code>material.CONSTANT_TYPE_PROJECTION_INVERSE</code></li>\n<li><code>material.CONSTANT_TYPE_VIEWPROJ_INVERSE</code></li>\n<li><code>material.CONSTANT_TYPE_WORLDVIEW_INVERSE</code></li>\n<li><code>material.CONSTANT_TYPE_WORLDVIEWPROJ_INVERSE</code></li>\n</ul>\n<dl>\n<dt><code>value</code></dt>\n<dd><span class=\"type\">vmath.vector4 | vmath.matrix4</span> the value(s) of the constant. If the constant is an array, the value will be a table of vmath.vector4 or vmath.matrix4 if the type is <code>material.CONSTANT_TYPE_USER_MATRIX4</code>.</dd>\n</dl>",
+                    "doc": "Information about the shader constants.",
                     "name": "table",
                     "types": [
-                        "table"
+                        "material.constant_info[]"
+                    ],
+                    "types_html": [
+                        "<a href=\"../material-lua/#material.constant_info\">material.constant_info</a>[]"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../material-lua/#material.constant_info\">material.constant_info</a>[]"
                     ]
                 }
             ],
@@ -50,16 +64,30 @@
                     "types": [
                         "hash",
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 }
             ],
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "A table of tables, where each entry contains info about the texture samplers:\n<dl>\n<dt><code>name</code></dt>\n<dd><span class=\"type\">hash</span> the hashed name of the texture sampler</dd>\n<dt><code>u_wrap</code></dt>\n<dd><span class=\"type\">number</span> the u wrap mode of the texture sampler. Supported values:</dd>\n</dl>\n<ul>\n<li><code>graphics.TEXTURE_WRAP_CLAMP_TO_BORDER</code></li>\n<li><code>graphics.TEXTURE_WRAP_CLAMP_TO_EDGE</code></li>\n<li><code>graphics.TEXTURE_WRAP_MIRRORED_REPEAT</code></li>\n<li><code>graphics.TEXTURE_WRAP_REPEAT</code></li>\n</ul>\n<dl>\n<dt><code>v_wrap</code></dt>\n<dd><span class=\"type\">number</span> the v wrap mode of the texture sampler. Supported values:</dd>\n</dl>\n<ul>\n<li><code>graphics.TEXTURE_WRAP_CLAMP_TO_BORDER</code></li>\n<li><code>graphics.TEXTURE_WRAP_CLAMP_TO_EDGE</code></li>\n<li><code>graphics.TEXTURE_WRAP_MIRRORED_REPEAT</code></li>\n<li><code>graphics.TEXTURE_WRAP_REPEAT</code></li>\n</ul>\n<dl>\n<dt><code>min_filter</code></dt>\n<dd><span class=\"type\">number</span> the min filter mode of the texture sampler. Supported values:</dd>\n</dl>\n<ul>\n<li><code>graphics.TEXTURE_FILTER_DEFAULT</code></li>\n<li><code>graphics.TEXTURE_FILTER_NEAREST</code></li>\n<li><code>graphics.TEXTURE_FILTER_LINEAR</code></li>\n<li><code>graphics.TEXTURE_FILTER_NEAREST_MIPMAP_NEAREST</code></li>\n<li><code>graphics.TEXTURE_FILTER_NEAREST_MIPMAP_LINEAR</code></li>\n<li><code>graphics.TEXTURE_FILTER_LINEAR_MIPMAP_NEAREST</code></li>\n<li><code>graphics.TEXTURE_FILTER_LINEAR_MIPMAP_LINEAR</code></li>\n</ul>\n<dl>\n<dt><code>mag_filter</code></dt>\n<dd><span class=\"type\">number</span> the mag filter mode of the texture sampler</dd>\n</dl>\n<ul>\n<li><code>graphics.TEXTURE_FILTER_DEFAULT</code></li>\n<li><code>graphics.TEXTURE_FILTER_NEAREST</code></li>\n<li><code>graphics.TEXTURE_FILTER_LINEAR</code></li>\n</ul>\n<dl>\n<dt><code>max_anisotropy</code></dt>\n<dd><span class=\"type\">number</span> the max anisotropy of the texture sampler</dd>\n</dl>",
+                    "doc": "Information about the texture samplers.",
                     "name": "table",
                     "types": [
-                        "table"
+                        "material.sampler_info[]"
+                    ],
+                    "types_html": [
+                        "<a href=\"../material-lua/#material.sampler_info\">material.sampler_info</a>[]"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../material-lua/#material.sampler_info\">material.sampler_info</a>[]"
                     ]
                 }
             ],
@@ -83,16 +111,30 @@
                     "types": [
                         "hash",
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 }
             ],
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "A table of tables, where each entry contains info about the compute textures:\n<dl>\n<dt><code>path</code></dt>\n<dd><span class=\"type\">hash</span> the resource path of the texture. Only available if the texture is a resource.</dd>\n<dt><code>handle</code></dt>\n<dd><span class=\"type\">hash</span> the runtime handle of the texture.</dd>\n<dt><code>width</code></dt>\n<dd><span class=\"type\">number</span> the width of the texture</dd>\n<dt><code>height</code></dt>\n<dd><span class=\"type\">number</span> the height of the texture</dd>\n<dt><code>depth</code></dt>\n<dd><span class=\"type\">number</span> the depth of the texture. Corresponds to the number of layers in an array texture.</dd>\n<dt><code>mipmaps</code></dt>\n<dd><span class=\"type\">number</span> the number of mipmaps in the texture</dd>\n<dt><code>type</code></dt>\n<dd><span class=\"type\">number</span> the type of the texture. Supported values:</dd>\n</dl>\n<ul>\n<li><code>graphics.TEXTURE_TYPE_2D</code></li>\n<li><code>graphics.TEXTURE_TYPE_2D_ARRAY</code></li>\n<li><code>graphics.TEXTURE_TYPE_CUBE_MAP</code></li>\n<li><code>graphics.TEXTURE_TYPE_IMAGE_2D</code></li>\n<li><code>graphics.TEXTURE_TYPE_3D</code></li>\n<li><code>graphics.TEXTURE_TYPE_IMAGE_3D</code></li>\n</ul>\n<dl>\n<dt><code>flags</code></dt>\n<dd><span class=\"type\">number</span> the flags of the texture. This field is a bit mask of these supported flags:</dd>\n</dl>\n<ul>\n<li><code>graphics.TEXTURE_USAGE_FLAG_SAMPLE</code></li>\n<li><code>graphics.TEXTURE_USAGE_FLAG_MEMORYLESS</code></li>\n<li><code>graphics.TEXTURE_USAGE_FLAG_STORAGE</code></li>\n<li><code>graphics.TEXTURE_USAGE_FLAG_INPUT</code></li>\n<li><code>graphics.TEXTURE_USAGE_FLAG_COLOR</code></li>\n</ul>",
+                    "doc": "Information about the compute textures.",
                     "name": "table",
                     "types": [
-                        "table"
+                        "material.texture_info[]"
+                    ],
+                    "types_html": [
+                        "<a href=\"../material-lua/#material.texture_info\">material.texture_info</a>[]"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../material-lua/#material.texture_info\">material.texture_info</a>[]"
                     ]
                 }
             ],
@@ -116,14 +158,28 @@
                     "types": [
                         "hash",
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 },
                 {
-                    "doc": "A table keyed by constant name with args tables as values. Constants can be partially updated. Supported entries:\n<dl>\n<dt><code>type</code></dt>\n<dd><span class=\"type\">number</span> the type of the constant. Supported values:</dd>\n</dl>\n<ul>\n<li><code>material.CONSTANT_TYPE_USER</code></li>\n<li><code>material.CONSTANT_TYPE_USER_COLOR</code></li>\n<li><code>material.CONSTANT_TYPE_USER_MATRIX4</code></li>\n<li><code>material.CONSTANT_TYPE_VIEWPROJ</code></li>\n<li><code>material.CONSTANT_TYPE_WORLD</code></li>\n<li><code>material.CONSTANT_TYPE_TEXTURE</code></li>\n<li><code>material.CONSTANT_TYPE_VIEW</code></li>\n<li><code>material.CONSTANT_TYPE_PROJECTION</code></li>\n<li><code>material.CONSTANT_TYPE_NORMAL</code></li>\n<li><code>material.CONSTANT_TYPE_WORLDVIEW</code></li>\n<li><code>material.CONSTANT_TYPE_WORLDVIEWPROJ</code></li>\n<li><code>material.CONSTANT_TYPE_TIME</code></li>\n<li><code>material.CONSTANT_TYPE_WORLD_INVERSE</code></li>\n<li><code>material.CONSTANT_TYPE_VIEW_INVERSE</code></li>\n<li><code>material.CONSTANT_TYPE_PROJECTION_INVERSE</code></li>\n<li><code>material.CONSTANT_TYPE_VIEWPROJ_INVERSE</code></li>\n<li><code>material.CONSTANT_TYPE_WORLDVIEW_INVERSE</code></li>\n<li><code>material.CONSTANT_TYPE_WORLDVIEWPROJ_INVERSE</code></li>\n</ul>\n<dl>\n<dt><code>value</code></dt>\n<dd><span class=\"type\">vmath.vector4 | vmath.vector3 | vmath.matrix4 | number | table</span> the value(s) of the constant. If the shader constant is an array, the amount of values to update depends on how many values that are passed in the 'value' field.</dd>\n</dl>",
+                    "doc": "Constant options keyed by constant name. Partial updates are supported.",
                     "is_optional": "False",
                     "name": "constants",
                     "types": [
-                        "table"
+                        "table<string|hash, material.constant_options>"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">table</a>&lt;<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>|<a href=\"../builtins-lua/#hash\">hash</a>, <a href=\"../material-lua/#material.constant_options\">material.constant_options</a>&gt;"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">table</a>&lt;<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>|<a href=\"../builtins-lua/#hash\">hash</a>, <a href=\"../material-lua/#material.constant_options\">material.constant_options</a>&gt;"
                     ]
                 }
             ],
@@ -149,14 +205,28 @@
                     "types": [
                         "hash",
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 },
                 {
-                    "doc": "A table keyed by sampler name with args tables as values. Partial updates are supported. Supported entries:\n<dl>\n<dt><code>u_wrap</code></dt>\n<dd><span class=\"type\">number</span> the u wrap mode of the texture sampler. Supported values:</dd>\n</dl>\n<ul>\n<li><code>graphics.TEXTURE_WRAP_CLAMP_TO_BORDER</code></li>\n<li><code>graphics.TEXTURE_WRAP_CLAMP_TO_EDGE</code></li>\n<li><code>graphics.TEXTURE_WRAP_MIRRORED_REPEAT</code></li>\n<li><code>graphics.TEXTURE_WRAP_REPEAT</code></li>\n</ul>\n<dl>\n<dt><code>v_wrap</code></dt>\n<dd><span class=\"type\">number</span> the v wrap mode of the texture sampler. Supported values:</dd>\n</dl>\n<ul>\n<li><code>graphics.TEXTURE_WRAP_CLAMP_TO_BORDER</code></li>\n<li><code>graphics.TEXTURE_WRAP_CLAMP_TO_EDGE</code></li>\n<li><code>graphics.TEXTURE_WRAP_MIRRORED_REPEAT</code></li>\n<li><code>graphics.TEXTURE_WRAP_REPEAT</code></li>\n</ul>\n<dl>\n<dt><code>min_filter</code></dt>\n<dd><span class=\"type\">number</span> the min filter mode of the texture sampler. Supported values:</dd>\n</dl>\n<ul>\n<li><code>graphics.TEXTURE_FILTER_DEFAULT</code></li>\n<li><code>graphics.TEXTURE_FILTER_NEAREST</code></li>\n<li><code>graphics.TEXTURE_FILTER_LINEAR</code></li>\n<li><code>graphics.TEXTURE_FILTER_NEAREST_MIPMAP_NEAREST</code></li>\n<li><code>graphics.TEXTURE_FILTER_NEAREST_MIPMAP_LINEAR</code></li>\n<li><code>graphics.TEXTURE_FILTER_LINEAR_MIPMAP_NEAREST</code></li>\n<li><code>graphics.TEXTURE_FILTER_LINEAR_MIPMAP_LINEAR</code></li>\n</ul>\n<dl>\n<dt><code>mag_filter</code></dt>\n<dd><span class=\"type\">number</span> the mag filter mode of the texture sampler</dd>\n</dl>\n<ul>\n<li><code>graphics.TEXTURE_FILTER_DEFAULT</code></li>\n<li><code>graphics.TEXTURE_FILTER_NEAREST</code></li>\n<li><code>graphics.TEXTURE_FILTER_LINEAR</code></li>\n</ul>\n<dl>\n<dt><code>max_anisotropy</code></dt>\n<dd><span class=\"type\">number</span> the max anisotropy of the texture sampler</dd>\n</dl>",
+                    "doc": "Sampler options keyed by sampler name. Partial updates are supported.",
                     "is_optional": "False",
                     "name": "samplers",
                     "types": [
-                        "table"
+                        "table<string|hash, material.sampler_options>"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">table</a>&lt;<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>|<a href=\"../builtins-lua/#hash\">hash</a>, <a href=\"../material-lua/#material.sampler_options\">material.sampler_options</a>&gt;"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">table</a>&lt;<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>|<a href=\"../builtins-lua/#hash\">hash</a>, <a href=\"../material-lua/#material.sampler_options\">material.sampler_options</a>&gt;"
                     ]
                 }
             ],
@@ -182,6 +252,14 @@
                     "types": [
                         "hash",
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 },
                 {
@@ -189,7 +267,13 @@
                     "is_optional": "False",
                     "name": "textures",
                     "types": [
-                        "table"
+                        "table<string|hash, string|hash>"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">table</a>&lt;<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>|<a href=\"../builtins-lua/#hash\">hash</a>, <a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>|<a href=\"../builtins-lua/#hash\">hash</a>&gt;"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">table</a>&lt;<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>|<a href=\"../builtins-lua/#hash\">hash</a>, <a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>|<a href=\"../builtins-lua/#hash\">hash</a>&gt;"
                     ]
                 }
             ],
@@ -199,6 +283,7 @@
             "type": "FUNCTION"
         }
     ],
+    "format_version": 2,
     "info": {
         "api_language": "Lua",
         "brief": "Compute API documentation",

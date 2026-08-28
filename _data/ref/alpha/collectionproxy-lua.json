@@ -31,6 +31,12 @@
                     "name": "collectionproxy",
                     "types": [
                         "url"
+                    ],
+                    "types_html": [
+                        "<a href=\"../msg-lua/#url\">url</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../msg-lua/#url\">url</a>"
                     ]
                 }
             ],
@@ -40,7 +46,13 @@
                     "doc": "the resources, or an empty list if the\ncollection was not excluded.",
                     "name": "resources",
                     "types": [
-                        "table"
+                        "string[]"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>[]"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>[]"
                     ]
                 }
             ],
@@ -65,6 +77,16 @@
                         "string",
                         "hash",
                         "url"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
                     ]
                 },
                 {
@@ -72,8 +94,16 @@
                     "is_optional": "False",
                     "name": "options",
                     "types": [
-                        "table",
+                        "{}",
                         "nil"
+                    ],
+                    "types_html": [
+                        "{}",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "{}",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 },
                 {
@@ -81,7 +111,13 @@
                     "is_optional": "False",
                     "name": "callback",
                     "types": [
-                        "function(self, message_id, message, sender)"
+                        "fun(self:script_instance, message_id:hash, message:collectionproxy.load_data, sender:url)"
+                    ],
+                    "types_html": [
+                        "fun(self:<a href=\"../builtins-lua/#script_instance\">script_instance</a>, message_id:<a href=\"../builtins-lua/#hash\">hash</a>, message:<a href=\"#collectionproxy.load_data\">collectionproxy.load_data</a>, sender:<a href=\"../msg-lua/#url\">url</a>)"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">function</a>(\n\tself:<a href=\"../builtins-lua/#script_instance\">script_instance</a>,\n\tmessage_id:<a href=\"../builtins-lua/#hash\">hash</a>,\n\tmessage:<a href=\"#collectionproxy.load_data\">collectionproxy.load_data</a>,\n\tsender:<a href=\"../msg-lua/#url\">url</a>)"
                     ]
                 }
             ],
@@ -91,49 +127,66 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "collection proxy is already loaded",
-            "description": "It's impossible to change the collection if the collection is already loaded.",
+            "brief": "Collection proxy load callback data",
+            "description": "Data delivered to a <a href=\"/ref/collectionproxy#collectionproxy.load\">collectionproxy.load</a> callback. The available\nfield depends on the callback message identifier.",
             "error": "",
             "examples": "",
             "language": "",
-            "members": [],
-            "name": "collectionproxy.RESULT_ALREADY_LOADED",
+            "members": [
+                {
+                    "display_name": "progress",
+                    "doc": "Loading progress from 0 to 1 for <code>proxy_loading</code>.",
+                    "is_optional": true,
+                    "name": "progress?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "code",
+                    "doc": "Error code for <code>proxy_error</code>.",
+                    "is_optional": true,
+                    "name": "code?",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                }
+            ],
+            "name": "collectionproxy.load_data",
             "notes": [],
             "parameters": [],
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "CONSTANT"
+            "type": "STRUCT"
         },
         {
-            "brief": "collection proxy is loading now",
-            "description": "It's impossible to change the collection while the collection proxy is loading.",
+            "brief": "Collection proxy results",
+            "description": "Collection proxy results",
             "error": "",
             "examples": "",
             "language": "",
-            "members": [],
-            "name": "collectionproxy.RESULT_LOADING",
+            "members": [
+                {
+                    "doc": "The collection proxy is already loaded, so its collection cannot be changed.",
+                    "name": "collectionproxy.RESULT_ALREADY_LOADED"
+                },
+                {
+                    "doc": "The collection proxy is loading, so its collection cannot be changed.",
+                    "name": "collectionproxy.RESULT_LOADING"
+                },
+                {
+                    "doc": "The collection proxy is not excluded from the bundle; only excluded proxies can change collections.",
+                    "name": "collectionproxy.RESULT_NOT_EXCLUDED"
+                }
+            ],
+            "name": "collectionproxy.RESULT",
             "notes": [],
             "parameters": [],
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "collection proxy isn't excluded",
-            "description": "It's impossible to change the collection for a proxy that isn't excluded.",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "collectionproxy.RESULT_NOT_EXCLUDED",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
+            "type": "ENUM",
+            "value_type": "integer",
+            "value_type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
         },
         {
             "brief": "changes the collection for a collection proxy.",
@@ -153,6 +206,16 @@
                         "string",
                         "hash",
                         "url"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
                     ]
                 },
                 {
@@ -162,6 +225,14 @@
                     "types": [
                         "string",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 }
             ],
@@ -172,18 +243,65 @@
                     "name": "success",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 },
                 {
-                    "doc": "one of the collectionproxy.RESULT_* codes if unsuccessful",
+                    "doc": "the failure reason",
                     "name": "code",
                     "types": [
-                        "number"
+                        "collectionproxy.RESULT"
+                    ],
+                    "types_html": [
+                        "<a href=\"#collectionproxy.RESULT\">collectionproxy.RESULT</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#collectionproxy.RESULT\">collectionproxy.RESULT</a>"
                     ]
                 }
             ],
             "tparams": [],
             "type": "FUNCTION"
+        },
+        {
+            "brief": "Collection proxy time-step mode",
+            "description": "The runtime message uses numeric modes rather than exported Lua constants:\n0 updates continuously and 1 updates in discrete steps.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "collectionproxy.TIME_STEP_MODE",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "time-step mode",
+                    "is_optional": "False",
+                    "name": "value",
+                    "types": [
+                        "0",
+                        "1"
+                    ],
+                    "types_html": [
+                        "0",
+                        "1"
+                    ],
+                    "types_table_html": [
+                        "0",
+                        "1"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "target_type": "0 | 1",
+            "target_type_html": "0 | 1",
+            "tparams": [],
+            "type": "TYPEDEF"
         },
         {
             "brief": "tells a collection proxy to disable the referenced collection",
@@ -261,6 +379,36 @@
             "type": "MESSAGE"
         },
         {
+            "brief": "reports that an error occurred while loading or initializing a collection",
+            "description": "proxy",
+            "error": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"n\">collectionproxy</span><span class=\"p\">.</span><span class=\"n\">load</span><span class=\"p\">(</span><span class=\"s2\">&quot;#proxy&quot;</span><span class=\"p\">,</span> <span class=\"p\">{},</span> <span class=\"kr\">function</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">message_id</span><span class=\"p\">,</span> <span class=\"n\">message</span><span class=\"p\">,</span> <span class=\"n\">sender</span><span class=\"p\">)</span>\n     <span class=\"kr\">if</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;proxy_error&quot;</span><span class=\"p\">)</span> <span class=\"kr\">then</span>\n        <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;Proxy loading error:&quot;</span><span class=\"p\">,</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">code</span><span class=\"p\">)</span>\n     <span class=\"kr\">end</span>\n  <span class=\"kr\">end</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "proxy_error",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "error code",
+                    "is_optional": "False",
+                    "name": "code",
+                    "types": [
+                        "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "MESSAGE"
+        },
+        {
             "brief": "reports that a collection proxy has loaded its referenced collection",
             "description": "This message is sent back to the script that initiated a collection proxy load when the referenced\ncollection is loaded. See documentation for <a href=\"#load\">load</a> for examples how to use.",
             "error": "",
@@ -268,6 +416,51 @@
             "language": "",
             "members": [],
             "name": "proxy_loaded",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "MESSAGE"
+        },
+        {
+            "brief": "reports that a collection proxy is loading",
+            "description": "reports that a collection proxy is loading",
+            "error": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"n\">collectionproxy</span><span class=\"p\">.</span><span class=\"n\">load</span><span class=\"p\">(</span><span class=\"s2\">&quot;#proxy&quot;</span><span class=\"p\">,</span> <span class=\"p\">{},</span> <span class=\"kr\">function</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">message_id</span><span class=\"p\">,</span> <span class=\"n\">message</span><span class=\"p\">,</span> <span class=\"n\">sender</span><span class=\"p\">)</span>\n     <span class=\"kr\">if</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;proxy_loading&quot;</span><span class=\"p\">)</span> <span class=\"kr\">then</span>\n        <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;Proxy loading progress:&quot;</span><span class=\"p\">,</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">progress</span><span class=\"p\">)</span>\n     <span class=\"kr\">end</span>\n  <span class=\"kr\">end</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "proxy_loading",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the loading progress (0.0 to 1.0)",
+                    "is_optional": "False",
+                    "name": "progress",
+                    "types": [
+                        "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "MESSAGE"
+        },
+        {
+            "brief": "reports that a collection proxy has been loaded and is running",
+            "description": "reports that a collection proxy has been loaded and is running",
+            "error": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"n\">collectionproxy</span><span class=\"p\">.</span><span class=\"n\">load</span><span class=\"p\">(</span><span class=\"s2\">&quot;#proxy&quot;</span><span class=\"p\">,</span> <span class=\"p\">{},</span> <span class=\"kr\">function</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">message_id</span><span class=\"p\">,</span> <span class=\"n\">message</span><span class=\"p\">,</span> <span class=\"n\">sender</span><span class=\"p\">)</span>\n     <span class=\"kr\">if</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;proxy_ready&quot;</span><span class=\"p\">)</span> <span class=\"kr\">then</span>\n        <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;Proxy has been loaded and is running&quot;</span><span class=\"p\">)</span>\n     <span class=\"kr\">end</span>\n  <span class=\"kr\">end</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "proxy_ready",
             "notes": [],
             "parameters": [],
             "replaces": "",
@@ -306,14 +499,26 @@
                     "name": "factor",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
-                    "doc": "time-step mode: 0 for continuous and 1 for discrete",
+                    "doc": "time-step mode",
                     "is_optional": "False",
                     "name": "mode",
                     "types": [
-                        "number"
+                        "collectionproxy.TIME_STEP_MODE"
+                    ],
+                    "types_html": [
+                        "<a href=\"#collectionproxy.TIME_STEP_MODE\">collectionproxy.TIME_STEP_MODE</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#collectionproxy.TIME_STEP_MODE\">collectionproxy.TIME_STEP_MODE</a>"
                     ]
                 }
             ],
@@ -338,16 +543,17 @@
             "type": "MESSAGE"
         }
     ],
+    "format_version": 2,
     "info": {
         "api_language": "Lua",
         "brief": "Collection proxy API documentation",
         "description": "Messages for controlling and interacting with collection proxies\nwhich are used to dynamically load collections into the runtime.",
         "description_html": "<p>Messages for controlling and interacting with collection proxies\nwhich are used to dynamically load collections into the runtime.</p>",
-        "file": "script_collectionproxy.cpp",
+        "file": "collectionproxy_ddf.proto",
         "name": "Collection proxy",
         "namespace": "collectionproxy",
         "notes": [],
-        "path": "engine/gamesys/src/gamesys/scripts/script_collectionproxy.cpp",
+        "path": "engine/gamesys/proto/gamesys/collectionproxy_ddf.proto",
         "type": "Defold Lua"
     }
 }

@@ -1,49 +1,66 @@
 {
     "elements": [
         {
-            "brief": "dimming mode off",
-            "description": "Dimming mode is used to control whether or not a mobile device should dim the screen after a period without user interaction.",
+            "brief": "Screen-dimming modes",
+            "description": "Screen-dimming modes",
             "error": "",
             "examples": "",
             "language": "",
-            "members": [],
-            "name": "window.DIMMING_OFF",
+            "members": [
+                {
+                    "doc": "dimming mode off Dimming mode is used to control whether or not a mobile device should dim the screen after a period without user interaction.",
+                    "name": "window.DIMMING_OFF"
+                },
+                {
+                    "doc": "dimming mode on Dimming mode is used to control whether or not a mobile device should dim the screen after a period without user interaction.",
+                    "name": "window.DIMMING_ON"
+                },
+                {
+                    "doc": "dimming mode unknown Dimming mode is used to control whether or not a mobile device should dim the screen after a period without user interaction. This mode indicates that the dim mode can't be determined, or that the platform doesn't support dimming.",
+                    "name": "window.DIMMING_UNKNOWN"
+                }
+            ],
+            "name": "window.DIMMING",
             "notes": [],
             "parameters": [],
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "CONSTANT"
+            "type": "ENUM",
+            "value_type": "integer",
+            "value_type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
         },
         {
-            "brief": "dimming mode on",
-            "description": "Dimming mode is used to control whether or not a mobile device should dim the screen after a period without user interaction.",
+            "brief": "Window event data",
+            "description": "Width and height are present for <a href=\"/ref/window#window.WINDOW_EVENT_RESIZED\">window.WINDOW_EVENT_RESIZED</a> and\nabsent for other window events.",
             "error": "",
             "examples": "",
             "language": "",
-            "members": [],
-            "name": "window.DIMMING_ON",
+            "members": [
+                {
+                    "display_name": "width",
+                    "doc": "Window width after a resize.",
+                    "is_optional": true,
+                    "name": "width?",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "height",
+                    "doc": "Window height after a resize.",
+                    "is_optional": true,
+                    "name": "height?",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                }
+            ],
+            "name": "window.event_data",
             "notes": [],
             "parameters": [],
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "dimming mode unknown",
-            "description": "Dimming mode is used to control whether or not a mobile device should dim the screen after a period without user interaction.\nThis mode indicates that the dim mode can't be determined, or that the platform doesn't support dimming.",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "window.DIMMING_UNKNOWN",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
+            "type": "STRUCT"
         },
         {
             "brief": "get the mode for screen dimming",
@@ -58,10 +75,16 @@
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "The mode for screen dimming\n<ul>\n<li><code>window.DIMMING_UNKNOWN</code></li>\n<li><code>window.DIMMING_ON</code></li>\n<li><code>window.DIMMING_OFF</code></li>\n</ul>",
+                    "doc": "The mode for screen dimming",
                     "name": "mode",
                     "types": [
-                        "constant"
+                        "window.DIMMING"
+                    ],
+                    "types_html": [
+                        "<a href=\"#window.DIMMING\">window.DIMMING</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#window.DIMMING\">window.DIMMING</a>"
                     ]
                 }
             ],
@@ -85,6 +108,12 @@
                     "name": "scale",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -108,6 +137,12 @@
                     "name": "state",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
@@ -127,10 +162,16 @@
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "safe area data\n<dl>\n<dt><code>safe_area</code></dt>\n<dd><span class=\"type\">table</span> table containing these keys:</dd>\n</dl>\n<ul>\n<li><span class=\"type\">number</span> <code>x</code></li>\n<li><span class=\"type\">number</span> <code>y</code></li>\n<li><span class=\"type\">number</span> <code>width</code></li>\n<li><span class=\"type\">number</span> <code>height</code></li>\n<li><span class=\"type\">number</span> <code>inset_left</code></li>\n<li><span class=\"type\">number</span> <code>inset_top</code></li>\n<li><span class=\"type\">number</span> <code>inset_right</code></li>\n<li><span class=\"type\">number</span> <code>inset_bottom</code></li>\n</ul>",
+                    "doc": "safe area data",
                     "name": "safe_area",
                     "types": [
-                        "table"
+                        "window.safe_area"
+                    ],
+                    "types_html": [
+                        "<a href=\"#window.safe_area\">window.safe_area</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#window.safe_area\">window.safe_area</a>"
                     ]
                 }
             ],
@@ -153,19 +194,111 @@
                     "doc": "The window width",
                     "name": "width",
                     "types": [
-                        "number"
+                        "integer"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
                     ]
                 },
                 {
                     "doc": "The window height",
                     "name": "height",
                     "types": [
-                        "number"
+                        "integer"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
                     ]
                 }
             ],
             "tparams": [],
             "type": "FUNCTION"
+        },
+        {
+            "brief": "Window safe-area data",
+            "description": "Window safe-area data",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "x",
+                    "doc": "Safe-area x-coordinate.",
+                    "is_optional": false,
+                    "name": "x",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "y",
+                    "doc": "Safe-area y-coordinate.",
+                    "is_optional": false,
+                    "name": "y",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "width",
+                    "doc": "Safe-area width.",
+                    "is_optional": false,
+                    "name": "width",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "height",
+                    "doc": "Safe-area height.",
+                    "is_optional": false,
+                    "name": "height",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "inset_left",
+                    "doc": "Inset from the left window edge.",
+                    "is_optional": false,
+                    "name": "inset_left",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "inset_top",
+                    "doc": "Inset from the top window edge.",
+                    "is_optional": false,
+                    "name": "inset_top",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "inset_right",
+                    "doc": "Inset from the right window edge.",
+                    "is_optional": false,
+                    "name": "inset_right",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "inset_bottom",
+                    "doc": "Inset from the bottom window edge.",
+                    "is_optional": false,
+                    "name": "inset_bottom",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                }
+            ],
+            "name": "window.safe_area",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
         },
         {
             "brief": "set the mode for screen dimming",
@@ -178,11 +311,17 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "The mode for screen dimming\n<ul>\n<li><code>window.DIMMING_ON</code></li>\n<li><code>window.DIMMING_OFF</code></li>\n</ul>",
+                    "doc": "The mode for screen dimming",
                     "is_optional": "False",
                     "name": "mode",
                     "types": [
-                        "constant"
+                        "window.DIMMING"
+                    ],
+                    "types_html": [
+                        "<a href=\"#window.DIMMING\">window.DIMMING</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#window.DIMMING\">window.DIMMING</a>"
                     ]
                 }
             ],
@@ -202,12 +341,20 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "A callback which receives info about window events. Pass an empty function or <code>nil</code> if you no longer wish to receive callbacks.\n<dl>\n<dt><code>self</code></dt>\n<dd><span class=\"type\">object</span> The calling script</dd>\n<dt><code>event</code></dt>\n<dd><span class=\"type\">constant</span> The type of event. Can be one of these:</dd>\n</dl>\n<ul>\n<li><code>window.WINDOW_EVENT_FOCUS_LOST</code></li>\n<li><code>window.WINDOW_EVENT_FOCUS_GAINED</code></li>\n<li><code>window.WINDOW_EVENT_RESIZED</code></li>\n<li><code>window.WINDOW_EVENT_ICONIFIED</code></li>\n<li><code>window.WINDOW_EVENT_DEICONIFIED</code></li>\n</ul>\n<dl>\n<dt><code>data</code></dt>\n<dd><span class=\"type\">table</span> The callback value <code>data</code> is a table which currently holds these values</dd>\n</dl>\n<ul>\n<li><span class=\"type\">number</span> <code>width</code>: The width of a resize event. nil otherwise.</li>\n<li><span class=\"type\">number</span> <code>height</code>: The height of a resize event. nil otherwise.</li>\n</ul>",
+                    "doc": "A callback which receives info about window events. Pass an empty function or <code>nil</code> if you no longer wish to receive callbacks.",
                     "is_optional": "False",
                     "name": "callback",
                     "types": [
-                        "function(self, event, data)",
+                        "fun(self:script_instance, event:window.WINDOW_EVENT, data:window.event_data)",
                         "nil"
+                    ],
+                    "types_html": [
+                        "fun(self:<a href=\"../builtins-lua/#script_instance\">script_instance</a>, event:<a href=\"#window.WINDOW_EVENT\">window.WINDOW_EVENT</a>, data:<a href=\"#window.event_data\">window.event_data</a>)",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">function</a>(\n\tself:<a href=\"../builtins-lua/#script_instance\">script_instance</a>,\n\tevent:<a href=\"#window.WINDOW_EVENT\">window.WINDOW_EVENT</a>,\n\tdata:<a href=\"#window.event_data\">window.event_data</a>)",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 }
             ],
@@ -232,6 +379,12 @@
                     "name": "flag",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
@@ -255,7 +408,13 @@
                     "is_optional": "False",
                     "name": "x",
                     "types": [
-                        "number"
+                        "integer"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
                     ]
                 },
                 {
@@ -263,7 +422,13 @@
                     "is_optional": "False",
                     "name": "y",
                     "types": [
-                        "number"
+                        "integer"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
                     ]
                 }
             ],
@@ -287,7 +452,13 @@
                     "is_optional": "False",
                     "name": "width",
                     "types": [
-                        "number"
+                        "integer"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
                     ]
                 },
                 {
@@ -295,7 +466,13 @@
                     "is_optional": "False",
                     "name": "height",
                     "types": [
-                        "number"
+                        "integer"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
                     ]
                 }
             ],
@@ -320,6 +497,12 @@
                     "name": "title",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 }
             ],
@@ -329,81 +512,45 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "deiconified window event",
-            "description": "<span class=\"icon-osx\"></span> <span class=\"icon-windows\"></span> <span class=\"icon-linux\"></span> This event is sent to a window event listener when the game window or app screen is\nrestored after being iconified.",
+            "brief": "Window events",
+            "description": "Window events",
             "error": "",
             "examples": "",
             "language": "",
-            "members": [],
-            "name": "window.WINDOW_EVENT_DEICONIFIED",
+            "members": [
+                {
+                    "doc": "deiconified window event <span class=\"icon-osx\"></span> <span class=\"icon-windows\"></span> <span class=\"icon-linux\"></span> This event is sent to a window event listener when the game window or app screen is restored after being iconified.",
+                    "name": "window.WINDOW_EVENT_DEICONIFIED"
+                },
+                {
+                    "doc": "focus gained window event This event is sent to a window event listener when the game window or app screen has gained focus. This event is also sent at game startup and the engine gives focus to the game.",
+                    "name": "window.WINDOW_EVENT_FOCUS_GAINED"
+                },
+                {
+                    "doc": "focus lost window event This event is sent to a window event listener when the game window or app screen has lost focus.",
+                    "name": "window.WINDOW_EVENT_FOCUS_LOST"
+                },
+                {
+                    "doc": "iconify window event <span class=\"icon-osx\"></span> <span class=\"icon-windows\"></span> <span class=\"icon-linux\"></span> This event is sent to a window event listener when the game window or app screen is iconified (reduced to an application icon in a toolbar, application tray or similar).",
+                    "name": "window.WINDOW_EVENT_ICONIFIED"
+                },
+                {
+                    "doc": "resized window event This event is sent to a window event listener when the game window or app screen is resized. The new size is passed along in the data field to the event listener.",
+                    "name": "window.WINDOW_EVENT_RESIZED"
+                }
+            ],
+            "name": "window.WINDOW_EVENT",
             "notes": [],
             "parameters": [],
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "focus gained window event",
-            "description": "This event is sent to a window event listener when the game window or app screen has\ngained focus.\nThis event is also sent at game startup and the engine gives focus to the game.",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "window.WINDOW_EVENT_FOCUS_GAINED",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "focus lost window event",
-            "description": "This event is sent to a window event listener when the game window or app screen has lost focus.",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "window.WINDOW_EVENT_FOCUS_LOST",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "iconify window event",
-            "description": "<span class=\"icon-osx\"></span> <span class=\"icon-windows\"></span> <span class=\"icon-linux\"></span> This event is sent to a window event listener when the game window or app screen is\niconified (reduced to an application icon in a toolbar, application tray or similar).",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "window.WINDOW_EVENT_ICONIFIED",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "resized window event",
-            "description": "This event is sent to a window event listener when the game window or app screen is resized.\nThe new size is passed along in the data field to the event listener.",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "window.WINDOW_EVENT_RESIZED",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
+            "type": "ENUM",
+            "value_type": "integer",
+            "value_type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
         }
     ],
+    "format_version": 2,
     "info": {
         "api_language": "Lua",
         "brief": "Window API documentation",

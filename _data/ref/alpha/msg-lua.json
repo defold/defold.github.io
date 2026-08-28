@@ -18,6 +18,16 @@
                         "string",
                         "url",
                         "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"#url\">url</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"#url\">url</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
                     ]
                 },
                 {
@@ -27,6 +37,14 @@
                     "types": [
                         "string",
                         "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
                     ]
                 },
                 {
@@ -34,8 +52,16 @@
                     "is_optional": "True",
                     "name": "message",
                     "types": [
-                        "table",
+                        "table<any, any>",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">table</a>&lt;<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>, <a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>&gt;",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">table</a>&lt;<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>, <a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>&gt;",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 }
             ],
@@ -61,6 +87,12 @@
                     "name": "url",
                     "types": [
                         "url"
+                    ],
+                    "types_html": [
+                        "<a href=\"#url\">url</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#url\">url</a>"
                     ]
                 }
             ],
@@ -83,6 +115,12 @@
                     "name": "urlstring",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 }
             ],
@@ -93,6 +131,12 @@
                     "name": "url",
                     "types": [
                         "url"
+                    ],
+                    "types_html": [
+                        "<a href=\"#url\">url</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#url\">url</a>"
                     ]
                 }
             ],
@@ -116,6 +160,14 @@
                     "types": [
                         "string",
                         "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
                     ]
                 },
                 {
@@ -125,6 +177,14 @@
                     "types": [
                         "string",
                         "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
                     ]
                 },
                 {
@@ -134,6 +194,14 @@
                     "types": [
                         "string",
                         "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
                     ]
                 }
             ],
@@ -144,13 +212,60 @@
                     "name": "url",
                     "types": [
                         "url"
+                    ],
+                    "types_html": [
+                        "<a href=\"#url\">url</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#url\">url</a>"
                     ]
                 }
             ],
             "tparams": [],
             "type": "FUNCTION"
+        },
+        {
+            "brief": "Component URL",
+            "description": "A URL identifies a message endpoint in Defold. Its string form is\n<code>[socket:][path][#fragment]</code>: the socket identifies a collection, the path\nidentifies a game object, and the fragment identifies a component. Missing\nparts are resolved relative to the script that creates the URL.\nCreate URLs with <a href=\"/ref/msg#msg.url\">msg.url</a>. The <code>socket</code>, <code>path</code>, and <code>fragment</code>\ncomponents are exposed as <span class=\"type\"><a href=\"../builtins-lua/#hash\">hash</a></span> values and can be inspected or\nreplaced individually. URLs are commonly passed to <a href=\"/ref/msg#msg.post\">msg.post</a> and to\nfunctions that address game objects or components.",
+            "error": "",
+            "examples": "Create a relative URL for a component on the current game object:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">sprite_url</span> <span class=\"o\">=</span> <span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">url</span><span class=\"p\">(</span><span class=\"s2\">&quot;#sprite&quot;</span><span class=\"p\">)</span>\n<span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"n\">sprite_url</span><span class=\"p\">,</span> <span class=\"s2\">&quot;disable&quot;</span><span class=\"p\">)</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">sprite_url</span><span class=\"p\">.</span><span class=\"n\">fragment</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; hash: [sprite]</span>\n</code></pre></div>\n\nCreate an absolute URL by specifying all three components:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">controller_url</span> <span class=\"o\">=</span> <span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">url</span><span class=\"p\">(</span><span class=\"s2\">&quot;main:/player#controller&quot;</span><span class=\"p\">)</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">controller_url</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; url: [main:/player#controller]</span>\n</code></pre></div>",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "socket",
+                    "doc": "socket component",
+                    "is_optional": false,
+                    "name": "socket",
+                    "type": "hash",
+                    "type_html": "<a href=\"../builtins-lua/#hash\">hash</a>"
+                },
+                {
+                    "display_name": "path",
+                    "doc": "path component",
+                    "is_optional": false,
+                    "name": "path",
+                    "type": "hash",
+                    "type_html": "<a href=\"../builtins-lua/#hash\">hash</a>"
+                },
+                {
+                    "display_name": "fragment",
+                    "doc": "fragment component",
+                    "is_optional": false,
+                    "name": "fragment",
+                    "type": "hash",
+                    "type_html": "<a href=\"../builtins-lua/#hash\">hash</a>"
+                }
+            ],
+            "name": "url",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "CLASS"
         }
     ],
+    "format_version": 2,
     "info": {
         "api_language": "Lua",
         "brief": "Messaging API documentation",

@@ -71,11 +71,17 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "reference to the script state to be used for storing data",
+                    "doc": "script instance used for storing state",
                     "is_optional": "False",
                     "name": "self",
                     "types": [
-                        "userdata"
+                        "script_instance"
+                    ],
+                    "types_html": [
+                        "<a href=\"../builtins-lua/#script_instance\">script_instance</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../builtins-lua/#script_instance\">script_instance</a>"
                     ]
                 }
             ],
@@ -95,11 +101,17 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "reference to the script state to be used for storing data",
+                    "doc": "script instance used for storing state",
                     "is_optional": "False",
                     "name": "self",
                     "types": [
-                        "userdata"
+                        "script_instance"
+                    ],
+                    "types_html": [
+                        "<a href=\"../builtins-lua/#script_instance\">script_instance</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../builtins-lua/#script_instance\">script_instance</a>"
                     ]
                 },
                 {
@@ -108,6 +120,12 @@
                     "name": "dt",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -134,6 +152,16 @@
                         "string",
                         "hash",
                         "url"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
                     ]
                 },
                 {
@@ -143,6 +171,14 @@
                     "types": [
                         "string",
                         "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
                     ]
                 },
                 {
@@ -150,12 +186,13 @@
                     "is_optional": "False",
                     "name": "playback",
                     "types": [
-                        "go.PLAYBACK_ONCE_FORWARD",
-                        "go.PLAYBACK_ONCE_BACKWARD",
-                        "go.PLAYBACK_ONCE_PINGPONG",
-                        "go.PLAYBACK_LOOP_FORWARD",
-                        "go.PLAYBACK_LOOP_BACKWARD",
-                        "go.PLAYBACK_LOOP_PINGPONG"
+                        "go.PLAYBACK"
+                    ],
+                    "types_html": [
+                        "<a href=\"#go.PLAYBACK\">go.PLAYBACK</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#go.PLAYBACK\">go.PLAYBACK</a>"
                     ]
                 },
                 {
@@ -167,6 +204,18 @@
                         "vector3",
                         "vector4",
                         "quaternion"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>",
+                        "<a href=\"../vmath-lua/#vector4\">vector4</a>",
+                        "<a href=\"../vmath-lua/#quaternion\">quaternion</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>",
+                        "<a href=\"../vmath-lua/#vector4\">vector4</a>",
+                        "<a href=\"../vmath-lua/#quaternion\">quaternion</a>"
                     ]
                 },
                 {
@@ -175,47 +224,15 @@
                     "name": "easing",
                     "types": [
                         "vector",
-                        "go.EASING_INBACK",
-                        "go.EASING_INBOUNCE",
-                        "go.EASING_INCIRC",
-                        "go.EASING_INCUBIC",
-                        "go.EASING_INELASTIC",
-                        "go.EASING_INEXPO",
-                        "go.EASING_INOUTBACK",
-                        "go.EASING_INOUTBOUNCE",
-                        "go.EASING_INOUTCIRC",
-                        "go.EASING_INOUTCUBIC",
-                        "go.EASING_INOUTELASTIC",
-                        "go.EASING_INOUTEXPO",
-                        "go.EASING_INOUTQUAD",
-                        "go.EASING_INOUTQUART",
-                        "go.EASING_INOUTQUINT",
-                        "go.EASING_INOUTSINE",
-                        "go.EASING_INQUAD",
-                        "go.EASING_INQUART",
-                        "go.EASING_INQUINT",
-                        "go.EASING_INSINE",
-                        "go.EASING_LINEAR",
-                        "go.EASING_OUTBACK",
-                        "go.EASING_OUTBOUNCE",
-                        "go.EASING_OUTCIRC",
-                        "go.EASING_OUTCUBIC",
-                        "go.EASING_OUTELASTIC",
-                        "go.EASING_OUTEXPO",
-                        "go.EASING_OUTINBACK",
-                        "go.EASING_OUTINBOUNCE",
-                        "go.EASING_OUTINCIRC",
-                        "go.EASING_OUTINCUBIC",
-                        "go.EASING_OUTINELASTIC",
-                        "go.EASING_OUTINEXPO",
-                        "go.EASING_OUTINQUAD",
-                        "go.EASING_OUTINQUART",
-                        "go.EASING_OUTINQUINT",
-                        "go.EASING_OUTINSINE",
-                        "go.EASING_OUTQUAD",
-                        "go.EASING_OUTQUART",
-                        "go.EASING_OUTQUINT",
-                        "go.EASING_OUTSINE"
+                        "go.EASING"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector\">vector</a>",
+                        "<a href=\"#go.EASING\">go.EASING</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector\">vector</a>",
+                        "<a href=\"#go.EASING\">go.EASING</a>"
                     ]
                 },
                 {
@@ -224,6 +241,12 @@
                     "name": "duration",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -232,14 +255,26 @@
                     "name": "delay",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
-                    "doc": "optional function to call when the animation has completed\n<dl>\n<dt><code>self</code></dt>\n<dd>\n<span class=\"type\">object</span> The current object.\n</dd>\n<dt><code>url</code></dt>\n<dd>\n<span class=\"type\">url</span> The game object or component instance for which the property is animated.\n</dd>\n<dt><code>property</code></dt>\n<dd>\n<span class=\"type\">hash</span> The id of the animated property.\n</dd>\n</dl>",
+                    "doc": "optional function to call when the animation has completed\n<dl>\n<dt class=\"api-lua-v2-type-definition\"><code>self:<a href=\"../builtins-lua/#script_instance\">script_instance</a></code></dt>\n<dd>The current script instance.</dd>\n<dt class=\"api-lua-v2-type-definition\"><code>url:<a href=\"../msg-lua/#url\">url</a></code></dt>\n<dd>The game object or component instance for which the property is animated.</dd>\n<dt class=\"api-lua-v2-type-definition\"><code>property:<a href=\"../builtins-lua/#hash\">hash</a></code></dt>\n<dd>The id of the animated property.</dd>\n</dl>",
                     "is_optional": "True",
                     "name": "complete_function",
                     "types": [
-                        "function(self, url, property)"
+                        "fun(self:script_instance, url:url, property:hash)"
+                    ],
+                    "types_html": [
+                        "fun(self:<a href=\"../builtins-lua/#script_instance\">script_instance</a>, url:<a href=\"../msg-lua/#url\">url</a>, property:<a href=\"../builtins-lua/#hash\">hash</a>)"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">function</a>(\n\tself:<a href=\"../builtins-lua/#script_instance\">script_instance</a>,\n\turl:<a href=\"../msg-lua/#url\">url</a>,\n\tproperty:<a href=\"../builtins-lua/#hash\">hash</a>)"
                     ]
                 }
             ],
@@ -266,6 +301,16 @@
                         "string",
                         "hash",
                         "url"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
                     ]
                 },
                 {
@@ -275,6 +320,14 @@
                     "types": [
                         "string",
                         "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
                     ]
                 }
             ],
@@ -301,7 +354,19 @@
                         "string",
                         "hash",
                         "url",
-                        "table"
+                        "(string|hash|url)[]"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>",
+                        "(<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>|<a href=\"../builtins-lua/#hash\">hash</a>|<a href=\"../msg-lua/#url\">url</a>)[]"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>",
+                        "(<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>|<a href=\"../builtins-lua/#hash\">hash</a>|<a href=\"../msg-lua/#url\">url</a>)[]"
                     ]
                 },
                 {
@@ -310,6 +375,12 @@
                     "name": "recursive",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
@@ -319,619 +390,186 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "in-back",
-            "description": "in-back",
+            "brief": "Easing curves",
+            "description": "Easing curves",
             "error": "",
             "examples": "",
             "language": "",
-            "members": [],
-            "name": "go.EASING_INBACK",
+            "members": [
+                {
+                    "doc": "in-back",
+                    "name": "go.EASING_INBACK"
+                },
+                {
+                    "doc": "in-bounce",
+                    "name": "go.EASING_INBOUNCE"
+                },
+                {
+                    "doc": "in-circlic",
+                    "name": "go.EASING_INCIRC"
+                },
+                {
+                    "doc": "in-cubic",
+                    "name": "go.EASING_INCUBIC"
+                },
+                {
+                    "doc": "in-elastic",
+                    "name": "go.EASING_INELASTIC"
+                },
+                {
+                    "doc": "in-exponential",
+                    "name": "go.EASING_INEXPO"
+                },
+                {
+                    "doc": "in-out-back",
+                    "name": "go.EASING_INOUTBACK"
+                },
+                {
+                    "doc": "in-out-bounce",
+                    "name": "go.EASING_INOUTBOUNCE"
+                },
+                {
+                    "doc": "in-out-circlic",
+                    "name": "go.EASING_INOUTCIRC"
+                },
+                {
+                    "doc": "in-out-cubic",
+                    "name": "go.EASING_INOUTCUBIC"
+                },
+                {
+                    "doc": "in-out-elastic",
+                    "name": "go.EASING_INOUTELASTIC"
+                },
+                {
+                    "doc": "in-out-exponential",
+                    "name": "go.EASING_INOUTEXPO"
+                },
+                {
+                    "doc": "in-out-quadratic",
+                    "name": "go.EASING_INOUTQUAD"
+                },
+                {
+                    "doc": "in-out-quartic",
+                    "name": "go.EASING_INOUTQUART"
+                },
+                {
+                    "doc": "in-out-quintic",
+                    "name": "go.EASING_INOUTQUINT"
+                },
+                {
+                    "doc": "in-out-sine",
+                    "name": "go.EASING_INOUTSINE"
+                },
+                {
+                    "doc": "in-quadratic",
+                    "name": "go.EASING_INQUAD"
+                },
+                {
+                    "doc": "in-quartic",
+                    "name": "go.EASING_INQUART"
+                },
+                {
+                    "doc": "in-quintic",
+                    "name": "go.EASING_INQUINT"
+                },
+                {
+                    "doc": "in-sine",
+                    "name": "go.EASING_INSINE"
+                },
+                {
+                    "doc": "linear interpolation",
+                    "name": "go.EASING_LINEAR"
+                },
+                {
+                    "doc": "out-back",
+                    "name": "go.EASING_OUTBACK"
+                },
+                {
+                    "doc": "out-bounce",
+                    "name": "go.EASING_OUTBOUNCE"
+                },
+                {
+                    "doc": "out-circlic",
+                    "name": "go.EASING_OUTCIRC"
+                },
+                {
+                    "doc": "out-cubic",
+                    "name": "go.EASING_OUTCUBIC"
+                },
+                {
+                    "doc": "out-elastic",
+                    "name": "go.EASING_OUTELASTIC"
+                },
+                {
+                    "doc": "out-exponential",
+                    "name": "go.EASING_OUTEXPO"
+                },
+                {
+                    "doc": "out-in-back",
+                    "name": "go.EASING_OUTINBACK"
+                },
+                {
+                    "doc": "out-in-bounce",
+                    "name": "go.EASING_OUTINBOUNCE"
+                },
+                {
+                    "doc": "out-in-circlic",
+                    "name": "go.EASING_OUTINCIRC"
+                },
+                {
+                    "doc": "out-in-cubic",
+                    "name": "go.EASING_OUTINCUBIC"
+                },
+                {
+                    "doc": "out-in-elastic",
+                    "name": "go.EASING_OUTINELASTIC"
+                },
+                {
+                    "doc": "out-in-exponential",
+                    "name": "go.EASING_OUTINEXPO"
+                },
+                {
+                    "doc": "out-in-quadratic",
+                    "name": "go.EASING_OUTINQUAD"
+                },
+                {
+                    "doc": "out-in-quartic",
+                    "name": "go.EASING_OUTINQUART"
+                },
+                {
+                    "doc": "out-in-quintic",
+                    "name": "go.EASING_OUTINQUINT"
+                },
+                {
+                    "doc": "out-in-sine",
+                    "name": "go.EASING_OUTINSINE"
+                },
+                {
+                    "doc": "out-quadratic",
+                    "name": "go.EASING_OUTQUAD"
+                },
+                {
+                    "doc": "out-quartic",
+                    "name": "go.EASING_OUTQUART"
+                },
+                {
+                    "doc": "out-quintic",
+                    "name": "go.EASING_OUTQUINT"
+                },
+                {
+                    "doc": "out-sine",
+                    "name": "go.EASING_OUTSINE"
+                }
+            ],
+            "name": "go.EASING",
             "notes": [],
             "parameters": [],
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "in-bounce",
-            "description": "in-bounce",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "go.EASING_INBOUNCE",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "in-circlic",
-            "description": "in-circlic",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "go.EASING_INCIRC",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "in-cubic",
-            "description": "in-cubic",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "go.EASING_INCUBIC",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "in-elastic",
-            "description": "in-elastic",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "go.EASING_INELASTIC",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "in-exponential",
-            "description": "in-exponential",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "go.EASING_INEXPO",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "in-out-back",
-            "description": "in-out-back",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "go.EASING_INOUTBACK",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "in-out-bounce",
-            "description": "in-out-bounce",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "go.EASING_INOUTBOUNCE",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "in-out-circlic",
-            "description": "in-out-circlic",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "go.EASING_INOUTCIRC",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "in-out-cubic",
-            "description": "in-out-cubic",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "go.EASING_INOUTCUBIC",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "in-out-elastic",
-            "description": "in-out-elastic",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "go.EASING_INOUTELASTIC",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "in-out-exponential",
-            "description": "in-out-exponential",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "go.EASING_INOUTEXPO",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "in-out-quadratic",
-            "description": "in-out-quadratic",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "go.EASING_INOUTQUAD",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "in-out-quartic",
-            "description": "in-out-quartic",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "go.EASING_INOUTQUART",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "in-out-quintic",
-            "description": "in-out-quintic",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "go.EASING_INOUTQUINT",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "in-out-sine",
-            "description": "in-out-sine",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "go.EASING_INOUTSINE",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "in-quadratic",
-            "description": "in-quadratic",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "go.EASING_INQUAD",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "in-quartic",
-            "description": "in-quartic",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "go.EASING_INQUART",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "in-quintic",
-            "description": "in-quintic",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "go.EASING_INQUINT",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "in-sine",
-            "description": "in-sine",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "go.EASING_INSINE",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "linear interpolation",
-            "description": "linear interpolation",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "go.EASING_LINEAR",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "out-back",
-            "description": "out-back",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "go.EASING_OUTBACK",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "out-bounce",
-            "description": "out-bounce",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "go.EASING_OUTBOUNCE",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "out-circlic",
-            "description": "out-circlic",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "go.EASING_OUTCIRC",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "out-cubic",
-            "description": "out-cubic",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "go.EASING_OUTCUBIC",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "out-elastic",
-            "description": "out-elastic",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "go.EASING_OUTELASTIC",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "out-exponential",
-            "description": "out-exponential",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "go.EASING_OUTEXPO",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "out-in-back",
-            "description": "out-in-back",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "go.EASING_OUTINBACK",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "out-in-bounce",
-            "description": "out-in-bounce",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "go.EASING_OUTINBOUNCE",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "out-in-circlic",
-            "description": "out-in-circlic",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "go.EASING_OUTINCIRC",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "out-in-cubic",
-            "description": "out-in-cubic",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "go.EASING_OUTINCUBIC",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "out-in-elastic",
-            "description": "out-in-elastic",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "go.EASING_OUTINELASTIC",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "out-in-exponential",
-            "description": "out-in-exponential",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "go.EASING_OUTINEXPO",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "out-in-quadratic",
-            "description": "out-in-quadratic",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "go.EASING_OUTINQUAD",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "out-in-quartic",
-            "description": "out-in-quartic",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "go.EASING_OUTINQUART",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "out-in-quintic",
-            "description": "out-in-quintic",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "go.EASING_OUTINQUINT",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "out-in-sine",
-            "description": "out-in-sine",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "go.EASING_OUTINSINE",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "out-quadratic",
-            "description": "out-quadratic",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "go.EASING_OUTQUAD",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "out-quartic",
-            "description": "out-quartic",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "go.EASING_OUTQUART",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "out-quintic",
-            "description": "out-quintic",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "go.EASING_OUTQUINT",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "out-sine",
-            "description": "out-sine",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "go.EASING_OUTSINE",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
+            "type": "ENUM",
+            "value_type": "integer",
+            "value_type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
         },
         {
             "brief": "check if the specified game object exists",
@@ -951,6 +589,16 @@
                         "string",
                         "hash",
                         "url"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
                     ]
                 }
             ],
@@ -961,6 +609,12 @@
                     "name": "exists",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
@@ -971,7 +625,7 @@
             "brief": "gets a named property of the specified game object or component",
             "description": "gets a named property of the specified game object or component",
             "error": "",
-            "examples": "Get a property \"speed\" from a script \"player\", the property must be declared in the player-script:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">property</span><span class=\"p\">(</span><span class=\"s2\">&quot;speed&quot;</span><span class=\"p\">,</span> <span class=\"mi\">50</span><span class=\"p\">)</span>\n</code></pre></div>\n\nThen in the calling script (assumed to belong to the same game object, but does not have to):\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">speed</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">&quot;#player&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;speed&quot;</span><span class=\"p\">)</span>\n<span class=\"err\">```</span><span class=\"n\">Get</span> <span class=\"n\">a</span> <span class=\"n\">value</span> <span class=\"kr\">in</span> <span class=\"n\">a</span> <span class=\"n\">material</span> <span class=\"n\">property</span> <span class=\"n\">array</span>\n\n<span class=\"err\">```</span><span class=\"n\">lua</span>\n<span class=\"c1\">-- get the first vector4 in the array: example[0] (the glsl indices are 0-based)</span>\n<span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"n\">url</span><span class=\"p\">,</span> <span class=\"s2\">&quot;example&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">index</span><span class=\"o\">=</span><span class=\"mi\">1</span><span class=\"p\">})</span>\n\n<span class=\"c1\">-- get the last vector4 in the array: example[15] (the glsl indices are 0-based)</span>\n<span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"n\">url</span><span class=\"p\">,</span> <span class=\"s2\">&quot;example&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">index</span><span class=\"o\">=</span><span class=\"mi\">16</span><span class=\"p\">})</span>\n\n<span class=\"c1\">-- get an element of a vector4 in the array: example[0].x (the glsl indices are 0-based)</span>\n<span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"n\">url</span><span class=\"p\">,</span> <span class=\"s2\">&quot;example.x&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">index</span><span class=\"o\">=</span><span class=\"mi\">1</span><span class=\"p\">})</span>\n</code></pre></div>\n\nGetting all values in a material property array as a table\n```lua\n-- get all vector4's in the constant array\ngo.get(url, \"example\")\n-- result: { vector4, vector4, ... }\n-- get all elements of the vector4's from an array\ngo.get(url, \"example.x\")\n-- result: { number1, number2, ... }\n```Get a named property\n<code>lua\n-- get the resource of a certain gui font\nlocal font_hash = go.get(\"#gui\", \"fonts\", {key = \"system_font_BIG\"})</code>Get a property from a sub-component, using the \"keys\" options table\n<code>lua\n-- Addressing the first level of a component:\ngo.get(\"#particlefx\", \"material\", { keys = { \"cone_emitter\" } })</code>Get a property into a deeper sub-hierarchy (if the component supports it).\n```lua\n-- Note: There is currently no component that supports this, but a custom component could.\ngo.get(\"#my_component\", \"some_property\", { keys = { \"root\", \"child_node\" } })",
+            "examples": "Get a property \"speed\" from a script \"player\", the property must be declared in the player-script:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">property</span><span class=\"p\">(</span><span class=\"s2\">&quot;speed&quot;</span><span class=\"p\">,</span> <span class=\"mi\">50</span><span class=\"p\">)</span>\n</code></pre></div>\n\nThen in the calling script (assumed to belong to the same game object, but does not have to):\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">speed</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">&quot;#player&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;speed&quot;</span><span class=\"p\">)</span>\n</code></pre></div>\n\nGet a value in a material property array\n<div class=\"codehilite\"><pre><span></span><code><span class=\"c1\">-- get the first vector4 in the array: example[0] (the glsl indices are 0-based)</span>\n<span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"n\">url</span><span class=\"p\">,</span> <span class=\"s2\">&quot;example&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">index</span><span class=\"o\">=</span><span class=\"mi\">1</span><span class=\"p\">})</span>\n\n<span class=\"c1\">-- get the last vector4 in the array: example[15] (the glsl indices are 0-based)</span>\n<span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"n\">url</span><span class=\"p\">,</span> <span class=\"s2\">&quot;example&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">index</span><span class=\"o\">=</span><span class=\"mi\">16</span><span class=\"p\">})</span>\n\n<span class=\"c1\">-- get an element of a vector4 in the array: example[0].x (the glsl indices are 0-based)</span>\n<span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"n\">url</span><span class=\"p\">,</span> <span class=\"s2\">&quot;example.x&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">index</span><span class=\"o\">=</span><span class=\"mi\">1</span><span class=\"p\">})</span>\n</code></pre></div>\n\nGetting all values in a material property array as a table\n<div class=\"codehilite\"><pre><span></span><code><span class=\"c1\">-- get all vector4&#39;s in the constant array</span>\n<span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"n\">url</span><span class=\"p\">,</span> <span class=\"s2\">&quot;example&quot;</span><span class=\"p\">)</span>\n<span class=\"c1\">-- result: { vector4, vector4, ... }</span>\n\n<span class=\"c1\">-- get all elements of the vector4&#39;s from an array</span>\n<span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"n\">url</span><span class=\"p\">,</span> <span class=\"s2\">&quot;example.x&quot;</span><span class=\"p\">)</span>\n<span class=\"c1\">-- result: { number1, number2, ... }</span>\n</code></pre></div>\n\nGet a named property\n<div class=\"codehilite\"><pre><span></span><code><span class=\"c1\">-- get the resource of a certain gui font</span>\n<span class=\"kd\">local</span> <span class=\"n\">font_hash</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">&quot;#gui&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;fonts&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">key</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;system_font_BIG&quot;</span><span class=\"p\">})</span>\n</code></pre></div>\n\nGet a property from a sub-component, using the \"keys\" options table\n<div class=\"codehilite\"><pre><span></span><code><span class=\"c1\">-- Addressing the first level of a component:</span>\n<span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">&quot;#particlefx&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;material&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span> <span class=\"n\">keys</span> <span class=\"o\">=</span> <span class=\"p\">{</span> <span class=\"s2\">&quot;cone_emitter&quot;</span> <span class=\"p\">}</span> <span class=\"p\">})</span>\n</code></pre></div>\n\nGet a property into a deeper sub-hierarchy (if the component supports it).\n<div class=\"codehilite\"><pre><span></span><code><span class=\"c1\">-- Note: There is currently no component that supports this, but a custom component could.</span>\n<span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">&quot;#my_component&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;some_property&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span> <span class=\"n\">keys</span> <span class=\"o\">=</span> <span class=\"p\">{</span> <span class=\"s2\">&quot;root&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;child_node&quot;</span> <span class=\"p\">}</span> <span class=\"p\">})</span>\n</code></pre></div>",
             "language": "",
             "members": [],
             "name": "go.get",
@@ -985,6 +639,16 @@
                         "string",
                         "hash",
                         "url"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
                     ]
                 },
                 {
@@ -994,14 +658,28 @@
                     "types": [
                         "string",
                         "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
                     ]
                 },
                 {
-                    "doc": "optional options table\n- index <span class=\"type\">number</span> index into array property (1 based)\n- key <span class=\"type\">hash</span> name of internal property\n- keys <span class=\"type\">table</span> array of internal component resources identified by key (e.g. a particle fx emitter, see examples below)",
+                    "doc": "optional property access options",
                     "is_optional": "True",
                     "name": "options",
                     "types": [
-                        "table"
+                        "go.property_options"
+                    ],
+                    "types_html": [
+                        "<a href=\"#go.property_options\">go.property_options</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#go.property_options\">go.property_options</a>"
                     ]
                 }
             ],
@@ -1019,7 +697,29 @@
                         "vector3",
                         "vector4",
                         "quaternion",
-                        "resource"
+                        "resource_data"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>",
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>",
+                        "<a href=\"../vmath-lua/#vector4\">vector4</a>",
+                        "<a href=\"../vmath-lua/#quaternion\">quaternion</a>",
+                        "<a href=\"../resource-lua/#resource_data\">resource_data</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>",
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>",
+                        "<a href=\"../vmath-lua/#vector4\">vector4</a>",
+                        "<a href=\"../vmath-lua/#quaternion\">quaternion</a>",
+                        "<a href=\"../resource-lua/#resource_data\">resource_data</a>"
                     ]
                 }
             ],
@@ -1042,6 +742,12 @@
                     "name": "path",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 }
             ],
@@ -1052,6 +758,12 @@
                     "name": "id",
                     "types": [
                         "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
                     ]
                 }
             ],
@@ -1076,6 +788,16 @@
                         "string",
                         "hash",
                         "url"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
                     ]
                 }
             ],
@@ -1087,6 +809,14 @@
                     "types": [
                         "hash",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 }
             ],
@@ -1111,6 +841,16 @@
                         "string",
                         "hash",
                         "url"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
                     ]
                 }
             ],
@@ -1121,6 +861,12 @@
                     "name": "position",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 }
             ],
@@ -1145,6 +891,16 @@
                         "string",
                         "hash",
                         "url"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
                     ]
                 }
             ],
@@ -1155,6 +911,12 @@
                     "name": "rotation",
                     "types": [
                         "quaternion"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#quaternion\">quaternion</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#quaternion\">quaternion</a>"
                     ]
                 }
             ],
@@ -1179,6 +941,16 @@
                         "string",
                         "hash",
                         "url"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
                     ]
                 }
             ],
@@ -1189,6 +961,12 @@
                     "name": "scale",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 }
             ],
@@ -1213,6 +991,16 @@
                         "string",
                         "hash",
                         "url"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
                     ]
                 }
             ],
@@ -1223,6 +1011,12 @@
                     "name": "scale",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -1247,6 +1041,16 @@
                         "string",
                         "hash",
                         "url"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
                     ]
                 }
             ],
@@ -1257,6 +1061,12 @@
                     "name": "position",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 }
             ],
@@ -1281,6 +1091,16 @@
                         "string",
                         "hash",
                         "url"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
                     ]
                 }
             ],
@@ -1291,6 +1111,12 @@
                     "name": "rotation",
                     "types": [
                         "quaternion"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#quaternion\">quaternion</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#quaternion\">quaternion</a>"
                     ]
                 }
             ],
@@ -1315,6 +1141,16 @@
                         "string",
                         "hash",
                         "url"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
                     ]
                 }
             ],
@@ -1325,6 +1161,12 @@
                     "name": "scale",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 }
             ],
@@ -1349,6 +1191,16 @@
                         "string",
                         "hash",
                         "url"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
                     ]
                 }
             ],
@@ -1359,6 +1211,12 @@
                     "name": "scale",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -1383,6 +1241,16 @@
                         "string",
                         "hash",
                         "url"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
                     ]
                 }
             ],
@@ -1393,6 +1261,12 @@
                     "name": "transform",
                     "types": [
                         "matrix4"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#matrix4\">matrix4</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#matrix4\">matrix4</a>"
                     ]
                 }
             ],
@@ -1400,109 +1274,50 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "loop backward",
-            "description": "loop backward",
+            "brief": "Playback modes",
+            "description": "Playback modes",
             "error": "",
             "examples": "",
             "language": "",
-            "members": [],
-            "name": "go.PLAYBACK_LOOP_BACKWARD",
+            "members": [
+                {
+                    "doc": "loop backward",
+                    "name": "go.PLAYBACK_LOOP_BACKWARD"
+                },
+                {
+                    "doc": "loop forward",
+                    "name": "go.PLAYBACK_LOOP_FORWARD"
+                },
+                {
+                    "doc": "ping pong loop",
+                    "name": "go.PLAYBACK_LOOP_PINGPONG"
+                },
+                {
+                    "doc": "no playback",
+                    "name": "go.PLAYBACK_NONE"
+                },
+                {
+                    "doc": "once backward",
+                    "name": "go.PLAYBACK_ONCE_BACKWARD"
+                },
+                {
+                    "doc": "once forward",
+                    "name": "go.PLAYBACK_ONCE_FORWARD"
+                },
+                {
+                    "doc": "once ping pong",
+                    "name": "go.PLAYBACK_ONCE_PINGPONG"
+                }
+            ],
+            "name": "go.PLAYBACK",
             "notes": [],
             "parameters": [],
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "loop forward",
-            "description": "loop forward",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "go.PLAYBACK_LOOP_FORWARD",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "ping pong loop",
-            "description": "ping pong loop",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "go.PLAYBACK_LOOP_PINGPONG",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "no playback",
-            "description": "no playback",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "go.PLAYBACK_NONE",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "once backward",
-            "description": "once backward",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "go.PLAYBACK_ONCE_BACKWARD",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "once forward",
-            "description": "once forward",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "go.PLAYBACK_ONCE_FORWARD",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "once ping pong",
-            "description": "once ping pong",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "go.PLAYBACK_ONCE_PINGPONG",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
+            "type": "ENUM",
+            "value_type": "integer",
+            "value_type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
         },
         {
             "brief": "define a property for the script",
@@ -1520,10 +1335,16 @@
                     "name": "name",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 },
                 {
-                    "doc": "default value of the property. In the case of a url, only the empty constructor msg.url() is allowed. In the case of a resource one of the resource constructors (eg resource.atlas(), resource.font() etc) is expected. Strings are stored as null-terminated UTF-8 and cannot contain embedded null bytes.",
+                    "doc": "default value of the property. In the case of a url, only the empty constructor msg.url() is allowed. In the case of a resource one of the resource constructors (eg resource.atlas(), resource.font() etc) is expected.",
                     "is_optional": "False",
                     "name": "value",
                     "types": [
@@ -1534,8 +1355,30 @@
                         "vector3",
                         "vector4",
                         "quaternion",
-                        "resource",
+                        "resource_data",
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>",
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>",
+                        "<a href=\"../vmath-lua/#vector4\">vector4</a>",
+                        "<a href=\"../vmath-lua/#quaternion\">quaternion</a>",
+                        "<a href=\"../resource-lua/#resource_data\">resource_data</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>",
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>",
+                        "<a href=\"../vmath-lua/#vector4\">vector4</a>",
+                        "<a href=\"../vmath-lua/#quaternion\">quaternion</a>",
+                        "<a href=\"../resource-lua/#resource_data\">resource_data</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
@@ -1545,10 +1388,50 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "Property access options",
+            "description": "Options for accessing indexed or internal component properties with <a href=\"/ref/go#go.get\">go.get</a> and <a href=\"/ref/go#go.set\">go.set</a>.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "index",
+                    "doc": "Index into an array property, starting at one.",
+                    "is_optional": true,
+                    "name": "index?",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "key",
+                    "doc": "Name of an internal property.",
+                    "is_optional": true,
+                    "name": "key?",
+                    "type": "hash",
+                    "type_html": "<a href=\"../builtins-lua/#hash\">hash</a>"
+                },
+                {
+                    "display_name": "keys",
+                    "doc": "Internal component resources identified by key, such as particle FX emitters.",
+                    "is_optional": true,
+                    "name": "keys?",
+                    "type": "hash[]",
+                    "type_html": "<a href=\"../builtins-lua/#hash\">hash</a>[]"
+                }
+            ],
+            "name": "go.property_options",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
             "brief": "sets a named property of the specified game object or component, or a material constant",
             "description": "sets a named property of the specified game object or component, or a material constant",
             "error": "",
-            "examples": "Set a property \"speed\" of a script \"player\", the property must be declared in the player-script:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">property</span><span class=\"p\">(</span><span class=\"s2\">&quot;speed&quot;</span><span class=\"p\">,</span> <span class=\"mi\">50</span><span class=\"p\">)</span>\n</code></pre></div>\n\nThen in the calling script (assumed to belong to the same game object, but does not have to):\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"s2\">&quot;#player&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;speed&quot;</span><span class=\"p\">,</span> <span class=\"mi\">100</span><span class=\"p\">)</span>\n<span class=\"err\">```</span><span class=\"n\">Set</span> <span class=\"n\">a</span> <span class=\"n\">vector4</span> <span class=\"kr\">in</span> <span class=\"n\">a</span> <span class=\"n\">material</span> <span class=\"n\">property</span> <span class=\"n\">array</span>\n\n<span class=\"err\">```</span><span class=\"n\">lua</span>\n<span class=\"c1\">-- set the first vector4 in the array: example[0] = v (the glsl indices are 0-based)</span>\n<span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"n\">url</span><span class=\"p\">,</span> <span class=\"s2\">&quot;example&quot;</span><span class=\"p\">,</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector4</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span><span class=\"mi\">1</span><span class=\"p\">,</span><span class=\"mi\">1</span><span class=\"p\">,</span><span class=\"mi\">1</span><span class=\"p\">),</span> <span class=\"p\">{</span><span class=\"n\">index</span><span class=\"o\">=</span><span class=\"mi\">1</span><span class=\"p\">})</span>\n\n<span class=\"c1\">-- set the last vector4 in the array: example[15] = v (the glsl indices are 0-based)</span>\n<span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"n\">url</span><span class=\"p\">,</span> <span class=\"s2\">&quot;example&quot;</span><span class=\"p\">,</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector4</span><span class=\"p\">(</span><span class=\"mi\">2</span><span class=\"p\">,</span><span class=\"mi\">2</span><span class=\"p\">,</span><span class=\"mi\">2</span><span class=\"p\">,</span><span class=\"mi\">2</span><span class=\"p\">),</span> <span class=\"p\">{</span><span class=\"n\">index</span><span class=\"o\">=</span><span class=\"mi\">16</span><span class=\"p\">})</span>\n\n<span class=\"c1\">-- set an element of a vector4 in the array: example[0].x = 7 (the glsl indices are 0-based)</span>\n<span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"n\">url</span><span class=\"p\">,</span> <span class=\"s2\">&quot;example.x&quot;</span><span class=\"p\">,</span> <span class=\"mi\">7</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">index</span><span class=\"o\">=</span><span class=\"mi\">1</span><span class=\"p\">})</span>\n</code></pre></div>\n\nSet a material property array by a table of vector4\n<code>lua\n-- set the first two vector4's in the array\n-- if the array has more than two elements in the array they will not be set\ngo.set(url, \"example\", { vmath.vector4(1,1,1,1), vmath.vector4(2,2,2,2) })</code>Set a named property\n```lua\ngo.property(\"big_font\", resource.font())\nfunction init(self)\n    go.set(\"#gui\", \"fonts\", self.big_font, {key = \"system_font_BIG\"})\nend\n```Set a property on a sub-component, using the \"keys\" options table\n<code>lua\ngo.property(\"my_material\", resource.material)\nfunction init(self)\n    go.set(\"#particlefx\", \"material\", self.my_material, { keys = { \"cone_emitter\" } })\nend</code>Set a property in a deeper sub-hierarchy (if the component supports it).\n```lua\n-- Note: There is currently no component that supports this, but a custom component could.\ngo.set(\"#my_component\", \"some_property\", some_value, { keys = { \"root\", \"child_node\" } })",
+            "examples": "Set a property \"speed\" of a script \"player\", the property must be declared in the player-script:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">property</span><span class=\"p\">(</span><span class=\"s2\">&quot;speed&quot;</span><span class=\"p\">,</span> <span class=\"mi\">50</span><span class=\"p\">)</span>\n</code></pre></div>\n\nThen in the calling script (assumed to belong to the same game object, but does not have to):\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"s2\">&quot;#player&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;speed&quot;</span><span class=\"p\">,</span> <span class=\"mi\">100</span><span class=\"p\">)</span>\n</code></pre></div>\n\nSet a vector4 in a material property array\n<div class=\"codehilite\"><pre><span></span><code><span class=\"c1\">-- set the first vector4 in the array: example[0] = v (the glsl indices are 0-based)</span>\n<span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"n\">url</span><span class=\"p\">,</span> <span class=\"s2\">&quot;example&quot;</span><span class=\"p\">,</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector4</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span><span class=\"mi\">1</span><span class=\"p\">,</span><span class=\"mi\">1</span><span class=\"p\">,</span><span class=\"mi\">1</span><span class=\"p\">),</span> <span class=\"p\">{</span><span class=\"n\">index</span><span class=\"o\">=</span><span class=\"mi\">1</span><span class=\"p\">})</span>\n\n<span class=\"c1\">-- set the last vector4 in the array: example[15] = v (the glsl indices are 0-based)</span>\n<span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"n\">url</span><span class=\"p\">,</span> <span class=\"s2\">&quot;example&quot;</span><span class=\"p\">,</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector4</span><span class=\"p\">(</span><span class=\"mi\">2</span><span class=\"p\">,</span><span class=\"mi\">2</span><span class=\"p\">,</span><span class=\"mi\">2</span><span class=\"p\">,</span><span class=\"mi\">2</span><span class=\"p\">),</span> <span class=\"p\">{</span><span class=\"n\">index</span><span class=\"o\">=</span><span class=\"mi\">16</span><span class=\"p\">})</span>\n\n<span class=\"c1\">-- set an element of a vector4 in the array: example[0].x = 7 (the glsl indices are 0-based)</span>\n<span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"n\">url</span><span class=\"p\">,</span> <span class=\"s2\">&quot;example.x&quot;</span><span class=\"p\">,</span> <span class=\"mi\">7</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">index</span><span class=\"o\">=</span><span class=\"mi\">1</span><span class=\"p\">})</span>\n</code></pre></div>\n\nSet a material property array by a table of vector4\n<div class=\"codehilite\"><pre><span></span><code><span class=\"c1\">-- set the first two vector4&#39;s in the array</span>\n<span class=\"c1\">-- if the array has more than two elements in the array they will not be set</span>\n<span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"n\">url</span><span class=\"p\">,</span> <span class=\"s2\">&quot;example&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector4</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span><span class=\"mi\">1</span><span class=\"p\">,</span><span class=\"mi\">1</span><span class=\"p\">,</span><span class=\"mi\">1</span><span class=\"p\">),</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector4</span><span class=\"p\">(</span><span class=\"mi\">2</span><span class=\"p\">,</span><span class=\"mi\">2</span><span class=\"p\">,</span><span class=\"mi\">2</span><span class=\"p\">,</span><span class=\"mi\">2</span><span class=\"p\">)</span> <span class=\"p\">})</span>\n</code></pre></div>\n\nSet a named property\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">property</span><span class=\"p\">(</span><span class=\"s2\">&quot;big_font&quot;</span><span class=\"p\">,</span> <span class=\"n\">resource</span><span class=\"p\">.</span><span class=\"n\">font</span><span class=\"p\">())</span>\n\n<span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"s2\">&quot;#gui&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;fonts&quot;</span><span class=\"p\">,</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">big_font</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">key</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;system_font_BIG&quot;</span><span class=\"p\">})</span>\n<span class=\"kr\">end</span>\n</code></pre></div>\n\nSet a property on a sub-component, using the \"keys\" options table\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">property</span><span class=\"p\">(</span><span class=\"s2\">&quot;my_material&quot;</span><span class=\"p\">,</span> <span class=\"n\">resource</span><span class=\"p\">.</span><span class=\"n\">material</span><span class=\"p\">)</span>\n<span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"s2\">&quot;#particlefx&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;material&quot;</span><span class=\"p\">,</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_material</span><span class=\"p\">,</span> <span class=\"p\">{</span> <span class=\"n\">keys</span> <span class=\"o\">=</span> <span class=\"p\">{</span> <span class=\"s2\">&quot;cone_emitter&quot;</span> <span class=\"p\">}</span> <span class=\"p\">})</span>\n<span class=\"kr\">end</span>\n</code></pre></div>\n\nSet a property in a deeper sub-hierarchy (if the component supports it).\n<div class=\"codehilite\"><pre><span></span><code><span class=\"c1\">-- Note: There is currently no component that supports this, but a custom component could.</span>\n<span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"s2\">&quot;#my_component&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;some_property&quot;</span><span class=\"p\">,</span> <span class=\"n\">some_value</span><span class=\"p\">,</span> <span class=\"p\">{</span> <span class=\"n\">keys</span> <span class=\"o\">=</span> <span class=\"p\">{</span> <span class=\"s2\">&quot;root&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;child_node&quot;</span> <span class=\"p\">}</span> <span class=\"p\">})</span>\n</code></pre></div>",
             "language": "",
             "members": [],
             "name": "go.set",
@@ -1562,6 +1445,16 @@
                         "string",
                         "hash",
                         "url"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
                     ]
                 },
                 {
@@ -1571,6 +1464,14 @@
                     "types": [
                         "string",
                         "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
                     ]
                 },
                 {
@@ -1586,15 +1487,43 @@
                         "vector3",
                         "vector4",
                         "quaternion",
-                        "resource"
+                        "resource_data"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>",
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>",
+                        "<a href=\"../vmath-lua/#vector4\">vector4</a>",
+                        "<a href=\"../vmath-lua/#quaternion\">quaternion</a>",
+                        "<a href=\"../resource-lua/#resource_data\">resource_data</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>",
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>",
+                        "<a href=\"../vmath-lua/#vector4\">vector4</a>",
+                        "<a href=\"../vmath-lua/#quaternion\">quaternion</a>",
+                        "<a href=\"../resource-lua/#resource_data\">resource_data</a>"
                     ]
                 },
                 {
-                    "doc": "optional options table\n- index <span class=\"type\">integer</span> index into array property (1 based)\n- key <span class=\"type\">hash</span> name of internal property\n- keys <span class=\"type\">table</span> array of internal component resources identified by key (e.g. a particle fx emitter, see examples below)",
+                    "doc": "optional property access options",
                     "is_optional": "True",
                     "name": "options",
                     "types": [
-                        "table"
+                        "go.property_options"
+                    ],
+                    "types_html": [
+                        "<a href=\"#go.property_options\">go.property_options</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#go.property_options\">go.property_options</a>"
                     ]
                 }
             ],
@@ -1621,6 +1550,16 @@
                         "string",
                         "hash",
                         "url"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
                     ]
                 },
                 {
@@ -1631,6 +1570,16 @@
                         "string",
                         "hash",
                         "url"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
                     ]
                 },
                 {
@@ -1639,6 +1588,12 @@
                     "name": "keep_world_transform",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
@@ -1663,6 +1618,12 @@
                     "name": "position",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 },
                 {
@@ -1673,6 +1634,16 @@
                         "string",
                         "hash",
                         "url"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
                     ]
                 }
             ],
@@ -1697,6 +1668,12 @@
                     "name": "rotation",
                     "types": [
                         "quaternion"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#quaternion\">quaternion</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#quaternion\">quaternion</a>"
                     ]
                 },
                 {
@@ -1707,6 +1684,16 @@
                         "string",
                         "hash",
                         "url"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
                     ]
                 }
             ],
@@ -1732,6 +1719,14 @@
                     "types": [
                         "number",
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 },
                 {
@@ -1742,6 +1737,16 @@
                         "string",
                         "hash",
                         "url"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
                     ]
                 }
             ],
@@ -1767,6 +1772,14 @@
                     "types": [
                         "number",
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 },
                 {
@@ -1777,6 +1790,16 @@
                         "string",
                         "hash",
                         "url"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
                     ]
                 }
             ],
@@ -1803,6 +1826,16 @@
                         "string",
                         "hash",
                         "url"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
                     ]
                 }
             ],
@@ -1827,6 +1860,12 @@
                     "name": "position",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 },
                 {
@@ -1837,6 +1876,16 @@
                         "string",
                         "hash",
                         "url"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
                     ]
                 }
             ],
@@ -1847,6 +1896,12 @@
                     "name": "converted_postion",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 }
             ],
@@ -1869,6 +1924,12 @@
                     "name": "transformation",
                     "types": [
                         "matrix4"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#matrix4\">matrix4</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#matrix4\">matrix4</a>"
                     ]
                 },
                 {
@@ -1879,6 +1940,16 @@
                         "string",
                         "hash",
                         "url"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
                     ]
                 }
             ],
@@ -1889,6 +1960,12 @@
                     "name": "converted_transform",
                     "types": [
                         "matrix4"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#matrix4\">matrix4</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#matrix4\">matrix4</a>"
                     ]
                 }
             ],
@@ -1906,11 +1983,17 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "reference to the script state to be used for storing data",
+                    "doc": "script instance used for storing state",
                     "is_optional": "False",
                     "name": "self",
                     "types": [
-                        "userdata"
+                        "script_instance"
+                    ],
+                    "types_html": [
+                        "<a href=\"../builtins-lua/#script_instance\">script_instance</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../builtins-lua/#script_instance\">script_instance</a>"
                     ]
                 }
             ],
@@ -1930,11 +2013,17 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "reference to the script state to be used for storing data",
+                    "doc": "script instance used for storing state",
                     "is_optional": "False",
                     "name": "self",
                     "types": [
-                        "userdata"
+                        "script_instance"
+                    ],
+                    "types_html": [
+                        "<a href=\"../builtins-lua/#script_instance\">script_instance</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../builtins-lua/#script_instance\">script_instance</a>"
                     ]
                 },
                 {
@@ -1943,6 +2032,12 @@
                     "name": "dt",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -1953,7 +2048,7 @@
         },
         {
             "brief": "called when user input is received",
-            "description": "This is a callback-function, which is called by the engine when user input is sent to the game object instance of the script.\nIt can be used to take action on the input, e.g. move the instance according to the input.\nFor an instance to obtain user input, it must first acquire input focus\nthrough the message <code>acquire_input_focus</code>.\nAny instance that has obtained input will be put on top of an\ninput stack. Input is sent to all listeners on the stack until the\nend of stack is reached, or a listener returns <code>true</code>\nto signal that it wants input to be consumed.\nSee the documentation of <a href=\"#acquire_input_focus\">acquire_input_focus</a> for more\ninformation.\nThe <code>action</code> parameter is a table containing data about the input mapped to the\n<code>action_id</code>.\nFor mapped actions it specifies the value of the input and if it was just pressed or released.\nActions are mapped to input in an input_binding-file.\nMouse movement is specifically handled and uses <code>nil</code> as its <code>action_id</code>.\nThe <code>action</code> only contains positional parameters in this case, such as x and y of the pointer.\nHere is a brief description of the available table fields:\n<table>\n<thead>\n<tr>\n<th>Field</th>\n<th>Description</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><code>value</code></td>\n<td>The amount of input given by the user. This is usually 1 for buttons and 0-1 for analogue inputs. This is not present for mouse movement and text input.</td>\n</tr>\n<tr>\n<td><code>pressed</code></td>\n<td>If the input was pressed this frame. This is not present for mouse movement and text input.</td>\n</tr>\n<tr>\n<td><code>released</code></td>\n<td>If the input was released this frame. This is not present for mouse movement and text input.</td>\n</tr>\n<tr>\n<td><code>repeated</code></td>\n<td>If the input was repeated this frame. This is similar to how a key on a keyboard is repeated when you hold it down. This is not present for mouse movement and text input.</td>\n</tr>\n<tr>\n<td><code>x</code></td>\n<td>The x value of a pointer device, if present. This is not present for gamepad, key and text input.</td>\n</tr>\n<tr>\n<td><code>y</code></td>\n<td>The y value of a pointer device, if present. This is not present for gamepad, key and text input.</td>\n</tr>\n<tr>\n<td><code>screen_x</code></td>\n<td>The screen space x value of a pointer device, if present. This is not present for gamepad, key and text input.</td>\n</tr>\n<tr>\n<td><code>screen_y</code></td>\n<td>The screen space y value of a pointer device, if present. This is not present for gamepad, key and text input.</td>\n</tr>\n<tr>\n<td><code>dx</code></td>\n<td>The change in x value of a pointer device, if present. This is not present for gamepad, key and text input.</td>\n</tr>\n<tr>\n<td><code>dy</code></td>\n<td>The change in y value of a pointer device, if present. This is not present for gamepad, key and text input.</td>\n</tr>\n<tr>\n<td><code>screen_dx</code></td>\n<td>The change in screen space x value of a pointer device, if present. This is not present for gamepad, key and text input.</td>\n</tr>\n<tr>\n<td><code>screen_dy</code></td>\n<td>The change in screen space y value of a pointer device, if present. This is not present for gamepad, key and text input.</td>\n</tr>\n<tr>\n<td><code>gamepad</code></td>\n<td>The index of the gamepad device that provided the input. See table below about gamepad input.</td>\n</tr>\n<tr>\n<td><code>touch</code></td>\n<td>List of touch input, one element per finger, if present. See table below about touch input</td>\n</tr>\n<tr>\n<td><code>text</code></td>\n<td>Text input from a (virtual) keyboard or similar.</td>\n</tr>\n<tr>\n<td><code>marked_text</code></td>\n<td>Sequence of entered symbols while entering a symbol combination, for example Japanese Kana.</td>\n</tr>\n</tbody>\n</table>\nGamepad specific fields:\n<table>\n<thead>\n<tr>\n<th>Field</th>\n<th>Description</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><code>gamepad</code></td>\n<td>The index of the gamepad device that provided the input.</td>\n</tr>\n<tr>\n<td><code>userid</code></td>\n<td>Id of the user associated with the controller. Usually only relevant on consoles.</td>\n</tr>\n<tr>\n<td><code>gamepad_guid</code></td>\n<td>The guid of the gamepad controller. Only passed with \"connected\" action.</td>\n</tr>\n<tr>\n<td><code>gamepad_guid_info</code></td>\n<td>Parsed guid info table. Only passed with \"connected\" action. See table below.</td>\n</tr>\n<tr>\n<td><code>gamepad_unknown</code></td>\n<td>True if the input originated from an unknown/unmapped gamepad.</td>\n</tr>\n<tr>\n<td><code>gamepad_name</code></td>\n<td>Name of the gamepad</td>\n</tr>\n<tr>\n<td><code>gamepad_axis</code></td>\n<td>List of gamepad axis values. For raw gamepad input only.</td>\n</tr>\n<tr>\n<td><code>gamepadhats</code></td>\n<td>List of gamepad hat values. For raw gamepad input only.</td>\n</tr>\n<tr>\n<td><code>gamepad_buttons</code></td>\n<td>List of gamepad button values. For raw gamepad input only.</td>\n</tr>\n</tbody>\n</table>\nTouch input table:\n<table>\n<thead>\n<tr>\n<th>Field</th>\n<th>Description</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><code>id</code></td>\n<td>A number identifying the touch input during its duration.</td>\n</tr>\n<tr>\n<td><code>pressed</code></td>\n<td>True if the finger was pressed this frame.</td>\n</tr>\n<tr>\n<td><code>released</code></td>\n<td>True if the finger was released this frame.</td>\n</tr>\n<tr>\n<td><code>tap_count</code></td>\n<td>Number of taps, one for single, two for double-tap, etc</td>\n</tr>\n<tr>\n<td><code>x</code></td>\n<td>The x touch location.</td>\n</tr>\n<tr>\n<td><code>y</code></td>\n<td>The y touch location.</td>\n</tr>\n<tr>\n<td><code>dx</code></td>\n<td>The change in x value.</td>\n</tr>\n<tr>\n<td><code>dy</code></td>\n<td>The change in y value.</td>\n</tr>\n<tr>\n<td><code>acc_x</code></td>\n<td>Accelerometer x value (if present).</td>\n</tr>\n<tr>\n<td><code>acc_y</code></td>\n<td>Accelerometer y value (if present).</td>\n</tr>\n<tr>\n<td><code>acc_z</code></td>\n<td>Accelerometer z value (if present).</td>\n</tr>\n</tbody>\n</table>\nGuid info table:\nThis info is only passed with a <code>connected</code> action.\n<table>\n<thead>\n<tr>\n<th>Field</th>\n<th>Description</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><code>vendor</code></td>\n<td>USB vendor id. E.g. Nintendo 0x057e, Sony 0x054c, or Microsoft 0x045e</td>\n</tr>\n<tr>\n<td><code>product</code></td>\n<td>USB product id</td>\n</tr>\n<tr>\n<td><code>bus</code></td>\n<td>How device is communicating. E.g.0x0003 for USB devices and 0x0005 for Bluetooth devices.</td>\n</tr>\n<tr>\n<td><code>crc</code></td>\n<td>SDL CRC16 signature, typically used when vendor and product ids are unavailable</td>\n</tr>\n<tr>\n<td><code>version</code></td>\n<td>The device or firmware version</td>\n</tr>\n</tbody>\n</table>",
+            "description": "This is a callback-function, which is called by the engine when user input is sent to the game object instance of the script.\nIt can be used to take action on the input, e.g. move the instance according to the input.\nFor an instance to obtain user input, it must first acquire input focus\nthrough the message <code>acquire_input_focus</code>.\nAny instance that has obtained input will be put on top of an\ninput stack. Input is sent to all listeners on the stack until the\nend of stack is reached, or a listener returns <code>true</code>\nto signal that it wants input to be consumed.\nSee the documentation of <a href=\"#acquire_input_focus\">acquire_input_focus</a> for more\ninformation.",
             "error": "",
             "examples": "This example demonstrates how a game object instance can be moved as a response to user input.\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"c1\">-- acquire input focus</span>\n    <span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"s2\">&quot;.&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;acquire_input_focus&quot;</span><span class=\"p\">)</span>\n    <span class=\"c1\">-- maximum speed the instance can be moved</span>\n    <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">max_speed</span> <span class=\"o\">=</span> <span class=\"mi\">2</span>\n    <span class=\"c1\">-- velocity of the instance, initially zero</span>\n    <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">velocity</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">()</span>\n<span class=\"kr\">end</span>\n\n<span class=\"kr\">function</span> <span class=\"nf\">update</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">dt</span><span class=\"p\">)</span>\n    <span class=\"c1\">-- move the instance</span>\n    <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set_position</span><span class=\"p\">(</span><span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get_position</span><span class=\"p\">()</span> <span class=\"o\">+</span> <span class=\"n\">dt</span> <span class=\"o\">*</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">velocity</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n\n<span class=\"kr\">function</span> <span class=\"nf\">on_input</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">action_id</span><span class=\"p\">,</span> <span class=\"n\">action</span><span class=\"p\">)</span>\n    <span class=\"c1\">-- check for movement input</span>\n    <span class=\"kr\">if</span> <span class=\"n\">action_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;right&quot;</span><span class=\"p\">)</span> <span class=\"kr\">then</span>\n        <span class=\"kr\">if</span> <span class=\"n\">action</span><span class=\"p\">.</span><span class=\"n\">released</span> <span class=\"kr\">then</span> <span class=\"c1\">-- reset velocity if input was released</span>\n            <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">velocity</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">()</span>\n        <span class=\"kr\">else</span> <span class=\"c1\">-- update velocity</span>\n            <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">velocity</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"n\">action</span><span class=\"p\">.</span><span class=\"n\">value</span> <span class=\"o\">*</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">max_speed</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n        <span class=\"kr\">end</span>\n    <span class=\"kr\">end</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
             "language": "",
@@ -1962,27 +2057,48 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "reference to the script state to be used for storing data",
+                    "doc": "script instance used for storing state",
                     "is_optional": "False",
                     "name": "self",
                     "types": [
-                        "userdata"
+                        "script_instance"
+                    ],
+                    "types_html": [
+                        "<a href=\"../builtins-lua/#script_instance\">script_instance</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../builtins-lua/#script_instance\">script_instance</a>"
                     ]
                 },
                 {
-                    "doc": "id of the received input action, as mapped in the input_binding-file",
+                    "doc": "id of the received input action, as mapped in the input_binding-file, or <code>nil</code> for mouse movement",
                     "is_optional": "False",
                     "name": "action_id",
                     "types": [
-                        "hash"
+                        "hash",
+                        "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 },
                 {
-                    "doc": "a table containing the input data, see above for a description",
+                    "doc": "input data for the action",
                     "is_optional": "False",
                     "name": "action",
                     "types": [
-                        "table"
+                        "on_input.action"
+                    ],
+                    "types_html": [
+                        "<a href=\"#on_input.action\">on_input.action</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#on_input.action\">on_input.action</a>"
                     ]
                 }
             ],
@@ -1994,11 +2110,411 @@
                     "types": [
                         "boolean",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 }
             ],
             "tparams": [],
             "type": "FUNCTION"
+        },
+        {
+            "brief": "Input action",
+            "description": "Data supplied to the global <code>on_input</code> lifecycle function.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "value",
+                    "doc": "Amount of input, usually 1 for buttons or between 0 and 1 for analogue input; absent for pointer movement and text input.",
+                    "is_optional": true,
+                    "name": "value?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "pressed",
+                    "doc": "Whether the input was pressed this frame; absent for pointer movement and text input.",
+                    "is_optional": true,
+                    "name": "pressed?",
+                    "type": "boolean",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                },
+                {
+                    "display_name": "released",
+                    "doc": "Whether the input was released this frame; absent for pointer movement and text input.",
+                    "is_optional": true,
+                    "name": "released?",
+                    "type": "boolean",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                },
+                {
+                    "display_name": "repeated",
+                    "doc": "Whether the input was repeated this frame; absent for pointer movement and text input.",
+                    "is_optional": true,
+                    "name": "repeated?",
+                    "type": "boolean",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                },
+                {
+                    "display_name": "x",
+                    "doc": "Pointer x-coordinate; absent for gamepad, key, and text input.",
+                    "is_optional": true,
+                    "name": "x?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "y",
+                    "doc": "Pointer y-coordinate; absent for gamepad, key, and text input.",
+                    "is_optional": true,
+                    "name": "y?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "screen_x",
+                    "doc": "Pointer x-coordinate in screen space; absent for gamepad, key, and text input.",
+                    "is_optional": true,
+                    "name": "screen_x?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "screen_y",
+                    "doc": "Pointer y-coordinate in screen space; absent for gamepad, key, and text input.",
+                    "is_optional": true,
+                    "name": "screen_y?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "dx",
+                    "doc": "Change in the pointer x-coordinate; absent for gamepad, key, and text input.",
+                    "is_optional": true,
+                    "name": "dx?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "dy",
+                    "doc": "Change in the pointer y-coordinate; absent for gamepad, key, and text input.",
+                    "is_optional": true,
+                    "name": "dy?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "screen_dx",
+                    "doc": "Change in the pointer x-coordinate in screen space; absent for gamepad, key, and text input.",
+                    "is_optional": true,
+                    "name": "screen_dx?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "screen_dy",
+                    "doc": "Change in the pointer y-coordinate in screen space; absent for gamepad, key, and text input.",
+                    "is_optional": true,
+                    "name": "screen_dy?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "acc_x",
+                    "doc": "Accelerometer x value, when present.",
+                    "is_optional": true,
+                    "name": "acc_x?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "acc_y",
+                    "doc": "Accelerometer y value, when present.",
+                    "is_optional": true,
+                    "name": "acc_y?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "acc_z",
+                    "doc": "Accelerometer z value, when present.",
+                    "is_optional": true,
+                    "name": "acc_z?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "gamepad",
+                    "doc": "Index of the gamepad that provided the input.",
+                    "is_optional": true,
+                    "name": "gamepad?",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "userid",
+                    "doc": "Id of the user associated with the controller.",
+                    "is_optional": true,
+                    "name": "userid?",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "gamepad_guid",
+                    "doc": "SDL-compatible guid, supplied with a gamepad-connected action.",
+                    "is_optional": true,
+                    "name": "gamepad_guid?",
+                    "type": "string",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                },
+                {
+                    "display_name": "gamepad_guid_info",
+                    "doc": "Parsed guid information, supplied with a gamepad-connected action.",
+                    "is_optional": true,
+                    "name": "gamepad_guid_info?",
+                    "type": "on_input.gamepad_guid_info",
+                    "type_html": "<a href=\"#on_input.gamepad_guid_info\">on_input.gamepad_guid_info</a>"
+                },
+                {
+                    "display_name": "gamepad_unknown",
+                    "doc": "Whether the input originated from an unknown or unmapped gamepad.",
+                    "is_optional": true,
+                    "name": "gamepad_unknown?",
+                    "type": "boolean",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                },
+                {
+                    "display_name": "gamepad_name",
+                    "doc": "Name of a connected gamepad.",
+                    "is_optional": true,
+                    "name": "gamepad_name?",
+                    "type": "string",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                },
+                {
+                    "display_name": "gamepad_axis",
+                    "doc": "Axis values, supplied only for raw gamepad input.",
+                    "is_optional": true,
+                    "name": "gamepad_axis?",
+                    "type": "number[]",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>[]"
+                },
+                {
+                    "display_name": "gamepad_hats",
+                    "doc": "Hat values, supplied only for raw gamepad input.",
+                    "is_optional": true,
+                    "name": "gamepad_hats?",
+                    "type": "number[]",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>[]"
+                },
+                {
+                    "display_name": "gamepad_buttons",
+                    "doc": "Button values, supplied only for raw gamepad input.",
+                    "is_optional": true,
+                    "name": "gamepad_buttons?",
+                    "type": "number[]",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>[]"
+                },
+                {
+                    "display_name": "touch",
+                    "doc": "Touch inputs, one entry per finger.",
+                    "is_optional": true,
+                    "name": "touch?",
+                    "type": "on_input.touch[]",
+                    "type_html": "<a href=\"#on_input.touch\">on_input.touch</a>[]"
+                },
+                {
+                    "display_name": "text",
+                    "doc": "Text entered by a text action, or the current sequence for marked-text composition such as Japanese Kana.",
+                    "is_optional": true,
+                    "name": "text?",
+                    "type": "string",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                }
+            ],
+            "name": "on_input.action",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Gamepad guid information",
+            "description": "Parsed fields from a connected gamepad guid.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "vendor",
+                    "doc": "USB vendor id.",
+                    "is_optional": false,
+                    "name": "vendor",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "product",
+                    "doc": "USB product id.",
+                    "is_optional": false,
+                    "name": "product",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "bus",
+                    "doc": "Bus used to communicate with the device.",
+                    "is_optional": false,
+                    "name": "bus",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "crc",
+                    "doc": "SDL CRC16 signature.",
+                    "is_optional": false,
+                    "name": "crc",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "version",
+                    "doc": "Device or firmware version.",
+                    "is_optional": false,
+                    "name": "version",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                }
+            ],
+            "name": "on_input.gamepad_guid_info",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Touch input",
+            "description": "One touch entry in <a href=\"/ref/on_input#on_input.action\">on_input.action</a>.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "id",
+                    "doc": "Identifier for the touch during its lifetime.",
+                    "is_optional": false,
+                    "name": "id",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "pressed",
+                    "doc": "Whether the finger was pressed this frame.",
+                    "is_optional": false,
+                    "name": "pressed",
+                    "type": "boolean",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                },
+                {
+                    "display_name": "released",
+                    "doc": "Whether the finger was released this frame.",
+                    "is_optional": false,
+                    "name": "released",
+                    "type": "boolean",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                },
+                {
+                    "display_name": "tap_count",
+                    "doc": "Number of taps, such as one for a single tap and two for a double tap.",
+                    "is_optional": false,
+                    "name": "tap_count",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "x",
+                    "doc": "Touch x-coordinate.",
+                    "is_optional": false,
+                    "name": "x",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "y",
+                    "doc": "Touch y-coordinate.",
+                    "is_optional": false,
+                    "name": "y",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "screen_x",
+                    "doc": "Touch x-coordinate in screen space.",
+                    "is_optional": false,
+                    "name": "screen_x",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "screen_y",
+                    "doc": "Touch y-coordinate in screen space.",
+                    "is_optional": false,
+                    "name": "screen_y",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "dx",
+                    "doc": "Change in the touch x-coordinate.",
+                    "is_optional": false,
+                    "name": "dx",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "dy",
+                    "doc": "Change in the touch y-coordinate.",
+                    "is_optional": false,
+                    "name": "dy",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "screen_dx",
+                    "doc": "Change in the touch x-coordinate in screen space.",
+                    "is_optional": false,
+                    "name": "screen_dx",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "screen_dy",
+                    "doc": "Change in the touch y-coordinate in screen space.",
+                    "is_optional": false,
+                    "name": "screen_dy",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                }
+            ],
+            "name": "on_input.touch",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
         },
         {
             "brief": "called when a message has been sent to the script component",
@@ -2011,11 +2527,17 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "reference to the script state to be used for storing data",
+                    "doc": "script instance used for storing state",
                     "is_optional": "False",
                     "name": "self",
                     "types": [
-                        "userdata"
+                        "script_instance"
+                    ],
+                    "types_html": [
+                        "<a href=\"../builtins-lua/#script_instance\">script_instance</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../builtins-lua/#script_instance\">script_instance</a>"
                     ]
                 },
                 {
@@ -2024,6 +2546,12 @@
                     "name": "message_id",
                     "types": [
                         "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
                     ]
                 },
                 {
@@ -2031,7 +2559,13 @@
                     "is_optional": "False",
                     "name": "message",
                     "types": [
-                        "table"
+                        "table<any, any>"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">table</a>&lt;<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>, <a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>&gt;"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">table</a>&lt;<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>, <a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>&gt;"
                     ]
                 },
                 {
@@ -2040,6 +2574,12 @@
                     "name": "sender",
                     "types": [
                         "url"
+                    ],
+                    "types_html": [
+                        "<a href=\"../msg-lua/#url\">url</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../msg-lua/#url\">url</a>"
                     ]
                 }
             ],
@@ -2059,11 +2599,17 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "reference to the script state to be used for storing data",
+                    "doc": "script instance used for storing state",
                     "is_optional": "False",
                     "name": "self",
                     "types": [
-                        "userdata"
+                        "script_instance"
+                    ],
+                    "types_html": [
+                        "<a href=\"../builtins-lua/#script_instance\">script_instance</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../builtins-lua/#script_instance\">script_instance</a>"
                     ]
                 }
             ],
@@ -2148,6 +2694,12 @@
                     "name": "parent_id",
                     "types": [
                         "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
                     ]
                 },
                 {
@@ -2156,6 +2708,12 @@
                     "name": "keep_world_transform",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -2175,11 +2733,17 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "reference to the script state to be used for storing data",
+                    "doc": "script instance used for storing state",
                     "is_optional": "False",
                     "name": "self",
                     "types": [
-                        "userdata"
+                        "script_instance"
+                    ],
+                    "types_html": [
+                        "<a href=\"../builtins-lua/#script_instance\">script_instance</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../builtins-lua/#script_instance\">script_instance</a>"
                     ]
                 },
                 {
@@ -2188,6 +2752,12 @@
                     "name": "dt",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -2197,6 +2767,7 @@
             "type": "FUNCTION"
         }
     ],
+    "format_version": 2,
     "info": {
         "api_language": "Lua",
         "brief": "Game object API documentation",

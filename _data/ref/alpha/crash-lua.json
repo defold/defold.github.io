@@ -16,6 +16,12 @@
                     "name": "handle",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -25,7 +31,13 @@
                     "doc": "table containing the backtrace",
                     "name": "backtrace",
                     "types": [
-                        "table"
+                        "string[]"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>[]"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>[]"
                     ]
                 }
             ],
@@ -48,6 +60,12 @@
                     "name": "handle",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -58,6 +76,12 @@
                     "name": "blob",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 }
             ],
@@ -66,7 +90,7 @@
         },
         {
             "brief": "get all loaded modules from when the crash occured",
-            "description": "The function returns a table containing entries with sub-tables that\nhave fields 'name' and 'address' set for all loaded modules.",
+            "description": "get all loaded modules from when the crash occured",
             "error": "",
             "examples": "",
             "language": "",
@@ -80,16 +104,28 @@
                     "name": "handle",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "module table",
+                    "doc": "loaded modules",
                     "name": "modules",
                     "types": [
-                        "table"
+                        "crash.module_info[]"
+                    ],
+                    "types_html": [
+                        "<a href=\"#crash.module_info\">crash.module_info</a>[]"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#crash.module_info\">crash.module_info</a>[]"
                     ]
                 }
             ],
@@ -112,6 +148,12 @@
                     "name": "handle",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -122,6 +164,12 @@
                     "name": "signal",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -144,6 +192,12 @@
                     "name": "handle",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -151,7 +205,13 @@
                     "is_optional": "False",
                     "name": "index",
                     "types": [
-                        "number"
+                        "crash.SYSFIELD"
+                    ],
+                    "types_html": [
+                        "<a href=\"#crash.SYSFIELD\">crash.SYSFIELD</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#crash.SYSFIELD\">crash.SYSFIELD</a>"
                     ]
                 }
             ],
@@ -163,6 +223,14 @@
                     "types": [
                         "string",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 }
             ],
@@ -185,6 +253,12 @@
                     "name": "handle",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -192,7 +266,13 @@
                     "is_optional": "False",
                     "name": "index",
                     "types": [
-                        "number"
+                        "crash.USERFIELD"
+                    ],
+                    "types_html": [
+                        "<a href=\"#crash.USERFIELD\">crash.USERFIELD</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#crash.USERFIELD\">crash.USERFIELD</a>"
                     ]
                 }
             ],
@@ -203,6 +283,12 @@
                     "name": "value",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 }
             ],
@@ -227,11 +313,51 @@
                     "types": [
                         "number",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 }
             ],
             "tparams": [],
             "type": "FUNCTION"
+        },
+        {
+            "brief": "Loaded crash module",
+            "description": "Loaded crash module",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "name",
+                    "doc": "module name",
+                    "is_optional": false,
+                    "name": "name",
+                    "type": "string",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                },
+                {
+                    "display_name": "address",
+                    "doc": "module load address",
+                    "is_optional": false,
+                    "name": "address",
+                    "type": "string",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                }
+            ],
+            "name": "crash.module_info",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
         },
         {
             "brief": "releases a previously loaded crash dump",
@@ -249,6 +375,12 @@
                     "name": "handle",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -273,6 +405,12 @@
                     "name": "path",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 }
             ],
@@ -296,7 +434,13 @@
                     "is_optional": "False",
                     "name": "index",
                     "types": [
-                        "number"
+                        "crash.USERFIELD"
+                    ],
+                    "types_html": [
+                        "<a href=\"#crash.USERFIELD\">crash.USERFIELD</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#crash.USERFIELD\">crash.USERFIELD</a>"
                     ]
                 },
                 {
@@ -305,6 +449,12 @@
                     "name": "value",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 }
             ],
@@ -314,199 +464,190 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "android build fingerprint",
-            "description": "android build fingerprint",
+            "brief": "System crash fields",
+            "description": "System crash fields",
             "error": "",
             "examples": "",
             "language": "",
-            "members": [],
-            "name": "crash.SYSFIELD_ANDROID_BUILD_FINGERPRINT",
+            "members": [
+                {
+                    "doc": "engine version as release number",
+                    "name": "crash.SYSFIELD_ENGINE_VERSION"
+                },
+                {
+                    "doc": "engine version as hash",
+                    "name": "crash.SYSFIELD_ENGINE_HASH"
+                },
+                {
+                    "doc": "device model as reported by sys.get_sys_info",
+                    "name": "crash.SYSFIELD_DEVICE_MODEL"
+                },
+                {
+                    "doc": "device manufacturer as reported by sys.get_sys_info",
+                    "name": "crash.SYSFIELD_MANUFACTURER"
+                },
+                {
+                    "doc": "system name as reported by sys.get_sys_info",
+                    "name": "crash.SYSFIELD_SYSTEM_NAME"
+                },
+                {
+                    "doc": "system version as reported by sys.get_sys_info",
+                    "name": "crash.SYSFIELD_SYSTEM_VERSION"
+                },
+                {
+                    "doc": "system language as reported by sys.get_sys_info",
+                    "name": "crash.SYSFIELD_LANGUAGE"
+                },
+                {
+                    "doc": "system device language as reported by sys.get_sys_info",
+                    "name": "crash.SYSFIELD_DEVICE_LANGUAGE"
+                },
+                {
+                    "doc": "system territory as reported by sys.get_sys_info",
+                    "name": "crash.SYSFIELD_TERRITORY"
+                },
+                {
+                    "doc": "android build fingerprint",
+                    "name": "crash.SYSFIELD_ANDROID_BUILD_FINGERPRINT"
+                }
+            ],
+            "name": "crash.SYSFIELD",
             "notes": [],
             "parameters": [],
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "system device language as reported by sys.get_sys_info",
-            "description": "system device language as reported by sys.get_sys_info",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "crash.SYSFIELD_DEVICE_LANGUAGE",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "device model as reported by sys.get_sys_info",
-            "description": "device model as reported by sys.get_sys_info",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "crash.SYSFIELD_DEVICE_MODEL",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "engine version as hash",
-            "description": "engine version as hash",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "crash.SYSFIELD_ENGINE_HASH",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "engine version as release number",
-            "description": "engine version as release number",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "crash.SYSFIELD_ENGINE_VERSION",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "system language as reported by sys.get_sys_info",
-            "description": "system language as reported by sys.get_sys_info",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "crash.SYSFIELD_LANGUAGE",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "device manufacturer as reported by sys.get_sys_info",
-            "description": "device manufacturer as reported by sys.get_sys_info",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "crash.SYSFIELD_MANUFACTURER",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
+            "type": "ENUM",
+            "value_type": "integer",
+            "value_type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
         },
         {
             "brief": "The max number of sysfields.",
             "description": "The max number of sysfields.",
             "error": "",
             "examples": "",
+            "is_enum_member": false,
             "language": "",
             "members": [],
             "name": "crash.SYSFIELD_MAX",
             "notes": [],
-            "parameters": [],
+            "parameters": [
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "value",
+                    "types": [
+                        "integer"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                    ]
+                }
+            ],
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "CONSTANT"
+            "type": "CONSTANT",
+            "value_type": "integer"
         },
         {
-            "brief": "system name as reported by sys.get_sys_info",
-            "description": "system name as reported by sys.get_sys_info",
+            "brief": "User crash-field slot index",
+            "description": "An integer index identifying one of the 32 user-defined fields stored in a\ncrash dump. Valid indices are 0 through 31. Each field stores a string of at\nmost <code>crash.USERFIELD_SIZE</code> bytes; longer strings are truncated.",
             "error": "",
-            "examples": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">crash</span><span class=\"p\">.</span><span class=\"n\">set_user_field</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"s2\">&quot;level=forest&quot;</span><span class=\"p\">)</span>\n<span class=\"n\">crash</span><span class=\"p\">.</span><span class=\"n\">set_user_field</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"s2\">&quot;checkpoint=3&quot;</span><span class=\"p\">)</span>\n</code></pre></div>",
             "language": "",
             "members": [],
-            "name": "crash.SYSFIELD_SYSTEM_NAME",
+            "name": "crash.USERFIELD",
             "notes": [],
-            "parameters": [],
+            "parameters": [
+                {
+                    "doc": "zero-based user-field index",
+                    "is_optional": "False",
+                    "name": "value",
+                    "types": [
+                        "integer"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                    ]
+                }
+            ],
             "replaces": "",
             "returnvalues": [],
+            "target_type": "integer",
+            "target_type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>",
             "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "system version as reported by sys.get_sys_info",
-            "description": "system version as reported by sys.get_sys_info",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "crash.SYSFIELD_SYSTEM_VERSION",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "system territory as reported by sys.get_sys_info",
-            "description": "system territory as reported by sys.get_sys_info",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "crash.SYSFIELD_TERRITORY",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
+            "type": "TYPEDEF"
         },
         {
             "brief": "The max number of user fields.",
             "description": "The max number of user fields.",
             "error": "",
             "examples": "",
+            "is_enum_member": false,
             "language": "",
             "members": [],
             "name": "crash.USERFIELD_MAX",
             "notes": [],
-            "parameters": [],
+            "parameters": [
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "value",
+                    "types": [
+                        "integer"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                    ]
+                }
+            ],
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "CONSTANT"
+            "type": "CONSTANT",
+            "value_type": "integer"
         },
         {
             "brief": "The max size of a single user field.",
             "description": "The max size of a single user field.",
             "error": "",
             "examples": "",
+            "is_enum_member": false,
             "language": "",
             "members": [],
             "name": "crash.USERFIELD_SIZE",
             "notes": [],
-            "parameters": [],
+            "parameters": [
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "value",
+                    "types": [
+                        "integer"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                    ]
+                }
+            ],
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "CONSTANT"
+            "type": "CONSTANT",
+            "value_type": "integer"
         },
         {
             "brief": "writes crash dump",
@@ -524,6 +665,7 @@
             "type": "FUNCTION"
         }
     ],
+    "format_version": 2,
     "info": {
         "api_language": "Lua",
         "brief": "Crash API documentation",

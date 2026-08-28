@@ -1,6 +1,253 @@
 {
     "elements": [
         {
+            "brief": "Shader constant information",
+            "description": "Shader constant information",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "name",
+                    "doc": "Constant name.",
+                    "is_optional": false,
+                    "name": "name",
+                    "type": "hash",
+                    "type_html": "<a href=\"../builtins-lua/#hash\">hash</a>"
+                },
+                {
+                    "display_name": "type",
+                    "doc": "Constant type.",
+                    "is_optional": false,
+                    "name": "type",
+                    "type": "material.CONSTANT_TYPE",
+                    "type_html": "<a href=\"#material.CONSTANT_TYPE\">material.CONSTANT_TYPE</a>"
+                },
+                {
+                    "display_name": "value",
+                    "doc": "Constant value or values. Present for user constants.",
+                    "is_optional": true,
+                    "name": "value?",
+                    "type": "material.constant_info_value",
+                    "type_html": "<a href=\"#material.constant_info_value\">material.constant_info_value</a>"
+                }
+            ],
+            "name": "material.constant_info",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Material constant result value",
+            "description": "The value of a user constant returned in a <span class=\"type\"><a href=\"#material.constant_info\">material.constant_info</a></span>\nentry by <a href=\"/ref/material#material.get_constants\">material.get_constants</a>. A scalar constant is returned as a\n<span class=\"type\"><a href=\"../vmath-lua/#vector4\">vector4</a></span> or <span class=\"type\"><a href=\"../vmath-lua/#matrix4\">matrix4</a></span>; a shader constant array is returned as an\narray of those values. Non-user constants do not include a <code>value</code> field.",
+            "error": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">for</span> <span class=\"n\">_</span><span class=\"p\">,</span> <span class=\"n\">constant</span> <span class=\"kr\">in</span> <span class=\"nb\">ipairs</span><span class=\"p\">(</span><span class=\"n\">material</span><span class=\"p\">.</span><span class=\"n\">get_constants</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">material</span><span class=\"p\">))</span> <span class=\"kr\">do</span>\n    <span class=\"kr\">if</span> <span class=\"n\">constant</span><span class=\"p\">.</span><span class=\"n\">value</span> <span class=\"kr\">then</span>\n        <span class=\"n\">pprint</span><span class=\"p\">(</span><span class=\"n\">constant</span><span class=\"p\">.</span><span class=\"n\">name</span><span class=\"p\">,</span> <span class=\"n\">constant</span><span class=\"p\">.</span><span class=\"n\">value</span><span class=\"p\">)</span>\n    <span class=\"kr\">end</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "material.constant_info_value",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "value",
+                    "types": [
+                        "vector4",
+                        "matrix4",
+                        "vector4[]",
+                        "matrix4[]"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector4\">vector4</a>",
+                        "<a href=\"../vmath-lua/#matrix4\">matrix4</a>",
+                        "<a href=\"../vmath-lua/#vector4\">vector4</a>[]",
+                        "<a href=\"../vmath-lua/#matrix4\">matrix4</a>[]"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector4\">vector4</a>",
+                        "<a href=\"../vmath-lua/#matrix4\">matrix4</a>",
+                        "<a href=\"../vmath-lua/#vector4\">vector4</a>[]",
+                        "<a href=\"../vmath-lua/#matrix4\">matrix4</a>[]"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "target_type": "vector4 | matrix4 | vector4[] | matrix4[]",
+            "target_type_html": "<a href=\"../vmath-lua/#vector4\">vector4</a> | <a href=\"../vmath-lua/#matrix4\">matrix4</a> | <a href=\"../vmath-lua/#vector4\">vector4</a>[] | <a href=\"../vmath-lua/#matrix4\">matrix4</a>[]",
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "Shader constant update",
+            "description": "Shader constant update",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "type",
+                    "doc": "Constant type.",
+                    "is_optional": true,
+                    "name": "type?",
+                    "type": "material.CONSTANT_TYPE",
+                    "type_html": "<a href=\"#material.CONSTANT_TYPE\">material.CONSTANT_TYPE</a>"
+                },
+                {
+                    "display_name": "value",
+                    "doc": "Constant value or values.",
+                    "is_optional": true,
+                    "name": "value?",
+                    "type": "material.constant_value",
+                    "type_html": "<a href=\"#material.constant_value\">material.constant_value</a>"
+                }
+            ],
+            "name": "material.constant_options",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Material constant types",
+            "description": "Material constant types",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "User vector constant.",
+                    "name": "material.CONSTANT_TYPE_USER"
+                },
+                {
+                    "doc": "User color constant.",
+                    "name": "material.CONSTANT_TYPE_USER_COLOR"
+                },
+                {
+                    "doc": "User matrix constant.",
+                    "name": "material.CONSTANT_TYPE_USER_MATRIX4"
+                },
+                {
+                    "doc": "View-projection matrix constant.",
+                    "name": "material.CONSTANT_TYPE_VIEWPROJ"
+                },
+                {
+                    "doc": "World matrix constant.",
+                    "name": "material.CONSTANT_TYPE_WORLD"
+                },
+                {
+                    "doc": "Texture matrix constant.",
+                    "name": "material.CONSTANT_TYPE_TEXTURE"
+                },
+                {
+                    "doc": "View matrix constant.",
+                    "name": "material.CONSTANT_TYPE_VIEW"
+                },
+                {
+                    "doc": "Projection matrix constant.",
+                    "name": "material.CONSTANT_TYPE_PROJECTION"
+                },
+                {
+                    "doc": "Normal matrix constant.",
+                    "name": "material.CONSTANT_TYPE_NORMAL"
+                },
+                {
+                    "doc": "World-view matrix constant.",
+                    "name": "material.CONSTANT_TYPE_WORLDVIEW"
+                },
+                {
+                    "doc": "World-view-projection matrix constant.",
+                    "name": "material.CONSTANT_TYPE_WORLDVIEWPROJ"
+                },
+                {
+                    "doc": "Time constant.",
+                    "name": "material.CONSTANT_TYPE_TIME"
+                },
+                {
+                    "doc": "Inverse world matrix constant.",
+                    "name": "material.CONSTANT_TYPE_WORLD_INVERSE"
+                },
+                {
+                    "doc": "Inverse view matrix constant.",
+                    "name": "material.CONSTANT_TYPE_VIEW_INVERSE"
+                },
+                {
+                    "doc": "Inverse projection matrix constant.",
+                    "name": "material.CONSTANT_TYPE_PROJECTION_INVERSE"
+                },
+                {
+                    "doc": "Inverse view-projection matrix constant.",
+                    "name": "material.CONSTANT_TYPE_VIEWPROJ_INVERSE"
+                },
+                {
+                    "doc": "Inverse world-view matrix constant.",
+                    "name": "material.CONSTANT_TYPE_WORLDVIEW_INVERSE"
+                },
+                {
+                    "doc": "Inverse world-view-projection matrix constant.",
+                    "name": "material.CONSTANT_TYPE_WORLDVIEWPROJ_INVERSE"
+                }
+            ],
+            "name": "material.CONSTANT_TYPE",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "ENUM",
+            "value_type": "integer",
+            "value_type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+        },
+        {
+            "brief": "Material constant value",
+            "description": "A value accepted by <a href=\"/ref/material#material.set_constants\">material.set_constants</a> when updating a shader\nconstant. Use a number or vector for user vector constants, a <span class=\"type\"><a href=\"../vmath-lua/#matrix4\">matrix4</a></span>\nfor matrix constants, and an array to update a shader constant array.",
+            "error": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">material</span><span class=\"p\">.</span><span class=\"n\">set_constants</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">material</span><span class=\"p\">,</span> <span class=\"p\">{</span>\n    <span class=\"n\">tint</span> <span class=\"o\">=</span> <span class=\"p\">{</span> <span class=\"n\">value</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector4</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mf\">0.5</span><span class=\"p\">,</span> <span class=\"mf\">0.5</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">)</span> <span class=\"p\">},</span>\n    <span class=\"n\">weights</span> <span class=\"o\">=</span> <span class=\"p\">{</span> <span class=\"n\">value</span> <span class=\"o\">=</span> <span class=\"p\">{</span> <span class=\"mf\">0.25</span><span class=\"p\">,</span> <span class=\"mf\">0.5</span><span class=\"p\">,</span> <span class=\"mf\">0.75</span><span class=\"p\">,</span> <span class=\"mi\">1</span> <span class=\"p\">}</span> <span class=\"p\">}</span>\n<span class=\"p\">})</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "material.constant_value",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "value",
+                    "types": [
+                        "number",
+                        "vector3",
+                        "vector4",
+                        "matrix4",
+                        "(number|vector3|vector4|matrix4)[]"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>",
+                        "<a href=\"../vmath-lua/#vector4\">vector4</a>",
+                        "<a href=\"../vmath-lua/#matrix4\">matrix4</a>",
+                        "(<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>|<a href=\"../vmath-lua/#vector3\">vector3</a>|<a href=\"../vmath-lua/#vector4\">vector4</a>|<a href=\"../vmath-lua/#matrix4\">matrix4</a>)[]"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>",
+                        "<a href=\"../vmath-lua/#vector4\">vector4</a>",
+                        "<a href=\"../vmath-lua/#matrix4\">matrix4</a>",
+                        "(<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>|<a href=\"../vmath-lua/#vector3\">vector3</a>|<a href=\"../vmath-lua/#vector4\">vector4</a>|<a href=\"../vmath-lua/#matrix4\">matrix4</a>)[]"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "target_type": "number | vector3 | vector4 | matrix4 | (number|vector3|vector4|matrix4)[]",
+            "target_type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a> | <a href=\"../vmath-lua/#vector3\">vector3</a> | <a href=\"../vmath-lua/#vector4\">vector4</a> | <a href=\"../vmath-lua/#matrix4\">matrix4</a> | (<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>|<a href=\"../vmath-lua/#vector3\">vector3</a>|<a href=\"../vmath-lua/#vector4\">vector4</a>|<a href=\"../vmath-lua/#matrix4\">matrix4</a>)[]",
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
             "brief": "gets shader constants from a material",
             "description": "Returns a table of all the shader constants in the material. This function will return all the shader constants\nthat are used in both the vertex and the fragment shaders.",
             "error": "",
@@ -17,16 +264,30 @@
                     "types": [
                         "hash",
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 }
             ],
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "A table of tables, where each entry contains info about the shader constants:\n<dl>\n<dt><code>name</code></dt>\n<dd><span class=\"type\">hash</span> the hashed name of the constant</dd>\n<dt><code>type</code></dt>\n<dd><span class=\"type\">number</span> the type of the constant. Supported values:</dd>\n</dl>\n<ul>\n<li><code>material.CONSTANT_TYPE_USER</code></li>\n<li><code>material.CONSTANT_TYPE_USER_COLOR</code></li>\n<li><code>material.CONSTANT_TYPE_USER_MATRIX4</code></li>\n<li><code>material.CONSTANT_TYPE_VIEWPROJ</code></li>\n<li><code>material.CONSTANT_TYPE_WORLD</code></li>\n<li><code>material.CONSTANT_TYPE_TEXTURE</code></li>\n<li><code>material.CONSTANT_TYPE_VIEW</code></li>\n<li><code>material.CONSTANT_TYPE_PROJECTION</code></li>\n<li><code>material.CONSTANT_TYPE_NORMAL</code></li>\n<li><code>material.CONSTANT_TYPE_WORLDVIEW</code></li>\n<li><code>material.CONSTANT_TYPE_WORLDVIEWPROJ</code></li>\n<li><code>material.CONSTANT_TYPE_TIME</code></li>\n<li><code>material.CONSTANT_TYPE_WORLD_INVERSE</code></li>\n<li><code>material.CONSTANT_TYPE_VIEW_INVERSE</code></li>\n<li><code>material.CONSTANT_TYPE_PROJECTION_INVERSE</code></li>\n<li><code>material.CONSTANT_TYPE_VIEWPROJ_INVERSE</code></li>\n<li><code>material.CONSTANT_TYPE_WORLDVIEW_INVERSE</code></li>\n<li><code>material.CONSTANT_TYPE_WORLDVIEWPROJ_INVERSE</code></li>\n</ul>\n<dl>\n<dt><code>value</code></dt>\n<dd><span class=\"type\">vmath.vector4 | vmath.matrix4</span> the value(s) of the constant. If the constant is an array, the value will be a table of vmath.vector4 or vmath.matrix4 if the type is <code>material.CONSTANT_TYPE_USER_MATRIX4</code>.</dd>\n</dl>",
-                    "name": "table",
+                    "doc": "Shader constant information.",
+                    "name": "constants",
                     "types": [
-                        "table"
+                        "material.constant_info[]"
+                    ],
+                    "types_html": [
+                        "<a href=\"#material.constant_info\">material.constant_info</a>[]"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#material.constant_info\">material.constant_info</a>[]"
                     ]
                 }
             ],
@@ -50,16 +311,30 @@
                     "types": [
                         "hash",
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 }
             ],
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "A table of tables, where each entry contains info about the texture samplers:\n<dl>\n<dt><code>name</code></dt>\n<dd><span class=\"type\">hash</span> the hashed name of the texture sampler</dd>\n<dt><code>u_wrap</code></dt>\n<dd><span class=\"type\">number</span> the u wrap mode of the texture sampler. Supported values:</dd>\n</dl>\n<ul>\n<li><code>graphics.TEXTURE_WRAP_CLAMP_TO_BORDER</code></li>\n<li><code>graphics.TEXTURE_WRAP_CLAMP_TO_EDGE</code></li>\n<li><code>graphics.TEXTURE_WRAP_MIRRORED_REPEAT</code></li>\n<li><code>graphics.TEXTURE_WRAP_REPEAT</code></li>\n</ul>\n<dl>\n<dt><code>v_wrap</code></dt>\n<dd><span class=\"type\">number</span> the v wrap mode of the texture sampler. Supported values:</dd>\n</dl>\n<ul>\n<li><code>graphics.TEXTURE_WRAP_CLAMP_TO_BORDER</code></li>\n<li><code>graphics.TEXTURE_WRAP_CLAMP_TO_EDGE</code></li>\n<li><code>graphics.TEXTURE_WRAP_MIRRORED_REPEAT</code></li>\n<li><code>graphics.TEXTURE_WRAP_REPEAT</code></li>\n</ul>\n<dl>\n<dt><code>min_filter</code></dt>\n<dd><span class=\"type\">number</span> the min filter mode of the texture sampler. Supported values:</dd>\n</dl>\n<ul>\n<li><code>graphics.TEXTURE_FILTER_DEFAULT</code></li>\n<li><code>graphics.TEXTURE_FILTER_NEAREST</code></li>\n<li><code>graphics.TEXTURE_FILTER_LINEAR</code></li>\n<li><code>graphics.TEXTURE_FILTER_NEAREST_MIPMAP_NEAREST</code></li>\n<li><code>graphics.TEXTURE_FILTER_NEAREST_MIPMAP_LINEAR</code></li>\n<li><code>graphics.TEXTURE_FILTER_LINEAR_MIPMAP_NEAREST</code></li>\n<li><code>graphics.TEXTURE_FILTER_LINEAR_MIPMAP_LINEAR</code></li>\n</ul>\n<dl>\n<dt><code>mag_filter</code></dt>\n<dd><span class=\"type\">number</span> the mag filter mode of the texture sampler</dd>\n</dl>\n<ul>\n<li><code>graphics.TEXTURE_FILTER_DEFAULT</code></li>\n<li><code>graphics.TEXTURE_FILTER_NEAREST</code></li>\n<li><code>graphics.TEXTURE_FILTER_LINEAR</code></li>\n</ul>\n<dl>\n<dt><code>max_anisotropy</code></dt>\n<dd><span class=\"type\">number</span> the max anisotropy of the texture sampler</dd>\n</dl>",
-                    "name": "table",
+                    "doc": "texture sampler information",
+                    "name": "samplers",
                     "types": [
-                        "table"
+                        "material.sampler_info[]"
+                    ],
+                    "types_html": [
+                        "<a href=\"#material.sampler_info\">material.sampler_info</a>[]"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#material.sampler_info\">material.sampler_info</a>[]"
                     ]
                 }
             ],
@@ -83,16 +358,30 @@
                     "types": [
                         "hash",
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 }
             ],
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "A table of tables, where each entry contains info about the material textures:\n<dl>\n<dt><code>path</code></dt>\n<dd><span class=\"type\">hash</span> the resource path of the texture. Only available if the texture is a resource.</dd>\n<dt><code>handle</code></dt>\n<dd><span class=\"type\">hash</span> the runtime handle of the texture.</dd>\n<dt><code>width</code></dt>\n<dd><span class=\"type\">number</span> the width of the texture</dd>\n<dt><code>height</code></dt>\n<dd><span class=\"type\">number</span> the height of the texture</dd>\n<dt><code>depth</code></dt>\n<dd><span class=\"type\">number</span> the depth of the texture. Corresponds to the number of layers in an array texture.</dd>\n<dt><code>mipmaps</code></dt>\n<dd><span class=\"type\">number</span> the number of mipmaps in the texture</dd>\n<dt><code>type</code></dt>\n<dd><span class=\"type\">number</span> the type of the texture. Supported values:</dd>\n</dl>\n<ul>\n<li><code>graphics.TEXTURE_TYPE_2D</code></li>\n<li><code>graphics.TEXTURE_TYPE_2D_ARRAY</code></li>\n<li><code>graphics.TEXTURE_TYPE_CUBE_MAP</code></li>\n<li><code>graphics.TEXTURE_TYPE_IMAGE_2D</code></li>\n<li><code>graphics.TEXTURE_TYPE_3D</code></li>\n<li><code>graphics.TEXTURE_TYPE_IMAGE_3D</code></li>\n</ul>\n<dl>\n<dt><code>flags</code></dt>\n<dd><span class=\"type\">number</span> the flags of the texture. This field is a bit mask of these supported flags:</dd>\n</dl>\n<ul>\n<li><code>graphics.TEXTURE_USAGE_FLAG_SAMPLE</code></li>\n<li><code>graphics.TEXTURE_USAGE_FLAG_MEMORYLESS</code></li>\n<li><code>graphics.TEXTURE_USAGE_FLAG_STORAGE</code></li>\n<li><code>graphics.TEXTURE_USAGE_FLAG_INPUT</code></li>\n<li><code>graphics.TEXTURE_USAGE_FLAG_COLOR</code></li>\n</ul>",
-                    "name": "table",
+                    "doc": "material texture information",
+                    "name": "textures",
                     "types": [
-                        "table"
+                        "material.texture_info[]"
+                    ],
+                    "types_html": [
+                        "<a href=\"#material.texture_info\">material.texture_info</a>[]"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#material.texture_info\">material.texture_info</a>[]"
                     ]
                 }
             ],
@@ -116,21 +405,227 @@
                     "types": [
                         "hash",
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 }
             ],
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "A table of tables, where each entry contains info about the vertex attributes:\n<dl>\n<dt><code>name</code></dt>\n<dd><span class=\"type\">hash</span> the hashed name of the vertex attribute</dd>\n<dt><code>value</code></dt>\n<dd><span class=\"type\">vmath.vector4 | vmath.vector3 | vmath.matrix4 | number | table</span> the value of the vertex attribute. Matrix attributes that do not map to <code>vmath.matrix4</code> are returned as a table of numbers.</dd>\n<dt><code>normalize</code></dt>\n<dd><span class=\"type\">boolean</span> whether the value is normalized when passed into the shader</dd>\n<dt><code>data_type</code></dt>\n<dd><span class=\"type\">number</span> the data type of the vertex attribute. Supported values:</dd>\n</dl>\n<ul>\n<li><code>graphics.DATA_TYPE_BYTE</code></li>\n<li><code>graphics.DATA_TYPE_UNSIGNED_BYTE</code></li>\n<li><code>graphics.DATA_TYPE_SHORT</code></li>\n<li><code>graphics.DATA_TYPE_UNSIGNED_SHORT</code></li>\n<li><code>graphics.DATA_TYPE_INT</code></li>\n<li><code>graphics.DATA_TYPE_UNSIGNED_INT</code></li>\n<li><code>graphics.DATA_TYPE_FLOAT</code></li>\n</ul>\n<dl>\n<dt><code>coordinate_space</code></dt>\n<dd><span class=\"type\">number</span> the coordinate space of the vertex attribute. Supported values:</dd>\n</dl>\n<ul>\n<li><code>graphics.COORDINATE_SPACE_WORLD</code></li>\n<li><code>graphics.COORDINATE_SPACE_LOCAL</code></li>\n</ul>\n<dl>\n<dt><code>semantic_type</code></dt>\n<dd><span class=\"type\">number</span> the semantic type of the vertex attribute. Supported values:</dd>\n</dl>\n<ul>\n<li><code>graphics.SEMANTIC_TYPE_NONE</code></li>\n<li><code>graphics.SEMANTIC_TYPE_POSITION</code></li>\n<li><code>graphics.SEMANTIC_TYPE_TEXCOORD</code></li>\n<li><code>graphics.SEMANTIC_TYPE_PAGE_INDEX</code></li>\n<li><code>graphics.SEMANTIC_TYPE_COLOR</code></li>\n<li><code>graphics.SEMANTIC_TYPE_NORMAL</code></li>\n<li><code>graphics.SEMANTIC_TYPE_TANGENT</code></li>\n<li><code>graphics.SEMANTIC_TYPE_WORLD_MATRIX</code></li>\n<li><code>graphics.SEMANTIC_TYPE_NORMAL_MATRIX</code></li>\n<li><code>graphics.SEMANTIC_TYPE_BONE_WEIGHTS</code></li>\n<li><code>graphics.SEMANTIC_TYPE_BONE_INDICES</code></li>\n<li><code>graphics.SEMANTIC_TYPE_TEXTURE_TRANSFORM_2D</code></li>\n<li><code>graphics.SEMANTIC_TYPE_MORPH_TARGET_WEIGHTS</code></li>\n</ul>",
-                    "name": "table",
+                    "doc": "vertex attribute information",
+                    "name": "attributes",
                     "types": [
-                        "table"
+                        "material.vertex_attribute_info[]"
+                    ],
+                    "types_html": [
+                        "<a href=\"#material.vertex_attribute_info\">material.vertex_attribute_info</a>[]"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#material.vertex_attribute_info\">material.vertex_attribute_info</a>[]"
                     ]
                 }
             ],
             "tparams": [],
             "type": "FUNCTION"
+        },
+        {
+            "brief": "Named material vertex attribute update",
+            "description": "Named material vertex attribute update",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "name",
+                    "doc": "Attribute name.",
+                    "is_optional": false,
+                    "name": "name",
+                    "type": "string|hash",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>|<a href=\"../builtins-lua/#hash\">hash</a>"
+                },
+                {
+                    "display_name": "value",
+                    "doc": "Attribute value.",
+                    "is_optional": true,
+                    "name": "value?",
+                    "type": "material.vertex_attribute_value",
+                    "type_html": "<a href=\"#material.vertex_attribute_value\">material.vertex_attribute_value</a>"
+                },
+                {
+                    "display_name": "normalize",
+                    "doc": "Whether integer data is normalized.",
+                    "is_optional": true,
+                    "name": "normalize?",
+                    "type": "boolean",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                },
+                {
+                    "display_name": "data_type",
+                    "doc": "Attribute data type.",
+                    "is_optional": true,
+                    "name": "data_type?",
+                    "type": "graphics.DATA_TYPE",
+                    "type_html": "<a href=\"../graphics-lua/#graphics.DATA_TYPE\">graphics.DATA_TYPE</a>"
+                },
+                {
+                    "display_name": "coordinate_space",
+                    "doc": "Attribute coordinate space.",
+                    "is_optional": true,
+                    "name": "coordinate_space?",
+                    "type": "graphics.COORDINATE_SPACE",
+                    "type_html": "<a href=\"../graphics-lua/#graphics.COORDINATE_SPACE\">graphics.COORDINATE_SPACE</a>"
+                },
+                {
+                    "display_name": "semantic_type",
+                    "doc": "Attribute semantic.",
+                    "is_optional": true,
+                    "name": "semantic_type?",
+                    "type": "graphics.SEMANTIC_TYPE",
+                    "type_html": "<a href=\"../graphics-lua/#graphics.SEMANTIC_TYPE\">graphics.SEMANTIC_TYPE</a>"
+                }
+            ],
+            "name": "material.named_vertex_attribute_options",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Texture sampler information",
+            "description": "Texture sampler information",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "name",
+                    "doc": "Sampler name.",
+                    "is_optional": false,
+                    "name": "name",
+                    "type": "hash",
+                    "type_html": "<a href=\"../builtins-lua/#hash\">hash</a>"
+                },
+                {
+                    "display_name": "type",
+                    "doc": "Sampler texture type.",
+                    "is_optional": false,
+                    "name": "type",
+                    "type": "graphics.TEXTURE_TYPE",
+                    "type_html": "<a href=\"../graphics-lua/#graphics.TEXTURE_TYPE\">graphics.TEXTURE_TYPE</a>"
+                },
+                {
+                    "display_name": "u_wrap",
+                    "doc": "Horizontal wrap mode.",
+                    "is_optional": false,
+                    "name": "u_wrap",
+                    "type": "graphics.TEXTURE_WRAP",
+                    "type_html": "<a href=\"../graphics-lua/#graphics.TEXTURE_WRAP\">graphics.TEXTURE_WRAP</a>"
+                },
+                {
+                    "display_name": "v_wrap",
+                    "doc": "Vertical wrap mode.",
+                    "is_optional": false,
+                    "name": "v_wrap",
+                    "type": "graphics.TEXTURE_WRAP",
+                    "type_html": "<a href=\"../graphics-lua/#graphics.TEXTURE_WRAP\">graphics.TEXTURE_WRAP</a>"
+                },
+                {
+                    "display_name": "min_filter",
+                    "doc": "Minification filter.",
+                    "is_optional": false,
+                    "name": "min_filter",
+                    "type": "graphics.TEXTURE_FILTER",
+                    "type_html": "<a href=\"../graphics-lua/#graphics.TEXTURE_FILTER\">graphics.TEXTURE_FILTER</a>"
+                },
+                {
+                    "display_name": "mag_filter",
+                    "doc": "Magnification filter.",
+                    "is_optional": false,
+                    "name": "mag_filter",
+                    "type": "graphics.TEXTURE_FILTER",
+                    "type_html": "<a href=\"../graphics-lua/#graphics.TEXTURE_FILTER\">graphics.TEXTURE_FILTER</a>"
+                },
+                {
+                    "display_name": "max_anisotropy",
+                    "doc": "Maximum anisotropy.",
+                    "is_optional": false,
+                    "name": "max_anisotropy",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                }
+            ],
+            "name": "material.sampler_info",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Texture sampler update",
+            "description": "Texture sampler update",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "u_wrap",
+                    "doc": "Horizontal wrap mode.",
+                    "is_optional": true,
+                    "name": "u_wrap?",
+                    "type": "graphics.TEXTURE_WRAP",
+                    "type_html": "<a href=\"../graphics-lua/#graphics.TEXTURE_WRAP\">graphics.TEXTURE_WRAP</a>"
+                },
+                {
+                    "display_name": "v_wrap",
+                    "doc": "Vertical wrap mode.",
+                    "is_optional": true,
+                    "name": "v_wrap?",
+                    "type": "graphics.TEXTURE_WRAP",
+                    "type_html": "<a href=\"../graphics-lua/#graphics.TEXTURE_WRAP\">graphics.TEXTURE_WRAP</a>"
+                },
+                {
+                    "display_name": "min_filter",
+                    "doc": "Minification filter.",
+                    "is_optional": true,
+                    "name": "min_filter?",
+                    "type": "graphics.TEXTURE_FILTER",
+                    "type_html": "<a href=\"../graphics-lua/#graphics.TEXTURE_FILTER\">graphics.TEXTURE_FILTER</a>"
+                },
+                {
+                    "display_name": "mag_filter",
+                    "doc": "Magnification filter.",
+                    "is_optional": true,
+                    "name": "mag_filter?",
+                    "type": "graphics.TEXTURE_FILTER",
+                    "type_html": "<a href=\"../graphics-lua/#graphics.TEXTURE_FILTER\">graphics.TEXTURE_FILTER</a>"
+                },
+                {
+                    "display_name": "max_anisotropy",
+                    "doc": "Maximum anisotropy.",
+                    "is_optional": true,
+                    "name": "max_anisotropy?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                }
+            ],
+            "name": "material.sampler_options",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
         },
         {
             "brief": "sets shader constants in a material",
@@ -149,14 +644,28 @@
                     "types": [
                         "hash",
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 },
                 {
-                    "doc": "A table keyed by constant name with args tables as values. Constants can be partially updated. Supported entries:\n<dl>\n<dt><code>type</code></dt>\n<dd><span class=\"type\">number</span> the type of the constant. Supported values:</dd>\n</dl>\n<ul>\n<li><code>material.CONSTANT_TYPE_USER</code></li>\n<li><code>material.CONSTANT_TYPE_USER_COLOR</code></li>\n<li><code>material.CONSTANT_TYPE_USER_MATRIX4</code></li>\n<li><code>material.CONSTANT_TYPE_VIEWPROJ</code></li>\n<li><code>material.CONSTANT_TYPE_WORLD</code></li>\n<li><code>material.CONSTANT_TYPE_TEXTURE</code></li>\n<li><code>material.CONSTANT_TYPE_VIEW</code></li>\n<li><code>material.CONSTANT_TYPE_PROJECTION</code></li>\n<li><code>material.CONSTANT_TYPE_NORMAL</code></li>\n<li><code>material.CONSTANT_TYPE_WORLDVIEW</code></li>\n<li><code>material.CONSTANT_TYPE_WORLDVIEWPROJ</code></li>\n<li><code>material.CONSTANT_TYPE_TIME</code></li>\n<li><code>material.CONSTANT_TYPE_WORLD_INVERSE</code></li>\n<li><code>material.CONSTANT_TYPE_VIEW_INVERSE</code></li>\n<li><code>material.CONSTANT_TYPE_PROJECTION_INVERSE</code></li>\n<li><code>material.CONSTANT_TYPE_VIEWPROJ_INVERSE</code></li>\n<li><code>material.CONSTANT_TYPE_WORLDVIEW_INVERSE</code></li>\n<li><code>material.CONSTANT_TYPE_WORLDVIEWPROJ_INVERSE</code></li>\n</ul>\n<dl>\n<dt><code>value</code></dt>\n<dd><span class=\"type\">vmath.vector4 | vmath.vector3 | vmath.matrix4 | number | table</span> the value(s) of the constant. If the shader constant is an array, the amount of values to update depends on how many values that are passed in the 'value' field.</dd>\n</dl>",
+                    "doc": "Shader constant updates keyed by constant name. Partial updates are supported.",
                     "is_optional": "False",
                     "name": "constants",
                     "types": [
-                        "table"
+                        "table<string|hash, material.constant_options>"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">table</a>&lt;<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>|<a href=\"../builtins-lua/#hash\">hash</a>, <a href=\"#material.constant_options\">material.constant_options</a>&gt;"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">table</a>&lt;<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>|<a href=\"../builtins-lua/#hash\">hash</a>, <a href=\"#material.constant_options\">material.constant_options</a>&gt;"
                     ]
                 }
             ],
@@ -182,14 +691,28 @@
                     "types": [
                         "hash",
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 },
                 {
-                    "doc": "A table keyed by sampler name with args tables as values. Partial updates are supported. Supported entries:\n<dl>\n<dt><code>u_wrap</code></dt>\n<dd><span class=\"type\">number</span> the u wrap mode of the texture sampler. Supported values:</dd>\n</dl>\n<ul>\n<li><code>graphics.TEXTURE_WRAP_CLAMP_TO_BORDER</code></li>\n<li><code>graphics.TEXTURE_WRAP_CLAMP_TO_EDGE</code></li>\n<li><code>graphics.TEXTURE_WRAP_MIRRORED_REPEAT</code></li>\n<li><code>graphics.TEXTURE_WRAP_REPEAT</code></li>\n</ul>\n<dl>\n<dt><code>v_wrap</code></dt>\n<dd><span class=\"type\">number</span> the v wrap mode of the texture sampler. Supported values:</dd>\n</dl>\n<ul>\n<li><code>graphics.TEXTURE_WRAP_CLAMP_TO_BORDER</code></li>\n<li><code>graphics.TEXTURE_WRAP_CLAMP_TO_EDGE</code></li>\n<li><code>graphics.TEXTURE_WRAP_MIRRORED_REPEAT</code></li>\n<li><code>graphics.TEXTURE_WRAP_REPEAT</code></li>\n</ul>\n<dl>\n<dt><code>min_filter</code></dt>\n<dd><span class=\"type\">number</span> the min filter mode of the texture sampler. Supported values:</dd>\n</dl>\n<ul>\n<li><code>graphics.TEXTURE_FILTER_DEFAULT</code></li>\n<li><code>graphics.TEXTURE_FILTER_NEAREST</code></li>\n<li><code>graphics.TEXTURE_FILTER_LINEAR</code></li>\n<li><code>graphics.TEXTURE_FILTER_NEAREST_MIPMAP_NEAREST</code></li>\n<li><code>graphics.TEXTURE_FILTER_NEAREST_MIPMAP_LINEAR</code></li>\n<li><code>graphics.TEXTURE_FILTER_LINEAR_MIPMAP_NEAREST</code></li>\n<li><code>graphics.TEXTURE_FILTER_LINEAR_MIPMAP_LINEAR</code></li>\n</ul>\n<dl>\n<dt><code>mag_filter</code></dt>\n<dd><span class=\"type\">number</span> the mag filter mode of the texture sampler</dd>\n</dl>\n<ul>\n<li><code>graphics.TEXTURE_FILTER_DEFAULT</code></li>\n<li><code>graphics.TEXTURE_FILTER_NEAREST</code></li>\n<li><code>graphics.TEXTURE_FILTER_LINEAR</code></li>\n</ul>\n<dl>\n<dt><code>max_anisotropy</code></dt>\n<dd><span class=\"type\">number</span> the max anisotropy of the texture sampler</dd>\n</dl>",
+                    "doc": "Sampler updates keyed by sampler name. Partial updates are supported.",
                     "is_optional": "False",
                     "name": "samplers",
                     "types": [
-                        "table"
+                        "table<string|hash, material.sampler_options>"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">table</a>&lt;<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>|<a href=\"../builtins-lua/#hash\">hash</a>, <a href=\"#material.sampler_options\">material.sampler_options</a>&gt;"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">table</a>&lt;<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>|<a href=\"../builtins-lua/#hash\">hash</a>, <a href=\"#material.sampler_options\">material.sampler_options</a>&gt;"
                     ]
                 }
             ],
@@ -215,6 +738,14 @@
                     "types": [
                         "hash",
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 },
                 {
@@ -222,7 +753,13 @@
                     "is_optional": "False",
                     "name": "textures",
                     "types": [
-                        "table"
+                        "table<string|hash, string|hash>"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">table</a>&lt;<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>|<a href=\"../builtins-lua/#hash\">hash</a>, <a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>|<a href=\"../builtins-lua/#hash\">hash</a>&gt;"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">table</a>&lt;<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>|<a href=\"../builtins-lua/#hash\">hash</a>, <a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>|<a href=\"../builtins-lua/#hash\">hash</a>&gt;"
                     ]
                 }
             ],
@@ -248,14 +785,31 @@
                     "types": [
                         "hash",
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 },
                 {
-                    "doc": "A table keyed by vertex attribute name with args tables as values. Partial updates are supported. Supported entries:\n<dl>\n<dt><code>value</code></dt>\n<dd><span class=\"type\">vmath.vector4 | vmath.vector3 | vmath.matrix4 | number | table</span> the value of the vertex attribute. Use a table of numbers for matrix attributes that do not map to <code>vmath.matrix4</code>.</dd>\n<dt><code>normalize</code></dt>\n<dd><span class=\"type\">boolean</span> whether the value is normalized when passed into the shader</dd>\n<dt><code>data_type</code></dt>\n<dd><span class=\"type\">number</span> the data type of the vertex attribute. Supported values:</dd>\n</dl>\n<ul>\n<li><code>graphics.DATA_TYPE_BYTE</code></li>\n<li><code>graphics.DATA_TYPE_UNSIGNED_BYTE</code></li>\n<li><code>graphics.DATA_TYPE_SHORT</code></li>\n<li><code>graphics.DATA_TYPE_UNSIGNED_SHORT</code></li>\n<li><code>graphics.DATA_TYPE_INT</code></li>\n<li><code>graphics.DATA_TYPE_UNSIGNED_INT</code></li>\n<li><code>graphics.DATA_TYPE_FLOAT</code></li>\n</ul>\n<dl>\n<dt><code>coordinate_space</code></dt>\n<dd><span class=\"type\">number</span> the coordinate space of the vertex attribute. Supported values:</dd>\n</dl>\n<ul>\n<li><code>graphics.COORDINATE_SPACE_DEFAULT</code></li>\n<li><code>graphics.COORDINATE_SPACE_WORLD</code></li>\n<li><code>graphics.COORDINATE_SPACE_LOCAL</code></li>\n</ul>\n<dl>\n<dt><code>semantic_type</code></dt>\n<dd><span class=\"type\">number</span> the semantic type of the vertex attribute. Supported values:</dd>\n</dl>\n<ul>\n<li><code>graphics.SEMANTIC_TYPE_NONE</code></li>\n<li><code>graphics.SEMANTIC_TYPE_POSITION</code></li>\n<li><code>graphics.SEMANTIC_TYPE_TEXCOORD</code></li>\n<li><code>graphics.SEMANTIC_TYPE_PAGE_INDEX</code></li>\n<li><code>graphics.SEMANTIC_TYPE_COLOR</code></li>\n<li><code>graphics.SEMANTIC_TYPE_NORMAL</code></li>\n<li><code>graphics.SEMANTIC_TYPE_TANGENT</code></li>\n<li><code>graphics.SEMANTIC_TYPE_WORLD_MATRIX</code></li>\n<li><code>graphics.SEMANTIC_TYPE_NORMAL_MATRIX</code></li>\n<li><code>graphics.SEMANTIC_TYPE_BONE_WEIGHTS</code></li>\n<li><code>graphics.SEMANTIC_TYPE_BONE_INDICES</code></li>\n<li><code>graphics.SEMANTIC_TYPE_TEXTURE_TRANSFORM_2D</code></li>\n<li><code>graphics.SEMANTIC_TYPE_MORPH_TARGET_WEIGHTS</code></li>\n</ul>",
+                    "doc": "Vertex attributes keyed by name, or an array with explicit <code>name</code> fields. Partial updates are supported.",
                     "is_optional": "False",
                     "name": "attributes",
                     "types": [
-                        "table"
+                        "table<string|hash, material.vertex_attribute_options>",
+                        "material.named_vertex_attribute_options[]"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">table</a>&lt;<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>|<a href=\"../builtins-lua/#hash\">hash</a>, <a href=\"#material.vertex_attribute_options\">material.vertex_attribute_options</a>&gt;",
+                        "<a href=\"#material.named_vertex_attribute_options\">material.named_vertex_attribute_options</a>[]"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">table</a>&lt;<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>|<a href=\"../builtins-lua/#hash\">hash</a>, <a href=\"#material.vertex_attribute_options\">material.vertex_attribute_options</a>&gt;",
+                        "<a href=\"#material.named_vertex_attribute_options\">material.named_vertex_attribute_options</a>[]"
                     ]
                 }
             ],
@@ -263,8 +817,261 @@
             "returnvalues": [],
             "tparams": [],
             "type": "FUNCTION"
+        },
+        {
+            "brief": "Texture information",
+            "description": "Texture information",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "path",
+                    "doc": "Texture resource path, if backed by a resource.",
+                    "is_optional": true,
+                    "name": "path?",
+                    "type": "hash",
+                    "type_html": "<a href=\"../builtins-lua/#hash\">hash</a>"
+                },
+                {
+                    "display_name": "handle",
+                    "doc": "Runtime texture handle.",
+                    "is_optional": false,
+                    "name": "handle",
+                    "type": "texture",
+                    "type_html": "<a href=\"../render-lua/#texture\">texture</a>"
+                },
+                {
+                    "display_name": "width",
+                    "doc": "Texture width.",
+                    "is_optional": false,
+                    "name": "width",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "height",
+                    "doc": "Texture height.",
+                    "is_optional": false,
+                    "name": "height",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "depth",
+                    "doc": "Texture depth or layer count.",
+                    "is_optional": false,
+                    "name": "depth",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "page_count",
+                    "doc": "Texture page count.",
+                    "is_optional": false,
+                    "name": "page_count",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "mipmaps",
+                    "doc": "Mipmap count.",
+                    "is_optional": false,
+                    "name": "mipmaps",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "type",
+                    "doc": "Texture type.",
+                    "is_optional": false,
+                    "name": "type",
+                    "type": "graphics.TEXTURE_TYPE",
+                    "type_html": "<a href=\"../graphics-lua/#graphics.TEXTURE_TYPE\">graphics.TEXTURE_TYPE</a>"
+                },
+                {
+                    "display_name": "flags",
+                    "doc": "Texture usage flags.",
+                    "is_optional": false,
+                    "name": "flags",
+                    "type": "graphics.TEXTURE_USAGE_FLAG",
+                    "type_html": "<a href=\"../graphics-lua/#graphics.TEXTURE_USAGE_FLAG\">graphics.TEXTURE_USAGE_FLAG</a>"
+                }
+            ],
+            "name": "material.texture_info",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Material vertex attribute information",
+            "description": "Material vertex attribute information",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "name",
+                    "doc": "Attribute name.",
+                    "is_optional": false,
+                    "name": "name",
+                    "type": "hash",
+                    "type_html": "<a href=\"../builtins-lua/#hash\">hash</a>"
+                },
+                {
+                    "display_name": "value",
+                    "doc": "Attribute value.",
+                    "is_optional": false,
+                    "name": "value",
+                    "type": "material.vertex_attribute_value",
+                    "type_html": "<a href=\"#material.vertex_attribute_value\">material.vertex_attribute_value</a>"
+                },
+                {
+                    "display_name": "normalize",
+                    "doc": "Whether integer data is normalized.",
+                    "is_optional": false,
+                    "name": "normalize",
+                    "type": "boolean",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                },
+                {
+                    "display_name": "data_type",
+                    "doc": "Attribute data type.",
+                    "is_optional": false,
+                    "name": "data_type",
+                    "type": "graphics.DATA_TYPE",
+                    "type_html": "<a href=\"../graphics-lua/#graphics.DATA_TYPE\">graphics.DATA_TYPE</a>"
+                },
+                {
+                    "display_name": "coordinate_space",
+                    "doc": "Attribute coordinate space.",
+                    "is_optional": false,
+                    "name": "coordinate_space",
+                    "type": "graphics.COORDINATE_SPACE",
+                    "type_html": "<a href=\"../graphics-lua/#graphics.COORDINATE_SPACE\">graphics.COORDINATE_SPACE</a>"
+                },
+                {
+                    "display_name": "semantic_type",
+                    "doc": "Attribute semantic.",
+                    "is_optional": false,
+                    "name": "semantic_type",
+                    "type": "graphics.SEMANTIC_TYPE",
+                    "type_html": "<a href=\"../graphics-lua/#graphics.SEMANTIC_TYPE\">graphics.SEMANTIC_TYPE</a>"
+                }
+            ],
+            "name": "material.vertex_attribute_info",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Material vertex attribute update",
+            "description": "Material vertex attribute update",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "value",
+                    "doc": "Attribute value.",
+                    "is_optional": true,
+                    "name": "value?",
+                    "type": "material.vertex_attribute_value",
+                    "type_html": "<a href=\"#material.vertex_attribute_value\">material.vertex_attribute_value</a>"
+                },
+                {
+                    "display_name": "normalize",
+                    "doc": "Whether integer data is normalized.",
+                    "is_optional": true,
+                    "name": "normalize?",
+                    "type": "boolean",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                },
+                {
+                    "display_name": "data_type",
+                    "doc": "Attribute data type.",
+                    "is_optional": true,
+                    "name": "data_type?",
+                    "type": "graphics.DATA_TYPE",
+                    "type_html": "<a href=\"../graphics-lua/#graphics.DATA_TYPE\">graphics.DATA_TYPE</a>"
+                },
+                {
+                    "display_name": "coordinate_space",
+                    "doc": "Attribute coordinate space.",
+                    "is_optional": true,
+                    "name": "coordinate_space?",
+                    "type": "graphics.COORDINATE_SPACE",
+                    "type_html": "<a href=\"../graphics-lua/#graphics.COORDINATE_SPACE\">graphics.COORDINATE_SPACE</a>"
+                },
+                {
+                    "display_name": "semantic_type",
+                    "doc": "Attribute semantic.",
+                    "is_optional": true,
+                    "name": "semantic_type?",
+                    "type": "graphics.SEMANTIC_TYPE",
+                    "type_html": "<a href=\"../graphics-lua/#graphics.SEMANTIC_TYPE\">graphics.SEMANTIC_TYPE</a>"
+                }
+            ],
+            "name": "material.vertex_attribute_options",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Material vertex attribute value",
+            "description": "A vertex attribute value accepted by <a href=\"/ref/material#material.set_vertex_attributes\">material.set_vertex_attributes</a>\nand returned by <a href=\"/ref/material#material.get_vertex_attributes\">material.get_vertex_attributes</a>. Use a number or vector\nfor scalar and vector attributes, <span class=\"type\"><a href=\"../vmath-lua/#matrix4\">matrix4</a></span> for a 4x4 matrix, and a flat\narray of numbers for matrix shapes that do not map to <span class=\"type\"><a href=\"../vmath-lua/#matrix4\">matrix4</a></span>.",
+            "error": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">material</span><span class=\"p\">.</span><span class=\"n\">set_vertex_attributes</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">material</span><span class=\"p\">,</span> <span class=\"p\">{</span>\n    <span class=\"n\">tint</span> <span class=\"o\">=</span> <span class=\"p\">{</span> <span class=\"n\">value</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector4</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">)</span> <span class=\"p\">},</span>\n    <span class=\"n\">transform_2d</span> <span class=\"o\">=</span> <span class=\"p\">{</span> <span class=\"n\">value</span> <span class=\"o\">=</span> <span class=\"p\">{</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">1</span> <span class=\"p\">}</span> <span class=\"p\">}</span>\n<span class=\"p\">})</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "material.vertex_attribute_value",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "value",
+                    "types": [
+                        "number",
+                        "vector3",
+                        "vector4",
+                        "matrix4",
+                        "number[]"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>",
+                        "<a href=\"../vmath-lua/#vector4\">vector4</a>",
+                        "<a href=\"../vmath-lua/#matrix4\">matrix4</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>[]"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>",
+                        "<a href=\"../vmath-lua/#vector4\">vector4</a>",
+                        "<a href=\"../vmath-lua/#matrix4\">matrix4</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>[]"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "target_type": "number | vector3 | vector4 | matrix4 | number[]",
+            "target_type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a> | <a href=\"../vmath-lua/#vector3\">vector3</a> | <a href=\"../vmath-lua/#vector4\">vector4</a> | <a href=\"../vmath-lua/#matrix4\">matrix4</a> | <a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>[]",
+            "tparams": [],
+            "type": "TYPEDEF"
         }
     ],
+    "format_version": 2,
     "info": {
         "api_language": "Lua",
         "brief": "Material API documentation",

@@ -1,769 +1,634 @@
 {
     "elements": [
         {
-            "brief": "",
-            "description": "",
+            "brief": "Graphics adapter information",
+            "description": "Graphics adapter information",
             "error": "",
             "examples": "",
             "language": "",
-            "members": [],
-            "name": "graphics.BLEND_EQUATION_ADD",
+            "members": [
+                {
+                    "display_name": "family",
+                    "doc": "Adapter family name.",
+                    "is_optional": false,
+                    "name": "family",
+                    "type": "string",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                },
+                {
+                    "display_name": "version_major",
+                    "doc": "Adapter API major version.",
+                    "is_optional": false,
+                    "name": "version_major",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "version_minor",
+                    "doc": "Adapter API minor version.",
+                    "is_optional": false,
+                    "name": "version_minor",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "limits",
+                    "doc": "Hardware and driver limits.",
+                    "is_optional": false,
+                    "name": "limits",
+                    "type": "graphics.adapter_limits",
+                    "type_html": "<a href=\"#graphics.adapter_limits\">graphics.adapter_limits</a>"
+                },
+                {
+                    "display_name": "extensions",
+                    "doc": "Driver-reported extension names.",
+                    "is_optional": false,
+                    "name": "extensions",
+                    "type": "string[]",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>[]"
+                },
+                {
+                    "display_name": "features",
+                    "doc": "Supported optional context features.",
+                    "is_optional": false,
+                    "name": "features",
+                    "type": "graphics.CONTEXT_FEATURE[]",
+                    "type_html": "<a href=\"#graphics.CONTEXT_FEATURE\">graphics.CONTEXT_FEATURE</a>[]"
+                }
+            ],
+            "name": "graphics.adapter_info",
             "notes": [],
             "parameters": [],
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "CONSTANT"
+            "type": "STRUCT"
         },
         {
-            "brief": "",
-            "description": "",
+            "brief": "Graphics context limits",
+            "description": "Graphics context limits",
             "error": "",
             "examples": "",
             "language": "",
-            "members": [],
-            "name": "graphics.BLEND_EQUATION_MAX",
+            "members": [
+                {
+                    "display_name": "max_texture_size_2d",
+                    "doc": "Maximum 2D texture dimension in texels.",
+                    "is_optional": false,
+                    "name": "max_texture_size_2d",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "max_texture_size_3d",
+                    "doc": "Maximum 3D texture dimension in texels.",
+                    "is_optional": false,
+                    "name": "max_texture_size_3d",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "max_texture_size_cube",
+                    "doc": "Maximum cube-map face dimension in texels.",
+                    "is_optional": false,
+                    "name": "max_texture_size_cube",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "max_texture_array_layers",
+                    "doc": "Maximum number of array texture layers.",
+                    "is_optional": false,
+                    "name": "max_texture_array_layers",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "max_framebuffer_width",
+                    "doc": "Maximum framebuffer width in pixels.",
+                    "is_optional": false,
+                    "name": "max_framebuffer_width",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "max_framebuffer_height",
+                    "doc": "Maximum framebuffer height in pixels.",
+                    "is_optional": false,
+                    "name": "max_framebuffer_height",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "max_color_attachments",
+                    "doc": "Maximum number of simultaneous color attachments.",
+                    "is_optional": false,
+                    "name": "max_color_attachments",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "max_samplers_per_stage",
+                    "doc": "Maximum number of texture samplers per shader stage.",
+                    "is_optional": false,
+                    "name": "max_samplers_per_stage",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "max_textures_per_stage",
+                    "doc": "Maximum number of sampled textures per shader stage.",
+                    "is_optional": false,
+                    "name": "max_textures_per_stage",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "max_vertex_attributes",
+                    "doc": "Maximum number of vertex attributes.",
+                    "is_optional": false,
+                    "name": "max_vertex_attributes",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "max_vertex_buffers",
+                    "doc": "Maximum number of vertex-buffer bindings.",
+                    "is_optional": false,
+                    "name": "max_vertex_buffers",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "max_compute_workgroup_size_x",
+                    "doc": "Maximum compute workgroup size on the X axis.",
+                    "is_optional": false,
+                    "name": "max_compute_workgroup_size_x",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "max_compute_workgroup_size_y",
+                    "doc": "Maximum compute workgroup size on the Y axis.",
+                    "is_optional": false,
+                    "name": "max_compute_workgroup_size_y",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "max_compute_workgroup_size_z",
+                    "doc": "Maximum compute workgroup size on the Z axis.",
+                    "is_optional": false,
+                    "name": "max_compute_workgroup_size_z",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "max_compute_workgroup_invocations",
+                    "doc": "Maximum invocations per compute workgroup.",
+                    "is_optional": false,
+                    "name": "max_compute_workgroup_invocations",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "max_compute_shared_memory_size",
+                    "doc": "Maximum shared memory per compute workgroup in bytes.",
+                    "is_optional": false,
+                    "name": "max_compute_shared_memory_size",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "max_uniform_buffer_range",
+                    "doc": "Maximum bindable uniform-buffer range in bytes.",
+                    "is_optional": false,
+                    "name": "max_uniform_buffer_range",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "max_storage_buffer_range",
+                    "doc": "Maximum bindable storage-buffer range in bytes.",
+                    "is_optional": false,
+                    "name": "max_storage_buffer_range",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                }
+            ],
+            "name": "graphics.adapter_limits",
             "notes": [],
             "parameters": [],
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "CONSTANT"
+            "type": "STRUCT"
         },
         {
-            "brief": "",
-            "description": "",
+            "brief": "Blend equations",
+            "description": "Blend equations",
             "error": "",
             "examples": "",
             "language": "",
-            "members": [],
-            "name": "graphics.BLEND_EQUATION_MIN",
+            "members": [
+                {
+                    "doc": "",
+                    "name": "graphics.BLEND_EQUATION_ADD"
+                },
+                {
+                    "doc": "",
+                    "name": "graphics.BLEND_EQUATION_MAX"
+                },
+                {
+                    "doc": "",
+                    "name": "graphics.BLEND_EQUATION_MIN"
+                },
+                {
+                    "doc": "",
+                    "name": "graphics.BLEND_EQUATION_REVERSE_SUBTRACT"
+                },
+                {
+                    "doc": "",
+                    "name": "graphics.BLEND_EQUATION_SUBTRACT"
+                }
+            ],
+            "name": "graphics.BLEND_EQUATION",
             "notes": [],
             "parameters": [],
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "CONSTANT"
+            "type": "ENUM",
+            "value_type": "integer",
+            "value_type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
         },
         {
-            "brief": "",
-            "description": "",
+            "brief": "Blend factors",
+            "description": "Blend factors",
             "error": "",
             "examples": "",
             "language": "",
-            "members": [],
-            "name": "graphics.BLEND_EQUATION_REVERSE_SUBTRACT",
+            "members": [
+                {
+                    "doc": "constant blend alpha for every component",
+                    "name": "graphics.BLEND_FACTOR_CONSTANT_ALPHA"
+                },
+                {
+                    "doc": "constant blend color",
+                    "name": "graphics.BLEND_FACTOR_CONSTANT_COLOR"
+                },
+                {
+                    "doc": "destination alpha for every component",
+                    "name": "graphics.BLEND_FACTOR_DST_ALPHA"
+                },
+                {
+                    "doc": "destination color",
+                    "name": "graphics.BLEND_FACTOR_DST_COLOR"
+                },
+                {
+                    "doc": "one for every component",
+                    "name": "graphics.BLEND_FACTOR_ONE"
+                },
+                {
+                    "doc": "one minus the constant blend alpha for every component",
+                    "name": "graphics.BLEND_FACTOR_ONE_MINUS_CONSTANT_ALPHA"
+                },
+                {
+                    "doc": "one minus the constant blend color",
+                    "name": "graphics.BLEND_FACTOR_ONE_MINUS_CONSTANT_COLOR"
+                },
+                {
+                    "doc": "one minus the destination alpha for every component",
+                    "name": "graphics.BLEND_FACTOR_ONE_MINUS_DST_ALPHA"
+                },
+                {
+                    "doc": "one minus the destination color",
+                    "name": "graphics.BLEND_FACTOR_ONE_MINUS_DST_COLOR"
+                },
+                {
+                    "doc": "one minus the source alpha for every component",
+                    "name": "graphics.BLEND_FACTOR_ONE_MINUS_SRC_ALPHA"
+                },
+                {
+                    "doc": "one minus the source color",
+                    "name": "graphics.BLEND_FACTOR_ONE_MINUS_SRC_COLOR"
+                },
+                {
+                    "doc": "source alpha for every component",
+                    "name": "graphics.BLEND_FACTOR_SRC_ALPHA"
+                },
+                {
+                    "doc": "minimum of source alpha and one minus destination alpha for color, and one for alpha",
+                    "name": "graphics.BLEND_FACTOR_SRC_ALPHA_SATURATE"
+                },
+                {
+                    "doc": "source color",
+                    "name": "graphics.BLEND_FACTOR_SRC_COLOR"
+                },
+                {
+                    "doc": "zero for every component",
+                    "name": "graphics.BLEND_FACTOR_ZERO"
+                }
+            ],
+            "name": "graphics.BLEND_FACTOR",
             "notes": [],
             "parameters": [],
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "CONSTANT"
+            "type": "ENUM",
+            "value_type": "integer",
+            "value_type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
         },
         {
-            "brief": "",
-            "description": "",
+            "brief": "Buffer types",
+            "description": "Buffer types",
             "error": "",
             "examples": "",
             "language": "",
-            "members": [],
-            "name": "graphics.BLEND_EQUATION_SUBTRACT",
+            "members": [
+                {
+                    "doc": "first color attachment",
+                    "name": "graphics.BUFFER_TYPE_COLOR0_BIT"
+                },
+                {
+                    "doc": "second color attachment; may be nil if multiple render targets are unsupported",
+                    "name": "graphics.BUFFER_TYPE_COLOR1_BIT"
+                },
+                {
+                    "doc": "third color attachment; may be nil if multiple render targets are unsupported",
+                    "name": "graphics.BUFFER_TYPE_COLOR2_BIT"
+                },
+                {
+                    "doc": "fourth color attachment; may be nil if multiple render targets are unsupported",
+                    "name": "graphics.BUFFER_TYPE_COLOR3_BIT"
+                },
+                {
+                    "doc": "depth attachment",
+                    "name": "graphics.BUFFER_TYPE_DEPTH_BIT"
+                },
+                {
+                    "doc": "stencil attachment",
+                    "name": "graphics.BUFFER_TYPE_STENCIL_BIT"
+                }
+            ],
+            "name": "graphics.BUFFER_TYPE",
             "notes": [],
             "parameters": [],
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "CONSTANT"
+            "type": "ENUM",
+            "value_type": "integer",
+            "value_type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
         },
         {
-            "brief": "",
-            "description": "",
+            "brief": "Comparison functions",
+            "description": "Comparison functions",
             "error": "",
             "examples": "",
             "language": "",
-            "members": [],
-            "name": "graphics.BLEND_FACTOR_CONSTANT_ALPHA",
+            "members": [
+                {
+                    "doc": "always passes",
+                    "name": "graphics.COMPARE_FUNC_ALWAYS"
+                },
+                {
+                    "doc": "passes when the values are equal",
+                    "name": "graphics.COMPARE_FUNC_EQUAL"
+                },
+                {
+                    "doc": "passes when the incoming value is greater than or equal to the stored value",
+                    "name": "graphics.COMPARE_FUNC_GEQUAL"
+                },
+                {
+                    "doc": "passes when the incoming value is greater than the stored value",
+                    "name": "graphics.COMPARE_FUNC_GREATER"
+                },
+                {
+                    "doc": "passes when the incoming value is less than or equal to the stored value",
+                    "name": "graphics.COMPARE_FUNC_LEQUAL"
+                },
+                {
+                    "doc": "passes when the incoming value is less than the stored value",
+                    "name": "graphics.COMPARE_FUNC_LESS"
+                },
+                {
+                    "doc": "never passes",
+                    "name": "graphics.COMPARE_FUNC_NEVER"
+                },
+                {
+                    "doc": "passes when the values are not equal",
+                    "name": "graphics.COMPARE_FUNC_NOTEQUAL"
+                }
+            ],
+            "name": "graphics.COMPARE_FUNC",
             "notes": [],
             "parameters": [],
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "CONSTANT"
+            "type": "ENUM",
+            "value_type": "integer",
+            "value_type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
         },
         {
-            "brief": "",
-            "description": "",
+            "brief": "Texture compression types",
+            "description": "Texture compression types",
             "error": "",
             "examples": "",
             "language": "",
-            "members": [],
-            "name": "graphics.BLEND_FACTOR_CONSTANT_COLOR",
+            "members": [
+                {
+                    "doc": "",
+                    "name": "graphics.COMPRESSION_TYPE_BASIS_ETC1S"
+                },
+                {
+                    "doc": "",
+                    "name": "graphics.COMPRESSION_TYPE_BASIS_UASTC"
+                },
+                {
+                    "doc": "",
+                    "name": "graphics.COMPRESSION_TYPE_DEFAULT"
+                },
+                {
+                    "doc": "",
+                    "name": "graphics.COMPRESSION_TYPE_WEBP"
+                },
+                {
+                    "doc": "",
+                    "name": "graphics.COMPRESSION_TYPE_WEBP_LOSSY"
+                }
+            ],
+            "name": "graphics.COMPRESSION_TYPE",
             "notes": [],
             "parameters": [],
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "CONSTANT"
+            "type": "ENUM",
+            "value_type": "integer",
+            "value_type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
         },
         {
-            "brief": "",
-            "description": "",
+            "brief": "Optional graphics-context features",
+            "description": "Optional graphics-context features",
             "error": "",
             "examples": "",
             "language": "",
-            "members": [],
-            "name": "graphics.BLEND_FACTOR_DST_ALPHA",
+            "members": [
+                {
+                    "doc": "Context feature flag indicating support for 3D (volume) textures.",
+                    "name": "graphics.CONTEXT_FEATURE_3D_TEXTURES"
+                },
+                {
+                    "doc": "Context feature flag indicating support for ASTC compressed 2D array textures. Some WebGL/GLES drivers fail array texture ASTC uploads while 2D ASTC works.",
+                    "name": "graphics.CONTEXT_FEATURE_ASTC_ARRAY_TEXTURES"
+                },
+                {
+                    "doc": "Context feature flag indicating support for min/max blend equations. Requires GLES3+ or EXT_blend_minmax.",
+                    "name": "graphics.CONTEXT_FEATURE_BLEND_EQUATION_MIN_MAX"
+                },
+                {
+                    "doc": "Context feature flag indicating support for compute shaders.",
+                    "name": "graphics.CONTEXT_FEATURE_COMPUTE_SHADER"
+                },
+                {
+                    "doc": "Context feature flag indicating support for hardware instancing.",
+                    "name": "graphics.CONTEXT_FEATURE_INSTANCING"
+                },
+                {
+                    "doc": "Context feature flag indicating support for rendering to multiple color targets simultaneously.",
+                    "name": "graphics.CONTEXT_FEATURE_MULTI_TARGET_RENDERING"
+                },
+                {
+                    "doc": "Context feature flag indicating support for storage buffers.",
+                    "name": "graphics.CONTEXT_FEATURE_STORAGE_BUFFER"
+                },
+                {
+                    "doc": "Context feature flag indicating support for texture arrays.",
+                    "name": "graphics.CONTEXT_FEATURE_TEXTURE_ARRAY"
+                },
+                {
+                    "doc": "Context feature flag indicating support for vertical sync (vsync).",
+                    "name": "graphics.CONTEXT_FEATURE_VSYNC"
+                }
+            ],
+            "name": "graphics.CONTEXT_FEATURE",
             "notes": [],
             "parameters": [],
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "CONSTANT"
+            "type": "ENUM",
+            "value_type": "integer",
+            "value_type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
         },
         {
-            "brief": "",
-            "description": "",
+            "brief": "Vertex attribute coordinate spaces",
+            "description": "Vertex attribute coordinate spaces",
             "error": "",
             "examples": "",
             "language": "",
-            "members": [],
-            "name": "graphics.BLEND_FACTOR_DST_COLOR",
+            "members": [
+                {
+                    "doc": "Default vertex attribute coordinate space.",
+                    "name": "graphics.COORDINATE_SPACE_DEFAULT"
+                },
+                {
+                    "doc": "Local vertex attribute coordinate space.",
+                    "name": "graphics.COORDINATE_SPACE_LOCAL"
+                },
+                {
+                    "doc": "World vertex attribute coordinate space.",
+                    "name": "graphics.COORDINATE_SPACE_WORLD"
+                }
+            ],
+            "name": "graphics.COORDINATE_SPACE",
             "notes": [],
             "parameters": [],
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "CONSTANT"
+            "type": "ENUM",
+            "value_type": "integer",
+            "value_type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
         },
         {
-            "brief": "",
-            "description": "",
+            "brief": "Vertex attribute data types",
+            "description": "Vertex attribute data types",
             "error": "",
             "examples": "",
             "language": "",
-            "members": [],
-            "name": "graphics.BLEND_FACTOR_ONE",
+            "members": [
+                {
+                    "doc": "Signed 8-bit vertex attribute data.",
+                    "name": "graphics.DATA_TYPE_BYTE"
+                },
+                {
+                    "doc": "32-bit floating-point vertex attribute data.",
+                    "name": "graphics.DATA_TYPE_FLOAT"
+                },
+                {
+                    "doc": "Signed 32-bit vertex attribute data.",
+                    "name": "graphics.DATA_TYPE_INT"
+                },
+                {
+                    "doc": "Signed 16-bit vertex attribute data.",
+                    "name": "graphics.DATA_TYPE_SHORT"
+                },
+                {
+                    "doc": "Unsigned 8-bit vertex attribute data.",
+                    "name": "graphics.DATA_TYPE_UNSIGNED_BYTE"
+                },
+                {
+                    "doc": "Unsigned 32-bit vertex attribute data.",
+                    "name": "graphics.DATA_TYPE_UNSIGNED_INT"
+                },
+                {
+                    "doc": "Unsigned 16-bit vertex attribute data.",
+                    "name": "graphics.DATA_TYPE_UNSIGNED_SHORT"
+                }
+            ],
+            "name": "graphics.DATA_TYPE",
             "notes": [],
             "parameters": [],
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "CONSTANT"
+            "type": "ENUM",
+            "value_type": "integer",
+            "value_type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
         },
         {
-            "brief": "",
-            "description": "",
+            "brief": "Face types",
+            "description": "Face types",
             "error": "",
             "examples": "",
             "language": "",
-            "members": [],
-            "name": "graphics.BLEND_FACTOR_ONE_MINUS_CONSTANT_ALPHA",
+            "members": [
+                {
+                    "doc": "back-facing polygons",
+                    "name": "graphics.FACE_TYPE_BACK"
+                },
+                {
+                    "doc": "front-facing polygons",
+                    "name": "graphics.FACE_TYPE_FRONT"
+                },
+                {
+                    "doc": "both front- and back-facing polygons",
+                    "name": "graphics.FACE_TYPE_FRONT_AND_BACK"
+                }
+            ],
+            "name": "graphics.FACE_TYPE",
             "notes": [],
             "parameters": [],
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "",
-            "description": "",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.BLEND_FACTOR_ONE_MINUS_CONSTANT_COLOR",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "",
-            "description": "",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.BLEND_FACTOR_ONE_MINUS_DST_ALPHA",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "",
-            "description": "",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.BLEND_FACTOR_ONE_MINUS_DST_COLOR",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "",
-            "description": "",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.BLEND_FACTOR_ONE_MINUS_SRC_ALPHA",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "",
-            "description": "",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.BLEND_FACTOR_ONE_MINUS_SRC_COLOR",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "",
-            "description": "",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.BLEND_FACTOR_SRC_ALPHA",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "",
-            "description": "",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.BLEND_FACTOR_SRC_ALPHA_SATURATE",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "",
-            "description": "",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.BLEND_FACTOR_SRC_COLOR",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "",
-            "description": "",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.BLEND_FACTOR_ZERO",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "",
-            "description": "",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.BUFFER_TYPE_COLOR0_BIT",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "May be nil if multitarget rendering isn't supporte...",
-            "description": "May be nil if multitarget rendering isn't supported",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.BUFFER_TYPE_COLOR1_BIT",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "May be nil if multitarget rendering isn't supporte...",
-            "description": "May be nil if multitarget rendering isn't supported",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.BUFFER_TYPE_COLOR2_BIT",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "May be nil if multitarget rendering isn't supporte...",
-            "description": "May be nil if multitarget rendering isn't supported",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.BUFFER_TYPE_COLOR3_BIT",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "",
-            "description": "",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.BUFFER_TYPE_DEPTH_BIT",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "",
-            "description": "",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.BUFFER_TYPE_STENCIL_BIT",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "",
-            "description": "",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.COMPARE_FUNC_ALWAYS",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "",
-            "description": "",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.COMPARE_FUNC_EQUAL",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "",
-            "description": "",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.COMPARE_FUNC_GEQUAL",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "",
-            "description": "",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.COMPARE_FUNC_GREATER",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "",
-            "description": "",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.COMPARE_FUNC_LEQUAL",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "",
-            "description": "",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.COMPARE_FUNC_LESS",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "",
-            "description": "",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.COMPARE_FUNC_NEVER",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "",
-            "description": "",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.COMPARE_FUNC_NOTEQUAL",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "",
-            "description": "",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.COMPRESSION_TYPE_BASIS_ETC1S",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "",
-            "description": "",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.COMPRESSION_TYPE_BASIS_UASTC",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "",
-            "description": "",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.COMPRESSION_TYPE_DEFAULT",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "",
-            "description": "",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.COMPRESSION_TYPE_WEBP",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "",
-            "description": "",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.COMPRESSION_TYPE_WEBP_LOSSY",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "Context feature flag indicating support for 3D (vo...",
-            "description": "Context feature flag indicating support for 3D (volume) textures.",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.CONTEXT_FEATURE_3D_TEXTURES",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "Context feature flag indicating support for ASTC c...",
-            "description": "Context feature flag indicating support for ASTC compressed 2D array textures.\nSome WebGL/GLES drivers fail array texture ASTC uploads while 2D ASTC works.",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.CONTEXT_FEATURE_ASTC_ARRAY_TEXTURES",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "Context feature flag indicating support for min/ma...",
-            "description": "Context feature flag indicating support for min/max blend equations.\nRequires GLES3+ or EXT_blend_minmax.",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.CONTEXT_FEATURE_BLEND_EQUATION_MIN_MAX",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "Context feature flag indicating support for comput...",
-            "description": "Context feature flag indicating support for compute shaders.",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.CONTEXT_FEATURE_COMPUTE_SHADER",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "Context feature flag indicating support for hardwa...",
-            "description": "Context feature flag indicating support for hardware instancing.",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.CONTEXT_FEATURE_INSTANCING",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "Context feature flag indicating support for render...",
-            "description": "Context feature flag indicating support for rendering to multiple color targets simultaneously.",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.CONTEXT_FEATURE_MULTI_TARGET_RENDERING",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "Context feature flag indicating support for storag...",
-            "description": "Context feature flag indicating support for storage buffers.",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.CONTEXT_FEATURE_STORAGE_BUFFER",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "Context feature flag indicating support for textur...",
-            "description": "Context feature flag indicating support for texture arrays.",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.CONTEXT_FEATURE_TEXTURE_ARRAY",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "Context feature flag indicating support for vertic...",
-            "description": "Context feature flag indicating support for vertical sync (vsync).",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.CONTEXT_FEATURE_VSYNC",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "",
-            "description": "",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.FACE_TYPE_BACK",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "",
-            "description": "",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.FACE_TYPE_FRONT",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "",
-            "description": "",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.FACE_TYPE_FRONT_AND_BACK",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
+            "type": "ENUM",
+            "value_type": "integer",
+            "value_type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
         },
         {
             "brief": "get information about the currently installed graphics adapter",
@@ -778,10 +643,16 @@
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "table with the following fields:\n<code>family</code>         <span class=\"type\">string</span>   adapter family name (e.g. \"opengl\", \"vulkan\")\n  <code>version_major</code>  <span class=\"type\">number</span>   adapter API major version (e.g. 1 for Vulkan 1.4)\n  <code>version_minor</code>  <span class=\"type\">number</span>   adapter API minor version (e.g. 4 for Vulkan 1.4)\n<code>limits</code>         <span class=\"type\">table</span>    hardware/driver limits:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n n-Quoted\">`max_texture_size_2d`</span><span class=\"w\">              </span><span class=\"err\">[</span><span class=\"k\">type</span><span class=\"o\">:</span><span class=\"k\">number</span><span class=\"err\">]</span><span class=\"w\">  </span><span class=\"n\">max</span><span class=\"w\"> </span><span class=\"n\">2D</span><span class=\"w\"> </span><span class=\"n\">texture</span><span class=\"w\"> </span><span class=\"n\">dimension</span><span class=\"w\"> </span><span class=\"k\">in</span><span class=\"w\"> </span><span class=\"n\">texels</span><span class=\"w\"></span>\n<span class=\"n n-Quoted\">`max_texture_size_3d`</span><span class=\"w\">              </span><span class=\"err\">[</span><span class=\"k\">type</span><span class=\"o\">:</span><span class=\"k\">number</span><span class=\"err\">]</span><span class=\"w\">  </span><span class=\"n\">max</span><span class=\"w\"> </span><span class=\"n\">3D</span><span class=\"w\"> </span><span class=\"p\">(</span><span class=\"n\">volume</span><span class=\"p\">)</span><span class=\"w\"> </span><span class=\"n\">texture</span><span class=\"w\"> </span><span class=\"n\">dimension</span><span class=\"w\"> </span><span class=\"k\">in</span><span class=\"w\"> </span><span class=\"n\">texels</span><span class=\"w\"></span>\n<span class=\"n n-Quoted\">`max_texture_size_cube`</span><span class=\"w\">            </span><span class=\"err\">[</span><span class=\"k\">type</span><span class=\"o\">:</span><span class=\"k\">number</span><span class=\"err\">]</span><span class=\"w\">  </span><span class=\"n\">max</span><span class=\"w\"> </span><span class=\"k\">cube</span><span class=\"w\"> </span><span class=\"n\">map</span><span class=\"w\"> </span><span class=\"n\">face</span><span class=\"w\"> </span><span class=\"n\">dimension</span><span class=\"w\"> </span><span class=\"k\">in</span><span class=\"w\"> </span><span class=\"n\">texels</span><span class=\"w\"></span>\n<span class=\"n n-Quoted\">`max_texture_array_layers`</span><span class=\"w\">         </span><span class=\"err\">[</span><span class=\"k\">type</span><span class=\"o\">:</span><span class=\"k\">number</span><span class=\"err\">]</span><span class=\"w\">  </span><span class=\"n\">max</span><span class=\"w\"> </span><span class=\"n\">layers</span><span class=\"w\"> </span><span class=\"k\">in</span><span class=\"w\"> </span><span class=\"n\">an</span><span class=\"w\"> </span><span class=\"k\">array</span><span class=\"w\"> </span><span class=\"n\">texture</span><span class=\"w\"></span>\n<span class=\"n n-Quoted\">`max_framebuffer_width`</span><span class=\"w\">            </span><span class=\"err\">[</span><span class=\"k\">type</span><span class=\"o\">:</span><span class=\"k\">number</span><span class=\"err\">]</span><span class=\"w\">  </span><span class=\"n\">max</span><span class=\"w\"> </span><span class=\"n\">framebuffer</span><span class=\"w\"> </span><span class=\"n\">width</span><span class=\"w\"> </span><span class=\"k\">in</span><span class=\"w\"> </span><span class=\"n\">pixels</span><span class=\"w\"></span>\n<span class=\"n n-Quoted\">`max_framebuffer_height`</span><span class=\"w\">           </span><span class=\"err\">[</span><span class=\"k\">type</span><span class=\"o\">:</span><span class=\"k\">number</span><span class=\"err\">]</span><span class=\"w\">  </span><span class=\"n\">max</span><span class=\"w\"> </span><span class=\"n\">framebuffer</span><span class=\"w\"> </span><span class=\"n\">height</span><span class=\"w\"> </span><span class=\"k\">in</span><span class=\"w\"> </span><span class=\"n\">pixels</span><span class=\"w\"></span>\n<span class=\"n n-Quoted\">`max_color_attachments`</span><span class=\"w\">            </span><span class=\"err\">[</span><span class=\"k\">type</span><span class=\"o\">:</span><span class=\"k\">number</span><span class=\"err\">]</span><span class=\"w\">  </span><span class=\"n\">max</span><span class=\"w\"> </span><span class=\"n\">simultaneous</span><span class=\"w\"> </span><span class=\"n\">color</span><span class=\"w\"> </span><span class=\"n\">attachments</span><span class=\"w\"></span>\n<span class=\"n n-Quoted\">`max_samplers_per_stage`</span><span class=\"w\">           </span><span class=\"err\">[</span><span class=\"k\">type</span><span class=\"o\">:</span><span class=\"k\">number</span><span class=\"err\">]</span><span class=\"w\">  </span><span class=\"n\">max</span><span class=\"w\"> </span><span class=\"n\">texture</span><span class=\"w\"> </span><span class=\"n\">samplers</span><span class=\"w\"> </span><span class=\"n\">per</span><span class=\"w\"> </span><span class=\"n\">shader</span><span class=\"w\"> </span><span class=\"n\">stage</span><span class=\"w\"></span>\n<span class=\"n n-Quoted\">`max_textures_per_stage`</span><span class=\"w\">           </span><span class=\"err\">[</span><span class=\"k\">type</span><span class=\"o\">:</span><span class=\"k\">number</span><span class=\"err\">]</span><span class=\"w\">  </span><span class=\"n\">max</span><span class=\"w\"> </span><span class=\"n\">sampled</span><span class=\"w\"> </span><span class=\"n\">textures</span><span class=\"w\"> </span><span class=\"n\">per</span><span class=\"w\"> </span><span class=\"n\">shader</span><span class=\"w\"> </span><span class=\"n\">stage</span><span class=\"w\"></span>\n<span class=\"n n-Quoted\">`max_vertex_attributes`</span><span class=\"w\">            </span><span class=\"err\">[</span><span class=\"k\">type</span><span class=\"o\">:</span><span class=\"k\">number</span><span class=\"err\">]</span><span class=\"w\">  </span><span class=\"n\">max</span><span class=\"w\"> </span><span class=\"n\">vertex</span><span class=\"w\"> </span><span class=\"n\">attributes</span><span class=\"w\"></span>\n<span class=\"n n-Quoted\">`max_vertex_buffers`</span><span class=\"w\">               </span><span class=\"err\">[</span><span class=\"k\">type</span><span class=\"o\">:</span><span class=\"k\">number</span><span class=\"err\">]</span><span class=\"w\">  </span><span class=\"n\">max</span><span class=\"w\"> </span><span class=\"n\">vertex</span><span class=\"w\"> </span><span class=\"n\">buffer</span><span class=\"w\"> </span><span class=\"n\">bindings</span><span class=\"w\"></span>\n<span class=\"n n-Quoted\">`max_compute_workgroup_size_x`</span><span class=\"w\">     </span><span class=\"err\">[</span><span class=\"k\">type</span><span class=\"o\">:</span><span class=\"k\">number</span><span class=\"err\">]</span><span class=\"w\">  </span><span class=\"n\">max</span><span class=\"w\"> </span><span class=\"n\">compute</span><span class=\"w\"> </span><span class=\"n\">workgroup</span><span class=\"w\"> </span><span class=\"n\">size</span><span class=\"w\"> </span><span class=\"p\">(</span><span class=\"n\">X</span><span class=\"p\">)</span><span class=\"w\"></span>\n<span class=\"n n-Quoted\">`max_compute_workgroup_size_y`</span><span class=\"w\">     </span><span class=\"err\">[</span><span class=\"k\">type</span><span class=\"o\">:</span><span class=\"k\">number</span><span class=\"err\">]</span><span class=\"w\">  </span><span class=\"n\">max</span><span class=\"w\"> </span><span class=\"n\">compute</span><span class=\"w\"> </span><span class=\"n\">workgroup</span><span class=\"w\"> </span><span class=\"n\">size</span><span class=\"w\"> </span><span class=\"p\">(</span><span class=\"n\">Y</span><span class=\"p\">)</span><span class=\"w\"></span>\n<span class=\"n n-Quoted\">`max_compute_workgroup_size_z`</span><span class=\"w\">     </span><span class=\"err\">[</span><span class=\"k\">type</span><span class=\"o\">:</span><span class=\"k\">number</span><span class=\"err\">]</span><span class=\"w\">  </span><span class=\"n\">max</span><span class=\"w\"> </span><span class=\"n\">compute</span><span class=\"w\"> </span><span class=\"n\">workgroup</span><span class=\"w\"> </span><span class=\"n\">size</span><span class=\"w\"> </span><span class=\"p\">(</span><span class=\"n\">Z</span><span class=\"p\">)</span><span class=\"w\"></span>\n<span class=\"n n-Quoted\">`max_compute_workgroup_invocations`</span><span class=\"w\"> </span><span class=\"err\">[</span><span class=\"k\">type</span><span class=\"o\">:</span><span class=\"k\">number</span><span class=\"err\">]</span><span class=\"w\"> </span><span class=\"n\">max</span><span class=\"w\"> </span><span class=\"n\">invocations</span><span class=\"w\"> </span><span class=\"n\">per</span><span class=\"w\"> </span><span class=\"n\">compute</span><span class=\"w\"> </span><span class=\"n\">workgroup</span><span class=\"w\"></span>\n<span class=\"n n-Quoted\">`max_compute_shared_memory_size`</span><span class=\"w\">   </span><span class=\"err\">[</span><span class=\"k\">type</span><span class=\"o\">:</span><span class=\"k\">number</span><span class=\"err\">]</span><span class=\"w\">  </span><span class=\"n\">max</span><span class=\"w\"> </span><span class=\"n\">shared</span><span class=\"w\"> </span><span class=\"k\">memory</span><span class=\"w\"> </span><span class=\"n\">per</span><span class=\"w\"> </span><span class=\"n\">compute</span><span class=\"w\"> </span><span class=\"n\">workgroup</span><span class=\"w\"> </span><span class=\"p\">(</span><span class=\"n\">bytes</span><span class=\"p\">)</span><span class=\"w\"></span>\n<span class=\"n n-Quoted\">`max_uniform_buffer_range`</span><span class=\"w\">         </span><span class=\"err\">[</span><span class=\"k\">type</span><span class=\"o\">:</span><span class=\"k\">number</span><span class=\"err\">]</span><span class=\"w\">  </span><span class=\"n\">max</span><span class=\"w\"> </span><span class=\"n\">bindable</span><span class=\"w\"> </span><span class=\"n\">uniform</span><span class=\"w\"> </span><span class=\"n\">buffer</span><span class=\"w\"> </span><span class=\"k\">range</span><span class=\"w\"> </span><span class=\"p\">(</span><span class=\"n\">bytes</span><span class=\"p\">)</span><span class=\"w\"></span>\n<span class=\"n n-Quoted\">`max_storage_buffer_range`</span><span class=\"w\">         </span><span class=\"err\">[</span><span class=\"k\">type</span><span class=\"o\">:</span><span class=\"k\">number</span><span class=\"err\">]</span><span class=\"w\">  </span><span class=\"n\">max</span><span class=\"w\"> </span><span class=\"n\">bindable</span><span class=\"w\"> </span><span class=\"k\">storage</span><span class=\"w\"> </span><span class=\"n\">buffer</span><span class=\"w\"> </span><span class=\"k\">range</span><span class=\"w\"> </span><span class=\"p\">(</span><span class=\"n\">bytes</span><span class=\"p\">)</span><span class=\"w\"></span>\n</code></pre></div>\n\n<code>extensions</code>     <span class=\"type\">table</span>    array of driver-reported extension name strings\n<code>features</code>       <span class=\"type\">table</span>    array of supported context feature ids:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"err\">`</span><span class=\"n\">graphics</span><span class=\"p\">.</span><span class=\"n\">CONTEXT_FEATURE_MULTI_TARGET_RENDERING</span><span class=\"err\">`</span>  <span class=\"n\">multi</span><span class=\"o\">-</span><span class=\"n\">target</span> <span class=\"n\">rendering</span>\n<span class=\"err\">`</span><span class=\"n\">graphics</span><span class=\"p\">.</span><span class=\"n\">CONTEXT_FEATURE_TEXTURE_ARRAY</span><span class=\"err\">`</span>           <span class=\"n\">texture</span> <span class=\"n\">arrays</span>\n<span class=\"err\">`</span><span class=\"n\">graphics</span><span class=\"p\">.</span><span class=\"n\">CONTEXT_FEATURE_COMPUTE_SHADER</span><span class=\"err\">`</span>          <span class=\"n\">compute</span> <span class=\"n\">shaders</span>\n<span class=\"err\">`</span><span class=\"n\">graphics</span><span class=\"p\">.</span><span class=\"n\">CONTEXT_FEATURE_STORAGE_BUFFER</span><span class=\"err\">`</span>          <span class=\"n\">storage</span> <span class=\"n\">buffers</span>\n<span class=\"err\">`</span><span class=\"n\">graphics</span><span class=\"p\">.</span><span class=\"n\">CONTEXT_FEATURE_VSYNC</span><span class=\"err\">`</span>                   <span class=\"n\">vertical</span> <span class=\"n\">sync</span>\n<span class=\"err\">`</span><span class=\"n\">graphics</span><span class=\"p\">.</span><span class=\"n\">CONTEXT_FEATURE_INSTANCING</span><span class=\"err\">`</span>              <span class=\"n\">hardware</span> <span class=\"n\">instancing</span>\n<span class=\"err\">`</span><span class=\"n\">graphics</span><span class=\"p\">.</span><span class=\"n\">CONTEXT_FEATURE_3D_TEXTURES</span><span class=\"err\">`</span>             <span class=\"mi\">3</span><span class=\"n\">D</span> <span class=\"p\">(</span><span class=\"n\">volume</span><span class=\"p\">)</span> <span class=\"n\">textures</span>\n<span class=\"err\">`</span><span class=\"n\">graphics</span><span class=\"p\">.</span><span class=\"n\">CONTEXT_FEATURE_ASTC_ARRAY_TEXTURES</span><span class=\"err\">`</span>     <span class=\"n\">ASTC</span> <span class=\"n\">compressed</span> <span class=\"mi\">2</span><span class=\"n\">D</span> <span class=\"n\">array</span> <span class=\"n\">textures</span>\n<span class=\"err\">`</span><span class=\"n\">graphics</span><span class=\"p\">.</span><span class=\"n\">CONTEXT_FEATURE_BLEND_EQUATION_MIN_MAX</span><span class=\"err\">`</span>  <span class=\"n\">min</span><span class=\"o\">/</span><span class=\"n\">max</span> <span class=\"n\">blend</span> <span class=\"n\">equations</span>\n</code></pre></div>",
+                    "doc": "information about the active graphics adapter and context",
                     "name": "info",
                     "types": [
-                        "table"
+                        "graphics.adapter_info"
+                    ],
+                    "types_html": [
+                        "<a href=\"#graphics.adapter_info\">graphics.adapter_info</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#graphics.adapter_info\">graphics.adapter_info</a>"
                     ]
                 }
             ],
@@ -804,7 +675,13 @@
                     "doc": "array of adapter family name strings (e.g. \"opengl\", \"vulkan\", \"webgpu\")",
                     "name": "adapters",
                     "types": [
-                        "table"
+                        "string[]"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>[]"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>[]"
                     ]
                 }
             ],
@@ -812,1071 +689,487 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "",
-            "description": "",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.STATE_ALPHA_TEST",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "",
-            "description": "",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.STATE_ALPHA_TEST_SUPPORTED",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "",
-            "description": "",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.STATE_BLEND",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "",
-            "description": "",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.STATE_CULL_FACE",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "",
-            "description": "",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.STATE_DEPTH_TEST",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "",
-            "description": "",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.STATE_POLYGON_OFFSET_FILL",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "",
-            "description": "",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.STATE_SCISSOR_TEST",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "",
-            "description": "",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.STATE_STENCIL_TEST",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "",
-            "description": "",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.STENCIL_OP_DECR",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "",
-            "description": "",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.STENCIL_OP_DECR_WRAP",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "",
-            "description": "",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.STENCIL_OP_INCR",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "",
-            "description": "",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.STENCIL_OP_INCR_WRAP",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "",
-            "description": "",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.STENCIL_OP_INVERT",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "",
-            "description": "",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.STENCIL_OP_KEEP",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "",
-            "description": "",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.STENCIL_OP_REPLACE",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "",
-            "description": "",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.STENCIL_OP_ZERO",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "",
-            "description": "",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.TEXTURE_FILTER_DEFAULT",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "",
-            "description": "",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.TEXTURE_FILTER_LINEAR",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "",
-            "description": "",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.TEXTURE_FILTER_LINEAR_MIPMAP_LINEAR",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "",
-            "description": "",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.TEXTURE_FILTER_LINEAR_MIPMAP_NEAREST",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "",
-            "description": "",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.TEXTURE_FILTER_NEAREST",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "",
-            "description": "",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.TEXTURE_FILTER_NEAREST_MIPMAP_LINEAR",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "",
-            "description": "",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.TEXTURE_FILTER_NEAREST_MIPMAP_NEAREST",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "May be nil if the graphics driver doesn't support ...",
-            "description": "May be nil if the graphics driver doesn't support it",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.TEXTURE_FORMAT_BGRA8U",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "",
-            "description": "",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.TEXTURE_FORMAT_DEPTH",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "May be nil if the graphics driver doesn't support ...",
-            "description": "May be nil if the graphics driver doesn't support it",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.TEXTURE_FORMAT_LUMINANCE",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "May be nil if the graphics driver doesn't support ...",
-            "description": "May be nil if the graphics driver doesn't support it",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.TEXTURE_FORMAT_LUMINANCE_ALPHA",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "May be nil if the graphics driver doesn't support ...",
-            "description": "May be nil if the graphics driver doesn't support it",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.TEXTURE_FORMAT_R16F",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "May be nil if the graphics driver doesn't support ...",
-            "description": "May be nil if the graphics driver doesn't support it",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.TEXTURE_FORMAT_R32F",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "May be nil if the graphics driver doesn't support ...",
-            "description": "May be nil if the graphics driver doesn't support it",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.TEXTURE_FORMAT_R32UI",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "May be nil if the graphics driver doesn't support ...",
-            "description": "May be nil if the graphics driver doesn't support it",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.TEXTURE_FORMAT_R_BC4",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "May be nil if the graphics driver doesn't support ...",
-            "description": "May be nil if the graphics driver doesn't support it",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.TEXTURE_FORMAT_R_ETC2",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "May be nil if the graphics driver doesn't support ...",
-            "description": "May be nil if the graphics driver doesn't support it",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.TEXTURE_FORMAT_RG16F",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "May be nil if the graphics driver doesn't support ...",
-            "description": "May be nil if the graphics driver doesn't support it",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.TEXTURE_FORMAT_RG32F",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "May be nil if the graphics driver doesn't support ...",
-            "description": "May be nil if the graphics driver doesn't support it",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.TEXTURE_FORMAT_RG_BC5",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "May be nil if the graphics driver doesn't support ...",
-            "description": "May be nil if the graphics driver doesn't support it",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.TEXTURE_FORMAT_RG_ETC2",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "May be nil if the graphics driver doesn't support ...",
-            "description": "May be nil if the graphics driver doesn't support it",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.TEXTURE_FORMAT_RGB",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "May be nil if the graphics driver doesn't support ...",
-            "description": "May be nil if the graphics driver doesn't support it",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.TEXTURE_FORMAT_RGB16F",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "May be nil if the graphics driver doesn't support ...",
-            "description": "May be nil if the graphics driver doesn't support it",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.TEXTURE_FORMAT_RGB32F",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "May be nil if the graphics driver doesn't support ...",
-            "description": "May be nil if the graphics driver doesn't support it",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.TEXTURE_FORMAT_RGB_16BPP",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "May be nil if the graphics driver doesn't support ...",
-            "description": "May be nil if the graphics driver doesn't support it",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.TEXTURE_FORMAT_RGB_BC1",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "May be nil if the graphics driver doesn't support ...",
-            "description": "May be nil if the graphics driver doesn't support it",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.TEXTURE_FORMAT_RGB_ETC1",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "May be nil if the graphics driver doesn't support ...",
-            "description": "May be nil if the graphics driver doesn't support it",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.TEXTURE_FORMAT_RGB_PVRTC_2BPPV1",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "May be nil if the graphics driver doesn't support ...",
-            "description": "May be nil if the graphics driver doesn't support it",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.TEXTURE_FORMAT_RGB_PVRTC_4BPPV1",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "May be nil if the graphics driver doesn't support ...",
-            "description": "May be nil if the graphics driver doesn't support it",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.TEXTURE_FORMAT_RGBA",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "May be nil if the graphics driver doesn't support ...",
-            "description": "May be nil if the graphics driver doesn't support it",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.TEXTURE_FORMAT_RGBA16F",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "May be nil if the graphics driver doesn't support ...",
-            "description": "May be nil if the graphics driver doesn't support it",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.TEXTURE_FORMAT_RGBA32F",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "May be nil if the graphics driver doesn't support ...",
-            "description": "May be nil if the graphics driver doesn't support it",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.TEXTURE_FORMAT_RGBA32UI",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "May be nil if the graphics driver doesn't support ...",
-            "description": "May be nil if the graphics driver doesn't support it",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.TEXTURE_FORMAT_RGBA_16BPP",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "May be nil if the graphics driver doesn't support ...",
-            "description": "May be nil if the graphics driver doesn't support it",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.TEXTURE_FORMAT_RGBA_ASTC_4X4",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "May be nil if the graphics driver doesn't support ...",
-            "description": "May be nil if the graphics driver doesn't support it",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.TEXTURE_FORMAT_RGBA_BC3",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "May be nil if the graphics driver doesn't support ...",
-            "description": "May be nil if the graphics driver doesn't support it",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.TEXTURE_FORMAT_RGBA_BC7",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "May be nil if the graphics driver doesn't support ...",
-            "description": "May be nil if the graphics driver doesn't support it",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.TEXTURE_FORMAT_RGBA_ETC2",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "May be nil if the graphics driver doesn't support ...",
-            "description": "May be nil if the graphics driver doesn't support it",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.TEXTURE_FORMAT_RGBA_PVRTC_2BPPV1",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "May be nil if the graphics driver doesn't support ...",
-            "description": "May be nil if the graphics driver doesn't support it",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.TEXTURE_FORMAT_RGBA_PVRTC_4BPPV1",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "",
-            "description": "",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.TEXTURE_FORMAT_STENCIL",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "",
-            "description": "",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.TEXTURE_TYPE_2D",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "",
-            "description": "",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.TEXTURE_TYPE_2D_ARRAY",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "May be nil if the graphics driver doesn't support ...",
-            "description": "May be nil if the graphics driver doesn't support it",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.TEXTURE_TYPE_3D",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "",
-            "description": "",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.TEXTURE_TYPE_CUBE_MAP",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "",
-            "description": "",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.TEXTURE_TYPE_IMAGE_2D",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "May be nil if the graphics driver doesn't support ...",
-            "description": "May be nil if the graphics driver doesn't support it",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.TEXTURE_TYPE_IMAGE_3D",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "",
-            "description": "",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.TEXTURE_USAGE_FLAG_COLOR",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "",
-            "description": "",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.TEXTURE_USAGE_FLAG_INPUT",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "",
-            "description": "",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.TEXTURE_USAGE_FLAG_MEMORYLESS",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "",
-            "description": "",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.TEXTURE_USAGE_FLAG_SAMPLE",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "",
-            "description": "",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.TEXTURE_USAGE_FLAG_STORAGE",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "",
-            "description": "",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.TEXTURE_WRAP_CLAMP_TO_BORDER",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "",
-            "description": "",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.TEXTURE_WRAP_CLAMP_TO_EDGE",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "",
-            "description": "",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.TEXTURE_WRAP_MIRRORED_REPEAT",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "",
-            "description": "",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "graphics.TEXTURE_WRAP_REPEAT",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
+            "brief": "Vertex attribute semantic types",
+            "description": "Vertex attribute semantic types",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "Bone-index vertex attribute.",
+                    "name": "graphics.SEMANTIC_TYPE_BONE_INDICES"
+                },
+                {
+                    "doc": "Bone-weight vertex attribute.",
+                    "name": "graphics.SEMANTIC_TYPE_BONE_WEIGHTS"
+                },
+                {
+                    "doc": "Color vertex attribute.",
+                    "name": "graphics.SEMANTIC_TYPE_COLOR"
+                },
+                {
+                    "doc": "Morph-target-weight vertex attribute.",
+                    "name": "graphics.SEMANTIC_TYPE_MORPH_TARGET_WEIGHTS"
+                },
+                {
+                    "doc": "Vertex attribute without a predefined semantic.",
+                    "name": "graphics.SEMANTIC_TYPE_NONE"
+                },
+                {
+                    "doc": "Normal vertex attribute.",
+                    "name": "graphics.SEMANTIC_TYPE_NORMAL"
+                },
+                {
+                    "doc": "Normal-matrix vertex attribute.",
+                    "name": "graphics.SEMANTIC_TYPE_NORMAL_MATRIX"
+                },
+                {
+                    "doc": "Texture page-index vertex attribute.",
+                    "name": "graphics.SEMANTIC_TYPE_PAGE_INDEX"
+                },
+                {
+                    "doc": "Position vertex attribute.",
+                    "name": "graphics.SEMANTIC_TYPE_POSITION"
+                },
+                {
+                    "doc": "Tangent vertex attribute.",
+                    "name": "graphics.SEMANTIC_TYPE_TANGENT"
+                },
+                {
+                    "doc": "Texture-coordinate vertex attribute.",
+                    "name": "graphics.SEMANTIC_TYPE_TEXCOORD"
+                },
+                {
+                    "doc": "2D texture-transform vertex attribute.",
+                    "name": "graphics.SEMANTIC_TYPE_TEXTURE_TRANSFORM_2D"
+                },
+                {
+                    "doc": "World-matrix vertex attribute.",
+                    "name": "graphics.SEMANTIC_TYPE_WORLD_MATRIX"
+                }
+            ],
+            "name": "graphics.SEMANTIC_TYPE",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "ENUM",
+            "value_type": "integer",
+            "value_type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+        },
+        {
+            "brief": "Graphics states",
+            "description": "Graphics states",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "",
+                    "name": "graphics.STATE_ALPHA_TEST"
+                },
+                {
+                    "doc": "",
+                    "name": "graphics.STATE_ALPHA_TEST_SUPPORTED"
+                },
+                {
+                    "doc": "",
+                    "name": "graphics.STATE_BLEND"
+                },
+                {
+                    "doc": "",
+                    "name": "graphics.STATE_CULL_FACE"
+                },
+                {
+                    "doc": "",
+                    "name": "graphics.STATE_DEPTH_TEST"
+                },
+                {
+                    "doc": "",
+                    "name": "graphics.STATE_POLYGON_OFFSET_FILL"
+                },
+                {
+                    "doc": "",
+                    "name": "graphics.STATE_SCISSOR_TEST"
+                },
+                {
+                    "doc": "",
+                    "name": "graphics.STATE_STENCIL_TEST"
+                }
+            ],
+            "name": "graphics.STATE",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "ENUM",
+            "value_type": "integer",
+            "value_type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+        },
+        {
+            "brief": "Stencil operations",
+            "description": "Stencil operations",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "decrement and clamp at zero",
+                    "name": "graphics.STENCIL_OP_DECR"
+                },
+                {
+                    "doc": "decrement and wrap zero to the maximum unsigned value",
+                    "name": "graphics.STENCIL_OP_DECR_WRAP"
+                },
+                {
+                    "doc": "increment and clamp at the maximum unsigned value",
+                    "name": "graphics.STENCIL_OP_INCR"
+                },
+                {
+                    "doc": "increment and wrap the maximum unsigned value to zero",
+                    "name": "graphics.STENCIL_OP_INCR_WRAP"
+                },
+                {
+                    "doc": "bitwise invert",
+                    "name": "graphics.STENCIL_OP_INVERT"
+                },
+                {
+                    "doc": "keep the current value",
+                    "name": "graphics.STENCIL_OP_KEEP"
+                },
+                {
+                    "doc": "replace with the reference value from <a href=\"/ref/render#render.set_stencil_func\">render.set_stencil_func</a>",
+                    "name": "graphics.STENCIL_OP_REPLACE"
+                },
+                {
+                    "doc": "set to zero",
+                    "name": "graphics.STENCIL_OP_ZERO"
+                }
+            ],
+            "name": "graphics.STENCIL_OP",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "ENUM",
+            "value_type": "integer",
+            "value_type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+        },
+        {
+            "brief": "Texture filters",
+            "description": "Texture filters",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "",
+                    "name": "graphics.TEXTURE_FILTER_DEFAULT"
+                },
+                {
+                    "doc": "",
+                    "name": "graphics.TEXTURE_FILTER_LINEAR"
+                },
+                {
+                    "doc": "",
+                    "name": "graphics.TEXTURE_FILTER_LINEAR_MIPMAP_LINEAR"
+                },
+                {
+                    "doc": "",
+                    "name": "graphics.TEXTURE_FILTER_LINEAR_MIPMAP_NEAREST"
+                },
+                {
+                    "doc": "",
+                    "name": "graphics.TEXTURE_FILTER_NEAREST"
+                },
+                {
+                    "doc": "",
+                    "name": "graphics.TEXTURE_FILTER_NEAREST_MIPMAP_LINEAR"
+                },
+                {
+                    "doc": "",
+                    "name": "graphics.TEXTURE_FILTER_NEAREST_MIPMAP_NEAREST"
+                }
+            ],
+            "name": "graphics.TEXTURE_FILTER",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "ENUM",
+            "value_type": "integer",
+            "value_type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+        },
+        {
+            "brief": "Texture formats",
+            "description": "Texture formats",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "May be nil if the graphics driver doesn't support it",
+                    "name": "graphics.TEXTURE_FORMAT_BGRA8U"
+                },
+                {
+                    "doc": "",
+                    "name": "graphics.TEXTURE_FORMAT_DEPTH"
+                },
+                {
+                    "doc": "May be nil if the graphics driver doesn't support it",
+                    "name": "graphics.TEXTURE_FORMAT_LUMINANCE"
+                },
+                {
+                    "doc": "May be nil if the graphics driver doesn't support it",
+                    "name": "graphics.TEXTURE_FORMAT_LUMINANCE_ALPHA"
+                },
+                {
+                    "doc": "May be nil if the graphics driver doesn't support it",
+                    "name": "graphics.TEXTURE_FORMAT_R16F"
+                },
+                {
+                    "doc": "May be nil if the graphics driver doesn't support it",
+                    "name": "graphics.TEXTURE_FORMAT_R32F"
+                },
+                {
+                    "doc": "May be nil if the graphics driver doesn't support it",
+                    "name": "graphics.TEXTURE_FORMAT_R32UI"
+                },
+                {
+                    "doc": "May be nil if the graphics driver doesn't support it",
+                    "name": "graphics.TEXTURE_FORMAT_RG16F"
+                },
+                {
+                    "doc": "May be nil if the graphics driver doesn't support it",
+                    "name": "graphics.TEXTURE_FORMAT_RG32F"
+                },
+                {
+                    "doc": "May be nil if the graphics driver doesn't support it",
+                    "name": "graphics.TEXTURE_FORMAT_RGB"
+                },
+                {
+                    "doc": "May be nil if the graphics driver doesn't support it",
+                    "name": "graphics.TEXTURE_FORMAT_RGB16F"
+                },
+                {
+                    "doc": "May be nil if the graphics driver doesn't support it",
+                    "name": "graphics.TEXTURE_FORMAT_RGB32F"
+                },
+                {
+                    "doc": "May be nil if the graphics driver doesn't support it",
+                    "name": "graphics.TEXTURE_FORMAT_RGBA"
+                },
+                {
+                    "doc": "May be nil if the graphics driver doesn't support it",
+                    "name": "graphics.TEXTURE_FORMAT_RGBA16F"
+                },
+                {
+                    "doc": "May be nil if the graphics driver doesn't support it",
+                    "name": "graphics.TEXTURE_FORMAT_RGBA32F"
+                },
+                {
+                    "doc": "May be nil if the graphics driver doesn't support it",
+                    "name": "graphics.TEXTURE_FORMAT_RGBA32UI"
+                },
+                {
+                    "doc": "May be nil if the graphics driver doesn't support it",
+                    "name": "graphics.TEXTURE_FORMAT_RGBA_16BPP"
+                },
+                {
+                    "doc": "May be nil if the graphics driver doesn't support it",
+                    "name": "graphics.TEXTURE_FORMAT_RGBA_ASTC_4X4"
+                },
+                {
+                    "doc": "May be nil if the graphics driver doesn't support it",
+                    "name": "graphics.TEXTURE_FORMAT_RGBA_BC3"
+                },
+                {
+                    "doc": "May be nil if the graphics driver doesn't support it",
+                    "name": "graphics.TEXTURE_FORMAT_RGBA_BC7"
+                },
+                {
+                    "doc": "May be nil if the graphics driver doesn't support it",
+                    "name": "graphics.TEXTURE_FORMAT_RGBA_ETC2"
+                },
+                {
+                    "doc": "May be nil if the graphics driver doesn't support it",
+                    "name": "graphics.TEXTURE_FORMAT_RGBA_PVRTC_2BPPV1"
+                },
+                {
+                    "doc": "May be nil if the graphics driver doesn't support it",
+                    "name": "graphics.TEXTURE_FORMAT_RGBA_PVRTC_4BPPV1"
+                },
+                {
+                    "doc": "May be nil if the graphics driver doesn't support it",
+                    "name": "graphics.TEXTURE_FORMAT_RGB_16BPP"
+                },
+                {
+                    "doc": "May be nil if the graphics driver doesn't support it",
+                    "name": "graphics.TEXTURE_FORMAT_RGB_BC1"
+                },
+                {
+                    "doc": "May be nil if the graphics driver doesn't support it",
+                    "name": "graphics.TEXTURE_FORMAT_RGB_ETC1"
+                },
+                {
+                    "doc": "May be nil if the graphics driver doesn't support it",
+                    "name": "graphics.TEXTURE_FORMAT_RGB_PVRTC_2BPPV1"
+                },
+                {
+                    "doc": "May be nil if the graphics driver doesn't support it",
+                    "name": "graphics.TEXTURE_FORMAT_RGB_PVRTC_4BPPV1"
+                },
+                {
+                    "doc": "May be nil if the graphics driver doesn't support it",
+                    "name": "graphics.TEXTURE_FORMAT_RG_BC5"
+                },
+                {
+                    "doc": "May be nil if the graphics driver doesn't support it",
+                    "name": "graphics.TEXTURE_FORMAT_RG_ETC2"
+                },
+                {
+                    "doc": "May be nil if the graphics driver doesn't support it",
+                    "name": "graphics.TEXTURE_FORMAT_R_BC4"
+                },
+                {
+                    "doc": "May be nil if the graphics driver doesn't support it",
+                    "name": "graphics.TEXTURE_FORMAT_R_ETC2"
+                },
+                {
+                    "doc": "",
+                    "name": "graphics.TEXTURE_FORMAT_STENCIL"
+                }
+            ],
+            "name": "graphics.TEXTURE_FORMAT",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "ENUM",
+            "value_type": "integer",
+            "value_type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+        },
+        {
+            "brief": "Texture types",
+            "description": "Texture types",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "",
+                    "name": "graphics.TEXTURE_TYPE_2D"
+                },
+                {
+                    "doc": "",
+                    "name": "graphics.TEXTURE_TYPE_2D_ARRAY"
+                },
+                {
+                    "doc": "May be nil if the graphics driver doesn't support it",
+                    "name": "graphics.TEXTURE_TYPE_3D"
+                },
+                {
+                    "doc": "",
+                    "name": "graphics.TEXTURE_TYPE_CUBE_MAP"
+                },
+                {
+                    "doc": "",
+                    "name": "graphics.TEXTURE_TYPE_IMAGE_2D"
+                },
+                {
+                    "doc": "May be nil if the graphics driver doesn't support it",
+                    "name": "graphics.TEXTURE_TYPE_IMAGE_3D"
+                }
+            ],
+            "name": "graphics.TEXTURE_TYPE",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "ENUM",
+            "value_type": "integer",
+            "value_type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+        },
+        {
+            "brief": "Texture usage flags",
+            "description": "Texture usage flags",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "",
+                    "name": "graphics.TEXTURE_USAGE_FLAG_COLOR"
+                },
+                {
+                    "doc": "",
+                    "name": "graphics.TEXTURE_USAGE_FLAG_INPUT"
+                },
+                {
+                    "doc": "",
+                    "name": "graphics.TEXTURE_USAGE_FLAG_MEMORYLESS"
+                },
+                {
+                    "doc": "",
+                    "name": "graphics.TEXTURE_USAGE_FLAG_SAMPLE"
+                },
+                {
+                    "doc": "",
+                    "name": "graphics.TEXTURE_USAGE_FLAG_STORAGE"
+                }
+            ],
+            "name": "graphics.TEXTURE_USAGE_FLAG",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "ENUM",
+            "value_type": "integer",
+            "value_type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+        },
+        {
+            "brief": "Texture wrapping modes",
+            "description": "Texture wrapping modes",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "",
+                    "name": "graphics.TEXTURE_WRAP_CLAMP_TO_BORDER"
+                },
+                {
+                    "doc": "",
+                    "name": "graphics.TEXTURE_WRAP_CLAMP_TO_EDGE"
+                },
+                {
+                    "doc": "",
+                    "name": "graphics.TEXTURE_WRAP_MIRRORED_REPEAT"
+                },
+                {
+                    "doc": "",
+                    "name": "graphics.TEXTURE_WRAP_REPEAT"
+                }
+            ],
+            "name": "graphics.TEXTURE_WRAP",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "ENUM",
+            "value_type": "integer",
+            "value_type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
         }
     ],
+    "format_version": 2,
     "info": {
         "api_language": "Lua",
         "brief": "Graphics API documentation",
