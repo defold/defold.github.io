@@ -1701,6 +1701,50 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "gets the markup objects for a text node",
+            "description": "Returns the sprites and links found in the text node's current layout.\nEach object's <code>x</code> and <code>y</code> identify its lower-left corner relative to the\ntext node's upper-left layout origin.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "gui.get_layout_objects",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "text node to inspect",
+                    "is_optional": "False",
+                    "name": "node",
+                    "types": [
+                        "node"
+                    ],
+                    "types_html": [
+                        "<a href=\"#node\">node</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#node\">node</a>"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "layout objects in source order",
+                    "name": "objects",
+                    "types": [
+                        "gui.layout_object[]"
+                    ],
+                    "types_html": [
+                        "<a href=\"#gui.layout_object\">gui.layout_object</a>[]"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#gui.layout_object\">gui.layout_object</a>[]"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "returns available layouts with sizes",
             "description": "Returns a table mapping each layout id hash to a vector3(width, height, 0). For the default layout,\nthe current scene resolution is returned. If a layout name is not present in the Display Profiles (or when\nno display profiles are assigned), the width/height pair is 0.",
             "error": "",
@@ -3030,6 +3074,94 @@
             "type": "ENUM",
             "value_type": "integer",
             "value_type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+        },
+        {
+            "brief": "Rich-text layout object",
+            "description": "Rich-text layout object",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "type",
+                    "doc": "object type, currently <code>link</code> or <code>sprite</code>",
+                    "is_optional": false,
+                    "name": "type",
+                    "type": "string",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                },
+                {
+                    "display_name": "id",
+                    "doc": "the object's <code>id</code> attribute, or its generated layout object id",
+                    "is_optional": false,
+                    "name": "id",
+                    "type": "hash",
+                    "type_html": "<a href=\"../builtins-lua/#hash\">hash</a>"
+                },
+                {
+                    "display_name": "text_offset",
+                    "doc": "zero-based UTF-32 offset in the visible text",
+                    "is_optional": false,
+                    "name": "text_offset",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "text_length",
+                    "doc": "visible UTF-32 text length covered by the object",
+                    "is_optional": false,
+                    "name": "text_length",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "x",
+                    "doc": "lower-left x-coordinate relative to the text node's upper-left layout origin",
+                    "is_optional": false,
+                    "name": "x",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "y",
+                    "doc": "lower-left y-coordinate relative to the text node's upper-left layout origin",
+                    "is_optional": false,
+                    "name": "y",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "width",
+                    "doc": "resolved object width",
+                    "is_optional": false,
+                    "name": "width",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "height",
+                    "doc": "resolved object height",
+                    "is_optional": false,
+                    "name": "height",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "attributes",
+                    "doc": "markup attributes keyed by name",
+                    "is_optional": false,
+                    "name": "attributes",
+                    "type": "table<string, string>",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">table</a>&lt;<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>, <a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>&gt;"
+                }
+            ],
+            "name": "gui.layout_object",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
         },
         {
             "brief": "moves the first node above the second",
@@ -6743,6 +6875,180 @@
             "returnvalues": [],
             "tparams": [],
             "type": "FUNCTION"
+        },
+        {
+            "brief": "Sent to the GUI script when an interactive rich-text object is clicked.",
+            "description": "Sent to the GUI script when an interactive rich-text object is clicked.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "text_object_clicked",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the object's <code>id</code> attribute, or its generated layout object id",
+                    "is_optional": "False",
+                    "name": "id",
+                    "types": [
+                        "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ]
+                },
+                {
+                    "doc": "the layout object type, currently <code>link</code>",
+                    "is_optional": "False",
+                    "name": "type",
+                    "types": [
+                        "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ]
+                },
+                {
+                    "doc": "the application-defined target from the object's <code>src</code> attribute",
+                    "is_optional": "False",
+                    "name": "src",
+                    "types": [
+                        "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "MESSAGE"
+        },
+        {
+            "brief": "Sent to the GUI script when the pointer enters an interactive rich-text object.",
+            "description": "Sent to the GUI script when the pointer enters an interactive rich-text object.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "text_object_hovered",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the object's <code>id</code> attribute, or its generated layout object id",
+                    "is_optional": "False",
+                    "name": "id",
+                    "types": [
+                        "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ]
+                },
+                {
+                    "doc": "the layout object type, currently <code>link</code>",
+                    "is_optional": "False",
+                    "name": "type",
+                    "types": [
+                        "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ]
+                },
+                {
+                    "doc": "the application-defined target from the object's <code>src</code> attribute",
+                    "is_optional": "False",
+                    "name": "src",
+                    "types": [
+                        "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "MESSAGE"
+        },
+        {
+            "brief": "Sent to the GUI script when the pointer leaves an interactive rich-text object.",
+            "description": "Sent to the GUI script when the pointer leaves an interactive rich-text object.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "text_object_unhovered",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the object's <code>id</code> attribute, or its generated layout object id",
+                    "is_optional": "False",
+                    "name": "id",
+                    "types": [
+                        "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ]
+                },
+                {
+                    "doc": "the layout object type, currently <code>link</code>",
+                    "is_optional": "False",
+                    "name": "type",
+                    "types": [
+                        "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ]
+                },
+                {
+                    "doc": "the application-defined target from the object's <code>src</code> attribute",
+                    "is_optional": "False",
+                    "name": "src",
+                    "types": [
+                        "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "MESSAGE"
         },
         {
             "brief": "<span class=\"type\">hash</span> gui textures",

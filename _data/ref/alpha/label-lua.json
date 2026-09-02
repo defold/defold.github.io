@@ -31,6 +31,56 @@
             "type": "PROPERTY"
         },
         {
+            "brief": "gets the markup objects for a label",
+            "description": "Returns the sprites and links found in the label's current layout.\nEach entry contains <code>type</code>, <code>id</code>, the zero-based UTF-32 <code>text_offset</code>,\n<code>text_length</code>, resolved <code>x</code>, <code>y</code>, <code>width</code>\nand <code>height</code>, and an <code>attributes</code> table. The position is the lower-left\nobject corner relative to the label's upper-left layout origin.\nInline resource rendering is not part of this MVP; sprites use their explicit\ndimensions or a one-em square fallback.",
+            "error": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">objects</span> <span class=\"o\">=</span> <span class=\"n\">label</span><span class=\"p\">.</span><span class=\"n\">get_layout_objects</span><span class=\"p\">(</span><span class=\"s2\">&quot;#label&quot;</span><span class=\"p\">)</span>\n<span class=\"kr\">for</span> <span class=\"n\">_</span><span class=\"p\">,</span> <span class=\"n\">object</span> <span class=\"kr\">in</span> <span class=\"nb\">ipairs</span><span class=\"p\">(</span><span class=\"n\">objects</span><span class=\"p\">)</span> <span class=\"kr\">do</span>\n    <span class=\"kr\">if</span> <span class=\"n\">object</span><span class=\"p\">.</span><span class=\"n\">type</span> <span class=\"o\">==</span> <span class=\"s2\">&quot;link&quot;</span> <span class=\"kr\">then</span>\n        <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">object</span><span class=\"p\">.</span><span class=\"n\">attributes</span><span class=\"p\">.</span><span class=\"n\">src</span><span class=\"p\">,</span> <span class=\"n\">object</span><span class=\"p\">.</span><span class=\"n\">text_offset</span><span class=\"p\">,</span> <span class=\"n\">object</span><span class=\"p\">.</span><span class=\"n\">text_length</span><span class=\"p\">)</span>\n    <span class=\"kr\">elseif</span> <span class=\"n\">object</span><span class=\"p\">.</span><span class=\"n\">type</span> <span class=\"o\">==</span> <span class=\"s2\">&quot;sprite&quot;</span> <span class=\"kr\">then</span>\n        <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">object</span><span class=\"p\">.</span><span class=\"n\">attributes</span><span class=\"p\">.</span><span class=\"n\">src</span><span class=\"p\">,</span> <span class=\"n\">object</span><span class=\"p\">.</span><span class=\"n\">x</span><span class=\"p\">,</span> <span class=\"n\">object</span><span class=\"p\">.</span><span class=\"n\">y</span><span class=\"p\">,</span> <span class=\"n\">object</span><span class=\"p\">.</span><span class=\"n\">width</span><span class=\"p\">,</span> <span class=\"n\">object</span><span class=\"p\">.</span><span class=\"n\">height</span><span class=\"p\">)</span>\n    <span class=\"kr\">end</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "label.get_layout_objects",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the label to inspect",
+                    "is_optional": "False",
+                    "name": "url",
+                    "types": [
+                        "string",
+                        "hash",
+                        "url"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "layout objects in source order",
+                    "name": "objects",
+                    "types": [
+                        "label.layout_object[]"
+                    ],
+                    "types_html": [
+                        "<a href=\"#label.layout_object\">label.layout_object</a>[]"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#label.layout_object\">label.layout_object</a>[]"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "gets the text for a label",
             "description": "Gets the text from a label component\n<span class=\"icon-attention\"></span> This function is deprecated. Use <code>go.get(\"#label\", \"text\")</code> instead.",
             "error": "",
@@ -79,6 +129,94 @@
             ],
             "tparams": [],
             "type": "FUNCTION"
+        },
+        {
+            "brief": "Rich-text layout object",
+            "description": "Rich-text layout object",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "type",
+                    "doc": "object type, currently <code>link</code> or <code>sprite</code>",
+                    "is_optional": false,
+                    "name": "type",
+                    "type": "string",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                },
+                {
+                    "display_name": "id",
+                    "doc": "the object's <code>id</code> attribute, or its generated layout object id",
+                    "is_optional": false,
+                    "name": "id",
+                    "type": "hash",
+                    "type_html": "<a href=\"../builtins-lua/#hash\">hash</a>"
+                },
+                {
+                    "display_name": "text_offset",
+                    "doc": "zero-based UTF-32 offset in the visible text",
+                    "is_optional": false,
+                    "name": "text_offset",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "text_length",
+                    "doc": "visible UTF-32 text length covered by the object",
+                    "is_optional": false,
+                    "name": "text_length",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "x",
+                    "doc": "lower-left x-coordinate relative to the label's upper-left layout origin",
+                    "is_optional": false,
+                    "name": "x",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "y",
+                    "doc": "lower-left y-coordinate relative to the label's upper-left layout origin",
+                    "is_optional": false,
+                    "name": "y",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "width",
+                    "doc": "resolved object width",
+                    "is_optional": false,
+                    "name": "width",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "height",
+                    "doc": "resolved object height",
+                    "is_optional": false,
+                    "name": "height",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "attributes",
+                    "doc": "markup attributes keyed by name",
+                    "is_optional": false,
+                    "name": "attributes",
+                    "type": "table<string, string>",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">table</a>&lt;<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>, <a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>&gt;"
+                }
+            ],
+            "name": "label.layout_object",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
         },
         {
             "brief": "set the text for a label",
@@ -254,6 +392,180 @@
             "type": "PROPERTY"
         },
         {
+            "brief": "Sent to the owning game object when an interactive rich-text object is clicked.",
+            "description": "Sent to the owning game object when an interactive rich-text object is clicked.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "text_object_clicked",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the object's <code>id</code> attribute, or its generated layout object id",
+                    "is_optional": "False",
+                    "name": "id",
+                    "types": [
+                        "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ]
+                },
+                {
+                    "doc": "the layout object type, currently <code>link</code>",
+                    "is_optional": "False",
+                    "name": "type",
+                    "types": [
+                        "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ]
+                },
+                {
+                    "doc": "the application-defined target from the object's <code>src</code> attribute",
+                    "is_optional": "False",
+                    "name": "src",
+                    "types": [
+                        "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "MESSAGE"
+        },
+        {
+            "brief": "Sent to the owning game object when the pointer enters an interactive rich-text object.",
+            "description": "Sent to the owning game object when the pointer enters an interactive rich-text object.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "text_object_hovered",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the object's <code>id</code> attribute, or its generated layout object id",
+                    "is_optional": "False",
+                    "name": "id",
+                    "types": [
+                        "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ]
+                },
+                {
+                    "doc": "the layout object type, currently <code>link</code>",
+                    "is_optional": "False",
+                    "name": "type",
+                    "types": [
+                        "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ]
+                },
+                {
+                    "doc": "the application-defined target from the object's <code>src</code> attribute",
+                    "is_optional": "False",
+                    "name": "src",
+                    "types": [
+                        "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "MESSAGE"
+        },
+        {
+            "brief": "Sent to the owning game object when the pointer leaves an interactive rich-text object.",
+            "description": "Sent to the owning game object when the pointer leaves an interactive rich-text object.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "text_object_unhovered",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the object's <code>id</code> attribute, or its generated layout object id",
+                    "is_optional": "False",
+                    "name": "id",
+                    "types": [
+                        "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ]
+                },
+                {
+                    "doc": "the layout object type, currently <code>link</code>",
+                    "is_optional": "False",
+                    "name": "type",
+                    "types": [
+                        "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ]
+                },
+                {
+                    "doc": "the application-defined target from the object's <code>src</code> attribute",
+                    "is_optional": "False",
+                    "name": "src",
+                    "types": [
+                        "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "MESSAGE"
+        },
+        {
             "brief": "<span class=\"type\">number</span> label tracking",
             "description": "The tracking of the label.\nThis value is used to adjust the vertical spacing of characters in the text.\nThe type of the property is number.",
             "error": "",
@@ -273,13 +585,13 @@
     "info": {
         "api_language": "Lua",
         "brief": "Label API documentation",
-        "description": "Functions to manipulate a label component.",
-        "description_html": "<p>Functions to manipulate a label component.</p>",
-        "file": "script_label.cpp",
+        "description": "Label API documentation",
+        "description_html": "<p>Label API documentation</p>",
+        "file": "label_ddf.proto",
         "name": "Label",
         "namespace": "label",
         "notes": [],
-        "path": "engine/gamesys/src/gamesys/scripts/script_label.cpp",
+        "path": "engine/gamesys/proto/gamesys/label_ddf.proto",
         "type": "Defold Lua"
     }
 }

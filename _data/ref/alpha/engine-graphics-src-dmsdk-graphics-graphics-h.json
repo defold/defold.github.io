@@ -4646,8 +4646,8 @@
             "type": "TYPEDEF"
         },
         {
-            "brief": "Set texture parameters",
-            "description": "Set texture parameters",
+            "brief": "Set texture parameters, including the W wrapping m...",
+            "description": "Set texture parameters, including the W wrapping mode used by 3D textures.",
             "error": "",
             "examples": "",
             "language": "",
@@ -4689,6 +4689,86 @@
                 },
                 {
                     "doc": "Wrapping mode for the U (X) texture coordinate.",
+                    "is_optional": "False",
+                    "name": "uwrap",
+                    "types": [
+                        "dmGraphics::TextureWrap"
+                    ]
+                },
+                {
+                    "doc": "Wrapping mode for the V (Y) texture coordinate",
+                    "is_optional": "False",
+                    "name": "vwrap",
+                    "types": [
+                        "dmGraphics::TextureWrap"
+                    ]
+                },
+                {
+                    "doc": "Wrapping mode for the W (Z) texture coordinate",
+                    "is_optional": "False",
+                    "name": "wwrap",
+                    "types": [
+                        "dmGraphics::TextureWrap"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "max_anisotropy",
+                    "types": [
+                        "float"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Set texture parameters using the legacy U/V wrappi...",
+            "description": "Set texture parameters using the legacy U/V wrapping interface.\nThe U wrapping mode is also applied to the W texture coordinate.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "SetTextureParams",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Graphics context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                },
+                {
+                    "doc": "Texture handle",
+                    "is_optional": "False",
+                    "name": "texture",
+                    "types": [
+                        "dmGraphics::HTexture"
+                    ]
+                },
+                {
+                    "doc": "Minification filter type",
+                    "is_optional": "False",
+                    "name": "min_filter",
+                    "types": [
+                        "dmGraphics::TextureFilter"
+                    ]
+                },
+                {
+                    "doc": "Magnification filter type",
+                    "is_optional": "False",
+                    "name": "mag_filter",
+                    "types": [
+                        "dmGraphics::TextureFilter"
+                    ]
+                },
+                {
+                    "doc": "Wrapping mode for the U (X) and W (Z) texture coordinates",
                     "is_optional": "False",
                     "name": "uwrap",
                     "types": [
@@ -5343,6 +5423,11 @@
                 {
                     "doc": "Wrapping mode for V (Y) texture coordinate. Controls behavior when texture coordinates exceed [0,1]",
                     "name": "m_VWrap",
+                    "type": "dmGraphics::TextureWrap"
+                },
+                {
+                    "doc": "Wrapping mode for W (Z) texture coordinate. Controls behavior when texture coordinates exceed [0,1]",
+                    "name": "m_WWrap",
                     "type": "dmGraphics::TextureWrap"
                 },
                 {

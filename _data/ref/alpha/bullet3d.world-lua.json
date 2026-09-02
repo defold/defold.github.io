@@ -34,7 +34,7 @@
         },
         {
             "brief": "Cast a ray",
-            "description": "Casts immediately from <code>origin</code> to <code>origin + translation</code> and returns all\nmatching hits sorted by fraction. Translation must be non-zero.\nBullet 2.77 normally does not report a ray whose start and end are both inside\nthe same convex hull. Set <code>filter.report_initial_overlaps = true</code> to perform\nan exact point-overlap test at the origin and synthesize one deduplicated hit\nper initially touching or overlapping object with <code>fraction = 0</code>, zero <code>normal</code>,\n<code>point = origin</code>, <code>initial_overlap = true</code>, and <code>inside = true</code>. The point is\nthe query origin, not a surface contact. This explicitly supports the\ninside-hull behavior requested by issue #5348. Fraction-zero native callbacks\nand starting overlaps are suppressed when the option is false.",
+            "description": "Casts immediately from <code>origin</code> to <code>origin + translation</code> and returns all\nmatching hits sorted by fraction. Translation must be non-zero.\nBullet's convex ray test normally does not report a ray whose start and end are both inside\nthe same convex hull. Set <code>filter.report_initial_overlaps = true</code> to perform\nan exact point-overlap test at the origin and synthesize one deduplicated hit\nper initially touching or overlapping object with <code>fraction = 0</code>, zero <code>normal</code>,\n<code>point = origin</code>, <code>initial_overlap = true</code>, and <code>inside = true</code>. The point is\nthe query origin, not a surface contact. This explicitly supports the\ninside-hull behavior requested by issue #5348. Fraction-zero native callbacks\nand starting overlaps are suppressed when the option is false.",
             "error": "",
             "examples": "",
             "language": "",
@@ -185,7 +185,7 @@
                     ]
                 },
                 {
-                    "doc": "result callback",
+                    "doc": "function called as <code>callback(self, hits)</code>",
                     "is_optional": "False",
                     "name": "callback",
                     "types": [
@@ -546,7 +546,7 @@
                     ]
                 },
                 {
-                    "doc": "result callback",
+                    "doc": "function called as <code>callback(self, hits)</code>",
                     "is_optional": "False",
                     "name": "callback",
                     "types": [
@@ -1424,7 +1424,7 @@
         },
         {
             "brief": "Set world gravity",
-            "description": "Set world gravity",
+            "description": "Bullet propagates the new value to active dynamic bodies unless they have\n<code>bullet3d.rigid_body.BT_DISABLE_WORLD_GRAVITY</code> set. Such bodies retain their\ncustom body gravity.",
             "error": "",
             "examples": "Set gravity for the current collection's physics world:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"kd\">local</span> <span class=\"n\">world</span> <span class=\"o\">=</span> <span class=\"n\">bullet3d</span><span class=\"p\">.</span><span class=\"n\">get_world</span><span class=\"p\">()</span>\n    <span class=\"kr\">if</span> <span class=\"n\">world</span> <span class=\"kr\">then</span>\n        <span class=\"n\">bullet3d</span><span class=\"p\">.</span><span class=\"n\">world</span><span class=\"p\">.</span><span class=\"n\">set_gravity</span><span class=\"p\">(</span><span class=\"n\">world</span><span class=\"p\">,</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"o\">-</span><span class=\"mf\">9.81</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">))</span>\n    <span class=\"kr\">end</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
             "language": "",

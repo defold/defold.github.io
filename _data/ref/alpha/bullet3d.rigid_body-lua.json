@@ -409,38 +409,6 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "Disable automatic world gravity for a rigid body",
-            "description": "Set this bit with <code>bullet3d.rigid_body.set_flags()</code> before assigning custom\nbody gravity that must survive later world-gravity changes or re-adding the\nbody to a world.",
-            "error": "",
-            "examples": "",
-            "is_enum_member": false,
-            "language": "",
-            "members": [],
-            "name": "bullet3d.rigid_body.BT_DISABLE_WORLD_GRAVITY",
-            "notes": [],
-            "parameters": [
-                {
-                    "doc": "",
-                    "is_optional": "False",
-                    "name": "value",
-                    "types": [
-                        "integer"
-                    ],
-                    "types_html": [
-                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
-                    ],
-                    "types_table_html": [
-                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
-                    ]
-                }
-            ],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT",
-            "value_type": "integer"
-        },
-        {
             "brief": "Clear accumulated force and torque",
             "description": "Clear accumulated force and torque",
             "error": "",
@@ -513,6 +481,40 @@
             ],
             "tparams": [],
             "type": "FUNCTION"
+        },
+        {
+            "brief": "Rigid body flags",
+            "description": "Combine these constants into the complete flag mask accepted by\n<code>bullet3d.rigid_body.set_flags()</code>.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "Disable automatic world gravity. Set this bit before assigning custom body gravity that must survive later world-gravity changes or re-adding the body to a world.",
+                    "name": "bullet3d.rigid_body.BT_DISABLE_WORLD_GRAVITY"
+                },
+                {
+                    "doc": "Enable explicit gyroscopic force integration.",
+                    "name": "bullet3d.rigid_body.BT_ENABLE_GYROSCOPIC_FORCE_EXPLICIT"
+                },
+                {
+                    "doc": "Enable implicit world-space gyroscopic force integration.",
+                    "name": "bullet3d.rigid_body.BT_ENABLE_GYROSCOPIC_FORCE_IMPLICIT_WORLD"
+                },
+                {
+                    "doc": "Enable implicit body-space gyroscopic force integration. This flag is enabled by default for newly constructed rigid bodies.",
+                    "name": "bullet3d.rigid_body.BT_ENABLE_GYROSCOPIC_FORCE_IMPLICIT_BODY"
+                }
+            ],
+            "name": "bullet3d.rigid_body.FLAG",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "ENUM",
+            "value_type": "integer",
+            "value_type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
         },
         {
             "brief": "Get angular damping",
@@ -1393,7 +1395,7 @@
         },
         {
             "brief": "Get velocity at a center-of-mass-relative point",
-            "description": "The relative position is expressed in world axes. Despite Bullet's legacy\nfunction name, it is not a body-local coordinate.",
+            "description": "The relative position is expressed in world axes. Despite Bullet's function\nname, it is not a body-local coordinate.",
             "error": "",
             "examples": "",
             "language": "",
@@ -1787,7 +1789,7 @@
         },
         {
             "brief": "Set rigid body flags",
-            "description": "Set rigid body flags",
+            "description": "This replaces the complete flag mask. Every enabled gyroscopic mode is\nevaluated independently, so clear existing gyroscopic mode bits before\nselecting a different mode.",
             "error": "",
             "examples": "",
             "language": "",
@@ -2088,7 +2090,7 @@
                     ]
                 },
                 {
-                    "doc": "finite non-negative diagonal local inertia in Defold units",
+                    "doc": "finite non-negative diagonal local inertia in Defold mass-times-distance-squared units",
                     "is_optional": "False",
                     "name": "local_inertia",
                     "types": [

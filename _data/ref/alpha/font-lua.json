@@ -290,6 +290,67 @@
             "returnvalues": [],
             "tparams": [],
             "type": "FUNCTION"
+        },
+        {
+            "brief": "sets a named rich-text render style on a font",
+            "description": "Named object styles are resolved by text layouts without reshaping text.\nA <code>link</code> tag uses <code>link</code> by default. Callers may select another named style,\nsuch as <code>link:hover</code> or <code>link:active</code>, in response to input.\nFont collections initially define these named styles. Each default contains\na normalized RGBA face-color multiplier and no effects. The default <code>link</code>\nstyle also uses a solid underline, which remains when hover or active colors\nare applied:\n<ul>\n<li><code>link</code>: <code>(0.10, 0.45, 0.90, 1.0)</code>, solid underline</li>\n<li><code>link:hover</code>: <code>(0.30, 0.65, 1.00, 1.0)</code></li>\n<li><code>link:active</code>: <code>(0.05, 0.30, 0.70, 1.0)</code></li>\n</ul>\nThe definition is an opening-only sequence of rich-text tags. Tags are\nimplicitly closed in reverse order. Calling this function replaces the\nnamed render properties and effects. Resource-defined decorations, such as\nthe default <code>link</code> underline, remain unchanged.",
+            "error": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">font</span><span class=\"p\">.</span><span class=\"n\">set_style</span><span class=\"p\">(</span><span class=\"s2\">&quot;/fonts/ui.fontc&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;link:hover&quot;</span><span class=\"p\">,</span>\n    <span class=\"s2\">&quot;&lt;color=#66b3ff&gt;&lt;outline color=#000000 size=1&gt;&lt;shake amplitude=0.2&gt;&quot;</span><span class=\"p\">)</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "font.set_style",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "The path to the <code>.fontc</code> resource.",
+                    "is_optional": "False",
+                    "name": "fontc",
+                    "types": [
+                        "string",
+                        "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ]
+                },
+                {
+                    "doc": "Style name, for example <code>link:hover</code>.",
+                    "is_optional": "False",
+                    "name": "name",
+                    "types": [
+                        "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ]
+                },
+                {
+                    "doc": "Opening-only render-style markup.",
+                    "is_optional": "False",
+                    "name": "style",
+                    "types": [
+                        "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
         }
     ],
     "format_version": 2,

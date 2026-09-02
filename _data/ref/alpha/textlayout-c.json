@@ -1,6 +1,110 @@
 {
     "elements": [
         {
+            "brief": "Release a resource acquired by <code>FTextLayoutResolveObject</code>",
+            "description": "Called during the layout's final release for each resolved sprite.\nThe callback may be null when the resolver never acquires resources.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "FTextLayoutReleaseObject",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "User context from <code>TextLayoutSettings.m_ObjectContext</code>.",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "void*"
+                    ]
+                },
+                {
+                    "doc": "Sprite object whose resource should be released.",
+                    "is_optional": "False",
+                    "name": "object",
+                    "types": [
+                        "const TextLayoutObject*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "Resolve a resource-backed layout object",
+            "description": "Called once for every sprite, including cache misses. The proposed\ndimensions already include explicit markup dimensions; each unspecified\ndimension is one em. The callback must set <code>object-&gt;m_Width</code> and\n<code>object-&gt;m_Height</code>, and may store an acquired resource handle in\n<code>object-&gt;m_Resource</code>. Returning false aborts markup layout creation.\n<code>source</code> and <code>attributes</code> are borrowed and valid for the duration of the\ncallback. Equivalent data can later be obtained from the created layout.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "FTextLayoutResolveObject",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "User context from <code>TextLayoutSettings.m_ObjectContext</code>.",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "void*"
+                    ]
+                },
+                {
+                    "doc": "Null-terminated markup source owned by the layout being created.",
+                    "is_optional": "False",
+                    "name": "source",
+                    "types": [
+                        "const char*"
+                    ]
+                },
+                {
+                    "doc": "Attribute array indexed by <code>object-&gt;m_AttributeIndex</code>.",
+                    "is_optional": "False",
+                    "name": "attributes",
+                    "types": [
+                        "const TextLayoutObjectAttribute*"
+                    ]
+                },
+                {
+                    "doc": "Explicit markup width, or one em when omitted.",
+                    "is_optional": "False",
+                    "name": "proposed_width",
+                    "types": [
+                        "float"
+                    ]
+                },
+                {
+                    "doc": "Explicit markup height, or one em when omitted.",
+                    "is_optional": "False",
+                    "name": "proposed_height",
+                    "types": [
+                        "float"
+                    ]
+                },
+                {
+                    "doc": "Object to update with resolved dimensions and an optional resource.",
+                    "is_optional": "False",
+                    "name": "object",
+                    "types": [
+                        "TextLayoutObject*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Non-zero on success; zero aborts layout creation.",
+                    "name": "success",
+                    "types": [
+                        "uint8_t"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
             "brief": "A handle representing a text layout",
             "description": "A handle representing a text layout",
             "error": "",
@@ -14,6 +118,93 @@
             "returnvalues": [],
             "tparams": [],
             "type": "TYPEDEF"
+        },
+        {
+            "brief": "Resolved line decoration",
+            "description": "Decorations contain backend-independent geometry after shaping, BiDi\nreordering, and line wrapping. <code>m_Y</code> is relative to the line baseline. The\noriginal underline or strike type is deliberately omitted because its font\nmetrics have already been resolved into <code>m_Y</code> and <code>m_Thickness</code>.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "Start position in the shaped line coordinate system.",
+                    "name": "m_X",
+                    "type": "float"
+                },
+                {
+                    "doc": "Vertical offset from the line baseline.",
+                    "name": "m_Y",
+                    "type": "float"
+                },
+                {
+                    "doc": "Decoration length.",
+                    "name": "m_Length",
+                    "type": "float"
+                },
+                {
+                    "doc": "Resolved font-derived thickness.",
+                    "name": "m_Thickness",
+                    "type": "float"
+                },
+                {
+                    "doc": "Stable pattern phase offset.",
+                    "name": "m_PatternOffset",
+                    "type": "float"
+                },
+                {
+                    "doc": "First associated layout glyph.",
+                    "name": "m_GlyphStart",
+                    "type": "uint32_t"
+                },
+                {
+                    "doc": "Number of associated layout glyphs.",
+                    "name": "m_GlyphCount",
+                    "type": "uint16_t"
+                },
+                {
+                    "doc": "Physical line containing the decoration.",
+                    "name": "m_LineIndex",
+                    "type": "uint16_t"
+                },
+                {
+                    "doc": "Line pattern.",
+                    "name": "m_Pattern",
+                    "type": "TextDecorationPattern"
+                }
+            ],
+            "name": "TextDecoration",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Text decoration pattern",
+            "description": "Text decoration pattern",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "A continuous decoration line.",
+                    "name": "TEXT_DECORATION_PATTERN_SOLID",
+                    "type": ""
+                },
+                {
+                    "doc": "A dashed decoration line.",
+                    "name": "TEXT_DECORATION_PATTERN_DASHED",
+                    "type": ""
+                }
+            ],
+            "name": "TextDecorationPattern",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "ENUM"
         },
         {
             "brief": "An enum representing text layout directions",
@@ -74,7 +265,12 @@
                     "type": "float"
                 },
                 {
-                    "doc": "original copdepoint (if available)",
+                    "doc": "scale applied to the cached glyph geometry during vertex generation",
+                    "name": "m_RenderScale",
+                    "type": "float"
+                },
+                {
+                    "doc": "original codepoint (if available)",
                     "name": "m_Codepoint",
                     "type": "uint32_t"
                 },
@@ -84,8 +280,33 @@
                     "type": "uint16_t"
                 },
                 {
-                    "doc": "the index in the original text, that this glyph corresponds to",
+                    "doc": "the index in the visible UTF-32 text that this glyph corresponds to",
                     "name": "m_Cluster",
+                    "type": "uint32_t"
+                },
+                {
+                    "doc": "resolved render style index",
+                    "name": "m_StyleIndex",
+                    "type": "uint16_t"
+                },
+                {
+                    "doc": "render style before layout-object named styles are applied",
+                    "name": "m_BaseStyleIndex",
+                    "type": "uint16_t"
+                },
+                {
+                    "doc": "resolved markup span index, or 0xffff when no markup is present",
+                    "name": "m_MarkupSpanIndex",
+                    "type": "uint16_t"
+                },
+                {
+                    "doc": "markup span before layout-object named styles are applied",
+                    "name": "m_BaseMarkupSpanIndex",
+                    "type": "uint16_t"
+                },
+                {
+                    "doc": "<code>TextGlyphFlags</code> describing non-text layout glyphs",
+                    "name": "m_Flags",
                     "type": "uint16_t"
                 }
             ],
@@ -96,6 +317,27 @@
             "returnvalues": [],
             "tparams": [],
             "type": "STRUCT"
+        },
+        {
+            "brief": "Text glyph flags",
+            "description": "Text glyph flags",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "The glyph reserves inline layout space for a layout object and must not be rasterized as text.",
+                    "name": "TEXT_GLYPH_FLAG_OBJECT",
+                    "type": ""
+                }
+            ],
+            "name": "TextGlyphFlags",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "ENUM"
         },
         {
             "brief": "Acquire a shared reference to a previously created...",
@@ -218,6 +460,70 @@
                     "name": "height",
                     "types": [
                         "float*"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get resolved decoration count",
+            "description": "Get resolved decoration count",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "TextLayoutGetDecorationCount",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the text layout",
+                    "is_optional": "False",
+                    "name": "layout",
+                    "types": [
+                        "HTextLayout"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "number of underline and strike segments",
+                    "name": "count",
+                    "types": [
+                        "uint32_t"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get resolved decorations",
+            "description": "Get resolved decorations",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "TextLayoutGetDecorations",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the text layout",
+                    "is_optional": "False",
+                    "name": "layout",
+                    "types": [
+                        "HTextLayout"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "borrowed decoration array",
+                    "name": "decorations",
+                    "types": [
+                        "const TextDecoration*"
                     ]
                 }
             ],
@@ -353,6 +659,375 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "Get layout object attributes",
+            "description": "Get layout object attributes",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "TextLayoutGetObjectAttributes",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the text layout",
+                    "is_optional": "False",
+                    "name": "layout",
+                    "types": [
+                        "HTextLayout"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "attribute array",
+                    "name": "attributes",
+                    "types": [
+                        "const TextLayoutObjectAttribute*"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get layout object count",
+            "description": "Get layout object count",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "TextLayoutGetObjectCount",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the text layout",
+                    "is_optional": "False",
+                    "name": "layout",
+                    "types": [
+                        "HTextLayout"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "number of sprites and links",
+                    "name": "count",
+                    "types": [
+                        "uint32_t"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get the rendered position of a layout object",
+            "description": "Resolves the lower-left corner of an object using the same shaped-line\ncoordinate normalization as text rendering. <code>paragraph_x</code> and\n<code>paragraph_top</code> define the upper-left layout origin. <code>paragraph_width</code> is\nused to place right-to-left lines.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "TextLayoutGetObjectPosition",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the text layout",
+                    "is_optional": "False",
+                    "name": "layout",
+                    "types": [
+                        "HTextLayout"
+                    ]
+                },
+                {
+                    "doc": "object borrowed from <code>TextLayoutGetObjects</code>",
+                    "is_optional": "False",
+                    "name": "object",
+                    "types": [
+                        "const TextLayoutObject*"
+                    ]
+                },
+                {
+                    "doc": "left layout origin",
+                    "is_optional": "False",
+                    "name": "paragraph_x",
+                    "types": [
+                        "float"
+                    ]
+                },
+                {
+                    "doc": "top layout origin",
+                    "is_optional": "False",
+                    "name": "paragraph_top",
+                    "types": [
+                        "float"
+                    ]
+                },
+                {
+                    "doc": "layout width",
+                    "is_optional": "False",
+                    "name": "paragraph_width",
+                    "types": [
+                        "float"
+                    ]
+                },
+                {
+                    "doc": "resolved lower-left x coordinate (out)",
+                    "is_optional": "False",
+                    "name": "x",
+                    "types": [
+                        "float*"
+                    ]
+                },
+                {
+                    "doc": "resolved lower-left y coordinate (out)",
+                    "is_optional": "False",
+                    "name": "y",
+                    "types": [
+                        "float*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "non-zero when the object belongs to a layout line",
+                    "name": "found",
+                    "types": [
+                        "uint8_t"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get layout objects",
+            "description": "The borrowed array remains valid until the layout is released.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "TextLayoutGetObjects",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the text layout",
+                    "is_optional": "False",
+                    "name": "layout",
+                    "types": [
+                        "HTextLayout"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "layout object array",
+                    "name": "objects",
+                    "types": [
+                        "const TextLayoutObject*"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get the UTF-8 source referenced by layout object attributes",
+            "description": "Get the UTF-8 source referenced by layout object attributes",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "TextLayoutGetObjectSource",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the text layout",
+                    "is_optional": "False",
+                    "name": "layout",
+                    "types": [
+                        "HTextLayout"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "null-terminated markup source copy",
+                    "name": "source",
+                    "types": [
+                        "const char*"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get the paragraph count in the layout",
+            "description": "Get the paragraph count in the layout",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "TextLayoutGetParagraphCount",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the text layout",
+                    "is_optional": "False",
+                    "name": "layout",
+                    "types": [
+                        "HTextLayout"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "the number of paragraphs in the layout",
+                    "name": "count",
+                    "types": [
+                        "uint32_t"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get the paragraphs in the layout",
+            "description": "Get the paragraphs in the layout",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "TextLayoutGetParagraphs",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the text layout",
+                    "is_optional": "False",
+                    "name": "layout",
+                    "types": [
+                        "HTextLayout"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "the array of paragraphs in the layout",
+                    "name": "paragraphs",
+                    "types": [
+                        "TextParagraph*"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Object found while resolving markup for a layout",
+            "description": "Sprite objects have resolved dimensions and an opaque value owned by the\nresolver. Their dimensions reserve inline layout space; rendering the\nsprite is the caller's responsibility. Link objects describe their visible\nUTF-32 text range and have zero dimensions until their geometry is queried.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "Opaque resolver-owned resource value.",
+                    "name": "m_Resource",
+                    "type": "uintptr_t"
+                },
+                {
+                    "doc": "Resolved object width in layout units.",
+                    "name": "m_Width",
+                    "type": "float"
+                },
+                {
+                    "doc": "Resolved object height in layout units.",
+                    "name": "m_Height",
+                    "type": "float"
+                },
+                {
+                    "doc": "Zero-based UTF-32 offset in visible text.",
+                    "name": "m_TextOffset",
+                    "type": "uint32_t"
+                },
+                {
+                    "doc": "Visible UTF-32 length; one for an inline sprite's U+FFFC object-replacement codepoint.",
+                    "name": "m_TextLength",
+                    "type": "uint32_t"
+                },
+                {
+                    "doc": "Stable object identifier derived from the <code>id</code> attribute, or generated from its order in the layout source.",
+                    "name": "m_Id",
+                    "type": "uint64_t"
+                },
+                {
+                    "doc": "First object attribute in the layout attribute array.",
+                    "name": "m_AttributeIndex",
+                    "type": "uint16_t"
+                },
+                {
+                    "doc": "Number of consecutive object attributes.",
+                    "name": "m_AttributeCount",
+                    "type": "uint16_t"
+                },
+                {
+                    "doc": "Hash of the markup tag name.",
+                    "name": "m_Tag",
+                    "type": "dmhash_t"
+                }
+            ],
+            "name": "TextLayoutObject",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Attribute belonging to a layout object",
+            "description": "Offsets and lengths are UTF-8 byte ranges in the string returned by\n<code>TextLayoutGetObjectSource()</code>.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "Attribute-name byte offset in the object source.",
+                    "name": "m_NameOffset",
+                    "type": "uint32_t"
+                },
+                {
+                    "doc": "Attribute-value byte offset in the object source.",
+                    "name": "m_ValueOffset",
+                    "type": "uint32_t"
+                },
+                {
+                    "doc": "Attribute-name length in bytes; zero for shorthand values.",
+                    "name": "m_NameLength",
+                    "type": "uint16_t"
+                },
+                {
+                    "doc": "Attribute-value length in bytes.",
+                    "name": "m_ValueLength",
+                    "type": "uint16_t"
+                }
+            ],
+            "name": "TextLayoutObjectAttribute",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
             "brief": "Release a previously created layout",
             "description": "Release a previously created layout",
             "error": "",
@@ -373,6 +1048,54 @@
             ],
             "replaces": "",
             "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Set a layout object's named style override",
+            "description": "The named style is applied after the object's default style. The default is\nthe markup <code>style</code> attribute when present, otherwise the object's tag name.\nPass zero to restore the default style. This affects rendering only and\nnever reshapes or reflows text.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "TextLayoutSetObjectStyle",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the text layout",
+                    "is_optional": "False",
+                    "name": "layout",
+                    "types": [
+                        "HTextLayout"
+                    ]
+                },
+                {
+                    "doc": "ID returned in <code>TextLayoutObject.m_Id</code>",
+                    "is_optional": "False",
+                    "name": "object_id",
+                    "types": [
+                        "uint64_t"
+                    ]
+                },
+                {
+                    "doc": "named style hash, or zero to restore the default",
+                    "is_optional": "False",
+                    "name": "style",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "non-zero when the object style changed",
+                    "name": "changed",
+                    "types": [
+                        "uint8_t"
+                    ]
+                }
+            ],
             "tparams": [],
             "type": "FUNCTION"
         },
@@ -402,6 +1125,21 @@
                     "doc": "The extra tracking between glyphs. Set 0 as default.",
                     "name": "m_Tracking",
                     "type": "float"
+                },
+                {
+                    "doc": "Resolver required when markup contains a sprite.",
+                    "name": "m_ResolveObject",
+                    "type": "FTextLayoutResolveObject"
+                },
+                {
+                    "doc": "Optional finalizer for resources acquired by the resolver.",
+                    "name": "m_ReleaseObject",
+                    "type": "FTextLayoutReleaseObject"
+                },
+                {
+                    "doc": "User context passed to both object callbacks.",
+                    "name": "m_ObjectContext",
+                    "type": "void*"
                 },
                 {
                     "doc": "Legacy: Padding for monospace, glyphbank fonts",
@@ -454,6 +1192,38 @@
             "type": "ENUM"
         },
         {
+            "brief": "Advance the animation clock used by markup effects...",
+            "description": "Advance the animation clock used by markup effects in a text layout.\nThis function only changes the layout's accumulated effect time. It does not\nreshape text or alter the base glyph positions, lines, paragraphs, or bounds.\nAnimated offsets are applied later when glyph vertices are generated.\nCall this once per frame with the elapsed time since the previous frame.\nNon-finite and non-positive values are ignored.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "TextLayoutUpdate",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the text layout",
+                    "is_optional": "False",
+                    "name": "layout",
+                    "types": [
+                        "HTextLayout"
+                    ]
+                },
+                {
+                    "doc": "elapsed time in seconds",
+                    "is_optional": "False",
+                    "name": "delta_time",
+                    "types": [
+                        "float"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "Represents a line of glyphs",
             "description": "Represents a line of glyphs",
             "error": "",
@@ -474,9 +1244,60 @@
                     "doc": "Number of glyphs to render",
                     "name": "m_Length",
                     "type": "uint16_t"
+                },
+                {
+                    "doc": "Index of the paragraph containing the line",
+                    "name": "m_ParagraphIndex",
+                    "type": "uint16_t"
+                },
+                {
+                    "doc": "Final baseline position measured from the bottom of the layout",
+                    "name": "m_Baseline",
+                    "type": "float"
                 }
             ],
             "name": "TextLine",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Represents a paragraph of lines",
+            "description": "Represents a paragraph of lines",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "Index into the source codepoints",
+                    "name": "m_TextIndex",
+                    "type": "uint32_t"
+                },
+                {
+                    "doc": "Number of source codepoints, excluding the paragraph separator",
+                    "name": "m_TextLength",
+                    "type": "uint32_t"
+                },
+                {
+                    "doc": "Index into the list of lines",
+                    "name": "m_LineIndex",
+                    "type": "uint16_t"
+                },
+                {
+                    "doc": "Number of lines in the paragraph",
+                    "name": "m_LineCount",
+                    "type": "uint16_t"
+                },
+                {
+                    "doc": "Base direction of the paragraph",
+                    "name": "m_Direction",
+                    "type": "TextDirection"
+                }
+            ],
+            "name": "TextParagraph",
             "notes": [],
             "parameters": [],
             "replaces": "",

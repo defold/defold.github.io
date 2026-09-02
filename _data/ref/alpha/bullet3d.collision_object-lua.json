@@ -90,6 +90,10 @@
             "language": "",
             "members": [
                 {
+                    "doc": "Zero-valued default dynamic-object flag. Compare the complete collision-flags value with this constant; do not pass it to <code>has_collision_flag</code>, since zero is not a bit that can be tested.",
+                    "name": "bullet3d.collision_object.CF_DYNAMIC_OBJECT"
+                },
+                {
                     "doc": "Static collision object flag.",
                     "name": "bullet3d.collision_object.CF_STATIC_OBJECT"
                 },
@@ -943,7 +947,7 @@
         },
         {
             "brief": "Test whether a collision object is active",
-            "description": "This exposes Bullet's native <code>btCollisionObject::isActive</code> result. It is\n<code>false</code> for <code>ISLAND_SLEEPING</code> and <code>DISABLE_SIMULATION</code>, and <code>true</code> for the\nother activation states. It is unrelated to whether the Defold component is\nenabled.",
+            "description": "This exposes Bullet's native <code>btCollisionObject::isActive</code> result. It is\n<code>false</code> for <code>ISLAND_SLEEPING</code> and <code>DISABLE_SIMULATION</code>, and <code>true</code> for the\nother activation states available to Defold collision objects. It is\nunrelated to whether the Defold component is enabled.",
             "error": "",
             "examples": "",
             "language": "",
@@ -1714,7 +1718,7 @@
                     ]
                 },
                 {
-                    "doc": "world rotation",
+                    "doc": "finite, non-zero world rotation; normalized by the binding",
                     "is_optional": "False",
                     "name": "rotation",
                     "types": [
@@ -1772,7 +1776,7 @@
                     ]
                 },
                 {
-                    "doc": "world rotation",
+                    "doc": "finite, non-zero world rotation; normalized by the binding",
                     "is_optional": "False",
                     "name": "rotation",
                     "types": [

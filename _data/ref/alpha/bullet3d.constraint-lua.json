@@ -271,7 +271,7 @@
         },
         {
             "brief": "Create a generic six-degree-of-freedom constraint",
-            "description": "The world is derived from <code>body_a</code>. Bullet 2.77's active 6-DOF\nsolver ignores its legacy linear-reference-frame selector, so that field is\nrejected rather than silently accepted.",
+            "description": "The params table requires local frame A and, for a two-body constraint,\nlocal frame B. It optionally accepts <code>collide_connected</code>. The world is\nderived from <code>body_a</code>. The active 6-DOF solver ignores its legacy\nlinear-reference-frame selector, so that field is rejected rather than\nsilently accepted.",
             "error": "",
             "examples": "",
             "language": "",
@@ -346,7 +346,7 @@
         },
         {
             "brief": "Create a generic spring six-degree-of-freedom constraint",
-            "description": "The world is derived from <code>body_a</code>. Bullet 2.77's active\nspring 6-DOF solver ignores its legacy linear-reference-frame selector, so\nthat field is rejected rather than silently accepted.",
+            "description": "Both bodies and both local frames are required. The params table optionally\naccepts <code>collide_connected</code>. The world is derived from <code>body_a</code>. The active\nspring 6-DOF solver ignores its legacy linear-reference-frame selector, so\nthat field is rejected rather than silently accepted.",
             "error": "",
             "examples": "Create a spring that moves along its first linear axis:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"kd\">local</span> <span class=\"n\">body_a</span> <span class=\"o\">=</span> <span class=\"n\">bullet3d</span><span class=\"p\">.</span><span class=\"n\">get_rigid_body</span><span class=\"p\">(</span><span class=\"s2\">&quot;/body_a#collisionobject&quot;</span><span class=\"p\">)</span>\n    <span class=\"kd\">local</span> <span class=\"n\">body_b</span> <span class=\"o\">=</span> <span class=\"n\">bullet3d</span><span class=\"p\">.</span><span class=\"n\">get_rigid_body</span><span class=\"p\">(</span><span class=\"s2\">&quot;/body_b#collisionobject&quot;</span><span class=\"p\">)</span>\n    <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">spring</span> <span class=\"o\">=</span> <span class=\"n\">bullet3d</span><span class=\"p\">.</span><span class=\"n\">constraint</span><span class=\"p\">.</span><span class=\"n\">create_generic_6dof_spring</span><span class=\"p\">(</span><span class=\"n\">body_a</span><span class=\"p\">,</span> <span class=\"n\">body_b</span><span class=\"p\">,</span> <span class=\"p\">{</span>\n        <span class=\"n\">frame_a_position</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(),</span>\n        <span class=\"n\">frame_a_rotation</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">quat</span><span class=\"p\">(),</span>\n        <span class=\"n\">frame_b_position</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(),</span>\n        <span class=\"n\">frame_b_rotation</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">quat</span><span class=\"p\">(),</span>\n    <span class=\"p\">})</span>\n    <span class=\"n\">bullet3d</span><span class=\"p\">.</span><span class=\"n\">constraint</span><span class=\"p\">.</span><span class=\"n\">set_limit</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">spring</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"o\">-</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">)</span>\n    <span class=\"n\">bullet3d</span><span class=\"p\">.</span><span class=\"n\">constraint</span><span class=\"p\">.</span><span class=\"n\">enable_spring</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">spring</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"kc\">true</span><span class=\"p\">)</span>\n    <span class=\"n\">bullet3d</span><span class=\"p\">.</span><span class=\"n\">constraint</span><span class=\"p\">.</span><span class=\"n\">set_spring_stiffness</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">spring</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">20</span><span class=\"p\">)</span>\n    <span class=\"n\">bullet3d</span><span class=\"p\">.</span><span class=\"n\">constraint</span><span class=\"p\">.</span><span class=\"n\">set_spring_damping</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">spring</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mf\">0.5</span><span class=\"p\">)</span>\n    <span class=\"n\">bullet3d</span><span class=\"p\">.</span><span class=\"n\">constraint</span><span class=\"p\">.</span><span class=\"n\">set_spring_equilibrium_point</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">spring</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n\n<span class=\"kr\">function</span> <span class=\"nf\">final</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"kr\">if</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">spring</span> <span class=\"ow\">and</span> <span class=\"n\">bullet3d</span><span class=\"p\">.</span><span class=\"n\">constraint</span><span class=\"p\">.</span><span class=\"n\">is_valid</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">spring</span><span class=\"p\">)</span> <span class=\"kr\">then</span>\n        <span class=\"n\">bullet3d</span><span class=\"p\">.</span><span class=\"n\">constraint</span><span class=\"p\">.</span><span class=\"n\">destroy</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">spring</span><span class=\"p\">)</span>\n    <span class=\"kr\">end</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
             "language": "",
@@ -1147,7 +1147,7 @@
         },
         {
             "brief": "Get 6-DOF motor settings",
-            "description": "Axes 1-3 are linear and axes 4-6 are angular. Bounce is zero for linear\nmotors because Bullet only implements it for angular motors.",
+            "description": "Axes 1-3 are linear and axes 4-6 are angular. Generic 6-DOF, generic spring\n6-DOF, and universal constraints support bounce only on angular axes; hinge2\nsupports it on every axis. Linear target velocity uses Defold units per\nsecond and angular target velocity uses radians per second. <code>max_force</code> is a\nforce for linear axes and a torque in Defold squared units for angular axes.",
             "error": "",
             "examples": "",
             "language": "",
@@ -1200,7 +1200,7 @@
                     ]
                 },
                 {
-                    "doc": "target velocity",
+                    "doc": "linear or angular target velocity",
                     "name": "target_velocity",
                     "types": [
                         "number"
@@ -1213,8 +1213,8 @@
                     ]
                 },
                 {
-                    "doc": "maximum motor impulse",
-                    "name": "max_impulse",
+                    "doc": "maximum motor force for linear axes or torque for angular axes",
+                    "name": "max_force",
                     "types": [
                         "number"
                     ],
@@ -1226,7 +1226,7 @@
                     ]
                 },
                 {
-                    "doc": "angular bounce from 0 to 1",
+                    "doc": "bounce from 0 to 1",
                     "name": "bounce",
                     "types": [
                         "number"
@@ -1678,7 +1678,7 @@
         },
         {
             "brief": "Get local frame A",
-            "description": "Returns position and rotation. For one-body generic 6-DOF and slider\nconstraints this is the user-body frame, despite Bullet storing it as its\nnative frame B.",
+            "description": "Supported constraint types are hinge, cone-twist, generic 6-DOF, generic\nspring 6-DOF, slider, universal, and hinge2. Point-to-point constraints use\n<code>get_pivots</code> instead.\nReturns position and rotation. For one-body generic 6-DOF and slider\nconstraints this is the user-body frame, despite Bullet storing it as its\nnative frame B.",
             "error": "",
             "examples": "",
             "language": "",
@@ -1735,7 +1735,7 @@
         },
         {
             "brief": "Get local frame B",
-            "description": "Get local frame B",
+            "description": "Supports the same constraint types as <code>get_frame_a</code>. For a one-body\nconstraint, this is the frame attached to the fixed world body.",
             "error": "",
             "examples": "",
             "language": "",
@@ -1932,7 +1932,7 @@
                     ]
                 },
                 {
-                    "doc": "angular target velocity",
+                    "doc": "angular target velocity in radians per second",
                     "name": "target_velocity",
                     "types": [
                         "number"
@@ -1945,7 +1945,7 @@
                     ]
                 },
                 {
-                    "doc": "maximum angular motor impulse",
+                    "doc": "maximum angular motor impulse in Defold squared units",
                     "name": "max_impulse",
                     "types": [
                         "number"
@@ -2174,7 +2174,7 @@
         },
         {
             "brief": "Get slider motor settings",
-            "description": "Get slider motor settings",
+            "description": "The linear motor uses Defold units per second and maximum force. The angular\nmotor uses radians per second and maximum torque in Defold squared units.",
             "error": "",
             "examples": "",
             "language": "",
@@ -2227,7 +2227,7 @@
                     ]
                 },
                 {
-                    "doc": "target velocity",
+                    "doc": "linear or angular target velocity",
                     "name": "target_velocity",
                     "types": [
                         "number"
@@ -2240,7 +2240,7 @@
                     ]
                 },
                 {
-                    "doc": "maximum motor force",
+                    "doc": "maximum linear force or angular torque",
                     "name": "max_force",
                     "types": [
                         "number"
@@ -2682,7 +2682,7 @@
         },
         {
             "brief": "Test whether a 6-DOF axis is limited",
-            "description": "Test whether a 6-DOF axis is limited",
+            "description": "Both a ranged and a locked axis are considered limited; a free axis is not.",
             "error": "",
             "examples": "",
             "language": "",
@@ -2868,7 +2868,7 @@
         },
         {
             "brief": "Set 6-DOF motor settings",
-            "description": "Set 6-DOF motor settings",
+            "description": "Linear and angular values use the units described by <code>get_6dof_motor</code>.",
             "error": "",
             "examples": "",
             "language": "",
@@ -2919,7 +2919,7 @@
                     ]
                 },
                 {
-                    "doc": "target velocity",
+                    "doc": "linear or angular target velocity",
                     "is_optional": "False",
                     "name": "target_velocity",
                     "types": [
@@ -2933,9 +2933,9 @@
                     ]
                 },
                 {
-                    "doc": "non-negative maximum motor impulse",
+                    "doc": "non-negative maximum motor force for linear axes or torque for angular axes",
                     "is_optional": "False",
-                    "name": "max_impulse",
+                    "name": "max_force",
                     "types": [
                         "number"
                     ],
@@ -2947,7 +2947,7 @@
                     ]
                 },
                 {
-                    "doc": "optional angular bounce from 0 to 1",
+                    "doc": "optional bounce from 0 to 1; defaults to <code>0</code>",
                     "is_optional": "True",
                     "name": "bounce",
                     "types": [
@@ -3038,7 +3038,7 @@
                     ]
                 },
                 {
-                    "doc": "non-negative first swing span",
+                    "doc": "non-negative first swing span in radians",
                     "is_optional": "False",
                     "name": "swing_span_1",
                     "types": [
@@ -3052,7 +3052,7 @@
                     ]
                 },
                 {
-                    "doc": "non-negative second swing span",
+                    "doc": "non-negative second swing span in radians",
                     "is_optional": "False",
                     "name": "swing_span_2",
                     "types": [
@@ -3066,7 +3066,7 @@
                     ]
                 },
                 {
-                    "doc": "non-negative twist span",
+                    "doc": "non-negative twist span in radians",
                     "is_optional": "False",
                     "name": "twist_span",
                     "types": [
@@ -3080,7 +3080,7 @@
                     ]
                 },
                 {
-                    "doc": "optional softness from 0 to 1",
+                    "doc": "optional softness from 0 to 1; defaults to <code>1</code>",
                     "is_optional": "True",
                     "name": "softness",
                     "types": [
@@ -3097,7 +3097,7 @@
                     ]
                 },
                 {
-                    "doc": "optional bias from 0 to 1",
+                    "doc": "optional bias from 0 to 1; defaults to <code>0.3</code>",
                     "is_optional": "True",
                     "name": "bias",
                     "types": [
@@ -3114,7 +3114,7 @@
                     ]
                 },
                 {
-                    "doc": "optional relaxation from 0 to 1",
+                    "doc": "optional relaxation from 0 to 1; defaults to <code>1</code>",
                     "is_optional": "True",
                     "name": "relaxation",
                     "types": [
@@ -3138,7 +3138,7 @@
         },
         {
             "brief": "Set the cone-twist motor target",
-            "description": "Set the cone-twist motor target",
+            "description": "By default, <code>target</code> is the desired rotation of body A relative to body B.\nWith <code>constraint_space</code> set, it is the desired rotation of frame A relative\nto frame B in constraint space.",
             "error": "",
             "examples": "",
             "language": "",
@@ -3161,7 +3161,7 @@
                     ]
                 },
                 {
-                    "doc": "target orientation",
+                    "doc": "finite, non-zero target orientation; normalized by the binding",
                     "is_optional": "False",
                     "name": "target",
                     "types": [
@@ -3175,7 +3175,7 @@
                     ]
                 },
                 {
-                    "doc": "target is already in constraint space",
+                    "doc": "optional target-is-in-constraint-space flag; defaults to <code>false</code>",
                     "is_optional": "True",
                     "name": "constraint_space",
                     "types": [
@@ -3199,7 +3199,7 @@
         },
         {
             "brief": "Set local frame A",
-            "description": "Set local frame A",
+            "description": "Frame mutation is supported for hinge, generic 6-DOF, generic spring 6-DOF,\nand slider constraints. Cone-twist, universal, and hinge2 frames are\nread-only through this API.",
             "error": "",
             "examples": "",
             "language": "",
@@ -3222,7 +3222,7 @@
                     ]
                 },
                 {
-                    "doc": "local position",
+                    "doc": "finite local position",
                     "is_optional": "False",
                     "name": "position",
                     "types": [
@@ -3236,7 +3236,7 @@
                     ]
                 },
                 {
-                    "doc": "local rotation",
+                    "doc": "finite, non-zero local rotation; normalized by the binding",
                     "is_optional": "False",
                     "name": "rotation",
                     "types": [
@@ -3257,7 +3257,7 @@
         },
         {
             "brief": "Set local frame B",
-            "description": "Set local frame B",
+            "description": "Supports the same constraint types as <code>set_frame_a</code>. For a one-body\nconstraint, this changes the frame attached to the fixed world body.",
             "error": "",
             "examples": "",
             "language": "",
@@ -3280,7 +3280,7 @@
                     ]
                 },
                 {
-                    "doc": "local position or world frame position",
+                    "doc": "finite local position or world frame position",
                     "is_optional": "False",
                     "name": "position",
                     "types": [
@@ -3294,7 +3294,7 @@
                     ]
                 },
                 {
-                    "doc": "local rotation or world frame rotation",
+                    "doc": "finite, non-zero local or world frame rotation; normalized by the binding",
                     "is_optional": "False",
                     "name": "rotation",
                     "types": [
@@ -3410,7 +3410,7 @@
                     ]
                 },
                 {
-                    "doc": "optional limit bias from 0 to 1",
+                    "doc": "optional limit bias from 0 to 1; defaults to <code>0.3</code>",
                     "is_optional": "True",
                     "name": "bias",
                     "types": [
@@ -3427,7 +3427,7 @@
                     ]
                 },
                 {
-                    "doc": "optional relaxation from 0 to 1",
+                    "doc": "optional relaxation from 0 to 1; defaults to <code>1</code>",
                     "is_optional": "True",
                     "name": "relaxation",
                     "types": [
@@ -3488,7 +3488,7 @@
                     ]
                 },
                 {
-                    "doc": "angular target velocity",
+                    "doc": "angular target velocity in radians per second",
                     "is_optional": "False",
                     "name": "target_velocity",
                     "types": [
@@ -3502,7 +3502,7 @@
                     ]
                 },
                 {
-                    "doc": "non-negative maximum angular motor impulse",
+                    "doc": "non-negative maximum angular motor impulse in Defold squared units",
                     "is_optional": "False",
                     "name": "max_impulse",
                     "types": [
@@ -3581,7 +3581,7 @@
         },
         {
             "brief": "Set a 6-DOF axis limit",
-            "description": "Set a 6-DOF axis limit",
+            "description": "Axes 1-3 use Defold units and axes 4-6 use radians. A lower value less than\nthe upper value creates a limited range, equal values lock the axis, and a\nlower value greater than the upper value makes the axis free.",
             "error": "",
             "examples": "",
             "language": "",
@@ -3711,7 +3711,7 @@
         },
         {
             "brief": "Set slider limits",
-            "description": "Set slider limits",
+            "description": "Each lower/upper pair follows Bullet's limit convention: lower less than\nupper creates a limited range, equal values lock that axis, and lower greater\nthan upper makes it free. Bullet normalizes the angular limits.",
             "error": "",
             "examples": "",
             "language": "",
@@ -3797,7 +3797,7 @@
         },
         {
             "brief": "Set slider motor settings",
-            "description": "Set slider motor settings",
+            "description": "Linear and angular values use the units described by <code>get_slider_motor</code>.",
             "error": "",
             "examples": "",
             "language": "",
@@ -3848,7 +3848,7 @@
                     ]
                 },
                 {
-                    "doc": "target velocity",
+                    "doc": "linear or angular target velocity",
                     "is_optional": "False",
                     "name": "target_velocity",
                     "types": [
@@ -3862,7 +3862,7 @@
                     ]
                 },
                 {
-                    "doc": "non-negative maximum motor force",
+                    "doc": "non-negative maximum linear force or angular torque",
                     "is_optional": "False",
                     "name": "max_force",
                     "types": [
@@ -3883,7 +3883,7 @@
         },
         {
             "brief": "Set spring damping",
-            "description": "Set spring damping",
+            "description": "Generic spring 6-DOF constraints use a scale-independent damping factor from\n0 to 1, where 1 means no damping. Hinge2 constraints use a damping coefficient\nwhere 0 means no damping and any non-negative value is accepted. Hinge2\nangular damping is automatically converted using <code>physics.scale</code> squared.",
             "error": "",
             "examples": "",
             "language": "",
@@ -3920,7 +3920,7 @@
                     ]
                 },
                 {
-                    "doc": "damping from 0 to 1",
+                    "doc": "damping value in the range required by the constraint type",
                     "is_optional": "False",
                     "name": "damping",
                     "types": [
@@ -4005,7 +4005,7 @@
         },
         {
             "brief": "Set spring stiffness",
-            "description": "Stiffness is Bullet's solver tuning coefficient, not a force or torque\nvalue, and is therefore independent of <code>physics.scale</code> for every axis.",
+            "description": "Linear stiffness values are independent of <code>physics.scale</code>. Angular\nstiffness values are automatically converted using <code>physics.scale</code> squared.",
             "error": "",
             "examples": "",
             "language": "",
@@ -4130,8 +4130,8 @@
     "info": {
         "api_language": "Lua",
         "brief": "Bullet constraint API",
-        "description": "Creates and controls Bullet constraints between Defold rigid bodies. A\nconstraint belongs to the supplied world and is destroyed automatically\nwith either body, with the world, or when the module is finalized. It is\ntemporarily removed from the native world while either linked body is\ndisabled and is restored when both bodies are enabled again. Dropping its\nLua userdata does not destroy the native constraint; call `destroy` for\nearly release.\n\nCreator positions and all other linear values use Defold units and are\nconverted with `physics.scale`. Angles are radians. Axes are one-based in\nLua: axes 1-3 are linear and axes 4-6 are angular. Mutating functions cannot\nbe called while the physics world is stepping.\n\n`CONSTRAINT_TYPE_*` values identify the concrete constraint exposed by this\nbinding. This deliberately distinguishes universal, hinge2, and spring 6-DOF\nconstraints even though Bullet 2.77 reports their native base type as 6-DOF.",
-        "description_html": "<p>Creates and controls Bullet constraints between Defold rigid bodies. A\nconstraint belongs to the supplied world and is destroyed automatically\nwith either body, with the world, or when the module is finalized. It is\ntemporarily removed from the native world while either linked body is\ndisabled and is restored when both bodies are enabled again. Dropping its\nLua userdata does not destroy the native constraint; call <code>destroy</code> for\nearly release.</p>\n<p>Creator positions and all other linear values use Defold units and are\nconverted with <code>physics.scale</code>. Angles are radians. Axes are one-based in\nLua: axes 1-3 are linear and axes 4-6 are angular. Mutating functions cannot\nbe called while the physics world is stepping.</p>\n<p><code>CONSTRAINT_TYPE_*</code> values identify the concrete constraint exposed by this\nbinding. This deliberately distinguishes universal, hinge2, and spring 6-DOF\nconstraints even though Bullet 2.77 reports their native base type as 6-DOF.</p>",
+        "description": "Creates and controls Bullet constraints between Defold rigid bodies. A\nconstraint belongs to the supplied world and is destroyed automatically\nwith either body, with the world, or when the module is finalized. It is\ntemporarily removed from the native world while either linked body is\ndisabled and is restored when both bodies are enabled again. Dropping its\nLua userdata does not destroy the native constraint; call `destroy` for\nearly release.\n\nCreator positions and all other linear values use Defold units and are\nconverted with `physics.scale`. Angles are radians. Axes are one-based in\nLua: axes 1-3 are linear and axes 4-6 are angular. Mutating functions cannot\nbe called while the physics world is stepping. Floating-point and vector\ninputs must be finite. Axis vectors must be non-zero and are normalized.\nInput rotations must be finite, non-zero quaternions and are normalized by\nthe binding.\n\n`CONSTRAINT_TYPE_*` values identify the concrete constraint exposed by this\nbinding. This deliberately distinguishes universal, hinge2, and spring 6-DOF\nconstraints independently of Bullet's internal constraint type hierarchy.",
+        "description_html": "<p>Creates and controls Bullet constraints between Defold rigid bodies. A\nconstraint belongs to the supplied world and is destroyed automatically\nwith either body, with the world, or when the module is finalized. It is\ntemporarily removed from the native world while either linked body is\ndisabled and is restored when both bodies are enabled again. Dropping its\nLua userdata does not destroy the native constraint; call <code>destroy</code> for\nearly release.</p>\n<p>Creator positions and all other linear values use Defold units and are\nconverted with <code>physics.scale</code>. Angles are radians. Axes are one-based in\nLua: axes 1-3 are linear and axes 4-6 are angular. Mutating functions cannot\nbe called while the physics world is stepping. Floating-point and vector\ninputs must be finite. Axis vectors must be non-zero and are normalized.\nInput rotations must be finite, non-zero quaternions and are normalized by\nthe binding.</p>\n<p><code>CONSTRAINT_TYPE_*</code> values identify the concrete constraint exposed by this\nbinding. This deliberately distinguishes universal, hinge2, and spring 6-DOF\nconstraints independently of Bullet's internal constraint type hierarchy.</p>",
         "file": "script_bullet3d_constraint.cpp",
         "name": "bullet3d.constraint",
         "namespace": "bullet3d.constraint",
