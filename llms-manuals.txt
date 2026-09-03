@@ -2496,6 +2496,12 @@ The built-in code editor will show code completion of functions while writing co
 
 Pressing `CTRL` + `Space` will show additional information about functions, arguments and return values:
 
+### Jump to symbol
+
+The built-in code editor can show a searchable list of symbols in the current code file, such as functions, objects, and variables. Select `View ▸ Jump to Symbol…`, or press `Ctrl` + `Shift` + `O` on Windows and Linux, or `⌘ Cmd` + `Shift` + `O` on macOS.
+
+Start typing to fuzzy search the symbols, use the arrow keys to move through the results and preview their locations in the editor, then press `Enter` to jump to the selected symbol. Press `Esc` to close the dialog and return to the previous cursor and scroll position.
+
 ### Linting configuration
 
 The built-in code editor performs code linting using [Luacheck](https://luacheck.readthedocs.io/en/stable/index.html) and [Lua language server](https://luals.github.io/wiki/diagnostics/). To configure the Luacheck, create a `.luacheckrc` file in the project root. You can read the [Luacheck configuration page](https://luacheck.readthedocs.io/en/stable/config.html) for the list of the available options. Defold uses the following defaults for the Luacheck configuration:
