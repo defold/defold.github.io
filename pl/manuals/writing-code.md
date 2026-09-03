@@ -11,6 +11,7 @@ toc:
 - Pisanie kodu natywnego
 - Używanie wbudowanego edytora kodu
 - Uzupełnianie kodu
+- Przejście do symbolu {jump-to-symbol}
 - Konfiguracja lintingu {linting-configuration}
 - Używanie zewnętrznego edytora kodu
 - Visual Studio Code - Defold Kit
@@ -48,6 +49,14 @@ Wbudowany edytor kodu wyświetla podpowiedzi dotyczące funkcji podczas pisania:
 Naciśnięcie <kbd>CTRL</kbd> + <kbd>Space</kbd> pokazuje dodatkowe informacje o funkcjach, argumentach i wartościach zwracanych:
 
 ![](/images/editor/apireference.png)
+
+### Przejście do symbolu {#jump-to-symbol}
+
+Wbudowany edytor kodu może wyświetlić przeszukiwalną listę symboli w bieżącym pliku kodu, takich jak funkcje, obiekty i zmienne. Wybierz <kbd>View ▸ Jump to Symbol…</kbd> lub naciśnij <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>O</kbd> w systemach Windows i Linux albo <kbd>⌘ Cmd</kbd> + <kbd>Shift</kbd> + <kbd>O</kbd> w systemie macOS.
+
+Zacznij pisać, aby wyszukiwać symbole metodą dopasowania rozmytego. Za pomocą klawiszy strzałek poruszaj się po wynikach i podglądaj położenie symboli w edytorze, a następnie naciśnij <kbd>Enter</kbd>, aby przejść do wybranego symbolu. Naciśnij <kbd>Esc</kbd>, aby zamknąć okno dialogowe i wrócić do poprzedniego położenia kursora oraz przewinięcia.
+
+![](/images/editor/jump-to-symbol.png)
 
 ### Konfiguracja lintingu {#linting-configuration}
 

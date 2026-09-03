@@ -11,6 +11,7 @@ toc:
 - 编写原生代码
 - 使用内置代码编辑器
 - 代码补全
+- 跳转到符号 {jump-to-symbol}
 - 代码检查配置 {linting-configuration}
 - 使用外部代码编辑器
 - Visual Studio Code - Defold Kit
@@ -49,6 +50,14 @@ Defold 有一个内置代码编辑器，允许您打开和编辑 Lua 文件（.l
 按 <kbd>CTRL</kbd> + <kbd>Space</kbd> 将显示有关函数、参数和返回值的附加信息：
 
 ![](/images/editor/apireference.png)
+
+### 跳转到符号 {#jump-to-symbol}
+
+内置代码编辑器可以显示当前代码文件中可搜索的符号列表，例如函数、对象和变量。选择 <kbd>View ▸ Jump to Symbol…</kbd>，或者在 Windows 和 Linux 上按 <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>O</kbd>，在 macOS 上按 <kbd>⌘ Cmd</kbd> + <kbd>Shift</kbd> + <kbd>O</kbd>。
+
+开始输入以对符号进行模糊搜索，使用方向键在结果中移动并在编辑器中预览其位置，然后按 <kbd>Enter</kbd> 跳转到所选符号。按 <kbd>Esc</kbd> 关闭对话框并返回此前的光标和滚动位置。
+
+![](/images/editor/jump-to-symbol.png)
 
 ### 代码检查配置 {#linting-configuration}
 

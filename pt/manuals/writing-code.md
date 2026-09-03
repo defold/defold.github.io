@@ -11,6 +11,7 @@ toc:
 - Escrevendo código nativo
 - Usando o editor de código integrado
 - Autocompletar código
+- Ir para símbolo {jump-to-symbol}
 - Configuração de linting {linting-configuration}
 - Usando um editor de código externo
 - Visual Studio Code - Defold Kit
@@ -49,6 +50,14 @@ O editor de código integrado mostrará autocompletar de funções enquanto voc�
 Pressionar <kbd>CTRL</kbd> + <kbd>Space</kbd> mostrará informações adicionais sobre funções, argumentos e valores de retorno:
 
 ![](/images/editor/apireference.png)
+
+### Ir para símbolo {#jump-to-symbol}
+
+O editor de código integrado pode exibir uma lista pesquisável de símbolos no arquivo de código atual, como funções, objetos e variáveis. Selecione <kbd>View ▸ Jump to Symbol…</kbd> ou pressione <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>O</kbd> no Windows e Linux, ou <kbd>⌘ Cmd</kbd> + <kbd>Shift</kbd> + <kbd>O</kbd> no macOS.
+
+Comece a digitar para fazer uma busca aproximada pelos símbolos, use as teclas de seta para percorrer os resultados e pré-visualizar suas localizações no editor e, em seguida, pressione <kbd>Enter</kbd> para ir até o símbolo selecionado. Pressione <kbd>Esc</kbd> para fechar a caixa de diálogo e retornar à posição anterior do cursor e da rolagem.
+
+![](/images/editor/jump-to-symbol.png)
 
 ### Configuração de linting {#linting-configuration}
 
