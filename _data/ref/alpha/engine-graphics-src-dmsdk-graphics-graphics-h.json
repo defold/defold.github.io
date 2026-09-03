@@ -1085,6 +1085,78 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "Draws indexed primitives",
+            "description": "Draws indexed primitives.\nRenders geometry using indices from the supplied index buffer. The <code>first</code>\nargument is a byte offset into the index buffer.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "DrawElements",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Graphics context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                },
+                {
+                    "doc": "Type of primitives to draw",
+                    "is_optional": "False",
+                    "name": "prim_type",
+                    "types": [
+                        "dmGraphics::PrimitiveType"
+                    ]
+                },
+                {
+                    "doc": "Byte offset of the first index to draw",
+                    "is_optional": "False",
+                    "name": "first",
+                    "types": [
+                        "uint32_t"
+                    ]
+                },
+                {
+                    "doc": "Number of indices to draw",
+                    "is_optional": "False",
+                    "name": "count",
+                    "types": [
+                        "uint32_t"
+                    ]
+                },
+                {
+                    "doc": "Index element type",
+                    "is_optional": "False",
+                    "name": "type",
+                    "types": [
+                        "dmGraphics::Type"
+                    ]
+                },
+                {
+                    "doc": "Index buffer handle",
+                    "is_optional": "False",
+                    "name": "index_buffer",
+                    "types": [
+                        "dmGraphics::HIndexBuffer"
+                    ]
+                },
+                {
+                    "doc": "Number of instances to draw (for instanced rendering)",
+                    "is_optional": "False",
+                    "name": "instance_count",
+                    "types": [
+                        "uint32_t"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "Activates a shader program for rendering",
             "description": "Activates a shader program for rendering.\nBinds the specified program to the graphics pipeline, making it the active program\nfor all subsequent rendering operations until another program is activated or disabled.",
             "error": "",
@@ -3958,6 +4030,102 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "Sets one or more mat4 uniform values",
+            "description": "Sets one or more mat4 uniform values.\nUpdates a shader uniform or uniform-buffer member starting at the supplied\nuniform location.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "SetConstantM4",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Graphics context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                },
+                {
+                    "doc": "Matrix data to upload",
+                    "is_optional": "False",
+                    "name": "data",
+                    "types": [
+                        "const dmVMath::Matrix4*"
+                    ]
+                },
+                {
+                    "doc": "Number of mat4 values to upload",
+                    "is_optional": "False",
+                    "name": "count",
+                    "types": [
+                        "int"
+                    ]
+                },
+                {
+                    "doc": "Uniform location",
+                    "is_optional": "False",
+                    "name": "base_location",
+                    "types": [
+                        "dmGraphics::HUniformLocation"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Sets one or more vec4 uniform values",
+            "description": "Sets one or more vec4 uniform values.\nUpdates a shader uniform or uniform-buffer member starting at the supplied\nuniform location.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "SetConstantV4",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Graphics context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                },
+                {
+                    "doc": "Vector data to upload",
+                    "is_optional": "False",
+                    "name": "data",
+                    "types": [
+                        "const dmVMath::Vector4*"
+                    ]
+                },
+                {
+                    "doc": "Number of vec4 values to upload",
+                    "is_optional": "False",
+                    "name": "count",
+                    "types": [
+                        "int"
+                    ]
+                },
+                {
+                    "doc": "Uniform location",
+                    "is_optional": "False",
+                    "name": "base_location",
+                    "types": [
+                        "dmGraphics::HUniformLocation"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "",
             "description": "",
             "error": "",
@@ -4267,6 +4435,62 @@
                     "doc": "Texture unit index to bind to",
                     "is_optional": "False",
                     "name": "unit",
+                    "types": [
+                        "int32_t"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Sets the scissor rectangle for rendering",
+            "description": "Sets the scissor rectangle for rendering.\nDefines the rectangular pixel region that rendering is clipped to when\n<code>STATE_SCISSOR_TEST</code> is enabled.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "SetScissor",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Graphics context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                },
+                {
+                    "doc": "X coordinate of the scissor rectangle's origin (in pixels)",
+                    "is_optional": "False",
+                    "name": "x",
+                    "types": [
+                        "int32_t"
+                    ]
+                },
+                {
+                    "doc": "Y coordinate of the scissor rectangle's origin (in pixels)",
+                    "is_optional": "False",
+                    "name": "y",
+                    "types": [
+                        "int32_t"
+                    ]
+                },
+                {
+                    "doc": "Width of the scissor rectangle (in pixels)",
+                    "is_optional": "False",
+                    "name": "width",
+                    "types": [
+                        "int32_t"
+                    ]
+                },
+                {
+                    "doc": "Height of the scissor rectangle (in pixels)",
+                    "is_optional": "False",
+                    "name": "height",
                     "types": [
                         "int32_t"
                     ]
