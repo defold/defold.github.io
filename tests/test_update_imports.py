@@ -102,8 +102,12 @@ class UpdateImportBoundaryTests(unittest.TestCase):
         build_workflow = (ROOT / ".github/workflows/build_site.yml").read_text(
             encoding="utf-8"
         )
+        install = build_workflow.index("name: Install Python dependencies")
+        download = build_workflow.index("name: Download showcase images")
+        self.assertIn("requests", build_workflow[install:download])
+        self.assertIn("pyyaml", build_workflow[install:download])
         self.assertLess(
-            build_workflow.index("name: Download showcase images"),
+            download,
             build_workflow.index("name: Build Jekyll site"),
         )
 
