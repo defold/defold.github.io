@@ -39,6 +39,7 @@ EXAMPLES_DEFOLD_CHANNEL = "alpha"
 EXAMPLES_BUILD_SERVER = "https://build-stage.defold.com/"
 ASSETINDEX_JSON = os.path.join("_data", "assetindex.json")
 GAMES_JSON = os.path.join("_data", "games.json")
+SHOWCASE_FEATURED_FULL_JSON = os.path.join("_data", "showcase_featured_full.json")
 TAGINDEX_JSON = os.path.join("_data", "tagindex.json")
 PLATFORMINDEX_JSON = os.path.join("_data", "platformindex.json")
 
@@ -1460,49 +1461,70 @@ def process_assets(tmp_dir):
             with open(os.path.join(tag_collection_dir, sort_order, tag["id"] + ".md"), "w") as f:
                 f.write(TAG_SORT_MD_FRONTMATTER.format(tag["id"], tag["name"], sort_order))
 
+def games_showcase_root(tmp_dir):
+    return os.path.join(tmp_dir, "games-showcase-master")
+
+
+def copy_game_images(tmp_dir):
+    source_dir = os.path.join(games_showcase_root(tmp_dir), "games", "images")
+    if not os.path.isdir(source_dir):
+        raise RuntimeError("games-showcase archive has no games/images directory")
+    rmcopytree(source_dir, os.path.join("images", "games"))
+
+
 def process_games(tmp_dir):
-    # image data
-    image_dir = os.path.join("images", "games")
-    rmcopytree(os.path.join(tmp_dir, "games-showcase-master", "games", "images"), image_dir)
+    source_root = games_showcase_root(tmp_dir)
+    source_games_dir = os.path.join(source_root, "games")
+    order_file = os.path.join(source_root, "games_order.json")
+    featured_file = os.path.join(source_root, "showcase_featured_full.json")
 
-    # update existing games with new info (except show+placement)
-    # maintain existing order
-    # add new games last
-    games = read_as_json(GAMES_JSON)
+    game_files = {}
+    for filename in find_files(source_games_dir, "*.json"):
+        game_id = os.path.splitext(os.path.basename(filename))[0]
+        game_files[game_id] = filename
 
-    # Track the IDs that exist upstream to allow removal of deleted games
-    new_game_ids = set()
+    game_order = read_as_json(order_file)
+    featured_full = read_as_json(featured_file)
+    game_ids = set(game_files)
 
-    # read new games
-    for filename in find_files(os.path.join(tmp_dir, "games-showcase-master", "games"), "*.json"):
-        basename = os.path.basename(filename)
-        print("Processing game: {}".format(basename))
+    if len(game_order) != len(set(game_order)):
+        raise RuntimeError("games_order.json contains duplicate IDs")
+    if set(game_order) != game_ids:
+        missing = sorted(game_ids - set(game_order))
+        unknown = sorted(set(game_order) - game_ids)
+        raise RuntimeError("games_order.json mismatch; missing={}, unknown={}".format(missing, unknown))
+    if len(featured_full) != len(set(featured_full)):
+        raise RuntimeError("showcase_featured_full.json contains duplicate IDs")
+    if not set(featured_full).issubset(game_ids):
+        raise RuntimeError("showcase_featured_full.json contains unknown game IDs")
 
-        # read new game and add additional data
-        game_id = basename.replace(".json", "")
-        new_game_ids.add(game_id)
-        new_game = read_as_json(filename)
-        new_game["id"] = game_id
+    games = []
+    referenced_images = set()
+    for game_id in game_order:
+        filename = game_files[game_id]
+        print("Processing game: {}".format(os.path.basename(filename)))
+        game = read_as_json(filename)
+        game["id"] = game_id
+        games.append(game)
+        for image in game.get("images", {}).values():
+            if image:
+                referenced_images.add(image)
 
-        # try to find game in existing list of games
-        found = False
-        for game in games:
-            if game.get("id") == new_game.get("id"):
-                found = True
-                # copy data from new game
-                # we do this to maintain the order of games in games.json
-                for k,v in new_game.items():
-                    game[k] = v
-        # append new games last
-        if not found:
-            new_game["games"] = "half"
-            games.append(new_game)
+    source_image_dir = os.path.join(source_games_dir, "images")
+    missing_images = sorted(
+        image for image in referenced_images
+        if not os.path.isfile(os.path.join(source_image_dir, image))
+    )
+    if missing_images:
+        raise RuntimeError("Missing showcase images: {}".format(", ".join(missing_images)))
 
-    # Remove games that no longer exist in the games-showcase repository
-    if new_game_ids:
-        games = [g for g in games if g.get("id") in new_game_ids]
+    full_ids = {game["id"] for game in games if game.get("showcase") == "full"}
+    if set(featured_full) != full_ids:
+        raise RuntimeError("Featured IDs must exactly match games with showcase=full")
 
-    write_as_json(GAMES_JSON, games)
+    copy_game_images(tmp_dir)
+    write_as_json(GAMES_JSON, games, False)
+    write_as_json(SHOWCASE_FEATURED_FULL_JSON, featured_full, False)
 
 
 def process_asset_portal(download = False):
@@ -1534,6 +1556,22 @@ def process_games_showcase(download = False):
         shutil.copyfile(GAMESSHOWCASE_ZIP, os.path.join(tmp_dir, GAMESSHOWCASE_ZIP))
         unzip(os.path.join(tmp_dir, GAMESSHOWCASE_ZIP), tmp_dir)
         process_games(tmp_dir)
+
+
+def process_game_images(download = False):
+    if download:
+        if os.path.exists(GAMESSHOWCASE_ZIP):
+            os.remove(GAMESSHOWCASE_ZIP)
+        download_file("https://github.com/defold/games-showcase/archive/master.zip", ".", GAMESSHOWCASE_ZIP)
+
+    if not os.path.exists(GAMESSHOWCASE_ZIP):
+        print("File {} does not exist".format(GAMESSHOWCASE_ZIP))
+        sys.exit(1)
+
+    with tmpdir() as tmp_dir:
+        shutil.copyfile(GAMESSHOWCASE_ZIP, os.path.join(tmp_dir, GAMESSHOWCASE_ZIP))
+        unzip(os.path.join(tmp_dir, GAMESSHOWCASE_ZIP), tmp_dir)
+        copy_game_images(tmp_dir)
 
 
 
@@ -1782,7 +1820,7 @@ def commit_changes():
             subprocess.run([ "git", "fetch", "origin", "master" ], check=True)
 
 
-ALL_COMMANDS = [ "all", "help", "docs", "refdoc", "asset-portal", "games-showcase", "examples", "codepad", "commit", "extensions" ]
+ALL_COMMANDS = [ "all", "help", "docs", "refdoc", "asset-portal", "games-showcase", "game-images", "examples", "codepad", "commit", "extensions" ]
 ALL_COMMANDS.sort()
 
 parser = ArgumentParser()
@@ -1800,6 +1838,7 @@ docs = Process the docs (manuals, tutorials and faq)
 refdoc = Process the API reference
 asset-portal = Process the assets list (from asset-portal)
 games-showcase = Process the games list (from games-showcase)
+game-images = Download website-ready game images without regenerating game data
 examples = Build the examples
 codepad = Build the Defold CodePad
 commit = Commit changed files
@@ -1816,6 +1855,8 @@ if "all" in args.commands:
     # Publishing is deliberately separate: CI validates the complete generated
     # site before invoking the commit command.
     commands.remove("commit")
+    # games-showcase already imports the images as part of the full data refresh.
+    commands.remove("game-images")
     args.commands = commands
 
 for command in args.commands:
@@ -1838,6 +1879,8 @@ for command in args.commands:
         process_asset_portal(download = args.download)
     elif command == "games-showcase":
         process_games_showcase(download = args.download)
+    elif command == "game-images":
+        process_game_images(download = args.download)
     elif command == "codepad":
         process_codepad(download = args.download)
     elif command == "commit":

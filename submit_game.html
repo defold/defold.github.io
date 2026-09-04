@@ -7,11 +7,9 @@ stylesheets:
   - submit
 ---
 
-{%- assign tags = site.asset_allowed_tags | default: site.data.tagindex -%}
-
 {%- capture page_hero_copy -%}
 <p>Want to feature your game in the Defold showcase? Fill in the details here and the site will open a prefilled GitHub issue for the showcase team.</p>
-<p>Add the showcase images directly on GitHub after the issue opens so the team can review the game and its presentation together.</p>
+<p>Add the showcase images directly on GitHub after the issue opens so the team can review the game and its presentation together. The Defold team will decide whether to accept the submission and where it should appear when preparing and reviewing the repository PR.</p>
 {%- endcapture -%}
 
 {%- capture page_hero_panel -%}
@@ -71,7 +69,10 @@ stylesheets:
 		if (document.getElementById("platform_ios").checked) { platforms.push("iOS"); }
 		if (document.getElementById("platform_android").checked) { platforms.push("Android"); }
 		if (document.getElementById("platform_html5").checked) { platforms.push("HTML5"); }
+		if (document.getElementById("platform_steam").checked) { platforms.push("Steam"); }
 		if (document.getElementById("platform_poki").checked) { platforms.push("Poki"); }
+		if (document.getElementById("platform_itchio").checked) { platforms.push("itch.io"); }
+		if (document.getElementById("platform_kongregate").checked) { platforms.push("Kongregate"); }
 		if (document.getElementById("platform_facebookinstant").checked) { platforms.push("Facebook Instant"); }
 		if (document.getElementById("platform_ps4").checked) { platforms.push("Sony PlayStation 4"); }
 		if (document.getElementById("platform_ps5").checked) { platforms.push("Sony PlayStation 5"); }
@@ -80,41 +81,40 @@ stylesheets:
 		if (document.getElementById("platform_switch2").checked) { platforms.push("Nintendo Switch 2"); }
 		if (document.getElementById("platform_other").checked) { platforms.push("Other"); }
 
-		var tags = [];
-		{%- for tag in tags -%}
-		{%- assign tag_name = tag.name | default: tag -%}
-		{%- assign tag_id = tag.id | default: tag_name | slugify -%}
-		if (document.getElementById("tag-{{ tag_id }}").checked) { tags.push({{ tag_name | jsonify }}); }
-		{% endfor %}
+		var platformValidationInput = document.getElementById("platform_windows");
+		platformValidationInput.setCustomValidity(platforms.length ? "" : "Select at least one platform.");
+		if (!platforms.length) {
+			platformValidationInput.reportValidity();
+			return;
+		}
 
 		var title = document.getElementById("game_title").value.trim();
 		var slug = showcase_slugify(title);
 		var game = {
-			id: slug,
 			name: title,
+			description: document.getElementById("game_description").value.trim(),
+			url: document.getElementById("game_url").value.trim(),
 			developer: document.getElementById("game_developer").value.trim(),
 			publisher: document.getElementById("game_publisher").value.trim(),
 			releasedate: showcase_release_date(),
 			platforms: platforms.join(", "),
-			tags: tags,
-			downloads: document.getElementById("game_downloads").value.trim(),
-			license: document.getElementById("game_license").value.trim(),
-			description: document.getElementById("game_description").value.trim(),
 			images: {
-				full: slug ? slug + "-full.png" : "",
-				half: slug ? slug + "-half.png" : "",
-				third: slug ? slug + "-third.png" : ""
+				full: slug ? slug + "-full.webp" : "",
+				half: slug ? slug + "-half.webp" : "",
+				third: slug ? slug + "-third.webp" : ""
 			}
 		};
 
 		var instructions = [
 			"Please attach the showcase images directly on this GitHub issue.",
+			"Accepted source formats: PNG, JPEG, or WebP. The images will be optimized and converted to WebP while preparing the repository PR.",
+			"Please provide all three aspect ratios at or above their target sizes:",
 			"Recommended filenames:",
-			"- " + (game.images.full || "<game-id>-full.png"),
-			"- " + (game.images.half || "<game-id>-half.png"),
-			"- " + (game.images.third || "<game-id>-third.png"),
+			"- full, 2000x750: " + (game.images.full || "<game-id>-full.webp"),
+			"- half, 1200x600: " + (game.images.half || "<game-id>-half.webp"),
+			"- third, 800x600: " + (game.images.third || "<game-id>-third.webp"),
 			"",
-			"Use the downloads field for store pages, web links, app listings, or other places where players can get the game."
+			"The Defold team will decide whether to accept the game and where it should appear while preparing and reviewing the repository PR."
 		].join("\n");
 
 		var url = "https://github.com/defold/games-showcase/issues/new"
@@ -128,7 +128,7 @@ stylesheets:
 	<div class="container">
 		<div class="page-section-heading">
 			<h2>Showcase details</h2>
-			<p>Describe the game clearly, pick the platforms it shipped on, and include the download links or store pages that help players find it.</p>
+			<p>Describe the game clearly, pick the platforms it shipped on, and provide the primary game or store page where players can find it.</p>
 		</div>
 
 		<div class="page-text-panel page-surface-panel submit-form-panel">
@@ -147,6 +147,11 @@ stylesheets:
 					<div class="submit-form-field submit-form-field-full">
 						<label for="game_publisher">Publisher (optional)</label>
 						<input id="game_publisher" type="text" name="publisher">
+					</div>
+
+					<div class="submit-form-field submit-form-field-full">
+						<label for="game_url">Game or store page URL</label>
+						<input id="game_url" type="url" name="url" placeholder="https://example.com/game" required>
 					</div>
 
 					<div class="submit-form-field submit-form-field-full">
@@ -194,7 +199,10 @@ stylesheets:
 							<label class="submit-form-check" for="platform_linux"><input type="checkbox" name="platforms" value="Linux" id="platform_linux"><span>Linux</span></label>
 							<label class="submit-form-check" for="platform_steamos"><input type="checkbox" name="platforms" value="SteamOS" id="platform_steamos"><span>SteamOS</span></label>
 							<label class="submit-form-check" for="platform_html5"><input type="checkbox" name="platforms" value="HTML5" id="platform_html5"><span>HTML5</span></label>
+							<label class="submit-form-check" for="platform_steam"><input type="checkbox" name="platforms" value="Steam" id="platform_steam"><span>Steam</span></label>
 							<label class="submit-form-check" for="platform_poki"><input type="checkbox" name="platforms" value="Poki" id="platform_poki"><span>Poki</span></label>
+							<label class="submit-form-check" for="platform_itchio"><input type="checkbox" name="platforms" value="itch.io" id="platform_itchio"><span>itch.io</span></label>
+							<label class="submit-form-check" for="platform_kongregate"><input type="checkbox" name="platforms" value="Kongregate" id="platform_kongregate"><span>Kongregate</span></label>
 							<label class="submit-form-check" for="platform_ios"><input type="checkbox" name="platforms" value="iOS" id="platform_ios"><span>iOS</span></label>
 							<label class="submit-form-check" for="platform_android"><input type="checkbox" name="platforms" value="Android" id="platform_android"><span>Android</span></label>
 							<label class="submit-form-check" for="platform_facebookinstant"><input type="checkbox" name="platforms" value="Facebook Instant" id="platform_facebookinstant"><span>Facebook Instant</span></label>
@@ -207,26 +215,6 @@ stylesheets:
 						</div>
 					</fieldset>
 
-					<fieldset class="submit-form-field submit-form-field-full submit-form-fieldset">
-						<legend>Tags (select 1-3 most fitting)</legend>
-						<div class="submit-form-check-grid">
-						{%- for tag in tags -%}
-							{%- assign tag_name = tag.name | default: tag -%}
-							{%- assign tag_id = tag.id | default: tag_name | slugify -%}
-							<label class="submit-form-check" for="tag-{{ tag_id }}"><input type="checkbox" name="tags" value="{{ tag_name | escape }}" id="tag-{{ tag_id }}"><span>{{ tag_name | escape }}</span></label>
-						{%- endfor -%}
-						</div>
-					</fieldset>
-
-					<div class="submit-form-field submit-form-field-full">
-						<label for="game_downloads">Reach (optional, brag about your game's reach - downloads or players)</label>
-						<input id="game_downloads" type="text" name="downloads">
-					</div>
-
-					<div class="submit-form-field submit-form-field-full">
-						<label for="game_license">License (optional, for open source projects)</label>
-						<input id="game_license" type="text" name="license">
-					</div>
 				</div>
 
 				<div class="submit-form-actions">

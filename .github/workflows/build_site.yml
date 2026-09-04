@@ -43,6 +43,9 @@ jobs:
           bundle exec ruby tests/test_api_lua_v2_rendering.rb
           python -m unittest discover -s tests
 
+      - name: Download showcase images
+        run: python update.py --download game-images
+
       - name: Build Jekyll site
         run: bundle exec jekyll build
 
