@@ -94,6 +94,10 @@ jobs:
         name: Update extension
         run: python update.py --download --extension "$ACTION" extensions refdoc
 
+      - if: env.ACTION != 'games-showcase' && env.ACTION != 'all'
+        name: Download showcase images
+        run: python update.py --download game-images
+
       - name: Build Jekyll site
         run: bundle exec jekyll build
 
