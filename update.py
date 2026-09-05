@@ -18,6 +18,7 @@ import yaml
 from llms import LLMS_DIR, generate_llms_manuals, generate_llms_apis, generate_llms_examples, path_to_manuals_anchor
 from utils import list_files, read_as_json, read_as_string, rmtree, write_as_string
 from scripts import dedupe_examples_wasm
+from scripts.example_images import copy_documentation_images
 from argparse import ArgumentParser
 from contextlib import contextmanager
 from example_scripts import (
@@ -57,17 +58,19 @@ twitter_image: {}
 """
 
 TAG_MD_FRONTMATTER = """---
-layout: assetportal
+layout: assetportal_redirect
 tag: {}
 title: {}
+pagefind_exclude: true
 ---
 """
 
 TAG_SORT_MD_FRONTMATTER = """---
-layout: assetportal
+layout: assetportal_redirect
 tag: {}
 title: {}
 sort: {}
+pagefind_exclude: true
 ---
 """
 
@@ -1103,10 +1106,8 @@ def process_examples(download = False, examples_ref = "master", changed_examples
                 print("...copying example.md")
                 shutil.copyfile(md_file, os.path.join(example_dst_dir, "index.md"))
 
-                print("...copying images")
-                for image in find_files(example_src_dir, "*.png|*.jpg|*.gif|*.webp|*.webm"):
-                    tgt = os.path.join(example_dst_dir, os.path.basename(image))
-                    shutil.copyfile(image, tgt)
+                print("...copying documentation images")
+                copy_documentation_images(example_src_dir, example_dst_dir, read_as_string(md_file))
 
         print("...generating index")
         if os.path.exists(data_index_file):
