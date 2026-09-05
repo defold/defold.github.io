@@ -1,8 +1,8 @@
 ---
 brief: This manual covers how to setup and use Zendesk in Defold.
 github: https://github.com/defold/extension-zendesk
-language: en
 layout: manual
+locale: en
 title: Zendesk extension documentation
 toc:
 - Zendesk extension documentation
