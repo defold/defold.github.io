@@ -37,6 +37,20 @@ class SubmitGameFormTests(unittest.TestCase):
         )
         self.assertIn("Select at least one platform.", FORM)
 
+    def test_platform_selection_clears_previous_validation_error(self):
+        self.assertRegex(
+            FORM,
+            r'<fieldset[^>]*onchange="showcase_clear_platform_validation\(\)"[^>]*>'
+            r'\s*<legend>Platforms</legend>',
+        )
+        clear_validation = re.search(
+            r"function showcase_clear_platform_validation\(\) \{(.*?)\n\s*\}",
+            FORM,
+            re.DOTALL,
+        )
+        self.assertIsNotNone(clear_validation)
+        self.assertIn('setCustomValidity("")', clear_validation.group(1))
+
     def test_issue_targets_games_showcase_and_requests_webp_roles(self):
         self.assertIn(
             "https://github.com/defold/games-showcase/issues/new",

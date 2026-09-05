@@ -60,6 +60,10 @@ stylesheets:
 		return year;
 	}
 
+	function showcase_clear_platform_validation() {
+		document.getElementById("platform_windows").setCustomValidity("");
+	}
+
 	function submit_game() {
 		var platforms = [];
 		if (document.getElementById("platform_windows").checked) { platforms.push("Windows"); }
@@ -191,7 +195,7 @@ stylesheets:
 						</div>
 					</fieldset>
 
-					<fieldset class="submit-form-field submit-form-field-full submit-form-fieldset">
+					<fieldset class="submit-form-field submit-form-field-full submit-form-fieldset" onchange="showcase_clear_platform_validation()">
 						<legend>Platforms</legend>
 						<div class="submit-form-check-grid">
 							<label class="submit-form-check" for="platform_windows"><input type="checkbox" name="platforms" value="Windows" id="platform_windows"><span>Windows</span></label>
