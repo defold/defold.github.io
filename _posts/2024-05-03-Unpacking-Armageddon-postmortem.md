@@ -33,13 +33,13 @@ I enjoy, however, working with really low resolutions, so I stuck to Pico8’s 1
 
 By 13:30 I had some final art (main character, boxes and the background), and the character could move and detect boxes.
 
-![Progress 2](https://www.defold.com/images/posts/unpacking-armageddon/game2.gif)
+{% include videomp4.html filename="/images/posts/unpacking-armageddon/game2.mp4" %}
 
 A friend was visiting, so I left home to have lunch and didn’t come back until 19:00 - totally worth it, though. I still managed to work two more hours at night and finished the main mechanic: pushing boxes around to set pentagrams free. If not done quick enough, pentagrams explode- Otherwise they glow and disappeared, scoring.
 
 Not much for the first day, but pretty good for roughly 5-7 hours of work, considering art was final already. I expected a hard second day.
 
-![Progress 3](https://www.defold.com/images/posts/unpacking-armageddon/game3.gif)
+{% include videomp4.html filename="/images/posts/unpacking-armageddon/game3.mp4" %}
 
 ### DAY 2
 
@@ -47,13 +47,13 @@ Woke up early on Sunday and went for the next basic mechanic, pulling boxes! And
 
 By lunch time I came up with the last game mechanic: while you have to clear pentagrams from boxes, you have to place the Ritual Candle on them to complete the summoning. Game felt quite fun! So all that remained was adding sound, UI and good/bad endings.
 
-![Progress 4](https://www.defold.com/images/posts/unpacking-armageddon/game4.gif)
+{% include videomp4.html filename="/images/posts/unpacking-armageddon/game4.mp4" %}
 
 [Freesound.org](https://freesound.org/) is great for sound effects, but one of the last things I added to the game wa the summoners’ chant when the Ritual Candle is placed on a pentagram. Shouting KLAATU BARADA NICTO! to the mic at 11pm while the family was already sleeping was too fun.
 
 Extra points if you get the RIGHT movie reference!
 
-![Gameplay](https://www.defold.com/images/posts/unpacking-armageddon/unpacking-armageddon.gif)
+{% include videomp4.html filename="/images/posts/unpacking-armageddon/unpacking-armageddon.mp4" %}
 
 
 ### WHAT WENT GOOD
