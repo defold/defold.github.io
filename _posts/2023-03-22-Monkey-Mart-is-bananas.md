@@ -18,13 +18,13 @@ __Nikita and Stanislav, thank you for taking the time to answer our questions! T
 
 *At that time we released Lazerman or Tesla Defense games.*
 
-![Tesla Defense 2](/images/posts/monkey-mart/game_tesladefense2.gif)
+{% include videomp4.html filename="/images/posts/monkey-mart/game_tesladefense2.mp4" %}
 
 <div align="center">
 [ Tesla Defense 2 ]
 </div>
 
-![Lazerman](/images/posts/monkey-mart/game_lazerman.gif)
+{% include videomp4.html filename="/images/posts/monkey-mart/game_lazerman.mp4" %}
 
 <div align="center">
 [ Lazerman ]
@@ -32,7 +32,7 @@ __Nikita and Stanislav, thank you for taking the time to answer our questions! T
 
 *After the end of the era of flash technology, we focused on html5 game development, using the Phaser framework. Here one of our early and very favorite project is a multiplayer game the Gunfight (the project is paused but not closed):*
 
-![Gunfight.io](/images/posts/monkey-mart/game_gunfight.gif)
+{% include videomp4.html filename="/images/posts/monkey-mart/game_gunfight.mp4" %}
 
 <div align="center">
 [ Gunfight.io ]
@@ -47,8 +47,8 @@ __What can you tell us about Monkey Mart? Where did you come up with the idea? W
 
 *We also had a popular flash game Monkey’n’Bananas where the goal of the game is to steal the bananas while the gorilla looks the other way.*
 
-![MnB](/images/posts/monkey-mart/mnb1.gif)
-![MnB 2](/images/posts/monkey-mart/mnb2.gif)
+{% include videomp4.html filename="/images/posts/monkey-mart/mnb1.mp4" %}
+{% include videomp4.html filename="/images/posts/monkey-mart/mnb2.mp4" %}
 
 *Here is an illustration from Stanislav where you can see how the style of the main character for Monkey Mart was created:*
 

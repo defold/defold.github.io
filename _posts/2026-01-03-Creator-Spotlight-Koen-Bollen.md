@@ -28,7 +28,7 @@ Where to start? Well, I started tinkering with computers at the age of 11, break
 
 The core of our game is movement and momentum, “got to go fast!”. When you race against others, you try to drain their clocks by finishing a lap first and clock them out! Or you time trial alone and set the world record on every track.
 
-![Sprint City Climbing](/images/posts/developer-spotlight-koen-bollen/sprint_city_climbing.gif)
+{% include videomp4.html filename="/images/posts/developer-spotlight-koen-bollen/sprint_city_climbing.mp4" %}
 
 ##### What are you working on in the project?
 
@@ -47,7 +47,7 @@ The main thing we want to carry over is the feel of movement; you need to be fly
 
 Something we wanted to improve on is waiting in menus to start playing the game (while waiting for matchmaking for example), so in Sprint City you are always gaming! At the end of a race, you just stay in the game and can hang around with friends and show off your moves.
 
-![Sprint City Grapling Hooks](/images/posts/developer-spotlight-koen-bollen/sprint_city_hooks.gif)
+{% include videomp4.html filename="/images/posts/developer-spotlight-koen-bollen/sprint_city_hooks.mp4" %}
  
 ##### We’re curious about the story behind the studio’s name. Does Second Stage Studio have a special meaning?
 
@@ -64,7 +64,7 @@ A couple of things came together for this idea. We wanted to support cross-play 
 
 And we feel it’s super fair if you can have your friends play without having to convince them to buy and download/install it first.
 
-![Sprint City Sliding](/images/posts/developer-spotlight-koen-bollen/sprint_city.gif)
+{% include videomp4.html filename="/images/posts/developer-spotlight-koen-bollen/sprint_city.mp4" %}
 
 ##### What have been the biggest technical challenges in developing Sprint City, and how did you overcome them? Every developer sometimes has a funny horror story. Did you have to resort to any “ugly” hacks or quick-and-dirty tricks during Sprint City’s development to make something work in a pinch?
 

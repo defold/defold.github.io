@@ -118,7 +118,7 @@ Defold development team is always super responsive and we can have a clear and t
 ## Craftomation 101
 Craftomation 101 is a craft automation game about funny programmable robots, CraftoMates, who can move, eat, and craft things needed to terraform a frozen planet. And they can build themselves, so we talk about [self-replicating machines](https://en.wikipedia.org/wiki/Self-replicating_machine) here.
 
-![](/images/posts/ludenio/craftomation-selfreplicating.gif)
+{% include videomp4.html filename="/images/posts/ludenio/craftomation-selfreplicating.mp4" %}
 
 <div align="center">
 _Self-replicating machines are a charming concept in the core of Craftomation 101_
@@ -142,7 +142,7 @@ As you probably already noticed, Craftomation 101 contains a lot of animations s
 
 Once we faced “an interesting” thing about the Z axis, handling of which once was surprisingly changed so it took us to remake all the rigs. What was especially amusing in that all the CraftoMates started rolling their jaws at the game’s start. What a show to remember!
 
-![](/images/posts/ludenio/craftomation-gameplay.gif)
+{% include videomp4.html filename="/images/posts/ludenio/craftomation-gameplay.mp4" %}
 
 <div align="center">
 _What to expect from playing Craftomation 101_
