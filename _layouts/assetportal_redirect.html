@@ -1,0 +1,19 @@
+---
+layout: null
+---
+{%- assign redirect_sort = page.sort | default: "stars" | url_encode -%}
+{%- capture redirect_url -%}/assets/?sort={{ redirect_sort }}{% if page.tag %}&tag={{ page.tag | url_encode }}{% endif %}{%- endcapture -%}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex">
+  <title>Defold Asset Portal</title>
+  <link rel="canonical" href="{{ site.url }}/assets/">
+  <noscript><meta http-equiv="refresh" content="0; url={{ redirect_url | escape }}"></noscript>
+</head>
+<body data-pagefind-ignore="all">
+  <a id="asset-portal-redirect" href="{{ redirect_url | escape }}">Continue to the Asset Portal</a>
+  <script src="/js/asset-portal-redirect.js"></script>
+</body>
+</html>
