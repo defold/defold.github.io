@@ -1,7 +1,7 @@
 ---
 layout: assetportal_redirect
-pagefind_exclude: true
 tag: localization
 title: Localization
 sort: stars
+pagefind_exclude: true
 ---

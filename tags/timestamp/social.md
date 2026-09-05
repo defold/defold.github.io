@@ -1,7 +1,7 @@
 ---
 layout: assetportal_redirect
-pagefind_exclude: true
 tag: social
 title: Social
 sort: timestamp
+pagefind_exclude: true
 ---

@@ -1,7 +1,7 @@
 ---
 layout: assetportal_redirect
-pagefind_exclude: true
 tag: platform
 title: Platform
 sort: timestamp
+pagefind_exclude: true
 ---
