@@ -890,7 +890,7 @@ def parse_script_api_members(api_name, api):
             element["name"] = m.get("name", "")
         examples = []
         for e in m.get("examples", []):
-            desc = e.get("desc", "")
+            desc = e.get("desc", "") if isinstance(e, dict) else str(e)
             examples.append(md.convert(desc))
         element["examples"] = "\n".join(examples)
         elements.append(element)
