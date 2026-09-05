@@ -17,13 +17,14 @@ Plays the specified animation on a Spine model. A [ref:spine_animation_done] mes
 - `url` (string | hash | url) - The Spine model for which to play an animation
 - `anim_id` (string | hash) - Id of the animation to play
 - `playback` (number) - Playback mode of the animation (from go.PLAYBACK_*)
-- `options` (table) - Playback options
+- `options` (table | nil) - Playback options
   - `blend_duration` (number) - Duration of a linear blend between the current and new animation.
   - `offset` (number) - The normalized initial value of the animation cursor when the animation starts playing.
   - `playback_rate` (constant) - The rate with which the animation will be played. Must be positive.
   - `track` (number) - The track index of the animation. Defaults to 1. Animations on different tracks play in parallel.
   - `mix_blend` (constant) - The mix blend mode for the animation (from spine.MIX_BLEND_*). Defaults to `spine.MIX_BLEND_REPLACE`. Ignored for animations on the first track.
-- `callback_function` (function) - function to call when the animation has completed or a Spine event occured
+  - `alpha` (number) - 0 applies the current or setup value (depending on mix_blend). 1 applies the timeline value. Between 0 and 1 applies a value between the current or setup value and the timeline value. Defaults to 1.
+- `callback_function` (function) - function to call when the animation has completed or a Spine event occurred
   - `self` (object) - The context of the calling script
   - `message_id` (hash) - The name of the message ("spine_animation_done" or "spine_event")
   - `message` (table) - A table that contains the response
@@ -31,6 +32,7 @@ Plays the specified animation on a Spine model. A [ref:spine_animation_done] mes
     - `track` (number) - The track index of the animation
     - `playback` (constant) - (spine_animation_done only!) The playback mode for the animation
     - `event_id` (hash) - (spine_event only!) the event that was triggered.
+    - `blend_weight` (float) - (spine_event only!) Deprecated. Always 0.
     - `t` (float) - (spine_event only!) the time at which the event occurred (seconds)
     - `integer` (int) - (spine_event only!) a custom integer associated with the event (0 by default).
     - `float` (float) - (spine_event only!) a custom float associated with the event (0 by default)
@@ -49,7 +51,7 @@ Cancels all running animations on a specified spine model component
 
 ### spine.get_go
 *Type:* FUNCTION
-Returns the id of the game object that corresponds to a specified skeleton bone.
+Returns the id of the game object that corresponds to a specified skeleton bone. Before using this function, make sure the "Create Go Bones" option is enabled in your Spine model.
 
 **Parameters**
 

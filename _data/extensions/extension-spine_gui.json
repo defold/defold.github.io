@@ -76,6 +76,13 @@
                             "types": [
                                 "number"
                             ]
+                        },
+                        {
+                            "doc": "The track number for the animation (1-based). Defaults to track 1. Multiple tracks allow for layered animations.",
+                            "name": "track",
+                            "types": [
+                                "number"
+                            ]
                         }
                     ],
                     "types": [
@@ -83,10 +90,105 @@
                     ]
                 },
                 {
-                    "doc": "function to call when the animation has completed",
-                    "name": "complete_function",
+                    "doc": "function to call when the animation has completed or when spine events occur",
+                    "name": "callback_function",
+                    "parameters": [
+                        {
+                            "doc": "The context of the calling script",
+                            "name": "self",
+                            "types": [
+                                "object"
+                            ]
+                        },
+                        {
+                            "doc": "The spine node that completed the animation or triggered the event",
+                            "name": "node",
+                            "types": [
+                                "node"
+                            ]
+                        },
+                        {
+                            "doc": "The name of the message (\"spine_animation_done\" or \"spine_event\")",
+                            "name": "message_id",
+                            "types": [
+                                "hash"
+                            ]
+                        },
+                        {
+                            "doc": "A table that contains the response",
+                            "name": "message",
+                            "parameters": [
+                                {
+                                    "doc": "The animation that was completed or triggered the event",
+                                    "name": "animation_id",
+                                    "types": [
+                                        "hash"
+                                    ]
+                                },
+                                {
+                                    "doc": "The track index of the animation",
+                                    "name": "track",
+                                    "types": [
+                                        "number"
+                                    ]
+                                },
+                                {
+                                    "doc": "(spine_animation_done only!) The playback mode for the animation",
+                                    "name": "playback",
+                                    "types": [
+                                        "constant"
+                                    ]
+                                },
+                                {
+                                    "doc": "(spine_event only!) the event that was triggered.",
+                                    "name": "event_id",
+                                    "types": [
+                                        "hash"
+                                    ]
+                                },
+                                {
+                                    "doc": "(spine_event only!) Deprecated. Always 0.",
+                                    "name": "blend_weight",
+                                    "types": [
+                                        "float"
+                                    ]
+                                },
+                                {
+                                    "doc": "(spine_event only!) the time at which the event occurred (seconds)",
+                                    "name": "t",
+                                    "types": [
+                                        "float"
+                                    ]
+                                },
+                                {
+                                    "doc": "(spine_event only!) a custom integer associated with the event (0 by default).",
+                                    "name": "integer",
+                                    "types": [
+                                        "int"
+                                    ]
+                                },
+                                {
+                                    "doc": "(spine_event only!) a custom float associated with the event (0 by default)",
+                                    "name": "float",
+                                    "types": [
+                                        "float"
+                                    ]
+                                },
+                                {
+                                    "doc": "(spine_event only!) a custom string associated with the event (hash(\"\") by default)",
+                                    "name": "string",
+                                    "types": [
+                                        "hash"
+                                    ]
+                                }
+                            ],
+                            "types": [
+                                "table"
+                            ]
+                        }
+                    ],
                     "types": [
-                        "function(self, node)"
+                        "function(self, node, message_id, message)"
                     ]
                 }
             ],
@@ -103,6 +205,22 @@
                     "name": "node",
                     "types": [
                         "node"
+                    ]
+                },
+                {
+                    "doc": "optional table with properties",
+                    "name": "options",
+                    "parameters": [
+                        {
+                            "doc": "The track number to cancel (1-based). If not specified, cancels all tracks.",
+                            "name": "track",
+                            "types": [
+                                "number"
+                            ]
+                        }
+                    ],
+                    "types": [
+                        "table"
                     ]
                 }
             ],
@@ -307,10 +425,26 @@
             "name": "gui.get_spine_animation",
             "parameters": [
                 {
-                    "doc": "node to get spine skin from",
+                    "doc": "node to get spine animation from",
                     "name": "node",
                     "types": [
                         "node"
+                    ]
+                },
+                {
+                    "doc": "optional table with properties",
+                    "name": "options",
+                    "parameters": [
+                        {
+                            "doc": "The track number to get animation from (1-based). Defaults to track 1.",
+                            "name": "track",
+                            "types": [
+                                "number"
+                            ]
+                        }
+                    ],
+                    "types": [
+                        "table"
                     ]
                 }
             ],
@@ -335,6 +469,22 @@
                     "types": [
                         "number"
                     ]
+                },
+                {
+                    "doc": "optional table with properties",
+                    "name": "options",
+                    "parameters": [
+                        {
+                            "doc": "The track number to set cursor for (1-based). Defaults to track 1.",
+                            "name": "track",
+                            "types": [
+                                "number"
+                            ]
+                        }
+                    ],
+                    "types": [
+                        "table"
+                    ]
                 }
             ],
             "returnvalues": [],
@@ -346,10 +496,26 @@
             "name": "gui.get_spine_cursor",
             "parameters": [
                 {
-                    "doc": "spine node to get the cursor for (node)",
+                    "doc": "spine node to get the cursor for",
                     "name": "node",
                     "types": [
                         "node"
+                    ]
+                },
+                {
+                    "doc": "optional table with properties",
+                    "name": "options",
+                    "parameters": [
+                        {
+                            "doc": "The track number to get cursor from (1-based). Defaults to track 1.",
+                            "name": "track",
+                            "types": [
+                                "number"
+                            ]
+                        }
+                    ],
+                    "types": [
+                        "table"
                     ]
                 }
             ],
@@ -362,7 +528,7 @@
             "name": "gui.set_spine_playback_rate",
             "parameters": [
                 {
-                    "doc": "spine node to set the cursor for",
+                    "doc": "spine node to set the playback rate for",
                     "name": "node",
                     "types": [
                         "node"
@@ -373,6 +539,22 @@
                     "name": "playback_rate",
                     "types": [
                         "number"
+                    ]
+                },
+                {
+                    "doc": "optional table with properties",
+                    "name": "options",
+                    "parameters": [
+                        {
+                            "doc": "The track number to set playback rate for (1-based). Defaults to track 1.",
+                            "name": "track",
+                            "types": [
+                                "number"
+                            ]
+                        }
+                    ],
+                    "types": [
+                        "table"
                     ]
                 }
             ],
@@ -385,10 +567,26 @@
             "name": "gui.get_spine_playback_rate",
             "parameters": [
                 {
-                    "doc": "spine node to set the cursor for",
+                    "doc": "spine node to get the playback rate for",
                     "name": "node",
                     "types": [
                         "node"
+                    ]
+                },
+                {
+                    "doc": "optional table with properties",
+                    "name": "options",
+                    "parameters": [
+                        {
+                            "doc": "The track number to get playback rate from (1-based). Defaults to track 1.",
+                            "name": "track",
+                            "types": [
+                                "number"
+                            ]
+                        }
+                    ],
+                    "types": [
+                        "table"
                     ]
                 }
             ],
@@ -600,10 +798,10 @@
     ],
     "info": {
         "api": "extension-spine/gui_api",
+        "api_language": "Lua",
         "brief": "gui",
         "description": "Functions and constants for interacting with Spine models in GUI",
         "group": "EXTENSIONS",
-        "language": "Lua",
         "name": "extension-spine",
         "namespace": "gui",
         "type": "Extension"

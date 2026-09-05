@@ -1,11 +1,12 @@
 ---
 brief: This manual explains how to bring Spine animations from _Spine_ into Defold.
 github: https://github.com/defold/extension-spine
-language: en
 layout: manual
+locale: en
 title: Spine animation in Defold
 toc:
 - Spine animation
+- '**Current Spine Runtime Version Supported: 4.2.xx**'
 - Requirements
 - Installation
 - Migration guide
@@ -28,13 +29,16 @@ toc:
 - Playback Modes
 - Creating Spine GUI nodes
 - Runtime animation control
+- GUI spine_scene overrides
 - GUI node bone hierarchy
 - Atlas caveats
 ---
 
 # Spine animation
 
-_Spine_ is a third party animation tool by Esoteric Software. Spine animation provides 2D _skeletal animation_ support (see http://en.wikipedia.org/wiki/Skeletal_animation). This is a fundamentally different technique from [flipbook animations](/manuals/flipbook-animation) that is closer to cutout animation. In cutout animation separate pieces of the animated object (e.g body parts, eyes, mouth etc) are moved individually between each frame. Spine animation let you build an invisible, virtual skeleton consisting of a hierarchy of interconnected _bones_. This skeleton, or _rig_, is then animated and individual images are attached to the bones. Defold supports animations created or exported in the [Spine JSON format](http://esotericsoftware.com/spine-json-format). Skeletal animation is very smooth since the engine can interpolate the location of each bone for each frame. It is particularly useful to animate characters and animals, but works very well for other types of objects, like ropes, vehicles or foliage.
+### **Current Spine Runtime Version Supported: 4.2.xx**
+
+_Spine_ is a third party animation tool by Esoteric Software. Spine animation provides 2D _skeletal animation_ support (see http://en.wikipedia.org/wiki/Skeletal_animation). This is a fundamentally different technique from [flipbook animations](/manuals/flipbook-animation) that is closer to cutout animation. In cutout animation separate pieces of the animated object (e.g body parts, eyes, mouth etc) are moved individually between each frame. Spine animation let you build an invisible, virtual skeleton consisting of a hierarchy of interconnected _bones_. This skeleton, or _rig_, is then animated and individual images are attached to the bones. Defold supports animations exported in Spine's [JSON](https://esotericsoftware.com/spine-json-format) and [binary](https://esotericsoftware.com/spine-binary-format) skeleton data formats. Skeletal animation is very smooth since the engine can interpolate the location of each bone for each frame. It is particularly useful to animate characters and animals, but works very well for other types of objects, like ropes, vehicles or foliage.
 
   ![Spine animation](spine_animation.png)
   ![Run loop](frog_runloop.gif)
@@ -55,11 +59,11 @@ Spine animations used to be part of the main Defold engine. Starting with Defold
 
 ### Spine content
 
-* The new file suffix is `.spinejson`
+* The file suffix for JSON data is `.spinejson`
     - Set this as the output suffix in the Spine Editor
 
 * Update the spine source files to latest version
-    - The new runtime is based on Spine 4.1.xx
+    - The new runtime is based on Spine 4.2.xx
 
     - NOTE: The old spine version json files won't work as they are too old!
 
@@ -98,23 +102,23 @@ Spine animations used to be part of the main Defold engine. Starting with Defold
 * The Lua callbacks have a new signature, to make them more consistent with the game object callbacks
 
 ```lua
-local function spine_callback(self, node, event, data)
-    pprint("SPINE CALLBACK", node, event, data)
+local function spine_callback(self, node, message_id, message)
+    pprint("SPINE CALLBACK", node, message_id, message)
 end
 ```
 
-* Currently the play anim requires a callback (i.e. the default handler is currently disabled)
+* GUI Spine completion and event notifications are delivered only through the callback passed to `gui.play_spine_anim()`. If no callback is supplied, the animation still plays, but no completion or event notification is sent.
 
 
 
 
 ## Concepts
 
-*Spine JSON data file*
-: This data file contains the skeleton, all the image slot names, skins and the actual animation data. No images are embedded in this file though. Create this file from your animation software of choice.
+*Spine data file*
+: This file contains the skeleton, image slot names, skins and animation data. Export it from Spine as JSON (`.spinejson`) or binary (`.skel`). No images are embedded in this file.
 
 *Spine scene*
-: The Defold resource tying together the Spine JSON data file and the Defold image atlas file that is used to fill bone slots with graphics.
+: The Defold resource tying together the Spine data file and the Defold image atlas file that is used to fill bone slots with graphics.
 
 *Spine model*
 : The _SpineModel_ component is put in a game object to bring the graphics and animation to the screen. The component contains the skeleton game object hierarchy, which animation to play, what skin to use and it also specifies the material used for rendering the model.
@@ -125,9 +129,11 @@ end
 
 ## Animation tools
 
-The Spine JSON data format that Defold supports can be created by Esoteric Software's _Spine_ software.
+The Spine JSON and binary data formats that Defold supports can be created by Esoteric Software's _Spine_ software.
 
 _Spine_ is available from [Esoteric Software](http://esotericsoftware.com).
+
+The Spine editor's major and minor version used for export must match the supported Spine runtime version shown above. This applies to both JSON and binary exports.
 
 ![Spine](spine.png)
 
@@ -136,12 +142,12 @@ _Spine_ is available from [Esoteric Software](http://esotericsoftware.com).
 
 When you have a model and animations that you have created in Spine, the process of importing them into Defold is straightforward:
 
-- Export a Spine JSON version of the animation data. Make sure the extension is `.spinejson`.
-- Put the exported JSON file somewhere in your project hierarchy.
+- Export the animation data as JSON or binary. Use `.spinejson` for JSON and `.skel` for binary.
+- Put the exported data file somewhere in your project hierarchy.
 - Put all images associated with the model somewhere in your project hierarchy.
 - Create an _Atlas_ file and add all the images to it. (See [2D graphics documentation](/manuals/2dgraphics) for details on how to create an atlas and below for some caveats)
 
-![Export JSON from Spine](spine_json_export.png)
+![Export JSON or binary data from Spine](spine_json_export.png)
 
 When you have the animation data and image files imported and set up in Defold, you need to create a _Spine scene_ resource file:
 
@@ -151,8 +157,8 @@ When you have the animation data and image files imported and set up in Defold, 
 
 ![Setup the Spine Scene](spinescene.png)
 
-Spine Json
-: The Spine JSON file to use as source for bone and animation data (Note: the file must have extension `.spinejson`).
+Spine Data
+: The Spine data file to use as the source for bone and animation data. The file must use `.spinejson` for JSON data or `.skel` for binary data.
 
 Atlas
 : The atlas containing images named corresponding to the Spine data file.
@@ -232,6 +238,10 @@ A spine model also has a number of different properties that can be manipulated 
 
 `skin`
 : The current skin on the component (`hash`).
+
+
+`spine_scene`
+: The current spine scene of the spine component. If it gets replaced via `go.set()`, the bones will be created one frame later.
 
 
 ### Material constants
@@ -324,13 +334,19 @@ Float
 String
 : A string value.
 
-When the animation plays and events are encountered, `spine_event` callbacks are sent back to the callback function provided with `spine.play_anim()`. The message data contains the custom numbers and strings embedded in the event, as well as a few additional fields that are sometimes useful:
+When the animation plays and events are encountered, `spine_event` callbacks are sent back to the callback function provided with `spine.play_anim()` or `gui.play_spine_anim()`. Game object callbacks use the signature `function(self, message_id, message, sender)`, while GUI callbacks use `function(self, node, message_id, message)`. The message data contains the custom numbers and strings embedded in the event, as well as a few additional fields that are sometimes useful:
 
 `t`
 : The number of seconds passed since the first frame of the animation.
 
 `animation_id`
 : The animation name, hashed.
+
+`track`
+: The track index of the animation.
+
+`blend_weight`
+: Deprecated. Always 0.
 
 `string`
 : The provided string value, hashed.
@@ -343,6 +359,7 @@ When the animation plays and events are encountered, `spine_event` callbacks are
 
 `event_id`
 : The event identifier, hashed.
+
 
 ```lua
 local function anim_done(self, message_id, message, sender)
@@ -413,17 +430,29 @@ Spine Default Animation
 Skin
 : The skin to use for the animation when the scene is initialized.
 
+Create Bones
+: When enabled, creates individual GUI nodes for each Spine bone under the Spine node. This allows parenting other GUI nodes to bones and using functions such as [`gui.get_spine_bone()`](/extension-spine/gui_api#gui.get_spine_bone).
+
+- Default for new nodes: Off. Keeps node count low and improves performance.
+- Note: If disabled, functions that require per-bone GUI nodes (e.g. `gui.get_spine_bone`, addressing nodes as `spine_node_id/bone_name`) will not work.
+
 
 ### Runtime animation control
 
-Spine nodes can be controlled in runtime through script. To start an animation on a node, simply call the [`gui.play_spine_anim()`](/extension-spine/gui_api/#gui.play_spine_anim:node-animation_id-playback-[play_properties]-[complete_function]) function:
+Spine nodes can be controlled in runtime through script. To start an animation on a node, simply call the [`gui.play_spine_anim()`](/extension-spine/gui_api/#gui.play_spine_anim:node-animation_id-playback-[play_properties]-[callback_function]) function:
 
 ```lua
-local catnode = gui.get_node("cat_note")
-local play_properties = { blend_time = 0.3, offset = 0, playback_rate = 1 }
-gui.play_spine_anim(catnode, hash("run"), gui.PLAYBACK_ONCE_FORWARD, play_properties, function(self, node)
-    print("Animation done!")
-end)
+local function spine_callback(self, node, message_id, message)
+    if message_id == hash("spine_animation_done") then
+        print("Animation done!")
+    elseif message_id == hash("spine_event") then
+        pprint("Spine event", message)
+    end
+end
+
+local catnode = gui.get_node("cat_node")
+local play_properties = { blend_duration = 0.3, offset = 0, playback_rate = 1 }
+gui.play_spine_anim(catnode, hash("run"), gui.PLAYBACK_ONCE_FORWARD, play_properties, spine_callback)
 ```
 
 Use one of the following playback modes to control animation playback:
@@ -436,10 +465,47 @@ Use one of the following playback modes to control animation playback:
 * gui.PLAYBACK_LOOP_BACKWARD
 * gui.PLAYBACK_LOOP_PINGPONG
 
+### GUI spine_scene overrides
+
+Define aliases in the `.gui` via `resources { name: "<alias>" path: "...spinescene" }`. You can then update which spinescene an alias points to, or set a node’s scene directly.
+
+- Using `go.set` (scene-wide alias override):
+```lua
+-- Build a dynamic spinescene
+local alias = "my_gui_scene" -- must exist as a GUI resource alias
+ local atlat_path = "/dyn/my_atlas.a.texturesetc"
+    local atlas_resource = resource.create_atlas(atlat_path, {
+        texture = texture_path,
+        animations = atlas_data.animations,
+        geometries = atlas_data.geometries
+    })
+local scene = resource.create_spinescene("/dyn/squirrel.spinescenec", {
+  spine_data = sys.load_resource("/custom_res/squirrel.spinejson"),
+  atlas_path = atlat_path
+})
+-- Remap alias -> scene for the GUI component; all nodes using this alias update
+go.set("/gui#gui_comp", "spine_scene", scene, { key = alias })
+-- It's posisble to set from gui component itself as well:
+-- gui.set(msg.url(), "spine_scene", scene, { key = alias })
+```
+
+- Using `gui.set_spine_scene` (per-node):
+```lua
+local node = gui.get_node("spine_node_anim")
+local alias = "my_gui_scene"  -- or a variable with another alias
+gui.set_spine_scene(node, alias)
+```
+
+Notes:
+- Alias overrides propagate immediately to registered Spine GUI nodes using that alias.
+- Overrides are scoped per GUI scene and cleaned up when the scene unloads.
+
 
 ### GUI node bone hierarchy
 
 The individual bones in the Spine skeleton can be accessed as GUI nodes. The nodes are named according to their names in the Spine setup.
+
+Note: Access to per-bone GUI nodes requires the Spine node’s Create Bones option to be enabled.
 
 ![Spine bone names](bone.png)
 
@@ -472,7 +538,7 @@ The animation data references the images used for the bones by name with the fil
 
 ![Spine images hierarchy](spine_images.png)
 
-This example shows files laid out in a flat structure. It is, however, possible to organize the files in subfolders and the file references will reflect that. For instance, a file *head_parts/eyes.png* on disk will be referenced as *head_parts/eyes* when you use it in a slot. This is also the name used in the exported JSON file so when creating the Defold image atlas, all names must match an atlas animation.
+This example shows files laid out in a flat structure. It is, however, possible to organize the files in subfolders and the file references will reflect that. For instance, a file *head_parts/eyes.png* on disk will be referenced as *head_parts/eyes* when you use it in a slot. This is also the name stored in the exported Spine data, so when creating the Defold image atlas, all names must match an atlas animation.
 
 If you select <kbd>Add Images</kbd> Defold will automatically create animation groups with the same name as the added files, but with the file suffix stripped off. So, after having added the file *eyes.png* its animation group can be referenced by the name "eyes". This works with file names only, not paths.
 
@@ -484,3 +550,6 @@ So what do you do if your animation references "head_parts/eyes"? The easiest wa
 
 ## API reference
 [API Reference - gui](/extension-spine/gui_api)
+
+## API reference
+[API Reference - resource](/extension-spine/resource_api)

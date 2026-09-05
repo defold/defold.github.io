@@ -67,14 +67,22 @@
                             "types": [
                                 "constant"
                             ]
+                        },
+                        {
+                            "doc": "0 applies the current or setup value (depending on mix_blend). 1 applies the timeline value. Between 0 and 1 applies a value between the current or setup value and the timeline value. Defaults to 1.",
+                            "name": "alpha",
+                            "types": [
+                                "number"
+                            ]
                         }
                     ],
                     "types": [
-                        "table"
+                        "table",
+                        "nil"
                     ]
                 },
                 {
-                    "doc": "function to call when the animation has completed or a Spine event occured",
+                    "doc": "function to call when the animation has completed or a Spine event occurred",
                     "name": "callback_function",
                     "parameters": [
                         {
@@ -121,6 +129,13 @@
                                     "name": "event_id",
                                     "types": [
                                         "hash"
+                                    ]
+                                },
+                                {
+                                    "doc": "(spine_event only!) Deprecated. Always 0.",
+                                    "name": "blend_weight",
+                                    "types": [
+                                        "float"
                                     ]
                                 },
                                 {
@@ -207,7 +222,7 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Returns the id of the game object that corresponds to a specified skeleton bone.",
+            "description": "Returns the id of the game object that corresponds to a specified skeleton bone. Before using this function, make sure the \"Create Go Bones\" option is enabled in your Spine model.",
             "examples": "",
             "name": "spine.get_go",
             "parameters": [
@@ -599,10 +614,10 @@
     ],
     "info": {
         "api": "extension-spine/spine_api",
+        "api_language": "Lua",
         "brief": "spine",
         "description": "Functions and constants for interacting with Spine models",
         "group": "EXTENSIONS",
-        "language": "Lua",
         "name": "extension-spine",
         "namespace": "spine",
         "type": "Extension"

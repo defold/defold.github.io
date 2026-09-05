@@ -162,6 +162,7 @@ These are per-namespace API reference files generated for LLM usage.
 - [safearea (extension-safearea)](https://defold.com/llms/apis/extension-safearea_safearea.md) - Defold native extension that will change the view/render of a game to fit into the safe area on iPhones and Android(API 28+) with notch
 - [siwa (extension-siwa)](https://defold.com/llms/apis/extension-siwa_siwa.md) - Functions and constants for interacting Sign in with Apple
 - [gui (extension-spine)](https://defold.com/llms/apis/extension-spine_gui.md) - Functions and constants for interacting with Spine models in GUI
+- [resource (extension-spine)](https://defold.com/llms/apis/extension-spine_resource.md) - Functions for creating Spine resources dynamically
 - [spine (extension-spine)](https://defold.com/llms/apis/extension-spine_spine.md) - Functions and constants for interacting with Spine models
 - [steam (extension-steam)](https://defold.com/llms/apis/extension-steam_steam.md) - Functions and constants for interacting with Steamworks
 - [websocket (extension-websocket)](https://defold.com/llms/apis/extension-websocket_websocket.md) - Functions and constants for using websockets

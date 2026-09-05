@@ -30,7 +30,21 @@ Starts a spine animation.
   - `blend_duration` (number) - The duration of a linear blend between the current and new animation
   - `offset` (number) - The normalized initial value of the animation cursor when the animation starts playing
   - `playback_rate` (number) - The rate with which the animation will be played. Must be positive
-- `complete_function` (function(self, node)) - function to call when the animation has completed
+  - `track` (number) - The track number for the animation (1-based). Defaults to track 1. Multiple tracks allow for layered animations.
+- `callback_function` (function(self, node, message_id, message)) - function to call when the animation has completed or when spine events occur
+  - `self` (object) - The context of the calling script
+  - `node` (node) - The spine node that completed the animation or triggered the event
+  - `message_id` (hash) - The name of the message ("spine_animation_done" or "spine_event")
+  - `message` (table) - A table that contains the response
+    - `animation_id` (hash) - The animation that was completed or triggered the event
+    - `track` (number) - The track index of the animation
+    - `playback` (constant) - (spine_animation_done only!) The playback mode for the animation
+    - `event_id` (hash) - (spine_event only!) the event that was triggered.
+    - `blend_weight` (float) - (spine_event only!) Deprecated. Always 0.
+    - `t` (float) - (spine_event only!) the time at which the event occurred (seconds)
+    - `integer` (int) - (spine_event only!) a custom integer associated with the event (0 by default).
+    - `float` (float) - (spine_event only!) a custom float associated with the event (0 by default)
+    - `string` (hash) - (spine_event only!) a custom string associated with the event (hash("") by default)
 
 ### gui.cancel_spine
 *Type:* FUNCTION
@@ -39,6 +53,8 @@ cancel a spine animation
 **Parameters**
 
 - `node` (node) - spine node that should cancel its animation
+- `options` (table) - optional table with properties
+  - `track` (number) - The track number to cancel (1-based). If not specified, cancels all tracks.
 
 ### gui.get_spine_bone
 *Type:* FUNCTION
@@ -158,7 +174,9 @@ Gets the playing animation on a spine node
 
 **Parameters**
 
-- `node` (node) - node to get spine skin from
+- `node` (node) - node to get spine animation from
+- `options` (table) - optional table with properties
+  - `track` (number) - The track number to get animation from (1-based). Defaults to track 1.
 
 ### gui.set_spine_cursor
 *Type:* FUNCTION
@@ -168,6 +186,8 @@ This is only useful for spine nodes. The cursor is normalized.
 
 - `node` (node) - spine node to set the cursor for
 - `cursor` (number) - cursor value
+- `options` (table) - optional table with properties
+  - `track` (number) - The track number to set cursor for (1-based). Defaults to track 1.
 
 ### gui.get_spine_cursor
 *Type:* FUNCTION
@@ -175,7 +195,9 @@ This is only useful for spine nodes. Gets the normalized cursor of the animation
 
 **Parameters**
 
-- `node` (node) - spine node to get the cursor for (node)
+- `node` (node) - spine node to get the cursor for
+- `options` (table) - optional table with properties
+  - `track` (number) - The track number to get cursor from (1-based). Defaults to track 1.
 
 ### gui.set_spine_playback_rate
 *Type:* FUNCTION
@@ -183,8 +205,10 @@ This is only useful for spine nodes. Sets the playback rate of the animation on 
 
 **Parameters**
 
-- `node` (node) - spine node to set the cursor for
+- `node` (node) - spine node to set the playback rate for
 - `playback_rate` (number) - playback rate
+- `options` (table) - optional table with properties
+  - `track` (number) - The track number to set playback rate for (1-based). Defaults to track 1.
 
 ### gui.get_spine_playback_rate
 *Type:* FUNCTION
@@ -192,7 +216,9 @@ This is only useful for spine nodes. Gets the playback rate of the animation on 
 
 **Parameters**
 
-- `node` (node) - spine node to set the cursor for
+- `node` (node) - spine node to get the playback rate for
+- `options` (table) - optional table with properties
+  - `track` (number) - The track number to get playback rate from (1-based). Defaults to track 1.
 
 ### gui.set_spine_attachment
 *Type:* FUNCTION

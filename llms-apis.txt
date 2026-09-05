@@ -162,6 +162,7 @@ This document contains the Defold API reference, grouped by language.
 - [safearea (extension-safearea)](#apis:extension-safearea_safearea) - Defold native extension that will change the view/render of a game to fit into the safe area on iPhones and Android(API 28+) with notch
 - [siwa (extension-siwa)](#apis:extension-siwa_siwa) - Functions and constants for interacting Sign in with Apple
 - [gui (extension-spine)](#apis:extension-spine_gui) - Functions and constants for interacting with Spine models in GUI
+- [resource (extension-spine)](#apis:extension-spine_resource) - Functions for creating Spine resources dynamically
 - [spine (extension-spine)](#apis:extension-spine_spine) - Functions and constants for interacting with Spine models
 - [steam (extension-steam)](#apis:extension-steam_steam) - Functions and constants for interacting with Steamworks
 - [websocket (extension-websocket)](#apis:extension-websocket_websocket) - Functions and constants for using websockets
@@ -54655,7 +54656,21 @@ Starts a spine animation.
   - `blend_duration` (number) - The duration of a linear blend between the current and new animation
   - `offset` (number) - The normalized initial value of the animation cursor when the animation starts playing
   - `playback_rate` (number) - The rate with which the animation will be played. Must be positive
-- `complete_function` (function(self, node)) - function to call when the animation has completed
+  - `track` (number) - The track number for the animation (1-based). Defaults to track 1. Multiple tracks allow for layered animations.
+- `callback_function` (function(self, node, message_id, message)) - function to call when the animation has completed or when spine events occur
+  - `self` (object) - The context of the calling script
+  - `node` (node) - The spine node that completed the animation or triggered the event
+  - `message_id` (hash) - The name of the message ("spine_animation_done" or "spine_event")
+  - `message` (table) - A table that contains the response
+    - `animation_id` (hash) - The animation that was completed or triggered the event
+    - `track` (number) - The track index of the animation
+    - `playback` (constant) - (spine_animation_done only!) The playback mode for the animation
+    - `event_id` (hash) - (spine_event only!) the event that was triggered.
+    - `blend_weight` (float) - (spine_event only!) Deprecated. Always 0.
+    - `t` (float) - (spine_event only!) the time at which the event occurred (seconds)
+    - `integer` (int) - (spine_event only!) a custom integer associated with the event (0 by default).
+    - `float` (float) - (spine_event only!) a custom float associated with the event (0 by default)
+    - `string` (hash) - (spine_event only!) a custom string associated with the event (hash("") by default)
 
 ### gui.cancel_spine
 *Type:* FUNCTION
@@ -54664,6 +54679,8 @@ cancel a spine animation
 **Parameters**
 
 - `node` (node) - spine node that should cancel its animation
+- `options` (table) - optional table with properties
+  - `track` (number) - The track number to cancel (1-based). If not specified, cancels all tracks.
 
 ### gui.get_spine_bone
 *Type:* FUNCTION
@@ -54783,7 +54800,9 @@ Gets the playing animation on a spine node
 
 **Parameters**
 
-- `node` (node) - node to get spine skin from
+- `node` (node) - node to get spine animation from
+- `options` (table) - optional table with properties
+  - `track` (number) - The track number to get animation from (1-based). Defaults to track 1.
 
 ### gui.set_spine_cursor
 *Type:* FUNCTION
@@ -54793,6 +54812,8 @@ This is only useful for spine nodes. The cursor is normalized.
 
 - `node` (node) - spine node to set the cursor for
 - `cursor` (number) - cursor value
+- `options` (table) - optional table with properties
+  - `track` (number) - The track number to set cursor for (1-based). Defaults to track 1.
 
 ### gui.get_spine_cursor
 *Type:* FUNCTION
@@ -54800,7 +54821,9 @@ This is only useful for spine nodes. Gets the normalized cursor of the animation
 
 **Parameters**
 
-- `node` (node) - spine node to get the cursor for (node)
+- `node` (node) - spine node to get the cursor for
+- `options` (table) - optional table with properties
+  - `track` (number) - The track number to get cursor from (1-based). Defaults to track 1.
 
 ### gui.set_spine_playback_rate
 *Type:* FUNCTION
@@ -54808,8 +54831,10 @@ This is only useful for spine nodes. Sets the playback rate of the animation on 
 
 **Parameters**
 
-- `node` (node) - spine node to set the cursor for
+- `node` (node) - spine node to set the playback rate for
 - `playback_rate` (number) - playback rate
+- `options` (table) - optional table with properties
+  - `track` (number) - The track number to set playback rate for (1-based). Defaults to track 1.
 
 ### gui.get_spine_playback_rate
 *Type:* FUNCTION
@@ -54817,7 +54842,9 @@ This is only useful for spine nodes. Gets the playback rate of the animation on 
 
 **Parameters**
 
-- `node` (node) - spine node to set the cursor for
+- `node` (node) - spine node to get the playback rate for
+- `options` (table) - optional table with properties
+  - `track` (number) - The track number to get playback rate from (1-based). Defaults to track 1.
 
 ### gui.set_spine_attachment
 *Type:* FUNCTION
@@ -54923,6 +54950,516 @@ end
 
 ```
 
+<!-- extension-spine_resource -->
+
+# extension-spine {#apis:extension-spine_resource}
+
+**Namespace:** `resource`
+**Language:** Lua
+**Type:** Extension
+
+Functions for creating Spine resources dynamically
+
+## API
+
+### resource.create_spinescene
+*Type:* FUNCTION
+Creates a spinescene resource (.spinescenec) from runtime data. Creates a Spine scene resource dynamically at runtime. This allows loading Spine animations from data rather than pre-built assets. The atlas path must reference a compiled `.texturesetc` resource. The created spinescene is tracked for cleanup when the collection unloads; internal intermediate JSON is removed automatically.
+
+**Parameters**
+
+- `path` (string) - The target resource path. Must end with .spinescenec
+- `options` (table) - Table with fields
+  - `spine_data` (string) - JSON bytes of the Spine skeleton
+  - `atlas_path` (string) - Path to the compiled atlas resource (.texturesetc)
+
+**Examples**
+
+`
+`
+`
+l
+u
+a
+
+f
+u
+n
+c
+t
+i
+o
+n
+
+i
+n
+i
+t
+(
+s
+e
+l
+f
+)
+
+-
+-
+
+L
+o
+a
+d
+
+S
+p
+i
+n
+e
+
+J
+S
+O
+N
+
+d
+a
+t
+a
+
+l
+o
+c
+a
+l
+
+j
+s
+o
+n
+
+=
+
+s
+y
+s
+.
+l
+o
+a
+d
+_
+r
+e
+s
+o
+u
+r
+c
+e
+(
+"
+/
+d
+a
+t
+a
+/
+c
+h
+a
+r
+a
+c
+t
+e
+r
+.
+s
+p
+i
+n
+e
+j
+s
+o
+n
+"
+)
+
+-
+-
+
+C
+r
+e
+a
+t
+e
+
+s
+p
+i
+n
+e
+s
+c
+e
+n
+e
+
+d
+y
+n
+a
+m
+i
+c
+a
+l
+l
+y
+
+l
+o
+c
+a
+l
+
+s
+c
+e
+n
+e
+
+=
+
+r
+e
+s
+o
+u
+r
+c
+e
+.
+c
+r
+e
+a
+t
+e
+_
+s
+p
+i
+n
+e
+s
+c
+e
+n
+e
+(
+"
+/
+d
+y
+n
+/
+c
+h
+a
+r
+a
+c
+t
+e
+r
+.
+s
+p
+i
+n
+e
+s
+c
+e
+n
+e
+c
+"
+,
+
+{
+
+s
+p
+i
+n
+e
+_
+d
+a
+t
+a
+
+=
+
+j
+s
+o
+n
+,
+
+a
+t
+l
+a
+s
+_
+p
+a
+t
+h
+
+=
+
+"
+/
+t
+e
+x
+t
+u
+r
+e
+s
+/
+c
+h
+a
+r
+a
+c
+t
+e
+r
+.
+a
+.
+t
+e
+x
+t
+u
+r
+e
+s
+e
+t
+c
+"
+
+}
+)
+
+g
+o
+.
+s
+e
+t
+(
+"
+/
+g
+u
+i
+
+s
+w
+a
+p
+"
+,
+
+"
+s
+p
+i
+n
+e
+_
+s
+c
+e
+n
+e
+"
+,
+
+s
+c
+e
+n
+e
+,
+
+{
+
+k
+e
+y
+
+=
+
+"
+s
+p
+i
+n
+e
+b
+o
+y
+"
+
+}
+)
+
+-
+-
+
+I
+t
+'
+s
+
+p
+o
+s
+i
+s
+b
+l
+e
+
+t
+o
+
+s
+e
+t
+
+f
+r
+o
+m
+
+g
+u
+i
+
+c
+o
+m
+p
+o
+n
+e
+n
+t
+
+i
+t
+s
+e
+l
+f
+
+a
+s
+
+w
+e
+l
+l
+:
+
+-
+-
+
+g
+u
+i
+.
+s
+e
+t
+(
+m
+s
+g
+.
+u
+r
+l
+(
+)
+,
+
+"
+s
+p
+i
+n
+e
+_
+s
+c
+e
+n
+e
+"
+,
+
+s
+c
+e
+n
+e
+,
+
+{
+
+k
+e
+y
+
+=
+
+"
+s
+p
+i
+n
+e
+b
+o
+y
+"
+
+}
+)
+
+e
+n
+d
+
+`
+`
+`
+
 <!-- extension-spine_spine -->
 
 # extension-spine {#apis:extension-spine_spine}
@@ -54944,13 +55481,14 @@ Plays the specified animation on a Spine model. A [ref:spine_animation_done] mes
 - `url` (string | hash | url) - The Spine model for which to play an animation
 - `anim_id` (string | hash) - Id of the animation to play
 - `playback` (number) - Playback mode of the animation (from go.PLAYBACK_*)
-- `options` (table) - Playback options
+- `options` (table | nil) - Playback options
   - `blend_duration` (number) - Duration of a linear blend between the current and new animation.
   - `offset` (number) - The normalized initial value of the animation cursor when the animation starts playing.
   - `playback_rate` (constant) - The rate with which the animation will be played. Must be positive.
   - `track` (number) - The track index of the animation. Defaults to 1. Animations on different tracks play in parallel.
   - `mix_blend` (constant) - The mix blend mode for the animation (from spine.MIX_BLEND_*). Defaults to `spine.MIX_BLEND_REPLACE`. Ignored for animations on the first track.
-- `callback_function` (function) - function to call when the animation has completed or a Spine event occured
+  - `alpha` (number) - 0 applies the current or setup value (depending on mix_blend). 1 applies the timeline value. Between 0 and 1 applies a value between the current or setup value and the timeline value. Defaults to 1.
+- `callback_function` (function) - function to call when the animation has completed or a Spine event occurred
   - `self` (object) - The context of the calling script
   - `message_id` (hash) - The name of the message ("spine_animation_done" or "spine_event")
   - `message` (table) - A table that contains the response
@@ -54958,6 +55496,7 @@ Plays the specified animation on a Spine model. A [ref:spine_animation_done] mes
     - `track` (number) - The track index of the animation
     - `playback` (constant) - (spine_animation_done only!) The playback mode for the animation
     - `event_id` (hash) - (spine_event only!) the event that was triggered.
+    - `blend_weight` (float) - (spine_event only!) Deprecated. Always 0.
     - `t` (float) - (spine_event only!) the time at which the event occurred (seconds)
     - `integer` (int) - (spine_event only!) a custom integer associated with the event (0 by default).
     - `float` (float) - (spine_event only!) a custom float associated with the event (0 by default)
@@ -54976,7 +55515,7 @@ Cancels all running animations on a specified spine model component
 
 ### spine.get_go
 *Type:* FUNCTION
-Returns the id of the game object that corresponds to a specified skeleton bone.
+Returns the id of the game object that corresponds to a specified skeleton bone. Before using this function, make sure the "Create Go Bones" option is enabled in your Spine model.
 
 **Parameters**
 
