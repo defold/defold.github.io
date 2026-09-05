@@ -55,6 +55,8 @@ Current Firebase Android SDKs require Android API level 23 or newer. Set this in
 minimum_sdk_version = 23
 ```
 
+Firebase Apple SDK 12.x requires iOS 15.0 or newer. The macOS extension manifest targets macOS 11.0 or newer.
+
 
 ## Usage
 
