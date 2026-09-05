@@ -2156,7 +2156,7 @@
                     ]
                 },
                 {
-                    "doc": "updated collision shape data",
+                    "doc": "updated collision shape data\nHull and mesh geometry cannot be changed with this function.",
                     "is_optional": "False",
                     "name": "table",
                     "types": [
@@ -2291,6 +2291,10 @@
                 {
                     "doc": "Convex hull shape.",
                     "name": "physics.SHAPE_TYPE_HULL"
+                },
+                {
+                    "doc": "Triangle mesh shape; supported only by the Bullet 3D backend.",
+                    "name": "physics.SHAPE_TYPE_MESH"
                 },
                 {
                     "doc": "Sphere shape.",

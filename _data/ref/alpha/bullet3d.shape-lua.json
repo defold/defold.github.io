@@ -366,7 +366,7 @@
         },
         {
             "brief": "Get shape geometry data.",
-            "description": "The returned table always contains <code>type</code>, one of <code>bullet3d.shape.SHAPE_TYPE_*</code>.\nA sphere also contains numeric <code>diameter</code>; a box contains vector3\n<code>dimensions</code>; a capsule contains numeric <code>diameter</code> and cylindrical-section\n<code>height</code>; and a hull contains a <code>vertices</code> array of vector3 values. The table\nuses Defold units and can be passed to a <code>bullet3d.world</code> shape query after\nadding the desired <code>position</code> and optional <code>rotation</code> fields.",
+            "description": "The returned table always contains <code>type</code>, one of <code>bullet3d.shape.SHAPE_TYPE_*</code>.\nA sphere also contains numeric <code>diameter</code>; a box contains vector3\n<code>dimensions</code>; a capsule contains numeric <code>diameter</code> and cylindrical-section\n<code>height</code>; a hull contains a <code>vertices</code> array of vector3 values; and a triangle\nmesh contains only <code>type</code>. Primitive and hull tables use Defold units and can\nbe passed to a <code>bullet3d.world</code> shape query after adding the desired <code>position</code>\nand optional <code>rotation</code> fields.",
             "error": "",
             "examples": "",
             "language": "",
@@ -556,7 +556,7 @@
         },
         {
             "brief": "Set shape geometry data.",
-            "description": "The table uses the same format as <code>get_shape</code>. Its <code>type</code> must match the\nexisting shape because changing native shape type is not supported. Primitive\ndimensions must be finite and greater than zero. Hulls require at least four\nfinite vertices.",
+            "description": "The table uses the same format as <code>get_shape</code>. Its <code>type</code> must match the\nexisting shape because changing native shape type is not supported. Primitive\ndimensions must be finite and greater than zero. Hulls require at least four\nfinite vertices. Triangle mesh geometry cannot be changed with this function.",
             "error": "",
             "examples": "Increase the dimensions of the first box shape by 50 percent for this instance:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"kd\">local</span> <span class=\"n\">object</span> <span class=\"o\">=</span> <span class=\"n\">bullet3d</span><span class=\"p\">.</span><span class=\"n\">get_collision_object</span><span class=\"p\">(</span><span class=\"s2\">&quot;#collisionobject&quot;</span><span class=\"p\">)</span>\n    <span class=\"kd\">local</span> <span class=\"n\">shape</span> <span class=\"o\">=</span> <span class=\"n\">bullet3d</span><span class=\"p\">.</span><span class=\"n\">collision_object</span><span class=\"p\">.</span><span class=\"n\">get_shape</span><span class=\"p\">(</span><span class=\"n\">object</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">)</span>\n    <span class=\"kd\">local</span> <span class=\"n\">data</span> <span class=\"o\">=</span> <span class=\"n\">bullet3d</span><span class=\"p\">.</span><span class=\"n\">shape</span><span class=\"p\">.</span><span class=\"n\">get_shape</span><span class=\"p\">(</span><span class=\"n\">shape</span><span class=\"p\">)</span>\n\n    <span class=\"kr\">if</span> <span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">type</span> <span class=\"o\">==</span> <span class=\"n\">bullet3d</span><span class=\"p\">.</span><span class=\"n\">shape</span><span class=\"p\">.</span><span class=\"n\">SHAPE_TYPE_BOX</span> <span class=\"kr\">then</span>\n        <span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">dimensions</span> <span class=\"o\">=</span> <span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">dimensions</span> <span class=\"o\">*</span> <span class=\"mf\">1.5</span>\n        <span class=\"n\">bullet3d</span><span class=\"p\">.</span><span class=\"n\">shape</span><span class=\"p\">.</span><span class=\"n\">set_shape</span><span class=\"p\">(</span><span class=\"n\">shape</span><span class=\"p\">,</span> <span class=\"n\">data</span><span class=\"p\">)</span>\n    <span class=\"kr\">end</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
             "language": "",
@@ -616,6 +616,10 @@
                 {
                     "doc": "Convex hull shape type Value <code>3</code>. Shape data contains a <code>vertices</code> array with at least four finite vector3 values in Defold units.",
                     "name": "bullet3d.shape.SHAPE_TYPE_HULL"
+                },
+                {
+                    "doc": "Triangle mesh shape type Value <code>4</code>. Shape data contains only the <code>type</code>; triangle geometry is read-only.",
+                    "name": "bullet3d.shape.SHAPE_TYPE_MESH"
                 },
                 {
                     "doc": "Sphere shape type Value <code>0</code>. Shape data contains a positive numeric <code>diameter</code> in Defold units.",
