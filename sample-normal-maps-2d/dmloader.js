@@ -103,7 +103,6 @@ var FileLoader = {
 var EngineLoader = {
     wasm_size: 2000000,
     wasmjs_size: 250000,
-    asmjs_size: 4000000,
 
     stream_wasm: false,
 
@@ -175,11 +174,8 @@ var EngineLoader = {
         EngineLoader.loadAndRunScriptAsync(exeName + '_wasm.js', EngineLoader.wasmjs_size, 0, 10);
     },
 
-    loadAsmJsAsync: function(exeName) {
-        EngineLoader.loadAndRunScriptAsync(exeName + '_asmjs.js', EngineLoader.asmjs_size, 0, 50);
-    },
 
-    // load and start engine script (asm.js or wasm.js)
+    // load and start engine script (wasm.js)
     loadAndRunScriptAsync: function(src, estimatedSize, fromProgress, toProgress) {
         FileLoader.load(src, "text", estimatedSize,
             function(loaded, total) { Progress.calculateProgress(fromProgress, toProgress, loaded, total); },
@@ -191,14 +187,13 @@ var EngineLoader = {
             });
     },
 
-    // load engine (asm.js or wasm.js + wasm)
+    // load engine (wasm.js + wasm)
     load: function(appCanvasId, exeName) {
         Progress.addProgress(Module.setupCanvas(appCanvasId));
-        if (Module['isWASMSupported']) {
-            EngineLoader.loadWasmAsync(exeName);
-        } else {
-            EngineLoader.loadAsmJsAsync(exeName);
+        if (!(Module['isWASMSupported'])) {
+            throw new Error("WebAssembly is required to run this demo.");
         }
+        EngineLoader.loadWasmAsync(exeName);
     }
 }
 

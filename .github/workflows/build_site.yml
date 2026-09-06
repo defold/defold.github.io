@@ -50,7 +50,9 @@ jobs:
         run: python update.py --download game-images
 
       - name: Build Jekyll site
-        run: bundle exec jekyll build
+        run: |
+          python -m scripts.strip_asmjs
+          bundle exec jekyll build
 
       - name: Install Pagefind Python
         run: python -m pip install "pagefind[extended]==1.5.2"

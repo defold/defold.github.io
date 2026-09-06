@@ -85,13 +85,6 @@ type: {}
 """
 REFDOC_MD_BODY = "{% include anchor_headings.html html=content %}"
 
-EXAMPLES_ENGINE_LOADER = """
-        CUSTOM_PARAMETERS.archive_location_filter = function(path) { return ("/examples/archive" + path); };
-        CUSTOM_PARAMETERS.engine_arguments = [ '--config=examples.start={{ page.collection }}', '--verify-graphics-calls=false' ];
-        CUSTOM_PARAMETERS.resize_window_callback = function() {};
-        EngineLoader.load("canvas", "/examples/Defoldexamples");
-"""
-
 @contextmanager
 def tmpdir():
     name = tempfile.mkdtemp()

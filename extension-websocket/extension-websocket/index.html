@@ -230,11 +230,10 @@
 	function load_engine() {
 		var engineJS = document.createElement('script');
 		engineJS.type = 'text/javascript';
-		if (Module['isWASMSupported']) {
-			engineJS.src = 'extensionwebsocket_wasm.js';
-		} else {
-			engineJS.src = 'extensionwebsocket_asmjs.js';
+		if (!(Module['isWASMSupported'])) {
+		    throw new Error("WebAssembly is required to run this demo.");
 		}
+		engineJS.src = 'extensionwebsocket_wasm.js';
 		document.head.appendChild(engineJS);
 	}
 	</script>
