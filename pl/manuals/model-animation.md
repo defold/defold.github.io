@@ -7,7 +7,8 @@ title: Animacja modeli 3D w instrukcji Defold
 toc:
 - Animacja modelu 3D
 - Odtwarzanie animacji
-- Cele morfingu {morph-targets}
+- anchor: morph-targets
+  title: Cele morfingu
 - Obsługa shaderów
 - Hierarchia kości
 - Animacja kursora
@@ -195,7 +196,7 @@ local bone_go = model.get_go("#wiggler", "Bone_002")
 
 ### Animacja kursora
 
-Oprócz używania `model.play_anim()` do sterowania animacją komponenty *Model* udostępniają właściwość "cursor", którą można animować za pomocą `go.animate()` (więcej w sekcji [animacje właściwości](/pl/manuals/property-animation)).
+Oprócz używania `model.play_anim()` do sterowania animacją komponenty *Model* udostępniają właściwość `cursor`, którą można animować za pomocą `go.animate()` (więcej w sekcji [animacje właściwości](/pl/manuals/property-animation)).
 
 ```lua
 -- Ustaw animację na komponencie #model, ale jej nie uruchamiaj

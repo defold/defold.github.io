@@ -6,7 +6,8 @@ locale: zh
 title: Defold 项目构建器手册
 toc:
 - 构建器 Bob
-- 用法 {usage}
+- anchor: usage
+  title: 用法
 ---
 
 # 构建器 Bob

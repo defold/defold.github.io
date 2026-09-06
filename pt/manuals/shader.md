@@ -14,7 +14,8 @@ toc:
 - Uniforms (chamados de constantes no Defold)
 - Variáveis integradas
 - Funções de textura
-- Precisão {precision}
+- anchor: precision
+  title: Precisão
 - Juntando tudo
 - Incluindo trechos em shaders
 - Header guards

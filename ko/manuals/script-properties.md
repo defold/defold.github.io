@@ -9,7 +9,8 @@ toc:
 - 스크립트 프로퍼티 정의
 - 스크립트 프로퍼티 액세스
 - 팩토리로 생성한 오브젝트
-- 리소스 프로퍼티 {resource-properties}
+- anchor: resource-properties
+  title: 리소스 프로퍼티
 ---
 
 # 스크립트 프로퍼티

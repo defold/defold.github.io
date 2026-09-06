@@ -10,7 +10,8 @@ toc:
 - URL da biblioteca
 - Autenticação de acesso básico
 - Autenticação de acesso avançada
-- Configurando dependências de biblioteca {setting-up-library-dependencies}
+- anchor: setting-up-library-dependencies
+  title: Configurando dependências de biblioteca
 - Editando arquivos em dependências de biblioteca
 - Referências quebradas
 - Colisões de nomes

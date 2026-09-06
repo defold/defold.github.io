@@ -8,7 +8,8 @@ toc:
 - Źródło kafelków
 - Tworzenie źródła kafelków
 - Animacje poklatkowe źródła kafelków
-- Kształty kolizji źródła kafelków {tile-source-collision-shapes}
+- anchor: tile-source-collision-shapes
+  title: Kształty kolizji źródła kafelków
 ---
 
 # Źródło kafelków

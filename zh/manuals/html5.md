@@ -6,11 +6,15 @@ locale: zh
 title: Defold HTML5平台开发
 toc:
 - HTML5开发
-- 堆大小 {heap-size}
+- anchor: heap-size
+  title: 堆大小
 - 测试HTML5构建
-- 创建HTML5包 {creating-html5-bundle}
-- 已知问题和局限性 {已知问题和局限性}
-- 自定义HTML5包 {自定义HTML5打包}
+- anchor: creating-html5-bundle
+  title: 创建HTML5包
+- anchor: 已知问题和局限性
+  title: 已知问题和局限性
+- anchor: 自定义HTML5打包
+  title: 自定义HTML5包
 - Downscale Fit和Fit
 - Stretch
 - No Scale

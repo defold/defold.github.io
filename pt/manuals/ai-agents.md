@@ -5,17 +5,28 @@ layout: manual
 locale: pt
 title: Uso de agentes de programação com IA no Defold
 toc:
-- Uso de agentes de programação com IA no Defold {using-ai-coding-agents-with-defold}
-- Quando um agente de IA é útil {when-an-ai-agent-is-useful}
-- Interfaces do Defold independentes de modelo {model-neutral-defold-interfaces}
-- Camadas de integração {integration-layers}
-- Model Context Protocol {model-context-protocol}
-- Integrações MCP da comunidade {community-mcp-integrations}
-- Instruções do projeto {project-instructions}
-- Descoberta de documentação {documentation-discovery}
-- Loops limitados de alteração e verificação {bounded-change-and-verification-loops}
-- Avaliação multimodal {multimodal-evaluation}
-- Segurança, isolamento e boas práticas {security-isolation-and-good-practices}
+- anchor: using-ai-coding-agents-with-defold
+  title: Uso de agentes de programação com IA no Defold
+- anchor: when-an-ai-agent-is-useful
+  title: Quando um agente de IA é útil
+- anchor: model-neutral-defold-interfaces
+  title: Interfaces do Defold independentes de modelo
+- anchor: integration-layers
+  title: Camadas de integração
+- anchor: model-context-protocol
+  title: Model Context Protocol
+- anchor: community-mcp-integrations
+  title: Integrações MCP da comunidade
+- anchor: project-instructions
+  title: Instruções do projeto
+- anchor: documentation-discovery
+  title: Descoberta de documentação
+- anchor: bounded-change-and-verification-loops
+  title: Loops limitados de alteração e verificação
+- anchor: multimodal-evaluation
+  title: Avaliação multimodal
+- anchor: security-isolation-and-good-practices
+  title: Segurança, isolamento e boas práticas
 ---
 
 # Uso de agentes de programação com IA no Defold {#using-ai-coding-agents-with-defold}

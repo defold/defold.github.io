@@ -7,7 +7,8 @@ title: GUI-нода Particle FX
 toc:
 - GUI-нода Particle FX
 - Добавление ноды Particle FX
-- Управление эффектом {controlling-the-effect}
+- anchor: controlling-the-effect
+  title: Управление эффектом
 ---
 
 # GUI-нода Particle FX

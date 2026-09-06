@@ -9,12 +9,16 @@ toc:
 - Abrindo o Scene Editor
 - Navegação na visualização de cena (controles de câmera)
 - Navegação padrão (todos os editores visuais)
-- Orientação de cena 2D e 3D {2d-and-3d-scene-orientation}
+- anchor: 2d-and-3d-scene-orientation
+  title: Orientação de cena 2D e 3D
 - Visão geral da barra de ferramentas
-- Selecionando e manipulando objetos {manipulating-objects}
+- anchor: manipulating-objects
+  title: Selecionando e manipulando objetos
 - Selecionando objetos
-- Filtros de visibilidade {visibility-filters}
-- Configurações da grade {grid-settings}
+- anchor: visibility-filters
+  title: Filtros de visibilidade
+- anchor: grid-settings
+  title: Configurações da grade
 - 'Tipo de câmera: Perspective vs Orthographic'
 - Free Camera Mode
 - Ativando o Free Camera Mode

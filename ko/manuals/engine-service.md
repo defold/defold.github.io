@@ -5,13 +5,20 @@ layout: manual
 locale: ko
 title: 엔진 서비스와 런타임 HTTP API
 toc:
-- 엔진 서비스와 런타임 HTTP API {the-engine-service-and-runtime-http-apis}
-- 사용 가능 여부와 포트 찾기 {availability-and-port-discovery}
-- 내장 엔드포인트 {built-in-endpoints}
-- 익스텐션에서 정의한 런타임 경로 {extension-defined-runtime-routes}
-- Automation Bridge 익스텐션 {automation-bridge-extension}
-- 에디터 클라이언트와 런타임 클라이언트 {editor-and-runtime-clients}
-- 제한 사항과 보안 {limitations-and-security}
+- anchor: the-engine-service-and-runtime-http-apis
+  title: 엔진 서비스와 런타임 HTTP API
+- anchor: availability-and-port-discovery
+  title: 사용 가능 여부와 포트 찾기
+- anchor: built-in-endpoints
+  title: 내장 엔드포인트
+- anchor: extension-defined-runtime-routes
+  title: 익스텐션에서 정의한 런타임 경로
+- anchor: automation-bridge-extension
+  title: Automation Bridge 익스텐션
+- anchor: editor-and-runtime-clients
+  title: 에디터 클라이언트와 런타임 클라이언트
+- anchor: limitations-and-security
+  title: 제한 사항과 보안
 ---
 
 # 엔진 서비스와 런타임 HTTP API {#the-engine-service-and-runtime-http-apis}

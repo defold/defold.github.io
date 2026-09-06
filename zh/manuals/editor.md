@@ -8,9 +8,11 @@ toc:
 - 编辑器概述
 - 启动编辑器
 - 编辑器语言
-- 编辑器面板 {the-editor-views}
+- anchor: the-editor-views
+  title: 编辑器面板
 - 1. Assets 面板
-- 2. Scene Editor 面板 {the-scene-editor}
+- anchor: the-scene-editor
+  title: 2. Scene Editor 面板
 - 3. Outline 面板
 - 4. Properties 面板
 - 5. Tools 面板
@@ -20,14 +22,17 @@ toc:
 - 面板大小和可见性
 - 标签页
 - 并排编辑
-- 创建新的项目文件 {creating-new-project-files}
+- anchor: creating-new-project-files
+  title: 创建新的项目文件
 - 模板
 - 将文件导入项目
 - 更新编辑器
 - 首选项
-- 编辑器日志 {editor-logs}
+- anchor: editor-logs
+  title: 编辑器日志
 - 编辑器服务器
-- 编辑器安装元数据 {editor-installation-metadata}
+- anchor: editor-installation-metadata
+  title: 编辑器安装元数据
 - 编辑器样式
 - FAQ
 ---

@@ -11,8 +11,10 @@ toc:
 - 编写原生代码
 - 使用内置代码编辑器
 - 代码补全
-- 跳转到符号 {jump-to-symbol}
-- 代码检查配置 {linting-configuration}
+- anchor: jump-to-symbol
+  title: 跳转到符号
+- anchor: linting-configuration
+  title: 代码检查配置
 - 使用外部代码编辑器
 - Visual Studio Code - Defold Kit
 - 文档软件

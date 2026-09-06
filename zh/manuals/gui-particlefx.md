@@ -7,7 +7,8 @@ title: Defold中的GUI粒子特效
 toc:
 - GUI ParticleFX节点
 - 添加ParticleFX节点
-- 控制效果 {controlling-the-effect}
+- anchor: controlling-the-effect
+  title: 控制效果
 ---
 
 # GUI ParticleFX节点

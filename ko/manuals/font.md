@@ -10,12 +10,15 @@ toc:
 - '텍스트 레이아웃 지원(예: 오른쪽에서 왼쪽)'
 - 폰트 컬렉션
 - 폰트 만들기
-- 프로퍼티 {properties}
+- anchor: properties
+  title: 프로퍼티
 - 디스턴스 필드 폰트
-- 비트맵 BMFonts {bitmap-bmfonts}
+- anchor: bitmap-bmfonts
+  title: 비트맵 BMFonts
 - 아티팩트와 모범 사례
 - 폰트 캐쉬
-- 런타임 폰트 활성화 {enabling-runtime-fonts}
+- anchor: enabling-runtime-fonts
+  title: 런타임 폰트 활성화
 - 폰트 스크립팅
 - 폰트 컬렉션에 폰트 추가/제거
 - 글리프 프리워밍

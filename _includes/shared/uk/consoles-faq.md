@@ -1,8 +1,8 @@
-#### Q: Do I need to install additional tools to build for consoles?
+#### П: Чи потрібно встановлювати додаткові інструменти для збирання для консолей? {#q-do-i-need-to-install-additional-tools-to-build-for-consoles}
 
-A: You will be able to create application bundles from the editor and command line tools. Information about how to test on PlayStation®4, PlayStation®5 and Nintendo Switch hardware will be provided to you when you are given access to the respective platforms.
+В: Ви зможете створювати пакети застосунків у редакторі та за допомогою засобів командного рядка. Інформацію про тестування на пристроях PlayStation®4, PlayStation®5 і Nintendo Switch вам нададуть разом із доступом до відповідних платформ.
 
 
-#### Q: Is it still easy to use a single code base if I decide to also target consoles?
+#### П: Чи буде так само легко використовувати єдину кодову базу, якщо я вирішу також підтримувати консолі? {#q-is-it-still-easy-to-use-a-single-code-base-if-i-decide-to-also-target-consoles}
 
-A: Yes, all of the standard Defold API functions are available also for the console platforms. In addition to the standard functionality you will also have access to a couple of PlayStation®4, PlayStation®5 and Nintendo Switch specific functions, but in general the code should be able to remain exactly the same across multiple platforms.
+В: Так, усі стандартні функції API Defold доступні й на консольних платформах. Крім стандартних можливостей, ви отримаєте доступ до кількох функцій, специфічних для PlayStation®4, PlayStation®5 і Nintendo Switch. Загалом код може залишатися цілком однаковим на різних платформах.

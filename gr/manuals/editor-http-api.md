@@ -5,23 +5,40 @@ layout: manual
 locale: gr
 title: Αυτοματοποίηση του επεξεργαστή Defold με HTTP
 toc:
-- Αυτοματοποίηση του επεξεργαστή Defold {automating-the-defold-editor}
-- Εκκίνηση του επεξεργαστή από εξωτερικό εργαλείο {starting-the-editor-from-an-external-tool}
-- Εντοπισμός του διακομιστή επεξεργαστή {locating-the-editor-server}
-- Εντοπισμός λειτουργιών μέσω OpenAPI {discovering-operations-through-openapi}
-- Εκτέλεση εντολών επεξεργαστή {executing-editor-commands}
-- Αποκρίσεις εντολών και ασύγχρονη εργασία {command-responses-and-asynchronous-work}
-- Δημιουργία HTML5 {building-html5}
-- Αναζήτηση τεκμηρίωσης API {searching-api-documentation}
-- Ανάγνωση εξόδου κονσόλας {reading-console-output}
-- Απόδοση προεπισκοπήσεων σκηνής {rendering-scene-previews}
-- Εκτέλεση Lua στον επεξεργαστή {executing-editor-lua}
-- Τροποποίηση πόρων και αρχείων {modifying-resources-and-files}
-- Προτιμήσεις {preferences}
-- Διαδρομές που ορίζονται από το έργο {project-defined-routes}
-- Άγκιστρα κύκλου ζωής {lifecycle-hooks}
-- Ασφάλεια και συμβατότητα {security-and-compatibility}
-- Διακομιστής μηχανής {engine-server}
+- anchor: automating-the-defold-editor
+  title: Αυτοματοποίηση του επεξεργαστή Defold
+- anchor: starting-the-editor-from-an-external-tool
+  title: Εκκίνηση του επεξεργαστή από εξωτερικό εργαλείο
+- anchor: locating-the-editor-server
+  title: Εντοπισμός του διακομιστή επεξεργαστή
+- anchor: discovering-operations-through-openapi
+  title: Εντοπισμός λειτουργιών μέσω OpenAPI
+- anchor: executing-editor-commands
+  title: Εκτέλεση εντολών επεξεργαστή
+- anchor: command-responses-and-asynchronous-work
+  title: Αποκρίσεις εντολών και ασύγχρονη εργασία
+- anchor: building-html5
+  title: Δημιουργία HTML5
+- anchor: searching-api-documentation
+  title: Αναζήτηση τεκμηρίωσης API
+- anchor: reading-console-output
+  title: Ανάγνωση εξόδου κονσόλας
+- anchor: rendering-scene-previews
+  title: Απόδοση προεπισκοπήσεων σκηνής
+- anchor: executing-editor-lua
+  title: Εκτέλεση Lua στον επεξεργαστή
+- anchor: modifying-resources-and-files
+  title: Τροποποίηση πόρων και αρχείων
+- anchor: preferences
+  title: Προτιμήσεις
+- anchor: project-defined-routes
+  title: Διαδρομές που ορίζονται από το έργο
+- anchor: lifecycle-hooks
+  title: Άγκιστρα κύκλου ζωής
+- anchor: security-and-compatibility
+  title: Ασφάλεια και συμβατότητα
+- anchor: engine-server
+  title: Διακομιστής μηχανής
 ---
 
 # Αυτοματοποίηση του επεξεργαστή Defold {#automating-the-defold-editor}

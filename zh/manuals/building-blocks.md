@@ -6,7 +6,8 @@ locale: zh
 title: Defold的构建块
 toc:
 - 构建块
-- 集合 {collections}
+- anchor: collections
+  title: 集合
 - 游戏对象
 - 组件
 - 就地添加或通过引用添加的对象

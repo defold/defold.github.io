@@ -6,7 +6,8 @@ locale: es
 title: Manual del constructor de proyectos Defold
 toc:
 - Bob el constructor
-- Uso {usage}
+- anchor: usage
+  title: Uso
 ---
 
 # Bob el constructor

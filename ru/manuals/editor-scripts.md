@@ -9,16 +9,22 @@ toc:
 - Время выполнения скрипта редактора
 - Анатомия .editor_script
 - API редактора
-- Команды {commands}
+- anchor: commands
+  title: Команды
 - Использование команд для изменения состояния редактора в памяти
 - Использование команд с активным представлением редактора
 - Использование shell-команд
-- Хуки жизненного цикла {lifecycle-hooks}
+- anchor: lifecycle-hooks
+  title: Хуки жизненного цикла
 - Языковые серверы
-- HTTP-сервер {http-server}
-- Скрипты редактора в библиотеках {editor-scripts-in-libraries}
-- Предпочтения {preferences}
-- Режимы выполнения {execution-modes}
+- anchor: http-server
+  title: HTTP-сервер
+- anchor: editor-scripts-in-libraries
+  title: Скрипты редактора в библиотеках
+- anchor: preferences
+  title: Предпочтения
+- anchor: execution-modes
+  title: Режимы выполнения
 - Действия
 - Отменяемые действия
 - Неотменяемые действия

@@ -1,41 +1,41 @@
-## Slice-9 texturing
+## Текстурування Slice-9 {#slice-9-texturing}
 
-GUI box nodes and Sprite components sometimes feature elements that are context sensitive in regard to their size: panels and dialogs that need to be resized to fit the containing content or a health bar that need to be resized to show the remaining health of an enemy. These may cause visual problems when you apply texturing to the resized node or sprite.
+Вузли Box у GUI та компоненти Sprite іноді використовують для елементів, розмір яких залежить від контексту: панелей і діалогових вікон, що мають змінювати розмір відповідно до вмісту, або індикаторів здоров’я, які мають змінювати розмір, щоб показувати залишок здоров’я ворога. Накладання текстури на вузол або спрайт зі зміненим розміром може спричинити візуальні проблеми.
 
-Normally, the engine scales the texture to fit the rectangular boundaries, but by defining slice-9 edge areas it is possible to limit what parts of the texture that should scale:
+Зазвичай рушій масштабує текстуру, щоб вона вписувалася в прямокутні межі, але, визначивши крайові ділянки slice-9, можна обмежити частини текстури, які масштабуватимуться:
 
-![GUI scaling](/shared/images/gui_slice9_scaling.png)
+![Масштабування GUI](/shared/images/gui_slice9_scaling.png)
 
-The *Slice9* box node consists of 4 numbers that specify the number of pixels for the left, top, right and bottom margin that should not be regularly scaled:
+Властивість *Slice9* вузла Box складається з 4 чисел, що задають у пікселях ліве, верхнє, праве й нижнє поля, які не слід масштабувати звичайним способом:
 
-![Slice 9 properties](/shared/images/gui_slice9_properties.png)
+![Властивості Slice 9](/shared/images/gui_slice9_properties.png)
 
-The margins are set clockwise, starting on the left edge:
+Поля задаються за годинниковою стрілкою, починаючи з лівого краю:
 
-![Slice 9 sections](/shared/images/gui_slice9.png)
+![Ділянки Slice 9](/shared/images/gui_slice9.png)
 
-- Corner segments are never scaled.
-- Edge segments are scaled along a single axis. The left and right edge segments are scaled vertically. The top and bottom edge segments are scaled horizontally.
-- The central texture area is scaled horizontally and vertically as needed.
+- Кутові сегменти ніколи не масштабуються.
+- Крайові сегменти масштабуються вздовж однієї осі. Лівий і правий крайові сегменти масштабуються по вертикалі. Верхній і нижній крайові сегменти масштабуються по горизонталі.
+- Центральна ділянка текстури масштабується по горизонталі й вертикалі за потреби.
 
-The *Slice9* texture scaling described above is only applied when you change box node's or sprite's size:
+Описане вище масштабування текстури *Slice9* застосовується лише тоді, коли ви змінюєте розмір вузла Box або спрайта:
 
-![GUI box node size](/shared/images/gui_slice9_size.png)
+![Розмір вузла Box у GUI](/shared/images/gui_slice9_size.png)
 
-![Sprite size](/shared/images/sprite_slice9_size.png)
+![Розмір спрайта](/shared/images/sprite_slice9_size.png)
 
 <div class='important' markdown='1'>
-If you change scale parameter of the box node or sprite (or on the game object) - the node or sprite and texture is scaled without applying *Slice9* parameters.
+Якщо ви змінюєте параметр масштабу вузла Box чи спрайта (або ігрового об’єкта), вузол або спрайт разом із текстурою масштабується без застосування параметрів *Slice9*.
 </div>
 
 <div class='important' markdown='1'>
-When using slice-9 texturing on Sprites the [Sprite Trim Mode of the image](https://defold.com/manuals/atlas/#image-properties) must be set to Off.
+Коли ви використовуєте текстурування slice-9 для спрайтів, [властивість Sprite Trim Mode зображення](https://defold.com/manuals/atlas/#image-properties) має бути встановлена в Off.
 </div>
 
 
-### Mipmaps and slice-9
-Due to the way mipmapping works in the renderer, scaling of texture segments can sometimes exhibit artifacts. This happens when you _scale down_ segments below the original texture size. The renderer then selects a lower resolution mipmap for the segment, resulting in visual artifacts.
+### Піраміди текстур і slice-9 {#mipmaps-and-slice-9}
+Через особливості роботи пірамід текстур (mipmaps) у рендерері масштабування сегментів текстури іноді може спричиняти артефакти. Це трапляється, коли ви _зменшуєте_ сегменти відносно початкового розміру текстури. Тоді рендерер вибирає для сегмента рівень піраміди текстур із нижчою роздільністю, що призводить до візуальних артефактів.
 
-![Slice 9 mipmapping](/shared/images/gui_slice9_mipmap.png)
+![Піраміди текстур Slice 9](/shared/images/gui_slice9_mipmap.png)
 
-To avoid this problem, make sure that the texture's segments that will be scaled are small enough never to be scaled down, only up.
+Щоб уникнути цієї проблеми, переконайтеся, що сегменти текстури, які масштабуватимуться, достатньо малі: їх має бути потрібно лише збільшувати, а ніколи не зменшувати.

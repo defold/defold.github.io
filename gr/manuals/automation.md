@@ -5,10 +5,14 @@ layout: manual
 locale: gr
 title: Αυτοματισμός στο Defold
 toc:
-- Αυτοματισμός στο Defold {automation-in-defold}
-- Ντετερμινιστικός αυτοματισμός ή πράκτορες AI {deterministic-automation-or-ai-agents}
-- Ο βρόχος αυτοματισμού {the-automation-loop}
-- Επόμενα βήματα {next-steps}
+- anchor: automation-in-defold
+  title: Αυτοματισμός στο Defold
+- anchor: deterministic-automation-or-ai-agents
+  title: Ντετερμινιστικός αυτοματισμός ή πράκτορες AI
+- anchor: the-automation-loop
+  title: Ο βρόχος αυτοματισμού
+- anchor: next-steps
+  title: Επόμενα βήματα
 ---
 
 # Αυτοματισμός στο Defold {#automation-in-defold}

@@ -7,7 +7,8 @@ title: Manual de animação de modelo 3D no Defold
 toc:
 - Animação de modelo 3D
 - Reproduzindo animações
-- Morph targets {morph-targets}
+- anchor: morph-targets
+  title: Morph targets
 - Suporte de shader
 - A hierarquia de ossos
 - Animação por cursor
@@ -196,7 +197,7 @@ local bone_go = model.get_go("#wiggler", "Bone_002")
 
 ### Animação por cursor
 
-Além de usar `model.play_anim()` para avançar uma animação de modelo, componentes *Model* expõem uma propriedade "cursor" que pode ser manipulada com `go.animate()` (mais sobre [animações de propriedade](/pt/manuals/property-animation)):
+Além de usar `model.play_anim()` para avançar uma animação de modelo, componentes *Model* expõem uma propriedade `cursor` que pode ser manipulada com `go.animate()` (mais sobre [animações de propriedade](/pt/manuals/property-animation)):
 
 ```lua
 -- Define a animação em #model, mas não a inicia

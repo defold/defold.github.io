@@ -5,10 +5,14 @@ layout: manual
 locale: ko
 title: Defold 자동화
 toc:
-- Defold 자동화 {automation-in-defold}
-- 결정론적 자동화 또는 AI 에이전트 {deterministic-automation-or-ai-agents}
-- 자동화 루프 {the-automation-loop}
-- 다음 단계 {next-steps}
+- anchor: automation-in-defold
+  title: Defold 자동화
+- anchor: deterministic-automation-or-ai-agents
+  title: 결정론적 자동화 또는 AI 에이전트
+- anchor: the-automation-loop
+  title: 자동화 루프
+- anchor: next-steps
+  title: 다음 단계
 ---
 
 # Defold 자동화 {#automation-in-defold}

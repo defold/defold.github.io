@@ -5,13 +5,16 @@ layout: manual
 locale: pl
 title: Jak uzyskać pomoc
 toc:
-- Jak uzyskać pomoc {getting-help}
+- anchor: getting-help
+  title: Jak uzyskać pomoc
 - Zgłoś problem na forum
 - Wymagane informacje
 - Udostępnianie kodu
-- Zgłoś problem z poziomu edytora {report-a-problem-from-the-editor}
+- anchor: report-a-problem-from-the-editor
+  title: Zgłoś problem z poziomu edytora
 - Przedyskutuj problem na Discord
-- Pliki z logami {log-files}
+- anchor: log-files
+  title: Pliki z logami
 ---
 
 # Jak uzyskać pomoc {#getting-help}

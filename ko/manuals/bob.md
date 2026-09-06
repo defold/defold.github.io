@@ -6,7 +6,8 @@ locale: ko
 title: Defold 프로젝트 빌더 매뉴얼
 toc:
 - Bob the builder
-- 사용법 {usage}
+- anchor: usage
+  title: 사용법
 ---
 
 # Bob the builder

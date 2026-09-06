@@ -6,22 +6,38 @@ locale: it
 title: Automatizzare l'editor Defold con HTTP
 toc:
 - Automatizzare leditor Defold
-- Avviare leditor da uno strumento esterno {starting-the-editor-from-an-external-tool}
-- Individuare il server delleditor {locating-the-editor-server}
-- Individuare le operazioni tramite OpenAPI {discovering-operations-through-openapi}
-- Eseguire i comandi delleditor {executing-editor-commands}
-- Risposte dei comandi e attività asincrone {command-responses-and-asynchronous-work}
-- Creare una build HTML5 {building-html5}
-- Cercare nella documentazione API {searching-api-documentation}
-- Leggere loutput della console {reading-console-output}
-- Renderizzare le anteprime delle scene {rendering-scene-previews}
-- Eseguire Lua nelleditor {executing-editor-lua}
-- Modificare risorse e file {modifying-resources-and-files}
-- Preferenze {preferences}
-- Route definite dal progetto {project-defined-routes}
-- Hook del ciclo di vita {lifecycle-hooks}
-- Sicurezza e compatibilità {security-and-compatibility}
-- Server del motore {engine-server}
+- anchor: starting-the-editor-from-an-external-tool
+  title: Avviare leditor da uno strumento esterno
+- anchor: locating-the-editor-server
+  title: Individuare il server delleditor
+- anchor: discovering-operations-through-openapi
+  title: Individuare le operazioni tramite OpenAPI
+- anchor: executing-editor-commands
+  title: Eseguire i comandi delleditor
+- anchor: command-responses-and-asynchronous-work
+  title: Risposte dei comandi e attività asincrone
+- anchor: building-html5
+  title: Creare una build HTML5
+- anchor: searching-api-documentation
+  title: Cercare nella documentazione API
+- anchor: reading-console-output
+  title: Leggere loutput della console
+- anchor: rendering-scene-previews
+  title: Renderizzare le anteprime delle scene
+- anchor: executing-editor-lua
+  title: Eseguire Lua nelleditor
+- anchor: modifying-resources-and-files
+  title: Modificare risorse e file
+- anchor: preferences
+  title: Preferenze
+- anchor: project-defined-routes
+  title: Route definite dal progetto
+- anchor: lifecycle-hooks
+  title: Hook del ciclo di vita
+- anchor: security-and-compatibility
+  title: Sicurezza e compatibilità
+- anchor: engine-server
+  title: Server del motore
 ---
 
 # Automatizzare l'editor Defold

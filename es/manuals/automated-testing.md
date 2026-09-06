@@ -8,14 +8,18 @@ toc:
 - Pruebas automatizadas y verificación
 - Niveles de verificación
 - Código Lua reutilizable y fácil de probar
-- Pruebas en una colección en ejecución {tests-in-a-running-collection}
+- anchor: tests-in-a-running-collection
+  title: Pruebas en una colección en ejecución
 - Frameworks de pruebas
-- Resultados de pruebas estructurados {structured-test-results}
+- anchor: structured-test-results
+  title: Resultados de pruebas estructurados
 - Recopilar la salida de la consola
 - Logs guardados
 - Probar un juego en ejecución mediante una API de runtime
-- Pruebas de navegador para HTML5 {browser-tests-for-html5}
-- Vistas previas del editor y capturas de pantalla del runtime para la inspección visual {editor-previews-and-runtime-screenshots}
+- anchor: browser-tests-for-html5
+  title: Pruebas de navegador para HTML5
+- anchor: editor-previews-and-runtime-screenshots
+  title: Vistas previas del editor y capturas de pantalla del runtime para la inspección visual
 - Pruebas headless y CI
 - Informes de fallos y artefactos
 ---

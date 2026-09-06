@@ -13,9 +13,11 @@ toc:
 - 카메라 줌
 - 적응형 줌
 - 게임 오브젝트 따라가기
-- 화면 좌표와 월드 좌표 사이 변환 {converting-mouse-to-world-coordinates}
+- anchor: converting-mouse-to-world-coordinates
+  title: 화면 좌표와 월드 좌표 사이 변환
 - 런타임 조작
-- 서드파티 카메라 솔루션 {third-party-camera-solutions}
+- anchor: third-party-camera-solutions
+  title: 서드파티 카메라 솔루션
 ---
 
 # 카메라

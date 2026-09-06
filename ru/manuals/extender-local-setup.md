@@ -6,7 +6,8 @@ locale: ru
 title: Установка локального сервера сборки
 toc:
 - Установка локального сервера сборки
-- Как запустить локальный Extender с заранее подготовленными артефактами {how-to-run-local-extender-with-preconfigured-artifacts}
+- anchor: how-to-run-local-extender-with-preconfigured-artifacts
+  title: Как запустить локальный Extender с заранее подготовленными артефактами
 - Что насчёт macOS и iOS?
 - Как запустить локальный Extender с локально собранными артефактами
 ---

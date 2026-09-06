@@ -6,7 +6,8 @@ locale: ru
 title: GUI-компоновки
 toc:
 - GUI-компоновки
-- Создание профилей отображения {creating-display-profiles}
+- anchor: creating-display-profiles
+  title: Создание профилей отображения
 - Автоматический выбор компоновки (Display Profiles)
 - GUI-компоновки
 - Динамический выбор профиля

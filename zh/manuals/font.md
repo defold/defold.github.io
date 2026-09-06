@@ -10,12 +10,15 @@ toc:
 - 文本布局支持（例如从右到左）
 - 字体集合
 - 创建字体
-- 属性 {properties}
+- anchor: properties
+  title: 属性
 - 距离场字体
-- 位图BMFonts {bitmap-bmfonts}
+- anchor: bitmap-bmfonts
+  title: 位图BMFonts
 - 伪影和最佳实践
 - 字体缓存
-- 启用运行时字体 {enabling-runtime-fonts}
+- anchor: enabling-runtime-fonts
+  title: 启用运行时字体
 - 字体脚本
 - 向字体集合添加/移除字体
 - 预热字形

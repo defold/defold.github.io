@@ -12,7 +12,8 @@ toc:
 - 런타임 조작
 - 런타임 애니메이션
 - 프로퍼티 변경
-- 메터리얼 {material}
+- anchor: material
+  title: 메터리얼
 - 메터리얼 상수
 - 렌더링
 ---

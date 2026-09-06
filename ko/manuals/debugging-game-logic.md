@@ -11,7 +11,8 @@ toc:
 - Breakpoints 탭
 - Lua debug 라이브러리
 - 디버깅 체크리스트
-- 물리 문제 디버깅 {debugging-problems-with-physics}
+- anchor: debugging-problems-with-physics
+  title: 물리 문제 디버깅
 ---
 
 # 게임 로직 디버깅

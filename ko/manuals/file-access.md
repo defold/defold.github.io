@@ -9,7 +9,8 @@ toc:
 - 파일 및 폴더 액세스 함수
 - 파일 및 폴더 위치
 - 어플리케이션별 파일을 저장하고 로드하는 방법
-- 어플리케이션에 번들된 파일에 액세스하는 방법 {how-to-access-files-bundled-with-the-application}
+- anchor: how-to-access-files-bundled-with-the-application
+  title: 어플리케이션에 번들된 파일에 액세스하는 방법
 - 시스템 파일 액세스
 - 익스텐션
 ---

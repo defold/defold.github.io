@@ -5,13 +5,20 @@ layout: manual
 locale: es
 title: Cómo obtener ayuda
 toc:
-- Obtener ayuda {getting-help}
-- Reportar un problema en el foro {report-a-problem-on-the-forum}
-- Información requerida {required-information}
-- Compartir código {sharing-code}
-- Reportar un problema desde el editor {report-a-problem-from-the-editor}
-- Hablar sobre un problema en Discord {discuss-a-problem-on-discord}
-- Archivos de log {log-files}
+- anchor: getting-help
+  title: Obtener ayuda
+- anchor: report-a-problem-on-the-forum
+  title: Reportar un problema en el foro
+- anchor: required-information
+  title: Información requerida
+- anchor: sharing-code
+  title: Compartir código
+- anchor: report-a-problem-from-the-editor
+  title: Reportar un problema desde el editor
+- anchor: discuss-a-problem-on-discord
+  title: Hablar sobre un problema en Discord
+- anchor: log-files
+  title: Archivos de log
 ---
 
 # Obtener ayuda {#getting-help}

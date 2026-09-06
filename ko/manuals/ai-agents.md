@@ -5,17 +5,28 @@ layout: manual
 locale: ko
 title: Defold에서 AI 코딩 에이전트 사용하기
 toc:
-- Defold에서 AI 코딩 에이전트 사용하기 {using-ai-coding-agents-with-defold}
-- AI 에이전트가 유용한 경우 {when-an-ai-agent-is-useful}
-- 모델 중립적 Defold 인터페이스 {model-neutral-defold-interfaces}
-- 연동 계층 {integration-layers}
-- Model Context Protocol {model-context-protocol}
-- 커뮤니티 MCP 연동 {community-mcp-integrations}
-- 프로젝트 지침 {project-instructions}
-- 문서 찾기 {documentation-discovery}
-- 제한된 변경 및 검증 루프 {bounded-change-and-verification-loops}
-- 멀티모달 평가 {multimodal-evaluation}
-- 보안, 격리 및 모범 사례 {security-isolation-and-good-practices}
+- anchor: using-ai-coding-agents-with-defold
+  title: Defold에서 AI 코딩 에이전트 사용하기
+- anchor: when-an-ai-agent-is-useful
+  title: AI 에이전트가 유용한 경우
+- anchor: model-neutral-defold-interfaces
+  title: 모델 중립적 Defold 인터페이스
+- anchor: integration-layers
+  title: 연동 계층
+- anchor: model-context-protocol
+  title: Model Context Protocol
+- anchor: community-mcp-integrations
+  title: 커뮤니티 MCP 연동
+- anchor: project-instructions
+  title: 프로젝트 지침
+- anchor: documentation-discovery
+  title: 문서 찾기
+- anchor: bounded-change-and-verification-loops
+  title: 제한된 변경 및 검증 루프
+- anchor: multimodal-evaluation
+  title: 멀티모달 평가
+- anchor: security-isolation-and-good-practices
+  title: 보안, 격리 및 모범 사례
 ---
 
 # Defold에서 AI 코딩 에이전트 사용하기 {#using-ai-coding-agents-with-defold}

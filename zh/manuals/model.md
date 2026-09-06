@@ -12,7 +12,8 @@ toc:
 - 运行时操作
 - 运行时动画
 - 更改属性
-- 材质 {material}
+- anchor: material
+  title: 材质
 - 材质常量
 - 渲染
 ---

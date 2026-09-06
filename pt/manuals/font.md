@@ -10,12 +10,14 @@ toc:
 - Suporte a layout de texto (por exemplo, da direita para a esquerda)
 - Coleção de fontes
 - Criando uma fonte
-- Propriedades {properties}
+- anchor: properties
+  title: Propriedades
 - Fontes de campo de distância
 - Bitmap BMFonts
 - Artefatos e boas práticas
 - Cache de fontes
-- Habilitando fontes em runtime {enabling-runtime-fonts}
+- anchor: enabling-runtime-fonts
+  title: Habilitando fontes em runtime
 - Script de fontes
 - Adicionando/removendo fontes de uma coleção de fontes
 - Pré-aquecendo glifos

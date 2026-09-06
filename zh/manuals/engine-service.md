@@ -9,7 +9,8 @@ toc:
 - 可用性和端口发现
 - 内置端点
 - 扩展定义的运行时路由
-- Automation Bridge 扩展 {automation-bridge-extension}
+- anchor: automation-bridge-extension
+  title: Automation Bridge 扩展
 - 编辑器客户端和运行时客户端
 - 限制和安全性
 ---

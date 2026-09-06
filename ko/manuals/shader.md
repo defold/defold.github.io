@@ -14,7 +14,8 @@ toc:
 - Uniforms(Defold에서는 상수라고 부름)
 - 내장 변수
 - 텍스쳐 함수
-- 정밀도 {precision}
+- anchor: precision
+  title: 정밀도
 - 모두 합치기
 - 쉐이더에 snippet 포함하기
 - 헤더 가드

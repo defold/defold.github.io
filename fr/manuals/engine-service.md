@@ -5,13 +5,20 @@ layout: manual
 locale: fr
 title: Le service du moteur et les API HTTP d'exécution
 toc:
-- Le service du moteur et les API HTTP dexécution {the-engine-service-and-runtime-http-apis}
-- Disponibilité et découverte du port {availability-and-port-discovery}
-- Points de terminaison intégrés {built-in-endpoints}
-- Routes dexécution définies par des extensions {extension-defined-runtime-routes}
-- Extension Automation Bridge {automation-bridge-extension}
-- Clients de léditeur et dexécution {editor-and-runtime-clients}
-- Limites et sécurité {limitations-and-security}
+- anchor: the-engine-service-and-runtime-http-apis
+  title: Le service du moteur et les API HTTP dexécution
+- anchor: availability-and-port-discovery
+  title: Disponibilité et découverte du port
+- anchor: built-in-endpoints
+  title: Points de terminaison intégrés
+- anchor: extension-defined-runtime-routes
+  title: Routes dexécution définies par des extensions
+- anchor: automation-bridge-extension
+  title: Extension Automation Bridge
+- anchor: editor-and-runtime-clients
+  title: Clients de léditeur et dexécution
+- anchor: limitations-and-security
+  title: Limites et sécurité
 ---
 
 # Le service du moteur et les API HTTP d'exécution {#the-engine-service-and-runtime-http-apis}

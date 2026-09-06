@@ -5,7 +5,8 @@ layout: manual
 locale: pl
 title: Strumieniowanie dźwięku w Defold
 toc:
-- Strumieniowanie dźwięku {sound-streaming}
+- anchor: sound-streaming
+  title: Strumieniowanie dźwięku
 - Przykład
 - Jak włączyć strumieniowanie dźwięków
 - Najprostszy sposób

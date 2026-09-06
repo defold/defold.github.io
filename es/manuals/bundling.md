@@ -7,7 +7,8 @@ title: Crear un bundle de una aplicación
 toc:
 - Crear un bundle de una aplicación
 - Crear bundles desde el editor
-- Reportes de build {build-reports}
+- anchor: build-reports
+  title: Reportes de build
 - Android
 - iOS
 - macOS

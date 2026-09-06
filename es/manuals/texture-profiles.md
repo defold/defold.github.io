@@ -5,19 +5,32 @@ layout: manual
 locale: es
 title: Perfiles de textura en Defold
 toc:
-- Perfiles de textura {texture-profiles}
-- Basis Universal {basis-universal}
-- ASTC {astc}
-- Archivo de perfiles de textura {texture-profiles-1}
-- Configuración de rutas {path-settings}
-- Perfiles {profiles}
-- Formatos de textura {texture-formats}
-- Compresores {compressors}
-- Imagen de ejemplo {example-image}
-- Tiempos de compresión {compression-times}
-- Pérdida de señal {signal-loss}
-- Tamaños de los archivos comprimidos {compression-file-sizes}
-- Calidad de imagen {image-quality}
+- anchor: texture-profiles
+  title: Perfiles de textura
+- anchor: basis-universal
+  title: Basis Universal
+- anchor: astc
+  title: ASTC
+- anchor: texture-profiles-1
+  title: Archivo de perfiles de textura
+- anchor: path-settings
+  title: Configuración de rutas
+- anchor: profiles
+  title: Perfiles
+- anchor: texture-formats
+  title: Formatos de textura
+- anchor: compressors
+  title: Compresores
+- anchor: example-image
+  title: Imagen de ejemplo
+- anchor: compression-times
+  title: Tiempos de compresión
+- anchor: signal-loss
+  title: Pérdida de señal
+- anchor: compression-file-sizes
+  title: Tamaños de los archivos comprimidos
+- anchor: image-quality
+  title: Calidad de imagen
 ---
 
 # Perfiles de textura {#texture-profiles}

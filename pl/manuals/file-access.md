@@ -9,7 +9,8 @@ toc:
 - Funkcje dostępu do plików i folderów
 - Lokalizacje plików i folderów
 - Jak zapisywać i odczytywać pliki specyficzne dla aplikacji
-- Jak uzyskiwać dostęp do plików dołączonych do aplikacji {how-to-access-files-bundled-with-the-application}
+- anchor: how-to-access-files-bundled-with-the-application
+  title: Jak uzyskiwać dostęp do plików dołączonych do aplikacji
 - Dostęp do plików systemowych
 - Rozszerzenia
 ---

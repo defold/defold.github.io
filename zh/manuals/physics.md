@@ -7,7 +7,8 @@ title: Defold 中的物理系统
 toc:
 - 物理
 - 物理引擎模拟使用的单位
-- 物理更新 {physics-updates}
+- anchor: physics-updates
+  title: 物理更新
 - 注意事项和常见问题
 ---
 

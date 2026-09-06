@@ -5,23 +5,40 @@ layout: manual
 locale: ko
 title: HTTP를 사용한 Defold 에디터 자동화
 toc:
-- Defold 에디터 자동화 {automating-the-defold-editor}
-- 외부 도구에서 에디터 시작하기 {starting-the-editor-from-an-external-tool}
-- 에디터 서버 찾기 {locating-the-editor-server}
-- OpenAPI를 통한 동작 찾기 {discovering-operations-through-openapi}
-- 에디터 명령 실행하기 {executing-editor-commands}
-- 명령 응답과 비동기 작업 {command-responses-and-asynchronous-work}
-- HTML5 빌드하기 {building-html5}
-- API 문서 검색하기 {searching-api-documentation}
-- 콘솔 출력 읽기 {reading-console-output}
-- 씬 미리보기 렌더링하기 {rendering-scene-previews}
-- 에디터 Lua 실행하기 {executing-editor-lua}
-- 리소스와 파일 수정하기 {modifying-resources-and-files}
-- 환경 설정 {preferences}
-- 프로젝트에서 정의한 경로 {project-defined-routes}
-- 라이프사이클 훅 {lifecycle-hooks}
-- 보안과 호환성 {security-and-compatibility}
-- 엔진 서버 {engine-server}
+- anchor: automating-the-defold-editor
+  title: Defold 에디터 자동화
+- anchor: starting-the-editor-from-an-external-tool
+  title: 외부 도구에서 에디터 시작하기
+- anchor: locating-the-editor-server
+  title: 에디터 서버 찾기
+- anchor: discovering-operations-through-openapi
+  title: OpenAPI를 통한 동작 찾기
+- anchor: executing-editor-commands
+  title: 에디터 명령 실행하기
+- anchor: command-responses-and-asynchronous-work
+  title: 명령 응답과 비동기 작업
+- anchor: building-html5
+  title: HTML5 빌드하기
+- anchor: searching-api-documentation
+  title: API 문서 검색하기
+- anchor: reading-console-output
+  title: 콘솔 출력 읽기
+- anchor: rendering-scene-previews
+  title: 씬 미리보기 렌더링하기
+- anchor: executing-editor-lua
+  title: 에디터 Lua 실행하기
+- anchor: modifying-resources-and-files
+  title: 리소스와 파일 수정하기
+- anchor: preferences
+  title: 환경 설정
+- anchor: project-defined-routes
+  title: 프로젝트에서 정의한 경로
+- anchor: lifecycle-hooks
+  title: 라이프사이클 훅
+- anchor: security-and-compatibility
+  title: 보안과 호환성
+- anchor: engine-server
+  title: 엔진 서버
 ---
 
 # Defold 에디터 자동화 {#automating-the-defold-editor}

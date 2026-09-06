@@ -17,7 +17,8 @@ toc:
 - Faza post update
 - Faza renderowania
 - Finalizacja
-- Rozsyłanie wiadomości {dispatching-messages}
+- anchor: dispatching-messages
+  title: Rozsyłanie wiadomości
 ---
 
 # Cykl życia aplikacji

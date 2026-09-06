@@ -8,20 +8,26 @@ toc:
 - Render
 - Potok renderowania - co, kiedy i gdzie?
 - Domyślny render
-- Predykaty renderowania {render-predicates}
-- Domyślna projekcja widoku {default-view-projection}
+- anchor: render-predicates
+  title: Predykaty renderowania
+- anchor: default-view-projection
+  title: Domyślna projekcja widoku
 - Projekcja Stretch
 - Projekcja Fixed Fit
-- Projekcja Fixed {fixed-projection}
+- anchor: fixed-projection
+  title: Projekcja Fixed
 - Projekcja kamery
-- Odrzucanie poza bryłą widokową {frustum-culling}
+- anchor: frustum-culling
+  title: Odrzucanie poza bryłą widokową
 - Układy współrzędnych
-- Skrypt do renderowania {the-render-script}
+- anchor: the-render-script
+  title: Skrypt do renderowania
 - Zasoby renderowania
 - Uchwyt tekstur
 - Obsługiwane API graficzne
 - Komunikaty systemowe
-- Wywołania rysowania i grupowanie {draw-calls-and-batching}
+- anchor: draw-calls-and-batching
+  title: Wywołania rysowania i grupowanie
 - Zasady grupowania dla komponentów innych niż GUI
 - Zasady grupowania dla komponentów GUI
 ---

@@ -11,8 +11,10 @@ toc:
 - Escribir código nativo
 - Usar el editor de código integrado
 - Autocompletado de código
-- Ir a un símbolo {jump-to-symbol}
-- Configuración de linting {linting-configuration}
+- anchor: jump-to-symbol
+  title: Ir a un símbolo
+- anchor: linting-configuration
+  title: Configuración de linting
 - Usar un editor de código externo
 - Visual Studio Code - Defold Kit
 - Software de documentación

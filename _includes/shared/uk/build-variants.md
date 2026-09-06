@@ -1,37 +1,37 @@
-## Build variants
+## Варіанти збірки {#build-variants}
 
-When you bundle a game, you need to choose what type of engine you wish to use. You have three basic options:
+Під час пакування гри потрібно вибрати, який тип рушія ви хочете використовувати. Є три основні варіанти:
 
   * Debug
   * Release
   * Headless
 
-These different versions are also referred to as `Build variants`
+Ці різновиди також називають `Build variants`
 
 <div class='sidenote' markdown='1'>
-When you choose <kbd>Project ▸ Build</kbd> you'll always get the debug version.
+Якщо вибрати <kbd>Project ▸ Build</kbd>, ви завжди отримаєте налагоджувальну версію.
 </div>
 
 
-### Debug
+### Debug {#debug}
 
-This type of executable is typically used during development of a game as it has several useful debugging features included:
+Цей тип виконуваної програми зазвичай використовують під час розробки гри, оскільки він містить кілька корисних функцій налагодження:
 
-* Profiler - Used for gathering performance and usage counters. Learn how to use the profiler in the [Profiling manual](/manuals/profiling/).
-* Logging - The engine will log system information, warnings and errors when logging is enabled. The engine will also output logs from the Lua `print()` function and from native extensions logging using `dmLogInfo()`, `dmLogError()` and so on. Learn how to read these logs in the [Game and System Logs manual](https://defold.com/manuals/debugging-game-and-system-logs/).
-* Hot reload - Hot-reload is a powerful feature which lets a developer reload resource while the game is running. Learn how to use this in the [Hot-Reload manual](https://defold.com/manuals/hot-reload/).
-* Engine services - It is possible to connect to and interact with a debug version of a game through a number of different open TCP ports and services. The services include the hot-reload feature, remote log access and the profiler mentioned above, but also other services to remotely interact with the engine. Learn more about the engine services [in the developer documentation](https://github.com/defold/defold/blob/dev/engine/docs/DEBUG_PORTS_AND_SERVICES.md).
-
-
-### Release
-
-This variant has the debugging features disabled. This options should be chosen when the game is ready to be released to the app store or in other ways shared with players. It is not recommended to release a game with the debugging features enabled for a number of reasons:
-
-* The debugging features take up a little bit of size in the binary, and [it is a best practice to try to keep the binary size of a released game as small as possible](https://defold.com/manuals/optimization/#optimize-application-size).
-* The debugging features takes a little bit of CPU time as well. This can impact the performance of the game if a user has a low-end hardware. On mobile phones the increased CPU usage will also contribute to heating and battery drain.
-* The debugging features may expose information about the game that is not intended for the eyes of the players, either from a security, cheating or fraud perspective.
+* Профайлер — збирає показники продуктивності та використання ресурсів. Дізнайтеся, як ним користуватися, у [посібнику з профілювання](/manuals/profiling/).
+* Ведення журналу — коли його ввімкнено, рушій записує системну інформацію, попередження та помилки. Рушій також виводить повідомлення функції Lua `print()` і нативних розширень, які використовують `dmLogInfo()`, `dmLogError()` тощо. Дізнайтеся, як читати ці журнали, у [посібнику з журналів гри та системи](https://defold.com/manuals/debugging-game-and-system-logs/).
+* Гаряче перезавантаження — потужна функція, що дає розробнику змогу перезавантажувати ресурси під час роботи гри. Дізнайтеся, як нею користуватися, у [посібнику з гарячого перезавантаження](https://defold.com/manuals/hot-reload/).
+* Сервіси рушія — до налагоджувальної версії гри можна під’єднатися через різні відкриті порти TCP та сервіси й взаємодіяти з нею. До цих сервісів належать згадані вище гаряче перезавантаження, віддалений доступ до журналу й профайлер, а також інші сервіси для віддаленої взаємодії з рушієм. Докладніше про сервіси рушія читайте [в документації для розробників](https://github.com/defold/defold/blob/dev/engine/docs/DEBUG_PORTS_AND_SERVICES.md).
 
 
-### Headless
+### Release {#release}
 
-This executable runs without any graphics and sound. It means that you can run the game unit/smoke tests on a CI server, or even have it as a game server in the cloud.
+У цьому варіанті функції налагодження вимкнено. Його слід вибирати, коли гра готова до випуску в магазині застосунків або до поширення серед гравців іншим способом. Випускати гру з увімкненими функціями налагодження не рекомендовано з кількох причин:
+
+* Функції налагодження дещо збільшують розмір двійкового файлу, а [розмір двійкового файлу випущеної гри рекомендовано зводити до мінімуму](https://defold.com/manuals/optimization/#optimize-application-size).
+* Функції налагодження також потребують певного часу процесора. Це може впливати на продуктивність гри, якщо користувач має малопотужний пристрій. На мобільних телефонах додаткове навантаження на процесор також спричиняє нагрівання й швидше розряджання батареї.
+* Функції налагодження можуть розкривати інформацію про гру, не призначену для гравців, що створює ризики для безпеки або може сприяти використанню читів чи шахрайству.
+
+
+### Headless {#headless}
+
+Ця виконувана програма працює без графіки та звуку. Тож ви можете запускати тести модулів або димові тести гри на сервері CI чи навіть використовувати її як ігровий сервер у хмарі.

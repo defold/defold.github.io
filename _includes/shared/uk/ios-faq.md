@@ -1,15 +1,15 @@
-#### Q: I am unable to install my Defold game using a free Apple Developer account.
-A: Make sure that you are using the same bundle identifier in your Defold project as you used in the Xcode project when you generated the mobile provisioning profile.
+#### П: Не вдається встановити гру Defold за допомогою безкоштовного облікового запису Apple Developer. {#q-i-am-unable-to-install-my-defold-game-using-a-free-apple-developer-account}
+В: Переконайтеся, що ідентифікатор пакета у вашому проєкті Defold збігається з ідентифікатором у проєкті Xcode, який ви використовували для створення мобільного профілю підготовки.
 
-#### Q: How can I check the entitlements of a bundled application?
-A: From [Inspect the entitlements of a built app](https://developer.apple.com/library/archive/technotes/tn2415/_index.html#//apple_ref/doc/uid/DTS40016427-CH1-APPENTITLEMENTS):
+#### П: Як перевірити права доступу пакета застосунку? {#q-how-can-i-check-the-entitlements-of-a-bundled-application}
+В: Із розділу [«Перевірка прав доступу зібраного застосунку»](https://developer.apple.com/library/archive/technotes/tn2415/_index.html#//apple_ref/doc/uid/DTS40016427-CH1-APPENTITLEMENTS):
 
 ```sh
 codesign -d --ent :- /path/to/the.app
 ```
 
-#### Q: How can I check the entitlements of a provisioning profile
-A: From [Inspecting a profile's entitlements](https://developer.apple.com/library/archive/technotes/tn2415/_index.html#//apple_ref/doc/uid/DTS40016427-CH1-PROFILESENTITLEMENTS):
+#### П: Як перевірити права доступу профілю підготовки? {#q-how-can-i-check-the-entitlements-of-a-provisioning-profile}
+В: Із розділу [«Перевірка прав доступу профілю»](https://developer.apple.com/library/archive/technotes/tn2415/_index.html#//apple_ref/doc/uid/DTS40016427-CH1-PROFILESENTITLEMENTS):
 
 ```sh
 security cms -D -i /path/to/iOSTeamProfile.mobileprovision

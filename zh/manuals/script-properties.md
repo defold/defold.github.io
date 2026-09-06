@@ -9,7 +9,8 @@ toc:
 - 定义脚本属性
 - 访问脚本属性
 - 工厂创建的对象
-- 资源属性 {resource-properties}
+- anchor: resource-properties
+  title: 资源属性
 ---
 
 # 脚本属性

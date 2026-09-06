@@ -10,7 +10,8 @@ toc:
 - 库URL
 - 基本访问认证
 - 高级访问认证
-- 设置库依赖 {setting-up-library-dependencies}
+- anchor: setting-up-library-dependencies
+  title: 设置库依赖
 - 编辑库依赖中的文件
 - 损坏的引用
 - 名称冲突

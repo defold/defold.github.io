@@ -5,20 +5,34 @@ layout: manual
 locale: es
 title: Manual de fuentes en Defold
 toc:
-- Archivos de fuente {font-files}
-- Fuentes offline o en runtime {offline-or-runtime-fonts}
-- Compatibilidad con layout de texto (p. ej., derecha a izquierda) {text-layout-support-eg-right-to-left}
-- Colección de fuentes {font-collection}
-- Crear una fuente {creating-a-font}
-- Propiedades {properties}
-- Fuentes de campo de distancia {distance-field-fonts}
-- Bitmap BMFonts {bitmap-bmfonts}
-- Artefactos y buenas prácticas {artifacts-and-best-practices}
-- Caché de fuentes {font-cache}
-- Habilitar fuentes en runtime {enabling-runtime-fonts}
-- Scripting de fuentes {font-scripting}
-- Agregar/eliminar fuentes de una colección de fuentes {addingremoving-fonts-to-a-font-collection}
-- Precalentar glifos {prewarming-glyphs}
+- anchor: font-files
+  title: Archivos de fuente
+- anchor: offline-or-runtime-fonts
+  title: Fuentes offline o en runtime
+- anchor: text-layout-support-eg-right-to-left
+  title: Compatibilidad con layout de texto (p. ej., derecha a izquierda)
+- anchor: font-collection
+  title: Colección de fuentes
+- anchor: creating-a-font
+  title: Crear una fuente
+- anchor: properties
+  title: Propiedades
+- anchor: distance-field-fonts
+  title: Fuentes de campo de distancia
+- anchor: bitmap-bmfonts
+  title: Bitmap BMFonts
+- anchor: artifacts-and-best-practices
+  title: Artefactos y buenas prácticas
+- anchor: font-cache
+  title: Caché de fuentes
+- anchor: enabling-runtime-fonts
+  title: Habilitar fuentes en runtime
+- anchor: font-scripting
+  title: Scripting de fuentes
+- anchor: addingremoving-fonts-to-a-font-collection
+  title: Agregar/eliminar fuentes de una colección de fuentes
+- anchor: prewarming-glyphs
+  title: Precalentar glifos
 ---
 
 # Archivos de fuente {#font-files}

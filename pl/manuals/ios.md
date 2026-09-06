@@ -8,10 +8,12 @@ toc:
 - Tworzenie na iOS
 - Proces podpisywania kodu przez Apple
 - Tworzenie przy użyciu bezpłatnego konta Apple Developer
-- Tworzenie pakietu aplikacji iOS {creating-an-ios-application-bundle}
+- anchor: creating-an-ios-application-bundle
+  title: Tworzenie pakietu aplikacji iOS
 - Własny Info.plist i wykrywanie celów w sieci lokalnej
 - Instalowanie i uruchamianie pakietu na podłączonym iPhonie
-- Tworzenie storyboardu {creating-a-storyboard}
+- anchor: creating-a-storyboard
+  title: Tworzenie storyboardu
 - Tworzenie katalogu zasobów ikon
 - Instalowanie pakietu aplikacji iOS
 - Informacje o zgodności eksportowej
@@ -72,8 +74,8 @@ Od Xcode 7 każdy może zainstalować Xcode i tworzyć na urządzeniu za darmo. 
 1. Podłącz urządzenie.
 2. Zainstaluj Xcode.
 3. Dodaj nowe konto do Xcode i zaloguj się przy użyciu Apple ID.
-4. Utwórz nowy projekt. Najprostsza opcja, "Single View App", działa bez problemu.
-5. Wybierz swój "Team" (utworzony automatycznie) i nadaj aplikacji bundle identifier.
+4. Utwórz nowy projekt. Najprostsza opcja, `Single View App`, działa bez problemu.
+5. Wybierz swój `Team` (utworzony automatycznie) i nadaj aplikacji bundle identifier.
 
 <div class='important' markdown='1'>
 Zanotuj bundle identifier, ponieważ musisz użyć tego samego bundle identifier w projekcie Defold.
@@ -84,7 +86,7 @@ Zanotuj bundle identifier, ponieważ musisz użyć tego samego bundle identifier
    ![](/manuals/images/ios/xcode_certificates.png)
 
 7. Zbuduj aplikację na urządzeniu. Przy pierwszym uruchomieniu Xcode poprosi o włączenie trybu deweloperskiego i przygotuje urządzenie ze wsparciem debuggera. Może to chwilę potrwać.
-8. Gdy potwierdzisz, że aplikacja działa, znajdź ją na dysku. Lokalizację kompilacji zobaczysz w raporcie budowania w "Report Navigator".
+8. Gdy potwierdzisz, że aplikacja działa, znajdź ją na dysku. Lokalizację kompilacji zobaczysz w raporcie budowania w `Report Navigator`.
 
    ![](/manuals/images/ios/app_location.png)
 
@@ -92,7 +94,7 @@ Zanotuj bundle identifier, ponieważ musisz użyć tego samego bundle identifier
 
    ![](/manuals/images/ios/app_contents.png)
 
-10. Skopiuj plik "embedded.mobileprovision" w miejsce na dysku, w którym będzie łatwo go znaleźć.
+10. Skopiuj plik `embedded.mobileprovision` w miejsce na dysku, w którym będzie łatwo go znaleźć.
 
    ![](/manuals/images/ios/free_provisioning.png)
 
@@ -139,7 +141,7 @@ Warunek Mustache pomija wpisy wykrywania w pakietach release. Tekst opisu użyci
 
 ## Instalowanie i uruchamianie pakietu na podłączonym iPhonie
 
-Zbudowany pakiet możesz zainstalować i uruchomić, używając w oknie Bundle pól wyboru edytora <kbd>Install on connected device</kbd> i <kbd>Launch installed app</kbd>:
+Zbudowany pakiet możesz zainstalować i uruchomić, używając w oknie Bundle pól wyboru edytora `Install on connected device` i `Launch installed app`:
 
 ![Instalowanie i uruchamianie pakietu iOS](/manuals/images/ios/install_and_launch.png)
 
@@ -168,7 +170,7 @@ Przeciągnij i upuść obraz, aby zaimportować go do projektu. Następnie wybie
 
 ![Dodaj obraz](/manuals/images/ios/xcode_storyboard_add_image.png)
 
-Otwórz `LaunchScreen.storyboard` i kliknij przycisk plusa (<kbd>+</kbd>). Wpisz "imageview" w oknie dialogowym, aby znaleźć komponent Image View.
+Otwórz `LaunchScreen.storyboard` i kliknij przycisk plusa (<kbd>+</kbd>). Wpisz `imageview` w oknie dialogowym, aby znaleźć komponent Image View.
 
 ![Dodaj widok obrazu](/manuals/images/ios/xcode_storyboard_add_imageview.png)
 
@@ -219,10 +221,10 @@ Przeciągnij i upuść obrazy do pustych pól odpowiadających różnym obsługi
 Nie dodawaj żadnych ikon dla Notifications, Settings ani Spotlight.
 </div>
 
-Gdy skończysz, ustaw aktywny schemat na <kbd>Build -> Any iOS Device (arm64)</kbd> (albo <kbd>Generic iOS Device</kbd>) i wybierz <kbd>Product -> Build</kbd>. Poczekaj, aż proces budowania się zakończy.
+Gdy skończysz, ustaw aktywny schemat na `Build -> Any iOS Device (arm64)` (albo `Generic iOS Device`) i wybierz <kbd>Product -> Build</kbd>. Poczekaj, aż proces budowania się zakończy.
 
 <div class='sidenote' markdown='1'>
-Upewnij się, że budujesz dla <kbd>Any iOS Device (arm64)</kbd> albo <kbd>Generic iOS Device</kbd>, bo w przeciwnym razie podczas wysyłania builda pojawi się błąd `ERROR ITMS-90704`.
+Upewnij się, że budujesz dla `Any iOS Device (arm64)` albo `Generic iOS Device`, bo w przeciwnym razie podczas wysyłania builda pojawi się błąd `ERROR ITMS-90704`.
 </div>
 
 ![Zbuduj projekt](/manuals/images/ios/xcode_icons_build.png)
@@ -244,7 +246,7 @@ Ikony App Store nie muszą być odwoływane w *game.project*. Są automatycznie 
 
 Edytor zapisuje plik *.ipa*, który jest pakietem aplikacji iOS. Aby zainstalować ten plik na urządzeniu, możesz użyć jednego z poniższych narzędzi:
 
-* Xcode przez okno <kbd>Devices and Simulators</kbd>
+* Xcode przez okno `Devices and Simulators`
 * [`ios-deploy`](https://github.com/ios-control/ios-deploy) command line tool
 * [`Apple Configurator 2`](https://apps.apple.com/us/app/apple-configurator-2/) z macOS App Store
 * iTunes

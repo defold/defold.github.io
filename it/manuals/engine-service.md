@@ -6,12 +6,18 @@ locale: it
 title: Il servizio del motore e le API HTTP a runtime
 toc:
 - Il servizio del motore e le API HTTP a runtime
-- Disponibilità e individuazione della porta {availability-and-port-discovery}
-- Endpoint integrati {built-in-endpoints}
-- Route a runtime definite dalle estensioni {extension-defined-runtime-routes}
-- Estensione Automation Bridge {automation-bridge-extension}
-- Client delleditor e del runtime {editor-and-runtime-clients}
-- Limitazioni e sicurezza {limitations-and-security}
+- anchor: availability-and-port-discovery
+  title: Disponibilità e individuazione della porta
+- anchor: built-in-endpoints
+  title: Endpoint integrati
+- anchor: extension-defined-runtime-routes
+  title: Route a runtime definite dalle estensioni
+- anchor: automation-bridge-extension
+  title: Estensione Automation Bridge
+- anchor: editor-and-runtime-clients
+  title: Client delleditor e del runtime
+- anchor: limitations-and-security
+  title: Limitazioni e sicurezza
 ---
 
 # Il servizio del motore e le API HTTP a runtime

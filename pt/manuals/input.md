@@ -9,8 +9,10 @@ toc:
 - Configurando mapeamentos de entrada
 - Tipos de trigger
 - Entrada de acelerômetro
-- Foco de entrada {input-focus}
-- Despacho de entrada e on_input() {input-dispatch-and-on_input}
+- anchor: input-focus
+  title: Foco de entrada
+- anchor: input-dispatch-and-on_input
+  title: Despacho de entrada e on_input()
 - Foco de entrada e componentes de proxy de coleção
 - Liberando entrada
 - Consumindo entrada
@@ -53,7 +55,7 @@ Os mapeamentos de entrada são uma tabela de todo o projeto que permite especifi
 
 ![Input binding setting](/manuals/images/input/setting.png)
 
-Um arquivo de mapeamento de entrada padrão é criado automaticamente com todos os novos modelos de projeto, então normalmente não há necessidade de criar um novo arquivo de mapeamento. O arquivo padrão se chama "game.input_binding" e pode ser encontrado na pasta "input" na raiz do projeto. Dê <kbd>clique duplo</kbd> no arquivo para abri-lo no editor:
+Um arquivo de mapeamento de entrada padrão é criado automaticamente com todos os novos modelos de projeto, então normalmente não há necessidade de criar um novo arquivo de mapeamento. O arquivo padrão se chama `game.input_binding` e pode ser encontrado na pasta `input` na raiz do projeto. Dê <kbd>clique duplo</kbd> no arquivo para abri-lo no editor:
 
 ![Input set bindings](/manuals/images/input/input_binding.png)
 
@@ -63,7 +65,7 @@ Para criar um novo mapeamento, clique no botão <kbd>+</kbd> na parte inferior d
 : A entrada bruta a escutar, selecionada em uma lista rolável de entradas disponíveis.
 
 *Action*
-: O nome de ação dado às ações de entrada quando elas são criadas e despachadas para seus scripts. O mesmo nome de ação pode ser atribuído a várias entradas. Por exemplo, você pode mapear a tecla <kbd>Space</kbd> e o botão "A" do gamepad para a ação `jump`. Observe que há um bug conhecido em que entradas de toque infelizmente não podem ter os mesmos nomes de ação que outras entradas.
+: O nome de ação dado às ações de entrada quando elas são criadas e despachadas para seus scripts. O mesmo nome de ação pode ser atribuído a várias entradas. Por exemplo, você pode mapear a tecla <kbd>Space</kbd> e o botão `A` do gamepad para a ação `jump`. Observe que há um bug conhecido em que entradas de toque infelizmente não podem ter os mesmos nomes de ação que outras entradas.
 
 ## Tipos de trigger
 
@@ -180,7 +182,7 @@ Há muitos bons casos de uso em que consumir entrada fornece uma forma simples e
 
 ![consuming input](/manuals/images/input/game.png)
 
-O menu de pausa inicialmente está oculto (desativado) e, quando o jogador toca no item HUD "PAUSE", ele é ativado:
+O menu de pausa inicialmente está oculto (desativado) e, quando o jogador toca no item HUD `PAUSE`, ele é ativado:
 
 ```lua
 function on_input(self, action_id, action)

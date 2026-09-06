@@ -10,12 +10,15 @@ toc:
 - Właściwości GUI
 - Manipulacja w czasie działania
 - Zależności
-- Typy węzłów {node-types}
-- Właściwości węzłów {node-properties}
+- anchor: node-types
+  title: Typy węzłów
+- anchor: node-properties
+  title: Właściwości węzłów
 - Pivot, Anchors i Adjust Mode
 - Kolejność rysowania
 - Hierarchie rodzic-dziecko
-- Warstwy i draw calls {layers-and-draw-calls}
+- anchor: layers-and-draw-calls
+  title: Warstwy i draw calls
 ---
 
 # GUI

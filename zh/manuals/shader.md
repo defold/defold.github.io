@@ -14,7 +14,8 @@ toc:
 - Uniform（在 Defold 中称为常量）
 - 内置变量
 - 纹理函数
-- 精度 {precision}
+- anchor: precision
+  title: 精度
 - 整合
 - 在着色器中包含代码片段
 - 头文件保护

@@ -50,9 +50,9 @@ CPM = стоимость за тысячу. Сумма, которую рекл�
 Портал [Defold Asset Portal](/tags/stars/ads/) содержит несколько активов, которые интегрируются с поставщиками рекламы:
 
 * [AdMob](https://defold.com/assets/admob-defold/) - Показ рекламы с помощью сети Google AdMob.
-* [AppLovin MAX](https://defold.com/extension-applovin/) - Показ рекламы с помощью рекламной медиации AppLovin MAX.
+* [Enhance](https://defold.com/assets/enhance/) - Поддерживает несколько различных рекламных сетей. Требуется дополнительный шаг после сборки.
 * [Facebook Instant Games](https://defold.com/assets/facebookinstantgames/) - Показывать рекламу в вашей игре Facebook Instant Game.
-* [LevelPlay](https://defold.com/extension-levelplay/) - Показ рекламы с помощью рекламной медиации Unity LevelPlay.
+* [IronSource](https://defold.com/assets/ironsource/) - Показывать рекламу, используя рекламную сеть IronSource.
 * [Unity Ads](https://defold.com/assets/defvideoads/) - показ рекламы с помощью сети Unity Ads.
 
 

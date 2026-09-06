@@ -1,51 +1,51 @@
-## Downloading
+## Завантаження {#downloading}
 
-Go to the [Defold download page](https://defold.com/download/) where you will find Download buttons for macOS, Windows and Linux (Ubuntu):
+Перейдіть на [сторінку завантаження Defold](https://defold.com/download/), де ви знайдете кнопки Download для macOS, Windows і Linux (Ubuntu):
 
-![download editor](/shared/images/editor_download.png)
+![Завантаження редактора](/shared/images/editor_download.png)
 
-## Installation
+## Встановлення {#installation}
 
-Installation on macOS
-: The downloaded file is a DMG image containing the program.
+Встановлення в macOS
+: Завантажений файл — це образ DMG, що містить програму.
 
-  1. Locate the file "Defold-x86_64-macos.dmg" and double click it to open the image.
-  2. Drag the application "Defold" to the "Applications" folder link.
+  1. Знайдіть файл «Defold-x86_64-macos.dmg» і двічі клацніть його, щоб відкрити образ.
+  2. Перетягніть застосунок «Defold» на посилання на папку «Applications».
 
-  To start the editor, open your "Applications" folder and <kbd>double click</kbd> the file "Defold".
+  Щоб запустити редактор, відкрийте папку «Applications» і <kbd>двічі клацніть</kbd> файл «Defold».
 
-  ![Defold macOS](/shared/images/macos_content.png)
+  ![Defold у macOS](/shared/images/macos_content.png)
 
-Installation on Windows
-: The downloaded file is a ZIP archive that needs to be extracted:
+Встановлення у Windows
+: Завантажений файл — це архів ZIP, який потрібно розпакувати:
 
-  1. Locate the archive file "Defold-x86_64-win32.zip", <kbd>press and hold</kbd> (or <kbd>right-click</kbd>) the folder, select *Extract All*, and then follow the instructions to extract the archive to a folder named "Defold".
-    2. Move the folder "Defold" to your preferred location (e.g. `D:\Defold`). You should not move Defold to `C:\Program Files (x86)\` or `C:\Program Files\` since this will prevent the editor from updating.
+  1. Знайдіть файл архіву «Defold-x86_64-win32.zip», <kbd>натисніть і утримуйте</kbd> папку (або <kbd>клацніть її правою кнопкою миші</kbd>), виберіть *Extract All* і дотримуйтеся вказівок, щоб розпакувати архів у папку «Defold».
+  2. Перемістіть папку «Defold» у зручне для вас місце (наприклад, `D:\Defold`). Не переміщуйте Defold у `C:\Program Files (x86)\` або `C:\Program Files\`, оскільки це завадить редактору оновлюватися.
 
-  To start the editor, open the folder "Defold" and <kbd>double click</kbd> the file "Defold.exe".
+  Щоб запустити редактор, відкрийте папку «Defold» і <kbd>двічі клацніть</kbd> файл «Defold.exe».
 
-  ![Defold windows](/shared/images/windows_content.png)
+  ![Defold у Windows](/shared/images/windows_content.png)
 
-Installation on Linux
-: The downloaded file is a ZIP archive that needs to be extracted:
+Встановлення в Linux
+: Завантажений файл — це архів ZIP, який потрібно розпакувати:
 
-  1. From a terminal, locate the archive file "Defold-x86_64-linux.zip" unzip it to a target Directory called "Defold".
+  1. У терміналі знайдіть файл архіву «Defold-x86_64-linux.zip» і розпакуйте його в цільовий каталог «Defold».
 
      ```bash
      $ unzip Defold-x86_64-linux.zip -d Defold
      ```
 
-  To start the editor, change directory to where you extracted the application, then run the `Defold` executable, or <kbd>double click</kbd> it on your desktop.
+  Щоб запустити редактор, перейдіть до каталогу, у який ви розпакували застосунок, і запустіть виконуваний файл `Defold` або <kbd>двічі клацніть</kbd> його в графічному середовищі.
 
   ```bash
   $ cd Defold
   $ ./Defold
   ```
 
-  There is a helper to install a desktop entry on the `Help > Create Desktop Entry` menu.
+  У меню `Help > Create Desktop Entry` є засіб створення ярлика застосунку.
 
-  If you run into any problems starting the editor, opening a project or running a Defold game please refer to the [Linux section of the FAQ](/faq/faq#linux-questions).
+  Якщо виникнуть проблеми із запуском редактора, відкриттям проєкту або запуском гри Defold, зверніться до [розділу поширених запитань про Linux](/faq/faq#linux-questions).
 
-## Install an old version
+## Встановлення старої версії {#install-an-old-version}
 
-Every beta and stable version of Defold is also [available on GitHub](https://github.com/defold/defold/releases).
+Усі бета-версії та стабільні версії Defold також [доступні на GitHub](https://github.com/defold/defold/releases).

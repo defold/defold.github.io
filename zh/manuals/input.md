@@ -9,8 +9,10 @@ toc:
 - 设置输入绑定
 - 触发器类型
 - 加速度计输入
-- 输入焦点 {input-focus}
-- 输入分派和 on_input() {input-dispatch-and-on_input}
+- anchor: input-focus
+  title: 输入焦点
+- anchor: input-dispatch-and-on_input
+  title: 输入分派和 on_input()
 - 输入焦点和集合代理组件
 - 释放输入
 - 消耗输入
@@ -53,7 +55,7 @@ toc:
 
 ![Input binding setting](/manuals/images/input/setting.png)
 
-所有新项目模板都会自动创建一个默认的输入绑定文件，因此通常不需要创建新的绑定文件。默认文件名为"game.input_binding"，可以在项目根目录的"input"文件夹中找到。<kbd>双击</kbd>该文件在编辑器中打开：
+所有新项目模板都会自动创建一个默认的输入绑定文件，因此通常不需要创建新的绑定文件。默认文件名为`game.input_binding`，可以在项目根目录的`input`文件夹中找到。<kbd>双击</kbd>该文件在编辑器中打开：
 
 ![Input set bindings](/manuals/images/input/input_binding.png)
 
@@ -63,7 +65,7 @@ toc:
 : 要监听的原始输入，从可用输入的滚动列表中选择。
 
 *操作*
-: 给输入操作指定的名称，当它们被创建并分派到您的脚本时使用。可以将相同的操作名称分配给多个输入。例如，您可以将<kbd>空格</kbd>键和游戏手柄"A"按钮绑定到操作`jump`。请注意，存在一个已知错误，即触摸输入不幸不能与其他输入具有相同的操作名称。
+: 给输入操作指定的名称，当它们被创建并分派到您的脚本时使用。可以将相同的操作名称分配给多个输入。例如，您可以将<kbd>空格</kbd>键和游戏手柄`A`按钮绑定到操作`jump`。请注意，存在一个已知错误，即触摸输入不幸不能与其他输入具有相同的操作名称。
 
 ## 触发器类型
 
@@ -180,7 +182,7 @@ msg.post(".", "release_input_focus")
 
 ![consuming input](/manuals/images/input/game.png)
 
-暂停菜单最初是隐藏的（禁用的），当玩家触摸"PAUSE" HUD项时，它被启用：
+暂停菜单最初是隐藏的（禁用的），当玩家触摸`PAUSE` HUD项时，它被启用：
 
 ```lua
 function on_input(self, action_id, action)

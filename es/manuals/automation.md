@@ -7,7 +7,8 @@ title: Automatización en Defold
 toc:
 - Automatización en Defold
 - Automatización determinista o agentes de IA
-- El ciclo de automatización {the-automation-loop}
+- anchor: the-automation-loop
+  title: El ciclo de automatización
 - Próximos pasos
 ---
 

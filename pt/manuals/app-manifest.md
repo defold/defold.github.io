@@ -7,12 +7,14 @@ title: Manifesto do aplicativo
 toc:
 - Manifesto do aplicativo
 - Aplicando o manifesto
-- Física 2D {physics-2d}
+- anchor: physics-2d
+  title: Física 2D
 - Física 3D
 - Rig + Modelo
 - Excluir Gravação
 - Profiler
-- Som {sound}
+- anchor: sound
+  title: Som
 - Excluir Som
 - 'Excluir decodificador de som: WAV'
 - 'Excluir decodificador de som: OGG'

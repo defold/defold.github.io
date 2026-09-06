@@ -17,7 +17,8 @@ toc:
 - 后更新阶段
 - 渲染阶段
 - 最终化
-- 分发消息 {dispatching-messages}
+- anchor: dispatching-messages
+  title: 分发消息
 ---
 
 # 应用生命周期

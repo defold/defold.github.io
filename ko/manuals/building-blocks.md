@@ -6,7 +6,8 @@ locale: ko
 title: Defold의 빌딩 블록
 toc:
 - 빌딩 블록
-- 컬렉션 {collections}
+- anchor: collections
+  title: 컬렉션
 - 게임 오브젝트
 - 컴포넌트
 - 내장(in-place) 또는 참조로 추가된 오브젝트

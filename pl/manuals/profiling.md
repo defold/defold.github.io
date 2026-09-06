@@ -11,7 +11,8 @@ toc:
 - Profiler klatek Remotery
 - Profiler zasobów
 - Oś czasu wydajności przeglądarki HTML5
-- Raporty budowania {build-reports}
+- anchor: build-reports
+  title: Raporty budowania
 - Narzędzia zewnętrzne
 ---
 
@@ -130,7 +131,7 @@ Podczas bundlowania gry możesz utworzyć raport budowania. Jest to bardzo przyd
 
 ![build report](/manuals/images/profiling/build_report.png)
 
-Narzędzie do budowania utworzy plik o nazwie "report.html" obok bundla gry. Otwórz ten plik w przeglądarce internetowej, aby przejrzeć raport:
+Narzędzie do budowania utworzy plik o nazwie `report.html` obok bundla gry. Otwórz ten plik w przeglądarce internetowej, aby przejrzeć raport:
 
 ![build report](/manuals/images/profiling/build_report_html.png)
 
@@ -164,7 +165,7 @@ Profiler OpenGL (macOS)
 Android Profiler (Android)
 : https://developer.android.com/studio/profile/android-profiler.html
 
-  Zestaw narzędzi profilowania, który zbiera dane w czasie rzeczywistym o CPU, pamięci i aktywności sieciowej gry. Możesz wykonywać próbkowe śledzenie wywołań metod, zrzuty sterty, podglądać alokacje pamięci i analizować szczegóły plików przesyłanych przez sieć. Korzystanie z tego narzędzia wymaga ustawienia `android:debuggable="true"` w "AndroidManifest.xml".
+  Zestaw narzędzi profilowania, który zbiera dane w czasie rzeczywistym o CPU, pamięci i aktywności sieciowej gry. Możesz wykonywać próbkowe śledzenie wywołań metod, zrzuty sterty, podglądać alokacje pamięci i analizować szczegóły plików przesyłanych przez sieć. Korzystanie z tego narzędzia wymaga ustawienia `android:debuggable="true"` w `AndroidManifest.xml`.
 
   ![android profiler](/manuals/images/profiling/android_profiler.png)
 
@@ -173,6 +174,6 @@ Android Profiler (Android)
 Graphics API Debugger (Android)
 : https://github.com/google/gapid
 
-  To zestaw narzędzi, który pozwala inspekcjonować, dostosowywać i odtwarzać wywołania z aplikacji do sterownika graficznego. Aby użyć tego narzędzia, trzeba ustawić `android:debuggable="true"` w "AndroidManifest.xml".
+  To zestaw narzędzi, który pozwala inspekcjonować, dostosowywać i odtwarzać wywołania z aplikacji do sterownika graficznego. Aby użyć tego narzędzia, trzeba ustawić `android:debuggable="true"` w `AndroidManifest.xml`.
 
   ![graphics api debugger](/manuals/images/profiling/gapid.png)

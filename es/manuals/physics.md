@@ -7,7 +7,8 @@ title: Física en Defold
 toc:
 - Física
 - Unidades usadas por la simulación del motor de física
-- Actualizaciones de física {physics-updates}
+- anchor: physics-updates
+  title: Actualizaciones de física
 - Advertencias y problemas comunes
 ---
 

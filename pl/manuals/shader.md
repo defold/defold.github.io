@@ -14,7 +14,8 @@ toc:
 - Uniformy (w Defold nazywane stałymi)
 - Wbudowane zmienne
 - Funkcje tekstur
-- Precyzja {precision}
+- anchor: precision
+  title: Precyzja
 - Składamy to razem
 - Dołączanie fragmentów kodu do shaderów
 - Osłony nagłówkowe

@@ -5,17 +5,28 @@ layout: manual
 locale: ru
 title: Использование ИИ-агентов для программирования с Defold
 toc:
-- Использование ИИ-агентов для программирования с Defold {using-ai-coding-agents-with-defold}
-- Когда полезен ИИ-агент {when-an-ai-agent-is-useful}
-- Нейтральные к моделям интерфейсы Defold {model-neutral-defold-interfaces}
-- Уровни интеграции {integration-layers}
-- Model Context Protocol {model-context-protocol}
-- Интеграции MCP от сообщества {community-mcp-integrations}
-- Инструкции проекта {project-instructions}
-- Поиск документации {documentation-discovery}
-- Ограниченные циклы изменения и проверки {bounded-change-and-verification-loops}
-- Мультимодальная оценка {multimodal-evaluation}
-- Безопасность, изоляция и хорошие практики {security-isolation-and-good-practices}
+- anchor: using-ai-coding-agents-with-defold
+  title: Использование ИИ-агентов для программирования с Defold
+- anchor: when-an-ai-agent-is-useful
+  title: Когда полезен ИИ-агент
+- anchor: model-neutral-defold-interfaces
+  title: Нейтральные к моделям интерфейсы Defold
+- anchor: integration-layers
+  title: Уровни интеграции
+- anchor: model-context-protocol
+  title: Model Context Protocol
+- anchor: community-mcp-integrations
+  title: Интеграции MCP от сообщества
+- anchor: project-instructions
+  title: Инструкции проекта
+- anchor: documentation-discovery
+  title: Поиск документации
+- anchor: bounded-change-and-verification-loops
+  title: Ограниченные циклы изменения и проверки
+- anchor: multimodal-evaluation
+  title: Мультимодальная оценка
+- anchor: security-isolation-and-good-practices
+  title: Безопасность, изоляция и хорошие практики
 ---
 
 # Использование ИИ-агентов для программирования с Defold {#using-ai-coding-agents-with-defold}

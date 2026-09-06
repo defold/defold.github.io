@@ -6,9 +6,12 @@ locale: it
 title: Automazione in Defold
 toc:
 - Automazione in Defold
-- Automazione deterministica o agenti IA {deterministic-automation-or-ai-agents}
-- Il ciclo di automazione {the-automation-loop}
-- Passaggi successivi {next-steps}
+- anchor: deterministic-automation-or-ai-agents
+  title: Automazione deterministica o agenti IA
+- anchor: the-automation-loop
+  title: Il ciclo di automazione
+- anchor: next-steps
+  title: Passaggi successivi
 ---
 
 # Automazione in Defold

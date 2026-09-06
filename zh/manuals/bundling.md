@@ -7,7 +7,8 @@ title: 打包应用程序
 toc:
 - 打包应用程序
 - 从编辑器中打包
-- 构建报告 {build-reports}
+- anchor: build-reports
+  title: 构建报告
 - Android
 - iOS
 - macOS

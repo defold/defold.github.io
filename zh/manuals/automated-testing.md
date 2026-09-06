@@ -8,14 +8,18 @@ toc:
 - 自动化测试与验证
 - 验证层级
 - 可复用且可测试的 Lua 代码
-- 在运行集合中进行测试 {tests-in-a-running-collection}
+- anchor: tests-in-a-running-collection
+  title: 在运行集合中进行测试
 - 测试框架
-- 结构化测试结果 {structured-test-results}
+- anchor: structured-test-results
+  title: 结构化测试结果
 - 收集控制台输出
 - 持久化日志
 - 通过运行时 API 测试运行中的游戏
-- HTML5 的浏览器测试 {browser-tests-for-html5}
-- 用于视觉检查的编辑器预览和运行时截图 {editor-previews-and-runtime-screenshots}
+- anchor: browser-tests-for-html5
+  title: HTML5 的浏览器测试
+- anchor: editor-previews-and-runtime-screenshots
+  title: 用于视觉检查的编辑器预览和运行时截图
 - 无头测试和 CI
 - 失败报告和产物
 ---

@@ -1,5 +1,5 @@
-This file can be used to test transclusion. This whole file will be transcluded as is, with whitespace preservation.
+Цей файл можна використовувати для перевірки включення вмісту файлів. Увесь цей файл буде включено без змін, зі збереженням пробільних символів.
 
-Note that any file references need are relative to the document where the file is inserted.
+Зверніть увагу: усі посилання на файли мають бути відносними до документа, у який вставляється цей файл.
 
-![shared image](/shared/images/logo.png)
+![спільне зображення](/shared/images/logo.png)

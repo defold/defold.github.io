@@ -9,7 +9,8 @@ toc:
 - Definiowanie właściwości skryptu
 - Uzyskiwanie dostępu do właściwości skryptu
 - Obiekty tworzone przez fabryki
-- Właściwości zasobów {resource-properties}
+- anchor: resource-properties
+  title: Właściwości zasobów
 ---
 
 # Właściwości skryptu

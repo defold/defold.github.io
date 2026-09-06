@@ -10,7 +10,8 @@ toc:
 - 网格属性
 - 编辑器操作
 - 运行时操作
-- 视锥体剔除 {frustum-culling}
+- anchor: frustum-culling
+  title: 视锥体剔除
 - 材质常量
 - 顶点局部空间与世界空间
 ---

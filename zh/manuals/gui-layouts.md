@@ -6,7 +6,8 @@ locale: zh
 title: Defold中的GUI布局
 toc:
 - 布局
-- 创建显示配置文件 {creating-display-profiles}
+- anchor: creating-display-profiles
+  title: 创建显示配置文件
 - 自动布局选择（显示配置文件）
 - GUI布局
 - 动态配置文件选择

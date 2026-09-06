@@ -6,9 +6,11 @@ locale: ru
 title: Разработка в Defold для платформы HTML5
 toc:
 - Разработка для HTML5
-- Размер heap {heap-size}
+- anchor: heap-size
+  title: Размер heap
 - Тестирование HTML5-сборки
-- Создание HTML5-бандла {creating-html5-bundle}
+- anchor: creating-html5-bundle
+  title: Создание HTML5-бандла
 - Известные проблемы и ограничения
 - Кастомизация HTML5-бандла
 - Downscale Fit и Fit

@@ -9,16 +9,22 @@ toc:
 - Runtime dos scripts do editor
 - Anatomia de .editor_script
 - API do editor
-- Comandos {commands}
+- anchor: commands
+  title: Comandos
 - Use comandos para alterar o estado em memória do editor
 - Use comandos com a visualização ativa do editor
 - Usar comandos de shell
-- Hooks de ciclo de vida {lifecycle-hooks}
+- anchor: lifecycle-hooks
+  title: Hooks de ciclo de vida
 - Language servers
-- Servidor HTTP {http-server}
-- Editor scripts em bibliotecas {editor-scripts-in-libraries}
-- Preferências {preferences}
-- Modos de execução {execution-modes}
+- anchor: http-server
+  title: Servidor HTTP
+- anchor: editor-scripts-in-libraries
+  title: Editor scripts em bibliotecas
+- anchor: preferences
+  title: Preferências
+- anchor: execution-modes
+  title: Modos de execução
 - Actions
 - Actions desfazíveis
 - Actions não desfazíveis

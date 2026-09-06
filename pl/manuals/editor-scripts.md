@@ -9,15 +9,20 @@ toc:
 - Środowisko uruchomieniowe skryptów edytora
 - Anatomia pliku .editor_script
 - API edytora
-- Polecenia {commands}
+- anchor: commands
+  title: Polecenia
 - Używanie poleceń do zmiany stanu edytora w pamięci
 - Używanie poleceń z aktywnym widokiem edytora
 - Używanie poleceń powłoki
-- Hooki cyklu życia {lifecycle-hooks}
+- anchor: lifecycle-hooks
+  title: Hooki cyklu życia
 - Serwery językowe
-- Serwer HTTP {http-server}
-- Skrypty edytora w bibliotekach {editor-scripts-in-libraries}
-- Preferencje {preferences}
+- anchor: http-server
+  title: Serwer HTTP
+- anchor: editor-scripts-in-libraries
+  title: Skrypty edytora w bibliotekach
+- anchor: preferences
+  title: Preferencje
 - Tryby wykonania
 - Akcje
 - Akcje z możliwością cofnięcia

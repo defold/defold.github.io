@@ -6,16 +6,25 @@ locale: it
 title: Utilizzare agenti di programmazione IA con Defold
 toc:
 - Utilizzare agenti di programmazione IA con Defold
-- Quando è utile un agente IA {when-an-ai-agent-is-useful}
-- Interfacce Defold indipendenti dal modello {model-neutral-defold-interfaces}
-- Livelli di integrazione {integration-layers}
+- anchor: when-an-ai-agent-is-useful
+  title: Quando è utile un agente IA
+- anchor: model-neutral-defold-interfaces
+  title: Interfacce Defold indipendenti dal modello
+- anchor: integration-layers
+  title: Livelli di integrazione
 - Model Context Protocol
-- Integrazioni MCP della comunità {community-mcp-integrations}
-- Istruzioni del progetto {project-instructions}
-- Individuazione della documentazione {documentation-discovery}
-- Cicli circoscritti di modifica e verifica {bounded-change-and-verification-loops}
-- Valutazione multimodale {multimodal-evaluation}
-- Sicurezza, isolamento e buone pratiche {security-isolation-and-good-practices}
+- anchor: community-mcp-integrations
+  title: Integrazioni MCP della comunità
+- anchor: project-instructions
+  title: Istruzioni del progetto
+- anchor: documentation-discovery
+  title: Individuazione della documentazione
+- anchor: bounded-change-and-verification-loops
+  title: Cicli circoscritti di modifica e verifica
+- anchor: multimodal-evaluation
+  title: Valutazione multimodale
+- anchor: security-isolation-and-good-practices
+  title: Sicurezza, isolamento e buone pratiche
 ---
 
 # Utilizzare agenti di programmazione IA con Defold

@@ -17,7 +17,8 @@ toc:
 - Componentes de entrada
 - Componentes relacionados a diálogos
 - Componentes utilitários
-- Reatividade {reactivity}
+- anchor: reactivity
+  title: Reatividade
 - Regras da reatividade
 - Hooks
 - '**use_state**'

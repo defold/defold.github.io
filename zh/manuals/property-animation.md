@@ -9,7 +9,8 @@ toc:
 - 属性动画
 - GUI 节点属性动画
 - 完成回调
-- 缓动 {easing}
+- anchor: easing
+  title: 缓动
 - 自定义缓动
 ---
 

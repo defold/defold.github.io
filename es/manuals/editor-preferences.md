@@ -5,13 +5,20 @@ layout: manual
 locale: es
 title: Preferencias del editor
 toc:
-- Preferencias del editor {editor-preferences}
-- General {general}
-- Código {code}
-- Abrir archivos script en Visual Studio Code {open-script-files-in-visual-studio-code}
-- Extensiones {extensions}
-- Herramientas {tools}
-- Mapa de teclas {keymap}
+- anchor: editor-preferences
+  title: Preferencias del editor
+- anchor: general
+  title: General
+- anchor: code
+  title: Código
+- anchor: open-script-files-in-visual-studio-code
+  title: Abrir archivos script en Visual Studio Code
+- anchor: extensions
+  title: Extensiones
+- anchor: tools
+  title: Herramientas
+- anchor: keymap
+  title: Mapa de teclas
 ---
 
 # Preferencias del editor {#editor-preferences}

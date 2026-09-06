@@ -6,7 +6,8 @@ locale: zh
 title: 项目设置
 toc:
 - 项目设置
-- 创建新的本地项目 {creating-a-new-project}
+- anchor: creating-a-new-project
+  title: 创建新的本地项目
 - 将项目添加到 GitHub
 - 打开现有项目
 - 打开最近的项目

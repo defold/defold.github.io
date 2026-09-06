@@ -6,18 +6,30 @@ locale: it
 title: Test automatici e verifica
 toc:
 - Test automatici e verifica
-- Livelli di verifica {verification-levels}
-- Codice Lua riutilizzabile e verificabile {reusable-and-testable-lua-code}
-- Test in una collezione in esecuzione {tests-in-a-running-collection}
-- Framework di test {test-frameworks}
-- Risultati dei test strutturati {structured-test-results}
-- Raccolta delloutput della console {collecting-console-output}
-- Log persistenti {persisted-logs}
-- Testare un gioco in esecuzione tramite unAPI di runtime {testing-a-running-game-through-a-runtime-api}
-- Test nel browser per HTML5 {browser-tests-for-html5}
-- Anteprime delleditor e schermate a runtime per lispezione visiva {editor-previews-and-runtime-screenshots}
-- Test headless e CI {headless-tests-and-ci}
-- Report degli errori e artefatti {failure-reports-and-artifacts}
+- anchor: verification-levels
+  title: Livelli di verifica
+- anchor: reusable-and-testable-lua-code
+  title: Codice Lua riutilizzabile e verificabile
+- anchor: tests-in-a-running-collection
+  title: Test in una collezione in esecuzione
+- anchor: test-frameworks
+  title: Framework di test
+- anchor: structured-test-results
+  title: Risultati dei test strutturati
+- anchor: collecting-console-output
+  title: Raccolta delloutput della console
+- anchor: persisted-logs
+  title: Log persistenti
+- anchor: testing-a-running-game-through-a-runtime-api
+  title: Testare un gioco in esecuzione tramite unAPI di runtime
+- anchor: browser-tests-for-html5
+  title: Test nel browser per HTML5
+- anchor: editor-previews-and-runtime-screenshots
+  title: Anteprime delleditor e schermate a runtime per lispezione visiva
+- anchor: headless-tests-and-ci
+  title: Test headless e CI
+- anchor: failure-reports-and-artifacts
+  title: Report degli errori e artefatti
 ---
 
 # Test automatici e verifica

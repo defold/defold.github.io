@@ -5,19 +5,32 @@ layout: manual
 locale: fr
 title: Tests et vérification automatisés
 toc:
-- Tests et vérification automatisés {automated-testing-and-verification}
-- Niveaux de vérification {verification-levels}
-- Code Lua réutilisable et testable {reusable-and-testable-lua-code}
-- Tests dans une collection en cours dexécution {tests-in-a-running-collection}
-- Frameworks de test {test-frameworks}
-- Résultats de test structurés {structured-test-results}
-- Collecte de la sortie de la console {collecting-console-output}
-- Journaux persistants {persisted-logs}
-- Tester un jeu en cours dexécution au moyen dune API dexécution {testing-a-running-game-through-a-runtime-api}
-- Tests HTML5 dans un navigateur {browser-tests-for-html5}
-- Aperçus de léditeur et captures décran à lexécution pour linspection visuelle {editor-previews-and-runtime-screenshots}
-- Tests sans interface graphique et CI {headless-tests-and-ci}
-- Rapports déchec et artefacts {failure-reports-and-artifacts}
+- anchor: automated-testing-and-verification
+  title: Tests et vérification automatisés
+- anchor: verification-levels
+  title: Niveaux de vérification
+- anchor: reusable-and-testable-lua-code
+  title: Code Lua réutilisable et testable
+- anchor: tests-in-a-running-collection
+  title: Tests dans une collection en cours dexécution
+- anchor: test-frameworks
+  title: Frameworks de test
+- anchor: structured-test-results
+  title: Résultats de test structurés
+- anchor: collecting-console-output
+  title: Collecte de la sortie de la console
+- anchor: persisted-logs
+  title: Journaux persistants
+- anchor: testing-a-running-game-through-a-runtime-api
+  title: Tester un jeu en cours dexécution au moyen dune API dexécution
+- anchor: browser-tests-for-html5
+  title: Tests HTML5 dans un navigateur
+- anchor: editor-previews-and-runtime-screenshots
+  title: Aperçus de léditeur et captures décran à lexécution pour linspection visuelle
+- anchor: headless-tests-and-ci
+  title: Tests sans interface graphique et CI
+- anchor: failure-reports-and-artifacts
+  title: Rapports déchec et artefacts
 ---
 
 # Tests et vérification automatisés {#automated-testing-and-verification}

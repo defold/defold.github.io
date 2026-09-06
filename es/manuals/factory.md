@@ -8,7 +8,8 @@ toc:
 - Componentes factory
 - Direccionamiento de objetos creados por factory
 - Seguimiento de objetos generados y objetos padre
-- Carga dinámica de recursos de factory {dynamic-loading-of-factory-resources}
+- anchor: dynamic-loading-of-factory-resources
+  title: Carga dinámica de recursos de factory
 - Prototipo dinámico
 - Límites de instancias
 - Pooling de objetos de juego

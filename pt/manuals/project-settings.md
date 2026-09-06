@@ -5,10 +5,14 @@ layout: manual
 locale: pt
 title: Configurações de projeto do Defold
 toc:
-- Configurações de projeto {project-settings}
-- Formato do arquivo {file-format}
-- Acesso em tempo de execução {runtime-access}
-- Seções e configurações {sections-and-settings}
+- anchor: project-settings
+  title: Configurações de projeto
+- anchor: file-format
+  title: Formato do arquivo
+- anchor: runtime-access
+  title: Acesso em tempo de execução
+- anchor: sections-and-settings
+  title: Seções e configurações
 - Project
 - Bootstrap
 - Library
@@ -46,8 +50,10 @@ toc:
 - Live update
 - Native extension
 - Profiler
-- Definindo valores de configuração na inicialização da engine {setting-config-values-on-engine-startup}
-- Configurações personalizadas de projeto {custom-project-settings}
+- anchor: setting-config-values-on-engine-startup
+  title: Definindo valores de configuração na inicialização da engine
+- anchor: custom-project-settings
+  title: Configurações personalizadas de projeto
 ---
 
 # Configurações de projeto {#project-settings}

@@ -5,14 +5,22 @@ layout: manual
 locale: ko
 title: Defold의 3D mesh
 toc:
-- Mesh 컴포넌트 {mesh-component}
-- Mesh 컴포넌트 만들기 {creating-a-mesh-component}
-- Mesh 프로퍼티 {mesh-properties}
-- 에디터 조작 {editor-manipulation}
-- 런타임 조작 {runtime-manipulation}
-- 절두체 컬링 {frustum-culling}
-- 메터리얼 상수 {material-constants}
-- 버텍스 로컬 공간과 월드 공간 {vertex-local-vs-world-space}
+- anchor: mesh-component
+  title: Mesh 컴포넌트
+- anchor: creating-a-mesh-component
+  title: Mesh 컴포넌트 만들기
+- anchor: mesh-properties
+  title: Mesh 프로퍼티
+- anchor: editor-manipulation
+  title: 에디터 조작
+- anchor: runtime-manipulation
+  title: 런타임 조작
+- anchor: frustum-culling
+  title: 절두체 컬링
+- anchor: material-constants
+  title: 메터리얼 상수
+- anchor: vertex-local-vs-world-space
+  title: 버텍스 로컬 공간과 월드 공간
 ---
 
 # Mesh 컴포넌트 {#mesh-component}

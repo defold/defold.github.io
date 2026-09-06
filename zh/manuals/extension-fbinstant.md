@@ -9,7 +9,8 @@ toc:
 - 发布 Instant Games
 - API 使用
 - 示例游戏
-- 减小包体 {reducing-bundle-size}
+- anchor: reducing-bundle-size
+  title: 减小包体
 - 已知问题
 ---
 

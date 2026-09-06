@@ -7,7 +7,8 @@ title: Defold 项目设置
 toc:
 - 项目设置
 - 文件格式
-- 运行时访问 {runtime-access}
+- anchor: runtime-access
+  title: 运行时访问
 - 部分和设置
 - Project
 - Bootstrap

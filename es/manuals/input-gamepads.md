@@ -5,18 +5,30 @@ layout: manual
 locale: es
 title: Input de gamepad en Defold
 toc:
-- Gamepads {gamepads}
-- Botones digitales {digital-buttons}
-- Sticks analógicos {analog-sticks}
-- Múltiples gamepads {multiple-gamepads}
-- Conexión y desconexión {connect-and-disconnect}
-- Gamepads raw {raw-gamepads}
-- Archivo de configuración de gamepads {gamepads-settings-file}
-- Gamepads no identificados {unidentified-gamepads}
-- Gamepads en HTML5 {gamepads-in-html5}
-- Gamepad estándar {standard-gamepad}
-- Gamepads en Windows {gamepads-on-windows}
-- Gamepads en Android {gamepads-on-android}
+- anchor: gamepads
+  title: Gamepads
+- anchor: digital-buttons
+  title: Botones digitales
+- anchor: analog-sticks
+  title: Sticks analógicos
+- anchor: multiple-gamepads
+  title: Múltiples gamepads
+- anchor: connect-and-disconnect
+  title: Conexión y desconexión
+- anchor: raw-gamepads
+  title: Gamepads raw
+- anchor: gamepads-settings-file
+  title: Archivo de configuración de gamepads
+- anchor: unidentified-gamepads
+  title: Gamepads no identificados
+- anchor: gamepads-in-html5
+  title: Gamepads en HTML5
+- anchor: standard-gamepad
+  title: Gamepad estándar
+- anchor: gamepads-on-windows
+  title: Gamepads en Windows
+- anchor: gamepads-on-android
+  title: Gamepads en Android
 ---
 
 <div class='sidenote' markdown='1'>
@@ -140,7 +152,7 @@ La herramienta te pedirá que presiones distintos botones en tu mando conectado.
 
 ### Gamepads no identificados {#unidentified-gamepads}
 
-Cuando se conecta un gamepad y no existe ningún mapeo para él, el gamepad solo generará acciones "connected", "disconnected" y "raw". En este caso necesitas mapear manualmente los datos raw del gamepad a acciones en tu juego.
+Cuando se conecta un gamepad y no existe ningún mapeo para él, el gamepad solo generará acciones `connected`, `disconnected` y `raw`. En este caso necesitas mapear manualmente los datos raw del gamepad a acciones en tu juego.
 
 Es posible comprobar si una acción de input para un gamepad proviene de un gamepad desconocido o no leyendo el valor `gamepad_unknown` de `action`:
 
@@ -177,7 +189,7 @@ Si tu juego se ejecuta dentro de un `iframe`, también debes asegurarte de que e
 
 ### Gamepad estándar {#standard-gamepad}
 
-Si el navegador identifica un gamepad conectado como gamepad estándar, usará el mapeo para "`Standard Gamepad`" en el [archivo de configuración de gamepads](/es/manuals/input-gamepads/#gamepads-settings-file) (el archivo `default.gamepads` en `/builtins` incluye un mapeo de Standard Gamepad). Un gamepad estándar se define como un dispositivo con 16 botones y 2 sticks analógicos, con una disposición de botones similar a un mando PlayStation o Xbox (consulta la [definición y disposición de botones de W3C](https://w3c.github.io/gamepad/#dfn-standard-gamepad) para más información). Si el gamepad conectado no se identifica como un gamepad estándar, Defold buscará en el archivo de configuración de gamepads un mapeo que coincida con el tipo de hardware del gamepad.
+Si el navegador identifica un gamepad conectado como gamepad estándar, usará el mapeo para `Standard Gamepad` en el [archivo de configuración de gamepads](/es/manuals/input-gamepads/#gamepads-settings-file) (el archivo `default.gamepads` en `/builtins` incluye un mapeo de `Standard Gamepad`). Un gamepad estándar se define como un dispositivo con 16 botones y 2 sticks analógicos, con una disposición de botones similar a un mando PlayStation o Xbox (consulta la [definición y disposición de botones de W3C](https://w3c.github.io/gamepad/#dfn-standard-gamepad) para más información). Si el gamepad conectado no se identifica como un gamepad estándar, Defold buscará en el archivo de configuración de gamepads un mapeo que coincida con el tipo de hardware del gamepad.
 
 ## Gamepads en Windows {#gamepads-on-windows}
 En Windows, actualmente solo se admiten mandos Xbox 360. Para conectar tu mando 360 a tu computadora Windows, [asegúrate de que esté configurado correctamente](http://www.wikihow.com/Use-Your-Xbox-360-Controller-for-Windows).

@@ -31,7 +31,7 @@ Consuming input
 
 The input bindings is a project wide table that allows you to specify how device input should translate into named *actions* before they are dispatched to your script components and GUI scripts. You can create a new input binding file, `right click` a location in the *Assets* view and select `New... ▸ Input Binding`. To make the engine use the new file, change the *Game Binding* entry in *game.project*.
 
-A default input binding file is automatically created with all new project templates so there is usually no need to create a new binding file. The default file is called "game.input_binding" and can be found in the "input" folder in the project root. `Double click` the file to open it in the editor:
+A default input binding file is automatically created with all new project templates so there is usually no need to create a new binding file. The default file is called `game.input_binding` and can be found in the `input` folder in the project root. `Double click` the file to open it in the editor:
 
 To create a new binding, click the `+` button at the bottom of the relevant trigger type section. Each entry has two fields:
 
@@ -39,7 +39,7 @@ To create a new binding, click the `+` button at the bottom of the relevant trig
 : The raw input to listen for, selected from a scroll list of available inputs.
 
 *Action*
-: The action name given to input actions when they are created and dispatched to your scripts. The same action name can be assigned to multiple inputs. For instance, you can bind the `Space` key and the gamepad "A" button to the action `jump`. Note that there is a known bug where touch inputs unfortunately cannot have the same action names as other inputs.
+: The action name given to input actions when they are created and dispatched to your scripts. The same action name can be assigned to multiple inputs. For instance, you can bind the `Space` key and the gamepad `A` button to the action `jump`. Note that there is a known bug where touch inputs unfortunately cannot have the same action names as other inputs.
 
 ## Trigger types
 
@@ -136,7 +136,7 @@ A component's `on_input()` can actively control whether actions should be passed
 
 There are many good use cases where input consumption provides a simple and powerful way to shift input between different parts of a game. For example, if you need a pop-up menu that temporarily is the only part of the game that listens to input:
 
-The pause menu is initially hidden (disabled) and when the player touches the "PAUSE" HUD item, it is enabled:
+The pause menu is initially hidden (disabled) and when the player touches the `PAUSE` HUD item, it is enabled:
 ```lua
 function on_input(self, action_id, action)
     if action_id == hash("mouse_press") and action.pressed then

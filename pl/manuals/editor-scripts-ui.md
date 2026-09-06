@@ -17,7 +17,8 @@ toc:
 - Komponenty wejściowe
 - Komponenty związane z dialogami
 - Komponenty pomocnicze
-- Reaktywność {reactivity}
+- anchor: reactivity
+  title: Reaktywność
 - Zasady reaktywności
 - Hooki
 - '**use_state**'

@@ -17,7 +17,8 @@ toc:
 - Fase de pós-atualização
 - Fase de renderização
 - Finalização
-- Despacho de mensagens {dispatching-messages}
+- anchor: dispatching-messages
+  title: Despacho de mensagens
 ---
 
 # Ciclo de vida da aplicação

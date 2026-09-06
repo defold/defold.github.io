@@ -5,10 +5,14 @@ layout: manual
 locale: ko
 title: 로컬 빌드 서버 설정
 toc:
-- 빌드 서버 로컬 설정 {build-server-local-setup}
-- 사전 구성된 아티팩트로 로컬 Extender를 실행하는 방법 {how-to-run-local-extender-with-preconfigured-artifacts}
-- macOS와 iOS는 어떻게 하나요? {what-about-macos-and-ios}
-- 로컬에서 빌드한 아티팩트로 로컬 Extender를 실행하는 방법 {how-to-run-local-extender-with-locally-built-artifacts}
+- anchor: build-server-local-setup
+  title: 빌드 서버 로컬 설정
+- anchor: how-to-run-local-extender-with-preconfigured-artifacts
+  title: 사전 구성된 아티팩트로 로컬 Extender를 실행하는 방법
+- anchor: what-about-macos-and-ios
+  title: macOS와 iOS는 어떻게 하나요?
+- anchor: how-to-run-local-extender-with-locally-built-artifacts
+  title: 로컬에서 빌드한 아티팩트로 로컬 Extender를 실행하는 방법
 ---
 
 # 빌드 서버 로컬 설정 {#build-server-local-setup}

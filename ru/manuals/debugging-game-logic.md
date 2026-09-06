@@ -11,7 +11,8 @@ toc:
 - Вкладка Breakpoints
 - Отладочная Lua-библиотека
 - Чеклист для отладки
-- Отладка проблем с физикой {debugging-problems-with-physics}
+- anchor: debugging-problems-with-physics
+  title: Отладка проблем с физикой
 ---
 
 # Отладка игровой логики

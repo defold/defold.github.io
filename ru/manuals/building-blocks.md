@@ -6,7 +6,8 @@ locale: ru
 title: Структурные элементы
 toc:
 - Структурные элементы
-- Коллекции (Collections) {collections}
+- anchor: collections
+  title: Коллекции (Collections)
 - Игровые объекты (Game objects)
 - Компоненты
 - Объекты, добавленные на месте или по ссылке

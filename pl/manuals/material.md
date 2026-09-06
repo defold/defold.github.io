@@ -7,12 +7,14 @@ title: Instrukcja dotycząca materiałów w Defold
 toc:
 - Materiały
 - Tworzenie materiału
-- Atrybuty {attributes}
+- anchor: attributes
+  title: Atrybuty
 - Domyślne semantyki atrybutów
 - Ustawianie własnych danych atrybutów wierzchołka
 - Przykłady użycia własnych atrybutów wierzchołków
 - Instancjonowanie
-- Stałe wierzchołków i fragmentów {vertex-and-fragment-constants}
+- anchor: vertex-and-fragment-constants
+  title: Stałe wierzchołków i fragmentów
 - Stałe materiału węzłów GUI
 - Samplery
 - Ustawienia samplerów

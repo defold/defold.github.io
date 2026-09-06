@@ -9,7 +9,8 @@ toc:
 - Disponibilidad y detección del puerto
 - Endpoints integrados
 - Rutas de runtime definidas por extensiones
-- Extensión Automation Bridge {automation-bridge-extension}
+- anchor: automation-bridge-extension
+  title: Extensión Automation Bridge
 - Clientes del editor y de runtime
 - Limitaciones y seguridad
 ---

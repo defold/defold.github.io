@@ -6,9 +6,11 @@ locale: es
 title: Desarrollo Defold para la plataforma HTML5
 toc:
 - Desarrollo HTML5
-- Tamaño del heap {heap-size}
+- anchor: heap-size
+  title: Tamaño del heap
 - Probar una build HTML5
-- Crear un bundle HTML5 {creating-html5-bundle}
+- anchor: creating-html5-bundle
+  title: Crear un bundle HTML5
 - Problemas conocidos y limitaciones
 - Personalizar el bundle HTML5
 - Downscale Fit y Fit

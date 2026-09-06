@@ -7,7 +7,8 @@ title: 어플리케이션 번들링
 toc:
 - 어플리케이션 번들링
 - 에디터 안에서 번들링하기
-- 빌드 리포트 {build-reports}
+- anchor: build-reports
+  title: 빌드 리포트
 - Android
 - iOS
 - macOS

@@ -7,12 +7,15 @@ title: Manifiesto de la aplicación
 toc:
 - Manifiesto de la aplicación
 - Aplicar el manifiesto
-- Físicas 2D (Physics 2D) {physics-2d}
+- anchor: physics-2d
+  title: Físicas 2D (Physics 2D)
 - Físicas 3D (Physics 3D)
 - Rig + modelo (Rig + Model)
 - Excluir grabación (Exclude Record)
-- Profiler {profiler}
-- Sonido {sound}
+- anchor: profiler
+  title: Profiler
+- anchor: sound
+  title: Sonido
 - Excluir sonido (Exclude Sound)
 - 'Excluir decodificador de sonido: WAV (Exclude Sound Decoder: WAV)'
 - 'Excluir decodificador de sonido: OGG (Exclude Sound Decoder: OGG)'

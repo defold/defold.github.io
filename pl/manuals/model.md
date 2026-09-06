@@ -12,7 +12,8 @@ toc:
 - Modyfikowanie w czasie działania
 - Animacja w czasie działania
 - Zmienianie właściwości
-- Materiał {material}
+- anchor: material
+  title: Materiał
 - Stałe materiału
 - Renderowanie
 ---

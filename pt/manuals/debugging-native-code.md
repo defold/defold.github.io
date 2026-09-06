@@ -10,7 +10,8 @@ toc:
 - Usar depuração com print
 - Analisar um log de travamento
 - Obtendo o log de travamento de um dispositivo
-- Simbolicar uma callstack {symbolicate-a-callstack}
+- anchor: symbolicate-a-callstack
+  title: Simbolicar uma callstack
 - Enviando símbolos para o Google Play
 - Simbolicar uma callstack do Android
 - Simbolicar uma callstack do iOS

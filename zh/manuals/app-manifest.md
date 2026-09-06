@@ -7,12 +7,15 @@ title: 应用程序清单
 toc:
 - 应用程序清单
 - 应用清单
-- 物理 2D {physics-2d}
+- anchor: physics-2d
+  title: 物理 2D
 - 物理 3D
 - 骨骼 + 模型
 - 排除录制
-- 分析器 {profiler}
-- 声音 {sound}
+- anchor: profiler
+  title: 分析器
+- anchor: sound
+  title: 声音
 - 排除声音
 - 排除声音解码器：WAV
 - 排除声音解码器：OGG

@@ -1,9 +1,9 @@
-## Heap size (HTML5)
-The heap size of a Defold HTML5 game can be configured from the [`heap_size` field](/manuals/project-settings/#heap-size) in *game.project*. Make sure to optimize memory usage of your game and set a minimal heap size.
+## Розмір купи (HTML5) {#heap-size-html5}
+Розмір купи гри Defold для HTML5 можна налаштувати в [полі `heap_size`](/manuals/project-settings/#heap-size) у *game.project*. Оптимізуйте використання пам’яті у грі та встановіть мінімальний розмір купи.
 
-For small games, 32 MB is an achievable heap size. For larger games, aim for 64–128 MB. If, for example, you're at 58 MB and further optimization isn't feasible, you can settle on 64 MB without overthinking it. There’s no strict target size — it depends on the game. Just aim for smaller sizes, ideally in steps of powers of two. 
+Для невеликих ігор цілком досяжний розмір купи 32 МБ. Для більших ігор орієнтуйтеся на 64–128 МБ. Якщо, наприклад, гра використовує 58 МБ і подальша оптимізація недоцільна, можна без зайвих вагань зупинитися на 64 МБ. Суворої цільової межі немає — усе залежить від гри. Просто прагніть менших розмірів, бажано вибираючи значення, що є степенями двійки.
 
-To check current heap usage you can launch your game and play the game in the most "resource heavy" level or section and monitor memory usage:
+Щоб перевірити поточне використання купи, запустіть гру, перейдіть на рівень або в ділянку, що потребує найбільше ресурсів, і стежте за споживанням пам’яті:
 
 ```lua
 if html5 then
@@ -12,10 +12,10 @@ if html5 then
 end
 ```
 
-You can also open the developer tools of your browser and write the following in the console:
+Також можна відкрити інструменти розробника браузера та ввести в консолі:
 
 ```js
 HEAP8.length / 1024 / 1024
 ```
 
-If the memory usage remains at 32 MB, that's great! If not, follow the steps to [optimize the size of the engine itself and large assets such as sounds and textures](/manuals/optimization-size).
+Якщо використання пам’яті залишається на рівні 32 МБ — чудово! Якщо ні, виконайте кроки з [оптимізації розміру самого рушія та великих ресурсів, як-от звуків і текстур](/manuals/optimization-size).

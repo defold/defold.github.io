@@ -8,9 +8,11 @@ toc:
 - 에디터 개요
 - 에디터 시작하기
 - 에디터 언어
-- 에디터 창 {the-editor-views}
+- anchor: the-editor-views
+  title: 에디터 창
 - 1. Assets pane
-- 2. Scene Editor pane {the-scene-editor}
+- anchor: the-scene-editor
+  title: 2. Scene Editor pane
 - 3. Outline pane
 - 4. Properties pane
 - 5. Tools pane
@@ -20,14 +22,17 @@ toc:
 - 창 크기와 표시 여부
 - 탭
 - 나란히 편집하기
-- 새 프로젝트 파일 만들기 {creating-new-project-files}
+- anchor: creating-new-project-files
+  title: 새 프로젝트 파일 만들기
 - 템플릿
 - 프로젝트로 파일 임포트하기
 - 에디터 업데이트
 - Preferences
-- 에디터 로그 {editor-logs}
+- anchor: editor-logs
+  title: 에디터 로그
 - 에디터 서버
-- 에디터 설치 메타데이터 {editor-installation-metadata}
+- anchor: editor-installation-metadata
+  title: 에디터 설치 메타데이터
 - 에디터 스타일링
 - FAQ
 ---

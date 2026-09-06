@@ -5,10 +5,14 @@ layout: manual
 locale: ko
 title: Defold 타일 소스 매뉴얼
 toc:
-- 타일 소스 {tile-source}
-- 타일 소스 만들기 {creating-a-tile-source}
-- 타일 소스 플립북 애니메이션 {tile-source-flip-book-animations}
-- 타일 소스 충돌 모양 {tile-source-collision-shapes}
+- anchor: tile-source
+  title: 타일 소스
+- anchor: creating-a-tile-source
+  title: 타일 소스 만들기
+- anchor: tile-source-flip-book-animations
+  title: 타일 소스 플립북 애니메이션
+- anchor: tile-source-collision-shapes
+  title: 타일 소스 충돌 모양
 ---
 
 # 타일 소스 {#tile-source}

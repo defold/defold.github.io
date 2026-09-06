@@ -6,7 +6,8 @@ locale: ru
 title: Руководство по сборщику проектов Defold
 toc:
 - Сборщик Bob
-- Применение {usage}
+- anchor: usage
+  title: Применение
 ---
 
 # Сборщик Bob

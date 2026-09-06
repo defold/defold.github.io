@@ -7,10 +7,13 @@ title: 编辑器首选项
 toc:
 - 编辑器首选项
 - 通用
-- 代码 {code}
+- anchor: code
+  title: 代码
 - 在Visual Studio Code中打开脚本文件
-- 扩展 {extensions}
-- 工具 {tools}
+- anchor: extensions
+  title: 扩展
+- anchor: tools
+  title: 工具
 - 键映射
 ---
 

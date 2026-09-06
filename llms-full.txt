@@ -209,7 +209,6 @@ If you find any issues, please report them [as a GitHub issue](https://github.co
 - [AdMob ads](https://defold.com/extension-admob)
 - [Android Device Performance Framework](https://defold.com/extension-adpf)
 - [App review and ratings](https://defold.com/extension-review)
-- [AppLovin MAX ad mediation](https://defold.com/extension-applovin)
 - [Camera](https://defold.com/extension-camera)
 - [Facebook](https://defold.com/extension-facebook)
 - [Firebase Analytics](https://defold.com/extension-firebase-analytics)
@@ -217,7 +216,7 @@ If you find any issues, please report them [as a GitHub issue](https://github.co
 - [Google Play Game Services](https://defold.com/extension-gpgs)
 - [Google Play Instant](https://defold.com/extension-googleplayinstant)
 - [Inter-app communication](#manuals:iac)
-- [LevelPlay ad mediation](https://defold.com/extension-levelplay)
+- [IronSource ad mediation](https://defold.com/extension-ironsource)
 - [Push notifications](https://defold.com/extension-push)
 - [Play Asset Delivery](https://defold.com/extension-pad/)
 - [Safe Area](https://defold.com/extension-safearea)
@@ -230,13 +229,12 @@ If you find any issues, please report them [as a GitHub issue](https://github.co
 - [Advertising Info](https://defold.com/extension-adinfo)
 - [AdMob ads](https://defold.com/extension-admob)
 - [App review and ratings](https://defold.com/extension-review)
-- [AppLovin MAX ad mediation](https://defold.com/extension-applovin)
 - [Camera](https://defold.com/extension-camera)
 - [Facebook](https://defold.com/extension-facebook)
 - [Firebase Analytics](https://defold.com/extension-firebase-analytics)
 - [Firebase Remote Config](https://defold.com/extension-firebase-remoteconfig)
 - [Inter-app communication](#manuals:iac)
-- [LevelPlay ad mediation](https://defold.com/extension-levelplay)
+- [IronSource ad mediation](https://defold.com/extension-ironsource)
 - [Push notifications](https://defold.com/extension-push)
 - [Safe Area](https://defold.com/extension-safearea)
 - [Webview](https://defold.com/extension-webview)
@@ -1352,13 +1350,13 @@ While movie clips can contain other movie clips, game objects can not *contain* 
 
 ## Flash—manually creating movie clips
 
-In Flash, instances of movie clips can be added to your scene manually by dragging them from the library and onto the timeline. This is illustrated in the screenshot below, where each Flash logo is an instance of the "logo" movieclip:
+In Flash, instances of movie clips can be added to your scene manually by dragging them from the library and onto the timeline. This is illustrated in the screenshot below, where each Flash logo is an instance of the `logo` movieclip:
 
 ## Defold—manually creating game objects
 
-As mentioned previously, Defold does not have a timeline concept. Instead, game objects are organized in collections. Collections are containers (or prefabs) that hold game objects and other collections. At the most basic level, a game can consist of only one collection. More frequently, Defold games make use of multiple collections, either added manually to the bootstrap “main” collection or dynamically loaded via [collection proxies](#manuals:collection-proxy). This concept of loading "levels" or "screens" does not have a direct Flash equivalent.
+As mentioned previously, Defold does not have a timeline concept. Instead, game objects are organized in collections. Collections are containers (or prefabs) that hold game objects and other collections. At the most basic level, a game can consist of only one collection. More frequently, Defold games make use of multiple collections, either added manually to the bootstrap `main` collection or dynamically loaded via [collection proxies](#manuals:collection-proxy). This concept of loading "levels" or "screens" does not have a direct Flash equivalent.
 
-In the example below, the "main" collection contains three instances (listed on the right, in the *Outline* window) of the "logo" game object (seen on the left, in the *Assets* browser window):
+In the example below, the `main` collection contains three instances (listed on the right, in the *Outline* window) of the `logo` game object (seen on the left, in the *Assets* browser window):
 
 ## Flash—referencing manually created movie clips
 
@@ -1370,9 +1368,9 @@ In Defold, all game objects and components are referred to via an address. In mo
 
 - `"."` addresses the current game object.
 - `"#"` addresses the current component (the script).
-- `"logo"` addresses the game object with the id "logo".
-- `"#script"` addresses the component with id "script" in the current game object.
-- `"logo#script"` addresses the component with id "script" in the game object with id "logo".
+- `"logo"` addresses the game object with the id `logo`.
+- `"#script"` addresses the component with id `script` in the current game object.
+- `"logo#script"` addresses the component with id `script` in the game object with id `logo`.
 
 The address of manually placed game objects is determined by the *Id* property assigned (see bottom right of screenshot). The id has to be unique for the current collection file you are working in. The editor automatically sets an id for you but you can change it for each game object instance that you create.
 
@@ -1384,7 +1382,7 @@ The addressing model and message passing are key concepts in Defold game develop
 
 In order to dynamically create movie clips in Flash, ActionScript Linkage first needs to be set up:
 
-This creates a class (Logo in this case), which then enables instantiation of new instances of this class. Adding an instance of the Logo class to the Stage could be done as below:
+This creates a class (`Logo` in this case), which then enables instantiation of new instances of this class. Adding an instance of the `Logo` class to the Stage could be done as below:
 ```as
 var logo:Logo = new Logo();
 addChild(logo);
@@ -1392,11 +1390,11 @@ addChild(logo);
 
 ## Defold—creating game objects using factories
 
-In Defold, dynamic generation of game objects is achieved through the use of *factories*. Factories are components that are used to spawn copies of a specific game object. In this example, a factory has been created with the "logo" game object as a prototype:
+In Defold, dynamic generation of game objects is achieved through the use of *factories*. Factories are components that are used to spawn copies of a specific game object. In this example, a factory has been created with the `logo` game object as a prototype:
 
-It is important to note that factories, like all components, need to be added to a game object before they can be used. In this example, we have created a game object called "factories", to hold our factory component:
+It is important to note that factories, like all components, need to be added to a game object before they can be used. In this example, we have created a game object called `factories`, to hold our factory component:
 
-The function to call to generate an instance of the logo game object is:
+The function to call to generate an instance of the `logo` game object is:
 ```lua
 local logo_id = factory.create("factories#logo_factory")
 ```
@@ -1411,9 +1409,9 @@ As discussed in the movie clips section above, the Stage is essentially the top 
 
 ## Defold—collections
 
-The Defold equivalent of the Flash Stage is a collection. When the engine starts up it creates a new game world based on the content of a collection file. By default, this file is called "main.collection" but you can change which collection is loaded at startup by accessing the *game.project* settings file that is in the root of every Defold project:
+The Defold equivalent of the Flash Stage is a collection. When the engine starts up it creates a new game world based on the content of a collection file. By default, this file is called `main.collection` but you can change which collection is loaded at startup by accessing the *game.project* settings file that is in the root of every Defold project:
 
-Collections are containers that are used in the editor to organize game objects and other collections. The contents of a collection can also be spawned via script into the runtime using a [collection factory](#manuals:collection-factory), which works the same way as a regular game object factory. This is useful for spawning groups of enemies, or a pattern of coin collectables, for instance. In the screenshot below, we have manually placed two instances of the "logos" collection into the "main" collection.
+Collections are containers that are used in the editor to organize game objects and other collections. The contents of a collection can also be spawned via script into the runtime using a [collection factory](#manuals:collection-factory), which works the same way as a regular game object factory. This is useful for spawning groups of enemies, or a pattern of coin collectables, for instance. In the screenshot below, we have manually placed two instances of the `logos` collection into the `main` collection.
 
 In some cases, you want to load a completely new game world. The [collection proxy](#manuals:collection-proxy) component allows you to create a new game world based on the contents of a collection file. This would be useful for scenarios such as loading new game levels, mini games, or cutscenes.
 
@@ -1429,13 +1427,13 @@ Motion tweens allow the animation of various properties of an object, including 
 
 Defold works with pixel images as opposed to vector graphics, thus it does not have an equivalent for shape tweening. However, motion tweening has a powerful equivalent in [property animation](https://defold.com/ref/go/#go.animate). This is accomplished via script, using the `go.animate()` function. The `go.animate()` function tweens a property (such as color, scale, rotation or position) from the starting value to the desired end value, using one of many available easing functions (including custom ones). Where Flash required user implementation of more advanced easing functions, Defold includes [many easing functions](#manuals:property-animation) built-into the engine.
 
-Where Flash makes use of keyframes of graphics on a timeline for animation, one of the main methods of graphic animation in Defold is by flipbook animation of imported image sequences. Animations are organized in a game object component known as an atlas. In this instance we have an atlas for a game character with an animation sequence called "run". This consists of a series of png files:
+Where Flash makes use of keyframes of graphics on a timeline for animation, one of the main methods of graphic animation in Defold is by flipbook animation of imported image sequences. Animations are organized in a game object component known as an atlas. In this instance we have an atlas for a game character with an animation sequence called `run`. This consists of a series of png files:
 
 ## Flash—depth index
 
-In Flash, the display list determines what is shown and in what order. The ordering of objects in a container (such as the Stage) is handled by an index. Objects added to a container using the `addChild()` method will automatically occupy the top position of the index, starting from 0 and incrementing with each additional object. In the screenshot below, we have generated three instances of the "logo" movie clip:
+In Flash, the display list determines what is shown and in what order. The ordering of objects in a container (such as the Stage) is handled by an index. Objects added to a container using the `addChild()` method will automatically occupy the top position of the index, starting from 0 and incrementing with each additional object. In the screenshot below, we have generated three instances of the `logo` movie clip:
 
-The positions in the display list are indicated by the numbers next to each logo instance. Ignoring any code to handle the x/y position of the movie clips, the above could have been generated like so:
+The positions in the display list are indicated by the numbers next to each `logo` instance. Ignoring any code to handle the x/y position of the movie clips, the above could have been generated like so:
 ```as
 var logo1:Logo = new Logo();
 var logo2:Logo = new Logo();
@@ -1459,9 +1457,9 @@ The positions of game objects in Defold are represented by vectors consisting of
 
 Game objects with a z position outside the -1 to 1 range will not be rendered and therefore not visible. This is a common pitfall for developers new to Defold, and is worth keeping in mind if a game object is not visible when you expect it to be.
 
-Unlike in Flash where the editor only implies depth indexing (and allows modification using commands like *Bring Forward* and *Send Backward*), Defold allows you to set the z position of objects directly in the editor. In the screenshot below, you can see that "logo3" is displayed on top, and has a z position of 0.2. The other game objects have z positions of 0.0 and 0.1.
+Unlike in Flash where the editor only implies depth indexing (and allows modification using commands like *Bring Forward* and *Send Backward*), Defold allows you to set the z position of objects directly in the editor. In the screenshot below, you can see that `logo3` is displayed on top, and has a z position of 0.2. The other game objects have z positions of 0.0 and 0.1.
 
-Note that the z position of a game object nested in one or more collections is decided by its own z position, together with that of all its parents. For instance, imagine the logo game objects above were placed in a "logos" collection which in turn was placed in "main" (see screenshot below). If the "logos" collection had a z position of 0.9, the z positions of the game objects contained within would be 0.9, 1.0, and 1.1. Therefore, "logo3" would not be rendered as its z position is greater than 1.
+Note that the z position of a game object nested in one or more collections is decided by its own z position, together with that of all its parents. For instance, imagine the `logo` game objects above were placed in a `logos` collection which in turn was placed in `main` (see screenshot below). If the `logos` collection had a z position of 0.9, the z positions of the game objects contained within would be 0.9, 1.0, and 1.1. Therefore, `logo3` would not be rendered as its z position is greater than 1.
 
 The z position of a game object can of course be changed using script. Assume the below is located in the script component of a game object:
 ```lua
@@ -1472,7 +1470,7 @@ go.set_position(pos)
 
 ## Flash `hitTestObject` and `hitTestPoint` collision detection
 
-Basic collision detection in Flash is achieved by using the `hitTestObject()` method. In this example, we have two movie clips: "bullet" and "bullseye". These are illustrated in the screenshot below. The blue boundary box is visible when selecting the symbols in the Flash editor, and it is these boundary boxes that drive the result of the `hitTestObject()` method.
+Basic collision detection in Flash is achieved by using the `hitTestObject()` method. In this example, we have two movie clips: `bullet` and `bullseye`. These are illustrated in the screenshot below. The blue boundary box is visible when selecting the symbols in the Flash editor, and it is these boundary boxes that drive the result of the `hitTestObject()` method.
 
 Collision detection using `hitTestObject()` is done as follows:
 ```as
@@ -1490,17 +1488,17 @@ This line would check the x and y position of the bullet (top left in this scena
 
 ## Defold—collision objects
 
-Defold includes a physics engine that can detect collisions and let a script react to it. Collision detection in Defold starts with assigning collision object components to game objects. In the screenshot below, we have added a collision object to the "bullet" game object. The collision object is indicated as the red transparent box (which is visible in the editor only):
+Defold includes a physics engine that can detect collisions and let a script react to it. Collision detection in Defold starts with assigning collision object components to game objects. In the screenshot below, we have added a collision object to the `bullet` game object. The collision object is indicated as the red transparent box (which is visible in the editor only):
 
 Defold includes a modified version of the Box2D physics engine, which can simulate realistic collisions automatically. This guide assumes use of the kinematic collision objects, as these most closely resemble collision detection in Flash. Read more about the dynamic collision objects in the Defold [physics manual](#manuals:physics).
 
 The collision object includes the following properties:
 
-A box shape has been used as this was most appropriate for the bullet graphic. The other shape used for 2D collisions, sphere, will be used for the target. Setting the type to Kinematic means resolving collisions is done by your script as opposed to the built-in physics engine (for more information on the other types, please refer to the [physics manual](#manuals:physics)). The *Group* and *Mask* properties determine what collision group the object belongs to and what collision group it should be checked against, respectively. The current setup means a "bullet" can only collide with a "target". Imagine the setup was changed to the below:
+A box shape has been used as this was most appropriate for the bullet graphic. The other shape used for 2D collisions, sphere, will be used for the target. Setting the type to Kinematic means resolving collisions is done by your script as opposed to the built-in physics engine (for more information on the other types, please refer to the [physics manual](#manuals:physics)). The *Group* and *Mask* properties determine what collision group the object belongs to and what collision group it should be checked against, respectively. The current setup means a `bullet` can only collide with a `target`. Imagine the setup was changed to the below:
 
 Now, bullets can collide with targets and other bullets. For reference, we have set up a collision object for the target that looks as follows:
 
-Note how the *Group* property is set to "target" and *Mask* is set to "bullet".
+Note how the *Group* property is set to `target` and *Mask* is set to `bullet`.
 
 In Flash, collision detection occurs only when explicitly called by the script. In Defold, collision detection occurs continuously in the background as long as a collision object remains enabled. When a collision occurs, messages are sent to all components of a game object (most relevantly, the script components). These are the [`collision_response` and `contact_point_response`](#manuals:physics-messages) messages, which contain all the information required to resolve the collision as desired.
 
@@ -5689,7 +5687,7 @@ Adding flipbook animations
 
   Select `Add Animation Group` from the pop up context menu to create a flipbook animation group.
 
-  A new, empty, animation group with a default name ("New Animation") is added to the atlas.
+  A new, empty, animation group with a default name (`New Animation`) is added to the atlas.
 
   Drag and drop images from the *Asset* pane to the editor view to add them to the currently selected group.
 
@@ -6827,7 +6825,7 @@ local bone_go = model.get_go("#wiggler", "Bone_002")
 
 ### Cursor animation
 
-In addition to using the `model.play_anim()` to advance a model animation, *Model* components expose a "cursor" property that can be manipulated with `go.animate()` (more about [property animations](#manuals:property-animation)):
+In addition to using the `model.play_anim()` to advance a model animation, *Model* components expose a `cursor` property that can be manipulated with `go.animate()` (more about [property animations](#manuals:property-animation)):
 ```lua
 -- Set the animation on #model but don't start it
 model.play_anim("#model", "wiggle", go.PLAYBACK_NONE)
@@ -7121,13 +7119,13 @@ With a collection factory component you can spawn the contents of a collection f
 
 ## Spawning a collection
 
-Suppose we want a character game object and a separate shield game object childed to the character. We build the game object hierarchy in a collection file and save it as "bean.collection".
+Suppose we want a character game object and a separate shield game object childed to the character. We build the game object hierarchy in a collection file and save it as `bean.collection`.
 
 The *collection proxy* component is used to create a new game world, including a separate physics world, based on a collection. The new world is accessed through a new socket. All assets contained in the collection are loaded through the proxy when you message the proxy to start loading. This makes them very useful to, for instance, change levels in a game. New game worlds come with quite a lot of overhead though so do not use them for dynamic loading of small stuff. For more information, see the [Collection proxy documentation](#manuals:collection-proxy).
 
-We then add a *Collection factory* to a gameobject that will take care of the spawning and set "bean.collection" as the component's *Prototype*:
+We then add a *Collection factory* to a gameobject that will take care of the spawning and set `bean.collection` as the component's *Prototype*:
 
-Spawning a bean and shield is now just a matter of calling the `collectionfactory.create()` function:
+Spawning a `bean` and shield is now just a matter of calling the `collectionfactory.create()` function:
 ```lua
 local bean_ids = collectionfactory.create("#bean_factory")
 ```
@@ -7151,7 +7149,7 @@ The function takes 5 parameters:
 
 `collectionfactory.create()` returns the identities of the spawned game objects as a table. The table keys map the hash of the collection-local id of each object to the runtime id of each object:
 
-The parent-child relationship between "bean" and "shield" is *not* reflected in the returned table. This relation only exist in the runtime scene-graph, i.e. how objects are transformed together. Re-parenting an object never changes its id.
+The parent-child relationship between `bean` and `shield` is *not* reflected in the returned table. This relation only exist in the runtime scene-graph, i.e. how objects are transformed together. Re-parenting an object never changes its id.
 
 ```lua
 local bean_ids = collectionfactory.create("#bean_factory")
@@ -7174,7 +7172,7 @@ props[hash("/bean")] = { shield = false }
 local ids = collectionfactory.create("#bean_factory", nil, nil, props)
 ```
 
-Supposing the "bean" game object in "bean.collection" defines the "shield" property. [The Script property manual](#manuals:script-properties) contains information on script properties.
+Supposing the `bean` game object in `bean.collection` defines the `shield` property. [The Script property manual](#manuals:script-properties) contains information on script properties.
 ```lua
 -- bean/controller.script
 go.property("shield", true)
@@ -7275,7 +7273,7 @@ Collection proxies differ from [collection factory components](#manuals:collecti
 
 ## Bootstrap
 
-When the Defold engine starts it loads and instantiates all game objects from a *bootstrap collection* into the runtime. It then initializes and enables the game objects and their components. Which bootstrap collection the engine should use is set in the [project settings](#manuals:project-settings). By convention this collection file is usually named "main.collection".
+When the Defold engine starts it loads and instantiates all game objects from a *bootstrap collection* into the runtime. It then initializes and enables the game objects and their components. Which bootstrap collection the engine should use is set in the [project settings](#manuals:project-settings). By convention this collection file is usually named `main.collection`.
 
 To fit the game objects and their components the engine allocates the memory needed for the whole "game world" into which the contents of the bootstrap collection are instantiated. A separate physics world is also created for any collision objects and physics simulation.
 
@@ -7541,7 +7539,7 @@ Bullet
 : Setting this property enables continuous collision detection (CCD) between the collision object and other dynamic collision objects. The *Bullet* property is ignored if the *Type* is not set to `Dynamic`.
 
 Group
-: The name of the collision group the object should belong to. You can have 16 different groups and you name them as you see fit for your game. For example "players", "bullets", "enemies" and "world". If the *Collision Shape* is set to a tile map, this field is not used but the groups names are taken from the tile source. [Learn more about collision groups](#manuals:physics-groups).
+: The name of the collision group the object should belong to. You can have 16 different groups and you name them as you see fit for your game. For example `players`, `bullets`, `enemies` and `world`. If the *Collision Shape* is set to a tile map, this field is not used but the groups names are taken from the tile source. [Learn more about collision groups](#manuals:physics-groups).
 
 Mask
 : The other _groups_ this object should collide with. You can name one group or specify multiple groups in a comma separated list. If you leave the *Mask* field empty, the object will not collide with anything. [Learn more about collision groups](#manuals:physics-groups).
@@ -8954,7 +8952,7 @@ Sound components
 : These components contain an actual sound that should be played and are able to play back the sound.
 
 Sound groups
-: Each sound component can be designated to belong to a _group_. Groups offer an easy way to manage sounds that belong together in an intuitive way. For instance, a group "sound_fx" can be set up and any sound belonging to that group can be ducked by a simple function call.
+: Each sound component can be designated to belong to a _group_. Groups offer an easy way to manage sounds that belong together in an intuitive way. For instance, a group `sound_fx` can be set up and any sound belonging to that group can be ducked by a simple function call.
 
 ## Creating a sound component
 
@@ -8972,7 +8970,7 @@ The created component has a set of properties that should be set:
 : The number of times a looping sound will play before stopping (0 means the sound should loop until explicitly stopped).
 
 *Group*
-: The name of the sound group the sound should belong to. If this property is left empty, the sound will be assigned to the built-in "master" group.
+: The name of the sound group the sound should belong to. If this property is left empty, the sound will be assigned to the built-in `master` group.
 
 *Gain*
 : You can set the gain for the sound directly on the component. This allows you to easily tweak the gain for a sound without going back to your sound program and performing a re-export. See below for details on how gain is calculated.
@@ -9008,13 +9006,13 @@ The sound system has 4 levels of gain:
 - The gain set on the sound component.
 - The gain set when starting the sound via a call to `sound.play()` or when changing the gain on the voice via a call to `sound.set_gain()`.
 - The gain set on the group via a [`sound.set_group_gain()`](https://defold.com/ref/sound#sound.set_group_gain) function call.
-- The gain set on the "master" group. This can be altered with `sound.set_group_gain(hash("master"), gain)`.
+- The gain set on the `master` group. This can be altered with `sound.set_group_gain(hash("master"), gain)`.
 
 When **Use Linear Gain** is enabled in the [Sound project settings](#manuals:project-settings) (the default), the output gain is the result of these four gains multiplied. A gain of `1.0` is unity gain (0 dB). When linear gain is disabled, Defold applies a nonlinear curve during mixing, so the direct four-way multiplication and decibel conversion below do not describe the resulting output level.
 
 ## Sound groups
 
-Any sound component with a sound group name specified will be put in a sound group with that name. If you don't specify a group the sound will be assigned to the "master" group. You can also explicitly set the group on a sound component to "master" which has the same effect.
+Any sound component with a sound group name specified will be put in a sound group with that name. If you don't specify a group the sound will be assigned to the `master` group. You can also explicitly set the group on a sound component to `master` which has the same effect.
 
 A few functions are available to get all available groups, get the string name, get and set gain, rms (see http://en.wikipedia.org/wiki/Root_mean_square) and peak gain. There is also a function that allows you to test if the target device's music player is running:
 ```lua
@@ -11070,7 +11068,7 @@ Consuming input
 
 The input bindings is a project wide table that allows you to specify how device input should translate into named *actions* before they are dispatched to your script components and GUI scripts. You can create a new input binding file, `right click` a location in the *Assets* view and select `New... ▸ Input Binding`. To make the engine use the new file, change the *Game Binding* entry in *game.project*.
 
-A default input binding file is automatically created with all new project templates so there is usually no need to create a new binding file. The default file is called "game.input_binding" and can be found in the "input" folder in the project root. `Double click` the file to open it in the editor:
+A default input binding file is automatically created with all new project templates so there is usually no need to create a new binding file. The default file is called `game.input_binding` and can be found in the `input` folder in the project root. `Double click` the file to open it in the editor:
 
 To create a new binding, click the `+` button at the bottom of the relevant trigger type section. Each entry has two fields:
 
@@ -11078,7 +11076,7 @@ To create a new binding, click the `+` button at the bottom of the relevant trig
 : The raw input to listen for, selected from a scroll list of available inputs.
 
 *Action*
-: The action name given to input actions when they are created and dispatched to your scripts. The same action name can be assigned to multiple inputs. For instance, you can bind the `Space` key and the gamepad "A" button to the action `jump`. Note that there is a known bug where touch inputs unfortunately cannot have the same action names as other inputs.
+: The action name given to input actions when they are created and dispatched to your scripts. The same action name can be assigned to multiple inputs. For instance, you can bind the `Space` key and the gamepad `A` button to the action `jump`. Note that there is a known bug where touch inputs unfortunately cannot have the same action names as other inputs.
 
 ## Trigger types
 
@@ -11175,7 +11173,7 @@ A component's `on_input()` can actively control whether actions should be passed
 
 There are many good use cases where input consumption provides a simple and powerful way to shift input between different parts of a game. For example, if you need a pop-up menu that temporarily is the only part of the game that listens to input:
 
-The pause menu is initially hidden (disabled) and when the player touches the "PAUSE" HUD item, it is enabled:
+The pause menu is initially hidden (disabled) and when the player touches the `PAUSE` HUD item, it is enabled:
 ```lua
 function on_input(self, action_id, action)
     if action_id == hash("mouse_press") and action.pressed then
@@ -11471,7 +11469,7 @@ The tool will ask you to press different buttons on your connected controller. I
 
 ### Unidentified gamepads
 
-When a gamepad is connected and no mapping exists for the gamepad the gamepad will only generate "connected", "disconnected" and "raw" actions. In this case you need to manually map the raw gamepad data to actions in your game.
+When a gamepad is connected and no mapping exists for the gamepad the gamepad will only generate `connected`, `disconnected` and `raw` actions. In this case you need to manually map the raw gamepad data to actions in your game.
 
 It is possible to check if an input action for a gamepad is from an unknown gamepad or not by reading the `gamepad_unknown` value from the `action`:
 ```lua
@@ -11505,7 +11503,7 @@ If your game is running from inside an `iframe` you must also make sure that the
 
 ### Standard gamepad
 
-If a connected gamepad is identified by the browser as a standard gamepad it will use the mapping for "Standard Gamepad" in the [gamepads settings file](#manuals:input-gamepads) (a `Standard Gamepad` mapping is included in the `default.gamepads` file in `/builtins`). A standard gamepad is defined as having 16 buttons and 2 analog sticks with a button layout similar to a PlayStation or Xbox controller (see the [W3C definition and button layout](https://w3c.github.io/gamepad/#dfn-standard-gamepad) for more information). If the connected gamepad is not identified as a standard gamepad Defold will look for a mapping matching the hardware gamepad type in the gamepad settings file.
+If a connected gamepad is identified by the browser as a standard gamepad it will use the mapping for `Standard Gamepad` in the [gamepads settings file](#manuals:input-gamepads) (a `Standard Gamepad` mapping is included in the `default.gamepads` file in `/builtins`). A standard gamepad is defined as having 16 buttons and 2 analog sticks with a button layout similar to a PlayStation or Xbox controller (see the [W3C definition and button layout](https://w3c.github.io/gamepad/#dfn-standard-gamepad) for more information). If the connected gamepad is not identified as a standard gamepad Defold will look for a mapping matching the hardware gamepad type in the gamepad settings file.
 
 ## Gamepads on Windows
 On Windows, only XBox 360 controllers are currently supported. To hook up your 360 controller to your Windows machine, [make sure it is setup correctly](http://www.wikihow.com/Use-Your-Xbox-360-Controller-for-Windows).
@@ -12769,7 +12767,7 @@ Lua modules allow you to structure your project and create reusable library code
 
 ## Requiring Lua files
 
-Lua code stored in files with file ending ".lua" somewhere in your game project structure can be loaded with `require` into script and gui script files. To create a new Lua module file, right click the folder you want to create it in in the *Assets* view, then select `New... ▸ Lua Module`. Give the file a unique name and press `Ok`:
+Lua code stored in files with file ending `.lua` somewhere in your game project structure can be loaded with `require` into script and gui script files. To create a new Lua module file, right click the folder you want to create it in in the *Assets* view, then select `New... ▸ Lua Module`. Give the file a unique name and press `Ok`:
 
 Suppose the following code is added to the file "`main/anim.lua`":
 ```lua
@@ -12851,7 +12849,7 @@ print(m.value) --> "4711" (even if "module.lua" is changed and hot reloaded)
 
 If you hot reload the module file the code is run again, but nothing happens with `m.value`. Why is that?
 
-First, the table created in "module.lua" is created in local scope and a _reference_ to that table is returned to the user. Reloading "module.lua" evaluates the module code again but that creates a new table in the local scope instead of updating the table `m` refers to.
+First, the table created in `module.lua` is created in local scope and a _reference_ to that table is returned to the user. Reloading `module.lua` evaluates the module code again but that creates a new table in the local scope instead of updating the table `m` refers to.
 
 Secondly, Lua caches files loaded with `require`. The first time a file is required, it is put in the table [`package.loaded`](https://defold.com/ref/package/#package.loaded) so it can be read faster on subsequent `require` calls. You can force a file to be re-read from disk by setting the file's entry to `nil`: `package.loaded["my_module"] = nil`.
 
@@ -16565,7 +16563,7 @@ function update(self, dt)
 end
 ```
 
-Changing and reloading "my_module.lua" will _not_ change the behavior of "user.script". See [the Modules manual](#manuals:modules) for more information on why, and how to avoid this pitfall.
+Changing and reloading `my_module.lua` will _not_ change the behavior of `user.script`. See [the Modules manual](#manuals:modules) for more information on why, and how to avoid this pitfall.
 
 ## The on_reload() function
 
@@ -17590,7 +17588,7 @@ This browser timeline is separate from both the in-game visual profiler and the 
 ## Build reports
 When bundling your game there is an option to create a build report. This is very useful to get a grip on the size of all the assets that are part of your game bundle. Simply check the *Generate build report* checkbox when bundling the game.
 
-The builder will produce a file called "report.html" alongside the game bundle. Open the file in a web browser to inspect the report:
+The builder will produce a file called `report.html` alongside the game bundle. Open the file in a web browser to inspect the report:
 
 The *Overview* gives an over all visual breakdown of the project size based on resource type.
 
@@ -17617,14 +17615,14 @@ OpenGL profiler (macOS)
 Android Profiler (Android)
 : https://developer.android.com/studio/profile/android-profiler.html
 
-  A set of profiling tools that captures real-time data of your game's CPU, memory, and network activity. You can perform sample-based method tracing of code execution, capture heap dumps, view memory allocations, and inspect the details of network-transmitted files. Using the tool requires that you set `android:debuggable="true"` in "AndroidManifest.xml".
+  A set of profiling tools that captures real-time data of your game's CPU, memory, and network activity. You can perform sample-based method tracing of code execution, capture heap dumps, view memory allocations, and inspect the details of network-transmitted files. Using the tool requires that you set `android:debuggable="true"` in `AndroidManifest.xml`.
 
   Note: Since Android Studio 4.1 it is also possible to [run the profiling tools without starting Android Studio](https://developer.android.com/studio/profile/android-profiler.html#standalone-profilers).
 
 Graphics API Debugger (Android)
 : https://github.com/google/gapid
 
-  This is a collection of tools that allows you to inspect, tweak and replay calls from an application to a graphics driver. To use the tool requires that you set `android:debuggable="true"` in "AndroidManifest.xml".
+  This is a collection of tools that allows you to inspect, tweak and replay calls from an application to a graphics driver. To use the tool requires that you set `android:debuggable="true"` in `AndroidManifest.xml`.
 
 <!-- /manuals/ads -->
 
@@ -17659,9 +17657,9 @@ Rewarded ads (also know as Incentivized ads) are optional and therefore less obt
 The [Defold Asset Portal](https://defold.com/tags/stars/ads/) contains several assets which integrate with ad providers:
 
 * [AdMob](https://defold.com/assets/admob-defold/) - Show ads using the Google AdMob network.
-* [AppLovin MAX](https://defold.com/extension-applovin/) - Show ads using AppLovin MAX ad mediation.
+* [Enhance](https://defold.com/assets/enhance/) - Supports a number of different ad networks. Requires an additional post-build step.
 * [Facebook Instant Games](https://defold.com/assets/facebookinstantgames/) - Show ads in your Facebook Instant Game.
-* [LevelPlay](https://defold.com/extension-levelplay/) - Show ads using Unity LevelPlay ad mediation.
+* [IronSource](https://defold.com/assets/ironsource/) - Show ads using the IronSource Ad network.
 * [Unity Ads](https://defold.com/assets/defvideoads/) - Show ads using the Unity Ads network.
 
 # How to integrate ads in your game
@@ -17933,19 +17931,19 @@ Since Xcode 7, anyone can install Xcode and do on-device development for free. Y
 1. Connect your device.
 2. Install Xcode.
 3. Add a new account to Xcode and sign in with your Apple ID.
-4. Create a new project. The simplest "Single View App" works fine.
-5. Select your "Team" (auto created for you) and give the app a bundle identifier.
+4. Create a new project. The simplest `Single View App` works fine.
+5. Select your `Team` (auto created for you) and give the app a bundle identifier.
 
 Make a note of the bundle identifier as you must use the same bundle identifier in your Defold project.
 
 6. Make sure that Xcode has created a *Provisioning Profile* and *Signing Certificate* for the app.
 
 7. Build the app on your device. The first time, Xcode will ask you to enable Developer mode and will prepare the device with debugger support. This may take a while.
-8. When you have verified that the app works, find it on your disk. You can see the build location in the Build report in the "Report Navigator".
+8. When you have verified that the app works, find it on your disk. You can see the build location in the Build report in the `Report Navigator`.
 
 9. Locate the app, right-click it and select `Show Package Contents`.
 
-10. Copy the file "embedded.mobileprovision" to some place on your drive where you will find it.
+10. Copy the file `embedded.mobileprovision` to some place on your drive where you will find it.
 
 This provision file can be used together with your code signing identity to sign apps in Defold for one week.
 
@@ -18014,7 +18012,7 @@ This executable runs without any graphics and sound. It means that you can run t
 
 ## Installing and launching bundle on a connected iPhone
 
-You can install and launch the built bundle using editor's "Install on connected device" and "Launch installed app" check-boxes in the Bundle dialog:
+You can install and launch the built bundle using editor's `Install on connected device` and `Launch installed app` check-boxes in the Bundle dialog:
 
 You need [ios-deploy](https://github.com/ios-control/ios-deploy) command lint tool installed for this feature to work. The simplest way to install it is using Homebrew:
 ```
@@ -18033,7 +18031,7 @@ Click Create to finish the process. Your project is now created and we can proce
 
 Drag and drop an image to import it to the project. Next select `Assets.xcassets` and drop the image to `Assets.xcassets`:
 
-Open `LaunchScreen.storyboard` and click on the plus button (`+`). Type "imageview" in the dialog to find the ImageView component.
+Open `LaunchScreen.storyboard` and click on the plus button (`+`). Type `imageview` in the dialog to find the ImageView component.
 
 Drag the Image View component onto the storyboard:
 
@@ -18064,9 +18062,9 @@ Drag and drop images to the empty boxes representing the different supported ico
 
 Do not add any icons for Notifications, Settings or Spotlight.
 
-When you are done, set the active scheme to "Build -> Any iOS Device (arm64)"(or "Generic iOS Device") and select `Product` -> `Build`. Wait for the build process to finish.
+When you are done, set the active scheme to `Build -> Any iOS Device (arm64)`(or `Generic iOS Device`) and select `Product` -> `Build`. Wait for the build process to finish.
 
-Make sure that you build for "Any iOS Device (arm64)" or "Generic iOS Device" otherwise you will get `ERROR ITMS-90704` error when uploading your build.
+Make sure that you build for `Any iOS Device (arm64)` or `Generic iOS Device` otherwise you will get `ERROR ITMS-90704` error when uploading your build.
 
 The last step is to copy the compiled `Assets.car` file to your Defold project. Open Finder at the following location and copy the `Assets.car` file to your Defold project:
 
@@ -18080,7 +18078,7 @@ The App Store icon does not have to be referenced from *game.project*. It is aut
 
 The editor writes an *.ipa* file which is an iOS application bundle. To install the file on your device, you can use one of the following tools:
 
-* Xcode via the "Devices and Simulators" window
+* Xcode via the `Devices and Simulators` window
 * [`ios-deploy`](https://github.com/ios-control/ios-deploy) command line tool
 * [`Apple Configurator 2`](https://apps.apple.com/us/app/apple-configurator-2/) from the macOS App Store
 * iTunes
@@ -18704,7 +18702,7 @@ Some applications may also need additional entitlements. The Steamworks extensio
 <true/>
 ```
 
-    * `com.apple.security.cs.disable-library-validation` - Indicates whether the app may load arbitrary plug-ins or frameworks, without requiring code signing.
+  * `com.apple.security.cs.disable-library-validation` - Indicates whether the app may load arbitrary plug-ins or frameworks, without requiring code signing.
 
 All of the entitlements that can be granted to an application are listed in the official [Apple developer documentation](https://developer.apple.com/documentation/bundleresources/entitlements).
 
@@ -18881,7 +18879,7 @@ Supported `arc-platform` pairs are `arm64-ios`, `x86_64-ios`, `armv7-android`, `
 : This optional folder contains additional files used in the build or bundling process. See below for details.
 
 *res*
-: This optional folder contains any extra resources that the extension depends on. Resource files should be placed in subfolders named by `platform`, or `architecture-platform` just as the "lib" subfolders. A subfolder `common` is also allowed, containing resource files common for all platforms.
+: This optional folder contains any extra resources that the extension depends on. Resource files should be placed in subfolders named by `platform`, or `architecture-platform` just as the `lib` subfolders. A subfolder `common` is also allowed, containing resource files common for all platforms.
 
 ### Manifest files
 
@@ -18996,7 +18994,7 @@ dmExtension::Result FinalizeMyExtension(dmExtension::Params* params)
 DM_DECLARE_EXTENSION(MyExtension, LIB_NAME, AppInitializeMyExtension, AppFinalizeMyExtension, InitializeMyExtension, 0, 0, FinalizeMyExtension)
 ```
 
-Note the macro `DM_DECLARE_EXTENSION` that is used to declare the various entry points into the extension code. The first argument `symbol` must match the name specified in *ext.manifest*. For this simple example, there is no need for any "update" or "on_event" entry points, so `0` is provided in those locations to the macro.
+Note the macro `DM_DECLARE_EXTENSION` that is used to declare the various entry points into the extension code. The first argument `symbol` must match the name specified in *ext.manifest*. For this simple example, there is no need for any `update` or `on_event` entry points, so `0` is provided in those locations to the macro.
 
 Now it is just a matter of building the project (`Project ▸ Build`). This will upload the extension to the extension builder which will produce a custom engine with the new extension included. If the builder encounters any errors, a dialog with the build errors will show.
 

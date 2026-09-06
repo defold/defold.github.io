@@ -5,13 +5,16 @@ layout: manual
 locale: pt
 title: Como obter ajuda
 toc:
-- Obtendo ajuda {getting-help}
+- anchor: getting-help
+  title: Obtendo ajuda
 - Relatar um problema no fórum
 - Informações necessárias
 - Compartilhando código
-- Relatar um problema pelo editor {report-a-problem-from-the-editor}
+- anchor: report-a-problem-from-the-editor
+  title: Relatar um problema pelo editor
 - Discutir um problema no Discord
-- Arquivos de log {log-files}
+- anchor: log-files
+  title: Arquivos de log
 ---
 
 # Obtendo ajuda {#getting-help}

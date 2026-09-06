@@ -17,7 +17,8 @@ toc:
 - Фаза Post Update
 - Фаза Render
 - Финализация
-- Диспетчеризация сообщений {dispatching-messages}
+- anchor: dispatching-messages
+  title: Диспетчеризация сообщений
 ---
 
 # Жизненный цикл приложения

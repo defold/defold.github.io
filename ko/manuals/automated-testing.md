@@ -5,19 +5,32 @@ layout: manual
 locale: ko
 title: 자동화 테스트 및 검증
 toc:
-- 자동화 테스트 및 검증 {automated-testing-and-verification}
-- 검증 수준 {verification-levels}
-- 재사용 및 테스트 가능한 Lua 코드 {reusable-and-testable-lua-code}
-- 실행 중인 컬렉션의 테스트 {tests-in-a-running-collection}
-- 테스트 프레임워크 {test-frameworks}
-- 구조화된 테스트 결과 {structured-test-results}
-- 콘솔 출력 수집 {collecting-console-output}
-- 저장되는 로그 {persisted-logs}
-- 런타임 API를 통한 실행 중인 게임 테스트 {testing-a-running-game-through-a-runtime-api}
-- HTML5 브라우저 테스트 {browser-tests-for-html5}
-- 시각적 검사를 위한 에디터 미리보기 및 런타임 스크린샷 {editor-previews-and-runtime-screenshots}
-- Headless 테스트와 CI {headless-tests-and-ci}
-- 실패 보고서와 아티팩트 {failure-reports-and-artifacts}
+- anchor: automated-testing-and-verification
+  title: 자동화 테스트 및 검증
+- anchor: verification-levels
+  title: 검증 수준
+- anchor: reusable-and-testable-lua-code
+  title: 재사용 및 테스트 가능한 Lua 코드
+- anchor: tests-in-a-running-collection
+  title: 실행 중인 컬렉션의 테스트
+- anchor: test-frameworks
+  title: 테스트 프레임워크
+- anchor: structured-test-results
+  title: 구조화된 테스트 결과
+- anchor: collecting-console-output
+  title: 콘솔 출력 수집
+- anchor: persisted-logs
+  title: 저장되는 로그
+- anchor: testing-a-running-game-through-a-runtime-api
+  title: 런타임 API를 통한 실행 중인 게임 테스트
+- anchor: browser-tests-for-html5
+  title: HTML5 브라우저 테스트
+- anchor: editor-previews-and-runtime-screenshots
+  title: 시각적 검사를 위한 에디터 미리보기 및 런타임 스크린샷
+- anchor: headless-tests-and-ci
+  title: Headless 테스트와 CI
+- anchor: failure-reports-and-artifacts
+  title: 실패 보고서와 아티팩트
 ---
 
 # 자동화 테스트 및 검증 {#automated-testing-and-verification}

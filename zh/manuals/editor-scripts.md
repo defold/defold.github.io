@@ -9,16 +9,22 @@ toc:
 - 编辑器脚本运行时
 - .editor_script 的构成
 - 编辑器 API
-- 命令 {commands}
+- anchor: commands
+  title: 命令
 - 使用命令更改编辑器内存状态
 - 将命令与活动编辑器视图一起使用
 - 使用 shell 命令
-- 生命周期钩子 {lifecycle-hooks}
+- anchor: lifecycle-hooks
+  title: 生命周期钩子
 - 语言服务器
-- HTTP 服务器 {http-server}
-- 库中的编辑器脚本 {editor-scripts-in-libraries}
-- 首选项 {preferences}
-- 执行模式 {execution-modes}
+- anchor: http-server
+  title: HTTP 服务器
+- anchor: editor-scripts-in-libraries
+  title: 库中的编辑器脚本
+- anchor: preferences
+  title: 首选项
+- anchor: execution-modes
+  title: 执行模式
 - 操作
 - 可撤销操作
 - 不可撤销操作

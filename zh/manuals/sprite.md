@@ -12,7 +12,8 @@ toc:
 - 材质常量
 - 材质属性
 - 项目配置
-- 多纹理精灵 {multi-textured-sprites}
+- anchor: multi-textured-sprites
+  title: 多纹理精灵
 - 动画
 - UV
 ---

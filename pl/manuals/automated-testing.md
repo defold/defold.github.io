@@ -5,19 +5,32 @@ layout: manual
 locale: pl
 title: Testowanie automatyczne i weryfikacja
 toc:
-- Testowanie automatyczne i weryfikacja {automated-testing-and-verification}
-- Poziomy weryfikacji {verification-levels}
-- Kod Lua wielokrotnego użytku i łatwy do testowania {reusable-and-testable-lua-code}
-- Testy w uruchomionej kolekcji {tests-in-a-running-collection}
-- Frameworki testowe {test-frameworks}
-- Ustrukturyzowane wyniki testów {structured-test-results}
-- Zbieranie danych wyjściowych konsoli {collecting-console-output}
-- Utrwalone logi {persisted-logs}
-- Testowanie uruchomionej gry za pomocą API czasu działania {testing-a-running-game-through-a-runtime-api}
-- Testy przeglądarkowe dla HTML5 {browser-tests-for-html5}
-- Podglądy edytora i zrzuty ekranu z uruchomionej aplikacji do kontroli wizualnej {editor-previews-and-runtime-screenshots}
-- Testy bez interfejsu graficznego i CI {headless-tests-and-ci}
-- Raporty o błędach i artefakty {failure-reports-and-artifacts}
+- anchor: automated-testing-and-verification
+  title: Testowanie automatyczne i weryfikacja
+- anchor: verification-levels
+  title: Poziomy weryfikacji
+- anchor: reusable-and-testable-lua-code
+  title: Kod Lua wielokrotnego użytku i łatwy do testowania
+- anchor: tests-in-a-running-collection
+  title: Testy w uruchomionej kolekcji
+- anchor: test-frameworks
+  title: Frameworki testowe
+- anchor: structured-test-results
+  title: Ustrukturyzowane wyniki testów
+- anchor: collecting-console-output
+  title: Zbieranie danych wyjściowych konsoli
+- anchor: persisted-logs
+  title: Utrwalone logi
+- anchor: testing-a-running-game-through-a-runtime-api
+  title: Testowanie uruchomionej gry za pomocą API czasu działania
+- anchor: browser-tests-for-html5
+  title: Testy przeglądarkowe dla HTML5
+- anchor: editor-previews-and-runtime-screenshots
+  title: Podglądy edytora i zrzuty ekranu z uruchomionej aplikacji do kontroli wizualnej
+- anchor: headless-tests-and-ci
+  title: Testy bez interfejsu graficznego i CI
+- anchor: failure-reports-and-artifacts
+  title: Raporty o błędach i artefakty
 ---
 
 # Testowanie automatyczne i weryfikacja {#automated-testing-and-verification}

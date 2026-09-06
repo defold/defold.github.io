@@ -10,12 +10,15 @@ toc:
 - Propiedades de Gui
 - Manipulación en tiempo de ejecución
 - Dependencias
-- Tipos de nodo {node-types}
-- Propiedades de nodo {node-properties}
+- anchor: node-types
+  title: Tipos de nodo
+- anchor: node-properties
+  title: Propiedades de nodo
 - Pivot, Anchors y Adjust Mode
 - Orden de dibujo
 - Jerarquías padre-hijo
-- Capas y draw calls {layers-and-draw-calls}
+- anchor: layers-and-draw-calls
+  title: Capas y draw calls
 ---
 
 # GUI

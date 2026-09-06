@@ -13,9 +13,11 @@ toc:
 - Hacer zoom con la cámara
 - Zoom adaptativo
 - Seguir un objeto de juego
-- Conversión entre coordenadas de pantalla y del mundo {converting-mouse-to-world-coordinates}
+- anchor: converting-mouse-to-world-coordinates
+  title: Conversión entre coordenadas de pantalla y del mundo
 - Manipulación en runtime
-- Soluciones de cámara de terceros {third-party-camera-solutions}
+- anchor: third-party-camera-solutions
+  title: Soluciones de cámara de terceros
 ---
 
 # Cámaras

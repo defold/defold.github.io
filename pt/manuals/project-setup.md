@@ -6,7 +6,8 @@ locale: pt
 title: Configuração de projeto
 toc:
 - Configuração de projeto
-- Criando um novo projeto local {creating-a-new-project}
+- anchor: creating-a-new-project
+  title: Criando um novo projeto local
 - Adicionando o projeto ao GitHub
 - Abrir um projeto existente
 - Abrir um projeto recente

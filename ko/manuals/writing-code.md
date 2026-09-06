@@ -11,8 +11,10 @@ toc:
 - 네이티브 코드 작성
 - 내장 코드 에디터 사용하기
 - 코드 자동 완성
-- 심볼로 이동 {jump-to-symbol}
-- 린팅 설정 {linting-configuration}
+- anchor: jump-to-symbol
+  title: 심볼로 이동
+- anchor: linting-configuration
+  title: 린팅 설정
 - 외부 코드 에디터 사용하기
 - Visual Studio Code - Defold Kit
 - 문서 소프트웨어

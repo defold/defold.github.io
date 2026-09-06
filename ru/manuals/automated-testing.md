@@ -5,19 +5,32 @@ layout: manual
 locale: ru
 title: Автоматизированное тестирование и проверка
 toc:
-- Автоматизированное тестирование и проверка {automated-testing-and-verification}
-- Уровни проверки {verification-levels}
-- Повторно используемый и тестируемый код Lua {reusable-and-testable-lua-code}
-- Тесты в запущенной коллекции {tests-in-a-running-collection}
-- Фреймворки тестирования {test-frameworks}
-- Структурированные результаты тестов {structured-test-results}
-- Сбор вывода консоли {collecting-console-output}
-- Сохраняемые журналы {persisted-logs}
-- Тестирование запущенной игры через API среды выполнения {testing-a-running-game-through-a-runtime-api}
-- Браузерные тесты для HTML5 {browser-tests-for-html5}
-- Предпросмотры редактора и снимки экрана среды выполнения для визуальной инспекции {editor-previews-and-runtime-screenshots}
-- Headless-тесты и CI {headless-tests-and-ci}
-- Отчёты об ошибках и артефакты {failure-reports-and-artifacts}
+- anchor: automated-testing-and-verification
+  title: Автоматизированное тестирование и проверка
+- anchor: verification-levels
+  title: Уровни проверки
+- anchor: reusable-and-testable-lua-code
+  title: Повторно используемый и тестируемый код Lua
+- anchor: tests-in-a-running-collection
+  title: Тесты в запущенной коллекции
+- anchor: test-frameworks
+  title: Фреймворки тестирования
+- anchor: structured-test-results
+  title: Структурированные результаты тестов
+- anchor: collecting-console-output
+  title: Сбор вывода консоли
+- anchor: persisted-logs
+  title: Сохраняемые журналы
+- anchor: testing-a-running-game-through-a-runtime-api
+  title: Тестирование запущенной игры через API среды выполнения
+- anchor: browser-tests-for-html5
+  title: Браузерные тесты для HTML5
+- anchor: editor-previews-and-runtime-screenshots
+  title: Предпросмотры редактора и снимки экрана среды выполнения для визуальной инспекции
+- anchor: headless-tests-and-ci
+  title: Headless-тесты и CI
+- anchor: failure-reports-and-artifacts
+  title: Отчёты об ошибках и артефакты
 ---
 
 # Автоматизированное тестирование и проверка {#automated-testing-and-verification}

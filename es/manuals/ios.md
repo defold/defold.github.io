@@ -8,10 +8,12 @@ toc:
 - Desarrollo en iOS
 - Proceso de firmado de código de Apple
 - Desarrollar con una cuenta gratuita de desarrollador de Apple
-- Crear un bundle de aplicación iOS {creating-an-ios-application-bundle}
+- anchor: creating-an-ios-application-bundle
+  title: Crear un bundle de aplicación iOS
 - Info.plist personalizado y descubrimiento de targets locales
 - Instalar y ejecutar un bundle en un iPhone conectado
-- Crear un storyboard {creating-a-storyboard}
+- anchor: creating-a-storyboard
+  title: Crear un storyboard
 - Crear un asset catalog de iconos
 - Instalar un bundle de aplicación iOS
 - Información de cumplimiento de exportación
@@ -72,8 +74,8 @@ Desde Xcode 7, cualquiera puede instalar Xcode y desarrollar en dispositivo de f
 1. Conecta tu dispositivo.
 2. Instala Xcode.
 3. Agrega una cuenta nueva a Xcode e inicia sesión con tu Apple ID.
-4. Crea un proyecto nuevo. La opción más simple, "Single View App", funciona bien.
-5. Selecciona tu "Team" (creado automáticamente para ti) y dale a la app un identificador de bundle.
+4. Crea un proyecto nuevo. La opción más simple, `Single View App`, funciona bien.
+5. Selecciona tu `Team` (creado automáticamente para ti) y dale a la app un identificador de bundle.
 
 <div class='important' markdown='1'>
 Anota el identificador de bundle, ya que debes usar el mismo identificador de bundle en tu proyecto Defold.
@@ -84,7 +86,7 @@ Anota el identificador de bundle, ya que debes usar el mismo identificador de bu
    ![](/manuals/images/ios/xcode_certificates.png)
 
 7. Crea la build de la app en tu dispositivo. La primera vez, Xcode te pedirá activar Developer mode y preparará el dispositivo con soporte para depurador. Esto puede tardar un poco.
-8. Cuando hayas verificado que la app funciona, búscala en tu disco. Puedes ver la ubicación de la build en el Build report del "Report Navigator".
+8. Cuando hayas verificado que la app funciona, búscala en tu disco. Puedes ver la ubicación de la build en el Build report del `Report Navigator`.
 
    ![](/manuals/images/ios/app_location.png)
 
@@ -92,7 +94,7 @@ Anota el identificador de bundle, ya que debes usar el mismo identificador de bu
 
    ![](/manuals/images/ios/app_contents.png)
 
-10. Copia el archivo "embedded.mobileprovision" a algún lugar de tu unidad donde puedas encontrarlo.
+10. Copia el archivo `embedded.mobileprovision` a algún lugar de tu unidad donde puedas encontrarlo.
 
    ![](/manuals/images/ios/free_provisioning.png)
 
@@ -139,7 +141,7 @@ La condición Mustache excluye las entradas de descubrimiento de los bundles rel
 
 ## Instalar y ejecutar un bundle en un iPhone conectado
 
-Puedes instalar y ejecutar el bundle creado usando las casillas "Install on connected device" y "Launch installed app" del editor en el diálogo Bundle:
+Puedes instalar y ejecutar el bundle creado usando las casillas `Install on connected device` y `Launch installed app` del editor en el diálogo Bundle:
 
 ![Instalar y ejecutar bundle iOS](/manuals/images/ios/install_and_launch.png)
 
@@ -168,7 +170,7 @@ Arrastra y suelta una imagen para importarla al proyecto. Luego selecciona `Asse
 
 ![Agregar imagen](/manuals/images/ios/xcode_storyboard_add_image.png)
 
-Abre `LaunchScreen.storyboard` y haz click en el botón de suma (<kbd>+</kbd>). Escribe "imageview" en el diálogo para encontrar el componente ImageView.
+Abre `LaunchScreen.storyboard` y haz click en el botón de suma (<kbd>+</kbd>). Escribe `imageview` en el diálogo para encontrar el componente ImageView.
 
 ![Agregar vista de imagen](/manuals/images/ios/xcode_storyboard_add_imageview.png)
 
@@ -220,10 +222,10 @@ Arrastra y suelta imágenes en las casillas vacías que representan los distinto
 No agregues iconos para Notifications, Settings ni Spotlight.
 </div>
 
-Cuando termines, establece el esquema activo en "Build -> Any iOS Device (arm64)" (o "Generic iOS Device") y selecciona <kbd>Product</kbd> -> <kbd>Build</kbd>. Espera a que finalice el proceso de build.
+Cuando termines, establece el esquema activo en `Build -> Any iOS Device (arm64)` (o `Generic iOS Device`) y selecciona <kbd>Product</kbd> -> <kbd>Build</kbd>. Espera a que finalice el proceso de build.
 
 <div class='sidenote' markdown='1'>
-Asegúrate de crear la build para "Any iOS Device (arm64)" o "Generic iOS Device"; de lo contrario, obtendrás el error `ERROR ITMS-90704` al subir tu build.
+Asegúrate de crear la build para `Any iOS Device (arm64)` o `Generic iOS Device`; de lo contrario, obtendrás el error `ERROR ITMS-90704` al subir tu build.
 </div>
 
 ![Crear build del proyecto](/manuals/images/ios/xcode_icons_build.png)
@@ -245,7 +247,7 @@ No es necesario referenciar el icono de la App Store desde *game.project*. Se ex
 
 El editor escribe un archivo *.ipa*, que es un bundle de aplicación iOS. Para instalar el archivo en tu dispositivo, puedes usar una de las siguientes herramientas:
 
-* Xcode mediante la ventana "Devices and Simulators"
+* Xcode mediante la ventana `Devices and Simulators`
 * La herramienta de línea de comando [`ios-deploy`](https://github.com/ios-control/ios-deploy)
 * [`Apple Configurator 2`](https://apps.apple.com/us/app/apple-configurator-2/) desde el macOS App Store
 * iTunes

@@ -5,17 +5,27 @@ layout: manual
 locale: pl
 title: Korzystanie z agentów AI wspomagających programowanie z Defold
 toc:
-- Korzystanie z agentów AI wspomagających programowanie z Defold {using-ai-coding-agents-with-defold}
-- Kiedy agent AI jest przydatny {when-an-ai-agent-is-useful}
-- Interfejsy Defold niezależne od modelu {model-neutral-defold-interfaces}
-- Warstwy integracji {integration-layers}
+- anchor: using-ai-coding-agents-with-defold
+  title: Korzystanie z agentów AI wspomagających programowanie z Defold
+- anchor: when-an-ai-agent-is-useful
+  title: Kiedy agent AI jest przydatny
+- anchor: model-neutral-defold-interfaces
+  title: Interfejsy Defold niezależne od modelu
+- anchor: integration-layers
+  title: Warstwy integracji
 - Model Context Protocol
-- Integracje MCP społeczności {community-mcp-integrations}
-- Instrukcje projektu {project-instructions}
-- Wyszukiwanie dokumentacji {documentation-discovery}
-- Ograniczone pętle zmian i weryfikacji {bounded-change-and-verification-loops}
-- Ocena multimodalna {multimodal-evaluation}
-- Bezpieczeństwo, izolacja i dobre praktyki {security-isolation-and-good-practices}
+- anchor: community-mcp-integrations
+  title: Integracje MCP społeczności
+- anchor: project-instructions
+  title: Instrukcje projektu
+- anchor: documentation-discovery
+  title: Wyszukiwanie dokumentacji
+- anchor: bounded-change-and-verification-loops
+  title: Ograniczone pętle zmian i weryfikacji
+- anchor: multimodal-evaluation
+  title: Ocena multimodalna
+- anchor: security-isolation-and-good-practices
+  title: Bezpieczeństwo, izolacja i dobre praktyki
 ---
 
 # Korzystanie z agentów AI wspomagających programowanie z Defold {#using-ai-coding-agents-with-defold}

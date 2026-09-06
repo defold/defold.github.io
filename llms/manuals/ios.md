@@ -42,19 +42,19 @@ Since Xcode 7, anyone can install Xcode and do on-device development for free. Y
 1. Connect your device.
 2. Install Xcode.
 3. Add a new account to Xcode and sign in with your Apple ID.
-4. Create a new project. The simplest "Single View App" works fine.
-5. Select your "Team" (auto created for you) and give the app a bundle identifier.
+4. Create a new project. The simplest `Single View App` works fine.
+5. Select your `Team` (auto created for you) and give the app a bundle identifier.
 
 Make a note of the bundle identifier as you must use the same bundle identifier in your Defold project.
 
 6. Make sure that Xcode has created a *Provisioning Profile* and *Signing Certificate* for the app.
 
 7. Build the app on your device. The first time, Xcode will ask you to enable Developer mode and will prepare the device with debugger support. This may take a while.
-8. When you have verified that the app works, find it on your disk. You can see the build location in the Build report in the "Report Navigator".
+8. When you have verified that the app works, find it on your disk. You can see the build location in the Build report in the `Report Navigator`.
 
 9. Locate the app, right-click it and select `Show Package Contents`.
 
-10. Copy the file "embedded.mobileprovision" to some place on your drive where you will find it.
+10. Copy the file `embedded.mobileprovision` to some place on your drive where you will find it.
 
 This provision file can be used together with your code signing identity to sign apps in Defold for one week.
 
@@ -123,7 +123,7 @@ This executable runs without any graphics and sound. It means that you can run t
 
 ## Installing and launching bundle on a connected iPhone
 
-You can install and launch the built bundle using editor's "Install on connected device" and "Launch installed app" check-boxes in the Bundle dialog:
+You can install and launch the built bundle using editor's `Install on connected device` and `Launch installed app` check-boxes in the Bundle dialog:
 
 You need [ios-deploy](https://github.com/ios-control/ios-deploy) command lint tool installed for this feature to work. The simplest way to install it is using Homebrew:
 ```
@@ -142,7 +142,7 @@ Click Create to finish the process. Your project is now created and we can proce
 
 Drag and drop an image to import it to the project. Next select `Assets.xcassets` and drop the image to `Assets.xcassets`:
 
-Open `LaunchScreen.storyboard` and click on the plus button (`+`). Type "imageview" in the dialog to find the ImageView component.
+Open `LaunchScreen.storyboard` and click on the plus button (`+`). Type `imageview` in the dialog to find the ImageView component.
 
 Drag the Image View component onto the storyboard:
 
@@ -173,9 +173,9 @@ Drag and drop images to the empty boxes representing the different supported ico
 
 Do not add any icons for Notifications, Settings or Spotlight.
 
-When you are done, set the active scheme to "Build -> Any iOS Device (arm64)"(or "Generic iOS Device") and select `Product` -> `Build`. Wait for the build process to finish.
+When you are done, set the active scheme to `Build -> Any iOS Device (arm64)`(or `Generic iOS Device`) and select `Product` -> `Build`. Wait for the build process to finish.
 
-Make sure that you build for "Any iOS Device (arm64)" or "Generic iOS Device" otherwise you will get `ERROR ITMS-90704` error when uploading your build.
+Make sure that you build for `Any iOS Device (arm64)` or `Generic iOS Device` otherwise you will get `ERROR ITMS-90704` error when uploading your build.
 
 The last step is to copy the compiled `Assets.car` file to your Defold project. Open Finder at the following location and copy the `Assets.car` file to your Defold project:
 
@@ -189,7 +189,7 @@ The App Store icon does not have to be referenced from *game.project*. It is aut
 
 The editor writes an *.ipa* file which is an iOS application bundle. To install the file on your device, you can use one of the following tools:
 
-* Xcode via the "Devices and Simulators" window
+* Xcode via the `Devices and Simulators` window
 * [`ios-deploy`](https://github.com/ios-control/ios-deploy) command line tool
 * [`Apple Configurator 2`](https://apps.apple.com/us/app/apple-configurator-2/) from the macOS App Store
 * iTunes

@@ -5,10 +5,14 @@ layout: manual
 locale: pt
 title: Automação no Defold
 toc:
-- Automação no Defold {automation-in-defold}
-- Automação determinística ou agentes de IA {deterministic-automation-or-ai-agents}
-- O loop de automação {the-automation-loop}
-- Próximas etapas {next-steps}
+- anchor: automation-in-defold
+  title: Automação no Defold
+- anchor: deterministic-automation-or-ai-agents
+  title: Automação determinística ou agentes de IA
+- anchor: the-automation-loop
+  title: O loop de automação
+- anchor: next-steps
+  title: Próximas etapas
 ---
 
 # Automação no Defold {#automation-in-defold}

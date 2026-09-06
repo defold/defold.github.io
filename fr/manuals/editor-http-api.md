@@ -5,23 +5,40 @@ layout: manual
 locale: fr
 title: Automatiser l'éditeur Defold avec HTTP
 toc:
-- Automatiser léditeur Defold {automating-the-defold-editor}
-- Démarrer léditeur depuis un outil externe {starting-the-editor-from-an-external-tool}
-- Localiser le serveur de léditeur {locating-the-editor-server}
-- Découvrir les opérations grâce à OpenAPI {discovering-operations-through-openapi}
-- Exécuter des commandes de léditeur {executing-editor-commands}
-- Réponses aux commandes et travail asynchrone {command-responses-and-asynchronous-work}
-- Build HTML5 {building-html5}
-- Rechercher dans la documentation de lAPI {searching-api-documentation}
-- Lire la sortie de la console {reading-console-output}
-- Générer des aperçus de scènes {rendering-scene-previews}
-- Exécuter du code Lua dans léditeur {executing-editor-lua}
-- Modifier les ressources et les fichiers {modifying-resources-and-files}
-- Préférences {preferences}
-- Routes définies par le projet {project-defined-routes}
-- Hooks de cycle de vie {lifecycle-hooks}
-- Sécurité et compatibilité {security-and-compatibility}
-- Serveur du moteur {engine-server}
+- anchor: automating-the-defold-editor
+  title: Automatiser léditeur Defold
+- anchor: starting-the-editor-from-an-external-tool
+  title: Démarrer léditeur depuis un outil externe
+- anchor: locating-the-editor-server
+  title: Localiser le serveur de léditeur
+- anchor: discovering-operations-through-openapi
+  title: Découvrir les opérations grâce à OpenAPI
+- anchor: executing-editor-commands
+  title: Exécuter des commandes de léditeur
+- anchor: command-responses-and-asynchronous-work
+  title: Réponses aux commandes et travail asynchrone
+- anchor: building-html5
+  title: Build HTML5
+- anchor: searching-api-documentation
+  title: Rechercher dans la documentation de lAPI
+- anchor: reading-console-output
+  title: Lire la sortie de la console
+- anchor: rendering-scene-previews
+  title: Générer des aperçus de scènes
+- anchor: executing-editor-lua
+  title: Exécuter du code Lua dans léditeur
+- anchor: modifying-resources-and-files
+  title: Modifier les ressources et les fichiers
+- anchor: preferences
+  title: Préférences
+- anchor: project-defined-routes
+  title: Routes définies par le projet
+- anchor: lifecycle-hooks
+  title: Hooks de cycle de vie
+- anchor: security-and-compatibility
+  title: Sécurité et compatibilité
+- anchor: engine-server
+  title: Serveur du moteur
 ---
 
 # Automatiser l'éditeur Defold {#automating-the-defold-editor}

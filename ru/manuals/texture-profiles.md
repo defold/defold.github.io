@@ -9,10 +9,12 @@ toc:
 - Basis Universal
 - ASTC
 - Профили текстур
-- Настройки путей {path-settings}
+- anchor: path-settings
+  title: Настройки путей
 - Профили
 - Форматы текстур
-- Компрессоры {compressors}
+- anchor: compressors
+  title: Компрессоры
 - Пример изображения
 - Время сжатия
 - Потеря сигнала

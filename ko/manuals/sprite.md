@@ -12,7 +12,8 @@ toc:
 - 메터리얼 상수
 - 메터리얼 attribute
 - 프로젝트 설정
-- 다중 텍스쳐 스프라이트 {multi-textured-sprites}
+- anchor: multi-textured-sprites
+  title: 다중 텍스쳐 스프라이트
 - 애니메이션
 - UV
 ---

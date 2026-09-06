@@ -7,7 +7,8 @@ title: Física no Defold
 toc:
 - Física
 - Unidades usadas pela simulação da engine de física
-- Atualizações de física {physics-updates}
+- anchor: physics-updates
+  title: Atualizações de física
 - Ressalvas e problemas comuns
 ---
 

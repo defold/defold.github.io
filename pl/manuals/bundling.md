@@ -7,7 +7,8 @@ title: Tworzenie pakietu aplikacji
 toc:
 - Tworzenie pakietu aplikacji
 - Tworzenie pakietu w edytorze
-- Raporty budowania {build-reports}
+- anchor: build-reports
+  title: Raporty budowania
 - Android
 - iOS
 - macOS

@@ -7,12 +7,14 @@ title: Manual de materiales de Defold
 toc:
 - Materiales
 - Crear un material
-- Atributos {attributes}
+- anchor: attributes
+  title: Atributos
 - Semántica predeterminada de atributos
 - Definir datos de atributos de vértice personalizados
 - Ejemplos de uso de atributos de vértice personalizados
 - Instancing
-- Constantes de vertex y fragment shader {vertex-and-fragment-constants}
+- anchor: vertex-and-fragment-constants
+  title: Constantes de vertex y fragment shader
 - Constantes de material de los nodos GUI
 - Samplers
 - Ajustes de sampler

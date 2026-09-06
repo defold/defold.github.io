@@ -10,7 +10,8 @@ toc:
 - print 디버깅 사용하기
 - 크래시 로그 분석하기
 - 기기에서 크래시 로그 가져오기
-- 콜스택 심볼리케이트하기 {symbolicate-a-callstack}
+- anchor: symbolicate-a-callstack
+  title: 콜스택 심볼리케이트하기
 - Google Play에 심볼 업로드하기
 - Android 콜스택 심볼리케이트하기
 - iOS 콜스택 심볼리케이트하기

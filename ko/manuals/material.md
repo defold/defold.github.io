@@ -7,12 +7,14 @@ title: Defold 메터리얼 매뉴얼
 toc:
 - 메터리얼
 - 메터리얼 만들기
-- Attribute {attributes}
+- anchor: attributes
+  title: Attribute
 - 기본 attribute semantic
 - 커스텀 버텍스 attribute 데이터 설정
 - 커스텀 버텍스 attribute 사용 예
 - 인스턴싱
-- 버텍스와 프래그먼트 상수 {vertex-and-fragment-constants}
+- anchor: vertex-and-fragment-constants
+  title: 버텍스와 프래그먼트 상수
 - GUI 노드 메터리얼 상수
 - 샘플러
 - 샘플러 설정

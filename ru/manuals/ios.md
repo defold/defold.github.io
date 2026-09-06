@@ -8,10 +8,12 @@ toc:
 - Разработка для iOS
 - Процесс подписи кода у Apple
 - Разработка с использованием бесплатного аккаунта Apple developer
-- Создание iOS application bundle {creating-an-ios-application-bundle}
+- anchor: creating-an-ios-application-bundle
+  title: Создание iOS application bundle
 - Пользовательский Info.plist и обнаружение локальных целей
 - Установка и запуск бандла на подключенном iPhone
-- Создание storyboard {creating-a-storyboard}
+- anchor: creating-a-storyboard
+  title: Создание storyboard
 - Создание icon asset catalog
 - Установка iOS application bundle
 - Информация Export Compliance
@@ -72,8 +74,8 @@ Device identifier (UDID)
 1. Подключите устройство.
 2. Установите Xcode.
 3. Добавьте в Xcode новую учетную запись и войдите с помощью Apple ID.
-4. Создайте новый проект. Самый простой вариант "Single View App" подойдет.
-5. Выберите свою "Team" (она будет создана автоматически) и задайте bundle identifier приложения.
+4. Создайте новый проект. Самый простой вариант `Single View App` подойдет.
+5. Выберите свою `Team` (она будет создана автоматически) и задайте bundle identifier приложения.
 
 <div class='important' markdown='1'>
 Запишите bundle identifier, так как в проекте Defold нужно использовать точно такой же bundle identifier.
@@ -84,7 +86,7 @@ Device identifier (UDID)
    ![](/manuals/images/ios/xcode_certificates.png)
 
 7. Соберите приложение на устройстве. При первом запуске Xcode попросит включить Developer mode и подготовит устройство для отладки. Это может занять некоторое время.
-8. Когда вы убедитесь, что приложение работает, найдите его на диске. Путь к сборке можно увидеть в Build report в "Report Navigator".
+8. Когда вы убедитесь, что приложение работает, найдите его на диске. Путь к сборке можно увидеть в Build report в `Report Navigator`.
 
    ![](/manuals/images/ios/app_location.png)
 
@@ -92,7 +94,7 @@ Device identifier (UDID)
 
    ![](/manuals/images/ios/app_contents.png)
 
-10. Скопируйте файл "embedded.mobileprovision" в удобное место на диске.
+10. Скопируйте файл `embedded.mobileprovision` в удобное место на диске.
 
    ![](/manuals/images/ios/free_provisioning.png)
 
@@ -139,7 +141,7 @@ Device identifier (UDID)
 
 ## Установка и запуск бандла на подключенном iPhone
 
-Можно установить и запустить собранный бандл, используя флажки редактора "Install on connected device" и "Launch installed app" в диалоге Bundle:
+Можно установить и запустить собранный бандл, используя флажки редактора `Install on connected device` и `Launch installed app` в диалоге Bundle:
 
 ![Install and launch iOS bundle](/manuals/images/ios/install_and_launch.png)
 
@@ -168,7 +170,7 @@ $ brew install ios-deploy
 
 ![Add image](/manuals/images/ios/xcode_storyboard_add_image.png)
 
-Откройте `LaunchScreen.storyboard` и нажмите кнопку плюс (<kbd>+</kbd>). Введите "imageview", чтобы найти компонент ImageView.
+Откройте `LaunchScreen.storyboard` и нажмите кнопку плюс (<kbd>+</kbd>). Введите `imageview`, чтобы найти компонент ImageView.
 
 ![Add image view](/manuals/images/ios/xcode_storyboard_add_imageview.png)
 
@@ -220,10 +222,10 @@ $ brew install ios-deploy
 Не добавляйте иконки для Notifications, Settings или Spotlight.
 </div>
 
-Когда все будет готово, установите активную схему "Build -> Any iOS Device (arm64)" (или "Generic iOS Device") и выберите <kbd>Product</kbd> -> <kbd>Build</kbd>. Дождитесь окончания сборки.
+Когда все будет готово, установите активную схему `Build -> Any iOS Device (arm64)` (или `Generic iOS Device`) и выберите <kbd>Product</kbd> -> <kbd>Build</kbd>. Дождитесь окончания сборки.
 
 <div class='sidenote' markdown='1'>
-Убедитесь, что сборка выполняется для "Any iOS Device (arm64)" или "Generic iOS Device", иначе при загрузке билда вы получите ошибку `ERROR ITMS-90704`.
+Убедитесь, что сборка выполняется для `Any iOS Device (arm64)` или `Generic iOS Device`, иначе при загрузке билда вы получите ошибку `ERROR ITMS-90704`.
 </div>
 
 ![Build project](/manuals/images/ios/xcode_icons_build.png)
@@ -245,7 +247,7 @@ $ brew install ios-deploy
 
 Редактор создает файл *.ipa*, который является iOS application bundle. Чтобы установить его на устройство, можно использовать один из следующих инструментов:
 
-* Xcode через окно "Devices and Simulators"
+* Xcode через окно `Devices and Simulators`
 * консольный инструмент [`ios-deploy`](https://github.com/ios-control/ios-deploy)
 * [`Apple Configurator 2`](https://apps.apple.com/us/app/apple-configurator-2/) из macOS App Store
 * iTunes

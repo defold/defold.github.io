@@ -6,7 +6,8 @@ locale: pl
 title: Podręcznik Boba do budowania projektów w Defold
 toc:
 - Bob, narzędzie do budowania
-- Użycie {usage}
+- anchor: usage
+  title: Użycie
 ---
 
 # Bob, narzędzie do budowania

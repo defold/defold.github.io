@@ -9,7 +9,8 @@ toc:
 - 文件和文件夹访问函数
 - 文件和文件夹位置
 - 如何保存和加载应用程序特定文件
-- 如何访问与应用程序捆绑的文件 {how-to-access-files-bundled-with-the-application}
+- anchor: how-to-access-files-bundled-with-the-application
+  title: 如何访问与应用程序捆绑的文件
 - 系统文件访问
 - 扩展
 ---

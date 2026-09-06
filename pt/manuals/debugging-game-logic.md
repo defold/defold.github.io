@@ -11,7 +11,8 @@ toc:
 - Aba Breakpoints
 - Biblioteca debug de Lua
 - Checklist de depuração
-- Depurando problemas com física {debugging-problems-with-physics}
+- anchor: debugging-problems-with-physics
+  title: Depurando problemas com física
 ---
 
 # Depurando lógica de jogo

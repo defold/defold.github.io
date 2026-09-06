@@ -6,7 +6,8 @@ locale: es
 title: Configurar un servidor de build local
 toc:
 - Configuración local del servidor de build
-- Cómo ejecutar Extender local con artefactos preconfigurados {how-to-run-local-extender-with-preconfigured-artifacts}
+- anchor: how-to-run-local-extender-with-preconfigured-artifacts
+  title: Cómo ejecutar Extender local con artefactos preconfigurados
 - ¿Qué ocurre con macOS e iOS?
 - Cómo ejecutar Extender local con artefactos compilados localmente
 ---

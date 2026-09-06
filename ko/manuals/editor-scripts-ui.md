@@ -5,23 +5,40 @@ layout: manual
 locale: ko
 title: '에디터 스크립트: UI'
 toc:
-- 에디터 스크립트와 UI {editor-scripts-and-ui}
-- Hello world {hello-world}
-- 기본 개념 {basic-concepts}
-- 컴포넌트 {components}
-- Props {props}
-- 정렬 {alignment}
-- 내장 컴포넌트 {built-in-components}
-- 레이아웃 컴포넌트 {layout-components}
-- 데이터 표시 컴포넌트 {data-presentation-components}
-- 입력 컴포넌트 {input-components}
-- Dialog 관련 컴포넌트 {dialog-related-components}
-- 유틸리티 컴포넌트 {utility-components}
-- 반응성 {reactivity}
-- 반응성 규칙 {rules-of-reactivity}
-- Hooks {hooks}
-- '**use_state** {use_state}'
-- '**use_memo** {use_memo}'
+- anchor: editor-scripts-and-ui
+  title: 에디터 스크립트와 UI
+- anchor: hello-world
+  title: Hello world
+- anchor: basic-concepts
+  title: 기본 개념
+- anchor: components
+  title: 컴포넌트
+- anchor: props
+  title: Props
+- anchor: alignment
+  title: 정렬
+- anchor: built-in-components
+  title: 내장 컴포넌트
+- anchor: layout-components
+  title: 레이아웃 컴포넌트
+- anchor: data-presentation-components
+  title: 데이터 표시 컴포넌트
+- anchor: input-components
+  title: 입력 컴포넌트
+- anchor: dialog-related-components
+  title: Dialog 관련 컴포넌트
+- anchor: utility-components
+  title: 유틸리티 컴포넌트
+- anchor: reactivity
+  title: 반응성
+- anchor: rules-of-reactivity
+  title: 반응성 규칙
+- anchor: hooks
+  title: Hooks
+- anchor: use_state
+  title: '**use_state**'
+- anchor: use_memo
+  title: '**use_memo**'
 ---
 
 # 에디터 스크립트와 UI {#editor-scripts-and-ui}

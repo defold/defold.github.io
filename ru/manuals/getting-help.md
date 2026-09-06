@@ -5,13 +5,16 @@ layout: manual
 locale: ru
 title: Как получить помощь
 toc:
-- Получение помощи {getting-help}
+- anchor: getting-help
+  title: Получение помощи
 - Решение проблемы на форуме
 - Необходимая информация
 - Код совместного использования
-- Сообщить о проблеме редактора {report-a-problem-from-the-editor}
+- anchor: report-a-problem-from-the-editor
+  title: Сообщить о проблеме редактора
 - Обсудите проблему в Discord
-- Файлы журналов {log-files}
+- anchor: log-files
+  title: Файлы журналов
 ---
 
 # Получение помощи {#getting-help}

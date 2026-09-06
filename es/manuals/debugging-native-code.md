@@ -5,15 +5,24 @@ layout: manual
 locale: es
 title: Depuración de código nativo en Defold
 toc:
-- Depuración de código nativo {debugging-native-code}
-- Usar un depurador {use-a-debugger}
-- Usar depuración con print {use-print-debugging}
-- Analizar un log de crash {analyze-a-crash-log}
-- Obtener el log de crash desde un dispositivo {getting-the-crash-log-from-a-device}
-- Simbolizar un callstack {symbolicate-a-callstack}
-- Subir símbolos a Google Play {uploading-symbols-to-google-play}
-- Simbolizar un callstack de Android {symbolicate-an-android-callstack}
-- Simbolizar un callstack de iOS {symbolicate-an-ios-callstack}
+- anchor: debugging-native-code
+  title: Depuración de código nativo
+- anchor: use-a-debugger
+  title: Usar un depurador
+- anchor: use-print-debugging
+  title: Usar depuración con print
+- anchor: analyze-a-crash-log
+  title: Analizar un log de crash
+- anchor: getting-the-crash-log-from-a-device
+  title: Obtener el log de crash desde un dispositivo
+- anchor: symbolicate-a-callstack
+  title: Simbolizar un callstack
+- anchor: uploading-symbols-to-google-play
+  title: Subir símbolos a Google Play
+- anchor: symbolicate-an-android-callstack
+  title: Simbolizar un callstack de Android
+- anchor: symbolicate-an-ios-callstack
+  title: Simbolizar un callstack de iOS
 ---
 
 # Depuración de código nativo {#debugging-native-code}

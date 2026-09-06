@@ -5,13 +5,20 @@ layout: manual
 locale: gr
 title: Η υπηρεσία μηχανής και τα HTTP API χρόνου εκτέλεσης
 toc:
-- Η υπηρεσία μηχανής και τα HTTP API χρόνου εκτέλεσης {the-engine-service-and-runtime-http-apis}
-- Διαθεσιμότητα και εντοπισμός θύρας {availability-and-port-discovery}
-- Ενσωματωμένα τελικά σημεία {built-in-endpoints}
-- Διαδρομές χρόνου εκτέλεσης που ορίζονται από επεκτάσεις {extension-defined-runtime-routes}
-- Επέκταση Automation Bridge {automation-bridge-extension}
-- Πελάτες επεξεργαστή και χρόνου εκτέλεσης {editor-and-runtime-clients}
-- Περιορισμοί και ασφάλεια {limitations-and-security}
+- anchor: the-engine-service-and-runtime-http-apis
+  title: Η υπηρεσία μηχανής και τα HTTP API χρόνου εκτέλεσης
+- anchor: availability-and-port-discovery
+  title: Διαθεσιμότητα και εντοπισμός θύρας
+- anchor: built-in-endpoints
+  title: Ενσωματωμένα τελικά σημεία
+- anchor: extension-defined-runtime-routes
+  title: Διαδρομές χρόνου εκτέλεσης που ορίζονται από επεκτάσεις
+- anchor: automation-bridge-extension
+  title: Επέκταση Automation Bridge
+- anchor: editor-and-runtime-clients
+  title: Πελάτες επεξεργαστή και χρόνου εκτέλεσης
+- anchor: limitations-and-security
+  title: Περιορισμοί και ασφάλεια
 ---
 
 # Η υπηρεσία μηχανής και τα HTTP API χρόνου εκτέλεσης {#the-engine-service-and-runtime-http-apis}

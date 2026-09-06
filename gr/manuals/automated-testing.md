@@ -5,19 +5,32 @@ layout: manual
 locale: gr
 title: Αυτοματοποιημένες δοκιμές και επαλήθευση
 toc:
-- Αυτοματοποιημένες δοκιμές και επαλήθευση {automated-testing-and-verification}
-- Επίπεδα επαλήθευσης {verification-levels}
-- Επαναχρησιμοποιήσιμος και ελέγξιμος κώδικας Lua {reusable-and-testable-lua-code}
-- Δοκιμές σε μια συλλογή που εκτελείται {tests-in-a-running-collection}
-- Πλαίσια δοκιμών {test-frameworks}
-- Δομημένα αποτελέσματα δοκιμών {structured-test-results}
-- Συλλογή εξόδου κονσόλας {collecting-console-output}
-- Μόνιμα αρχεία καταγραφής {persisted-logs}
-- Δοκιμή ενός παιχνιδιού που εκτελείται μέσω API χρόνου εκτέλεσης {testing-a-running-game-through-a-runtime-api}
-- Δοκιμές προγράμματος περιήγησης για HTML5 {browser-tests-for-html5}
-- Προεπισκοπήσεις επεξεργαστή και στιγμιότυπα οθόνης χρόνου εκτέλεσης για οπτική επιθεώρηση {editor-previews-and-runtime-screenshots}
-- Δοκιμές χωρίς γραφικό περιβάλλον και CI {headless-tests-and-ci}
-- Αναφορές αποτυχίας και παραδοτέα {failure-reports-and-artifacts}
+- anchor: automated-testing-and-verification
+  title: Αυτοματοποιημένες δοκιμές και επαλήθευση
+- anchor: verification-levels
+  title: Επίπεδα επαλήθευσης
+- anchor: reusable-and-testable-lua-code
+  title: Επαναχρησιμοποιήσιμος και ελέγξιμος κώδικας Lua
+- anchor: tests-in-a-running-collection
+  title: Δοκιμές σε μια συλλογή που εκτελείται
+- anchor: test-frameworks
+  title: Πλαίσια δοκιμών
+- anchor: structured-test-results
+  title: Δομημένα αποτελέσματα δοκιμών
+- anchor: collecting-console-output
+  title: Συλλογή εξόδου κονσόλας
+- anchor: persisted-logs
+  title: Μόνιμα αρχεία καταγραφής
+- anchor: testing-a-running-game-through-a-runtime-api
+  title: Δοκιμή ενός παιχνιδιού που εκτελείται μέσω API χρόνου εκτέλεσης
+- anchor: browser-tests-for-html5
+  title: Δοκιμές προγράμματος περιήγησης για HTML5
+- anchor: editor-previews-and-runtime-screenshots
+  title: Προεπισκοπήσεις επεξεργαστή και στιγμιότυπα οθόνης χρόνου εκτέλεσης για οπτική επιθεώρηση
+- anchor: headless-tests-and-ci
+  title: Δοκιμές χωρίς γραφικό περιβάλλον και CI
+- anchor: failure-reports-and-artifacts
+  title: Αναφορές αποτυχίας και παραδοτέα
 ---
 
 # Αυτοματοποιημένες δοκιμές και επαλήθευση {#automated-testing-and-verification}

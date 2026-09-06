@@ -5,13 +5,20 @@ layout: manual
 locale: ru
 title: Сервис движка и HTTP API среды выполнения
 toc:
-- Сервис движка и HTTP API среды выполнения {the-engine-service-and-runtime-http-apis}
-- Доступность и определение порта {availability-and-port-discovery}
-- Встроенные эндпоинты {built-in-endpoints}
-- Маршруты среды выполнения, определяемые расширениями {extension-defined-runtime-routes}
-- Расширение Automation Bridge {automation-bridge-extension}
-- Клиенты редактора и среды выполнения {editor-and-runtime-clients}
-- Ограничения и безопасность {limitations-and-security}
+- anchor: the-engine-service-and-runtime-http-apis
+  title: Сервис движка и HTTP API среды выполнения
+- anchor: availability-and-port-discovery
+  title: Доступность и определение порта
+- anchor: built-in-endpoints
+  title: Встроенные эндпоинты
+- anchor: extension-defined-runtime-routes
+  title: Маршруты среды выполнения, определяемые расширениями
+- anchor: automation-bridge-extension
+  title: Расширение Automation Bridge
+- anchor: editor-and-runtime-clients
+  title: Клиенты редактора и среды выполнения
+- anchor: limitations-and-security
+  title: Ограничения и безопасность
 ---
 
 # Сервис движка и HTTP API среды выполнения {#the-engine-service-and-runtime-http-apis}

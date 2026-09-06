@@ -8,20 +8,25 @@ toc:
 - Render
 - Pipeline de renderizado - ¿Qué, cuándo y dónde?
 - El render por defecto
-- Predicados de render {render-predicates}
-- Proyección de vista por defecto {default-view-projection}
+- anchor: render-predicates
+  title: Predicados de render
+- anchor: default-view-projection
+  title: Proyección de vista por defecto
 - Proyección Stretch
 - Proyección Fixed Fit
-- Proyección Fixed {fixed-projection}
+- anchor: fixed-projection
+  title: Proyección Fixed
 - Proyección Camera
 - Frustum culling
 - Sistemas de coordenadas
-- El script de render {the-render-script}
+- anchor: the-render-script
+  title: El script de render
 - Recursos de render
 - Handles de textura
 - APIs gráficas soportadas
 - Mensajes de sistema
-- Draw calls y batching {draw-calls-and-batching}
+- anchor: draw-calls-and-batching
+  title: Draw calls y batching
 - Reglas de batching para componentes no GUI
 - Reglas de batching para componentes GUI
 ---

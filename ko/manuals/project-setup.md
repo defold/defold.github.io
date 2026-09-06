@@ -6,7 +6,8 @@ locale: ko
 title: 프로젝트 준비
 toc:
 - 프로젝트 준비
-- 새 로컬 프로젝트 생성하기 {creating-a-new-project}
+- anchor: creating-a-new-project
+  title: 새 로컬 프로젝트 생성하기
 - 프로젝트를 GitHub에 추가하기
 - 기존 프로젝트 열기
 - 최근 프로젝트 열기
