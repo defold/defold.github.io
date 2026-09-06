@@ -334,14 +334,15 @@ def generate_toc(file):
         if line.strip().startswith("```"):
             within_comment = not within_comment
         elif not within_comment and (line.startswith("# ") or line.startswith("## ") or line.startswith("### ")):
-            heading = line
+            anchor = re.search(r"\s+\{#([^}]+)\}\s*$", line)
+            heading = line[:anchor.start()] if anchor else line
             heading = heading.replace("#", "")
             heading = heading.replace("'", "")
             heading = heading.replace("`", "")
             heading = heading.replace("\"", "")
             heading = heading.strip()
             # note: there is some additional stripping done in manual.html
-            toc.append(heading)
+            toc.append({"title": heading, "anchor": anchor.group(1)} if anchor else heading)
     return toc
 
 
@@ -893,6 +894,10 @@ def parse_script_api_members(api_name, api):
     return elements
 
 def process_extension(extension_name, download = False):
+    # The IronSource repository was renamed; keep old rebuild requests working.
+    if extension_name == "extension-ironsource":
+        extension_name = "extension-levelplay"
+
     extension_zip = extension_name + ".zip"
     github_url = "https://github.com/defold/{}".format(extension_name)
     if download:
