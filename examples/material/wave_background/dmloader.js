@@ -1,6 +1,12 @@
 /*
 *     'archive_location_filter':
-*         Filter function that will run for each archive path.
+*         Filter function that will run for each archive path, called as
+*         filter(path, attempt) where attempt counts up per retry. What it returns is
+*         requested as is. The default filter varies the url on retries with
+*         FileLoader.addCacheBuster(url, attempt) unless an archive_location_suffix is
+*         configured, since a suffix may carry a signature that covers the query string.
+*         A custom filter that signs its urls must sign the retry url too, or ignore
+*         attempt to reuse the signed url.
 *
 *     'unsupported_webgl_callback':
 *         Function that is called if WebGL is not supported.
@@ -44,8 +50,12 @@
 *         subsequently passed on to WebAssembly.
 */
 var CUSTOM_PARAMETERS = {
-    archive_location_filter: function( path ) {
-        return ("archive" + path + "");
+    archive_location_filter: function( path, attempt ) {
+        var url = "archive" + path;
+        var suffix = "";
+        // a configured suffix may carry a signature that covers the query string
+        if (suffix) return url + suffix;
+        return attempt ? FileLoader.addCacheBuster(url, attempt) : url;
     },
     engine_arguments: ["--verify-graphics-calls=false",],
     custom_heap_size: 268435456,
@@ -124,35 +134,50 @@ var FileLoader = {
         retryCount: 4,
         retryInterval: 1000,
     },
+    addCacheBuster: function(url, attempt) {
+        return url + (url.indexOf("?") === -1 ? "?" : "&") + "dmretry=" + attempt;
+    },
+    
+    resolveUrl: function(url, attempt) {
+        if (typeof url === "function") {
+            return url(attempt);
+        }
+        return attempt > 0 ? FileLoader.addCacheBuster(url, attempt) : url;
+    },
     // do xhr request with retries
     request: function(url, method, responseType, currentAttempt) {
         if (typeof method === 'undefined') throw TypeError("No method specified");
         if (typeof method === 'responseType') throw TypeError("No responseType specified");
         if (typeof currentAttempt === 'undefined') currentAttempt = 0;
         var obj = {
+            retry: function(xhr, event) {
+                if (currentAttempt == FileLoader.options.retryCount) {
+                    return false;
+                }
+                if (obj.onretry) obj.onretry(xhr, event, xhr._loadedSize, currentAttempt);
+                xhr._loadedSize = 0;
+                currentAttempt += 1;
+                setTimeout(obj.send.bind(obj), FileLoader.options.retryInterval);
+                return true;
+            },
             send: function() {
                 var onprogress = this.onprogress;
                 var onload = this.onload;
                 var onerror = this.onerror;
-                var onretry = this.onretry;
 
                 var xhr = new XMLHttpRequest();
                 xhr._loadedSize = 0;
-                xhr.open(method, url, true);
+                obj.url = FileLoader.resolveUrl(url, currentAttempt);
+                xhr.open(method, obj.url, true);
                 xhr.responseType = responseType;
                 xhr.onprogress = function(event) {
                     if (onprogress) onprogress(xhr, event, xhr._loadedSize);
                     xhr._loadedSize = event.loaded;
                 };
                 xhr.onerror = function(event) {
-                    if (currentAttempt == FileLoader.options.retryCount) {
+                    if (!obj.retry(xhr, event)) {
                         if (onerror) onerror(xhr, event);
-                        return;
                     }
-                    if (onretry) onretry(xhr, event, xhr._loadedSize, currentAttempt);
-                    xhr._loadedSize = 0;
-                    currentAttempt += 1;
-                    setTimeout(obj.send.bind(obj), FileLoader.options.retryInterval);
                 };
                 xhr.onload = function(event) {
                     if (onload) onload(xhr, event);
@@ -184,28 +209,35 @@ var FileLoader = {
     // Do HTTP GET request
     // onprogress(loadedDelta)
     // onerror(error)
-    // onload(response)
+    // onload(response, url) - url is the one that answered, which is not the one passed in
+    //                         when a retry had to vary it
     // onretry(loadedSize, currentAttempt)
-    load: function(url, responseType, onprogress, onerror, onload, onretry) {
+    // onverify(response) - optional, returns an error message for a response that must not
+    //                      be used, which is then retried like a failed status
+    load: function(url, responseType, onprogress, onerror, onload, onretry, onverify) {
         var request = FileLoader.request(url, "GET", responseType);
         request.onprogress = function(xhr, e, ls) {
             var delta = e.loaded - ls;
             onprogress(delta);
         };
         request.onerror = function(xhr, e) {
-            onerror("Error loading '" + url + "' (" + e + ")");
+            onerror("Error loading '" + request.url + "' (" + e + ")");
         };
         request.onload = function(xhr, e) {
             if (xhr.readyState === XMLHttpRequest.DONE) {
                 if (xhr.status === 200) {
                     var res = xhr.response;
                     if (responseType == "json" && typeof res === "string") {
-                        onload(JSON.parse(res));
-                    } else {
-                        onload(res);
+                        res = JSON.parse(res);
                     }
-                } else {
-                    onerror("Error loading '" + url + "' (" + e + ")");
+                    var error = onverify ? onverify(res) : undefined;
+                    if (!error) {
+                        onload(res, request.url);
+                    } else if (!request.retry(xhr, e)) {
+                        onerror("Error loading '" + request.url + "' (" + error + ")");
+                    }
+                } else if (!request.retry(xhr, e)) {
+                    onerror("Error loading '" + request.url + "' (status " + xhr.status + ")");
                 }
             }
         };
@@ -220,17 +252,17 @@ var FileLoader = {
 var EngineLoader = {
     arc_sha1: "",
     wasm_sha1: "",
-    wasm_size: 2880766,
+    wasm_size: 3374683,
     wasmjs_sha1: "",
-    wasmjs_size: 296757,
+    wasmjs_size: 296790,
     wasm_pthread_sha1: "",
-    wasm_pthread_size: 2880766,
+    wasm_pthread_size: 3374683,
     wasmjs_pthread_sha1: "",
-    wasmjs_pthread_size: 296757,
-    wasm_file: "/examples/wasm/55c6751231ade12b69c7f84e388020f3.wasm",
-    wasm_pthread_file: "/examples/wasm/55c6751231ade12b69c7f84e388020f3.wasm",
-    wasmjs_file: "/examples/wasm/374d172c65b66af13739964f9efad2b6.wasm.js",
-    wasmjs_pthread_file: "/examples/wasm/374d172c65b66af13739964f9efad2b6.wasm.js",
+    wasmjs_pthread_size: 296790,
+    wasm_file: "/examples/wasm/c5e6c273a55526de69d6672be20dae0a.wasm",
+    wasm_pthread_file: "/examples/wasm/c5e6c273a55526de69d6672be20dae0a.wasm",
+    wasmjs_file: "/examples/wasm/58b7376ab34171465b462348ab0d1123.wasm.js",
+    wasmjs_pthread_file: "/examples/wasm/58b7376ab34171465b462348ab0d1123.wasm.js",
     wasm_instantiate_progress: 0,
 
     stream_wasm: "false" === "true",
@@ -283,9 +315,6 @@ var EngineLoader = {
             },
             function(error) { throw error; },
             async function(wasm) {
-                if (wasm.byteLength != EngineLoader.getWasmSize()) {
-                   console.warn("Unexpected wasm size: " + wasm.byteLength + ", expected: " + EngineLoader.getWasmSize());
-                }
                 if (EngineLoader.getWasmSha1()) {
                     const digest = await window.crypto.subtle.digest("SHA-1", wasm);
                     const sha1 = Array.from(new Uint8Array(digest)).map(b => b.toString(16).padStart(2, '0')).join('');
@@ -312,19 +341,36 @@ var EngineLoader = {
             },
             function(loadedDelta, currentAttempt){
                 ProgressUpdater.updateCurrent(-loadedDelta);
+            },
+            function(wasm) {
+                
+                if (wasm.byteLength != EngineLoader.getWasmSize()) {
+                    return "Unexpected wasm size: " + wasm.byteLength + ", expected: " + EngineLoader.getWasmSize();
+                }
+                
             });
     },
 
     // stream and instantiate .wasm file
     streamAndInstantiateWasmAsync: async function(src, imports, successCallback) {
+        var canCount = typeof TransformStream === "function" && ReadableStream.prototype.pipeThrough;
+        
+        if (!canCount) {
+            // without a stream to count the bytes, only the xhr path can verify the size
+            EngineLoader.loadAndInstantiateWasmAsync(src, imports, successCallback);
+            return;
+        }
+        
         // https://stackoverflow.com/a/69179454
         var fetchFn = fetch;
-        if (typeof TransformStream === "function" && ReadableStream.prototype.pipeThrough) {
+        var streamedSize = 0;
+        if (canCount) {
             async function fetchWithProgress(path) {
                 const response = await fetch(path);
                 if (response.ok) {
                     const ts = new TransformStream({
                         transform (chunk, controller) {
+                            streamedSize += chunk.byteLength;
                             ProgressUpdater.updateCurrent(chunk.byteLength);
                             controller.enqueue(chunk);
                         }
@@ -339,12 +385,19 @@ var EngineLoader = {
         }
 
         WebAssembly.instantiateStreaming(fetchFn(src), imports).then(function(output) {
+            
+            if (streamedSize != EngineLoader.getWasmSize()) {
+                throw new Error("Unexpected wasm size: " + streamedSize + ", expected: " + EngineLoader.getWasmSize());
+            }
+            
             ProgressUpdater.updateCurrent(EngineLoader.wasm_instantiate_progress);
             Module.instance = output.instance;
             successCallback(output.instance, output.module);
         }).catch(function(e) {
             console.log('wasm streaming instantiation failed! ' + e);
             console.log('Fallback to wasm loading');
+            // the xhr download counts the file again
+            ProgressUpdater.updateCurrent(-streamedSize);
             try {
                 EngineLoader.loadAndInstantiateWasmAsync(src, imports, successCallback);
             } catch (error) {
@@ -384,10 +437,7 @@ var EngineLoader = {
                 ProgressUpdater.updateCurrent(delta);
             },
             function(error) { throw error; },
-            async function(response) {
-                if (response.length != expectedLength) {
-                    console.warn("Unexpected JS size: " + response.length + ", expected: " + expectedLength);
-                }
+            async function(response, url) {
                 if (expectedSHA1) {
                     const digest = await window.crypto.subtle.digest("SHA-1", new TextEncoder().encode(response));
                     const sha1 = Array.from(new Uint8Array(digest)).map(b => b.toString(16).padStart(2, '0')).join('');
@@ -400,15 +450,25 @@ var EngineLoader = {
                         }
                     }
                 }
-                Module["mainScriptUrlOrBlob"] = src;
+                
+                Module["mainScriptUrlOrBlob"] = url;
 
                 const script = document.createElement('script');
-                script.src = src;
+                script.src = url;
                 script.type = "text/javascript";
                 document.body.appendChild(script);
             },
             function(loadedDelta, currentAttempt){
                 ProgressUpdater.updateCurrent(-loadedDelta);
+            },
+            function(response) {
+                
+                
+                const actualLength = new TextEncoder().encode(response).length;
+                if (actualLength != expectedLength) {
+                    return "Unexpected JS size: " + actualLength + ", expected: " + expectedLength;
+                }
+                
             });
     },
 
@@ -473,11 +533,24 @@ var GameArchiveLoader = {
 
     isCompleted: false,       // status of process
 
+    
+    MAX_VERIFICATION_RETRIES: 2,
+
     _onFileLoadedListeners: [],          // signature: name, data.
     _onArchiveLoadedListeners:[],        // signature: void
     _onFileDownloadErrorListeners: [],   // signature: name
 
-    _archiveLocationFilter: function(path) { return "split" + path; },
+    _archiveLocationFilter: function(path, attempt) {
+        var url = "split" + path;
+        return attempt ? FileLoader.addCacheBuster(url, attempt) : url;
+    },
+
+    
+    archiveLocationProvider: function(path, verificationAttempt) {
+        var self = this;
+        var base = (verificationAttempt || 0) * (FileLoader.options.retryCount + 1);
+        return function(attempt) { return self._archiveLocationFilter(path, base + attempt); };
+    },
 
     cleanUp: function() {
         this._files =  [];
@@ -529,7 +602,7 @@ var GameArchiveLoader = {
     // descriptionUrl: location of text file describing files to be preloaded
     loadArchiveDescription: function(descriptionUrl) {
         FileLoader.load(
-            this._archiveLocationFilter(descriptionUrl),
+            this.archiveLocationProvider(descriptionUrl, 0),
             "text",
             function (delta) { },
             function (error) { GameArchiveLoader.notifyFileDownloadError(descriptionUrl); },
@@ -585,10 +658,16 @@ var GameArchiveLoader = {
         if (Module['isDMFSSupported']) {
             const path = `${DMSYS.GetUserPersistentDataRoot()}/${file.name}`;
             try { // see if already and stored
-                const stat = FS.stat(path);
+                
+                const stat = file.verificationAttempt ? null : FS.stat(path);
                 if (stat) {
+                    
                     let matches = (file.size == stat.size);
+                    
+                    
                     if (matches && file.sha1) {
+                        
+                        matches = false;
                         const stream = FS.open(path, "r");
                         if (stream) {
                             try {
@@ -599,8 +678,6 @@ var GameArchiveLoader = {
                                 }
                             } catch(e) { }
                             FS.close(stream);
-                        } else {
-                            matches = false;
                         }
                     }
                     if (matches) {
@@ -636,10 +713,8 @@ var GameArchiveLoader = {
         file.lastRequestedPiece = index;
         file.totalLoadedPieces = 0;
 
-        var url = this._archiveLocationFilter('/' + piece.name);
-
         FileLoader.load(
-            url, "arraybuffer",
+            this.archiveLocationProvider('/' + piece.name, file.verificationAttempt), "arraybuffer",
             function (delta) {
                 GameArchiveLoader.notifyDownloadProgress(delta);
             },
@@ -670,11 +745,11 @@ var GameArchiveLoader = {
             }
             var start = piece.offset;
             var end = start + piece.data.length;
-            if (0 > start) {
-                throw RangeError("Buffer underflow. Start: " + start);
-            }
-            if (end > file.data.length) {
-                throw RangeError("Buffer overflow. End : " + end + ", data length: " + file.data.length);
+            
+            if (0 > start || end > file.data.length) {
+                
+                console.warn("Piece " + piece.name + " does not fit " + file.name + ": start " + start + ", end " + end + ", buffer length " + file.data.length);
+                return;
             }
             file.data.set(piece.data, piece.offset);
         }
@@ -693,6 +768,9 @@ var GameArchiveLoader = {
                 }
                 this.onFileLoaded(file);
             }).catch((e) => {
+                if (this.retryFile(file, e)) {
+                    return;
+                }
                 console.log('file verification failed! ' + e);
                 if (typeof CUSTOM_PARAMETERS["start_error"] === "function") {
                    CUSTOM_PARAMETERS["start_error"](e);
@@ -711,15 +789,50 @@ var GameArchiveLoader = {
         }
     },
 
+    retryFile: function(file, error) {
+        if (file.verificationAttempt === undefined) {
+            file.verificationAttempt = 0;
+        }
+        if (file.verificationAttempt >= this.MAX_VERIFICATION_RETRIES) {
+            return false;
+        }
+        file.verificationAttempt += 1;
+        console.warn("Verification of " + file.name + " failed (attempt " + file.verificationAttempt + " of " + this.MAX_VERIFICATION_RETRIES + "), downloading it again: " + error);
+
+        // hand back the progress of everything we are about to throw away
+        var downloadedSize = 0;
+        for (var i = 0; i < file.pieces.length; ++i) {
+            downloadedSize += file.pieces[i].dataLength;
+            file.pieces[i].dataLength = 0;
+            file.pieces[i].data = undefined;
+        }
+        ProgressUpdater.updateCurrent(-downloadedSize);
+
+        
+        if (file.stream !== undefined) {
+            FS.close(file.stream);
+            file.stream = undefined;
+        }
+
+        file.data = undefined;
+        file.totalLoadedPieces = 0;
+        file.lastRequestedPiece = undefined;
+
+        setTimeout(function() { GameArchiveLoader.downloadContent(); }, FileLoader.options.retryInterval);
+        return true;
+    },
+
     verifyFile: function(file) {
         // verify that we downloaded as much as we were supposed to
         var actualSize = 0;
         for (var i=0;i<file.pieces.length; ++i) {
             actualSize += file.pieces[i].dataLength;
         }
+        
         if (actualSize != file.size) {
             return Promise.reject(new Error("Unexpected data size: " + file.name + ", expected size: " + file.size + ", actual size: " + actualSize));
         }
+        
 
         // verify the pieces
         if (file.pieces.length > 1) {
@@ -747,7 +860,7 @@ var GameArchiveLoader = {
             let data = file.data;
             if (file.stream) {
                 try {
-                    data = FS.mmap(file.stream, file.size, 0, 0x01, 0x01); //PROT_READ, MAP_SHARED
+                    data = FS.mmap(file.stream, actualSize, 0, 0x01, 0x01); //PROT_READ, MAP_SHARED
                 } catch(e) { }
             }
             if(data) {
@@ -893,7 +1006,7 @@ var Progress = {
 
 var Module = {
     engineVersion: "1.13.2",
-    engineSdkSha1: "302933d13d26c095eb528ceedf03d15a4266496c",
+    engineSdkSha1: "8113d3b687ad7b9f5fb74ff05da451d2ffe2b212",
     noInitialRun: true,
 
     _filesToPreload: [],
