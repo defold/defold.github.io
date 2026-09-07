@@ -64,9 +64,9 @@ When the provision expires, you need to build the app again in Xcode and get a n
 
 When you have the code signing identity and provisioning profile, you are ready to create a stand alone application bundle for your game from the editor. Simply select `Project ▸ Bundle... ▸ iOS Application...` from the menu.
 
-Select your code signing identity and browse for your mobile provisioning file. Select the `arm64-ios` device architecture and, when needed, the `x86_64-ios` simulator architecture, as well as the variant (Debug or Release). You can optionally uncheck the `Sign application` checkbox to skip the signing process and then manually sign at a later stage.
+Select your code signing identity and browse for your mobile provisioning file, as well as the variant (Debug or Release). You can optionally uncheck the `Sign application` checkbox to skip the signing process and then manually sign at a later stage. Check `Simulator` to create an `arm64_sim-ios` bundle for the iOS Simulator instead of a device bundle.
 
-You **must** uncheck the `Sign application` checkbox when testing your game on the iOS simulator. You will be able to install the application but it will not boot.
+Simulator bundles run only in the iOS Simulator on Apple Silicon Macs. They do not use a signing identity or provisioning profile, so the signing, install and launch options are disabled when `Simulator` is checked. Install the bundle with `xcrun simctl` as described below.
 
 Press *Create Bundle* and you will then be prompted to specify where on your computer the bundle will be created.
 
