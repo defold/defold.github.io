@@ -45094,6 +45094,26 @@ Get the CrazyGames SDK environment. SDK functionality should only be used when t
 
 - `string`
 
+### crazygames.get_game_settings
+*Type:* FUNCTION
+Get the current CrazyGames game settings, including muteAudio and disableChat.
+
+**Returns**
+
+- `table` - The current settings table, or nil if settings are unavailable.
+
+### crazygames.add_settings_change_listener
+*Type:* FUNCTION
+Register a listener that is called whenever the CrazyGames game settings change. Registering again replaces the previous listener.
+
+**Parameters**
+
+- `callback` (function) - The function takes two arguments, self and the updated settings table.
+
+### crazygames.remove_settings_change_listener
+*Type:* FUNCTION
+Remove the currently registered game-settings listener.
+
 ### crazygames.gameplay_start
 *Type:* FUNCTION
 The gameplayStart() function has to be called whenever the player starts playing or resumes playing after a break (menu/loading/achievement screen, game paused, etc.)
