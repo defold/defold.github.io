@@ -243,6 +243,19 @@
             "type": "FUNCTION"
         },
         {
+            "description": "Get all invite parameters supplied when the game was opened from an invite link.",
+            "examples": "",
+            "name": "crazygames.get_invite_params",
+            "parameters": [],
+            "returnvalues": [
+                {
+                    "doc": "The invite parameters, or nil if the game was not opened from an invite link.",
+                    "name": "table"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
             "description": "For multiplayer games, if is_instant_multiplayer() returns true, you should instantly create a new room/lobby for the user.",
             "examples": "",
             "name": "crazygames.is_instant_multiplayer",
@@ -253,6 +266,54 @@
                     "name": "boolean"
                 }
             ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Update the current multiplayer room. The table can contain roomId (string), isJoinable (boolean), and inviteParams (a table of string, number, or boolean values). Only supplied fields are updated.",
+            "examples": "",
+            "name": "crazygames.update_room",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "room",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Notify CrazyGames that the player has left the current multiplayer room.",
+            "examples": "",
+            "name": "crazygames.left_room",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Register a listener for requests to join a multiplayer room. Registering again replaces the previous listener.",
+            "examples": "",
+            "name": "crazygames.add_join_room_listener",
+            "parameters": [
+                {
+                    "doc": "The function takes two arguments, self and the invite parameters table.",
+                    "name": "callback",
+                    "types": [
+                        "function"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Remove the currently registered join-room listener.",
+            "examples": "",
+            "name": "crazygames.remove_join_room_listener",
+            "parameters": [],
+            "returnvalues": [],
             "type": "FUNCTION"
         },
         {

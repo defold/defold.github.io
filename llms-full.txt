@@ -65058,6 +65058,14 @@ Get an invite link parameter.
 
 - `string` - The parameter value, or nil if the parameter is missing.
 
+### crazygames.get_invite_params
+*Type:* FUNCTION
+Get all invite parameters supplied when the game was opened from an invite link.
+
+**Returns**
+
+- `table` - The invite parameters, or nil if the game was not opened from an invite link.
+
 ### crazygames.is_instant_multiplayer
 *Type:* FUNCTION
 For multiplayer games, if is_instant_multiplayer() returns true, you should instantly create a new room/lobby for the user.
@@ -65065,6 +65073,30 @@ For multiplayer games, if is_instant_multiplayer() returns true, you should inst
 **Returns**
 
 - `boolean`
+
+### crazygames.update_room
+*Type:* FUNCTION
+Update the current multiplayer room. The table can contain roomId (string), isJoinable (boolean), and inviteParams (a table of string, number, or boolean values). Only supplied fields are updated.
+
+**Parameters**
+
+- `room` (table)
+
+### crazygames.left_room
+*Type:* FUNCTION
+Notify CrazyGames that the player has left the current multiplayer room.
+
+### crazygames.add_join_room_listener
+*Type:* FUNCTION
+Register a listener for requests to join a multiplayer room. Registering again replaces the previous listener.
+
+**Parameters**
+
+- `callback` (function) - The function takes two arguments, self and the invite parameters table.
+
+### crazygames.remove_join_room_listener
+*Type:* FUNCTION
+Remove the currently registered join-room listener.
 
 ### crazygames.clear_data
 *Type:* FUNCTION
