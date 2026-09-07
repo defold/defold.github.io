@@ -3,9 +3,13 @@ import contextlib
 import io
 import json
 import os
+import shutil
 import tempfile
 import unittest
 from pathlib import Path
+from unittest import mock
+
+import yaml
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -22,7 +26,24 @@ def function_source(name: str) -> str:
     return ast.get_source_segment(UPDATE_SOURCE, node)
 
 
-def load_game_importer(games_json: Path, featured_json: Path, copy_calls: list):
+def load_image_copier():
+    namespace = {"os": os, "Path": Path, "shutil": shutil}
+    for name in ("games_showcase_root", "copy_game_images"):
+        exec(function_source(name), namespace)
+    return namespace["copy_game_images"]
+
+
+@contextlib.contextmanager
+def working_directory(path):
+    previous = Path.cwd()
+    os.chdir(path)
+    try:
+        yield
+    finally:
+        os.chdir(previous)
+
+
+def load_game_importer(games_json: Path, featured_json: Path):
     def find_files(root_dir, pattern):
         return sorted(str(path) for path in Path(root_dir).rglob(pattern))
 
@@ -40,7 +61,7 @@ def load_game_importer(games_json: Path, featured_json: Path, copy_calls: list):
         "find_files": find_files,
         "read_as_json": read_as_json,
         "write_as_json": write_as_json,
-        "copy_game_images": lambda tmp_dir: copy_calls.append(Path(tmp_dir)),
+        "copy_game_images": load_image_copier(),
         "GAMES_JSON": str(games_json),
         "SHOWCASE_FEATURED_FULL_JSON": str(featured_json),
     }
@@ -98,24 +119,25 @@ class UpdateImportBoundaryTests(unittest.TestCase):
         self.assertLess(build, pagefind)
         self.assertLess(pagefind, commit)
 
-    def test_ci_downloads_showcase_images_before_each_build(self):
+    def test_ci_refreshes_showcase_only_on_explicit_update(self):
         build_workflow = (ROOT / ".github/workflows/build_site.yml").read_text(
             encoding="utf-8"
         )
-        install = build_workflow.index("name: Install Python dependencies")
-        download = build_workflow.index("name: Download showcase images")
-        self.assertIn("requests", build_workflow[install:download])
-        self.assertIn("pyyaml", build_workflow[install:download])
-        self.assertLess(
-            download,
-            build_workflow.index("name: Build Jekyll site"),
-        )
+        self.assertNotIn("--download", build_workflow)
 
         update_workflow = (ROOT / ".github/workflows/update_site.yml").read_text(
             encoding="utf-8"
         )
-        self.assertIn("python update.py --download games-showcase", update_workflow)
-        self.assertIn("python update.py --download game-images", update_workflow)
+        steps = yaml.safe_load(update_workflow)["jobs"]["update_site"]["steps"]
+        self.assertEqual(
+            [step for step in steps if "game" in step.get("run", "")],
+            [{
+                "if": "env.ACTION == 'games-showcase'",
+                "name": "Update games",
+                "run": "python update.py --download games-showcase",
+            }],
+        )
+        self.assertNotIn("/images/games/", (ROOT / ".gitignore").read_text())
 
 
 class GamesShowcaseImportTests(unittest.TestCase):
@@ -147,14 +169,12 @@ class GamesShowcaseImportTests(unittest.TestCase):
         games_output = root / "output" / "games.json"
         featured_output = root / "output" / "featured.json"
         games_output.parent.mkdir()
-        copy_calls = []
-        importer = load_game_importer(games_output, featured_output, copy_calls)
-        with contextlib.redirect_stdout(io.StringIO()):
+        importer = load_game_importer(games_output, featured_output)
+        with working_directory(root), contextlib.redirect_stdout(io.StringIO()):
             importer(str(root))
         return (
             json.loads(games_output.read_text(encoding="utf-8")),
             json.loads(featured_output.read_text(encoding="utf-8")),
-            copy_calls,
         )
 
     def test_import_uses_upstream_order_featured_and_images(self):
@@ -162,20 +182,14 @@ class GamesShowcaseImportTests(unittest.TestCase):
             root = Path(temporary)
             self.make_source(root)
 
-            games, featured, copy_calls = self.run_import(root)
+            games, featured = self.run_import(root)
 
             self.assertEqual([game["id"] for game in games], ["beta", "alpha"])
             self.assertEqual(featured, ["alpha"])
-            self.assertEqual(copy_calls, [root])
-
-    def test_import_rejects_missing_referenced_image(self):
-        with tempfile.TemporaryDirectory() as temporary:
-            root = Path(temporary)
-            source = self.make_source(root)
-            (source / "games" / "images" / "alpha-full.webp").unlink()
-
-            with self.assertRaisesRegex(RuntimeError, "Missing showcase images"):
-                self.run_import(root)
+            self.assertEqual(
+                {path.name for path in (root / "images" / "games").iterdir()},
+                {"alpha-full.webp", "alpha-third.webp", "beta-half.webp"},
+            )
 
     def test_import_rejects_featured_list_different_from_full_games(self):
         with tempfile.TemporaryDirectory() as temporary:
@@ -185,6 +199,59 @@ class GamesShowcaseImportTests(unittest.TestCase):
 
             with self.assertRaisesRegex(RuntimeError, "Featured IDs must exactly match"):
                 self.run_import(root)
+
+    def test_images_copy_only_changed_references_and_prune_obsolete_files(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            source = self.make_source(root) / "games" / "images"
+            (source / "unused.webp").write_bytes(b"unused upstream image")
+            destination = root / "images" / "games"
+            destination.mkdir(parents=True)
+            (destination / "alpha-full.webp").write_bytes(b"fixture")
+            # Same size and timestamp must not hide changed image content.
+            (destination / "alpha-third.webp").write_bytes(b"changed")
+            timestamp = (source / "alpha-third.webp").stat().st_mtime_ns
+            os.utime(destination / "alpha-third.webp", ns=(timestamp, timestamp))
+            (destination / "obsolete.webp").write_bytes(b"old image")
+
+            with mock.patch.object(shutil, "copyfile", wraps=shutil.copyfile) as copy:
+                self.run_import(root)
+
+            self.assertEqual(
+                {Path(call.args[1]).name for call in copy.call_args_list},
+                {"alpha-third.webp", "beta-half.webp"},
+            )
+            self.assertEqual(
+                {path.name for path in destination.iterdir()},
+                {"alpha-full.webp", "alpha-third.webp", "beta-half.webp"},
+            )
+            for path in destination.iterdir():
+                self.assertEqual(path.read_bytes(), b"fixture")
+
+            with working_directory(root), mock.patch.object(shutil, "copyfile") as copy:
+                load_image_copier()(str(root), {path.name for path in destination.iterdir()})
+            copy.assert_not_called()
+
+    def test_missing_image_does_not_change_existing_snapshots(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            source = self.make_source(root)
+            self.run_import(root)
+            snapshots = {
+                path: path.read_bytes()
+                for directory in (root / "output", root / "images")
+                for path in directory.rglob("*") if path.is_file()
+            }
+            (source / "games" / "images" / "alpha-third.webp").unlink()
+            (source / "games" / "images" / "alpha-full.webp").write_bytes(b"new")
+            importer = load_game_importer(
+                root / "output" / "games.json", root / "output" / "featured.json"
+            )
+            with working_directory(root), contextlib.redirect_stdout(io.StringIO()):
+                with self.assertRaisesRegex(RuntimeError, "Missing showcase images"):
+                    importer(str(root))
+            for path, content in snapshots.items():
+                self.assertEqual(path.read_bytes(), content)
 
 
 if __name__ == "__main__":

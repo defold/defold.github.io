@@ -54,10 +54,9 @@ The script accepts the following commands:
 * `examples` - Import examples from github.com/defold/examples
 * `asset-portal` - Import Asset Portal content from github.com/defold/asset-portal
 * `games-showcase` - Import Showcase content from github.com/defold/games-showcase
-* `game-images` - Download only the website-ready Showcase images for a local or CI build
 * `commit` - Commit changes to GitHub (for CI use)
 
-The Showcase source of truth is `defold/games-showcase`. `_data/games.json` and `_data/showcase_featured_full.json` are generated snapshots. Game images are versioned only in `games-showcase`; `images/games` is ignored here and downloaded before every CI build. Run `python3 update.py --download game-images` before a direct local Jekyll build, or run the full `games-showcase` import when testing data changes.
+The Showcase source of truth is `defold/games-showcase`. `_data/games.json`, `_data/showcase_featured_full.json`, and `images/games` are committed snapshots, like the Asset Portal data and images. Ordinary site builds use these snapshots without downloading showcase content. Showcase content changes trigger the `games-showcase` update; an explicit `all` update also refreshes it. Run `python3 update.py --download games-showcase` to refresh locally. This downloads the upstream archive, copies only new or changed referenced images, removes obsolete image files, and updates the catalog and featured list together. Unchanged images are reused without recompression.
 
 # HOW TO TEST THE SITE LOCALLY
 It is recommended that you generate and test the site locally before pushing the changes to the repository. You generate and test the site locally by running `serve.sh`.
@@ -182,7 +181,7 @@ The script is also triggered once every hour to update the asset portal star cou
 
 * [Update site](https://github.com/defold/defold.github.io/blob/master/.github/workflows/update_site.yml) - on change in external repository (triggered using the repository_dispatch event)
   * Asset-portal - Triggered from [asset-portal workflow](https://github.com/defold/asset-portal/blob/master/.github/workflows/trigger-site-rebuild.yml) on change.
-  * Games-showcase - Triggered from the [games-showcase publish workflow](https://github.com/defold/games-showcase/blob/master/.github/workflows/publish.yml) after validated changes reach `master`.
+  * Games-showcase - Triggered from the [games-showcase publish workflow](https://github.com/defold/games-showcase/blob/master/.github/workflows/publish.yml) after validated game data, image, order, or featured-list changes reach `master`, or when manually dispatched.
   * Docs (manuals, tutorials, faq) - Triggered from [doc workflow](https://github.com/defold/doc/blob/master/.github/workflows/trigger-site-rebuild.yml) on change.
   * Docs (examples) - Triggered from [examples workflow](https://github.com/defold/examples/blob/master/.github/workflows/trigger-site-rebuild.yml) on change.
   * Codepad - Triggered from [codepad workflow](https://github.com/defold/codepad/blob/master/.github/workflows/trigger-site-rebuild.yml) on change.
