@@ -45110,6 +45110,10 @@ The loadingStart() function has to be called whenever you start loading your gam
 *Type:* FUNCTION
 The loadingStop() function has to be called when the loading is complete and eventually the gameplay starts.
 
+### crazygames.happytime
+*Type:* FUNCTION
+Celebrate a major player achievement, such as beating a boss or reaching a high score.
+
 ### crazygames.show_rewarded_ad
 *Type:* FUNCTION
 Show a rewarded ad.
@@ -45126,13 +45130,13 @@ Show a midgame ad.
 
 - `callback` (function)
 
-### crazygames.is_ad_blocked
+### crazygames.has_ad_block
 *Type:* FUNCTION
 Detect if the user has an adblocker.
 
 **Parameters**
 
-- `callback` (function)
+- `callback` (function) - The function takes two arguments, self and a boolean indicating whether an adblocker was detected.
 
 ### crazygames.request_banner
 *Type:* FUNCTION
@@ -45178,7 +45182,7 @@ Create a link to your game to invite others to join a multiplayer game.
 
 ### crazygames.show_invite_button
 *Type:* FUNCTION
-Display a button in the game footer, that opens a popup containing an invite link.
+Display a button in the game footer that opens a popup containing an invite link. This CrazyGames feature is deprecated in favor of Room Data, but remains available for existing integrations.
 
 **Parameters**
 
@@ -45194,7 +45198,7 @@ Hide the invite button when it is no longer necessary.
 
 ### crazygames.get_invite_param
 *Type:* FUNCTION
-Get an invite link parameters.
+Get an invite link parameter.
 
 **Parameters**
 
@@ -45202,7 +45206,7 @@ Get an invite link parameters.
 
 **Returns**
 
-- `string`
+- `string` - The parameter value, or nil if the parameter is missing.
 
 ### crazygames.is_instant_multiplayer
 *Type:* FUNCTION
@@ -45214,11 +45218,11 @@ For multiplayer games, if is_instant_multiplayer() returns true, you should inst
 
 ### crazygames.clear_data
 *Type:* FUNCTION
-Remove all data items from the local storage.
+Remove all stored game data from the CrazyGames data module.
 
 ### crazygames.get_item
 *Type:* FUNCTION
-Get a data item from the local storage.
+Get a stored value from the CrazyGames data module.
 
 **Parameters**
 
@@ -45226,11 +45230,11 @@ Get a data item from the local storage.
 
 **Returns**
 
-- `string`
+- `string` - The stored value, or nil if the key does not exist.
 
 ### crazygames.remove_item
 *Type:* FUNCTION
-Remove a data item from the local storage.
+Remove a stored value from the CrazyGames data module.
 
 **Parameters**
 
@@ -45238,7 +45242,7 @@ Remove a data item from the local storage.
 
 ### crazygames.set_item
 *Type:* FUNCTION
-Add a data item to the local storage.
+Store a value in the CrazyGames data module.
 
 **Parameters**
 
@@ -45255,7 +45259,7 @@ Before using any user account features, you should always ensure that the user a
 
 ### crazygames.get_user
 *Type:* FUNCTION
-Retrieve the user currently logged in CrazyGames. If the user is not logged in CrazyGames, the returned user will be null. Will call the provided callback with the logged in user account.
+Retrieve the user currently logged in CrazyGames. If the user is not logged in CrazyGames, the callback receives nil. Will call the provided callback with the logged in user account.
 
 **Parameters**
 

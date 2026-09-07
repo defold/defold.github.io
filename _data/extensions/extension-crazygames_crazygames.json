@@ -46,6 +46,14 @@
             "type": "FUNCTION"
         },
         {
+            "description": "Celebrate a major player achievement, such as beating a boss or reaching a high score.",
+            "examples": "",
+            "name": "crazygames.happytime",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
             "description": "Show a rewarded ad.",
             "examples": "",
             "name": "crazygames.show_rewarded_ad",
@@ -80,10 +88,10 @@
         {
             "description": "Detect if the user has an adblocker.",
             "examples": "",
-            "name": "crazygames.is_ad_blocked",
+            "name": "crazygames.has_ad_block",
             "parameters": [
                 {
-                    "doc": "",
+                    "doc": "The function takes two arguments, self and a boolean indicating whether an adblocker was detected.",
                     "name": "callback",
                     "types": [
                         "function"
@@ -185,7 +193,7 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Display a button in the game footer, that opens a popup containing an invite link.",
+            "description": "Display a button in the game footer that opens a popup containing an invite link. This CrazyGames feature is deprecated in favor of Room Data, but remains available for existing integrations.",
             "examples": "",
             "name": "crazygames.show_invite_button",
             "parameters": [
@@ -214,7 +222,7 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Get an invite link parameters.",
+            "description": "Get an invite link parameter.",
             "examples": "",
             "name": "crazygames.get_invite_param",
             "parameters": [
@@ -228,7 +236,7 @@
             ],
             "returnvalues": [
                 {
-                    "doc": "",
+                    "doc": "The parameter value, or nil if the parameter is missing.",
                     "name": "string"
                 }
             ],
@@ -248,7 +256,7 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Remove all data items from the local storage.",
+            "description": "Remove all stored game data from the CrazyGames data module.",
             "examples": "",
             "name": "crazygames.clear_data",
             "parameters": [],
@@ -256,7 +264,7 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Get a data item from the local storage.",
+            "description": "Get a stored value from the CrazyGames data module.",
             "examples": "",
             "name": "crazygames.get_item",
             "parameters": [
@@ -270,14 +278,14 @@
             ],
             "returnvalues": [
                 {
-                    "doc": "",
+                    "doc": "The stored value, or nil if the key does not exist.",
                     "name": "string"
                 }
             ],
             "type": "FUNCTION"
         },
         {
-            "description": "Remove a data item from the local storage.",
+            "description": "Remove a stored value from the CrazyGames data module.",
             "examples": "",
             "name": "crazygames.remove_item",
             "parameters": [
@@ -293,7 +301,7 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Add a data item to the local storage.",
+            "description": "Store a value in the CrazyGames data module.",
             "examples": "",
             "name": "crazygames.set_item",
             "parameters": [
@@ -329,7 +337,7 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Retrieve the user currently logged in CrazyGames. If the user is not logged in CrazyGames, the returned user will be null. Will call the provided callback with the logged in user account.",
+            "description": "Retrieve the user currently logged in CrazyGames. If the user is not logged in CrazyGames, the callback receives nil. Will call the provided callback with the logged in user account.",
             "examples": "",
             "name": "crazygames.get_user",
             "parameters": [

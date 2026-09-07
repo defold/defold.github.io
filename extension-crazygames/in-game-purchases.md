@@ -11,7 +11,7 @@ toc:
 
 # In-game purchases
 
-CrazyGames have partnered with Xsolla to offer you the possibility to integrate in-game purchases more conveniently. Learn more about how to use Xsolla on the [CrazyGames developer pages](https://docs.crazygames.com/sdk/html5-v3/in-game-purchases/).
+CrazyGames have partnered with Xsolla to offer you the possibility to integrate in-game purchases more conveniently. Learn more about how to use Xsolla on the [CrazyGames developer pages](https://docs.crazygames.com/sdk/in-game-purchases/).
 
 
 ## Get Xsolla token
