@@ -8,6 +8,8 @@ toc:
 - Game
 - Game settings
 - Happy time
+- Game completion percentage
+- Game context
 - Gameplay start/stop
 - Game loading start/stop
 - Room data
@@ -62,6 +64,38 @@ The `happytime()` method can be called on various player achievements (beating a
 
 ```lua
 crazygames.happytime()
+```
+
+
+## Game completion percentage
+
+Report progression milestones with a number from 0 to 100. Reporting 100 is sufficient for games without useful intermediate milestones.
+
+```lua
+-- The player has completed half of the game's progression.
+crazygames.report_game_completed_percentage(50)
+
+-- The player reached a meaningful completion point.
+crazygames.report_game_completed_percentage(100)
+```
+
+If an update adds new content, report the player's recalculated percentage when the game starts, even if it is lower than a previously reported value.
+
+
+## Game context
+
+Game context attaches relevant state to feedback submitted through CrazyGames, making reports easier to reproduce. The context must be a JSON-serializable Lua table.
+
+```lua
+-- Set context when the player enters a level.
+crazygames.set_game_context({
+  level = 12,
+  weapon = "bow",
+  gold = 450,
+})
+
+-- Clear it when that context is no longer relevant.
+crazygames.clear_game_context()
 ```
 
 

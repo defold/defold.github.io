@@ -91,6 +91,46 @@
             "type": "FUNCTION"
         },
         {
+            "description": "Report the player's current game-completion percentage to CrazyGames. The value must be between 0 and 100.",
+            "examples": "",
+            "name": "crazygames.report_game_completed_percentage",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "percentage",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Attach JSON-serializable game state to feedback submitted by the player. Call clear_game_context when the state is no longer relevant.",
+            "examples": "",
+            "name": "crazygames.set_game_context",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "context",
+                    "types": [
+                        "table"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Clear the game context previously supplied with set_game_context.",
+            "examples": "",
+            "name": "crazygames.clear_game_context",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
             "description": "Show a rewarded ad.",
             "examples": "",
             "name": "crazygames.show_rewarded_ad",
@@ -415,6 +455,49 @@
                     "name": "value",
                     "types": [
                         "string"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Get information about the user's locale, country, device, operating system, browser, and CrazyGames application type.",
+            "examples": "",
+            "name": "crazygames.get_system_info",
+            "parameters": [],
+            "returnvalues": [
+                {
+                    "doc": "The current system information, or nil if it is unavailable.",
+                    "name": "table"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Retrieve one page of the current user's CrazyGames friends. Only one list_friends request may be active at a time. The callback receives nil if the request fails.",
+            "examples": "",
+            "name": "crazygames.list_friends",
+            "parameters": [
+                {
+                    "doc": "Page number, starting at 1.",
+                    "name": "page",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "Number of friends to retrieve, between 1 and 50.",
+                    "name": "size",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "The function takes two arguments, self and the friends-page table.",
+                    "name": "callback",
+                    "types": [
+                        "function"
                     ]
                 }
             ],

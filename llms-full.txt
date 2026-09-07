@@ -64984,6 +64984,26 @@ The loadingStop() function has to be called when the loading is complete and eve
 *Type:* FUNCTION
 Celebrate a major player achievement, such as beating a boss or reaching a high score.
 
+### crazygames.report_game_completed_percentage
+*Type:* FUNCTION
+Report the player's current game-completion percentage to CrazyGames. The value must be between 0 and 100.
+
+**Parameters**
+
+- `percentage` (number)
+
+### crazygames.set_game_context
+*Type:* FUNCTION
+Attach JSON-serializable game state to feedback submitted by the player. Call clear_game_context when the state is no longer relevant.
+
+**Parameters**
+
+- `context` (table)
+
+### crazygames.clear_game_context
+*Type:* FUNCTION
+Clear the game context previously supplied with set_game_context.
+
 ### crazygames.show_rewarded_ad
 *Type:* FUNCTION
 Show a rewarded ad.
@@ -65150,6 +65170,24 @@ Store a value in the CrazyGames data module.
 
 - `key` (string)
 - `value` (string)
+
+### crazygames.get_system_info
+*Type:* FUNCTION
+Get information about the user's locale, country, device, operating system, browser, and CrazyGames application type.
+
+**Returns**
+
+- `table` - The current system information, or nil if it is unavailable.
+
+### crazygames.list_friends
+*Type:* FUNCTION
+Retrieve one page of the current user's CrazyGames friends. Only one list_friends request may be active at a time. The callback receives nil if the request fails.
+
+**Parameters**
+
+- `page` (number) - Page number, starting at 1.
+- `size` (number) - Number of friends to retrieve, between 1 and 50.
+- `callback` (function) - The function takes two arguments, self and the friends-page table.
 
 ### crazygames.is_user_account_available
 *Type:* FUNCTION
