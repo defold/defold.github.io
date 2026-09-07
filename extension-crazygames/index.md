@@ -1,8 +1,8 @@
 ---
 brief: This manual covers how to integrate and use the CrazyGames SDK in Defold.
 github: https://github.com/defold/extension-crazygames
-language: en
 layout: manual
+locale: en
 title: Defold CrazyGames SDK extension API documentation
 toc:
 - Defold CrazyGames SDK extension API documentation
