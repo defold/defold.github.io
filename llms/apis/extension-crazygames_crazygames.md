@@ -261,6 +261,15 @@ Retrieve one page of the current user's CrazyGames friends. Only one list_friend
 - `size` (number) - Number of friends to retrieve, between 1 and 50.
 - `callback` (function) - The function takes two arguments, self and the friends-page table.
 
+### crazygames.submit_score
+*Type:* FUNCTION
+Submit an encrypted score and its plain numeric value to a CrazyGames leaderboard. Leaderboards must be enabled and configured for the game.
+
+**Parameters**
+
+- `encrypted_score` (string) - The score encrypted with the game's CrazyGames leaderboard encryption key and encoded as Base64.
+- `score` (number) - The unencrypted numeric score.
+
 ### crazygames.is_user_account_available
 *Type:* FUNCTION
 Before using any user account features, you should always ensure that the user account system is available.
@@ -292,6 +301,15 @@ Generates a custom Xsolla token that you use with the Xsolla SDK. Will call the 
 **Parameters**
 
 - `callback` (function) - The function takes two arguments, self and the xsolla token
+
+### crazygames.track_order
+*Type:* FUNCTION
+Report an in-game purchase order to CrazyGames analytics. Order tracking is optional; use provider "xsolla" for Xsolla orders.
+
+**Parameters**
+
+- `provider` (string)
+- `order` (table) - The JSON-serializable order returned by the payment provider.
 
 ### crazygames.show_auth_prompt
 *Type:* FUNCTION

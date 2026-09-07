@@ -505,6 +505,29 @@
             "type": "FUNCTION"
         },
         {
+            "description": "Submit an encrypted score and its plain numeric value to a CrazyGames leaderboard. Leaderboards must be enabled and configured for the game.",
+            "examples": "",
+            "name": "crazygames.submit_score",
+            "parameters": [
+                {
+                    "doc": "The score encrypted with the game's CrazyGames leaderboard encryption key and encoded as Base64.",
+                    "name": "encrypted_score",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "The unencrypted numeric score.",
+                    "name": "score",
+                    "types": [
+                        "number"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
             "description": "Before using any user account features, you should always ensure that the user account system is available.",
             "examples": "",
             "name": "crazygames.is_user_account_available",
@@ -559,6 +582,29 @@
                     "name": "callback",
                     "types": [
                         "function"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Report an in-game purchase order to CrazyGames analytics. Order tracking is optional; use provider \"xsolla\" for Xsolla orders.",
+            "examples": "",
+            "name": "crazygames.track_order",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "provider",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "The JSON-serializable order returned by the payment provider.",
+                    "name": "order",
+                    "types": [
+                        "table"
                     ]
                 }
             ],
