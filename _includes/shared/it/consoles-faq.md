@@ -1,8 +1,8 @@
-#### Q: Do I need to install additional tools to build for consoles?
+#### D: Devo installare strumenti aggiuntivi per creare build per le console? {#q-do-i-need-to-install-additional-tools-to-build-for-consoles}
 
-A: You will be able to create application bundles from the editor and command line tools. Information about how to test on PlayStation®4, PlayStation®5 and Nintendo Switch hardware will be provided to you when you are given access to the respective platforms.
+R: Potrai creare bundle dell'applicazione dall'editor e dagli strumenti a riga di comando. Riceverai le informazioni su come eseguire test sull'hardware PlayStation®4, PlayStation®5 e Nintendo Switch quando ti verrà concesso l'accesso alle rispettive piattaforme.
 
 
-#### Q: Is it still easy to use a single code base if I decide to also target consoles?
+#### D: È comunque facile usare un'unica base di codice se decido di sviluppare anche per le console? {#q-is-it-still-easy-to-use-a-single-code-base-if-i-decide-to-also-target-consoles}
 
-A: Yes, all of the standard Defold API functions are available also for the console platforms. In addition to the standard functionality you will also have access to a couple of PlayStation®4, PlayStation®5 and Nintendo Switch specific functions, but in general the code should be able to remain exactly the same across multiple platforms.
+R: Sì, tutte le funzioni standard delle API di Defold sono disponibili anche per le piattaforme console. Oltre alle funzionalità standard, avrai accesso anche ad alcune funzioni specifiche per PlayStation®4, PlayStation®5 e Nintendo Switch, ma in generale il codice dovrebbe poter rimanere esattamente lo stesso su più piattaforme.

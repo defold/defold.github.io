@@ -5,10 +5,11 @@ layout: manual
 locale: it
 title: Installazione di Defold
 toc:
-- Installazione di Defold
+- anchor: installing-defold
+  title: Installazione di Defold
 ---
 
-# Installazione di Defold
+# Installazione di Defold {#installing-defold}
 
 L'installazione dell'editor Defold è piuttosto semplice. Scarica la versione compilata per il tuo sistema operativo, estraila e copia il software in una posizione appropriata.
 

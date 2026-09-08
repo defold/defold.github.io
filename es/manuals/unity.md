@@ -647,8 +647,9 @@ Aquí hay una comparación:
 | `on_message` | Message Receiver | Callback central de Defold para recibir mensajes. Se procesa cuando hay cualquier mensaje en una cola. |
 | `final` | `OnDisable` / `OnDestroy` / `OnApplicationQuit` | Defold llama a los callbacks `final()` de cada componente cuando su objeto de juego se destruye en tiempo de ejecución (usando `go.delete()`) o cuando el mundo/colección se descarga, y durante la terminación de la aplicación para todos los objetos restantes. |
 
-::: sidenote
+<div class='sidenote' markdown='1'>
 Recuerda que Defold no garantiza ningún orden de ejecución entre componentes cuando varios se inicializan, actualizan o eliminan a la vez. Se recomienda un diseño desacoplado.
+</div>
 
 ### Inicialización
 

@@ -1,10 +1,10 @@
   `.`
-  : Shorthand resolving to the current game object.
+  : Raccourci désignant l'objet de jeu (game object) actuel.
 
   `#`
-  : Shorthand resolving to the current component.
+  : Raccourci désignant le composant (component) actuel.
 
-  For example:
+  Par exemple :
 
   ```lua
    -- Let this game object acquire input focus

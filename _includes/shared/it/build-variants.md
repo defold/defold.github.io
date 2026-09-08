@@ -1,37 +1,37 @@
-## Build variants
+## Varianti di build {#build-variants}
 
-When you bundle a game, you need to choose what type of engine you wish to use. You have three basic options:
+Quando crei il bundle di un gioco, devi scegliere quale tipo di motore usare. Hai tre opzioni di base:
 
   * Debug
   * Release
   * Headless
 
-These different versions are also referred to as `Build variants`
+Queste diverse versioni sono anche indicate come `Build variants`
 
 <div class='sidenote' markdown='1'>
-When you choose <kbd>Project ▸ Build</kbd> you'll always get the debug version.
+Quando scegli <kbd>Project ▸ Build</kbd> ottieni sempre la versione di debug.
 </div>
 
 
 ### Debug
 
-This type of executable is typically used during development of a game as it has several useful debugging features included:
+Questo tipo di eseguibile viene generalmente usato durante lo sviluppo di un gioco perché include diverse funzionalità utili per il debug:
 
-* Profiler - Used for gathering performance and usage counters. Learn how to use the profiler in the [Profiling manual](/manuals/profiling/).
-* Logging - The engine will log system information, warnings and errors when logging is enabled. The engine will also output logs from the Lua `print()` function and from native extensions logging using `dmLogInfo()`, `dmLogError()` and so on. Learn how to read these logs in the [Game and System Logs manual](https://defold.com/manuals/debugging-game-and-system-logs/).
-* Hot reload - Hot-reload is a powerful feature which lets a developer reload resource while the game is running. Learn how to use this in the [Hot-Reload manual](https://defold.com/manuals/hot-reload/).
-* Engine services - It is possible to connect to and interact with a debug version of a game through a number of different open TCP ports and services. The services include the hot-reload feature, remote log access and the profiler mentioned above, but also other services to remotely interact with the engine. Learn more about the engine services [in the developer documentation](https://github.com/defold/defold/blob/dev/engine/docs/DEBUG_PORTS_AND_SERVICES.md).
+* Profilatore - Serve a raccogliere contatori delle prestazioni e dell'utilizzo. Scopri come usare il profilatore nel [manuale sulla profilazione](/manuals/profiling/).
+* Registrazione dei log - Quando la registrazione dei log è abilitata, il motore registra informazioni sul sistema, avvisi ed errori. Il motore produce anche i log generati dalla funzione Lua `print()` e dalle estensioni native che usano `dmLogInfo()`, `dmLogError()` e così via. Scopri come leggere questi log nel [manuale sui log del gioco e del sistema](https://defold.com/manuals/debugging-game-and-system-logs/).
+* Hot reload - L'hot reload è una potente funzionalità che permette a uno sviluppatore di ricaricare le risorse mentre il gioco è in esecuzione. Scopri come usarla nel [manuale sull'hot reload](https://defold.com/manuals/hot-reload/).
+* Servizi del motore - Puoi connetterti a una versione di debug di un gioco e interagire con essa attraverso diverse porte TCP aperte e vari servizi. Questi servizi comprendono la funzionalità di hot reload, l'accesso remoto ai log e il profilatore menzionati sopra, oltre ad altri servizi per interagire a distanza con il motore. Scopri di più sui servizi del motore [nella documentazione per gli sviluppatori](https://github.com/defold/defold/blob/dev/engine/docs/DEBUG_PORTS_AND_SERVICES.md).
 
 
 ### Release
 
-This variant has the debugging features disabled. This options should be chosen when the game is ready to be released to the app store or in other ways shared with players. It is not recommended to release a game with the debugging features enabled for a number of reasons:
+In questa variante le funzionalità di debug sono disabilitate. Scegli questa opzione quando il gioco è pronto per essere pubblicato in uno store di applicazioni o distribuito ai giocatori in altri modi. È sconsigliato pubblicare un gioco con le funzionalità di debug abilitate per diversi motivi:
 
-* The debugging features take up a little bit of size in the binary, and [it is a best practice to try to keep the binary size of a released game as small as possible](https://defold.com/manuals/optimization/#optimize-application-size).
-* The debugging features takes a little bit of CPU time as well. This can impact the performance of the game if a user has a low-end hardware. On mobile phones the increased CPU usage will also contribute to heating and battery drain.
-* The debugging features may expose information about the game that is not intended for the eyes of the players, either from a security, cheating or fraud perspective.
+* Le funzionalità di debug occupano un po' di spazio nel file binario e [è buona pratica cercare di mantenere il più possibile ridotte le dimensioni del file binario di un gioco pubblicato](https://defold.com/manuals/optimization/#optimize-application-size).
+* Le funzionalità di debug richiedono anche un po' di tempo della CPU. Questo può influire sulle prestazioni del gioco se un utente dispone di hardware di fascia bassa. Sui telefoni cellulari, il maggiore utilizzo della CPU contribuisce anche al riscaldamento e al consumo della batteria.
+* Le funzionalità di debug possono rivelare informazioni sul gioco che non dovrebbero essere accessibili ai giocatori, per ragioni legate alla sicurezza o alla prevenzione di trucchi e frodi.
 
 
 ### Headless
 
-This executable runs without any graphics and sound. It means that you can run the game unit/smoke tests on a CI server, or even have it as a game server in the cloud.
+Questo eseguibile funziona senza grafica né audio. Ciò significa che puoi eseguire i test unitari e gli smoke test del gioco su un server di integrazione continua (CI), o persino usarlo come server di gioco nel cloud.

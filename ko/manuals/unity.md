@@ -647,8 +647,9 @@ Defold에도 잘 정의된 어플리케이션 라이프사이클이 있지만, �
 | `on_message` | Message Receiver | 메세지를 받기 위한 Defold의 핵심 콜백입니다. 큐에 메세지가 있을 때 처리됩니다. |
 | `final` | `OnDisable` / `OnDestroy` / `OnApplicationQuit` | Defold는 게임 오브젝트가 런타임에 삭제되거나(`go.delete()` 사용), 월드/컬렉션이 언로드될 때, 그리고 어플리케이션 종료 중 남아 있는 모든 오브젝트에 대해 각 컴포넌트의 `final()` 콜백을 호출합니다. |
 
-::: sidenote
+<div class='sidenote' markdown='1'>
 여러 컴포넌트가 한 번에 초기화/업데이트/제거될 때 Defold는 컴포넌트 간 실행 순서를 보장하지 않는다는 점을 기억하세요. 분리된 설계를 권장합니다.
+</div>
 
 ### 초기화
 
