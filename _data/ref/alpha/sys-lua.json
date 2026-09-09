@@ -147,7 +147,7 @@
         },
         {
             "brief": "set update frequency",
-            "description": "Set game update-frequency (frame cap). This option is equivalent to <code>display.update_frequency</code> in\nthe \"game.project\" settings but set in run-time. If <code>Vsync</code> checked in \"game.project\", the rate will\nbe clamped to a swap interval that matches any detected main monitor refresh rate. If <code>Vsync</code> is\nunchecked the engine will try to respect the rate in software using timers. There is no\nguarantee that the frame cap will be achieved depending on platform specifics and hardware settings.\nThis message can only be sent to the designated <code>@system</code> socket.",
+            "description": "Set game update-frequency (frame cap). This option is equivalent to\n<code>display.update_frequency</code> in the \"game.project\" settings but set at run-time.\nOn platforms where Defold owns the application loop, a positive value uses\ntimer pacing and requests a swap interval of 0 to avoid an additional vsync\nwait where supported. Setting the frequency to 0 restores the requested swap\ninterval and uses variable-rate updates. Platform-owned loops, such as HTML5\nand iOS, retain their platform scheduling and presentation behavior. There is\nno guarantee that the frame cap will be achieved depending on platform and\nhardware constraints.\nWith engine-side timer pacing, the update dt can be shortened or enlarged to\naccount for elapsed time; the frame cap does not guarantee a constant dt.\nElapsed time beyond max(engine.max_time_step, 1 / frequency) is discarded,\nso accumulated dt can trail wall-clock time after hitches. An intentional\nfixed interval longer than engine.max_time_step is allowed. This setting\nis separate from the fixed_update() timestep.\nThis message can only be sent to the designated <code>@system</code> socket.",
             "error": "",
             "examples": "<pre>\nmsg.post(\"@system:\", \"set_update_frequency\", { frequency = 60 } )\n</pre>",
             "language": "",
@@ -156,7 +156,7 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "target frequency. 60 for 60 fps",
+                    "doc": "target frequency in hertz. 0 selects a variable\nframe rate; negative values are treated as 0.",
                     "is_optional": "False",
                     "name": "frequency",
                     "types": [
@@ -177,7 +177,7 @@
         },
         {
             "brief": "set vsync swap interval",
-            "description": "Set the vsync swap interval. The interval with which to swap the front and back buffers\nin sync with vertical blanks (v-blank), the hardware event where the screen image is updated\nwith data from the front buffer. A value of 1 swaps the buffers at every v-blank, a value of\n2 swaps the buffers every other v-blank and so on. A value of 0 disables waiting for v-blank\nbefore swapping the buffers. Default value is 1.\nWhen setting the swap interval to 0 and having <code>vsync</code> disabled in\n\"game.project\", the engine will try to respect the set frame cap value from\n\"game.project\" in software instead.\nThis setting may be overridden by driver settings.\nThis message can only be sent to the designated <code>@system</code> socket.",
+            "description": "Request a presentation interval relative to vertical blanks (v-blank).\n0 requests disabling vsync and 1 requests presenting every refresh (the default).\nOpenGL may support larger intervals, such as 2 for every other refresh.\nVulkan and Metal treat any nonzero interval as enabling vsync; DX12 clamps\nintervals to the supported range 0 through 4. Actual behavior depends on\nthe backend, platform, and driver.\nOn platforms where Defold owns the application loop, a positive\n<code>display.update_frequency</code> or a positive value set by <code>sys.set_update_frequency()</code>\nuses timer pacing and requests a swap interval of 0. The requested\nswap interval is retained and applied again when the update frequency is set to 0.\nThis setting may be overridden by driver settings.\nThis message can only be sent to the designated <code>@system</code> socket.",
             "error": "",
             "examples": "<pre>\nmsg.post(\"@system:\", \"set_vsync\", { swap_interval = 1 } )\n</pre>",
             "language": "",
@@ -1775,7 +1775,7 @@
         },
         {
             "brief": "set update frequency",
-            "description": "Set game update-frequency (frame cap). This option is equivalent to <code>display.update_frequency</code> in\nthe \"game.project\" settings but set in run-time. If <code>Vsync</code> checked in \"game.project\", the rate will\nbe clamped to a swap interval that matches any detected main monitor refresh rate. If <code>Vsync</code> is\nunchecked the engine will try to respect the rate in software using timers. There is no\nguarantee that the frame cap will be achieved depending on platform specifics and hardware settings.",
+            "description": "Set game update-frequency (frame cap). This option is equivalent to\n<code>display.update_frequency</code> in the \"game.project\" settings but set at run-time.\nOn platforms where Defold owns the application loop, a positive value uses\ntimer pacing and requests a swap interval of 0 to avoid an additional vsync\nwait where supported. Setting the frequency to 0 restores the requested swap\ninterval and uses variable-rate updates. Platform-owned loops, such as HTML5\nand iOS, retain their platform scheduling and presentation behavior. There is\nno guarantee that the frame cap will be achieved depending on platform and\nhardware constraints.\nWith engine-side timer pacing, the update dt can be shortened or enlarged to\naccount for elapsed time; the frame cap does not guarantee a constant dt.\nElapsed time beyond max(engine.max_time_step, 1 / frequency) is discarded,\nso accumulated dt can trail wall-clock time after hitches. An intentional\nfixed interval longer than engine.max_time_step is allowed. This setting\nis separate from the fixed_update() timestep.",
             "error": "",
             "examples": "Setting the update frequency to 60 frames per second\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">set_update_frequency</span><span class=\"p\">(</span><span class=\"mi\">60</span><span class=\"p\">)</span>\n</code></pre></div>",
             "language": "",
@@ -1784,7 +1784,7 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "target frequency. 60 for 60 fps",
+                    "doc": "target frequency in hertz. 0 selects a variable\nframe rate; negative values are treated as 0.",
                     "is_optional": "False",
                     "name": "frequency",
                     "types": [
@@ -1805,9 +1805,9 @@
         },
         {
             "brief": "set vsync swap interval",
-            "description": "Set the vsync swap interval. The interval with which to swap the front and back buffers\nin sync with vertical blanks (v-blank), the hardware event where the screen image is updated\nwith data from the front buffer. A value of 1 swaps the buffers at every v-blank, a value of\n2 swaps the buffers every other v-blank and so on. A value of 0 disables waiting for v-blank\nbefore swapping the buffers. Default value is 1.\nWhen setting the swap interval to 0 and having <code>vsync</code> disabled in\n\"game.project\", the engine will try to respect the set frame cap value from\n\"game.project\" in software instead.\nThis setting may be overridden by driver settings.",
+            "description": "Request a presentation interval relative to vertical blanks (v-blank).\n0 requests disabling vsync and 1 requests presenting every refresh (the default).\nOpenGL may support larger intervals, such as 2 for every other refresh.\nVulkan and Metal treat any nonzero interval as enabling vsync; DX12 clamps\nintervals to the supported range 0 through 4. Actual behavior depends on\nthe backend, platform, and driver.\nOn platforms where Defold owns the application loop, a positive\n<code>display.update_frequency</code> or a positive value set by <code>sys.set_update_frequency()</code>\nuses timer pacing and requests a swap interval of 0. The requested\nswap interval is retained and applied again when the update frequency is set to 0.\nThis setting may be overridden by driver settings.",
             "error": "",
-            "examples": "Setting the swap intervall to swap every v-blank\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">set_vsync_swap_interval</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">)</span>\n</code></pre></div>",
+            "examples": "Setting the swap interval to swap every v-blank\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">set_vsync_swap_interval</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">)</span>\n</code></pre></div>",
             "language": "",
             "members": [],
             "name": "sys.set_vsync_swap_interval",
