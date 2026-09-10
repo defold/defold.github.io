@@ -6,6 +6,8 @@ Fonts are used to render text on Label components and GUI text nodes. Defold sup
 - OpenType
 - BMFont
 
+For information about styling individual text spans and working with links and inline sprites, see the [Rich text markup manual](https://defold.com/llms/manuals/font-richtext.md).
+
 Fonts added to your project are automatically converted into a texture format that Defold can render. Two font rendering techniques are available, each with its own specific benefits and drawbacks:
 
 - Bitmap

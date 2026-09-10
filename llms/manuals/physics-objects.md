@@ -21,7 +21,7 @@ A collision object component has a set of *Properties* that sets its type and ph
 To add a collision object component to a game object:
 
 1. In the *Outline* view, `right click` the game object and select `Add Component ▸ Collision Object` from the context menu. This creates a new component with no shapes.
-2. `Right click` the new component and select `Add Shape ▸ Box / Capsule / Sphere`. This adds a new shape to the collision object component. You can add any number of shapes to the component. You can also use a tilemap or a convex hull to define the shape of the physics object.
+2. `Right click` the new component and select `Add Shape`, then choose a shape: `Box`, `Capsule` or `Sphere` in projects using 3D physics, `Box` or `Circle` in projects using 2D physics. This adds a new shape to the collision object component. You can add any number of shapes to the component. You can also use a tilemap or a convex hull to define the shape of the physics object.
 3. Use the move, rotate and scale tools to edit the shapes.
 4. Select the component in the *Outline* and edit the collision object's *Properties*.
 
