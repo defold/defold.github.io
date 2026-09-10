@@ -16,29 +16,71 @@
                     "name": "json",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 },
                 {
-                    "doc": "table with decode options\n<ul>\n<li><span class=\"type\">boolean</span> <code>decode_null_as_userdata</code>: whether to decode a JSON null value as json.null or nil (default is nil)</li>\n</ul>",
+                    "doc": "optional decoding options",
                     "is_optional": "True",
                     "name": "options",
                     "types": [
-                        "table"
+                        "json.decode_options"
+                    ],
+                    "types_html": [
+                        "<a href=\"#json.decode_options\">json.decode_options</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#json.decode_options\">json.decode_options</a>"
                     ]
                 }
             ],
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "decoded json",
+                    "doc": "decoded JSON value",
                     "name": "data",
                     "types": [
-                        "table"
+                        "any"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>"
                     ]
                 }
             ],
             "tparams": [],
             "type": "FUNCTION"
+        },
+        {
+            "brief": "JSON decoding options",
+            "description": "JSON decoding options",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "decode_null_as_userdata",
+                    "doc": "Decode JSON <code>null</code> as <a href=\"/ref/json#json.null\">json.null</a> instead of <code>nil</code>.",
+                    "is_optional": true,
+                    "name": "decode_null_as_userdata?",
+                    "type": "boolean",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                }
+            ],
+            "name": "json.decode_options",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
         },
         {
             "brief": "encode a lua table to a JSON string",
@@ -51,19 +93,31 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "lua table to encode",
+                    "doc": "Lua value to encode",
                     "is_optional": "False",
                     "name": "tbl",
                     "types": [
-                        "table"
+                        "any"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>"
                     ]
                 },
                 {
-                    "doc": "table with encode options\n<ul>\n<li><span class=\"type\">string</span> <code>encode_empty_table_as_object</code>: whether to encode an empty table as an JSON object or array (default is object)</li>\n</ul>",
+                    "doc": "optional encoding options",
                     "is_optional": "True",
                     "name": "options",
                     "types": [
-                        "table"
+                        "json.encode_options"
+                    ],
+                    "types_html": [
+                        "<a href=\"#json.encode_options\">json.encode_options</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#json.encode_options\">json.encode_options</a>"
                     ]
                 }
             ],
@@ -74,6 +128,12 @@
                     "name": "json",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 }
             ],
@@ -81,10 +141,35 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "JSON encoding options",
+            "description": "JSON encoding options",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "encode_empty_table_as_object",
+                    "doc": "Encode an empty table as an object instead of an array. The default is true.",
+                    "is_optional": true,
+                    "name": "encode_empty_table_as_object?",
+                    "type": "boolean",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                }
+            ],
+            "name": "json.encode_options",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
             "brief": "null",
             "description": "Represents the null primitive from a json file",
             "error": "",
             "examples": "",
+            "is_enum_member": false,
             "language": "",
             "members": [],
             "name": "json.null",
@@ -93,9 +178,11 @@
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "VARIABLE"
+            "type": "VARIABLE",
+            "value_type": "any"
         }
     ],
+    "format_version": 2,
     "info": {
         "api_language": "Lua",
         "brief": "JSON API documentation",

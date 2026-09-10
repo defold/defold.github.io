@@ -15,7 +15,13 @@
                     "is_optional": "False",
                     "name": "dst",
                     "types": [
-                        "buffer"
+                        "buffer_data"
+                    ],
+                    "types_html": [
+                        "<a href=\"#buffer_data\">buffer_data</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#buffer_data\">buffer_data</a>"
                     ]
                 },
                 {
@@ -24,6 +30,12 @@
                     "name": "dstoffset",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -31,7 +43,13 @@
                     "is_optional": "False",
                     "name": "src",
                     "types": [
-                        "buffer"
+                        "buffer_data"
+                    ],
+                    "types_html": [
+                        "<a href=\"#buffer_data\">buffer_data</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#buffer_data\">buffer_data</a>"
                     ]
                 },
                 {
@@ -40,6 +58,12 @@
                     "name": "srcoffset",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -48,6 +72,12 @@
                     "name": "count",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -71,7 +101,13 @@
                     "is_optional": "False",
                     "name": "dst",
                     "types": [
-                        "bufferstream"
+                        "buffer_stream"
+                    ],
+                    "types_html": [
+                        "<a href=\"#buffer_stream\">buffer_stream</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#buffer_stream\">buffer_stream</a>"
                     ]
                 },
                 {
@@ -80,6 +116,12 @@
                     "name": "dstoffset",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -87,7 +129,13 @@
                     "is_optional": "False",
                     "name": "src",
                     "types": [
-                        "bufferstream"
+                        "buffer_stream"
+                    ],
+                    "types_html": [
+                        "<a href=\"#buffer_stream\">buffer_stream</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#buffer_stream\">buffer_stream</a>"
                     ]
                 },
                 {
@@ -96,6 +144,12 @@
                     "name": "srcoffset",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -104,6 +158,12 @@
                     "name": "count",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -128,14 +188,26 @@
                     "name": "element_count",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
-                    "doc": "A table where each entry (table) describes a stream\n<ul>\n<li><span class=\"type\">hash | string</span> <code>name</code>: The name of the stream</li>\n<li><span class=\"type\">constant</span> <code>type</code>: The data type of the stream</li>\n<li><span class=\"type\">number</span> <code>count</code>: The number of values each element should hold</li>\n</ul>",
+                    "doc": "A table where each entry (table) describes a stream\n<ul>\n<li><span class=\"type\"><a href=\"../builtins-lua/#hash\">hash</a> | <a href=\"../../../manuals/lua/#variables-and-data-types\">string</a></span> <code>name</code>: The name of the stream</li>\n<li><span class=\"type\"><a href=\"#buffer.VALUE_TYPE\">buffer.VALUE_TYPE</a></span> <code>type</code>: The data type of the stream</li>\n<li><span class=\"type\"><a href=\"../../../manuals/lua/#variables-and-data-types\">number</a></span> <code>count</code>: The number of values each element should hold</li>\n</ul>",
                     "is_optional": "False",
                     "name": "declaration",
                     "types": [
-                        "table"
+                        "({ name:hash|string, type:buffer.VALUE_TYPE, count:number })[]"
+                    ],
+                    "types_html": [
+                        "({ name:<a href=\"../builtins-lua/#hash\">hash</a>|<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>, type:<a href=\"#buffer.VALUE_TYPE\">buffer.VALUE_TYPE</a>, count:<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a> })[]"
+                    ],
+                    "types_table_html": [
+                        "({ name:<a href=\"../builtins-lua/#hash\">hash</a>|<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>, type:<a href=\"#buffer.VALUE_TYPE\">buffer.VALUE_TYPE</a>, count:<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a> })[]"
                     ]
                 }
             ],
@@ -145,7 +217,13 @@
                     "doc": "the new buffer",
                     "name": "buffer",
                     "types": [
-                        "buffer"
+                        "buffer_data"
+                    ],
+                    "types_html": [
+                        "<a href=\"#buffer_data\">buffer_data</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#buffer_data\">buffer_data</a>"
                     ]
                 }
             ],
@@ -167,7 +245,13 @@
                     "is_optional": "False",
                     "name": "buffer",
                     "types": [
-                        "buffer"
+                        "buffer_data"
+                    ],
+                    "types_html": [
+                        "<a href=\"#buffer_data\">buffer_data</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#buffer_data\">buffer_data</a>"
                     ]
                 },
                 {
@@ -176,6 +260,12 @@
                     "name": "stream_name",
                     "types": [
                         "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
                     ]
                 }
             ],
@@ -186,6 +276,12 @@
                     "name": "data",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 }
             ],
@@ -207,7 +303,13 @@
                     "is_optional": "False",
                     "name": "buf",
                     "types": [
-                        "buffer"
+                        "buffer_data"
+                    ],
+                    "types_html": [
+                        "<a href=\"#buffer_data\">buffer_data</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#buffer_data\">buffer_data</a>"
                     ]
                 },
                 {
@@ -217,6 +319,14 @@
                     "types": [
                         "hash",
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 }
             ],
@@ -226,16 +336,32 @@
                     "doc": "table of metadata values or <code>nil</code> if the entry does not exist",
                     "name": "values",
                     "types": [
-                        "table",
+                        "number[]",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>[]",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>[]",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 },
                 {
                     "doc": "numeric type of values or <code>nil</code>",
                     "name": "value_type",
                     "types": [
-                        "constant",
+                        "buffer.VALUE_TYPE",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"#buffer.VALUE_TYPE\">buffer.VALUE_TYPE</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#buffer.VALUE_TYPE\">buffer.VALUE_TYPE</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 }
             ],
@@ -257,7 +383,13 @@
                     "is_optional": "False",
                     "name": "buffer",
                     "types": [
-                        "buffer"
+                        "buffer_data"
+                    ],
+                    "types_html": [
+                        "<a href=\"#buffer_data\">buffer_data</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#buffer_data\">buffer_data</a>"
                     ]
                 },
                 {
@@ -267,6 +399,14 @@
                     "types": [
                         "hash",
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 }
             ],
@@ -276,7 +416,13 @@
                     "doc": "the data stream",
                     "name": "stream",
                     "types": [
-                        "bufferstream"
+                        "buffer_stream"
+                    ],
+                    "types_html": [
+                        "<a href=\"#buffer_stream\">buffer_stream</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#buffer_stream\">buffer_stream</a>"
                     ]
                 }
             ],
@@ -298,7 +444,13 @@
                     "is_optional": "False",
                     "name": "buf",
                     "types": [
-                        "buffer"
+                        "buffer_data"
+                    ],
+                    "types_html": [
+                        "<a href=\"#buffer_data\">buffer_data</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#buffer_data\">buffer_data</a>"
                     ]
                 },
                 {
@@ -308,6 +460,14 @@
                     "types": [
                         "hash",
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 },
                 {
@@ -315,7 +475,13 @@
                     "is_optional": "False",
                     "name": "values",
                     "types": [
-                        "table"
+                        "number[]"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>[]"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>[]"
                     ]
                 },
                 {
@@ -323,7 +489,13 @@
                     "is_optional": "False",
                     "name": "value_type",
                     "types": [
-                        "constant"
+                        "buffer.VALUE_TYPE"
+                    ],
+                    "types_html": [
+                        "<a href=\"#buffer.VALUE_TYPE\">buffer.VALUE_TYPE</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#buffer.VALUE_TYPE\">buffer.VALUE_TYPE</a>"
                     ]
                 }
             ],
@@ -333,141 +505,125 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "float32",
-            "description": "Float, single precision, 4 bytes",
+            "brief": "Buffer value types",
+            "description": "Buffer value types",
             "error": "",
             "examples": "",
             "language": "",
-            "members": [],
-            "name": "buffer.VALUE_TYPE_FLOAT32",
+            "members": [
+                {
+                    "doc": "float32 Float, single precision, 4 bytes",
+                    "name": "buffer.VALUE_TYPE_FLOAT32"
+                },
+                {
+                    "doc": "int16 Signed integer, 2 bytes",
+                    "name": "buffer.VALUE_TYPE_INT16"
+                },
+                {
+                    "doc": "int32 Signed integer, 4 bytes",
+                    "name": "buffer.VALUE_TYPE_INT32"
+                },
+                {
+                    "doc": "int64 Signed integer, 8 bytes",
+                    "name": "buffer.VALUE_TYPE_INT64"
+                },
+                {
+                    "doc": "int8 Signed integer, 1 byte",
+                    "name": "buffer.VALUE_TYPE_INT8"
+                },
+                {
+                    "doc": "uint16 Unsigned integer, 2 bytes",
+                    "name": "buffer.VALUE_TYPE_UINT16"
+                },
+                {
+                    "doc": "uint32 Unsigned integer, 4 bytes",
+                    "name": "buffer.VALUE_TYPE_UINT32"
+                },
+                {
+                    "doc": "uint64 Unsigned integer, 8 bytes",
+                    "name": "buffer.VALUE_TYPE_UINT64"
+                },
+                {
+                    "doc": "uint8 Unsigned integer, 1 byte",
+                    "name": "buffer.VALUE_TYPE_UINT8"
+                }
+            ],
+            "name": "buffer.VALUE_TYPE",
             "notes": [],
             "parameters": [],
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "CONSTANT"
+            "type": "ENUM",
+            "value_type": "integer",
+            "value_type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
         },
         {
-            "brief": "int16",
-            "description": "Signed integer, 2 bytes",
+            "brief": "Typed data buffer",
+            "description": "A buffer stores one or more named streams of typed values. Create a buffer\nwith <a href=\"/ref/buffer#buffer.create\">buffer.create</a>, or obtain one from APIs such as\n<a href=\"/ref/resource#resource.get_buffer\">resource.get_buffer</a>, <a href=\"/ref/sys#sys.load_buffer\">sys.load_buffer</a>, or <a href=\"/ref/image#image.load\">image.load</a>. Use\n<a href=\"/ref/buffer#buffer.get_stream\">buffer.get_stream</a> to access the values in an individual stream.",
             "error": "",
-            "examples": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">vertices</span> <span class=\"o\">=</span> <span class=\"n\">buffer</span><span class=\"p\">.</span><span class=\"n\">create</span><span class=\"p\">(</span><span class=\"mi\">3</span><span class=\"p\">,</span> <span class=\"p\">{</span>\n    <span class=\"p\">{</span> <span class=\"n\">name</span> <span class=\"o\">=</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;position&quot;</span><span class=\"p\">),</span> <span class=\"nb\">type</span> <span class=\"o\">=</span> <span class=\"n\">buffer</span><span class=\"p\">.</span><span class=\"n\">VALUE_TYPE_FLOAT32</span><span class=\"p\">,</span> <span class=\"n\">count</span> <span class=\"o\">=</span> <span class=\"mi\">3</span> <span class=\"p\">}</span>\n<span class=\"p\">})</span>\n</code></pre></div>",
             "language": "",
             "members": [],
-            "name": "buffer.VALUE_TYPE_INT16",
+            "name": "buffer_data",
             "notes": [],
-            "parameters": [],
+            "parameters": [
+                {
+                    "doc": "typed data buffer",
+                    "is_optional": "False",
+                    "name": "value",
+                    "types": [
+                        "userdata"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">userdata</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">userdata</a>"
+                    ]
+                }
+            ],
             "replaces": "",
             "returnvalues": [],
+            "target_type": "userdata",
+            "target_type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">userdata</a>",
             "tparams": [],
-            "type": "CONSTANT"
+            "type": "TYPEDEF"
         },
         {
-            "brief": "int32",
-            "description": "Signed integer, 4 bytes",
+            "brief": "Named stream in a data buffer",
+            "description": "An indexable view of one named stream in a <span class=\"type\"><a href=\"#buffer_data\">buffer_data</a></span>. Obtain a\nstream with <a href=\"/ref/buffer#buffer.get_stream\">buffer.get_stream</a>. Reading or writing the stream accesses\nthe values in its underlying buffer.",
             "error": "",
-            "examples": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">vertices</span> <span class=\"o\">=</span> <span class=\"n\">buffer</span><span class=\"p\">.</span><span class=\"n\">create</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"p\">{</span>\n    <span class=\"p\">{</span> <span class=\"n\">name</span> <span class=\"o\">=</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;position&quot;</span><span class=\"p\">),</span> <span class=\"nb\">type</span> <span class=\"o\">=</span> <span class=\"n\">buffer</span><span class=\"p\">.</span><span class=\"n\">VALUE_TYPE_FLOAT32</span><span class=\"p\">,</span> <span class=\"n\">count</span> <span class=\"o\">=</span> <span class=\"mi\">3</span> <span class=\"p\">}</span>\n<span class=\"p\">})</span>\n<span class=\"kd\">local</span> <span class=\"n\">positions</span> <span class=\"o\">=</span> <span class=\"n\">buffer</span><span class=\"p\">.</span><span class=\"n\">get_stream</span><span class=\"p\">(</span><span class=\"n\">vertices</span><span class=\"p\">,</span> <span class=\"s2\">&quot;position&quot;</span><span class=\"p\">)</span>\n<span class=\"n\">positions</span><span class=\"p\">[</span><span class=\"mi\">1</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"mi\">10</span>\n<span class=\"n\">positions</span><span class=\"p\">[</span><span class=\"mi\">2</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"mi\">20</span>\n<span class=\"n\">positions</span><span class=\"p\">[</span><span class=\"mi\">3</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"mi\">0</span>\n</code></pre></div>",
             "language": "",
             "members": [],
-            "name": "buffer.VALUE_TYPE_INT32",
+            "name": "buffer_stream",
             "notes": [],
-            "parameters": [],
+            "parameters": [
+                {
+                    "doc": "named buffer stream",
+                    "is_optional": "False",
+                    "name": "value",
+                    "types": [
+                        "userdata"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">userdata</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">userdata</a>"
+                    ]
+                }
+            ],
             "replaces": "",
             "returnvalues": [],
+            "target_type": "userdata",
+            "target_type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">userdata</a>",
             "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "int64",
-            "description": "Signed integer, 8 bytes",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "buffer.VALUE_TYPE_INT64",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "int8",
-            "description": "Signed integer, 1 byte",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "buffer.VALUE_TYPE_INT8",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "uint16",
-            "description": "Unsigned integer, 2 bytes",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "buffer.VALUE_TYPE_UINT16",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "uint32",
-            "description": "Unsigned integer, 4 bytes",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "buffer.VALUE_TYPE_UINT32",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "uint64",
-            "description": "Unsigned integer, 8 bytes",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "buffer.VALUE_TYPE_UINT64",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "uint8",
-            "description": "Unsigned integer, 1 byte",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "buffer.VALUE_TYPE_UINT8",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
+            "type": "TYPEDEF"
         }
     ],
+    "format_version": 2,
     "info": {
         "api_language": "Lua",
         "brief": "Buffer API documentation",

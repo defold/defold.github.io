@@ -16,6 +16,12 @@
                     "name": "url",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 },
                 {
@@ -24,14 +30,26 @@
                     "name": "method",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 },
                 {
-                    "doc": "response callback function\n<dl>\n<dt><code>self</code></dt>\n<dd><span class=\"type\">object</span> The script instance</dd>\n<dt><code>id</code></dt>\n<dd><span class=\"type\">hash</span> Internal message identifier. Do not use!</dd>\n<dt><code>response</code></dt>\n<dd><span class=\"type\">table</span> The response data. Contains the fields:</dd>\n</dl>\n<ul>\n<li><span class=\"type\">number</span> <code>status</code>: the status of the response</li>\n<li><span class=\"type\">string</span> <code>response</code>: the response data (if not saved on disc)</li>\n<li><span class=\"type\">table</span> <code>headers</code>: all the returned headers (if status is 200 or 206)</li>\n<li><span class=\"type\">string</span> <code>path</code>: the stored path (if saved to disc)</li>\n<li><span class=\"type\">string</span> <code>error</code>: if any unforeseen errors occurred (e.g. file I/O)</li>\n<li><span class=\"type\">number</span> <code>bytes_received</code>: the amount of bytes received/sent for a request, only if option <code>report_progress</code> is true</li>\n<li><span class=\"type\">number</span> <code>bytes_total</code>: the total amount of bytes for a request, only if option <code>report_progress</code> is true</li>\n<li><span class=\"type\">number</span> <code>range_start</code>: the start offset into the requested file</li>\n<li><span class=\"type\">number</span> <code>range_end</code>: the end offset into the requested file (inclusive)</li>\n<li><span class=\"type\">number</span> <code>document_size</code>: the full size of the requested file</li>\n</ul>",
+                    "doc": "response callback function\n<dl>\n<dt class=\"api-lua-v2-type-definition\"><code>self:<a href=\"../builtins-lua/#script_instance\">script_instance</a></code></dt>\n<dd>The current script instance</dd>\n<dt class=\"api-lua-v2-type-definition\"><code>id:<a href=\"../builtins-lua/#hash\">hash</a></code></dt>\n<dd>Internal message identifier. Do not use!</dd>\n</dl>",
                     "is_optional": "False",
                     "name": "callback",
                     "types": [
-                        "function(self, id, response)"
+                        "fun(self:script_instance, id:hash, response:http.response)"
+                    ],
+                    "types_html": [
+                        "fun(self:<a href=\"../builtins-lua/#script_instance\">script_instance</a>, id:<a href=\"../builtins-lua/#hash\">hash</a>, response:<a href=\"#http.response\">http.response</a>)"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">function</a>(\n\tself:<a href=\"../builtins-lua/#script_instance\">script_instance</a>,\n\tid:<a href=\"../builtins-lua/#hash\">hash</a>,\n\tresponse:<a href=\"#http.response\">http.response</a>)"
                     ]
                 },
                 {
@@ -39,7 +57,13 @@
                     "is_optional": "True",
                     "name": "headers",
                     "types": [
-                        "table"
+                        "table<string, string>"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">table</a>&lt;<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>, <a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>&gt;"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">table</a>&lt;<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>, <a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>&gt;"
                     ]
                 },
                 {
@@ -48,14 +72,26 @@
                     "name": "post_data",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 },
                 {
-                    "doc": "optional table with request parameters. Supported entries:\n<ul>\n<li><span class=\"type\">number</span> <code>timeout</code>: timeout in seconds</li>\n<li><span class=\"type\">string</span> <code>path</code>: path on disc where to download the file. Only overwrites the path if status is 200. <span class=\"icon-attention\"></span> Path should be absolute</li>\n<li><span class=\"type\">boolean</span> <code>ignore_cache</code>: don't return cached data if we get a 304. <span class=\"icon-attention\"></span> Not available in HTML5 build</li>\n<li><span class=\"type\">boolean</span> <code>chunked_transfer</code>: use chunked transfer encoding for https requests larger than 16kb. Defaults to true. <span class=\"icon-attention\"></span> Not available in HTML5 build</li>\n<li><span class=\"type\">boolean</span> <code>report_progress</code>: when it is true, the amount of bytes sent and/or received for a request will be passed into the callback function</li>\n</ul>",
+                    "doc": "optional request options",
                     "is_optional": "True",
                     "name": "options",
                     "types": [
-                        "table"
+                        "http.request_options"
+                    ],
+                    "types_html": [
+                        "<a href=\"#http.request_options\">http.request_options</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#http.request_options\">http.request_options</a>"
                     ]
                 }
             ],
@@ -63,8 +99,161 @@
             "returnvalues": [],
             "tparams": [],
             "type": "FUNCTION"
+        },
+        {
+            "brief": "HTTP request options",
+            "description": "HTTP request options",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "timeout",
+                    "doc": "timeout in seconds",
+                    "is_optional": true,
+                    "name": "timeout?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "path",
+                    "doc": "absolute destination path; overwritten only for status 200",
+                    "is_optional": true,
+                    "name": "path?",
+                    "type": "string",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                },
+                {
+                    "display_name": "ignore_cache",
+                    "doc": "do not return cached data for status 304; unavailable on HTML5",
+                    "is_optional": true,
+                    "name": "ignore_cache?",
+                    "type": "boolean",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                },
+                {
+                    "display_name": "chunked_transfer",
+                    "doc": "use chunked transfer encoding for HTTPS requests larger than 16 KB; defaults to true and is unavailable on HTML5",
+                    "is_optional": true,
+                    "name": "chunked_transfer?",
+                    "type": "boolean",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                },
+                {
+                    "display_name": "report_progress",
+                    "doc": "report transferred and total byte counts to the callback",
+                    "is_optional": true,
+                    "name": "report_progress?",
+                    "type": "boolean",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                }
+            ],
+            "name": "http.request_options",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "HTTP response data",
+            "description": "HTTP response data",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "status",
+                    "doc": "response status",
+                    "is_optional": false,
+                    "name": "status",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "response",
+                    "doc": "response data when it is not saved to disk",
+                    "is_optional": true,
+                    "name": "response?",
+                    "type": "string",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                },
+                {
+                    "display_name": "headers",
+                    "doc": "response headers for status 200 or 206",
+                    "is_optional": true,
+                    "name": "headers?",
+                    "type": "table<string, string>",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">table</a>&lt;<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>, <a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>&gt;"
+                },
+                {
+                    "display_name": "path",
+                    "doc": "destination path when the response is saved to disk",
+                    "is_optional": true,
+                    "name": "path?",
+                    "type": "string",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                },
+                {
+                    "display_name": "error",
+                    "doc": "unexpected error, such as a file I/O error",
+                    "is_optional": true,
+                    "name": "error?",
+                    "type": "string",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                },
+                {
+                    "display_name": "bytes_received",
+                    "doc": "bytes transferred when progress reporting is enabled",
+                    "is_optional": true,
+                    "name": "bytes_received?",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "bytes_total",
+                    "doc": "total request size when progress reporting is enabled",
+                    "is_optional": true,
+                    "name": "bytes_total?",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "range_start",
+                    "doc": "requested-file start offset",
+                    "is_optional": true,
+                    "name": "range_start?",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "range_end",
+                    "doc": "requested-file end offset, inclusive",
+                    "is_optional": true,
+                    "name": "range_end?",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "document_size",
+                    "doc": "full requested-file size",
+                    "is_optional": true,
+                    "name": "document_size?",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                }
+            ],
+            "name": "http.response",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
         }
     ],
+    "format_version": 2,
     "info": {
         "api_language": "Lua",
         "brief": "HTTP API documentation",

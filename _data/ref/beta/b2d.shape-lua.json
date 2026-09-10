@@ -16,6 +16,12 @@
                     "name": "shape_id",
                     "types": [
                         "b2Shape"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Shape\">b2Shape</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Shape\">b2Shape</a>"
                     ]
                 }
             ],
@@ -26,6 +32,12 @@
                     "name": "enabled",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
@@ -48,6 +60,12 @@
                     "name": "shape_id",
                     "types": [
                         "b2Shape"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Shape\">b2Shape</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Shape\">b2Shape</a>"
                     ]
                 }
             ],
@@ -58,6 +76,12 @@
                     "name": "enabled",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
@@ -80,6 +104,12 @@
                     "name": "shape_id",
                     "types": [
                         "b2Shape"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Shape\">b2Shape</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Shape\">b2Shape</a>"
                     ]
                 }
             ],
@@ -90,6 +120,12 @@
                     "name": "enabled",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
@@ -112,6 +148,12 @@
                     "name": "shape_id",
                     "types": [
                         "b2Shape"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Shape\">b2Shape</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Shape\">b2Shape</a>"
                     ]
                 }
             ],
@@ -122,11 +164,61 @@
                     "name": "enabled",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
             "tparams": [],
             "type": "FUNCTION"
+        },
+        {
+            "brief": "Box2D shape definition.",
+            "description": "A reusable table describing Box2D shape geometry. It is accepted by shape\ncreation, query, cast, and update functions, and is returned by\n<a href=\"#b2d\">b2d.shape.get_shape</a> or <a href=\"#b2d\">b2d.fixture.get_shape</a>. Available fields\ndepend on <code>type</code>:\n<ul>\n<li>Circle: <code>radius</code> and optional <code>center</code>.</li>\n<li>Capsule: <code>radius</code>, <code>center1</code>, and <code>center2</code>.</li>\n<li>Edge or segment: <code>v1</code>, <code>v2</code>, and optional ghost vertices <code>v0</code> and <code>v3</code>.</li>\n<li>Box: half-extents <code>hx</code> and <code>hy</code>, with optional <code>center</code> and <code>angle</code> in radians.</li>\n<li>Polygon: <code>vertices</code>.</li>\n<li>Chain: <code>vertices</code>, with optional loop and ghost-vertex fields.</li>\n</ul>\nThe union covers both supported Box2D runtime versions; some shape types are\nonly available with one version.",
+            "error": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">circle</span> <span class=\"o\">=</span> <span class=\"p\">{</span>\n    <span class=\"nb\">type</span> <span class=\"o\">=</span> <span class=\"n\">b2d</span><span class=\"p\">.</span><span class=\"n\">shape</span><span class=\"p\">.</span><span class=\"n\">SHAPE_TYPE_CIRCLE</span><span class=\"p\">,</span>\n    <span class=\"n\">radius</span> <span class=\"o\">=</span> <span class=\"mi\">16</span><span class=\"p\">,</span>\n    <span class=\"n\">center</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">8</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">),</span>\n<span class=\"p\">}</span>\n\n<span class=\"kd\">local</span> <span class=\"n\">box</span> <span class=\"o\">=</span> <span class=\"p\">{</span>\n    <span class=\"nb\">type</span> <span class=\"o\">=</span> <span class=\"n\">b2d</span><span class=\"p\">.</span><span class=\"n\">shape</span><span class=\"p\">.</span><span class=\"n\">SHAPE_TYPE_BOX</span><span class=\"p\">,</span>\n    <span class=\"n\">hx</span> <span class=\"o\">=</span> <span class=\"mi\">32</span><span class=\"p\">,</span>\n    <span class=\"n\">hy</span> <span class=\"o\">=</span> <span class=\"mi\">8</span><span class=\"p\">,</span>\n    <span class=\"n\">angle</span> <span class=\"o\">=</span> <span class=\"nb\">math.rad</span><span class=\"p\">(</span><span class=\"mi\">15</span><span class=\"p\">),</span>\n<span class=\"p\">}</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "b2d.shape.definition",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "value",
+                    "types": [
+                        "{ type:b2d.shape.SHAPE_TYPE, radius:number, center?:vector3 }",
+                        "{ type:b2d.shape.SHAPE_TYPE, radius:number, center1:vector3, center2:vector3 }",
+                        "{ type:b2d.shape.SHAPE_TYPE, v1:vector3, v2:vector3, v0?:vector3, v3?:vector3 }",
+                        "{ type:b2d.shape.SHAPE_TYPE, hx:number, hy:number, center?:vector3, angle?:number }",
+                        "{ type:b2d.shape.SHAPE_TYPE, vertices:vector3[], loop?:boolean, prev_vertex?:vector3, next_vertex?:vector3 }"
+                    ],
+                    "types_html": [
+                        "{ type:<a href=\"#b2d.shape.SHAPE_TYPE\">b2d.shape.SHAPE_TYPE</a>, radius:<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>, center?:<a href=\"../vmath-lua/#vector3\">vector3</a> }",
+                        "{ type:<a href=\"#b2d.shape.SHAPE_TYPE\">b2d.shape.SHAPE_TYPE</a>, radius:<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>, center1:<a href=\"../vmath-lua/#vector3\">vector3</a>, center2:<a href=\"../vmath-lua/#vector3\">vector3</a> }",
+                        "{ type:<a href=\"#b2d.shape.SHAPE_TYPE\">b2d.shape.SHAPE_TYPE</a>, v1:<a href=\"../vmath-lua/#vector3\">vector3</a>, v2:<a href=\"../vmath-lua/#vector3\">vector3</a>, v0?:<a href=\"../vmath-lua/#vector3\">vector3</a>, v3?:<a href=\"../vmath-lua/#vector3\">vector3</a> }",
+                        "{ type:<a href=\"#b2d.shape.SHAPE_TYPE\">b2d.shape.SHAPE_TYPE</a>, hx:<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>, hy:<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>, center?:<a href=\"../vmath-lua/#vector3\">vector3</a>, angle?:<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a> }",
+                        "{ type:<a href=\"#b2d.shape.SHAPE_TYPE\">b2d.shape.SHAPE_TYPE</a>, vertices:<a href=\"../vmath-lua/#vector3\">vector3</a>[], loop?:<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>, prev_vertex?:<a href=\"../vmath-lua/#vector3\">vector3</a>, next_vertex?:<a href=\"../vmath-lua/#vector3\">vector3</a> }"
+                    ],
+                    "types_table_html": [
+                        "{type:<a href=\"#b2d.shape.SHAPE_TYPE\">b2d.shape.SHAPE_TYPE</a>,\nradius:<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>,\ncenter?:<a href=\"../vmath-lua/#vector3\">vector3</a>}",
+                        "{type:<a href=\"#b2d.shape.SHAPE_TYPE\">b2d.shape.SHAPE_TYPE</a>,\nradius:<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>,\ncenter1:<a href=\"../vmath-lua/#vector3\">vector3</a>,\ncenter2:<a href=\"../vmath-lua/#vector3\">vector3</a>}",
+                        "{type:<a href=\"#b2d.shape.SHAPE_TYPE\">b2d.shape.SHAPE_TYPE</a>,\nv1:<a href=\"../vmath-lua/#vector3\">vector3</a>,\nv2:<a href=\"../vmath-lua/#vector3\">vector3</a>,\nv0?:<a href=\"../vmath-lua/#vector3\">vector3</a>,\nv3?:<a href=\"../vmath-lua/#vector3\">vector3</a>}",
+                        "{type:<a href=\"#b2d.shape.SHAPE_TYPE\">b2d.shape.SHAPE_TYPE</a>,\nhx:<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>,\nhy:<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>,\ncenter?:<a href=\"../vmath-lua/#vector3\">vector3</a>,\nangle?:<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>}",
+                        "{type:<a href=\"#b2d.shape.SHAPE_TYPE\">b2d.shape.SHAPE_TYPE</a>,\nvertices:<a href=\"../vmath-lua/#vector3\">vector3</a>[],\nloop?:<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>,\nprev_vertex?:<a href=\"../vmath-lua/#vector3\">vector3</a>,\nnext_vertex?:<a href=\"../vmath-lua/#vector3\">vector3</a>}"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "target_type": "{ type:b2d.shape.SHAPE_TYPE, radius:number, center?:vector3 } | { type:b2d.shape.SHAPE_TYPE, radius:number, center1:vector3, center2:vector3 } | { type:b2d.shape.SHAPE_TYPE, v1:vector3, v2:vector3, v0?:vector3, v3?:vector3 } | { type:b2d.shape.SHAPE_TYPE, hx:number, hy:number, center?:vector3, angle?:number } | { type:b2d.shape.SHAPE_TYPE, vertices:vector3[], loop?:boolean, prev_vertex?:vector3, next_vertex?:vector3 }",
+            "target_type_html": "{ type:<a href=\"#b2d.shape.SHAPE_TYPE\">b2d.shape.SHAPE_TYPE</a>, radius:<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>, center?:<a href=\"../vmath-lua/#vector3\">vector3</a> } | { type:<a href=\"#b2d.shape.SHAPE_TYPE\">b2d.shape.SHAPE_TYPE</a>, radius:<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>, center1:<a href=\"../vmath-lua/#vector3\">vector3</a>, center2:<a href=\"../vmath-lua/#vector3\">vector3</a> } | { type:<a href=\"#b2d.shape.SHAPE_TYPE\">b2d.shape.SHAPE_TYPE</a>, v1:<a href=\"../vmath-lua/#vector3\">vector3</a>, v2:<a href=\"../vmath-lua/#vector3\">vector3</a>, v0?:<a href=\"../vmath-lua/#vector3\">vector3</a>, v3?:<a href=\"../vmath-lua/#vector3\">vector3</a> } | { type:<a href=\"#b2d.shape.SHAPE_TYPE\">b2d.shape.SHAPE_TYPE</a>, hx:<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>, hy:<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>, center?:<a href=\"../vmath-lua/#vector3\">vector3</a>, angle?:<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a> } | { type:<a href=\"#b2d.shape.SHAPE_TYPE\">b2d.shape.SHAPE_TYPE</a>, vertices:<a href=\"../vmath-lua/#vector3\">vector3</a>[], loop?:<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>, prev_vertex?:<a href=\"../vmath-lua/#vector3\">vector3</a>, next_vertex?:<a href=\"../vmath-lua/#vector3\">vector3</a> }",
+            "tparams": [],
+            "type": "TYPEDEF"
         },
         {
             "brief": "Enable or disable contact events for a shape.",
@@ -144,6 +236,12 @@
                     "name": "shape_id",
                     "types": [
                         "b2Shape"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Shape\">b2Shape</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Shape\">b2Shape</a>"
                     ]
                 },
                 {
@@ -152,6 +250,12 @@
                     "name": "enable",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
@@ -176,6 +280,12 @@
                     "name": "shape_id",
                     "types": [
                         "b2Shape"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Shape\">b2Shape</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Shape\">b2Shape</a>"
                     ]
                 },
                 {
@@ -184,6 +294,12 @@
                     "name": "enable",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
@@ -208,6 +324,12 @@
                     "name": "shape_id",
                     "types": [
                         "b2Shape"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Shape\">b2Shape</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Shape\">b2Shape</a>"
                     ]
                 },
                 {
@@ -216,6 +338,12 @@
                     "name": "enable",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
@@ -240,6 +368,12 @@
                     "name": "shape_id",
                     "types": [
                         "b2Shape"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Shape\">b2Shape</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Shape\">b2Shape</a>"
                     ]
                 },
                 {
@@ -248,6 +382,12 @@
                     "name": "enable",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
@@ -272,6 +412,12 @@
                     "name": "shape_id",
                     "types": [
                         "b2Shape"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Shape\">b2Shape</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Shape\">b2Shape</a>"
                     ]
                 }
             ],
@@ -281,6 +427,12 @@
                     "doc": "owning body",
                     "name": "body",
                     "types": [
+                        "b2Body"
+                    ],
+                    "types_html": [
+                        "b2Body"
+                    ],
+                    "types_table_html": [
                         "b2Body"
                     ]
                 }
@@ -304,6 +456,12 @@
                     "name": "shape_id",
                     "types": [
                         "b2Shape"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Shape\">b2Shape</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Shape\">b2Shape</a>"
                     ]
                 },
                 {
@@ -312,6 +470,12 @@
                     "name": "target",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 }
             ],
@@ -322,6 +486,12 @@
                     "name": "point",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 }
             ],
@@ -344,6 +514,12 @@
                     "name": "shape_id",
                     "types": [
                         "b2Shape"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Shape\">b2Shape</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Shape\">b2Shape</a>"
                     ]
                 }
             ],
@@ -353,7 +529,13 @@
                     "doc": "maximum contact data count",
                     "name": "capacity",
                     "types": [
-                        "number"
+                        "integer"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
                     ]
                 }
             ],
@@ -376,16 +558,28 @@
                     "name": "shape_id",
                     "types": [
                         "b2Shape"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Shape\">b2Shape</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Shape\">b2Shape</a>"
                     ]
                 }
             ],
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "array of contact tables",
+                    "doc": "touching contacts",
                     "name": "contacts",
                     "types": [
-                        "table"
+                        "b2d.contact_data[]"
+                    ],
+                    "types_html": [
+                        "<a href=\"../b2d-lua/#b2d.contact_data\">b2d.contact_data</a>[]"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../b2d-lua/#b2d.contact_data\">b2d.contact_data</a>[]"
                     ]
                 }
             ],
@@ -408,16 +602,28 @@
                     "name": "shape_id",
                     "types": [
                         "b2Shape"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Shape\">b2Shape</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Shape\">b2Shape</a>"
                     ]
                 }
             ],
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "table with <code>mass</code>, <code>center</code>, and <code>inertia</code>",
+                    "doc": "shape mass data",
                     "name": "data",
                     "types": [
-                        "table"
+                        "b2d.mass_data"
+                    ],
+                    "types_html": [
+                        "<a href=\"../b2d-lua/#b2d.mass_data\">b2d.mass_data</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../b2d-lua/#b2d.mass_data\">b2d.mass_data</a>"
                     ]
                 }
             ],
@@ -440,6 +646,12 @@
                     "name": "shape_id",
                     "types": [
                         "b2Shape"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Shape\">b2Shape</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Shape\">b2Shape</a>"
                     ]
                 }
             ],
@@ -449,7 +661,13 @@
                     "doc": "shape material id",
                     "name": "material",
                     "types": [
-                        "number"
+                        "integer"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
                     ]
                 }
             ],
@@ -472,6 +690,12 @@
                     "name": "shape_id",
                     "types": [
                         "b2Shape"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Shape\">b2Shape</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Shape\">b2Shape</a>"
                     ]
                 }
             ],
@@ -481,7 +705,13 @@
                     "doc": "maximum sensor overlap count",
                     "name": "capacity",
                     "types": [
-                        "number"
+                        "integer"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
                     ]
                 }
             ],
@@ -504,16 +734,28 @@
                     "name": "shape_id",
                     "types": [
                         "b2Shape"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Shape\">b2Shape</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Shape\">b2Shape</a>"
                     ]
                 }
             ],
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "array of shape info tables",
+                    "doc": "overlapping shapes",
                     "name": "overlaps",
                     "types": [
-                        "table"
+                        "b2d.shape_info[]"
+                    ],
+                    "types_html": [
+                        "<a href=\"../b2d-lua/#b2d.shape_info\">b2d.shape_info</a>[]"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../b2d-lua/#b2d.shape_info\">b2d.shape_info</a>[]"
                     ]
                 }
             ],
@@ -536,6 +778,12 @@
                     "name": "shape_id",
                     "types": [
                         "b2Shape"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Shape\">b2Shape</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Shape\">b2Shape</a>"
                     ]
                 }
             ],
@@ -545,7 +793,13 @@
                     "doc": "shape table with numeric <code>type</code> from <code>b2d.shape.SHAPE_TYPE_*</code>",
                     "name": "shape",
                     "types": [
-                        "table"
+                        "b2d.shape.definition"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2d.shape.definition\">b2d.shape.definition</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2d.shape.definition\">b2d.shape.definition</a>"
                     ]
                 }
             ],
@@ -568,6 +822,12 @@
                     "name": "shape_id",
                     "types": [
                         "b2Shape"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Shape\">b2Shape</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Shape\">b2Shape</a>"
                     ]
                 }
             ],
@@ -577,6 +837,12 @@
                     "doc": "owning world",
                     "name": "world",
                     "types": [
+                        "b2World"
+                    ],
+                    "types_html": [
+                        "b2World"
+                    ],
+                    "types_table_html": [
                         "b2World"
                     ]
                 }
@@ -600,6 +866,12 @@
                     "name": "shape_id",
                     "types": [
                         "b2Shape"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Shape\">b2Shape</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Shape\">b2Shape</a>"
                     ]
                 }
             ],
@@ -610,6 +882,12 @@
                     "name": "valid",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
@@ -632,6 +910,12 @@
                     "name": "shape_id",
                     "types": [
                         "b2Shape"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Shape\">b2Shape</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Shape\">b2Shape</a>"
                     ]
                 },
                 {
@@ -640,6 +924,12 @@
                     "name": "origin",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 },
                 {
@@ -648,24 +938,45 @@
                     "name": "translation",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 },
                 {
                     "doc": "optional maximum translation fraction, defaults to 1",
-                    "is_optional": "False",
+                    "is_optional": "True",
                     "name": "max_fraction",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "hit table with <code>point</code>, <code>normal</code>, <code>fraction</code>, and <code>iterations</code>, or nil",
+                    "doc": "cast result, or <code>nil</code>",
                     "name": "hit",
                     "types": [
-                        "table"
+                        "b2d.shape_cast_output",
+                        "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../b2d-lua/#b2d.shape_cast_output\">b2d.shape_cast_output</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../b2d-lua/#b2d.shape_cast_output\">b2d.shape_cast_output</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 }
             ],
@@ -688,6 +999,12 @@
                     "name": "shape_id",
                     "types": [
                         "b2Shape"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Shape\">b2Shape</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Shape\">b2Shape</a>"
                     ]
                 },
                 {
@@ -695,7 +1012,13 @@
                     "is_optional": "False",
                     "name": "material",
                     "types": [
-                        "number"
+                        "integer"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
                     ]
                 }
             ],
@@ -720,6 +1043,12 @@
                     "name": "shape_id",
                     "types": [
                         "b2Shape"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Shape\">b2Shape</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Shape\">b2Shape</a>"
                     ]
                 },
                 {
@@ -727,7 +1056,13 @@
                     "is_optional": "False",
                     "name": "definition",
                     "types": [
-                        "table"
+                        "b2d.shape.definition"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2d.shape.definition\">b2d.shape.definition</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2d.shape.definition\">b2d.shape.definition</a>"
                     ]
                 },
                 {
@@ -736,6 +1071,12 @@
                     "name": "update_mass",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
@@ -745,210 +1086,89 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "Box shape type alias.",
-            "description": "Uses the polygon enum value, but indicates the <code>hx</code>/<code>hy</code> box convenience format.",
+            "brief": "Box2D shape types.",
+            "description": "Box2D shape types.",
             "error": "",
             "examples": "",
             "language": "",
-            "members": [],
-            "name": "b2d.shape.SHAPE_TYPE_BOX",
+            "members": [
+                {
+                    "doc": "Box shape type alias. Uses the polygon enum value, but indicates the <code>hx</code>/<code>hy</code> box convenience format.",
+                    "name": "b2d.shape.SHAPE_TYPE_BOX"
+                },
+                {
+                    "doc": "Capsule shape type.",
+                    "name": "b2d.shape.SHAPE_TYPE_CAPSULE"
+                },
+                {
+                    "doc": "Chain shape type.",
+                    "name": "b2d.shape.SHAPE_TYPE_CHAIN"
+                },
+                {
+                    "doc": "Circle shape type.",
+                    "name": "b2d.shape.SHAPE_TYPE_CIRCLE"
+                },
+                {
+                    "doc": "Edge shape type alias. Compatibility alias for <code>b2d.shape.SHAPE_TYPE_SEGMENT</code>.",
+                    "name": "b2d.shape.SHAPE_TYPE_EDGE"
+                },
+                {
+                    "doc": "Grid shape type.",
+                    "name": "b2d.shape.SHAPE_TYPE_GRID"
+                },
+                {
+                    "doc": "Polygon shape type.",
+                    "name": "b2d.shape.SHAPE_TYPE_POLYGON"
+                },
+                {
+                    "doc": "Segment shape type.",
+                    "name": "b2d.shape.SHAPE_TYPE_SEGMENT"
+                }
+            ],
+            "name": "b2d.shape.SHAPE_TYPE",
             "notes": [],
             "parameters": [],
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "Box shape type alias.",
-            "description": "Uses the polygon enum value, but indicates the <code>hx</code>/<code>hy</code> box convenience format.",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "b2d.shape.SHAPE_TYPE_BOX",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "Capsule shape type.",
-            "description": "Capsule shape type.",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "b2d.shape.SHAPE_TYPE_CAPSULE",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "Chain shape type.",
-            "description": "Chain shape type.",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "b2d.shape.SHAPE_TYPE_CHAIN",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "Circle shape type.",
-            "description": "Circle shape type.",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "b2d.shape.SHAPE_TYPE_CIRCLE",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "Circle shape type.",
-            "description": "Circle shape type.",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "b2d.shape.SHAPE_TYPE_CIRCLE",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "Edge shape type.",
-            "description": "Edge shape type.",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "b2d.shape.SHAPE_TYPE_EDGE",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "Edge shape type alias.",
-            "description": "Compatibility alias for <code>b2d.shape.SHAPE_TYPE_SEGMENT</code>.",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "b2d.shape.SHAPE_TYPE_EDGE",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "Grid shape type.",
-            "description": "Grid shape type.",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "b2d.shape.SHAPE_TYPE_GRID",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "Polygon shape type.",
-            "description": "Polygon shape type.",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "b2d.shape.SHAPE_TYPE_POLYGON",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "Polygon shape type.",
-            "description": "Polygon shape type.",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "b2d.shape.SHAPE_TYPE_POLYGON",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "Segment shape type.",
-            "description": "Segment shape type.",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "b2d.shape.SHAPE_TYPE_SEGMENT",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
+            "type": "ENUM",
+            "value_type": "integer",
+            "value_type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
         },
         {
             "brief": "Box2D shape",
-            "description": "Box2D shape",
+            "description": "An opaque handle to one collision shape attached to a <span class=\"type\">b2Body</span>. Obtain\nshape handles from <a href=\"#b2d\">b2d.body.get_shapes</a> or when creating shapes, then use\nthe functions in <code>b2d.shape</code> to inspect or modify them. A shape is owned by its\nbody and its handle becomes invalid when the shape or body is destroyed.",
             "error": "",
-            "examples": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">body</span> <span class=\"o\">=</span> <span class=\"n\">b2d</span><span class=\"p\">.</span><span class=\"n\">get_body</span><span class=\"p\">(</span><span class=\"s2\">&quot;#collisionobject&quot;</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">shapes</span> <span class=\"o\">=</span> <span class=\"n\">b2d</span><span class=\"p\">.</span><span class=\"n\">body</span><span class=\"p\">.</span><span class=\"n\">get_shapes</span><span class=\"p\">(</span><span class=\"n\">body</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">shape</span> <span class=\"o\">=</span> <span class=\"n\">shapes</span><span class=\"p\">[</span><span class=\"mi\">1</span><span class=\"p\">].</span><span class=\"n\">shape_id</span>\n<span class=\"n\">pprint</span><span class=\"p\">(</span><span class=\"n\">b2d</span><span class=\"p\">.</span><span class=\"n\">shape</span><span class=\"p\">.</span><span class=\"n\">get_shape</span><span class=\"p\">(</span><span class=\"n\">shape</span><span class=\"p\">))</span>\n</code></pre></div>",
             "language": "",
             "members": [],
             "name": "b2Shape",
             "notes": [],
             "parameters": [
                 {
-                    "doc": "",
+                    "doc": "Box2D shape handle",
                     "is_optional": "False",
                     "name": "value",
                     "types": [
                         "userdata"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">userdata</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">userdata</a>"
                     ]
                 }
             ],
             "replaces": "",
             "returnvalues": [],
+            "target_type": "userdata",
+            "target_type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">userdata</a>",
             "tparams": [],
             "type": "TYPEDEF"
         }
     ],
+    "format_version": 2,
     "info": {
         "api_language": "Lua",
         "brief": "Box2D b2Shape documentation",

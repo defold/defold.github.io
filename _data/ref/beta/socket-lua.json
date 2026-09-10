@@ -1,30 +1,6 @@
 {
     "elements": [
         {
-            "brief": "TCP client object",
-            "description": "TCP client object",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "client",
-            "notes": [],
-            "parameters": [
-                {
-                    "doc": "",
-                    "is_optional": "False",
-                    "name": "value",
-                    "types": [
-                        "userdata"
-                    ]
-                }
-            ],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "TYPEDEF"
-        },
-        {
             "brief": "closes a client TCP object",
             "description": "Closes the TCP object. The internal socket used by the object is closed and the local address to which the object was bound is made available to other applications. No further operations (except for further calls to the close method) are allowed on a closed socket.\n<span class=\"icon-attention\"></span> It is important to close all used sockets once they are not needed, since, in many systems, each socket uses a file descriptor, which are limited system resources. Garbage-collected objects are automatically closed before destruction, though.",
             "error": "",
@@ -35,7 +11,21 @@
             "notes": [],
             "parameters": [],
             "replaces": "",
-            "returnvalues": [],
+            "returnvalues": [
+                {
+                    "doc": "the value <code>1</code>.",
+                    "name": "success",
+                    "types": [
+                        "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ]
+                }
+            ],
             "tparams": [],
             "type": "FUNCTION"
         },
@@ -56,6 +46,12 @@
                     "name": "status",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
@@ -79,6 +75,12 @@
                     "name": "handle",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -101,6 +103,12 @@
                     "name": "option",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 }
             ],
@@ -112,6 +120,14 @@
                     "types": [
                         "any",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 },
                 {
@@ -120,6 +136,14 @@
                     "types": [
                         "string",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 }
             ],
@@ -139,10 +163,51 @@
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "a string with the IP address of the peer, the port number that peer is using for the connection, and the family (\"inet\" or \"inet6\"). In case of error, the method returns <code>nil</code>.",
-                    "name": "info",
+                    "doc": "the IP address of the peer, or <code>nil</code> in case of error.",
+                    "name": "address",
                     "types": [
+                        "string",
+                        "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ]
+                },
+                {
+                    "doc": "the peer port number, or the error message in case of error.",
+                    "name": "port_or_error",
+                    "types": [
+                        "integer",
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ]
+                },
+                {
+                    "doc": "the socket family (<code>\"inet\"</code> or <code>\"inet6\"</code>), or <code>nil</code> in case of error.",
+                    "name": "family",
+                    "types": [
+                        "string",
+                        "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 }
             ],
@@ -162,10 +227,48 @@
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "a string with local IP address, the local port number, and the family (\"inet\" or \"inet6\"). In case of error, the method returns <code>nil</code>.",
-                    "name": "info",
+                    "doc": "the local IP address, or <code>nil</code> in case of error.",
+                    "name": "address",
+                    "types": [
+                        "string",
+                        "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ]
+                },
+                {
+                    "doc": "the local port, or the error message in case of error.",
+                    "name": "port_or_error",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ]
+                },
+                {
+                    "doc": "the socket family (<code>\"inet\"</code> or <code>\"inet6\"</code>), or <code>nil</code> in case of error.",
+                    "name": "family",
+                    "types": [
+                        "string",
+                        "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 }
             ],
@@ -185,10 +288,42 @@
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "a string with the number of bytes received, the number of bytes sent, and the age of the socket object in seconds.",
-                    "name": "stats",
+                    "doc": "the number of bytes received.",
+                    "name": "received",
                     "types": [
-                        "string"
+                        "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ]
+                },
+                {
+                    "doc": "the number of bytes sent.",
+                    "name": "sent",
+                    "types": [
+                        "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ]
+                },
+                {
+                    "doc": "the age of the socket object in seconds.",
+                    "name": "age",
+                    "types": [
+                        "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -212,6 +347,14 @@
                     "types": [
                         "string",
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -220,6 +363,12 @@
                     "name": "prefix",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 }
             ],
@@ -231,6 +380,14 @@
                     "types": [
                         "string",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 },
                 {
@@ -239,6 +396,14 @@
                     "types": [
                         "string",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 },
                 {
@@ -247,6 +412,14 @@
                     "types": [
                         "string",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 }
             ],
@@ -269,6 +442,12 @@
                     "name": "data",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 },
                 {
@@ -277,6 +456,12 @@
                     "name": "i",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -285,6 +470,12 @@
                     "name": "j",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -296,6 +487,14 @@
                     "types": [
                         "number",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 },
                 {
@@ -304,6 +503,14 @@
                     "types": [
                         "string",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 },
                 {
@@ -312,6 +519,14 @@
                     "types": [
                         "number",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 }
             ],
@@ -334,6 +549,12 @@
                     "name": "handle",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -353,11 +574,17 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "the name of the option to set. The value is provided in the <code>value</code> parameter:\n<dl>\n<dt><code>\"keepalive\"</code></dt>\n<dd>Setting this option to <code>true</code> enables the periodic transmission of messages on a connected socket. Should the connected party fail to respond to these messages, the connection is considered broken and processes using the socket are notified;</dd>\n<dt><code>\"linger\"</code></dt>\n<dd>Controls the action taken when unsent data are queued on a socket and a close is performed. The value is a table with the following keys:</dd>\n</dl>\n<ul>\n<li><span class=\"type\">boolean</span> <code>on</code></li>\n<li><span class=\"type\">number</span> <code>timeout</code> (seconds)</li>\n</ul>\nIf the 'on' field is set to true, the system will block the process on the close attempt until it is able to transmit the data or until <code>timeout</code> has passed. If 'on' is false and a close is issued, the system will process the close in a manner that allows the process to continue as quickly as possible. It is not advised to set this to anything other than zero;\n<dl>\n<dt><code>\"reuseaddr\"</code></dt>\n<dd>Setting this option indicates that the rules used in validating addresses supplied in a call to <code>bind</code> should allow reuse of local addresses;</dd>\n<dt><code>\"tcp-nodelay\"</code></dt>\n<dd>Setting this option to <code>true</code> disables the Nagle's algorithm for the connection;</dd>\n<dt><code>\"ipv6-v6only\"</code></dt>\n<dd>Setting this option to <code>true</code> restricts an inet6 socket to sending and receiving only IPv6 packets.</dd>\n</dl>",
+                    "doc": "the name of the option to set. The value is provided in the <code>value</code> parameter:\n<dl>\n<dt><code>\"keepalive\"</code></dt>\n<dd>Setting this option to <code>true</code> enables the periodic transmission of messages on a connected socket. Should the connected party fail to respond to these messages, the connection is considered broken and processes using the socket are notified;</dd>\n<dt><code>\"linger\"</code></dt>\n<dd>Controls the action taken when unsent data are queued on a socket and a close is performed. The value is a table with the following keys:</dd>\n</dl>\n<ul>\n<li><span class=\"type\"><a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a></span> <code>on</code></li>\n<li><span class=\"type\"><a href=\"../../../manuals/lua/#variables-and-data-types\">number</a></span> <code>timeout</code> (seconds)</li>\n</ul>\nIf the 'on' field is set to true, the system will block the process on the close attempt until it is able to transmit the data or until <code>timeout</code> has passed. If 'on' is false and a close is issued, the system will process the close in a manner that allows the process to continue as quickly as possible. It is not advised to set this to anything other than zero;\n<dl>\n<dt><code>\"reuseaddr\"</code></dt>\n<dd>Setting this option indicates that the rules used in validating addresses supplied in a call to <code>bind</code> should allow reuse of local addresses;</dd>\n<dt><code>\"tcp-nodelay\"</code></dt>\n<dd>Setting this option to <code>true</code> disables the Nagle's algorithm for the connection;</dd>\n<dt><code>\"ipv6-v6only\"</code></dt>\n<dd>Setting this option to <code>true</code> restricts an inet6 socket to sending and receiving only IPv6 packets.</dd>\n</dl>",
                     "is_optional": "False",
                     "name": "option",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 },
                 {
@@ -366,6 +593,12 @@
                     "name": "value",
                     "types": [
                         "any"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>"
                     ]
                 }
             ],
@@ -377,6 +610,14 @@
                     "types": [
                         "number",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 },
                 {
@@ -385,6 +626,14 @@
                     "types": [
                         "string",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 }
             ],
@@ -402,38 +651,70 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "the new number of bytes received.",
-                    "is_optional": "False",
+                    "doc": "the new number of bytes received, or <code>nil</code> to preserve it.",
+                    "is_optional": "True",
                     "name": "received",
                     "types": [
-                        "number"
+                        "number",
+                        "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 },
                 {
-                    "doc": "the new number of bytes sent.",
-                    "is_optional": "False",
+                    "doc": "the new number of bytes sent, or <code>nil</code> to preserve it.",
+                    "is_optional": "True",
                     "name": "sent",
                     "types": [
-                        "number"
+                        "number",
+                        "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 },
                 {
-                    "doc": "the new age in seconds.",
-                    "is_optional": "False",
+                    "doc": "the new age in seconds, or <code>nil</code> to preserve it.",
+                    "is_optional": "True",
                     "name": "age",
                     "types": [
-                        "number"
+                        "number",
+                        "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 }
             ],
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "the value <code>1</code> in case of success, or <code>nil</code> in case of error.",
+                    "doc": "the value <code>1</code>.",
                     "name": "success",
                     "types": [
-                        "number",
-                        "nil"
+                        "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -452,10 +733,19 @@
             "parameters": [
                 {
                     "doc": "the amount of time to wait, in seconds. The <code>nil</code> timeout value allows operations to block indefinitely. Negative timeout values have the same effect.",
-                    "is_optional": "False",
+                    "is_optional": "True",
                     "name": "value",
                     "types": [
-                        "number"
+                        "number",
+                        "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 },
                 {
@@ -464,11 +754,31 @@
                     "name": "mode",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 }
             ],
             "replaces": "",
-            "returnvalues": [],
+            "returnvalues": [
+                {
+                    "doc": "the value <code>1</code>.",
+                    "name": "success",
+                    "types": [
+                        "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ]
+                }
+            ],
             "tparams": [],
             "type": "FUNCTION"
         },
@@ -488,6 +798,12 @@
                     "name": "mode",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 }
             ],
@@ -498,6 +814,12 @@
                     "name": "status",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -515,7 +837,21 @@
             "notes": [],
             "parameters": [],
             "replaces": "",
-            "returnvalues": [],
+            "returnvalues": [
+                {
+                    "doc": "the value <code>1</code>.",
+                    "name": "success",
+                    "types": [
+                        "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ]
+                }
+            ],
             "tparams": [],
             "type": "FUNCTION"
         },
@@ -535,6 +871,12 @@
                     "name": "option",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 }
             ],
@@ -546,6 +888,14 @@
                     "types": [
                         "any",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 },
                 {
@@ -554,6 +904,14 @@
                     "types": [
                         "string",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 }
             ],
@@ -573,10 +931,51 @@
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "a string with the IP address of the peer, the port number that peer is using for the connection, and the family (\"inet\" or \"inet6\"). In case of error, the method returns <code>nil</code>.",
-                    "name": "info",
+                    "doc": "the IP address of the peer, or <code>nil</code> in case of error.",
+                    "name": "address",
                     "types": [
+                        "string",
+                        "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ]
+                },
+                {
+                    "doc": "the peer port number, or the error message in case of error.",
+                    "name": "port_or_error",
+                    "types": [
+                        "integer",
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ]
+                },
+                {
+                    "doc": "the socket family (<code>\"inet\"</code> or <code>\"inet6\"</code>), or <code>nil</code> in case of error.",
+                    "name": "family",
+                    "types": [
+                        "string",
+                        "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 }
             ],
@@ -596,10 +995,48 @@
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "a string with local IP address, a number with the local port, and the family (\"inet\" or \"inet6\"). In case of error, the method returns <code>nil</code>.",
-                    "name": "info",
+                    "doc": "the local IP address, or <code>nil</code> in case of error.",
+                    "name": "address",
+                    "types": [
+                        "string",
+                        "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ]
+                },
+                {
+                    "doc": "the local port, or the error message in case of error.",
+                    "name": "port_or_error",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ]
+                },
+                {
+                    "doc": "the socket family (<code>\"inet\"</code> or <code>\"inet6\"</code>), or <code>nil</code> in case of error.",
+                    "name": "family",
+                    "types": [
+                        "string",
+                        "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 }
             ],
@@ -622,6 +1059,12 @@
                     "name": "size",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -633,6 +1076,14 @@
                     "types": [
                         "string",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 },
                 {
@@ -641,6 +1092,14 @@
                     "types": [
                         "string",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 }
             ],
@@ -663,6 +1122,12 @@
                     "name": "datagram",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 }
             ],
@@ -674,6 +1139,14 @@
                     "types": [
                         "number",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 },
                 {
@@ -682,6 +1155,14 @@
                     "types": [
                         "string",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 }
             ],
@@ -699,11 +1180,17 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "the name of the option to set. The value is provided in the <code>value</code> parameter:\n<dl>\n<dt><code>\"dontroute\"</code></dt>\n<dd>Indicates that outgoing messages should bypass the standard routing facilities. Receives a boolean value;</dd>\n<dt><code>\"broadcast\"</code></dt>\n<dd>Requests permission to send broadcast datagrams on the socket. Receives a boolean value;</dd>\n<dt><code>\"reuseaddr\"</code></dt>\n<dd>Indicates that the rules used in validating addresses supplied in a <code>bind</code> call should allow reuse of local addresses. Receives a boolean value;</dd>\n<dt><code>\"reuseport\"</code></dt>\n<dd>Allows completely duplicate bindings by multiple processes if they all set <code>\"reuseport\"</code> before binding the port. Receives a boolean value;</dd>\n<dt><code>\"ip-multicast-loop\"</code></dt>\n<dd>Specifies whether or not a copy of an outgoing multicast datagram is delivered to the sending host as long as it is a member of the multicast group. Receives a boolean value;</dd>\n<dt><code>\"ipv6-v6only\"</code></dt>\n<dd>Specifies whether to restrict inet6 sockets to sending and receiving only IPv6 packets. Receive a boolean value;</dd>\n<dt><code>\"ip-multicast-if\"</code></dt>\n<dd>Sets the interface over which outgoing multicast datagrams are sent. Receives an IP address;</dd>\n<dt><code>\"ip-multicast-ttl\"</code></dt>\n<dd>Sets the Time To Live in the IP header for outgoing multicast datagrams. Receives a number;</dd>\n</dl>\n<code>\"ip-add-membership\"</code>: Joins the multicast group specified. Receives a table with fields:\n<ul>\n<li><span class=\"type\">string</span> <code>multiaddr</code> (IP address)</li>\n<li><span class=\"type\">string</span> <code>interface</code> (IP address)</li>\n</ul>\n<dl>\n<dt>\"'ip-drop-membership\"`</dt>\n<dd>Leaves the multicast group specified. Receives a table with fields:</dd>\n</dl>\n<ul>\n<li><span class=\"type\">string</span> <code>multiaddr</code> (IP address)</li>\n<li><span class=\"type\">string</span> <code>interface</code> (IP address)</li>\n</ul>",
+                    "doc": "the name of the option to set. The value is provided in the <code>value</code> parameter:\n<dl>\n<dt><code>\"dontroute\"</code></dt>\n<dd>Indicates that outgoing messages should bypass the standard routing facilities. Receives a boolean value;</dd>\n<dt><code>\"broadcast\"</code></dt>\n<dd>Requests permission to send broadcast datagrams on the socket. Receives a boolean value;</dd>\n<dt><code>\"reuseaddr\"</code></dt>\n<dd>Indicates that the rules used in validating addresses supplied in a <code>bind</code> call should allow reuse of local addresses. Receives a boolean value;</dd>\n<dt><code>\"reuseport\"</code></dt>\n<dd>Allows completely duplicate bindings by multiple processes if they all set <code>\"reuseport\"</code> before binding the port. Receives a boolean value;</dd>\n<dt><code>\"ip-multicast-loop\"</code></dt>\n<dd>Specifies whether or not a copy of an outgoing multicast datagram is delivered to the sending host as long as it is a member of the multicast group. Receives a boolean value;</dd>\n<dt><code>\"ipv6-v6only\"</code></dt>\n<dd>Specifies whether to restrict inet6 sockets to sending and receiving only IPv6 packets. Receive a boolean value;</dd>\n<dt><code>\"ip-multicast-if\"</code></dt>\n<dd>Sets the interface over which outgoing multicast datagrams are sent. Receives an IP address;</dd>\n<dt><code>\"ip-multicast-ttl\"</code></dt>\n<dd>Sets the Time To Live in the IP header for outgoing multicast datagrams. Receives a number;</dd>\n</dl>\n<code>\"ip-add-membership\"</code>: Joins the multicast group specified. Receives a table with fields:\n<ul>\n<li><span class=\"type\"><a href=\"../../../manuals/lua/#variables-and-data-types\">string</a></span> <code>multiaddr</code> (IP address)</li>\n<li><span class=\"type\"><a href=\"../../../manuals/lua/#variables-and-data-types\">string</a></span> <code>interface</code> (IP address)</li>\n</ul>\n<dl>\n<dt>\"'ip-drop-membership\"`</dt>\n<dd>Leaves the multicast group specified. Receives a table with fields:</dd>\n</dl>\n<ul>\n<li><span class=\"type\"><a href=\"../../../manuals/lua/#variables-and-data-types\">string</a></span> <code>multiaddr</code> (IP address)</li>\n<li><span class=\"type\"><a href=\"../../../manuals/lua/#variables-and-data-types\">string</a></span> <code>interface</code> (IP address)</li>\n</ul>",
                     "is_optional": "False",
                     "name": "option",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 },
                 {
@@ -712,6 +1199,12 @@
                     "name": "value",
                     "types": [
                         "any"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>"
                     ]
                 }
             ],
@@ -723,6 +1216,14 @@
                     "types": [
                         "number",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 },
                 {
@@ -731,6 +1232,14 @@
                     "types": [
                         "string",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 }
             ],
@@ -748,11 +1257,17 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "if address is \"*\" and the object is connected, the peer association is removed and the object becomes an unconnected object again.",
+                    "doc": "must be <code>\"*\"</code>. The peer association is removed and the object becomes an unconnected object again.",
                     "is_optional": "False",
-                    "name": "\"*\"",
+                    "name": "address",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 }
             ],
@@ -764,6 +1279,14 @@
                     "types": [
                         "number",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 },
                 {
@@ -772,6 +1295,14 @@
                     "types": [
                         "string",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 }
             ],
@@ -790,41 +1321,40 @@
             "parameters": [
                 {
                     "doc": "the amount of time to wait, in seconds. The <code>nil</code> timeout value allows operations to block indefinitely. Negative timeout values have the same effect.",
-                    "is_optional": "False",
+                    "is_optional": "True",
                     "name": "value",
+                    "types": [
+                        "number",
+                        "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "the value <code>1</code>.",
+                    "name": "success",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
-            "replaces": "",
-            "returnvalues": [],
             "tparams": [],
             "type": "FUNCTION"
-        },
-        {
-            "brief": "TCP master object",
-            "description": "TCP master object",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "master",
-            "notes": [],
-            "parameters": [
-                {
-                    "doc": "",
-                    "is_optional": "False",
-                    "name": "value",
-                    "types": [
-                        "userdata"
-                    ]
-                }
-            ],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "TYPEDEF"
         },
         {
             "brief": "binds a master object to address and port on the local host",
@@ -842,6 +1372,12 @@
                     "name": "address",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 },
                 {
@@ -850,6 +1386,12 @@
                     "name": "port",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -861,6 +1403,14 @@
                     "types": [
                         "number",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 },
                 {
@@ -869,6 +1419,14 @@
                     "types": [
                         "string",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 }
             ],
@@ -886,7 +1444,21 @@
             "notes": [],
             "parameters": [],
             "replaces": "",
-            "returnvalues": [],
+            "returnvalues": [
+                {
+                    "doc": "the value <code>1</code>.",
+                    "name": "success",
+                    "types": [
+                        "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ]
+                }
+            ],
             "tparams": [],
             "type": "FUNCTION"
         },
@@ -906,6 +1478,12 @@
                     "name": "address",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 },
                 {
@@ -914,6 +1492,12 @@
                     "name": "port",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -925,6 +1509,14 @@
                     "types": [
                         "number",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 },
                 {
@@ -933,6 +1525,14 @@
                     "types": [
                         "string",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 }
             ],
@@ -956,6 +1556,12 @@
                     "name": "status",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
@@ -979,6 +1585,12 @@
                     "name": "handle",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -998,33 +1610,48 @@
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "a string with local IP address, the local port number, and the family (\"inet\" or \"inet6\"). In case of error, the method returns <code>nil</code>.",
-                    "name": "info",
+                    "doc": "the local IP address, or <code>nil</code> in case of error.",
+                    "name": "address",
                     "types": [
-                        "string"
+                        "string",
+                        "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
-                }
-            ],
-            "tparams": [],
-            "type": "FUNCTION"
-        },
-        {
-            "brief": "gets accounting information on the socket",
-            "description": "Returns accounting information on the socket, useful for throttling of bandwidth.",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "master:getstats",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [
+                },
                 {
-                    "doc": "a string with the number of bytes received, the number of bytes sent, and the age of the socket object in seconds.",
-                    "name": "stats",
+                    "doc": "the local port, or the error message in case of error.",
+                    "name": "port_or_error",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ]
+                },
+                {
+                    "doc": "the socket family (<code>\"inet\"</code> or <code>\"inet6\"</code>), or <code>nil</code> in case of error.",
+                    "name": "family",
+                    "types": [
+                        "string",
+                        "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 }
             ],
@@ -1047,6 +1674,12 @@
                     "name": "backlog",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -1058,6 +1691,14 @@
                     "types": [
                         "number",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 },
                 {
@@ -1066,6 +1707,14 @@
                     "types": [
                         "string",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 }
             ],
@@ -1088,60 +1737,17 @@
                     "name": "handle",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
             "replaces": "",
             "returnvalues": [],
-            "tparams": [],
-            "type": "FUNCTION"
-        },
-        {
-            "brief": "resets accounting information on the socket",
-            "description": "Resets accounting information on the socket, useful for throttling of bandwidth.",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "master:setstats",
-            "notes": [],
-            "parameters": [
-                {
-                    "doc": "the new number of bytes received.",
-                    "is_optional": "False",
-                    "name": "received",
-                    "types": [
-                        "number"
-                    ]
-                },
-                {
-                    "doc": "the new number of bytes sent.",
-                    "is_optional": "False",
-                    "name": "sent",
-                    "types": [
-                        "number"
-                    ]
-                },
-                {
-                    "doc": "the new age in seconds.",
-                    "is_optional": "False",
-                    "name": "age",
-                    "types": [
-                        "number"
-                    ]
-                }
-            ],
-            "replaces": "",
-            "returnvalues": [
-                {
-                    "doc": "the value <code>1</code> in case of success, or <code>nil</code> in case of error.",
-                    "name": "success",
-                    "types": [
-                        "number",
-                        "nil"
-                    ]
-                }
-            ],
             "tparams": [],
             "type": "FUNCTION"
         },
@@ -1157,10 +1763,19 @@
             "parameters": [
                 {
                     "doc": "the amount of time to wait, in seconds. The <code>nil</code> timeout value allows operations to block indefinitely. Negative timeout values have the same effect.",
-                    "is_optional": "False",
+                    "is_optional": "True",
                     "name": "value",
                     "types": [
-                        "number"
+                        "number",
+                        "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 },
                 {
@@ -1169,11 +1784,31 @@
                     "name": "mode",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 }
             ],
             "replaces": "",
-            "returnvalues": [],
+            "returnvalues": [
+                {
+                    "doc": "the value <code>1</code>.",
+                    "name": "success",
+                    "types": [
+                        "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ]
+                }
+            ],
             "tparams": [],
             "type": "FUNCTION"
         },
@@ -1193,8 +1828,16 @@
                     "doc": "if a connection is successfully initiated, a client object is returned, or <code>nil</code> in case of error.",
                     "name": "tcp_client",
                     "types": [
-                        "client",
+                        "socket_client",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"#socket_client\">socket_client</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#socket_client\">socket_client</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 },
                 {
@@ -1203,6 +1846,14 @@
                     "types": [
                         "string",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 }
             ],
@@ -1220,7 +1871,21 @@
             "notes": [],
             "parameters": [],
             "replaces": "",
-            "returnvalues": [],
+            "returnvalues": [
+                {
+                    "doc": "the value <code>1</code>.",
+                    "name": "success",
+                    "types": [
+                        "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ]
+                }
+            ],
             "tparams": [],
             "type": "FUNCTION"
         },
@@ -1241,6 +1906,12 @@
                     "name": "status",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
@@ -1264,6 +1935,12 @@
                     "name": "handle",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -1286,6 +1963,12 @@
                     "name": "option",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 }
             ],
@@ -1297,6 +1980,14 @@
                     "types": [
                         "any",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 },
                 {
@@ -1305,6 +1996,14 @@
                     "types": [
                         "string",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 }
             ],
@@ -1324,33 +2023,48 @@
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "a string with local IP address, the local port number, and the family (\"inet\" or \"inet6\"). In case of error, the method returns <code>nil</code>.",
-                    "name": "info",
+                    "doc": "the local IP address, or <code>nil</code> in case of error.",
+                    "name": "address",
                     "types": [
-                        "string"
+                        "string",
+                        "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
-                }
-            ],
-            "tparams": [],
-            "type": "FUNCTION"
-        },
-        {
-            "brief": "gets accounting information on the socket",
-            "description": "Returns accounting information on the socket, useful for throttling of bandwidth.",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "server:getstats",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [
+                },
                 {
-                    "doc": "a string with the number of bytes received, the number of bytes sent, and the age of the socket object in seconds.",
-                    "name": "stats",
+                    "doc": "the local port, or the error message in case of error.",
+                    "name": "port_or_error",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ]
+                },
+                {
+                    "doc": "the socket family (<code>\"inet\"</code> or <code>\"inet6\"</code>), or <code>nil</code> in case of error.",
+                    "name": "family",
+                    "types": [
+                        "string",
+                        "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 }
             ],
@@ -1373,6 +2087,12 @@
                     "name": "handle",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -1392,11 +2112,17 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "the name of the option to set. The value is provided in the <code>value</code> parameter:\n<dl>\n<dt><code>\"keepalive\"</code></dt>\n<dd>Setting this option to <code>true</code> enables the periodic transmission of messages on a connected socket. Should the connected party fail to respond to these messages, the connection is considered broken and processes using the socket are notified;</dd>\n<dt><code>\"linger\"</code></dt>\n<dd>Controls the action taken when unsent data are queued on a socket and a close is performed. The value is a table with the following keys:</dd>\n</dl>\n<ul>\n<li><span class=\"type\">boolean</span> <code>on</code></li>\n<li><span class=\"type\">number</span> <code>timeout</code> (seconds)</li>\n</ul>\nIf the 'on' field is set to true, the system will block the process on the close attempt until it is able to transmit the data or until <code>timeout</code> has passed. If 'on' is false and a close is issued, the system will process the close in a manner that allows the process to continue as quickly as possible. It is not advised to set this to anything other than zero;\n<dl>\n<dt><code>\"reuseaddr\"</code></dt>\n<dd>Setting this option indicates that the rules used in validating addresses supplied in a call to <code>bind</code> should allow reuse of local addresses;</dd>\n<dt><code>\"tcp-nodelay\"</code></dt>\n<dd>Setting this option to <code>true</code> disables the Nagle's algorithm for the connection;</dd>\n<dt><code>\"ipv6-v6only\"</code></dt>\n<dd>Setting this option to <code>true</code> restricts an inet6 socket to sending and receiving only IPv6 packets.</dd>\n</dl>",
+                    "doc": "the name of the option to set. The value is provided in the <code>value</code> parameter:\n<dl>\n<dt><code>\"keepalive\"</code></dt>\n<dd>Setting this option to <code>true</code> enables the periodic transmission of messages on a connected socket. Should the connected party fail to respond to these messages, the connection is considered broken and processes using the socket are notified;</dd>\n<dt><code>\"linger\"</code></dt>\n<dd>Controls the action taken when unsent data are queued on a socket and a close is performed. The value is a table with the following keys:</dd>\n</dl>\n<ul>\n<li><span class=\"type\"><a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a></span> <code>on</code></li>\n<li><span class=\"type\"><a href=\"../../../manuals/lua/#variables-and-data-types\">number</a></span> <code>timeout</code> (seconds)</li>\n</ul>\nIf the 'on' field is set to true, the system will block the process on the close attempt until it is able to transmit the data or until <code>timeout</code> has passed. If 'on' is false and a close is issued, the system will process the close in a manner that allows the process to continue as quickly as possible. It is not advised to set this to anything other than zero;\n<dl>\n<dt><code>\"reuseaddr\"</code></dt>\n<dd>Setting this option indicates that the rules used in validating addresses supplied in a call to <code>bind</code> should allow reuse of local addresses;</dd>\n<dt><code>\"tcp-nodelay\"</code></dt>\n<dd>Setting this option to <code>true</code> disables the Nagle's algorithm for the connection;</dd>\n<dt><code>\"ipv6-v6only\"</code></dt>\n<dd>Setting this option to <code>true</code> restricts an inet6 socket to sending and receiving only IPv6 packets.</dd>\n</dl>",
                     "is_optional": "False",
                     "name": "option",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 },
                 {
@@ -1405,6 +2131,12 @@
                     "name": "value",
                     "types": [
                         "any"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>"
                     ]
                 }
             ],
@@ -1416,6 +2148,14 @@
                     "types": [
                         "number",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 },
                 {
@@ -1424,55 +2164,14 @@
                     "types": [
                         "string",
                         "nil"
-                    ]
-                }
-            ],
-            "tparams": [],
-            "type": "FUNCTION"
-        },
-        {
-            "brief": "resets accounting information on the socket",
-            "description": "Resets accounting information on the socket, useful for throttling of bandwidth.",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "server:setstats",
-            "notes": [],
-            "parameters": [
-                {
-                    "doc": "the new number of bytes received.",
-                    "is_optional": "False",
-                    "name": "received",
-                    "types": [
-                        "number"
-                    ]
-                },
-                {
-                    "doc": "the new number of bytes sent.",
-                    "is_optional": "False",
-                    "name": "sent",
-                    "types": [
-                        "number"
-                    ]
-                },
-                {
-                    "doc": "the new age in seconds.",
-                    "is_optional": "False",
-                    "name": "age",
-                    "types": [
-                        "number"
-                    ]
-                }
-            ],
-            "replaces": "",
-            "returnvalues": [
-                {
-                    "doc": "the value <code>1</code> in case of success, or <code>nil</code> in case of error.",
-                    "name": "success",
-                    "types": [
-                        "number",
-                        "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 }
             ],
@@ -1491,10 +2190,19 @@
             "parameters": [
                 {
                     "doc": "the amount of time to wait, in seconds. The <code>nil</code> timeout value allows operations to block indefinitely. Negative timeout values have the same effect.",
-                    "is_optional": "False",
+                    "is_optional": "True",
                     "name": "value",
                     "types": [
-                        "number"
+                        "number",
+                        "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 },
                 {
@@ -1503,11 +2211,31 @@
                     "name": "mode",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 }
             ],
             "replaces": "",
-            "returnvalues": [],
+            "returnvalues": [
+                {
+                    "doc": "the value <code>1</code>.",
+                    "name": "success",
+                    "types": [
+                        "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ]
+                }
+            ],
             "tparams": [],
             "type": "FUNCTION"
         },
@@ -1516,30 +2244,64 @@
             "description": "This constant contains the maximum number of sockets that the select function can handle.",
             "error": "",
             "examples": "",
+            "is_enum_member": false,
             "language": "",
             "members": [],
             "name": "socket._SETSIZE",
             "notes": [],
-            "parameters": [],
+            "parameters": [
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "value",
+                    "types": [
+                        "integer"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                    ]
+                }
+            ],
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "CONSTANT"
+            "type": "CONSTANT",
+            "value_type": "integer"
         },
         {
             "brief": "the current LuaSocket version",
             "description": "This constant has a string describing the current LuaSocket version.",
             "error": "",
             "examples": "",
+            "is_enum_member": false,
             "language": "",
             "members": [],
             "name": "socket._VERSION",
             "notes": [],
-            "parameters": [],
+            "parameters": [
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "value",
+                    "types": [
+                        "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ]
+                }
+            ],
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "CONSTANT"
+            "type": "CONSTANT",
+            "value_type": "string"
         },
         {
             "brief": "creates a new connected TCP client object",
@@ -1557,6 +2319,12 @@
                     "name": "address",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 },
                 {
@@ -1565,6 +2333,12 @@
                     "name": "port",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -1573,6 +2347,12 @@
                     "name": "locaddr",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 },
                 {
@@ -1581,6 +2361,12 @@
                     "name": "locport",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -1589,6 +2375,12 @@
                     "name": "family",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 }
             ],
@@ -1598,8 +2390,16 @@
                     "doc": "a new IPv6 TCP client object, or <code>nil</code> in case of error.",
                     "name": "tcp_client",
                     "types": [
-                        "client",
+                        "socket_client",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"#socket_client\">socket_client</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#socket_client\">socket_client</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 },
                 {
@@ -1608,6 +2408,14 @@
                     "types": [
                         "string",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 }
             ],
@@ -1615,8 +2423,40 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "DNS address information",
+            "description": "DNS address information",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "family",
+                    "doc": "<code>\"inet\"</code> for IPv4 or <code>\"inet6\"</code> for IPv6",
+                    "is_optional": false,
+                    "name": "family",
+                    "type": "string",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                },
+                {
+                    "display_name": "addr",
+                    "doc": "resolved IP address",
+                    "is_optional": false,
+                    "name": "addr",
+                    "type": "string",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                }
+            ],
+            "name": "socket.dns.address_info",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
             "brief": "resolve to IPv4 or IPv6 address",
-            "description": "This function converts a host name to IPv4 or IPv6 address.\nThe supplied address can be an IPv4 or IPv6 address or host name.\nThe function returns a table with all information returned by the resolver:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"p\">{</span>\n <span class=\"p\">[</span><span class=\"mi\">1</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"p\">{</span>\n    <span class=\"n\">family</span> <span class=\"o\">=</span> <span class=\"n\">family</span><span class=\"o\">-</span><span class=\"n\">name</span><span class=\"o\">-</span><span class=\"mi\">1</span><span class=\"p\">,</span>\n    <span class=\"n\">addr</span> <span class=\"o\">=</span> <span class=\"n\">address</span><span class=\"o\">-</span><span class=\"mi\">1</span>\n  <span class=\"p\">},</span>\n  <span class=\"p\">...</span>\n  <span class=\"p\">[</span><span class=\"n\">n</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"p\">{</span>\n    <span class=\"n\">family</span> <span class=\"o\">=</span> <span class=\"n\">family</span><span class=\"o\">-</span><span class=\"n\">name</span><span class=\"o\">-</span><span class=\"n\">n</span><span class=\"p\">,</span>\n    <span class=\"n\">addr</span> <span class=\"o\">=</span> <span class=\"n\">address</span><span class=\"o\">-</span><span class=\"n\">n</span>\n  <span class=\"p\">}</span>\n<span class=\"p\">}</span>\n</code></pre></div>\n\nHere, family contains the string <code>\"inet\"</code> for IPv4 addresses, and <code>\"inet6\"</code> for IPv6 addresses.\nIn case of error, the function returns nil followed by an error message.",
+            "description": "This function converts a host name to IPv4 or IPv6 address.\nThe supplied address can be an IPv4 or IPv6 address or host name.\nIn case of error, the function returns nil followed by an error message.",
             "error": "",
             "examples": "",
             "language": "",
@@ -1630,17 +2470,31 @@
                     "name": "address",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 }
             ],
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "a table with all information returned by the resolver, or if an error occurs, <code>nil</code>.",
+                    "doc": "resolver information, or <code>nil</code> on error",
                     "name": "resolved",
                     "types": [
-                        "table",
+                        "socket.dns.address_info[]",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"#socket.dns.address_info\">socket.dns.address_info</a>[]",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#socket.dns.address_info\">socket.dns.address_info</a>[]",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 },
                 {
@@ -1649,6 +2503,14 @@
                     "types": [
                         "string",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 }
             ],
@@ -1672,6 +2534,12 @@
                     "name": "hostname",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 }
             ],
@@ -1694,6 +2562,12 @@
                     "name": "address",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 }
             ],
@@ -1703,8 +2577,16 @@
                     "doc": "a table with all information returned by the resolver, or if an error occurs, <code>nil</code>.",
                     "name": "resolved",
                     "types": [
-                        "table",
+                        "string[]",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>[]",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>[]",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 },
                 {
@@ -1713,11 +2595,59 @@
                     "types": [
                         "string",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 }
             ],
             "tparams": [],
             "type": "FUNCTION"
+        },
+        {
+            "brief": "DNS host information",
+            "description": "DNS host information",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "name",
+                    "doc": "canonical host name",
+                    "is_optional": false,
+                    "name": "name",
+                    "type": "string",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                },
+                {
+                    "display_name": "alias",
+                    "doc": "host aliases",
+                    "is_optional": false,
+                    "name": "alias",
+                    "type": "string[]",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>[]"
+                },
+                {
+                    "display_name": "ip",
+                    "doc": "resolved IPv4 addresses",
+                    "is_optional": false,
+                    "name": "ip",
+                    "type": "string[]",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>[]"
+                }
+            ],
+            "name": "socket.dns.host_info",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
         },
         {
             "brief": "resolve to host name (IPv4)",
@@ -1735,6 +2665,12 @@
                     "name": "address",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 }
             ],
@@ -1746,14 +2682,30 @@
                     "types": [
                         "string",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 },
                 {
-                    "doc": "a table with all information returned by the resolver, or if an error occurs, the error message string.",
+                    "doc": "resolver information, or an error message string",
                     "name": "resolved",
                     "types": [
-                        "table",
+                        "socket.dns.host_info",
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"#socket.dns.host_info\">socket.dns.host_info</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#socket.dns.host_info\">socket.dns.host_info</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 }
             ],
@@ -1776,6 +2728,12 @@
                     "name": "address",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 }
             ],
@@ -1787,14 +2745,30 @@
                     "types": [
                         "string",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 },
                 {
-                    "doc": "a table with all information returned by the resolver, or if an error occurs, the error message string.",
+                    "doc": "resolver information, or an error message string",
                     "name": "resolved",
                     "types": [
-                        "table",
+                        "socket.dns.host_info",
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"#socket.dns.host_info\">socket.dns.host_info</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#socket.dns.host_info\">socket.dns.host_info</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 }
             ],
@@ -1818,6 +2792,12 @@
                     "name": "seconds",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -1839,7 +2819,13 @@
                     "is_optional": "False",
                     "name": "finalizer",
                     "types": [
-                        "function()"
+                        "fun()"
+                    ],
+                    "types_html": [
+                        "fun()"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">function</a>()"
                     ]
                 }
             ],
@@ -1849,7 +2835,13 @@
                     "doc": "the customized try function.",
                     "name": "try",
                     "types": [
-                        "function"
+                        "fun(...:any):any"
+                    ],
+                    "types_html": [
+                        "fun(...:<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>):<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">function</a>(\n\t...:<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>):<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>"
                     ]
                 }
             ],
@@ -1871,7 +2863,13 @@
                     "is_optional": "False",
                     "name": "func",
                     "types": [
-                        "function"
+                        "fun(...:any):any"
+                    ],
+                    "types_html": [
+                        "fun(...:<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>):<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">function</a>(\n\t...:<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>):<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>"
                     ]
                 }
             ],
@@ -1881,7 +2879,13 @@
                     "doc": "an equivalent function that instead of throwing exceptions, returns <code>nil</code> followed by an error message.",
                     "name": "safe_func",
                     "types": [
-                        "function(function())"
+                        "fun(...:any):any"
+                    ],
+                    "types_html": [
+                        "fun(...:<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>):<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">function</a>(\n\t...:<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>):<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>"
                     ]
                 }
             ],
@@ -1899,19 +2903,31 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "array with the sockets to test for characters available for reading.",
+                    "doc": "array with the sockets or compatible objects to test for characters available for reading.",
                     "is_optional": "False",
                     "name": "recvt",
                     "types": [
-                        "table"
+                        "socket_selectable[]"
+                    ],
+                    "types_html": [
+                        "<a href=\"#socket_selectable\">socket_selectable</a>[]"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#socket_selectable\">socket_selectable</a>[]"
                     ]
                 },
                 {
-                    "doc": "array with sockets that are watched to see if it is OK to immediately write on them.",
+                    "doc": "array with sockets or compatible objects that are watched to see if it is OK to immediately write on them.",
                     "is_optional": "False",
                     "name": "sendt",
                     "types": [
-                        "table"
+                        "socket_selectable[]"
+                    ],
+                    "types_html": [
+                        "<a href=\"#socket_selectable\">socket_selectable</a>[]"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#socket_selectable\">socket_selectable</a>[]"
                     ]
                 },
                 {
@@ -1920,23 +2936,41 @@
                     "name": "timeout",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "a list with the sockets ready for reading.",
+                    "doc": "sockets ready for reading, keyed both by array index and by socket.",
                     "name": "sockets_r",
                     "types": [
-                        "table"
+                        "table<integer|socket_selectable, socket_selectable|integer>"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">table</a>&lt;<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>|<a href=\"#socket_selectable\">socket_selectable</a>, <a href=\"#socket_selectable\">socket_selectable</a>|<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>&gt;"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">table</a>&lt;<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>|<a href=\"#socket_selectable\">socket_selectable</a>, <a href=\"#socket_selectable\">socket_selectable</a>|<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>&gt;"
                     ]
                 },
                 {
-                    "doc": "a list with the sockets ready for writing.",
+                    "doc": "sockets ready for writing, keyed both by array index and by socket.",
                     "name": "sockets_w",
                     "types": [
-                        "table"
+                        "table<integer|socket_selectable, socket_selectable|integer>"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">table</a>&lt;<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>|<a href=\"#socket_selectable\">socket_selectable</a>, <a href=\"#socket_selectable\">socket_selectable</a>|<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>&gt;"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">table</a>&lt;<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>|<a href=\"#socket_selectable\">socket_selectable</a>, <a href=\"#socket_selectable\">socket_selectable</a>|<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>&gt;"
                     ]
                 },
                 {
@@ -1945,6 +2979,14 @@
                     "types": [
                         "string",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 }
             ],
@@ -1966,58 +3008,43 @@
                     "is_optional": "False",
                     "name": "d",
                     "types": [
-                        "number"
+                        "integer"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
                     ]
                 },
                 {
-                    "doc": "argument 1.",
-                    "is_optional": "True",
-                    "name": "ret1",
+                    "doc": "the values from which to drop arguments.",
+                    "is_optional": "False",
+                    "name": "...",
                     "types": [
                         "any"
-                    ]
-                },
-                {
-                    "doc": "argument 2.",
-                    "is_optional": "True",
-                    "name": "ret2",
-                    "types": [
-                        "any"
-                    ]
-                },
-                {
-                    "doc": "argument N.",
-                    "is_optional": "True",
-                    "name": "retN",
-                    "types": [
-                        "any"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>"
                     ]
                 }
             ],
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "argument D+1.",
-                    "name": "retD+1",
+                    "doc": "the remaining values after the first <code>d</code> values are dropped.",
+                    "name": "...",
                     "types": [
-                        "any",
-                        "nil"
-                    ]
-                },
-                {
-                    "doc": "argument D+2.",
-                    "name": "retD+2",
-                    "types": [
-                        "any",
-                        "nil"
-                    ]
-                },
-                {
-                    "doc": "argument N.",
-                    "name": "retN",
-                    "types": [
-                        "any",
-                        "nil"
+                        "any"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>"
                     ]
                 }
             ],
@@ -2040,6 +3067,12 @@
                     "name": "time",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -2064,8 +3097,16 @@
                     "doc": "a new IPv4 TCP master object, or <code>nil</code> in case of error.",
                     "name": "tcp_master",
                     "types": [
-                        "master",
+                        "socket_master",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"#socket_master\">socket_master</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#socket_master\">socket_master</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 },
                 {
@@ -2074,6 +3115,14 @@
                     "types": [
                         "string",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 }
             ],
@@ -2096,8 +3145,16 @@
                     "doc": "a new IPv6 TCP master object, or <code>nil</code> in case of error.",
                     "name": "tcp_master",
                     "types": [
-                        "master",
+                        "socket_master",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"#socket_master\">socket_master</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#socket_master\">socket_master</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 },
                 {
@@ -2106,6 +3163,14 @@
                     "types": [
                         "string",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 }
             ],
@@ -2128,8 +3193,16 @@
                     "doc": "a new unconnected IPv4 UDP object, or <code>nil</code> in case of error.",
                     "name": "udp_unconnected",
                     "types": [
-                        "unconnected",
+                        "socket_unconnected",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"#socket_unconnected\">socket_unconnected</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#socket_unconnected\">socket_unconnected</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 },
                 {
@@ -2138,6 +3211,14 @@
                     "types": [
                         "string",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 }
             ],
@@ -2160,8 +3241,16 @@
                     "doc": "a new unconnected IPv6 UDP object, or <code>nil</code> in case of error.",
                     "name": "udp_unconnected",
                     "types": [
-                        "unconnected",
+                        "socket_unconnected",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"#socket_unconnected\">socket_unconnected</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#socket_unconnected\">socket_unconnected</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 },
                 {
@@ -2170,6 +3259,14 @@
                     "types": [
                         "string",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 }
             ],
@@ -2177,13 +3274,109 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "unconnected UDP object",
-            "description": "unconnected UDP object",
+            "brief": "TCP client object",
+            "description": "A TCP socket connected to a remote endpoint. Create one with\n<a href=\"/ref/socket#socket.connect\">socket.connect</a>, or by calling <code>connect</code> on a <span class=\"type\"><a href=\"#socket_master\">socket_master</a></span>. Use\n<code>send</code> and <code>receive</code> to exchange stream data, and <code>close</code> when finished.",
             "error": "",
-            "examples": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">client</span> <span class=\"o\">=</span> <span class=\"nb\">assert</span><span class=\"p\">(</span><span class=\"n\">socket</span><span class=\"p\">.</span><span class=\"n\">connect</span><span class=\"p\">(</span><span class=\"s2\">&quot;127.0.0.1&quot;</span><span class=\"p\">,</span> <span class=\"mi\">8000</span><span class=\"p\">))</span>\n<span class=\"nb\">assert</span><span class=\"p\">(</span><span class=\"n\">client</span><span class=\"p\">:</span><span class=\"n\">send</span><span class=\"p\">(</span><span class=\"s2\">&quot;ping</span><span class=\"se\">\\n</span><span class=\"s2\">&quot;</span><span class=\"p\">))</span>\n<span class=\"n\">client</span><span class=\"p\">:</span><span class=\"n\">close</span><span class=\"p\">()</span>\n</code></pre></div>",
             "language": "",
             "members": [],
-            "name": "unconnected",
+            "name": "socket_client",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "connected TCP socket",
+                    "is_optional": "False",
+                    "name": "value",
+                    "types": [
+                        "userdata"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">userdata</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">userdata</a>"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "target_type": "userdata",
+            "target_type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">userdata</a>",
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "Connected UDP object",
+            "description": "A UDP socket associated with one remote peer. Start with a\n<span class=\"type\"><a href=\"#socket_unconnected\">socket_unconnected</a></span> from <a href=\"/ref/socket#socket.udp\">socket.udp</a> or <a href=\"/ref/socket#socket.udp6\">socket.udp6</a>, then call\n<code>setpeername</code>. Connected UDP sockets use <code>send</code> and <code>receive</code> instead of\n<code>sendto</code> and <code>receivefrom</code>.",
+            "error": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">udp</span> <span class=\"o\">=</span> <span class=\"nb\">assert</span><span class=\"p\">(</span><span class=\"n\">socket</span><span class=\"p\">.</span><span class=\"n\">udp</span><span class=\"p\">())</span>\n<span class=\"nb\">assert</span><span class=\"p\">(</span><span class=\"n\">udp</span><span class=\"p\">:</span><span class=\"n\">setpeername</span><span class=\"p\">(</span><span class=\"s2\">&quot;127.0.0.1&quot;</span><span class=\"p\">,</span> <span class=\"mi\">8000</span><span class=\"p\">))</span>\n<span class=\"nb\">assert</span><span class=\"p\">(</span><span class=\"n\">udp</span><span class=\"p\">:</span><span class=\"n\">send</span><span class=\"p\">(</span><span class=\"s2\">&quot;ping&quot;</span><span class=\"p\">))</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "socket_connected",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "connected UDP socket",
+                    "is_optional": "False",
+                    "name": "value",
+                    "types": [
+                        "userdata"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">userdata</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">userdata</a>"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "target_type": "userdata",
+            "target_type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">userdata</a>",
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "TCP master object",
+            "description": "A newly created TCP socket that is not yet connected or listening. Obtain one\nfrom <a href=\"/ref/socket#socket.tcp\">socket.tcp</a> or <a href=\"/ref/socket#socket.tcp6\">socket.tcp6</a>. Calling <code>connect</code> transforms it into\na <span class=\"type\"><a href=\"#socket_client\">socket_client</a></span>; calling <code>bind</code> followed by <code>listen</code> transforms it into a\n<span class=\"type\"><a href=\"#socket_server\">socket_server</a></span>.",
+            "error": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">tcp</span> <span class=\"o\">=</span> <span class=\"nb\">assert</span><span class=\"p\">(</span><span class=\"n\">socket</span><span class=\"p\">.</span><span class=\"n\">tcp</span><span class=\"p\">())</span>\n<span class=\"nb\">assert</span><span class=\"p\">(</span><span class=\"n\">tcp</span><span class=\"p\">:</span><span class=\"n\">bind</span><span class=\"p\">(</span><span class=\"s2\">&quot;*&quot;</span><span class=\"p\">,</span> <span class=\"mi\">8000</span><span class=\"p\">))</span>\n<span class=\"nb\">assert</span><span class=\"p\">(</span><span class=\"n\">tcp</span><span class=\"p\">:</span><span class=\"n\">listen</span><span class=\"p\">(</span><span class=\"mi\">32</span><span class=\"p\">))</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "socket_master",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "unconfigured TCP socket",
+                    "is_optional": "False",
+                    "name": "value",
+                    "types": [
+                        "userdata"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">userdata</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">userdata</a>"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "target_type": "userdata",
+            "target_type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">userdata</a>",
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "Object accepted by socket.select",
+            "description": "In addition to LuaSocket TCP and UDP objects, <code>socket.select()</code> accepts any\nobject that implements compatible <code>getfd</code> and <code>dirty</code> methods.",
+            "error": "",
+            "examples": "Test whether a client can be read without blocking:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">client</span> <span class=\"o\">=</span> <span class=\"nb\">assert</span><span class=\"p\">(</span><span class=\"n\">socket</span><span class=\"p\">.</span><span class=\"n\">connect</span><span class=\"p\">(</span><span class=\"s2\">&quot;127.0.0.1&quot;</span><span class=\"p\">,</span> <span class=\"mi\">8000</span><span class=\"p\">))</span>\n<span class=\"kd\">local</span> <span class=\"n\">readable</span> <span class=\"o\">=</span> <span class=\"n\">socket</span><span class=\"p\">.</span><span class=\"n\">select</span><span class=\"p\">({</span> <span class=\"n\">client</span> <span class=\"p\">},</span> <span class=\"p\">{},</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n<span class=\"kr\">if</span> <span class=\"o\">#</span><span class=\"n\">readable</span> <span class=\"o\">&gt;</span> <span class=\"mi\">0</span> <span class=\"kr\">then</span>\n    <span class=\"kd\">local</span> <span class=\"n\">data</span> <span class=\"o\">=</span> <span class=\"n\">client</span><span class=\"p\">:</span><span class=\"n\">receive</span><span class=\"p\">()</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "socket_selectable",
             "notes": [],
             "parameters": [
                 {
@@ -2191,12 +3384,99 @@
                     "is_optional": "False",
                     "name": "value",
                     "types": [
-                        "userdata"
+                        "socket_master",
+                        "socket_client",
+                        "socket_server",
+                        "socket_connected",
+                        "socket_unconnected",
+                        "{ getfd:fun(self:any):integer, dirty:fun(self:any):boolean }"
+                    ],
+                    "types_html": [
+                        "<a href=\"#socket_master\">socket_master</a>",
+                        "<a href=\"#socket_client\">socket_client</a>",
+                        "<a href=\"#socket_server\">socket_server</a>",
+                        "<a href=\"#socket_connected\">socket_connected</a>",
+                        "<a href=\"#socket_unconnected\">socket_unconnected</a>",
+                        "{ getfd:fun(self:<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>):<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>, dirty:fun(self:<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>):<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a> }"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#socket_master\">socket_master</a>",
+                        "<a href=\"#socket_client\">socket_client</a>",
+                        "<a href=\"#socket_server\">socket_server</a>",
+                        "<a href=\"#socket_connected\">socket_connected</a>",
+                        "<a href=\"#socket_unconnected\">socket_unconnected</a>",
+                        "{getfd:fun(self:<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>):<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>,\ndirty:fun(self:<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>):<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>}"
                     ]
                 }
             ],
             "replaces": "",
             "returnvalues": [],
+            "target_type": "socket_master | socket_client | socket_server | socket_connected | socket_unconnected | { getfd:fun(self:any):integer, dirty:fun(self:any):boolean }",
+            "target_type_html": "<a href=\"#socket_master\">socket_master</a> | <a href=\"#socket_client\">socket_client</a> | <a href=\"#socket_server\">socket_server</a> | <a href=\"#socket_connected\">socket_connected</a> | <a href=\"#socket_unconnected\">socket_unconnected</a> | { getfd:fun(self:<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>):<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>, dirty:fun(self:<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>):<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a> }",
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "TCP server object",
+            "description": "A TCP socket listening for incoming connections. Create one by binding a\n<span class=\"type\"><a href=\"#socket_master\">socket_master</a></span> and calling its <code>listen</code> method. Calling <code>accept</code> returns a\n<span class=\"type\"><a href=\"#socket_client\">socket_client</a></span> for an incoming connection.",
+            "error": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">server</span> <span class=\"o\">=</span> <span class=\"nb\">assert</span><span class=\"p\">(</span><span class=\"n\">socket</span><span class=\"p\">.</span><span class=\"n\">tcp</span><span class=\"p\">())</span>\n<span class=\"nb\">assert</span><span class=\"p\">(</span><span class=\"n\">server</span><span class=\"p\">:</span><span class=\"n\">bind</span><span class=\"p\">(</span><span class=\"s2\">&quot;*&quot;</span><span class=\"p\">,</span> <span class=\"mi\">8000</span><span class=\"p\">))</span>\n<span class=\"nb\">assert</span><span class=\"p\">(</span><span class=\"n\">server</span><span class=\"p\">:</span><span class=\"n\">listen</span><span class=\"p\">(</span><span class=\"mi\">32</span><span class=\"p\">))</span>\n<span class=\"kd\">local</span> <span class=\"n\">client</span> <span class=\"o\">=</span> <span class=\"nb\">assert</span><span class=\"p\">(</span><span class=\"n\">server</span><span class=\"p\">:</span><span class=\"n\">accept</span><span class=\"p\">())</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "socket_server",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "listening TCP socket",
+                    "is_optional": "False",
+                    "name": "value",
+                    "types": [
+                        "userdata"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">userdata</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">userdata</a>"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "target_type": "userdata",
+            "target_type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">userdata</a>",
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "Unconnected UDP object",
+            "description": "A UDP socket without a fixed remote peer, created by <a href=\"/ref/socket#socket.udp\">socket.udp</a> or\n<a href=\"/ref/socket#socket.udp6\">socket.udp6</a>. Use <code>sendto</code> and <code>receivefrom</code> with explicit addresses, or\ncall <code>setpeername</code> to transform it into a <span class=\"type\"><a href=\"#socket_connected\">socket_connected</a></span>.",
+            "error": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">udp</span> <span class=\"o\">=</span> <span class=\"nb\">assert</span><span class=\"p\">(</span><span class=\"n\">socket</span><span class=\"p\">.</span><span class=\"n\">udp</span><span class=\"p\">())</span>\n<span class=\"nb\">assert</span><span class=\"p\">(</span><span class=\"n\">udp</span><span class=\"p\">:</span><span class=\"n\">sendto</span><span class=\"p\">(</span><span class=\"s2\">&quot;ping&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;127.0.0.1&quot;</span><span class=\"p\">,</span> <span class=\"mi\">8000</span><span class=\"p\">))</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "socket_unconnected",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "unconnected UDP socket",
+                    "is_optional": "False",
+                    "name": "value",
+                    "types": [
+                        "userdata"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">userdata</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">userdata</a>"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "target_type": "userdata",
+            "target_type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">userdata</a>",
             "tparams": [],
             "type": "TYPEDEF"
         },
@@ -2211,7 +3491,21 @@
             "notes": [],
             "parameters": [],
             "replaces": "",
-            "returnvalues": [],
+            "returnvalues": [
+                {
+                    "doc": "the value <code>1</code>.",
+                    "name": "success",
+                    "types": [
+                        "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ]
+                }
+            ],
             "tparams": [],
             "type": "FUNCTION"
         },
@@ -2231,6 +3525,12 @@
                     "name": "option",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 }
             ],
@@ -2242,6 +3542,14 @@
                     "types": [
                         "any",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 },
                 {
@@ -2250,6 +3558,14 @@
                     "types": [
                         "string",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 }
             ],
@@ -2269,10 +3585,48 @@
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "a string with local IP address, a number with the local port, and the family (\"inet\" or \"inet6\"). In case of error, the method returns <code>nil</code>.",
-                    "name": "info",
+                    "doc": "the local IP address, or <code>nil</code> in case of error.",
+                    "name": "address",
+                    "types": [
+                        "string",
+                        "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ]
+                },
+                {
+                    "doc": "the local port, or the error message in case of error.",
+                    "name": "port_or_error",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ]
+                },
+                {
+                    "doc": "the socket family (<code>\"inet\"</code> or <code>\"inet6\"</code>), or <code>nil</code> in case of error.",
+                    "name": "family",
+                    "types": [
+                        "string",
+                        "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 }
             ],
@@ -2295,6 +3649,12 @@
                     "name": "size",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -2306,6 +3666,14 @@
                     "types": [
                         "string",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 },
                 {
@@ -2314,6 +3682,14 @@
                     "types": [
                         "string",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 }
             ],
@@ -2336,6 +3712,12 @@
                     "name": "size",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -2347,6 +3729,14 @@
                     "types": [
                         "string",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 },
                 {
@@ -2354,6 +3744,12 @@
                     "name": "ip_or_error",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 },
                 {
@@ -2362,6 +3758,14 @@
                     "types": [
                         "number",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 }
             ],
@@ -2384,6 +3788,12 @@
                     "name": "datagram",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 },
                 {
@@ -2392,6 +3802,12 @@
                     "name": "ip",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 },
                 {
@@ -2400,6 +3816,12 @@
                     "name": "port",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -2411,6 +3833,14 @@
                     "types": [
                         "number",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 },
                 {
@@ -2419,6 +3849,14 @@
                     "types": [
                         "string",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 }
             ],
@@ -2436,11 +3874,17 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "the name of the option to set. The value is provided in the <code>value</code> parameter:\n<dl>\n<dt><code>\"dontroute\"</code></dt>\n<dd>Indicates that outgoing messages should bypass the standard routing facilities. Receives a boolean value;</dd>\n<dt><code>\"broadcast\"</code></dt>\n<dd>Requests permission to send broadcast datagrams on the socket. Receives a boolean value;</dd>\n<dt><code>\"reuseaddr\"</code></dt>\n<dd>Indicates that the rules used in validating addresses supplied in a <code>bind</code> call should allow reuse of local addresses. Receives a boolean value;</dd>\n<dt><code>\"reuseport\"</code></dt>\n<dd>Allows completely duplicate bindings by multiple processes if they all set <code>\"reuseport\"</code> before binding the port. Receives a boolean value;</dd>\n<dt><code>\"ip-multicast-loop\"</code></dt>\n<dd>Specifies whether or not a copy of an outgoing multicast datagram is delivered to the sending host as long as it is a member of the multicast group. Receives a boolean value;</dd>\n<dt><code>\"ipv6-v6only\"</code></dt>\n<dd>Specifies whether to restrict inet6 sockets to sending and receiving only IPv6 packets. Receive a boolean value;</dd>\n<dt><code>\"ip-multicast-if\"</code></dt>\n<dd>Sets the interface over which outgoing multicast datagrams are sent. Receives an IP address;</dd>\n<dt><code>\"ip-multicast-ttl\"</code></dt>\n<dd>Sets the Time To Live in the IP header for outgoing multicast datagrams. Receives a number;</dd>\n</dl>\n<code>\"ip-add-membership\"</code>: Joins the multicast group specified. Receives a table with fields:\n<ul>\n<li><span class=\"type\">string</span> <code>multiaddr</code> (IP address)</li>\n<li><span class=\"type\">string</span> <code>interface</code> (IP address)</li>\n</ul>\n<dl>\n<dt>\"'ip-drop-membership\"`</dt>\n<dd>Leaves the multicast group specified. Receives a table with fields:</dd>\n</dl>\n<ul>\n<li><span class=\"type\">string</span> <code>multiaddr</code> (IP address)</li>\n<li><span class=\"type\">string</span> <code>interface</code> (IP address)</li>\n</ul>",
+                    "doc": "the name of the option to set. The value is provided in the <code>value</code> parameter:\n<dl>\n<dt><code>\"dontroute\"</code></dt>\n<dd>Indicates that outgoing messages should bypass the standard routing facilities. Receives a boolean value;</dd>\n<dt><code>\"broadcast\"</code></dt>\n<dd>Requests permission to send broadcast datagrams on the socket. Receives a boolean value;</dd>\n<dt><code>\"reuseaddr\"</code></dt>\n<dd>Indicates that the rules used in validating addresses supplied in a <code>bind</code> call should allow reuse of local addresses. Receives a boolean value;</dd>\n<dt><code>\"reuseport\"</code></dt>\n<dd>Allows completely duplicate bindings by multiple processes if they all set <code>\"reuseport\"</code> before binding the port. Receives a boolean value;</dd>\n<dt><code>\"ip-multicast-loop\"</code></dt>\n<dd>Specifies whether or not a copy of an outgoing multicast datagram is delivered to the sending host as long as it is a member of the multicast group. Receives a boolean value;</dd>\n<dt><code>\"ipv6-v6only\"</code></dt>\n<dd>Specifies whether to restrict inet6 sockets to sending and receiving only IPv6 packets. Receive a boolean value;</dd>\n<dt><code>\"ip-multicast-if\"</code></dt>\n<dd>Sets the interface over which outgoing multicast datagrams are sent. Receives an IP address;</dd>\n<dt><code>\"ip-multicast-ttl\"</code></dt>\n<dd>Sets the Time To Live in the IP header for outgoing multicast datagrams. Receives a number;</dd>\n</dl>\n<code>\"ip-add-membership\"</code>: Joins the multicast group specified. Receives a table with fields:\n<ul>\n<li><span class=\"type\"><a href=\"../../../manuals/lua/#variables-and-data-types\">string</a></span> <code>multiaddr</code> (IP address)</li>\n<li><span class=\"type\"><a href=\"../../../manuals/lua/#variables-and-data-types\">string</a></span> <code>interface</code> (IP address)</li>\n</ul>\n<dl>\n<dt>\"'ip-drop-membership\"`</dt>\n<dd>Leaves the multicast group specified. Receives a table with fields:</dd>\n</dl>\n<ul>\n<li><span class=\"type\"><a href=\"../../../manuals/lua/#variables-and-data-types\">string</a></span> <code>multiaddr</code> (IP address)</li>\n<li><span class=\"type\"><a href=\"../../../manuals/lua/#variables-and-data-types\">string</a></span> <code>interface</code> (IP address)</li>\n</ul>",
                     "is_optional": "False",
                     "name": "option",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 },
                 {
@@ -2449,6 +3893,12 @@
                     "name": "value",
                     "types": [
                         "any"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>"
                     ]
                 }
             ],
@@ -2460,6 +3910,14 @@
                     "types": [
                         "number",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 },
                 {
@@ -2468,6 +3926,14 @@
                     "types": [
                         "string",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 }
             ],
@@ -2490,6 +3956,12 @@
                     "name": "address",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 },
                 {
@@ -2498,6 +3970,12 @@
                     "name": "port",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -2509,6 +3987,14 @@
                     "types": [
                         "number",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 },
                 {
@@ -2517,6 +4003,14 @@
                     "types": [
                         "string",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 }
             ],
@@ -2539,6 +4033,12 @@
                     "name": "address",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 },
                 {
@@ -2547,6 +4047,12 @@
                     "name": "port",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -2558,6 +4064,14 @@
                     "types": [
                         "number",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 },
                 {
@@ -2566,6 +4080,14 @@
                     "types": [
                         "string",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 }
             ],
@@ -2584,19 +4106,43 @@
             "parameters": [
                 {
                     "doc": "the amount of time to wait, in seconds. The <code>nil</code> timeout value allows operations to block indefinitely. Negative timeout values have the same effect.",
-                    "is_optional": "False",
+                    "is_optional": "True",
                     "name": "value",
                     "types": [
-                        "number"
+                        "number",
+                        "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 }
             ],
             "replaces": "",
-            "returnvalues": [],
+            "returnvalues": [
+                {
+                    "doc": "the value <code>1</code>.",
+                    "name": "success",
+                    "types": [
+                        "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ]
+                }
+            ],
             "tparams": [],
             "type": "FUNCTION"
         }
     ],
+    "format_version": 2,
     "info": {
         "api_language": "Lua",
         "brief": "LuaSocket API documentation",

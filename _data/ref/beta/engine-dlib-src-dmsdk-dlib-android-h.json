@@ -47,6 +47,29 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "get's the previously registered android app",
+            "description": "get's the previously registered android app",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetAndroidApp",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "The registered android app",
+                    "name": "app",
+                    "types": [
+                        "struct android_app*"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "Gets the JNI environment",
             "description": "Gets the JNI environment",
             "error": "",
@@ -321,6 +344,30 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "sets the android app",
+            "description": "sets the android app",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "SetAndroidApp",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "The registered android app",
+                    "is_optional": "False",
+                    "name": "app",
+                    "types": [
+                        "struct android_app*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "Struct attaching the JNI environment.",
             "description": "Struct attaching the JNI environment.",
             "error": "",
@@ -403,6 +450,7 @@
             "type": "FUNCTION"
         }
     ],
+    "format_version": 2,
     "info": {
         "api_language": "C++",
         "brief": "Android API documentation",

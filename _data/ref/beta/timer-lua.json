@@ -4,7 +4,7 @@
             "brief": "cancel a timer",
             "description": "You may cancel a timer from inside a timer callback.\nCancelling a timer that is already executed or cancelled is safe.",
             "error": "",
-            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">handle</span> <span class=\"o\">=</span> <span class=\"n\">timer</span><span class=\"p\">.</span><span class=\"n\">delay</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"kc\">true</span><span class=\"p\">,</span> <span class=\"kr\">function</span><span class=\"p\">()</span> <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;print every second&quot;</span><span class=\"p\">)</span> <span class=\"kr\">end</span><span class=\"p\">)</span>\n<span class=\"p\">...</span>\n<span class=\"kd\">local</span> <span class=\"n\">result</span> <span class=\"o\">=</span> <span class=\"n\">timer</span><span class=\"p\">.</span><span class=\"n\">cancel</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">handle</span><span class=\"p\">)</span>\n<span class=\"kr\">if</span> <span class=\"ow\">not</span> <span class=\"n\">result</span> <span class=\"kr\">then</span>\n   <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;the timer is already cancelled&quot;</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">handle</span> <span class=\"o\">=</span> <span class=\"n\">timer</span><span class=\"p\">.</span><span class=\"n\">delay</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"kc\">true</span><span class=\"p\">,</span> <span class=\"kr\">function</span><span class=\"p\">()</span> <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;print every second&quot;</span><span class=\"p\">)</span> <span class=\"kr\">end</span><span class=\"p\">)</span>\n<span class=\"p\">...</span>\n<span class=\"kd\">local</span> <span class=\"n\">cancelled</span> <span class=\"o\">=</span> <span class=\"n\">timer</span><span class=\"p\">.</span><span class=\"n\">cancel</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">handle</span><span class=\"p\">)</span>\n<span class=\"kr\">if</span> <span class=\"ow\">not</span> <span class=\"n\">cancelled</span> <span class=\"kr\">then</span>\n   <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;the timer is already cancelled&quot;</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
             "language": "",
             "members": [],
             "name": "timer.cancel",
@@ -15,17 +15,29 @@
                     "is_optional": "False",
                     "name": "handle",
                     "types": [
-                        "number"
+                        "timer_handle"
+                    ],
+                    "types_html": [
+                        "<a href=\"#timer_handle\">timer_handle</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#timer_handle\">timer_handle</a>"
                     ]
                 }
             ],
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "if the timer was active, false if the timer is already cancelled / complete",
-                    "name": "true",
+                    "doc": "<code>true</code> if the timer was active and cancelled, <code>false</code> if the timer was already cancelled or complete",
+                    "name": "cancelled",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
@@ -48,6 +60,12 @@
                     "name": "delay",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -56,14 +74,26 @@
                     "name": "repeating",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 },
                 {
-                    "doc": "timer callback function\n<dl>\n<dt><code>self</code></dt>\n<dd><span class=\"type\">object</span> The current object</dd>\n<dt><code>handle</code></dt>\n<dd><span class=\"type\">number</span> The handle of the timer</dd>\n<dt><code>time_elapsed</code></dt>\n<dd><span class=\"type\">number</span> The elapsed time - on first trigger it is time since timer.delay call, otherwise time since last trigger</dd>\n</dl>",
+                    "doc": "timer callback function\n<dl>\n<dt class=\"api-lua-v2-type-definition\"><code>self:<a href=\"../builtins-lua/#script_instance\">script_instance</a></code></dt>\n<dd>The current script instance</dd>\n<dt class=\"api-lua-v2-type-definition\"><code>handle:<a href=\"#timer_handle\">timer_handle</a></code></dt>\n<dd>The handle of the timer</dd>\n<dt class=\"api-lua-v2-type-definition\"><code>time_elapsed:<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a></code></dt>\n<dd>The elapsed time - on first trigger it is time since timer.delay call, otherwise time since last trigger</dd>\n</dl>",
                     "is_optional": "False",
                     "name": "callback",
                     "types": [
-                        "function(self, handle, time_elapsed)"
+                        "fun(self:script_instance, handle:timer_handle, time_elapsed:number)"
+                    ],
+                    "types_html": [
+                        "fun(self:<a href=\"../builtins-lua/#script_instance\">script_instance</a>, handle:<a href=\"#timer_handle\">timer_handle</a>, time_elapsed:<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>)"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">function</a>(\n\tself:<a href=\"../builtins-lua/#script_instance\">script_instance</a>,\n\thandle:<a href=\"#timer_handle\">timer_handle</a>,\n\ttime_elapsed:<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>)"
                     ]
                 }
             ],
@@ -73,7 +103,13 @@
                     "doc": "identifier for the create timer, returns timer.INVALID_TIMER_HANDLE if the timer can not be created",
                     "name": "handle",
                     "types": [
-                        "number"
+                        "timer_handle"
+                    ],
+                    "types_html": [
+                        "<a href=\"#timer_handle\">timer_handle</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#timer_handle\">timer_handle</a>"
                     ]
                 }
             ],
@@ -95,18 +131,32 @@
                     "is_optional": "False",
                     "name": "handle",
                     "types": [
-                        "number"
+                        "timer_handle"
+                    ],
+                    "types_html": [
+                        "<a href=\"#timer_handle\">timer_handle</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#timer_handle\">timer_handle</a>"
                     ]
                 }
             ],
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "table or <code>nil</code> if timer is cancelled/completed. table with data in the following fields:\n<dl>\n<dt><code>time_remaining</code></dt>\n<dd><span class=\"type\">number</span> Time remaining until the next time a timer.delay() fires.</dd>\n<dt><code>delay</code></dt>\n<dd><span class=\"type\">number</span> Time interval.</dd>\n<dt><code>repeating</code></dt>\n<dd><span class=\"type\">boolean</span> true = repeat timer until cancel, false = one-shot timer.</dd>\n</dl>",
+                    "doc": "timer information, or <code>nil</code> if the timer is cancelled or complete",
                     "name": "data",
                     "types": [
-                        "table",
+                        "timer.info",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"#timer.info\">timer.info</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#timer.info\">timer.info</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 }
             ],
@@ -114,25 +164,82 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "Indicates an invalid timer handle",
-            "description": "Indicates an invalid timer handle",
+            "brief": "Timer information",
+            "description": "Timer information",
             "error": "",
             "examples": "",
             "language": "",
-            "members": [],
-            "name": "timer.INVALID_TIMER_HANDLE",
+            "members": [
+                {
+                    "display_name": "time_remaining",
+                    "doc": "Time remaining until the next callback.",
+                    "is_optional": false,
+                    "name": "time_remaining",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "delay",
+                    "doc": "Timer interval.",
+                    "is_optional": false,
+                    "name": "delay",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "repeating",
+                    "doc": "Whether the timer repeats until cancelled.",
+                    "is_optional": false,
+                    "name": "repeating",
+                    "type": "boolean",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                }
+            ],
+            "name": "timer.info",
             "notes": [],
             "parameters": [],
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "CONSTANT"
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Indicates an invalid timer handle",
+            "description": "Indicates an invalid timer handle",
+            "error": "",
+            "examples": "",
+            "is_enum_member": false,
+            "language": "",
+            "members": [],
+            "name": "timer.INVALID_TIMER_HANDLE",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "value",
+                    "types": [
+                        "timer_handle"
+                    ],
+                    "types_html": [
+                        "<a href=\"#timer_handle\">timer_handle</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#timer_handle\">timer_handle</a>"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "CONSTANT",
+            "value_type": "timer_handle"
         },
         {
             "brief": "trigger a callback",
             "description": "Manual triggering a callback for a timer.",
             "error": "",
-            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">handle</span> <span class=\"o\">=</span> <span class=\"n\">timer</span><span class=\"p\">.</span><span class=\"n\">delay</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"kc\">true</span><span class=\"p\">,</span> <span class=\"kr\">function</span><span class=\"p\">()</span> <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;print every second or manually by timer.trigger&quot;</span><span class=\"p\">)</span> <span class=\"kr\">end</span><span class=\"p\">)</span>\n<span class=\"p\">...</span>\n<span class=\"kd\">local</span> <span class=\"n\">result</span> <span class=\"o\">=</span> <span class=\"n\">timer</span><span class=\"p\">.</span><span class=\"n\">trigger</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">handle</span><span class=\"p\">)</span>\n<span class=\"kr\">if</span> <span class=\"ow\">not</span> <span class=\"n\">result</span> <span class=\"kr\">then</span>\n   <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;the timer is already cancelled or complete&quot;</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">handle</span> <span class=\"o\">=</span> <span class=\"n\">timer</span><span class=\"p\">.</span><span class=\"n\">delay</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"kc\">true</span><span class=\"p\">,</span> <span class=\"kr\">function</span><span class=\"p\">()</span> <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;print every second or manually by timer.trigger&quot;</span><span class=\"p\">)</span> <span class=\"kr\">end</span><span class=\"p\">)</span>\n<span class=\"p\">...</span>\n<span class=\"kd\">local</span> <span class=\"n\">triggered</span> <span class=\"o\">=</span> <span class=\"n\">timer</span><span class=\"p\">.</span><span class=\"n\">trigger</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">handle</span><span class=\"p\">)</span>\n<span class=\"kr\">if</span> <span class=\"ow\">not</span> <span class=\"n\">triggered</span> <span class=\"kr\">then</span>\n   <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;the timer is already cancelled or complete&quot;</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
             "language": "",
             "members": [],
             "name": "timer.trigger",
@@ -143,24 +250,69 @@
                     "is_optional": "False",
                     "name": "handle",
                     "types": [
-                        "number"
+                        "timer_handle"
+                    ],
+                    "types_html": [
+                        "<a href=\"#timer_handle\">timer_handle</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#timer_handle\">timer_handle</a>"
                     ]
                 }
             ],
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "if the timer was active, false if the timer is already cancelled / complete",
-                    "name": "true",
+                    "doc": "<code>true</code> if the timer was active and triggered, <code>false</code> if the timer was already cancelled or complete",
+                    "name": "triggered",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
             "tparams": [],
             "type": "FUNCTION"
+        },
+        {
+            "brief": "Timer handle",
+            "description": "An opaque numeric identifier returned by <a href=\"/ref/timer#timer.delay\">timer.delay</a>. Pass it to\n<a href=\"/ref/timer#timer.cancel\">timer.cancel</a>, <a href=\"/ref/timer#timer.trigger\">timer.trigger</a>, or <a href=\"/ref/timer#timer.get_info\">timer.get_info</a> to control\nthe timer. Timers are owned by the script that created them and are removed\nautomatically when the script is deleted. A failed creation returns\n<code>timer.INVALID_TIMER_HANDLE</code>.",
+            "error": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">handle</span> <span class=\"o\">=</span> <span class=\"n\">timer</span><span class=\"p\">.</span><span class=\"n\">delay</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"kc\">true</span><span class=\"p\">,</span> <span class=\"kr\">function</span><span class=\"p\">()</span>\n    <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;tick&quot;</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span><span class=\"p\">)</span>\n\n<span class=\"n\">timer</span><span class=\"p\">.</span><span class=\"n\">cancel</span><span class=\"p\">(</span><span class=\"n\">handle</span><span class=\"p\">)</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "timer_handle",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "timer identifier",
+                    "is_optional": "False",
+                    "name": "value",
+                    "types": [
+                        "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "target_type": "number",
+            "target_type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+            "tparams": [],
+            "type": "TYPEDEF"
         }
     ],
+    "format_version": 2,
     "info": {
         "api_language": "Lua",
         "brief": "Timer API documentation",

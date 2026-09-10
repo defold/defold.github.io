@@ -2,27 +2,739 @@
     "elements": [
         {
             "brief": "Box2D body",
-            "description": "Box2D body",
+            "description": "An opaque handle to the native Box2D body of a collision-object component.\nObtain it with <a href=\"/ref/b2d#b2d.get_body\">b2d.get_body</a> and pass it to functions in <code>b2d.body</code>.\nThe collision object owns the body, so the handle becomes invalid when its\ncomponent or game object is deleted.",
             "error": "",
-            "examples": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">body</span> <span class=\"o\">=</span> <span class=\"n\">b2d</span><span class=\"p\">.</span><span class=\"n\">get_body</span><span class=\"p\">(</span><span class=\"s2\">&quot;#collisionobject&quot;</span><span class=\"p\">)</span>\n<span class=\"kr\">if</span> <span class=\"n\">body</span> <span class=\"kr\">then</span>\n    <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">b2d</span><span class=\"p\">.</span><span class=\"n\">body</span><span class=\"p\">.</span><span class=\"n\">get_position</span><span class=\"p\">(</span><span class=\"n\">body</span><span class=\"p\">))</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
             "language": "",
             "members": [],
             "name": "b2Body",
             "notes": [],
             "parameters": [
                 {
-                    "doc": "",
+                    "doc": "Box2D body handle",
                     "is_optional": "False",
                     "name": "value",
                     "types": [
                         "userdata"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">userdata</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">userdata</a>"
                     ]
                 }
             ],
             "replaces": "",
             "returnvalues": [],
+            "target_type": "userdata",
+            "target_type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">userdata</a>",
             "tparams": [],
             "type": "TYPEDEF"
+        },
+        {
+            "brief": "Box2D axis-aligned bounding box",
+            "description": "Box2D axis-aligned bounding box",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "lower",
+                    "doc": "Lower bound.",
+                    "is_optional": false,
+                    "name": "lower",
+                    "type": "vector3",
+                    "type_html": "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                },
+                {
+                    "display_name": "upper",
+                    "doc": "Upper bound.",
+                    "is_optional": false,
+                    "name": "upper",
+                    "type": "vector3",
+                    "type_html": "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                }
+            ],
+            "name": "b2d.aabb",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Box2D 3.x chain definition",
+            "description": "Box2D 3.x chain definition",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "vertices",
+                    "doc": "Chain vertices.",
+                    "is_optional": false,
+                    "name": "vertices",
+                    "type": "vector3[]",
+                    "type_html": "<a href=\"../vmath-lua/#vector3\">vector3</a>[]"
+                },
+                {
+                    "display_name": "loop",
+                    "doc": "Whether the chain is closed.",
+                    "is_optional": true,
+                    "name": "loop?",
+                    "type": "boolean",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                },
+                {
+                    "display_name": "prev_vertex",
+                    "doc": "Ghost vertex preceding an open chain.",
+                    "is_optional": true,
+                    "name": "prev_vertex?",
+                    "type": "vector3",
+                    "type_html": "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                },
+                {
+                    "display_name": "next_vertex",
+                    "doc": "Ghost vertex following an open chain.",
+                    "is_optional": true,
+                    "name": "next_vertex?",
+                    "type": "vector3",
+                    "type_html": "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                },
+                {
+                    "display_name": "friction",
+                    "doc": "Segment friction.",
+                    "is_optional": true,
+                    "name": "friction?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "restitution",
+                    "doc": "Segment restitution.",
+                    "is_optional": true,
+                    "name": "restitution?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "material",
+                    "doc": "Segment material identifier.",
+                    "is_optional": true,
+                    "name": "material?",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "filter",
+                    "doc": "Collision filter fields to override.",
+                    "is_optional": true,
+                    "name": "filter?",
+                    "type": "b2d.filter_options",
+                    "type_html": "<a href=\"#b2d.filter_options\">b2d.filter_options</a>"
+                },
+                {
+                    "display_name": "enable_sensor_events",
+                    "doc": "Whether to enable sensor events.",
+                    "is_optional": true,
+                    "name": "enable_sensor_events?",
+                    "type": "boolean",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                }
+            ],
+            "name": "b2d.chain_definition",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Box2D chain geometry",
+            "description": "Box2D chain geometry",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "loop",
+                    "doc": "Whether the chain is closed.",
+                    "is_optional": false,
+                    "name": "loop",
+                    "type": "boolean",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                },
+                {
+                    "display_name": "segment_count",
+                    "doc": "Number of chain segments.",
+                    "is_optional": false,
+                    "name": "segment_count",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "vertices",
+                    "doc": "Chain vertices.",
+                    "is_optional": false,
+                    "name": "vertices",
+                    "type": "vector3[]",
+                    "type_html": "<a href=\"../vmath-lua/#vector3\">vector3</a>[]"
+                },
+                {
+                    "display_name": "prev_vertex",
+                    "doc": "Ghost vertex preceding an open chain.",
+                    "is_optional": true,
+                    "name": "prev_vertex?",
+                    "type": "vector3",
+                    "type_html": "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                },
+                {
+                    "display_name": "next_vertex",
+                    "doc": "Ghost vertex following an open chain.",
+                    "is_optional": true,
+                    "name": "next_vertex?",
+                    "type": "vector3",
+                    "type_html": "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                }
+            ],
+            "name": "b2d.chain_geometry",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Box2D contact data",
+            "description": "Box2D contact data",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "shape_a",
+                    "doc": "First contact shape.",
+                    "is_optional": false,
+                    "name": "shape_a",
+                    "type": "b2d.shape_info",
+                    "type_html": "<a href=\"#b2d.shape_info\">b2d.shape_info</a>"
+                },
+                {
+                    "display_name": "shape_b",
+                    "doc": "Second contact shape.",
+                    "is_optional": false,
+                    "name": "shape_b",
+                    "type": "b2d.shape_info",
+                    "type_html": "<a href=\"#b2d.shape_info\">b2d.shape_info</a>"
+                },
+                {
+                    "display_name": "normal",
+                    "doc": "Contact normal.",
+                    "is_optional": false,
+                    "name": "normal",
+                    "type": "vector3",
+                    "type_html": "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                },
+                {
+                    "display_name": "rolling_impulse",
+                    "doc": "Rolling resistance impulse.",
+                    "is_optional": false,
+                    "name": "rolling_impulse",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "point_count",
+                    "doc": "Number of manifold points.",
+                    "is_optional": false,
+                    "name": "point_count",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "points",
+                    "doc": "Contact manifold points.",
+                    "is_optional": false,
+                    "name": "points",
+                    "type": "b2d.contact_point[]",
+                    "type_html": "<a href=\"#b2d.contact_point\">b2d.contact_point</a>[]"
+                }
+            ],
+            "name": "b2d.contact_data",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Box2D contact manifold point",
+            "description": "Box2D contact manifold point",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "point",
+                    "doc": "World contact point.",
+                    "is_optional": false,
+                    "name": "point",
+                    "type": "vector3",
+                    "type_html": "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                },
+                {
+                    "display_name": "anchor_a",
+                    "doc": "Contact anchor on the first body.",
+                    "is_optional": false,
+                    "name": "anchor_a",
+                    "type": "vector3",
+                    "type_html": "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                },
+                {
+                    "display_name": "anchor_b",
+                    "doc": "Contact anchor on the second body.",
+                    "is_optional": false,
+                    "name": "anchor_b",
+                    "type": "vector3",
+                    "type_html": "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                },
+                {
+                    "display_name": "separation",
+                    "doc": "Contact separation.",
+                    "is_optional": false,
+                    "name": "separation",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "normal_impulse",
+                    "doc": "Normal impulse.",
+                    "is_optional": false,
+                    "name": "normal_impulse",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "tangent_impulse",
+                    "doc": "Tangent impulse.",
+                    "is_optional": false,
+                    "name": "tangent_impulse",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "total_normal_impulse",
+                    "doc": "Total normal impulse.",
+                    "is_optional": false,
+                    "name": "total_normal_impulse",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "normal_velocity",
+                    "doc": "Relative normal velocity.",
+                    "is_optional": false,
+                    "name": "normal_velocity",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "id",
+                    "doc": "Contact point identifier.",
+                    "is_optional": false,
+                    "name": "id",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "persisted",
+                    "doc": "Whether the point persisted from the previous step.",
+                    "is_optional": false,
+                    "name": "persisted",
+                    "type": "boolean",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                }
+            ],
+            "name": "b2d.contact_point",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Box2D explosion definition",
+            "description": "Box2D explosion definition",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "position",
+                    "doc": "Explosion center.",
+                    "is_optional": false,
+                    "name": "position",
+                    "type": "vector3",
+                    "type_html": "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                },
+                {
+                    "display_name": "radius",
+                    "doc": "Explosion radius.",
+                    "is_optional": false,
+                    "name": "radius",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "falloff",
+                    "doc": "Distance over which the impulse falls off.",
+                    "is_optional": false,
+                    "name": "falloff",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "impulse_per_length",
+                    "doc": "Impulse applied per unit length.",
+                    "is_optional": false,
+                    "name": "impulse_per_length",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "mask_bits",
+                    "doc": "Optional collision mask.",
+                    "is_optional": true,
+                    "name": "mask_bits?",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                }
+            ],
+            "name": "b2d.explosion_definition",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Box2D collision filter",
+            "description": "Box2D collision filter",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "category_bits",
+                    "doc": "Collision category bits.",
+                    "is_optional": false,
+                    "name": "category_bits",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "mask_bits",
+                    "doc": "Collision mask bits.",
+                    "is_optional": false,
+                    "name": "mask_bits",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "group_index",
+                    "doc": "Collision group index.",
+                    "is_optional": false,
+                    "name": "group_index",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                }
+            ],
+            "name": "b2d.filter",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Partial Box2D collision filter",
+            "description": "Partial Box2D collision filter",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "category_bits",
+                    "doc": "Collision category bits.",
+                    "is_optional": true,
+                    "name": "category_bits?",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "mask_bits",
+                    "doc": "Collision mask bits.",
+                    "is_optional": true,
+                    "name": "mask_bits?",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "group_index",
+                    "doc": "Collision group index.",
+                    "is_optional": true,
+                    "name": "group_index?",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                }
+            ],
+            "name": "b2d.filter_options",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Box2D 2.x cast hit",
+            "description": "Box2D 2.x cast hit",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "fixture",
+                    "doc": "Hit fixture.",
+                    "is_optional": false,
+                    "name": "fixture",
+                    "type": "b2d.fixture_info",
+                    "type_html": "<a href=\"#b2d.fixture_info\">b2d.fixture_info</a>"
+                },
+                {
+                    "display_name": "shape",
+                    "doc": "Hit fixture child shape.",
+                    "is_optional": false,
+                    "name": "shape",
+                    "type": "b2d.fixture_info",
+                    "type_html": "<a href=\"#b2d.fixture_info\">b2d.fixture_info</a>"
+                },
+                {
+                    "display_name": "point",
+                    "doc": "Hit point.",
+                    "is_optional": false,
+                    "name": "point",
+                    "type": "vector3",
+                    "type_html": "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                },
+                {
+                    "display_name": "normal",
+                    "doc": "Hit normal.",
+                    "is_optional": false,
+                    "name": "normal",
+                    "type": "vector3",
+                    "type_html": "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                },
+                {
+                    "display_name": "fraction",
+                    "doc": "Hit fraction.",
+                    "is_optional": false,
+                    "name": "fraction",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "node_visits",
+                    "doc": "Number of tree nodes visited by a closest query.",
+                    "is_optional": true,
+                    "name": "node_visits?",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "leaf_visits",
+                    "doc": "Number of tree leaves visited by a closest query.",
+                    "is_optional": true,
+                    "name": "leaf_visits?",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                }
+            ],
+            "name": "b2d.fixture_cast_hit",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Box2D 2.x fixture definition",
+            "description": "Box2D 2.x fixture definition",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "shape",
+                    "doc": "Shape definition.",
+                    "is_optional": false,
+                    "name": "shape",
+                    "type": "b2d.shape.definition",
+                    "type_html": "<a href=\"../b2d.shape-lua/#b2d.shape.definition\">b2d.shape.definition</a>"
+                },
+                {
+                    "display_name": "friction",
+                    "doc": "Fixture friction.",
+                    "is_optional": true,
+                    "name": "friction?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "restitution",
+                    "doc": "Fixture restitution.",
+                    "is_optional": true,
+                    "name": "restitution?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "density",
+                    "doc": "Fixture density.",
+                    "is_optional": true,
+                    "name": "density?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "sensor",
+                    "doc": "Whether the fixture is a sensor.",
+                    "is_optional": true,
+                    "name": "sensor?",
+                    "type": "boolean",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                },
+                {
+                    "display_name": "is_sensor",
+                    "doc": "Alias for <code>sensor</code>.",
+                    "is_optional": true,
+                    "name": "is_sensor?",
+                    "type": "boolean",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                },
+                {
+                    "display_name": "filter",
+                    "doc": "Collision filter.",
+                    "is_optional": true,
+                    "name": "filter?",
+                    "type": "b2d.filter",
+                    "type_html": "<a href=\"#b2d.filter\">b2d.filter</a>"
+                }
+            ],
+            "name": "b2d.fixture_definition",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Box2D 2.x fixture information",
+            "description": "Box2D 2.x fixture information",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "body",
+                    "doc": "Owning body, when returned from a world query.",
+                    "is_optional": true,
+                    "name": "body?",
+                    "type": "b2Body",
+                    "type_html": "<a href=\"#b2Body\">b2Body</a>"
+                },
+                {
+                    "display_name": "index",
+                    "doc": "Fixture index on the body.",
+                    "is_optional": false,
+                    "name": "index",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "child_index",
+                    "doc": "Child-shape index, when returned from a world query.",
+                    "is_optional": true,
+                    "name": "child_index?",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "type",
+                    "doc": "Shape type.",
+                    "is_optional": false,
+                    "name": "type",
+                    "type": "b2d.shape.SHAPE_TYPE",
+                    "type_html": "<a href=\"../b2d.shape-lua/#b2d.shape.SHAPE_TYPE\">b2d.shape.SHAPE_TYPE</a>"
+                },
+                {
+                    "display_name": "sensor",
+                    "doc": "Whether the fixture is a sensor.",
+                    "is_optional": false,
+                    "name": "sensor",
+                    "type": "boolean",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                },
+                {
+                    "display_name": "density",
+                    "doc": "Fixture density.",
+                    "is_optional": false,
+                    "name": "density",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "friction",
+                    "doc": "Fixture friction.",
+                    "is_optional": false,
+                    "name": "friction",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "restitution",
+                    "doc": "Fixture restitution.",
+                    "is_optional": false,
+                    "name": "restitution",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "child_count",
+                    "doc": "Number of child shapes.",
+                    "is_optional": false,
+                    "name": "child_count",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                }
+            ],
+            "name": "b2d.fixture_info",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
         },
         {
             "brief": "Get the Box2D body from a collision object",
@@ -42,6 +754,16 @@
                         "string",
                         "hash",
                         "url"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
                     ]
                 }
             ],
@@ -51,7 +773,16 @@
                     "doc": "the body if successful. Otherwise <code>nil</code>.",
                     "name": "body",
                     "types": [
-                        "b2Body"
+                        "b2Body",
+                        "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 }
             ],
@@ -71,10 +802,16 @@
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "version info with fields <code>version</code>, <code>major</code>, <code>middle</code>, and <code>minor</code>",
+                    "doc": "version information",
                     "name": "info",
                     "types": [
-                        "table"
+                        "b2d.version_info"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2d.version_info\">b2d.version_info</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2d.version_info\">b2d.version_info</a>"
                     ]
                 }
             ],
@@ -97,7 +834,16 @@
                     "doc": "the world if successful. Otherwise <code>nil</code>.",
                     "name": "world",
                     "types": [
-                        "b2World"
+                        "b2World",
+                        "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2World\">b2World</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2World\">b2World</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 }
             ],
@@ -105,13 +851,1341 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "Box2D world",
-            "description": "Box2D world",
+            "brief": "Box2D distance-joint definition",
+            "description": "Box2D distance-joint definition",
             "error": "",
             "examples": "",
             "language": "",
+            "members": [
+                {
+                    "display_name": "local_anchor_a",
+                    "doc": "Local anchor on the first body.",
+                    "is_optional": true,
+                    "name": "local_anchor_a?",
+                    "type": "vector3",
+                    "type_html": "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                },
+                {
+                    "display_name": "local_anchor_b",
+                    "doc": "Local anchor on the second body.",
+                    "is_optional": true,
+                    "name": "local_anchor_b?",
+                    "type": "vector3",
+                    "type_html": "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                },
+                {
+                    "display_name": "length",
+                    "doc": "Rest length.",
+                    "is_optional": true,
+                    "name": "length?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "min_length",
+                    "doc": "Minimum length.",
+                    "is_optional": true,
+                    "name": "min_length?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "max_length",
+                    "doc": "Maximum length.",
+                    "is_optional": true,
+                    "name": "max_length?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "enable_spring",
+                    "doc": "Whether the spring is enabled.",
+                    "is_optional": true,
+                    "name": "enable_spring?",
+                    "type": "boolean",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                },
+                {
+                    "display_name": "hertz",
+                    "doc": "Spring frequency in hertz.",
+                    "is_optional": true,
+                    "name": "hertz?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "frequency",
+                    "doc": "Legacy spring frequency alias.",
+                    "is_optional": true,
+                    "name": "frequency?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "damping_ratio",
+                    "doc": "Spring damping ratio.",
+                    "is_optional": true,
+                    "name": "damping_ratio?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "damping",
+                    "doc": "Legacy spring damping-ratio alias.",
+                    "is_optional": true,
+                    "name": "damping?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "enable_limit",
+                    "doc": "Whether length limits are enabled.",
+                    "is_optional": true,
+                    "name": "enable_limit?",
+                    "type": "boolean",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                },
+                {
+                    "display_name": "enable_motor",
+                    "doc": "Whether the motor is enabled.",
+                    "is_optional": true,
+                    "name": "enable_motor?",
+                    "type": "boolean",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                },
+                {
+                    "display_name": "max_motor_force",
+                    "doc": "Maximum motor force.",
+                    "is_optional": true,
+                    "name": "max_motor_force?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "motor_speed",
+                    "doc": "Motor speed.",
+                    "is_optional": true,
+                    "name": "motor_speed?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "collide_connected",
+                    "doc": "Whether connected bodies collide.",
+                    "is_optional": true,
+                    "name": "collide_connected?",
+                    "type": "boolean",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                }
+            ],
+            "name": "b2d.joint.distance_definition",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Box2D filter-joint definition",
+            "description": "The optional definition passed to <a href=\"#b2d\">b2d.joint.create_filter</a>. Filter joints\ncurrently have no configurable fields, so omit the argument or pass an empty\ntable. The type is reserved for future options.",
+            "error": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">body_a</span> <span class=\"o\">=</span> <span class=\"n\">b2d</span><span class=\"p\">.</span><span class=\"n\">get_body</span><span class=\"p\">(</span><span class=\"s2\">&quot;#collisionobject_a&quot;</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">body_b</span> <span class=\"o\">=</span> <span class=\"n\">b2d</span><span class=\"p\">.</span><span class=\"n\">get_body</span><span class=\"p\">(</span><span class=\"s2\">&quot;#collisionobject_b&quot;</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">joint</span> <span class=\"o\">=</span> <span class=\"n\">b2d</span><span class=\"p\">.</span><span class=\"n\">joint</span><span class=\"p\">.</span><span class=\"n\">create_filter</span><span class=\"p\">(</span><span class=\"n\">body_a</span><span class=\"p\">,</span> <span class=\"n\">body_b</span><span class=\"p\">,</span> <span class=\"p\">{})</span>\n</code></pre></div>",
+            "language": "",
             "members": [],
-            "name": "b2World",
+            "name": "b2d.joint.filter_definition",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "empty filter-joint options",
+                    "is_optional": "False",
+                    "name": "value",
+                    "types": [
+                        "{}"
+                    ],
+                    "types_html": [
+                        "{}"
+                    ],
+                    "types_table_html": [
+                        "{}"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "target_type": "{}",
+            "target_type_html": "{}",
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "Box2D friction-joint definition",
+            "description": "Box2D friction-joint definition",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "local_anchor_a",
+                    "doc": "Local anchor on the first body.",
+                    "is_optional": true,
+                    "name": "local_anchor_a?",
+                    "type": "vector3",
+                    "type_html": "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                },
+                {
+                    "display_name": "local_anchor_b",
+                    "doc": "Local anchor on the second body.",
+                    "is_optional": true,
+                    "name": "local_anchor_b?",
+                    "type": "vector3",
+                    "type_html": "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                },
+                {
+                    "display_name": "max_force",
+                    "doc": "Maximum friction force.",
+                    "is_optional": true,
+                    "name": "max_force?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "max_torque",
+                    "doc": "Maximum friction torque.",
+                    "is_optional": true,
+                    "name": "max_torque?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "collide_connected",
+                    "doc": "Whether connected bodies collide.",
+                    "is_optional": true,
+                    "name": "collide_connected?",
+                    "type": "boolean",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                }
+            ],
+            "name": "b2d.joint.friction_definition",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Box2D gear-joint definition",
+            "description": "Box2D gear-joint definition",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "ratio",
+                    "doc": "Gear ratio.",
+                    "is_optional": true,
+                    "name": "ratio?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "collide_connected",
+                    "doc": "Whether connected bodies collide.",
+                    "is_optional": true,
+                    "name": "collide_connected?",
+                    "type": "boolean",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                }
+            ],
+            "name": "b2d.joint.gear_definition",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Box2D motor-joint definition",
+            "description": "Box2D motor-joint definition",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "linear_offset",
+                    "doc": "Linear target offset.",
+                    "is_optional": true,
+                    "name": "linear_offset?",
+                    "type": "vector3",
+                    "type_html": "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                },
+                {
+                    "display_name": "angular_offset",
+                    "doc": "Angular target offset.",
+                    "is_optional": true,
+                    "name": "angular_offset?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "max_force",
+                    "doc": "Maximum motor force.",
+                    "is_optional": true,
+                    "name": "max_force?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "max_torque",
+                    "doc": "Maximum motor torque.",
+                    "is_optional": true,
+                    "name": "max_torque?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "correction_factor",
+                    "doc": "Position correction factor.",
+                    "is_optional": true,
+                    "name": "correction_factor?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "collide_connected",
+                    "doc": "Whether connected bodies collide.",
+                    "is_optional": true,
+                    "name": "collide_connected?",
+                    "type": "boolean",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                }
+            ],
+            "name": "b2d.joint.motor_definition",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Box2D mouse-joint definition",
+            "description": "Box2D mouse-joint definition",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "target",
+                    "doc": "Target position.",
+                    "is_optional": true,
+                    "name": "target?",
+                    "type": "vector3",
+                    "type_html": "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                },
+                {
+                    "display_name": "max_force",
+                    "doc": "Maximum force.",
+                    "is_optional": true,
+                    "name": "max_force?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "hertz",
+                    "doc": "Spring frequency in hertz.",
+                    "is_optional": true,
+                    "name": "hertz?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "frequency",
+                    "doc": "Legacy spring frequency alias.",
+                    "is_optional": true,
+                    "name": "frequency?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "damping_ratio",
+                    "doc": "Spring damping ratio.",
+                    "is_optional": true,
+                    "name": "damping_ratio?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "damping",
+                    "doc": "Legacy spring damping-ratio alias.",
+                    "is_optional": true,
+                    "name": "damping?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "collide_connected",
+                    "doc": "Whether connected bodies collide.",
+                    "is_optional": true,
+                    "name": "collide_connected?",
+                    "type": "boolean",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                }
+            ],
+            "name": "b2d.joint.mouse_definition",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Box2D prismatic-joint definition",
+            "description": "Box2D prismatic-joint definition",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "local_anchor_a",
+                    "doc": "Local anchor on the first body.",
+                    "is_optional": true,
+                    "name": "local_anchor_a?",
+                    "type": "vector3",
+                    "type_html": "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                },
+                {
+                    "display_name": "local_anchor_b",
+                    "doc": "Local anchor on the second body.",
+                    "is_optional": true,
+                    "name": "local_anchor_b?",
+                    "type": "vector3",
+                    "type_html": "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                },
+                {
+                    "display_name": "local_axis_a",
+                    "doc": "Local translation axis on the first body.",
+                    "is_optional": true,
+                    "name": "local_axis_a?",
+                    "type": "vector3",
+                    "type_html": "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                },
+                {
+                    "display_name": "reference_angle",
+                    "doc": "Reference angle.",
+                    "is_optional": true,
+                    "name": "reference_angle?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "enable_spring",
+                    "doc": "Whether the spring is enabled.",
+                    "is_optional": true,
+                    "name": "enable_spring?",
+                    "type": "boolean",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                },
+                {
+                    "display_name": "hertz",
+                    "doc": "Spring frequency in hertz.",
+                    "is_optional": true,
+                    "name": "hertz?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "frequency",
+                    "doc": "Legacy spring frequency alias.",
+                    "is_optional": true,
+                    "name": "frequency?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "damping_ratio",
+                    "doc": "Spring damping ratio.",
+                    "is_optional": true,
+                    "name": "damping_ratio?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "damping",
+                    "doc": "Legacy spring damping-ratio alias.",
+                    "is_optional": true,
+                    "name": "damping?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "enable_limit",
+                    "doc": "Whether translation limits are enabled.",
+                    "is_optional": true,
+                    "name": "enable_limit?",
+                    "type": "boolean",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                },
+                {
+                    "display_name": "lower_translation",
+                    "doc": "Lower translation limit.",
+                    "is_optional": true,
+                    "name": "lower_translation?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "upper_translation",
+                    "doc": "Upper translation limit.",
+                    "is_optional": true,
+                    "name": "upper_translation?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "enable_motor",
+                    "doc": "Whether the motor is enabled.",
+                    "is_optional": true,
+                    "name": "enable_motor?",
+                    "type": "boolean",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                },
+                {
+                    "display_name": "max_motor_force",
+                    "doc": "Maximum motor force.",
+                    "is_optional": true,
+                    "name": "max_motor_force?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "motor_speed",
+                    "doc": "Motor speed.",
+                    "is_optional": true,
+                    "name": "motor_speed?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "collide_connected",
+                    "doc": "Whether connected bodies collide.",
+                    "is_optional": true,
+                    "name": "collide_connected?",
+                    "type": "boolean",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                }
+            ],
+            "name": "b2d.joint.prismatic_definition",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Box2D pulley-joint definition",
+            "description": "Box2D pulley-joint definition",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "ground_anchor_a",
+                    "doc": "First ground anchor.",
+                    "is_optional": true,
+                    "name": "ground_anchor_a?",
+                    "type": "vector3",
+                    "type_html": "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                },
+                {
+                    "display_name": "ground_anchor_b",
+                    "doc": "Second ground anchor.",
+                    "is_optional": true,
+                    "name": "ground_anchor_b?",
+                    "type": "vector3",
+                    "type_html": "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                },
+                {
+                    "display_name": "local_anchor_a",
+                    "doc": "Local anchor on the first body.",
+                    "is_optional": true,
+                    "name": "local_anchor_a?",
+                    "type": "vector3",
+                    "type_html": "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                },
+                {
+                    "display_name": "local_anchor_b",
+                    "doc": "Local anchor on the second body.",
+                    "is_optional": true,
+                    "name": "local_anchor_b?",
+                    "type": "vector3",
+                    "type_html": "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                },
+                {
+                    "display_name": "length_a",
+                    "doc": "First segment length.",
+                    "is_optional": true,
+                    "name": "length_a?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "length_b",
+                    "doc": "Second segment length.",
+                    "is_optional": true,
+                    "name": "length_b?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "ratio",
+                    "doc": "Pulley ratio.",
+                    "is_optional": true,
+                    "name": "ratio?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "collide_connected",
+                    "doc": "Whether connected bodies collide.",
+                    "is_optional": true,
+                    "name": "collide_connected?",
+                    "type": "boolean",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                }
+            ],
+            "name": "b2d.joint.pulley_definition",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Box2D revolute-joint definition",
+            "description": "Box2D revolute-joint definition",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "local_anchor_a",
+                    "doc": "Local anchor on the first body.",
+                    "is_optional": true,
+                    "name": "local_anchor_a?",
+                    "type": "vector3",
+                    "type_html": "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                },
+                {
+                    "display_name": "local_anchor_b",
+                    "doc": "Local anchor on the second body.",
+                    "is_optional": true,
+                    "name": "local_anchor_b?",
+                    "type": "vector3",
+                    "type_html": "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                },
+                {
+                    "display_name": "reference_angle",
+                    "doc": "Reference angle.",
+                    "is_optional": true,
+                    "name": "reference_angle?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "enable_spring",
+                    "doc": "Whether the spring is enabled.",
+                    "is_optional": true,
+                    "name": "enable_spring?",
+                    "type": "boolean",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                },
+                {
+                    "display_name": "hertz",
+                    "doc": "Spring frequency in hertz.",
+                    "is_optional": true,
+                    "name": "hertz?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "frequency",
+                    "doc": "Legacy spring frequency alias.",
+                    "is_optional": true,
+                    "name": "frequency?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "damping_ratio",
+                    "doc": "Spring damping ratio.",
+                    "is_optional": true,
+                    "name": "damping_ratio?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "damping",
+                    "doc": "Legacy spring damping-ratio alias.",
+                    "is_optional": true,
+                    "name": "damping?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "enable_limit",
+                    "doc": "Whether angular limits are enabled.",
+                    "is_optional": true,
+                    "name": "enable_limit?",
+                    "type": "boolean",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                },
+                {
+                    "display_name": "lower_angle",
+                    "doc": "Lower angular limit.",
+                    "is_optional": true,
+                    "name": "lower_angle?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "upper_angle",
+                    "doc": "Upper angular limit.",
+                    "is_optional": true,
+                    "name": "upper_angle?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "enable_motor",
+                    "doc": "Whether the motor is enabled.",
+                    "is_optional": true,
+                    "name": "enable_motor?",
+                    "type": "boolean",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                },
+                {
+                    "display_name": "max_motor_torque",
+                    "doc": "Maximum motor torque.",
+                    "is_optional": true,
+                    "name": "max_motor_torque?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "motor_speed",
+                    "doc": "Motor speed.",
+                    "is_optional": true,
+                    "name": "motor_speed?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "collide_connected",
+                    "doc": "Whether connected bodies collide.",
+                    "is_optional": true,
+                    "name": "collide_connected?",
+                    "type": "boolean",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                }
+            ],
+            "name": "b2d.joint.revolute_definition",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Box2D rope-joint definition",
+            "description": "Box2D rope-joint definition",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "local_anchor_a",
+                    "doc": "Local anchor on the first body.",
+                    "is_optional": true,
+                    "name": "local_anchor_a?",
+                    "type": "vector3",
+                    "type_html": "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                },
+                {
+                    "display_name": "local_anchor_b",
+                    "doc": "Local anchor on the second body.",
+                    "is_optional": true,
+                    "name": "local_anchor_b?",
+                    "type": "vector3",
+                    "type_html": "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                },
+                {
+                    "display_name": "max_length",
+                    "doc": "Maximum rope length.",
+                    "is_optional": true,
+                    "name": "max_length?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "collide_connected",
+                    "doc": "Whether connected bodies collide.",
+                    "is_optional": true,
+                    "name": "collide_connected?",
+                    "type": "boolean",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                }
+            ],
+            "name": "b2d.joint.rope_definition",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Box2D weld-joint definition",
+            "description": "Box2D weld-joint definition",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "local_anchor_a",
+                    "doc": "Local anchor on the first body.",
+                    "is_optional": true,
+                    "name": "local_anchor_a?",
+                    "type": "vector3",
+                    "type_html": "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                },
+                {
+                    "display_name": "local_anchor_b",
+                    "doc": "Local anchor on the second body.",
+                    "is_optional": true,
+                    "name": "local_anchor_b?",
+                    "type": "vector3",
+                    "type_html": "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                },
+                {
+                    "display_name": "reference_angle",
+                    "doc": "Reference angle.",
+                    "is_optional": true,
+                    "name": "reference_angle?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "hertz",
+                    "doc": "Legacy spring frequency in hertz.",
+                    "is_optional": true,
+                    "name": "hertz?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "frequency",
+                    "doc": "Legacy spring frequency.",
+                    "is_optional": true,
+                    "name": "frequency?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "damping_ratio",
+                    "doc": "Legacy spring damping ratio.",
+                    "is_optional": true,
+                    "name": "damping_ratio?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "damping",
+                    "doc": "Legacy spring damping-ratio alias.",
+                    "is_optional": true,
+                    "name": "damping?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "linear_hertz",
+                    "doc": "Linear spring frequency in hertz.",
+                    "is_optional": true,
+                    "name": "linear_hertz?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "angular_hertz",
+                    "doc": "Angular spring frequency in hertz.",
+                    "is_optional": true,
+                    "name": "angular_hertz?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "linear_damping_ratio",
+                    "doc": "Linear damping ratio.",
+                    "is_optional": true,
+                    "name": "linear_damping_ratio?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "angular_damping_ratio",
+                    "doc": "Angular damping ratio.",
+                    "is_optional": true,
+                    "name": "angular_damping_ratio?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "collide_connected",
+                    "doc": "Whether connected bodies collide.",
+                    "is_optional": true,
+                    "name": "collide_connected?",
+                    "type": "boolean",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                }
+            ],
+            "name": "b2d.joint.weld_definition",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Box2D wheel-joint definition",
+            "description": "Box2D wheel-joint definition",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "local_anchor_a",
+                    "doc": "Local anchor on the first body.",
+                    "is_optional": true,
+                    "name": "local_anchor_a?",
+                    "type": "vector3",
+                    "type_html": "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                },
+                {
+                    "display_name": "local_anchor_b",
+                    "doc": "Local anchor on the second body.",
+                    "is_optional": true,
+                    "name": "local_anchor_b?",
+                    "type": "vector3",
+                    "type_html": "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                },
+                {
+                    "display_name": "local_axis_a",
+                    "doc": "Local suspension axis on the first body.",
+                    "is_optional": true,
+                    "name": "local_axis_a?",
+                    "type": "vector3",
+                    "type_html": "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                },
+                {
+                    "display_name": "enable_spring",
+                    "doc": "Whether the spring is enabled.",
+                    "is_optional": true,
+                    "name": "enable_spring?",
+                    "type": "boolean",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                },
+                {
+                    "display_name": "hertz",
+                    "doc": "Spring frequency in hertz.",
+                    "is_optional": true,
+                    "name": "hertz?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "frequency",
+                    "doc": "Legacy spring frequency alias.",
+                    "is_optional": true,
+                    "name": "frequency?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "damping_ratio",
+                    "doc": "Spring damping ratio.",
+                    "is_optional": true,
+                    "name": "damping_ratio?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "damping",
+                    "doc": "Legacy spring damping-ratio alias.",
+                    "is_optional": true,
+                    "name": "damping?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "enable_limit",
+                    "doc": "Whether translation limits are enabled.",
+                    "is_optional": true,
+                    "name": "enable_limit?",
+                    "type": "boolean",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                },
+                {
+                    "display_name": "lower_translation",
+                    "doc": "Lower translation limit.",
+                    "is_optional": true,
+                    "name": "lower_translation?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "upper_translation",
+                    "doc": "Upper translation limit.",
+                    "is_optional": true,
+                    "name": "upper_translation?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "enable_motor",
+                    "doc": "Whether the motor is enabled.",
+                    "is_optional": true,
+                    "name": "enable_motor?",
+                    "type": "boolean",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                },
+                {
+                    "display_name": "max_motor_torque",
+                    "doc": "Maximum motor torque.",
+                    "is_optional": true,
+                    "name": "max_motor_torque?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "motor_speed",
+                    "doc": "Motor speed.",
+                    "is_optional": true,
+                    "name": "motor_speed?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "collide_connected",
+                    "doc": "Whether connected bodies collide.",
+                    "is_optional": true,
+                    "name": "collide_connected?",
+                    "type": "boolean",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                }
+            ],
+            "name": "b2d.joint.wheel_definition",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Box2D mass data",
+            "description": "Mass properties for a Box2D body or shape.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "mass",
+                    "doc": "Body mass, usually in kilograms.",
+                    "is_optional": false,
+                    "name": "mass",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "center",
+                    "doc": "Local center of mass.",
+                    "is_optional": false,
+                    "name": "center",
+                    "type": "vector3",
+                    "type_html": "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                },
+                {
+                    "display_name": "inertia",
+                    "doc": "Rotational inertia about the local origin.",
+                    "is_optional": false,
+                    "name": "inertia",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                }
+            ],
+            "name": "b2d.mass_data",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Box2D mover capsule",
+            "description": "Box2D mover capsule",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "center1",
+                    "doc": "First capsule center.",
+                    "is_optional": false,
+                    "name": "center1",
+                    "type": "vector3",
+                    "type_html": "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                },
+                {
+                    "display_name": "center2",
+                    "doc": "Second capsule center.",
+                    "is_optional": false,
+                    "name": "center2",
+                    "type": "vector3",
+                    "type_html": "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                },
+                {
+                    "display_name": "radius",
+                    "doc": "Capsule radius.",
+                    "is_optional": false,
+                    "name": "radius",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                }
+            ],
+            "name": "b2d.mover_capsule",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Box2D mover collision plane",
+            "description": "Box2D mover collision plane",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "shape",
+                    "doc": "Colliding shape.",
+                    "is_optional": false,
+                    "name": "shape",
+                    "type": "b2d.shape_info",
+                    "type_html": "<a href=\"#b2d.shape_info\">b2d.shape_info</a>"
+                },
+                {
+                    "display_name": "normal",
+                    "doc": "Plane normal.",
+                    "is_optional": false,
+                    "name": "normal",
+                    "type": "vector3",
+                    "type_html": "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                },
+                {
+                    "display_name": "offset",
+                    "doc": "Plane offset.",
+                    "is_optional": false,
+                    "name": "offset",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "hit",
+                    "doc": "Whether the mover hit the plane.",
+                    "is_optional": false,
+                    "name": "hit",
+                    "type": "boolean",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                }
+            ],
+            "name": "b2d.mover_plane",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Box2D world-query filter",
+            "description": "Box2D world-query filter",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "category_bits",
+                    "doc": "Optional collision category bits.",
+                    "is_optional": true,
+                    "name": "category_bits?",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "mask_bits",
+                    "doc": "Optional collision mask bits.",
+                    "is_optional": true,
+                    "name": "mask_bits?",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "group_index",
+                    "doc": "Optional collision group index. Supported by the Box2D 2.x backend.",
+                    "is_optional": true,
+                    "name": "group_index?",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                }
+            ],
+            "name": "b2d.query_filter",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Box2D 3.x cast hit",
+            "description": "Box2D 3.x cast hit",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "shape",
+                    "doc": "Hit shape.",
+                    "is_optional": false,
+                    "name": "shape",
+                    "type": "b2d.shape_info",
+                    "type_html": "<a href=\"#b2d.shape_info\">b2d.shape_info</a>"
+                },
+                {
+                    "display_name": "point",
+                    "doc": "Hit point.",
+                    "is_optional": false,
+                    "name": "point",
+                    "type": "vector3",
+                    "type_html": "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                },
+                {
+                    "display_name": "normal",
+                    "doc": "Hit normal.",
+                    "is_optional": false,
+                    "name": "normal",
+                    "type": "vector3",
+                    "type_html": "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                },
+                {
+                    "display_name": "fraction",
+                    "doc": "Hit fraction.",
+                    "is_optional": false,
+                    "name": "fraction",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "node_visits",
+                    "doc": "Number of tree nodes visited by a closest query.",
+                    "is_optional": true,
+                    "name": "node_visits?",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "leaf_visits",
+                    "doc": "Number of tree leaves visited by a closest query.",
+                    "is_optional": true,
+                    "name": "leaf_visits?",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                }
+            ],
+            "name": "b2d.shape_cast_hit",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Direct Box2D shape cast result",
+            "description": "Direct Box2D shape cast result",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "point",
+                    "doc": "Hit point.",
+                    "is_optional": false,
+                    "name": "point",
+                    "type": "vector3",
+                    "type_html": "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                },
+                {
+                    "display_name": "normal",
+                    "doc": "Hit normal.",
+                    "is_optional": false,
+                    "name": "normal",
+                    "type": "vector3",
+                    "type_html": "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                },
+                {
+                    "display_name": "fraction",
+                    "doc": "Hit fraction.",
+                    "is_optional": false,
+                    "name": "fraction",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "iterations",
+                    "doc": "Number of cast iterations.",
+                    "is_optional": false,
+                    "name": "iterations",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                }
+            ],
+            "name": "b2d.shape_cast_output",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Box2D 3.x shape creation definition",
+            "description": "Geometry and material properties accepted by <a href=\"#b2d\">b2d.body.create_shape</a>. The\ngeometry can be supplied in the <code>shape</code> field as a <span class=\"type\"><a href=\"../b2d.shape-lua/#b2d.shape.definition\">b2d.shape.definition</a></span>,\nor its fields can be placed directly in this table. Material properties such\nas <code>density</code>, <code>friction</code>, <code>restitution</code>, and <code>filter</code> are optional.",
+            "error": "",
+            "examples": "Create a circular shape using an inline geometry definition:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">body</span> <span class=\"o\">=</span> <span class=\"n\">b2d</span><span class=\"p\">.</span><span class=\"n\">get_body</span><span class=\"p\">(</span><span class=\"s2\">&quot;#collisionobject&quot;</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">shape</span> <span class=\"o\">=</span> <span class=\"n\">b2d</span><span class=\"p\">.</span><span class=\"n\">body</span><span class=\"p\">.</span><span class=\"n\">create_shape</span><span class=\"p\">(</span><span class=\"n\">body</span><span class=\"p\">,</span> <span class=\"p\">{</span>\n    <span class=\"nb\">type</span> <span class=\"o\">=</span> <span class=\"n\">b2d</span><span class=\"p\">.</span><span class=\"n\">shape</span><span class=\"p\">.</span><span class=\"n\">SHAPE_TYPE_CIRCLE</span><span class=\"p\">,</span>\n    <span class=\"n\">radius</span> <span class=\"o\">=</span> <span class=\"mi\">16</span><span class=\"p\">,</span>\n    <span class=\"n\">density</span> <span class=\"o\">=</span> <span class=\"mi\">1</span><span class=\"p\">,</span>\n    <span class=\"n\">friction</span> <span class=\"o\">=</span> <span class=\"mf\">0.4</span><span class=\"p\">,</span>\n<span class=\"p\">})</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "b2d.shape_create_definition",
             "notes": [],
             "parameters": [
                 {
@@ -119,16 +2193,564 @@
                     "is_optional": "False",
                     "name": "value",
                     "types": [
-                        "userdata"
+                        "{ shape:b2d.shape.definition, density?:number, friction?:number, restitution?:number, material?:integer, sensor?:boolean, is_sensor?:boolean, filter?:b2d.filter }",
+                        "{ type:b2d.shape.SHAPE_TYPE, radius?:number, center?:vector3, center1?:vector3, center2?:vector3, v0?:vector3, v1?:vector3, v2?:vector3, v3?:vector3, hx?:number, hy?:number, angle?:number, vertices?:vector3[], density?:number, friction?:number, restitution?:number, material?:integer, sensor?:boolean, is_sensor?:boolean, filter?:b2d.filter }"
+                    ],
+                    "types_html": [
+                        "{ shape:<a href=\"../b2d.shape-lua/#b2d.shape.definition\">b2d.shape.definition</a>, density?:<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>, friction?:<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>, restitution?:<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>, material?:<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>, sensor?:<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>, is_sensor?:<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>, filter?:<a href=\"#b2d.filter\">b2d.filter</a> }",
+                        "{ type:<a href=\"../b2d.shape-lua/#b2d.shape.SHAPE_TYPE\">b2d.shape.SHAPE_TYPE</a>, radius?:<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>, center?:<a href=\"../vmath-lua/#vector3\">vector3</a>, center1?:<a href=\"../vmath-lua/#vector3\">vector3</a>, center2?:<a href=\"../vmath-lua/#vector3\">vector3</a>, v0?:<a href=\"../vmath-lua/#vector3\">vector3</a>, v1?:<a href=\"../vmath-lua/#vector3\">vector3</a>, v2?:<a href=\"../vmath-lua/#vector3\">vector3</a>, v3?:<a href=\"../vmath-lua/#vector3\">vector3</a>, hx?:<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>, hy?:<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>, angle?:<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>, vertices?:<a href=\"../vmath-lua/#vector3\">vector3</a>[], density?:<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>, friction?:<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>, restitution?:<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>, material?:<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>, sensor?:<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>, is_sensor?:<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>, filter?:<a href=\"#b2d.filter\">b2d.filter</a> }"
+                    ],
+                    "types_table_html": [
+                        "{shape:<a href=\"../b2d.shape-lua/#b2d.shape.definition\">b2d.shape.definition</a>,\ndensity?:<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>,\nfriction?:<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>,\nrestitution?:<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>,\nmaterial?:<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>,\nsensor?:<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>,\nis_sensor?:<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>,\nfilter?:<a href=\"#b2d.filter\">b2d.filter</a>}",
+                        "{type:<a href=\"../b2d.shape-lua/#b2d.shape.SHAPE_TYPE\">b2d.shape.SHAPE_TYPE</a>,\nradius?:<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>,\ncenter?:<a href=\"../vmath-lua/#vector3\">vector3</a>,\ncenter1?:<a href=\"../vmath-lua/#vector3\">vector3</a>,\ncenter2?:<a href=\"../vmath-lua/#vector3\">vector3</a>,\nv0?:<a href=\"../vmath-lua/#vector3\">vector3</a>,\nv1?:<a href=\"../vmath-lua/#vector3\">vector3</a>,\nv2?:<a href=\"../vmath-lua/#vector3\">vector3</a>,\nv3?:<a href=\"../vmath-lua/#vector3\">vector3</a>,\nhx?:<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>,\nhy?:<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>,\nangle?:<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>,\nvertices?:<a href=\"../vmath-lua/#vector3\">vector3</a>[],\ndensity?:<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>,\nfriction?:<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>,\nrestitution?:<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>,\nmaterial?:<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>,\nsensor?:<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>,\nis_sensor?:<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>,\nfilter?:<a href=\"#b2d.filter\">b2d.filter</a>}"
                     ]
                 }
             ],
             "replaces": "",
             "returnvalues": [],
+            "target_type": "{ shape:b2d.shape.definition, density?:number, friction?:number, restitution?:number, material?:integer, sensor?:boolean, is_sensor?:boolean, filter?:b2d.filter } | { type:b2d.shape.SHAPE_TYPE, radius?:number, center?:vector3, center1?:vector3, center2?:vector3, v0?:vector3, v1?:vector3, v2?:vector3, v3?:vector3, hx?:number, hy?:number, angle?:number, vertices?:vector3[], density?:number, friction?:number, restitution?:number, material?:integer, sensor?:boolean, is_sensor?:boolean, filter?:b2d.filter }",
+            "target_type_html": "{ shape:<a href=\"../b2d.shape-lua/#b2d.shape.definition\">b2d.shape.definition</a>, density?:<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>, friction?:<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>, restitution?:<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>, material?:<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>, sensor?:<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>, is_sensor?:<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>, filter?:<a href=\"#b2d.filter\">b2d.filter</a> } | { type:<a href=\"../b2d.shape-lua/#b2d.shape.SHAPE_TYPE\">b2d.shape.SHAPE_TYPE</a>, radius?:<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>, center?:<a href=\"../vmath-lua/#vector3\">vector3</a>, center1?:<a href=\"../vmath-lua/#vector3\">vector3</a>, center2?:<a href=\"../vmath-lua/#vector3\">vector3</a>, v0?:<a href=\"../vmath-lua/#vector3\">vector3</a>, v1?:<a href=\"../vmath-lua/#vector3\">vector3</a>, v2?:<a href=\"../vmath-lua/#vector3\">vector3</a>, v3?:<a href=\"../vmath-lua/#vector3\">vector3</a>, hx?:<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>, hy?:<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>, angle?:<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>, vertices?:<a href=\"../vmath-lua/#vector3\">vector3</a>[], density?:<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>, friction?:<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>, restitution?:<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>, material?:<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>, sensor?:<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>, is_sensor?:<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>, filter?:<a href=\"#b2d.filter\">b2d.filter</a> }",
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "Box2D 3.x shape information",
+            "description": "Box2D 3.x shape information",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "index",
+                    "doc": "Shape index on the body.",
+                    "is_optional": false,
+                    "name": "index",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "shape_id",
+                    "doc": "Shape handle.",
+                    "is_optional": false,
+                    "name": "shape_id",
+                    "type": "b2Shape",
+                    "type_html": "<a href=\"../b2d.shape-lua/#b2Shape\">b2Shape</a>"
+                },
+                {
+                    "display_name": "type",
+                    "doc": "Shape type.",
+                    "is_optional": false,
+                    "name": "type",
+                    "type": "b2d.shape.SHAPE_TYPE",
+                    "type_html": "<a href=\"../b2d.shape-lua/#b2d.shape.SHAPE_TYPE\">b2d.shape.SHAPE_TYPE</a>"
+                },
+                {
+                    "display_name": "sensor",
+                    "doc": "Whether the shape is a sensor.",
+                    "is_optional": false,
+                    "name": "sensor",
+                    "type": "boolean",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                },
+                {
+                    "display_name": "density",
+                    "doc": "Shape density.",
+                    "is_optional": false,
+                    "name": "density",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "friction",
+                    "doc": "Shape friction.",
+                    "is_optional": false,
+                    "name": "friction",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "restitution",
+                    "doc": "Shape restitution.",
+                    "is_optional": false,
+                    "name": "restitution",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "material",
+                    "doc": "Shape material identifier.",
+                    "is_optional": false,
+                    "name": "material",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "child_count",
+                    "doc": "Number of child shapes.",
+                    "is_optional": false,
+                    "name": "child_count",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "is_chain_segment",
+                    "doc": "Whether the shape belongs to a chain.",
+                    "is_optional": false,
+                    "name": "is_chain_segment",
+                    "type": "boolean",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                }
+            ],
+            "name": "b2d.shape_info",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Box2D transform",
+            "description": "World transform for a Box2D body.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "position",
+                    "doc": "World position of the body origin.",
+                    "is_optional": false,
+                    "name": "position",
+                    "type": "vector3",
+                    "type_html": "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                },
+                {
+                    "display_name": "angle",
+                    "doc": "World rotation angle in radians.",
+                    "is_optional": false,
+                    "name": "angle",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                }
+            ],
+            "name": "b2d.transform",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Box2D broad-phase query statistics",
+            "description": "Box2D broad-phase query statistics",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "node_visits",
+                    "doc": "Number of tree nodes visited.",
+                    "is_optional": false,
+                    "name": "node_visits",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "leaf_visits",
+                    "doc": "Number of tree leaves visited.",
+                    "is_optional": false,
+                    "name": "leaf_visits",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                }
+            ],
+            "name": "b2d.tree_stats",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Box2D version information",
+            "description": "Box2D version information",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "version",
+                    "doc": "Full Box2D version string.",
+                    "is_optional": false,
+                    "name": "version",
+                    "type": "string",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                },
+                {
+                    "display_name": "major",
+                    "doc": "Major version number.",
+                    "is_optional": false,
+                    "name": "major",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "middle",
+                    "doc": "Middle version number.",
+                    "is_optional": false,
+                    "name": "middle",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "minor",
+                    "doc": "Minor version number.",
+                    "is_optional": false,
+                    "name": "minor",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                }
+            ],
+            "name": "b2d.version_info",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Box2D world counters",
+            "description": "Box2D world counters",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "body_count",
+                    "doc": "Number of bodies.",
+                    "is_optional": false,
+                    "name": "body_count",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "shape_count",
+                    "doc": "Number of shapes.",
+                    "is_optional": false,
+                    "name": "shape_count",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "contact_count",
+                    "doc": "Number of contacts.",
+                    "is_optional": false,
+                    "name": "contact_count",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "joint_count",
+                    "doc": "Number of joints.",
+                    "is_optional": false,
+                    "name": "joint_count",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "island_count",
+                    "doc": "Number of islands.",
+                    "is_optional": false,
+                    "name": "island_count",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "stack_used",
+                    "doc": "Stack bytes in use.",
+                    "is_optional": false,
+                    "name": "stack_used",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "static_tree_height",
+                    "doc": "Static broad-phase tree height.",
+                    "is_optional": false,
+                    "name": "static_tree_height",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "tree_height",
+                    "doc": "Dynamic broad-phase tree height.",
+                    "is_optional": false,
+                    "name": "tree_height",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "byte_count",
+                    "doc": "Allocated byte count.",
+                    "is_optional": false,
+                    "name": "byte_count",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "task_count",
+                    "doc": "Number of tasks.",
+                    "is_optional": false,
+                    "name": "task_count",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "color_counts",
+                    "doc": "Constraint graph color counts.",
+                    "is_optional": false,
+                    "name": "color_counts",
+                    "type": "integer[]",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>[]"
+                }
+            ],
+            "name": "b2d.world_counters",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Box2D world profiling data",
+            "description": "Box2D world profiling data",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "step",
+                    "doc": "Total step time.",
+                    "is_optional": false,
+                    "name": "step",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "pairs",
+                    "doc": "Pair update time.",
+                    "is_optional": false,
+                    "name": "pairs",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "collide",
+                    "doc": "Collision time.",
+                    "is_optional": false,
+                    "name": "collide",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "solve",
+                    "doc": "Solver time.",
+                    "is_optional": false,
+                    "name": "solve",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "merge_islands",
+                    "doc": "Island merge time.",
+                    "is_optional": false,
+                    "name": "merge_islands",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "prepare_stages",
+                    "doc": "Stage preparation time.",
+                    "is_optional": false,
+                    "name": "prepare_stages",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "solve_constraints",
+                    "doc": "Constraint solver time.",
+                    "is_optional": false,
+                    "name": "solve_constraints",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "prepare_constraints",
+                    "doc": "Constraint preparation time.",
+                    "is_optional": false,
+                    "name": "prepare_constraints",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "integrate_velocities",
+                    "doc": "Velocity integration time.",
+                    "is_optional": false,
+                    "name": "integrate_velocities",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "warm_start",
+                    "doc": "Warm-start time.",
+                    "is_optional": false,
+                    "name": "warm_start",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "solve_impulses",
+                    "doc": "Impulse solver time.",
+                    "is_optional": false,
+                    "name": "solve_impulses",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "integrate_positions",
+                    "doc": "Position integration time.",
+                    "is_optional": false,
+                    "name": "integrate_positions",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "relax_impulses",
+                    "doc": "Impulse relaxation time.",
+                    "is_optional": false,
+                    "name": "relax_impulses",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "apply_restitution",
+                    "doc": "Restitution time.",
+                    "is_optional": false,
+                    "name": "apply_restitution",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "store_impulses",
+                    "doc": "Impulse storage time.",
+                    "is_optional": false,
+                    "name": "store_impulses",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "split_islands",
+                    "doc": "Island splitting time.",
+                    "is_optional": false,
+                    "name": "split_islands",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "transforms",
+                    "doc": "Transform update time.",
+                    "is_optional": false,
+                    "name": "transforms",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "hit_events",
+                    "doc": "Hit-event generation time.",
+                    "is_optional": false,
+                    "name": "hit_events",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "refit",
+                    "doc": "Tree refit time.",
+                    "is_optional": false,
+                    "name": "refit",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "bullets",
+                    "doc": "Bullet processing time.",
+                    "is_optional": false,
+                    "name": "bullets",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "sleep_islands",
+                    "doc": "Island sleeping time.",
+                    "is_optional": false,
+                    "name": "sleep_islands",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "sensors",
+                    "doc": "Sensor processing time.",
+                    "is_optional": false,
+                    "name": "sensors",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                }
+            ],
+            "name": "b2d.world_profile",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Box2D world",
+            "description": "An opaque handle to the Box2D physics world owned by the current collection.\nObtain it with <a href=\"/ref/b2d#b2d.get_world\">b2d.get_world</a> and pass it to functions in <code>b2d.world</code>.\nThe engine creates and destroys the world together with the collection; it\ncannot be constructed directly from Lua.",
+            "error": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">world</span> <span class=\"o\">=</span> <span class=\"n\">b2d</span><span class=\"p\">.</span><span class=\"n\">get_world</span><span class=\"p\">()</span>\n<span class=\"kr\">if</span> <span class=\"n\">world</span> <span class=\"kr\">then</span>\n    <span class=\"n\">pprint</span><span class=\"p\">(</span><span class=\"n\">world</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "b2World",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Box2D world handle",
+                    "is_optional": "False",
+                    "name": "value",
+                    "types": [
+                        "userdata"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">userdata</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">userdata</a>"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "target_type": "userdata",
+            "target_type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">userdata</a>",
             "tparams": [],
             "type": "TYPEDEF"
         }
     ],
+    "format_version": 2,
     "info": {
         "api_language": "Lua",
         "brief": "Box2D documentation",

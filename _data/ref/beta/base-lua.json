@@ -5,6 +5,7 @@
             "description": "A global variable (not a function) that\nholds the global environment (that is, <code>_G._G = _G</code>).\nLua itself does not use this variable;\nchanging its value does not affect any environment,\nnor vice-versa.\n(Use setfenv to change environments.)",
             "error": "",
             "examples": "",
+            "is_enum_member": false,
             "language": "",
             "members": [],
             "name": "_G",
@@ -13,13 +14,15 @@
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "VARIABLE"
+            "type": "VARIABLE",
+            "value_type": "any"
         },
         {
             "brief": "global variable containing the running Lua version",
             "description": "A global variable (not a function) that\nholds a string containing the current interpreter version.\nThe current contents of this variable is \"Lua 5.1\".",
             "error": "",
             "examples": "",
+            "is_enum_member": false,
             "language": "",
             "members": [],
             "name": "_VERSION",
@@ -28,11 +31,12 @@
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "VARIABLE"
+            "type": "VARIABLE",
+            "value_type": "any"
         },
         {
             "brief": "asserts that condition is not nil and not false",
-            "description": "Issues an  error when\nthe value of its argument v is false (i.e., <span class=\"type\"> nil</span> or <span class=\"type\"> false</span>);\notherwise, returns all its arguments.\nmessage is an error message;\nwhen absent, it defaults to \"assertion failed!\"",
+            "description": "Issues an  error when\nthe value of its argument v is false (i.e., <span class=\"type\"> <a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a></span> or <span class=\"type\"> false</span>);\notherwise, returns all its arguments.\nmessage is an error message;\nwhen absent, it defaults to \"assertion failed!\"",
             "error": "",
             "examples": "",
             "language": "",
@@ -46,6 +50,12 @@
                     "name": "v",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 },
                 {
@@ -54,6 +64,12 @@
                     "name": "message",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 }
             ],
@@ -77,7 +93,13 @@
                     "is_optional": "True",
                     "name": "opt",
                     "types": [
-                        "table"
+                        "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 },
                 {
@@ -86,6 +108,12 @@
                     "name": "arg",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -110,6 +138,12 @@
                     "name": "filename",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 }
             ],
@@ -134,6 +168,12 @@
                     "name": "message",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 },
                 {
@@ -142,6 +182,12 @@
                     "name": "level",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -166,6 +212,12 @@
                     "name": "f",
                     "types": [
                         "function"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">function</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">function</a>"
                     ]
                 }
             ],
@@ -176,7 +228,7 @@
         },
         {
             "brief": "returns the metatable for the object",
-            "description": "If object does not have a metatable, returns <span class=\"type\"> nil</span>.\nOtherwise,\nif the object's metatable has a <code>\"__metatable\"</code> field,\nreturns the associated value.\nOtherwise, returns the metatable of the given object.",
+            "description": "If object does not have a metatable, returns <span class=\"type\"> <a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a></span>.\nOtherwise,\nif the object's metatable has a <code>\"__metatable\"</code> field,\nreturns the associated value.\nOtherwise, returns the metatable of the given object.",
             "error": "",
             "examples": "",
             "language": "",
@@ -189,7 +241,13 @@
                     "is_optional": "False",
                     "name": "object",
                     "types": [
-                        "table"
+                        "any"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>"
                     ]
                 }
             ],
@@ -213,7 +271,13 @@
                     "is_optional": "False",
                     "name": "t",
                     "types": [
-                        "table"
+                        "table<integer, any>"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">table</a>&lt;<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>, <a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>&gt;"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">table</a>&lt;<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>, <a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>&gt;"
                     ]
                 }
             ],
@@ -224,7 +288,7 @@
         },
         {
             "brief": "loads a chunk by calling a function repeatedly",
-            "description": "Loads a chunk using function func to get its pieces.\nEach call to func must return a string that concatenates\nwith previous results.\nA return of an empty string, <span class=\"type\"> nil</span>, or no value signals the end of the chunk.\nIf there are no errors,\nreturns the compiled chunk as a function;\notherwise, returns <span class=\"type\"> nil</span> plus the error message.\nThe environment of the returned function is the global environment.\nchunkname is used as the chunk name for error messages\nand debug information.\nWhen absent,\nit defaults to \"=(load)\".",
+            "description": "Loads a chunk using function func to get its pieces.\nEach call to func must return a string that concatenates\nwith previous results.\nA return of an empty string, <span class=\"type\"> <a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a></span>, or no value signals the end of the chunk.\nIf there are no errors,\nreturns the compiled chunk as a function;\notherwise, returns <span class=\"type\"> <a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a></span> plus the error message.\nThe environment of the returned function is the global environment.\nchunkname is used as the chunk name for error messages\nand debug information.\nWhen absent,\nit defaults to \"=(load)\".",
             "error": "",
             "examples": "",
             "language": "",
@@ -238,6 +302,12 @@
                     "name": "func",
                     "types": [
                         "function"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">function</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">function</a>"
                     ]
                 },
                 {
@@ -246,6 +316,12 @@
                     "name": "chunkname",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 }
             ],
@@ -270,6 +346,12 @@
                     "name": "filename",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 }
             ],
@@ -294,6 +376,12 @@
                     "name": "string",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 },
                 {
@@ -302,6 +390,12 @@
                     "name": "chunkname",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 }
             ],
@@ -326,6 +420,12 @@
                     "name": "name",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 },
                 {
@@ -333,6 +433,12 @@
                     "is_optional": "True",
                     "name": "...",
                     "types": [
+                        "..."
+                    ],
+                    "types_html": [
+                        "..."
+                    ],
+                    "types_table_html": [
                         "..."
                     ]
                 }
@@ -344,7 +450,7 @@
         },
         {
             "brief": "returns next key / value pair in a table",
-            "description": "Allows a program to traverse all fields of a table.\nIts first argument is a table and its second argument\nis an index in this table.\nnext returns the next index of the table\nand its associated value.\nWhen called with <span class=\"type\"> nil</span> as its second argument,\nnext returns an initial index\nand its associated value.\nWhen called with the last index,\nor with <span class=\"type\"> nil</span> in an empty table,\nnext returns <span class=\"type\"> nil</span>.\nIf the second argument is absent, then it is interpreted as <span class=\"type\"> nil</span>.\nIn particular,\nyou can use <code>next(t)</code> to check whether a table is empty.\nThe order in which the indices are enumerated is not specified,\n<em>even for numeric indices</em>.\n(To traverse a table in numeric order,\nuse a numerical for or the ipairs function.)\nThe behavior of next is <em>undefined</em> if,\nduring the traversal,\nyou assign any value to a non-existent field in the table.\nYou may however modify existing fields.\nIn particular, you may clear existing fields.",
+            "description": "Allows a program to traverse all fields of a table.\nIts first argument is a table and its second argument\nis an index in this table.\nnext returns the next index of the table\nand its associated value.\nWhen called with <span class=\"type\"> <a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a></span> as its second argument,\nnext returns an initial index\nand its associated value.\nWhen called with the last index,\nor with <span class=\"type\"> <a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a></span> in an empty table,\nnext returns <span class=\"type\"> <a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a></span>.\nIf the second argument is absent, then it is interpreted as <span class=\"type\"> <a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a></span>.\nIn particular,\nyou can use <code>next(t)</code> to check whether a table is empty.\nThe order in which the indices are enumerated is not specified,\n<em>even for numeric indices</em>.\n(To traverse a table in numeric order,\nuse a numerical for or the ipairs function.)\nThe behavior of next is <em>undefined</em> if,\nduring the traversal,\nyou assign any value to a non-existent field in the table.\nYou may however modify existing fields.\nIn particular, you may clear existing fields.",
             "error": "",
             "examples": "",
             "language": "",
@@ -357,7 +463,13 @@
                     "is_optional": "False",
                     "name": "table",
                     "types": [
-                        "table"
+                        "table<any, any>"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">table</a>&lt;<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>, <a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>&gt;"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">table</a>&lt;<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>, <a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>&gt;"
                     ]
                 },
                 {
@@ -365,7 +477,13 @@
                     "is_optional": "True",
                     "name": "index",
                     "types": [
-                        "number"
+                        "any"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>"
                     ]
                 }
             ],
@@ -376,7 +494,7 @@
         },
         {
             "brief": "traverse all items in a table",
-            "description": "Returns three values: the next function, the table t, and <span class=\"type\"> nil</span>,\nso that the construction\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">for</span> <span class=\"n\">k</span><span class=\"p\">,</span><span class=\"n\">v</span> <span class=\"kr\">in</span> <span class=\"nb\">pairs</span><span class=\"p\">(</span><span class=\"n\">t</span><span class=\"p\">)</span> <span class=\"kr\">do</span> <span class=\"n\">body</span> <span class=\"kr\">end</span>\n</code></pre></div>\n\nwill iterate over all key-{}value pairs of table t.\nSee function next for the caveats of modifying\nthe table during its traversal.",
+            "description": "Returns three values: the next function, the table t, and <span class=\"type\"> <a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a></span>,\nso that the construction\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">for</span> <span class=\"n\">k</span><span class=\"p\">,</span><span class=\"n\">v</span> <span class=\"kr\">in</span> <span class=\"nb\">pairs</span><span class=\"p\">(</span><span class=\"n\">t</span><span class=\"p\">)</span> <span class=\"kr\">do</span> <span class=\"n\">body</span> <span class=\"kr\">end</span>\n</code></pre></div>\n\nwill iterate over all key-{}value pairs of table t.\nSee function next for the caveats of modifying\nthe table during its traversal.",
             "error": "",
             "examples": "",
             "language": "",
@@ -390,6 +508,12 @@
                     "name": "t",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 }
             ],
@@ -414,6 +538,12 @@
                     "name": "f",
                     "types": [
                         "function"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">function</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">function</a>"
                     ]
                 },
                 {
@@ -422,6 +552,12 @@
                     "name": "arg1",
                     "types": [
                         "any"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>"
                     ]
                 },
                 {
@@ -429,6 +565,12 @@
                     "is_optional": "False",
                     "name": "...",
                     "types": [
+                        "..."
+                    ],
+                    "types_html": [
+                        "..."
+                    ],
+                    "types_table_html": [
                         "..."
                     ]
                 }
@@ -454,6 +596,12 @@
                     "name": "...",
                     "types": [
                         "..."
+                    ],
+                    "types_html": [
+                        "..."
+                    ],
+                    "types_table_html": [
+                        "..."
                     ]
                 }
             ],
@@ -478,6 +626,12 @@
                     "name": "v1",
                     "types": [
                         "any"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>"
                     ]
                 },
                 {
@@ -486,6 +640,12 @@
                     "name": "v2",
                     "types": [
                         "any"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>"
                     ]
                 }
             ],
@@ -509,7 +669,13 @@
                     "is_optional": "False",
                     "name": "table",
                     "types": [
-                        "table"
+                        "table<any, any>"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">table</a>&lt;<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>, <a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>&gt;"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">table</a>&lt;<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>, <a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>&gt;"
                     ]
                 },
                 {
@@ -517,7 +683,13 @@
                     "is_optional": "False",
                     "name": "index",
                     "types": [
-                        "number"
+                        "any"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>"
                     ]
                 }
             ],
@@ -528,7 +700,7 @@
         },
         {
             "brief": "sets the value of a table item without invoking metamethods",
-            "description": "Sets the real value of <code>table[index]</code> to value,\nwithout invoking any metamethod.\ntable must be a table,\nindex any value different from <span class=\"type\"> nil</span>,\nand value any Lua value.\nThis function returns table.",
+            "description": "Sets the real value of <code>table[index]</code> to value,\nwithout invoking any metamethod.\ntable must be a table,\nindex any value different from <span class=\"type\"> <a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a></span>,\nand value any Lua value.\nThis function returns table.",
             "error": "",
             "examples": "",
             "language": "",
@@ -541,7 +713,13 @@
                     "is_optional": "False",
                     "name": "table",
                     "types": [
-                        "table"
+                        "table<any, any>"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">table</a>&lt;<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>, <a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>&gt;"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">table</a>&lt;<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>, <a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>&gt;"
                     ]
                 },
                 {
@@ -549,7 +727,13 @@
                     "is_optional": "False",
                     "name": "index",
                     "types": [
-                        "number"
+                        "any"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>"
                     ]
                 },
                 {
@@ -558,6 +742,12 @@
                     "name": "value",
                     "types": [
                         "any"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>"
                     ]
                 }
             ],
@@ -582,6 +772,12 @@
                     "name": "modname",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 }
             ],
@@ -606,6 +802,12 @@
                     "name": "index",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -613,6 +815,12 @@
                     "is_optional": "False",
                     "name": "...",
                     "types": [
+                        "..."
+                    ],
+                    "types_html": [
+                        "..."
+                    ],
+                    "types_table_html": [
                         "..."
                     ]
                 }
@@ -638,6 +846,12 @@
                     "name": "f",
                     "types": [
                         "function"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">function</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">function</a>"
                     ]
                 },
                 {
@@ -645,7 +859,13 @@
                     "is_optional": "False",
                     "name": "table",
                     "types": [
-                        "table"
+                        "table<any, any>"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">table</a>&lt;<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>, <a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>&gt;"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">table</a>&lt;<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>, <a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>&gt;"
                     ]
                 }
             ],
@@ -656,7 +876,7 @@
         },
         {
             "brief": "sets the metatable for a table",
-            "description": "Sets the metatable for the given table.\n(You cannot change the metatable of other types from Lua, only from C.)\nIf metatable is <span class=\"type\"> nil</span>,\nremoves the metatable of the given table.\nIf the original metatable has a <code>\"__metatable\"</code> field,\nraises an error.\nThis function returns table.",
+            "description": "Sets the metatable for the given table.\n(You cannot change the metatable of other types from Lua, only from C.)\nIf metatable is <span class=\"type\"> <a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a></span>,\nremoves the metatable of the given table.\nIf the original metatable has a <code>\"__metatable\"</code> field,\nraises an error.\nThis function returns table.",
             "error": "",
             "examples": "",
             "language": "",
@@ -669,7 +889,13 @@
                     "is_optional": "False",
                     "name": "table",
                     "types": [
-                        "table"
+                        "table<any, any>"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">table</a>&lt;<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>, <a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>&gt;"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">table</a>&lt;<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>, <a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>&gt;"
                     ]
                 },
                 {
@@ -677,7 +903,16 @@
                     "is_optional": "False",
                     "name": "metatable",
                     "types": [
-                        "table"
+                        "table<any, any>",
+                        "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">table</a>&lt;<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>, <a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>&gt;",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">table</a>&lt;<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>, <a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>&gt;",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 }
             ],
@@ -688,7 +923,7 @@
         },
         {
             "brief": "converts a string (of the given base) to a number",
-            "description": "Tries to convert its argument to a number.\nIf the argument is already a number or a string convertible\nto a number, then tonumber returns this number;\notherwise, it returns <span class=\"type\"> nil</span>.\nAn optional argument specifies the base to interpret the numeral.\nThe base may be any integer between 2 and 36, inclusive.\nIn bases above 10, the letter 'A' (in either upper or lower case)\nrepresents 10, 'B' represents 11, and so forth,\nwith 'Z' representing 35.\nIn base 10 (the default), the number can have a decimal part,\nas well as an optional exponent part .\nIn other bases, only unsigned integers are accepted.",
+            "description": "Tries to convert its argument to a number.\nIf the argument is already a number or a string convertible\nto a number, then tonumber returns this number;\notherwise, it returns <span class=\"type\"> <a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a></span>.\nAn optional argument specifies the base to interpret the numeral.\nThe base may be any integer between 2 and 36, inclusive.\nIn bases above 10, the letter 'A' (in either upper or lower case)\nrepresents 10, 'B' represents 11, and so forth,\nwith 'Z' representing 35.\nIn base 10 (the default), the number can have a decimal part,\nas well as an optional exponent part .\nIn other bases, only unsigned integers are accepted.",
             "error": "",
             "examples": "",
             "language": "",
@@ -702,6 +937,12 @@
                     "name": "e",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 },
                 {
@@ -710,6 +951,12 @@
                     "name": "base",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -734,6 +981,12 @@
                     "name": "e",
                     "types": [
                         "any"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>"
                     ]
                 }
             ],
@@ -744,7 +997,7 @@
         },
         {
             "brief": "returns the type of a variable",
-            "description": "Returns the type of its only argument, coded as a string.\nThe possible results of this function are\n\"nil\" (a string, not the value <span class=\"type\"> nil</span>),\n\"number\",\n\"string\",\n\"boolean\",\n\"table\",\n\"function\",\n\"thread\",\nand \"userdata\".",
+            "description": "Returns the type of its only argument, coded as a string.\nThe possible results of this function are\n\"nil\" (a string, not the value <span class=\"type\"> <a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a></span>),\n\"number\",\n\"string\",\n\"boolean\",\n\"table\",\n\"function\",\n\"thread\",\nand \"userdata\".",
             "error": "",
             "examples": "",
             "language": "",
@@ -758,6 +1011,12 @@
                     "name": "v",
                     "types": [
                         "any"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>"
                     ]
                 }
             ],
@@ -781,7 +1040,13 @@
                     "is_optional": "False",
                     "name": "list",
                     "types": [
-                        "table"
+                        "any[]"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>[]"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>[]"
                     ]
                 },
                 {
@@ -789,7 +1054,13 @@
                     "is_optional": "True",
                     "name": "i",
                     "types": [
-                        "number"
+                        "integer"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
                     ]
                 },
                 {
@@ -797,7 +1068,13 @@
                     "is_optional": "True",
                     "name": "j",
                     "types": [
-                        "number"
+                        "integer"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
                     ]
                 }
             ],
@@ -822,6 +1099,12 @@
                     "name": "f",
                     "types": [
                         "function"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">function</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">function</a>"
                     ]
                 },
                 {
@@ -830,6 +1113,12 @@
                     "name": "err",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 }
             ],
@@ -839,6 +1128,7 @@
             "type": "FUNCTION"
         }
     ],
+    "format_version": 2,
     "info": {
         "api_language": "Lua",
         "brief": "Lua base standard library",
