@@ -95,6 +95,13 @@ These are per-manual files generated for LLM usage.
 - [Clipping](https://defold.com/llms/manuals/gui-clipping.md)
 - [Layouts](https://defold.com/llms/manuals/gui-layouts.md)
 
+## Fonts and text
+
+- [Fonts](https://defold.com/llms/manuals/font.md)
+- [Rich Text](https://defold.com/llms/manuals/font-richtext.md)
+- [Text nodes](https://defold.com/llms/manuals/gui-text.md)
+- [Label components](https://defold.com/manuals/labels)
+
 ## Physics
 
 - [Physics overview](https://defold.com/llms/manuals/physics.md)
