@@ -59,11 +59,7 @@ Both getters are synchronous and take no arguments or callbacks. The SDK can be 
 
 ## Game lifecycle
 
-Call `playables.first_frame_ready()` when the game has begun showing frames. YouTube does not show the game to players until this is reported:
-
-```lua
-playables.first_frame_ready()
-```
+The extension automatically calls `ytgame.game.firstFrameReady()` during initialization, before Lua code can call `playables.game_ready()`. No Lua call is needed to report the first frame.
 
 Call `playables.game_ready()` after the game has finished loading, the loading screen is no longer visible, and the player can interact with the game:
 
@@ -72,10 +68,6 @@ playables.game_ready()
 ```
 
 This calls `ytgame.game.gameReady()` and does not return a value.
-
-<div class='important' markdown='1'>
-`playables.first_frame_ready()` must be called before `playables.game_ready()`.
-</div>
 
 ## Load data
 
@@ -121,6 +113,8 @@ Only one `save_data()` request may be in progress at a time. The request remains
 
 ### Audio
 
+With a registered `playables.on_audio_enabled_change()` callback, the extension automatically mutes the master sound group when YouTube disables audio. It unmutes the group when audio is enabled again, unless the game is paused. The mute state is updated before your Lua callback runs.
+
 Use `playables.is_audio_enabled()` to initialize the game's audio state, then register a handler to keep it synchronized with YouTube:
 
 ```lua
@@ -144,6 +138,8 @@ playables.on_audio_enabled_change(nil)
 Do not call `playables.on_audio_enabled_change()` from inside its callback. Registration, replacement, and unregistration are rejected while the callback is executing.
 
 ### Pause and resume
+
+With registered `playables.on_pause()` and `playables.on_resume()` callbacks, the extension automatically mutes the master sound group on pause and unmutes it on resume if YouTube audio is enabled. If audio is disabled, sound remains muted. This happens before the corresponding Lua callback runs; use the callbacks to pause and resume gameplay and handle any other game-specific behavior.
 
 YouTube can pause the game when it is backgrounded or exited. A paused game is not guaranteed to resume, so save important state during the pause callback:
 

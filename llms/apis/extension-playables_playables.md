@@ -24,13 +24,9 @@ Returns the loaded YouTube Playables SDK version, or nil if it is unavailable.
 
 - `['string', 'nil']` - The value of SDK_VERSION, or nil if the SDK or its version is unavailable.
 
-### playables.first_frame_ready
-*Type:* FUNCTION
-Notifies YouTube that the game has begun showing frames. This must be called before game_ready().
-
 ### playables.game_ready
 *Type:* FUNCTION
-Notifies YouTube that the loading screen is gone and the game is ready for players to interact with. YouTube requires firstFrameReady() to be called before this function.
+Notifies YouTube that the loading screen is gone and the game is ready for players to interact with. The extension automatically calls firstFrameReady() during initialization.
 
 ### playables.load_data
 *Type:* FUNCTION
@@ -65,7 +61,7 @@ Returns whether game audio is enabled in the player's YouTube settings. Use this
 
 ### playables.on_audio_enabled_change
 *Type:* FUNCTION
-Registers a callback for YouTube audio-setting changes. A new callback replaces the previous one. Pass nil to unregister it. This function cannot be called from its own callback.
+Registers a callback for YouTube audio-setting changes. Before the callback runs, the extension automatically mutes the master sound group when audio is disabled, or unmutes it when audio is enabled and the game is not paused. A new callback replaces the previous one. Pass nil to unregister it. This function cannot be called from its own callback.
 
 **Parameters**
 
@@ -75,7 +71,7 @@ Registers a callback for YouTube audio-setting changes. A new callback replaces 
 
 ### playables.on_pause
 *Type:* FUNCTION
-Registers a callback for YouTube pause events. A new callback replaces the previous one. Pass nil to unregister it. This function cannot be called from its own callback. A paused game is not guaranteed to resume.
+Registers a callback for YouTube pause events. The extension automatically mutes the master sound group before the callback runs. A new callback replaces the previous one. Pass nil to unregister it. This function cannot be called from its own callback. A paused game is not guaranteed to resume.
 
 **Parameters**
 
@@ -84,7 +80,7 @@ Registers a callback for YouTube pause events. A new callback replaces the previ
 
 ### playables.on_resume
 *Type:* FUNCTION
-Registers a callback for YouTube resume events. A new callback replaces the previous one. Pass nil to unregister it. This function cannot be called from its own callback.
+Registers a callback for YouTube resume events. Before the callback runs, the extension automatically unmutes the master sound group if YouTube audio is enabled, or keeps it muted if audio is disabled. A new callback replaces the previous one. Pass nil to unregister it. This function cannot be called from its own callback.
 
 **Parameters**
 
