@@ -77,7 +77,7 @@ We (or a supplier or affiliated company acting on our behalf and only under our 
  * managing your account and relationship with us and improving your experience when playing our Games;
  * improving our Games, for example by helping us fix bugs or providing Games updates;
  * research, surveying, and engaging with you, for example by sending communications (including by email) for these purposes;
- * marketing and promotion of our Games, for example sending communications (including by email) for these purposes on our, or a third party's behalf. If you do not want us to use your data in this way please let us know by contacting us at: info@defold.com;
+ * marketing and promotion of our Games, for example sending communications (including by email) for these purposes on our, or a third party's behalf. If you do not want us to use your data in this way please let us know by contacting us at: [info@defold.se](mailto:info@defold.se);
  * to create reports, analysis or similar services for use by us for the purposes of research or business intelligence, for example to track potential problems or trends with our Games;
  * preventing cheating, crime or fraud. We may also need to pass your information to fraud prevention agencies and other organisations involved in crime and fraud prevention; and
  * as otherwise expressly set out in this Games Privacy Policy or as required by law.
@@ -144,12 +144,12 @@ Those rights include:
 
 **13. How to contact us**
 
-If you have any questions or concerns about any of the matters in relation to this Privacy Policy, including to exercise any of your rights, you may contact us by email at [info@defold.com](mailto:info@defold.com).
+If you have any questions or concerns about any of the matters in relation to this Privacy Policy, including to exercise any of your rights, you may contact us by email at [info@defold.se](mailto:info@defold.se).
 
 
 **14. Complaints**
 
-We hope that you won't have any complaints about us or our Games. If you are unhappy with our use of your information then please contact our customer services department by emailing [info@defold.com](mailto:info@defold.com).
+We hope that you won't have any complaints about us or our Games. If you are unhappy with our use of your information then please contact our customer services department by emailing [info@defold.se](mailto:info@defold.se).
 
 You also have the right to complain to your local data protection authority if there is a problem.
 

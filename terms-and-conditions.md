@@ -21,7 +21,7 @@ title: Defold Terms & Conditions
 
  * **We might change stuff** - We will try to let you know of any significant changes to these terms or to any part of the Defold services.
 
- * **Issues/Feedback/Reporting Abuse/Complaints**: Please send any feedback, issues, complaints and let us know if you feel others are abusing the Website by emailing us at: [info@defold.com](mailto:info@defold.com).
+ * **Issues/Feedback/Reporting Abuse/Complaints**: Please send any feedback, issues, complaints and let us know if you feel others are abusing the Website by emailing us at: [info@defold.se](mailto:info@defold.se).
 
 
 ##### DEFINED TERMS
@@ -183,7 +183,7 @@ We will only collect, process, use and share your personal information in accord
 
 ##### 7. SUSPENSION AND CANCELLATION OF YOUR ACCOUNT(S)
 
-**7.1 Cancellation by You.** You can cancel your use of our Website, Services and the Community Forums at any time by contacting us at info@defold.com and requesting us to delete any account you have registered with us.
+**7.1 Cancellation by You.** You can cancel your use of our Website, Services and the Community Forums at any time by contacting us at [info@defold.se](mailto:info@defold.se) and requesting us to delete any account you have registered with us.
 
 **7.2 Account Suspension or Cancellation By Us for Your breach of the Terms.** We reserve the right to suspend or cancel your access to any or all of your accounts and/or your access to our Website and/or Services (including by deleting your account) if we reasonably believe that you are in material breach of these Terms (including by repeated minor breaches). Without limitation, any breaches of section 2 (User Conduct), section 3 (Content) of the Community Terms (if applicable) are likely to be considered material breaches.
 
@@ -254,12 +254,12 @@ Our failure to exercise or enforce any of our rights under these Terms does not 
 
 ##### 16. COMPLAINTS AND DISPUTE RESOLUTION
 
-Most concerns can be solved quickly by contacting us at: [info@defold.com](mailto:info@defold.se). In the unlikely event that we cannot solve your concern and you wish to bring legal action against us these Terms shall be governed by and construed in accordance with the laws of Sweden.
+Most concerns can be solved quickly by contacting us at: [info@defold.se](mailto:info@defold.se). In the unlikely event that we cannot solve your concern and you wish to bring legal action against us these Terms shall be governed by and construed in accordance with the laws of Sweden.
 
 
 ##### 17. QUESTIONS ABOUT THESE TERMS
 
-If you have any questions about these Terms you may contact us by email at: [info@defold.com](mailto:info@defold.se).
+If you have any questions about these Terms you may contact us by email at: [info@defold.se](mailto:info@defold.se).
 
 
 ##### 18. FEEDBACK
@@ -295,7 +295,7 @@ We may use, edit, adapt, publish and distribute any Content you post on the Comm
 
 We do not control or actively monitor Content posted on the Community Forums by you or others, therefore we do not guarantee the accuracy, integrity or quality of that Content. Under no circumstances will we be liable in any way for any Content, including, but not limited to, any losses or harm of any kind resulting from the use of any Content posted, emailed, transmitted or otherwise made available via the Community Forums or the Website. Notwithstanding the foregoing, we reserve the right to remove any Content from our Community Forums or Website if we, in our sole discretion, decide that it results in or from a breach of any part of these Terms, or that it may bring us, our Services or our games into disrepute.
 
-Should you wish to complain about any Content posted by any other user, or any use of your Content by us or any other user, please contact us at: [info@defold.com](mailto:info@defold.com).
+Should you wish to complain about any Content posted by any other user, or any use of your Content by us or any other user, please contact us at: [info@defold.se](mailto:info@defold.se).
 
 
 ### PART D – DEFOLD LICENSE TERMS
@@ -353,7 +353,7 @@ We make no claim over your Games or any intellectual property rights that you in
 
 6.2 We may, but are not obliged to, provide maintenance and support for the Defold Software. Should you require support in using the Defold Software we recommend that you use the Community Forum.
 
-6.3 If you need to report any error or defect in any of the Defold Software, please contact us at: [info@defold.com](mailto:info@defold.com).
+6.3 If you need to report any error or defect in any of the Defold Software, please contact us at: [info@defold.se](mailto:info@defold.se).
 
 
 ##### 7. DATA COLLECTION
