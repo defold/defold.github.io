@@ -16,7 +16,7 @@ Collection proxies differ from [collection factory components](https://defold.co
 
 ## Bootstrap
 
-When the Defold engine starts it loads and instantiates all game objects from a *bootstrap collection* into the runtime. It then initializes and enables the game objects and their components. Which bootstrap collection the engine should use is set in the [project settings](https://defold.com/llms/manuals/project-settings.md). By convention this collection file is usually named "main.collection".
+When the Defold engine starts it loads and instantiates all game objects from a *bootstrap collection* into the runtime. It then initializes and enables the game objects and their components. Which bootstrap collection the engine should use is set in the [project settings](https://defold.com/llms/manuals/project-settings.md). By convention this collection file is usually named `main.collection`.
 
 To fit the game objects and their components the engine allocates the memory needed for the whole "game world" into which the contents of the bootstrap collection are instantiated. A separate physics world is also created for any collision objects and physics simulation.
 

@@ -5,13 +5,16 @@ layout: manual
 locale: zh
 title: 如何获取帮助
 toc:
-- 获取帮助 {getting-help}
+- anchor: getting-help
+  title: 获取帮助
 - 在论坛上报告问题
 - 必需信息
 - 分享代码
-- 从编辑器报告问题 {report-a-problem-from-the-editor}
+- anchor: report-a-problem-from-the-editor
+  title: 从编辑器报告问题
 - 在Discord上讨论问题
-- 日志文件 {log-files}
+- anchor: log-files
+  title: 日志文件
 ---
 
 # 获取帮助 {#getting-help}

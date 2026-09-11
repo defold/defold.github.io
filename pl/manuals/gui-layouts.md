@@ -6,7 +6,8 @@ locale: pl
 title: Układy GUI w Defold
 toc:
 - Układy
-- Tworzenie profili wyświetlania {creating-display-profiles}
+- anchor: creating-display-profiles
+  title: Tworzenie profili wyświetlania
 - Auto Layout Selection (Display Profiles)
 - Układy GUI
 - Dynamiczny wybór profilu

@@ -7,7 +7,8 @@ title: Configuración del proyecto Defold
 toc:
 - Configuración del proyecto
 - Formato de archivo
-- Acceso en runtime {runtime-access}
+- anchor: runtime-access
+  title: Acceso en runtime
 - Secciones y configuraciones
 - Project
 - Bootstrap

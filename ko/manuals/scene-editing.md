@@ -9,12 +9,15 @@ toc:
 - Scene Editor 열기
 - 씬 뷰 탐색(카메라 컨트롤)
 - 표준 탐색(모든 시각적 에디터)
-- 2D와 3D 씬 방향 {2d-and-3d-scene-orientation}
+- anchor: 2d-and-3d-scene-orientation
+  title: 2D와 3D 씬 방향
 - 툴바 개요
-- 오브젝트 선택 및 조작 {manipulating-objects}
+- anchor: manipulating-objects
+  title: 오브젝트 선택 및 조작
 - 오브젝트 선택
 - Visibility filters
-- 그리드 설정 {grid-settings}
+- anchor: grid-settings
+  title: 그리드 설정
 - '카메라 타입: Perspective와 Orthographic'
 - Free Camera Mode
 - Free Camera Mode 활성화

@@ -8,7 +8,8 @@ toc:
 - Tile source
 - Criando um tile source
 - Animações flip-book de tile source
-- Formas de colisão de tile source {tile-source-collision-shapes}
+- anchor: tile-source-collision-shapes
+  title: Formas de colisão de tile source
 ---
 
 # Tile source

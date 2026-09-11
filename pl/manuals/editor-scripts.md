@@ -9,15 +9,20 @@ toc:
 - Środowisko uruchomieniowe skryptów edytora
 - Anatomia pliku .editor_script
 - API edytora
-- Polecenia {commands}
+- anchor: commands
+  title: Polecenia
 - Używanie poleceń do zmiany stanu edytora w pamięci
 - Używanie poleceń z aktywnym widokiem edytora
 - Używanie poleceń powłoki
-- Hooki cyklu życia {lifecycle-hooks}
+- anchor: lifecycle-hooks
+  title: Hooki cyklu życia
 - Serwery językowe
-- Serwer HTTP {http-server}
-- Skrypty edytora w bibliotekach {editor-scripts-in-libraries}
-- Preferencje {preferences}
+- anchor: http-server
+  title: Serwer HTTP
+- anchor: editor-scripts-in-libraries
+  title: Skrypty edytora w bibliotekach
+- anchor: preferences
+  title: Preferencje
 - Tryby wykonania
 - Akcje
 - Akcje z możliwością cofnięcia
@@ -758,7 +763,7 @@ Skrypty edytora mogą definiować i używać preferencji, czyli trwałych, nieza
 
 - są typowane: każda preferencja ma definicję schematu zawierającą typ danych i dodatkowe metadane, takie jak wartość domyślna;
 - mają zakres: preferencje są ograniczone albo do projektu, albo do użytkownika;
-- są zagnieżdżone: każdy klucz preferencji jest łańcuchem rozdzielanym kropkami, gdzie pierwszy segment identyfikuje skrypt edytora, a kolejne opisują strukturę danej preferencji.
+- są zagnieżdżone: każdy klucz preferencji jest łańcuchem rozdzielanym kropkami, gdzie pierwszy segment identyfikuje skrypt edytora, a kolejne identyfikują grupy i poszczególne preferencje w jego obrębie.
 
 Wszystkie preferencje trzeba zarejestrować przez zdefiniowanie schematu:
 

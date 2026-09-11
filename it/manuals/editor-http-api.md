@@ -5,28 +5,45 @@ layout: manual
 locale: it
 title: Automatizzare l'editor Defold con HTTP
 toc:
-- Automatizzare leditor Defold
-- Avviare leditor da uno strumento esterno {starting-the-editor-from-an-external-tool}
-- Individuare il server delleditor {locating-the-editor-server}
-- Individuare le operazioni tramite OpenAPI {discovering-operations-through-openapi}
-- Eseguire i comandi delleditor {executing-editor-commands}
-- Risposte dei comandi e attività asincrone {command-responses-and-asynchronous-work}
-- Creare una build HTML5 {building-html5}
-- Cercare nella documentazione API {searching-api-documentation}
-- Leggere loutput della console {reading-console-output}
-- Renderizzare le anteprime delle scene {rendering-scene-previews}
-- Eseguire Lua nelleditor {executing-editor-lua}
-- Modificare risorse e file {modifying-resources-and-files}
-- Preferenze {preferences}
-- Route definite dal progetto {project-defined-routes}
-- Hook del ciclo di vita {lifecycle-hooks}
-- Sicurezza e compatibilità {security-and-compatibility}
-- Server del motore {engine-server}
+- anchor: automating-the-defold-editor
+  title: Automatizzare leditor Defold
+- anchor: starting-the-editor-from-an-external-tool
+  title: Avviare leditor da uno strumento esterno
+- anchor: locating-the-editor-server
+  title: Individuare il server delleditor
+- anchor: discovering-operations-through-openapi
+  title: Individuare le operazioni tramite OpenAPI
+- anchor: executing-editor-commands
+  title: Eseguire i comandi delleditor
+- anchor: command-responses-and-asynchronous-work
+  title: Risposte dei comandi e attività asincrone
+- anchor: building-html5
+  title: Creare una build HTML5
+- anchor: searching-api-documentation
+  title: Cercare nella documentazione API
+- anchor: reading-console-output
+  title: Leggere loutput della console
+- anchor: rendering-scene-previews
+  title: Renderizzare le anteprime delle scene
+- anchor: executing-editor-lua
+  title: Eseguire Lua nelleditor
+- anchor: modifying-resources-and-files
+  title: Modificare risorse e file
+- anchor: preferences
+  title: Preferenze
+- anchor: project-defined-routes
+  title: Route definite dal progetto
+- anchor: lifecycle-hooks
+  title: Hook del ciclo di vita
+- anchor: security-and-compatibility
+  title: Sicurezza e compatibilità
+- anchor: engine-server
+  title: Server del motore
 ---
 
-# Automatizzare l'editor Defold
+# Automatizzare l'editor Defold {#automating-the-defold-editor}
 
-L'editor Defold apre un server speciale per le azioni automatizzate. L'API HTTP controlla il progetto aperto. Utilizzala per comandi dell'editor, build, risorse del progetto, anteprime, preferenze, output della console, ricerca nella documentazione o integrazioni con script dell'editor. Per ispezionare o controllare invece il gioco in esecuzione, utilizza il [servizio del motore o un'API di automazione a runtime](/it/manuals/engine-service).
+L'editor Defold avvia un server dedicato alle azioni automatizzate. L'API HTTP controlla il progetto aperto. Utilizzala per comandi dell'editor, build, risorse del progetto, anteprime, preferenze, output della console, ricerca nella documentazione o integrazioni con script dell'editor. Per ispezionare o controllare invece il gioco in esecuzione, utilizza il [servizio del motore o un'API di automazione a runtime](/it/manuals/engine-service).
 
 <div class='important' markdown='1'>
 L'API HTTP dell'editor è sperimentale e può cambiare tra le versioni di Defold. Il documento `/openapi.json` generato dall'editor in esecuzione è la fonte autorevole per le operazioni e gli schemi disponibili.
@@ -36,7 +53,7 @@ L'API HTTP dell'editor è sperimentale e può cambiare tra le versioni di Defold
 
 Uno strumento esterno necessita dell'eseguibile dell'editor e del percorso assoluto del file `game.project` del progetto.
 
-Le versioni di Defold installate possono essere individuate tramite `installations.json`, come descritto nel [manuale dell'editor](/manuals/editor/#editor-installation-metadata). Il relativo campo `launcherPath` contiene l'eseguibile da avviare. Passa il percorso di `game.project` come primo argomento posizionale per aprire direttamente il progetto.
+Le versioni di Defold installate possono essere individuate tramite `installations.json`, come descritto nel [manuale dell'editor](/it/manuals/editor/#editor-installation-metadata). Il relativo campo `launcherPath` contiene l'eseguibile da avviare. Passa il percorso di `game.project` come primo argomento posizionale per aprire direttamente il progetto.
 
 L'argomento facoltativo `--port` o `-p` seleziona la porta del server dell'editor. Se viene omesso, Defold sceglie una porta disponibile; questa soluzione è solitamente preferibile quando possono essere aperti più progetti.
 
@@ -55,7 +72,7 @@ L'argomento facoltativo `--port` o `-p` seleziona la porta del server dell'edito
 C:\path\to\Defold\Defold.exe --port 8181 C:\absolute\path\to\project\game.project
 ```
 
-L'editor è un'applicazione desktop grafica. Avvialo in una sessione utente interattiva con accesso allo schermo. Utilizza [Bob](/manuals/bob) quando non è disponibile una sessione grafica, ad esempio nella CI headless, oppure per l'automazione della sola compilazione e la creazione di bundle autonomi.
+L'editor è un'applicazione desktop grafica. Avvialo in una sessione utente interattiva con accesso allo schermo. Utilizza [Bob](/it/manuals/bob) quando non è disponibile una sessione grafica, ad esempio nella CI headless, oppure per l'automazione della sola compilazione e la creazione di bundle autonomi.
 
 Dopo avere avviato l'editor, attendi che il progetto sia aperto e che esista `.internal/editor.port`. Quindi interroga ripetutamente `/openapi.json` finché non restituisce un documento valido. Non presupporre che la creazione del processo significhi che il progetto sia pronto.
 
@@ -86,7 +103,7 @@ Il server dell'editor è un'interfaccia di controllo locale attendibile. Non esp
 
 ## Individuare le operazioni tramite OpenAPI {#discovering-operations-through-openapi}
 
-Le uniche informazioni di bootstrap specifiche di Defold necessarie a uno strumento esterno sono la porta dell'editor e il documento OpenAPI:
+Le uniche informazioni iniziali specifiche di Defold necessarie a uno strumento esterno sono la porta dell'editor e il documento OpenAPI:
 
 ```sh
 curl -sS "http://127.0.0.1:$(cat .internal/editor.port)/openapi.json"
@@ -112,7 +129,7 @@ curl -sS "$BASE_URL/openapi.json" |
   '
 ```
 
-Un'integrazione compatibile con più versioni dovrebbe verificare ogni operazione richiesta e configurare le richieste in base allo schema restituito. Sconsigliamo di mantenere una copia che si presume esaustiva dei nomi degli endpoint o dei comandi, poiché può diventare obsoleta.
+Un'integrazione che tiene conto della versione dovrebbe verificare ogni operazione richiesta e configurare le richieste in base allo schema restituito. Sconsigliamo di mantenere una copia che si presume esaustiva dei nomi degli endpoint o dei comandi, poiché può diventare obsoleta.
 
 Anche le route definite dal progetto compaiono in `/openapi.json` quando i relativi script dell'editor forniscono una descrizione dell'operazione OpenAPI.
 
@@ -266,9 +283,9 @@ I parametri di ricerca sono:
 `q`
 : Un'espressione senza distinzione tra maiuscole e minuscole. Gli spazi rappresentano AND, mentre `|` rappresenta OR.
 
-Esistono anche risorse di documentazione condensate: l'[indice della documentazione per LLM](https://defold.com/llms.txt) rimanda ai manuali ufficiali, ai namespace API e agli esempi, mentre la [documentazione completa per LLM](https://defold.com/llms-full.txt) elenca la documentazione completa per consentire la ricerca offline e l'indicizzazione locale.
+Esistono anche risorse di documentazione in formato compatto: l'[indice della documentazione per LLM](https://defold.com/llms.txt) rimanda ai manuali ufficiali, ai namespace API e agli esempi, mentre la [documentazione completa per LLM](https://defold.com/llms-full.txt) raccoglie l'intera documentazione per consentire la ricerca offline e l'indicizzazione locale.
 
-Gli agenti IA dovrebbero tuttavia preferire ricerche specifiche anziché recuperare un intero documento di riferimento quando occorre soltanto un'API o un messaggio, in modo da risparmiare token e disporre di un contesto pulito e meglio preparato per l'attività specifica.
+Gli agenti IA dovrebbero tuttavia preferire ricerche mirate anziché recuperare un intero documento di riferimento quando occorre soltanto un'API o un messaggio, in modo da risparmiare token e disporre di un contesto privo di informazioni superflue e più adatto all'attività da svolgere.
 
 ## Leggere l'output della console {#reading-console-output}
 
@@ -288,7 +305,7 @@ curl -N "$BASE_URL/console/stream"
 
 Il flusso include le righe già presenti nella console e poi rimane aperto per il nuovo output. Chiudilo dopo aver ricevuto un indicatore di completamento o un errore, aver rilevato la terminazione del processo o aver raggiunto un timeout o un limite di righe.
 
-Per l'inquadramento dei risultati dei test e la classificazione degli errori, consulta [Test automatici e verifica](/it/manuals/automated-testing/#structured-test-results).
+Per la delimitazione dei risultati dei test e la classificazione degli errori, consulta [Test automatici e verifica](/it/manuals/automated-testing/#structured-test-results).
 
 ## Renderizzare le anteprime delle scene {#rendering-scene-previews}
 
@@ -306,7 +323,7 @@ Questo comando renderizza la collezione principale del progetto aperto basato su
 
 ![Anteprima della collezione principale renderizzata dall'editor](/manuals/images/automation/main-preview.png)
 
-Puoi utilizzare il rendering per ottenere anteprime delle risorse che usano l'editor visivo delle scene. Ad esempio, puoi renderizzare allo stesso modo un componente modello, così da verificarne l'aspetto o, per esempio, la correttezza dello shader:
+Puoi utilizzare il rendering per ottenere anteprime delle risorse che usano l'editor visivo delle scene. Ad esempio, puoi renderizzare allo stesso modo un componente modello per verificarne l'aspetto o la correttezza dello shader:
 
 ```sh
 curl -sS \
@@ -439,9 +456,9 @@ Le preferenze sono impostazioni persistenti dell'utente, globali o specifiche de
 
 ## Route definite dal progetto {#project-defined-routes}
 
-Gli script dell'editor possono definire route aggiuntive con [`get_http_server_routes()`](/manuals/editor-scripts/#http-server). Una tabella facoltativa delle operazioni OpenAPI espone una route tramite lo stesso documento `/openapi.json` delle operazioni integrate.
+Gli script dell'editor possono definire route aggiuntive con [`get_http_server_routes()`](/it/manuals/editor-scripts/#http-server). Una tabella facoltativa delle operazioni OpenAPI espone una route tramite lo stesso documento `/openapi.json` delle operazioni integrate.
 
-Le route definite dal progetto possono fornire generazione di contenuti, convalida, report, controlli di localizzazione, analisi delle risorse, test specifici del progetto o un'interfaccia più piccola per un IDE o un controller esterno.
+Le route definite dal progetto possono fornire generazione di contenuti, convalida, report, controlli di localizzazione, analisi delle risorse, test specifici del progetto o un'interfaccia più essenziale per un IDE o un controller esterno.
 
 Una buona route dovrebbe eseguire un'unica operazione dal nome chiaro, convalidarne l'input, restituire un risultato strutturato, essere idempotente ove possibile e limitare le attività dispendiose.
 
@@ -488,7 +505,7 @@ Considera l'intero server dell'editor come un'interfaccia locale attendibile:
 * Mantieni il token nel livello di integrazione locale anziché nei prompt, nei report o nei log.
 * Ricorda che le route definite dal progetto non ereditano l'autenticazione di `/eval`.
 * Utilizza un `/openapi.json` aggiornato.
-* Utilizza attese limitate per i comandi automatici asincroni e per l'avvio dell'editor.
+* Utilizza tempi di attesa limitati per i comandi automatici asincroni e per l'avvio dell'editor.
 
 ## Server del motore {#engine-server}
 

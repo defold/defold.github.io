@@ -9,7 +9,8 @@ toc:
 - Definindo uma propriedade de script
 - Acessando propriedades de script
 - Objetos criados por fábrica
-- Propriedades de recurso {resource-properties}
+- anchor: resource-properties
+  title: Propriedades de recurso
 ---
 
 # Propriedades de script

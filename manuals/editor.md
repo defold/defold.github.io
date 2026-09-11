@@ -8,9 +8,11 @@ toc:
 - Editor overview
 - Starting the Editor
 - Editor Language
-- The Editor panes {the-editor-views}
+- anchor: the-editor-views
+  title: The Editor panes
 - 1. Assets pane
-- 2. Scene Editor pane {the-scene-editor}
+- anchor: the-scene-editor
+  title: 2. Scene Editor pane
 - 3. Outline pane
 - 4. Properties pane
 - 5. Tools pane

@@ -32,7 +32,7 @@
         },
         {
             "brief": "table of package loaders",
-            "description": "A table used by require to control how to load modules.\nEach entry in this table is a searcher function.\nWhen looking for a module,\nrequire calls each of these searchers in ascending order,\nwith the module name (the argument given to require) as its\nsole parameter.\nThe function can return another function (the module loader)\nor a string explaining why it did not find that module\n(or <span class=\"type\"> nil</span> if it has nothing to say).\nLua initializes this table with four functions.\nThe first searcher simply looks for a loader in the\npackage.preload table.\nThe second searcher looks for a loader as a Lua library,\nusing the path stored at package.path.\nA path is a sequence of <em>templates</em> separated by semicolons.\nFor each template,\nthe searcher will change each interrogation\nmark in the template by filename,\nwhich is the module name with each dot replaced by a\n\"directory separator\" (such as \"/\" in Unix);\nthen it will try to open the resulting file name.\nSo, for instance, if the Lua path is the string\n<div class=\"codehilite\"><pre><span></span><code><span class=\"s2\">&quot;./?.lua;./?.lc;/usr/local/?/init.lua&quot;</span>\n</code></pre></div>\n\nthe search for a Lua file for module foo\nwill try to open the files\n<code>./foo.lua</code>, <code>./foo.lc</code>, and\n<code>/usr/local/foo/init.lua</code>, in that order.\nThe third searcher looks for a loader as a C library,\nusing the path given by the variable package.cpath.\nFor instance,\nif the C path is the string\n<div class=\"codehilite\"><pre><span></span><code><span class=\"s2\">&quot;./?.so;./?.dll;/usr/local/?/init.so&quot;</span>\n</code></pre></div>\n\nthe searcher for module foo\nwill try to open the files <code>./foo.so</code>, <code>./foo.dll</code>,\nand <code>/usr/local/foo/init.so</code>, in that order.\nOnce it finds a C library,\nthis searcher first uses a dynamic link facility to link the\napplication with the library.\nThen it tries to find a C function inside the library to\nbe used as the loader.\nThe name of this C function is the string \"luaopen_\"\nconcatenated with a copy of the module name where each dot\nis replaced by an underscore.\nMoreover, if the module name has a hyphen,\nits prefix up to (and including) the first hyphen is removed.\nFor instance, if the module name is a.v1-b.c,\nthe function name will be luaopen_b_c.\nThe fourth searcher tries an all-in-one loader.\nIt searches the C path for a library for\nthe root name of the given module.\nFor instance, when requiring a.b.c,\nit will search for a C library for a.\nIf found, it looks into it for an open function for\nthe submodule;\nin our example, that would be luaopen_a_b_c.\nWith this facility, a package can pack several C submodules\ninto one single library,\nwith each submodule keeping its original open function.",
+            "description": "A table used by require to control how to load modules.\nEach entry in this table is a searcher function.\nWhen looking for a module,\nrequire calls each of these searchers in ascending order,\nwith the module name (the argument given to require) as its\nsole parameter.\nThe function can return another function (the module loader)\nor a string explaining why it did not find that module\n(or <span class=\"type\"> <a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a></span> if it has nothing to say).\nLua initializes this table with four functions.\nThe first searcher simply looks for a loader in the\npackage.preload table.\nThe second searcher looks for a loader as a Lua library,\nusing the path stored at package.path.\nA path is a sequence of <em>templates</em> separated by semicolons.\nFor each template,\nthe searcher will change each interrogation\nmark in the template by filename,\nwhich is the module name with each dot replaced by a\n\"directory separator\" (such as \"/\" in Unix);\nthen it will try to open the resulting file name.\nSo, for instance, if the Lua path is the string\n<div class=\"codehilite\"><pre><span></span><code><span class=\"s2\">&quot;./?.lua;./?.lc;/usr/local/?/init.lua&quot;</span>\n</code></pre></div>\n\nthe search for a Lua file for module foo\nwill try to open the files\n<code>./foo.lua</code>, <code>./foo.lc</code>, and\n<code>/usr/local/foo/init.lua</code>, in that order.\nThe third searcher looks for a loader as a C library,\nusing the path given by the variable package.cpath.\nFor instance,\nif the C path is the string\n<div class=\"codehilite\"><pre><span></span><code><span class=\"s2\">&quot;./?.so;./?.dll;/usr/local/?/init.so&quot;</span>\n</code></pre></div>\n\nthe searcher for module foo\nwill try to open the files <code>./foo.so</code>, <code>./foo.dll</code>,\nand <code>/usr/local/foo/init.so</code>, in that order.\nOnce it finds a C library,\nthis searcher first uses a dynamic link facility to link the\napplication with the library.\nThen it tries to find a C function inside the library to\nbe used as the loader.\nThe name of this C function is the string \"luaopen_\"\nconcatenated with a copy of the module name where each dot\nis replaced by an underscore.\nMoreover, if the module name has a hyphen,\nits prefix up to (and including) the first hyphen is removed.\nFor instance, if the module name is a.v1-b.c,\nthe function name will be luaopen_b_c.\nThe fourth searcher tries an all-in-one loader.\nIt searches the C path for a library for\nthe root name of the given module.\nFor instance, when requiring a.b.c,\nit will search for a C library for a.\nIf found, it looks into it for an open function for\nthe submodule;\nin our example, that would be luaopen_a_b_c.\nWith this facility, a package can pack several C submodules\ninto one single library,\nwith each submodule keeping its original open function.",
             "error": "",
             "examples": "",
             "language": "",
@@ -61,6 +61,12 @@
                     "name": "libname",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 },
                 {
@@ -69,6 +75,12 @@
                     "name": "funcname",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 }
             ],
@@ -122,7 +134,13 @@
                     "is_optional": "False",
                     "name": "module",
                     "types": [
-                        "table"
+                        "table<any, any>"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">table</a>&lt;<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>, <a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>&gt;"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">table</a>&lt;<a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>, <a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>&gt;"
                     ]
                 }
             ],
@@ -132,6 +150,7 @@
             "type": "FUNCTION"
         }
     ],
+    "format_version": 2,
     "info": {
         "api_language": "Lua",
         "brief": "Lua package standard library",

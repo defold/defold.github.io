@@ -7,7 +7,8 @@ title: Defold의 물리
 toc:
 - 물리
 - 물리 엔진 시뮬레이션에서 사용하는 단위
-- 물리 업데이트 {physics-updates}
+- anchor: physics-updates
+  title: 물리 업데이트
 - 주의 사항 및 일반적인 문제
 ---
 

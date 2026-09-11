@@ -11,7 +11,8 @@ toc:
 - Standard navigation (all visual editors)
 - 2D and 3D scene orientation
 - Toolbar overview
-- Selecting and manipulating objects {manipulating-objects}
+- anchor: manipulating-objects
+  title: Selecting and manipulating objects
 - Selecting objects
 - Visibility filters
 - Grid settings

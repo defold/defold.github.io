@@ -8,20 +8,26 @@ toc:
 - 渲染
 - 渲染管线 - 是什么、何时以及何处？
 - 默认渲染
-- 渲染判定 {render-predicates}
-- 默认视图投影 {default-view-projection}
+- anchor: render-predicates
+  title: 渲染判定
+- anchor: default-view-projection
+  title: 默认视图投影
 - Stretch 投影
 - Fixed fit 投影
-- Fixed 投影 {fixed-projection}
+- anchor: fixed-projection
+  title: Fixed 投影
 - 摄像机投影
-- 视锥体剔除 {frustum-culling}
+- anchor: frustum-culling
+  title: 视锥体剔除
 - 坐标系统
-- 渲染脚本 {the-render-script}
+- anchor: the-render-script
+  title: 渲染脚本
 - 渲染资源
 - 纹理句柄
 - 支持的图形 API
 - 系统消息
-- 绘制调用和批处理 {draw-calls-and-batching}
+- anchor: draw-calls-and-batching
+  title: 绘制调用和批处理
 - 非 GUI 组件的批处理规则
 - GUI 组件的批处理规则
 ---

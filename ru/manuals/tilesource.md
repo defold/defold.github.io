@@ -8,7 +8,8 @@ toc:
 - Ресурс Tile Source
 - Создание источника тайлов
 - Анимация в тайловом источнике
-- Формы столкновений источника тайлов {tile-source-collision-shapes}
+- anchor: tile-source-collision-shapes
+  title: Формы столкновений источника тайлов
 ---
 
 # Ресурс Tile Source

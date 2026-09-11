@@ -8,7 +8,8 @@ toc:
 - Componentes de fábrica
 - Endereçamento de objetos criados por fábrica
 - Rastreamento de objetos criados e objetos pai
-- Carregamento dinâmico de recursos de fábrica {dynamic-loading-of-factory-resources}
+- anchor: dynamic-loading-of-factory-resources
+  title: Carregamento dinâmico de recursos de fábrica
 - Protótipo dinâmico
 - Limites de instâncias
 - Pooling de objetos de jogo

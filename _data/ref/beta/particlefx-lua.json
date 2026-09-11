@@ -46,64 +46,38 @@
             "type": "PROPERTY"
         },
         {
-            "brief": "postspawn state",
-            "description": "The emitter is not spawning any particles, but has particles that are still alive.",
+            "brief": "Emitter states",
+            "description": "Emitter states",
             "error": "",
             "examples": "",
             "language": "",
-            "members": [],
-            "name": "particlefx.EMITTER_STATE_POSTSPAWN",
+            "members": [
+                {
+                    "doc": "postspawn state The emitter is not spawning any particles, but has particles that are still alive.",
+                    "name": "particlefx.EMITTER_STATE_POSTSPAWN"
+                },
+                {
+                    "doc": "prespawn state The emitter will be in this state when it has been started but before spawning any particles. Normally the emitter is in this state for a short time, depending on if a start delay has been set for this emitter or not.",
+                    "name": "particlefx.EMITTER_STATE_PRESPAWN"
+                },
+                {
+                    "doc": "sleeping state The emitter does not have any living particles and will not spawn any particles in this state.",
+                    "name": "particlefx.EMITTER_STATE_SLEEPING"
+                },
+                {
+                    "doc": "spawning state The emitter is spawning particles.",
+                    "name": "particlefx.EMITTER_STATE_SPAWNING"
+                }
+            ],
+            "name": "particlefx.EMITTER_STATE",
             "notes": [],
             "parameters": [],
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "prespawn state",
-            "description": "The emitter will be in this state when it has been started but before spawning any particles. Normally the emitter is in this state for a short time, depending on if a start delay has been set for this emitter or not.",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "particlefx.EMITTER_STATE_PRESPAWN",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "sleeping state",
-            "description": "The emitter does not have any living particles and will not spawn any particles in this state.",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "particlefx.EMITTER_STATE_SLEEPING",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "spawning state",
-            "description": "The emitter is spawning particles.",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "particlefx.EMITTER_STATE_SPAWNING",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
+            "type": "ENUM",
+            "value_type": "integer",
+            "value_type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
         },
         {
             "brief": "start playing a particle FX",
@@ -123,14 +97,30 @@
                         "string",
                         "hash",
                         "url"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
                     ]
                 },
                 {
-                    "doc": "optional callback function that will be called when an emitter attached to this particlefx changes state.\n<dl>\n<dt><code>self</code></dt>\n<dd><span class=\"type\">object</span> The current object</dd>\n<dt><code>id</code></dt>\n<dd><span class=\"type\">hash</span> The id of the particle fx component</dd>\n<dt><code>emitter</code></dt>\n<dd><span class=\"type\">hash</span> The id of the emitter</dd>\n<dt><code>state</code></dt>\n<dd><span class=\"type\">constant</span> the new state of the emitter:</dd>\n</dl>\n<ul>\n<li><code>particlefx.EMITTER_STATE_SLEEPING</code></li>\n<li><code>particlefx.EMITTER_STATE_PRESPAWN</code></li>\n<li><code>particlefx.EMITTER_STATE_SPAWNING</code></li>\n<li><code>particlefx.EMITTER_STATE_POSTSPAWN</code></li>\n</ul>",
+                    "doc": "optional callback function that will be called when an emitter attached to this particlefx changes state.",
                     "is_optional": "True",
                     "name": "emitter_state_function",
                     "types": [
-                        "function(self, id, emitter, state)"
+                        "fun(self:script_instance, id:hash, emitter:hash, state:particlefx.EMITTER_STATE)"
+                    ],
+                    "types_html": [
+                        "fun(self:<a href=\"../builtins-lua/#script_instance\">script_instance</a>, id:<a href=\"../builtins-lua/#hash\">hash</a>, emitter:<a href=\"../builtins-lua/#hash\">hash</a>, state:<a href=\"#particlefx.EMITTER_STATE\">particlefx.EMITTER_STATE</a>)"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">function</a>(\n\tself:<a href=\"../builtins-lua/#script_instance\">script_instance</a>,\n\tid:<a href=\"../builtins-lua/#hash\">hash</a>,\n\temitter:<a href=\"../builtins-lua/#hash\">hash</a>,\n\tstate:<a href=\"#particlefx.EMITTER_STATE\">particlefx.EMITTER_STATE</a>)"
                     ]
                 }
             ],
@@ -157,6 +147,16 @@
                         "string",
                         "hash",
                         "url"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
                     ]
                 },
                 {
@@ -166,6 +166,14 @@
                     "types": [
                         "string",
                         "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
                     ]
                 },
                 {
@@ -175,6 +183,14 @@
                     "types": [
                         "string",
                         "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
                     ]
                 }
             ],
@@ -201,6 +217,16 @@
                         "string",
                         "hash",
                         "url"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
                     ]
                 },
                 {
@@ -210,6 +236,14 @@
                     "types": [
                         "string",
                         "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
                     ]
                 },
                 {
@@ -219,6 +253,14 @@
                     "types": [
                         "string",
                         "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
                     ]
                 },
                 {
@@ -227,6 +269,12 @@
                     "name": "value",
                     "types": [
                         "vector4"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector4\">vector4</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector4\">vector4</a>"
                     ]
                 }
             ],
@@ -253,14 +301,30 @@
                         "string",
                         "hash",
                         "url"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
                     ]
                 },
                 {
-                    "doc": "Options when stopping the particle fx. Supported options:\n<ul>\n<li><span class=\"type\">boolean</span> <code>clear</code>: instantly clear spawned particles</li>\n</ul>",
+                    "doc": "options used when stopping the particle fx",
                     "is_optional": "True",
                     "name": "options",
                     "types": [
-                        "table"
+                        "particlefx.stop_options"
+                    ],
+                    "types_html": [
+                        "<a href=\"#particlefx.stop_options\">particlefx.stop_options</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#particlefx.stop_options\">particlefx.stop_options</a>"
                     ]
                 }
             ],
@@ -268,8 +332,33 @@
             "returnvalues": [],
             "tparams": [],
             "type": "FUNCTION"
+        },
+        {
+            "brief": "Particle effect stop options",
+            "description": "Options used when stopping particle effects.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "clear",
+                    "doc": "Instantly clear spawned particles.",
+                    "is_optional": true,
+                    "name": "clear?",
+                    "type": "boolean",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                }
+            ],
+            "name": "particlefx.stop_options",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
         }
     ],
+    "format_version": 2,
     "info": {
         "api_language": "Lua",
         "brief": "Particle effects API documentation",

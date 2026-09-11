@@ -10,12 +10,15 @@ toc:
 - Gui свойства
 - Работа со свойствами GUI во время выполнения
 - Зависимости
-- Типы нод {node-types}
-- Свойства нод {node-properties}
+- anchor: node-types
+  title: Типы нод
+- anchor: node-properties
+  title: Свойства нод
 - Пивот, якоря и режим корректировки
 - Порядок отрисовки
 - Иерархии родительский-дочерний
-- Слои и вызовы отрисовки {layers-and-draw-calls}
+- anchor: layers-and-draw-calls
+  title: Слои и вызовы отрисовки
 ---
 
 # Разработка GUI

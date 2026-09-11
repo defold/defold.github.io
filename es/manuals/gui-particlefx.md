@@ -7,7 +7,8 @@ title: Particle fx de GUI en Defold
 toc:
 - Nodos ParticleFX de GUI
 - Añadir nodos Particle FX
-- Controlar el efecto {controlling-the-effect}
+- anchor: controlling-the-effect
+  title: Controlar el efecto
 ---
 
 # Nodos ParticleFX de GUI

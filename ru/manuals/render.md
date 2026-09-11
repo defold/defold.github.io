@@ -8,20 +8,26 @@ toc:
 - Рендер пайплайн
 - Рендер пайплайн - Что, где и когда?
 - Рендер по-умолчанию
-- Рендер предикаты {render-predicates}
-- Проекция вида по умолчанию {default-view-projection}
+- anchor: render-predicates
+  title: Рендер предикаты
+- anchor: default-view-projection
+  title: Проекция вида по умолчанию
 - Stretch проекция
 - Fixed fit проекция
-- Fixed проекция {fixed-projection}
+- anchor: fixed-projection
+  title: Fixed проекция
 - Проекция камеры
-- Отсечение по усеченному конусу (Frustum culling) {frustum-culling}
+- anchor: frustum-culling
+  title: Отсечение по усеченному конусу (Frustum culling)
 - Системы координат
-- Рендер скрипт {the-render-script}
+- anchor: the-render-script
+  title: Рендер скрипт
 - Ресурсы рендеринга
 - Обработчики текстур
 - Поддерживаемые графические API
 - Системные сообщения
-- Вызовы отрисовки и пакетирование {draw-calls-and-batching}
+- anchor: draw-calls-and-batching
+  title: Вызовы отрисовки и пакетирование
 - Правила пакетирования для не-GUI компонентов
 - Правила пакетирования для GUI компонентов
 ---

@@ -5,13 +5,20 @@ layout: manual
 locale: pt
 title: O serviço do engine e as APIs HTTP de tempo de execução
 toc:
-- O serviço do engine e as APIs HTTP de tempo de execução {the-engine-service-and-runtime-http-apis}
-- Disponibilidade e descoberta da porta {availability-and-port-discovery}
-- Endpoints integrados {built-in-endpoints}
-- Rotas de tempo de execução definidas por extensões {extension-defined-runtime-routes}
-- Extensão Automation Bridge {automation-bridge-extension}
-- Clientes do editor e de tempo de execução {editor-and-runtime-clients}
-- Limitações e segurança {limitations-and-security}
+- anchor: the-engine-service-and-runtime-http-apis
+  title: O serviço do engine e as APIs HTTP de tempo de execução
+- anchor: availability-and-port-discovery
+  title: Disponibilidade e descoberta da porta
+- anchor: built-in-endpoints
+  title: Endpoints integrados
+- anchor: extension-defined-runtime-routes
+  title: Rotas de tempo de execução definidas por extensões
+- anchor: automation-bridge-extension
+  title: Extensão Automation Bridge
+- anchor: editor-and-runtime-clients
+  title: Clientes do editor e de tempo de execução
+- anchor: limitations-and-security
+  title: Limitações e segurança
 ---
 
 # O serviço do engine e as APIs HTTP de tempo de execução {#the-engine-service-and-runtime-http-apis}

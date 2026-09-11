@@ -11,7 +11,8 @@ toc:
 - Pestaña Breakpoints
 - Biblioteca debug de Lua
 - Checklist de depuración
-- Depuración de problemas con físicas {debugging-problems-with-physics}
+- anchor: debugging-problems-with-physics
+  title: Depuración de problemas con físicas
 ---
 
 # Depuración de la lógica del juego

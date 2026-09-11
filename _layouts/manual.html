@@ -102,8 +102,13 @@ layout: page_with_learnnav
 						<label class="togglelabel">On this page</label>
 						<ul class="nobullet">
 						{%- for t in page.toc -%}
+							{%- assign toc_title = t.title | default: t -%}
+							{%- assign toc_anchor = t.anchor -%}
+							{%- if toc_anchor == nil -%}
+								{%- assign toc_anchor = toc_title | downcase | replace: " ", "-" | replace: "/", "" -%}
+							{%- endif -%}
 							<li class="learn-detail-list-item">
-								<a class="learn-detail-list-link" href='#{{ t | downcase | replace: " ", "-" | replace: "/", "" }}'>{{ t }}</a>
+								<a class="learn-detail-list-link" href='#{{ toc_anchor | escape }}'>{{ toc_title }}</a>
 							</li>
 						{%- endfor -%}
 						</ul>

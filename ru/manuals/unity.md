@@ -648,8 +648,9 @@ msg.post("#myproxy", "load")
 | `on_message` | Message Receiver | Основной callback Defold для получения сообщений. Вызывается, когда в очереди есть сообщение. |
 | `final` | `OnDisable` / `OnDestroy` / `OnApplicationQuit` | Defold вызывает `final()` у каждого component'а, когда его game object уничтожается во время выполнения (`go.delete()`), либо когда world/collection выгружается, а также при завершении приложения для всех оставшихся объектов. |
 
-::: sidenote
+<div class='sidenote' markdown='1'>
 Помните, что Defold не гарантирует порядок выполнения между components, если несколько инициализируются/обновляются/удаляются одновременно. Поощряется decoupled design.
+</div>
 
 ### Инициализация
 

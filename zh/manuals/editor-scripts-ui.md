@@ -17,7 +17,8 @@ toc:
 - 输入组件
 - 对话框相关组件
 - 实用组件
-- 响应式 {reactivity}
+- anchor: reactivity
+  title: 响应式
 - 响应式规则
 - Hooks
 - '**use_state**'

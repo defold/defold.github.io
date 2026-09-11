@@ -10,12 +10,15 @@ toc:
 - GUI 프로퍼티
 - 런타임 조작
 - 종속성
-- 노드 타입 {node-types}
-- 노드 프로퍼티 {node-properties}
+- anchor: node-types
+  title: 노드 타입
+- anchor: node-properties
+  title: 노드 프로퍼티
 - Pivot, Anchors 및 Adjust Mode
 - 그리기 순서
 - 부모-자식 계층구조
-- 레이어와 드로우 콜 {layers-and-draw-calls}
+- anchor: layers-and-draw-calls
+  title: 레이어와 드로우 콜
 ---
 
 # GUI

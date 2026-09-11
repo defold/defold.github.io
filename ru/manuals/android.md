@@ -7,8 +7,10 @@ title: Разработка на Defold для платформы Android
 toc:
 - Разработка для Android
 - Android и процесс подписания Google Play
-- Создание хранилища ключей {creating-a-keystore}
-- Создание пакета приложений для Android {creating-an-android-application-bundle}
+- anchor: creating-a-keystore
+  title: Создание хранилища ключей
+- anchor: creating-an-android-application-bundle
+  title: Создание пакета приложений для Android
 - Установка пакета приложений для Android
 - Разрешения
 - 'android.permission.INTERNET и android.permission.ACCESS_NETWORK_STATE (Уровень защиты: нормальный)'

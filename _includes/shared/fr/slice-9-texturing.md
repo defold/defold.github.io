@@ -1,41 +1,41 @@
-## Slice-9 texturing
+## Texturage en neuf tranches {#slice-9-texturing}
 
-GUI box nodes and Sprite components sometimes feature elements that are context sensitive in regard to their size: panels and dialogs that need to be resized to fit the containing content or a health bar that need to be resized to show the remaining health of an enemy. These may cause visual problems when you apply texturing to the resized node or sprite.
+Les nœuds Box de l'interface graphique et les composants sprite (sprite components) comportent parfois des éléments dont la taille dépend du contexte : des panneaux et des boîtes de dialogue qui doivent être redimensionnés pour s'adapter à leur contenu, ou une barre de vie qui doit être redimensionnée pour indiquer les points de vie restants d'un ennemi. Cela peut entraîner des problèmes visuels lorsque vous appliquez une texture au nœud ou au sprite redimensionné.
 
-Normally, the engine scales the texture to fit the rectangular boundaries, but by defining slice-9 edge areas it is possible to limit what parts of the texture that should scale:
+Normalement, le moteur met la texture à l'échelle pour l'adapter aux limites du rectangle, mais la définition de zones de bordure pour le découpage en neuf tranches (slice-9) permet de limiter les parties de la texture qui doivent être mises à l'échelle :
 
-![GUI scaling](/shared/images/gui_slice9_scaling.png)
+![Mise à l'échelle de l'interface graphique](/shared/images/gui_slice9_scaling.png)
 
-The *Slice9* box node consists of 4 numbers that specify the number of pixels for the left, top, right and bottom margin that should not be regularly scaled:
+Le paramètre *Slice9* du nœud Box se compose de quatre nombres qui indiquent le nombre de pixels des marges gauche, supérieure, droite et inférieure qui ne doivent pas être mises à l'échelle de la manière habituelle :
 
-![Slice 9 properties](/shared/images/gui_slice9_properties.png)
+![Propriétés du découpage en neuf tranches](/shared/images/gui_slice9_properties.png)
 
-The margins are set clockwise, starting on the left edge:
+Les marges sont définies dans le sens des aiguilles d'une montre, en partant du bord gauche :
 
-![Slice 9 sections](/shared/images/gui_slice9.png)
+![Sections du découpage en neuf tranches](/shared/images/gui_slice9.png)
 
-- Corner segments are never scaled.
-- Edge segments are scaled along a single axis. The left and right edge segments are scaled vertically. The top and bottom edge segments are scaled horizontally.
-- The central texture area is scaled horizontally and vertically as needed.
+- Les segments des coins ne sont jamais mis à l'échelle.
+- Les segments des bords sont mis à l'échelle selon un seul axe. Les segments des bords gauche et droit sont mis à l'échelle verticalement. Les segments des bords supérieur et inférieur sont mis à l'échelle horizontalement.
+- La zone centrale de la texture est mise à l'échelle horizontalement et verticalement selon les besoins.
 
-The *Slice9* texture scaling described above is only applied when you change box node's or sprite's size:
+La mise à l'échelle de la texture avec *Slice9* décrite ci-dessus s'applique uniquement lorsque vous modifiez la taille du nœud Box ou du sprite :
 
-![GUI box node size](/shared/images/gui_slice9_size.png)
+![Taille du nœud Box de l'interface graphique](/shared/images/gui_slice9_size.png)
 
-![Sprite size](/shared/images/sprite_slice9_size.png)
+![Taille du sprite](/shared/images/sprite_slice9_size.png)
 
 <div class='important' markdown='1'>
-If you change scale parameter of the box node or sprite (or on the game object) - the node or sprite and texture is scaled without applying *Slice9* parameters.
+Si vous modifiez le paramètre d'échelle du nœud Box, du sprite ou de l'objet de jeu (game object), le nœud ou le sprite et la texture sont mis à l'échelle sans appliquer les paramètres *Slice9*.
 </div>
 
 <div class='important' markdown='1'>
-When using slice-9 texturing on Sprites the [Sprite Trim Mode of the image](https://defold.com/manuals/atlas/#image-properties) must be set to Off.
+Lorsque vous utilisez le texturage en neuf tranches sur des sprites, le [paramètre Sprite Trim Mode de l'image](https://defold.com/manuals/atlas/#image-properties) doit être réglé sur Off.
 </div>
 
 
-### Mipmaps and slice-9
-Due to the way mipmapping works in the renderer, scaling of texture segments can sometimes exhibit artifacts. This happens when you _scale down_ segments below the original texture size. The renderer then selects a lower resolution mipmap for the segment, resulting in visual artifacts.
+### Mipmaps et découpage en neuf tranches {#mipmaps-and-slice-9}
+En raison du fonctionnement du mipmapping dans le moteur de rendu, la mise à l'échelle des segments de texture peut parfois présenter des artefacts. Cela se produit lorsque vous _réduisez la taille_ des segments en dessous de la taille de la texture d'origine. Le moteur de rendu sélectionne alors un mipmap de résolution inférieure pour le segment, ce qui entraîne des artefacts visuels.
 
-![Slice 9 mipmapping](/shared/images/gui_slice9_mipmap.png)
+![Mipmapping du découpage en neuf tranches](/shared/images/gui_slice9_mipmap.png)
 
-To avoid this problem, make sure that the texture's segments that will be scaled are small enough never to be scaled down, only up.
+Pour éviter ce problème, assurez-vous que les segments de la texture qui seront mis à l'échelle sont suffisamment petits pour ne jamais devoir être réduits, mais uniquement agrandis.

@@ -13,9 +13,11 @@ toc:
 - Zoomowanie kamery
 - Adaptacyjny zoom
 - Śledzenie obiektu gry
-- Konwersja między współrzędnymi ekranu i świata {converting-mouse-to-world-coordinates}
+- anchor: converting-mouse-to-world-coordinates
+  title: Konwersja między współrzędnymi ekranu i świata
 - Manipulacja w czasie działania
-- Rozwiązania kamer od społeczności {third-party-camera-solutions}
+- anchor: third-party-camera-solutions
+  title: Rozwiązania kamer od społeczności
 ---
 
 # Kamery

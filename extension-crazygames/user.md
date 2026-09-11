@@ -1,16 +1,20 @@
 ---
 brief: This manual covers how to use the user module in the CrazyGames SDK in Defold.
 github: https://github.com/defold/extension-crazygames
-language: en
 layout: manual
+locale: en
 title: Defold CrazyGames SDK extension API documentation
 toc:
 - User
 - Check availability
+- System information
+- Get friends
+- Submit a leaderboard score
 - Auth listener
 - Get current user
 - Auth prompt
 - Get user token
+- Account link prompt
 - Testing
 - Local
 - QA Tool
@@ -31,6 +35,58 @@ The user account functionality is not available on other domains that embed your
 local available = crazygames.is_user_account_available()
 print("User account system available", available);
 ```
+
+
+## System information
+
+System information is available synchronously after SDK initialization. Use `locale` when selecting a language; `applicationType` indicates whether the game is running on the web, as a PWA, or in a CrazyGames mobile app.
+
+```lua
+local system_info = crazygames.get_system_info()
+if system_info then
+  print("Locale", system_info.locale)
+  print("Country", system_info.countryCode)
+  print("Device", system_info.device.type)
+  print("Application", system_info.applicationType)
+end
+```
+
+The returned table contains `countryCode`, `locale`, `device`, `os`, `browser`, and `applicationType`.
+
+
+## Get friends
+
+Retrieve the signed-in user's friends one page at a time. Pages start at 1 and page size must be between 1 and 50.
+
+```lua
+crazygames.list_friends(1, 10, function(self, friends_page)
+  if not friends_page then
+    print("Unable to retrieve friends")
+    return
+  end
+
+  for _, friend in ipairs(friends_page.friends) do
+    print(friend.username, friend.profilePictureUrl)
+  end
+  print("More friends available", friends_page.hasMore)
+end)
+```
+
+The callback receives a table containing `friends`, `page`, `size`, `hasMore`, and `total`, or `nil` if the request fails. Only one `list_friends()` request can be active at a time.
+
+
+## Submit a leaderboard score
+
+Leaderboards are enabled by CrazyGames for selected games. Encrypt the score using the encryption key configured for your leaderboard, then submit both the Base64-encoded encrypted value and the plain numeric score:
+
+```lua
+local score = 152.1
+local encrypted_score = encrypt_leaderboard_score(score, encryption_key)
+
+crazygames.submit_score(encrypted_score, score)
+```
+
+Score encryption is intentionally performed by the game rather than this extension, because it requires the leaderboard-specific key supplied by CrazyGames. See the [CrazyGames Leaderboards SDK documentation](https://docs.crazygames.com/sdk/leaderboards-client/) for the required AES-GCM encryption format and testing instructions.
 
 
 ### Auth listener
@@ -66,10 +122,13 @@ The returned user object will look like this:
 
 ```json
 {
+    "__dangerousUserId": "GAR5irLOPebfbol3QXww2WL1Ja61",
     "username": "SingingCheese.TLNU",
     "profilePictureUrl": "https://images.crazygames.com/userportal/avatars/4.png"
 }
 ```
+
+Do not use `__dangerousUserId` to authenticate a user. It is exposed for convenience and is not a secure identity credential. For authentication, retrieve a JWT with `get_user_token()` and verify it on your server.
 
 
 ### Auth prompt
@@ -114,6 +173,21 @@ The token payload will contain the following data:
 When you need to authenticate the requests with your server, you should send the token together with the requests.
 
 The token can be verified with the public key hosted at this URL [https://sdk.crazygames.com/publicKey.json](https://sdk.crazygames.com/publicKey.json). We recommend that you fetch the key every time you verify the token, since it may change. Alternatively, you can implement a caching mechanism, and re-fetch it when the token fails to decode due to a possible key change.
+
+
+### Account link prompt
+
+Use the account link prompt to ask the player for permission to link their CrazyGames account to an existing in-game account. The callback receives a table whose `response` field is either `"yes"` or `"no"`. It receives `nil` if the prompt fails.
+
+```lua
+crazygames.show_account_link_prompt(function(self, result)
+  if result then
+    print("Account link response", result.response)
+  else
+    print("Account link prompt failed")
+  end
+end)
+```
 
 
 ## Testing

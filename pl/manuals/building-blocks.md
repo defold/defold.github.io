@@ -6,7 +6,8 @@ locale: pl
 title: Podstawowe elementy Defold
 toc:
 - Podstawowe elementy
-- Kolekcje {collections}
+- anchor: collections
+  title: Kolekcje
 - Obiekty gry
 - Komponenty
 - Obiekty dodawane bezpośrednio lub przez odwołanie

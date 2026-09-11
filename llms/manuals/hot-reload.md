@@ -84,7 +84,7 @@ function update(self, dt)
 end
 ```
 
-Changing and reloading "my_module.lua" will _not_ change the behavior of "user.script". See [the Modules manual](https://defold.com/llms/manuals/modules.md) for more information on why, and how to avoid this pitfall.
+Changing and reloading `my_module.lua` will _not_ change the behavior of `user.script`. See [the Modules manual](https://defold.com/llms/manuals/modules.md) for more information on why, and how to avoid this pitfall.
 
 ## The on_reload() function
 

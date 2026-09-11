@@ -1,26 +1,26 @@
-The `adb` command line tool is an easy to use and versatile program that is used to interact with Android devices. You can download and install `adb` as part of the Android SDK Platform-Tools, for Mac, Linux or Windows.
+L'outil en ligne de commande `adb` est un programme polyvalent et facile à utiliser qui permet d'interagir avec les appareils Android. Vous pouvez télécharger et installer `adb` avec les Android SDK Platform-Tools, pour Mac, Linux ou Windows.
 
-Download the Android SDK Platform-Tools from: https://developer.android.com/studio/releases/platform-tools. You find the *adb* tool in */platform-tools/*. Alternatively, platform specific packages can be installed through respective package managers.
+Téléchargez les Android SDK Platform-Tools à l'adresse suivante : https://developer.android.com/studio/releases/platform-tools. Vous trouverez l'outil *adb* dans */platform-tools/*. Vous pouvez également installer des paquets propres à chaque plateforme à l'aide de leurs gestionnaires de paquets respectifs.
 
-On Ubuntu Linux:
+Sur Ubuntu Linux :
 
 ```
 $ sudo apt-get install android-tools-adb
 ```
 
-On Fedora 18/19:
+Sur Fedora 18/19 :
 
 ```
 $ sudo yum install android-tools
 ```
 
-On macOS (Homebrew)
+Sur macOS (Homebrew)
 
 ```
 $ brew cask install android-platform-tools
 ```
 
-You can verify that `adb` works by connecting your Android device to your computer via USB and issue the following command:
+Vous pouvez vérifier que `adb` fonctionne en connectant votre appareil Android à votre ordinateur par USB et en exécutant la commande suivante :
 
 ```
 $ adb devices
@@ -28,6 +28,6 @@ List of devices attached
 31002535c90ef000    device
 ```
 
-If your device does not show up, verify that you have enabled *USB debugging* on the Android device. Open the device *Settings* and look for *Developer options* (or *Development*).
+Si votre appareil n'apparaît pas, vérifiez que vous avez activé *USB debugging* sur l'appareil Android. Ouvrez les *Settings* de l'appareil et recherchez *Developer options* (ou *Development*).
 
-![Enable USB debugging](../images/android/usb_debugging.png)
+![Activer le débogage USB](../images/android/usb_debugging.png)

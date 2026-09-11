@@ -8,7 +8,8 @@ toc:
 - 팩토리 컴포넌트
 - 팩토리로 생성한 오브젝트의 주소 지정
 - 스폰된 오브젝트와 부모 오브젝트 추적
-- 팩토리 리소스의 동적 로딩 {dynamic-loading-of-factory-resources}
+- anchor: dynamic-loading-of-factory-resources
+  title: 팩토리 리소스의 동적 로딩
 - 동적 프로토타입
 - 인스턴스 제한
 - 게임 오브젝트 풀링

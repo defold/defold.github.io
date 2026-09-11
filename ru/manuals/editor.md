@@ -8,9 +8,11 @@ toc:
 - Обзор редактора
 - Запуск редактора
 - Язык редактора
-- Панели редактора {the-editor-views}
+- anchor: the-editor-views
+  title: Панели редактора
 - 1. Панель ресурсы (Assets)
-- 2. Панель редактора сцены (Scene Editor) {the-scene-editor}
+- anchor: the-scene-editor
+  title: 2. Панель редактора сцены (Scene Editor)
 - 3. Панель структура (Outline)
 - 4. Панель свойства (Properties)
 - 5. Панель инструменты (Tools)
@@ -20,14 +22,17 @@ toc:
 - Размер и видимость панелей
 - Вкладки (Tabs)
 - Редактирование в двух окнах
-- Создание новых файлов проекта {creating-new-project-files}
+- anchor: creating-new-project-files
+  title: Создание новых файлов проекта
 - Шаблоны (Templates)
 - Импорт файлов в проект
 - Обновление редактора
 - Настройки (Preferences)
-- Логи редактора (Editor Logs) {editor-logs}
+- anchor: editor-logs
+  title: Логи редактора (Editor Logs)
 - Сервер редакторa (Editor Server)
-- Метаданные установки редактора (Editor Installation Metadata) {editor-installation-metadata}
+- anchor: editor-installation-metadata
+  title: Метаданные установки редактора (Editor Installation Metadata)
 - Оформление редактора (Editor Styling)
 - FAQ
 ---

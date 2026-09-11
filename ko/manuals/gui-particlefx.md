@@ -7,7 +7,8 @@ title: Defold GUI ParticleFX
 toc:
 - GUI ParticleFX 노드
 - Particle FX 노드 추가하기
-- 효과 제어하기 {controlling-the-effect}
+- anchor: controlling-the-effect
+  title: 효과 제어하기
 ---
 
 # GUI ParticleFX 노드

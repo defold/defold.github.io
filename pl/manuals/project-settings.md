@@ -7,7 +7,8 @@ title: Ustawienia projektu Defold
 toc:
 - Ustawienia projektu
 - Format pliku
-- Dostęp w czasie działania {runtime-access}
+- anchor: runtime-access
+  title: Dostęp w czasie działania
 - Sekcje i ustawienia
 - Project
 - Bootstrap

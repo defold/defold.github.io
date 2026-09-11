@@ -9,10 +9,12 @@ toc:
 - Basis Universal
 - ASTC
 - Perfis de textura
-- Configurações de caminho {path-settings}
+- anchor: path-settings
+  title: Configurações de caminho
 - Profiles
 - Formatos de textura
-- Compressores {compressors}
+- anchor: compressors
+  title: Compressores
 - Imagem de exemplo
 - Tempos de compressão
 - Perda de sinal

@@ -10,7 +10,8 @@ toc:
 - 使用打印调试
 - 分析崩溃日志
 - 从设备获取崩溃日志
-- 符号化调用堆栈 {symbolicate-a-callstack}
+- anchor: symbolicate-a-callstack
+  title: 符号化调用堆栈
 - 将符号上传到 Google Play
 - 符号化 Android 调用堆栈
 - 符号化 iOS 调用堆栈

@@ -6,7 +6,8 @@ locale: pl
 title: Tworzenie nowego projektu
 toc:
 - Tworzenie projektu
-- Tworzenie nowego projektu lokalnie {creating-a-new-project}
+- anchor: creating-a-new-project
+  title: Tworzenie nowego projektu lokalnie
 - Dodawanie projektu na Githuba
 - Otwieranie istniejącego projektu
 - Otwarcie ostatniego projektu

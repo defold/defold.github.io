@@ -7,8 +7,10 @@ title: Android 플랫폼용 Defold 개발
 toc:
 - Android 개발
 - Android 및 Google Play 서명 프로세스
-- keystore 만들기 {creating-a-keystore}
-- Android 어플리케이션 번들 만들기 {creating-an-android-application-bundle}
+- anchor: creating-a-keystore
+  title: keystore 만들기
+- anchor: creating-an-android-application-bundle
+  title: Android 어플리케이션 번들 만들기
 - Android 어플리케이션 번들 설치하기
 - 권한
 - 'android.permission.INTERNET and android.permission.ACCESS_NETWORK_STATE (Protection level: normal)'

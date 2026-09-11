@@ -4,7 +4,8 @@
 This script scans the example directories, moves identical `*.wasm` and
 `*_wasm.js` files into a shared `examples/wasm/` cache keyed by the file's MD5,
 updates each example's `dmloader.js` to load from the shared cache, and ensures
-engine loader helpers point to the new locations.
+engine loader helpers point to the new locations. Unreferenced cache entries
+are removed only after all current loaders have been validated.
 
 Run automatically from `update.py` after importing examples or manually with
 `python3 scripts/dedupe_examples_wasm.py` to shrink the published site size.
@@ -103,10 +104,10 @@ def set_string_property(content: str, key: str, value: str) -> str:
 
 
 def set_numeric_property(content: str, key: str, value: int) -> str:
-    pattern = re.compile(rf"({key}:\\s*)(\d+)")
+    pattern = re.compile(rf"({key}:\s*)(\d+)")
     if not pattern.search(content):
         return content
-    return pattern.sub(rf"\1{value}", content, count=1)
+    return pattern.sub(lambda match: match[1] + str(value), content, count=1)
 
 
 def update_wasm_name_helpers(content: str) -> str:
@@ -163,7 +164,12 @@ def update_locate_file(content: str) -> str:
 
 def process_dmloader(dmloader_path: Path) -> bool:
     updated = False
-    values: Dict[str, str] = {art.property_name: "" for art in ARTIFACTS}
+    content = dmloader_path.read_text()
+    original_content = content
+    values: Dict[str, str] = {}
+    for art in ARTIFACTS:
+        match = re.search(rf'{art.property_name}:\s*"([^\"]*)"', content)
+        values[art.property_name] = match[1] if match else ""
     sizes: Dict[str, int] = {}
 
     for art in ARTIFACTS:
@@ -173,15 +179,21 @@ def process_dmloader(dmloader_path: Path) -> bool:
             values[art.property_name] = hashed_url
             sizes[art.size_property] = size
             updated = True
-        else:
+        elif not values[art.property_name]:
             # Fallback to non-pthread variants if pthread artifacts are missing.
             if art.property_name.endswith("pthread_file"):
                 fallback = art.property_name.replace("_pthread_file", "_file")
                 values[art.property_name] = values.get(fallback, "")
                 sizes[art.size_property] = sizes.get(art.size_property.replace("_pthread", ""), 0)
 
-    content = dmloader_path.read_text()
-    original_content = content
+        url = values[art.property_name]
+        if not url:
+            raise RuntimeError(f"Missing {art.property_name} in {dmloader_path}")
+        if url.startswith("/examples/wasm/"):
+            cached = DEDUP_DIR / url.removeprefix("/examples/wasm/")
+            if not cached.is_file():
+                raise RuntimeError(f"Missing cached artifact {url} referenced by {dmloader_path}")
+            sizes[art.size_property] = cached.stat().st_size
 
     content = insert_property_block(content, values)
 
@@ -206,6 +218,27 @@ def iter_example_dmloaders() -> Iterable[Path]:
     return sorted(EXAMPLES_DIR.glob("*/**/dmloader.js"))
 
 
+def prune_unused_artifacts(dmloaders: Iterable[Path]) -> int:
+    referenced = set()
+    for dmloader in dmloaders:
+        referenced.update(re.findall(
+            r'/examples/wasm/([a-f0-9]{32}\.wasm(?:\.js)?)',
+            dmloader.read_text(),
+        ))
+    if not referenced:
+        raise RuntimeError("No shared WASM references found; refusing to prune the cache")
+    for filename in referenced:
+        if not (DEDUP_DIR / filename).is_file():
+            raise RuntimeError(f"Missing cached artifact {filename}")
+
+    removed_bytes = 0
+    for path in sorted(DEDUP_DIR.iterdir()):
+        if re.fullmatch(r"[a-f0-9]{32}\.wasm(?:\.js)?", path.name) and path.name not in referenced:
+            removed_bytes += path.stat().st_size
+            path.unlink()
+    return removed_bytes
+
+
 def run() -> bool:
     if not EXAMPLES_DIR.exists():
         raise RuntimeError("examples directory not found")
@@ -223,11 +256,16 @@ def run() -> bool:
             rel = dmloader.relative_to(ROOT)
             print(f"updated {rel}")
 
-    if changed == 0:
+    removed_bytes = prune_unused_artifacts(dmloaders)
+    if removed_bytes:
+        print(f"Removed {removed_bytes / (1 << 20):.2f} MiB of unused WASM cache entries")
+
+    if changed == 0 and removed_bytes == 0:
         print("No changes required")
         return False
 
-    print(f"Updated {changed} loader(s)")
+    if changed:
+        print(f"Updated {changed} loader(s)")
     return True
 
 

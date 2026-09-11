@@ -7,7 +7,8 @@ title: Węzły efektów cząsteczkowych - particle FX w Defoldzie.
 toc:
 - Węzeł GUI typu text ParticleFX
 - Dodawanie węzłów ParticleFX
-- Kontrolowanie efektu {controlling-the-effect}
+- anchor: controlling-the-effect
+  title: Kontrolowanie efektu
 ---
 
 # Węzeł GUI typu text ParticleFX

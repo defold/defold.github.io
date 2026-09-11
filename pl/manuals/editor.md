@@ -8,9 +8,11 @@ toc:
 - Przegląd edytora
 - Uruchamianie Edytora
 - Język edytora
-- Panele edytora {the-editor-views}
+- anchor: the-editor-views
+  title: Panele edytora
 - 1. Panel Assets
-- 2. Panel edytora {the-scene-editor}
+- anchor: the-scene-editor
+  title: 2. Panel edytora
 - 3. Panel Outline
 - 4. Panel Properties
 - 5. Panel Tools
@@ -20,14 +22,17 @@ toc:
 - Rozmiar i widoczność paneli
 - Zakładki
 - Edycja obok siebie
-- Tworzenie nowych plików projektu {creating-new-project-files}
+- anchor: creating-new-project-files
+  title: Tworzenie nowych plików projektu
 - Szablony
 - Importowanie plików do projektu
 - Aktualizowanie edytora
 - Preferencje
-- Logi edytora {editor-logs}
+- anchor: editor-logs
+  title: Logi edytora
 - Serwer edytora
-- Metadane instalacji edytora {editor-installation-metadata}
+- anchor: editor-installation-metadata
+  title: Metadane instalacji edytora
 - Stylizacja edytora
 - FAQ
 ---

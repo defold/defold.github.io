@@ -13,7 +13,8 @@ toc:
 - Ścieżki obiektów gry
 - Adresowanie bezwzględne
 - Haszowane identyfikatory
-- URL-e {urls}
+- anchor: urls
+  title: URL-e
 - Konstruowanie obiektów URL
 ---
 

@@ -5,24 +5,42 @@ layout: manual
 locale: es
 title: El editor de escenas de Defold
 toc:
-- El editor de escenas de Defold {the-defold-scene-editor}
-- Abrir el Scene Editor {opening-the-scene-editor}
-- Navegación de la vista de escena (controles de cámara) {scene-view-navigation-camera-controls}
-- Navegación estándar (todos los editores visuales) {standard-navigation-all-visual-editors}
-- Orientación de escena 2D y 3D {2d-and-3d-scene-orientation}
-- Vista general de la barra de herramientas {toolbar-overview}
-- Seleccionar y manipular objetos {manipulating-objects}
-- Seleccionar objetos {selecting-objects}
-- Filtros de visibilidad {visibility-filters}
-- Configuración de Grid {grid-settings}
-- 'Tipo de cámara: Perspective frente a Orthographic {camera-type-perspective-vs-orthographic}'
-- Free Camera Mode {free-camera-mode}
-- Activar Free Camera Mode {activating-free-camera-mode}
-- Salir de Free Camera Mode {exiting-free-camera-mode}
-- Mirar alrededor (mouse look) {looking-around-mouse-look}
-- Moverse {moving}
-- Walking Mode (opcional) {walking-mode-optional}
-- Popup de configuración de cámara {camera-settings-popup}
+- anchor: the-defold-scene-editor
+  title: El editor de escenas de Defold
+- anchor: opening-the-scene-editor
+  title: Abrir el Scene Editor
+- anchor: scene-view-navigation-camera-controls
+  title: Navegación de la vista de escena (controles de cámara)
+- anchor: standard-navigation-all-visual-editors
+  title: Navegación estándar (todos los editores visuales)
+- anchor: 2d-and-3d-scene-orientation
+  title: Orientación de escena 2D y 3D
+- anchor: toolbar-overview
+  title: Vista general de la barra de herramientas
+- anchor: manipulating-objects
+  title: Seleccionar y manipular objetos
+- anchor: selecting-objects
+  title: Seleccionar objetos
+- anchor: visibility-filters
+  title: Filtros de visibilidad
+- anchor: grid-settings
+  title: Configuración de Grid
+- anchor: camera-type-perspective-vs-orthographic
+  title: 'Tipo de cámara: Perspective frente a Orthographic'
+- anchor: free-camera-mode
+  title: Free Camera Mode
+- anchor: activating-free-camera-mode
+  title: Activar Free Camera Mode
+- anchor: exiting-free-camera-mode
+  title: Salir de Free Camera Mode
+- anchor: looking-around-mouse-look
+  title: Mirar alrededor (mouse look)
+- anchor: moving
+  title: Moverse
+- anchor: walking-mode-optional
+  title: Walking Mode (opcional)
+- anchor: camera-settings-popup
+  title: Popup de configuración de cámara
 ---
 
 # El editor de escenas de Defold {#the-defold-scene-editor}

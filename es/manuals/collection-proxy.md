@@ -9,7 +9,8 @@ toc:
 - Crear un componente proxy de colección
 - Bootstrap
 - Cargar una colección
-- Cambiar la colección de un proxy excluido {changing-an-excluded-proxys-collection}
+- anchor: changing-an-excluded-proxys-collection
+  title: Cambiar la colección de un proxy excluido
 - Direccionamiento hacia el nuevo mundo
 - Descargar un mundo
 - Paso de tiempo
@@ -36,7 +37,7 @@ Los proxies de colección son distintos de los [componentes factory de colecció
 
 ## Bootstrap
 
-Cuando el motor Defold se inicia, carga e instancia en el runtime todos los objetos de juego de una *colección bootstrap*. Luego inicializa y habilita los objetos de juego y sus componentes. La colección bootstrap que debe usar el motor se configura en la [configuración del proyecto](/es/manuals/project-settings/#main-collection). Por convención, este archivo de colección suele llamarse "main.collection".
+Cuando el motor Defold se inicia, carga e instancia en el runtime todos los objetos de juego de una *colección bootstrap*. Luego inicializa y habilita los objetos de juego y sus componentes. La colección bootstrap que debe usar el motor se configura en la [configuración del proyecto](/es/manuals/project-settings/#main-collection). Por convención, este archivo de colección suele llamarse `main.collection`.
 
 ![bootstrap](/manuals/images/collection-proxy/bootstrap.png)
 

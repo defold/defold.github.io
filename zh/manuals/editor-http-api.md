@@ -11,15 +11,19 @@ toc:
 - 通过 OpenAPI 发现操作
 - 执行编辑器命令
 - 命令响应和异步工作
-- 构建 HTML5 {building-html5}
+- anchor: building-html5
+  title: 构建 HTML5
 - 搜索 API 文档
-- 读取控制台输出 {reading-console-output}
-- 渲染场景预览 {rendering-scene-previews}
+- anchor: reading-console-output
+  title: 读取控制台输出
+- anchor: rendering-scene-previews
+  title: 渲染场景预览
 - 执行编辑器 Lua
 - 修改资源和文件
 - 偏好设置
 - 项目定义的路由
-- 生命周期钩子 {lifecycle-hooks}
+- anchor: lifecycle-hooks
+  title: 生命周期钩子
 - 安全性和兼容性
 - 引擎服务器
 ---

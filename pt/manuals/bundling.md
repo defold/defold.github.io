@@ -7,7 +7,8 @@ title: Empacotando uma aplicação
 toc:
 - Empacotando uma aplicação
 - Empacotando pelo editor
-- Relatórios de build {build-reports}
+- anchor: build-reports
+  title: Relatórios de build
 - Android
 - iOS
 - macOS

@@ -10,7 +10,8 @@ toc:
 - Właściwości komponentu Mesh
 - Edycja w edytorze
 - Modyfikacja w czasie działania
-- Odrzucanie spoza bryły widokowej {frustum-culling}
+- anchor: frustum-culling
+  title: Odrzucanie spoza bryły widokowej
 - Stałe materiału
 - Lokalna przestrzeń wierzchołków a przestrzeń świata
 ---

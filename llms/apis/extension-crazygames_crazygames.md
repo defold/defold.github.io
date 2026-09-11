@@ -8,6 +8,34 @@ Functions and constants for interacting with the CrazyGames SDK APIs
 
 ## API
 
+### crazygames.get_environment
+*Type:* FUNCTION
+Get the CrazyGames SDK environment. SDK functionality should only be used when the result is "local" or "crazygames".
+
+**Returns**
+
+- `string`
+
+### crazygames.get_game_settings
+*Type:* FUNCTION
+Get the current CrazyGames game settings, including muteAudio and disableChat.
+
+**Returns**
+
+- `table` - The current settings table, or nil if settings are unavailable.
+
+### crazygames.add_settings_change_listener
+*Type:* FUNCTION
+Register a listener that is called whenever the CrazyGames game settings change. Registering again replaces the previous listener.
+
+**Parameters**
+
+- `callback` (function) - The function takes two arguments, self and the updated settings table.
+
+### crazygames.remove_settings_change_listener
+*Type:* FUNCTION
+Remove the currently registered game-settings listener.
+
 ### crazygames.gameplay_start
 *Type:* FUNCTION
 The gameplayStart() function has to be called whenever the player starts playing or resumes playing after a break (menu/loading/achievement screen, game paused, etc.)
@@ -23,6 +51,30 @@ The loadingStart() function has to be called whenever you start loading your gam
 ### crazygames.loading_stop
 *Type:* FUNCTION
 The loadingStop() function has to be called when the loading is complete and eventually the gameplay starts.
+
+### crazygames.happytime
+*Type:* FUNCTION
+Celebrate a major player achievement, such as beating a boss or reaching a high score.
+
+### crazygames.report_game_completed_percentage
+*Type:* FUNCTION
+Report the player's current game-completion percentage to CrazyGames. The value must be between 0 and 100.
+
+**Parameters**
+
+- `percentage` (number)
+
+### crazygames.set_game_context
+*Type:* FUNCTION
+Attach JSON-serializable game state to feedback submitted by the player. Call clear_game_context when the state is no longer relevant.
+
+**Parameters**
+
+- `context` (table)
+
+### crazygames.clear_game_context
+*Type:* FUNCTION
+Clear the game context previously supplied with set_game_context.
 
 ### crazygames.show_rewarded_ad
 *Type:* FUNCTION
@@ -40,13 +92,13 @@ Show a midgame ad.
 
 - `callback` (function)
 
-### crazygames.is_ad_blocked
+### crazygames.has_ad_block
 *Type:* FUNCTION
 Detect if the user has an adblocker.
 
 **Parameters**
 
-- `callback` (function)
+- `callback` (function) - The function takes two arguments, self and a boolean indicating whether an adblocker was detected.
 
 ### crazygames.request_banner
 *Type:* FUNCTION
@@ -92,7 +144,7 @@ Create a link to your game to invite others to join a multiplayer game.
 
 ### crazygames.show_invite_button
 *Type:* FUNCTION
-Display a button in the game footer, that opens a popup containing an invite link.
+Display a button in the game footer that opens a popup containing an invite link. This CrazyGames feature is deprecated in favor of Room Data, but remains available for existing integrations.
 
 **Parameters**
 
@@ -108,7 +160,7 @@ Hide the invite button when it is no longer necessary.
 
 ### crazygames.get_invite_param
 *Type:* FUNCTION
-Get an invite link parameters.
+Get an invite link parameter.
 
 **Parameters**
 
@@ -116,7 +168,15 @@ Get an invite link parameters.
 
 **Returns**
 
-- `string`
+- `string` - The parameter value, or nil if the parameter is missing.
+
+### crazygames.get_invite_params
+*Type:* FUNCTION
+Get all invite parameters supplied when the game was opened from an invite link.
+
+**Returns**
+
+- `table` - The invite parameters, or nil if the game was not opened from an invite link.
 
 ### crazygames.is_instant_multiplayer
 *Type:* FUNCTION
@@ -126,13 +186,37 @@ For multiplayer games, if is_instant_multiplayer() returns true, you should inst
 
 - `boolean`
 
+### crazygames.update_room
+*Type:* FUNCTION
+Update the current multiplayer room. The table can contain roomId (string), isJoinable (boolean), and inviteParams (a table of string, number, or boolean values). Only supplied fields are updated.
+
+**Parameters**
+
+- `room` (table)
+
+### crazygames.left_room
+*Type:* FUNCTION
+Notify CrazyGames that the player has left the current multiplayer room.
+
+### crazygames.add_join_room_listener
+*Type:* FUNCTION
+Register a listener for requests to join a multiplayer room. Registering again replaces the previous listener.
+
+**Parameters**
+
+- `callback` (function) - The function takes two arguments, self and the invite parameters table.
+
+### crazygames.remove_join_room_listener
+*Type:* FUNCTION
+Remove the currently registered join-room listener.
+
 ### crazygames.clear_data
 *Type:* FUNCTION
-Remove all data items from the local storage.
+Remove all stored game data from the CrazyGames data module.
 
 ### crazygames.get_item
 *Type:* FUNCTION
-Get a data item from the local storage.
+Get a stored value from the CrazyGames data module.
 
 **Parameters**
 
@@ -140,11 +224,11 @@ Get a data item from the local storage.
 
 **Returns**
 
-- `string`
+- `string` - The stored value, or nil if the key does not exist.
 
 ### crazygames.remove_item
 *Type:* FUNCTION
-Remove a data item from the local storage.
+Remove a stored value from the CrazyGames data module.
 
 **Parameters**
 
@@ -152,12 +236,39 @@ Remove a data item from the local storage.
 
 ### crazygames.set_item
 *Type:* FUNCTION
-Add a data item to the local storage.
+Store a value in the CrazyGames data module.
 
 **Parameters**
 
 - `key` (string)
 - `value` (string)
+
+### crazygames.get_system_info
+*Type:* FUNCTION
+Get information about the user's locale, country, device, operating system, browser, and CrazyGames application type.
+
+**Returns**
+
+- `table` - The current system information, or nil if it is unavailable.
+
+### crazygames.list_friends
+*Type:* FUNCTION
+Retrieve one page of the current user's CrazyGames friends. Only one list_friends request may be active at a time. The callback receives nil if the request fails.
+
+**Parameters**
+
+- `page` (number) - Page number, starting at 1.
+- `size` (number) - Number of friends to retrieve, between 1 and 50.
+- `callback` (function) - The function takes two arguments, self and the friends-page table.
+
+### crazygames.submit_score
+*Type:* FUNCTION
+Submit an encrypted score and its plain numeric value to a CrazyGames leaderboard. Leaderboards must be enabled and configured for the game.
+
+**Parameters**
+
+- `encrypted_score` (string) - The score encrypted with the game's CrazyGames leaderboard encryption key and encoded as Base64.
+- `score` (number) - The unencrypted numeric score.
 
 ### crazygames.is_user_account_available
 *Type:* FUNCTION
@@ -169,7 +280,7 @@ Before using any user account features, you should always ensure that the user a
 
 ### crazygames.get_user
 *Type:* FUNCTION
-Retrieve the user currently logged in CrazyGames. If the user is not logged in CrazyGames, the returned user will be null. Will call the provided callback with the logged in user account.
+Retrieve the user currently logged in CrazyGames. If the user is not logged in CrazyGames, the callback receives nil. Will call the provided callback with the logged in user account.
 
 **Parameters**
 
@@ -190,6 +301,15 @@ Generates a custom Xsolla token that you use with the Xsolla SDK. Will call the 
 **Parameters**
 
 - `callback` (function) - The function takes two arguments, self and the xsolla token
+
+### crazygames.track_order
+*Type:* FUNCTION
+Report an in-game purchase order to CrazyGames analytics. Order tracking is optional; use provider "xsolla" for Xsolla orders.
+
+**Parameters**
+
+- `provider` (string)
+- `order` (table) - The JSON-serializable order returned by the payment provider.
 
 ### crazygames.show_auth_prompt
 *Type:* FUNCTION
@@ -213,4 +333,8 @@ Remove any previously set auth listener.
 
 ### crazygames.show_account_link_prompt
 *Type:* FUNCTION
-Show an account linking prompt to link a CrazyGames account to the in-game account.
+Show an account linking prompt to link a CrazyGames account to the in-game account. Will call the provided callback with a response table containing either response = "yes" or response = "no". The response is nil if the prompt fails.
+
+**Parameters**
+
+- `callback` (function) - The function takes two arguments, self and the response table

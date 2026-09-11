@@ -71,6 +71,7 @@ max_font_batches = 128
 max_debug_vertices = 10000
 texture_profiles = /builtins/graphics/default.texture_profiles
 verify_graphics_calls = 1
+webgl_version_hint = 2
 opengl_version_hint = 33
 opengl_core_profile_hint = 1
 vulkan_version_major = 1
@@ -171,7 +172,7 @@ input_method = KeyEvent
 immersive_mode = 0
 display_cutout = 1
 debuggable = 0
-proguard = 
+r8_keep_rules = 
 extract_native_libs = 0
 
 [osx]
@@ -194,6 +195,7 @@ archive_location_prefix = archive
 archive_location_suffix = 
 engine_arguments = --verify-graphics-calls=false
 wasm_streaming = 0
+verify_downloaded_file_size = 1
 show_fullscreen_button = 1
 show_made_with_defold = 1
 show_console_banner = 1

@@ -9,7 +9,8 @@ toc:
 - 创建集合代理组件
 - 引导集合
 - 加载集合
-- 更改被排除代理的集合 {changing-an-excluded-proxys-collection}
+- anchor: changing-an-excluded-proxys-collection
+  title: 更改被排除代理的集合
 - 定位到新世界
 - 卸载世界
 - 时间步
@@ -36,7 +37,7 @@ Defold将所有游戏对象组织在集合中。一个集合可以包含游戏�
 
 ## 引导集合
 
-当Defold引擎启动时，它会从*引导集合*加载并实例化所有游戏对象到运行时。然后初始化并启用游戏对象及其组件。引擎应该使用哪个引导集合是在[项目设置](/zh/manuals/project-settings/#main-collection)中设置的。按照惯例，这个集合文件通常命名为"main.collection"。
+当Defold引擎启动时，它会从*引导集合*加载并实例化所有游戏对象到运行时。然后初始化并启用游戏对象及其组件。引擎应该使用哪个引导集合是在[项目设置](/zh/manuals/project-settings/#main-collection)中设置的。按照惯例，这个集合文件通常命名为`main.collection`。
 
 ![bootstrap](/manuals/images/collection-proxy/bootstrap.png)
 

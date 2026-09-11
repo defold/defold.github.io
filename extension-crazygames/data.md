@@ -1,8 +1,8 @@
 ---
 brief: This manual covers how to use the data module in the CrazyGames SDK in Defold.
 github: https://github.com/defold/extension-crazygames
-language: en
 layout: manual
+locale: en
 title: Defold CrazyGames SDK extension API documentation
 toc:
 - Data
@@ -31,6 +31,8 @@ local value = crazygames.get_item(key)
 crazygames.remove_item(key)
 crazygames.set_item(key, value)
 ```
+
+`get_item()` returns the stored string, or `nil` if the key does not exist.
 
 
 ## Guest user behaviour

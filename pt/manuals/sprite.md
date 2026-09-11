@@ -12,7 +12,8 @@ toc:
 - Constantes de material
 - Atributos de material
 - Configuração do projeto
-- Sprites com múltiplas texturas {multi-textured-sprites}
+- anchor: multi-textured-sprites
+  title: Sprites com múltiplas texturas
 - Animações
 - UVs
 ---

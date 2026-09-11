@@ -5,24 +5,42 @@ layout: manual
 locale: es
 title: Scripts del editor
 toc:
-- Scripts del editor {editor-scripts}
-- Tiempo de ejecución de scripts del editor {editor-script-runtime}
-- Anatomía de .editor_script {anatomy-of-editor_script}
-- API del editor {editor-api}
-- Comandos {commands}
-- Usar comandos para cambiar el estado en memoria del editor {use-commands-to-change-the-in-memory-editor-state}
-- Usar comandos con la vista activa del editor {use-commands-with-the-active-editor-view}
-- Usar comandos de shell {use-shell-commands}
-- Hooks de ciclo de vida {lifecycle-hooks}
-- Servidores de lenguaje {language-servers}
-- Servidor HTTP {http-server}
-- Scripts del editor en bibliotecas {editor-scripts-in-libraries}
-- Preferencias {preferences}
-- Modos de ejecución {execution-modes}
-- Acciones {actions}
-- Acciones deshacibles {undoable-actions}
-- Acciones no deshacibles {non-undoable-actions}
-- Mezclar acciones y efectos secundarios {mixing-actions-and-side-effects}
+- anchor: editor-scripts
+  title: Scripts del editor
+- anchor: editor-script-runtime
+  title: Tiempo de ejecución de scripts del editor
+- anchor: anatomy-of-editor_script
+  title: Anatomía de .editor_script
+- anchor: editor-api
+  title: API del editor
+- anchor: commands
+  title: Comandos
+- anchor: use-commands-to-change-the-in-memory-editor-state
+  title: Usar comandos para cambiar el estado en memoria del editor
+- anchor: use-commands-with-the-active-editor-view
+  title: Usar comandos con la vista activa del editor
+- anchor: use-shell-commands
+  title: Usar comandos de shell
+- anchor: lifecycle-hooks
+  title: Hooks de ciclo de vida
+- anchor: language-servers
+  title: Servidores de lenguaje
+- anchor: http-server
+  title: Servidor HTTP
+- anchor: editor-scripts-in-libraries
+  title: Scripts del editor en bibliotecas
+- anchor: preferences
+  title: Preferencias
+- anchor: execution-modes
+  title: Modos de ejecución
+- anchor: actions
+  title: Acciones
+- anchor: undoable-actions
+  title: Acciones deshacibles
+- anchor: non-undoable-actions
+  title: Acciones no deshacibles
+- anchor: mixing-actions-and-side-effects
+  title: Mezclar acciones y efectos secundarios
 ---
 
 # Scripts del editor {#editor-scripts}
@@ -697,7 +715,7 @@ Ten en cuenta también que aunque las dependencias se muestran en la vista Asset
 Los scripts del editor pueden definir y usar preferencias: piezas de datos persistentes y sin commit almacenadas en la computadora del usuario. Estas preferencias tienen tres características clave:
 - tipadas: cada preferencia tiene una definición de esquema que incluye el tipo de dato y otros metadatos, como el valor predeterminado
 - con alcance: las preferencias tienen alcance por proyecto o por usuario
-- anidadas: cada clave de preferencia es un string separado por puntos, donde el primer segmento de ruta identifica un script del editor, y el resto
+- anidadas: cada clave de preferencia es un string separado por puntos, donde el primer segmento de ruta identifica un script del editor, y los segmentos restantes identifican grupos y preferencias individuales dentro de él
 
 Todas las preferencias deben registrarse definiendo su esquema:
 ```lua

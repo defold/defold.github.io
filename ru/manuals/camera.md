@@ -13,9 +13,11 @@ toc:
 - Масштабирование камеры
 - Адаптивный зум
 - Следование за игровым объектом
-- Преобразование между экранными и мировыми координатами {converting-mouse-to-world-coordinates}
+- anchor: converting-mouse-to-world-coordinates
+  title: Преобразование между экранными и мировыми координатами
 - Манипуляции во время выполнения
-- Сторонние решения для камеры {third-party-camera-solutions}
+- anchor: third-party-camera-solutions
+  title: Сторонние решения для камеры
 ---
 
 # Камеры

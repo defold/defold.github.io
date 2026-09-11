@@ -8,7 +8,8 @@ toc:
 - 瓦片图源
 - 创建瓦片图源
 - 瓦片图源翻页动画
-- 瓦片图源碰撞形状 {tile-source-collision-shapes}
+- anchor: tile-source-collision-shapes
+  title: 瓦片图源碰撞形状
 ---
 
 # 瓦片图源

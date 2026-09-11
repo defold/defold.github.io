@@ -1,12 +1,13 @@
 ---
 brief: This manual covers how to integrate and use the CrazyGames SDK in Defold.
 github: https://github.com/defold/extension-crazygames
-language: en
 layout: manual
+locale: en
 title: Defold CrazyGames SDK extension API documentation
 toc:
 - Defold CrazyGames SDK extension API documentation
 - Installation
+- Environment
 - Modules
 - Example
 - Quality Assurance Tool
@@ -26,6 +27,18 @@ To use CrazyGames SDK in your Defold project, add a version of the CrazyGames SD
 ![](add-dependency.png)
 
 Select `Project->Fetch Libraries` once you have added the version to `game.project` to download the version and make it available in your project.
+
+
+## Environment
+
+The CrazyGames SDK is available when its environment is `"local"` or `"crazygames"`. On other domains it reports `"disabled"`; avoid calling SDK functionality there.
+
+```lua
+local environment = crazygames.get_environment()
+if environment == "local" or environment == "crazygames" then
+    -- CrazyGames SDK calls are safe here
+end
+```
 
 
 ## Modules
@@ -50,7 +63,7 @@ The `user` module also has support for Xsolla token creation to perform [in-game
 
 You can use the CrazyGames QATool to test your SDK implementation. You can use the [standalone version](https://developer.crazygames.com/qatool) without creating a submission. With the QATool you can:
 
-* Run your game as it would on Crazygames.
+* Run your game as it would on CrazyGames.
 * Try out the main different resolutions that are used on the site.
 * Test all the SDK features that you implemented and get feedback about it.
 

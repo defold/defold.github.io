@@ -1,9 +1,9 @@
-#### Q: Is it possible to hide the navigation and status bars on Android?
-A: Yes, set the *immersive_mode* setting in the *Android* section of your *game.project* file. This lets your app take over the whole screen and capture all touch events on the screen.
+#### D: È possibile nascondere la barra di navigazione e la barra di stato su Android? {#q-is-it-possible-to-hide-the-navigation-and-status-bars-on-android}
+R: Sì, attiva l'impostazione *immersive_mode* nella sezione *Android* del file *game.project*. In questo modo l'app può occupare l'intero schermo e acquisire tutti gli eventi di tocco sullo schermo.
 
 
-#### Q: Why am I'm getting "Failure [INSTALL_PARSE_FAILED_INCONSISTENT_CERTIFICATES]" when installing a Defold game on device?
-A: Android detects that you try to install the app with a new certificate. When bundling debug builds, each build will be signed with a temporary certificate. Uninstall the old app before installing the new version:
+#### D: Perché compare "Failure [INSTALL_PARSE_FAILED_INCONSISTENT_CERTIFICATES]" quando installo un gioco Defold su un dispositivo? {#q-why-am-im-getting-failure-install_parse_failed_inconsistent_certificates-when-installing-a-defold-game-on-device}
+R: Android rileva che stai tentando di installare l'app con un nuovo certificato. Quando crei bundle di build di debug, ogni build viene firmata con un certificato temporaneo. Disinstalla la vecchia app prima di installare la nuova versione:
 
 ```
 $ adb uninstall com.defold.examples
@@ -15,8 +15,8 @@ Success
 ```
 
 
-#### Q: Why am I getting errors about conflicting properties in AndroidManifest.xml when building with certain extensions?
-A: This can happen when two or more extensions provide an Android Manifest stub containing the same property tag but with different values. This has for instance happened with Firebase and AdMob. The build error looks similar to this:
+#### D: Perché si verificano errori relativi a proprietà in conflitto in AndroidManifest.xml quando creo una build con alcune estensioni? {#q-why-am-i-getting-errors-about-conflicting-properties-in-androidmanifestxml-when-building-with-certain-extensions}
+R: Questo può accadere quando due o più estensioni forniscono un frammento di Android Manifest che contiene lo stesso tag di proprietà ma con valori diversi. È successo, ad esempio, con Firebase e AdMob. L'errore di build è simile al seguente:
 
 ```
 SEVERE: /tmp/job4531953598647135356/upload/AndroidManifest.xml:32:13-58
@@ -27,4 +27,4 @@ Suggestion: add 'tools:replace="android:resource"' to <property> element at
 AndroidManifest.xml to override. 
 ```
 
-You can read more about the issue and the workaround in reported Defold issue [#9453](https://github.com/defold/defold/issues/9453#issuecomment-2367367269) and Google issue [#327696048](https://issuetracker.google.com/issues/327696048?pli=1).
+Puoi trovare maggiori dettagli sul problema e sulla soluzione temporanea nella segnalazione Defold [#9453](https://github.com/defold/defold/issues/9453#issuecomment-2367367269) e nella segnalazione Google [#327696048](https://issuetracker.google.com/issues/327696048?pli=1).

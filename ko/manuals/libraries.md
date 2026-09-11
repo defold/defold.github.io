@@ -10,7 +10,8 @@ toc:
 - 라이브러리 URL
 - 기본 액세스 인증
 - 고급 액세스 인증
-- 라이브러리 종속성 설정 {setting-up-library-dependencies}
+- anchor: setting-up-library-dependencies
+  title: 라이브러리 종속성 설정
 - 라이브러리 종속성의 파일 편집
 - 깨진 참조
 - 이름 충돌

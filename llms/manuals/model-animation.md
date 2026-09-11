@@ -165,7 +165,7 @@ local bone_go = model.get_go("#wiggler", "Bone_002")
 
 ### Cursor animation
 
-In addition to using the `model.play_anim()` to advance a model animation, *Model* components expose a "cursor" property that can be manipulated with `go.animate()` (more about [property animations](https://defold.com/llms/manuals/property-animation.md)):
+In addition to using the `model.play_anim()` to advance a model animation, *Model* components expose a `cursor` property that can be manipulated with `go.animate()` (more about [property animations](https://defold.com/llms/manuals/property-animation.md)):
 ```lua
 -- Set the animation on #model but don't start it
 model.play_anim("#model", "wiggle", go.PLAYBACK_NONE)

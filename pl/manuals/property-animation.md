@@ -9,7 +9,8 @@ toc:
 - Animacja właściwości
 - Animacja właściwości węzłów GUI
 - Wywołania zwrotne po zakończeniu
-- Krzywe easing {easing}
+- anchor: easing
+  title: Krzywe easing
 - Własne krzywe easing
 ---
 

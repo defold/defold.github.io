@@ -9,16 +9,22 @@ toc:
 - Runtime dos scripts do editor
 - Anatomia de .editor_script
 - API do editor
-- Comandos {commands}
+- anchor: commands
+  title: Comandos
 - Use comandos para alterar o estado em memória do editor
 - Use comandos com a visualização ativa do editor
 - Usar comandos de shell
-- Hooks de ciclo de vida {lifecycle-hooks}
+- anchor: lifecycle-hooks
+  title: Hooks de ciclo de vida
 - Language servers
-- Servidor HTTP {http-server}
-- Editor scripts em bibliotecas {editor-scripts-in-libraries}
-- Preferências {preferences}
-- Modos de execução {execution-modes}
+- anchor: http-server
+  title: Servidor HTTP
+- anchor: editor-scripts-in-libraries
+  title: Editor scripts em bibliotecas
+- anchor: preferences
+  title: Preferências
+- anchor: execution-modes
+  title: Modos de execução
 - Actions
 - Actions desfazíveis
 - Actions não desfazíveis
@@ -699,7 +705,7 @@ Observe também que, embora dependências sejam mostradas na visualização Asse
 Editor scripts podem definir e usar preferências — dados persistentes, não versionados, armazenados no computador do usuário. Essas preferências têm três características principais:
 - tipadas: toda preferência tem uma definição de schema que inclui o tipo de dado e outros metadados, como valor padrão
 - escopadas: preferências têm escopo por projeto ou por usuário
-- aninhadas: toda chave de preferência é uma string separada por pontos, em que o primeiro segmento do caminho identifica um editor script, e o restante
+- aninhadas: toda chave de preferência é uma string separada por pontos, em que o primeiro segmento do caminho identifica um editor script, e os demais segmentos identificam grupos e preferências individuais dentro dele
 
 Todas as preferências devem ser registradas definindo seu schema:
 ```lua

@@ -1,3 +1,3 @@
-Custom resources are bundled in the main game archive using the [*Custom Resources* field](https://defold.com/manuals/project-settings/#custom-resources) in *game.project*.
+Користувацькі ресурси включають до основного архіву гри за допомогою [поля *Custom Resources*](https://defold.com/manuals/project-settings/#custom-resources) у *game.project*.
 
-The *Custom Resources* field should contain a comma separated list of resources that will be included in the main game archive. If directories are specified, all files and directories in that directory are recursively included. You can read the files using [`sys.load_resource()`](/ref/sys/#sys.load_resource).
+Поле *Custom Resources* має містити розділений комами список ресурсів, які буде включено до основного архіву гри. Якщо вказано каталоги, усі вкладені файли та каталоги включаються рекурсивно. Читати ці файли можна за допомогою [`sys.load_resource()`](/ref/sys/#sys.load_resource).

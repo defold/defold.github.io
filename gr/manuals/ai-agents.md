@@ -5,17 +5,28 @@ layout: manual
 locale: gr
 title: Χρήση πρακτόρων προγραμματισμού AI με το Defold
 toc:
-- Χρήση πρακτόρων προγραμματισμού AI με το Defold {using-ai-coding-agents-with-defold}
-- Πότε είναι χρήσιμος ένας πράκτορας AI {when-an-ai-agent-is-useful}
-- Ανεξάρτητες από το μοντέλο διεπαφές του Defold {model-neutral-defold-interfaces}
-- Επίπεδα ενσωμάτωσης {integration-layers}
-- Model Context Protocol {model-context-protocol}
-- Ενσωματώσεις MCP της κοινότητας {community-mcp-integrations}
-- Οδηγίες έργου {project-instructions}
-- Εντοπισμός τεκμηρίωσης {documentation-discovery}
-- Οριοθετημένοι βρόχοι αλλαγών και επαλήθευσης {bounded-change-and-verification-loops}
-- Πολυτροπική αξιολόγηση {multimodal-evaluation}
-- Ασφάλεια, απομόνωση και καλές πρακτικές {security-isolation-and-good-practices}
+- anchor: using-ai-coding-agents-with-defold
+  title: Χρήση πρακτόρων προγραμματισμού AI με το Defold
+- anchor: when-an-ai-agent-is-useful
+  title: Πότε είναι χρήσιμος ένας πράκτορας AI
+- anchor: model-neutral-defold-interfaces
+  title: Ανεξάρτητες από το μοντέλο διεπαφές του Defold
+- anchor: integration-layers
+  title: Επίπεδα ενσωμάτωσης
+- anchor: model-context-protocol
+  title: Model Context Protocol
+- anchor: community-mcp-integrations
+  title: Ενσωματώσεις MCP της κοινότητας
+- anchor: project-instructions
+  title: Οδηγίες έργου
+- anchor: documentation-discovery
+  title: Εντοπισμός τεκμηρίωσης
+- anchor: bounded-change-and-verification-loops
+  title: Οριοθετημένοι βρόχοι αλλαγών και επαλήθευσης
+- anchor: multimodal-evaluation
+  title: Πολυτροπική αξιολόγηση
+- anchor: security-isolation-and-good-practices
+  title: Ασφάλεια, απομόνωση και καλές πρακτικές
 ---
 
 # Χρήση πρακτόρων προγραμματισμού AI με το Defold {#using-ai-coding-agents-with-defold}

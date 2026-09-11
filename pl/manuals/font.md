@@ -10,12 +10,14 @@ toc:
 - Obsługa układu tekstu, np. right-to-left
 - Kolekcja fontów
 - Tworzenie fontu
-- Właściwości {properties}
+- anchor: properties
+  title: Właściwości
 - Fonty typu Distance field
 - Bitmap BMFonts
 - Artefakty i dobre praktyki
 - Pamięć podręczna fontu
-- Włączanie runtime fonts {enabling-runtime-fonts}
+- anchor: enabling-runtime-fonts
+  title: Włączanie runtime fonts
 - Skryptowanie fontów
 - Dodawanie i usuwanie fontów z kolekcji fontów
 - Wstępne podgrzewanie glifów

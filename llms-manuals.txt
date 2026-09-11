@@ -100,6 +100,13 @@ If you find any issues, please report them [as a GitHub issue](https://github.co
 - [Clipping](#manuals:gui-clipping)
 - [Layouts](#manuals:gui-layouts)
 
+### Fonts and text
+
+- [Fonts](#manuals:font)
+- [Rich Text](#manuals:font-richtext)
+- [Text nodes](#manuals:gui-text)
+- [Label components](https://defold.com/manuals/labels)
+
 ### Physics
 
 - [Physics overview](#manuals:physics)
@@ -209,6 +216,7 @@ If you find any issues, please report them [as a GitHub issue](https://github.co
 - [AdMob ads](https://defold.com/extension-admob)
 - [Android Device Performance Framework](https://defold.com/extension-adpf)
 - [App review and ratings](https://defold.com/extension-review)
+- [AppLovin MAX ad mediation](https://defold.com/extension-applovin)
 - [Camera](https://defold.com/extension-camera)
 - [Facebook](https://defold.com/extension-facebook)
 - [Firebase Analytics](https://defold.com/extension-firebase-analytics)
@@ -216,7 +224,7 @@ If you find any issues, please report them [as a GitHub issue](https://github.co
 - [Google Play Game Services](https://defold.com/extension-gpgs)
 - [Google Play Instant](https://defold.com/extension-googleplayinstant)
 - [Inter-app communication](#manuals:iac)
-- [IronSource ad mediation](https://defold.com/extension-ironsource)
+- [LevelPlay ad mediation](https://defold.com/extension-levelplay)
 - [Push notifications](https://defold.com/extension-push)
 - [Play Asset Delivery](https://defold.com/extension-pad/)
 - [Safe Area](https://defold.com/extension-safearea)
@@ -229,12 +237,13 @@ If you find any issues, please report them [as a GitHub issue](https://github.co
 - [Advertising Info](https://defold.com/extension-adinfo)
 - [AdMob ads](https://defold.com/extension-admob)
 - [App review and ratings](https://defold.com/extension-review)
+- [AppLovin MAX ad mediation](https://defold.com/extension-applovin)
 - [Camera](https://defold.com/extension-camera)
 - [Facebook](https://defold.com/extension-facebook)
 - [Firebase Analytics](https://defold.com/extension-firebase-analytics)
 - [Firebase Remote Config](https://defold.com/extension-firebase-remoteconfig)
 - [Inter-app communication](#manuals:iac)
-- [IronSource ad mediation](https://defold.com/extension-ironsource)
+- [LevelPlay ad mediation](https://defold.com/extension-levelplay)
 - [Push notifications](https://defold.com/extension-push)
 - [Safe Area](https://defold.com/extension-safearea)
 - [Webview](https://defold.com/extension-webview)
@@ -369,7 +378,7 @@ Installation on Windows
 : The downloaded file is a ZIP archive that needs to be extracted:
 
   1. Locate the archive file "Defold-x86_64-win32.zip", `press and hold` (or `right-click`) the folder, select *Extract All*, and then follow the instructions to extract the archive to a folder named "Defold".
-    2. Move the folder "Defold" to your preferred location (e.g. `D:\\Defold`). You should not move Defold to `C:\\Program Files (x86)\\` or `C:\\Program Files\\` since this will prevent the editor from updating.
+  2. Move the folder "Defold" to your preferred location (e.g. `D:\\Defold`). You should not move Defold to `C:\\Program Files (x86)\\` or `C:\\Program Files\\` since this will prevent the editor from updating.
 
   To start the editor, open the folder "Defold" and `double click` the file "Defold.exe".
 
@@ -651,7 +660,7 @@ The table below presents similar Unity components for quick lookup, with links f
 |---|---|---|
 | [Sprite](#manuals:sprite) | Sprite Renderer | In Defold, you can change the tint (color property) only via code. |
 | [Tilemap](#manuals:tilemap) | Tilemap / Grid | Defold has a built-in Tilemap Editor that supports square grids (but there’s an extension for, e.g. [Hexagon](https://github.com/selimanac/defold-hexagon/)) and has no built-in autotiling rules. Tools like [Tiled](https://defold.com/assets/tiled/), [TileSetter](https://defold.com/assets/tilesetter/) or [Sprite Fusion](https://defold.com/assets/spritefusion/) have export to Defold options. |
-| [Label](#manuals:label) | Text / TextMeshPro | Defold has a [RichText extension](https://defold.com/assets/richtext/) for rich formatting (similar to TextMeshPro). |
+| [Label](#manuals:label) | Text / TextMeshPro | Since Defold 1.13.2, Label components and GUI text nodes support built-in [rich text markup](#manuals:font-richtext) for colors, gradients, outlines and animated effects. A separate [RichText extension](https://defold.com/assets/richtext/) is also available. |
 | [Sound](#manuals:sound) | AudioSource | Defold has only a global sound source (not spatial). There is an official [FMOD extension](https://github.com/defold/extension-fmod) for Defold. |
 | [Factory](#manuals:factory) | Prefab Instantiate() | In Defold, a Factory is a component with a specific prototype (prefab). |
 | [Collection Factory](#manuals:collection-factory) | - (No direct component equivalent) | A Collection Factory component in Defold can spawn multiple Game Objects with parent-child relationships at once. |
@@ -980,13 +989,13 @@ While movie clips can contain other movie clips, game objects can not *contain* 
 
 ## Flash—manually creating movie clips
 
-In Flash, instances of movie clips can be added to your scene manually by dragging them from the library and onto the timeline. This is illustrated in the screenshot below, where each Flash logo is an instance of the "logo" movieclip:
+In Flash, instances of movie clips can be added to your scene manually by dragging them from the library and onto the timeline. This is illustrated in the screenshot below, where each Flash logo is an instance of the `logo` movieclip:
 
 ## Defold—manually creating game objects
 
-As mentioned previously, Defold does not have a timeline concept. Instead, game objects are organized in collections. Collections are containers (or prefabs) that hold game objects and other collections. At the most basic level, a game can consist of only one collection. More frequently, Defold games make use of multiple collections, either added manually to the bootstrap “main” collection or dynamically loaded via [collection proxies](#manuals:collection-proxy). This concept of loading "levels" or "screens" does not have a direct Flash equivalent.
+As mentioned previously, Defold does not have a timeline concept. Instead, game objects are organized in collections. Collections are containers (or prefabs) that hold game objects and other collections. At the most basic level, a game can consist of only one collection. More frequently, Defold games make use of multiple collections, either added manually to the bootstrap `main` collection or dynamically loaded via [collection proxies](#manuals:collection-proxy). This concept of loading "levels" or "screens" does not have a direct Flash equivalent.
 
-In the example below, the "main" collection contains three instances (listed on the right, in the *Outline* window) of the "logo" game object (seen on the left, in the *Assets* browser window):
+In the example below, the `main` collection contains three instances (listed on the right, in the *Outline* window) of the `logo` game object (seen on the left, in the *Assets* browser window):
 
 ## Flash—referencing manually created movie clips
 
@@ -998,9 +1007,9 @@ In Defold, all game objects and components are referred to via an address. In mo
 
 - `"."` addresses the current game object.
 - `"#"` addresses the current component (the script).
-- `"logo"` addresses the game object with the id "logo".
-- `"#script"` addresses the component with id "script" in the current game object.
-- `"logo#script"` addresses the component with id "script" in the game object with id "logo".
+- `"logo"` addresses the game object with the id `logo`.
+- `"#script"` addresses the component with id `script` in the current game object.
+- `"logo#script"` addresses the component with id `script` in the game object with id `logo`.
 
 The address of manually placed game objects is determined by the *Id* property assigned (see bottom right of screenshot). The id has to be unique for the current collection file you are working in. The editor automatically sets an id for you but you can change it for each game object instance that you create.
 
@@ -1012,7 +1021,7 @@ The addressing model and message passing are key concepts in Defold game develop
 
 In order to dynamically create movie clips in Flash, ActionScript Linkage first needs to be set up:
 
-This creates a class (Logo in this case), which then enables instantiation of new instances of this class. Adding an instance of the Logo class to the Stage could be done as below:
+This creates a class (`Logo` in this case), which then enables instantiation of new instances of this class. Adding an instance of the `Logo` class to the Stage could be done as below:
 ```as
 var logo:Logo = new Logo();
 addChild(logo);
@@ -1020,11 +1029,11 @@ addChild(logo);
 
 ## Defold—creating game objects using factories
 
-In Defold, dynamic generation of game objects is achieved through the use of *factories*. Factories are components that are used to spawn copies of a specific game object. In this example, a factory has been created with the "logo" game object as a prototype:
+In Defold, dynamic generation of game objects is achieved through the use of *factories*. Factories are components that are used to spawn copies of a specific game object. In this example, a factory has been created with the `logo` game object as a prototype:
 
-It is important to note that factories, like all components, need to be added to a game object before they can be used. In this example, we have created a game object called "factories", to hold our factory component:
+It is important to note that factories, like all components, need to be added to a game object before they can be used. In this example, we have created a game object called `factories`, to hold our factory component:
 
-The function to call to generate an instance of the logo game object is:
+The function to call to generate an instance of the `logo` game object is:
 ```lua
 local logo_id = factory.create("factories#logo_factory")
 ```
@@ -1039,9 +1048,9 @@ As discussed in the movie clips section above, the Stage is essentially the top 
 
 ## Defold—collections
 
-The Defold equivalent of the Flash Stage is a collection. When the engine starts up it creates a new game world based on the content of a collection file. By default, this file is called "main.collection" but you can change which collection is loaded at startup by accessing the *game.project* settings file that is in the root of every Defold project:
+The Defold equivalent of the Flash Stage is a collection. When the engine starts up it creates a new game world based on the content of a collection file. By default, this file is called `main.collection` but you can change which collection is loaded at startup by accessing the *game.project* settings file that is in the root of every Defold project:
 
-Collections are containers that are used in the editor to organize game objects and other collections. The contents of a collection can also be spawned via script into the runtime using a [collection factory](#manuals:collection-factory), which works the same way as a regular game object factory. This is useful for spawning groups of enemies, or a pattern of coin collectables, for instance. In the screenshot below, we have manually placed two instances of the "logos" collection into the "main" collection.
+Collections are containers that are used in the editor to organize game objects and other collections. The contents of a collection can also be spawned via script into the runtime using a [collection factory](#manuals:collection-factory), which works the same way as a regular game object factory. This is useful for spawning groups of enemies, or a pattern of coin collectables, for instance. In the screenshot below, we have manually placed two instances of the `logos` collection into the `main` collection.
 
 In some cases, you want to load a completely new game world. The [collection proxy](#manuals:collection-proxy) component allows you to create a new game world based on the contents of a collection file. This would be useful for scenarios such as loading new game levels, mini games, or cutscenes.
 
@@ -1057,13 +1066,13 @@ Motion tweens allow the animation of various properties of an object, including 
 
 Defold works with pixel images as opposed to vector graphics, thus it does not have an equivalent for shape tweening. However, motion tweening has a powerful equivalent in [property animation](https://defold.com/ref/go/#go.animate). This is accomplished via script, using the `go.animate()` function. The `go.animate()` function tweens a property (such as color, scale, rotation or position) from the starting value to the desired end value, using one of many available easing functions (including custom ones). Where Flash required user implementation of more advanced easing functions, Defold includes [many easing functions](#manuals:property-animation) built-into the engine.
 
-Where Flash makes use of keyframes of graphics on a timeline for animation, one of the main methods of graphic animation in Defold is by flipbook animation of imported image sequences. Animations are organized in a game object component known as an atlas. In this instance we have an atlas for a game character with an animation sequence called "run". This consists of a series of png files:
+Where Flash makes use of keyframes of graphics on a timeline for animation, one of the main methods of graphic animation in Defold is by flipbook animation of imported image sequences. Animations are organized in a game object component known as an atlas. In this instance we have an atlas for a game character with an animation sequence called `run`. This consists of a series of png files:
 
 ## Flash—depth index
 
-In Flash, the display list determines what is shown and in what order. The ordering of objects in a container (such as the Stage) is handled by an index. Objects added to a container using the `addChild()` method will automatically occupy the top position of the index, starting from 0 and incrementing with each additional object. In the screenshot below, we have generated three instances of the "logo" movie clip:
+In Flash, the display list determines what is shown and in what order. The ordering of objects in a container (such as the Stage) is handled by an index. Objects added to a container using the `addChild()` method will automatically occupy the top position of the index, starting from 0 and incrementing with each additional object. In the screenshot below, we have generated three instances of the `logo` movie clip:
 
-The positions in the display list are indicated by the numbers next to each logo instance. Ignoring any code to handle the x/y position of the movie clips, the above could have been generated like so:
+The positions in the display list are indicated by the numbers next to each `logo` instance. Ignoring any code to handle the x/y position of the movie clips, the above could have been generated like so:
 ```as
 var logo1:Logo = new Logo();
 var logo2:Logo = new Logo();
@@ -1087,9 +1096,9 @@ The positions of game objects in Defold are represented by vectors consisting of
 
 Game objects with a z position outside the -1 to 1 range will not be rendered and therefore not visible. This is a common pitfall for developers new to Defold, and is worth keeping in mind if a game object is not visible when you expect it to be.
 
-Unlike in Flash where the editor only implies depth indexing (and allows modification using commands like *Bring Forward* and *Send Backward*), Defold allows you to set the z position of objects directly in the editor. In the screenshot below, you can see that "logo3" is displayed on top, and has a z position of 0.2. The other game objects have z positions of 0.0 and 0.1.
+Unlike in Flash where the editor only implies depth indexing (and allows modification using commands like *Bring Forward* and *Send Backward*), Defold allows you to set the z position of objects directly in the editor. In the screenshot below, you can see that `logo3` is displayed on top, and has a z position of 0.2. The other game objects have z positions of 0.0 and 0.1.
 
-Note that the z position of a game object nested in one or more collections is decided by its own z position, together with that of all its parents. For instance, imagine the logo game objects above were placed in a "logos" collection which in turn was placed in "main" (see screenshot below). If the "logos" collection had a z position of 0.9, the z positions of the game objects contained within would be 0.9, 1.0, and 1.1. Therefore, "logo3" would not be rendered as its z position is greater than 1.
+Note that the z position of a game object nested in one or more collections is decided by its own z position, together with that of all its parents. For instance, imagine the `logo` game objects above were placed in a `logos` collection which in turn was placed in `main` (see screenshot below). If the `logos` collection had a z position of 0.9, the z positions of the game objects contained within would be 0.9, 1.0, and 1.1. Therefore, `logo3` would not be rendered as its z position is greater than 1.
 
 The z position of a game object can of course be changed using script. Assume the below is located in the script component of a game object:
 ```lua
@@ -1100,7 +1109,7 @@ go.set_position(pos)
 
 ## Flash `hitTestObject` and `hitTestPoint` collision detection
 
-Basic collision detection in Flash is achieved by using the `hitTestObject()` method. In this example, we have two movie clips: "bullet" and "bullseye". These are illustrated in the screenshot below. The blue boundary box is visible when selecting the symbols in the Flash editor, and it is these boundary boxes that drive the result of the `hitTestObject()` method.
+Basic collision detection in Flash is achieved by using the `hitTestObject()` method. In this example, we have two movie clips: `bullet` and `bullseye`. These are illustrated in the screenshot below. The blue boundary box is visible when selecting the symbols in the Flash editor, and it is these boundary boxes that drive the result of the `hitTestObject()` method.
 
 Collision detection using `hitTestObject()` is done as follows:
 ```as
@@ -1118,17 +1127,17 @@ This line would check the x and y position of the bullet (top left in this scena
 
 ## Defold—collision objects
 
-Defold includes a physics engine that can detect collisions and let a script react to it. Collision detection in Defold starts with assigning collision object components to game objects. In the screenshot below, we have added a collision object to the "bullet" game object. The collision object is indicated as the red transparent box (which is visible in the editor only):
+Defold includes a physics engine that can detect collisions and let a script react to it. Collision detection in Defold starts with assigning collision object components to game objects. In the screenshot below, we have added a collision object to the `bullet` game object. The collision object is indicated as the red transparent box (which is visible in the editor only):
 
 Defold includes a modified version of the Box2D physics engine, which can simulate realistic collisions automatically. This guide assumes use of the kinematic collision objects, as these most closely resemble collision detection in Flash. Read more about the dynamic collision objects in the Defold [physics manual](#manuals:physics).
 
 The collision object includes the following properties:
 
-A box shape has been used as this was most appropriate for the bullet graphic. The other shape used for 2D collisions, sphere, will be used for the target. Setting the type to Kinematic means resolving collisions is done by your script as opposed to the built-in physics engine (for more information on the other types, please refer to the [physics manual](#manuals:physics)). The *Group* and *Mask* properties determine what collision group the object belongs to and what collision group it should be checked against, respectively. The current setup means a "bullet" can only collide with a "target". Imagine the setup was changed to the below:
+A box shape has been used as this was most appropriate for the bullet graphic. The other shape used for 2D collisions, sphere, will be used for the target. Setting the type to Kinematic means resolving collisions is done by your script as opposed to the built-in physics engine (for more information on the other types, please refer to the [physics manual](#manuals:physics)). The *Group* and *Mask* properties determine what collision group the object belongs to and what collision group it should be checked against, respectively. The current setup means a `bullet` can only collide with a `target`. Imagine the setup was changed to the below:
 
 Now, bullets can collide with targets and other bullets. For reference, we have set up a collision object for the target that looks as follows:
 
-Note how the *Group* property is set to "target" and *Mask* is set to "bullet".
+Note how the *Group* property is set to `target` and *Mask* is set to `bullet`.
 
 In Flash, collision detection occurs only when explicitly called by the script. In Defold, collision detection occurs continuously in the background as long as a collision object remains enabled. When a collision occurs, messages are sent to all components of a game object (most relevantly, the script components). These are the [`collision_response` and `contact_point_response`](#manuals:physics-messages) messages, which contain all the information required to resolve the collision as desired.
 
@@ -3249,7 +3258,7 @@ Also note that although dependencies are shown in Assets view, they do not exist
 Editor scripts can define and use preferences — persistent, uncommitted pieces of data stored on the user's computer. These preferences have three key characteristics:
 - typed: every preference has a schema definition that includes the data type and other metadata like default value
 - scoped: preferences are scoped either per project or per user
-- nested: every preference key is a dot-separated string, where the first path segment identifies an editor script, and the rest
+- nested: every preference key is a dot-separated string, where the first path segment identifies an editor script, and the remaining segments identify groups and individual preferences within it
 
 All preferences must be registered by defining their schema:
 ```lua
@@ -4221,7 +4230,7 @@ Code that controls a running game must be able to reach every object and compone
 Defold uses addresses (or URLs, but let's ignore that for now) to refer to game objects and components. These addresses consist of identifiers. The following are all examples of how Defold uses addresses. Through this manual we are going to examine in detail how they work:
 ```lua
 local id = factory.create("#enemy_factory")
-label.set_text("my_gameobject#my_label", "Hello World!")
+go.set("my_gameobject#my_label", "text", "Hello World!")
 
 local pos = go.get_position("my_gameobject")
 go.set_position(pos, "/level/stuff/other_gameobject")
@@ -5014,14 +5023,16 @@ If the model should use a texture in Defold, import the texture image as a separ
 
 Starting with Defold 1.13.0, Defold preserves the positions and transforms from the imported glTF file and does not automatically re-center the model during import. The editor preview and runtime use the imported transforms consistently: skinned or bone-parented meshes preserve their local, skeleton-relative transforms, while rigid meshes retain their flattened world placement.
 
+Since Defold 1.13.2, a [Model component](#manuals:model) can select a single named mesh from the imported scene. Leaving its *Mesh* field empty uses the whole scene and preserves the transforms described above. Selecting a mesh uses its local geometry without the glTF node transforms, so place it using the model component or game object's transform.
+
 If a model created with an older version of Defold changes position or orientation after being reimported, correct the transform in Blender or another authoring tool and export the *.gltf* or *.glb* file again.
 
 ## Using a model
 Once you have imported the model, use it in a [Model component](#manuals:model):
 
 1. Create a Model file from the *Assets* pane with `New... ▸ Model`, or add a Model component directly to a game object with `Add Component ▸ Model`.
-2. Set the *Mesh* property to the imported *.gltf* or *.glb* file containing the mesh.
-3. For an animated model, set the *Skeleton* property to the *.gltf* or *.glb* file containing the skeleton. This is often the same file used for *Mesh* when mesh, skeleton and animations are exported together.
+2. Set the *Scene* property to the imported *.gltf* or *.glb* file. Leave *Mesh* empty to use the whole scene, or select a named mesh to use only its local geometry.
+3. For an animated model, set the *Skeleton* property to the *.gltf* or *.glb* file containing the skeleton. This is often the same file used for *Scene* when mesh, skeleton and animations are exported together.
 4. Create an *Animation Set* file for the animations and assign it to the *Animations* property. Set *Default Animation* if you want an animation to start automatically.
 5. Set the *Material* property to a material suitable for the model. The built-in *model.material*, *model_instanced.material*, *model_skinned.material* and *model_skinned_instanced.material* files are useful starting points. The skinned materials use local vertex space so skinning can run on the GPU; custom materials for GPU-skinned or instanced models should also use local vertex space. See the [Model manual](#manuals:model) for the graphics-adapter requirement.
 6. Set the material texture properties, such as *Texture*, to the imported texture image files. If the material uses multiple textures, assign each texture in the corresponding material texture field.
@@ -5317,7 +5328,7 @@ Adding flipbook animations
 
   Select `Add Animation Group` from the pop up context menu to create a flipbook animation group.
 
-  A new, empty, animation group with a default name ("New Animation") is added to the atlas.
+  A new, empty, animation group with a default name (`New Animation`) is added to the atlas.
 
   Drag and drop images from the *Asset* pane to the editor view to add them to the currently selected group.
 
@@ -5529,6 +5540,10 @@ Fonts are used to render text on Label components and GUI text nodes. Defold sup
 - OpenType
 - BMFont
 
+Since Defold 1.13.2, both the legacy and full text layout engines support TrueType outlines and OpenType CFF1/CFF2 outlines, including runtime generation from `.ttf` and `.otf` resources.
+
+For information about styling individual text spans and working with links and inline sprites, see the [Rich text markup manual](#manuals:font-richtext).
+
 Fonts added to your project are automatically converted into a texture format that Defold can render. Two font rendering techniques are available, each with its own specific benefits and drawbacks:
 
 - Bitmap
@@ -5538,7 +5553,7 @@ Fonts added to your project are automatically converted into a texture format th
 
 By default, the conversion to rasterized glyph images happens at build time (offline). This has the drawback that each font needs to rasterize all possible glyphs in the build stage, producing potentially very large textures that consume memory and also increase the bundle size.
 
-By using "runtime fonts", the `.ttf` fonts will be bundled as-is, and the rasterization will happen on-demand at runtime. This minimizes both runtime memory usage and the bundle size.
+By using "runtime fonts", the `.ttf` and `.otf` fonts will be bundled as-is, and the rasterization will happen on-demand at runtime. This minimizes both runtime memory usage and the bundle size.
 
 ## Text layout support (e.g. Right-to-left)
 
@@ -5550,7 +5565,7 @@ See [Enabling Runtime Fonts](#manuals:font#enabling-runtime-fonts)
 ## Font collection
 
 The `.fontc` file format is also known as a font collection. In offline mode, only one font is associated with it.
-When using runtime fonts, you can associate more than one font file (`.ttf`) with the font collection.
+When using runtime fonts, you can associate more than one font file (`.ttf` or `.otf`) with the font collection.
 
 This allows for using the a font collection when rendering multiple texts in different languages, while also keeping the memory footprint low.
 E.g. loading a collection with the Japanese font, then associate that font with the current main font, followed by unloading the Japanese font collection.
@@ -5686,7 +5701,7 @@ For more information about shader uniforms, see the [Shader manual](#manuals:sha
 
 ## Enabling Runtime Fonts
 
-It is possible to use runtime generation for SDF type fonts, when using TrueType (`.ttf`) fonts.
+It is possible to use runtime generation for SDF type fonts, when using TrueType (`.ttf`) or OpenType (`.otf`) fonts. Runtime generation from `.otf` resources is supported since Defold 1.13.2.
 This approach can greatly reduce the download size and runtime memory consumption of a Defold game.
 The small downside is the asynchronous nature of generating each glyph.
 
@@ -5697,7 +5712,7 @@ This builds a custom engine that has this feature enabled.
 
 This feature is currently experimental, but with the intention to be used as the default workflow in the future.
 
-The `font.runtime_generation` setting affects all `.ttf` fonts in the project.
+The `font.runtime_generation` setting affects all `.ttf` and `.otf` fonts in the project.
 
 ### Font Scripting
 
@@ -5751,7 +5766,7 @@ If the glyph cache gets full, the oldest glyph in the cache will be evicted.
 font.prewarm_text(self.font_collection, info.text, function (self, request_id, result, err)
     if result then
       print("PREWARMING OK!")
-      label.set_text(self.label, info.text)
+      go.set(self.label, "text", info.text)
     else
       print("Error prewarming text:", err)
     end
@@ -6455,7 +6470,7 @@ local bone_go = model.get_go("#wiggler", "Bone_002")
 
 ### Cursor animation
 
-In addition to using the `model.play_anim()` to advance a model animation, *Model* components expose a "cursor" property that can be manipulated with `go.animate()` (more about [property animations](#manuals:property-animation)):
+In addition to using the `model.play_anim()` to advance a model animation, *Model* components expose a `cursor` property that can be manipulated with `go.animate()` (more about [property animations](#manuals:property-animation)):
 ```lua
 -- Set the animation on #model but don't start it
 model.play_anim("#model", "wiggle", go.PLAYBACK_NONE)
@@ -6749,13 +6764,13 @@ With a collection factory component you can spawn the contents of a collection f
 
 ## Spawning a collection
 
-Suppose we want a character game object and a separate shield game object childed to the character. We build the game object hierarchy in a collection file and save it as "bean.collection".
+Suppose we want a character game object and a separate shield game object childed to the character. We build the game object hierarchy in a collection file and save it as `bean.collection`.
 
 The *collection proxy* component is used to create a new game world, including a separate physics world, based on a collection. The new world is accessed through a new socket. All assets contained in the collection are loaded through the proxy when you message the proxy to start loading. This makes them very useful to, for instance, change levels in a game. New game worlds come with quite a lot of overhead though so do not use them for dynamic loading of small stuff. For more information, see the [Collection proxy documentation](#manuals:collection-proxy).
 
-We then add a *Collection factory* to a gameobject that will take care of the spawning and set "bean.collection" as the component's *Prototype*:
+We then add a *Collection factory* to a gameobject that will take care of the spawning and set `bean.collection` as the component's *Prototype*:
 
-Spawning a bean and shield is now just a matter of calling the `collectionfactory.create()` function:
+Spawning a `bean` and shield is now just a matter of calling the `collectionfactory.create()` function:
 ```lua
 local bean_ids = collectionfactory.create("#bean_factory")
 ```
@@ -6779,7 +6794,7 @@ The function takes 5 parameters:
 
 `collectionfactory.create()` returns the identities of the spawned game objects as a table. The table keys map the hash of the collection-local id of each object to the runtime id of each object:
 
-The parent-child relationship between "bean" and "shield" is *not* reflected in the returned table. This relation only exist in the runtime scene-graph, i.e. how objects are transformed together. Re-parenting an object never changes its id.
+The parent-child relationship between `bean` and `shield` is *not* reflected in the returned table. This relation only exist in the runtime scene-graph, i.e. how objects are transformed together. Re-parenting an object never changes its id.
 
 ```lua
 local bean_ids = collectionfactory.create("#bean_factory")
@@ -6802,7 +6817,7 @@ props[hash("/bean")] = { shield = false }
 local ids = collectionfactory.create("#bean_factory", nil, nil, props)
 ```
 
-Supposing the "bean" game object in "bean.collection" defines the "shield" property. [The Script property manual](#manuals:script-properties) contains information on script properties.
+Supposing the `bean` game object in `bean.collection` defines the `shield` property. [The Script property manual](#manuals:script-properties) contains information on script properties.
 ```lua
 -- bean/controller.script
 go.property("shield", true)
@@ -6903,7 +6918,7 @@ Collection proxies differ from [collection factory components](#manuals:collecti
 
 ## Bootstrap
 
-When the Defold engine starts it loads and instantiates all game objects from a *bootstrap collection* into the runtime. It then initializes and enables the game objects and their components. Which bootstrap collection the engine should use is set in the [project settings](#manuals:project-settings). By convention this collection file is usually named "main.collection".
+When the Defold engine starts it loads and instantiates all game objects from a *bootstrap collection* into the runtime. It then initializes and enables the game objects and their components. Which bootstrap collection the engine should use is set in the [project settings](#manuals:project-settings). By convention this collection file is usually named `main.collection`.
 
 To fit the game objects and their components the engine allocates the memory needed for the whole "game world" into which the contents of the bootstrap collection are instantiated. A separate physics world is also created for any collision objects and physics simulation.
 
@@ -7115,13 +7130,13 @@ A collision object component has a set of *Properties* that sets its type and ph
 To add a collision object component to a game object:
 
 1. In the *Outline* view, `right click` the game object and select `Add Component ▸ Collision Object` from the context menu. This creates a new component with no shapes.
-2. `Right click` the new component and select `Add Shape ▸ Box / Capsule / Sphere`. This adds a new shape to the collision object component. You can add any number of shapes to the component. You can also use a tilemap or a convex hull to define the shape of the physics object.
+2. `Right click` the new component and select `Add Shape`, then choose a shape: `Box`, `Capsule`, `Sphere`, `Hull` or `Mesh` in projects using 3D physics, `Box` or `Circle` in projects using 2D physics. Hull and Mesh shapes are available since Defold 1.13.2 and use a named mesh from a glTF or GLB scene. You can add several shapes to the component. You can also use a tilemap or a `.convexshape` resource through the *Collision Shape* property.
 3. Use the move, rotate and scale tools to edit the shapes.
 4. Select the component in the *Outline* and edit the collision object's *Properties*.
 
 ## Adding a collision shape
 
-A collision component can either use several primitive shapes or a single complex shape. Learn more about the various shapes and how to add them to a collision component in the [Collision Shapes manual](#manuals:physics-shapes).
+A collision component can contain several embedded shapes, including hulls and triangle meshes in 3D physics, or use a tilemap or convex shape resource. Learn more about the various shapes and how to add them to a collision component in the [Collision Shapes manual](#manuals:physics-shapes).
 
 ## Collision object properties
 
@@ -7129,7 +7144,7 @@ Id
 : The identity of the component.
 
 Collision Shape
-: This property is used for tile map geometry or convex shapes that does not use primitive shapes. See [Collision Shapes for more information](#manuals:physics-shapes).
+: A tilemap or `.convexshape` resource. To use a glTF or GLB mesh, add a Hull or Mesh shape to the component and set that shape's *Scene* and *Mesh* properties instead. See [Collision Shapes for more information](#manuals:physics-shapes).
 
 Type
 : The type of collision object: `Dynamic`, `Kinematic`, `Static` or `Trigger`. If you set the object to `Dynamic` you _must_ set the *Mass* property to a non zero value. For `Dynamic` or `Static` objects you should also check that the *Friction* and *Restitution* values are good for your use-case.
@@ -7169,7 +7184,7 @@ Bullet
 : Setting this property enables continuous collision detection (CCD) between the collision object and other dynamic collision objects. The *Bullet* property is ignored if the *Type* is not set to `Dynamic`.
 
 Group
-: The name of the collision group the object should belong to. You can have 16 different groups and you name them as you see fit for your game. For example "players", "bullets", "enemies" and "world". If the *Collision Shape* is set to a tile map, this field is not used but the groups names are taken from the tile source. [Learn more about collision groups](#manuals:physics-groups).
+: The name of the collision group the object should belong to. You can have 16 different groups and you name them as you see fit for your game. For example `players`, `bullets`, `enemies` and `world`. If the *Collision Shape* is set to a tile map, this field is not used but the groups names are taken from the tile source. [Learn more about collision groups](#manuals:physics-groups).
 
 Mask
 : The other _groups_ this object should collide with. You can name one group or specify multiple groups in a comma separated list. If you leave the *Mask* field empty, the object will not collide with anything. [Learn more about collision groups](#manuals:physics-groups).
@@ -7827,6 +7842,9 @@ By setting the *Pivot* property you can change the alignment mode for the text.
 
 You can manipulate labels in runtime by getting and setting the label text as well as the various other properties.
 
+`text`
+: The text content of the label (`string`). Available through `go.get()` and `go.set()` since Defold 1.13.2.
+
 `color`
 : The label color (`vector4`)
 
@@ -7845,9 +7863,14 @@ You can manipulate labels in runtime by getting and setting the label text as we
 function init(self)
     -- Set the text of the "my_label" component in the same game object
     -- as this script.
-    label.set_text("#my_label", "New text")
+    go.set("#my_label", "text", "New text")
+    local text = go.get("#my_label", "text")
+    print(text) -- New text
 end
 ```
+
+Since Defold 1.13.2, `label.set_text()` and `label.get_text()` are deprecated in favor of the `text` property. The old functions remain available for compatibility. The old setter queues a message, while `go.set()` updates the text immediately.
+
 ```lua
 function init(self)
     -- Set the color of the "my_label" component in the same game object
@@ -8213,8 +8236,11 @@ With the model created you need to specify a number of properties:
 
 Apart from the properties *Id*, *Position* and *Rotation* the following component specific properties exist:
 
+*Scene*
+: The glTF *.gltf* or *.glb* file that contains the model's geometry. If the file contains morph targets, they are imported together with the scene. This property was named *Mesh* before Defold 1.13.2.
+
 *Mesh*
-: This property should refer to the glTF *.gltf* or *.glb* file that contains the mesh to use. If the file contains morph targets, they are imported together with the mesh. If the file contains multiple meshes, only the first one is read.
+: An optional named mesh from the selected *Scene*, available since Defold 1.13.2. Leave this field empty to render the whole scene with its imported transforms. Select a mesh to render that mesh once in its local coordinates, without the glTF node transforms. Position, rotate and scale the model component or its game object to place the selected mesh.
 
 *Create GO Bones*
 : Check this to create a game object for every bone of the model. You can use the game objects to attach other game objects such as weapons to hand bones and so on.
@@ -8582,7 +8608,7 @@ Sound components
 : These components contain an actual sound that should be played and are able to play back the sound.
 
 Sound groups
-: Each sound component can be designated to belong to a _group_. Groups offer an easy way to manage sounds that belong together in an intuitive way. For instance, a group "sound_fx" can be set up and any sound belonging to that group can be ducked by a simple function call.
+: Each sound component can be designated to belong to a _group_. Groups offer an easy way to manage sounds that belong together in an intuitive way. For instance, a group `sound_fx` can be set up and any sound belonging to that group can be ducked by a simple function call.
 
 ## Creating a sound component
 
@@ -8600,7 +8626,7 @@ The created component has a set of properties that should be set:
 : The number of times a looping sound will play before stopping (0 means the sound should loop until explicitly stopped).
 
 *Group*
-: The name of the sound group the sound should belong to. If this property is left empty, the sound will be assigned to the built-in "master" group.
+: The name of the sound group the sound should belong to. If this property is left empty, the sound will be assigned to the built-in `master` group.
 
 *Gain*
 : You can set the gain for the sound directly on the component. This allows you to easily tweak the gain for a sound without going back to your sound program and performing a re-export. See below for details on how gain is calculated.
@@ -8636,13 +8662,13 @@ The sound system has 4 levels of gain:
 - The gain set on the sound component.
 - The gain set when starting the sound via a call to `sound.play()` or when changing the gain on the voice via a call to `sound.set_gain()`.
 - The gain set on the group via a [`sound.set_group_gain()`](https://defold.com/ref/sound#sound.set_group_gain) function call.
-- The gain set on the "master" group. This can be altered with `sound.set_group_gain(hash("master"), gain)`.
+- The gain set on the `master` group. This can be altered with `sound.set_group_gain(hash("master"), gain)`.
 
 When **Use Linear Gain** is enabled in the [Sound project settings](#manuals:project-settings) (the default), the output gain is the result of these four gains multiplied. A gain of `1.0` is unity gain (0 dB). When linear gain is disabled, Defold applies a nonlinear curve during mixing, so the direct four-way multiplication and decibel conversion below do not describe the resulting output level.
 
 ## Sound groups
 
-Any sound component with a sound group name specified will be put in a sound group with that name. If you don't specify a group the sound will be assigned to the "master" group. You can also explicitly set the group on a sound component to "master" which has the same effect.
+Any sound component with a sound group name specified will be put in a sound group with that name. If you don't specify a group the sound will be assigned to the `master` group. You can also explicitly set the group on a sound component to `master` which has the same effect.
 
 A few functions are available to get all available groups, get the string name, get and set gain, rms (see http://en.wikipedia.org/wiki/Root_mean_square) and peak gain. There is also a function that allows you to test if the target device's music player is running:
 ```lua
@@ -9924,6 +9950,478 @@ end
 
 Note: If a GUI layout exists in the scene but is not present in Display Profiles, `gui.set_layout()` still applies the per-layout node overrides but does not change the scene resolution.
 
+<!-- /manuals/font-richtext -->
+
+# Rich text markup {#manuals:font-richtext}
+
+Use markup in Label components and GUI text nodes to apply nested visual styles and effects, and inspect links and sprites from Lua.
+```lua
+go.set("#label", "text", "Score: <color=#69D2E7>1200</color>")
+```
+
+Alternatively, define a reusable named object style on the font and select it from a link:
+```lua
+local fontpath = "/fonts/ui.fontc"
+font.set_style(fontpath, "menu_link", "<color=#69D2E7>")
+go.set("#label", "text", "Open <link style=menu_link src=inventory>inventory</link>")
+```
+
+## Tag reference
+
+| Tag | Purpose | Example |
+| --- | --- | --- |
+| [`color`](#color) | Set the glyph face color. |  |
+| [`size`](#size) | Change glyph shaping and layout size. |  |
+| [`gradient`](#gradient) | Apply a static or animated color gradient. |  |
+| [`ul`](#ul) | Underline text. |  |
+| [`strike`](#strike) | Strike through text. |  |
+| [`outline`](#outline) | Set the glyph outline width and color. |  |
+| [`shadow`](#shadow) | Add a shadow to text. |  |
+| [`shake`](#shake) | Apply an animated random offset. |  |
+| [`wave`](#wave) | Move text in an animated sine wave. |  |
+| [`sprite`](#sprite) | Add an inline sprite object. |  |
+| [`link`](#link) | Add an interactive link object. |  |
+
+## Syntax
+
+Tags and attribute names are case-sensitive. A paired tag applies to the visible UTF-32 text inside it. Sprite objects use self-closing tags.
+```text
+<color=#69D2E7>colored text</color>
+<ul pattern=dashed>underlined text</ul>
+<outline size=2 color=#000000>outlined text</outline>
+<shadow x=2 y=-2 color=#00000080>shadowed text</shadow>
+<sprite src=images/icon.png width=2em/>
+```
+
+### Attributes
+
+Attributes may be unquoted when they contain no whitespace, or quoted with single or double quotes. `color` and `size` support a shorthand first value as well as the named `value` form.
+```text
+<color=#FF8800>Orange</color>
+<color value="#FF8800">Orange</color>
+<size='120%'>Larger</size>
+```
+
+### Nesting
+
+Tags must close in last-in, first-out order. Inner style values override the same property from an outer style. Different properties combine. Span effects remain independently active, so nested gradients multiply colors and nested position effects add their offsets.
+```text
+<color=#FFCC00>
+    Gold <outline size=2 color=#000000>with a black outline</outline>
+</color>
+```
+
+### Entities
+
+Use `&amp;`, `&apos;`, `&gt;`, `&lt;`, and `&quot;` for reserved characters in visible text. Numeric entities are not currently supported.
+
+## Tags
+
+Rich-text tags either style an enclosed text span or describe an object that can be inspected from Lua. Style tags use a matching closing tag. The `sprite` object is self-closing, while `link` encloses its linked text.
+
+### `color`
+
+Sets the glyph face color. Colors use `#RRGGBB` or `#RRGGBBAA`. The hash prefix is required; `0xFF0000` and `FF0000` are invalid. The result multiplies the label or renderer base color.
+
+| Attribute | Required | Default | Meaning |
+| --- | --- | --- | --- |
+| `=color` or `value=color` | Yes | No default | Face color in RGB or RGBA hexadecimal form. |
+```text
+<color=#00FF00>Opaque green</color>
+<color=#00FF0080>Half-alpha green</color>
+```
+
+*#00FF00*
+
+*#00FF0080*
+
+### `size`
+
+Changes glyph shaping and layout size, not only vertex scale. Relative values always use the layout's base font size. They do not compound with an enclosing `size` tag.
+
+| Attribute | Required | Default | Meaning |
+| --- | --- | --- | --- |
+| `=size` or `value=size` | Yes | No default | Absolute size, percentage, base-size multiple, or signed base-size offset using one of the forms below. |
+
+| Form | Example at 32 px | Resolved size |
+| --- | --- | --- |
+| Bare number or `px` | `24`, `24px` | 24 px |
+| Percentage of base size | `120%` | 38.4 px |
+| Multiple of base size | `2em` | 64 px |
+| Signed offset from base size | `+4`, `-4` | 36 px, 28 px |
+```text
+<size=24px>Exactly 24 pixels</size>
+<size=120%>120% of the layout base size</size>
+<size=2em>Twice the layout base size</size>
+```
+
+*24px*
+
+*120% of 32px*
+
+*2em of 32px*
+
+### `gradient`
+
+A gradient accepts exactly one complete attribute set. Mixing sets or omitting a member is invalid.
+
+| Mode | Required attributes | Interpolation |
+| --- | --- | --- |
+| Horizontal | `left`, `right` | Interpolates between the two horizontal colors. |
+| Vertical | `bottom`, `top` | Interpolates between the bottom and top colors. |
+| Four-corner | `tl`, `tr`, `bl`, `br` | Interpolates between four vertex colors. |
+
+| Attribute | Required | Default | Meaning |
+| --- | --- | --- | --- |
+| `left`, `right` | For horizontal mode | None | Horizontal endpoint colors in `#RRGGBB` or `#RRGGBBAA` form. Both must be present. |
+| `bottom`, `top` | For vertical mode | None | Vertical endpoint colors. Both must be present. |
+| `tl`, `tr`, `bl`, `br` | For four-corner mode | None | Top-left, top-right, bottom-left, and bottom-right colors. All four must be present. |
+| `fit` | No | `span` | `glyph` samples each shaped text position; `span` distributes the gradient across the complete tagged text. |
+| `hz` | No | `0` | Complete flowing cycles per second in `[0,)`; zero keeps the gradient static. |
+| `direction` | No | `forward` | `forward` or `reverse`. Controls the flow direction when `hz` is non-zero. |
+
+When `fit` is omitted, `fit=span` distributes the gradient across the complete tagged text. `fit=glyph` samples each shaped text position independently. Optional `hz` specifies complete flowing animation cycles per second; its default of zero keeps the gradient static. The repeating mirrored color ramp flows continuously and wraps without a color jump. `direction=forward` is the default; use `direction=reverse` to reverse the flow.
+```text
+<gradient left=#FF00FF right=#FFFFFF>Horizontal Gradient</gradient>
+
+<gradient hz=0.25 fit=glyph bottom=#182848 top=#4B6CB7>Animated vertical glyphs</gradient>
+
+<gradient hz=0.25 direction=reverse left=#FF0000 right=#0000FF>Reverse flow</gradient>
+
+<gradient hz=0.25 direction=reverse fit=span left=#FF0000 right=#0000FF>One animated span color</gradient>
+
+<gradient fit=glyph tl=#FF0000 tr=#00FF00 bl=#0000FF br=#FFFFFF>
+    Four corners
+</gradient>
+```
+
+*Horizontal*
+
+*Vertical*
+
+**Four corner**
+
+*`fit=glyph`*
+
+*`fit=span`*
+
+**Animated**
+
+*`fit=glyph`*
+
+*`fit=span`*
+
+Gradient colors multiply the current face color. A gradient inside `color=#808080` therefore cannot produce a channel brighter than that base multiplier.
+
+### `ul`
+
+Draws an underline using the font's underline metrics when they are available. The tag has no independent color: the line inherits the effective face color, including horizontal, vertical, and four-corner gradients.
+
+| Attribute | Required | Default | Meaning |
+| --- | --- | --- | --- |
+| `pattern` | No | `solid` | `solid` or `dashed`. |
+```text
+<ul>Solid underline</ul>
+<ul pattern=dashed>Dashed underline</ul>
+<ul><gradient left=#FF00FF right=#FFFFFF>Gradient line</gradient></ul>
+```
+
+*Solid*
+
+*Dashed*
+
+*Gradient*
+
+### `strike`
+
+Draws a line through the enclosed text. It accepts the same `pattern` values as `ul` and likewise inherits the effective face color.
+
+| Attribute | Required | Default | Meaning |
+| --- | --- | --- | --- |
+| `pattern` | No | `solid` | `solid` or `dashed`. |
+```text
+<strike>No longer available</strike>
+<strike pattern=dashed>Dashed strikethrough</strike>
+```
+
+*Solid*
+
+*Dashed*
+
+### `outline`
+
+Sets outline width, outline color, or both. At least one attribute is required. A zero width explicitly disables the outline for the span.
+
+| Attribute | Required | Default | Meaning |
+| --- | --- | --- | --- |
+| `size` | One of size/color | Inherited; `0` on a default font | Width in layout units, range `[0,)`. Unit suffixes are not accepted. |
+| `color` | One of size/color | Inherited; `#000000` on a default label | Single outline color in hexadecimal RGB (`#RRGGBB`) or RGBA (`#RRGGBBAA`) form; the alpha component controls opacity. |
+```text
+<outline size=3 color=#000000>Black outline</outline>
+<outline color=#FF0000>Keep inherited width, change color</outline>
+<outline size=0>Disable inherited outline</outline>
+```
+
+*External black outline*
+
+### `shadow`
+
+Adds a hard shadow to the enclosed text. At least one attribute is required. Attributes omitted by a nested tag retain the enclosing shadow value; attributes omitted by the outermost tag retain the font's base shadow value.
+
+| Attribute | Required | Default | Meaning |
+| --- | --- | --- | --- |
+| `color` | No | Inherited; `#000000` on a default label | Shadow color in `#RRGGBB` or `#RRGGBBAA` form. |
+| `x` | No | Inherited; `0` on a default font | Horizontal shadow offset in layout units. Positive values move it right. |
+| `y` | No | Inherited; `0` on a default font | Vertical shadow offset in layout units. Positive values move it up. |
+| `blur` | No | Inherited; `0` on a default font | Blur radius in layout units, range `[0,)`. |
+```text
+<shadow x=6 y=-6 blur=4 color=#000000A0>Shadow</shadow>
+<shadow x=-2>Override only the horizontal offset</shadow>
+```
+
+*x=6, y=-6, blur=4*
+
+Shadow blur is generated and stored in the glyph atlas. A span can request a smaller blur than the font's baked blur; larger values are preserved in the layout but currently render using the largest blur available in the atlas.
+
+### `shake`
+
+Applies a deterministic animated random offset without changing line breaking or layout bounds. The effect keeps time internally; scripts do not need to modify the label text for each animation frame.
+
+| Attribute | Required | Default | Valid values | Meaning |
+| --- | --- | --- | --- | --- |
+| `hz` | No | 20 | `[0,)` | Random target transitions per second. Zero pauses the effect. |
+| `amplitude` | No | 0.5 | `[0,)` | Maximum displacement in layout units. |
+| `fit` | No | `glyph` | `glyph` or `span` | `glyph` samples a cluster-safe offset for each shaped glyph unit. `span` moves the complete tagged text span as one rigid unit. |
+```text
+<shake>Default shake</shake>
+<shake hz=12 amplitude=0.8 fit=glyph>Glyph shake</shake>
+<shake hz=12 amplitude=0.8 fit=span>Rigid span shake</shake>
+```
+
+*`fit=glyph`*
+
+*`fit=span`*
+
+### `wave`
+
+Moves characters up and down in an animated sine wave without changing line breaking or layout bounds. The layout accumulates animation time when it is updated.
+
+| Attribute | Required | Default | Meaning |
+| --- | --- | --- | --- |
+| `amplitude` | No | 1 | Maximum vertical displacement in layout units, range `[0,)`. |
+| `hz` | No | 1 | Complete temporal cycles per second, range `[0,)`. Zero pauses the wave. |
+| `wavelength` | No | 6 | Visible UTF-32 text positions per complete spatial cycle, range `[1,)`. Characters that the font shapes together, such as a base character and its combining accent, move as a unit. |
+| `fit` | No | `glyph` | `glyph` applies the spatial wave across the text. `span` gives the complete tagged text span one shared vertical sine offset. |
+| `direction` | No | `forward` | `forward` advances normally. `reverse` reverses the wave's travel direction. |
+```text
+<wave>Animated character wave</wave>
+<wave amplitude=4 hz=3 wavelength=8 fit=glyph>Travelling wave</wave>
+<wave amplitude=4 hz=3 wavelength=8 fit=glyph direction=reverse>Reverse travelling wave</wave>
+<wave amplitude=4 hz=1 fit=span>Whole span moves together</wave>
+```
+
+*`fit=glyph`*
+
+*`fit=span`*
+
+### `sprite`
+
+Adds a self-closing sprite object at the current position in the visible text. Its attributes are preserved as metadata for `label.get_layout_objects()` and `gui.get_layout_objects()`.
+
+| Attribute | Required | Default | Meaning |
+| --- | --- | --- | --- |
+| `id` | No | Generated | Stable identifier hashed into the returned layout object's `id`. |
+| `src` | No | None | Application-defined sprite resource identifier, such as an image or atlas project path. |
+| `animation` | No | None | Application-defined animation identifier within the resource. |
+| `width` | No | `1em` | Resolved sprite width. |
+| `height` | No | `1em` | Resolved sprite height. |
+| Any other attribute | No | Absent | Application-defined metadata preserved for the object resolver and the layout-object APIs. |
+```text
+A <sprite src=engine/engine/content/builtins/assets/images/logo/logo_256.png/> logo
+<sprite src=images/banner.png width=4em height=2em/>
+<sprite src=images/icons.atlas animation=coin width=2em/>
+```
+
+*Resolved inline sprite*
+
+Dimensions accept positive bare layout units, `px`, `em`, or `%`. Both `em` and `%` use the text layout's base font size.
+
+Each missing dimension defaults independently to `1em`. Omitting both produces a `1em × 1em` object; specifying only the width does not derive the height automatically from a resource aspect ratio.
+
+The sprite tag is merely a placeholder for the developer to fit whatever object in that place!
+
+### `link`
+
+Describes a range of visible text as a link object. The enclosed text is laid out normally and receives the named `link` style by default. Label and GUI components select `link:hover` and `link:active` in response to input without reshaping the text. See [Interaction messages](#interaction-messages) for the messages produced by link input.
+
+| Attribute | Required | Default | Meaning |
+| --- | --- | --- | --- |
+| `src` | No | None | Application-defined link target. The value is returned as a string without automatic validation or navigation. |
+| `id` | No | Generated | Stable identifier hashed into the returned layout object's `id`. |
+| `style` | No | `link` | Named default style for the link text. |
+| Any other attribute | No | Absent | Application-defined metadata, such as an identifier, action, tooltip, or analytics value. |
+```text
+<ul><link id=website src=https://www.defold.com>www.defold.com</link></ul>
+<link id=inventory style=menu_link action=open_inventory item=sword>Iron sword</link>
+```
+
+*`style=link`*
+
+The component tracks each link's pointer state. It applies `link:hover` while the pointer is over the link and `link:active` while the pointer is pressed. When neither state applies, the component restores the style named by the link's `style` attribute, or `link` when the attribute is absent.
+
+### Interaction messages
+
+Link interaction uses Defold's normal input system. Add a Mouse Trigger binding for `MOUSE_BUTTON_LEFT`, which also enables single-touch input, and acquire input focus in the game object's script or GUI script:
+```lua
+function init(self)
+    msg.post(".", "acquire_input_focus")
+end
+```
+
+See [Input focus](#manuals:input) and [Mouse and touch input](#manuals:input-mouse-and-touch) for setup details.
+
+When a label or GUI component receives pointer input, links produce the following messages. Label messages are sent to the owning game object; GUI messages are sent to the GUI script.
+
+| Message | When sent |
+| --- | --- |
+| `text_object_hovered` | The pointer enters a link. |
+| `text_object_unhovered` | The pointer leaves a link. |
+| `text_object_clicked` | A press is released over the same link. |
+
+Each message contains these fields:
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `hash` | The object's `id` attribute, or its generated layout-object id. |
+| `type` | `hash` | The layout-object type, currently `hash("link")`. |
+| `src` | `string` | The application-defined value of the object's `src` attribute, or an empty string when absent. |
+```lua
+function on_message(self, message_id, message)
+    if message_id == hash("text_object_clicked") then
+        assert(message.type == hash("link"))
+        print(message.id, message.src)
+    end
+end
+```
+
+## Named styles
+
+Each font collection contains render-only named object styles. A link uses the style named by its `style` attribute, or `link` when the attribute is absent. There is no general `` span tag.
+
+Defold provides the following defaults:
+
+| Style | Face-color multiplier | Decoration |
+| --- | --- | --- |
+| `link` | `(0.10, 0.45, 0.90, 1.0)` | Solid underline |
+| `link:hover` | `(0.30, 0.65, 1.00, 1.0)` | None |
+| `link:active` | `(0.05, 0.30, 0.70, 1.0)` | None |
+
+Define a style with a text string containing opening tags. The tags are implicitly closed in reverse order, so closing tags and visible text are not allowed.
+```lua
+font.set_style("/fonts/ui.fontc", "link",
+    "<color=#2673ff><outline color=#000000 size=1>")
+
+font.set_style("/fonts/ui.fontc", "link:hover",
+    "<color=#66b3ff><shake amplitude=0.2 hz=20>")
+```
+
+Tags are applied from left to right, as though they were nested around the object text. A caller-selected object style is applied after the default style. When multiple tags set the same render property, the value applied later overrides earlier values. Effects are appended in left-to-right order.
+
+Calling `font.set_style()` replaces that named style's render properties and effects. Resource-defined decorations remain unchanged, so redefining `link` does not remove its default underline. Named styles accept render-only tags such as `color`, `outline`, `shadow`, `gradient`, `wave`, and `shake`. Layout-changing, decoration, and object tags are rejected.
+
+## Layout object API
+
+Use `label.get_layout_objects()` or `gui.get_layout_objects()` to retrieve the `sprite` and `link` objects from laid-out text.
+
+### `label.get_layout_objects()`
+```lua
+objects = label.get_layout_objects(url)
+```
+
+| Argument | Type | Description |
+| --- | --- | --- |
+| `url` | `string`, `hash`, or `url` | The label component to inspect, for example `"#label"`. |
+
+### `gui.get_layout_objects()`
+```lua
+objects = gui.get_layout_objects(node)
+```
+
+| Argument | Type | Description |
+| --- | --- | --- |
+| `node` | `node` | The GUI text node to inspect, for example `gui.get_node("rich_text")`. |
+
+Both functions return a newly created array containing the current layout objects in source order. They return an empty array when the text contains no object tags. Since the objects and their attributes are copied into Lua on every call, cache the result and query again after changing the text or another property that changes its layout.
+
+### Returned object fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `type` | `string` | `"sprite"` or `"link"`. |
+| `id` | `hash` | Object identifier used in interaction messages. |
+| `text_offset` | `number` | Zero-based position in the visible text, measured in Unicode codepoints. Markup is excluded, and entities count as their decoded characters. For a sprite, this is its insertion point. |
+| `text_length` | `number` | Length of the enclosed visible text in Unicode codepoints. A sprite has length one for its inserted U+FFFC object-replacement codepoint. |
+| `width` | `number` | Resolved width in text-layout units. Links currently have width zero. |
+| `height` | `number` | Resolved height in text-layout units. Links currently have height zero. |
+| `x` | `number` | Horizontal position of the object's lower-left corner relative to the text layout's upper-left origin. |
+| `y` | `number` | Vertical position of the object's lower-left corner relative to the text layout's upper-left origin. |
+| `attributes` | `table` | All tag attributes as string key/value pairs. Attribute values retain their source representation, such as `"2em"`. A shorthand unnamed value is stored under the key `value`. |
+
+`text_offset` and `text_length` are not UTF-8 byte offsets. A non-ASCII character such as `å` or `猫` counts as one position.
+
+### Lua example
+```lua
+local text = [[
+Read the <link src=https://defold.com/manuals/ id=manual>manual</link>
+or inspect <sprite src=images/info.png width=2em/> for more information.
+]]
+
+go.set("#label", "text", text)
+
+local objects = label.get_layout_objects("#label")
+for _, object in ipairs(objects) do
+    if object.type == "link" then
+        print("link", object.attributes.src)
+        print("visible range", object.text_offset, object.text_length)
+        print("position", object.x, object.y)
+    elseif object.type == "sprite" then
+        print("sprite", object.x, object.y, object.width, object.height)
+        pprint(object.attributes)
+    end
+end
+
+local gui_objects = gui.get_layout_objects(gui.get_node("rich_text"))
+```
+
+## Useful combinations
+
+### Colored outline with a horizontal gradient
+```text
+<outline size=2 color=#101820>
+    <gradient left=#FEE715 right=#FF6F61>Gradient title</gradient>
+</outline>
+```
+
+The gradient multiplies the face color only; the outline keeps its own color.
+
+### Shake a sentence, gradient one word
+```text
+<shake hz=20 amplitude=0.5>
+    This <gradient left=#FF00FF right=#FFFFFF>whole</gradient> text shakes!
+</shake>
+```
+
+The outer position effect applies to every glyph. The nested color effect applies only to “whole”.
+
+### Override one property without losing the others
+```text
+<color=#FFFFFF><outline size=2 color=#000000>
+    Normal <color=#FF4040>warning</color> normal
+</outline></color>
+```
+
+The inner color changes the face while retaining the inherited outline width and color.
+
 <!-- /manuals/physics -->
 
 # Physics {#manuals:physics}
@@ -9965,7 +10463,7 @@ Collisions not detected
 
 # Collision shapes {#manuals:physics-shapes}
 
-A collision component can either use several primitive shapes or a single complex shape.
+A collision object can contain several embedded shapes. In 3D physics these can include hulls and triangle meshes from glTF or GLB files. You can also use a tilemap or a convex shape resource through the collision object's *Collision Shape* property.
 
 ### Primitive shapes
 The primitive shapes are *box*, *sphere* and *capsule*. You add a primitive shape by `right clicking` the collision object and selecting `Add Shape`:
@@ -9982,7 +10480,21 @@ A capsule has a position, rotation, diameter and height:
 Capsule shapes are only supported when using 3D physics (configured in the Physics section of the *game.project* file).
 
 ### Complex shapes
-A complex shape can either be created from a tilemap component or from a convex hull shape.
+Complex shapes can use tilemap geometry or convex hull data. Since Defold 1.13.2, 3D collision objects can also create hulls and triangle mesh shapes from meshes in glTF or GLB scenes.
+
+## Hull and mesh shapes in 3D
+
+Use a *Hull* shape for a convex approximation of a mesh, or a *Mesh* shape when collisions need to follow its triangles, including concave areas such as openings in level geometry.
+
+1. Set **Physics → Type** to `3D` in *game.project*.
+2. Right-click the collision object in the *Outline* and select `Add Shape ▸ Hull` or `Add Shape ▸ Mesh`.
+3. Select the new shape and set its *Scene* property to a *.gltf* or *.glb* file.
+4. Select a named mesh from the *Mesh* field. If it is missing from the list, name the mesh in your modeling tool and export the scene again.
+5. Position and rotate the shape to align it with the game object's visible geometry. Repeat these steps to add more shapes if needed.
+
+The selected mesh supplies its local geometry; glTF node transforms are not applied. Mesh collision shapes are supported by the Bullet 3D backend, including for static and non-static collision objects. They are not supported by the 2D physics backends.
+
+Triangle mesh geometry is read-only through the runtime shape APIs. Edit the source mesh and rebuild to change its triangles. See [scaling collision shapes](#scaling-collision-shapes) for the game object's scale.
 
 ## Tilemap collision shape
 Defold includes a feature allowing you to easily generate physics shapes for the tile source used by a tile map. The [Tilesource manual](#manuals:tilesource) explains how to add collision groups to a tile source and assign tiles to collision groups ([example](https://defold.com/examples/tilemap/collisions/)).
@@ -9997,7 +10509,7 @@ To add collision to a tile map:
 Note that the *Group* property is **not** used here since the collision groups are defined in the tile map's tile source.
 
 ## Convex hull shape
-Defold includes a feature allowing you to create a convex hull shape from three or more points.
+In 3D physics you can create a hull directly from a mesh using the [editor workflow above](#hull-and-mesh-shapes-in-3d). The legacy `.convexshape` resource is also supported and can be created from points using an external editor:
 
 1. Create convex hull shape file (file extension `.convexshape`) using an external editor.
 2. Edit the file manually using a text editor or external tool (see below)
@@ -10045,7 +10557,7 @@ There are a number of different external tools that can be used to create collis
 The collision object and its shapes inherit the scale of the game object. To disable this behaviour uncheck the [Allow Dynamic Transforms](#manuals:project-settings) checkbox in the Physics section of *game.project*. Note that only uniform scaling is supported and that the smallest scale value will be used if the scale isn't uniform.
 
 # Resizing collision shapes
-The shapes of a collision object can be resized at runtime using `physics.set_shape()`. Example:
+Primitive shapes can be resized at runtime using `physics.set_shape()`. This function does not replace hull vertices or triangle mesh geometry. Example:
 ```lua
 -- set capsule shape data
 local capsule_data = {
@@ -10485,7 +10997,11 @@ Ray casts will ignore collision objects that contain the starting point of the r
 
 # Joints {#manuals:physics-joints}
 
-Defold supports joints for 2D physics. A joint connects two collision objects using some kind of constraint. The supported joint types are:
+A joint connects two collision objects using a constraint. Defold supports joints in both 2D and 3D physics, through different APIs.
+
+This manual describes the 2D joints exposed by the `physics` module. Since Defold 1.13.2, 3D projects can create and control constraints through [`bullet3d.constraint`](https://defold.com/ref/beta/bullet3d.constraint/), including hinges, sliders and springs. Use that API with rigid bodies obtained through [`bullet3d.get_rigid_body()`](https://defold.com/ref/beta/bullet3d/#bullet3d.get_rigid_body).
+
+The supported joint types in the 2D `physics` API are:
 
 * **Fixed (physics.JOINT_TYPE_FIXED)** - A rope joint that restricts the maximum distance between two points. In Box2D referred to as a Rope joint.
 * **Hinge (physics.JOINT_TYPE_HINGE)** - A hinge joint specifies an anchor point on two collision objects and moves them so that the two collision objects are always in the same place, and the relative rotation of the collision objects is not restricted. The hinge joint can enable a motor with a defined maximum engine torque and speed. In Box2D referred to as a [Revolute joint](https://box2d.org/documentation/group__revolute__joint.html#details).
@@ -10496,7 +11012,7 @@ Defold supports joints for 2D physics. A joint connects two collision objects us
 
 ## Creating joints
 
-Joints can currently only be created programmatically using [`physics.create_joint()`](https://defold.com/ref/physics/#physics.create_joint:joint_type-collisionobject_a-joint_id-position_a-collisionobject_b-position_b-[properties]):
+The 2D joints described here are created programmatically using [`physics.create_joint()`](https://defold.com/ref/physics/#physics.create_joint:joint_type-collisionobject_a-joint_id-position_a-collisionobject_b-position_b-[properties]):
 
 Editor support for creating joints is planned but no release date has been decided.
 
@@ -10505,7 +11021,7 @@ Editor support for creating joints is planned but no release date has been decid
 physics.create_joint(physics.JOINT_TYPE_FIXED, "obj_a#collisionobject", "my_test_joint", vmath.vector3(10, 0, 0), "obj_b#collisionobject", vmath.vector3(0, 20, 0), { max_length = 20 })
 ```
 
-The above will create a fixed joint with id `my_test_joint` connected between the two collision object `obj_a#collisionobject` and `obj_b#collisionobject`. The joint is connected 10 pixels to the left of the center of collision object `obj_a#collisionobject` and 20 pixels above the center of collision object `obj_b#collisionobject`. The maximum length of the joint is 20 pixels.
+The above will create a fixed joint with id `my_test_joint` connected between the two collision object `obj_a#collisionobject` and `obj_b#collisionobject`. The joint is connected 10 pixels to the right of the center of collision object `obj_a#collisionobject` and 20 pixels above the center of collision object `obj_b#collisionobject`. The maximum length of the joint is 20 pixels.
 
 ## Destroying joints
 
@@ -10698,7 +11214,7 @@ Consuming input
 
 The input bindings is a project wide table that allows you to specify how device input should translate into named *actions* before they are dispatched to your script components and GUI scripts. You can create a new input binding file, `right click` a location in the *Assets* view and select `New... ▸ Input Binding`. To make the engine use the new file, change the *Game Binding* entry in *game.project*.
 
-A default input binding file is automatically created with all new project templates so there is usually no need to create a new binding file. The default file is called "game.input_binding" and can be found in the "input" folder in the project root. `Double click` the file to open it in the editor:
+A default input binding file is automatically created with all new project templates so there is usually no need to create a new binding file. The default file is called `game.input_binding` and can be found in the `input` folder in the project root. `Double click` the file to open it in the editor:
 
 To create a new binding, click the `+` button at the bottom of the relevant trigger type section. Each entry has two fields:
 
@@ -10706,7 +11222,7 @@ To create a new binding, click the `+` button at the bottom of the relevant trig
 : The raw input to listen for, selected from a scroll list of available inputs.
 
 *Action*
-: The action name given to input actions when they are created and dispatched to your scripts. The same action name can be assigned to multiple inputs. For instance, you can bind the `Space` key and the gamepad "A" button to the action `jump`. Note that there is a known bug where touch inputs unfortunately cannot have the same action names as other inputs.
+: The action name given to input actions when they are created and dispatched to your scripts. The same action name can be assigned to multiple inputs. For instance, you can bind the `Space` key and the gamepad `A` button to the action `jump`. Note that there is a known bug where touch inputs unfortunately cannot have the same action names as other inputs.
 
 ## Trigger types
 
@@ -10803,7 +11319,7 @@ A component's `on_input()` can actively control whether actions should be passed
 
 There are many good use cases where input consumption provides a simple and powerful way to shift input between different parts of a game. For example, if you need a pop-up menu that temporarily is the only part of the game that listens to input:
 
-The pause menu is initially hidden (disabled) and when the player touches the "PAUSE" HUD item, it is enabled:
+The pause menu is initially hidden (disabled) and when the player touches the `PAUSE` HUD item, it is enabled:
 ```lua
 function on_input(self, action_id, action)
     if action_id == hash("mouse_press") and action.pressed then
@@ -11099,7 +11615,7 @@ The tool will ask you to press different buttons on your connected controller. I
 
 ### Unidentified gamepads
 
-When a gamepad is connected and no mapping exists for the gamepad the gamepad will only generate "connected", "disconnected" and "raw" actions. In this case you need to manually map the raw gamepad data to actions in your game.
+When a gamepad is connected and no mapping exists for the gamepad the gamepad will only generate `connected`, `disconnected` and `raw` actions. In this case you need to manually map the raw gamepad data to actions in your game.
 
 It is possible to check if an input action for a gamepad is from an unknown gamepad or not by reading the `gamepad_unknown` value from the `action`:
 ```lua
@@ -11133,7 +11649,7 @@ If your game is running from inside an `iframe` you must also make sure that the
 
 ### Standard gamepad
 
-If a connected gamepad is identified by the browser as a standard gamepad it will use the mapping for "Standard Gamepad" in the [gamepads settings file](#manuals:input-gamepads) (a `Standard Gamepad` mapping is included in the `default.gamepads` file in `/builtins`). A standard gamepad is defined as having 16 buttons and 2 analog sticks with a button layout similar to a PlayStation or Xbox controller (see the [W3C definition and button layout](https://w3c.github.io/gamepad/#dfn-standard-gamepad) for more information). If the connected gamepad is not identified as a standard gamepad Defold will look for a mapping matching the hardware gamepad type in the gamepad settings file.
+If a connected gamepad is identified by the browser as a standard gamepad it will use the mapping for `Standard Gamepad` in the [gamepads settings file](#manuals:input-gamepads) (a `Standard Gamepad` mapping is included in the `default.gamepads` file in `/builtins`). A standard gamepad is defined as having 16 buttons and 2 analog sticks with a button layout similar to a PlayStation or Xbox controller (see the [W3C definition and button layout](https://w3c.github.io/gamepad/#dfn-standard-gamepad) for more information). If the connected gamepad is not identified as a standard gamepad Defold will look for a mapping matching the hardware gamepad type in the gamepad settings file.
 
 ## Gamepads on Windows
 On Windows, only XBox 360 controllers are currently supported. To hook up your 360 controller to your Windows machine, [make sure it is setup correctly](http://www.wikihow.com/Use-Your-Xbox-360-Controller-for-Windows).
@@ -11476,6 +11992,7 @@ Specific functions for working with the game object transform also exist; they a
 
 | property   | description                            | type            |                  |
 | ---------- | -------------------------------------- | --------------- | ---------------- |
+| *text* | The text content of the label. Available since Defold 1.13.2. | `string` | `get+set` |
 | *scale* | The scale of the label. | `vector3` | `get+set` |
 | *scale.xy* | The scale of the label along X and Y axis. | `vector3` | `get+set`|
 | *color*     | The color of the label. | `vector4` | `get+set` |
@@ -11552,7 +12069,7 @@ Common use cases are to set the health or speed of a specific enemy AI, the tint
 
 ## Defining a script property
 
-Script properties are added to a script component by defining them with the `go.property()` special function. The function has to be used at the top level---outside any lifecycle functions like `init()` and `update()`. The default value provided for the property governs the type of the property: `number`, `boolean`, `hash`, `msg.url`, `vmath.vector3`, `vmath.vector4`, `vmath.quaternion` and `resource` (see below).
+Script properties are added to a script component by defining them with the `go.property()` special function. The function has to be used at the top level---outside any lifecycle functions like `init()` and `update()`. The default value provided for the property governs the type of the property: `number`, `boolean`, `string`, `hash`, `msg.url`, `vmath.vector3`, `vmath.vector4`, `vmath.quaternion` and `resource` (see below).
 
 Note that the reversal of the hash value works only in the Debug build to facilitate debugging. In the Release build, the reversed string value does not exist, so using `tostring()` on a `hash` value to extract the string from it is meaningless.
 
@@ -11588,6 +12105,19 @@ Any property that is overridden with a new instance specific value is marked blu
 
 Script properties are parsed when building the project. Value expressions are not evaluated. This means that something like `go.property("hp", 3+6)` will not work while `go.property("hp", 9)` will.
 
+### Text properties
+
+Since Defold 1.13.2, a string default defines a text property. Text properties support UTF-8 and newline characters and are edited in a multiline field in the editor:
+```lua
+go.property("greeting", "Hello!\nWelcome to the game.")
+
+function init(self)
+    go.set("#label", "text", self.greeting)
+end
+```
+
+Select a script component in a game object or collection to override its text properties, just like other script properties. Embedded NUL characters are not allowed in defaults or overrides.
+
 ## Accessing script properties
 
 Any defined script property is available as a stored member in `self`, the script instance reference:
@@ -11603,7 +12133,7 @@ function update(self, dt)
 end
 ```
 
-User-defined script properties can also be accessed through the `get`, `set` and `animate` functions, the same way as any other property:
+User-defined script properties can also be read with `go.get()` and written with `go.set()`. Numeric properties, including vectors and quaternions, can be animated with `go.animate()`. Text properties can be read and written, but cannot be animated:
 ```lua
 -- another.script
 
@@ -12397,7 +12927,7 @@ Lua modules allow you to structure your project and create reusable library code
 
 ## Requiring Lua files
 
-Lua code stored in files with file ending ".lua" somewhere in your game project structure can be loaded with `require` into script and gui script files. To create a new Lua module file, right click the folder you want to create it in in the *Assets* view, then select `New... ▸ Lua Module`. Give the file a unique name and press `Ok`:
+Lua code stored in files with file ending `.lua` somewhere in your game project structure can be loaded with `require` into script and gui script files. To create a new Lua module file, right click the folder you want to create it in in the *Assets* view, then select `New... ▸ Lua Module`. Give the file a unique name and press `Ok`:
 
 Suppose the following code is added to the file "`main/anim.lua`":
 ```lua
@@ -12479,7 +13009,7 @@ print(m.value) --> "4711" (even if "module.lua" is changed and hot reloaded)
 
 If you hot reload the module file the code is run again, but nothing happens with `m.value`. Why is that?
 
-First, the table created in "module.lua" is created in local scope and a _reference_ to that table is returned to the user. Reloading "module.lua" evaluates the module code again but that creates a new table in the local scope instead of updating the table `m` refers to.
+First, the table created in `module.lua` is created in local scope and a _reference_ to that table is returned to the user. Reloading `module.lua` evaluates the module code again but that creates a new table in the local scope instead of updating the table `m` refers to.
 
 Secondly, Lua caches files loaded with `require`. The first time a file is required, it is put in the table [`package.loaded`](https://defold.com/ref/package/#package.loaded) so it can be read faster on subsequent `require` calls. You can force a file to be re-read from disk by setting the file's entry to `nil`: `package.loaded["my_module"] = nil`.
 
@@ -14935,7 +15465,7 @@ The optional `--port` or `-p` argument selects the editor server port. Omitting 
 C:\path\to\Defold\Defold.exe --port 8181 C:\absolute\path\to\project\game.project
 ```
 
-The editor is a graphical desktop application. Start it in an interactive user session with access to the display. Use [Bob](#manuals:bob) when a graphical session is unavailable, such as in headless CI, or for compile-only automation and creating standalone bundles.
+The editor is a graphical desktop application. Start it in an interactive user session with access to the display. Use [Bob](#manuals:bob) when a graphical session is unavailable, such as in headless CI, or for creating standalone bundles. An open editor also supports compile-only automation through `/command/compile`.
 
 After starting the editor, wait until the project has opened and `.internal/editor.port` exists. Then poll `/openapi.json` until it returns a valid document. Do not assume that creating the process means the project is ready.
 
@@ -14973,15 +15503,13 @@ curl -sS "$BASE_URL/openapi.json" |
   jq -r '.paths | keys[]'
 ```
 
-List the available editor commands:
+List the documented editor command paths:
 ```sh
 curl -sS "$BASE_URL/openapi.json" |
-  jq -r '
-    .paths["/command/{command}"].post.parameters[]
-    | select(.name == "command")
-    | .schema.enum[]
-  '
+  jq -r '.paths | keys[] | select(startswith("/command/"))'
 ```
+
+In Defold 1.13.2 and later, each command has its own path in the OpenAPI document. Earlier versions describe commands through a `/command/{command}` path and a command-name enum.
 
 A version-aware integration should verify each required operation and configure requests from the returned schema. We advise against maintaining a supposedly exhaustive copy of endpoint or command names, as this can get outdated.
 
@@ -14989,20 +15517,33 @@ Project-defined routes also appear in `/openapi.json` when their editor scripts 
 
 ## Executing editor commands
 
-Editor commands are invoked through:
+Invoke editor commands by sending a `POST` request to the command's documented path, for example:
 ```text
-POST /command/{command}
+POST /command/compile
+POST /command/run
 ```
 
-For example, the current `build` command compiles and runs the project:
+To compile the project without running it:
 ```sh
 curl -sS \
   -X POST \
-  "$BASE_URL/command/build" |
+  "$BASE_URL/command/compile" |
   jq
 ```
 
-A successful build returns a structured result:
+To compile and run the project:
+```sh
+curl -sS \
+  -X POST \
+  "$BASE_URL/command/run" |
+  jq
+```
+
+These pipelines display the response body. In automation scripts, also check the HTTP status and `success`, using the pattern in [Building HTML5](#building-html5).
+
+Since Defold 1.13.2, `/command/build` is a deprecated compatibility alias for `/command/run` and is not listed in OpenAPI. Use `/command/run` in new integrations.
+
+A successful compile returns HTTP status `200` with a structured result:
 ```json
 {
   "success": true,
@@ -15038,7 +15579,10 @@ The available fields depend on the error. Use the resource path and source range
 
 Commonly useful commands, when listed by the running editor, include:
 
-`build`
+`compile`
+: Compile the project without running it.
+
+`run`
 : Compile and run the project.
 
 `clean-build`
@@ -15065,7 +15609,9 @@ Commands that operate on project resources synchronize external file changes bef
 
 ### Command responses and asynchronous work
 
-The command operation documents response codes in the current OpenAPI schema.
+Responses depend on the command. In Defold 1.13.2 and later, `compile`, `run`, `clean-build`, `build-html5`, `debugger-start`, and `hot-reload` wait for command completion and return a structured result with `success` and `issues`, as shown above. A successful result returns HTTP `200`; a build or validation failure returns `422`.
+
+Other commands can still return `202`, for example `debugger-break`. Inspect the operation in the current OpenAPI schema and handle the actual HTTP response status:
 
 | Status | Meaning |
 | --- | --- |
@@ -15080,19 +15626,34 @@ An HTTP `202` response is not proof that the requested result exists. Wait for t
 
 ### Building HTML5
 
-If the current OpenAPI document lists `build-html5`, invoke it through the command operation:
+If the current OpenAPI document lists `/command/build-html5`, invoke it through that path. In a shell script, capture the HTTP status separately from the response body and stop on a failed request or build:
 ```sh
-curl -sS \
+build_response_file="$(mktemp)" || exit 1
+if ! build_http_status="$(curl -sS \
   -X POST \
-  "$BASE_URL/command/build-html5"
+  -o "$build_response_file" \
+  -w '%{http_code}' \
+  "$BASE_URL/command/build-html5")"; then
+  cat "$build_response_file"
+  rm -f "$build_response_file"
+  exit 1
+fi
+
+cat "$build_response_file"
+if [ "$build_http_status" != "200" ] ||
+   ! jq -e '.success == true' "$build_response_file" > /dev/null; then
+  rm -f "$build_response_file"
+  exit 1
+fi
+rm -f "$build_response_file"
 ```
 
-The command runs asynchronously and normally returns HTTP `202`. After the build completes, the editor serves it at:
+In Defold 1.13.2 and later, this request waits for the build to finish and returns a structured result. The example prints the response body, including any build issues, and proceeds only on HTTP `200` with `success: true`. After a successful build, the editor opens the game in a browser and serves it at:
 ```text
 http://127.0.0.1:<editor-port>/html5/
 ```
 
-Wait until the URL is available before starting browser tests. See [Browser tests for HTML5](#manuals:automated-testing) for more details.
+A completed build does not mean that the game has finished loading in the browser. Wait for the canvas and application readiness before sending input or checking gameplay. See [Browser tests for HTML5](#manuals:automated-testing) for more details.
 
 ## Searching API documentation
 
@@ -16063,8 +16624,8 @@ Available platforms and architectures:
 `arm64-linux`
 : Linux ARM64 for Raspberry Pi and Linux-based handheld devices.
 
-`x86_64-ios`
-: iOS macOS 64 bit (iOS Simulator)
+`arm64_sim-ios`
+: iOS Simulator on Apple Silicon Macs. Simulator bundles do not use a signing identity or provisioning profile, so `--identity` and `--mobileprovisioning` are ignored.
 
 `arm64-ios`
 : iOS 64 bit. By default, `--architectures` argument value is `arm64-ios`.
@@ -16193,7 +16754,7 @@ function update(self, dt)
 end
 ```
 
-Changing and reloading "my_module.lua" will _not_ change the behavior of "user.script". See [the Modules manual](#manuals:modules) for more information on why, and how to avoid this pitfall.
+Changing and reloading `my_module.lua` will _not_ change the behavior of `user.script`. See [the Modules manual](#manuals:modules) for more information on why, and how to avoid this pitfall.
 
 ## The on_reload() function
 
@@ -17218,7 +17779,7 @@ This browser timeline is separate from both the in-game visual profiler and the 
 ## Build reports
 When bundling your game there is an option to create a build report. This is very useful to get a grip on the size of all the assets that are part of your game bundle. Simply check the *Generate build report* checkbox when bundling the game.
 
-The builder will produce a file called "report.html" alongside the game bundle. Open the file in a web browser to inspect the report:
+The builder will produce a file called `report.html` alongside the game bundle. Open the file in a web browser to inspect the report:
 
 The *Overview* gives an over all visual breakdown of the project size based on resource type.
 
@@ -17245,14 +17806,14 @@ OpenGL profiler (macOS)
 Android Profiler (Android)
 : https://developer.android.com/studio/profile/android-profiler.html
 
-  A set of profiling tools that captures real-time data of your game's CPU, memory, and network activity. You can perform sample-based method tracing of code execution, capture heap dumps, view memory allocations, and inspect the details of network-transmitted files. Using the tool requires that you set `android:debuggable="true"` in "AndroidManifest.xml".
+  A set of profiling tools that captures real-time data of your game's CPU, memory, and network activity. You can perform sample-based method tracing of code execution, capture heap dumps, view memory allocations, and inspect the details of network-transmitted files. Using the tool requires that you set `android:debuggable="true"` in `AndroidManifest.xml`.
 
   Note: Since Android Studio 4.1 it is also possible to [run the profiling tools without starting Android Studio](https://developer.android.com/studio/profile/android-profiler.html#standalone-profilers).
 
 Graphics API Debugger (Android)
 : https://github.com/google/gapid
 
-  This is a collection of tools that allows you to inspect, tweak and replay calls from an application to a graphics driver. To use the tool requires that you set `android:debuggable="true"` in "AndroidManifest.xml".
+  This is a collection of tools that allows you to inspect, tweak and replay calls from an application to a graphics driver. To use the tool requires that you set `android:debuggable="true"` in `AndroidManifest.xml`.
 
 <!-- /manuals/ads -->
 
@@ -17287,9 +17848,9 @@ Rewarded ads (also know as Incentivized ads) are optional and therefore less obt
 The [Defold Asset Portal](https://defold.com/tags/stars/ads/) contains several assets which integrate with ad providers:
 
 * [AdMob](https://defold.com/assets/admob-defold/) - Show ads using the Google AdMob network.
-* [Enhance](https://defold.com/assets/enhance/) - Supports a number of different ad networks. Requires an additional post-build step.
+* [AppLovin MAX](https://defold.com/extension-applovin/) - Show ads using AppLovin MAX ad mediation.
 * [Facebook Instant Games](https://defold.com/assets/facebookinstantgames/) - Show ads in your Facebook Instant Game.
-* [IronSource](https://defold.com/assets/ironsource/) - Show ads using the IronSource Ad network.
+* [LevelPlay](https://defold.com/extension-levelplay/) - Show ads using Unity LevelPlay ad mediation.
 * [Unity Ads](https://defold.com/assets/defvideoads/) - Show ads using the Unity Ads network.
 
 # How to integrate ads in your game
@@ -17561,19 +18122,19 @@ Since Xcode 7, anyone can install Xcode and do on-device development for free. Y
 1. Connect your device.
 2. Install Xcode.
 3. Add a new account to Xcode and sign in with your Apple ID.
-4. Create a new project. The simplest "Single View App" works fine.
-5. Select your "Team" (auto created for you) and give the app a bundle identifier.
+4. Create a new project. The simplest `Single View App` works fine.
+5. Select your `Team` (auto created for you) and give the app a bundle identifier.
 
 Make a note of the bundle identifier as you must use the same bundle identifier in your Defold project.
 
 6. Make sure that Xcode has created a *Provisioning Profile* and *Signing Certificate* for the app.
 
 7. Build the app on your device. The first time, Xcode will ask you to enable Developer mode and will prepare the device with debugger support. This may take a while.
-8. When you have verified that the app works, find it on your disk. You can see the build location in the Build report in the "Report Navigator".
+8. When you have verified that the app works, find it on your disk. You can see the build location in the Build report in the `Report Navigator`.
 
 9. Locate the app, right-click it and select `Show Package Contents`.
 
-10. Copy the file "embedded.mobileprovision" to some place on your drive where you will find it.
+10. Copy the file `embedded.mobileprovision` to some place on your drive where you will find it.
 
 This provision file can be used together with your code signing identity to sign apps in Defold for one week.
 
@@ -17583,9 +18144,9 @@ When the provision expires, you need to build the app again in Xcode and get a n
 
 When you have the code signing identity and provisioning profile, you are ready to create a stand alone application bundle for your game from the editor. Simply select `Project ▸ Bundle... ▸ iOS Application...` from the menu.
 
-Select your code signing identity and browse for your mobile provisioning file. Select the `arm64-ios` device architecture and, when needed, the `x86_64-ios` simulator architecture, as well as the variant (Debug or Release). You can optionally uncheck the `Sign application` checkbox to skip the signing process and then manually sign at a later stage.
+Select your code signing identity and browse for your mobile provisioning file, as well as the variant (Debug or Release). You can optionally uncheck the `Sign application` checkbox to skip the signing process and then manually sign at a later stage. Check `Simulator` to create an `arm64_sim-ios` bundle for the iOS Simulator instead of a device bundle.
 
-You **must** uncheck the `Sign application` checkbox when testing your game on the iOS simulator. You will be able to install the application but it will not boot.
+Simulator bundles run only in the iOS Simulator on Apple Silicon Macs. They do not use a signing identity or provisioning profile, so the signing, install and launch options are disabled when `Simulator` is checked. Install the bundle with `xcrun simctl` as described below.
 
 Press *Create Bundle* and you will then be prompted to specify where on your computer the bundle will be created.
 
@@ -17642,7 +18203,7 @@ This executable runs without any graphics and sound. It means that you can run t
 
 ## Installing and launching bundle on a connected iPhone
 
-You can install and launch the built bundle using editor's "Install on connected device" and "Launch installed app" check-boxes in the Bundle dialog:
+You can install and launch the built bundle using editor's `Install on connected device` and `Launch installed app` check-boxes in the Bundle dialog:
 
 You need [ios-deploy](https://github.com/ios-control/ios-deploy) command lint tool installed for this feature to work. The simplest way to install it is using Homebrew:
 ```
@@ -17661,7 +18222,7 @@ Click Create to finish the process. Your project is now created and we can proce
 
 Drag and drop an image to import it to the project. Next select `Assets.xcassets` and drop the image to `Assets.xcassets`:
 
-Open `LaunchScreen.storyboard` and click on the plus button (`+`). Type "imageview" in the dialog to find the ImageView component.
+Open `LaunchScreen.storyboard` and click on the plus button (`+`). Type `imageview` in the dialog to find the ImageView component.
 
 Drag the Image View component onto the storyboard:
 
@@ -17692,9 +18253,9 @@ Drag and drop images to the empty boxes representing the different supported ico
 
 Do not add any icons for Notifications, Settings or Spotlight.
 
-When you are done, set the active scheme to "Build -> Any iOS Device (arm64)"(or "Generic iOS Device") and select `Product` -> `Build`. Wait for the build process to finish.
+When you are done, set the active scheme to `Build -> Any iOS Device (arm64)`(or `Generic iOS Device`) and select `Product` -> `Build`. Wait for the build process to finish.
 
-Make sure that you build for "Any iOS Device (arm64)" or "Generic iOS Device" otherwise you will get `ERROR ITMS-90704` error when uploading your build.
+Make sure that you build for `Any iOS Device (arm64)` or `Generic iOS Device` otherwise you will get `ERROR ITMS-90704` error when uploading your build.
 
 The last step is to copy the compiled `Assets.car` file to your Defold project. Open Finder at the following location and copy the `Assets.car` file to your Defold project:
 
@@ -17708,7 +18269,7 @@ The App Store icon does not have to be referenced from *game.project*. It is aut
 
 The editor writes an *.ipa* file which is an iOS application bundle. To install the file on your device, you can use one of the following tools:
 
-* Xcode via the "Devices and Simulators" window
+* Xcode via the `Devices and Simulators` window
 * [`ios-deploy`](https://github.com/ios-control/ios-deploy) command line tool
 * [`Apple Configurator 2`](https://apps.apple.com/us/app/apple-configurator-2/) from the macOS App Store
 * iTunes
@@ -17958,6 +18519,24 @@ DEFOLD_SPLASH_IMAGE
 
 exe-name
 : The project name without unacceptable symbols
+
+DEFOLD_ARCHIVE_LOCATION_PREFIX
+: The resolved archive path prefix used by the loader, based on `html5.archive_location_prefix`.
+
+DEFOLD_ARCHIVE_LOCATION_SUFFIX
+: The resolved suffix appended to archive URLs, based on `html5.archive_location_suffix`.
+
+DEFOLD_HAS_ARCHIVE_ORIGIN
+: `true` when the archive prefix specifies an HTTP or HTTPS origin, including a protocol-relative URL such as `//cdn.example.com/archive`. It is `false` for relative archive prefixes. Available since Defold 1.13.2.
+
+DEFOLD_ARCHIVE_ORIGIN
+: The archive origin, including the scheme, host and optional port, or an empty string when no origin is specified. A protocol-relative prefix produces a protocol-relative origin. Used for the preconnect hint and available since Defold 1.13.2.
+
+DEFOLD_HAS_WASM_ENGINE
+: `true` if the bundle includes a WebAssembly engine, either `wasm-web` or `wasm_pthread-web`.
+
+DEFOLD_HAS_WASM_PTHREAD_ENGINE
+: `true` if the bundle includes `wasm_pthread-web`. Use it to avoid preloading the wrong engine variant when the loader chooses the architecture at runtime.
 
 DEFOLD_CUSTOM_CSS_INLINE
 : This is the place when we inline of the CSS file specified in your *game.project* settings.
@@ -18332,7 +18911,7 @@ Some applications may also need additional entitlements. The Steamworks extensio
 <true/>
 ```
 
-    * `com.apple.security.cs.disable-library-validation` - Indicates whether the app may load arbitrary plug-ins or frameworks, without requiring code signing.
+  * `com.apple.security.cs.disable-library-validation` - Indicates whether the app may load arbitrary plug-ins or frameworks, without requiring code signing.
 
 All of the entitlements that can be granted to an application are listed in the official [Apple developer documentation](https://developer.apple.com/documentation/bundleresources/entitlements).
 
@@ -18503,13 +19082,13 @@ To create a new extension, create a folder in the project root. This folder will
 
   Supported platforms are `ios`, `android`, `osx`, `win32`, `linux`, `web`.
 
-Supported `arc-platform` pairs are `arm64-ios`, `x86_64-ios`, `armv7-android`, `arm64-android`, `x86_64-android`, `arm64-osx`, `x86_64-osx`, `x86-win32`, `x86_64-win32`, `arm64-linux`, `x86_64-linux`, `wasm-web` and `wasm_pthread-web`.
+Supported `arc-platform` pairs are `arm64-ios`, `arm64_sim-ios`, `armv7-android`, `arm64-android`, `x86_64-android`, `arm64-osx`, `x86_64-osx`, `x86-win32`, `x86_64-win32`, `arm64-linux`, `x86_64-linux`, `wasm-web` and `wasm_pthread-web`.
 
 *manifests*
 : This optional folder contains additional files used in the build or bundling process. See below for details.
 
 *res*
-: This optional folder contains any extra resources that the extension depends on. Resource files should be placed in subfolders named by `platform`, or `architecture-platform` just as the "lib" subfolders. A subfolder `common` is also allowed, containing resource files common for all platforms.
+: This optional folder contains any extra resources that the extension depends on. Resource files should be placed in subfolders named by `platform`, or `architecture-platform` just as the `lib` subfolders. A subfolder `common` is also allowed, containing resource files common for all platforms.
 
 ### Manifest files
 
@@ -18517,7 +19096,7 @@ The optional *manifests* folder of an extension contains additional files used i
 
 * `android` - This folder accepts a manifest stub file to be merged into the main application ([as described here](#manuals:extensions-manifest-merge-tool)).
   * The folder can also contain a `build.gradle` file with dependencies to be [resolved by Gradle](#manuals:extensions-gradle).
-  * Finally the folder can also contain zero or more ProGuard files (experimental).
+  * The folder can also contain R8 keep-rule files (`.keep`) for Java code that needs to be preserved when shrinking is enabled. See the [R8 Keep Rules project setting](#manuals:project-settings) for setup and migration from the former ProGuard configuration.
 * `ios` - This folder accepts a manifest stub file to be merged into the main application ([as described here](#manuals:extensions-manifest-merge-tool)).
   * The folder can also contain a `Podfile` file with dependencies to be [resolved by Cocoapods](#manuals:extensions-cocoapods).
 * `osx` - This folder accepts a manifest stub file to be merged into the main application ([as described here](#manuals:extensions-manifest-merge-tool)).
@@ -18624,7 +19203,7 @@ dmExtension::Result FinalizeMyExtension(dmExtension::Params* params)
 DM_DECLARE_EXTENSION(MyExtension, LIB_NAME, AppInitializeMyExtension, AppFinalizeMyExtension, InitializeMyExtension, 0, 0, FinalizeMyExtension)
 ```
 
-Note the macro `DM_DECLARE_EXTENSION` that is used to declare the various entry points into the extension code. The first argument `symbol` must match the name specified in *ext.manifest*. For this simple example, there is no need for any "update" or "on_event" entry points, so `0` is provided in those locations to the macro.
+Note the macro `DM_DECLARE_EXTENSION` that is used to declare the various entry points into the extension code. The first argument `symbol` must match the name specified in *ext.manifest*. For this simple example, there is no need for any `update` or `on_event` entry points, so `0` is provided in those locations to the macro.
 
 Now it is just a matter of building the project (`Project ▸ Build`). This will upload the extension to the extension builder which will produce a custom engine with the new extension included. If the builder encounters any errors, a dialog with the build errors will show.
 
@@ -18870,7 +19449,7 @@ In certain places, the platform architecture is used as a folder name, to know w
 
 The current list is:
 
-    arm64-ios, armv7-ios, x86_64-ios, arm64-android, armv7-android, x86_64-android, x86_64-linux, x86_64-osx, x86_64-win32, x86-win32
+    arm64-ios, arm64_sim-ios, arm64-android, armv7-android, x86_64-android, x86_64-linux, x86_64-osx, x86_64-win32, x86-win32
 
 So for instance, put platform specific libraries under:
 
@@ -18976,7 +19555,7 @@ platforms:
             libs:       ["z", "c++", "sqlite3"]
             defines:    ["MY_DEFINE"]
 
-    armv7-ios:
+    arm64_sim-ios:
         context:
             frameworks: ["CoreGraphics", "CFNetwork", "GLKit", "CoreMotion", "MessageUI", "MediaPlayer", "StoreKit", "MobileCoreServices", "AdSupport", "AudioToolbox", "AVFoundation", "CoreGraphics", "CoreMedia", "CoreMotion", "CoreTelephony", "CoreVideo", "Foundation", "GLKit", "JavaScriptCore", "MediaPlayer", "MessageUI", "MobileCoreServices", "OpenGLES", "SafariServices", "StoreKit", "SystemConfiguration", "UIKit", "WebKit"]
             flags:      ["-stdlib=libc++"]
@@ -19104,7 +19683,7 @@ On Linux ARM64, the **OpenGL** choice uses the OpenGL ES backend. The Android co
 
 ## Use full text layout system
 
-If enabled (`true`), it will allow to use runtime generation for SDF type fonts, when using True Type Fonts (`.ttf`) in the project. Read more details in the [Font Manual](#manuals:font).
+If enabled (`true`), this includes the full text layout system for shaping text, including right-to-left languages. Enable this option together with `font.runtime_generation` in *game.project* to use runtime generation for SDF fonts from TrueType (`.ttf`) or OpenType (`.otf`) resources. Runtime generation from `.otf` resources is supported since Defold 1.13.2. Read more in the [Font Manual](#manuals:font).
 
 ## Minimum browser versions
 

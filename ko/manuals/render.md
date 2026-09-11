@@ -5,25 +5,44 @@ layout: manual
 locale: ko
 title: Defold의 렌더링 파이프라인
 toc:
-- 렌더링 {render}
-- 렌더링 파이프라인 - 무엇을, 언제, 어디에? {render-pipeline---what-when-and-where}
-- 기본 렌더링 {the-default-render}
-- 렌더 predicate {render-predicates}
-- 기본 뷰 투영 {default-view-projection}
-- Stretch 투영 {stretch-projection}
-- Fixed Fit 투영 {fixed-fit-projection}
-- Fixed 투영 {fixed-projection}
-- 카메라 투영 {camera-projection}
-- 절두체 컬링 {frustum-culling}
-- 좌표 시스템 {coordinate-systems}
-- 렌더 스크립트 {the-render-script}
-- 렌더 리소스 {render-resources}
-- 텍스쳐 핸들 {texture-handles}
-- 지원되는 그래픽 API {supported-graphics-apis}
-- 시스템 메세지 {system-messages}
-- 드로우 콜과 배치 {draw-calls-and-batching}
-- 비 GUI 컴포넌트의 배치 규칙 {batch-rules-for-non-gui-components}
-- GUI 컴포넌트의 배치 규칙 {batch-rules-for-gui-components}
+- anchor: render
+  title: 렌더링
+- anchor: render-pipeline---what-when-and-where
+  title: 렌더링 파이프라인 - 무엇을, 언제, 어디에?
+- anchor: the-default-render
+  title: 기본 렌더링
+- anchor: render-predicates
+  title: 렌더 predicate
+- anchor: default-view-projection
+  title: 기본 뷰 투영
+- anchor: stretch-projection
+  title: Stretch 투영
+- anchor: fixed-fit-projection
+  title: Fixed Fit 투영
+- anchor: fixed-projection
+  title: Fixed 투영
+- anchor: camera-projection
+  title: 카메라 투영
+- anchor: frustum-culling
+  title: 절두체 컬링
+- anchor: coordinate-systems
+  title: 좌표 시스템
+- anchor: the-render-script
+  title: 렌더 스크립트
+- anchor: render-resources
+  title: 렌더 리소스
+- anchor: texture-handles
+  title: 텍스쳐 핸들
+- anchor: supported-graphics-apis
+  title: 지원되는 그래픽 API
+- anchor: system-messages
+  title: 시스템 메세지
+- anchor: draw-calls-and-batching
+  title: 드로우 콜과 배치
+- anchor: batch-rules-for-non-gui-components
+  title: 비 GUI 컴포넌트의 배치 규칙
+- anchor: batch-rules-for-gui-components
+  title: GUI 컴포넌트의 배치 규칙
 ---
 
 # 렌더링 {#render}

@@ -11,7 +11,8 @@ toc:
 - 断点标签页
 - Lua 调试库
 - 调试检查清单
-- 调试物理问题 {debugging-problems-with-physics}
+- anchor: debugging-problems-with-physics
+  title: 调试物理问题
 ---
 
 # 调试游戏逻辑

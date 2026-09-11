@@ -6,9 +6,11 @@ locale: pl
 title: Tworzenie gier dla platformy HTML5 w Defold
 toc:
 - Tworzenie gier HTML5
-- Rozmiar sterty {heap-size}
+- anchor: heap-size
+  title: Rozmiar sterty
 - Testowanie builda HTML5
-- Tworzenie pakietu HTML5 {creating-html5-bundle}
+- anchor: creating-html5-bundle
+  title: Tworzenie pakietu HTML5
 - Znane problemy i ograniczenia
 - Dostosowywanie pakietu HTML5
 - Downscale Fit i Fit

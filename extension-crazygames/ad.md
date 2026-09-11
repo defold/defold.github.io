@@ -1,8 +1,8 @@
 ---
 brief: This manual covers how to show video ads using the CrazyGames SDK in Defold.
 github: https://github.com/defold/extension-crazygames
-language: en
 layout: manual
+locale: en
 title: Defold CrazyGames SDK extension API documentation
 toc:
 - Video ads
@@ -56,6 +56,7 @@ Don't forget to mute the audio and pause the game when the ad starts and to unmu
 You can use the code below to detect if the user has an adblocker.
 
 ```lua
-local result = crazygames.has_adblock()
-print("Adblock usage fetched", result)
+crazygames.has_ad_block(function(self, blocked)
+  print("Adblock usage fetched", blocked)
+end)
 ```

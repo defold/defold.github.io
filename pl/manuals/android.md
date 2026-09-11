@@ -7,8 +7,10 @@ title: Tworzenie aplikacji Defold na platformie Android
 toc:
 - Programowanie na Androidzie
 - Proces podpisywania dla Androida i Google Play
-- Tworzenie keystore {creating-a-keystore}
-- Tworzenie pakietu aplikacji Android {creating-an-android-application-bundle}
+- anchor: creating-a-keystore
+  title: Tworzenie keystore
+- anchor: creating-an-android-application-bundle
+  title: Tworzenie pakietu aplikacji Android
 - Instalowanie pakietu aplikacji Android
 - Uprawnienia
 - 'android.permission.INTERNET i android.permission.ACCESS_NETWORK_STATE (Protection level: normal)'

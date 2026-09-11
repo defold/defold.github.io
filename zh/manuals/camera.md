@@ -13,9 +13,11 @@ toc:
 - 缩放摄像机
 - 自适应缩放
 - 跟随游戏对象
-- 在屏幕坐标与世界坐标之间转换 {converting-mouse-to-world-coordinates}
+- anchor: converting-mouse-to-world-coordinates
+  title: 在屏幕坐标与世界坐标之间转换
 - 运行时操作
-- 第三方摄像机解决方案 {third-party-camera-solutions}
+- anchor: third-party-camera-solutions
+  title: 第三方摄像机解决方案
 ---
 
 # 摄像机

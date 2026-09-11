@@ -95,6 +95,13 @@ These are per-manual files generated for LLM usage.
 - [Clipping](https://defold.com/llms/manuals/gui-clipping.md)
 - [Layouts](https://defold.com/llms/manuals/gui-layouts.md)
 
+## Fonts and text
+
+- [Fonts](https://defold.com/llms/manuals/font.md)
+- [Rich Text](https://defold.com/llms/manuals/font-richtext.md)
+- [Text nodes](https://defold.com/llms/manuals/gui-text.md)
+- [Label components](https://defold.com/manuals/labels)
+
 ## Physics
 
 - [Physics overview](https://defold.com/llms/manuals/physics.md)
@@ -204,6 +211,7 @@ These are per-manual files generated for LLM usage.
 - [AdMob ads](https://defold.com/extension-admob)
 - [Android Device Performance Framework](https://defold.com/extension-adpf)
 - [App review and ratings](https://defold.com/extension-review)
+- [AppLovin MAX ad mediation](https://defold.com/extension-applovin)
 - [Camera](https://defold.com/extension-camera)
 - [Facebook](https://defold.com/extension-facebook)
 - [Firebase Analytics](https://defold.com/extension-firebase-analytics)
@@ -211,7 +219,7 @@ These are per-manual files generated for LLM usage.
 - [Google Play Game Services](https://defold.com/extension-gpgs)
 - [Google Play Instant](https://defold.com/extension-googleplayinstant)
 - [Inter-app communication](https://defold.com/llms/manuals/iac.md)
-- [IronSource ad mediation](https://defold.com/extension-ironsource)
+- [LevelPlay ad mediation](https://defold.com/extension-levelplay)
 - [Push notifications](https://defold.com/extension-push)
 - [Play Asset Delivery](https://defold.com/extension-pad/)
 - [Safe Area](https://defold.com/extension-safearea)
@@ -224,12 +232,13 @@ These are per-manual files generated for LLM usage.
 - [Advertising Info](https://defold.com/extension-adinfo)
 - [AdMob ads](https://defold.com/extension-admob)
 - [App review and ratings](https://defold.com/extension-review)
+- [AppLovin MAX ad mediation](https://defold.com/extension-applovin)
 - [Camera](https://defold.com/extension-camera)
 - [Facebook](https://defold.com/extension-facebook)
 - [Firebase Analytics](https://defold.com/extension-firebase-analytics)
 - [Firebase Remote Config](https://defold.com/extension-firebase-remoteconfig)
 - [Inter-app communication](https://defold.com/llms/manuals/iac.md)
-- [IronSource ad mediation](https://defold.com/extension-ironsource)
+- [LevelPlay ad mediation](https://defold.com/extension-levelplay)
 - [Push notifications](https://defold.com/extension-push)
 - [Safe Area](https://defold.com/extension-safearea)
 - [Webview](https://defold.com/extension-webview)

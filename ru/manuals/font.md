@@ -10,12 +10,15 @@ toc:
 - Поддержка раскладки текста (например, справа налево)
 - Коллекция шрифтов
 - Создание шрифта
-- Свойства {properties}
+- anchor: properties
+  title: Свойства
 - Шрифты Distance Field
-- Растровые шрифты BMFont {bitmap-bmfonts}
+- anchor: bitmap-bmfonts
+  title: Растровые шрифты BMFont
 - Артефакты и рекомендации
 - Кэш шрифта
-- Включение runtime-шрифтов {enabling-runtime-fonts}
+- anchor: enabling-runtime-fonts
+  title: Включение runtime-шрифтов
 - Скриптование шрифтов
 - Добавление и удаление шрифтов из коллекции шрифтов
 - Предварительный прогрев глифов

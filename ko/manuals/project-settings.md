@@ -7,7 +7,8 @@ title: Defold 프로젝트 설정
 toc:
 - 프로젝트 설정
 - 파일 포멧
-- 런타임 액세스 {runtime-access}
+- anchor: runtime-access
+  title: 런타임 액세스
 - 섹션과 설정
 - Project
 - Bootstrap

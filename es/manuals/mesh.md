@@ -10,7 +10,8 @@ toc:
 - Propiedades de Mesh
 - Manipulación en el editor
 - Manipulación en tiempo de ejecución
-- Culling de frustum {frustum-culling}
+- anchor: frustum-culling
+  title: Culling de frustum
 - Constantes del material
 - Espacio local vs espacio del mundo de vértices
 ---

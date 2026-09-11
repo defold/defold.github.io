@@ -6,7 +6,8 @@ locale: pl
 title: Konfiguracja lokalnego serwera budowania
 toc:
 - Konfiguracja lokalnego serwera budowania
-- Jak uruchomić lokalny Extender ze wstępnie skonfigurowanymi artefaktami {how-to-run-local-extender-with-preconfigured-artifacts}
+- anchor: how-to-run-local-extender-with-preconfigured-artifacts
+  title: Jak uruchomić lokalny Extender ze wstępnie skonfigurowanymi artefaktami
 - A co z macOS i iOS?
 - Jak uruchomić lokalny Extender z artefaktami zbudowanymi lokalnie
 ---

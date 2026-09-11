@@ -1,0 +1,10 @@
+---
+brief: アプリ内購入（in-app purchase、アプリ内課金とも呼ばれます）を使用すると、追加のコンテンツや機能について、プレイヤーやアプリのユーザーに課金できます。このマニュアルでは、この機能に利用できる Defold の API を説明します。
+github: https://github.com/defold/doc
+layout: manual
+locale: ja
+title: Defold のアプリ内購入
+toc: []
+---
+
+[このマニュアルは移動しました](/extension-iap)

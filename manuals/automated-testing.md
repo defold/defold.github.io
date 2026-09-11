@@ -15,7 +15,8 @@ toc:
 - Persisted logs
 - Testing a running game through a runtime API
 - Browser tests for HTML5
-- Editor previews and runtime screenshots for visual inspection {editor-previews-and-runtime-screenshots}
+- anchor: editor-previews-and-runtime-screenshots
+  title: Editor previews and runtime screenshots for visual inspection
 - Headless tests and CI
 - Failure reports and artifacts
 ---

@@ -6,9 +6,11 @@ locale: pl
 title: Fabryki kolekcji
 toc:
 - Fabryki kolekcji
-- Tworzenie kolekcji {spawning-a-collection}
+- anchor: spawning-a-collection
+  title: Tworzenie kolekcji
 - Właściwości
-- Dynamiczne ładowanie zasobów fabryki {dynamic-loading-of-factory-resources}
+- anchor: dynamic-loading-of-factory-resources
+  title: Dynamiczne ładowanie zasobów fabryki
 - Dynamiczny prototyp
 ---
 
@@ -22,7 +24,7 @@ Za pomocą komponentu fabryki kolekcji możesz tworzyć w świecie gry zawartoś
 
 ## Tworzenie kolekcji {#spawning-a-collection}
 
-Załóżmy, że chcemy mieć obiekt gry postaci oraz osobny obiekt gry tarczy będący dzieckiem tej postaci. Budujemy taką hierarchię w pliku kolekcji i zapisujemy ją jako "bean.collection".
+Załóżmy, że chcemy mieć obiekt gry postaci oraz osobny obiekt gry tarczy będący dzieckiem tej postaci. Budujemy taką hierarchię w pliku kolekcji i zapisujemy ją jako `bean.collection`.
 
 <div class='sidenote' markdown='1'>
 Komponent *Collection proxy* (pełnomocnik kolekcji) służy do tworzenia nowego świata gry, w tym osobnego świata fizyki, na podstawie kolekcji. Nowy świat jest dostępny przez nowe gniazdo. Wszystkie zasoby zawarte w kolekcji są ładowane przez pełnomocnika po wysłaniu do niego wiadomości rozpoczynającej ładowanie. To bardzo przydatne na przykład przy zmianie poziomów w grze. Nowe światy gry mają jednak spory narzut, więc nie należy ich używać do dynamicznego ładowania niewielkich rzeczy. Więcej informacji znajdziesz w [dokumentacji Collection proxy](/pl/manuals/collection-proxy).
@@ -30,7 +32,7 @@ Komponent *Collection proxy* (pełnomocnik kolekcji) służy do tworzenia nowego
 
 ![Collection to spawn](/manuals/images/collection_factory/collection.png)
 
-Następnie dodajemy komponent *Collection factory* do obiektu gry, który ma odpowiadać za tworzenie instancji, i ustawiamy "bean.collection" jako właściwość *<kbd>Prototype</kbd>* komponentu:
+Następnie dodajemy komponent *Collection factory* do obiektu gry, który ma odpowiadać za tworzenie instancji, i ustawiamy `bean.collection` jako właściwość *<kbd>Prototype</kbd>* komponentu:
 
 ![Collection factory](/manuals/images/collection_factory/factory.png)
 
@@ -60,7 +62,7 @@ Funkcja przyjmuje 5 parametrów:
 `collectionfactory.create()` zwraca tabelę z identyfikatorami utworzonych obiektów gry. Klucze tabeli mapują hash lokalnego id obiektu w kolekcji na id w czasie działania danego obiektu:
 
 <div class='sidenote' markdown='1'>
-Relacja rodzic-dziecko między "bean" i "shield" *nie* jest odzwierciedlona w zwracanej tabeli. Ta relacja istnieje tylko w runtime scene-graph, czyli w sposobie, w jaki obiekty są razem transformowane. Zmiana rodzica nigdy nie zmienia id obiektu.
+Relacja rodzic-dziecko między `bean` i `shield` *nie* jest odzwierciedlona w zwracanej tabeli. Ta relacja istnieje tylko w runtime scene-graph, czyli w sposobie, w jaki obiekty są razem transformowane. Zmiana rodzica nigdy nie zmienia id obiektu.
 </div>
 
 ```lua
@@ -85,7 +87,7 @@ props[hash("/bean")] = { shield = false }
 local ids = collectionfactory.create("#bean_factory", nil, nil, props)
 ```
 
-Załóżmy, że obiekt gry "bean" w "bean.collection" definiuje właściwość "shield". [Instrukcja o właściwościach skryptu](/pl/manuals/script-properties) zawiera więcej informacji o takich właściwościach.
+Załóżmy, że obiekt gry `bean` w `bean.collection` definiuje właściwość `shield`. [Instrukcja o właściwościach skryptu](/pl/manuals/script-properties) zawiera więcej informacji o takich właściwościach.
 
 ```lua
 -- plik bean/controller.script

@@ -1,26 +1,26 @@
-The `adb` command line tool is an easy to use and versatile program that is used to interact with Android devices. You can download and install `adb` as part of the Android SDK Platform-Tools, for Mac, Linux or Windows.
+Засіб командного рядка `adb` — це проста у використанні й універсальна програма для взаємодії з пристроями Android. Ви можете завантажити й установити `adb` у складі Android SDK Platform-Tools для Mac, Linux або Windows.
 
-Download the Android SDK Platform-Tools from: https://developer.android.com/studio/releases/platform-tools. You find the *adb* tool in */platform-tools/*. Alternatively, platform specific packages can be installed through respective package managers.
+Завантажте Android SDK Platform-Tools за адресою: https://developer.android.com/studio/releases/platform-tools. Засіб *adb* міститься в */platform-tools/*. Також можна встановити пакети для вашої платформи через відповідний менеджер пакетів.
 
-On Ubuntu Linux:
+В Ubuntu Linux:
 
 ```
 $ sudo apt-get install android-tools-adb
 ```
 
-On Fedora 18/19:
+У Fedora 18/19:
 
 ```
 $ sudo yum install android-tools
 ```
 
-On macOS (Homebrew)
+У macOS (Homebrew)
 
 ```
 $ brew cask install android-platform-tools
 ```
 
-You can verify that `adb` works by connecting your Android device to your computer via USB and issue the following command:
+Щоб перевірити, чи працює `adb`, під’єднайте пристрій Android до комп’ютера через USB і виконайте таку команду:
 
 ```
 $ adb devices
@@ -28,6 +28,6 @@ List of devices attached
 31002535c90ef000    device
 ```
 
-If your device does not show up, verify that you have enabled *USB debugging* on the Android device. Open the device *Settings* and look for *Developer options* (or *Development*).
+Якщо пристрій не відображається, перевірте, чи ввімкнено на ньому *USB debugging*. Відкрийте *Settings* пристрою й знайдіть *Developer options* (або *Development*).
 
-![Enable USB debugging](../images/android/usb_debugging.png)
+![Увімкнення налагодження через USB](../images/android/usb_debugging.png)

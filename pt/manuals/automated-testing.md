@@ -5,19 +5,32 @@ layout: manual
 locale: pt
 title: Testes automatizados e verificação
 toc:
-- Testes automatizados e verificação {automated-testing-and-verification}
-- Níveis de verificação {verification-levels}
-- Código Lua reutilizável e testável {reusable-and-testable-lua-code}
-- Testes em uma coleção em execução {tests-in-a-running-collection}
-- Frameworks de teste {test-frameworks}
-- Resultados de teste estruturados {structured-test-results}
-- Coleta da saída do console {collecting-console-output}
-- Logs persistidos {persisted-logs}
-- Teste de um jogo em execução por meio de uma API de tempo de execução {testing-a-running-game-through-a-runtime-api}
-- Testes em navegador para HTML5 {browser-tests-for-html5}
-- Pré-visualizações do editor e capturas de tela em tempo de execução para inspeção visual {editor-previews-and-runtime-screenshots}
-- Testes headless e CI {headless-tests-and-ci}
-- Relatórios de falhas e artefatos {failure-reports-and-artifacts}
+- anchor: automated-testing-and-verification
+  title: Testes automatizados e verificação
+- anchor: verification-levels
+  title: Níveis de verificação
+- anchor: reusable-and-testable-lua-code
+  title: Código Lua reutilizável e testável
+- anchor: tests-in-a-running-collection
+  title: Testes em uma coleção em execução
+- anchor: test-frameworks
+  title: Frameworks de teste
+- anchor: structured-test-results
+  title: Resultados de teste estruturados
+- anchor: collecting-console-output
+  title: Coleta da saída do console
+- anchor: persisted-logs
+  title: Logs persistidos
+- anchor: testing-a-running-game-through-a-runtime-api
+  title: Teste de um jogo em execução por meio de uma API de tempo de execução
+- anchor: browser-tests-for-html5
+  title: Testes em navegador para HTML5
+- anchor: editor-previews-and-runtime-screenshots
+  title: Pré-visualizações do editor e capturas de tela em tempo de execução para inspeção visual
+- anchor: headless-tests-and-ci
+  title: Testes headless e CI
+- anchor: failure-reports-and-artifacts
+  title: Relatórios de falhas e artefatos
 ---
 
 # Testes automatizados e verificação {#automated-testing-and-verification}

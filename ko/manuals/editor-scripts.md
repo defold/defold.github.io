@@ -5,24 +5,42 @@ layout: manual
 locale: ko
 title: 에디터 스크립트
 toc:
-- 에디터 스크립트 {editor-scripts}
-- 에디터 스크립트 런타임 {editor-script-runtime}
-- .editor_script의 구조 {anatomy-of-editor_script}
-- 에디터 API {editor-api}
-- 커맨드 {commands}
-- 커맨드로 메모리 내 에디터 상태 변경하기 {use-commands-to-change-the-in-memory-editor-state}
-- 활성 에디터 뷰와 함께 커맨드 사용하기 {use-commands-with-the-active-editor-view}
-- 쉘 명령 사용 {use-shell-commands}
-- 라이프사이클 훅 {lifecycle-hooks}
-- 언어 서버(Language server) {language-servers}
-- HTTP 서버 {http-server}
-- 라이브러리의 에디터 스크립트 {editor-scripts-in-libraries}
-- Preferences {preferences}
-- 실행 모드 {execution-modes}
-- Actions {actions}
-- 실행 취소 가능한 actions {undoable-actions}
-- 실행 취소 불가능한 actions {non-undoable-actions}
-- Actions와 부작용(side effect) 섞기 {mixing-actions-and-side-effects}
+- anchor: editor-scripts
+  title: 에디터 스크립트
+- anchor: editor-script-runtime
+  title: 에디터 스크립트 런타임
+- anchor: anatomy-of-editor_script
+  title: .editor_script의 구조
+- anchor: editor-api
+  title: 에디터 API
+- anchor: commands
+  title: 커맨드
+- anchor: use-commands-to-change-the-in-memory-editor-state
+  title: 커맨드로 메모리 내 에디터 상태 변경하기
+- anchor: use-commands-with-the-active-editor-view
+  title: 활성 에디터 뷰와 함께 커맨드 사용하기
+- anchor: use-shell-commands
+  title: 쉘 명령 사용
+- anchor: lifecycle-hooks
+  title: 라이프사이클 훅
+- anchor: language-servers
+  title: 언어 서버(Language server)
+- anchor: http-server
+  title: HTTP 서버
+- anchor: editor-scripts-in-libraries
+  title: 라이브러리의 에디터 스크립트
+- anchor: preferences
+  title: Preferences
+- anchor: execution-modes
+  title: 실행 모드
+- anchor: actions
+  title: Actions
+- anchor: undoable-actions
+  title: 실행 취소 가능한 actions
+- anchor: non-undoable-actions
+  title: 실행 취소 불가능한 actions
+- anchor: mixing-actions-and-side-effects
+  title: Actions와 부작용(side effect) 섞기
 ---
 
 # 에디터 스크립트 {#editor-scripts}
@@ -699,7 +717,7 @@ end)
 에디터 스크립트는 preferences를 정의하고 사용할 수 있습니다. preferences는 사용자의 컴퓨터에 저장되는, 커밋되지 않는 영구 데이터 조각입니다. 이 preferences에는 세 가지 주요 특징이 있습니다.
 - typed: 모든 preference에는 데이터 타입과 기본값 같은 기타 메타데이터를 포함하는 스키마 정의가 있습니다.
 - scoped: preferences는 프로젝트별 또는 사용자별로 scope가 지정됩니다.
-- nested: 모든 preference 키는 점으로 구분된 문자열이며, 첫 번째 path segment는 에디터 스크립트를 식별하고 나머지는
+- nested: 모든 preference 키는 점으로 구분된 문자열이며, 첫 번째 path segment는 에디터 스크립트를 식별하고 나머지는 해당 스크립트 내의 그룹과 개별 preference를 식별합니다.
 
 모든 preferences는 스키마를 정의해 등록해야 합니다.
 ```lua

@@ -8,7 +8,8 @@ toc:
 - Factory 组件
 - Factory 创建对象的寻址
 - 跟踪生成的对象和父对象
-- Factory 资源的动态加载 {dynamic-loading-of-factory-resources}
+- anchor: dynamic-loading-of-factory-resources
+  title: Factory 资源的动态加载
 - 动态原型
 - 实例限制
 - 游戏对象池

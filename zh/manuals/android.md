@@ -7,8 +7,10 @@ title: Android 平台开发
 toc:
 - Android 开发
 - Android 和 Google Play 签名流程
-- 创建密钥库 {creating-a-keystore}
-- 创建 Android 应用包 {creating-an-android-application-bundle}
+- anchor: creating-a-keystore
+  title: 创建密钥库
+- anchor: creating-an-android-application-bundle
+  title: 创建 Android 应用包
 - 安装 Android 应用包
 - 权限
 - 'android.permission.INTERNET 和 android.permission.ACCESS_NETWORK_STATE (保护级别: normal)'

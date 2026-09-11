@@ -8,7 +8,8 @@ toc:
 - Komponenty Factory
 - Adresowanie obiektów utworzonych przez Factory
 - Śledzenie utworzonych obiektów i obiektu nadrzędnego
-- Dynamiczne ładowanie zasobów Factory {dynamic-loading-of-factory-resources}
+- anchor: dynamic-loading-of-factory-resources
+  title: Dynamiczne ładowanie zasobów Factory
 - Dynamiczny prototyp
 - Limity instancji
 - Ponowne używanie obiektów gry

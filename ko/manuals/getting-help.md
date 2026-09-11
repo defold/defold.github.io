@@ -5,13 +5,16 @@ layout: manual
 locale: ko
 title: 도움 받는 방법
 toc:
-- 도움 받기 {getting-help}
+- anchor: getting-help
+  title: 도움 받기
 - 포럼에서 문제 보고하기
 - 필요한 정보
 - 코드 공유하기
-- 에디터에서 문제 보고하기 {report-a-problem-from-the-editor}
+- anchor: report-a-problem-from-the-editor
+  title: 에디터에서 문제 보고하기
 - Discord에서 문제 논의하기
-- 로그 파일 {log-files}
+- anchor: log-files
+  title: 로그 파일
 ---
 
 # 도움 받기 {#getting-help}

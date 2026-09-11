@@ -5,23 +5,39 @@ layout: manual
 locale: pl
 title: Automatyzowanie edytora Defold przez HTTP
 toc:
-- Automatyzowanie edytora Defold {automating-the-defold-editor}
-- Uruchamianie edytora z narzędzia zewnętrznego {starting-the-editor-from-an-external-tool}
-- Lokalizowanie serwera edytora {locating-the-editor-server}
-- Wykrywanie operacji za pomocą OpenAPI {discovering-operations-through-openapi}
-- Wykonywanie poleceń edytora {executing-editor-commands}
-- Odpowiedzi poleceń i praca asynchroniczna {command-responses-and-asynchronous-work}
-- Budowanie HTML5 {building-html5}
-- Przeszukiwanie dokumentacji API {searching-api-documentation}
-- Odczytywanie danych wyjściowych konsoli {reading-console-output}
-- Renderowanie podglądów scen {rendering-scene-previews}
-- Wykonywanie kodu Lua edytora {executing-editor-lua}
-- Modyfikowanie zasobów i plików {modifying-resources-and-files}
+- anchor: automating-the-defold-editor
+  title: Automatyzowanie edytora Defold
+- anchor: starting-the-editor-from-an-external-tool
+  title: Uruchamianie edytora z narzędzia zewnętrznego
+- anchor: locating-the-editor-server
+  title: Lokalizowanie serwera edytora
+- anchor: discovering-operations-through-openapi
+  title: Wykrywanie operacji za pomocą OpenAPI
+- anchor: executing-editor-commands
+  title: Wykonywanie poleceń edytora
+- anchor: command-responses-and-asynchronous-work
+  title: Odpowiedzi poleceń i praca asynchroniczna
+- anchor: building-html5
+  title: Budowanie HTML5
+- anchor: searching-api-documentation
+  title: Przeszukiwanie dokumentacji API
+- anchor: reading-console-output
+  title: Odczytywanie danych wyjściowych konsoli
+- anchor: rendering-scene-previews
+  title: Renderowanie podglądów scen
+- anchor: executing-editor-lua
+  title: Wykonywanie kodu Lua edytora
+- anchor: modifying-resources-and-files
+  title: Modyfikowanie zasobów i plików
 - Preferencje
-- Trasy zdefiniowane przez projekt {project-defined-routes}
-- Haki cyklu życia {lifecycle-hooks}
-- Bezpieczeństwo i zgodność {security-and-compatibility}
-- Serwer silnika {engine-server}
+- anchor: project-defined-routes
+  title: Trasy zdefiniowane przez projekt
+- anchor: lifecycle-hooks
+  title: Haki cyklu życia
+- anchor: security-and-compatibility
+  title: Bezpieczeństwo i zgodność
+- anchor: engine-server
+  title: Serwer silnika
 ---
 
 # Automatyzowanie edytora Defold {#automating-the-defold-editor}

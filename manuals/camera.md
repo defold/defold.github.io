@@ -13,7 +13,8 @@ toc:
 - Zooming the camera
 - Adaptive zoom
 - Following a game object
-- Converting between screen and world coordinates {converting-mouse-to-world-coordinates}
+- anchor: converting-mouse-to-world-coordinates
+  title: Converting between screen and world coordinates
 - Runtime manipulation
 - Third-party camera solutions
 ---

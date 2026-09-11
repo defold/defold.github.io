@@ -7,7 +7,8 @@ title: Defold 中的自动化
 toc:
 - Defold 中的自动化
 - 确定性自动化或 AI 智能体
-- 自动化循环 {the-automation-loop}
+- anchor: the-automation-loop
+  title: 自动化循环
 - 后续步骤
 ---
 

@@ -1,25 +1,25 @@
-#### Q: What are the system requirements for the editor?
-A: The editor will use up to 75% of the available memory of the system. On a computer with 4 GB of RAM this should be enough for smaller Defold projects. For mid-sized or large projects it is recommended to use 6 GB or more of RAM.
+#### D: Quali sono i requisiti di sistema dell'editor? {#q-what-are-the-system-requirements-for-the-editor}
+R: L'editor utilizza fino al 75% della memoria disponibile nel sistema. Su un computer con 4 GB di RAM, questa quantità dovrebbe essere sufficiente per progetti Defold di piccole dimensioni. Per progetti di medie o grandi dimensioni, si consiglia di avere almeno 6 GB di RAM.
 
 
-#### Q: Are Defold beta versions auto-updating?
-A: Yes. The Defold beta editor checks for an update at startup, just like the Defold stable version does.
+#### D: Le versioni beta di Defold si aggiornano automaticamente? {#q-are-defold-beta-versions-auto-updating}
+R: Sì. All'avvio, l'editor Defold beta verifica la disponibilità di aggiornamenti, proprio come la versione stabile di Defold.
 
 
-#### Q: Why am I getting an error saying `java.awt.AWTError: Assistive Technology not found` when launching the editor?
-A: This error is related to problems with Java assistive technology such as the [NVDA screen reader](https://www.nvaccess.org/download/). You probably have an `.accessibility.properties` file in your home folder. Remove the file and try launching the editor again. (Note: If you do use any assistive technology and require that file to be present then please reach out to us at info@defold.se to discuss alternative solutions).
+#### D: Perché ricevo l'errore `java.awt.AWTError: Assistive Technology not found` quando avvio l'editor? {#q-why-am-i-getting-an-error-saying-javaawtawterror-assistive-technology-not-found-when-launching-the-editor}
+R: Questo errore è legato a problemi con le tecnologie assistive di Java, come il [lettore di schermo NVDA](https://www.nvaccess.org/download/). Probabilmente nella tua cartella home è presente un file `.accessibility.properties`. Rimuovi il file e prova ad avviare nuovamente l'editor. (Nota: se utilizzi una tecnologia assistiva che richiede la presenza di questo file, contattaci all'indirizzo info@defold.se per discutere soluzioni alternative).
 
-Discussed [here on the Defold forum](https://forum.defold.com/t/editor-endless-loading-windows-10-1-2-169-solved/65481/3).
-
-
-#### Q: Why am I getting an error saying `sun.security.validator.ValidatorException: PKIX path building failed` when launching the editor?
-A: This exception occurs when the editor tries to make an https connection but the certificate chain provided by the server cannot be verified.
-
-See [this link](https://github.com/defold/defold/blob/master/editor/README_TROUBLESHOOTING_PKIX.md) for details on this error.
+Se ne parla [in questa discussione sul forum Defold](https://forum.defold.com/t/editor-endless-loading-windows-10-1-2-169-solved/65481/3).
 
 
-#### Q: Why am I am getting a `java.lang.OutOfMemoryError: Java heap space` when performing certain operations?
-A: The Defold editor is built using Java and in some cases the default memory configuration of Java might not be sufficient. If this happens you can manually configure the editor to allocate more memory by editing the editor configuration file. The configuration file, named `config`, is located in the `Defold.app/Contents/Resources/` folder on macOS. On Windows it is located next to `Defold.exe` executable and on Linux next to the `Defold` executable. Open the `config` file and add `-Xmx6gb` to the line starting with `vmargs`. Adding `-Xmx6gb` will set the max heap size to 6 gigabytes (the default is usually 4Gb). It should look something like this:
+#### D: Perché ricevo l'errore `sun.security.validator.ValidatorException: PKIX path building failed` quando avvio l'editor? {#q-why-am-i-getting-an-error-saying-sunsecurityvalidatorvalidatorexception-pkix-path-building-failed-when-launching-the-editor}
+R: Questa eccezione si verifica quando l'editor tenta di stabilire una connessione HTTPS, ma non è possibile verificare la catena di certificati fornita dal server.
+
+Consulta [questo link](https://github.com/defold/defold/blob/master/editor/README_TROUBLESHOOTING_PKIX.md) per maggiori dettagli su questo errore.
+
+
+#### D: Perché ricevo l'errore `java.lang.OutOfMemoryError: Java heap space` quando eseguo determinate operazioni? {#q-why-am-i-am-getting-a-javalangoutofmemoryerror-java-heap-space-when-performing-certain-operations}
+R: L'editor Defold è realizzato in Java e, in alcuni casi, la configurazione predefinita della memoria di Java potrebbe non essere sufficiente. In questo caso puoi configurare manualmente l'editor affinché allochi più memoria, modificando il suo file di configurazione. Il file di configurazione, denominato `config`, si trova nella cartella `Defold.app/Contents/Resources/` su macOS. Su Windows si trova accanto all'eseguibile `Defold.exe` e su Linux accanto all'eseguibile `Defold`. Apri il file `config` e aggiungi `-Xmx6gb` alla riga che inizia con `vmargs`. Aggiungendo `-Xmx6gb`, imposti la dimensione massima dell'heap a 6 gigabyte (il valore predefinito è solitamente 4 GB). La riga dovrebbe avere un aspetto simile a questo:
 
 ```
 vmargs = -Xmx6gb,-Dfile.encoding=UTF-8,-Djna.nosys=true,-Ddefold.launcherpath=${bootstrap.launcherpath},-Ddefold.resourcespath=${bootstrap.resourcespath},-Ddefold.version=${build.version},-Ddefold.editor.sha1=${build.editor_sha1},-Ddefold.engine.sha1=${build.engine_sha1},-Ddefold.buildtime=${build.time},-Ddefold.channel=${build.channel},-Ddefold.archive.domain=${build.archive_domain},-Djava.net.preferIPv4Stack=true,-Dsun.net.client.defaultConnectTimeout=30000,-Dsun.net.client.defaultReadTimeout=30000,-Djogl.texture.notexrect=true,-Dglass.accessible.force=false,--illegal-access=warn,--add-opens=java.base/java.lang=ALL-UNNAMED,--add-opens=java.desktop/sun.awt=ALL-UNNAMED,--add-opens=java.desktop/sun.java2d.opengl=ALL-UNNAMED,--add-opens=java.xml/com.sun.org.apache.xerces.internal.jaxp=ALL-UNNAMED

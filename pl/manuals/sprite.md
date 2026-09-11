@@ -12,7 +12,8 @@ toc:
 - Stałe materiału
 - Atrybuty materiału
 - Konfiguracja projektu
-- Spritey z wieloma teksturami {multi-textured-sprites}
+- anchor: multi-textured-sprites
+  title: Spritey z wieloma teksturami
 - Animacje
 - UV
 ---

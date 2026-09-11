@@ -10,7 +10,8 @@ toc:
 - Użyj debugowania przez wypisywanie
 - Przeanalizuj log awarii
 - Pobieranie logu awarii z urządzenia
-- Zsymbolikuj stos wywołań {symbolicate-a-callstack}
+- anchor: symbolicate-a-callstack
+  title: Zsymbolikuj stos wywołań
 - Przesyłanie symboli do Google Play
 - Zsymbolikuj stos wywołań z Androida
 - Zsymbolikuj stos wywołań z iOS

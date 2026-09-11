@@ -11,7 +11,8 @@ toc:
 - Profiler de frames Remotery
 - Perfilador de recursos
 - Timeline de desempenho do navegador em HTML5
-- Relatórios de build {build-reports}
+- anchor: build-reports
+  title: Relatórios de build
 - Ferramentas externas
 ---
 
@@ -130,7 +131,7 @@ Ao empacotar seu jogo, há uma opção para criar um relatório de build. Isso �
 
 ![build report](/manuals/images/profiling/build_report.png)
 
-O builder produzirá um arquivo chamado "report.html" ao lado do pacote do jogo. Abra o arquivo em um navegador web para inspecionar o relatório:
+O builder produzirá um arquivo chamado `report.html` ao lado do pacote do jogo. Abra o arquivo em um navegador web para inspecionar o relatório:
 
 ![build report](/manuals/images/profiling/build_report_html.png)
 
@@ -164,7 +165,7 @@ OpenGL profiler (macOS)
 Android Profiler (Android)
 : https://developer.android.com/studio/profile/android-profiler.html
 
-  Um conjunto de ferramentas de profiling que captura dados em tempo real da atividade de CPU, memória e rede do seu jogo. Você pode realizar tracing de métodos baseado em amostras da execução do código, capturar heap dumps, ver alocações de memória e inspecionar os detalhes de arquivos transmitidos pela rede. Usar a ferramenta exige que você defina `android:debuggable="true"` em "AndroidManifest.xml".
+  Um conjunto de ferramentas de profiling que captura dados em tempo real da atividade de CPU, memória e rede do seu jogo. Você pode realizar tracing de métodos baseado em amostras da execução do código, capturar heap dumps, ver alocações de memória e inspecionar os detalhes de arquivos transmitidos pela rede. Usar a ferramenta exige que você defina `android:debuggable="true"` em `AndroidManifest.xml`.
 
   ![android profiler](/manuals/images/profiling/android_profiler.png)
 
@@ -173,6 +174,6 @@ Android Profiler (Android)
 Graphics API Debugger (Android)
 : https://github.com/google/gapid
 
-  Esta é uma coleção de ferramentas que permite inspecionar, ajustar e reproduzir chamadas de uma aplicação para um driver gráfico. Usar a ferramenta exige que você defina `android:debuggable="true"` em "AndroidManifest.xml".
+  Esta é uma coleção de ferramentas que permite inspecionar, ajustar e reproduzir chamadas de uma aplicação para um driver gráfico. Usar a ferramenta exige que você defina `android:debuggable="true"` em `AndroidManifest.xml`.
 
   ![graphics api debugger](/manuals/images/profiling/gapid.png)

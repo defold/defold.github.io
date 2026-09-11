@@ -6,7 +6,8 @@ locale: es
 title: Los bloques de construcción de Defold
 toc:
 - Bloques de construcción
-- Colecciones {collections}
+- anchor: collections
+  title: Colecciones
 - Objetos del juego
 - Componentes
 - Objetos añadidos en el lugar o por referencia

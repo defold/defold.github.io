@@ -11,7 +11,8 @@ toc:
 - Karta Breakpoints
 - Biblioteka debugowania Lua
 - Lista kontrolna debugowania
-- Debugowanie problemów z fizyką {debugging-problems-with-physics}
+- anchor: debugging-problems-with-physics
+  title: Debugowanie problemów z fizyką
 ---
 
 # Debugowanie logiki gry

@@ -5,10 +5,14 @@ layout: manual
 locale: es
 title: Manual de tile source de Defold
 toc:
-- Tile source {tile-source}
-- Crear un tile source {creating-a-tile-source}
-- Animaciones flipbook de tile source {tile-source-flip-book-animations}
-- Formas de colisión de tile source {tile-source-collision-shapes}
+- anchor: tile-source
+  title: Tile source
+- anchor: creating-a-tile-source
+  title: Crear un tile source
+- anchor: tile-source-flip-book-animations
+  title: Animaciones flipbook de tile source
+- anchor: tile-source-collision-shapes
+  title: Formas de colisión de tile source
 ---
 
 # Tile source {#tile-source}

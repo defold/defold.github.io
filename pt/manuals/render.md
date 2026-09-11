@@ -8,20 +8,25 @@ toc:
 - Renderização
 - Pipeline de renderização - o quê, quando e onde?
 - A renderização padrão
-- Predicados de renderização {render-predicates}
-- Projeção de visualização padrão {default-view-projection}
+- anchor: render-predicates
+  title: Predicados de renderização
+- anchor: default-view-projection
+  title: Projeção de visualização padrão
 - Projeção Stretch
 - Projeção Fixed Fit
-- Projeção Fixed {fixed-projection}
+- anchor: fixed-projection
+  title: Projeção Fixed
 - Projeção de câmera
 - Frustum culling
 - Sistemas de coordenadas
-- O script de renderização {the-render-script}
+- anchor: the-render-script
+  title: O script de renderização
 - Recursos de renderização
 - Handles de textura
 - APIs gráficas suportadas
 - Mensagens do sistema
-- Draw calls e batching {draw-calls-and-batching}
+- anchor: draw-calls-and-batching
+  title: Draw calls e batching
 - Regras de batch para componentes não GUI
 - Regras de batch para componentes GUI
 ---

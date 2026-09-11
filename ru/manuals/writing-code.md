@@ -11,8 +11,10 @@ toc:
 - Написание нативного кода
 - Использование встроенного редактора кода
 - Автодополнение кода
-- Переход к символу {jump-to-symbol}
-- Настройка анализа кода (Linting) {linting-configuration}
+- anchor: jump-to-symbol
+  title: Переход к символу
+- anchor: linting-configuration
+  title: Настройка анализа кода (Linting)
 - Использование внешнего редактора кода
 - Visual Studio Code — Defold Kit
 - Программная документация

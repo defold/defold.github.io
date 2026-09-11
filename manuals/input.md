@@ -10,7 +10,8 @@ toc:
 - Trigger types
 - Accelerometer input
 - Input focus
-- Input dispatch and on_input() {input-dispatch-and-on_input}
+- anchor: input-dispatch-and-on_input
+  title: Input dispatch and on_input()
 - Input focus and collection proxy components
 - Releasing input
 - Consuming input
@@ -53,7 +54,7 @@ The input bindings is a project wide table that allows you to specify how device
 
 ![Input binding setting](../images/input/setting.png)
 
-A default input binding file is automatically created with all new project templates so there is usually no need to create a new binding file. The default file is called "game.input_binding" and can be found in the "input" folder in the project root. <kbd>Double click</kbd> the file to open it in the editor:
+A default input binding file is automatically created with all new project templates so there is usually no need to create a new binding file. The default file is called `game.input_binding` and can be found in the `input` folder in the project root. <kbd>Double click</kbd> the file to open it in the editor:
 
 ![Input set bindings](../images/input/input_binding.png)
 
@@ -63,7 +64,7 @@ To create a new binding, click the <kbd>+</kbd> button at the bottom of the rele
 : The raw input to listen for, selected from a scroll list of available inputs.
 
 *Action*
-: The action name given to input actions when they are created and dispatched to your scripts. The same action name can be assigned to multiple inputs. For instance, you can bind the <kbd>Space</kbd> key and the gamepad "A" button to the action `jump`. Note that there is a known bug where touch inputs unfortunately cannot have the same action names as other inputs.
+: The action name given to input actions when they are created and dispatched to your scripts. The same action name can be assigned to multiple inputs. For instance, you can bind the <kbd>Space</kbd> key and the gamepad `A` button to the action `jump`. Note that there is a known bug where touch inputs unfortunately cannot have the same action names as other inputs.
 
 ## Trigger types
 
@@ -180,7 +181,7 @@ There are many good use cases where input consumption provides a simple and powe
 
 ![consuming input](../images/input/game.png)
 
-The pause menu is initially hidden (disabled) and when the player touches the "PAUSE" HUD item, it is enabled:
+The pause menu is initially hidden (disabled) and when the player touches the `PAUSE` HUD item, it is enabled:
 
 ```lua
 function on_input(self, action_id, action)

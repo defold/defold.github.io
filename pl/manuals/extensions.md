@@ -13,7 +13,8 @@ toc:
 - Prosty przykład rozszerzenia
 - Cykl życia rozszerzenia
 - Zdefiniowane identyfikatory platform
-- Dzienniki serwera budowania {build-server-logs}
+- anchor: build-server-logs
+  title: Dzienniki serwera budowania
 - Przykłady rozszerzeń
 ---
 
@@ -78,7 +79,7 @@ Aby utworzyć nowe rozszerzenie, utwórz folder w katalogu głównym projektu. T
 : Ten opcjonalny folder zawiera dodatkowe pliki używane podczas procesu budowania lub pakowania. Szczegóły znajdziesz poniżej.
 
 *res*
-: Ten opcjonalny folder zawiera dodatkowe zasoby, od których zależy rozszerzenie. Pliki zasobów należy umieszczać w podfolderach nazwanych według `platform` albo `architecture-platform`, tak samo jak podfoldery w "lib". Dozwolony jest też podfolder `common`, zawierający pliki zasobów wspólne dla wszystkich platform.
+: Ten opcjonalny folder zawiera dodatkowe zasoby, od których zależy rozszerzenie. Pliki zasobów należy umieszczać w podfolderach nazwanych według `platform` albo `architecture-platform`, tak samo jak podfoldery w `lib`. Dozwolony jest też podfolder `common`, zawierający pliki zasobów wspólne dla wszystkich platform.
 
 ### Pliki manifestu
 
@@ -200,7 +201,7 @@ dmExtension::Result FinalizeMyExtension(dmExtension::Params* params)
 DM_DECLARE_EXTENSION(MyExtension, LIB_NAME, AppInitializeMyExtension, AppFinalizeMyExtension, InitializeMyExtension, 0, 0, FinalizeMyExtension)
 ```
 
-Zwróć uwagę na makro `DM_DECLARE_EXTENSION`, które służy do deklarowania różnych punktów wejścia do kodu rozszerzenia. Pierwszy argument `symbol` musi odpowiadać nazwie podanej w *ext.manifest*. W tym prostym przykładzie nie ma potrzeby definiować żadnych punktów wejścia "update" ani "on_event", więc w tych miejscach do makra przekazano `0`.
+Zwróć uwagę na makro `DM_DECLARE_EXTENSION`, które służy do deklarowania różnych punktów wejścia do kodu rozszerzenia. Pierwszy argument `symbol` musi odpowiadać nazwie podanej w *ext.manifest*. W tym prostym przykładzie nie ma potrzeby definiować żadnych punktów wejścia `update` ani `on_event`, więc w tych miejscach do makra przekazano `0`.
 
 Teraz wystarczy zbudować projekt (<kbd>Project ▸ Build</kbd>). Spowoduje to wysłanie rozszerzenia do serwera budowania, który wygeneruje własny silnik z nowym rozszerzeniem wbudowanym na stałe. Jeśli serwer budowania napotka jakiekolwiek błędy, pojawi się okno dialogowe z błędami budowania.
 

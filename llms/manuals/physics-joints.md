@@ -1,6 +1,10 @@
 # Joints {#manuals:physics-joints}
 
-Defold supports joints for 2D physics. A joint connects two collision objects using some kind of constraint. The supported joint types are:
+A joint connects two collision objects using a constraint. Defold supports joints in both 2D and 3D physics, through different APIs.
+
+This manual describes the 2D joints exposed by the `physics` module. Since Defold 1.13.2, 3D projects can create and control constraints through [`bullet3d.constraint`](https://defold.com/ref/beta/bullet3d.constraint/), including hinges, sliders and springs. Use that API with rigid bodies obtained through [`bullet3d.get_rigid_body()`](https://defold.com/ref/beta/bullet3d/#bullet3d.get_rigid_body).
+
+The supported joint types in the 2D `physics` API are:
 
 * **Fixed (physics.JOINT_TYPE_FIXED)** - A rope joint that restricts the maximum distance between two points. In Box2D referred to as a Rope joint.
 * **Hinge (physics.JOINT_TYPE_HINGE)** - A hinge joint specifies an anchor point on two collision objects and moves them so that the two collision objects are always in the same place, and the relative rotation of the collision objects is not restricted. The hinge joint can enable a motor with a defined maximum engine torque and speed. In Box2D referred to as a [Revolute joint](https://box2d.org/documentation/group__revolute__joint.html#details).
@@ -11,7 +15,7 @@ Defold supports joints for 2D physics. A joint connects two collision objects us
 
 ## Creating joints
 
-Joints can currently only be created programmatically using [`physics.create_joint()`](https://defold.com/ref/physics/#physics.create_joint:joint_type-collisionobject_a-joint_id-position_a-collisionobject_b-position_b-[properties]):
+The 2D joints described here are created programmatically using [`physics.create_joint()`](https://defold.com/ref/physics/#physics.create_joint:joint_type-collisionobject_a-joint_id-position_a-collisionobject_b-position_b-[properties]):
 
 Editor support for creating joints is planned but no release date has been decided.
 
@@ -20,7 +24,7 @@ Editor support for creating joints is planned but no release date has been decid
 physics.create_joint(physics.JOINT_TYPE_FIXED, "obj_a#collisionobject", "my_test_joint", vmath.vector3(10, 0, 0), "obj_b#collisionobject", vmath.vector3(0, 20, 0), { max_length = 20 })
 ```
 
-The above will create a fixed joint with id `my_test_joint` connected between the two collision object `obj_a#collisionobject` and `obj_b#collisionobject`. The joint is connected 10 pixels to the left of the center of collision object `obj_a#collisionobject` and 20 pixels above the center of collision object `obj_b#collisionobject`. The maximum length of the joint is 20 pixels.
+The above will create a fixed joint with id `my_test_joint` connected between the two collision object `obj_a#collisionobject` and `obj_b#collisionobject`. The joint is connected 10 pixels to the right of the center of collision object `obj_a#collisionobject` and 20 pixels above the center of collision object `obj_b#collisionobject`. The maximum length of the joint is 20 pixels.
 
 ## Destroying joints
 

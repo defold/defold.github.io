@@ -1,41 +1,41 @@
-## Slice-9 texturing
+## Applicazione di texture con slice-9 {#slice-9-texturing}
 
-GUI box nodes and Sprite components sometimes feature elements that are context sensitive in regard to their size: panels and dialogs that need to be resized to fit the containing content or a health bar that need to be resized to show the remaining health of an enemy. These may cause visual problems when you apply texturing to the resized node or sprite.
+I nodi GUI di tipo box e i componenti sprite a volte includono elementi le cui dimensioni dipendono dal contesto: pannelli e finestre di dialogo da ridimensionare per adattarli al contenuto, oppure una barra della salute da ridimensionare per mostrare la salute rimanente di un nemico. L'applicazione di texture al nodo o allo sprite ridimensionato può causare problemi visivi.
 
-Normally, the engine scales the texture to fit the rectangular boundaries, but by defining slice-9 edge areas it is possible to limit what parts of the texture that should scale:
+Normalmente, il motore ridimensiona la texture per adattarla ai limiti rettangolari, ma definendo le aree dei bordi con slice-9 è possibile limitare le parti della texture da ridimensionare:
 
-![GUI scaling](/shared/images/gui_slice9_scaling.png)
+![Ridimensionamento della GUI](/shared/images/gui_slice9_scaling.png)
 
-The *Slice9* box node consists of 4 numbers that specify the number of pixels for the left, top, right and bottom margin that should not be regularly scaled:
+La proprietà *Slice9* del nodo box è composta da 4 numeri che specificano il numero di pixel dei margini sinistro, superiore, destro e inferiore da escludere dal normale ridimensionamento:
 
-![Slice 9 properties](/shared/images/gui_slice9_properties.png)
+![Proprietà di slice-9](/shared/images/gui_slice9_properties.png)
 
-The margins are set clockwise, starting on the left edge:
+I margini vengono impostati in senso orario, a partire dal bordo sinistro:
 
-![Slice 9 sections](/shared/images/gui_slice9.png)
+![Sezioni di slice-9](/shared/images/gui_slice9.png)
 
-- Corner segments are never scaled.
-- Edge segments are scaled along a single axis. The left and right edge segments are scaled vertically. The top and bottom edge segments are scaled horizontally.
-- The central texture area is scaled horizontally and vertically as needed.
+- I segmenti agli angoli non vengono mai ridimensionati.
+- I segmenti dei bordi vengono ridimensionati lungo un solo asse. I segmenti dei bordi sinistro e destro vengono ridimensionati verticalmente. I segmenti dei bordi superiore e inferiore vengono ridimensionati orizzontalmente.
+- L'area centrale della texture viene ridimensionata orizzontalmente e verticalmente secondo necessità.
 
-The *Slice9* texture scaling described above is only applied when you change box node's or sprite's size:
+Il ridimensionamento della texture con *Slice9* descritto sopra viene applicato solo quando modifichi le dimensioni del nodo box o dello sprite:
 
-![GUI box node size](/shared/images/gui_slice9_size.png)
+![Dimensioni del nodo GUI di tipo box](/shared/images/gui_slice9_size.png)
 
-![Sprite size](/shared/images/sprite_slice9_size.png)
+![Dimensioni dello sprite](/shared/images/sprite_slice9_size.png)
 
 <div class='important' markdown='1'>
-If you change scale parameter of the box node or sprite (or on the game object) - the node or sprite and texture is scaled without applying *Slice9* parameters.
+Se modifichi il parametro di scala del nodo box o dello sprite (oppure dell'oggetto di gioco), il nodo o lo sprite e la texture vengono ridimensionati senza applicare i parametri *Slice9*.
 </div>
 
 <div class='important' markdown='1'>
-When using slice-9 texturing on Sprites the [Sprite Trim Mode of the image](https://defold.com/manuals/atlas/#image-properties) must be set to Off.
+Quando applichi texture con slice-9 agli sprite, la [proprietà Sprite Trim Mode dell'immagine](https://defold.com/manuals/atlas/#image-properties) deve essere impostata su Off.
 </div>
 
 
-### Mipmaps and slice-9
-Due to the way mipmapping works in the renderer, scaling of texture segments can sometimes exhibit artifacts. This happens when you _scale down_ segments below the original texture size. The renderer then selects a lower resolution mipmap for the segment, resulting in visual artifacts.
+### Mipmap e slice-9 {#mipmaps-and-slice-9}
+Per il modo in cui il mipmapping funziona nel renderer, il ridimensionamento dei segmenti della texture può talvolta produrre artefatti. Questo accade quando _riduci_ i segmenti al di sotto delle dimensioni originali della texture. Il renderer seleziona quindi una mipmap a risoluzione inferiore per il segmento, causando artefatti visivi.
 
-![Slice 9 mipmapping](/shared/images/gui_slice9_mipmap.png)
+![Mipmapping con slice-9](/shared/images/gui_slice9_mipmap.png)
 
-To avoid this problem, make sure that the texture's segments that will be scaled are small enough never to be scaled down, only up.
+Per evitare questo problema, assicurati che i segmenti della texture da ridimensionare siano abbastanza piccoli da dover essere soltanto ingranditi, mai ridotti.

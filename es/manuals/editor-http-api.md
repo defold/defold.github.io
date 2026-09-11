@@ -11,15 +11,19 @@ toc:
 - Detectar operaciones mediante OpenAPI
 - Ejecutar comandos del editor
 - Respuestas de comandos y trabajo asíncrono
-- Crear una build HTML5 {building-html5}
+- anchor: building-html5
+  title: Crear una build HTML5
 - Buscar en la documentación de la API
-- Leer la salida de la consola {reading-console-output}
-- Renderizar vistas previas de escenas {rendering-scene-previews}
+- anchor: reading-console-output
+  title: Leer la salida de la consola
+- anchor: rendering-scene-previews
+  title: Renderizar vistas previas de escenas
 - Ejecutar Lua en el editor
 - Modificar recursos y archivos
 - Preferencias
 - Rutas definidas por el proyecto
-- Hooks del ciclo de vida {lifecycle-hooks}
+- anchor: lifecycle-hooks
+  title: Hooks del ciclo de vida
 - Seguridad y compatibilidad
 - Servidor del motor
 ---

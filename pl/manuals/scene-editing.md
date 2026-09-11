@@ -11,9 +11,11 @@ toc:
 - Standardowa nawigacja (wszystkie edytory wizualne)
 - Orientacja sceny 2D i 3D
 - Przegląd paska narzędzi
-- Zaznaczanie i manipulowanie obiektami {manipulating-objects}
+- anchor: manipulating-objects
+  title: Zaznaczanie i manipulowanie obiektami
 - Zaznaczanie obiektów
-- Filtry widoczności {filtry-widocznosci}
+- anchor: filtry-widocznosci
+  title: Filtry widoczności
 - Ustawienia siatki
 - 'Typ kamery: Perspective i Orthographic'
 - Free Camera Mode

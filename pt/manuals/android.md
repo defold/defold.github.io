@@ -7,8 +7,10 @@ title: Desenvolvimento Defold para a plataforma Android
 toc:
 - Desenvolvimento Android
 - Processo de assinatura Android e Google Play
-- Criando um keystore {creating-a-keystore}
-- Criando um pacote de aplicativo Android {creating-an-android-application-bundle}
+- anchor: creating-a-keystore
+  title: Criando um keystore
+- anchor: creating-an-android-application-bundle
+  title: Criando um pacote de aplicativo Android
 - Instalando um pacote de aplicativo Android
 - Permissões
 - 'android.permission.INTERNET e android.permission.ACCESS_NETWORK_STATE (Nível de proteção: normal)'

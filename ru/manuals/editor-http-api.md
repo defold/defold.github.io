@@ -5,23 +5,40 @@ layout: manual
 locale: ru
 title: Автоматизация редактора Defold с помощью HTTP
 toc:
-- Автоматизация редактора Defold {automating-the-defold-editor}
-- Запуск редактора из внешнего инструмента {starting-the-editor-from-an-external-tool}
-- Определение местоположения сервера редактора {locating-the-editor-server}
-- Обнаружение операций через OpenAPI {discovering-operations-through-openapi}
-- Выполнение команд редактора {executing-editor-commands}
-- Ответы команд и асинхронная работа {command-responses-and-asynchronous-work}
-- Сборка HTML5 {building-html5}
-- Поиск по документации API {searching-api-documentation}
-- Чтение вывода консоли {reading-console-output}
-- Рендеринг предпросмотров сцен {rendering-scene-previews}
-- Выполнение Lua в редакторе {executing-editor-lua}
-- Изменение ресурсов и файлов {modifying-resources-and-files}
-- Настройки {preferences}
-- Маршруты, определяемые проектом {project-defined-routes}
-- Хуки жизненного цикла {lifecycle-hooks}
-- Безопасность и совместимость {security-and-compatibility}
-- Сервер движка {engine-server}
+- anchor: automating-the-defold-editor
+  title: Автоматизация редактора Defold
+- anchor: starting-the-editor-from-an-external-tool
+  title: Запуск редактора из внешнего инструмента
+- anchor: locating-the-editor-server
+  title: Определение местоположения сервера редактора
+- anchor: discovering-operations-through-openapi
+  title: Обнаружение операций через OpenAPI
+- anchor: executing-editor-commands
+  title: Выполнение команд редактора
+- anchor: command-responses-and-asynchronous-work
+  title: Ответы команд и асинхронная работа
+- anchor: building-html5
+  title: Сборка HTML5
+- anchor: searching-api-documentation
+  title: Поиск по документации API
+- anchor: reading-console-output
+  title: Чтение вывода консоли
+- anchor: rendering-scene-previews
+  title: Рендеринг предпросмотров сцен
+- anchor: executing-editor-lua
+  title: Выполнение Lua в редакторе
+- anchor: modifying-resources-and-files
+  title: Изменение ресурсов и файлов
+- anchor: preferences
+  title: Настройки
+- anchor: project-defined-routes
+  title: Маршруты, определяемые проектом
+- anchor: lifecycle-hooks
+  title: Хуки жизненного цикла
+- anchor: security-and-compatibility
+  title: Безопасность и совместимость
+- anchor: engine-server
+  title: Сервер движка
 ---
 
 # Автоматизация редактора Defold {#automating-the-defold-editor}

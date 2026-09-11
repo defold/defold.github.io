@@ -8,10 +8,12 @@ toc:
 - iOS 开发
 - Apple 的代码签名过程
 - 使用免费的 Apple 开发者账户进行开发
-- 创建 iOS 应用包 {creating-an-ios-application-bundle}
+- anchor: creating-an-ios-application-bundle
+  title: 创建 iOS 应用包
 - 自定义 Info.plist 和本地目标发现
 - 在已连接的 iPhone 上安装和启动包
-- 创建故事板 {creating-a-storyboard}
+- anchor: creating-a-storyboard
+  title: 创建故事板
 - 创建图标资源目录
 - 安装 iOS 应用包
 - 出口合规信息
@@ -72,8 +74,8 @@ iOS 要求 _所有_ 你想要在手机或平板电脑上运行的应用 _必须_
 1. 连接你的设备。
 2. 安装 Xcode。
 3. 向 Xcode 添加新账户并使用你的 Apple ID 登录。
-4. 创建一个新项目。最简单的"单视图应用"即可。
-5. 选择你的"团队"（为你自动创建）并为应用提供一个包标识符。
+4. 创建一个新项目。最简单的`单视图应用`即可。
+5. 选择你的`团队`（为你自动创建）并为应用提供一个包标识符。
 
 <div class='important' markdown='1'>
 记下包标识符，因为你必须在你的 Defold 项目中使用相同的包标识符。
@@ -84,7 +86,7 @@ iOS 要求 _所有_ 你想要在手机或平板电脑上运行的应用 _必须_
    ![](/manuals/images/ios/xcode_certificates.png)
 
 7. 在你的设备上构建应用。第一次，Xcode 会要求你启用开发者模式，并会用调试器支持准备设备。这可能需要一段时间。
-8. 当你验证应用可以正常工作后，在磁盘上找到它。你可以在"报告导航器"的构建报告中查看构建位置。
+8. 当你验证应用可以正常工作后，在磁盘上找到它。你可以在`报告导航器`的构建报告中查看构建位置。
 
    ![](/manuals/images/ios/app_location.png)
 
@@ -92,7 +94,7 @@ iOS 要求 _所有_ 你想要在手机或平板电脑上运行的应用 _必须_
 
    ![](/manuals/images/ios/app_contents.png)
 
-10. 将"embedded.mobileprovision"文件复制到你驱动器上你将找到它的某个位置。
+10. 将`embedded.mobileprovision`文件复制到你驱动器上你将找到它的某个位置。
 
    ![](/manuals/images/ios/free_provisioning.png)
 
@@ -106,10 +108,10 @@ iOS 要求 _所有_ 你想要在手机或平板电脑上运行的应用 _必须_
 
 ![Signing iOS bundle](/manuals/images/ios/sign_bundle.png)
 
-选择你的代码签名身份并浏览移动配置文件。选择 `arm64-ios` 设备架构，并在需要时选择 `x86_64-ios` 模拟器架构，同时选择变体（Debug 或 Release）。你可以取消选中 `Sign application` 复选框以跳过签名过程，稍后再手动签名。
+选择你的代码签名身份并浏览移动配置文件，同时选择变体（Debug 或 Release）。你可以取消选中 `Sign application` 复选框以跳过签名过程，稍后再手动签名。勾选 `Simulator` 可以创建用于 iOS 模拟器的 `arm64_sim-ios` 包，而不是设备包。
 
 <div class='important' markdown='1'>
-在 iOS 模拟器上测试游戏时，你 **必须** 取消选中 `Sign application` 复选框。你将能够安装应用程序，但它无法启动。
+模拟器包只能在 Apple Silicon Mac 上的 iOS 模拟器中运行。它们始终使用 ad-hoc 签名，因此勾选 `Simulator` 后，签名、安装和启动选项将被禁用。请按照下文说明使用 `xcrun simctl` 安装该包。
 </div>
 
 按*创建包*，然后系统会提示你指定包将在你的计算机上的哪个位置创建。
@@ -139,7 +141,7 @@ Mustache 条件会将发现相关条目排除在 Release bundle 之外。iOS 会
 
 ## 在已连接的 iPhone 上安装和启动包
 
-你可以使用编辑器的打包对话框中的"在已连接设备上安装"和"启动已安装应用"复选框来安装和启动构建的包：
+你可以使用编辑器的打包对话框中的`在已连接设备上安装`和`启动已安装应用`复选框来安装和启动构建的包：
 
 ![Install and launch iOS bundle](/manuals/images/ios/install_and_launch.png)
 
@@ -168,7 +170,7 @@ $ brew install ios-deploy
 
 ![Add image](/manuals/images/ios/xcode_storyboard_add_image.png)
 
-打开 `LaunchScreen.storyboard` 并点击加号按钮（<kbd>+</kbd>）。在对话框中输入"imageview"以查找 ImageView 组件。
+打开 `LaunchScreen.storyboard` 并点击加号按钮（<kbd>+</kbd>）。在对话框中输入`imageview`以查找 ImageView 组件。
 
 ![Add image view](/manuals/images/ios/xcode_storyboard_add_imageview.png)
 
@@ -220,10 +222,10 @@ $ brew install ios-deploy
 不要为通知、设置或 Spotlight 添加任何图标。
 </div>
 
-完成后，将活动方案设置为"Build -> Any iOS Device (arm64)"（或"Generic iOS Device"）并选择 <kbd>Product</kbd> -> <kbd>Build</kbd>。等待构建过程完成。
+完成后，将活动方案设置为`Build -> Any iOS Device (arm64)`（或`Generic iOS Device`）并选择 <kbd>Product</kbd> -> <kbd>Build</kbd>。等待构建过程完成。
 
 <div class='sidenote' markdown='1'>
-确保你为"Any iOS Device (arm64)"或"Generic iOS Device"构建，否则在上传构建时你会得到 `ERROR ITMS-90704` 错误。
+确保你为`Any iOS Device (arm64)`或`Generic iOS Device`构建，否则在上传构建时你会得到 `ERROR ITMS-90704` 错误。
 </div>
 
 ![Build project](/manuals/images/ios/xcode_icons_build.png)
@@ -245,7 +247,7 @@ App Store 图标不必从 *game.project* 中引用。上传到 iTunes Connect �
 
 编辑器会写入一个 *.ipa* 文件，这是一个 iOS 应用包。要在你的设备上安装该文件，你可以使用以下工具之一：
 
-* 通过 Xcode 的"设备和模拟器"窗口
+* 通过 Xcode 的`设备和模拟器`窗口
 * [`ios-deploy`](https://github.com/ios-control/ios-deploy) 命令行工具
 * 来自 macOS App Store 的 [`Apple Configurator 2`](https://apps.apple.com/us/app/apple-configurator-2/)
 * iTunes

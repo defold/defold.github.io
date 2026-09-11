@@ -1,0 +1,18 @@
+---
+brief: このマニュアルでは、Defold ゲームのサイズとパフォーマンスを最適化する方法を説明します。
+github: https://github.com/defold/doc
+layout: manual
+locale: ja
+title: Defold ゲームの最適化
+toc:
+- anchor: optimizing-a-defold-game
+  title: Defold ゲームの最適化
+---
+
+# Defold ゲームの最適化 {#optimizing-a-defold-game}
+対象プラットフォームの技術的な制約を理解し、その要件を満たすようにゲームを設計、実装、最適化することが重要です。ほとんどのプラットフォームでは、考慮すべき点がいくつかあります。
+
+* [ゲームのサイズ](/ja/manuals/optimization-size) - ゲームのバンドル（bundle）の許容できる最大サイズはどのくらいですか？品質を損なわずにゲームをできるだけ小さくするにはどうすればよいですか？
+* [実行時の速度](/ja/manuals/optimization-speed) - 対象プラットフォームにはどの程度の性能がありますか？CPU、GPU、またはその両方の使用率を最小限に抑えながら、安定したフレームレートでゲームを動作させるにはどうすればよいですか？
+* [メモリ使用量](/ja/manuals/optimization-memory) - 対象プラットフォームにはどのようなメモリの制約がありますか？メモリ使用量を減らすにはどうすればよいですか？
+* [バッテリー消費量](/ja/manuals/optimization-battery) - これは主に、モバイルデバイスや携帯型デバイスを対象とする場合に重点的に検討する項目です。

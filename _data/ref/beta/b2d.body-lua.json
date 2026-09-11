@@ -2,25 +2,33 @@
     "elements": [
         {
             "brief": "Box2D body",
-            "description": "Box2D body",
+            "description": "An opaque handle to the native Box2D body of a collision-object component.\nObtain it with <a href=\"/ref/b2d#b2d.get_body\">b2d.get_body</a> and pass it to functions in <code>b2d.body</code>.\nThe collision object owns the body, so use <a href=\"#b2d\">b2d.body.is_valid</a> before\nretaining a handle across deletion or collection changes.",
             "error": "",
-            "examples": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">body</span> <span class=\"o\">=</span> <span class=\"n\">b2d</span><span class=\"p\">.</span><span class=\"n\">get_body</span><span class=\"p\">(</span><span class=\"s2\">&quot;#collisionobject&quot;</span><span class=\"p\">)</span>\n<span class=\"kr\">if</span> <span class=\"n\">body</span> <span class=\"ow\">and</span> <span class=\"n\">b2d</span><span class=\"p\">.</span><span class=\"n\">body</span><span class=\"p\">.</span><span class=\"n\">is_valid</span><span class=\"p\">(</span><span class=\"n\">body</span><span class=\"p\">)</span> <span class=\"kr\">then</span>\n    <span class=\"n\">b2d</span><span class=\"p\">.</span><span class=\"n\">body</span><span class=\"p\">.</span><span class=\"n\">apply_force_to_center</span><span class=\"p\">(</span><span class=\"n\">body</span><span class=\"p\">,</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">100</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">))</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
             "language": "",
             "members": [],
             "name": "b2Body",
             "notes": [],
             "parameters": [
                 {
-                    "doc": "",
+                    "doc": "Box2D body handle",
                     "is_optional": "False",
                     "name": "value",
                     "types": [
                         "userdata"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">userdata</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">userdata</a>"
                     ]
                 }
             ],
             "replaces": "",
             "returnvalues": [],
+            "target_type": "userdata",
+            "target_type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">userdata</a>",
             "tparams": [],
             "type": "TYPEDEF"
         },
@@ -40,6 +48,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 },
                 {
@@ -48,6 +62,12 @@
                     "name": "impulse",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -72,6 +92,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 },
                 {
@@ -80,6 +106,12 @@
                     "name": "impulse",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -104,6 +136,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 },
                 {
@@ -112,6 +150,12 @@
                     "name": "force",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 },
                 {
@@ -120,6 +164,12 @@
                     "name": "point",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 }
             ],
@@ -144,6 +194,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 },
                 {
@@ -152,6 +208,12 @@
                     "name": "force",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 },
                 {
@@ -160,6 +222,12 @@
                     "name": "point",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 }
             ],
@@ -184,6 +252,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 },
                 {
@@ -192,6 +266,12 @@
                     "name": "force",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 }
             ],
@@ -216,6 +296,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 },
                 {
@@ -224,6 +310,12 @@
                     "name": "force",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 }
             ],
@@ -248,6 +340,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 },
                 {
@@ -256,6 +354,12 @@
                     "name": "impulse",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 },
                 {
@@ -264,6 +368,12 @@
                     "name": "point",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 }
             ],
@@ -288,6 +398,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 },
                 {
@@ -296,6 +412,12 @@
                     "name": "impulse",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 },
                 {
@@ -304,6 +426,12 @@
                     "name": "point",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 }
             ],
@@ -328,6 +456,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 },
                 {
@@ -336,6 +470,12 @@
                     "name": "impulse",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 }
             ],
@@ -360,6 +500,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 },
                 {
@@ -368,6 +514,12 @@
                     "name": "torque",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -392,6 +544,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 },
                 {
@@ -400,6 +558,12 @@
                     "name": "torque",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -409,94 +573,34 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "Dynamic body",
-            "description": "Dynamic body",
+            "brief": "Body types",
+            "description": "Body types",
             "error": "",
             "examples": "",
             "language": "",
-            "members": [],
-            "name": "b2d.body.B2_DYNAMIC_BODY",
+            "members": [
+                {
+                    "doc": "Dynamic body",
+                    "name": "b2d.body.B2_DYNAMIC_BODY"
+                },
+                {
+                    "doc": "Kinematic body",
+                    "name": "b2d.body.B2_KINEMATIC_BODY"
+                },
+                {
+                    "doc": "Static (immovable) body",
+                    "name": "b2d.body.B2_STATIC_BODY"
+                }
+            ],
+            "name": "b2d.body.B2",
             "notes": [],
             "parameters": [],
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "Dynamic body",
-            "description": "Dynamic body",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "b2d.body.B2_DYNAMIC_BODY",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "Kinematic body",
-            "description": "Kinematic body",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "b2d.body.B2_KINEMATIC_BODY",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "Kinematic body",
-            "description": "Kinematic body",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "b2d.body.B2_KINEMATIC_BODY",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "Static (immovable) body",
-            "description": "Static (immovable) body",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "b2d.body.B2_STATIC_BODY",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "Static (immovable) body",
-            "description": "Static (immovable) body",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "b2d.body.B2_STATIC_BODY",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
+            "type": "ENUM",
+            "value_type": "integer",
+            "value_type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
         },
         {
             "brief": "Compute the world AABB of all body shapes.",
@@ -514,16 +618,28 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 }
             ],
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "table with <code>lower</code> and <code>upper</code> vector3 fields",
+                    "doc": "body bounds",
                     "name": "aabb",
                     "types": [
-                        "table"
+                        "b2d.aabb"
+                    ],
+                    "types_html": [
+                        "<a href=\"../b2d-lua/#b2d.aabb\">b2d.aabb</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../b2d-lua/#b2d.aabb\">b2d.aabb</a>"
                     ]
                 }
             ],
@@ -532,7 +648,7 @@
         },
         {
             "brief": "Create a chain and attach its segment shapes to this body.",
-            "description": "Chains are one-sided connected segments with optional ghost vertices at\nthe ends of open chains. Ghost vertices are creation-time chain data only and\ncannot be added to arbitrary shapes, bodies, or joints after creation.\n<dl>\n<dt><code>definition.vertices</code></dt>\n<dd><span class=\"type\">table</span> array of local <code>vector3</code> vertices. Open chains require at least 2 vertices. Loop chains require at least 4 vertices.</dd>\n<dt><code>definition.loop</code></dt>\n<dd><span class=\"type\">boolean</span> true to create a closed loop chain.</dd>\n<dt><code>definition.prev_vertex</code></dt>\n<dd><span class=\"type\">vector3</span> optional ghost vertex before the first vertex for open chains.</dd>\n<dt><code>definition.next_vertex</code></dt>\n<dd><span class=\"type\">vector3</span> optional ghost vertex after the last vertex for open chains.</dd>\n<dt><code>definition.friction</code></dt>\n<dd><span class=\"type\">number</span> optional friction.</dd>\n<dt><code>definition.restitution</code></dt>\n<dd><span class=\"type\">number</span> optional restitution.</dd>\n<dt><code>definition.material</code></dt>\n<dd><span class=\"type\">number</span> optional material id.</dd>\n<dt><code>definition.filter</code></dt>\n<dd><span class=\"type\">table</span> optional filter with <code>category_bits</code>, <code>mask_bits</code>, and <code>group_index</code>.</dd>\n<dt><code>definition.enable_sensor_events</code></dt>\n<dd><span class=\"type\">boolean</span> true to enable sensor events for chain segments.</dd>\n</dl>",
+            "description": "Chains are one-sided connected segments with optional ghost vertices at\nthe ends of open chains. Ghost vertices are creation-time chain data only and\ncannot be added to arbitrary shapes, bodies, or joints after creation.",
             "error": "",
             "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">chain</span><span class=\"p\">,</span> <span class=\"n\">segments</span> <span class=\"o\">=</span> <span class=\"n\">b2d</span><span class=\"p\">.</span><span class=\"n\">body</span><span class=\"p\">.</span><span class=\"n\">create_chain</span><span class=\"p\">(</span><span class=\"n\">body</span><span class=\"p\">,</span> <span class=\"p\">{</span>\n    <span class=\"n\">vertices</span> <span class=\"o\">=</span> <span class=\"p\">{</span>\n        <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"o\">-</span><span class=\"mi\">64</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">),</span>\n        <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">16</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">),</span>\n        <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">64</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">),</span>\n    <span class=\"p\">},</span>\n    <span class=\"n\">prev_vertex</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"o\">-</span><span class=\"mi\">96</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">),</span>\n    <span class=\"n\">next_vertex</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">96</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">),</span>\n    <span class=\"n\">friction</span> <span class=\"o\">=</span> <span class=\"mf\">0.6</span><span class=\"p\">,</span>\n<span class=\"p\">})</span>\n</code></pre></div>",
             "language": "",
@@ -546,6 +662,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 },
                 {
@@ -553,7 +675,13 @@
                     "is_optional": "False",
                     "name": "definition",
                     "types": [
-                        "table"
+                        "b2d.chain_definition"
+                    ],
+                    "types_html": [
+                        "<a href=\"../b2d-lua/#b2d.chain_definition\">b2d.chain_definition</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../b2d-lua/#b2d.chain_definition\">b2d.chain_definition</a>"
                     ]
                 }
             ],
@@ -564,13 +692,25 @@
                     "name": "chain",
                     "types": [
                         "b2Chain"
+                    ],
+                    "types_html": [
+                        "<a href=\"../b2d.chain-lua/#b2Chain\">b2Chain</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../b2d.chain-lua/#b2Chain\">b2Chain</a>"
                     ]
                 },
                 {
-                    "doc": "array of shape info tables for the chain segments",
+                    "doc": "created chain segments",
                     "name": "segments",
                     "types": [
-                        "table"
+                        "b2d.shape_info[]"
+                    ],
+                    "types_html": [
+                        "<a href=\"../b2d-lua/#b2d.shape_info\">b2d.shape_info</a>[]"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../b2d-lua/#b2d.shape_info\">b2d.shape_info</a>[]"
                     ]
                 }
             ],
@@ -593,24 +733,42 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 },
                 {
-                    "doc": "fixture definition table with:\n<code>shape</code> = shape table, <code>friction</code> = number, <code>restitution</code> = number,\n<code>density</code> = number, <code>sensor</code> = boolean, and optional <code>filter</code> table.\nSupported shape tables are:\n<code>circle</code> = <code>{ type = b2d.shape.SHAPE_TYPE_CIRCLE, radius = number, center = vector3_or_nil }</code>\n<code>edge</code> = <code>{ type = b2d.shape.SHAPE_TYPE_EDGE, v1 = vector3, v2 = vector3, v0 = vector3_or_nil, v3 = vector3_or_nil }</code>\n<code>polygon</code> = <code>{ type = b2d.shape.SHAPE_TYPE_POLYGON, vertices = { vector3, ... } }</code>\n<code>box</code> = <code>{ type = b2d.shape.SHAPE_TYPE_BOX, hx = number, hy = number, center = vector3_or_nil, angle = radians_or_nil }</code>\n<code>chain</code> = <code>{ type = b2d.shape.SHAPE_TYPE_CHAIN, vertices = { vector3, ... }, loop = boolean_or_nil, prev_vertex = vector3_or_nil, next_vertex = vector3_or_nil }</code>",
+                    "doc": "fixture definition",
                     "is_optional": "False",
                     "name": "definition",
                     "types": [
-                        "table"
+                        "b2d.fixture_definition"
+                    ],
+                    "types_html": [
+                        "<a href=\"../b2d-lua/#b2d.fixture_definition\">b2d.fixture_definition</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../b2d-lua/#b2d.fixture_definition\">b2d.fixture_definition</a>"
                     ]
                 }
             ],
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "fixture info table with <code>index</code>, <code>type</code>, <code>sensor</code>, <code>density</code>, <code>friction</code>, <code>restitution</code>, and <code>child_count</code>",
+                    "doc": "fixture information",
                     "name": "fixture",
                     "types": [
-                        "table"
+                        "b2d.fixture_info"
+                    ],
+                    "types_html": [
+                        "<a href=\"../b2d-lua/#b2d.fixture_info\">b2d.fixture_info</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../b2d-lua/#b2d.fixture_info\">b2d.fixture_info</a>"
                     ]
                 }
             ],
@@ -633,6 +791,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 },
                 {
@@ -641,6 +805,12 @@
                     "name": "shape",
                     "types": [
                         "b2Shape"
+                    ],
+                    "types_html": [
+                        "<a href=\"../b2d.shape-lua/#b2Shape\">b2Shape</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../b2d.shape-lua/#b2Shape\">b2Shape</a>"
                     ]
                 },
                 {
@@ -649,6 +819,12 @@
                     "name": "density",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -659,7 +835,7 @@
         },
         {
             "brief": "Creates a shape and attaches it to this body",
-            "description": "Creates a shape and attaches it to this body.\nIf the density is non-zero, this function automatically updates the mass of the body.\nContacts are not created until the next time step.\nThe definition may include <code>density</code>, <code>friction</code>, <code>restitution</code>, <code>material</code>,\n<code>sensor</code> or <code>is_sensor</code>, <code>filter</code>, and the shape table itself. The shape table\ncan be in <code>definition.shape</code> or directly in <code>definition</code>.",
+            "description": "Creates a shape and attaches it to this body.\nIf the density is non-zero, this function automatically updates the mass of the body.\nContacts are not created until the next time step.",
             "error": "",
             "examples": "",
             "language": "",
@@ -673,6 +849,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 },
                 {
@@ -680,7 +862,13 @@
                     "is_optional": "False",
                     "name": "definition",
                     "types": [
-                        "table"
+                        "b2d.shape_create_definition"
+                    ],
+                    "types_html": [
+                        "<a href=\"../b2d-lua/#b2d.shape_create_definition\">b2d.shape_create_definition</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../b2d-lua/#b2d.shape_create_definition\">b2d.shape_create_definition</a>"
                     ]
                 }
             ],
@@ -705,14 +893,26 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 },
                 {
-                    "doc": "1-based fixture index from <code>b2d.body.get_fixtures</code>",
+                    "doc": "1-based fixture index from <a href=\"#b2d\">b2d.body.get_fixtures</a>",
                     "is_optional": "False",
                     "name": "fixture_index",
                     "types": [
-                        "number"
+                        "integer"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
                     ]
                 }
             ],
@@ -737,6 +937,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 },
                 {
@@ -744,7 +950,13 @@
                     "is_optional": "False",
                     "name": "shape_index",
                     "types": [
-                        "number"
+                        "integer"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
                     ]
                 }
             ],
@@ -769,6 +981,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 }
             ],
@@ -793,6 +1011,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 },
                 {
@@ -801,6 +1025,12 @@
                     "name": "enable",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
@@ -825,6 +1055,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 },
                 {
@@ -833,6 +1069,12 @@
                     "name": "enable",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
@@ -857,6 +1099,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 },
                 {
@@ -865,6 +1113,12 @@
                     "name": "enable",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
@@ -889,6 +1143,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 }
             ],
@@ -899,6 +1159,56 @@
                     "name": "angle",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get the angle in radians.",
+            "description": "Get the angle in radians.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.body.get_angle",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "body",
+                    "is_optional": "False",
+                    "name": "body",
+                    "types": [
+                        "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "the current world rotation angle in radians.",
+                    "name": "angle",
+                    "types": [
+                        "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -921,6 +1231,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 }
             ],
@@ -931,6 +1247,12 @@
                     "name": "damping",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -953,6 +1275,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 }
             ],
@@ -963,6 +1291,12 @@
                     "name": "damping",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -985,6 +1319,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 }
             ],
@@ -995,6 +1335,12 @@
                     "name": "velocity",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -1017,6 +1363,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 }
             ],
@@ -1027,6 +1379,12 @@
                     "name": "velocity",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -1049,6 +1407,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 }
             ],
@@ -1058,71 +1422,13 @@
                     "doc": "array of contact tables",
                     "name": "contacts",
                     "types": [
-                        "table"
-                    ]
-                }
-            ],
-            "tparams": [],
-            "type": "FUNCTION"
-        },
-        {
-            "brief": "Get the list of all contacts attached to this body.",
-            "description": "Get the list of all contacts attached to this body.",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "b2d.body.get_contact_list",
-            "notes": [],
-            "parameters": [
-                {
-                    "doc": "body",
-                    "is_optional": "False",
-                    "name": "body",
-                    "types": [
-                        "b2Body"
-                    ]
-                }
-            ],
-            "replaces": "",
-            "returnvalues": [
-                {
-                    "doc": "the first edge",
-                    "name": "edge",
-                    "types": [
-                        "b2ContactEdge"
-                    ]
-                }
-            ],
-            "tparams": [],
-            "type": "FUNCTION"
-        },
-        {
-            "brief": "Get the list of all contacts attached to this body.",
-            "description": "Get the list of all contacts attached to this body.",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "b2d.body.get_contact_list",
-            "notes": [],
-            "parameters": [
-                {
-                    "doc": "body",
-                    "is_optional": "False",
-                    "name": "body",
-                    "types": [
-                        "b2Body"
-                    ]
-                }
-            ],
-            "replaces": "",
-            "returnvalues": [
-                {
-                    "doc": "the first edge",
-                    "name": "edge",
-                    "types": [
-                        "b2ContactEdge"
+                        "b2d.contact_data[]"
+                    ],
+                    "types_html": [
+                        "<a href=\"../b2d-lua/#b2d.contact_data\">b2d.contact_data</a>[]"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../b2d-lua/#b2d.contact_data\">b2d.contact_data</a>[]"
                     ]
                 }
             ],
@@ -1145,16 +1451,28 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 }
             ],
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "array of fixture info tables with <code>index</code>, <code>type</code>, <code>sensor</code>, <code>density</code>, <code>friction</code>, <code>restitution</code>, and <code>child_count</code>",
+                    "doc": "the attached fixtures",
                     "name": "fixtures",
                     "types": [
-                        "table"
+                        "b2d.fixture_info[]"
+                    ],
+                    "types_html": [
+                        "<a href=\"../b2d-lua/#b2d.fixture_info\">b2d.fixture_info</a>[]"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../b2d-lua/#b2d.fixture_info\">b2d.fixture_info</a>[]"
                     ]
                 }
             ],
@@ -1179,6 +1497,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 }
             ],
@@ -1189,6 +1513,12 @@
                     "name": "force",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 }
             ],
@@ -1213,6 +1543,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 }
             ],
@@ -1223,6 +1559,12 @@
                     "name": "force",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 }
             ],
@@ -1245,6 +1587,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 }
             ],
@@ -1255,6 +1603,12 @@
                     "name": "scale",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -1277,6 +1631,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 }
             ],
@@ -1287,6 +1647,12 @@
                     "name": "scale",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -1309,6 +1675,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 }
             ],
@@ -1319,6 +1691,12 @@
                     "name": "inertia",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -1341,16 +1719,28 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 }
             ],
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "array of <code>b2Joint</code> handles created by <code>b2d.joint</code>",
+                    "doc": "joint handles created by <a href=\"/ref/b2d#b2d.joint\">b2d.joint</a>",
                     "name": "joints",
                     "types": [
-                        "table"
+                        "b2Joint[]"
+                    ],
+                    "types_html": [
+                        "<a href=\"../b2d.joint-lua/#b2Joint\">b2Joint</a>[]"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../b2d.joint-lua/#b2Joint\">b2Joint</a>[]"
                     ]
                 }
             ],
@@ -1373,16 +1763,28 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 }
             ],
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "array of <code>b2Joint</code> handles created by <code>b2d.joint</code>",
+                    "doc": "joint handles created by <a href=\"/ref/b2d#b2d.joint\">b2d.joint</a>",
                     "name": "joints",
                     "types": [
-                        "table"
+                        "b2Joint[]"
+                    ],
+                    "types_html": [
+                        "<a href=\"../b2d.joint-lua/#b2Joint\">b2Joint</a>[]"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../b2d.joint-lua/#b2Joint\">b2Joint</a>[]"
                     ]
                 }
             ],
@@ -1405,6 +1807,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 }
             ],
@@ -1415,6 +1823,12 @@
                     "name": "damping",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -1437,6 +1851,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 }
             ],
@@ -1447,6 +1867,12 @@
                     "name": "damping",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -1469,6 +1895,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 }
             ],
@@ -1479,6 +1911,12 @@
                     "name": "velocity",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 }
             ],
@@ -1501,6 +1939,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 }
             ],
@@ -1511,6 +1955,12 @@
                     "name": "velocity",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 }
             ],
@@ -1533,6 +1983,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 },
                 {
@@ -1541,6 +1997,12 @@
                     "name": "local_point",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 }
             ],
@@ -1551,6 +2013,12 @@
                     "name": "velocity",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 }
             ],
@@ -1573,6 +2041,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 },
                 {
@@ -1581,6 +2055,12 @@
                     "name": "local_point",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 }
             ],
@@ -1591,6 +2071,12 @@
                     "name": "velocity",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 }
             ],
@@ -1613,6 +2099,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 },
                 {
@@ -1621,6 +2113,12 @@
                     "name": "world_point",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 }
             ],
@@ -1631,6 +2129,12 @@
                     "name": "velocity",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 }
             ],
@@ -1653,6 +2157,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 },
                 {
@@ -1661,6 +2171,12 @@
                     "name": "world_point",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 }
             ],
@@ -1671,6 +2187,12 @@
                     "name": "velocity",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 }
             ],
@@ -1693,6 +2215,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 }
             ],
@@ -1703,6 +2231,12 @@
                     "name": "center",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 }
             ],
@@ -1725,6 +2259,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 }
             ],
@@ -1735,6 +2275,12 @@
                     "name": "center",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 }
             ],
@@ -1757,6 +2303,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 },
                 {
@@ -1765,6 +2317,12 @@
                     "name": "world_point",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 }
             ],
@@ -1775,6 +2333,12 @@
                     "name": "vector",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 }
             ],
@@ -1797,6 +2361,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 },
                 {
@@ -1805,6 +2375,12 @@
                     "name": "world_point",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 }
             ],
@@ -1815,6 +2391,12 @@
                     "name": "vector",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 }
             ],
@@ -1837,6 +2419,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 },
                 {
@@ -1845,6 +2433,12 @@
                     "name": "world_vector",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 }
             ],
@@ -1855,6 +2449,12 @@
                     "name": "vector",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 }
             ],
@@ -1877,6 +2477,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 },
                 {
@@ -1885,6 +2491,12 @@
                     "name": "world_vector",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 }
             ],
@@ -1895,6 +2507,12 @@
                     "name": "vector",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 }
             ],
@@ -1917,6 +2535,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 }
             ],
@@ -1927,6 +2551,12 @@
                     "name": "mass",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -1949,6 +2579,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 }
             ],
@@ -1959,6 +2595,12 @@
                     "name": "mass",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -1981,16 +2623,28 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 }
             ],
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "table with <code>mass</code>, <code>center</code> in local coordinates, and <code>inertia</code>.",
+                    "doc": "the mass data",
                     "name": "data",
                     "types": [
-                        "table"
+                        "b2d.mass_data"
+                    ],
+                    "types_html": [
+                        "<a href=\"../b2d-lua/#b2d.mass_data\">b2d.mass_data</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../b2d-lua/#b2d.mass_data\">b2d.mass_data</a>"
                     ]
                 }
             ],
@@ -2013,6 +2667,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 }
             ],
@@ -2022,6 +2682,12 @@
                     "doc": "a struct containing the mass, inertia and center of the body.",
                     "name": "data",
                     "types": [
+                        "b2MassData"
+                    ],
+                    "types_html": [
+                        "b2MassData"
+                    ],
+                    "types_table_html": [
                         "b2MassData"
                     ]
                 }
@@ -2045,16 +2711,31 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 }
             ],
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "body name, or nil if no name is set",
+                    "doc": "body name, or <code>nil</code> if no name is set",
                     "name": "name",
                     "types": [
-                        "string"
+                        "string",
+                        "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 }
             ],
@@ -2077,16 +2758,31 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 }
             ],
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "the next body",
+                    "doc": "the next body, or <code>nil</code> if this is the last body",
                     "name": "body",
                     "types": [
-                        "b2Body"
+                        "b2Body",
+                        "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 }
             ],
@@ -2109,6 +2805,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 }
             ],
@@ -2119,6 +2821,12 @@
                     "name": "position",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 }
             ],
@@ -2141,6 +2849,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 }
             ],
@@ -2151,6 +2865,12 @@
                     "name": "position",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 }
             ],
@@ -2173,6 +2893,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 }
             ],
@@ -2183,6 +2909,12 @@
                     "name": "inertia",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -2205,16 +2937,28 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 }
             ],
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "a table of shape info entries. Each entry includes <code>shape_id</code> for use with <code>b2d.shape</code> functions.",
+                    "doc": "attached shapes",
                     "name": "shapes",
                     "types": [
-                        "table"
+                        "b2d.shape_info[]"
+                    ],
+                    "types_html": [
+                        "<a href=\"../b2d-lua/#b2d.shape_info\">b2d.shape_info</a>[]"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../b2d-lua/#b2d.shape_info\">b2d.shape_info</a>[]"
                     ]
                 }
             ],
@@ -2237,6 +2981,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 }
             ],
@@ -2247,6 +2997,12 @@
                     "name": "threshold",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -2269,16 +3025,28 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 }
             ],
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "table with <code>position</code> and <code>angle</code> in radians.",
+                    "doc": "the body transform",
                     "name": "transform",
                     "types": [
-                        "table"
+                        "b2d.transform"
+                    ],
+                    "types_html": [
+                        "<a href=\"../b2d-lua/#b2d.transform\">b2d.transform</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../b2d-lua/#b2d.transform\">b2d.transform</a>"
                     ]
                 }
             ],
@@ -2301,6 +3069,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 }
             ],
@@ -2310,6 +3084,12 @@
                     "doc": "the world position of the body's origin.",
                     "name": "transform",
                     "types": [
+                        "b2Transform"
+                    ],
+                    "types_html": [
+                        "b2Transform"
+                    ],
+                    "types_table_html": [
                         "b2Transform"
                     ]
                 }
@@ -2333,6 +3113,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 }
             ],
@@ -2342,6 +3128,12 @@
                     "doc": "the body type",
                     "name": "type",
                     "types": [
+                        "b2BodyType"
+                    ],
+                    "types_html": [
+                        "b2BodyType"
+                    ],
+                    "types_table_html": [
                         "b2BodyType"
                     ]
                 }
@@ -2365,6 +3157,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 }
             ],
@@ -2374,6 +3172,12 @@
                     "doc": "the body type",
                     "name": "type",
                     "types": [
+                        "b2BodyType"
+                    ],
+                    "types_html": [
+                        "b2BodyType"
+                    ],
+                    "types_table_html": [
                         "b2BodyType"
                     ]
                 }
@@ -2397,6 +3201,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 }
             ],
@@ -2407,6 +3217,12 @@
                     "name": "id",
                     "types": [
                         "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
                     ]
                 }
             ],
@@ -2429,6 +3245,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 }
             ],
@@ -2439,6 +3261,12 @@
                     "name": "world",
                     "types": [
                         "b2World"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2World\">b2World</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2World\">b2World</a>"
                     ]
                 }
             ],
@@ -2461,6 +3289,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 }
             ],
@@ -2471,38 +3305,12 @@
                     "name": "world",
                     "types": [
                         "b2World"
-                    ]
-                }
-            ],
-            "tparams": [],
-            "type": "FUNCTION"
-        },
-        {
-            "brief": "Get the angle in radians.",
-            "description": "Get the angle in radians.",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "b2d.body.get_world_center",
-            "notes": [],
-            "parameters": [
-                {
-                    "doc": "body",
-                    "is_optional": "False",
-                    "name": "body",
-                    "types": [
-                        "b2Body"
-                    ]
-                }
-            ],
-            "replaces": "",
-            "returnvalues": [
-                {
-                    "doc": "the current world rotation angle in radians.",
-                    "name": "angle",
-                    "types": [
-                        "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2World\">b2World</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2World\">b2World</a>"
                     ]
                 }
             ],
@@ -2525,6 +3333,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 }
             ],
@@ -2535,6 +3349,12 @@
                     "name": "center",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 }
             ],
@@ -2557,6 +3377,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 }
             ],
@@ -2567,6 +3393,12 @@
                     "name": "center",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 }
             ],
@@ -2589,6 +3421,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 },
                 {
@@ -2597,6 +3435,12 @@
                     "name": "local_vector",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 }
             ],
@@ -2607,6 +3451,12 @@
                     "name": "vector",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 }
             ],
@@ -2629,6 +3479,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 },
                 {
@@ -2637,6 +3493,12 @@
                     "name": "local_vector",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 }
             ],
@@ -2647,6 +3509,12 @@
                     "name": "vector",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 }
             ],
@@ -2669,6 +3537,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 },
                 {
@@ -2677,6 +3551,12 @@
                     "name": "local_vector",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 }
             ],
@@ -2687,6 +3567,12 @@
                     "name": "vector",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 }
             ],
@@ -2709,6 +3595,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 },
                 {
@@ -2717,6 +3609,12 @@
                     "name": "local_vector",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 }
             ],
@@ -2727,6 +3625,12 @@
                     "name": "vector",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 }
             ],
@@ -2749,6 +3653,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 }
             ],
@@ -2759,6 +3669,12 @@
                     "name": "enabled",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
@@ -2781,6 +3697,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 }
             ],
@@ -2791,6 +3713,12 @@
                     "name": "enabled",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
@@ -2813,6 +3741,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 }
             ],
@@ -2823,6 +3757,12 @@
                     "name": "enabled",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
@@ -2845,6 +3785,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 }
             ],
@@ -2855,6 +3801,12 @@
                     "name": "enabled",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
@@ -2877,6 +3829,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 }
             ],
@@ -2887,6 +3845,12 @@
                     "name": "enabled",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
@@ -2909,6 +3873,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 }
             ],
@@ -2919,6 +3889,12 @@
                     "name": "enabled",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
@@ -2941,6 +3917,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 }
             ],
@@ -2951,6 +3933,12 @@
                     "name": "enabled",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
@@ -2973,6 +3961,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 }
             ],
@@ -2983,6 +3977,12 @@
                     "name": "enabled",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
@@ -3005,6 +4005,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 }
             ],
@@ -3015,6 +4021,12 @@
                     "name": "enabled",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
@@ -3037,6 +4049,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 }
             ],
@@ -3047,6 +4065,12 @@
                     "name": "enabled",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
@@ -3069,6 +4093,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 }
             ],
@@ -3079,6 +4109,12 @@
                     "name": "valid",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
@@ -3101,6 +4137,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 }
             ],
@@ -3125,6 +4167,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 }
             ],
@@ -3149,6 +4197,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 },
                 {
@@ -3157,6 +4211,12 @@
                     "name": "enable",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
@@ -3181,6 +4241,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 },
                 {
@@ -3189,6 +4255,12 @@
                     "name": "enable",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
@@ -3213,6 +4285,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 },
                 {
@@ -3221,6 +4299,12 @@
                     "name": "damping",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -3245,6 +4329,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 },
                 {
@@ -3253,6 +4343,12 @@
                     "name": "damping",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -3277,6 +4373,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 },
                 {
@@ -3285,6 +4387,12 @@
                     "name": "omega",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -3309,6 +4417,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 },
                 {
@@ -3317,6 +4431,12 @@
                     "name": "omega",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -3341,6 +4461,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 },
                 {
@@ -3349,6 +4475,12 @@
                     "name": "enable",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
@@ -3373,6 +4505,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 },
                 {
@@ -3381,6 +4519,12 @@
                     "name": "enable",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
@@ -3405,6 +4549,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 },
                 {
@@ -3413,6 +4563,12 @@
                     "name": "enable",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
@@ -3437,6 +4593,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 },
                 {
@@ -3445,6 +4607,12 @@
                     "name": "enable",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
@@ -3469,6 +4637,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 },
                 {
@@ -3477,6 +4651,12 @@
                     "name": "enable",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
@@ -3501,6 +4681,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 },
                 {
@@ -3509,6 +4695,12 @@
                     "name": "enable",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
@@ -3533,6 +4725,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 },
                 {
@@ -3541,6 +4739,12 @@
                     "name": "scale",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -3565,6 +4769,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 },
                 {
@@ -3573,6 +4783,12 @@
                     "name": "scale",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -3597,6 +4813,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 },
                 {
@@ -3605,6 +4827,12 @@
                     "name": "damping",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -3629,6 +4857,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 },
                 {
@@ -3637,6 +4871,12 @@
                     "name": "damping",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -3661,6 +4901,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 },
                 {
@@ -3669,6 +4915,12 @@
                     "name": "velocity",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 }
             ],
@@ -3693,6 +4945,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 },
                 {
@@ -3701,6 +4959,12 @@
                     "name": "velocity",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 }
             ],
@@ -3729,14 +4993,26 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 },
                 {
-                    "doc": "table with <code>mass</code>, <code>center</code> in local coordinates, and <code>inertia</code>.",
+                    "doc": "the mass data",
                     "is_optional": "False",
                     "name": "data",
                     "types": [
-                        "table"
+                        "b2d.mass_data"
+                    ],
+                    "types_html": [
+                        "<a href=\"../b2d-lua/#b2d.mass_data\">b2d.mass_data</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../b2d-lua/#b2d.mass_data\">b2d.mass_data</a>"
                     ]
                 }
             ],
@@ -3765,6 +5041,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 },
                 {
@@ -3772,6 +5054,12 @@
                     "is_optional": "False",
                     "name": "data",
                     "types": [
+                        "b2MassData"
+                    ],
+                    "types_html": [
+                        "b2MassData"
+                    ],
+                    "types_table_html": [
                         "b2MassData"
                     ]
                 }
@@ -3797,6 +5085,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 },
                 {
@@ -3805,6 +5099,12 @@
                     "name": "name",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 }
             ],
@@ -3829,6 +5129,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 },
                 {
@@ -3837,6 +5143,12 @@
                     "name": "threshold",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -3861,6 +5173,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 },
                 {
@@ -3869,6 +5187,12 @@
                     "name": "enable",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
@@ -3893,6 +5217,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 },
                 {
@@ -3901,6 +5231,12 @@
                     "name": "position",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 },
                 {
@@ -3909,6 +5245,12 @@
                     "name": "angle",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -3917,6 +5259,12 @@
                     "name": "time_step",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -3941,6 +5289,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 },
                 {
@@ -3949,6 +5303,12 @@
                     "name": "position",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 },
                 {
@@ -3957,6 +5317,12 @@
                     "name": "angle",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -3981,6 +5347,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 },
                 {
@@ -3989,6 +5361,12 @@
                     "name": "position",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 },
                 {
@@ -3997,6 +5375,12 @@
                     "name": "angle",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -4021,6 +5405,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 },
                 {
@@ -4028,6 +5418,12 @@
                     "is_optional": "False",
                     "name": "type",
                     "types": [
+                        "b2BodyType"
+                    ],
+                    "types_html": [
+                        "b2BodyType"
+                    ],
+                    "types_table_html": [
                         "b2BodyType"
                     ]
                 }
@@ -4053,6 +5449,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 },
                 {
@@ -4060,6 +5462,12 @@
                     "is_optional": "False",
                     "name": "type",
                     "types": [
+                        "b2BodyType"
+                    ],
+                    "types_html": [
+                        "b2BodyType"
+                    ],
+                    "types_table_html": [
                         "b2BodyType"
                     ]
                 }
@@ -4085,6 +5493,12 @@
                     "name": "body",
                     "types": [
                         "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
                     ]
                 },
                 {
@@ -4093,6 +5507,12 @@
                     "name": "id",
                     "types": [
                         "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
                     ]
                 }
             ],
@@ -4103,29 +5523,38 @@
         },
         {
             "brief": "Box2D world",
-            "description": "Box2D world",
+            "description": "An opaque handle to the Box2D physics world owned by a collection. Obtain the\ncurrent collection's world with <a href=\"/ref/b2d#b2d.get_world\">b2d.get_world</a>, or the world that owns a\nbody with <a href=\"#b2d\">b2d.body.get_world</a>. Pass the handle to functions in\n<code>b2d.world</code>; it cannot be constructed directly from Lua.",
             "error": "",
-            "examples": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">world</span> <span class=\"o\">=</span> <span class=\"n\">b2d</span><span class=\"p\">.</span><span class=\"n\">get_world</span><span class=\"p\">()</span>\n<span class=\"kr\">if</span> <span class=\"n\">world</span> <span class=\"kr\">then</span>\n    <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">b2d</span><span class=\"p\">.</span><span class=\"n\">world</span><span class=\"p\">.</span><span class=\"n\">get_gravity</span><span class=\"p\">(</span><span class=\"n\">world</span><span class=\"p\">))</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
             "language": "",
             "members": [],
             "name": "b2World",
             "notes": [],
             "parameters": [
                 {
-                    "doc": "",
+                    "doc": "Box2D world handle",
                     "is_optional": "False",
                     "name": "value",
                     "types": [
                         "userdata"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">userdata</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">userdata</a>"
                     ]
                 }
             ],
             "replaces": "",
             "returnvalues": [],
+            "target_type": "userdata",
+            "target_type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">userdata</a>",
             "tparams": [],
             "type": "TYPEDEF"
         }
     ],
+    "format_version": 2,
     "info": {
         "api_language": "Lua",
         "brief": "Box2D b2Body documentation",

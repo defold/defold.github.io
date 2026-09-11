@@ -226,8 +226,6 @@ var EngineLoader = {
     wasm_pthread_size: 2000000,
     wasmjs_pthread_sha1: "",
     wasmjs_pthread_size: 250000,
-    asmjs_sha1: "",
-    asmjs_size: 3863299,
     wasm_instantiate_progress: 0,
 
     stream_wasm: "false" === "true",
@@ -372,11 +370,8 @@ var EngineLoader = {
         EngineLoader.loadAndRunScriptAsync(EngineLoader.getWasmJSName(exeName), EngineLoader.getWasmJSSize(), EngineLoader.getWasmJSSha1());
     },
 
-    loadAsmJsAsync: function(exeName) {
-        EngineLoader.loadAndRunScriptAsync(exeName + '_asmjs.js', EngineLoader.asmjs_size, EngineLoader.asmjs_sha1);
-    },
 
-    // load and start engine script (asm.js or wasm.js)
+    // load and start engine script (wasm.js)
     loadAndRunScriptAsync: function(src, expectedLength, expectedSHA1) {
         FileLoader.load(src, "text",
             function(delta) {
@@ -557,13 +552,11 @@ var GameArchiveLoader = {
         this._files = json.content;
 
         var isWASMSupported = Module['isWASMSupported'];
-        if (isWASMSupported) {
-            EngineLoader.loadWasmAsync(exeName);
-            totalSize += EngineLoader.getWasmSize() + EngineLoader.getWasmJSSize();
-        } else {
-            EngineLoader.loadAsmJsAsync(exeName);
-            totalSize += EngineLoader.asmjs_size;
+        if (!(isWASMSupported)) {
+            throw new Error("WebAssembly is required to run this demo.");
         }
+        EngineLoader.loadWasmAsync(exeName);
+        totalSize += EngineLoader.getWasmSize() + EngineLoader.getWasmJSSize();
         if (!Module['isDMFSSupported']) {
             // we can download in parallel here because we will not rely on FS, otherwise
             // we have to wait until after the [w]asm is loaded.

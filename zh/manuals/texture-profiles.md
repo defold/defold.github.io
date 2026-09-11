@@ -9,10 +9,12 @@ toc:
 - Basis Universal
 - ASTC
 - 纹理配置文件
-- 路径设置 {path-settings}
+- anchor: path-settings
+  title: 路径设置
 - 配置文件
 - 纹理格式
-- 压缩器 {compressors}
+- anchor: compressors
+  title: 压缩器
 - 示例图像
 - 压缩时间
 - 信号损失

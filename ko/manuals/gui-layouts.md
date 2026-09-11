@@ -6,7 +6,8 @@ locale: ko
 title: Defold의 GUI 레이아웃
 toc:
 - 레이아웃
-- 디스플레이 프로파일 만들기 {creating-display-profiles}
+- anchor: creating-display-profiles
+  title: 디스플레이 프로파일 만들기
 - Auto Layout Selection (Display Profiles)
 - GUI 레이아웃
 - 동적 프로파일 선택

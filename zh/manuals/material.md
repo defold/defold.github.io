@@ -7,12 +7,14 @@ title: Defold材质
 toc:
 - 材质
 - 创建材质
-- 属性 {attributes}
+- anchor: attributes
+  title: 属性
 - 默认属性语义
 - 设置自定义顶点属性数据
 - 使用自定义顶点属性的示例
 - 实例化
-- 顶点和片段常量 {vertex-and-fragment-constants}
+- anchor: vertex-and-fragment-constants
+  title: 顶点和片段常量
 - GUI 节点材质常量
 - 采样器
 - 采样器设置

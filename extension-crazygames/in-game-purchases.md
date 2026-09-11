@@ -1,17 +1,18 @@
 ---
 brief: This manual covers how to use in-game purchase in the CrazyGames SDK in Defold.
 github: https://github.com/defold/extension-crazygames
-language: en
 layout: manual
+locale: en
 title: Defold CrazyGames SDK extension API documentation
 toc:
 - In-game purchases
 - Get Xsolla token
+- Order tracking
 ---
 
 # In-game purchases
 
-CrazyGames have partnered with Xsolla to offer you the possibility to integrate in-game purchases more conveniently. Learn more about how to use Xsolla on the [CrazyGames developer pages](https://docs.crazygames.com/sdk/html5-v3/in-game-purchases/).
+CrazyGames have partnered with Xsolla to offer you the possibility to integrate in-game purchases more conveniently. Learn more about how to use Xsolla on the [CrazyGames developer pages](https://docs.crazygames.com/sdk/in-game-purchases/).
 
 
 ## Get Xsolla token
@@ -25,3 +26,17 @@ end)
 ```
 
 CrazyGames recommend that you retrieve the token every time before using it, since the tokens are usually short-lived, for example only 1 hour. The SDK handles the token refresh.
+
+
+## Order tracking
+
+CrazyGames order tracking is optional. After Xsolla reports that an order has completed, pass the order object to the analytics API:
+
+```lua
+crazygames.track_order("xsolla", {
+  orderId = "example-order-id",
+  status = "done",
+})
+```
+
+The order table must be JSON-serializable. CrazyGames also encourages reporting `new` and `canceled` orders when those states are available.

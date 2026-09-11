@@ -98,6 +98,9 @@ By setting the *Pivot* property you can change the alignment mode for the text.
 
 You can manipulate labels in runtime by getting and setting the label text as well as the various other properties.
 
+`text`
+: The text content of the label (`string`). Available through `go.get()` and `go.set()` since Defold 1.13.2.
+
 `color`
 : The label color (`vector4`)
 
@@ -117,9 +120,15 @@ You can manipulate labels in runtime by getting and setting the label text as we
 function init(self)
     -- Set the text of the "my_label" component in the same game object
     -- as this script.
-    label.set_text("#my_label", "New text")
+    go.set("#my_label", "text", "New text")
+    local text = go.get("#my_label", "text")
+    print(text) -- New text
 end
 ```
+
+<div class='sidenote' markdown='1'>
+Since Defold 1.13.2, `label.set_text()` and `label.get_text()` are deprecated in favor of the `text` property. The old functions remain available for compatibility. The old setter queues a message, while `go.set()` updates the text immediately.
+</div>
 
 ```lua
 function init(self)

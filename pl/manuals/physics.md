@@ -7,7 +7,8 @@ title: Fizyka w Defold
 toc:
 - Fizyka
 - Jednostki używane przez symulację silnika fizycznego
-- Aktualizacje fizyki {physics-updates}
+- anchor: physics-updates
+  title: Aktualizacje fizyki
 - Zastrzeżenia i typowe problemy
 ---
 

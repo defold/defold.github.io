@@ -87,7 +87,7 @@ This browser timeline is separate from both the in-game visual profiler and the 
 ## Build reports
 When bundling your game there is an option to create a build report. This is very useful to get a grip on the size of all the assets that are part of your game bundle. Simply check the *Generate build report* checkbox when bundling the game.
 
-The builder will produce a file called "report.html" alongside the game bundle. Open the file in a web browser to inspect the report:
+The builder will produce a file called `report.html` alongside the game bundle. Open the file in a web browser to inspect the report:
 
 The *Overview* gives an over all visual breakdown of the project size based on resource type.
 
@@ -114,11 +114,11 @@ OpenGL profiler (macOS)
 Android Profiler (Android)
 : https://developer.android.com/studio/profile/android-profiler.html
 
-  A set of profiling tools that captures real-time data of your game's CPU, memory, and network activity. You can perform sample-based method tracing of code execution, capture heap dumps, view memory allocations, and inspect the details of network-transmitted files. Using the tool requires that you set `android:debuggable="true"` in "AndroidManifest.xml".
+  A set of profiling tools that captures real-time data of your game's CPU, memory, and network activity. You can perform sample-based method tracing of code execution, capture heap dumps, view memory allocations, and inspect the details of network-transmitted files. Using the tool requires that you set `android:debuggable="true"` in `AndroidManifest.xml`.
 
   Note: Since Android Studio 4.1 it is also possible to [run the profiling tools without starting Android Studio](https://developer.android.com/studio/profile/android-profiler.html#standalone-profilers).
 
 Graphics API Debugger (Android)
 : https://github.com/google/gapid
 
-  This is a collection of tools that allows you to inspect, tweak and replay calls from an application to a graphics driver. To use the tool requires that you set `android:debuggable="true"` in "AndroidManifest.xml".
+  This is a collection of tools that allows you to inspect, tweak and replay calls from an application to a graphics driver. To use the tool requires that you set `android:debuggable="true"` in `AndroidManifest.xml`.

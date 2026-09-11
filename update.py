@@ -8,6 +8,7 @@ import sys
 import shutil
 import fnmatch
 import json
+from pathlib import Path
 import tempfile
 import re
 import subprocess
@@ -18,6 +19,7 @@ import yaml
 from llms import LLMS_DIR, generate_llms_manuals, generate_llms_apis, generate_llms_examples, path_to_manuals_anchor
 from utils import list_files, read_as_json, read_as_string, rmtree, write_as_string
 from scripts import dedupe_examples_wasm
+from scripts.example_images import copy_documentation_images
 from argparse import ArgumentParser
 from contextlib import contextmanager
 from example_scripts import (
@@ -57,17 +59,19 @@ twitter_image: {}
 """
 
 TAG_MD_FRONTMATTER = """---
-layout: assetportal
+layout: assetportal_redirect
 tag: {}
 title: {}
+pagefind_exclude: true
 ---
 """
 
 TAG_SORT_MD_FRONTMATTER = """---
-layout: assetportal
+layout: assetportal_redirect
 tag: {}
 title: {}
 sort: {}
+pagefind_exclude: true
 ---
 """
 
@@ -81,13 +85,6 @@ type: {}
 {}---
 """
 REFDOC_MD_BODY = "{% include anchor_headings.html html=content %}"
-
-EXAMPLES_ENGINE_LOADER = """
-        CUSTOM_PARAMETERS.archive_location_filter = function(path) { return ("/examples/archive" + path); };
-        CUSTOM_PARAMETERS.engine_arguments = [ '--config=examples.start={{ page.collection }}', '--verify-graphics-calls=false' ];
-        CUSTOM_PARAMETERS.resize_window_callback = function() {};
-        EngineLoader.load("canvas", "/examples/Defoldexamples");
-"""
 
 @contextmanager
 def tmpdir():
@@ -338,14 +335,15 @@ def generate_toc(file):
         if line.strip().startswith("```"):
             within_comment = not within_comment
         elif not within_comment and (line.startswith("# ") or line.startswith("## ") or line.startswith("### ")):
-            heading = line
+            anchor = re.search(r"\s+\{#([^}]+)\}\s*$", line)
+            heading = line[:anchor.start()] if anchor else line
             heading = heading.replace("#", "")
             heading = heading.replace("'", "")
             heading = heading.replace("`", "")
             heading = heading.replace("\"", "")
             heading = heading.strip()
             # note: there is some additional stripping done in manual.html
-            toc.append(heading)
+            toc.append({"title": heading, "anchor": anchor.group(1)} if anchor else heading)
     return toc
 
 
@@ -897,6 +895,10 @@ def parse_script_api_members(api_name, api):
     return elements
 
 def process_extension(extension_name, download = False):
+    # The IronSource repository was renamed; keep old rebuild requests working.
+    if extension_name == "extension-ironsource":
+        extension_name = "extension-levelplay"
+
     extension_zip = extension_name + ".zip"
     github_url = "https://github.com/defold/{}".format(extension_name)
     if download:
@@ -1103,10 +1105,8 @@ def process_examples(download = False, examples_ref = "master", changed_examples
                 print("...copying example.md")
                 shutil.copyfile(md_file, os.path.join(example_dst_dir, "index.md"))
 
-                print("...copying images")
-                for image in find_files(example_src_dir, "*.png|*.jpg|*.gif|*.webp|*.webm"):
-                    tgt = os.path.join(example_dst_dir, os.path.basename(image))
-                    shutil.copyfile(image, tgt)
+                print("...copying documentation images")
+                copy_documentation_images(example_src_dir, example_dst_dir, read_as_string(md_file))
 
         print("...generating index")
         if os.path.exists(data_index_file):
@@ -1465,11 +1465,28 @@ def games_showcase_root(tmp_dir):
     return os.path.join(tmp_dir, "games-showcase-master")
 
 
-def copy_game_images(tmp_dir):
-    source_dir = os.path.join(games_showcase_root(tmp_dir), "games", "images")
-    if not os.path.isdir(source_dir):
+def copy_game_images(tmp_dir, referenced_images):
+    source_dir = Path(games_showcase_root(tmp_dir)) / "games" / "images"
+    if not source_dir.is_dir():
         raise RuntimeError("games-showcase archive has no games/images directory")
-    rmcopytree(source_dir, os.path.join("images", "games"))
+
+    for image in referenced_images:
+        if Path(image).name != image:
+            raise RuntimeError("Showcase image must be a filename: {}".format(image))
+    missing_images = sorted(image for image in referenced_images if not (source_dir / image).is_file())
+    if missing_images:
+        raise RuntimeError("Missing showcase images: {}".format(", ".join(missing_images)))
+
+    image_dir = Path("images") / "games"
+    image_dir.mkdir(parents=True, exist_ok=True)
+    for image in sorted(referenced_images):
+        source = source_dir / image
+        destination = image_dir / image
+        if not destination.is_file() or destination.read_bytes() != source.read_bytes():
+            shutil.copyfile(source, destination)
+    for image in image_dir.iterdir():
+        if image.is_file() and image.name not in referenced_images:
+            image.unlink()
 
 
 def process_games(tmp_dir):
@@ -1510,19 +1527,11 @@ def process_games(tmp_dir):
             if image:
                 referenced_images.add(image)
 
-    source_image_dir = os.path.join(source_games_dir, "images")
-    missing_images = sorted(
-        image for image in referenced_images
-        if not os.path.isfile(os.path.join(source_image_dir, image))
-    )
-    if missing_images:
-        raise RuntimeError("Missing showcase images: {}".format(", ".join(missing_images)))
-
     full_ids = {game["id"] for game in games if game.get("showcase") == "full"}
     if set(featured_full) != full_ids:
         raise RuntimeError("Featured IDs must exactly match games with showcase=full")
 
-    copy_game_images(tmp_dir)
+    copy_game_images(tmp_dir, referenced_images)
     write_as_json(GAMES_JSON, games, False)
     write_as_json(SHOWCASE_FEATURED_FULL_JSON, featured_full, False)
 
@@ -1556,23 +1565,6 @@ def process_games_showcase(download = False):
         shutil.copyfile(GAMESSHOWCASE_ZIP, os.path.join(tmp_dir, GAMESSHOWCASE_ZIP))
         unzip(os.path.join(tmp_dir, GAMESSHOWCASE_ZIP), tmp_dir)
         process_games(tmp_dir)
-
-
-def process_game_images(download = False):
-    if download:
-        if os.path.exists(GAMESSHOWCASE_ZIP):
-            os.remove(GAMESSHOWCASE_ZIP)
-        download_file("https://github.com/defold/games-showcase/archive/master.zip", ".", GAMESSHOWCASE_ZIP)
-
-    if not os.path.exists(GAMESSHOWCASE_ZIP):
-        print("File {} does not exist".format(GAMESSHOWCASE_ZIP))
-        sys.exit(1)
-
-    with tmpdir() as tmp_dir:
-        shutil.copyfile(GAMESSHOWCASE_ZIP, os.path.join(tmp_dir, GAMESSHOWCASE_ZIP))
-        unzip(os.path.join(tmp_dir, GAMESSHOWCASE_ZIP), tmp_dir)
-        copy_game_images(tmp_dir)
-
 
 
 def process_refdoc(download = False):
@@ -1820,7 +1812,7 @@ def commit_changes():
             subprocess.run([ "git", "fetch", "origin", "master" ], check=True)
 
 
-ALL_COMMANDS = [ "all", "help", "docs", "refdoc", "asset-portal", "games-showcase", "game-images", "examples", "codepad", "commit", "extensions" ]
+ALL_COMMANDS = [ "all", "help", "docs", "refdoc", "asset-portal", "games-showcase", "examples", "codepad", "commit", "extensions" ]
 ALL_COMMANDS.sort()
 
 parser = ArgumentParser()
@@ -1838,7 +1830,6 @@ docs = Process the docs (manuals, tutorials and faq)
 refdoc = Process the API reference
 asset-portal = Process the assets list (from asset-portal)
 games-showcase = Process the games list (from games-showcase)
-game-images = Download website-ready game images without regenerating game data
 examples = Build the examples
 codepad = Build the Defold CodePad
 commit = Commit changed files
@@ -1855,8 +1846,6 @@ if "all" in args.commands:
     # Publishing is deliberately separate: CI validates the complete generated
     # site before invoking the commit command.
     commands.remove("commit")
-    # games-showcase already imports the images as part of the full data refresh.
-    commands.remove("game-images")
     args.commands = commands
 
 for command in args.commands:
@@ -1879,8 +1868,6 @@ for command in args.commands:
         process_asset_portal(download = args.download)
     elif command == "games-showcase":
         process_games_showcase(download = args.download)
-    elif command == "game-images":
-        process_game_images(download = args.download)
     elif command == "codepad":
         process_codepad(download = args.download)
     elif command == "commit":

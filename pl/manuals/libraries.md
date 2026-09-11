@@ -10,7 +10,8 @@ toc:
 - Adres URL biblioteki
 - Podstawowe uwierzytelnianie
 - Zaawansowane uwierzytelnianie
-- Ustawianie zależności do biblioteki {setting-up-library-dependencies}
+- anchor: setting-up-library-dependencies
+  title: Ustawianie zależności do biblioteki
 - Edytowanie plików w zależnościach bibliotek
 - Zerwane odwołania
 - Kolizja nazw

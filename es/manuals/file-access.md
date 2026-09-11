@@ -9,7 +9,8 @@ toc:
 - Funciones para acceder a archivos y carpetas
 - Ubicaciones de archivos y carpetas
 - Cómo guardar y cargar archivos específicos de la aplicación
-- Cómo acceder a archivos empaquetados con la aplicación {how-to-access-files-bundled-with-the-application}
+- anchor: how-to-access-files-bundled-with-the-application
+  title: Cómo acceder a archivos empaquetados con la aplicación
 - Acceso a archivos del sistema
 - Extensiones
 ---

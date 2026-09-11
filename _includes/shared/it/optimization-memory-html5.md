@@ -1,9 +1,9 @@
-## Heap size (HTML5)
-The heap size of a Defold HTML5 game can be configured from the [`heap_size` field](/manuals/project-settings/#heap-size) in *game.project*. Make sure to optimize memory usage of your game and set a minimal heap size.
+## Dimensione dell'heap (HTML5) {#heap-size-html5}
+Puoi configurare la dimensione dell'heap di un gioco HTML5 realizzato con Defold tramite il [campo `heap_size`](/manuals/project-settings/#heap-size) in *game.project*. Assicurati di ottimizzare l'utilizzo della memoria del gioco e di impostare la dimensione dell'heap al minimo necessario.
 
-For small games, 32 MB is an achievable heap size. For larger games, aim for 64–128 MB. If, for example, you're at 58 MB and further optimization isn't feasible, you can settle on 64 MB without overthinking it. There’s no strict target size — it depends on the game. Just aim for smaller sizes, ideally in steps of powers of two. 
+Per i giochi piccoli, un heap di 32 MB è un obiettivo raggiungibile. Per i giochi più grandi, punta a 64–128 MB. Se, per esempio, sei a 58 MB e non sono possibili ulteriori ottimizzazioni, puoi scegliere 64 MB senza pensarci troppo. Non esiste una dimensione obiettivo rigida: dipende dal gioco. Cerca semplicemente di ridurre le dimensioni, scegliendo idealmente valori che siano potenze di due. 
 
-To check current heap usage you can launch your game and play the game in the most "resource heavy" level or section and monitor memory usage:
+Per controllare l'utilizzo attuale dell'heap, puoi avviare il gioco e giocare nel livello o nella sezione che richiede più risorse, monitorando l'utilizzo della memoria:
 
 ```lua
 if html5 then
@@ -12,10 +12,10 @@ if html5 then
 end
 ```
 
-You can also open the developer tools of your browser and write the following in the console:
+Puoi anche aprire gli strumenti per sviluppatori del browser e scrivere quanto segue nella console:
 
 ```js
 HEAP8.length / 1024 / 1024
 ```
 
-If the memory usage remains at 32 MB, that's great! If not, follow the steps to [optimize the size of the engine itself and large assets such as sounds and textures](/manuals/optimization-size).
+Se l'utilizzo della memoria rimane a 32 MB, ottimo! Altrimenti, segui i passaggi per [ottimizzare le dimensioni del motore stesso e degli asset di grandi dimensioni, come suoni e texture](/manuals/optimization-size).

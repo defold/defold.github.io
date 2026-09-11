@@ -646,8 +646,9 @@ Oto porównanie:
 | `on_message` | Message Receiver | Podstawowe wywołanie zwrotne Defold do odbierania wiadomości. Jest przetwarzane, gdy w kolejce znajduje się jakakolwiek wiadomość. |
 | `final` | `OnDisable` / `OnDestroy` / `OnApplicationQuit` | Defold wywołuje `final()` dla każdego komponentu, gdy jego obiekt gry zostanie usunięty w czasie działania (`go.delete()`) albo gdy świat/kolekcja zostanie zwolniony, a także podczas zamykania aplikacji dla wszystkich pozostałych obiektów. |
 
-::: sidenote
+<div class='sidenote' markdown='1'>
 Pamiętaj, że Defold nie gwarantuje żadnej kolejności wykonywania między komponentami, gdy kilka z nich jest inicjalizowanych, aktualizowanych albo usuwanych naraz. Zachęca się do projektowania odseparowanego.
+</div>
 
 ### Inicjalizacja
 

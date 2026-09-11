@@ -6,7 +6,8 @@ locale: pt
 title: Layouts de GUI no Defold
 toc:
 - Layouts
-- Criando perfis de exibição {creating-display-profiles}
+- anchor: creating-display-profiles
+  title: Criando perfis de exibição
 - Seleção automática de layout (Display Profiles)
 - Layouts de GUI
 - Seleção dinâmica de perfil

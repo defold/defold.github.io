@@ -6,9 +6,11 @@ locale: ko
 title: HTML5 플랫폼용 Defold 개발
 toc:
 - HTML5 개발
-- 힙 크기 {heap-size}
+- anchor: heap-size
+  title: 힙 크기
 - HTML5 빌드 테스트
-- HTML5 번들 생성 {creating-html5-bundle}
+- anchor: creating-html5-bundle
+  title: HTML5 번들 생성
 - 알려진 이슈와 제약사항
 - HTML5 번들 커스터마이징
 - Downscale Fit and Fit

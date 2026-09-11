@@ -7,10 +7,13 @@ title: Настройки редактора
 toc:
 - Настройки редактора
 - Общие сведения
-- Програмный код {code}
+- anchor: code
+  title: Програмный код
 - Открытие скриптов в Visual Studio Code
-- Расширения {extensions}
-- Инструменты {tools}
+- anchor: extensions
+  title: Расширения
+- anchor: tools
+  title: Инструменты
 - Сочетания клавиш
 ---
 

@@ -9,14 +9,19 @@ toc:
 - 打开场景编辑器
 - 场景视图导航（摄像机控制）
 - 标准导航（所有可视编辑器）
-- 2D 和 3D 场景方向 {2d-and-3d-scene-orientation}
+- anchor: 2d-and-3d-scene-orientation
+  title: 2D 和 3D 场景方向
 - 工具栏概览
-- 选择和操作对象 {manipulating-objects}
+- anchor: manipulating-objects
+  title: 选择和操作对象
 - 选择对象
-- 可见性过滤器 {visibility-filters}
-- 网格设置 {grid-settings}
+- anchor: visibility-filters
+  title: 可见性过滤器
+- anchor: grid-settings
+  title: 网格设置
 - 摄像机类型：透视与正交
-- 自由摄像机模式 {free-camera-mode}
+- anchor: free-camera-mode
+  title: 自由摄像机模式
 - 激活自由摄像机模式
 - 退出自由摄像机模式
 - 环顾四周（鼠标视角）

@@ -1053,7 +1053,7 @@
         },
         {
             "brief": "Set a layout object's named style override",
-            "description": "The named style is applied after the object's default style. The default is\nthe markup <code>style</code> attribute when present, otherwise the object's tag name.\nPass zero to restore the default style. This affects rendering only and\nnever reshapes or reflows text.",
+            "description": "The named style replaces the object's default render properties, effects,\nand decorations. The default is the markup <code>style</code> attribute when present,\notherwise the object's tag name. Inline markup remains applied over the\nselected style. Pass zero to restore the default style. This affects rendering\nonly and never reshapes or reflows text.",
             "error": "",
             "examples": "",
             "language": "",
@@ -1145,6 +1145,16 @@
                     "doc": "Legacy: Padding for monospace, glyphbank fonts",
                     "name": "m_Padding",
                     "type": "uint32_t"
+                },
+                {
+                    "doc": "Named base style; zero selects no style.",
+                    "name": "m_BaseStyle",
+                    "type": "dmhash_t"
+                },
+                {
+                    "doc": "Use explicit base styling instead of legacy font layers, including when m_BaseStyle is zero.",
+                    "name": "m_UseBaseStyle",
+                    "type": "uint8_t:1"
                 },
                 {
                     "doc": "Allow line breaks",

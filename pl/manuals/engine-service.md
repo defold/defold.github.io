@@ -5,13 +5,20 @@ layout: manual
 locale: pl
 title: Usługa silnika i interfejsy HTTP API czasu działania
 toc:
-- Usługa silnika i interfejsy HTTP API czasu działania {the-engine-service-and-runtime-http-apis}
-- Dostępność i wykrywanie portu {availability-and-port-discovery}
-- Wbudowane punkty końcowe {built-in-endpoints}
-- Trasy czasu działania zdefiniowane przez rozszerzenia {extension-defined-runtime-routes}
-- Rozszerzenie Automation Bridge {automation-bridge-extension}
-- Klienty edytora i środowiska uruchomieniowego {editor-and-runtime-clients}
-- Ograniczenia i bezpieczeństwo {limitations-and-security}
+- anchor: the-engine-service-and-runtime-http-apis
+  title: Usługa silnika i interfejsy HTTP API czasu działania
+- anchor: availability-and-port-discovery
+  title: Dostępność i wykrywanie portu
+- anchor: built-in-endpoints
+  title: Wbudowane punkty końcowe
+- anchor: extension-defined-runtime-routes
+  title: Trasy czasu działania zdefiniowane przez rozszerzenia
+- anchor: automation-bridge-extension
+  title: Rozszerzenie Automation Bridge
+- anchor: editor-and-runtime-clients
+  title: Klienty edytora i środowiska uruchomieniowego
+- anchor: limitations-and-security
+  title: Ograniczenia i bezpieczeństwo
 ---
 
 # Usługa silnika i interfejsy HTTP API czasu działania {#the-engine-service-and-runtime-http-apis}

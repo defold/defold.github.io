@@ -7,7 +7,8 @@ title: Бандлинг (сборка пакета) приложения
 toc:
 - Бандлинг приложения
 - Бандлинг прямо из редактора
-- Отчеты о сборке {build-reports}
+- anchor: build-reports
+  title: Отчеты о сборке
 - Android
 - iOS
 - macOS

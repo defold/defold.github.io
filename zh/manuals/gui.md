@@ -10,12 +10,15 @@ toc:
 - Gui属性
 - 运行时操作
 - 依赖项
-- 节点类型 {node-types}
-- 节点属性 {node-properties}
+- anchor: node-types
+  title: 节点类型
+- anchor: node-properties
+  title: 节点属性
 - 枢轴、锚点和调整模式
 - 绘制顺序
 - 父子层次结构
-- 层和绘制调用 {layers-and-draw-calls}
+- anchor: layers-and-draw-calls
+  title: 层和绘制调用
 ---
 
 # GUI
