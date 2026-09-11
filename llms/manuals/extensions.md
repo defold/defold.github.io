@@ -64,7 +64,7 @@ The optional *manifests* folder of an extension contains additional files used i
 
 * `android` - This folder accepts a manifest stub file to be merged into the main application ([as described here](https://defold.com/llms/manuals/extensions-manifest-merge-tool.md)).
   * The folder can also contain a `build.gradle` file with dependencies to be [resolved by Gradle](https://defold.com/llms/manuals/extensions-gradle.md).
-  * Finally the folder can also contain zero or more ProGuard files (experimental).
+  * The folder can also contain R8 keep-rule files (`.keep`) for Java code that needs to be preserved when shrinking is enabled. See the [R8 Keep Rules project setting](https://defold.com/llms/manuals/project-settings.md) for setup and migration from the former ProGuard configuration.
 * `ios` - This folder accepts a manifest stub file to be merged into the main application ([as described here](https://defold.com/llms/manuals/extensions-manifest-merge-tool.md)).
   * The folder can also contain a `Podfile` file with dependencies to be [resolved by Cocoapods](https://defold.com/llms/manuals/extensions-cocoapods.md).
 * `osx` - This folder accepts a manifest stub file to be merged into the main application ([as described here](https://defold.com/llms/manuals/extensions-manifest-merge-tool.md)).

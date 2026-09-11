@@ -660,7 +660,7 @@ The table below presents similar Unity components for quick lookup, with links f
 |---|---|---|
 | [Sprite](#manuals:sprite) | Sprite Renderer | In Defold, you can change the tint (color property) only via code. |
 | [Tilemap](#manuals:tilemap) | Tilemap / Grid | Defold has a built-in Tilemap Editor that supports square grids (but there’s an extension for, e.g. [Hexagon](https://github.com/selimanac/defold-hexagon/)) and has no built-in autotiling rules. Tools like [Tiled](https://defold.com/assets/tiled/), [TileSetter](https://defold.com/assets/tilesetter/) or [Sprite Fusion](https://defold.com/assets/spritefusion/) have export to Defold options. |
-| [Label](#manuals:label) | Text / TextMeshPro | Defold has a [RichText extension](https://defold.com/assets/richtext/) for rich formatting (similar to TextMeshPro). |
+| [Label](#manuals:label) | Text / TextMeshPro | Since Defold 1.13.2, Label components and GUI text nodes support built-in [rich text markup](#manuals:font-richtext) for colors, gradients, outlines and animated effects. A separate [RichText extension](https://defold.com/assets/richtext/) is also available. |
 | [Sound](#manuals:sound) | AudioSource | Defold has only a global sound source (not spatial). There is an official [FMOD extension](https://github.com/defold/extension-fmod) for Defold. |
 | [Factory](#manuals:factory) | Prefab Instantiate() | In Defold, a Factory is a component with a specific prototype (prefab). |
 | [Collection Factory](#manuals:collection-factory) | - (No direct component equivalent) | A Collection Factory component in Defold can spawn multiple Game Objects with parent-child relationships at once. |
@@ -4230,7 +4230,7 @@ Code that controls a running game must be able to reach every object and compone
 Defold uses addresses (or URLs, but let's ignore that for now) to refer to game objects and components. These addresses consist of identifiers. The following are all examples of how Defold uses addresses. Through this manual we are going to examine in detail how they work:
 ```lua
 local id = factory.create("#enemy_factory")
-label.set_text("my_gameobject#my_label", "Hello World!")
+go.set("my_gameobject#my_label", "text", "Hello World!")
 
 local pos = go.get_position("my_gameobject")
 go.set_position(pos, "/level/stuff/other_gameobject")
@@ -5023,14 +5023,16 @@ If the model should use a texture in Defold, import the texture image as a separ
 
 Starting with Defold 1.13.0, Defold preserves the positions and transforms from the imported glTF file and does not automatically re-center the model during import. The editor preview and runtime use the imported transforms consistently: skinned or bone-parented meshes preserve their local, skeleton-relative transforms, while rigid meshes retain their flattened world placement.
 
+Since Defold 1.13.2, a [Model component](#manuals:model) can select a single named mesh from the imported scene. Leaving its *Mesh* field empty uses the whole scene and preserves the transforms described above. Selecting a mesh uses its local geometry without the glTF node transforms, so place it using the model component or game object's transform.
+
 If a model created with an older version of Defold changes position or orientation after being reimported, correct the transform in Blender or another authoring tool and export the *.gltf* or *.glb* file again.
 
 ## Using a model
 Once you have imported the model, use it in a [Model component](#manuals:model):
 
 1. Create a Model file from the *Assets* pane with `New... ▸ Model`, or add a Model component directly to a game object with `Add Component ▸ Model`.
-2. Set the *Mesh* property to the imported *.gltf* or *.glb* file containing the mesh.
-3. For an animated model, set the *Skeleton* property to the *.gltf* or *.glb* file containing the skeleton. This is often the same file used for *Mesh* when mesh, skeleton and animations are exported together.
+2. Set the *Scene* property to the imported *.gltf* or *.glb* file. Leave *Mesh* empty to use the whole scene, or select a named mesh to use only its local geometry.
+3. For an animated model, set the *Skeleton* property to the *.gltf* or *.glb* file containing the skeleton. This is often the same file used for *Scene* when mesh, skeleton and animations are exported together.
 4. Create an *Animation Set* file for the animations and assign it to the *Animations* property. Set *Default Animation* if you want an animation to start automatically.
 5. Set the *Material* property to a material suitable for the model. The built-in *model.material*, *model_instanced.material*, *model_skinned.material* and *model_skinned_instanced.material* files are useful starting points. The skinned materials use local vertex space so skinning can run on the GPU; custom materials for GPU-skinned or instanced models should also use local vertex space. See the [Model manual](#manuals:model) for the graphics-adapter requirement.
 6. Set the material texture properties, such as *Texture*, to the imported texture image files. If the material uses multiple textures, assign each texture in the corresponding material texture field.
@@ -5538,6 +5540,8 @@ Fonts are used to render text on Label components and GUI text nodes. Defold sup
 - OpenType
 - BMFont
 
+Since Defold 1.13.2, both the legacy and full text layout engines support TrueType outlines and OpenType CFF1/CFF2 outlines, including runtime generation from `.ttf` and `.otf` resources.
+
 For information about styling individual text spans and working with links and inline sprites, see the [Rich text markup manual](#manuals:font-richtext).
 
 Fonts added to your project are automatically converted into a texture format that Defold can render. Two font rendering techniques are available, each with its own specific benefits and drawbacks:
@@ -5549,7 +5553,7 @@ Fonts added to your project are automatically converted into a texture format th
 
 By default, the conversion to rasterized glyph images happens at build time (offline). This has the drawback that each font needs to rasterize all possible glyphs in the build stage, producing potentially very large textures that consume memory and also increase the bundle size.
 
-By using "runtime fonts", the `.ttf` fonts will be bundled as-is, and the rasterization will happen on-demand at runtime. This minimizes both runtime memory usage and the bundle size.
+By using "runtime fonts", the `.ttf` and `.otf` fonts will be bundled as-is, and the rasterization will happen on-demand at runtime. This minimizes both runtime memory usage and the bundle size.
 
 ## Text layout support (e.g. Right-to-left)
 
@@ -5561,7 +5565,7 @@ See [Enabling Runtime Fonts](#manuals:font#enabling-runtime-fonts)
 ## Font collection
 
 The `.fontc` file format is also known as a font collection. In offline mode, only one font is associated with it.
-When using runtime fonts, you can associate more than one font file (`.ttf`) with the font collection.
+When using runtime fonts, you can associate more than one font file (`.ttf` or `.otf`) with the font collection.
 
 This allows for using the a font collection when rendering multiple texts in different languages, while also keeping the memory footprint low.
 E.g. loading a collection with the Japanese font, then associate that font with the current main font, followed by unloading the Japanese font collection.
@@ -5697,7 +5701,7 @@ For more information about shader uniforms, see the [Shader manual](#manuals:sha
 
 ## Enabling Runtime Fonts
 
-It is possible to use runtime generation for SDF type fonts, when using TrueType (`.ttf`) fonts.
+It is possible to use runtime generation for SDF type fonts, when using TrueType (`.ttf`) or OpenType (`.otf`) fonts. Runtime generation from `.otf` resources is supported since Defold 1.13.2.
 This approach can greatly reduce the download size and runtime memory consumption of a Defold game.
 The small downside is the asynchronous nature of generating each glyph.
 
@@ -5708,7 +5712,7 @@ This builds a custom engine that has this feature enabled.
 
 This feature is currently experimental, but with the intention to be used as the default workflow in the future.
 
-The `font.runtime_generation` setting affects all `.ttf` fonts in the project.
+The `font.runtime_generation` setting affects all `.ttf` and `.otf` fonts in the project.
 
 ### Font Scripting
 
@@ -5762,7 +5766,7 @@ If the glyph cache gets full, the oldest glyph in the cache will be evicted.
 font.prewarm_text(self.font_collection, info.text, function (self, request_id, result, err)
     if result then
       print("PREWARMING OK!")
-      label.set_text(self.label, info.text)
+      go.set(self.label, "text", info.text)
     else
       print("Error prewarming text:", err)
     end
@@ -7126,13 +7130,13 @@ A collision object component has a set of *Properties* that sets its type and ph
 To add a collision object component to a game object:
 
 1. In the *Outline* view, `right click` the game object and select `Add Component ▸ Collision Object` from the context menu. This creates a new component with no shapes.
-2. `Right click` the new component and select `Add Shape`, then choose a shape: `Box`, `Capsule` or `Sphere` in projects using 3D physics, `Box` or `Circle` in projects using 2D physics. This adds a new shape to the collision object component. You can add any number of shapes to the component. You can also use a tilemap or a convex hull to define the shape of the physics object.
+2. `Right click` the new component and select `Add Shape`, then choose a shape: `Box`, `Capsule`, `Sphere`, `Hull` or `Mesh` in projects using 3D physics, `Box` or `Circle` in projects using 2D physics. Hull and Mesh shapes are available since Defold 1.13.2 and use a named mesh from a glTF or GLB scene. You can add several shapes to the component. You can also use a tilemap or a `.convexshape` resource through the *Collision Shape* property.
 3. Use the move, rotate and scale tools to edit the shapes.
 4. Select the component in the *Outline* and edit the collision object's *Properties*.
 
 ## Adding a collision shape
 
-A collision component can either use several primitive shapes or a single complex shape. Learn more about the various shapes and how to add them to a collision component in the [Collision Shapes manual](#manuals:physics-shapes).
+A collision component can contain several embedded shapes, including hulls and triangle meshes in 3D physics, or use a tilemap or convex shape resource. Learn more about the various shapes and how to add them to a collision component in the [Collision Shapes manual](#manuals:physics-shapes).
 
 ## Collision object properties
 
@@ -7140,7 +7144,7 @@ Id
 : The identity of the component.
 
 Collision Shape
-: This property is used for tile map geometry or convex shapes that does not use primitive shapes. See [Collision Shapes for more information](#manuals:physics-shapes).
+: A tilemap or `.convexshape` resource. To use a glTF or GLB mesh, add a Hull or Mesh shape to the component and set that shape's *Scene* and *Mesh* properties instead. See [Collision Shapes for more information](#manuals:physics-shapes).
 
 Type
 : The type of collision object: `Dynamic`, `Kinematic`, `Static` or `Trigger`. If you set the object to `Dynamic` you _must_ set the *Mass* property to a non zero value. For `Dynamic` or `Static` objects you should also check that the *Friction* and *Restitution* values are good for your use-case.
@@ -7838,6 +7842,9 @@ By setting the *Pivot* property you can change the alignment mode for the text.
 
 You can manipulate labels in runtime by getting and setting the label text as well as the various other properties.
 
+`text`
+: The text content of the label (`string`). Available through `go.get()` and `go.set()` since Defold 1.13.2.
+
 `color`
 : The label color (`vector4`)
 
@@ -7856,9 +7863,14 @@ You can manipulate labels in runtime by getting and setting the label text as we
 function init(self)
     -- Set the text of the "my_label" component in the same game object
     -- as this script.
-    label.set_text("#my_label", "New text")
+    go.set("#my_label", "text", "New text")
+    local text = go.get("#my_label", "text")
+    print(text) -- New text
 end
 ```
+
+Since Defold 1.13.2, `label.set_text()` and `label.get_text()` are deprecated in favor of the `text` property. The old functions remain available for compatibility. The old setter queues a message, while `go.set()` updates the text immediately.
+
 ```lua
 function init(self)
     -- Set the color of the "my_label" component in the same game object
@@ -8224,8 +8236,11 @@ With the model created you need to specify a number of properties:
 
 Apart from the properties *Id*, *Position* and *Rotation* the following component specific properties exist:
 
+*Scene*
+: The glTF *.gltf* or *.glb* file that contains the model's geometry. If the file contains morph targets, they are imported together with the scene. This property was named *Mesh* before Defold 1.13.2.
+
 *Mesh*
-: This property should refer to the glTF *.gltf* or *.glb* file that contains the mesh to use. If the file contains morph targets, they are imported together with the mesh. If the file contains multiple meshes, only the first one is read.
+: An optional named mesh from the selected *Scene*, available since Defold 1.13.2. Leave this field empty to render the whole scene with its imported transforms. Select a mesh to render that mesh once in its local coordinates, without the glTF node transforms. Position, rotate and scale the model component or its game object to place the selected mesh.
 
 *Create GO Bones*
 : Check this to create a game object for every bone of the model. You can use the game objects to attach other game objects such as weapons to hand bones and so on.
@@ -9941,14 +9956,14 @@ Note: If a GUI layout exists in the scene but is not present in Display Profiles
 
 Use markup in Label components and GUI text nodes to apply nested visual styles and effects, and inspect links and sprites from Lua.
 ```lua
-label.set_text("#label", "Score: <color=#69D2E7>1200</color>")
+go.set("#label", "text", "Score: <color=#69D2E7>1200</color>")
 ```
 
 Alternatively, define a reusable named object style on the font and select it from a link:
 ```lua
 local fontpath = "/fonts/ui.fontc"
 font.set_style(fontpath, "menu_link", "<color=#69D2E7>")
-label.set_text("#label", "Open <link style=menu_link src=inventory>inventory</link>")
+go.set("#label", "text", "Open <link style=menu_link src=inventory>inventory</link>")
 ```
 
 ## Tag reference
@@ -10361,7 +10376,7 @@ Read the <link src=https://defold.com/manuals/ id=manual>manual</link>
 or inspect <sprite src=images/info.png width=2em/> for more information.
 ]]
 
-label.set_text("#label", text)
+go.set("#label", "text", text)
 
 local objects = label.get_layout_objects("#label")
 for _, object in ipairs(objects) do
@@ -10448,7 +10463,7 @@ Collisions not detected
 
 # Collision shapes {#manuals:physics-shapes}
 
-A collision component can either use several primitive shapes or a single complex shape.
+A collision object can contain several embedded shapes. In 3D physics these can include hulls and triangle meshes from glTF or GLB files. You can also use a tilemap or a convex shape resource through the collision object's *Collision Shape* property.
 
 ### Primitive shapes
 The primitive shapes are *box*, *sphere* and *capsule*. You add a primitive shape by `right clicking` the collision object and selecting `Add Shape`:
@@ -10465,7 +10480,21 @@ A capsule has a position, rotation, diameter and height:
 Capsule shapes are only supported when using 3D physics (configured in the Physics section of the *game.project* file).
 
 ### Complex shapes
-A complex shape can either be created from a tilemap component or from a convex hull shape.
+Complex shapes can use tilemap geometry or convex hull data. Since Defold 1.13.2, 3D collision objects can also create hulls and triangle mesh shapes from meshes in glTF or GLB scenes.
+
+## Hull and mesh shapes in 3D
+
+Use a *Hull* shape for a convex approximation of a mesh, or a *Mesh* shape when collisions need to follow its triangles, including concave areas such as openings in level geometry.
+
+1. Set **Physics → Type** to `3D` in *game.project*.
+2. Right-click the collision object in the *Outline* and select `Add Shape ▸ Hull` or `Add Shape ▸ Mesh`.
+3. Select the new shape and set its *Scene* property to a *.gltf* or *.glb* file.
+4. Select a named mesh from the *Mesh* field. If it is missing from the list, name the mesh in your modeling tool and export the scene again.
+5. Position and rotate the shape to align it with the game object's visible geometry. Repeat these steps to add more shapes if needed.
+
+The selected mesh supplies its local geometry; glTF node transforms are not applied. Mesh collision shapes are supported by the Bullet 3D backend, including for static and non-static collision objects. They are not supported by the 2D physics backends.
+
+Triangle mesh geometry is read-only through the runtime shape APIs. Edit the source mesh and rebuild to change its triangles. See [scaling collision shapes](#scaling-collision-shapes) for the game object's scale.
 
 ## Tilemap collision shape
 Defold includes a feature allowing you to easily generate physics shapes for the tile source used by a tile map. The [Tilesource manual](#manuals:tilesource) explains how to add collision groups to a tile source and assign tiles to collision groups ([example](https://defold.com/examples/tilemap/collisions/)).
@@ -10480,7 +10509,7 @@ To add collision to a tile map:
 Note that the *Group* property is **not** used here since the collision groups are defined in the tile map's tile source.
 
 ## Convex hull shape
-Defold includes a feature allowing you to create a convex hull shape from three or more points.
+In 3D physics you can create a hull directly from a mesh using the [editor workflow above](#hull-and-mesh-shapes-in-3d). The legacy `.convexshape` resource is also supported and can be created from points using an external editor:
 
 1. Create convex hull shape file (file extension `.convexshape`) using an external editor.
 2. Edit the file manually using a text editor or external tool (see below)
@@ -10528,7 +10557,7 @@ There are a number of different external tools that can be used to create collis
 The collision object and its shapes inherit the scale of the game object. To disable this behaviour uncheck the [Allow Dynamic Transforms](#manuals:project-settings) checkbox in the Physics section of *game.project*. Note that only uniform scaling is supported and that the smallest scale value will be used if the scale isn't uniform.
 
 # Resizing collision shapes
-The shapes of a collision object can be resized at runtime using `physics.set_shape()`. Example:
+Primitive shapes can be resized at runtime using `physics.set_shape()`. This function does not replace hull vertices or triangle mesh geometry. Example:
 ```lua
 -- set capsule shape data
 local capsule_data = {
@@ -10968,7 +10997,11 @@ Ray casts will ignore collision objects that contain the starting point of the r
 
 # Joints {#manuals:physics-joints}
 
-Defold supports joints for 2D physics. A joint connects two collision objects using some kind of constraint. The supported joint types are:
+A joint connects two collision objects using a constraint. Defold supports joints in both 2D and 3D physics, through different APIs.
+
+This manual describes the 2D joints exposed by the `physics` module. Since Defold 1.13.2, 3D projects can create and control constraints through [`bullet3d.constraint`](https://defold.com/ref/beta/bullet3d.constraint/), including hinges, sliders and springs. Use that API with rigid bodies obtained through [`bullet3d.get_rigid_body()`](https://defold.com/ref/beta/bullet3d/#bullet3d.get_rigid_body).
+
+The supported joint types in the 2D `physics` API are:
 
 * **Fixed (physics.JOINT_TYPE_FIXED)** - A rope joint that restricts the maximum distance between two points. In Box2D referred to as a Rope joint.
 * **Hinge (physics.JOINT_TYPE_HINGE)** - A hinge joint specifies an anchor point on two collision objects and moves them so that the two collision objects are always in the same place, and the relative rotation of the collision objects is not restricted. The hinge joint can enable a motor with a defined maximum engine torque and speed. In Box2D referred to as a [Revolute joint](https://box2d.org/documentation/group__revolute__joint.html#details).
@@ -10979,7 +11012,7 @@ Defold supports joints for 2D physics. A joint connects two collision objects us
 
 ## Creating joints
 
-Joints can currently only be created programmatically using [`physics.create_joint()`](https://defold.com/ref/physics/#physics.create_joint:joint_type-collisionobject_a-joint_id-position_a-collisionobject_b-position_b-[properties]):
+The 2D joints described here are created programmatically using [`physics.create_joint()`](https://defold.com/ref/physics/#physics.create_joint:joint_type-collisionobject_a-joint_id-position_a-collisionobject_b-position_b-[properties]):
 
 Editor support for creating joints is planned but no release date has been decided.
 
@@ -11959,6 +11992,7 @@ Specific functions for working with the game object transform also exist; they a
 
 | property   | description                            | type            |                  |
 | ---------- | -------------------------------------- | --------------- | ---------------- |
+| *text* | The text content of the label. Available since Defold 1.13.2. | `string` | `get+set` |
 | *scale* | The scale of the label. | `vector3` | `get+set` |
 | *scale.xy* | The scale of the label along X and Y axis. | `vector3` | `get+set`|
 | *color*     | The color of the label. | `vector4` | `get+set` |
@@ -12035,7 +12069,7 @@ Common use cases are to set the health or speed of a specific enemy AI, the tint
 
 ## Defining a script property
 
-Script properties are added to a script component by defining them with the `go.property()` special function. The function has to be used at the top level---outside any lifecycle functions like `init()` and `update()`. The default value provided for the property governs the type of the property: `number`, `boolean`, `hash`, `msg.url`, `vmath.vector3`, `vmath.vector4`, `vmath.quaternion` and `resource` (see below).
+Script properties are added to a script component by defining them with the `go.property()` special function. The function has to be used at the top level---outside any lifecycle functions like `init()` and `update()`. The default value provided for the property governs the type of the property: `number`, `boolean`, `string`, `hash`, `msg.url`, `vmath.vector3`, `vmath.vector4`, `vmath.quaternion` and `resource` (see below).
 
 Note that the reversal of the hash value works only in the Debug build to facilitate debugging. In the Release build, the reversed string value does not exist, so using `tostring()` on a `hash` value to extract the string from it is meaningless.
 
@@ -12071,6 +12105,19 @@ Any property that is overridden with a new instance specific value is marked blu
 
 Script properties are parsed when building the project. Value expressions are not evaluated. This means that something like `go.property("hp", 3+6)` will not work while `go.property("hp", 9)` will.
 
+### Text properties
+
+Since Defold 1.13.2, a string default defines a text property. Text properties support UTF-8 and newline characters and are edited in a multiline field in the editor:
+```lua
+go.property("greeting", "Hello!\nWelcome to the game.")
+
+function init(self)
+    go.set("#label", "text", self.greeting)
+end
+```
+
+Select a script component in a game object or collection to override its text properties, just like other script properties. Embedded NUL characters are not allowed in defaults or overrides.
+
 ## Accessing script properties
 
 Any defined script property is available as a stored member in `self`, the script instance reference:
@@ -12086,7 +12133,7 @@ function update(self, dt)
 end
 ```
 
-User-defined script properties can also be accessed through the `get`, `set` and `animate` functions, the same way as any other property:
+User-defined script properties can also be read with `go.get()` and written with `go.set()`. Numeric properties, including vectors and quaternions, can be animated with `go.animate()`. Text properties can be read and written, but cannot be animated:
 ```lua
 -- another.script
 
@@ -18473,6 +18520,24 @@ DEFOLD_SPLASH_IMAGE
 exe-name
 : The project name without unacceptable symbols
 
+DEFOLD_ARCHIVE_LOCATION_PREFIX
+: The resolved archive path prefix used by the loader, based on `html5.archive_location_prefix`.
+
+DEFOLD_ARCHIVE_LOCATION_SUFFIX
+: The resolved suffix appended to archive URLs, based on `html5.archive_location_suffix`.
+
+DEFOLD_HAS_ARCHIVE_ORIGIN
+: `true` when the archive prefix specifies an HTTP or HTTPS origin, including a protocol-relative URL such as `//cdn.example.com/archive`. It is `false` for relative archive prefixes. Available since Defold 1.13.2.
+
+DEFOLD_ARCHIVE_ORIGIN
+: The archive origin, including the scheme, host and optional port, or an empty string when no origin is specified. A protocol-relative prefix produces a protocol-relative origin. Used for the preconnect hint and available since Defold 1.13.2.
+
+DEFOLD_HAS_WASM_ENGINE
+: `true` if the bundle includes a WebAssembly engine, either `wasm-web` or `wasm_pthread-web`.
+
+DEFOLD_HAS_WASM_PTHREAD_ENGINE
+: `true` if the bundle includes `wasm_pthread-web`. Use it to avoid preloading the wrong engine variant when the loader chooses the architecture at runtime.
+
 DEFOLD_CUSTOM_CSS_INLINE
 : This is the place when we inline of the CSS file specified in your *game.project* settings.
 
@@ -19031,7 +19096,7 @@ The optional *manifests* folder of an extension contains additional files used i
 
 * `android` - This folder accepts a manifest stub file to be merged into the main application ([as described here](#manuals:extensions-manifest-merge-tool)).
   * The folder can also contain a `build.gradle` file with dependencies to be [resolved by Gradle](#manuals:extensions-gradle).
-  * Finally the folder can also contain zero or more ProGuard files (experimental).
+  * The folder can also contain R8 keep-rule files (`.keep`) for Java code that needs to be preserved when shrinking is enabled. See the [R8 Keep Rules project setting](#manuals:project-settings) for setup and migration from the former ProGuard configuration.
 * `ios` - This folder accepts a manifest stub file to be merged into the main application ([as described here](#manuals:extensions-manifest-merge-tool)).
   * The folder can also contain a `Podfile` file with dependencies to be [resolved by Cocoapods](#manuals:extensions-cocoapods).
 * `osx` - This folder accepts a manifest stub file to be merged into the main application ([as described here](#manuals:extensions-manifest-merge-tool)).
@@ -19618,7 +19683,7 @@ On Linux ARM64, the **OpenGL** choice uses the OpenGL ES backend. The Android co
 
 ## Use full text layout system
 
-If enabled (`true`), it will allow to use runtime generation for SDF type fonts, when using True Type Fonts (`.ttf`) in the project. Read more details in the [Font Manual](#manuals:font).
+If enabled (`true`), this includes the full text layout system for shaping text, including right-to-left languages. Enable this option together with `font.runtime_generation` in *game.project* to use runtime generation for SDF fonts from TrueType (`.ttf`) or OpenType (`.otf`) resources. Runtime generation from `.otf` resources is supported since Defold 1.13.2. Read more in the [Font Manual](#manuals:font).
 
 ## Minimum browser versions
 
