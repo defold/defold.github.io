@@ -1,0 +1,507 @@
+{
+    "elements": [
+        {
+            "description": "Returns whether the SDK reports that the game is running in the Playables environment. Returns false if the SDK is not loaded.",
+            "examples": "",
+            "name": "playables.is_in_playables_env",
+            "parameters": [],
+            "returnvalues": [
+                {
+                    "doc": "True when the SDK is loaded and IN_PLAYABLES_ENV is true, otherwise false.",
+                    "name": "boolean"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Returns the loaded YouTube Playables SDK version, or nil if it is unavailable.",
+            "examples": "",
+            "name": "playables.get_sdk_version",
+            "parameters": [],
+            "returnvalues": [
+                {
+                    "doc": "The value of SDK_VERSION, or nil if the SDK or its version is unavailable.",
+                    "name": [
+                        "string",
+                        "nil"
+                    ]
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Notifies YouTube that the game has begun showing frames. This must be called before game_ready().",
+            "examples": "",
+            "name": "playables.first_frame_ready",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Notifies YouTube that the loading screen is gone and the game is ready for players to interact with. YouTube requires firstFrameReady() to be called before this function.",
+            "examples": "",
+            "name": "playables.game_ready",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Loads serialized game data from YouTube. Only one load request may be in progress at a time. The request remains in progress until its callback returns, so the callback cannot start another load_data() request.",
+            "examples": "",
+            "name": "playables.load_data",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "callback",
+                    "parameters": [
+                        {
+                            "doc": "The calling script instance.",
+                            "name": "self",
+                            "types": [
+                                "object"
+                            ]
+                        },
+                        {
+                            "doc": "The serialized game data on success, otherwise nil.",
+                            "name": "data",
+                            "types": [
+                                "string",
+                                "nil"
+                            ]
+                        },
+                        {
+                            "doc": "The SDK error message on failure, otherwise nil.",
+                            "name": "error",
+                            "types": [
+                                "string",
+                                "nil"
+                            ]
+                        }
+                    ],
+                    "types": [
+                        "function"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Saves valid UTF-8 text to YouTube, with a maximum size of 3 MiB. Invalid UTF-8 returns false and an error through the callback before the SDK is called. Base64-encode binary data such as sys.serialize() output before saving. Only one save request may be in progress at a time. The request remains in progress until its callback returns, so the callback cannot start another save_data() request.",
+            "examples": "",
+            "name": "playables.save_data",
+            "parameters": [
+                {
+                    "doc": "The serialized game data as valid UTF-8 text. Embedded zero bytes are supported.",
+                    "name": "data",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "callback",
+                    "parameters": [
+                        {
+                            "doc": "The calling script instance.",
+                            "name": "self",
+                            "types": [
+                                "object"
+                            ]
+                        },
+                        {
+                            "doc": "True when the save completed successfully.",
+                            "name": "success",
+                            "types": [
+                                "boolean"
+                            ]
+                        },
+                        {
+                            "doc": "The UTF-8 decoding or SDK error message on failure, otherwise nil.",
+                            "name": "error",
+                            "types": [
+                                "string",
+                                "nil"
+                            ]
+                        }
+                    ],
+                    "types": [
+                        "function"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Returns whether game audio is enabled in the player's YouTube settings. Use this to initialize the game audio state.",
+            "examples": "",
+            "name": "playables.is_audio_enabled",
+            "parameters": [],
+            "returnvalues": [
+                {
+                    "doc": "True when game audio is enabled.",
+                    "name": "boolean"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Registers a callback for YouTube audio-setting changes. A new callback replaces the previous one. Pass nil to unregister it. This function cannot be called from its own callback.",
+            "examples": "",
+            "name": "playables.on_audio_enabled_change",
+            "parameters": [
+                {
+                    "doc": "The event callback, or nil to unregister the current callback.",
+                    "name": "callback",
+                    "parameters": [
+                        {
+                            "doc": "The calling script instance.",
+                            "name": "self",
+                            "types": [
+                                "object"
+                            ]
+                        },
+                        {
+                            "doc": "True when game audio should be enabled.",
+                            "name": "is_audio_enabled",
+                            "types": [
+                                "boolean"
+                            ]
+                        }
+                    ],
+                    "types": [
+                        "function",
+                        "nil"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Registers a callback for YouTube pause events. A new callback replaces the previous one. Pass nil to unregister it. This function cannot be called from its own callback. A paused game is not guaranteed to resume.",
+            "examples": "",
+            "name": "playables.on_pause",
+            "parameters": [
+                {
+                    "doc": "The event callback, or nil to unregister the current callback.",
+                    "name": "callback",
+                    "parameters": [
+                        {
+                            "doc": "The calling script instance.",
+                            "name": "self",
+                            "types": [
+                                "object"
+                            ]
+                        }
+                    ],
+                    "types": [
+                        "function",
+                        "nil"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Registers a callback for YouTube resume events. A new callback replaces the previous one. Pass nil to unregister it. This function cannot be called from its own callback.",
+            "examples": "",
+            "name": "playables.on_resume",
+            "parameters": [
+                {
+                    "doc": "The event callback, or nil to unregister the current callback.",
+                    "name": "callback",
+                    "parameters": [
+                        {
+                            "doc": "The calling script instance.",
+                            "name": "self",
+                            "types": [
+                                "object"
+                            ]
+                        }
+                    ],
+                    "types": [
+                        "function",
+                        "nil"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Gets the language in the player's YouTube settings as a BCP-47 language tag. Only one request may be in progress at a time. The request remains in progress until its callback returns, so the callback cannot start another get_language() request.",
+            "examples": "",
+            "name": "playables.get_language",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "callback",
+                    "parameters": [
+                        {
+                            "doc": "The calling script instance.",
+                            "name": "self",
+                            "types": [
+                                "object"
+                            ]
+                        },
+                        {
+                            "doc": "The BCP-47 language tag on success, otherwise nil.",
+                            "name": "language",
+                            "types": [
+                                "string",
+                                "nil"
+                            ]
+                        },
+                        {
+                            "doc": "The SDK error message on failure, otherwise nil.",
+                            "name": "error",
+                            "types": [
+                                "string",
+                                "nil"
+                            ]
+                        }
+                    ],
+                    "types": [
+                        "function"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Sends an integer score to YouTube. Use one consistent score dimension across the game. Only one request may be in progress at a time. The request remains in progress until its callback returns, so the callback cannot start another send_score() request.",
+            "examples": "",
+            "name": "playables.send_score",
+            "parameters": [
+                {
+                    "doc": "An integer no greater than JavaScript's maximum safe integer.",
+                    "name": "score",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "callback",
+                    "parameters": [
+                        {
+                            "doc": "The calling script instance.",
+                            "name": "self",
+                            "types": [
+                                "object"
+                            ]
+                        },
+                        {
+                            "doc": "True when the request succeeded.",
+                            "name": "success",
+                            "types": [
+                                "boolean"
+                            ]
+                        },
+                        {
+                            "doc": "The SDK error message on failure, otherwise nil.",
+                            "name": "error",
+                            "types": [
+                                "string",
+                                "nil"
+                            ]
+                        }
+                    ],
+                    "types": [
+                        "function"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Requests that YouTube open a video or another Playable. The content type is optional and defaults to CONTENT_TYPE_VIDEO. Only one request may be in progress at a time. The request remains in progress until its callback returns, so the callback cannot start another open_yt_content() request.",
+            "examples": "",
+            "name": "playables.open_yt_content",
+            "parameters": [
+                {
+                    "doc": "The YouTube video or Playable ID.",
+                    "name": "content_id",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "CONTENT_TYPE_VIDEO or CONTENT_TYPE_PLAYABLE.",
+                    "name": "content_type",
+                    "types": [
+                        "number"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "callback",
+                    "parameters": [
+                        {
+                            "doc": "The calling script instance.",
+                            "name": "self",
+                            "types": [
+                                "object"
+                            ]
+                        },
+                        {
+                            "doc": "True when the request succeeded. This does not guarantee that the content opened.",
+                            "name": "success",
+                            "types": [
+                                "boolean"
+                            ]
+                        },
+                        {
+                            "doc": "The SDK error message on failure, otherwise nil.",
+                            "name": "error",
+                            "types": [
+                                "string",
+                                "nil"
+                            ]
+                        }
+                    ],
+                    "types": [
+                        "function"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Requests an interstitial ad. Success does not guarantee that an ad was shown. Do not use this API to grant rewards. Only one interstitial request may be in progress at a time. The request remains in progress until its callback returns, so the callback cannot start another request_interstitial_ad() request. Keep handling YouTube audio, pause, and resume events during ads.",
+            "examples": "",
+            "name": "playables.request_interstitial_ad",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "callback",
+                    "parameters": [
+                        {
+                            "doc": "The calling script instance.",
+                            "name": "self",
+                            "types": [
+                                "object"
+                            ]
+                        },
+                        {
+                            "doc": "True when the request succeeded. This does not guarantee that an ad was shown.",
+                            "name": "success",
+                            "types": [
+                                "boolean"
+                            ]
+                        },
+                        {
+                            "doc": "The SDK error message on failure, otherwise nil.",
+                            "name": "error",
+                            "types": [
+                                "string",
+                                "nil"
+                            ]
+                        }
+                    ],
+                    "types": [
+                        "function"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Requests a rewarded ad. Grant a reward only when reward_earned is true. Only one rewarded request may be in progress at a time. The request remains in progress until its callback returns, so the callback cannot start another request_rewarded_ad() request. Keep handling YouTube audio, pause, and resume events during ads.",
+            "examples": "",
+            "name": "playables.request_rewarded_ad",
+            "parameters": [
+                {
+                    "doc": "A stable ID unique to the reward type. Reuse it for each offer of that reward and do not include user data.",
+                    "name": "reward_id",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "callback",
+                    "parameters": [
+                        {
+                            "doc": "The calling script instance.",
+                            "name": "self",
+                            "types": [
+                                "object"
+                            ]
+                        },
+                        {
+                            "doc": "True if a reward was earned, false if no reward was earned, or nil if the request failed.",
+                            "name": "reward_earned",
+                            "types": [
+                                "boolean",
+                                "nil"
+                            ]
+                        },
+                        {
+                            "doc": "The SDK error message on failure, otherwise nil.",
+                            "name": "error",
+                            "types": [
+                                "string",
+                                "nil"
+                            ]
+                        }
+                    ],
+                    "types": [
+                        "function"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Reports an error occurrence to YouTube. Takes no arguments and returns no value. Reporting is best-effort and rate-limited, so delivery is not guaranteed.",
+            "examples": "",
+            "name": "playables.log_error",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Reports a warning occurrence to YouTube. Takes no arguments and returns no value. Reporting is best-effort and rate-limited, so delivery is not guaranteed.",
+            "examples": "",
+            "name": "playables.log_warning",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Opens a YouTube video.",
+            "examples": "",
+            "name": "CONTENT_TYPE_VIDEO",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "Opens another YouTube Playable.",
+            "examples": "",
+            "name": "CONTENT_TYPE_PLAYABLE",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        }
+    ],
+    "info": {
+        "api": "extension-playables/playables_api",
+        "api_language": "Lua",
+        "brief": "playables",
+        "description": "Functions for interacting with the YouTube Playables SDK.",
+        "group": "EXTENSIONS",
+        "name": "extension-playables",
+        "namespace": "playables",
+        "type": "Extension"
+    }
+}

@@ -155,6 +155,7 @@ These are per-namespace API reference files generated for LLM usage.
 - [permissions (extension-permissions)](https://defold.com/llms/apis/extension-permissions_permissions.md) - Functions and constants for interacting with permissions related APIs
 - [fusion (extension-photon-fusion)](https://defold.com/llms/apis/extension-photon-fusion_fusion.md) - Functions and constants for interacting with Photon Fusion
 - [realtime (extension-photon-realtime)](https://defold.com/llms/apis/extension-photon-realtime_realtime.md) - Functions and constants for interacting with Photon Realtime
+- [playables (extension-playables)](https://defold.com/llms/apis/extension-playables_playables.md) - Functions for interacting with the YouTube Playables SDK
 - [poki_sdk (extension-poki-sdk)](https://defold.com/llms/apis/extension-poki-sdk_poki_sdk.md) - Functions and constants for interacting with Poki SDK APIs
 - [push (extension-push)](https://defold.com/llms/apis/extension-push_push.md) - Functions and constants for interacting with local, as well as Apple''s and Google''s push notification services
 - [review (extension-review)](https://defold.com/llms/apis/extension-review_review.md) - Functions and constants for interacting with review APIs
