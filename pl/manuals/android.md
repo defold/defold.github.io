@@ -12,6 +12,14 @@ toc:
 - anchor: creating-an-android-application-bundle
   title: Tworzenie pakietu aplikacji Android
 - Instalowanie pakietu aplikacji Android
+- anchor: shrinking-java-code-with-r8
+  title: Zmniejszanie kodu Java za pomocą R8
+- anchor: enabling-r8
+  title: Włączanie R8
+- anchor: adding-rules-to-an-extension
+  title: Dodawanie reguł do rozszerzenia
+- anchor: keeping-the-obfuscation-mapping
+  title: Zachowywanie mapowania zaciemnionych nazw
 - Uprawnienia
 - 'android.permission.INTERNET i android.permission.ACCESS_NETWORK_STATE (Protection level: normal)'
 - 'android.permission.WAKE_LOCK (Protection level: normal)'
@@ -99,6 +107,41 @@ Aby ta funkcja działała, musisz mieć zainstalowany *ADB* oraz włączone *USB
 #### Instalowanie AAB
 
 Plik *.aab* można przesłać do Google Play przez [konsolę deweloperską Google Play](https://play.google.com/apps/publish/). Można też wygenerować plik *`.apk`* z pliku *.aab*, aby zainstalować go lokalnie za pomocą [Android bundletool](https://developer.android.com/studio/command-line/bundletool).
+
+## Zmniejszanie kodu Java za pomocą R8 {#shrinking-java-code-with-r8}
+
+R8 zmniejsza rozmiar kodu Java przez usuwanie nieużywanego kodu, optymalizację i zaciemnianie nazw.
+
+### Włączanie R8 {#enabling-r8}
+
+Wybierz `/builtins/manifests/android/dmengine.keep` w **Android ▸ R8 Keep Rules** w pliku *game.project*. Pozwala to bezpośrednio użyć domyślnych reguł silnika Defold:
+
+```ini
+[android]
+r8_keep_rules = /builtins/manifests/android/dmengine.keep
+```
+
+Upewnij się, że każde rozszerzenie zawierające kod Java dostarcza plik `.keep` dla klas potrzebnych w czasie działania. Podczas budowania reguły rozszerzeń są łączone z wybranymi regułami projektu. Po włączeniu R8 przetestuj na urządzeniu kompilację wydania.
+
+Pozostawienie pustego pola **R8 Keep Rules** oznacza użycie D8 bez usuwania nieużywanego kodu. Włączenie R8 wymaga usługi budowania natywnych rozszerzeń, nawet w projekcie, który takich rozszerzeń nie zawiera.
+
+### Dodawanie reguł do rozszerzenia {#adding-rules-to-an-extension}
+
+Reguły zachowywania klas rozszerzenia należy umieścić w jego katalogu `manifests/android`, obok `build.gradle`. Sposób dodawania pliku i zachowywania klas Java rozszerzenia opisano w sekcji [reguły R8 dla rozszerzeń Androida](/pl/manuals/extensions/#r8-keep-rules-for-android).
+
+### Zachowywanie mapowania zaciemnionych nazw {#keeping-the-obfuscation-mapping}
+
+Włącz **Generate debug symbols** w oknie tworzenia pakietu Android lub przekaż `--with-symbols` do narzędzia Bob, aby zachować plik `mapping.txt` narzędzia R8, gdy zostanie on wygenerowany podczas budowania. Na przykład uruchom w katalogu projektu:
+
+```sh
+java -jar bob.jar --platform arm64-android --variant release \
+  --archive --with-symbols --bundle-output build/android \
+  resolve build bundle
+```
+
+Mapowanie jest zapisywane w pliku `<binary-name>.apk.symbols/mapping.txt` obok wygenerowanego APK lub AAB. Na przykład dla projektu o tytule `My Game` powyższe polecenie tworzy plik `build/android/MyGame/MyGame.apk.symbols/mapping.txt`.
+
+Przechowuj plik mapowania razem z dokładnie tym wydaniem, z którego pochodzi. Umożliwia on odtworzenie pierwotnych nazw Java z nazw zaciemnionych podczas analizy śladów stosu; mapowanie z innej kompilacji może dać błędne wyniki.
 
 ## Uprawnienia
 

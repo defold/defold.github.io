@@ -107,6 +107,7 @@ Istnieją także konkretne funkcje do pracy z transformacją obiektu gry, takie 
 
 | Właściwość | Opis                                   | Typ             |                  |
 | ---------- | -------------------------------------- | --------------- | ---------------- |
+| *text* | Treść etykiety. Dostępna od wersji Defold 1.13.2. | `string` | `get+set` |
 | *scale*    | Skala etykiety.                        | `vector3`       | `get+set` |
 | *scale.xy* | Skala etykiety w osiach X i Y.         | `vector3`       | `get+set` |
 | *color*    | Kolor etykiety.                        | `vector4`       | `get+set` |

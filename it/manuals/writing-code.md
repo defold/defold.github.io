@@ -17,6 +17,8 @@ toc:
   title: Usare leditor di codice integrato
 - anchor: code-completion
   title: Completamento del codice
+- anchor: formatting-code
+  title: Formattare il codice
 - anchor: jump-to-symbol
   title: Passare a un simbolo
 - anchor: linting-configuration
@@ -59,6 +61,16 @@ L'editor di codice integrato mostra suggerimenti per completare i nomi delle fun
 Premendo <kbd>CTRL</kbd> + <kbd>Space</kbd> vengono mostrate ulteriori informazioni su funzioni, argomenti e valori restituiti:
 
 ![](/images/editor/apireference.png)
+
+Il server di linguaggio Lua incluso contiene annotazioni dei tipi per le API Defold. Il completamento, le informazioni al passaggio del puntatore e la diagnostica comprendono i tipi Defold, come hash, URL, vettori e quaternioni, oltre agli argomenti e ai valori restituiti dalle funzioni. L'editor fornisce annotazioni per gli script di gioco e per le API `editor.*` usate nei file `.editor_script`. Quando usi l'editor di codice Defold, non serve una libreria di annotazioni separata per le API integrate.
+
+Le API delle estensioni di terze parti possono richiedere annotazioni proprie.
+
+### Formattare il codice {#formatting-code}
+
+Seleziona <kbd>Edit ▸ Format Document/Selection</kbd> oppure premi <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>F</kbd> per eseguire il formatter del server di linguaggio. Se è presente una selezione, l'editor formatta le righe selezionate; altrimenti formatta il documento. La formattazione richiede un server di linguaggio che supporti la relativa operazione.
+
+Per formattare al salvataggio i file aperti e modificati, abilita **Format on save** in <kbd>Preferences ▸ Code</kbd>. Questa preferenza è disabilitata per impostazione predefinita e richiede un server di linguaggio che supporti la formattazione dei documenti. Consulta [Preferenze del codice](/it/manuals/editor-preferences/#code).
 
 ### Passare a un simbolo {#jump-to-symbol}
 

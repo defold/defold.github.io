@@ -108,6 +108,8 @@ print(data.highscore) -- 100
 #### Користувацькі ресурси {#custom-resources}
 {% include shared/uk/custom-resources.md %}
 
+Розширення також можуть надавати ці файли через `ext.properties`. Їхні шляхи об’єднуються з користувацькими ресурсами проєкту як у збірках редактора, так і в архівах Bob. Див. [користувацькі ресурси розширень](/uk/manuals/extensions/#custom-resources).
+
 ```lua
 -- Load level data into a string
 local data, error = sys.load_resource("/assets/level_data.json")

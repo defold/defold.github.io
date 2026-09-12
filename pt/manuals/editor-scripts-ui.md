@@ -7,6 +7,8 @@ title: 'Scripts do editor: UI'
 toc:
 - Editor scripts e UI
 - Hello world
+- anchor: opening-resources
+  title: Abertura de recursos
 - Conceitos básicos
 - Componentes
 - Props
@@ -27,7 +29,7 @@ toc:
 
 # Editor scripts e UI
 
-Este manual explica como criar elementos interativos de UI no editor usando editor scripts escritos em Lua. Para começar com editor scripts, veja o [manual de Editor Scripts](/pt/manuals/editor-scripts). Você encontra a referência completa da API do editor [aqui](/ref/stable/editor-lua/). Atualmente, só é possível criar diálogos interativos, embora queiramos expandir o suporte a scripting de UI para o restante do editor no futuro.
+Este manual explica como criar diálogos interativos e abrir recursos no editor usando scripts do editor escritos em Lua. Para começar com scripts do editor, veja o [manual de scripts do editor](/pt/manuals/editor-scripts). Você encontra a referência completa da API do editor [aqui](/ref/stable/editor-lua/).
 
 ## Hello world
 
@@ -74,6 +76,32 @@ Por fim, depois de pressionar <kbd>Enter</kbd> (ou clicar no botão `Perform`), 
 ```
 Perform action:	true
 ```
+
+## Abertura de recursos {#opening-resources}
+
+Chame `editor.ui.open_resource()` na função `run` de um comando para abrir um recurso do projeto. O caminho começa com `/`. Omitir a visualização seleciona a visualização principal do recurso:
+
+```lua
+editor.ui.open_resource("/main/main.script")
+```
+
+As visualizações `code` e `text` aceitam uma posição do cursor ou uma seleção como terceiro argumento. Os números de linha e coluna começam em `1`; uma coluna ausente usa `1` como padrão. Especifique a visualização ao passar esses argumentos:
+
+```lua
+editor.ui.open_resource("/main/main.script", "code", { line = 10 })
+editor.ui.open_resource("/main/main.script", "code", { line = 10, column = 5 })
+```
+
+Para selecionar um intervalo, forneça as posições do cursor em `from` e `to`:
+
+```lua
+editor.ui.open_resource("/main/main.script", "code", {
+    from = { line = 10, column = 1 },
+    to = { line = 12, column = 1 }
+})
+```
+
+A visualização configurada para o recurso pode abrir no editor ou em uma aplicação externa. As visualizações integradas Code e Text aceitam os argumentos de cursor e seleção. Consulte [`editor.ui.open_resource()`](/ref/beta/editor/#editor.ui.open_resource:resource_path-view-args) para saber quais nomes de visualização são aceitos.
 
 ## Conceitos básicos
 

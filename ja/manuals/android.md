@@ -15,6 +15,14 @@ toc:
   title: Android アプリケーションバンドルの作成
 - anchor: installing-an-android-application-bundle
   title: Android アプリケーションバンドルのインストール
+- anchor: shrinking-java-code-with-r8
+  title: R8 による Java コードの縮小
+- anchor: enabling-r8
+  title: R8 の有効化
+- anchor: adding-rules-to-an-extension
+  title: 拡張へのルールの追加
+- anchor: keeping-the-obfuscation-mapping
+  title: 難読化マッピングの保持
 - anchor: permissions
   title: 権限
 - anchor: androidpermissioninternet-and-androidpermissionaccess_network_state-protection-level-normal
@@ -108,6 +116,41 @@ Success
 #### AAB のインストール {#installing-an-aab}
 
 *.aab* ファイルは、[Google Play デベロッパーコンソール](https://play.google.com/apps/publish/) 経由で Google Play にアップロードできます。[Android bundletool](https://developer.android.com/studio/command-line/bundletool) を使い、*.aab* ファイルから *`.apk`* ファイルを生成してローカルにインストールすることもできます。
+
+## R8 による Java コードの縮小 {#shrinking-java-code-with-r8}
+
+R8 は、縮小、最適化、難読化によって Java コードのサイズを削減します。
+
+### R8 の有効化 {#enabling-r8}
+
+*game.project* の **Android ▸ R8 Keep Rules** で `/builtins/manifests/android/dmengine.keep` を選択します。これにより Defold の既定のルールを直接使います。
+
+```ini
+[android]
+r8_keep_rules = /builtins/manifests/android/dmengine.keep
+```
+
+Java コードを持つすべての拡張に、実行時に必要なクラスの `.keep` ファイルが含まれていることを確認してください。拡張のルールは、ビルド時に選択したプロジェクトのルールと統合されます。R8 を有効にした後、デバイス上でリリースビルドをテストしてください。
+
+**R8 Keep Rules** を空にすると、縮小を行わない D8 を使います。R8 を有効にすると、ネイティブ拡張を含まないプロジェクトでもネイティブ拡張ビルドサービスを使います。
+
+### 拡張へのルールの追加 {#adding-rules-to-an-extension}
+
+拡張の保持ルールは、`manifests/android` ディレクトリ内の `build.gradle` と同じ場所に配置します。ファイルを追加し、拡張の Java クラスを保持する方法については、[Android 拡張の R8 保持ルール](/ja/manuals/extensions/#r8-keep-rules-for-android)を参照してください。
+
+### 難読化マッピングの保持 {#keeping-the-obfuscation-mapping}
+
+Android のバンドルダイアログで **Generate debug symbols** を有効にするか、Bob に `--with-symbols` を渡すと、ビルドで生成された R8 の `mapping.txt` を保持できます。たとえば、プロジェクトディレクトリで次を実行します。
+
+```sh
+java -jar bob.jar --platform arm64-android --variant release \
+  --archive --with-symbols --bundle-output build/android \
+  resolve build bundle
+```
+
+マッピングは、生成された APK または AAB の隣の `<binary-name>.apk.symbols/mapping.txt` に保存されます。たとえば、プロジェクトのタイトルが `My Game` の場合、上記のコマンドは `build/android/MyGame/MyGame.apk.symbols/mapping.txt` を生成します。
+
+マッピングファイルは、生成元のリリースと正確に対応付けて保管してください。このファイルは難読化された Java 名を元の名前に対応付け、スタックトレースを解釈するために使います。別のビルドのマッピングを使うと、誤った結果になることがあります。
 
 ## 権限 {#permissions}
 

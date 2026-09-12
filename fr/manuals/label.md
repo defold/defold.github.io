@@ -105,6 +105,9 @@ La propriété *Pivot* vous permet de modifier le mode d'alignement du texte.
 
 Vous pouvez manipuler les libellés à l'exécution en récupérant et en définissant leur texte ainsi que leurs diverses autres propriétés.
 
+`text`
+: Le contenu textuel du label (`string`). Accessible avec `go.get()` et `go.set()` depuis Defold 1.13.2.
+
 `color`
 : La couleur du libellé (`vector4`)
 
@@ -124,9 +127,15 @@ Vous pouvez manipuler les libellés à l'exécution en récupérant et en défin
 function init(self)
     -- Set the text of the "my_label" component in the same game object
     -- as this script.
-    label.set_text("#my_label", "New text")
+    go.set("#my_label", "text", "New text")
+    local text = go.get("#my_label", "text")
+    print(text) -- New text
 end
 ```
+
+<div class='sidenote' markdown='1'>
+Depuis Defold 1.13.2, `label.set_text()` et `label.get_text()` sont obsolètes au profit de la propriété `text`. Les anciennes fonctions restent disponibles pour assurer la compatibilité. L'ancienne fonction d'écriture met un message en file d'attente, tandis que `go.set()` met le texte à jour immédiatement.
+</div>
 
 ```lua
 function init(self)

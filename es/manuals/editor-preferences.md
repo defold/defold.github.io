@@ -80,6 +80,10 @@ Auto-insert closing parens
 : Inserta automáticamente los caracteres de cierre correspondientes al editar código. Esta opción está activada de forma predeterminada.
 
 
+Format on save
+: Ejecuta el formateador del servidor de lenguaje en los archivos de código abiertos y modificados al guardar. Está desactivado de forma predeterminada. El servidor de lenguaje debe admitir el formateo; consulta [formatear código](/es/manuals/writing-code/#formatting-code) para formatear un documento o una selección manualmente.
+
+
 ### Abrir archivos script en Visual Studio Code {#open-script-files-in-visual-studio-code}
 
 ![](/manuals/images/editor/preferences_vscode.png)

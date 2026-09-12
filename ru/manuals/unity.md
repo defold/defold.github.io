@@ -217,7 +217,7 @@ Defold использует **"Game Objects"**, как и Unity. В обоих �
 |---|---|---|
 | [Sprite](/ru/manuals/sprite/) | Sprite Renderer | В Defold tint (color property) можно менять только из кода. |
 | [Tilemap](/ru/manuals/tilemap/) | Tilemap / Grid | В Defold есть встроенный редактор Tilemap, поддерживающий квадратные сетки (но существует расширение, например, для [Hexagon](https://github.com/selimanac/defold-hexagon/)), и отсутствуют встроенные autotiling rules. Такие инструменты как [Tiled](https://defold.com/assets/tiled/), [TileSetter](https://defold.com/assets/tilesetter/) или [Sprite Fusion](https://defold.com/assets/spritefusion/) поддерживают экспорт в Defold. |
-| [Label](/ru/manuals/label/) | Text / TextMeshPro | В Defold есть расширение [RichText](https://defold.com/assets/richtext/) для rich formatting, аналогично TextMeshPro. |
+| [Label](/ru/manuals/label/) | Text / TextMeshPro | Начиная с Defold 1.13.2, компоненты Label и GUI-ноды Text поддерживают встроенную [форматированную текстовую разметку](/ru/manuals/font-richtext/) для цветов, градиентов, обводок и анимированных эффектов. Также доступно отдельное расширение [RichText](https://defold.com/assets/richtext/). |
 | [Sound](/ru/manuals/sound/) | AudioSource | В Defold звук только глобальный, а не spatial. Для Defold существует официальное [расширение FMOD](https://github.com/defold/extension-fmod). |
 | [Factory](/ru/manuals/factory/) | Prefab Instantiate() | В Defold Factory — это компонент с определенным prototype (prefab). |
 | [Collection Factory](/ru/manuals/collection-factory/) | - (No direct component equivalent) | Компонент Collection Factory в Defold может порождать сразу несколько Game Objects с отношениями parent-child. |

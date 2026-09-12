@@ -108,6 +108,8 @@ Puoi includere file nella tua applicazione usando risorse del bundle (bundle res
 #### Risorse personalizzate {#custom-resources}
 {% include shared/it/custom-resources.md %}
 
+Anche le estensioni possono fornire questi file tramite `ext.properties`. I loro percorsi vengono combinati con le risorse personalizzate del progetto sia nelle build dell'editor sia negli archivi di Bob. Consulta [Risorse personalizzate delle estensioni](/it/manuals/extensions/#custom-resources).
+
 ```lua
 -- Load level data into a string
 local data, error = sys.load_resource("/assets/level_data.json")

@@ -12,6 +12,14 @@ toc:
 - anchor: creating-an-android-application-bundle
   title: Crear un bundle de aplicación Android
 - Instalar un bundle de aplicación Android
+- anchor: shrinking-java-code-with-r8
+  title: Reducir el código Java con R8
+- anchor: enabling-r8
+  title: Activar R8
+- anchor: adding-rules-to-an-extension
+  title: Agregar reglas a una extensión
+- anchor: keeping-the-obfuscation-mapping
+  title: Conservar el mapa de ofuscación
 - Permisos
 - 'android.permission.INTERNET y android.permission.ACCESS_NETWORK_STATE (Nivel de protección: normal)'
 - 'android.permission.WAKE_LOCK (Nivel de protección: normal)'
@@ -100,6 +108,41 @@ Para que esta funcionalidad funcione, necesitarás tener *ADB* instalado y *USB 
 #### Instalar un AAB
 
 Un archivo *.aab* se puede subir a Google Play mediante la [consola para desarrolladores de Google Play](https://play.google.com/apps/publish/). También es posible generar un archivo *`.apk`* a partir de un archivo *.aab* para instalarlo localmente usando [Android bundletool](https://developer.android.com/studio/command-line/bundletool).
+
+## Reducir el código Java con R8 {#shrinking-java-code-with-r8}
+
+R8 reduce el tamaño del código Java mediante eliminación de código no usado, optimización y ofuscación.
+
+### Activar R8 {#enabling-r8}
+
+Selecciona `/builtins/manifests/android/dmengine.keep` en **Android ▸ R8 Keep Rules** en *game.project*. Esto usa directamente las reglas predeterminadas de Defold:
+
+```ini
+[android]
+r8_keep_rules = /builtins/manifests/android/dmengine.keep
+```
+
+Asegúrate de que cada extensión con código Java proporcione un archivo `.keep` para las clases que necesita en runtime. Las reglas de las extensiones se combinan con las reglas del proyecto seleccionadas al compilar. Prueba una build de release en un dispositivo después de activar R8.
+
+Dejar **R8 Keep Rules** vacío usa D8 sin eliminar código. Al activar R8 se usa el servicio de compilación de extensiones nativas, incluso en un proyecto sin extensiones nativas.
+
+### Agregar reglas a una extensión {#adding-rules-to-an-extension}
+
+Las reglas de conservación de una extensión van en su directorio `manifests/android`, junto a `build.gradle`. Consulta [reglas de conservación de R8 para extensiones de Android](/es/manuals/extensions/#r8-keep-rules-for-android) para saber cómo agregar un archivo y conservar las clases Java de la extensión.
+
+### Conservar el mapa de ofuscación {#keeping-the-obfuscation-mapping}
+
+Activa **Generate debug symbols** en el diálogo de bundle de Android, o pasa `--with-symbols` a Bob, para conservar el archivo `mapping.txt` de R8 cuando la build lo genere. Por ejemplo, desde el directorio del proyecto:
+
+```sh
+java -jar bob.jar --platform arm64-android --variant release \
+  --archive --with-symbols --bundle-output build/android \
+  resolve build bundle
+```
+
+El mapa se guarda como `<binary-name>.apk.symbols/mapping.txt` junto al APK o AAB generado. Por ejemplo, con el título de proyecto `My Game`, el comando anterior genera `build/android/MyGame/MyGame.apk.symbols/mapping.txt`.
+
+Guarda el archivo de mapa junto a la release exacta de la que procede. Permite relacionar los nombres Java ofuscados con los originales para interpretar trazas de pila; un mapa de otra build puede dar resultados incorrectos.
 
 ## Permisos
 

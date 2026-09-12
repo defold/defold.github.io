@@ -17,6 +17,8 @@ toc:
   title: Utiliser léditeur de code intégré
 - anchor: code-completion
   title: Complétion de code
+- anchor: formatting-code
+  title: Formatage du code
 - anchor: jump-to-symbol
   title: Accéder à un symbole
 - anchor: linting-configuration
@@ -60,6 +62,16 @@ L'éditeur de code intégré propose la complétion des fonctions pendant que vo
 Appuyez sur <kbd>CTRL</kbd> + <kbd>Space</kbd> pour afficher des informations supplémentaires sur les fonctions, les arguments et les valeurs de retour :
 
 ![](/images/editor/apireference.png)
+
+Le serveur de langage Lua fourni inclut des annotations de types pour les API Defold. La complétion, les informations au survol et les diagnostics comprennent les types Defold tels que les hachages, les URL, les vecteurs et les quaternions, ainsi que les arguments et les valeurs de retour des fonctions. L'éditeur fournit des annotations pour les scripts de jeu et les API `editor.*` utilisées dans les fichiers `.editor_script`. Aucune bibliothèque d'annotations distincte n'est nécessaire pour les API intégrées lorsque vous utilisez l'éditeur de code Defold.
+
+Les API d'extensions tierces peuvent nécessiter leurs propres annotations.
+
+### Formatage du code {#formatting-code}
+
+Sélectionnez <kbd>Edit ▸ Format Document/Selection</kbd> ou appuyez sur <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>F</kbd> pour exécuter l'outil de formatage du serveur de langage. Si une sélection existe, l'éditeur formate les lignes sélectionnées ; sinon, il formate le document. Le formatage nécessite un serveur de langage prenant en charge l'opération correspondante.
+
+Pour formater les fichiers ouverts modifiés lors de l'enregistrement, activez **Format on save** dans <kbd>Preferences ▸ Code</kbd>. Cette préférence est désactivée par défaut et nécessite un serveur de langage prenant en charge le formatage du document. Consultez les [préférences de code](/fr/manuals/editor-preferences/#code).
 
 ### Accéder à un symbole {#jump-to-symbol}
 

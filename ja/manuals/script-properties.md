@@ -9,6 +9,8 @@ toc:
   title: スクリプトプロパティ
 - anchor: defining-a-script-property
   title: スクリプトプロパティの定義
+- anchor: text-properties
+  title: テキストプロパティ
 - anchor: accessing-script-properties
   title: スクリプトプロパティへのアクセス
 - anchor: factory-created-objects
@@ -30,7 +32,7 @@ toc:
 
 ## スクリプトプロパティの定義 {#defining-a-script-property}
 
-スクリプトプロパティは、特殊な関数 `go.property()` で定義することでスクリプトコンポーネント（script component）に追加します。この関数はトップレベル、つまり `init()` や `update()` などのライフサイクル関数の外側で使用する必要があります。プロパティに指定するデフォルト値によって、そのプロパティの型が決まります。型には `number`、`boolean`、`hash`、`msg.url`、`vmath.vector3`、`vmath.vector4`、`vmath.quaternion`、`resource` があります（下記を参照）。
+スクリプトプロパティは、特殊な関数 `go.property()` で定義することでスクリプトコンポーネント（script component）に追加します。この関数はトップレベル、つまり `init()` や `update()` などのライフサイクル関数の外側で使用する必要があります。プロパティに指定するデフォルト値によって、そのプロパティの型が決まります。型には `number`、`boolean`、`string`、`hash`、`msg.url`、`vmath.vector3`、`vmath.vector4`、`vmath.quaternion`、`resource` があります（下記を参照）。
 
 <div class='important' markdown='1'>
 ハッシュ値から元の文字列を逆引きできるのは、デバッグを容易にするための Debug ビルドだけです。Release ビルドには逆引き用の文字列の値が存在しないため、`tostring()` を `hash` 値に使用して文字列を取り出そうとしても意味がありません。
@@ -76,6 +78,32 @@ end
 スクリプトプロパティは、プロジェクトのビルド時に解析されます。値を表す式は評価されません。つまり、`go.property("hp", 3+6)` のような指定は動作しませんが、`go.property("hp", 9)` は動作します。
 </div>
 
+### テキストプロパティ {#text-properties}
+
+Defold 1.13.2 以降では、文字列の既定値でテキストプロパティを定義できます。テキストプロパティは UTF-8 と改行文字をサポートし、エディターの複数行フィールドで編集できます。
+
+```lua
+go.property("greeting", "Hello!\nWelcome, José!")
+
+function init(self)
+    go.set("#label", "text", self.greeting)
+end
+```
+
+他のスクリプトプロパティと同じように、ゲームオブジェクトまたはコレクションでスクリプトコンポーネントを選択して、テキストプロパティを上書きできます。既定値や上書きする値には NUL 文字を含められません。
+
+他のスクリプトは、スクリプトコンポーネントの URL を通じてテキストプロパティを読み書きできます。たとえば、コレクション内の `speaker` という名前のゲームオブジェクトに上記のスクリプトとラベルを配置し、コンポーネント ID を `script` と `label` にします。別のスクリプトの `init()` から、次のように更新します。
+
+```lua
+function init(self)
+    local greeting = go.get("/speaker#script", "greeting")
+    go.set("/speaker#script", "greeting", greeting .. "\nEnjoy the game!")
+    go.set("/speaker#label", "text", go.get("/speaker#script", "greeting"))
+end
+```
+
+スクリプトプロパティを変更しても、ラベルは自動的に更新されません。最後の行で、新しい値をラベルの `text` プロパティに明示的にコピーしています。
+
 ## スクリプトプロパティへのアクセス {#accessing-script-properties}
 
 定義したすべてのスクリプトプロパティは、スクリプトインスタンスへの参照である `self` に格納されたメンバーとして利用できます。
@@ -92,7 +120,7 @@ function update(self, dt)
 end
 ```
 
-ユーザー定義のスクリプトプロパティには、ほかのプロパティと同じように `get`、`set`、`animate` 関数を使ってアクセスすることもできます。
+ユーザー定義のスクリプトプロパティは、`go.get()` で読み取り、`go.set()` で書き込むこともできます。ベクトルやクォータニオンを含む数値プロパティは、`go.animate()` でアニメーションできます。テキストプロパティは読み書きできますが、アニメーションはできません。
 
 ```lua
 -- another.script

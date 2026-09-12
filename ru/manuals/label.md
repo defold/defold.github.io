@@ -98,6 +98,9 @@ toc:
 
 Текстовыми метками можно манипулировать во время выполнения, получая и устанавливая текст метки, а также изменяя другие свойства.
 
+`text`
+: Текстовое содержимое метки (`string`). Доступно через `go.get()` и `go.set()` начиная с Defold 1.13.2.
+
 `color`
 : Цвет метки (`vector4`)
 
@@ -115,11 +118,17 @@ toc:
 
 ```lua
 function init(self)
-    -- Задать текст компоненту "my_label" в том же игровом объекте,
-    -- что и этот скрипт.
-    label.set_text("#my_label", "New text")
+    -- Set the text of the "my_label" component in the same game object
+    -- as this script.
+    go.set("#my_label", "text", "New text")
+    local text = go.get("#my_label", "text")
+    print(text) -- New text
 end
 ```
+
+<div class='sidenote' markdown='1'>
+Начиная с Defold 1.13.2, функции `label.set_text()` и `label.get_text()` считаются устаревшими; вместо них используется свойство `text`. Старые функции остаются доступными для совместимости. Прежняя функция установки текста ставит сообщение в очередь, тогда как `go.set()` обновляет текст немедленно.
+</div>
 
 ```lua
 function init(self)

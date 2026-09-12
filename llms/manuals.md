@@ -100,7 +100,7 @@ These are per-manual files generated for LLM usage.
 - [Fonts](https://defold.com/llms/manuals/font.md)
 - [Rich Text](https://defold.com/llms/manuals/font-richtext.md)
 - [Text nodes](https://defold.com/llms/manuals/gui-text.md)
-- [Label components](https://defold.com/manuals/labels)
+- [Label components](https://defold.com/llms/manuals/label.md)
 
 ## Physics
 
