@@ -64,11 +64,50 @@ The optional *manifests* folder of an extension contains additional files used i
 
 * `android` - This folder accepts a manifest stub file to be merged into the main application ([as described here](https://defold.com/llms/manuals/extensions-manifest-merge-tool.md)).
   * The folder can also contain a `build.gradle` file with dependencies to be [resolved by Gradle](https://defold.com/llms/manuals/extensions-gradle.md).
-  * The folder can also contain R8 keep-rule files (`.keep`) for Java code that needs to be preserved when shrinking is enabled. See the [R8 Keep Rules project setting](https://defold.com/llms/manuals/project-settings.md) for setup and migration from the former ProGuard configuration.
+  * Extensions with Java code should include an [R8 keep-rule file](#r8-keep-rules-for-android) (`.keep`) for the classes they need at runtime.
 * `ios` - This folder accepts a manifest stub file to be merged into the main application ([as described here](https://defold.com/llms/manuals/extensions-manifest-merge-tool.md)).
   * The folder can also contain a `Podfile` file with dependencies to be [resolved by Cocoapods](https://defold.com/llms/manuals/extensions-cocoapods.md).
 * `osx` - This folder accepts a manifest stub file to be merged into the main application ([as described here](https://defold.com/llms/manuals/extensions-manifest-merge-tool.md)).
 * `web` - This folder accepts a manifest stub file to be merged into the main application ([as described here](https://defold.com/llms/manuals/extensions-manifest-merge-tool.md)).
+
+### R8 keep rules for Android
+
+Add a `.keep` file to the extension's `manifests/android` directory, next to `build.gradle`. For example, `/myextension/manifests/android/myextension.keep` can preserve the extension's Java classes with:
+```proguard
+-keep,allowoptimization class com.example.myextension.** { *; }
+```
+
+Replace `com.example.myextension` with the package containing your extension's Java classes. This rule preserves the classes and their members while allowing R8 to optimize their code. Add rules for other classes accessed through the Java Native Interface (JNI) or reflection, since R8 may not discover those uses automatically.
+
+If the extension relies on annotations at runtime, also include:
+```proguard
+-keepattributes *Annotation*
+```
+
+These rules are combined with the project's selected keep file when [R8 is enabled](https://defold.com/llms/manuals/android.md).
+
+## Custom resources
+
+An extension can include data in the game archive by declaring custom resources in an `ext.properties` file next to its `ext.manifest`:
+```ini
+[project]
+custom_resources.default = /myextension/data
+```
+
+For example, place a JSON file at `/myextension/data/settings.json`. The path is relative to the project root, including the extension folder. When sharing the extension as a library, include `myextension` in the library's [Include Dirs](https://defold.com/llms/manuals/libraries.md) so consuming projects receive the extension and its data.
+
+These paths are combined with `project.custom_resources` from *game.project* and contributions from other extensions. Setting custom resources in the project does not replace the extension contributions. Both editor builds and Bob archives include the files, which can be loaded at runtime:
+```lua
+local data, err = sys.load_resource("/myextension/data/settings.json")
+if data then
+    local settings = json.decode(data)
+    pprint(settings)
+else
+    print(err)
+end
+```
+
+See [file access](https://defold.com/llms/manuals/file-access.md) for how custom resources differ from bundle resources.
 
 ## Sharing an extension
 

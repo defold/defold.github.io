@@ -567,9 +567,11 @@ Please note that lifecycle hooks currently are an editor-only feature, and they 
 
 ## Language servers
 
-The editor supports a subset of the [Language Server Protocol](https://microsoft.github.io/language-server-protocol/): diagnostics (lints), completions, hover information, document symbols in the Structure pane, go to definition, find references, and symbol rename. Hover over a symbol to see information from the language server. With the cursor on a symbol, use `F2` to rename it, `F12` to go to its definition, or `Shift+F12` to find references. These actions are also available from the `Edit` menu.
+The editor supports a subset of the [Language Server Protocol](https://microsoft.github.io/language-server-protocol/): diagnostics (lints), completions, hover information, document symbols in the Structure pane, go to definition, find references, symbol rename, and document/range formatting. Hover over a symbol to see information from the language server. With the cursor on a symbol, use `F2` to rename it, `F12` to go to its definition, or `Shift+F12` to find references. These actions are also available from the `Edit` menu. See [formatting code](https://defold.com/llms/manuals/writing-code.md) for the formatting command and format-on-save preference.
 
-To define the language server, you need to edit your editor script's `get_language_servers` function like so:
+The bundled Lua language server includes Defold type annotations for the runtime and editor scripting APIs. In `.editor_script` files, completion and diagnostics recognize `editor.*` functions and their argument and return types. See [code completion](https://defold.com/llms/manuals/writing-code.md).
+
+To register an additional language server, define your editor script's `get_language_servers` function like so:
 ```lua
 function M.get_language_servers()
   local command = 'build/plugins/my-ext/plugins/bin/' .. editor.platform .. '/lua-lsp'

@@ -1825,6 +1825,8 @@ The *Custom Resources* field should contain a comma separated list of resources 
 
 Loading custom resources is covered in more detail in the [File Access manual](#manuals:file-access).
 
+Paths contributed by extensions through `custom_resources.default` in `ext.properties` are combined with this setting. See [extension custom resources](#manuals:extensions) for an example.
+
 #### Bundle Resources
 `bundle_resources`
 Bundle resources are additional files and folders located as a part of your application bundle using the [*Bundle Resources* field](#manuals:project-settings) in *game.project*.
@@ -2125,10 +2127,13 @@ When enabled this option will print information about the engine and engine vers
 Specifies which method to use to scale the game canvas.
 
 #### Retry Count
-The number of attempts to download a file when the engine starts (see `Retry Time`).
+The number of retries after a failed download during startup, including network errors, failed HTTP statuses and size mismatches in the engine's JavaScript or WebAssembly file. The initial request is separate. Archive-file verification has its own retry limit; see [download verification](#manuals:html5) and `Retry Time`.
 
 #### Retry Time
 The number of seconds to wait between attempts to download a file when the download failed (see `Retry Count`).
+
+#### Verify Downloaded File Size
+`html5.verify_downloaded_file_size` checks downloaded engine and archive files against their expected sizes. Enabled by default (`true`). Set it to `false` only if a server, proxy or CDN intentionally rewrites files and changes their sizes. Failed verification causes download retries before startup fails. The retry limits differ for engine downloads and archive-file verification; see [download verification](#manuals:html5).
 
 #### Transparent Graphics Context
 Check if you want the graphics context to have a transparent backdrop.
@@ -2648,7 +2653,7 @@ vmargs = -Xmx6gb,-Dfile.encoding=UTF-8,-Djna.nosys=true,-Ddefold.launcherpath=${
 
 The **Scene Editor** is the visual editor used to build and edit scenes such as collections, game objects, and other visual assets.
 
-By default, many visual scenes open with a **2D orthographic** view. For 3D work you can switch to a 3D-oriented layout, enable a 3D grid plane, and use a **perspective** camera.
+The initial camera view depends on the resource. 3D resources such as models and glTF scenes default to **perspective**, while 2D resources such as sprites, tilemaps and GUI scenes default to **orthographic**. You can change the camera orientation, projection and grid through the scene toolbar.
 
 ## Opening the Scene Editor
 
@@ -2660,6 +2665,14 @@ Open the Scene Editor by double-clicking a visual resource in the *Assets* pane,
 - **UI** — GUI scenes (`.gui`)
 - **Effects** — particle effects (`.particlefx`)
 - And others
+
+## Remembered scene views
+
+The editor remembers the camera state for each scene resource when its tab is closed or the editor exits. Reopening the same resource restores its view, so different collections or models can retain different camera positions, orientations and projections.
+
+Visibility filters are also remembered per scene. Hiding models or component guides in one scene does not require using the same filters in another. These are editor view settings and do not change the game's camera or runtime visibility.
+
+For resources without a saved camera state, model, mesh and glTF resources start in perspective. Collision objects choose their view from the project's 2D/3D physics setting; collections and game objects choose an initial view based on their scene geometry.
 
 ## Scene view navigation (camera controls)
 
@@ -2750,6 +2763,8 @@ Click on the **Visibility Eye Icon** (`👁`) in the Toolbar to toggle visibilit
 ## Grid settings
 
 The grid can be customized to match your workflow (especially useful in 3D). Click the **Grid Settings** button (`▦`) to open the grid settings popup.
+
+The editor keeps separate grid settings for 2D and 3D views. Set the size, plane and appearance while the desired mode is active; switching modes restores that mode's grid settings. **Reset to Defaults** resets the active mode's settings.
 
 Settings include:
 
@@ -2875,6 +2890,16 @@ Defold has a built-in code editor that allows you to open and edit Lua files (.l
 The built-in code editor will show code completion of functions while writing code:
 
 Pressing `CTRL` + `Space` will show additional information about functions, arguments and return values:
+
+The bundled Lua language server includes type annotations for Defold APIs. Completion, hover information and diagnostics understand Defold types such as hashes, URLs, vectors and quaternions, as well as function arguments and return values. The editor provides annotations for game scripts and for the `editor.*` APIs used in `.editor_script` files. No separate annotation library is needed for the built-in APIs when using the Defold code editor.
+
+Third-party extension APIs may need their own annotations.
+
+### Formatting code
+
+Select `Edit ▸ Format Document/Selection` or press `Alt` + `Shift` + `F` to run the language server's formatter. With a selection, the editor formats the selected lines; without one, it formats the document. Formatting requires a language server that supports the corresponding formatting operation.
+
+To format modified open files when saving, enable **Format on save** in `Preferences ▸ Code`. This preference is disabled by default and requires a language server that supports document formatting. See [Code preferences](#manuals:editor-preferences).
 
 ### Jump to symbol
 
@@ -3529,9 +3554,11 @@ Please note that lifecycle hooks currently are an editor-only feature, and they 
 
 ## Language servers
 
-The editor supports a subset of the [Language Server Protocol](https://microsoft.github.io/language-server-protocol/): diagnostics (lints), completions, hover information, document symbols in the Structure pane, go to definition, find references, and symbol rename. Hover over a symbol to see information from the language server. With the cursor on a symbol, use `F2` to rename it, `F12` to go to its definition, or `Shift+F12` to find references. These actions are also available from the `Edit` menu.
+The editor supports a subset of the [Language Server Protocol](https://microsoft.github.io/language-server-protocol/): diagnostics (lints), completions, hover information, document symbols in the Structure pane, go to definition, find references, symbol rename, and document/range formatting. Hover over a symbol to see information from the language server. With the cursor on a symbol, use `F2` to rename it, `F12` to go to its definition, or `Shift+F12` to find references. These actions are also available from the `Edit` menu. See [formatting code](#manuals:writing-code) for the formatting command and format-on-save preference.
 
-To define the language server, you need to edit your editor script's `get_language_servers` function like so:
+The bundled Lua language server includes Defold type annotations for the runtime and editor scripting APIs. In `.editor_script` files, completion and diagnostics recognize `editor.*` functions and their argument and return types. See [code completion](#manuals:writing-code).
+
+To register an additional language server, define your editor script's `get_language_servers` function like so:
 ```lua
 function M.get_language_servers()
   local command = 'build/plugins/my-ext/plugins/bin/' .. editor.platform .. '/lua-lsp'
@@ -3744,7 +3771,7 @@ Instead of returning actions from functions that expect them, you can just read 
 
 # Editor scripts and UI {#manuals:editor-scripts-ui}
 
-This manual explains how to create interactive UI elements in the editor using editor scripts written in Lua. To get started with editor scripts, see [Editor Scripts manual](#manuals:editor-scripts). You can find the full editor API reference [here](https://defold.com/ref/stable/editor-lua/). Currently, it's only possible to create interactive dialogs, though we want to expand the UI scripting support to the rest of the editor in the future.
+This manual explains how to create interactive dialogs and open resources in the editor using editor scripts written in Lua. To get started with editor scripts, see [Editor Scripts manual](#manuals:editor-scripts). You can find the full editor API reference [here](https://defold.com/ref/stable/editor-lua/).
 
 ## Hello world
 
@@ -3789,6 +3816,29 @@ Finally, after pressing `Enter` (or clicking on the `Perform` button), you'll se
 ```
 Perform action:	true
 ```
+
+## Opening resources
+
+Call `editor.ui.open_resource()` from a command's `run` function to open a project resource. The path starts with `/`. Omitting the view selects the resource's primary view:
+```lua
+editor.ui.open_resource("/main/main.script")
+```
+
+The `code` and `text` views accept a cursor position or a selection as a third argument. Line and column numbers start at `1`; a missing column defaults to `1`. Specify the view when passing these arguments:
+```lua
+editor.ui.open_resource("/main/main.script", "code", { line = 10 })
+editor.ui.open_resource("/main/main.script", "code", { line = 10, column = 5 })
+```
+
+To select a range, provide `from` and `to` cursor positions instead:
+```lua
+editor.ui.open_resource("/main/main.script", "code", {
+    from = { line = 10, column = 1 },
+    to = { line = 12, column = 1 }
+})
+```
+
+The configured resource view may open in the editor or an external application. The built-in Code and Text views support the cursor and selection arguments. See [`editor.ui.open_resource()`](https://defold.com/ref/beta/editor/#editor.ui.open_resource:resource_path-view-args) for supported view names.
 
 ## Basic concepts
 
@@ -4298,6 +4348,9 @@ Zoom on Scroll
 
 Auto-insert closing parens
 : Automatically inserts matching closing characters while editing code. This option is enabled by default.
+
+Format on save
+: Runs the language server formatter on modified open code files when saving. Disabled by default. The language server must support formatting; see [formatting code](#manuals:writing-code) for formatting a document or selection manually.
 
 ### Open script files in Visual Studio Code
 
@@ -5932,6 +5985,8 @@ The runtime fonts also have the benefit of supporting full text layout, e.g. rig
 We currently use the libraries [HarfBuzz](https://github.com/harfbuzz/harfbuzz), [SheenBidi](https://github.com/Tehreer/SheenBidi), [libunibreak](https://github.com/adah1972/libunibreak) and [SkriBidi](https://github.com/memononen/Skribidi).
 
 See [Enabling Runtime Fonts](#manuals:font#enabling-runtime-fonts)
+
+The editor uses the engine's font renderer for font and scene text previews. Text shaping and right-to-left layout require [runtime fonts](#enabling-runtime-fonts) and the **Use full text layout system** option in the App Manifest. For offline fonts, the preview respects the font's **Characters** and **All Chars** settings.
 
 ## Font collection
 
@@ -9845,6 +9900,8 @@ To avoid this problem, make sure that the texture's segments that will be scaled
 
 Defold supports a specific type of GUI node that allows text to be rendered in a GUI scene. Any font resource added to a project can be used for text node rendering.
 
+The editor preview supports text shaping and right-to-left layout using the engine's font renderer. See [text layout support](#manuals:font) for the required font and App Manifest settings.
+
 ## Adding text nodes
 
 The fonts that you wish to use in GUI text nodes must be added to the GUI component. Either right-click the *Fonts* folder, use the `GUI` top menu or press the corresponding keyboard shortcut.
@@ -12480,7 +12537,7 @@ Script properties are parsed when building the project. Value expressions are no
 
 Since Defold 1.13.2, a string default defines a text property. Text properties support UTF-8 and newline characters and are edited in a multiline field in the editor:
 ```lua
-go.property("greeting", "Hello!\nWelcome to the game.")
+go.property("greeting", "Hello!\nWelcome, José!")
 
 function init(self)
     go.set("#label", "text", self.greeting)
@@ -12488,6 +12545,17 @@ end
 ```
 
 Select a script component in a game object or collection to override its text properties, just like other script properties. Embedded NUL characters are not allowed in defaults or overrides.
+
+Other scripts can read and write a text property through the script component's URL. For example, put the script above and a label on a game object named `speaker` in the collection, with component ids `script` and `label`. Update them from another script's `init()`:
+```lua
+function init(self)
+    local greeting = go.get("/speaker#script", "greeting")
+    go.set("/speaker#script", "greeting", greeting .. "\nEnjoy the game!")
+    go.set("/speaker#label", "text", go.get("/speaker#script", "greeting"))
+end
+```
+
+Changing the script property does not automatically update the label; the last line explicitly copies the new value to the label's `text` property.
 
 ## Accessing script properties
 
@@ -13600,6 +13668,7 @@ Custom resources are bundled in the main game archive using the [*Custom Resourc
 
 The *Custom Resources* field should contain a comma separated list of resources that will be included in the main game archive. If directories are specified, all files and directories in that directory are recursively included. You can read the files using [`sys.load_resource()`](https://defold.com/ref/sys/#sys.load_resource).
 
+Extensions can also contribute these files through `ext.properties`. Their paths are combined with the project's custom resources in both editor builds and Bob archives. See [extension custom resources](#manuals:extensions).
 ```lua
 -- Load level data into a string
 local data, error = sys.load_resource("/assets/level_data.json")
@@ -14196,6 +14265,62 @@ render.draw(self.my_tile_predicate)
 ```
 
 Defold currently only supports `Materials` and `Render Targets` as referenced render resources, but over time more resource types will be supported by this system.
+
+### Multisampled render targets
+
+Render targets support multisample anti-aliasing (MSAA). This smooths geometry edges in an offscreen render pass. The target's sample count is independent of [Display ▸ Samples](#manuals:project-settings), which controls anti-aliasing for the window.
+
+For a `.render_target` resource, set **Sample Count** in the editor to `1`, `2`, `4`, `8` or `16`. A value of `1` disables multisampling. Add the resource to your `.render` file's **Render Resources** table and use its assigned name with `render.set_render_target()`, as in the example above.
+
+Alternatively, create a target in your render script's `init()`. Put `sample_count` in the outer parameter table, alongside the attachments:
+```lua
+self.offscreen = render.render_target({
+    sample_count = 4,
+    [graphics.BUFFER_TYPE_COLOR0_BIT] = {
+        format = graphics.TEXTURE_FORMAT_RGBA,
+        width = 1024,
+        height = 1024,
+        min_filter = graphics.TEXTURE_FILTER_LINEAR,
+        mag_filter = graphics.TEXTURE_FILTER_LINEAR,
+        u_wrap = graphics.TEXTURE_WRAP_CLAMP_TO_EDGE,
+        v_wrap = graphics.TEXTURE_WRAP_CLAMP_TO_EDGE,
+    },
+})
+self.scene_predicate = render.predicate({"scene"})
+self.present_predicate = render.predicate({"present"})
+```
+
+This example uses a color-only target. All color, depth and stencil attachments in a target share its sample count. Add a depth attachment and the usual depth-test state if the pass requires depth testing.
+
+For the following `update()` fragment, give the scene materials the `scene` tag and a full-screen quad's material the `present` tag. The quad's material must sample texture unit `0`. Set the appropriate view and projection for each pass:
+```lua
+render.set_render_target(self.offscreen)
+render.set_viewport(0, 0, 1024, 1024)
+render.clear({[graphics.BUFFER_TYPE_COLOR0_BIT] = vmath.vector4(0, 0, 0, 1)})
+-- Set the scene view and projection here.
+render.draw(self.scene_predicate)
+
+render.set_render_target(render.RENDER_TARGET_DEFAULT)
+render.set_viewport(0, 0, render.get_window_width(), render.get_window_height())
+-- Set the full-screen quad view and projection here.
+render.enable_texture(0, self.offscreen, graphics.BUFFER_TYPE_COLOR0_BIT)
+render.draw(self.present_predicate)
+render.disable_texture(0)
+```
+
+Switching away from the target finishes the pass and resolves its multisampled color attachments automatically. `render.enable_texture()` binds the resolved color texture, so the quad uses an ordinary texture sampler. No separate resolve command is required.
+
+The requested sample count defaults to `1` and must be a positive integer. Graphics backends reduce unsupported requests to a supported power-of-two count, falling back to `1` if necessary, and log a warning when the count changes. Higher sample counts increase the memory needed for the attachments.
+
+When using a render target resource, inspect its effective count from a game object `.script` with `resource.get_render_target_info()`. For example, after adding `/render/offscreen.render_target` to **Render Resources**:
+```lua
+function init(self)
+    local info = resource.get_render_target_info("/render/offscreen.render_targetc")
+    print("Render target sample count:", info.sample_count)
+end
+```
+
+Use this effective count when checking device support instead of assuming that the requested count was available. See [`render.render_target()`](https://defold.com/ref/beta/render/#render.render_target:parameters) and [`resource.get_render_target_info()`](https://defold.com/ref/beta/resource/#resource.get_render_target_info:path) for the full parameter and result tables.
 
 ## Texture handles
 
@@ -17856,6 +17981,8 @@ Defold will create a dependency tree when building and bundling your application
 A quick way to reduce the engine size is to remove functionality in the engine that you do not use. This is done [application manifest file](#manuals:app-manifest) where it is possible to remove engine components that you do not need. Examples:
 
 * Physics - If your game does not make use of Box2D or Bullet3D physics then it is strongly advised to remove the physics engines
+* GUI, particle effects and tilemaps - These components can be excluded separately with the [App Manifest component switches](#manuals:app-manifest). Remove component references and API calls for any feature you exclude. Excluding particle effects also removes support for particle nodes in GUI scenes.
+* Rich text - Disable [Use Rich Text](#manuals:app-manifest) if labels and GUI text only need plain text. This removes rich text parsing and style effects while retaining ordinary text rendering.
 * LiveUpdate - If your game does not use LiveUpdate it can be removed
 * Image loaded - If your game does not manually load and decode images using `image.load()`
 * BasisU - If your game has few textures, compare the build size without BasisU (removed via app manifest) and without texture compression versus a build with BasisU and compressed textures. For games with limited textures, it might be more beneficial to reduce the binary size and skip texture compression. Additionally, not using the transcoder can lower the amount of memory required to run your game.
@@ -18365,6 +18492,39 @@ For this feature to work, you will need *ADB* installed and *USB debugging* enab
 
 An *.aab* file can be uploaded to Google Play via the [Google Play developer console](https://play.google.com/apps/publish/). It is also possible to generate an *`.apk`* file from an *.aab* file to install it locally using the [Android bundletool](https://developer.android.com/studio/command-line/bundletool).
 
+## Shrinking Java code with R8
+
+R8 reduces the size of Java code through shrinking, optimization and obfuscation.
+
+### Enabling R8
+
+Select `/builtins/manifests/android/dmengine.keep` in **Android ▸ R8 Keep Rules** in *game.project*. This uses Defold's default rules directly:
+```ini
+[android]
+r8_keep_rules = /builtins/manifests/android/dmengine.keep
+```
+
+Make sure every extension with Java code provides a `.keep` file for the classes it needs at runtime. Extension rules are combined with the selected project rules when building. Test a release build on a device after enabling R8.
+
+Leaving **R8 Keep Rules** empty uses D8 without shrinking. Enabling R8 uses the native extension build service, even for a project without native extensions.
+
+### Adding rules to an extension
+
+Keep rules for an extension belong in its `manifests/android` directory, next to `build.gradle`. See [R8 keep rules for Android extensions](#manuals:extensions) for how to add a file and preserve the extension's Java classes.
+
+### Keeping the obfuscation mapping
+
+Enable **Generate debug symbols** in the Android bundle dialog, or pass `--with-symbols` to Bob, to retain R8's `mapping.txt` when the build produces one. For example, from the project directory:
+```sh
+java -jar bob.jar --platform arm64-android --variant release \
+  --archive --with-symbols --bundle-output build/android \
+  resolve build bundle
+```
+
+The mapping is saved as `.apk.symbols/mapping.txt` beside the generated APK or AAB. For example, with the project title `My Game`, the command above produces `build/android/MyGame/MyGame.apk.symbols/mapping.txt`.
+
+Keep the mapping file with the exact release it came from. It maps obfuscated Java names back to the original names for interpreting stack traces; a mapping from a different build may give incorrect results.
+
 ## Permissions
 
 The Defold engine requires a number of different permissions for all engine features to work. The permissions are defined in the `AndroidManifest.xml`, specified in the *game.project* [project settings file](#manuals:project-settings). You can read more about Android permissions in [the official docs](https://developer.android.com/guide/topics/permissions/overview). The following permissions are requested in the default manifest:
@@ -18823,6 +18983,27 @@ Cross-origin resources loaded by the page must also use compatible CORS or Cross
 Defold HTML5 bundles require a modern browser with WebAssembly support. Internet Explorer 11 is not supported.
 
 When you click on the `Create bundle` button you will be prompted to select a folder in which to create your application. After the export process completes, you will find all of the files needed to run the application.
+
+## WebGL context version
+
+Select the requested graphics context through [`graphics.webgl_version_hint`](#manuals:project-settings). Its default is WebGL 2; request WebGL 1 to test or target that context on browsers that support both versions.
+
+## Download verification
+
+The HTML5 loader checks the sizes of downloaded engine and archive files by default. Failed checks cause downloads to be retried before the loader reports an error:
+
+* Network errors, failed HTTP statuses and size mismatches in the engine's JavaScript or WebAssembly download use the retry limit in `html5.retry_count`.
+* Archive-file verification has its own retry limit for size or SHA-1 mismatches. Each verification retry downloads the file's pieces again, with the normal network retries available for each download.
+
+The `html5.retry_time` setting controls the delay between retries in both cases.
+
+If your server, proxy or CDN intentionally rewrites served files and changes their sizes, disable size verification in *game.project*:
+```ini
+[html5]
+verify_downloaded_file_size = 0
+```
+
+Disabling **Verify Downloaded File Size** leaves any SHA-1 verification included in the bundle enabled. See the [HTML5 project settings](#manuals:project-settings).
 
 ## Known issues and limitations
 
@@ -19467,11 +19648,50 @@ The optional *manifests* folder of an extension contains additional files used i
 
 * `android` - This folder accepts a manifest stub file to be merged into the main application ([as described here](#manuals:extensions-manifest-merge-tool)).
   * The folder can also contain a `build.gradle` file with dependencies to be [resolved by Gradle](#manuals:extensions-gradle).
-  * The folder can also contain R8 keep-rule files (`.keep`) for Java code that needs to be preserved when shrinking is enabled. See the [R8 Keep Rules project setting](#manuals:project-settings) for setup and migration from the former ProGuard configuration.
+  * Extensions with Java code should include an [R8 keep-rule file](#r8-keep-rules-for-android) (`.keep`) for the classes they need at runtime.
 * `ios` - This folder accepts a manifest stub file to be merged into the main application ([as described here](#manuals:extensions-manifest-merge-tool)).
   * The folder can also contain a `Podfile` file with dependencies to be [resolved by Cocoapods](#manuals:extensions-cocoapods).
 * `osx` - This folder accepts a manifest stub file to be merged into the main application ([as described here](#manuals:extensions-manifest-merge-tool)).
 * `web` - This folder accepts a manifest stub file to be merged into the main application ([as described here](#manuals:extensions-manifest-merge-tool)).
+
+### R8 keep rules for Android
+
+Add a `.keep` file to the extension's `manifests/android` directory, next to `build.gradle`. For example, `/myextension/manifests/android/myextension.keep` can preserve the extension's Java classes with:
+```proguard
+-keep,allowoptimization class com.example.myextension.** { *; }
+```
+
+Replace `com.example.myextension` with the package containing your extension's Java classes. This rule preserves the classes and their members while allowing R8 to optimize their code. Add rules for other classes accessed through the Java Native Interface (JNI) or reflection, since R8 may not discover those uses automatically.
+
+If the extension relies on annotations at runtime, also include:
+```proguard
+-keepattributes *Annotation*
+```
+
+These rules are combined with the project's selected keep file when [R8 is enabled](#manuals:android).
+
+## Custom resources
+
+An extension can include data in the game archive by declaring custom resources in an `ext.properties` file next to its `ext.manifest`:
+```ini
+[project]
+custom_resources.default = /myextension/data
+```
+
+For example, place a JSON file at `/myextension/data/settings.json`. The path is relative to the project root, including the extension folder. When sharing the extension as a library, include `myextension` in the library's [Include Dirs](#manuals:libraries) so consuming projects receive the extension and its data.
+
+These paths are combined with `project.custom_resources` from *game.project* and contributions from other extensions. Setting custom resources in the project does not replace the extension contributions. Both editor builds and Bob archives include the files, which can be loaded at runtime:
+```lua
+local data, err = sys.load_resource("/myextension/data/settings.json")
+if data then
+    local settings = json.decode(data)
+    pprint(settings)
+else
+    print(err)
+end
+```
+
+See [file access](#manuals:file-access) for how custom resources differ from bundle resources.
 
 ## Sharing an extension
 
@@ -20018,6 +20238,18 @@ Include support for Ogg Opus sound resources. The Opus decoder is excluded by de
 
 Exclude all input handling from the engine.
 
+## Exclude GUI
+
+Remove GUI resources, components and Lua support from the engine. Enable this only if the project does not use GUI scenes or GUI scripts. Label components remain available. This option is disabled by default.
+
+## Exclude Particle FX
+
+Remove particle effect resources, components and the `particlefx` Lua module. This also removes support for particle nodes in GUI scenes; GUI scenes without particle nodes remain supported. Remove references to particle effects and calls to their APIs before enabling this option. It is disabled by default.
+
+## Exclude Tilemaps
+
+Remove tilemap resources, components and the `tilemap` Lua module. Enable this only if the project does not use tilemap components or their APIs. Tile sources used by other components remain available. This option is disabled by default.
+
 ## Exclude Live Update
 
 Exclude the [Live Update functionality](#manuals:live-update) from the engine.
@@ -20055,6 +20287,10 @@ On Linux ARM64, the **OpenGL** choice uses the OpenGL ES backend. The Android co
 ## Use full text layout system
 
 If enabled (`true`), this includes the full text layout system for shaping text, including right-to-left languages. Enable this option together with `font.runtime_generation` in *game.project* to use runtime generation for SDF fonts from TrueType (`.ttf`) or OpenType (`.otf`) resources. Runtime generation from `.otf` resources is supported since Defold 1.13.2. Read more in the [Font Manual](#manuals:font).
+
+## Use Rich Text
+
+Include rich text parsing and style effects for labels and GUI text. This option is enabled by default. Disable it to reduce engine size when the project only needs plain text. Labels and GUI text remain supported, but markup renders as plain text instead of applying formatting or effects.
 
 ## Minimum browser versions
 

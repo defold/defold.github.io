@@ -84,6 +84,7 @@ Custom resources are bundled in the main game archive using the [*Custom Resourc
 
 The *Custom Resources* field should contain a comma separated list of resources that will be included in the main game archive. If directories are specified, all files and directories in that directory are recursively included. You can read the files using [`sys.load_resource()`](https://defold.com/ref/sys/#sys.load_resource).
 
+Extensions can also contribute these files through `ext.properties`. Their paths are combined with the project's custom resources in both editor builds and Bob archives. See [extension custom resources](https://defold.com/llms/manuals/extensions.md).
 ```lua
 -- Load level data into a string
 local data, error = sys.load_resource("/assets/level_data.json")

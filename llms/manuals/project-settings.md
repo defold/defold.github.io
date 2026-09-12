@@ -89,6 +89,8 @@ The *Custom Resources* field should contain a comma separated list of resources 
 
 Loading custom resources is covered in more detail in the [File Access manual](https://defold.com/llms/manuals/file-access.md).
 
+Paths contributed by extensions through `custom_resources.default` in `ext.properties` are combined with this setting. See [extension custom resources](https://defold.com/llms/manuals/extensions.md) for an example.
+
 #### Bundle Resources
 `bundle_resources`
 Bundle resources are additional files and folders located as a part of your application bundle using the [*Bundle Resources* field](https://defold.com/llms/manuals/project-settings.md) in *game.project*.
@@ -389,10 +391,13 @@ When enabled this option will print information about the engine and engine vers
 Specifies which method to use to scale the game canvas.
 
 #### Retry Count
-The number of attempts to download a file when the engine starts (see `Retry Time`).
+The number of retries after a failed download during startup, including network errors, failed HTTP statuses and size mismatches in the engine's JavaScript or WebAssembly file. The initial request is separate. Archive-file verification has its own retry limit; see [download verification](https://defold.com/llms/manuals/html5.md) and `Retry Time`.
 
 #### Retry Time
 The number of seconds to wait between attempts to download a file when the download failed (see `Retry Count`).
+
+#### Verify Downloaded File Size
+`html5.verify_downloaded_file_size` checks downloaded engine and archive files against their expected sizes. Enabled by default (`true`). Set it to `false` only if a server, proxy or CDN intentionally rewrites files and changes their sizes. Failed verification causes download retries before startup fails. The retry limits differ for engine downloads and archive-file verification; see [download verification](https://defold.com/llms/manuals/html5.md).
 
 #### Transparent Graphics Context
 Check if you want the graphics context to have a transparent backdrop.

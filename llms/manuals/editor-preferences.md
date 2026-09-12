@@ -51,6 +51,9 @@ Zoom on Scroll
 Auto-insert closing parens
 : Automatically inserts matching closing characters while editing code. This option is enabled by default.
 
+Format on save
+: Runs the language server formatter on modified open code files when saving. Disabled by default. The language server must support formatting; see [formatting code](https://defold.com/llms/manuals/writing-code.md) for formatting a document or selection manually.
+
 ### Open script files in Visual Studio Code
 
 To open script files from the Defold Editor directly in Visual Studio Code, you must set the following settings by specifying the path to the executable file:

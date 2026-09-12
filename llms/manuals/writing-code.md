@@ -24,6 +24,16 @@ The built-in code editor will show code completion of functions while writing co
 
 Pressing `CTRL` + `Space` will show additional information about functions, arguments and return values:
 
+The bundled Lua language server includes type annotations for Defold APIs. Completion, hover information and diagnostics understand Defold types such as hashes, URLs, vectors and quaternions, as well as function arguments and return values. The editor provides annotations for game scripts and for the `editor.*` APIs used in `.editor_script` files. No separate annotation library is needed for the built-in APIs when using the Defold code editor.
+
+Third-party extension APIs may need their own annotations.
+
+### Formatting code
+
+Select `Edit ▸ Format Document/Selection` or press `Alt` + `Shift` + `F` to run the language server's formatter. With a selection, the editor formats the selected lines; without one, it formats the document. Formatting requires a language server that supports the corresponding formatting operation.
+
+To format modified open files when saving, enable **Format on save** in `Preferences ▸ Code`. This preference is disabled by default and requires a language server that supports document formatting. See [Code preferences](https://defold.com/llms/manuals/editor-preferences.md).
+
 ### Jump to symbol
 
 The built-in code editor can show a searchable list of symbols in the current code file, such as functions, objects, and variables. Select `View ▸ Jump to Symbol…`, or press `Ctrl` + `Shift` + `O` on Windows and Linux, or `⌘ Cmd` + `Shift` + `O` on macOS.

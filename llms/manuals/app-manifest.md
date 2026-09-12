@@ -62,6 +62,18 @@ Include support for Ogg Opus sound resources. The Opus decoder is excluded by de
 
 Exclude all input handling from the engine.
 
+## Exclude GUI
+
+Remove GUI resources, components and Lua support from the engine. Enable this only if the project does not use GUI scenes or GUI scripts. Label components remain available. This option is disabled by default.
+
+## Exclude Particle FX
+
+Remove particle effect resources, components and the `particlefx` Lua module. This also removes support for particle nodes in GUI scenes; GUI scenes without particle nodes remain supported. Remove references to particle effects and calls to their APIs before enabling this option. It is disabled by default.
+
+## Exclude Tilemaps
+
+Remove tilemap resources, components and the `tilemap` Lua module. Enable this only if the project does not use tilemap components or their APIs. Tile sources used by other components remain available. This option is disabled by default.
+
 ## Exclude Live Update
 
 Exclude the [Live Update functionality](https://defold.com/llms/manuals/live-update.md) from the engine.
@@ -99,6 +111,10 @@ On Linux ARM64, the **OpenGL** choice uses the OpenGL ES backend. The Android co
 ## Use full text layout system
 
 If enabled (`true`), this includes the full text layout system for shaping text, including right-to-left languages. Enable this option together with `font.runtime_generation` in *game.project* to use runtime generation for SDF fonts from TrueType (`.ttf`) or OpenType (`.otf`) resources. Runtime generation from `.otf` resources is supported since Defold 1.13.2. Read more in the [Font Manual](https://defold.com/llms/manuals/font.md).
+
+## Use Rich Text
+
+Include rich text parsing and style effects for labels and GUI text. This option is enabled by default. Disable it to reduce engine size when the project only needs plain text. Labels and GUI text remain supported, but markup renders as plain text instead of applying formatting or effects.
 
 ## Minimum browser versions
 
