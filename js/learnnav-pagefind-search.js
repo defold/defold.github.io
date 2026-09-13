@@ -38,6 +38,15 @@ const { createChannelFilter, channelLabel } = await import(`./pagefind-channel-f
 		}
 
 		form.dataset.pagefindNavSearchReady = "true";
+		const fixedPanel = form.hasAttribute("data-pagefind-fixed-panel");
+		if (fixedPanel) {
+			// Keep the overlay outside scrolling ancestors that can clip fixed descendants.
+			form.id ||= `${instanceName}-form`;
+			panel.querySelectorAll("input, select, textarea, button").forEach((control) => {
+				control.setAttribute("form", form.id);
+			});
+			document.body.append(panel);
+		}
 
 		input.inputEl = input;
 		input.setAttribute("autocomplete", "off");
@@ -55,11 +64,16 @@ const { createChannelFilter, channelLabel } = await import(`./pagefind-channel-f
 		const getFilters = () => ({ "API channel": channelLabel(channelFilter.getValue()) });
 
 		const syncFixedPanelPosition = () => {
-			if (!form.hasAttribute("data-pagefind-fixed-panel") || panel.hidden) {
+			if (!fixedPanel || panel.hidden) {
 				return;
 			}
 
 			const rect = input.getBoundingClientRect();
+			const sidebarTop = form.closest(".apimenu")?.getBoundingClientRect().top || 0;
+			if (!rect.width || !rect.height || rect.bottom <= Math.max(0, sidebarTop) || rect.top >= window.innerHeight) {
+				setPanelOpen(false);
+				return;
+			}
 			const viewportPadding = 16;
 			const panelWidth = Math.min(448, window.innerWidth - viewportPadding * 2);
 			const align = form.getAttribute("data-pagefind-panel-align") || "left";
@@ -136,7 +150,7 @@ const { createChannelFilter, channelLabel } = await import(`./pagefind-channel-f
 		});
 
 		document.addEventListener("click", (event) => {
-			if (!form.contains(event.target)) {
+			if (!form.contains(event.target) && !panel.contains(event.target)) {
 				window.clearTimeout(searchTimer);
 				setPanelOpen(false);
 			}
