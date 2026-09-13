@@ -9,7 +9,7 @@ layout: page_with_learnnav
 <div class="section lightest dark:dark">
 	<div class="container">
 		<div class="row">
-			<div class="columns ten faq content-flow">
+			<div class="columns ten faq content-flow" data-pagefind-body>
 				{%- if page_locale != "en" -%}
 				{%- capture urlprefix -%}/{{ locale_info.urlprefix }}/{%- endcapture -%}
 				<p><a href="{{ page.url | replace: urlprefix, "/" }}">Read this FAQ in English</a></p>

@@ -14,7 +14,7 @@ layout: null
 	{%- endunless -%}
 	{%- endfor -%}
 	{%- for page in site.pages -%}
-	{%- unless page.pagefind_exclude -%}
+	{%- unless page.pagefind_exclude or page.redirect_to -%}
 	{%- assign page_url = page.url | remove: "index.html" -%}
 	<url>
 		<loc>{{ site.url }}{{ page_url }}</loc>
