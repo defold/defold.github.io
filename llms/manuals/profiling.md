@@ -26,7 +26,7 @@ profiler.set_ui_view_mode()
 profiler.view_recorded_frame()
 ```
 
-Refer to a the [profiler API reference](https://defold.com/ref/stable/profiler/) for more information about the profiler functions.
+Refer to a the [profiler API reference](https://defold.com/ref/profiler/) for more information about the profiler functions.
 
 ## The web profiler
 While running a desktop or mobile build that includes profiler support, interactive frame and resource profilers can be accessed through a browser.

@@ -291,7 +291,7 @@ Shader constants, or "uniforms" are values that are passed from the engine to ve
   ```
 
 `CONSTANT_TYPE_USER`
-: A vector4 constant that you can use for any custom data you want to pass into your shader programs. You can set the initial value of the constant in the constant definition, but it is mutable through the functions [go.set()](https://defold.com/ref/stable/go/#go.set) / [go.animate()](https://defold.com/ref/stable/go/#go.animate). You can also retrieve the value with [go.get()](https://defold.com/ref/stable/go/#go.get). Changing a material constant of a single component instance [breaks render batching and will result in additional draw calls](https://defold.com/llms/manuals/render.md).
+: A vector4 constant that you can use for any custom data you want to pass into your shader programs. You can set the initial value of the constant in the constant definition, but it is mutable through the functions [go.set()](https://defold.com/ref/go/#go.set) / [go.animate()](https://defold.com/ref/go/#go.animate). You can also retrieve the value with [go.get()](https://defold.com/ref/go/#go.get). Changing a material constant of a single component instance [breaks render batching and will result in additional draw calls](https://defold.com/llms/manuals/render.md).
 
 Example:
 ```lua
@@ -301,7 +301,7 @@ go.animate("#sprite", "tint", go.PLAYBACK_LOOP_PINGPONG, vmath.vector4(1,0,0,1),
 ```
 
 `CONSTANT_TYPE_USER_MATRIX4`
-: A matrix4 constant that you can use for any custom data you want to pass into your shader programs. You can set the initial value of the constant in the constant definition, but it is mutable through the functions [go.set()](https://defold.com/ref/stable/go/#go.set) / [go.animate()](https://defold.com/ref/stable/go/#go.animate). You can also retrieve the value with [go.get()](https://defold.com/ref/stable/go/#go.get). Changing a material constant of a single component instance [breaks render batching and will result in additional draw calls](https://defold.com/llms/manuals/render.md).
+: A matrix4 constant that you can use for any custom data you want to pass into your shader programs. You can set the initial value of the constant in the constant definition, but it is mutable through the functions [go.set()](https://defold.com/ref/go/#go.set) / [go.animate()](https://defold.com/ref/go/#go.animate). You can also retrieve the value with [go.get()](https://defold.com/ref/go/#go.get). Changing a material constant of a single component instance [breaks render batching and will result in additional draw calls](https://defold.com/llms/manuals/render.md).
 
 Example:
 ```lua

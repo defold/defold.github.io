@@ -41,7 +41,7 @@ toc:
 
 # Editor-Skripte und Benutzeroberflächen {#editor-scripts-and-ui}
 
-Dieses Handbuch erklärt, wie du mit in Lua geschriebenen Editor-Skripten interaktive Dialogfelder erstellst und Ressourcen im Editor öffnest. Einen Einstieg in Editor-Skripte findest du im [Handbuch zu Editor-Skripten](/de/manuals/editor-scripts). Die vollständige API-Referenz des Editors findest du [hier](/ref/stable/editor-lua/).
+Dieses Handbuch erklärt, wie du mit in Lua geschriebenen Editor-Skripten interaktive Dialogfelder erstellst und Ressourcen im Editor öffnest. Einen Einstieg in Editor-Skripte findest du im [Handbuch zu Editor-Skripten](/de/manuals/editor-scripts). Die vollständige API-Referenz des Editors findest du [hier](/ref/editor-lua/).
 
 ## Hallo Welt {#hello-world}
 

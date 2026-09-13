@@ -76,7 +76,7 @@ You can interact with the editor using `editor` package that defines this API:
 - `editor.ui.*` — various UI-related functions, see [UI manual](https://defold.com/llms/manuals/editor-scripts-ui.md).
 - `editor.prefs.*` — functions for interacting with editor preferences, see [preferences](#preferences).
 
-You can find the full editor API reference [here](https://defold.com/ref/stable/editor/).
+You can find the full editor API reference [here](https://defold.com/ref/editor/).
 
 ## Commands
 

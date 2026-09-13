@@ -336,7 +336,7 @@ Gölgelendirici sabitleri (shader constants) veya "uniform" değerleri, motordan
   ```
 
 `CONSTANT_TYPE_USER`
-: Gölgelendirici programlarınıza iletmek istediğiniz herhangi bir özel veri için kullanabileceğiniz vector4 sabiti. Sabitin başlangıç değerini sabit tanımında ayarlayabilirsiniz, ancak bu değer [go.set()](/ref/stable/go/#go.set) / [go.animate()](/ref/stable/go/#go.animate) işlevleriyle değiştirilebilir. Değeri [go.get()](/ref/stable/go/#go.get) ile de alabilirsiniz. Tek bir bileşen örneğinin materyal sabitini değiştirmek [toplu çizimi bozar ve ek çizim çağrılarına yol açar](/tr/manuals/render/#draw-calls-and-batching).
+: Gölgelendirici programlarınıza iletmek istediğiniz herhangi bir özel veri için kullanabileceğiniz vector4 sabiti. Sabitin başlangıç değerini sabit tanımında ayarlayabilirsiniz, ancak bu değer [go.set()](/ref/go/#go.set) / [go.animate()](/ref/go/#go.animate) işlevleriyle değiştirilebilir. Değeri [go.get()](/ref/go/#go.get) ile de alabilirsiniz. Tek bir bileşen örneğinin materyal sabitini değiştirmek [toplu çizimi bozar ve ek çizim çağrılarına yol açar](/tr/manuals/render/#draw-calls-and-batching).
 
 Örnek:
 
@@ -347,7 +347,7 @@ go.animate("#sprite", "tint", go.PLAYBACK_LOOP_PINGPONG, vmath.vector4(1,0,0,1),
 ```
 
 `CONSTANT_TYPE_USER_MATRIX4`
-: Gölgelendirici programlarınıza iletmek istediğiniz herhangi bir özel veri için kullanabileceğiniz matrix4 sabiti. Sabitin başlangıç değerini sabit tanımında ayarlayabilirsiniz, ancak bu değer [go.set()](/ref/stable/go/#go.set) / [go.animate()](/ref/stable/go/#go.animate) işlevleriyle değiştirilebilir. Değeri [go.get()](/ref/stable/go/#go.get) ile de alabilirsiniz. Tek bir bileşen örneğinin materyal sabitini değiştirmek [toplu çizimi bozar ve ek çizim çağrılarına yol açar](/tr/manuals/render/#draw-calls-and-batching).
+: Gölgelendirici programlarınıza iletmek istediğiniz herhangi bir özel veri için kullanabileceğiniz matrix4 sabiti. Sabitin başlangıç değerini sabit tanımında ayarlayabilirsiniz, ancak bu değer [go.set()](/ref/go/#go.set) / [go.animate()](/ref/go/#go.animate) işlevleriyle değiştirilebilir. Değeri [go.get()](/ref/go/#go.get) ile de alabilirsiniz. Tek bir bileşen örneğinin materyal sabitini değiştirmek [toplu çizimi bozar ve ek çizim çağrılarına yol açar](/tr/manuals/render/#draw-calls-and-batching).
 
 Örnek:
 

@@ -29,7 +29,7 @@ toc:
 
 # Skrypty edytora i UI
 
-Ta instrukcja wyjaśnia, jak tworzyć interaktywne okna dialogowe i otwierać zasoby w edytorze przy użyciu skryptów edytora napisanych w Lua. Aby zacząć pracę ze skryptami edytora, zobacz [instrukcję skryptów edytora](/pl/manuals/editor-scripts). Pełną dokumentację API edytora znajdziesz [tutaj](/ref/stable/editor-lua/).
+Ta instrukcja wyjaśnia, jak tworzyć interaktywne okna dialogowe i otwierać zasoby w edytorze przy użyciu skryptów edytora napisanych w Lua. Aby zacząć pracę ze skryptami edytora, zobacz [instrukcję skryptów edytora](/pl/manuals/editor-scripts). Pełną dokumentację API edytora znajdziesz [tutaj](/ref/editor-lua/).
 
 ## Witaj świecie
 

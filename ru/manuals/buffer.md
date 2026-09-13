@@ -35,4 +35,4 @@ toc:
 
 Ресурсы Buffer обычно создаются с помощью внешних инструментов или скриптов, например при экспорте из инструментов моделирования, таких как Blender.
 
-Ресурс Buffer можно использовать как входные данные для [компонента Mesh](/ru/manuals/mesh). Ресурсы Buffer также можно создавать во время выполнения с помощью `buffer.create()` и [связанных функций API](/ref/stable/buffer/#buffer.create:element_count-declaration).
+Ресурс Buffer можно использовать как входные данные для [компонента Mesh](/ru/manuals/mesh). Ресурсы Buffer также можно создавать во время выполнения с помощью `buffer.create()` и [связанных функций API](/ref/buffer/#buffer.create:element_count-declaration).

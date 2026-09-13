@@ -127,7 +127,7 @@ A shape of the correct type with the specified id must already exist on the coll
 Collision shapes in 3D physics can be rotated around all axis.
 
 ## Rotating collision shapes in 2D physics
-Collision shapes in 2D physics can only be rotated around the z-axis. Rotation around the x or y axis will yield incorrect results and should be avoided, even when rotating 180 degrees to essentially flip the shape along the x or y axis. To flip a physics shape it is recommended to use [`physics.set_hlip(url, flip)`](https://defold.com/ref/stable/physics/?#physics.set_hflip:url-flip) and [`physics.set_vlip(url, flip)`](https://defold.com/ref/stable/physics/?#physics.set_vflip:url-flip).
+Collision shapes in 2D physics can only be rotated around the z-axis. Rotation around the x or y axis will yield incorrect results and should be avoided, even when rotating 180 degrees to essentially flip the shape along the x or y axis. To flip a physics shape it is recommended to use [`physics.set_hlip(url, flip)`](https://defold.com/ref/physics/?#physics.set_hflip:url-flip) and [`physics.set_vlip(url, flip)`](https://defold.com/ref/physics/?#physics.set_vflip:url-flip).
 
 # Debugging
 You can [enable Physics debugging](https://defold.com/llms/manuals/debugging-game-logic.md) to see the collision shapes at runtime.

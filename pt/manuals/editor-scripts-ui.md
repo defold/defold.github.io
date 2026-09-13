@@ -29,7 +29,7 @@ toc:
 
 # Editor scripts e UI
 
-Este manual explica como criar diálogos interativos e abrir recursos no editor usando scripts do editor escritos em Lua. Para começar com scripts do editor, veja o [manual de scripts do editor](/pt/manuals/editor-scripts). Você encontra a referência completa da API do editor [aqui](/ref/stable/editor-lua/).
+Este manual explica como criar diálogos interativos e abrir recursos no editor usando scripts do editor escritos em Lua. Para começar com scripts do editor, veja o [manual de scripts do editor](/pt/manuals/editor-scripts). Você encontra a referência completa da API do editor [aqui](/ref/editor-lua/).
 
 ## Hello world
 
