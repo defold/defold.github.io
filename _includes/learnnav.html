@@ -22,6 +22,7 @@
 						<form action="/search" class="learnnav-search-form pagefind-nav-search" data-pagefind-nav-search data-pagefind-search-instance="learnnav-search-desktop" data-pagefind-fixed-panel data-pagefind-panel-align="right" data-pagefind-ignore role="search">
 							{% include catalog_search_field.html id="learnnav-search-desktop" name="q" wrapper_class="learnnav-search-field" data_attribute_name="data-pagefind-nav-search-input" placeholder="Search..." aria_label="Search the learn section" %}
 							<div id="learnnav-search-desktop-results" class="pagefind-nav-results-panel" data-pagefind-nav-search-panel hidden>
+								{% include pagefind_channel_filter.html id="learnnav-search-desktop" %}
 								<pagefind-config instance="learnnav-search-desktop" bundle-path="/_pagefind/" excerpt-length="18"></pagefind-config>
 								<pagefind-summary instance="learnnav-search-desktop"></pagefind-summary>
 								<pagefind-results instance="learnnav-search-desktop" max-results="6" max-sub-results="3"></pagefind-results>
@@ -49,6 +50,7 @@
 					<form action="/search" class="learnnav-mobile-search learnnav-search-form pagefind-nav-search" data-pagefind-nav-search data-pagefind-search-instance="learnnav-search-mobile" data-pagefind-ignore role="search">
 						{% include catalog_search_field.html id="learnnav-search-mobile" name="q" wrapper_class="learnnav-search-field" data_attribute_name="data-pagefind-nav-search-input" placeholder="Search..." aria_label="Search the learn section" %}
 						<div id="learnnav-search-mobile-results" class="pagefind-nav-results-panel pagefind-nav-results-panel-mobile" data-pagefind-nav-search-panel hidden>
+							{% include pagefind_channel_filter.html id="learnnav-search-mobile" %}
 							<pagefind-config instance="learnnav-search-mobile" bundle-path="/_pagefind/" excerpt-length="18"></pagefind-config>
 							<pagefind-summary instance="learnnav-search-mobile"></pagefind-summary>
 							<pagefind-results instance="learnnav-search-mobile" max-results="6" max-sub-results="3"></pagefind-results>

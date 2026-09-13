@@ -227,6 +227,15 @@
 <link rel="preload" as="style" href="{{ fonts_url }}" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="{{ fonts_url }}"></noscript>
 
+{%- comment -%}Unversioned content is available with every API channel filter.{%- endcomment -%}
+{%- if page.layout == "api" and page.type != "Extension" -%}
+<meta data-pagefind-filter="API channel[content]" content="{{ page.branch | capitalize }}">
+{%- else -%}
+<meta data-pagefind-filter="API channel:Stable">
+<meta data-pagefind-filter="API channel:Beta">
+<meta data-pagefind-filter="API channel:Alpha">
+{%- endif -%}
+
 <!-- favicon -->
 <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico">
 
@@ -265,7 +274,7 @@
 <link rel="stylesheet" type="text/css" href="/css/asset-detail.css">
 {%- endif -%}
 {%- if load_learn_stylesheet -%}
-<link rel="stylesheet" type="text/css" href="/css/learn.css">
+<link rel="stylesheet" type="text/css" href="/css/learn.css?v={{ site.time | date: '%s' }}">
 {%- endif -%}
 {%- if load_api_stylesheet -%}
 <link rel="stylesheet" type="text/css" href="/css/api.css">
@@ -287,7 +296,7 @@
 
 {%- if pagefind_nav_search_layouts contains page.layout -%}
 <script src="/_pagefind/pagefind-component-ui.js" type="module"></script>
-<script src="/js/learnnav-pagefind-search.js" type="module"></script>
+<script src="/js/learnnav-pagefind-search.js?v={{ site.time | date: '%s' }}" type="module"></script>
 {%- endif -%}
 
 <script>

@@ -19,7 +19,7 @@ layout: base
 {%- assign ref_api_language = ref.info.api_language | default: ref.info.language -%}
 
 {%- assign api_index_exclude = false -%}
-{%- if page.url contains "/ref/stable/" or page.url contains "/ref/alpha/" or page.url contains "/ref/beta/" -%}
+{%- if page.url contains "/ref/stable/" -%}
   {%- assign api_index_exclude = true -%}
 {%- endif -%}
 {%- if ref_api_language == "" or ref_api_language == nil -%}
@@ -28,12 +28,23 @@ layout: base
 {%- if page.pagefind_exclude -%}
   {%- assign api_index_exclude = true -%}
 {%- endif -%}
+{%- assign api_search_weight = 1 -%}
+{%- if page.type != "Extension" -%}
+	{%- if branch == "beta" -%}
+		{%- assign api_search_weight = 0.9 -%}
+	{%- elsif branch == "alpha" -%}
+		{%- assign api_search_weight = 0.8 -%}
+	{%- endif -%}
+{%- endif -%}
 
 {%- unless api_index_exclude -%}
 <!-- Pagefind metadata and filters for API reference -->
 <div class="pagefind-hidden-meta" data-pagefind-filter="section">API</div>
 <div class="pagefind-hidden-meta" data-pagefind-meta="section">API</div>
 <div class="pagefind-hidden-meta" data-pagefind-meta="api_language">{{ ref_api_language }}</div>
+{%- if page.type != "Extension" -%}
+<div class="pagefind-hidden-meta" data-pagefind-meta="title">{{ page.title | escape }} — {{ branch | capitalize }}{% if site.data.engine_versions[branch] %} ({{ site.data.engine_versions[branch] }}){% endif %}</div>
+{%- endif -%}
 {%- endunless -%}
 
 {%- if api_index_exclude -%}
@@ -49,6 +60,7 @@ layout: base
 			<form action="/search" class="api-search-form pagefind-nav-search" data-pagefind-nav-search data-pagefind-search-instance="api-search-desktop" data-pagefind-fixed-panel data-pagefind-ignore role="search">
 				{% include catalog_search_field.html id="api-search-desktop" name="q" wrapper_class="learnnav-search-field" data_attribute_name="data-pagefind-nav-search-input" placeholder="Search..." aria_label="Search the API reference" %}
 				<div id="api-search-desktop-results" class="pagefind-nav-results-panel pagefind-nav-results-panel-left" data-pagefind-nav-search-panel hidden>
+					{% include pagefind_channel_filter.html id="api-search-desktop" %}
 					<pagefind-config instance="api-search-desktop" bundle-path="/_pagefind/" excerpt-length="18"></pagefind-config>
 					<pagefind-summary instance="api-search-desktop"></pagefind-summary>
 					<pagefind-results instance="api-search-desktop" max-results="6" max-sub-results="3"></pagefind-results>
@@ -111,7 +123,7 @@ layout: base
 
 		</div>
 
-		<div class="apicontent lightest dark:dark" data-pagefind-body>
+		<div class="apicontent lightest dark:dark" data-pagefind-body data-pagefind-weight="{{ api_search_weight }}">
 			<div class="dropdownmenu">
 				<p>
 					<a href="/learn"><img src="/images/logo/defold/logo_with_text/logo-hor-classic-dark-160.png" alt="Defold Learn logo" loading="lazy" decoding="async"/></a>
@@ -119,6 +131,7 @@ layout: base
 				<form action="/search" class="api-search-form pagefind-nav-search" data-pagefind-nav-search data-pagefind-search-instance="api-search-mobile" data-pagefind-ignore role="search">
 					{% include catalog_search_field.html id="api-search-mobile" name="q" wrapper_class="learnnav-search-field" data_attribute_name="data-pagefind-nav-search-input" placeholder="Search..." aria_label="Search the API reference" %}
 					<div id="api-search-mobile-results" class="pagefind-nav-results-panel pagefind-nav-results-panel-mobile" data-pagefind-nav-search-panel hidden>
+						{% include pagefind_channel_filter.html id="api-search-mobile" %}
 						<pagefind-config instance="api-search-mobile" bundle-path="/_pagefind/" excerpt-length="18"></pagefind-config>
 						<pagefind-summary instance="api-search-mobile"></pagefind-summary>
 						<pagefind-results instance="api-search-mobile" max-results="6" max-sub-results="3"></pagefind-results>

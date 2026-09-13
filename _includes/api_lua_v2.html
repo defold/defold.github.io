@@ -1,3 +1,4 @@
+{%- assign api_search_weight = api_search_weight | default: 1 -%}
 {%- assign ref = include.ref -%}
 {%- assign record_type_list = "STRUCT~CLASS" | split: "~" -%}
 {%- assign records = ref.elements | where_exp: "item", "record_type_list contains item.type" -%}
@@ -13,7 +14,7 @@
 {%- assign constants = v | concat: c -%}
 {%- assign standalone_constants = constants | where_exp: "item", "item.is_enum_member != true" -%}
 
-<h1>{{ ref.info.brief }}</h1>
+<h1 data-pagefind-weight="{{ 7 | times: api_search_weight }}">{{ ref.info.brief }}</h1>
 <p>{{ ref.info.description_html }}</p>
 {%- assign engine_version = site.data.engine_versions[page.branch] -%}
 <p>Version: {{ page.branch }}{% if engine_version and page.type != "Extension" %} ({{ engine_version }}){% endif %}</p>
@@ -28,10 +29,10 @@
 {% include api_lua_v2_summary.html title="MACROS" items=macros %}
 
 {%- if aliases.size > 0 -%}
-<h2 id="types" data-pagefind-weight="7">Types</h2>
+<h2 id="types" data-pagefind-weight="{{ 7 | times: api_search_weight }}">Types</h2>
 	{%- for alias in aliases -%}
 	{% include ref_anchor_target.html element=alias %}
-	<div data-pagefind-weight="8">
+	<div data-pagefind-weight="{{ 8 | times: api_search_weight }}">
 		<h4 id="{% include ref_anchorlink.html element=alias %}">{{ alias.name }}<a href="#{% include ref_anchorlink.html element=alias %}" class="anchor-link"></a></h4>
 		<p><code class="api-lua-v2-signature">{{ alias.name | escape }} = {{ alias.target_type_html }}</code></p>
 		<p>{{ alias.description }}</p>
@@ -46,10 +47,10 @@
 {%- endif -%}
 
 {%- if records.size > 0 -%}
-<h2 id="records" data-pagefind-weight="7">Records</h2>
+<h2 id="records" data-pagefind-weight="{{ 7 | times: api_search_weight }}">Records</h2>
 	{%- for record in records -%}
 	{% include ref_anchor_target.html element=record %}
-	<div data-pagefind-weight="8">
+	<div data-pagefind-weight="{{ 8 | times: api_search_weight }}">
 		<h4 id="{% include ref_anchorlink.html element=record %}">{{ record.name }}<a href="#{% include ref_anchorlink.html element=record %}" class="anchor-link"></a></h4>
 		<p>{{ record.description }}</p>
 
@@ -76,10 +77,10 @@
 {%- endif -%}
 
 {%- if enums.size > 0 -%}
-<h2 id="enums" data-pagefind-weight="7">Enums</h2>
+<h2 id="enums" data-pagefind-weight="{{ 7 | times: api_search_weight }}">Enums</h2>
 	{%- for enum in enums -%}
 	{% include ref_anchor_target.html element=enum %}
-	<div data-pagefind-weight="8">
+	<div data-pagefind-weight="{{ 8 | times: api_search_weight }}">
 		<h4 id="{% include ref_anchorlink.html element=enum %}">{{ enum.name }}<a href="#{% include ref_anchorlink.html element=enum %}" class="anchor-link"></a></h4>
 		<p><code>{{ enum.name | escape }}: {{ enum.value_type_html }}</code></p>
 		<p>{{ enum.description }}</p>
@@ -88,7 +89,7 @@
 		<p><b>VALUES</b></p>
 		<table class="api-lua-v2-enum-values">
 			{%- for member in enum.members -%}
-			<tr id="{{ member.name }}" data-pagefind-weight="9">
+			<tr id="{{ member.name }}" data-pagefind-weight="{{ 9 | times: api_search_weight }}">
 				<td><a name="{{ member.name | downcase }}"></a><code>{{ member.name }}</code></td>
 				<td>{{ member.doc }}</td>
 			</tr>
@@ -106,10 +107,10 @@
 {%- endif -%}
 
 {%- if functions.size > 0 -%}
-<h2 id="functions" data-pagefind-weight="7">Functions</h2>
+<h2 id="functions" data-pagefind-weight="{{ 7 | times: api_search_weight }}">Functions</h2>
 	{%- for function in functions -%}
 		{% include ref_anchor_target.html element=function %}
-		<div data-pagefind-weight="10">
+		<div data-pagefind-weight="{{ 10 | times: api_search_weight }}">
 			<h4 id="{% include ref_anchorlink.html element=function %}">{{ function.name }}()<a href="#{% include ref_anchorlink.html element=function %}" class="anchor-link"
 			data-pagefind-index-attrs="data-aliases"
 			data-aliases="{% assign parts = function.name | split: '.' %}{{ parts | last }}"></a></h4>
@@ -138,10 +139,10 @@
 {%- endif -%}
 
 {%- if standalone_constants.size > 0 -%}
-<h2 id="constants" data-pagefind-weight="7">Constants</h2>
+<h2 id="constants" data-pagefind-weight="{{ 7 | times: api_search_weight }}">Constants</h2>
 	{%- for constant in standalone_constants -%}
 	{% include ref_anchor_target.html element=constant %}
-	<div data-pagefind-weight="8">
+	<div data-pagefind-weight="{{ 8 | times: api_search_weight }}">
 		<h5 id="{% include ref_anchorlink.html element=constant %}" class="compact">{{ constant.name }}<a href="#{% include ref_anchorlink.html element=constant %}" class="anchor-link"
 		data-pagefind-index-attrs="data-aliases"
 		data-aliases="{% assign parts = constant.name | split: '.' %}{{ parts | last }}"></a></h5>
@@ -156,10 +157,10 @@
 {%- endif -%}
 
 {%- if messages.size > 0 -%}
-<h2 id="messages" data-pagefind-weight="7">Messages</h2>
+<h2 id="messages" data-pagefind-weight="{{ 7 | times: api_search_weight }}">Messages</h2>
 	{%- for message in messages -%}
 	{% include ref_anchor_target.html element=message %}
-	<div data-pagefind-weight="8">
+	<div data-pagefind-weight="{{ 8 | times: api_search_weight }}">
 		<h4 id="{% include ref_anchorlink.html element=message %}">{{ message.name }}<a href="#{% include ref_anchorlink.html element=message %}" class="anchor-link"></a></h4>
 		<p>{{ message.description }}</p>
 
@@ -177,10 +178,10 @@
 {%- endif -%}
 
 {%- if properties.size > 0 -%}
-<h2 id="properties" data-pagefind-weight="7">Properties</h2>
+<h2 id="properties" data-pagefind-weight="{{ 7 | times: api_search_weight }}">Properties</h2>
 	{%- for property in properties -%}
 	{% include ref_anchor_target.html element=property %}
-	<div data-pagefind-weight="8">
+	<div data-pagefind-weight="{{ 8 | times: api_search_weight }}">
 		<h4 id="{% include ref_anchorlink.html element=property %}">{{ property.name }}<a href="#{% include ref_anchorlink.html element=property %}" class="anchor-link"></a></h4>
 		<p>{{ property.description }}</p>
 		{%- if property.examples.size > 0 -%}
@@ -194,10 +195,10 @@
 {%- endif -%}
 
 {%- if macros.size > 0 -%}
-<h2 id="macros" data-pagefind-weight="7">Macros</h2>
+<h2 id="macros" data-pagefind-weight="{{ 7 | times: api_search_weight }}">Macros</h2>
 	{%- for macro in macros -%}
 	{% include ref_anchor_target.html element=macro %}
-	<div data-pagefind-weight="8">
+	<div data-pagefind-weight="{{ 8 | times: api_search_weight }}">
 		<h4 id="{% include ref_anchorlink.html element=macro %}">{{ macro.name }}<a href="#{% include ref_anchorlink.html element=macro %}" class="anchor-link"></a></h4>
 		<p>{{ macro.description }}</p>
 		{%- if macro.examples.size > 0 -%}

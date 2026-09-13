@@ -178,7 +178,7 @@ The single `/sitemap.xml` includes canonical HTML pages. API references and cate
 
 `_includes/search_engine_metadata.html` shares this policy between page heads and the sitemap. Legacy API aliases point to the corresponding reference in their channel and remain excluded; redirect pages are also excluded. Google indexing is independent of Pagefind: `pagefind_exclude` only controls internal search. Set `noindex: true` in front matter to exclude another page from search engines and the sitemap, or `sitemap: false` to omit it from the sitemap only. A page with a different `canonical` URL is omitted from the sitemap.
 
-Internal API search continues to index Stable references and extension APIs. Crawling remains allowed in `robots.txt` so search engines can read indexing instructions.
+Internal API search indexes canonical references in all three channels and extension APIs. Crawling remains allowed in `robots.txt` so search engines can read indexing instructions.
 
 Sitemap `lastmod` values come only from an explicit `last_modified_at` front-matter date representing the last significant content update. Unknown update dates are omitted; publication dates and build timestamps are not substituted. The sitemap does not emit `priority` or `changefreq`.
 
@@ -207,6 +207,10 @@ The script is also triggered once every hour to update the asset portal star cou
 
 ## Site search
 The site search is powered by [Pagefind](https://pagefind.app), a static site search library. Pagefind automatically generates a search index during the site build process and provides a fast, client-side search interface with filtering and metadata support.
+
+Search includes Stable, Beta, and Alpha API references, with channel and engine version labels. Existing Pagefind content and section weights are multiplied by 1.0 for Stable, 0.9 for Beta, and 0.8 for Alpha. This favors Stable while preserving relevance and staying within Pagefind's maximum weight of 10. Legacy aliases, redirects, and API category overviews remain excluded.
+
+Search always selects one API channel, defaulting to Stable. The API sidebar defaults to its current channel. Both search interfaces use three channel buttons backed by Pagefind's filters; on the full search page they appear above the Section filters. Each button counts matching pages in the API section across all channels, independently of the current channel and Section selections. The channel follows both form submissions and “View all results” links to `/search?q=…&channel=beta`. Manuals, tutorials, extensions, and other unversioned content belong to all three filter values, so selecting an API channel keeps that content visible.
 
 ## Page search
 Functionality for searching and marking within a single page using [Mark.js](https://markjs.io/).
