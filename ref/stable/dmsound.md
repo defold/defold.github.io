@@ -1,10 +1,5 @@
 ---
-layout: api
-branch: stable
-ref: engine-sound-src-dmsdk-sound-sound-h
-api_language: C++
-title: API reference (Sound)
-type: Defold C++
-pagefind_exclude: true
+layout: redirect
+title: API reference
+redirect_to: /ref/dmsound/
 ---
-{% include anchor_headings.html html=content %}

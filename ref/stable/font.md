@@ -1,10 +1,5 @@
 ---
-layout: api
-branch: stable
-ref: font-lua
-api_language: Lua
-title: API reference (Font)
-type: Defold Lua
-pagefind_exclude: true
+layout: redirect
+title: API reference
+redirect_to: /ref/font/
 ---
-{% include anchor_headings.html html=content %}

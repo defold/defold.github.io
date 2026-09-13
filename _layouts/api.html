@@ -3,7 +3,10 @@ layout: base
 ---
 {%- assign branch = page.branch -%}
 {%- assign refs = site.data.refindex | where: "branch", branch -%}
-{%- assign branches = site.data.branchindex -%}
+{%- assign branch_base = "/ref/" -%}
+{%- unless branch == "stable" -%}
+	{%- assign branch_base = branch_base | append: branch | append: "/" -%}
+{%- endunless -%}
 {%- assign categories = refs | map: "type" | uniq | sort -%}
 {%- assign clean_ref = page.ref | remove: '.' -%}
 
@@ -16,7 +19,7 @@ layout: base
 {%- assign ref_api_language = ref.info.api_language | default: ref.info.language -%}
 
 {%- assign api_index_exclude = false -%}
-{%- if page.url contains "/ref/stable/" or page.url contains "/ref/alpha/" or page.url contains "/ref/beta/" -%}
+{%- if page.url contains "/ref/stable/" -%}
   {%- assign api_index_exclude = true -%}
 {%- endif -%}
 {%- if ref_api_language == "" or ref_api_language == nil -%}
@@ -25,19 +28,24 @@ layout: base
 {%- if page.pagefind_exclude -%}
   {%- assign api_index_exclude = true -%}
 {%- endif -%}
+{%- assign api_search_weight = 1 -%}
+{%- if page.type != "Extension" -%}
+	{%- if branch == "beta" -%}
+		{%- assign api_search_weight = 0.9 -%}
+	{%- elsif branch == "alpha" -%}
+		{%- assign api_search_weight = 0.8 -%}
+	{%- endif -%}
+{%- endif -%}
 
 {%- unless api_index_exclude -%}
 <!-- Pagefind metadata and filters for API reference -->
 <div class="pagefind-hidden-meta" data-pagefind-filter="section">API</div>
 <div class="pagefind-hidden-meta" data-pagefind-meta="section">API</div>
 <div class="pagefind-hidden-meta" data-pagefind-meta="api_language">{{ ref_api_language }}</div>
-{%- endunless -%}
-
-{%- if page.url contains branch -%}
-	{%- assign page_url = page.url | replace: branch, "BRANCH" -%}
-{%- else -%}
-	{%- assign page_url = page.url | replace: "ref/", "ref/BRANCH/" -%}
+{%- if page.type != "Extension" -%}
+<div class="pagefind-hidden-meta" data-pagefind-meta="title">{{ page.title | escape }} — {{ branch | capitalize }}{% if site.data.engine_versions[branch] %} ({{ site.data.engine_versions[branch] }}){% endif %}</div>
 {%- endif -%}
+{%- endunless -%}
 
 {%- if api_index_exclude -%}
 <div id="page" class="lightest dark:dark" data-pagefind-ignore>
@@ -52,12 +60,14 @@ layout: base
 			<form action="/search" class="api-search-form pagefind-nav-search" data-pagefind-nav-search data-pagefind-search-instance="api-search-desktop" data-pagefind-fixed-panel data-pagefind-ignore role="search">
 				{% include catalog_search_field.html id="api-search-desktop" name="q" wrapper_class="learnnav-search-field" data_attribute_name="data-pagefind-nav-search-input" placeholder="Search..." aria_label="Search the API reference" %}
 				<div id="api-search-desktop-results" class="pagefind-nav-results-panel pagefind-nav-results-panel-left" data-pagefind-nav-search-panel hidden>
+					{% include pagefind_channel_filter.html id="api-search-desktop" %}
 					<pagefind-config instance="api-search-desktop" bundle-path="/_pagefind/" excerpt-length="18"></pagefind-config>
 					<pagefind-summary instance="api-search-desktop"></pagefind-summary>
 					<pagefind-results instance="api-search-desktop" max-results="6" max-sub-results="3"></pagefind-results>
 					<a class="pagefind-nav-search-all-results" href="/search" data-pagefind-nav-search-all-results>View all results</a>
 				</div>
 			</form>
+			{% include api_channel_switcher.html id="api-channels-desktop" %}
 			<hr>
 			<ul class="nobullet">
 				{% comment %}Iterate over "Defold C", "Defold Lua", Defold C++" etc{% endcomment %}
@@ -66,6 +76,11 @@ layout: base
 					{%- assign clean_category = category | remove: ' ' | replace: "C++", "cpp" | downcase -%}
 
 					{%- assign checked = "" -%}
+					{%- assign overview_current = false -%}
+					{%- if page.ref == "overview" and page.type == category -%}
+						{%- assign checked = "checked" -%}
+						{%- assign overview_current = true -%}
+					{%- endif -%}
 					{%- for r in categoryrefs -%}
 						{%- assign url = r.url -%}
 						{%- if page.url contains url -%}
@@ -76,7 +91,7 @@ layout: base
 				<input id="collapsible_{{ category }}" class="toggle" type="checkbox" {{ checked }}/>
 				<label for="collapsible_{{ category }}" class="togglelabel">{{ category }}</label>
 				<ul class="nobullet">
-					<li class="api-nav-item"><a class="api-nav-link" href="/ref/{{page.branch}}/overview_{{clean_category}}">Overview</a></li>
+					<li class="api-nav-item"><a class="api-nav-link{% if overview_current %} api-nav-link-current{% endif %}" href="{{ branch_base }}overview_{{ clean_category }}/"{% if overview_current %} aria-current="page"{% endif %}>Overview</a></li>
 
 					{%- assign namespaces = categoryrefs | map: "namespace" | uniq | sort_natural -%}
 					{%- for ns in namespaces -%}
@@ -104,23 +119,11 @@ layout: base
 					{%- endfor -%}
 				</ul>
 				{%- endfor -%}
-
-				<input id="branch" class="toggle" type="checkbox" checked/>
-				<label for="branch" class="togglelabel">Version</label>
-				<ul class="nobullet">
-					{%- for b in branches -%}
-						{%- assign api_link_class = "api-nav-link" -%}
-						{%- if page.branch == b -%}
-							{%- assign api_link_class = api_link_class | append: " api-nav-link-current" -%}
-						{%- endif -%}
-					<li class="api-nav-item api-nav-item-indented"><a class="{{ api_link_class }}" href="{{ page_url | replace: 'BRANCH', b }}">{{ b }}</a></li>
-					{%- endfor -%}
-				</ul>
 			</ul>
 
 		</div>
 
-		<div class="apicontent lightest dark:dark" data-pagefind-body>
+		<div class="apicontent lightest dark:dark" data-pagefind-body data-pagefind-weight="{{ api_search_weight }}">
 			<div class="dropdownmenu">
 				<p>
 					<a href="/learn"><img src="/images/logo/defold/logo_with_text/logo-hor-classic-dark-160.png" alt="Defold Learn logo" loading="lazy" decoding="async"/></a>
@@ -128,12 +131,14 @@ layout: base
 				<form action="/search" class="api-search-form pagefind-nav-search" data-pagefind-nav-search data-pagefind-search-instance="api-search-mobile" data-pagefind-ignore role="search">
 					{% include catalog_search_field.html id="api-search-mobile" name="q" wrapper_class="learnnav-search-field" data_attribute_name="data-pagefind-nav-search-input" placeholder="Search..." aria_label="Search the API reference" %}
 					<div id="api-search-mobile-results" class="pagefind-nav-results-panel pagefind-nav-results-panel-mobile" data-pagefind-nav-search-panel hidden>
+						{% include pagefind_channel_filter.html id="api-search-mobile" %}
 						<pagefind-config instance="api-search-mobile" bundle-path="/_pagefind/" excerpt-length="18"></pagefind-config>
 						<pagefind-summary instance="api-search-mobile"></pagefind-summary>
 						<pagefind-results instance="api-search-mobile" max-results="6" max-sub-results="3"></pagefind-results>
 						<a class="pagefind-nav-search-all-results" href="/search" data-pagefind-nav-search-all-results>View all results</a>
 					</div>
 				</form>
+				{% include api_channel_switcher.html id="api-channels-mobile" %}
 			</div>
 			<select class="dropdownmenu" aria-label="API reference navigation" onchange="if(this.value){location = this.value;}">
 				{%- comment -%}Mirror the desktop sidebar: group by category ("Defold Lua", "Defold C", "Defold C++", "Extension"),
@@ -141,10 +146,10 @@ layout: base
 				{%- for category in categories -%}
 					{%- assign categoryrefs = refs | where: "type", category | sort_natural: "namespace" -%}
 					{%- assign clean_category = category | remove: ' ' | replace: "C++", "cpp" | downcase -%}
-					{%- assign overview_url = "/ref/" | append: page.branch | append: "/overview_" | append: clean_category -%}
+					{%- assign overview_url = branch_base | append: "overview_" | append: clean_category | append: "/" -%}
 				<optgroup label="{{ category }}">
 					{%- assign overview_selected = "" -%}
-					{%- if page.url contains overview_url -%}
+					{%- if page.ref == "overview" and page.type == category -%}
 						{%- assign overview_selected = " selected" -%}
 					{%- endif -%}
 					<option value="{{ overview_url }}"{{ overview_selected }}>Overview</option>
@@ -166,16 +171,6 @@ layout: base
 				</optgroup>
 				{%- endfor -%}
 			</select>
-			<select class="dropdownmenu" aria-label="API reference version" onchange="if(this.value){location = this.value;}">
-				{%- for b in branches -%}
-					{%- assign branch_selected = "" -%}
-					{%- if page.branch == b -%}
-						{%- assign branch_selected = " selected" -%}
-					{%- endif -%}
-				<option value="{{ page_url | replace: 'BRANCH', b }}"{{ branch_selected }}>{{ b }}</option>
-				{%- endfor -%}
-			</select>
-
 
 			{%- if page.ref == "overview" -%}
 				<h1>API Overview</h1>
@@ -218,3 +213,4 @@ layout: base
 
 {%- include marksearchhits.html div="apicontent" -%}
 {%- include copy-icon-for-code-snippets.html -%}
+<script src="/js/api-channels.js" defer></script>

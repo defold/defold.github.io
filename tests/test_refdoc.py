@@ -1,7 +1,34 @@
 import copy
+import tempfile
 import unittest
+from pathlib import Path
 
 import refdoc
+
+
+class StableReferenceUrlTests(unittest.TestCase):
+    def test_publish_stable_pages_and_redirect_old_urls(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "stable").mkdir()
+            pages = {
+                "b2d-lua": "---\nlayout: api\nbranch: stable\nref: b2d-lua\n---\n",
+                "b2d": "---\nlayout: api\nref: b2d-lua\npagefind_exclude: true\n---\n",
+                "overview_defoldlua": "---\nlayout: api\nref: overview\n---\n",
+            }
+            for name, content in pages.items():
+                (root / "stable" / (name + ".md")).write_text(content)
+
+            # Re-running must never replace a canonical page with its redirect.
+            for _ in range(2):
+                refdoc.canonicalize_stable_pages(root)
+                for name, content in pages.items():
+                    with self.subTest(page=name):
+                        self.assertEqual(content, (root / (name + ".md")).read_text())
+                        redirect = (root / "stable" / (name + ".md")).read_text()
+                        self.assertIn("layout: redirect\n", redirect)
+                        self.assertIn("redirect_to: /ref/%s/\n" % name, redirect)
+                        self.assertNotIn("layout: api\n", redirect)
 
 
 class RefdocFormatTests(unittest.TestCase):

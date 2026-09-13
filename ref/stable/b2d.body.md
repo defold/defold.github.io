@@ -1,10 +1,5 @@
 ---
-layout: api
-branch: stable
-ref: b2d.body-lua
-api_language: Lua
-title: API reference (b2d.body)
-type: Defold Lua
-pagefind_exclude: true
+layout: redirect
+title: API reference
+redirect_to: /ref/b2d.body/
 ---
-{% include anchor_headings.html html=content %}

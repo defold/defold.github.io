@@ -1,10 +1,5 @@
 ---
-layout: api
-branch: stable
-ref: crash-lua
-api_language: Lua
-title: API reference (Crash)
-type: Defold Lua
-pagefind_exclude: true
+layout: redirect
+title: API reference
+redirect_to: /ref/crash/
 ---
-{% include anchor_headings.html html=content %}

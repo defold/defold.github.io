@@ -1,10 +1,5 @@
 ---
-layout: api
-branch: stable
-ref: window-lua
-api_language: Lua
-title: API reference (Window)
-type: Defold Lua
-pagefind_exclude: true
+layout: redirect
+title: API reference
+redirect_to: /ref/window/
 ---
-{% include anchor_headings.html html=content %}

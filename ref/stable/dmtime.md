@@ -1,10 +1,5 @@
 ---
-layout: api
-branch: stable
-ref: engine-dlib-src-dmsdk-dlib-time-h
-api_language: C++
-title: API reference (Time)
-type: Defold C++
-pagefind_exclude: true
+layout: redirect
+title: API reference
+redirect_to: /ref/dmtime/
 ---
-{% include anchor_headings.html html=content %}

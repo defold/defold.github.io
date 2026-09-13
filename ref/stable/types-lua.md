@@ -1,9 +1,5 @@
 ---
-layout: api
-branch: stable
-ref: types-lua
-api_language: Lua
-title: API reference (Types)
-type: Defold Lua
+layout: redirect
+title: API reference
+redirect_to: /ref/types-lua/
 ---
-{% include anchor_headings.html html=content %}

@@ -1,9 +1,5 @@
 ---
-layout: api
-branch: stable
-ref: engine-gameobject-src-dmsdk-gameobject-gameobject-h
-api_language: C++
-title: API reference (Gameobject)
-type: Defold C++
+layout: redirect
+title: API reference
+redirect_to: /ref/engine-gameobject-src-dmsdk-gameobject-gameobject-h/
 ---
-{% include anchor_headings.html html=content %}

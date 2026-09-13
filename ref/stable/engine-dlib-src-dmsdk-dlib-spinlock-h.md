@@ -1,9 +1,5 @@
 ---
-layout: api
-branch: stable
-ref: engine-dlib-src-dmsdk-dlib-spinlock-h
-api_language: C++
-title: API reference (Spinlock)
-type: Defold C++
+layout: redirect
+title: API reference
+redirect_to: /ref/engine-dlib-src-dmsdk-dlib-spinlock-h/
 ---
-{% include anchor_headings.html html=content %}

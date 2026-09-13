@@ -1,3 +1,5 @@
+const { createChannelFilter, channelLabel } = await import(`./pagefind-channel-filter.js${new URL(import.meta.url).search}`);
+
 (() => {
 	const debounceMs = 180;
 
@@ -7,10 +9,13 @@
 		return manager && manager.getInstance(instanceName);
 	};
 
-	const buildSearchUrl = (term) => {
+	const buildSearchUrl = (term, channel) => {
 		const params = new URLSearchParams();
 		if (term) {
 			params.set("q", term);
+		}
+		if (channel) {
+			params.set("channel", channel);
 		}
 		const query = params.toString();
 		return query ? `/search?${query}` : "/search";
@@ -25,9 +30,10 @@
 		const input = form.querySelector("[data-pagefind-nav-search-input]");
 		const panel = form.querySelector("[data-pagefind-nav-search-panel]");
 		const allResultsLink = form.querySelector("[data-pagefind-nav-search-all-results]");
+		const channelElement = form.querySelector("[data-pagefind-channel-filter]");
 		const instance = getInstance(instanceName);
 
-		if (!input || !panel || !instance) {
+		if (!input || !panel || !channelElement || !instance) {
 			return false;
 		}
 
@@ -42,6 +48,11 @@
 		let searchTimer = null;
 
 		const getTerm = () => input.value.trim();
+		const channelFilter = createChannelFilter(channelElement, () => {
+			window.clearTimeout(searchTimer);
+			triggerSearch();
+		});
+		const getFilters = () => ({ "API channel": channelLabel(channelFilter.getValue()) });
 
 		const syncFixedPanelPosition = () => {
 			if (!form.hasAttribute("data-pagefind-fixed-panel") || panel.hidden) {
@@ -75,7 +86,7 @@
 
 		const updateAllResultsLink = () => {
 			if (allResultsLink) {
-				allResultsLink.href = buildSearchUrl(getTerm());
+				allResultsLink.href = buildSearchUrl(getTerm(), channelFilter.getValue());
 			}
 		};
 
@@ -90,11 +101,13 @@
 			}
 
 			setPanelOpen(true);
-			instance.triggerSearch(term);
+			channelFilter.updateCounts(term);
+			instance.triggerSearchWithFilters(term, getFilters());
 		};
 
 		const queueSearch = () => {
 			updateAllResultsLink();
+			channelFilter.updateCounts(getTerm());
 			window.clearTimeout(searchTimer);
 			searchTimer = window.setTimeout(triggerSearch, debounceMs);
 		};

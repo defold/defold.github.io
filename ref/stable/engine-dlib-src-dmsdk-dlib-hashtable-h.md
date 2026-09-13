@@ -1,9 +1,5 @@
 ---
-layout: api
-branch: stable
-ref: engine-dlib-src-dmsdk-dlib-hashtable-h
-api_language: C++
-title: API reference (Hashtable)
-type: Defold C++
+layout: redirect
+title: API reference
+redirect_to: /ref/engine-dlib-src-dmsdk-dlib-hashtable-h/
 ---
-{% include anchor_headings.html html=content %}

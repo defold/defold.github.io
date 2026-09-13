@@ -1,9 +1,5 @@
 ---
-layout: api
-branch: stable
-ref: engine-gamesys-src-dmsdk-gamesys-render_constants-h
-api_language: C++
-title: API reference (Component Render Constants)
-type: Defold C++
+layout: redirect
+title: API reference
+redirect_to: /ref/engine-gamesys-src-dmsdk-gamesys-render_constants-h/
 ---
-{% include anchor_headings.html html=content %}

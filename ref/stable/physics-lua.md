@@ -1,9 +1,5 @@
 ---
-layout: api
-branch: stable
-ref: physics-lua
-api_language: Lua
-title: API reference (Collision object)
-type: Defold Lua
+layout: redirect
+title: API reference
+redirect_to: /ref/physics-lua/
 ---
-{% include anchor_headings.html html=content %}

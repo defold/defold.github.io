@@ -1,10 +1,5 @@
 ---
-layout: api
-branch: stable
-ref: b2d.joint-lua
-api_language: Lua
-title: API reference (b2d.joint)
-type: Defold Lua
-pagefind_exclude: true
+layout: redirect
+title: API reference
+redirect_to: /ref/b2d.joint/
 ---
-{% include anchor_headings.html html=content %}

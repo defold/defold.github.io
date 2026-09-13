@@ -1,9 +1,5 @@
 ---
-layout: api
-branch: stable
-ref: engine-engine-src-engine_doc-h
-api_language: C++
-title: API reference (Engine runtime)
-type: Defold C++
+layout: redirect
+title: API reference
+redirect_to: /ref/engine-engine-src-engine_doc-h/
 ---
-{% include anchor_headings.html html=content %}

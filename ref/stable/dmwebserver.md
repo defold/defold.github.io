@@ -1,10 +1,5 @@
 ---
-layout: api
-branch: stable
-ref: engine-dlib-src-dmsdk-dlib-webserver-h
-api_language: C++
-title: API reference (WebServer)
-type: Defold C++
-pagefind_exclude: true
+layout: redirect
+title: API reference
+redirect_to: /ref/dmwebserver/
 ---
-{% include anchor_headings.html html=content %}

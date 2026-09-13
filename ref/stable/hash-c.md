@@ -1,9 +1,5 @@
 ---
-layout: api
-branch: stable
-ref: hash-c
-api_language: C
-title: API reference (Hash)
-type: Defold C
+layout: redirect
+title: API reference
+redirect_to: /ref/hash-c/
 ---
-{% include anchor_headings.html html=content %}

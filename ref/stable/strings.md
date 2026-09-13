@@ -1,10 +1,5 @@
 ---
-layout: api
-branch: stable
-ref: strings-c
-api_language: C
-title: API reference (Strings)
-type: Defold C
-pagefind_exclude: true
+layout: redirect
+title: API reference
+redirect_to: /ref/strings/
 ---
-{% include anchor_headings.html html=content %}

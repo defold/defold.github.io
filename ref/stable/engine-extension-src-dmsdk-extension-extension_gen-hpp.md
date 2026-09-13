@@ -1,9 +1,5 @@
 ---
-layout: api
-branch: stable
-ref: engine-extension-src-dmsdk-extension-extension_gen-hpp
-api_language: C++
-title: API reference (Extension)
-type: Defold C++
+layout: redirect
+title: API reference
+redirect_to: /ref/engine-extension-src-dmsdk-extension-extension_gen-hpp/
 ---
-{% include anchor_headings.html html=content %}

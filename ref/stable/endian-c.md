@@ -1,9 +1,5 @@
 ---
-layout: api
-branch: stable
-ref: endian-c
-api_language: C
-title: API reference (Endian)
-type: Defold C
+layout: redirect
+title: API reference
+redirect_to: /ref/endian-c/
 ---
-{% include anchor_headings.html html=content %}

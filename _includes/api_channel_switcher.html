@@ -1,0 +1,28 @@
+{%- comment -%}Extension releases are independent of engine release channels.{%- endcomment -%}
+{%- unless page.type == "Extension" and page.ref != "overview" -%}
+{%- assign channels = site.data.branchindex | reverse -%}
+{%- assign channel_category = page.type | remove: ' ' | replace: "C++", "cpp" | downcase -%}
+<nav class="api-channel-switcher" aria-label="API release channel" data-pagefind-ignore>
+	{%- for channel in channels -%}
+		{%- assign channel_base = "/ref/" -%}
+		{%- unless channel == "stable" -%}
+			{%- assign channel_base = channel_base | append: channel | append: "/" -%}
+		{%- endunless -%}
+		{%- assign channel_ref = site.data.refindex | where: "branch", channel | where: "filename", page.ref | first -%}
+		{%- assign channel_version = site.data.engine_versions[channel] -%}
+		{%- assign channel_preserve_fragment = true -%}
+		{%- if page.ref == "overview" -%}
+			{%- assign channel_url = channel_base | append: "overview_" | append: channel_category | append: "/" -%}
+		{%- elsif channel_ref -%}
+			{%- assign channel_url = channel_ref.url | append: "/" -%}
+		{%- else -%}
+			{%- assign channel_url = channel_base | append: "overview_" | append: channel_category | append: "/" -%}
+			{%- assign channel_preserve_fragment = false -%}
+		{%- endif -%}
+		<a class="api-channel-button" href="{{ channel_url }}" data-api-channel="{{ channel }}" data-preserve-fragment="{{ channel_preserve_fragment }}" aria-label="{{ channel | capitalize }}" aria-describedby="{{ include.id }}-{{ channel }}-tooltip"{% if page.branch == channel %} aria-current="page"{% endif %}>
+			{{ channel | capitalize }}
+			<span class="api-channel-tooltip" id="{{ include.id }}-{{ channel }}-tooltip" role="tooltip">{% if channel_version %}Currently it is {{ channel_version }}{% else %}Current version unavailable{% endif %}</span>
+		</a>
+	{%- endfor -%}
+</nav>
+{%- endunless -%}

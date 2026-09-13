@@ -6,6 +6,12 @@ layout: null
 <head>
   <meta charset="utf-8">
   <meta name="robots" content="noindex, follow">
+  <script>
+    const target = new URL({{ page.redirect_to | jsonify }}, window.location.origin);
+    if (!target.search) target.search = window.location.search;
+    if (!target.hash) target.hash = window.location.hash;
+    window.location.replace(target.href);
+  </script>
   <meta http-equiv="refresh" content="0; url={{ page.redirect_to | escape }}">
   <link rel="canonical" href="{{ page.redirect_to | absolute_url }}">
   <title>{{ page.title | escape }}</title>

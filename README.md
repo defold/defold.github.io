@@ -156,6 +156,12 @@ You can use the `update.py` script to pull in and process content from external 
 
 ## How to test local reference documentation
 
+The API reference has three engine release channels: Stable (the released engine), Beta (the upcoming release under testing), and Alpha (ongoing development). Each channel reads its own snapshot from `_data/ref/<channel>/`.
+
+Stable pages use `/ref/<api>/`. The old `/ref/stable/<api>/` URLs redirect there, preserving query strings and function anchors. Beta and Alpha use `/ref/beta/<api>/` and `/ref/alpha/<api>/`. `update.py refdoc` regenerates these pages, redirects, and navigation links together.
+
+The channel selector below API search opens the same API in the selected channel, or its category overview if that API is unavailable. `update.py --download refdoc` also saves the current engine versions from `https://d.defold.com/<channel>/info.json` to `_data/engine_versions.json` for the tooltips, engine API page titles, and visible Lua API version labels (for example, `Version: stable (1.13.1)`). Local imports without `--download` retain those versions. Extension APIs have independent releases and do not show the engine channel selector or engine version numbers.
+
 Copy the `refdoc.zip` to the main folder:
 
 ```sh
@@ -165,6 +171,16 @@ cp $DYNAMO_HOME/share/ref-doc.zip refdoc_stable.zip
 ./update.py refdoc
 ./serve.sh
 ```
+
+### Search-engine indexing and the sitemap
+
+The single `/sitemap.xml` includes canonical HTML pages. API references and category overviews in all three channels are indexable and included, along with extension APIs. Each channel uses its own canonical URLs, so APIs that are not available in Stable can still be discovered. The main navigation and general documentation links use Stable by default. Engine API page titles identify the channel and engine version; Google determines which version appears in search results.
+
+`_includes/search_engine_metadata.html` shares this policy between page heads and the sitemap. Legacy API aliases point to the corresponding reference in their channel and remain excluded; redirect pages are also excluded. Google indexing is independent of Pagefind: `pagefind_exclude` only controls internal search. Set `noindex: true` in front matter to exclude another page from search engines and the sitemap, or `sitemap: false` to omit it from the sitemap only. A page with a different `canonical` URL is omitted from the sitemap.
+
+Internal API search indexes canonical references in all three channels and extension APIs. Crawling remains allowed in `robots.txt` so search engines can read indexing instructions.
+
+Sitemap `lastmod` values come only from an explicit `last_modified_at` front-matter date representing the last significant content update. Unknown update dates are omitted; publication dates and build timestamps are not substituted. The sitemap does not emit `priority` or `changefreq`.
 
 ## How to test local documentaion
 
@@ -191,6 +207,10 @@ The script is also triggered once every hour to update the asset portal star cou
 
 ## Site search
 The site search is powered by [Pagefind](https://pagefind.app), a static site search library. Pagefind automatically generates a search index during the site build process and provides a fast, client-side search interface with filtering and metadata support.
+
+Search includes Stable, Beta, and Alpha API references, with channel and engine version labels. Existing Pagefind content and section weights are multiplied by 1.0 for Stable, 0.9 for Beta, and 0.8 for Alpha. This favors Stable while preserving relevance and staying within Pagefind's maximum weight of 10. Legacy aliases, redirects, and API category overviews remain excluded.
+
+Search always selects one API channel, defaulting to Stable. The API sidebar defaults to its current channel. Both search interfaces use three channel buttons backed by Pagefind's filters; on the full search page they appear above the Section filters. Each button counts matching pages in the API section across all channels, independently of the current channel and Section selections. The channel follows both form submissions and “View all results” links to `/search?q=…&channel=beta`. Manuals, tutorials, extensions, and other unversioned content belong to all three filter values, so selecting an API channel keeps that content visible.
 
 ## Page search
 Functionality for searching and marking within a single page using [Mark.js](https://markjs.io/).

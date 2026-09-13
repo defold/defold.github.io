@@ -1,10 +1,5 @@
 ---
-layout: api
-branch: stable
-ref: gui-lua
-api_language: Lua
-title: API reference (GUI)
-type: Defold Lua
-pagefind_exclude: true
+layout: redirect
+title: API reference
+redirect_to: /ref/gui/
 ---
-{% include anchor_headings.html html=content %}

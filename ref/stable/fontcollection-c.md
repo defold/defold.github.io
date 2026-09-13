@@ -1,9 +1,5 @@
 ---
-layout: api
-branch: stable
-ref: fontcollection-c
-api_language: C
-title: API reference (FontCollection)
-type: Defold C
+layout: redirect
+title: API reference
+redirect_to: /ref/fontcollection-c/
 ---
-{% include anchor_headings.html html=content %}

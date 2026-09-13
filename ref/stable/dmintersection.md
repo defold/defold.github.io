@@ -1,10 +1,5 @@
 ---
-layout: api
-branch: stable
-ref: engine-dlib-src-dmsdk-dlib-intersection-h
-api_language: C++
-title: API reference (Intersection structs and functions)
-type: Defold C++
-pagefind_exclude: true
+layout: redirect
+title: API reference
+redirect_to: /ref/dmintersection/
 ---
-{% include anchor_headings.html html=content %}

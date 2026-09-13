@@ -1,9 +1,5 @@
 ---
-layout: api
-branch: stable
-ref: engine-gamesys-src-dmsdk-gamesys-components-comp_gui-h
-api_language: C++
-title: API reference (GameSystem GUI Component)
-type: Defold C++
+layout: redirect
+title: API reference
+redirect_to: /ref/engine-gamesys-src-dmsdk-gamesys-components-comp_gui-h/
 ---
-{% include anchor_headings.html html=content %}

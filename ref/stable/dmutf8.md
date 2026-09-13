@@ -1,10 +1,5 @@
 ---
-layout: api
-branch: stable
-ref: engine-dlib-src-dmsdk-dlib-utf8-h
-api_language: C++
-title: API reference (Utf8)
-type: Defold C++
-pagefind_exclude: true
+layout: redirect
+title: API reference
+redirect_to: /ref/dmutf8/
 ---
-{% include anchor_headings.html html=content %}

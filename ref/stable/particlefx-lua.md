@@ -1,9 +1,5 @@
 ---
-layout: api
-branch: stable
-ref: particlefx-lua
-api_language: Lua
-title: API reference (Particle effects)
-type: Defold Lua
+layout: redirect
+title: API reference
+redirect_to: /ref/particlefx-lua/
 ---
-{% include anchor_headings.html html=content %}

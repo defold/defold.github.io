@@ -1,0 +1,16 @@
+{%- assign search_channels = "stable|beta|alpha" | split: "|" -%}
+{%- assign search_channel_default = "stable" -%}
+{%- if page.layout == "api" and page.type != "Extension" and search_channels contains page.branch -%}
+	{%- assign search_channel_default = page.branch -%}
+{%- endif -%}
+<fieldset id="{{ include.id }}-channel" class="pagefind-channel-filter" data-pagefind-channel-filter{% if include.hidden %} hidden{% endif %}>
+	<legend>API channel</legend>
+	<div class="pagefind-channel-switcher">
+		{%- for search_channel in search_channels -%}
+		<label class="pagefind-channel-choice" title="Counts show matching API pages only.">
+			<input type="radio" name="channel" value="{{ search_channel }}"{% if search_channel_default == search_channel %} checked{% endif %}>
+			<span class="pagefind-channel-button">{{ search_channel | capitalize }} <span class="pagefind-channel-count" data-pagefind-channel-count>—</span></span>
+		</label>
+		{%- endfor -%}
+	</div>
+</fieldset>

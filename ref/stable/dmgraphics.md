@@ -1,10 +1,5 @@
 ---
-layout: api
-branch: stable
-ref: engine-graphics-src-dmsdk-graphics-graphics_vulkan-h
-api_language: C++
-title: API reference (Graphics Vulkan)
-type: Defold C++
-pagefind_exclude: true
+layout: redirect
+title: API reference
+redirect_to: /ref/dmgraphics/
 ---
-{% include anchor_headings.html html=content %}

@@ -1,9 +1,5 @@
 ---
-layout: api
-branch: stable
-ref: engine-gamesys-src-dmsdk-gamesys-resources-res_light-h
-api_language: C++
-title: API reference (Light Resource)
-type: Defold C++
+layout: redirect
+title: API reference
+redirect_to: /ref/engine-gamesys-src-dmsdk-gamesys-resources-res_light-h/
 ---
-{% include anchor_headings.html html=content %}

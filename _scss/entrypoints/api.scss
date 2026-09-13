@@ -85,6 +85,42 @@
 	width: 100%
 }
 
+.api-channel-tooltip {
+	position: absolute;
+	z-index: 2;
+	top: calc(100% + 0.7rem);
+	left: 50%;
+	transform: translateX(-50%);
+	width: max-content;
+	padding: 0.65rem 0.85rem;
+	border: 1px solid var(--surface-border-strong);
+	border-radius: 6px;
+	background: var(--theme-page-bg);
+	color: var(--theme-heading-color);
+	box-shadow: var(--surface-shadow);
+	font-size: 1.15rem;
+	font-weight: 400;
+	white-space: nowrap;
+	pointer-events: none;
+	visibility: hidden;
+}
+
+.api-channel-button:first-child .api-channel-tooltip {
+	left: 0;
+	transform: none;
+}
+
+.api-channel-button:last-child .api-channel-tooltip {
+	left: auto;
+	right: 0;
+	transform: none;
+}
+
+.api-channel-button:hover .api-channel-tooltip,
+.api-channel-button:focus-visible .api-channel-tooltip {
+	visibility: visible;
+}
+
 .apicontent {
 	margin-left: 250px;
 	padding-left: 6%;
@@ -95,6 +131,14 @@
 
 @media (max-width: 800px) {
 	.apicontent  { margin-left: 0px; }
+
+	.api-channel-switcher {
+		margin: 0;
+	}
+
+	.api-channel-switcher .api-channel-button {
+		min-height: 4.4rem;
+	}
 
 	.apicontent div.dropdownmenu {
 		display: grid;

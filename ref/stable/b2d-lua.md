@@ -1,9 +1,5 @@
 ---
-layout: api
-branch: stable
-ref: b2d-lua
-api_language: Lua
-title: API reference (b2d)
-type: Defold Lua
+layout: redirect
+title: API reference
+redirect_to: /ref/b2d-lua/
 ---
-{% include anchor_headings.html html=content %}

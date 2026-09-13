@@ -1,10 +1,5 @@
 ---
-layout: api
-branch: stable
-ref: extension-c
-api_language: C
-title: API reference (Extension)
-type: Defold C
-pagefind_exclude: true
+layout: redirect
+title: API reference
+redirect_to: /ref/extension/
 ---
-{% include anchor_headings.html html=content %}

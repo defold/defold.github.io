@@ -1,10 +1,5 @@
 ---
-layout: api
-branch: stable
-ref: engine-dlib-src-dmsdk-dlib-http_client-h
-api_language: C++
-title: API reference (Http Client)
-type: Defold C++
-pagefind_exclude: true
+layout: redirect
+title: API reference
+redirect_to: /ref/dmhttpclient/
 ---
-{% include anchor_headings.html html=content %}
