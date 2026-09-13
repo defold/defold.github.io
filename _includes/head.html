@@ -8,23 +8,15 @@
 {%- endif -%}
 
 {%- assign site_url = site.url | default: "https://www.defold.com" -%}
-{%- assign page_url_path = page.url | default: "/" | remove: "index.html" -%}
-{%- assign canonical_url = page_url_path | absolute_url -%}
-{%- if page.canonical -%}
-	{%- assign canonical_url = page.canonical | absolute_url -%}
-{%- elsif page.pagefind_exclude and page.ref -%}
-	{%- assign canonical_path = "/ref/" -%}
-	{%- unless page.branch == "stable" -%}
-		{%- assign canonical_path = canonical_path | append: page.branch | append: "/" -%}
-	{%- endunless -%}
-	{%- assign canonical_path = canonical_path | append: page.ref | append: "/" -%}
-	{%- assign canonical_url = canonical_path | absolute_url -%}
-{%- endif -%}
+{%- include search_engine_metadata.html page=page -%}
 
 {%- assign page_title = page.title | default: site.name | strip_html | normalize_whitespace | strip -%}
 {%- assign page_title_downcase = page_title | downcase -%}
 {%- if page.seo_title -%}
 	{%- assign seo_title = page.seo_title | strip_html | normalize_whitespace | strip -%}
+{%- elsif page.layout == "api" and page.branch and page.type != "Extension" -%}
+	{%- assign engine_version = site.data.engine_versions[page.branch] -%}
+	{%- capture seo_title -%}{{ page_title }} | {{ site.name }}{% if engine_version %} {{ engine_version }}{% endif %} ({{ page.branch | capitalize }}){%- endcapture -%}
 {%- elsif page.url == "/" or page.url == "/index.html" -%}
 	{%- assign seo_title = page_title -%}
 {%- elsif page_title_downcase contains "defold" -%}
@@ -174,8 +166,7 @@
 <meta name="theme-color" content="#14181c">
 <meta name="theme-color" content="#fafafa" media="(prefers-color-scheme: light)">
 
-{%- if page.pagefind_exclude -%}
-<!-- Prevent indexing of fallback/duplicate pages and point to canonical -->
+{%- if search_engine_noindex -%}
 <meta name="robots" content="noindex, follow">
 {%- else -%}
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">

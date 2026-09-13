@@ -11,7 +11,8 @@
 
 <h1>{{ ref.info.brief }}</h1>
 <p>{{ ref.info.description_html }}</p>
-<p>Version: {{ page.branch }}</p>
+{%- assign engine_version = site.data.engine_versions[page.branch] -%}
+<p>Version: {{ page.branch }}{% if engine_version and page.type != "Extension" %} ({{ engine_version }}){% endif %}</p>
 
 {%- if functions.size > 0 -%}
 <table class="compact">

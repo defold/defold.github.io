@@ -160,7 +160,7 @@ The API reference has three engine release channels: Stable (the released engine
 
 Stable pages use `/ref/<api>/`. The old `/ref/stable/<api>/` URLs redirect there, preserving query strings and function anchors. Beta and Alpha use `/ref/beta/<api>/` and `/ref/alpha/<api>/`. `update.py refdoc` regenerates these pages, redirects, and navigation links together.
 
-The channel selector below API search opens the same API in the selected channel, or its category overview if that API is unavailable. `update.py --download refdoc` also saves the current engine versions from `https://d.defold.com/<channel>/info.json` to `_data/engine_versions.json` for the tooltips. Local imports without `--download` retain those versions. Extension APIs have independent releases and do not show the engine channel selector.
+The channel selector below API search opens the same API in the selected channel, or its category overview if that API is unavailable. `update.py --download refdoc` also saves the current engine versions from `https://d.defold.com/<channel>/info.json` to `_data/engine_versions.json` for the tooltips, engine API page titles, and visible Lua API version labels (for example, `Version: stable (1.13.1)`). Local imports without `--download` retain those versions. Extension APIs have independent releases and do not show the engine channel selector or engine version numbers.
 
 Copy the `refdoc.zip` to the main folder:
 
@@ -171,6 +171,16 @@ cp $DYNAMO_HOME/share/ref-doc.zip refdoc_stable.zip
 ./update.py refdoc
 ./serve.sh
 ```
+
+### Search-engine indexing and the sitemap
+
+The single `/sitemap.xml` includes canonical HTML pages. API references and category overviews in all three channels are indexable and included, along with extension APIs. Each channel uses its own canonical URLs, so APIs that are not available in Stable can still be discovered. The main navigation and general documentation links use Stable by default. Engine API page titles identify the channel and engine version; Google determines which version appears in search results.
+
+`_includes/search_engine_metadata.html` shares this policy between page heads and the sitemap. Legacy API aliases point to the corresponding reference in their channel and remain excluded; redirect pages are also excluded. Google indexing is independent of Pagefind: `pagefind_exclude` only controls internal search. Set `noindex: true` in front matter to exclude another page from search engines and the sitemap, or `sitemap: false` to omit it from the sitemap only. A page with a different `canonical` URL is omitted from the sitemap.
+
+Internal API search continues to index Stable references and extension APIs. Crawling remains allowed in `robots.txt` so search engines can read indexing instructions.
+
+Sitemap `lastmod` values come only from an explicit `last_modified_at` front-matter date representing the last significant content update. Unknown update dates are omitted; publication dates and build timestamps are not substituted. The sitemap does not emit `priority` or `changefreq`.
 
 ## How to test local documentaion
 

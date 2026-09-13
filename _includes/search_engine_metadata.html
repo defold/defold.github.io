@@ -1,0 +1,28 @@
+{%- comment -%}
+Shared Google indexing policy for page heads and the sitemap. Pagefind has its
+own policy; pagefind_exclude must not control search-engine metadata.
+{%- endcomment -%}
+{%- assign search_page = include.page -%}
+{%- assign search_page_url = search_page.url | remove: "index.html" | absolute_url -%}
+{%- assign canonical_url = search_page_url -%}
+{%- assign search_engine_noindex = false -%}
+
+{%- if search_page.layout == "api" -%}
+	{%- if search_page.ref and search_page.ref != "overview" and search_page.type != "Extension" -%}
+		{%- assign canonical_path = "/ref/" -%}
+		{%- if search_page.branch == "alpha" or search_page.branch == "beta" -%}
+			{%- assign canonical_path = canonical_path | append: search_page.branch | append: "/" -%}
+		{%- endif -%}
+		{%- assign canonical_url = canonical_path | append: search_page.ref | append: "/" | absolute_url -%}
+		{%- if search_page_url != canonical_url -%}
+			{%- assign search_engine_noindex = true -%}
+		{%- endif -%}
+	{%- endif -%}
+{%- endif -%}
+
+{%- if search_page.canonical -%}
+	{%- assign canonical_url = search_page.canonical | absolute_url -%}
+{%- endif -%}
+{%- if search_page.noindex or search_page.redirect_to or search_page.layout == "redirect" or search_page.layout == "assetportal_redirect" -%}
+	{%- assign search_engine_noindex = true -%}
+{%- endif -%}
