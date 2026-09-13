@@ -1,9 +1,5 @@
 ---
-layout: api
-branch: stable
-ref: socket-lua
-api_language: Lua
-title: API reference (LuaSocket)
-type: Defold Lua
+layout: redirect
+title: API reference
+redirect_to: /ref/socket-lua/
 ---
-{% include anchor_headings.html html=content %}

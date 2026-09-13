@@ -1,9 +1,5 @@
 ---
-layout: api
-branch: stable
-ref: engine-dlib-src-dmsdk-dlib-thread-h
-api_language: C++
-title: API reference (Thread)
-type: Defold C++
+layout: redirect
+title: API reference
+redirect_to: /ref/engine-dlib-src-dmsdk-dlib-thread-h/
 ---
-{% include anchor_headings.html html=content %}

@@ -1,9 +1,25 @@
 import html
 import re
+from pathlib import Path
 from urllib.parse import quote
 
 
 SUPPORTED_FORMAT_VERSIONS = (1, 2)
+
+
+def canonicalize_stable_pages(ref_root_dir):
+    """Publish Stable at /ref/ and retain its old URLs as redirects."""
+    root = Path(ref_root_dir)
+    for page in sorted((root / "stable").glob("*.md")):
+        content = page.read_text(encoding="utf-8")
+        if content.startswith("---\nlayout: redirect\n"):
+            continue
+        (root / page.name).write_text(content, encoding="utf-8")
+        page.write_text(
+            "---\nlayout: redirect\ntitle: API reference\n"
+            "redirect_to: /ref/%s/\n---\n" % page.stem,
+            encoding="utf-8")
+
 
 _LUA_TYPE_ELEMENT_TYPES = frozenset((
     "CLASS", "ENUM", "MESSAGE", "STRUCT", "TYPEDEF",

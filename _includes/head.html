@@ -13,7 +13,11 @@
 {%- if page.canonical -%}
 	{%- assign canonical_url = page.canonical | absolute_url -%}
 {%- elsif page.pagefind_exclude and page.ref -%}
-	{%- assign canonical_path = "/ref/" | append: page.branch | append: "/" | append: page.ref | append: "/" -%}
+	{%- assign canonical_path = "/ref/" -%}
+	{%- unless page.branch == "stable" -%}
+		{%- assign canonical_path = canonical_path | append: page.branch | append: "/" -%}
+	{%- endunless -%}
+	{%- assign canonical_path = canonical_path | append: page.ref | append: "/" -%}
 	{%- assign canonical_url = canonical_path | absolute_url -%}
 {%- endif -%}
 

@@ -1,10 +1,5 @@
 ---
-layout: api
-branch: stable
-ref: engine-dlib-src-dmsdk-dlib-image-h
-api_language: C++
-title: API reference (Image)
-type: Defold C++
-pagefind_exclude: true
+layout: redirect
+title: API reference
+redirect_to: /ref/dmimage/
 ---
-{% include anchor_headings.html html=content %}

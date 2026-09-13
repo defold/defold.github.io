@@ -1,10 +1,5 @@
 ---
-layout: api
-branch: stable
-ref: engine-hid-src-dmsdk-hid-hid-h
-api_language: C++
-title: API reference (Hid)
-type: Defold C++
-pagefind_exclude: true
+layout: redirect
+title: API reference
+redirect_to: /ref/dmhid/
 ---
-{% include anchor_headings.html html=content %}

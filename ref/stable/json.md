@@ -1,10 +1,5 @@
 ---
-layout: api
-branch: stable
-ref: json-lua
-api_language: Lua
-title: API reference (JSON)
-type: Defold Lua
-pagefind_exclude: true
+layout: redirect
+title: API reference
+redirect_to: /ref/json/
 ---
-{% include anchor_headings.html html=content %}

@@ -1,10 +1,5 @@
 ---
-layout: api
-branch: stable
-ref: engine-dlib-src-dmsdk-dlib-trig_lookup-h
-api_language: C++
-title: API reference (TrigLookup)
-type: Defold C++
-pagefind_exclude: true
+layout: redirect
+title: API reference
+redirect_to: /ref/dmtriglookup/
 ---
-{% include anchor_headings.html html=content %}

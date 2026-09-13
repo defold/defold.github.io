@@ -1,9 +1,5 @@
 ---
-layout: api
-branch: stable
-ref: textlayout-c
-api_language: C
-title: API reference (TextLayout)
-type: Defold C
+layout: redirect
+title: API reference
+redirect_to: /ref/textlayout-c/
 ---
-{% include anchor_headings.html html=content %}

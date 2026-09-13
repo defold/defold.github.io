@@ -29,7 +29,7 @@ from example_scripts import (
 )
 
 
-SHA1 = {}
+ENGINE_INFO = {}
 
 DOCS_ZIP = "doc-master.zip"
 EXAMPLES_ZIP = "examples-master.zip"
@@ -165,12 +165,14 @@ def download_json(url):
     return response.json()
 
 
+def get_engine_info(branch = "stable"):
+    if branch not in ENGINE_INFO:
+        ENGINE_INFO[branch] = download_json("https://d.defold.com/{}/info.json".format(branch))
+    return ENGINE_INFO[branch]
+
+
 def get_sha1(branch = "stable"):
-    global SHA1
-    if not SHA1.get(branch):
-        info = download_json("https://d.defold.com/{}/info.json".format(branch))
-        SHA1[branch] = info["sha1"]
-    return SHA1[branch]
+    return get_engine_info(branch)["sha1"]
 
 
 def get_bob_filename(sha1):
@@ -1570,6 +1572,8 @@ def process_games_showcase(download = False):
 def process_refdoc(download = False):
     refindex = []
     branchindex = [ "alpha", "beta", "stable" ]
+    versions_path = os.path.join("_data", "engine_versions.json")
+    engine_versions = read_as_json(versions_path) if os.path.exists(versions_path) else {}
     ref_root_dir = "ref"
     rmmkdir(ref_root_dir)
 
@@ -1580,6 +1584,7 @@ def process_refdoc(download = False):
         REF_PAGE_DIR = os.path.join(ref_root_dir, branch)
 
         if download:
+            engine_versions[branch] = get_engine_info(branch)["version"]
             if os.path.exists(REFDOC_ZIP):
                 os.remove(REFDOC_ZIP)
             download_file("http://d.defold.com/archive/{}/engine/share/ref-doc.zip".format(get_sha1(branch)), ".", REFDOC_ZIP)
@@ -1727,7 +1732,7 @@ def process_refdoc(download = False):
                     "path": api["info"]["path"],
                     "name": api["info"]["name"],
                     "filename": json_out_name,
-                    "url": "/ref/" + branch + "/" + json_out_name,
+                    "url": "/ref/" + (branch + "/" if branch != "stable" else "") + json_out_name,
                     "branch": branch,
                     "api_language": api["info"]["api_language"],
                     "type": api["info"]["type"],
@@ -1770,12 +1775,7 @@ def process_refdoc(download = False):
                 f.write(REFDOC_MD_FRONTMATTER.format(fm_branch, fm_ref, fm_language, fm_title, fm_type, "") + REFDOC_MD_BODY)
 
 
-    # copy stable files to ref/ for backwards compatibility
-    for item in os.listdir(os.path.join("ref", "stable")):
-        s = os.path.join("ref", "stable", item)
-        d = os.path.join("ref", item)
-        if not os.path.isdir(s):
-            shutil.copy2(s, d)
+    refdoc.canonicalize_stable_pages(ref_root_dir)
 
     refindex.sort(key=lambda x: x.get("name").lower() + x.get("branch").lower())
 
@@ -1784,6 +1784,7 @@ def process_refdoc(download = False):
 
     # write branch index
     write_as_json(os.path.join("_data", "branchindex.json"), branchindex)
+    write_as_json(versions_path, engine_versions)
 
     print("...generating llms/apis")
     generate_llms_apis()

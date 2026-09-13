@@ -1,9 +1,5 @@
 ---
-layout: api
-branch: stable
-ref: overview
-api_language: Lua
-title: API reference (Overview)
-type: Extension
+layout: redirect
+title: API reference
+redirect_to: /ref/overview_extension/
 ---
-{% include anchor_headings.html html=content %}

@@ -1,9 +1,5 @@
 ---
-layout: api
-branch: stable
-ref: engine-dlib-src-dmsdk-dlib-socket-h
-api_language: C++
-title: API reference (Socket)
-type: Defold C++
+layout: redirect
+title: API reference
+redirect_to: /ref/engine-dlib-src-dmsdk-dlib-socket-h/
 ---
-{% include anchor_headings.html html=content %}

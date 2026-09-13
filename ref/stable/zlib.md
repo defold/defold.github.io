@@ -1,10 +1,5 @@
 ---
-layout: api
-branch: stable
-ref: zlib-lua
-api_language: Lua
-title: API reference (Zlib)
-type: Defold Lua
-pagefind_exclude: true
+layout: redirect
+title: API reference
+redirect_to: /ref/zlib/
 ---
-{% include anchor_headings.html html=content %}

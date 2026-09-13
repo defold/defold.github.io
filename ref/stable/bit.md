@@ -1,10 +1,5 @@
 ---
-layout: api
-branch: stable
-ref: bit-lua
-api_language: Lua
-title: API reference (BitOp)
-type: Defold Lua
-pagefind_exclude: true
+layout: redirect
+title: API reference
+redirect_to: /ref/bit/
 ---
-{% include anchor_headings.html html=content %}

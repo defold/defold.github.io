@@ -1,10 +1,5 @@
 ---
-layout: api
-branch: stable
-ref: label-lua
-api_language: Lua
-title: API reference (Label)
-type: Defold Lua
-pagefind_exclude: true
+layout: redirect
+title: API reference
+redirect_to: /ref/label/
 ---
-{% include anchor_headings.html html=content %}

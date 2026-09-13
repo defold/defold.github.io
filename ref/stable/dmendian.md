@@ -1,10 +1,5 @@
 ---
-layout: api
-branch: stable
-ref: engine-dlib-src-dmsdk-dlib-endian-hpp
-api_language: C++
-title: API reference (Endian)
-type: Defold C++
-pagefind_exclude: true
+layout: redirect
+title: API reference
+redirect_to: /ref/dmendian/
 ---
-{% include anchor_headings.html html=content %}

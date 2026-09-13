@@ -1,10 +1,5 @@
 ---
-layout: api
-branch: stable
-ref: sprite-lua
-api_language: Lua
-title: API reference (Sprite)
-type: Defold Lua
-pagefind_exclude: true
+layout: redirect
+title: API reference
+redirect_to: /ref/sprite/
 ---
-{% include anchor_headings.html html=content %}

@@ -1,9 +1,5 @@
 ---
-layout: api
-branch: stable
-ref: math-lua
-api_language: Lua
-title: API reference (Math)
-type: Defold Lua
+layout: redirect
+title: API reference
+redirect_to: /ref/math-lua/
 ---
-{% include anchor_headings.html html=content %}

@@ -1,9 +1,5 @@
 ---
-layout: api
-branch: stable
-ref: vmath-lua
-api_language: Lua
-title: API reference (Vector math)
-type: Defold Lua
+layout: redirect
+title: API reference
+redirect_to: /ref/vmath-lua/
 ---
-{% include anchor_headings.html html=content %}

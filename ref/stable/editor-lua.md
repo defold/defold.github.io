@@ -1,9 +1,5 @@
 ---
-layout: api
-branch: stable
-ref: editor-lua
-api_language: Lua
-title: API reference (Editor)
-type: Defold Lua
+layout: redirect
+title: API reference
+redirect_to: /ref/editor-lua/
 ---
-{% include anchor_headings.html html=content %}

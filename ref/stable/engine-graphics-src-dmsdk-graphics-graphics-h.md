@@ -1,9 +1,5 @@
 ---
-layout: api
-branch: stable
-ref: engine-graphics-src-dmsdk-graphics-graphics-h
-api_language: C++
-title: API reference (Graphics)
-type: Defold C++
+layout: redirect
+title: API reference
+redirect_to: /ref/engine-graphics-src-dmsdk-graphics-graphics-h/
 ---
-{% include anchor_headings.html html=content %}

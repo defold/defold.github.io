@@ -1,10 +1,5 @@
 ---
-layout: api
-branch: stable
-ref: align-c
-api_language: C
-title: API reference (Align)
-type: Defold C
-pagefind_exclude: true
+layout: redirect
+title: API reference
+redirect_to: /ref/align/
 ---
-{% include anchor_headings.html html=content %}

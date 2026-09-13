@@ -1,9 +1,5 @@
 ---
-layout: api
-branch: stable
-ref: engine-script-src-dmsdk-script-script-h
-api_language: C++
-title: API reference (Script)
-type: Defold C++
+layout: redirect
+title: API reference
+redirect_to: /ref/engine-script-src-dmsdk-script-script-h/
 ---
-{% include anchor_headings.html html=content %}

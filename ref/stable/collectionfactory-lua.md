@@ -1,9 +1,5 @@
 ---
-layout: api
-branch: stable
-ref: collectionfactory-lua
-api_language: Lua
-title: API reference (Collection factory)
-type: Defold Lua
+layout: redirect
+title: API reference
+redirect_to: /ref/collectionfactory-lua/
 ---
-{% include anchor_headings.html html=content %}

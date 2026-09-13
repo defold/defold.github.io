@@ -1,9 +1,5 @@
 ---
-layout: api
-branch: stable
-ref: go-lua
-api_language: Lua
-title: API reference (Game object)
-type: Defold Lua
+layout: redirect
+title: API reference
+redirect_to: /ref/go-lua/
 ---
-{% include anchor_headings.html html=content %}

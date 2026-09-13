@@ -1,10 +1,5 @@
 ---
-layout: api
-branch: stable
-ref: engine-dlib-src-dmsdk-dlib-log-h
-api_language: C++
-title: API reference (Log)
-type: Defold C++
-pagefind_exclude: true
+layout: redirect
+title: API reference
+redirect_to: /ref/log/
 ---
-{% include anchor_headings.html html=content %}

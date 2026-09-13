@@ -156,6 +156,12 @@ You can use the `update.py` script to pull in and process content from external 
 
 ## How to test local reference documentation
 
+The API reference has three engine release channels: Stable (the released engine), Beta (the upcoming release under testing), and Alpha (ongoing development). Each channel reads its own snapshot from `_data/ref/<channel>/`.
+
+Stable pages use `/ref/<api>/`. The old `/ref/stable/<api>/` URLs redirect there, preserving query strings and function anchors. Beta and Alpha use `/ref/beta/<api>/` and `/ref/alpha/<api>/`. `update.py refdoc` regenerates these pages, redirects, and navigation links together.
+
+The channel selector below API search opens the same API in the selected channel, or its category overview if that API is unavailable. `update.py --download refdoc` also saves the current engine versions from `https://d.defold.com/<channel>/info.json` to `_data/engine_versions.json` for the tooltips. Local imports without `--download` retain those versions. Extension APIs have independent releases and do not show the engine channel selector.
+
 Copy the `refdoc.zip` to the main folder:
 
 ```sh

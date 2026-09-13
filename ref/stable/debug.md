@@ -1,10 +1,5 @@
 ---
-layout: api
-branch: stable
-ref: debug-lua
-api_language: Lua
-title: API reference (Debug)
-type: Defold Lua
-pagefind_exclude: true
+layout: redirect
+title: API reference
+redirect_to: /ref/debug/
 ---
-{% include anchor_headings.html html=content %}

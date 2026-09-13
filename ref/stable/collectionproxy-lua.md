@@ -1,9 +1,5 @@
 ---
-layout: api
-branch: stable
-ref: collectionproxy-lua
-api_language: Lua
-title: API reference (Collection proxy)
-type: Defold Lua
+layout: redirect
+title: API reference
+redirect_to: /ref/collectionproxy-lua/
 ---
-{% include anchor_headings.html html=content %}

@@ -1,10 +1,5 @@
 ---
-layout: api
-branch: stable
-ref: profiler-lua
-api_language: Lua
-title: API reference (Profiler)
-type: Defold Lua
-pagefind_exclude: true
+layout: redirect
+title: API reference
+redirect_to: /ref/profiler/
 ---
-{% include anchor_headings.html html=content %}

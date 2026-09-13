@@ -1,10 +1,5 @@
 ---
-layout: api
-branch: stable
-ref: engine-dlib-src-dmsdk-dlib-configfile_gen-hpp
-api_language: C++
-title: API reference (ConfigFile)
-type: Defold C++
-pagefind_exclude: true
+layout: redirect
+title: API reference
+redirect_to: /ref/dmconfigfile/
 ---
-{% include anchor_headings.html html=content %}

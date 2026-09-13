@@ -1,9 +1,5 @@
 ---
-layout: api
-branch: stable
-ref: engine-gamesys-src-dmsdk-gamesys-components-comp_collection_factory-h
-api_language: C++
-title: API reference (Collection factory)
-type: Defold C++
+layout: redirect
+title: API reference
+redirect_to: /ref/engine-gamesys-src-dmsdk-gamesys-components-comp_collection_factory-h/
 ---
-{% include anchor_headings.html html=content %}

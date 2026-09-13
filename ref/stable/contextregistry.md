@@ -1,10 +1,5 @@
 ---
-layout: api
-branch: stable
-ref: contextregistry-c
-api_language: C
-title: API reference (ContextRegistry)
-type: Defold C
-pagefind_exclude: true
+layout: redirect
+title: API reference
+redirect_to: /ref/contextregistry/
 ---
-{% include anchor_headings.html html=content %}

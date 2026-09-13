@@ -1,10 +1,5 @@
 ---
-layout: api
-branch: stable
-ref: coroutine-lua
-api_language: Lua
-title: API reference (Coroutine)
-type: Defold Lua
-pagefind_exclude: true
+layout: redirect
+title: API reference
+redirect_to: /ref/coroutine/
 ---
-{% include anchor_headings.html html=content %}

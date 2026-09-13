@@ -1,10 +1,5 @@
 ---
-layout: api
-branch: stable
-ref: engine-ddf-src-dmsdk-ddf-ddf-h
-api_language: C++
-title: API reference (Ddf)
-type: Defold C++
-pagefind_exclude: true
+layout: redirect
+title: API reference
+redirect_to: /ref/dmddf/
 ---
-{% include anchor_headings.html html=content %}

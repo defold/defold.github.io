@@ -1,10 +1,5 @@
 ---
-layout: api
-branch: stable
-ref: engine-dlib-src-dmsdk-dlib-static_assert-h
-api_language: C++
-title: API reference (Static Assert)
-type: Defold C++
-pagefind_exclude: true
+layout: redirect
+title: API reference
+redirect_to: /ref/dmstaticassert/
 ---
-{% include anchor_headings.html html=content %}

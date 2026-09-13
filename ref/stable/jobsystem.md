@@ -1,10 +1,5 @@
 ---
-layout: api
-branch: stable
-ref: jobsystem-c
-api_language: C
-title: API reference (Job System)
-type: Defold C
-pagefind_exclude: true
+layout: redirect
+title: API reference
+redirect_to: /ref/jobsystem/
 ---
-{% include anchor_headings.html html=content %}

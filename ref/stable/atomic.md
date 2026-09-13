@@ -1,10 +1,5 @@
 ---
-layout: api
-branch: stable
-ref: atomic-c
-api_language: C
-title: API reference (Atomic)
-type: Defold C
-pagefind_exclude: true
+layout: redirect
+title: API reference
+redirect_to: /ref/atomic/
 ---
-{% include anchor_headings.html html=content %}

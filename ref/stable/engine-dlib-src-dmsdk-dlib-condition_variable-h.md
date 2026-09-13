@@ -1,9 +1,5 @@
 ---
-layout: api
-branch: stable
-ref: engine-dlib-src-dmsdk-dlib-condition_variable-h
-api_language: C++
-title: API reference (Condition Variable)
-type: Defold C++
+layout: redirect
+title: API reference
+redirect_to: /ref/engine-dlib-src-dmsdk-dlib-condition_variable-h/
 ---
-{% include anchor_headings.html html=content %}

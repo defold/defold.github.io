@@ -1,10 +1,5 @@
 ---
-layout: api
-branch: stable
-ref: image-lua
-api_language: Lua
-title: API reference (Image)
-type: Defold Lua
-pagefind_exclude: true
+layout: redirect
+title: API reference
+redirect_to: /ref/image/
 ---
-{% include anchor_headings.html html=content %}

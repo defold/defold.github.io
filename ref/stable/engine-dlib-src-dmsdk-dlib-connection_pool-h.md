@@ -1,9 +1,5 @@
 ---
-layout: api
-branch: stable
-ref: engine-dlib-src-dmsdk-dlib-connection_pool-h
-api_language: C++
-title: API reference (Connection Pool)
-type: Defold C++
+layout: redirect
+title: API reference
+redirect_to: /ref/engine-dlib-src-dmsdk-dlib-connection_pool-h/
 ---
-{% include anchor_headings.html html=content %}
