@@ -64,6 +64,11 @@ layout: base
 					{%- assign clean_category = category | remove: ' ' | replace: "C++", "cpp" | downcase -%}
 
 					{%- assign checked = "" -%}
+					{%- assign overview_current = false -%}
+					{%- if page.ref == "overview" and page.type == category -%}
+						{%- assign checked = "checked" -%}
+						{%- assign overview_current = true -%}
+					{%- endif -%}
 					{%- for r in categoryrefs -%}
 						{%- assign url = r.url -%}
 						{%- if page.url contains url -%}
@@ -74,7 +79,7 @@ layout: base
 				<input id="collapsible_{{ category }}" class="toggle" type="checkbox" {{ checked }}/>
 				<label for="collapsible_{{ category }}" class="togglelabel">{{ category }}</label>
 				<ul class="nobullet">
-					<li class="api-nav-item"><a class="api-nav-link" href="{{ branch_base }}overview_{{ clean_category }}/">Overview</a></li>
+					<li class="api-nav-item"><a class="api-nav-link{% if overview_current %} api-nav-link-current{% endif %}" href="{{ branch_base }}overview_{{ clean_category }}/"{% if overview_current %} aria-current="page"{% endif %}>Overview</a></li>
 
 					{%- assign namespaces = categoryrefs | map: "namespace" | uniq | sort_natural -%}
 					{%- for ns in namespaces -%}
@@ -131,7 +136,7 @@ layout: base
 					{%- assign overview_url = branch_base | append: "overview_" | append: clean_category | append: "/" -%}
 				<optgroup label="{{ category }}">
 					{%- assign overview_selected = "" -%}
-					{%- if page.url contains overview_url -%}
+					{%- if page.ref == "overview" and page.type == category -%}
 						{%- assign overview_selected = " selected" -%}
 					{%- endif -%}
 					<option value="{{ overview_url }}"{{ overview_selected }}>Overview</option>
