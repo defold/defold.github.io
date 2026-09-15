@@ -1103,7 +1103,7 @@
         },
         {
             "brief": "gets the text metrics for a font",
-            "description": "Gets the text metrics from a font",
+            "description": "Gets the text metrics from a font. Rich text markup is measured using its\nvisible text and font sizes. If markup cannot be parsed, the text is measured literally.\nInline sprites reserve their specified dimensions, or one em by default.",
             "error": "",
             "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"kd\">local</span> <span class=\"n\">font</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">&quot;#label&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;font&quot;</span><span class=\"p\">)</span>\n    <span class=\"kd\">local</span> <span class=\"n\">metrics</span> <span class=\"o\">=</span> <span class=\"n\">resource</span><span class=\"p\">.</span><span class=\"n\">get_text_metrics</span><span class=\"p\">(</span><span class=\"n\">font</span><span class=\"p\">,</span> <span class=\"s2\">&quot;The quick brown fox</span><span class=\"se\">\\n</span><span class=\"s2\"> jumps over the lazy dog&quot;</span><span class=\"p\">)</span>\n    <span class=\"n\">pprint</span><span class=\"p\">(</span><span class=\"n\">metrics</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
             "language": "",
