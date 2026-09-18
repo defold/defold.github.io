@@ -1,8 +1,8 @@
 ---
 brief: This manual covers how to setup and use Facebook in Defold.
 github: https://github.com/defold/extension-facebook
-language: en
 layout: manual
+locale: en
 title: Defold Facebook documentation
 toc:
 - Defold Facebook documentation
