@@ -1476,7 +1476,7 @@ res
             └── filepaths.xml
 ```
 
-You can use [`sys.get_application_path()`](https://defold.com/ref/stable/sys/#sys.get_application_path:) to get the path to where the application is stored. Use this application base path to create the final absolute path to the files you need access to. Once you have the absolute path of these files you can use the `io.*` and `os.*` functions to access the files.
+You can use [`sys.get_application_path()`](https://defold.com/ref/sys/#sys.get_application_path:) to get the path to where the application is stored. Use this application base path to create the final absolute path to the files you need access to. Once you have the absolute path of these files you can use the `io.*` and `os.*` functions to access the files.
 
 Loading bundle resources is covered in more detail in the [File Access manual](#manuals:file-access).
 
@@ -8258,7 +8258,7 @@ buffer.set_metadata(buf, hash("AABB"), { 0, 0, 0, 1, 1, 1 }, buffer.VALUE_TYPE_F
 
 ## Material constants
 
-The default mesh material has the following constants that can be changed using [go.set()](https://defold.com/ref/stable/go/#go.set) or [go.animate()](https://defold.com/ref/stable/go/#go.animate) (refer to the [Material manual for more details](#manuals:material)). Examples:
+The default mesh material has the following constants that can be changed using [go.set()](https://defold.com/ref/go/#go.set) or [go.animate()](https://defold.com/ref/go/#go.animate) (refer to the [Material manual for more details](#manuals:material)). Examples:
 ```lua
 go.set("#mesh", "tint", vmath.vector4(1,0,0,1))
 go.animate("#mesh", "tint", go.PLAYBACK_LOOP_PINGPONG, vmath.vector4(1,0,0,1), go.EASING_LINEAR, 2)
@@ -8388,7 +8388,7 @@ If you need to create custom materials for your models, see the [Material docume
 
 ### Material constants
 
-The default model material has the following constants that can be changed using [go.set()](https://defold.com/ref/stable/go/#go.set) or [go.animate()](https://defold.com/ref/stable/go/#go.animate) (refer to the [Material manual for more details](#manuals:material)). Examples:
+The default model material has the following constants that can be changed using [go.set()](https://defold.com/ref/go/#go.set) or [go.animate()](https://defold.com/ref/go/#go.animate) (refer to the [Material manual for more details](#manuals:material)). Examples:
 ```lua
 go.set("#model", "tint", vmath.vector4(1,0,0,1))
 go.animate("#model", "tint", go.PLAYBACK_LOOP_PINGPONG, vmath.vector4(1,0,0,1), go.EASING_LINEAR, 2)
@@ -8945,7 +8945,7 @@ A sprite also has a number of different properties that can be manipulated using
 
 ## Material constants
 
-The default sprite material has the following constants that can be changed using [go.set()](https://defold.com/ref/stable/go/#go.set) or [go.animate()](https://defold.com/ref/stable/go/#go.animate) (refer to the [Material manual for more details](#manuals:material)). Examples:
+The default sprite material has the following constants that can be changed using [go.set()](https://defold.com/ref/go/#go.set) or [go.animate()](https://defold.com/ref/go/#go.animate) (refer to the [Material manual for more details](#manuals:material)). Examples:
 ```lua
 go.set("#sprite", "tint", vmath.vector4(1,0,0,1))
 go.animate("#sprite", "tint", go.PLAYBACK_LOOP_PINGPONG, vmath.vector4(1,0,0,1), go.EASING_LINEAR, 2)
@@ -9101,7 +9101,7 @@ A tilemap has a number of different properties that can be manipulated using `go
 
 ### Material constants
 
-The default tilemap material has the following constants that can be changed using [go.set()](https://defold.com/ref/stable/go/#go.set) or [go.animate()](https://defold.com/ref/stable/go/#go.animate) (refer to the [Material manual for more details](#manuals:material)). Examples:
+The default tilemap material has the following constants that can be changed using [go.set()](https://defold.com/ref/go/#go.set) or [go.animate()](https://defold.com/ref/go/#go.animate) (refer to the [Material manual for more details](#manuals:material)). Examples:
 ```lua
 go.set("#tilemap", "tint", vmath.vector4(1,0,0,1))
 go.animate("#tilemap", "tint", go.PLAYBACK_LOOP_PINGPONG, vmath.vector4(1,0,0,1), go.EASING_LINEAR, 2)
@@ -13329,7 +13329,7 @@ res
             └── filepaths.xml
 ```
 
-You can use [`sys.get_application_path()`](https://defold.com/ref/stable/sys/#sys.get_application_path:) to get the path to where the application is stored. Use this application base path to create the final absolute path to the files you need access to. Once you have the absolute path of these files you can use the `io.*` and `os.*` functions to access the files.
+You can use [`sys.get_application_path()`](https://defold.com/ref/sys/#sys.get_application_path:) to get the path to where the application is stored. Use this application base path to create the final absolute path to the files you need access to. Once you have the absolute path of these files you can use the `io.*` and `os.*` functions to access the files.
 ```lua
 local path = sys.get_application_path()
 local f = io.open(path .. "/mycommonfile.txt", "rb")

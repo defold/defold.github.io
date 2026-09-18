@@ -111,7 +111,7 @@ res
             └── filepaths.xml
 ```
 
-You can use [`sys.get_application_path()`](https://defold.com/ref/stable/sys/#sys.get_application_path:) to get the path to where the application is stored. Use this application base path to create the final absolute path to the files you need access to. Once you have the absolute path of these files you can use the `io.*` and `os.*` functions to access the files.
+You can use [`sys.get_application_path()`](https://defold.com/ref/sys/#sys.get_application_path:) to get the path to where the application is stored. Use this application base path to create the final absolute path to the files you need access to. Once you have the absolute path of these files you can use the `io.*` and `os.*` functions to access the files.
 
 Loading bundle resources is covered in more detail in the [File Access manual](https://defold.com/llms/manuals/file-access.md).
 

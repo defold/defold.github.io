@@ -96,7 +96,7 @@ A sprite also has a number of different properties that can be manipulated using
 
 ## Material constants
 
-The default sprite material has the following constants that can be changed using [go.set()](https://defold.com/ref/stable/go/#go.set) or [go.animate()](https://defold.com/ref/stable/go/#go.animate) (refer to the [Material manual for more details](https://defold.com/llms/manuals/material.md)). Examples:
+The default sprite material has the following constants that can be changed using [go.set()](https://defold.com/ref/go/#go.set) or [go.animate()](https://defold.com/ref/go/#go.animate) (refer to the [Material manual for more details](https://defold.com/llms/manuals/material.md)). Examples:
 ```lua
 go.set("#sprite", "tint", vmath.vector4(1,0,0,1))
 go.animate("#sprite", "tint", go.PLAYBACK_LOOP_PINGPONG, vmath.vector4(1,0,0,1), go.EASING_LINEAR, 2)
