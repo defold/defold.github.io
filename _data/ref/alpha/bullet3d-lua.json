@@ -150,6 +150,56 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "Get the game object id associated with a Bullet collision object",
+            "description": "Returns the id of the game object that owns the collision-object component.\nAccepts both rigid bodies and ghost trigger objects.\nRaises a Lua error if the handle is invalid or its game object has been deleted.",
+            "error": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">object</span> <span class=\"o\">=</span> <span class=\"n\">bullet3d</span><span class=\"p\">.</span><span class=\"n\">get_collision_object</span><span class=\"p\">(</span><span class=\"s2\">&quot;#collisionobject&quot;</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">id</span> <span class=\"o\">=</span> <span class=\"n\">bullet3d</span><span class=\"p\">.</span><span class=\"n\">get_gameobject_id</span><span class=\"p\">(</span><span class=\"n\">object</span><span class=\"p\">)</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "bullet3d.get_gameobject_id",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the Bullet collision object",
+                    "is_optional": "False",
+                    "name": "object",
+                    "types": [
+                        "btCollisionObject",
+                        "btRigidBody"
+                    ],
+                    "types_html": [
+                        "<a href=\"#btCollisionObject\">btCollisionObject</a>",
+                        "<a href=\"#btRigidBody\">btRigidBody</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#btCollisionObject\">btCollisionObject</a>",
+                        "<a href=\"#btRigidBody\">btRigidBody</a>"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "the game object id, or <code>nil</code> if the collision object has no associated game object",
+                    "name": "id",
+                    "types": [
+                        "hash",
+                        "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "Get a Bullet rigid body",
             "description": "Trigger components are ghost objects, so this function returns <code>nil</code> for them.\nThis function raises an error unless the collection uses 3D physics.",
             "error": "",
