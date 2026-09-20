@@ -44631,6 +44631,14 @@ Returns whether a supported CMP is integrated and available.
 
 - `boolean`
 
+### applovin.get_ump_dma_parameters
+*Type:* FUNCTION
+Returns DMA consent parameters from the current Google UMP/IAB TCF storage on Android and iOS. Read after the consent flow completes and again after consent changes. This function does not display a consent form or update any SDK's consent settings. Missing or unreadable consent values are treated as false. All fields are false unless Adjust (ATP ID 2822) appears in the Additional Consent consented-provider list.
+
+**Returns**
+
+- `table` - Boolean fields: `adjustConsent` indicates consent for Adjust; `adUserData` also requires TCF purpose 1; `adPersonalization` also requires TCF purposes 2 and 4.
+
 ### applovin.is_tablet
 *Type:* FUNCTION
 Returns whether the current device uses the SDK's tablet classification.

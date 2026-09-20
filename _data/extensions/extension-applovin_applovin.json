@@ -220,6 +220,19 @@
             "type": "FUNCTION"
         },
         {
+            "description": "Returns DMA consent parameters from the current Google UMP/IAB TCF storage on Android and iOS. Read after the consent flow completes and again after consent changes. This function does not display a consent form or update any SDK's consent settings. Missing or unreadable consent values are treated as false. All fields are false unless Adjust (ATP ID 2822) appears in the Additional Consent consented-provider list.",
+            "examples": "",
+            "name": "applovin.get_ump_dma_parameters",
+            "parameters": [],
+            "returnvalues": [
+                {
+                    "doc": "Boolean fields: `adjustConsent` indicates consent for Adjust; `adUserData` also requires TCF purpose 1; `adPersonalization` also requires TCF purposes 2 and 4.",
+                    "name": "table"
+                }
+            ],
+            "type": "FUNCTION"
+        },
+        {
             "description": "Returns whether the current device uses the SDK's tablet classification.",
             "examples": "",
             "name": "applovin.is_tablet",
