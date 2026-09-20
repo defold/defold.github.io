@@ -42,7 +42,7 @@ If you are upgrading from 1.x, start with the
 | Defold | 1.13.0 |
 | Android | API 24 |
 | iOS | iOS 15 |
-| AppLovin MAX | 13.6.3 |
+| AppLovin MAX | 13.6.4 |
 
 ## Install
 
@@ -304,6 +304,11 @@ meta_ios = 1
 Android and iOS switches are independent. Available property names and pinned
 versions are listed in
 [`updater/adapters.json`](https://github.com/defold/extension-applovin/blob/master/updater/adapters.json).
+
+MAX 13.6.4 removed VK Ad Network (MyTarget) adapter detection on both
+platforms. The legacy `vk_android` and `vk_ios` switches retain their last
+published adapter versions for existing projects; do not enable them for new
+integrations.
 
 Google also requires an application ID:
 
