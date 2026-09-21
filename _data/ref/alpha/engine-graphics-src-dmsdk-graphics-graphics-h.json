@@ -653,6 +653,57 @@
             "type": "STRUCT"
         },
         {
+            "brief": "Cubemap faces\nThe six face values are contiguous,...",
+            "description": "Cubemap faces\nThe six face values are contiguous, zero-based, and may be used as array indices.\n<code>CUBEMAP_FACE_COUNT</code> is the number of cubemap faces and is not a valid face.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "Positive X face (array index 0)",
+                    "name": "CUBEMAP_FACE_POSITIVE_X",
+                    "type": ""
+                },
+                {
+                    "doc": "Negative X face (array index 1)",
+                    "name": "CUBEMAP_FACE_NEGATIVE_X",
+                    "type": ""
+                },
+                {
+                    "doc": "Positive Y face (array index 2)",
+                    "name": "CUBEMAP_FACE_POSITIVE_Y",
+                    "type": ""
+                },
+                {
+                    "doc": "Negative Y face (array index 3)",
+                    "name": "CUBEMAP_FACE_NEGATIVE_Y",
+                    "type": ""
+                },
+                {
+                    "doc": "Positive Z face (array index 4)",
+                    "name": "CUBEMAP_FACE_POSITIVE_Z",
+                    "type": ""
+                },
+                {
+                    "doc": "Negative Z face (array index 5)",
+                    "name": "CUBEMAP_FACE_NEGATIVE_Z",
+                    "type": ""
+                },
+                {
+                    "doc": "Number of cubemap faces",
+                    "name": "CUBEMAP_FACE_COUNT",
+                    "type": ""
+                }
+            ],
+            "name": "CubeMapFace",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "ENUM"
+        },
+        {
             "brief": "Destroys a graphics context",
             "description": "Destroys a graphics context.\nCleans up all resources associated with the graphics context.\nThe context becomes invalid after this call.",
             "error": "",
@@ -2117,6 +2168,46 @@
                     "name": "render_target_texture",
                     "types": [
                         "dmGraphics::HTexture"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "",
+            "description": "",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetRenderTargetTextureType",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Graphics context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "render_target",
+                    "types": [
+                        "dmGraphics::HRenderTarget"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "render target texture type",
+                    "name": "texture_type",
+                    "types": [
+                        "dmGraphics::TextureType"
                     ]
                 }
             ],
@@ -3798,6 +3889,32 @@
             "type": "ENUM"
         },
         {
+            "brief": "Render target binding parameters.",
+            "description": "Render target binding parameters.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "BufferType bit mask identifying attachments whose contents may be discarded after the render pass",
+                    "name": "m_TransientBufferTypes",
+                    "type": "uint32_t"
+                },
+                {
+                    "doc": "Cubemap face to bind. For non-cubemap render targets this must remain <code>CUBEMAP_FACE_POSITIVE_X</code>, which is also the zero-initialized default",
+                    "name": "m_CubeMapFace",
+                    "type": "dmGraphics::CubeMapFace"
+                }
+            ],
+            "name": "RenderTargetBindingParams",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
             "brief": "",
             "description": "",
             "error": "",
@@ -4318,8 +4435,8 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "",
-            "description": "",
+            "brief": "Bind a render target with generic binding paramete...",
+            "description": "Bind a render target with generic binding parameters.",
             "error": "",
             "examples": "",
             "language": "",
@@ -4346,9 +4463,9 @@
                 {
                     "doc": "",
                     "is_optional": "False",
-                    "name": "transient_buffer_types",
+                    "name": "params",
                     "types": [
-                        "uint32_t"
+                        "dmGraphics::RenderTargetBindingParams"
                     ]
                 }
             ],
