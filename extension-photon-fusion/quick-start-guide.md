@@ -113,7 +113,11 @@ When the `fusion.EVENT_ROOM_JOINED` event is received in the event handler that 
 
 local function spawn_player(self)
 	local pos = vmath.vector3(math.random(100, 700), math.random(100, 500), 0)
-	local id = fusion.spawn("#playerfactory", pos)
+	local rotation = nil
+	local map = 1
+	local owner_mode = fusion.OWNERMODE_PLAYERATTACHED
+	local options = {}
+	local id = fusion.spawn("#playerfactory", pos, rotation, map, owner_mode, options)
 	print("joined room and spawned player with id:", id, "at:", pos)
 end
 
@@ -235,7 +239,7 @@ Not everything in a game is continuous state. One-shot events like chat messages
 local function send_message()
 	local player_id = 0 -- broadcast
 	local object_id = nil
-	fusion.rpc(player_id, object_id, "show_message", "Hello!")
+	fusion.send_rpc(player_id, object_id, "show_message", { message = "Hello!" })
 end
 ```
 
@@ -243,10 +247,10 @@ end
 -- lobby.script
 
 function init(self)
-	fusion.on_event(function(self, event, data)
+	fusion.on_event(function(self, event_id, event)
 		if event_id == fusion.EVENT_RPC then
-			if event == hash("show_message") then
-				print(data)
+			if event.id == hash("show_message") then
+				print(event.data)
 			end
 		end
 	end)

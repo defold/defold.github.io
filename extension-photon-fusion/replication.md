@@ -30,12 +30,12 @@ Fusion replicates at the property level. Individual values like position, health
 Register a game object using `fusion.create_object()` to handle property sync for the game object. The authority client writes values to the server; remote clients receive and optionally smooth them.
 
 ```lua
-local map = 1
 local factory_url = "example:/game#playerfactory"
+local map = 1
 local owner_mode = fusion.OWNERMODE_PLAYERATTACHED
 local options = {}
 local id = go.get_id()
-fusion.create_object(map, factory_url, owner_mode, options, id)
+fusion.create_object(factory_url, map, owner_mode, options, id)
 ```
 
 Call `fusion.destroy_object(id)` to no longer handle property sync for a game object.

@@ -16,6 +16,7 @@ Initialize Fusion.
 
 - `app_id` (string)
 - `app_version` (string)
+- `protocol` (string) - One of wss, ws, tcp or udp
 
 ### fusion.init_from_settings
 *Type:* FUNCTION
@@ -51,7 +52,7 @@ Get connection state.
 
 **Returns**
 
-- `number` - State
+- `number` - The connection state
 
 ### fusion.get_disconnect_cause
 *Type:* FUNCTION
@@ -59,7 +60,7 @@ Get disconnect cause.
 
 **Returns**
 
-- `number` - Cause
+- `number` - The disconnect cause
 
 ### fusion.join_or_create_room_random
 *Type:* FUNCTION
@@ -164,7 +165,10 @@ Create a map object.
 
 - `map` (number)
 - `owner_mode` (number)
-- `properties` (table) - Which script properties to sync
+- `options` (table) - Table with `properties` and `replication_mode` fields. The
+properties field should be a id,property map with script ids and properties to
+sync. Replication mode should be one of the established `REPLICATION_MODE`
+constants.
 
 - `id` (string)
 
@@ -184,11 +188,14 @@ Way as when calling factory.create(). The function will also register the spawne
 
 - `owner_mode` (number) - Owner mode of spawned object
 
-- `script_properties` (table)
+- `options` (table) - Table with `properties` and `replication_mode` fields. The
+properties field should be a id,property map with script ids and properties to
+sync. Replication mode should be one of the established `REPLICATION_MODE`
+constants.
 
 **Returns**
 
-- `hash` - Of the spawned game object
+- `hash` - Id of the spawned game object
 
 ### fusion.despawn
 *Type:* FUNCTION
@@ -228,7 +235,7 @@ Add map.
 
 **Returns**
 
-- `number` - Id
+- `number` - Map id
 
 ### fusion.map_change
 *Type:* FUNCTION
@@ -240,7 +247,7 @@ Change map.
 
 **Returns**
 
-- `number` - Id
+- `number` - Map id
 
 ### fusion.map_remove
 *Type:* FUNCTION
@@ -248,19 +255,19 @@ Remove map.
 
 **Parameters**
 
-- `Map` (number) - Id
+- `map` (number) - Map id
 
 ### fusion.map_is_valid
 *Type:* FUNCTION
-Checkl if map is valid.
+Check if map is valid.
 
 **Parameters**
 
-- `Map` (number) - Id
+- `map` (number) - Map id
 
 **Returns**
 
-- `boolean` - If valid
+- `boolean` - True if valid
 
 ### fusion.send_rpc
 *Type:* FUNCTION
@@ -288,7 +295,7 @@ Subscribe to RPC broadcast event. The events will be delivered as messages.
 
 - `rpc_event` (hash) - Event to subscribe to
 
-- `id` (hash?) - Subscriber id
+- `id` (hash) - Subscriber id
 
 ### fusion.unsubscribe_rpc
 *Type:* FUNCTION
@@ -298,7 +305,7 @@ Unsubscribe from a subscribed RPC event.
 
 - `rpc_event` (hash) - Event to unsubscribe to
 
-- `id` (hash?) - Which object should unsubscribe
+- `id` (hash) - Which object should unsubscribe
 
 ### fusion.on_event
 *Type:* FUNCTION
@@ -314,7 +321,7 @@ Get the player id of the local client
 
 **Returns**
 
-- `number` - Player id of the local client
+- `number` - The player id of the local client
 
 ### fusion.get_owner_id
 *Type:* FUNCTION
@@ -326,7 +333,7 @@ Get the player id of the current owner of an object
 
 **Returns**
 
-- `number` - Player id of the object's owner
+- `number` - The player id of the object's owner
 
 ### fusion.has_authority
 *Type:* FUNCTION
@@ -350,7 +357,7 @@ Check if an object has an owner
 
 **Returns**
 
-- `boolean` - If the object has an owner
+- `boolean` - True if the object has an owner
 
 ### fusion.want_authority
 *Type:* FUNCTION
@@ -485,7 +492,7 @@ Set area visibility keys
 
 ### fusion.add_user_key
 *Type:* FUNCTION
-Add a user visibility key
+Add a user visibility key to the set of local interest keys.
 
 **Parameters**
 
@@ -493,13 +500,11 @@ Add a user visibility key
 
 ### fusion.remove_user_key
 *Type:* FUNCTION
-Remove a user visibility key from an object
+Remove a user visibility key from the set of local interest keys.
 
 **Parameters**
 
 - `key` (hash) - User key to remove
-
-- `id` (hash) - Object to remove user visibility key from
 
 ### OWNERMODE_TRANSACTION
 *Type:* VARIABLE

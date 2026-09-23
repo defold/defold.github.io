@@ -39,11 +39,8 @@ fusion.init(app_id, app_version)
 Use `fusion.connect()` to connect to the master server:
 
 ```lua
--- connect with specified username and region taken from game.project
+-- connect with specified username
 fusion.connect(username)
-
--- connect with specified username and region
-fusion.connect(username, region)
 ```
 
 ## Connecting and Joining
@@ -64,13 +61,13 @@ A room is a shared session where players sync objects and exchange RPCs. Fusion 
 
 ```lua
 -- Create a new room (fails if it already exists)
-fusion.create_room("my_room", options)
+fusion.create_room("my_room", create_room_options)
 
 -- Join an existing room (empty name = random room)
-fusion.join_room("my_room", options)
+fusion.join_room("my_room", join_room_options)
 
--- Join if exists, create if not
-fusion.join_or_create_room("my_room", options)
+-- Join if rooms exists, create if does not
+fusion.join_or_create_room("my_room", create_room_options, join_room_options)
 
 -- Leave current room (stays connected for re-matchmaking)
 fusion.leave_room()

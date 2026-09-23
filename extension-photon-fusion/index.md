@@ -61,7 +61,8 @@ local position = vmath.vector3(100, 100, 0)
 local rotation = vmath.quat_rotation_z(math.rad(45))
 local map = 1
 local owner_mode = fusion.OWNERMODE_PLAYERATTACHED
-local id = fusion.spawn(factory_url, position, rotation, map, owner_mode)
+local options = {}
+local id = fusion.spawn(factory_url, position, rotation, map, owner_mode, options)
 ```
 
 ## Where to Go Next

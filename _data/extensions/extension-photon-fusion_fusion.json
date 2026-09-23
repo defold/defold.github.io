@@ -18,6 +18,13 @@
                     "types": [
                         "string"
                     ]
+                },
+                {
+                    "doc": "One of wss, ws, tcp or udp\n",
+                    "name": "protocol",
+                    "types": [
+                        "string"
+                    ]
                 }
             ],
             "returnvalues": [],
@@ -86,7 +93,7 @@
             "parameters": [],
             "returnvalues": [
                 {
-                    "doc": "State\n",
+                    "doc": "The connection state\n",
                     "name": "number"
                 }
             ],
@@ -99,7 +106,7 @@
             "parameters": [],
             "returnvalues": [
                 {
-                    "doc": "Cause\n",
+                    "doc": "The disconnect cause\n",
                     "name": "number"
                 }
             ],
@@ -331,8 +338,8 @@
                     ]
                 },
                 {
-                    "doc": "Which script properties to sync\n",
-                    "name": "properties",
+                    "doc": "Table with `properties` and `replication_mode` fields. The\nproperties field should be a id,property map with script ids and properties to\nsync. Replication mode should be one of the established `REPLICATION_MODE`\nconstants.\n",
+                    "name": "options",
                     "types": [
                         "table"
                     ]
@@ -389,8 +396,8 @@
                     ]
                 },
                 {
-                    "doc": "",
-                    "name": "script_properties",
+                    "doc": "Table with `properties` and `replication_mode` fields. The\nproperties field should be a id,property map with script ids and properties to\nsync. Replication mode should be one of the established `REPLICATION_MODE`\nconstants.\n",
+                    "name": "options",
                     "types": [
                         "table"
                     ]
@@ -398,7 +405,7 @@
             ],
             "returnvalues": [
                 {
-                    "doc": "Of the spawned game object\n",
+                    "doc": "Id of the spawned game object\n",
                     "name": "hash"
                 }
             ],
@@ -495,7 +502,7 @@
             ],
             "returnvalues": [
                 {
-                    "doc": "Id\n",
+                    "doc": "Map id\n",
                     "name": "number"
                 }
             ],
@@ -516,7 +523,7 @@
             ],
             "returnvalues": [
                 {
-                    "doc": "Id\n",
+                    "doc": "Map id\n",
                     "name": "number"
                 }
             ],
@@ -528,8 +535,8 @@
             "name": "fusion.map_remove",
             "parameters": [
                 {
-                    "doc": "Id\n",
-                    "name": "Map",
+                    "doc": "Map id\n",
+                    "name": "map",
                     "types": [
                         "number"
                     ]
@@ -539,13 +546,13 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Checkl if map is valid.\n",
+            "description": "Check if map is valid.\n",
             "examples": "",
             "name": "fusion.map_is_valid",
             "parameters": [
                 {
-                    "doc": "Id\n",
-                    "name": "Map",
+                    "doc": "Map id\n",
+                    "name": "map",
                     "types": [
                         "number"
                     ]
@@ -553,7 +560,7 @@
             ],
             "returnvalues": [
                 {
-                    "doc": "If valid\n",
+                    "doc": "True if valid\n",
                     "name": "boolean"
                 }
             ],
@@ -617,7 +624,7 @@
                     "doc": "Subscriber id\n",
                     "name": "id",
                     "types": [
-                        "hash?"
+                        "hash"
                     ]
                 }
             ],
@@ -640,7 +647,7 @@
                     "doc": "Which object should unsubscribe\n",
                     "name": "id",
                     "types": [
-                        "hash?"
+                        "hash"
                     ]
                 }
             ],
@@ -670,7 +677,7 @@
             "parameters": [],
             "returnvalues": [
                 {
-                    "doc": "Player id of the local client\n",
+                    "doc": "The player id of the local client\n",
                     "name": "number"
                 }
             ],
@@ -691,7 +698,7 @@
             ],
             "returnvalues": [
                 {
-                    "doc": "Player id of the object's owner\n",
+                    "doc": "The player id of the object's owner\n",
                     "name": "number"
                 }
             ],
@@ -733,7 +740,7 @@
             ],
             "returnvalues": [
                 {
-                    "doc": "If the object has an owner\n",
+                    "doc": "True if the object has an owner\n",
                     "name": "boolean"
                 }
             ],
@@ -1014,7 +1021,7 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Add a user visibility key\n",
+            "description": "Add a user visibility key to the set of local interest keys.\n",
             "examples": "",
             "name": "fusion.add_user_key",
             "parameters": [
@@ -1030,20 +1037,13 @@
             "type": "FUNCTION"
         },
         {
-            "description": "Remove a user visibility key from an object\n",
+            "description": "Remove a user visibility key from the set of local interest keys.\n",
             "examples": "",
             "name": "fusion.remove_user_key",
             "parameters": [
                 {
                     "doc": "User key to remove\n",
                     "name": "key",
-                    "types": [
-                        "hash"
-                    ]
-                },
-                {
-                    "doc": "Object to remove user visibility key from\n",
-                    "name": "id",
                     "types": [
                         "hash"
                     ]
