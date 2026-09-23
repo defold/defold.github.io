@@ -6,6 +6,7 @@ locale: en
 title: AppLovin MAX extension for Defold
 toc:
 - AppLovin MAX for Defold
+- Native ad event listeners
 - Requirements
 - Install
 - Initialize MAX
@@ -35,6 +36,28 @@ and mediated networks. The complete Lua API is documented in the
 
 If you are upgrading from 1.x, start with the
 [migration guide](https://github.com/defold/extension-applovin/blob/master/MIGRATION.md).
+
+## Native ad event listeners
+
+Other native extensions can subscribe directly to the MAX callbacks without
+replacing the AppLovin listeners. Include this extension as a dependency and
+register before loading ads. Both callbacks run synchronously on the platform's
+UI thread, so keep handlers brief. Display events cover interstitial and
+rewarded ads; revenue events cover banner, leader, MREC, interstitial, and
+rewarded ads. The existing Lua/Defold callbacks continue to fire. If an
+analytics extension reports an impression through this native listener, avoid
+reporting the same impression again from Lua.
+
+On Android, implement `com.defold.applovin.MaxAdEventBus.Listener` and use
+`MaxAdEventBus.addListener(listener)` / `removeListener(listener)`. Each method
+receives the SDK's `com.applovin.mediation.MaxAd`, including revenue, ad unit,
+network, and placement data. The bus retains Java listeners until removed.
+
+On iOS, import `MADefoldAdEvents.h` from `extension-applovin/include`, implement
+`MADefoldAdEventListener`, and use `[MADefoldAdEvents addListener:listener]` /
+`removeListener:`. Implement `onMaxAdDisplayed:` and/or
+`onMaxAdRevenuePaid:`. Each receives the SDK's `MAAd`. The registry holds iOS
+listeners weakly, so the subscribing extension must retain its listener.
 
 ## Requirements
 
