@@ -44740,6 +44740,7 @@ Shows a loaded interstitial, optionally attributing it to a placement.
 
 - `ad_unit_id` (string)
 - `placement` (string) - MAX placement name.
+- `custom_data` (string) - Custom data passed to MAX for this impression. Omitted or nil uses an empty string.
 
 ### applovin.set_interstitial_extra_parameter
 *Type:* FUNCTION
@@ -44779,6 +44780,7 @@ Shows a loaded rewarded ad, optionally attributing it to a placement.
 
 - `ad_unit_id` (string)
 - `placement` (string) - MAX placement name.
+- `custom_data` (string) - Custom data passed to MAX for this impression. Omitted or nil uses an empty string.
 
 ### applovin.set_rewarded_ad_extra_parameter
 *Type:* FUNCTION
@@ -44816,6 +44818,15 @@ Sets the MAX placement name for a banner ad unit. Call this before `create_banne
 
 - `ad_unit_id` (string)
 - `placement` (string)
+
+### applovin.set_banner_custom_data
+*Type:* FUNCTION
+Sets custom data after OnSdkInitializedEvent. Call before create_banner() to include it in the first load. Later calls update the existing view for subsequent loads; they do not reload it. Pass an empty string to clear. Destroying the banner clears cached data.
+
+**Parameters**
+
+- `ad_unit_id` (string)
+- `custom_data` (string)
 
 ### applovin.set_banner_extra_parameter
 *Type:* FUNCTION

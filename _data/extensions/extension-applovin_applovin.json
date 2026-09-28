@@ -429,6 +429,13 @@
                     "types": [
                         "string"
                     ]
+                },
+                {
+                    "doc": "Custom data passed to MAX for this impression. Omitted or nil uses an empty string.",
+                    "name": "custom_data",
+                    "types": [
+                        "string"
+                    ]
                 }
             ],
             "returnvalues": [],
@@ -516,6 +523,13 @@
                 {
                     "doc": "MAX placement name.",
                     "name": "placement",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "Custom data passed to MAX for this impression. Omitted or nil uses an empty string.",
+                    "name": "custom_data",
                     "types": [
                         "string"
                     ]
@@ -615,6 +629,29 @@
                 {
                     "doc": "",
                     "name": "placement",
+                    "types": [
+                        "string"
+                    ]
+                }
+            ],
+            "returnvalues": [],
+            "type": "FUNCTION"
+        },
+        {
+            "description": "Sets custom data after OnSdkInitializedEvent. Call before create_banner() to include it in the first load. Later calls update the existing view for subsequent loads; they do not reload it. Pass an empty string to clear. Destroying the banner clears cached data.",
+            "examples": "",
+            "name": "applovin.set_banner_custom_data",
+            "parameters": [
+                {
+                    "doc": "",
+                    "name": "ad_unit_id",
+                    "types": [
+                        "string"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "name": "custom_data",
                     "types": [
                         "string"
                     ]
