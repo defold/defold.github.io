@@ -31,6 +31,38 @@
             "type": "PROPERTY"
         },
         {
+            "brief": "Axis-aligned bounding box",
+            "description": "Axis-aligned bounding box",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "min",
+                    "doc": "minimum local-space bounds",
+                    "is_optional": false,
+                    "name": "min",
+                    "type": "vector3",
+                    "type_html": "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                },
+                {
+                    "display_name": "max",
+                    "doc": "maximum local-space bounds",
+                    "is_optional": false,
+                    "name": "max",
+                    "type": "vector3",
+                    "type_html": "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                }
+            ],
+            "name": "model.aabb",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
             "brief": "cancel all animation on a model",
             "description": "Cancels all animation on a model component.",
             "error": "",
@@ -48,6 +80,16 @@
                         "string",
                         "hash",
                         "url"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
                     ]
                 }
             ],
@@ -58,7 +100,7 @@
         },
         {
             "brief": "get the AABB of the whole model in local coordinate space",
-            "description": "Get AABB of the whole model in local coordinate space.\nAABB information return as a table with <code>min</code> and <code>max</code> fields, where <code>min</code> and <code>max</code> has type <code>vmath.vector3</code>.",
+            "description": "Get AABB of the whole model in local coordinate space.",
             "error": "",
             "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">model</span><span class=\"p\">.</span><span class=\"n\">get_aabb</span><span class=\"p\">(</span><span class=\"s2\">&quot;#model&quot;</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"p\">{</span> <span class=\"n\">min</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"o\">-</span><span class=\"mf\">2.5</span><span class=\"p\">,</span> <span class=\"o\">-</span><span class=\"mf\">3.0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">),</span> <span class=\"n\">max</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mf\">1.5</span><span class=\"p\">,</span> <span class=\"mf\">5.5</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span> <span class=\"p\">}</span>\n<span class=\"n\">model</span><span class=\"p\">.</span><span class=\"n\">get_aabb</span><span class=\"p\">(</span><span class=\"s2\">&quot;#empty&quot;</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"p\">{</span> <span class=\"n\">min</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">),</span> <span class=\"n\">max</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span> <span class=\"p\">}</span>\n</code></pre></div>",
             "language": "",
@@ -74,16 +116,32 @@
                         "string",
                         "hash",
                         "url"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
                     ]
                 }
             ],
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "A table containing AABB of the model. If model has no meshes - return vmath.vector3(0,0,0) for min and max fields.",
+                    "doc": "model bounds; an empty model returns zero vectors",
                     "name": "aabb",
                     "types": [
-                        "table"
+                        "model.aabb"
+                    ],
+                    "types_html": [
+                        "<a href=\"#model.aabb\">model.aabb</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#model.aabb\">model.aabb</a>"
                     ]
                 }
             ],
@@ -108,6 +166,16 @@
                         "string",
                         "hash",
                         "url"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
                     ]
                 }
             ],
@@ -117,7 +185,13 @@
                     "doc": "array of weight values, or empty table if the model has no morph targets",
                     "name": "weights",
                     "types": [
-                        "table"
+                        "number[]"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>[]"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>[]"
                     ]
                 }
             ],
@@ -142,6 +216,16 @@
                         "string",
                         "hash",
                         "url"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
                     ]
                 },
                 {
@@ -151,6 +235,14 @@
                     "types": [
                         "string",
                         "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
                     ]
                 }
             ],
@@ -161,6 +253,12 @@
                     "name": "id",
                     "types": [
                         "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
                     ]
                 }
             ],
@@ -169,7 +267,7 @@
         },
         {
             "brief": "get the AABB of all meshes",
-            "description": "Get AABB of all meshes.\nAABB information return as a table with <code>min</code> and <code>max</code> fields, where <code>min</code> and <code>max</code> has type <code>vmath.vector3</code>.",
+            "description": "Get AABB of all meshes.",
             "error": "",
             "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">model</span><span class=\"p\">.</span><span class=\"n\">get_mesh_aabb</span><span class=\"p\">(</span><span class=\"s2\">&quot;#model&quot;</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"p\">{</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;Sword&quot;</span><span class=\"p\">)</span> <span class=\"o\">=</span> <span class=\"p\">{</span> <span class=\"n\">min</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"o\">-</span><span class=\"mf\">0.5</span><span class=\"p\">,</span> <span class=\"o\">-</span><span class=\"mf\">0.5</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">),</span> <span class=\"n\">max</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mf\">0.5</span><span class=\"p\">,</span> <span class=\"mf\">0.5</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span> <span class=\"p\">},</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;Shield&quot;</span><span class=\"p\">)</span> <span class=\"o\">=</span> <span class=\"p\">{</span> <span class=\"n\">min</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"o\">-</span><span class=\"mf\">0.5</span><span class=\"p\">,</span> <span class=\"o\">-</span><span class=\"mf\">0.5</span><span class=\"p\">,</span> <span class=\"o\">-</span><span class=\"mf\">0.5</span><span class=\"p\">),</span> <span class=\"n\">max</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mf\">0.5</span><span class=\"p\">,</span> <span class=\"mf\">0.5</span><span class=\"p\">,</span> <span class=\"mf\">0.5</span><span class=\"p\">)</span> <span class=\"p\">}</span> <span class=\"p\">}</span>\n</code></pre></div>",
             "language": "",
@@ -185,16 +283,32 @@
                         "string",
                         "hash",
                         "url"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
                     ]
                 }
             ],
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "A table containing info about all AABB in the format <hash(mesh_id), aabb_info>",
+                    "doc": "mesh bounds keyed by mesh identifier",
                     "name": "aabb",
                     "types": [
-                        "table"
+                        "table<hash, model.aabb>"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">table</a>&lt;<a href=\"../builtins-lua/#hash\">hash</a>, <a href=\"#model.aabb\">model.aabb</a>&gt;"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">table</a>&lt;<a href=\"../builtins-lua/#hash\">hash</a>, <a href=\"#model.aabb\">model.aabb</a>&gt;"
                     ]
                 }
             ],
@@ -219,6 +333,16 @@
                         "string",
                         "hash",
                         "url"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
                     ]
                 },
                 {
@@ -229,6 +353,16 @@
                         "string",
                         "hash",
                         "url"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
                     ]
                 }
             ],
@@ -239,6 +373,12 @@
                     "name": "enabled",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
@@ -263,6 +403,16 @@
                         "string",
                         "hash",
                         "url"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
                     ]
                 },
                 {
@@ -272,30 +422,56 @@
                     "types": [
                         "string",
                         "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
                     ]
                 },
                 {
-                    "doc": "playback mode of the animation\n<ul>\n<li><code>go.PLAYBACK_ONCE_FORWARD</code></li>\n<li><code>go.PLAYBACK_ONCE_BACKWARD</code></li>\n<li><code>go.PLAYBACK_ONCE_PINGPONG</code></li>\n<li><code>go.PLAYBACK_LOOP_FORWARD</code></li>\n<li><code>go.PLAYBACK_LOOP_BACKWARD</code></li>\n<li><code>go.PLAYBACK_LOOP_PINGPONG</code></li>\n</ul>",
+                    "doc": "playback mode of the animation",
                     "is_optional": "False",
                     "name": "playback",
                     "types": [
-                        "constant"
+                        "go.PLAYBACK"
+                    ],
+                    "types_html": [
+                        "<a href=\"../go-lua/#go.PLAYBACK\">go.PLAYBACK</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../go-lua/#go.PLAYBACK\">go.PLAYBACK</a>"
                     ]
                 },
                 {
-                    "doc": "optional table with properties\nPlay properties table:\n<dl>\n<dt><code>blend_duration</code></dt>\n<dd><span class=\"type\">number</span> Duration of a linear blend between the current and new animation.</dd>\n<dt><code>offset</code></dt>\n<dd><span class=\"type\">number</span> The normalized initial value of the animation cursor when the animation starts playing.</dd>\n<dt><code>playback_rate</code></dt>\n<dd><span class=\"type\">number</span> The rate with which the animation will be played. Must be positive.</dd>\n</dl>",
+                    "doc": "optional playback properties",
                     "is_optional": "True",
                     "name": "play_properties",
                     "types": [
-                        "table"
+                        "model.play_properties"
+                    ],
+                    "types_html": [
+                        "<a href=\"#model.play_properties\">model.play_properties</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#model.play_properties\">model.play_properties</a>"
                     ]
                 },
                 {
-                    "doc": "function to call when the animation has completed.\n<dl>\n<dt><code>self</code></dt>\n<dd><span class=\"type\">object</span> The current object.</dd>\n<dt><code>message_id</code></dt>\n<dd><span class=\"type\">hash</span> The name of the completion message, <code>\"model_animation_done\"</code>.</dd>\n<dt><code>message</code></dt>\n<dd><span class=\"type\">table</span> Information about the completion:</dd>\n</dl>\n<ul>\n<li><span class=\"type\">hash</span> <code>animation_id</code> - the animation that was completed.</li>\n<li><span class=\"type\">constant</span> <code>playback</code> - the playback mode for the animation.</li>\n</ul>\n<dl>\n<dt><code>sender</code></dt>\n<dd><span class=\"type\">url</span> The invoker of the callback: the model component.</dd>\n</dl>",
+                    "doc": "function to call when the animation has completed.\n<dl>\n<dt class=\"api-lua-v2-type-definition\"><code>self:<a href=\"../builtins-lua/#script_instance\">script_instance</a></code></dt>\n<dd>The current script instance.</dd>\n<dt class=\"api-lua-v2-type-definition\"><code>message_id:<a href=\"../builtins-lua/#hash\">hash</a></code></dt>\n<dd>The name of the completion message, <code>\"model_animation_done\"</code>.</dd>\n<dt class=\"api-lua-v2-type-definition\"><code>message:<a href=\"#model_animation_done\">message.model.model_animation_done</a></code></dt>\n<dd>Information about the completion.</dd>\n<dt class=\"api-lua-v2-type-definition\"><code>sender:<a href=\"../msg-lua/#url\">url</a></code></dt>\n<dd>The invoker of the callback: the model component.</dd>\n</dl>",
                     "is_optional": "True",
                     "name": "complete_function",
                     "types": [
-                        "function(self, message_id, message, sender)"
+                        "fun(self:script_instance, message_id:hash, message:message.model.model_animation_done, sender:url)"
+                    ],
+                    "types_html": [
+                        "fun(self:<a href=\"../builtins-lua/#script_instance\">script_instance</a>, message_id:<a href=\"../builtins-lua/#hash\">hash</a>, message:<a href=\"#model_animation_done\">message.model.model_animation_done</a>, sender:<a href=\"../msg-lua/#url\">url</a>)"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">function</a>(\n\tself:<a href=\"../builtins-lua/#script_instance\">script_instance</a>,\n\tmessage_id:<a href=\"../builtins-lua/#hash\">hash</a>,\n\tmessage:<a href=\"#model_animation_done\">message.model.model_animation_done</a>,\n\tsender:<a href=\"../msg-lua/#url\">url</a>)"
                     ]
                 }
             ],
@@ -303,6 +479,46 @@
             "returnvalues": [],
             "tparams": [],
             "type": "FUNCTION"
+        },
+        {
+            "brief": "Model animation playback properties",
+            "description": "Model animation playback properties",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "blend_duration",
+                    "doc": "duration of a linear blend from the current animation",
+                    "is_optional": true,
+                    "name": "blend_duration?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "offset",
+                    "doc": "normalized initial animation cursor",
+                    "is_optional": true,
+                    "name": "offset?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "playback_rate",
+                    "doc": "positive animation playback rate",
+                    "is_optional": true,
+                    "name": "playback_rate?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                }
+            ],
+            "name": "model.play_properties",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
         },
         {
             "brief": "DEPRECATED! reset a shader constant for a model",
@@ -322,6 +538,16 @@
                         "string",
                         "hash",
                         "url"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
                     ]
                 },
                 {
@@ -331,6 +557,14 @@
                     "types": [
                         "string",
                         "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
                     ]
                 }
             ],
@@ -357,15 +591,33 @@
                         "string",
                         "hash",
                         "url"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
                     ]
                 },
                 {
                     "doc": "array of weight values (1-based indices). Omit or pass <code>nil</code> to clear the override and return morphs to animation only",
-                    "is_optional": "False",
+                    "is_optional": "True",
                     "name": "weights",
                     "types": [
-                        "table",
+                        "number[]",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>[]",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>[]",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 }
             ],
@@ -392,6 +644,16 @@
                         "string",
                         "hash",
                         "url"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
                     ]
                 },
                 {
@@ -402,6 +664,16 @@
                         "string",
                         "hash",
                         "url"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
                     ]
                 },
                 {
@@ -410,6 +682,12 @@
                     "name": "enabled",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
@@ -434,6 +712,12 @@
                     "name": "animation_id",
                     "types": [
                         "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
                     ]
                 },
                 {
@@ -441,7 +725,13 @@
                     "is_optional": "False",
                     "name": "playback",
                     "types": [
-                        "constant"
+                        "go.PLAYBACK"
+                    ],
+                    "types_html": [
+                        "<a href=\"../go-lua/#go.PLAYBACK\">go.PLAYBACK</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../go-lua/#go.PLAYBACK\">go.PLAYBACK</a>"
                     ]
                 }
             ],
@@ -481,6 +771,7 @@
             "type": "PROPERTY"
         }
     ],
+    "format_version": 2,
     "info": {
         "api_language": "Lua",
         "brief": "Model API documentation",

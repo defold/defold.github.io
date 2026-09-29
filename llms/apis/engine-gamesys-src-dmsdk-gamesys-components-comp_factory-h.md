@@ -30,3 +30,13 @@ Spawns a new gameobject instance in a collection using a factory component.
 **Returns**
 
 - `result` (dmGameObject::Result) - Result of the operation
+
+### CompFactoryStatus
+*Type:* ENUM
+CompFactoryStatus
+
+**Members**
+
+- `COMP_FACTORY_STATUS_UNLOADED`
+- `COMP_FACTORY_STATUS_LOADING`
+- `COMP_FACTORY_STATUS_LOADED`

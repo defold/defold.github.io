@@ -55,6 +55,15 @@ end
 
 ```
 
+### model.aabb
+*Type:* STRUCT
+Axis-aligned bounding box
+
+**Members**
+
+- `min` (vector3) - minimum local-space bounds
+- `max` (vector3) - maximum local-space bounds
+
 ### model.cancel
 *Type:* FUNCTION
 Cancels all animation on a model component.
@@ -66,7 +75,6 @@ Cancels all animation on a model component.
 ### model.get_aabb
 *Type:* FUNCTION
 Get AABB of the whole model in local coordinate space.
-AABB information return as a table with min and max fields, where min and max has type vmath.vector3.
 
 **Parameters**
 
@@ -74,7 +82,7 @@ AABB information return as a table with min and max fields, where min and max ha
 
 **Returns**
 
-- `aabb` (table) - A table containing AABB of the model. If model has no meshes - return vmath.vector3(0,0,0) for min and max fields.
+- `aabb` (model.aabb) - model bounds; an empty model returns zero vectors
 
 **Examples**
 
@@ -95,7 +103,7 @@ Values reflect the rig state at call time (after animation, and any active scrip
 
 **Returns**
 
-- `weights` (table) - array of weight values, or empty table if the model has no morph targets
+- `weights` (number[]) - array of weight values, or empty table if the model has no morph targets
 
 **Examples**
 
@@ -142,7 +150,6 @@ end
 ### model.get_mesh_aabb
 *Type:* FUNCTION
 Get AABB of all meshes.
-AABB information return as a table with min and max fields, where min and max has type vmath.vector3.
 
 **Parameters**
 
@@ -150,7 +157,7 @@ AABB information return as a table with min and max fields, where min and max ha
 
 **Returns**
 
-- `aabb` (table) - A table containing info about all AABB in the format <hash(mesh_id), aabb_info>
+- `aabb` (table<hash, model.aabb>) - mesh bounds keyed by mesh identifier
 
 **Examples**
 
@@ -203,41 +210,18 @@ go.PLAYBACK_ONCE_PINGPONG
 
 - `url` (string | hash | url) - the model for which to play the animation
 - `anim_id` (string | hash) - id of the animation to play
-- `playback` (constant) - playback mode of the animation
-<ul>
-<li><code>go.PLAYBACK_ONCE_FORWARD</code></li>
-<li><code>go.PLAYBACK_ONCE_BACKWARD</code></li>
-<li><code>go.PLAYBACK_ONCE_PINGPONG</code></li>
-<li><code>go.PLAYBACK_LOOP_FORWARD</code></li>
-<li><code>go.PLAYBACK_LOOP_BACKWARD</code></li>
-<li><code>go.PLAYBACK_LOOP_PINGPONG</code></li>
-</ul>
-- `play_properties` (table) (optional) - optional table with properties
-Play properties table:
+- `playback` (go.PLAYBACK) - playback mode of the animation
+- `play_properties` (model.play_properties) (optional) - optional playback properties
+- `complete_function` (fun(self:script_instance, message_id:hash, message:message.model.model_animation_done, sender:url)) (optional) - function to call when the animation has completed.
 <dl>
-<dt><code>blend_duration</code></dt>
-<dd><span class="type">number</span> Duration of a linear blend between the current and new animation.</dd>
-<dt><code>offset</code></dt>
-<dd><span class="type">number</span> The normalized initial value of the animation cursor when the animation starts playing.</dd>
-<dt><code>playback_rate</code></dt>
-<dd><span class="type">number</span> The rate with which the animation will be played. Must be positive.</dd>
-</dl>
-- `complete_function` (function(self, message_id, message, sender)) (optional) - function to call when the animation has completed.
-<dl>
-<dt><code>self</code></dt>
-<dd><span class="type">object</span> The current object.</dd>
-<dt><code>message_id</code></dt>
-<dd><span class="type">hash</span> The name of the completion message, <code>"model_animation_done"</code>.</dd>
-<dt><code>message</code></dt>
-<dd><span class="type">table</span> Information about the completion:</dd>
-</dl>
-<ul>
-<li><span class="type">hash</span> <code>animation_id</code> - the animation that was completed.</li>
-<li><span class="type">constant</span> <code>playback</code> - the playback mode for the animation.</li>
-</ul>
-<dl>
-<dt><code>sender</code></dt>
-<dd><span class="type">url</span> The invoker of the callback: the model component.</dd>
+<dt class="api-lua-v2-type-definition"><code>self:<a href="../builtins-lua/#script_instance">script_instance</a></code></dt>
+<dd>The current script instance.</dd>
+<dt class="api-lua-v2-type-definition"><code>message_id:<a href="../builtins-lua/#hash">hash</a></code></dt>
+<dd>The name of the completion message, <code>"model_animation_done"</code>.</dd>
+<dt class="api-lua-v2-type-definition"><code>message:<a href="#model_animation_done">message.model.model_animation_done</a></code></dt>
+<dd>Information about the completion.</dd>
+<dt class="api-lua-v2-type-definition"><code>sender:<a href="../msg-lua/#url">url</a></code></dt>
+<dd>The invoker of the callback: the model component.</dd>
 </dl>
 
 **Examples**
@@ -263,6 +247,16 @@ function init(self)
 end
 
 ```
+
+### model.play_properties
+*Type:* STRUCT
+Model animation playback properties
+
+**Members**
+
+- `blend_duration?` (number) - duration of a linear blend from the current animation
+- `offset?` (number) - normalized initial animation cursor
+- `playback_rate?` (number) - positive animation playback rate
 
 ### model.reset_constant
 *Type:* FUNCTION
@@ -299,7 +293,7 @@ To reset the weights, use model.set_blend_weights(url) or model.set_blend_weight
 **Parameters**
 
 - `url` (string | hash | url) - the model component
-- `weights` (table | nil) - array of weight values (1-based indices). Omit or pass <code>nil</code> to clear the override and return morphs to animation only
+- `weights` (number[] | nil) (optional) - array of weight values (1-based indices). Omit or pass <code>nil</code> to clear the override and return morphs to animation only
 
 **Examples**
 
@@ -347,7 +341,7 @@ go.PLAYBACK_ONCE_PINGPONG
 **Parameters**
 
 - `animation_id` (hash) - the id of the completed animation
-- `playback` (constant) - the playback mode of the completed animation
+- `playback` (go.PLAYBACK) - the playback mode of the completed animation
 
 **Examples**
 

@@ -428,7 +428,7 @@ Check if the value at #index is a dmVMath::Matrix4*
 
 **Returns**
 
-- `true` (bool) - if value at #index is a dmVMath::Matrix4*
+- `is_matrix4` (bool) - true if value at #index is a dmVMath::Matrix4*
 
 ### IsQuat
 *Type:* FUNCTION
@@ -441,7 +441,7 @@ Check if the value at #index is a dmVMath::Quat*
 
 **Returns**
 
-- `true` (bool) - if value at #index is a dmVMath::Quat*
+- `is_quat` (bool) - true if value at #index is a dmVMath::Quat*
 
 ### IsURL
 *Type:* FUNCTION
@@ -467,7 +467,7 @@ Check if the value at #index is a dmVMath::Vector3*
 
 **Returns**
 
-- `true` (bool) - if value at #index is a dmVMath::Vector3*
+- `is_vector3` (bool) - true if value at #index is a dmVMath::Vector3*
 
 ### IsVector4
 *Type:* FUNCTION
@@ -480,7 +480,7 @@ Check if the value at #index is a dmVMath::Vector4*
 
 **Returns**
 
-- `true` (bool) - if value at #index is a dmVMath::Vector4*
+- `is_vector4` (bool) - true if value at #index is a dmVMath::Vector4*
 
 ### JsonToLua
 *Type:* FUNCTION
@@ -715,7 +715,7 @@ In the event of an unsuccessful call, the Lua stack is unchanged
 
 **Returns**
 
-- `true` (bool) - if the setup was successful
+- `success` (bool) - true if the setup was successful
 
 ### TeardownCallback
 *Type:* FUNCTION

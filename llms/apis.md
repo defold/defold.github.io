@@ -84,6 +84,12 @@ These are per-namespace API reference files generated for LLM usage.
 - [bit (BitOp)](https://defold.com/llms/apis/bit-lua.md) - [Lua BitOp](http://bitop
 - [buffer (Buffer)](https://defold.com/llms/apis/buffer-lua.md) - Functions for manipulating buffers and streams
 - [builtins (Built-ins)](https://defold.com/llms/apis/builtins-lua.md) - Built-in scripting functions
+- [bullet3d](https://defold.com/llms/apis/bullet3d-lua.md) - Native-style access to the Bullet 3D world and collision objects owned by Defold
+- [bullet3d.collision_object](https://defold.com/llms/apis/bullet3d.collision_object-lua.md) - Functions shared by rigid bodies and trigger ghost objects
+- [bullet3d.constraint](https://defold.com/llms/apis/bullet3d.constraint-lua.md) - Creates and controls Bullet constraints between Defold rigid bodies
+- [bullet3d.rigid_body](https://defold.com/llms/apis/bullet3d.rigid_body-lua.md) - Rigid body functions accept the collision object userdata returned by `bullet3d
+- [bullet3d.shape](https://defold.com/llms/apis/bullet3d.shape-lua.md) - Borrowed shape handles identify a one-based child slot on a Defold-owned collision object
+- [bullet3d.world](https://defold.com/llms/apis/bullet3d.world-lua.md) - Read and tune the Bullet dynamics world owned by the current collection
 - [camera (Camera)](https://defold.com/llms/apis/camera-lua.md) - Messages to control camera components and camera focus
 - [collectionfactory (Collection factory)](https://defold.com/llms/apis/collectionfactory-lua.md) - Functions for controlling collection factory components which are used to dynamically spawn collections into the runtime
 - [collectionproxy (Collection proxy)](https://defold.com/llms/apis/collectionproxy-lua.md) - Messages for controlling and interacting with collection proxies which are used to dynamically load collections into the runtime
@@ -102,7 +108,7 @@ These are per-namespace API reference files generated for LLM usage.
 - [image (Image)](https://defold.com/llms/apis/image-lua.md) - Functions for creating image objects
 - [io (Io)](https://defold.com/llms/apis/io-lua.md) - Documentation for the Lua io standard library
 - [json (JSON)](https://defold.com/llms/apis/json-lua.md) - Manipulation of JSON data strings
-- [label (Label)](https://defold.com/llms/apis/label-lua.md) - Functions to manipulate a label component
+- [label (Label)](https://defold.com/llms/apis/label-lua.md) - Label API documentation
 - [liveupdate (LiveUpdate)](https://defold.com/llms/apis/liveupdate-lua.md) - Functions and constants to access resources
 - [material (Material)](https://defold.com/llms/apis/material-lua.md) - Functions for interacting with materials
 - [math (Math)](https://defold.com/llms/apis/math-lua.md) - Documentation for the Lua math standard library

@@ -26,15 +26,15 @@ After the mount succeeded, the resources are available to load. (i.e. no reboot 
 
 - `name` (string | hash) - Unique name of the mount
 - `uri` (string) - The uri of the mount, including the scheme. Currently supported schemes are 'zip' and 'archive'.
-- `priority` (number) - Priority of mount. Larger priority takes prescedence
-- `callback` (function(self, name, uri, result)) - Callback after the asynchronous request completed
-- <code>name</code> <span class="type">hash</span> Unique name of the mount
-- <code>uri</code> <span class="type">string</span> The uri of the mount
-- <code>result</code> <span class="type">number</span> The result of the request
+- `priority` (integer) - Priority of mount. Larger priority takes prescedence
+- `callback` (fun(self:script_instance, name:hash, uri:string, result:liveupdate.LIVEUPDATE)) - Callback after the asynchronous request completed
+- <code>name</code> <span class="type"><a href="../builtins-lua/#hash">hash</a></span> Unique name of the mount
+- <code>uri</code> <span class="type"><a href="../../../manuals/lua/#variables-and-data-types">string</a></span> The uri of the mount
+- <code>result</code> <span class="type"><a href="#liveupdate.LIVEUPDATE">liveupdate.LIVEUPDATE</a></span> The result of the request
 
 **Returns**
 
-- `result` (number) - The result of the request
+- `result` (liveupdate.LIVEUPDATE) - The result of the request
 
 **Examples**
 
@@ -51,9 +51,13 @@ liveupdate.add_mount("season_pack_1", "zip:/path/to/easter_pack_1.zip", 30, func
 Get an array of the current mounts
 This can be used to determine if a new mount is needed or not
 
+**Notes**
+
+- Any mount with priority < 0 is considered a base archive and it cannot be removed. All other mounts are considered "live update" content
+
 **Returns**
 
-- `mounts` (table) - Array of mounts
+- `mounts` ({ name:hash, uri:string, priority:integer }[]) - Array of mounts
 
 **Examples**
 
@@ -103,57 +107,25 @@ end
 
 ```
 
-### liveupdate.LIVEUPDATE_BUNDLED_RESOURCE_MISMATCH
-*Type:* CONSTANT
-Mismatch between between expected bundled resources and actual bundled resources. The manifest expects a resource to be in the bundle, but it was not found in the bundle. This is typically the case when a non-excluded resource was modified between publishing the bundle and publishing the manifest.
+### liveupdate.LIVEUPDATE
+*Type:* ENUM
+LiveUpdate values
 
-### liveupdate.LIVEUPDATE_ENGINE_VERSION_MISMATCH
-*Type:* CONSTANT
-Mismatch between running engine version and engine versions supported by manifest.
+**Members**
 
-### liveupdate.LIVEUPDATE_FORMAT_ERROR
-*Type:* CONSTANT
-Failed to parse manifest data buffer. The manifest was probably produced by a different engine version.
-
-### liveupdate.LIVEUPDATE_INVAL
-*Type:* CONSTANT
-Argument was invalid
-
-### liveupdate.LIVEUPDATE_INVALID_HEADER
-*Type:* CONSTANT
-The handled resource is invalid.
-
-### liveupdate.LIVEUPDATE_INVALID_RESOURCE
-*Type:* CONSTANT
-The header of the resource is invalid.
-
-### liveupdate.LIVEUPDATE_IO_ERROR
-*Type:* CONSTANT
-I/O operation failed
-
-### liveupdate.LIVEUPDATE_MEM_ERROR
-*Type:* CONSTANT
-Memory wasn't allocated
-
-### liveupdate.LIVEUPDATE_OK
-*Type:* CONSTANT
-LIVEUPDATE_OK
-
-### liveupdate.LIVEUPDATE_SCHEME_MISMATCH
-*Type:* CONSTANT
-Mismatch between scheme used to load resources. Resources are loaded with a different scheme than from manifest, for example over HTTP or directly from file. This is typically the case when running the game directly from the editor instead of from a bundle.
-
-### liveupdate.LIVEUPDATE_SIGNATURE_MISMATCH
-*Type:* CONSTANT
-Mismatch between expected and actual integrity data for legacy liveupdate verification.
-
-### liveupdate.LIVEUPDATE_UNKNOWN
-*Type:* CONSTANT
-Unspecified error
-
-### liveupdate.LIVEUPDATE_VERSION_MISMATCH
-*Type:* CONSTANT
-Mismatch between manifest expected version and actual version.
+- `liveupdate.LIVEUPDATE_BUNDLED_RESOURCE_MISMATCH` - Mismatch between between expected bundled resources and actual bundled resources. The manifest expects a resource to be in the bundle, but it was not found in the bundle. This is typically the case when a non-excluded resource was modified between publishing the bundle and publishing the manifest.
+- `liveupdate.LIVEUPDATE_ENGINE_VERSION_MISMATCH` - Mismatch between running engine version and engine versions supported by manifest.
+- `liveupdate.LIVEUPDATE_FORMAT_ERROR` - Failed to parse manifest data buffer. The manifest was probably produced by a different engine version.
+- `liveupdate.LIVEUPDATE_INVAL` - Argument was invalid
+- `liveupdate.LIVEUPDATE_INVALID_HEADER` - The handled resource is invalid.
+- `liveupdate.LIVEUPDATE_INVALID_RESOURCE` - The header of the resource is invalid.
+- `liveupdate.LIVEUPDATE_IO_ERROR` - I/O operation failed
+- `liveupdate.LIVEUPDATE_MEM_ERROR` - Memory wasn't allocated
+- `liveupdate.LIVEUPDATE_OK` - Operation completed successfully.
+- `liveupdate.LIVEUPDATE_SCHEME_MISMATCH` - Mismatch between scheme used to load resources. Resources are loaded with a different scheme than from manifest, for example over HTTP or directly from file. This is typically the case when running the game directly from the editor instead of from a bundle.
+- `liveupdate.LIVEUPDATE_SIGNATURE_MISMATCH` - Mismatch between expected and actual integrity data for legacy liveupdate verification.
+- `liveupdate.LIVEUPDATE_UNKNOWN` - Unspecified error
+- `liveupdate.LIVEUPDATE_VERSION_MISMATCH` - Mismatch between manifest expected version and actual version.
 
 ### liveupdate.remove_mount
 *Type:* FUNCTION
@@ -171,7 +143,7 @@ Removing a mount does not affect any loaded resources.
 
 **Returns**
 
-- `result` (number) - The result of the call
+- `result` (liveupdate.LIVEUPDATE) - The result of the call
 
 **Examples**
 

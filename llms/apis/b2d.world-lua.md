@@ -12,16 +12,15 @@ Query and cast functions for the Defold-owned Box2D v2 world.
 
 ### b2d.world.cast_mover
 *Type:* FUNCTION
-The capsule table has center1, center2, and radius fields. The return
-value is the fraction of translation that can be traveled before collision,
+The return value is the fraction of translation that can be traveled before collision,
 or 1 if there is no hit.
 
 **Parameters**
 
 - `world` (b2World) - world
-- `capsule` (table) - capsule table with <code>center1</code>, <code>center2</code>, and <code>radius</code>
+- `capsule` (b2d.mover_capsule) - mover capsule
 - `translation` (vector3) - capsule displacement
-- `filter` (table) (optional) - optional query filter with <code>category_bits</code> and <code>mask_bits</code>
+- `filter` (b2d.query_filter) (optional) - optional query filter
 
 **Returns**
 
@@ -33,16 +32,16 @@ Cast a ray.
 
 **Parameters**
 
-- `world` (b2World) - world from <code>b2d.get_world</code> or <code>b2d.body.get_world</code>
+- `world` (b2World) - world from <a href="/ref/b2d#b2d.get_world">b2d.get_world</a> or <a href="#b2d">b2d.body.get_world</a>
 - `origin` (vector3) - world ray origin
 - `translation` (vector3) - world ray translation
-- `filter` (table) - optional query filter with <code>category_bits</code>, <code>mask_bits</code>, and optional <code>group_index</code>
-- `max_results` (number) - optional maximum result count
+- `filter` (b2d.query_filter) (optional) - optional query filter
+- `max_results` (integer) (optional) - optional maximum result count
 
 **Returns**
 
-- `hits` (table) - array of hit tables with <code>fixture</code>, <code>shape</code>, <code>point</code>, <code>normal</code>, and <code>fraction</code>
-- `stats` (table) - table with <code>node_visits</code> and <code>leaf_visits</code>
+- `hits` (b2d.fixture_cast_hit[]) - ray-cast hits
+- `stats` (b2d.tree_stats) - broad-phase query statistics
 
 ### b2d.world.cast_ray
 *Type:* FUNCTION
@@ -54,13 +53,13 @@ guaranteed by Box2D.
 - `world` (b2World) - world
 - `origin` (vector3) - ray start position
 - `translation` (vector3) - ray displacement
-- `filter` (table) (optional) - optional query filter with <code>category_bits</code> and <code>mask_bits</code>
-- `max_results` (number) (optional) - optional maximum result count. Omit or pass 0 for unlimited results.
+- `filter` (b2d.query_filter) (optional) - optional query filter
+- `max_results` (integer) (optional) - optional maximum result count. Omit or pass 0 for unlimited results.
 
 **Returns**
 
-- `hits` (table) - array of cast hit tables
-- `stats` (table) - tree stats table
+- `hits` (b2d.shape_cast_hit[]) - ray-cast hits
+- `stats` (b2d.tree_stats) - broad-phase query statistics
 
 ### b2d.world.cast_ray_closest
 *Type:* FUNCTION
@@ -68,14 +67,14 @@ Cast a ray and return the closest hit.
 
 **Parameters**
 
-- `world` (b2World) - world from <code>b2d.get_world</code> or <code>b2d.body.get_world</code>
+- `world` (b2World) - world from <a href="/ref/b2d#b2d.get_world">b2d.get_world</a> or <a href="#b2d">b2d.body.get_world</a>
 - `origin` (vector3) - world ray origin
 - `translation` (vector3) - world ray translation
-- `filter` (table) - optional query filter with <code>category_bits</code>, <code>mask_bits</code>, and optional <code>group_index</code>
+- `filter` (b2d.query_filter) (optional) - optional query filter
 
 **Returns**
 
-- `hit` (table) - hit table with <code>fixture</code>, <code>shape</code>, <code>point</code>, <code>normal</code>, <code>fraction</code>, <code>node_visits</code>, and <code>leaf_visits</code>, or nil
+- `hit` (b2d.fixture_cast_hit | nil) - closest hit, or <code>nil</code>
 
 ### b2d.world.cast_ray_closest
 *Type:* FUNCTION
@@ -86,11 +85,11 @@ The translation is the ray displacement from origin.
 - `world` (b2World) - world
 - `origin` (vector3) - ray start position
 - `translation` (vector3) - ray displacement
-- `filter` (table) (optional) - optional query filter with <code>category_bits</code> and <code>mask_bits</code>
+- `filter` (b2d.query_filter) (optional) - optional query filter
 
 **Returns**
 
-- `hit` (table | nil) - closest cast hit table with <code>node_visits</code> and <code>leaf_visits</code>, or <code>nil</code> on miss
+- `hit` (b2d.shape_cast_hit | nil) - closest hit, or <code>nil</code>
 
 ### b2d.world.cast_shape
 *Type:* FUNCTION
@@ -99,50 +98,48 @@ Grid fixture children are skipped.
 
 **Parameters**
 
-- `world` (b2World) - world from <code>b2d.get_world</code> or <code>b2d.body.get_world</code>
-- `shape` (table) - shape table using the same format as the <code>shape</code> field in <code>b2d.body.create_fixture</code>
+- `world` (b2World) - world from <a href="/ref/b2d#b2d.get_world">b2d.get_world</a> or <a href="#b2d">b2d.body.get_world</a>
+- `shape` (b2d.shape.definition) - query shape
 - `translation` (vector3) - world shape translation
-- `filter` (table) - optional query filter with <code>category_bits</code>, <code>mask_bits</code>, and optional <code>group_index</code>
-- `max_results` (number) - optional maximum result count
+- `filter` (b2d.query_filter) (optional) - optional query filter
+- `max_results` (integer) (optional) - optional maximum result count
 
 **Returns**
 
-- `hits` (table) - array of hit tables with <code>fixture</code>, <code>shape</code>, <code>point</code>, <code>normal</code>, and <code>fraction</code>
-- `stats` (table) - table with <code>node_visits</code> and <code>leaf_visits</code>
+- `hits` (b2d.fixture_cast_hit[]) - shape-cast hits
+- `stats` (b2d.tree_stats) - broad-phase query statistics
 
 ### b2d.world.cast_shape
 *Type:* FUNCTION
-The shape table uses the same circle, capsule, segment, polygon, and box formats
-as b2d.body.create_shape. The translation is the shape displacement.
+The translation is the shape displacement.
 
 **Parameters**
 
 - `world` (b2World) - world
-- `shape` (table) - shape table
+- `shape` (b2d.shape.definition) - cast shape
 - `translation` (vector3) - shape displacement
-- `filter` (table) (optional) - optional query filter with <code>category_bits</code> and <code>mask_bits</code>
-- `max_results` (number) (optional) - optional maximum result count. Omit or pass 0 for unlimited results.
+- `filter` (b2d.query_filter) (optional) - optional query filter
+- `max_results` (integer) (optional) - optional maximum result count. Omit or pass 0 for unlimited results.
 
 **Returns**
 
-- `hits` (table) - array of cast hit tables
-- `stats` (table) - tree stats table
+- `hits` (b2d.shape_cast_hit[]) - shape-cast hits
+- `stats` (b2d.tree_stats) - broad-phase query statistics
 
 ### b2d.world.collide_mover
 *Type:* FUNCTION
-The capsule table has center1, center2, and radius fields. Plane result
-tables include shape, normal, offset, and hit.
+Collide a mover capsule against the world.
 
 **Parameters**
 
 - `world` (b2World) - world
-- `capsule` (table) - capsule table with <code>center1</code>, <code>center2</code>, and <code>radius</code>
-- `filter` (table) (optional) - optional query filter with <code>category_bits</code> and <code>mask_bits</code>
-- `max_results` (number) (optional) - optional maximum result count. Omit or pass 0 for unlimited results.
+- `capsule` (b2d.mover_capsule) - mover capsule
+- `filter` (b2d.query_filter) (optional) - optional query filter
+- `max_results` (integer) (optional) - optional maximum result count. Omit or pass 0 for unlimited results.
 
 **Returns**
 
-- `planes` (table) - array of plane result tables
+- `planes` (b2d.mover_plane[]) - collision planes
 
 ### b2d.world.enable_continuous
 *Type:* FUNCTION
@@ -182,13 +179,12 @@ Enable or disable warm starting.
 
 ### b2d.world.explode
 *Type:* FUNCTION
-The definition table requires position, radius, falloff, and
-impulse_per_length. It may also include mask_bits.
+Apply an explosion impulse.
 
 **Parameters**
 
 - `world` (b2World) - world
-- `definition` (table) - explosion definition
+- `definition` (b2d.explosion_definition) - explosion definition
 
 ### b2d.world.get_awake_body_count
 *Type:* FUNCTION
@@ -200,13 +196,11 @@ Get the number of awake bodies.
 
 **Returns**
 
-- `count` (number) - awake body count
+- `count` (integer) - awake body count
 
 ### b2d.world.get_counters
 *Type:* FUNCTION
-The returned table contains body_count, shape_count, contact_count,
-joint_count, island_count, stack_used, static_tree_height,
-tree_height, byte_count, task_count, and color_counts.
+Get world counters.
 
 **Parameters**
 
@@ -214,7 +208,7 @@ tree_height, byte_count, task_count, and color_counts.
 
 **Returns**
 
-- `counters` (table) - world counters
+- `counters` (b2d.world_counters) - world counters
 
 ### b2d.world.get_gravity
 *Type:* FUNCTION
@@ -254,12 +248,7 @@ Get the maximum linear speed.
 
 ### b2d.world.get_profile
 *Type:* FUNCTION
-The returned table contains Box2D timing fields including step, pairs,
-collide, solve, merge_islands, prepare_stages, solve_constraints,
-prepare_constraints, integrate_velocities, warm_start,
-solve_impulses, integrate_positions, relax_impulses,
-apply_restitution, store_impulses, split_islands, transforms,
-hit_events, refit, bullets, sleep_islands, and sensors.
+Get world profiling data.
 
 **Parameters**
 
@@ -267,7 +256,7 @@ hit_events, refit, bullets, sleep_islands, and sensors.
 
 **Returns**
 
-- `profile` (table) - world profiling data
+- `profile` (b2d.world_profile) - world profiling data
 
 ### b2d.world.get_restitution_threshold
 *Type:* FUNCTION
@@ -348,31 +337,31 @@ Overlap an AABB.
 
 **Parameters**
 
-- `world` (b2World) - world from <code>b2d.get_world</code> or <code>b2d.body.get_world</code>
-- `aabb` (table) - table with <code>lower</code> and <code>upper</code> vector3 fields
-- `filter` (table) - optional query filter with <code>category_bits</code>, <code>mask_bits</code>, and optional <code>group_index</code>
-- `max_results` (number) - optional maximum result count
+- `world` (b2World) - world from <a href="/ref/b2d#b2d.get_world">b2d.get_world</a> or <a href="#b2d">b2d.body.get_world</a>
+- `aabb` (b2d.aabb) - query bounds
+- `filter` (b2d.query_filter) (optional) - optional query filter
+- `max_results` (integer) (optional) - optional maximum result count
 
 **Returns**
 
-- `fixtures` (table) - array of fixture info tables
-- `stats` (table) - table with <code>node_visits</code> and <code>leaf_visits</code>
+- `fixtures` (b2d.fixture_info[]) - overlapping fixtures
+- `stats` (b2d.tree_stats) - broad-phase query statistics
 
 ### b2d.world.overlap_aabb
 *Type:* FUNCTION
-The AABB table has lower and upper vector3 fields.
+Find shapes overlapping an AABB.
 
 **Parameters**
 
 - `world` (b2World) - world
-- `aabb` (table) - AABB table with <code>lower</code> and <code>upper</code>
-- `filter` (table) (optional) - optional query filter with <code>category_bits</code> and <code>mask_bits</code>
-- `max_results` (number) (optional) - optional maximum result count. Omit or pass 0 for unlimited results.
+- `aabb` (b2d.aabb) - query bounds
+- `filter` (b2d.query_filter) (optional) - optional query filter
+- `max_results` (integer) (optional) - optional maximum result count. Omit or pass 0 for unlimited results.
 
 **Returns**
 
-- `hits` (table) - array of shape info tables
-- `stats` (table) - tree stats table
+- `hits` (b2d.shape_info[]) - overlapping shapes
+- `stats` (b2d.tree_stats) - broad-phase query statistics
 
 ### b2d.world.overlap_shape
 *Type:* FUNCTION
@@ -380,32 +369,31 @@ Overlap a shape.
 
 **Parameters**
 
-- `world` (b2World) - world from <code>b2d.get_world</code> or <code>b2d.body.get_world</code>
-- `shape` (table) - shape table using the same format as the <code>shape</code> field in <code>b2d.body.create_fixture</code>
-- `filter` (table) - optional query filter with <code>category_bits</code>, <code>mask_bits</code>, and optional <code>group_index</code>
-- `max_results` (number) - optional maximum result count
+- `world` (b2World) - world from <a href="/ref/b2d#b2d.get_world">b2d.get_world</a> or <a href="#b2d">b2d.body.get_world</a>
+- `shape` (b2d.shape.definition) - query shape
+- `filter` (b2d.query_filter) (optional) - optional query filter
+- `max_results` (integer) (optional) - optional maximum result count
 
 **Returns**
 
-- `fixtures` (table) - array of fixture info tables
-- `stats` (table) - table with <code>node_visits</code> and <code>leaf_visits</code>
+- `fixtures` (b2d.fixture_info[]) - overlapping fixtures
+- `stats` (b2d.tree_stats) - broad-phase query statistics
 
 ### b2d.world.overlap_shape
 *Type:* FUNCTION
-The shape table uses the same circle, capsule, segment, polygon, and box formats
-as b2d.body.create_shape.
+Find shapes overlapping a shape proxy.
 
 **Parameters**
 
 - `world` (b2World) - world
-- `shape` (table) - shape table
-- `filter` (table) (optional) - optional query filter with <code>category_bits</code> and <code>mask_bits</code>
-- `max_results` (number) (optional) - optional maximum result count. Omit or pass 0 for unlimited results.
+- `shape` (b2d.shape.definition) - query shape
+- `filter` (b2d.query_filter) (optional) - optional query filter
+- `max_results` (integer) (optional) - optional maximum result count. Omit or pass 0 for unlimited results.
 
 **Returns**
 
-- `hits` (table) - array of shape info tables
-- `stats` (table) - tree stats table
+- `hits` (b2d.shape_info[]) - overlapping shapes
+- `stats` (b2d.tree_stats) - broad-phase query statistics
 
 ### b2d.world.rebuild_static_tree
 *Type:* FUNCTION

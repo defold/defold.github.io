@@ -26,7 +26,7 @@ The following receiver shorthands are available:
 
 - `receiver` (string | url | hash) - The receiver must be a string in URL-format, a URL object or a hashed string.
 - `message_id` (string | hash) - The id must be a string or a hashed string.
-- `message` (table | nil) (optional) - a lua table with message parameters to send.
+- `message` (table<any, any> | nil) (optional) - a lua table with message parameters to send.
 
 **Examples**
 
@@ -123,5 +123,39 @@ print(my_url) --> url: [main:/my_collection/my_gameobject#component]
 print(my_url.socket) --> 786443 (internal numeric value)
 print(my_url.path) --> hash: [/my_collection/my_gameobject]
 print(my_url.fragment) --> hash: [component]
+
+```
+
+### url
+*Type:* CLASS
+A URL identifies a message endpoint in Defold. Its string form is
+[socket:][path][#fragment]: the socket identifies a collection, the path
+identifies a game object, and the fragment identifies a component. Missing
+parts are resolved relative to the script that creates the URL.
+Create URLs with msg.url. The socket, path, and fragment
+components are exposed as hash values and can be inspected or
+replaced individually. URLs are commonly passed to msg.post and to
+functions that address game objects or components.
+
+**Members**
+
+- `socket` (hash) - socket component
+- `path` (hash) - path component
+- `fragment` (hash) - fragment component
+
+**Examples**
+
+Create a relative URL for a component on the current game object:
+```
+local sprite_url = msg.url("#sprite")
+msg.post(sprite_url, "disable")
+print(sprite_url.fragment) --> hash: [sprite]
+
+```
+
+Create an absolute URL by specifying all three components:
+```
+local controller_url = msg.url("main:/player#controller")
+print(controller_url) --> url: [main:/player#controller]
 
 ```

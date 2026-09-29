@@ -10,6 +10,19 @@ Functions for creating image objects.
 
 ## API
 
+### image.astc_header
+*Type:* STRUCT
+ASTC image header
+
+**Members**
+
+- `width` (integer) - Image width.
+- `height` (integer) - Image height.
+- `depth` (integer) - Image depth.
+- `block_size_x` (integer) - Block size on the x-axis.
+- `block_size_y` (integer) - Block size on the y-axis.
+- `block_size_z` (integer) - Block size on the z-axis.
+
 ### image.get_astc_header
 *Type:* FUNCTION
 get the header of an .astc buffer
@@ -20,15 +33,7 @@ get the header of an .astc buffer
 
 **Returns**
 
-- `table` (table | nil) - header or <code>nil</code> if buffer is not a valid .astc. The header has these fields:
-<ul>
-<li><span class="type">number</span> <code>width</code>: image width</li>
-<li><span class="type">number</span> <code>height</code>: image height</li>
-<li><span class="type">number</span> <code>depth</code>: image depth</li>
-<li><span class="type">number</span> <code>block_size_x</code>: block size x</li>
-<li><span class="type">number</span> <code>block_size_y</code>: block size y</li>
-<li><span class="type">number</span> <code>block_size_z</code>: block size z</li>
-</ul>
+- `header` (image.astc_header | nil) - header, or <code>nil</code> if the buffer is not a valid ASTC image
 
 **Examples**
 
@@ -47,29 +52,11 @@ Load image (PNG or JPEG) from buffer.
 **Parameters**
 
 - `buffer` (string) - image data buffer
-- `options` (table) (optional) - An optional table containing parameters for loading the image. Supported entries:
-<dl>
-<dt><code>premultiply_alpha</code></dt>
-<dd><span class="type">boolean</span> True if alpha should be premultiplied into the color components. Defaults to <code>false</code>.</dd>
-<dt><code>flip_vertically</code></dt>
-<dd><span class="type">boolean</span> True if the image contents should be flipped vertically. Defaults to <code>false</code>.</dd>
-</dl>
+- `options` (boolean | image.load_options) (optional) - Optional loading parameters. A boolean is accepted for backwards compatibility and controls <code>premultiply_alpha</code>.
 
 **Returns**
 
-- `image` (table | nil) - object or <code>nil</code> if loading fails. The object is a table with the following fields:
-<ul>
-<li><span class="type">number</span> <code>width</code>: image width</li>
-<li><span class="type">number</span> <code>height</code>: image height</li>
-<li><span class="type">constant</span> <code>type</code>: image type<ul>
-<li><code>image.TYPE_RGB</code></li>
-<li><code>image.TYPE_RGBA</code></li>
-<li><code>image.TYPE_LUMINANCE</code></li>
-<li><code>image.TYPE_LUMINANCE_ALPHA</code></li>
-</ul>
-</li>
-<li><span class="type">string</span> <code>buffer</code>: the raw image data</li>
-</ul>
+- `image` (image.load_result | nil) - loaded image, or <code>nil</code> if loading fails
 
 **Examples**
 
@@ -90,29 +77,11 @@ Load image (PNG or JPEG) from a string buffer.
 **Parameters**
 
 - `buffer` (string) - image data buffer
-- `options` (table) (optional) - An optional table containing parameters for loading the image. Supported entries:
-<dl>
-<dt><code>premultiply_alpha</code></dt>
-<dd><span class="type">boolean</span> True if alpha should be premultiplied into the color components. Defaults to <code>false</code>.</dd>
-<dt><code>flip_vertically</code></dt>
-<dd><span class="type">boolean</span> True if the image contents should be flipped vertically. Defaults to <code>false</code>.</dd>
-</dl>
+- `options` (boolean | image.load_options) (optional) - Optional loading parameters. A boolean is accepted for backwards compatibility and controls <code>premultiply_alpha</code>.
 
 **Returns**
 
-- `image` (table | nil) - object or <code>nil</code> if loading fails. The object is a table with the following fields:
-<ul>
-<li><span class="type">number</span> <code>width</code>: image width</li>
-<li><span class="type">number</span> <code>height</code>: image height</li>
-<li><span class="type">constant</span> <code>type</code>: image type<ul>
-<li><code>image.TYPE_RGB</code></li>
-<li><code>image.TYPE_RGBA</code></li>
-<li><code>image.TYPE_LUMINANCE</code></li>
-<li><code>image.TYPE_LUMINANCE_ALPHA</code></li>
-</ul>
-</li>
-<li><span class="type">buffer</span> <code>buffer</code>: the script buffer that holds the decompressed image data. See <a href="/ref/buffer#buffer.create">buffer.create</a> how to use the buffer.</li>
-</ul>
+- `image` (image.load_buffer_result | nil) - loaded image, or <code>nil</code> if loading fails
 
 **Examples**
 
@@ -134,18 +103,48 @@ http.request(imgurl, "GET", function(self, id, response)
 
 ```
 
-### image.TYPE_LUMINANCE
-*Type:* CONSTANT
-luminance image type
+### image.load_buffer_result
+*Type:* STRUCT
+Loaded buffer image data
 
-### image.TYPE_LUMINANCE_ALPHA
-*Type:* CONSTANT
-luminance image type
+**Members**
 
-### image.TYPE_RGB
-*Type:* CONSTANT
-RGB image type
+- `width` (integer) - Image width.
+- `height` (integer) - Image height.
+- `type` (image.TYPE) - Image type.
+- `buffer` (buffer_data) - Script buffer containing the decompressed image data.
 
-### image.TYPE_RGBA
-*Type:* CONSTANT
-RGBA image type
+### image.load_options
+*Type:* STRUCT
+Image loading options
+
+**Members**
+
+- `premultiply_alpha?` (boolean) - Whether to premultiply alpha into the color components. Defaults to <code>false</code>.
+- `flip_vertically?` (boolean) - Whether to flip the image contents vertically. Defaults to <code>false</code>.
+
+### image.load_result
+*Type:* STRUCT
+Loaded string image data
+
+**Members**
+
+- `width` (integer) - Image width.
+- `height` (integer) - Image height.
+- `type` (image.TYPE) - Image type.
+- `buffer` (string) - Raw image data.
+
+### image.TYPE
+*Type:* ENUM
+Image types
+
+**Parameters**
+
+- `value` (string) - image type
+
+**Members**
+
+- `image.TYPE_RGB` - RGB image type.
+- `image.TYPE_RGBA` - RGBA image type.
+- `image.TYPE_LUMINANCE` - Luminance image type.
+- `image.TYPE_LUMINANCE_ALPHA` - Luminance-alpha image type.

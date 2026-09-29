@@ -27,11 +27,24 @@ msg.post("@render:", "clear_color", { color = vmath.vector4(1, 0, 0, 0) } )
 
 ### constant_buffer
 *Type:* TYPEDEF
-Constant buffer
+A mutable collection of shader constants created with
+render.constant_buffer. Assign constants by name using vector4
+or matrix4 values, or arrays of those values, then pass the buffer in
+the constants option to render.draw. Constant buffers are Lua
+userdata and cannot be iterated with pairs() or ipairs().
 
 **Parameters**
 
-- `value` (userdata)
+- `value` (userdata) - shader constant buffer
+
+**Examples**
+
+```
+local constants = render.constant_buffer()
+constants.tint = vmath.vector4(1, 0.5, 0.5, 1)
+render.draw(self.model_predicate, { constants = constants })
+
+```
 
 ### draw_debug_text
 *Type:* MESSAGE
@@ -68,6 +81,14 @@ msg.post("@render:", "draw_line", { start_point = vmath.vector3(200, 200, 0), en
 
 ```
 
+### render.camera_options
+*Type:* STRUCT
+Render-camera options
+
+**Members**
+
+- `use_frustum?` (boolean) - Use the camera view-projection matrix for frustum culling. The default is false.
+
 ### render.clear
 *Type:* FUNCTION
 Clear buffers in the currently enabled render target with specified value. If the render target has been created with multiple
@@ -75,7 +96,7 @@ color attachments, all buffers will be cleared with the same value.
 
 **Parameters**
 
-- `buffers` (table) - table with keys specifying which buffers to clear and values set to clear values. Available keys are:
+- `buffers` (table<graphics.BUFFER_TYPE, number|vector4>) - table with keys specifying which buffers to clear and values set to clear values. Available keys are:
 <ul>
 <li><code>graphics.BUFFER_TYPE_COLOR0_BIT</code></li>
 <li><code>graphics.BUFFER_TYPE_DEPTH_BIT</code></li>
@@ -138,6 +159,24 @@ constants.light_colors[4] = vmath.vector4(1, 1, 1, 1)
 
 ```
 
+### render.CONTEXT_EVENT
+*Type:* ENUM
+Render context events
+
+**Members**
+
+- `render.CONTEXT_EVENT_CONTEXT_LOST` - rendering context was lost; rendering pauses and graphics resources become invalid
+- `render.CONTEXT_EVENT_CONTEXT_RESTORED` - rendering context was restored; rendering remains paused while resources can be reloaded
+
+### render.debug_draw_options
+*Type:* STRUCT
+Debug-draw options
+
+**Members**
+
+- `frustum?` (matrix4) - Frustum matrix used for culling renderable items.
+- `frustum_planes?` (render.FRUSTUM_PLANES) - Frustum planes used for culling. The default is <a href="/ref/render#render.FRUSTUM_PLANES_SIDES">render.FRUSTUM_PLANES_SIDES</a>.
+
 ### render.delete_render_target
 *Type:* FUNCTION
 Deletes a render target created by a render script.
@@ -177,7 +216,7 @@ Disables a render state.
 
 **Parameters**
 
-- `state` (constant) - state to disable
+- `state` (graphics.STATE) - state to disable
 <ul>
 <li><code>graphics.STATE_DEPTH_TEST</code></li>
 <li><code>graphics.STATE_STENCIL_TEST</code></li>
@@ -228,14 +267,10 @@ system constants buffer is used containing constants as defined in the compute p
 
 **Parameters**
 
-- `x` (number) - global work group size X
-- `y` (number) - global work group size Y
-- `z` (number) - global work group size Z
-- `options` (table) (optional) - optional table with properties:
-<dl>
-<dt><code>constants</code></dt>
-<dd><span class="type">constant_buffer</span> optional constants to use while rendering</dd>
-</dl>
+- `x` (integer) - global work group size X
+- `y` (integer) - global work group size Y
+- `z` (integer) - global work group size Z
+- `options` (render.dispatch_options) (optional) - optional compute-dispatch options
 
 **Examples**
 
@@ -265,6 +300,14 @@ render.dispatch_compute(32, 32, 32, {constants = constants})
 
 ```
 
+### render.dispatch_options
+*Type:* STRUCT
+Compute-dispatch options
+
+**Members**
+
+- `constants?` (constant_buffer) - Constants used by the compute program. The values are copied when <code>render.dispatch_compute()</code> is called.
+
 ### render.draw
 *Type:* FUNCTION
 Draws all objects that match a specified predicate. An optional constant buffer can be
@@ -274,24 +317,8 @@ go.set (or particlefx.set_constant) on visual components.
 
 **Parameters**
 
-- `predicate` (number) - predicate to draw for
-- `options` (table) (optional) - optional table with properties:
-<dl>
-<dt><code>frustum</code></dt>
-<dd><span class="type">matrix4</span> A frustum matrix used to cull renderable items. (E.g. <code>local frustum = proj * view</code>). default=nil</dd>
-<dt><code>frustum_planes</code></dt>
-<dd><span class="type">int</span> Determines which sides of the frustum will be used. Default is render.FRUSTUM_PLANES_SIDES.</dd>
-</dl>
-<ul>
-<li>render.FRUSTUM_PLANES_SIDES : The left, right, top and bottom sides of the frustum.</li>
-<li>render.FRUSTUM_PLANES_ALL : All 6 sides of the frustum.</li>
-</ul>
-<dl>
-<dt><code>constants</code></dt>
-<dd><span class="type">constant_buffer</span> optional constants to use while rendering</dd>
-<dt><code>sort_order</code></dt>
-<dd><span class="type">int</span> How to sort draw order for world-ordered entries. Default uses the renderer's preferred world sorting (back-to-front).</dd>
-</dl>
+- `predicate` (render_predicate) - predicate to draw for
+- `options` (render.draw_options) (optional) - optional draw options
 
 **Examples**
 
@@ -336,17 +363,7 @@ Draws all 3d debug graphics such as lines drawn with "draw_line" messages and ph
 
 **Parameters**
 
-- `options` (table) (optional) - optional table with properties:
-<dl>
-<dt><code>frustum</code></dt>
-<dd><span class="type">matrix4</span> A frustum matrix used to cull renderable items. (E.g. <code>local frustum = proj * view</code>). May be nil.</dd>
-<dt><code>frustum_planes</code></dt>
-<dd><span class="type">int</span> Determines which sides of the frustum will be used. Default is render.FRUSTUM_PLANES_SIDES.</dd>
-</dl>
-<ul>
-<li>render.FRUSTUM_PLANES_SIDES : The left, right, top and bottom sides of the frustum.</li>
-<li>render.FRUSTUM_PLANES_ALL : All sides of the frustum.</li>
-</ul>
+- `options` (render.debug_draw_options) (optional) - optional debug-draw options
 
 **Examples**
 
@@ -357,6 +374,17 @@ function update(self, dt)
 end
 
 ```
+
+### render.draw_options
+*Type:* STRUCT
+Render draw options
+
+**Members**
+
+- `frustum?` (matrix4) - Frustum matrix used for culling renderable items.
+- `frustum_planes?` (render.FRUSTUM_PLANES) - Frustum planes used for culling. The default is <a href="/ref/render#render.FRUSTUM_PLANES_SIDES">render.FRUSTUM_PLANES_SIDES</a>.
+- `constants?` (constant_buffer) - Constants used while rendering. The values are copied when <code>render.draw()</code> is called.
+- `sort_order?` (render.SORT) - World-entry sort order. The default is the renderer's preferred back-to-front order.
 
 ### render.enable_material
 *Type:* FUNCTION
@@ -385,7 +413,7 @@ Enables a particular render state. The state will be enabled until disabled.
 
 **Parameters**
 
-- `state` (constant) - state to enable
+- `state` (graphics.STATE) - state to enable
 <ul>
 <li><code>graphics.STATE_DEPTH_TEST</code></li>
 <li><code>graphics.STATE_STENCIL_TEST</code></li>
@@ -423,23 +451,7 @@ everywhere for the textures that should be shared across different materials.
 
 - `binding` (number | string | hash) - texture binding, either by texture unit, string or hash for the sampler name that the texture should be bound to
 - `handle_or_name` (texture | string | hash) - render target or texture handle that should be bound, or a named resource in the "Render Resource" table in the currently assigned .render file
-- `buffer_type` (graphics.BUFFER_TYPE_COLOR0_BIT | graphics.BUFFER_TYPE_COLOR1_BIT | graphics.BUFFER_TYPE_COLOR2_BIT | graphics.BUFFER_TYPE_COLOR3_BIT | graphics.BUFFER_TYPE_DEPTH_BIT | graphics.BUFFER_TYPE_STENCIL_BIT) (optional) - optional buffer type from which to enable the texture. Note that this argument only applies to render targets. Defaults to <code>graphics.BUFFER_TYPE_COLOR0_BIT</code>. These values are supported:
-<ul>
-<li><code>graphics.BUFFER_TYPE_COLOR0_BIT</code></li>
-</ul>
-If The render target has been created as depth and/or stencil textures, these buffer types can be used:
-<ul>
-<li><code>graphics.BUFFER_TYPE_DEPTH_BIT</code></li>
-<li><code>graphics.BUFFER_TYPE_STENCIL_BIT</code></li>
-</ul>
-If the render target has been created with multiple color attachments, these buffer types can be used
-to enable those textures as well. Currently 4 color attachments are supported:
-<ul>
-<li><code>graphics.BUFFER_TYPE_COLOR0_BIT</code></li>
-<li><code>graphics.BUFFER_TYPE_COLOR1_BIT</code></li>
-<li><code>graphics.BUFFER_TYPE_COLOR2_BIT</code></li>
-<li><code>graphics.BUFFER_TYPE_COLOR3_BIT</code></li>
-</ul>
+- `buffer_type` (graphics.BUFFER_TYPE) (optional) - optional render-target attachment. Defaults to <code>graphics.BUFFER_TYPE_COLOR0_BIT</code>. Depth and stencil attachments must have been created as textures; color attachments beyond the first require a render target with multiple color attachments (up to four are supported).
 
 **Examples**
 
@@ -487,11 +499,14 @@ end
 
 ```
 
-### render.FRUSTUM_PLANES_ALL
-*Type:* CONSTANT
+### render.FRUSTUM_PLANES
+*Type:* ENUM
+Frustum plane selections
 
-### render.FRUSTUM_PLANES_SIDES
-*Type:* CONSTANT
+**Members**
+
+- `render.FRUSTUM_PLANES_ALL` - All six frustum planes.
+- `render.FRUSTUM_PLANES_SIDES` - Left, right, top, and bottom frustum planes.
 
 ### render.get_height
 *Type:* FUNCTION
@@ -501,7 +516,7 @@ or user input.
 
 **Returns**
 
-- `height` (number) - specified window height
+- `height` (integer) - specified window height
 
 **Examples**
 
@@ -517,8 +532,8 @@ Returns the specified buffer height from a render target.
 
 **Parameters**
 
-- `render_target` (render_target) - render target from which to retrieve the buffer height
-- `buffer_type` (graphics.BUFFER_TYPE_COLOR0_BIT | graphics.BUFFER_TYPE_COLOR1_BIT | graphics.BUFFER_TYPE_COLOR2_BIT | graphics.BUFFER_TYPE_COLOR3_BIT | graphics.BUFFER_TYPE_DEPTH_BIT | graphics.BUFFER_TYPE_STENCIL_BIT) - which type of buffer to retrieve the height from
+- `render_target` (render_target | string | hash) - render target from which to retrieve the buffer height
+- `buffer_type` (graphics.BUFFER_TYPE) - which type of buffer to retrieve the height from
 <ul>
 <li><code>graphics.BUFFER_TYPE_COLOR0_BIT</code></li>
 <li><code>graphics.BUFFER_TYPE_DEPTH_BIT</code></li>
@@ -527,7 +542,7 @@ Returns the specified buffer height from a render target.
 
 **Returns**
 
-- `height` (number) - the height of the render target buffer texture
+- `height` (integer) - the height of the render target buffer texture
 
 **Examples**
 
@@ -545,8 +560,8 @@ Returns the specified buffer width from a render target.
 
 **Parameters**
 
-- `render_target` (render_target) - render target from which to retrieve the buffer width
-- `buffer_type` (graphics.BUFFER_TYPE_COLOR0_BIT | graphics.BUFFER_TYPE_COLOR1_BIT | graphics.BUFFER_TYPE_COLOR2_BIT | graphics.BUFFER_TYPE_COLOR3_BIT | graphics.BUFFER_TYPE_DEPTH_BIT | graphics.BUFFER_TYPE_STENCIL_BIT) - which type of buffer to retrieve the width from
+- `render_target` (render_target | string | hash) - render target from which to retrieve the buffer width
+- `buffer_type` (graphics.BUFFER_TYPE) - which type of buffer to retrieve the width from
 <ul>
 <li><code>graphics.BUFFER_TYPE_COLOR0_BIT</code></li>
 <li><code>graphics.BUFFER_TYPE_COLOR[x]_BIT</code> (x: [0..3], if supported!)</li>
@@ -556,7 +571,7 @@ Returns the specified buffer width from a render target.
 
 **Returns**
 
-- `width` (number) - the width of the render target buffer texture
+- `width` (integer) - the width of the render target buffer texture
 
 **Examples**
 
@@ -576,7 +591,7 @@ or user input.
 
 **Returns**
 
-- `width` (number) - specified window width (number)
+- `width` (integer) - specified window width
 
 **Examples**
 
@@ -594,7 +609,7 @@ Note that this value might differ from the logical height that is set in the
 
 **Returns**
 
-- `height` (number) - actual window height
+- `height` (integer) - actual window height
 
 **Examples**
 
@@ -612,7 +627,7 @@ Note that this value might differ from the logical width that is set in the
 
 **Returns**
 
-- `width` (number) - actual window width
+- `width` (integer) - actual window width
 
 **Examples**
 
@@ -632,11 +647,11 @@ The current limit to the number of tags that can be defined is 64.
 
 **Parameters**
 
-- `tags` (table) - table of tags that the predicate should match. The tags can be of either hash or string type
+- `tags` ((string|hash)[]) - table of tags that the predicate should match. The tags can be of either hash or string type
 
 **Returns**
 
-- `predicate` (number) - new predicate
+- `predicate` (render_predicate) - new predicate
 
 **Examples**
 
@@ -651,37 +666,6 @@ local p = render.predicate({hash("opaque"), hash("smoke")})
 *Type:* FUNCTION
 Creates a new render target according to the supplied
 specification table.
-The table should contain keys specifying which buffers should be created
-with what parameters. Each buffer key should have a table value consisting
-of parameters. The following parameter keys are available:
-
-Key
-Values
-
-format
-graphics.TEXTURE_FORMAT_LUMINANCEgraphics.TEXTURE_FORMAT_RGBgraphics.TEXTURE_FORMAT_RGBAgraphics.TEXTURE_FORMAT_DEPTHgraphics.TEXTURE_FORMAT_STENCILgraphics.TEXTURE_FORMAT_RGBA32Fgraphics.TEXTURE_FORMAT_RGBA16F
-
-width
-number
-
-height
-number
-
-min_filter (optional)
-graphics.TEXTURE_FILTER_LINEARgraphics.TEXTURE_FILTER_NEAREST
-
-mag_filter (optional)
-graphics.TEXTURE_FILTER_LINEARgraphics.TEXTURE_FILTER_NEAREST
-
-u_wrap     (optional)
-graphics.TEXTURE_WRAP_CLAMP_TO_BORDERgraphics.TEXTURE_WRAP_CLAMP_TO_EDGEgraphics.TEXTURE_WRAP_MIRRORED_REPEATgraphics.TEXTURE_WRAP_REPEAT
-
-v_wrap     (optional)
-graphics.TEXTURE_WRAP_CLAMP_TO_BORDERgraphics.TEXTURE_WRAP_CLAMP_TO_EDGEgraphics.TEXTURE_WRAP_MIRRORED_REPEATgraphics.TEXTURE_WRAP_REPEAT
-
-flags      (optional)
-render.TEXTURE_BIT (only applicable to depth and stencil buffers)
-
 The render target can be created to support multiple color attachments. Each attachment can have different format settings and texture filters,
 but attachments must be added in sequence, meaning you cannot create a render target at slot 0 and 3.
 Instead it has to be created with all four buffer types ranging from [0..3] (as denoted by graphics.BUFFER_TYPE_COLORX_BIT where 'X' is the attachment you want to create).
@@ -698,8 +682,7 @@ end
 
 **Parameters**
 
-- `name` (string) - render target name
-- `parameters` (table) - table of buffer parameters, see the description for available keys and values
+- `parameters` (render.render_target_params) - render-target parameters
 
 **Returns**
 
@@ -723,7 +706,7 @@ function init(self)
                            height = render.get_window_height(),
                            u_wrap = graphics.TEXTURE_WRAP_CLAMP_TO_EDGE,
                            v_wrap = graphics.TEXTURE_WRAP_CLAMP_TO_EDGE }
-    self.my_render_target = render.render_target({[graphics.BUFFER_TYPE_COLOR0_BIT] = color_params, [graphics.BUFFER_TYPE_DEPTH_BIT] = depth_params })
+    self.my_render_target = render.render_target({sample_count = 4, [graphics.BUFFER_TYPE_COLOR0_BIT] = color_params, [graphics.BUFFER_TYPE_DEPTH_BIT] = depth_params })
 end
 
 function update(self, dt)
@@ -773,8 +756,45 @@ end
 
 ```
 
+### render.render_target_buffer_params
+*Type:* STRUCT
+Render-target attachment parameters
+
+**Members**
+
+- `format` (graphics.TEXTURE_FORMAT) - Attachment texture format.
+- `width` (integer) - Attachment width.
+- `height` (integer) - Attachment height.
+- `min_filter?` (graphics.TEXTURE_FILTER) - Minification filter.
+- `mag_filter?` (graphics.TEXTURE_FILTER) - Magnification filter.
+- `u_wrap?` (graphics.TEXTURE_WRAP) - Horizontal wrap mode.
+- `v_wrap?` (graphics.TEXTURE_WRAP) - Vertical wrap mode.
+- `w_wrap?` (graphics.TEXTURE_WRAP) - Depth wrap mode.
+- `flags?` (render.RENDER_TARGET_FLAG) - Attachment creation flags, applicable only to depth and stencil buffers.
+
 ### render.RENDER_TARGET_DEFAULT
 *Type:* CONSTANT
+
+**Parameters**
+
+- `value` (render_target)
+
+### render.RENDER_TARGET_FLAG
+*Type:* ENUM
+Render-target creation flags
+
+**Members**
+
+- `render.TEXTURE_BIT` - Create a texture-backed depth or stencil attachment.
+
+### render.render_target_params
+*Type:* TYPEDEF
+sample_count defaults to 1 and is normalized by the graphics adapter to
+a supported power-of-two value.
+
+**Parameters**
+
+- `value` ({ sample_count?:integer, [graphics.BUFFER_TYPE]:render.render_target_buffer_params }) - Attachments keyed by buffer type, with an optional multisample count.
 
 ### render.set_blend_equation_separate
 *Type:* FUNCTION
@@ -782,8 +802,8 @@ Sets the blend equation with separate equations for the color and alpha channels
 
 **Parameters**
 
-- `equation_color` (number) - color blend equation
-- `equation_alpha` (number) - alpha blend equation
+- `equation_color` (graphics.BLEND_EQUATION) - color blend equation
+- `equation_alpha` (graphics.BLEND_EQUATION) - alpha blend equation
 
 **Examples**
 
@@ -809,56 +829,6 @@ The color specified by setting the blendcolor is referred to as (Rc,Gc,Bc,Ac).
 The source scale factor is referred to as (sR,sG,sB,sA).
 The destination scale factor is referred to as (dR,dG,dB,dA).
 The color values have integer values between 0 and (kR,kG,kB,kA), where kc = 2mc - 1 and mc is the number of bitplanes for that color. I.e for 8 bit color depth, color values are between 0 and 255.
-Available factor constants and corresponding scale factors:
-
-Factor constant
-Scale factor (fR,fG,fB,fA)
-
-graphics.BLEND_FACTOR_ZERO
-(0,0,0,0)
-
-graphics.BLEND_FACTOR_ONE
-(1,1,1,1)
-
-graphics.BLEND_FACTOR_SRC_COLOR
-(Rs/kR,Gs/kG,Bs/kB,As/kA)
-
-graphics.BLEND_FACTOR_ONE_MINUS_SRC_COLOR
-(1,1,1,1) - (Rs/kR,Gs/kG,Bs/kB,As/kA)
-
-graphics.BLEND_FACTOR_DST_COLOR
-(Rd/kR,Gd/kG,Bd/kB,Ad/kA)
-
-graphics.BLEND_FACTOR_ONE_MINUS_DST_COLOR
-(1,1,1,1) - (Rd/kR,Gd/kG,Bd/kB,Ad/kA)
-
-graphics.BLEND_FACTOR_SRC_ALPHA
-(As/kA,As/kA,As/kA,As/kA)
-
-graphics.BLEND_FACTOR_ONE_MINUS_SRC_ALPHA
-(1,1,1,1) - (As/kA,As/kA,As/kA,As/kA)
-
-graphics.BLEND_FACTOR_DST_ALPHA
-(Ad/kA,Ad/kA,Ad/kA,Ad/kA)
-
-graphics.BLEND_FACTOR_ONE_MINUS_DST_ALPHA
-(1,1,1,1) - (Ad/kA,Ad/kA,Ad/kA,Ad/kA)
-
-graphics.BLEND_FACTOR_CONSTANT_COLOR
-(Rc,Gc,Bc,Ac)
-
-graphics.BLEND_FACTOR_ONE_MINUS_CONSTANT_COLOR
-(1,1,1,1) - (Rc,Gc,Bc,Ac)
-
-graphics.BLEND_FACTOR_CONSTANT_ALPHA
-(Ac,Ac,Ac,Ac)
-
-graphics.BLEND_FACTOR_ONE_MINUS_CONSTANT_ALPHA
-(1,1,1,1) - (Ac,Ac,Ac,Ac)
-
-graphics.BLEND_FACTOR_SRC_ALPHA_SATURATE
-(i,i,i,1) where i = min(As, kA - Ad) /kA
-
 The blended RGBA values of a pixel comes from the following equations:
 
 Rd = min(kR, Rs * sR + Rd * dR)
@@ -872,8 +842,8 @@ It is also useful for drawing antialiased points and lines in arbitrary order.
 
 **Parameters**
 
-- `source_factor` (number) - source factor
-- `destination_factor` (number) - destination factor
+- `source_factor` (graphics.BLEND_FACTOR) - source factor
+- `destination_factor` (graphics.BLEND_FACTOR) - destination factor
 
 **Examples**
 
@@ -918,11 +888,7 @@ Note that the frustum plane option in render.draw can still be used together wit
 **Parameters**
 
 - `camera` (url | number | nil) - camera id to use, or nil to reset
-- `options` (table) (optional) - optional table with properties:
-<dl>
-<dt><code>use_frustum</code></dt>
-<dd><span class="type">boolean</span> If true, the renderer will use the cameras view-projection matrix for frustum culling (default: false)</dd>
-</dl>
+- `options` (render.camera_options) (optional) - optional camera options
 
 **Examples**
 
@@ -995,12 +961,7 @@ face_type is graphics.FACE_TYPE_BACK.
 
 **Parameters**
 
-- `face_type` (number) - face type
-<ul>
-<li><code>graphics.FACE_TYPE_FRONT</code></li>
-<li><code>graphics.FACE_TYPE_BACK</code></li>
-<li><code>graphics.FACE_TYPE_FRONT_AND_BACK</code></li>
-</ul>
+- `face_type` (graphics.FACE_TYPE) - face type
 
 **Examples**
 
@@ -1017,22 +978,11 @@ Specifies the function that should be used to compare each incoming pixel
 depth value with the value present in the depth buffer.
 The comparison is performed only if depth testing is enabled and specifies
 the conditions under which a pixel will be drawn.
-Function constants:
-
-graphics.COMPARE_FUNC_NEVER (never passes)
-graphics.COMPARE_FUNC_LESS (passes if the incoming depth value is less than the stored value)
-graphics.COMPARE_FUNC_LEQUAL (passes if the incoming depth value is less than or equal to the stored value)
-graphics.COMPARE_FUNC_GREATER (passes if the incoming depth value is greater than the stored value)
-graphics.COMPARE_FUNC_GEQUAL (passes if the incoming depth value is greater than or equal to the stored value)
-graphics.COMPARE_FUNC_EQUAL (passes if the incoming depth value is equal to the stored value)
-graphics.COMPARE_FUNC_NOTEQUAL (passes if the incoming depth value is not equal to the stored value)
-graphics.COMPARE_FUNC_ALWAYS (always passes)
-
 The depth function is initially set to graphics.COMPARE_FUNC_LESS.
 
 **Parameters**
 
-- `func` (number) - depth test function, see the description for available values
+- `func` (graphics.COMPARE_FUNC) - depth test function, see the description for available values
 
 **Examples**
 
@@ -1063,21 +1013,12 @@ render.set_depth_mask(false)
 
 ### render.set_listener
 *Type:* FUNCTION
-Set or remove listener. Currenly only only two type of events can arrived:
-render.CONTEXT_EVENT_CONTEXT_LOST - when rendering context lost. Rending paused and all graphics resources become invalid.
-render.CONTEXT_EVENT_CONTEXT_RESTORED - when rendering context was restored. Rendering still paused and graphics resources still
-invalid but can be reloaded.
+Set or remove the rendering-context event listener.
 
 **Parameters**
 
-- `callback` (function(self, event_type) | nil) - A callback that receives all render related events.
+- `callback` (fun(self:script_instance, event_type:render.CONTEXT_EVENT) | nil) - A callback that receives all render related events.
 Pass <code>nil</code> if want to remove listener.
-<dl>
-<dt><code>self</code></dt>
-<dd><span class="type">object</span> The render script</dd>
-<dt><code>event_type</code></dt>
-<dd><span class="type">string</span> Rendering event. Possible values: <code>render.CONTEXT_EVENT_CONTEXT_LOST</code>, <code>render.CONTEXT_EVENT_CONTEXT_RESTORED</code></dd>
-</dl>
 
 **Examples**
 
@@ -1154,19 +1095,8 @@ This function supports render targets created by a render script, or a render ta
 
 **Parameters**
 
-- `render_target` (render_target) - render target to set. render.RENDER_TARGET_DEFAULT to set the default render target
-- `options` (table) (optional) - optional table with behaviour parameters
-<dl>
-<dt><code>transient</code></dt>
-<dd><span class="type">table</span> Transient frame buffer types are only valid while the render target is active, i.e becomes undefined when a new target is set by a subsequent call to set_render_target.
- Default is all non-transient. Be aware that some hardware uses a combined depth stencil buffer and when this is the case both are considered non-transient if exclusively selected!
- A buffer type defined that doesn't exist in the render target is silently ignored.</dd>
-</dl>
-<ul>
-<li><code>graphics.BUFFER_TYPE_COLOR0_BIT</code></li>
-<li><code>graphics.BUFFER_TYPE_DEPTH_BIT</code></li>
-<li><code>graphics.BUFFER_TYPE_STENCIL_BIT</code></li>
-</ul>
+- `render_target` (render_target | string | hash | nil) (optional) - render target to set. Omit it, pass <code>nil</code>, or use render.RENDER_TARGET_DEFAULT to set the default render target
+- `options` (render.set_render_target_options) (optional) - optional render-target activation options
 
 **Examples**
 
@@ -1203,6 +1133,14 @@ end
 
 ```
 
+### render.set_render_target_options
+*Type:* STRUCT
+Render-target activation options
+
+**Members**
+
+- `transient?` (graphics.BUFFER_TYPE[]) - Buffers whose contents become undefined after the target is deactivated. Missing buffers are ignored; combined depth-stencil buffers remain non-transient unless both are selected.
+
 ### render.set_render_target_size
 *Type:* FUNCTION
 Sets the render target size for a render target created from
@@ -1210,9 +1148,9 @@ either a render script, or from a render target resource.
 
 **Parameters**
 
-- `render_target` (render_target) - render target to set size for
-- `width` (number) - new render target width
-- `height` (number) - new render target height
+- `render_target` (render_target | string | hash) - render target to set size for
+- `width` (integer) - new render target width
+- `height` (integer) - new render target height
 
 **Examples**
 
@@ -1231,27 +1169,17 @@ Second, geometry and images are rendered but using the stencil planes to mask ou
 where to draw.
 The stencil test discards a pixel based on the outcome of a comparison between the
 reference value ref and the corresponding value in the stencil buffer.
-func specifies the comparison function. See the table below for values.
+func specifies the comparison function.
 The initial value is graphics.COMPARE_FUNC_ALWAYS.
 ref specifies the reference value for the stencil test. The value is clamped to
 the range [0, 2n-1], where n is the number of bitplanes in the stencil buffer.
 The initial value is 0.
 mask is ANDed with both the reference value and the stored stencil value when the test
 is done. The initial value is all 1's.
-Function constant:
-
-graphics.COMPARE_FUNC_NEVER (never passes)
-graphics.COMPARE_FUNC_LESS (passes if (ref & mask)
-graphics.COMPARE_FUNC_LEQUAL (passes if (ref & mask)
-graphics.COMPARE_FUNC_GREATER (passes if (ref & mask) > (stencil & mask))
-graphics.COMPARE_FUNC_GEQUAL (passes if (ref & mask) >= (stencil & mask))
-graphics.COMPARE_FUNC_EQUAL (passes if (ref & mask) = (stencil & mask))
-graphics.COMPARE_FUNC_NOTEQUAL (passes if (ref & mask) != (stencil & mask))
-graphics.COMPARE_FUNC_ALWAYS (always passes)
 
 **Parameters**
 
-- `func` (number) - stencil test function, see the description for available values
+- `func` (graphics.COMPARE_FUNC) - stencil test function, see the description for available values
 - `ref` (number) - reference value for the stencil test
 - `mask` (number) - mask that is ANDed with both the reference value and the stored stencil value when the test is done
 
@@ -1294,26 +1222,15 @@ This function takes three arguments that control what happens to the stored sten
 value while stenciling is enabled. If the stencil test fails, no change is made to the
 pixel's color or depth buffers, and sfail specifies what happens to the stencil buffer
 contents.
-Operator constants:
-
-graphics.STENCIL_OP_KEEP (keeps the current value)
-graphics.STENCIL_OP_ZERO (sets the stencil buffer value to 0)
-graphics.STENCIL_OP_REPLACE (sets the stencil buffer value to ref, as specified by render.set_stencil_func)
-graphics.STENCIL_OP_INCR (increments the stencil buffer value and clamp to the maximum representable unsigned value)
-graphics.STENCIL_OP_INCR_WRAP (increments the stencil buffer value and wrap to zero when incrementing the maximum representable unsigned value)
-graphics.STENCIL_OP_DECR (decrements the current stencil buffer value and clamp to 0)
-graphics.STENCIL_OP_DECR_WRAP (decrements the current stencil buffer value and wrap to the maximum representable unsigned value when decrementing zero)
-graphics.STENCIL_OP_INVERT (bitwise inverts the current stencil buffer value)
-
 dppass and dpfail specify the stencil buffer actions depending on whether subsequent
 depth buffer tests succeed (dppass) or fail (dpfail).
 The initial value for all operators is graphics.STENCIL_OP_KEEP.
 
 **Parameters**
 
-- `sfail` (number) - action to take when the stencil test fails
-- `dpfail` (number) - the stencil action when the stencil test passes
-- `dppass` (number) - the stencil action when both the stencil test and the depth test pass, or when the stencil test passes and either there is no depth buffer or depth testing is not enabled
+- `sfail` (graphics.STENCIL_OP) - action to take when the stencil test fails
+- `dpfail` (graphics.STENCIL_OP) - the stencil action when the stencil test passes
+- `dppass` (graphics.STENCIL_OP) - the stencil action when both the stencil test and the depth test pass, or when the stencil test passes and either there is no depth buffer or depth testing is not enabled
 
 **Examples**
 
@@ -1366,10 +1283,10 @@ Set the render viewport to the specified rectangle.
 
 **Parameters**
 
-- `x` (number) - left corner
-- `y` (number) - bottom corner
-- `width` (number) - viewport width
-- `height` (number) - viewport height
+- `x` (integer) - left corner
+- `y` (integer) - bottom corner
+- `width` (integer) - viewport width
+- `height` (integer) - viewport height
 
 **Examples**
 
@@ -1379,25 +1296,78 @@ render.set_viewport(0, 0, render.get_window_width(), render.get_window_height())
 
 ```
 
-### render.SORT_BACK_TO_FRONT
-*Type:* CONSTANT
-Depth sort far-to-near (default; good for transparent passes).
+### render.SORT
+*Type:* ENUM
+Render sort orders
 
-### render.SORT_FRONT_TO_BACK
-*Type:* CONSTANT
-Depth sort near-to-far (good for opaque passes to reduce overdraw).
+**Members**
 
-### render.SORT_NONE
-*Type:* CONSTANT
-No per-call sorting; draw entries in insertion order.
+- `render.SORT_BACK_TO_FRONT` - Depth sort far-to-near (default; good for transparent passes).
+- `render.SORT_FRONT_TO_BACK` - Depth sort near-to-far (good for opaque passes to reduce overdraw).
+- `render.SORT_NONE` - No per-call sorting; draw entries in insertion order.
 
-### render_target
+### render_predicate
 *Type:* TYPEDEF
-Render target
+An opaque filter that selects renderable objects by material tag. Create a
+predicate with render.predicate and pass it to render.draw. When
+multiple tags are supplied, an object's material must contain all of them.
+Predicates are intended for use in render scripts.
 
 **Parameters**
 
-- `value` (number)
+- `value` (userdata) - material-tag render filter
+
+**Examples**
+
+```
+local opaque = render.predicate({ "opaque" })
+render.draw(opaque)
+
+```
+
+### render_target
+*Type:* TYPEDEF
+An opaque graphics handle identifying an off-screen render target. Create
+one with render.render_target, draw into it with
+render.set_render_target, and release dynamically created targets with
+render.delete_render_target. A render-target resource handle can also
+be obtained from resource.get_render_target_info.
+
+**Parameters**
+
+- `value` (number) - opaque render-target handle
+
+**Examples**
+
+```
+function init(self)
+    local color_params = {
+        format = graphics.TEXTURE_FORMAT_RGBA,
+        width = 320,
+        height = 180,
+    }
+    self.target = render.render_target({
+        [graphics.BUFFER_TYPE_COLOR0_BIT] = color_params,
+    })
+end
+
+function update(self)
+    if not self.target then
+        return
+    end
+    render.set_render_target(self.target)
+    -- Draw off-screen content here.
+    render.set_render_target(render.RENDER_TARGET_DEFAULT)
+end
+
+function on_message(self, message_id)
+    if message_id == hash("release_render_target") and self.target then
+        render.delete_render_target(self.target)
+        self.target = nil
+    end
+end
+
+```
 
 ### resize
 *Type:* MESSAGE
@@ -1417,11 +1387,24 @@ msg.post("@render:", "resize", { width = 1024, height = 768 } )
 
 ### texture
 *Type:* TYPEDEF
-Texture handle
+An opaque graphics handle identifying a texture. Texture handles are
+returned by APIs such as resource.get_texture_info,
+material.get_textures, and compute.get_textures. Pass a handle
+to render.enable_texture to bind the texture in a render script. The
+resource or render target that owns the texture controls its lifetime.
 
 **Parameters**
 
-- `value` (number)
+- `value` (number) - opaque texture handle
+
+**Examples**
+
+```
+local texture_info = resource.get_texture_info("/assets/logo.texturec")
+local texture_handle = texture_info.handle
+render.enable_texture("texture_sampler", texture_handle)
+
+```
 
 ### window_resized
 *Type:* MESSAGE

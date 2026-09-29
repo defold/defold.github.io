@@ -13,11 +13,29 @@ shapes, so it is represented by a separate `b2Chain` handle.
 
 ### b2Chain
 *Type:* TYPEDEF
-Box2D chain
+An opaque handle to a chain of connected segment shapes attached to a
+b2Body. Create one with b2d.body.create_chain, use the functions
+in b2d.chain to inspect or configure it, and release it with
+b2d.chain.destroy. Destroying its body also destroys the chain.
 
 **Parameters**
 
-- `value` (userdata)
+- `value` (userdata) - Box2D chain handle
+
+**Examples**
+
+```
+local body = b2d.get_body("#collisionobject")
+local chain = b2d.body.create_chain(body, {
+    vertices = {
+        vmath.vector3(-64, 0, 0),
+        vmath.vector3(0, 16, 0),
+        vmath.vector3(64, 0, 0),
+    },
+})
+print(b2d.chain.get_segment_count(chain))
+
+```
 
 ### b2d.chain.destroy
 *Type:* FUNCTION
@@ -54,8 +72,7 @@ Get chain friction.
 
 ### b2d.chain.get_geometry
 *Type:* FUNCTION
-Returns a chain geometry table with loop, segment_count, and vertices.
-Open chains also include prev_vertex and next_vertex ghost vertices.
+Get the chain geometry.
 
 **Parameters**
 
@@ -63,7 +80,7 @@ Open chains also include prev_vertex and next_vertex ghost vertices.
 
 **Returns**
 
-- `geometry` (table) - chain geometry table
+- `geometry` (b2d.chain_geometry) - chain geometry
 
 ### b2d.chain.get_material
 *Type:* FUNCTION
@@ -75,7 +92,7 @@ Get chain material id.
 
 **Returns**
 
-- `material` (number) - chain material id
+- `material` (integer) - chain material id
 
 ### b2d.chain.get_restitution
 *Type:* FUNCTION
@@ -99,7 +116,7 @@ Get the number of segment shapes in a chain.
 
 **Returns**
 
-- `count` (number) - segment count
+- `count` (integer) - segment count
 
 ### b2d.chain.get_segments
 *Type:* FUNCTION
@@ -111,7 +128,7 @@ Get the segment shapes owned by a chain.
 
 **Returns**
 
-- `segments` (table) - array of shape info tables for the chain segments. Each entry includes <code>shape_id</code>.
+- `segments` (b2d.shape_info[]) - chain segment shapes
 
 ### b2d.chain.get_world
 *Type:* FUNCTION
@@ -153,7 +170,7 @@ Set chain material id.
 **Parameters**
 
 - `chain` (b2Chain) - chain
-- `material` (number) - chain material id
+- `material` (integer) - chain material id
 
 ### b2d.chain.set_restitution
 *Type:* FUNCTION

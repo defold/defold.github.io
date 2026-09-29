@@ -30,3 +30,13 @@ Spawns a collection of gameobjects in a collection using a collection factory co
 **Returns**
 
 - `result` (dmGameObject::Result) - Result of the operation
+
+### CompCollectionFactoryStatus
+*Type:* ENUM
+CompCollectionFactoryStatus
+
+**Members**
+
+- `COMP_COLLECTION_FACTORY_STATUS_UNLOADED`
+- `COMP_COLLECTION_FACTORY_STATUS_LOADING`
+- `COMP_COLLECTION_FACTORY_STATUS_LOADED`

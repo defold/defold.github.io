@@ -58,6 +58,7 @@ Create result enum.
 **Members**
 
 - `dmGameObject::CREATE_RESULT_OK`
+- `dmGameObject::CREATE_RESULT_TOO_MANY_COMPONENTS`
 - `dmGameObject::CREATE_RESULT_UNKNOWN_ERROR`
 
 ### Delete
@@ -314,6 +315,22 @@ Retrieve a quaternion property from a component.
 - `component_id` (dmhash_t) - Id of the component
 - `property_id` (dmhash_t) - Id of the property
 - `out_value` (dmVMath::Quat*) - The retrieved property value
+
+**Returns**
+
+- `PROPERTY_RESULT_OK` - if the out-parameter was written
+
+### GetPropertyAsText
+*Type:* FUNCTION
+Retrieve a text property from a component.
+The returned pointer is borrowed from the component and must not be freed. Its lifetime is controlled by the component.
+
+**Parameters**
+
+- `instance` (HInstance) - Instance of the game object
+- `component_id` (dmhash_t) - Id of the component
+- `property_id` (dmhash_t) - Id of the property
+- `out_value` (const char**) - The retrieved property value
 
 **Returns**
 
@@ -681,6 +698,8 @@ Property types.
 - `dmGameObject::PROPERTY_TYPE_VECTOR4`
 - `dmGameObject::PROPERTY_TYPE_QUAT`
 - `dmGameObject::PROPERTY_TYPE_BOOLEAN`
+- `dmGameObject::PROPERTY_TYPE_MATRIX4`
+- `dmGameObject::PROPERTY_TYPE_TEXT`
 - `dmGameObject::PROPERTY_TYPE_COUNT`
 
 ### PropertyValueType
@@ -704,6 +723,7 @@ Property variant that holds the data for a variable
 - `m_Url` (const uin8_t*) - An URL value (union)
 - `m_V4` (float) - A vector4 value (union)
 - `m_Bool` (bool) - A boolean value (union)
+- `m_Text` (const char*) - A borrowed text value (union). The caller owns the pointed-to memory.
 
 ### Result
 *Type:* ENUM
@@ -750,24 +770,20 @@ Struct that holds info about the current position when traversing the scene
 - `m_NameHash` (dmhash_t) - name
 - `m_Type` (dmGameObject::SceneNodePropertyType) - type
 - `m_Value` (union) - value
-
-`m_Number`
-: [type:double] floating point number
-
-`m_Hash`
-: [type:dmhash_t] The hashed value.
-
-`m_URL`
-: [type:char[1024]] The text representation of the url (if reverse hashes are enabled)
-
-`m_V4`
-: [type:float[4]] Used for Vector3, Vector4 and Quat
-
-`m_Bool`
-: [type:bool] A boolean value
-
-`m_Text`
-: [type:const char*] Text from a text property
+<dl>
+<dt><code>m_Number</code></dt>
+<dd><span class="type">double</span> floating point number</dd>
+<dt><code>m_Hash</code></dt>
+<dd><span class="type">dmhash_t</span> The hashed value.</dd>
+<dt><code>m_URL</code></dt>
+<dd><span class="type">char[1024</span>] The text representation of the url (if reverse hashes are enabled)</dd>
+<dt><code>m_V4</code></dt>
+<dd><span class="type">float[4</span>] Used for Vector3, Vector4 and Quat</dd>
+<dt><code>m_Bool</code></dt>
+<dd><span class="type">bool</span> A boolean value</dd>
+<dt><code>m_Text</code></dt>
+<dd><span class="type">const char*</span> Text from a text property</dd>
+</dl>
 
 ### SceneNodePropertyIterator
 *Type:* STRUCT
@@ -780,10 +796,6 @@ Holds the property
 ### SceneNodePropertyType
 *Type:* ENUM
 scene node property types
-
-**Notes**
-
-- Since we don't support text properties, we'll keep a separate enum here for now
 
 **Members**
 
@@ -928,6 +940,22 @@ Sets the value of a quaternion property on a component.
 - `component_id` (dmhash_t) - Id of the component
 - `property_id` (dmhash_t) - Id of the property
 - `value` (dmVMath::Quat) - Value of the property
+
+**Returns**
+
+- `PROPERTY_RESULT_OK` - if the value could be set
+
+### SetPropertyFromText
+*Type:* FUNCTION
+Sets the value of a text property on a component.
+The component must copy the value if it needs to retain it after this function returns.
+
+**Parameters**
+
+- `instance` (HInstance) - Instance of the game object
+- `component_id` (dmhash_t) - Id of the component
+- `property_id` (dmhash_t) - Id of the property
+- `value` (const char*) - Null-terminated UTF-8 value of the property
 
 **Returns**
 

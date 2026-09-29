@@ -1,16 +1,16 @@
 {
     "elements": [
         {
-            "brief": "associates a ttf resource to a .fontc file.",
-            "description": "associates a ttf resource to a .fontc file.",
+            "brief": "associates a TTF or OTF resource to a .fontc file.",
+            "description": "associates a TTF or OTF resource to a .fontc file.",
             "error": "",
             "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">font_hash</span> <span class=\"o\">=</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;/assets/fonts/roboto.fontc&quot;</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">ttf_hash</span> <span class=\"o\">=</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;/assets/fonts/Roboto/Roboto-Bold.ttf&quot;</span><span class=\"p\">)</span>\n<span class=\"n\">font</span><span class=\"p\">.</span><span class=\"n\">add_font</span><span class=\"p\">(</span><span class=\"n\">font_hash</span><span class=\"p\">,</span> <span class=\"n\">ttf_hash</span><span class=\"p\">)</span>\n</code></pre></div>",
             "language": "",
             "members": [],
             "name": "font.add_font",
             "notes": [
-                "The ttf font is loaded via the resource system. There are a few ways it can be accessed:\n    - It was already loaded in the resource system\n    - It is bundled via our game data\n    - It is accessible via a live update mount",
-                "The reference count will increase for the .ttf font"
+                "The font is loaded via the resource system. There are a few ways it can be accessed:\n    - It was already loaded in the resource system\n    - It is bundled via our game data\n    - It is accessible via a live update mount",
+                "The reference count will increase for the .ttf or .otf font"
             ],
             "parameters": [
                 {
@@ -20,15 +20,31 @@
                     "types": [
                         "string",
                         "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
                     ]
                 },
                 {
-                    "doc": "The path to the .ttf resource",
+                    "doc": "The path to the .ttf or .otf resource",
                     "is_optional": "False",
-                    "name": "ttf",
+                    "name": "font",
                     "types": [
                         "string",
                         "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
                     ]
                 }
             ],
@@ -36,6 +52,38 @@
             "returnvalues": [],
             "tparams": [],
             "type": "FUNCTION"
+        },
+        {
+            "brief": "Associated font file information",
+            "description": "Associated font file information",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "path",
+                    "doc": "path to the <code>.ttf</code> or <code>.otf</code> font file",
+                    "is_optional": false,
+                    "name": "path",
+                    "type": "string",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                },
+                {
+                    "display_name": "path_hash",
+                    "doc": "hashed font-file path",
+                    "is_optional": false,
+                    "name": "path_hash",
+                    "type": "hash",
+                    "type_html": "<a href=\"../builtins-lua/#hash\">hash</a>"
+                }
+            ],
+            "name": "font.file_info",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
         },
         {
             "brief": "Gets information about a font, such as the associa...",
@@ -54,21 +102,67 @@
                     "types": [
                         "string",
                         "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
                     ]
                 }
             ],
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "the information table contains these fields:\n<dl>\n<dt><code>path</code></dt>\n<dd><span class=\"type\">hash</span> The path hash of the current file.</dd>\n<dt><code>fonts</code></dt>\n<dd>\n<span class=\"type\">table</span> An array of associated font (e.g. .ttf) files. Each item is a table that contains:\n<dl>\n<dt><code>path</code></dt>\n<dd><span class=\"type\">string</span> The path of the font file</dd>\n<dt><code>path_hash</code></dt>\n<dd><span class=\"type\">hash</span> The path of the font file</dd>\n</dl>\n</dd>\n</dl>",
+                    "doc": "font resource information",
                     "name": "info",
                     "types": [
-                        "table"
+                        "font.info"
+                    ],
+                    "types_html": [
+                        "<a href=\"#font.info\">font.info</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#font.info\">font.info</a>"
                     ]
                 }
             ],
             "tparams": [],
             "type": "FUNCTION"
+        },
+        {
+            "brief": "Font resource information",
+            "description": "Font resource information",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "path",
+                    "doc": "path hash of the <code>.fontc</code> resource",
+                    "is_optional": false,
+                    "name": "path",
+                    "type": "hash",
+                    "type_html": "<a href=\"../builtins-lua/#hash\">hash</a>"
+                },
+                {
+                    "display_name": "fonts",
+                    "doc": "associated font files",
+                    "is_optional": false,
+                    "name": "fonts",
+                    "type": "font.file_info[]",
+                    "type_html": "<a href=\"#font.file_info\">font.file_info</a>[]"
+                }
+            ],
+            "name": "font.info",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
         },
         {
             "brief": "prepopulates the font glyph cache with rasterised ...",
@@ -87,6 +181,14 @@
                     "types": [
                         "string",
                         "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
                     ]
                 },
                 {
@@ -95,14 +197,26 @@
                     "name": "text",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 },
                 {
-                    "doc": "(optional) A callback function that is called after the request is finished\n<dl>\n<dt><code>self</code></dt>\n<dd><span class=\"type\">object</span> The current object.</dd>\n<dt><code>request_id</code></dt>\n<dd><span class=\"type\">number</span> The request id</dd>\n<dt><code>result</code></dt>\n<dd><span class=\"type\">boolean</span> True if request was succesful</dd>\n<dt><code>errstring</code></dt>\n<dd><span class=\"type\">string</span> <code>nil</code> if the request was successful</dd>\n</dl>",
+                    "doc": "(optional) A callback function that is called after the request is finished\n<dl>\n<dt class=\"api-lua-v2-type-definition\"><code>self:<a href=\"../builtins-lua/#script_instance\">script_instance</a></code></dt>\n<dd>The current script instance.</dd>\n<dt class=\"api-lua-v2-type-definition\"><code>request_id:<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a></code></dt>\n<dd>The request id</dd>\n<dt class=\"api-lua-v2-type-definition\"><code>result:<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a></code></dt>\n<dd>True if request was succesful</dd>\n<dt class=\"api-lua-v2-type-definition\"><code>errstring:<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a></code></dt>\n<dd><code>nil</code> if the request was successful</dd>\n</dl>",
                     "is_optional": "True",
                     "name": "callback",
                     "types": [
-                        "function(self, request_id, result, errstring)"
+                        "fun(self:script_instance, request_id:integer, result:boolean, errstring?:string)"
+                    ],
+                    "types_html": [
+                        "fun(self:<a href=\"../builtins-lua/#script_instance\">script_instance</a>, request_id:<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>, result:<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>, errstring?:<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>)"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">function</a>(\n\tself:<a href=\"../builtins-lua/#script_instance\">script_instance</a>,\n\trequest_id:<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>,\n\tresult:<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>,\n\terrstring?:<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>)"
                     ]
                 }
             ],
@@ -112,7 +226,13 @@
                     "doc": "Returns the asynchronous request id",
                     "name": "request_id",
                     "types": [
-                        "number"
+                        "integer"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
                     ]
                 }
             ],
@@ -120,15 +240,15 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "associates a ttf resource to a .fontc file",
-            "description": "associates a ttf resource to a .fontc file",
+            "brief": "associates a TTF or OTF resource to a .fontc file",
+            "description": "associates a TTF or OTF resource to a .fontc file",
             "error": "",
             "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">font_hash</span> <span class=\"o\">=</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;/assets/fonts/roboto.fontc&quot;</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">ttf_hash</span> <span class=\"o\">=</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;/assets/fonts/Roboto/Roboto-Bold.ttf&quot;</span><span class=\"p\">)</span>\n<span class=\"n\">font</span><span class=\"p\">.</span><span class=\"n\">remove_font</span><span class=\"p\">(</span><span class=\"n\">font_hash</span><span class=\"p\">,</span> <span class=\"n\">ttf_hash</span><span class=\"p\">)</span>\n</code></pre></div>",
             "language": "",
             "members": [],
             "name": "font.remove_font",
             "notes": [
-                "The reference count will decrease for the .ttf font"
+                "The reference count will decrease for the .ttf or .otf font"
             ],
             "parameters": [
                 {
@@ -138,15 +258,92 @@
                     "types": [
                         "string",
                         "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
                     ]
                 },
                 {
-                    "doc": "The path to the .ttf resource",
+                    "doc": "The path to the .ttf or .otf resource",
                     "is_optional": "False",
-                    "name": "ttf",
+                    "name": "font",
                     "types": [
                         "string",
                         "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "sets a named rich-text render style on a font",
+            "description": "Named object styles are resolved by text layouts without reshaping text.\nA <code>link</code> tag uses <code>link</code> by default. Callers may select another named style,\nsuch as <code>link:hover</code> or <code>link:active</code>, in response to input.\nFont collections initially define these named styles. Each default contains\na normalized RGBA face-color multiplier and no effects. The default <code>link</code>\nstyle also uses a solid underline, which remains when hover or active colors\nare applied:\n<ul>\n<li><code>link</code>: <code>(0.10, 0.45, 0.90, 1.0)</code>, solid underline</li>\n<li><code>link:hover</code>: <code>(0.30, 0.65, 1.00, 1.0)</code></li>\n<li><code>link:active</code>: <code>(0.05, 0.30, 0.70, 1.0)</code></li>\n</ul>\nThe definition is an opening-only sequence of rich-text tags. Tags are\nimplicitly closed in reverse order. Calling this function replaces the\nnamed render properties and effects. Resource-defined decorations, such as\nthe default <code>link</code> underline, remain unchanged.",
+            "error": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">font</span><span class=\"p\">.</span><span class=\"n\">set_style</span><span class=\"p\">(</span><span class=\"s2\">&quot;/fonts/ui.fontc&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;link:hover&quot;</span><span class=\"p\">,</span>\n    <span class=\"s2\">&quot;&lt;color=#66b3ff&gt;&lt;outline color=#000000 size=1&gt;&lt;shake amplitude=0.2&gt;&quot;</span><span class=\"p\">)</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "font.set_style",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "The path to the <code>.fontc</code> resource.",
+                    "is_optional": "False",
+                    "name": "fontc",
+                    "types": [
+                        "string",
+                        "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ]
+                },
+                {
+                    "doc": "Style name, for example <code>link:hover</code>.",
+                    "is_optional": "False",
+                    "name": "name",
+                    "types": [
+                        "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ]
+                },
+                {
+                    "doc": "Opening-only render-style markup.",
+                    "is_optional": "False",
+                    "name": "style",
+                    "types": [
+                        "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 }
             ],
@@ -156,6 +353,7 @@
             "type": "FUNCTION"
         }
     ],
+    "format_version": 2,
     "info": {
         "api_language": "Lua",
         "brief": "Font API documentation",

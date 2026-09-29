@@ -18,14 +18,11 @@ A Lua error is raised for syntax errors.
 **Parameters**
 
 - `json` (string) - json data
-- `options` (table) (optional) - table with decode options
-<ul>
-<li><span class="type">boolean</span> <code>decode_null_as_userdata</code>: whether to decode a JSON null value as json.null or nil (default is nil)</li>
-</ul>
+- `options` (json.decode_options) (optional) - optional decoding options
 
 **Returns**
 
-- `data` (table) - decoded json
+- `data` (any) - decoded JSON value
 
 **Examples**
 
@@ -54,6 +51,14 @@ Results in the following printout:
 
 ```
 
+### json.decode_options
+*Type:* STRUCT
+JSON decoding options
+
+**Members**
+
+- `decode_null_as_userdata?` (boolean) - Decode JSON <code>null</code> as <a href="/ref/json#json.null">json.null</a> instead of <code>nil</code>.
+
 ### json.encode
 *Type:* FUNCTION
 Encode a lua table to a JSON string.
@@ -61,11 +66,8 @@ A Lua error is raised for syntax errors.
 
 **Parameters**
 
-- `tbl` (table) - lua table to encode
-- `options` (table) (optional) - table with encode options
-<ul>
-<li><span class="type">string</span> <code>encode_empty_table_as_object</code>: whether to encode an empty table as an JSON object or array (default is object)</li>
-</ul>
+- `tbl` (any) - Lua value to encode
+- `options` (json.encode_options) (optional) - optional encoding options
 
 **Returns**
 
@@ -93,6 +95,14 @@ Results in the following printout:
 {"persons":[{"name":"John Doe"},{"name":"Darth Vader"}]}
 
 ```
+
+### json.encode_options
+*Type:* STRUCT
+JSON encoding options
+
+**Members**
+
+- `encode_empty_table_as_object?` (boolean) - Encode an empty table as an object instead of an array. The default is true.
 
 ### json.null
 *Type:* VARIABLE

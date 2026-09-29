@@ -167,7 +167,7 @@ Returns the maximum value among its arguments.
 **Parameters**
 
 - `x` (number)
-- `...`
+- `...` (any)
 
 ### math.min
 *Type:* FUNCTION
@@ -176,7 +176,7 @@ Returns the minimum value among its arguments.
 **Parameters**
 
 - `x` (number)
-- `...`
+- `...` (any)
 
 ### math.modf
 *Type:* FUNCTION

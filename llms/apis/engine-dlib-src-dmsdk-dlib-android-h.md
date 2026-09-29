@@ -27,6 +27,14 @@ Gets the app native activity
 
 - `activity` (ANativeActivity*) - the app native activity
 
+### GetAndroidApp
+*Type:* FUNCTION
+get's the previously registered android app
+
+**Returns**
+
+- `app` (struct android_app*) - The registered android app
+
 ### GetEnv
 *Type:* FUNCTION
 Gets the JNI environment
@@ -130,6 +138,14 @@ Registers an activity result callback. Multiple listeners are allowed.
 **Parameters**
 
 - `listener` (dmAndroid::OnActivityResult)
+
+### SetAndroidApp
+*Type:* FUNCTION
+sets the android app
+
+**Parameters**
+
+- `app` (struct android_app*) - The registered android app
 
 ### ThreadAttacher
 *Type:* CLASS

@@ -20,36 +20,7 @@ Returns a table of all the shader constants in the compute program.
 
 **Returns**
 
-- `table` (table) - A table of tables, where each entry contains info about the shader constants:
-<dl>
-<dt><code>name</code></dt>
-<dd><span class="type">hash</span> the hashed name of the constant</dd>
-<dt><code>type</code></dt>
-<dd><span class="type">number</span> the type of the constant. Supported values:</dd>
-</dl>
-<ul>
-<li><code>material.CONSTANT_TYPE_USER</code></li>
-<li><code>material.CONSTANT_TYPE_USER_MATRIX4</code></li>
-<li><code>material.CONSTANT_TYPE_VIEWPROJ</code></li>
-<li><code>material.CONSTANT_TYPE_WORLD</code></li>
-<li><code>material.CONSTANT_TYPE_TEXTURE</code></li>
-<li><code>material.CONSTANT_TYPE_VIEW</code></li>
-<li><code>material.CONSTANT_TYPE_PROJECTION</code></li>
-<li><code>material.CONSTANT_TYPE_NORMAL</code></li>
-<li><code>material.CONSTANT_TYPE_WORLDVIEW</code></li>
-<li><code>material.CONSTANT_TYPE_WORLDVIEWPROJ</code></li>
-<li><code>material.CONSTANT_TYPE_TIME</code></li>
-<li><code>material.CONSTANT_TYPE_WORLD_INVERSE</code></li>
-<li><code>material.CONSTANT_TYPE_VIEW_INVERSE</code></li>
-<li><code>material.CONSTANT_TYPE_PROJECTION_INVERSE</code></li>
-<li><code>material.CONSTANT_TYPE_VIEWPROJ_INVERSE</code></li>
-<li><code>material.CONSTANT_TYPE_WORLDVIEW_INVERSE</code></li>
-<li><code>material.CONSTANT_TYPE_WORLDVIEWPROJ_INVERSE</code></li>
-</ul>
-<dl>
-<dt><code>value</code></dt>
-<dd><span class="type">vmath.vector4 | vmath.matrix4</span> the value(s) of the constant. If the constant is an array, the value will be a table of vmath.vector4 or vmath.matrix4 if the type is <code>material.CONSTANT_TYPE_USER_MATRIX4</code>.</dd>
-</dl>
+- `table` (material.constant_info[]) - Information about the shader constants.
 
 **Examples**
 
@@ -72,55 +43,7 @@ that are available, even the ones that have not been specified in the compute re
 
 **Returns**
 
-- `table` (table) - A table of tables, where each entry contains info about the texture samplers:
-<dl>
-<dt><code>name</code></dt>
-<dd><span class="type">hash</span> the hashed name of the texture sampler</dd>
-<dt><code>u_wrap</code></dt>
-<dd><span class="type">number</span> the u wrap mode of the texture sampler. Supported values:</dd>
-</dl>
-<ul>
-<li><code>graphics.TEXTURE_WRAP_CLAMP_TO_BORDER</code></li>
-<li><code>graphics.TEXTURE_WRAP_CLAMP_TO_EDGE</code></li>
-<li><code>graphics.TEXTURE_WRAP_MIRRORED_REPEAT</code></li>
-<li><code>graphics.TEXTURE_WRAP_REPEAT</code></li>
-</ul>
-<dl>
-<dt><code>v_wrap</code></dt>
-<dd><span class="type">number</span> the v wrap mode of the texture sampler. Supported values:</dd>
-</dl>
-<ul>
-<li><code>graphics.TEXTURE_WRAP_CLAMP_TO_BORDER</code></li>
-<li><code>graphics.TEXTURE_WRAP_CLAMP_TO_EDGE</code></li>
-<li><code>graphics.TEXTURE_WRAP_MIRRORED_REPEAT</code></li>
-<li><code>graphics.TEXTURE_WRAP_REPEAT</code></li>
-</ul>
-<dl>
-<dt><code>min_filter</code></dt>
-<dd><span class="type">number</span> the min filter mode of the texture sampler. Supported values:</dd>
-</dl>
-<ul>
-<li><code>graphics.TEXTURE_FILTER_DEFAULT</code></li>
-<li><code>graphics.TEXTURE_FILTER_NEAREST</code></li>
-<li><code>graphics.TEXTURE_FILTER_LINEAR</code></li>
-<li><code>graphics.TEXTURE_FILTER_NEAREST_MIPMAP_NEAREST</code></li>
-<li><code>graphics.TEXTURE_FILTER_NEAREST_MIPMAP_LINEAR</code></li>
-<li><code>graphics.TEXTURE_FILTER_LINEAR_MIPMAP_NEAREST</code></li>
-<li><code>graphics.TEXTURE_FILTER_LINEAR_MIPMAP_LINEAR</code></li>
-</ul>
-<dl>
-<dt><code>mag_filter</code></dt>
-<dd><span class="type">number</span> the mag filter mode of the texture sampler</dd>
-</dl>
-<ul>
-<li><code>graphics.TEXTURE_FILTER_DEFAULT</code></li>
-<li><code>graphics.TEXTURE_FILTER_NEAREST</code></li>
-<li><code>graphics.TEXTURE_FILTER_LINEAR</code></li>
-</ul>
-<dl>
-<dt><code>max_anisotropy</code></dt>
-<dd><span class="type">number</span> the max anisotropy of the texture sampler</dd>
-</dl>
+- `table` (material.sampler_info[]) - Information about the texture samplers.
 
 **Examples**
 
@@ -142,42 +65,7 @@ Returns a table of all the textures from the compute program.
 
 **Returns**
 
-- `table` (table) - A table of tables, where each entry contains info about the compute textures:
-<dl>
-<dt><code>path</code></dt>
-<dd><span class="type">hash</span> the resource path of the texture. Only available if the texture is a resource.</dd>
-<dt><code>handle</code></dt>
-<dd><span class="type">hash</span> the runtime handle of the texture.</dd>
-<dt><code>width</code></dt>
-<dd><span class="type">number</span> the width of the texture</dd>
-<dt><code>height</code></dt>
-<dd><span class="type">number</span> the height of the texture</dd>
-<dt><code>depth</code></dt>
-<dd><span class="type">number</span> the depth of the texture. Corresponds to the number of layers in an array texture.</dd>
-<dt><code>mipmaps</code></dt>
-<dd><span class="type">number</span> the number of mipmaps in the texture</dd>
-<dt><code>type</code></dt>
-<dd><span class="type">number</span> the type of the texture. Supported values:</dd>
-</dl>
-<ul>
-<li><code>graphics.TEXTURE_TYPE_2D</code></li>
-<li><code>graphics.TEXTURE_TYPE_2D_ARRAY</code></li>
-<li><code>graphics.TEXTURE_TYPE_CUBE_MAP</code></li>
-<li><code>graphics.TEXTURE_TYPE_IMAGE_2D</code></li>
-<li><code>graphics.TEXTURE_TYPE_3D</code></li>
-<li><code>graphics.TEXTURE_TYPE_IMAGE_3D</code></li>
-</ul>
-<dl>
-<dt><code>flags</code></dt>
-<dd><span class="type">number</span> the flags of the texture. This field is a bit mask of these supported flags:</dd>
-</dl>
-<ul>
-<li><code>graphics.TEXTURE_USAGE_FLAG_SAMPLE</code></li>
-<li><code>graphics.TEXTURE_USAGE_FLAG_MEMORYLESS</code></li>
-<li><code>graphics.TEXTURE_USAGE_FLAG_STORAGE</code></li>
-<li><code>graphics.TEXTURE_USAGE_FLAG_INPUT</code></li>
-<li><code>graphics.TEXTURE_USAGE_FLAG_COLOR</code></li>
-</ul>
+- `table` (material.texture_info[]) - Information about the compute textures.
 
 **Examples**
 
@@ -196,34 +84,7 @@ Sets shader constants in a compute program, if the constants exist.
 **Parameters**
 
 - `path` (hash | string) - The path to the resource
-- `constants` (table) - A table keyed by constant name with args tables as values. Constants can be partially updated. Supported entries:
-<dl>
-<dt><code>type</code></dt>
-<dd><span class="type">number</span> the type of the constant. Supported values:</dd>
-</dl>
-<ul>
-<li><code>material.CONSTANT_TYPE_USER</code></li>
-<li><code>material.CONSTANT_TYPE_USER_MATRIX4</code></li>
-<li><code>material.CONSTANT_TYPE_VIEWPROJ</code></li>
-<li><code>material.CONSTANT_TYPE_WORLD</code></li>
-<li><code>material.CONSTANT_TYPE_TEXTURE</code></li>
-<li><code>material.CONSTANT_TYPE_VIEW</code></li>
-<li><code>material.CONSTANT_TYPE_PROJECTION</code></li>
-<li><code>material.CONSTANT_TYPE_NORMAL</code></li>
-<li><code>material.CONSTANT_TYPE_WORLDVIEW</code></li>
-<li><code>material.CONSTANT_TYPE_WORLDVIEWPROJ</code></li>
-<li><code>material.CONSTANT_TYPE_TIME</code></li>
-<li><code>material.CONSTANT_TYPE_WORLD_INVERSE</code></li>
-<li><code>material.CONSTANT_TYPE_VIEW_INVERSE</code></li>
-<li><code>material.CONSTANT_TYPE_PROJECTION_INVERSE</code></li>
-<li><code>material.CONSTANT_TYPE_VIEWPROJ_INVERSE</code></li>
-<li><code>material.CONSTANT_TYPE_WORLDVIEW_INVERSE</code></li>
-<li><code>material.CONSTANT_TYPE_WORLDVIEWPROJ_INVERSE</code></li>
-</ul>
-<dl>
-<dt><code>value</code></dt>
-<dd><span class="type">vmath.vector4 | vmath.vector3 | vmath.matrix4 | number | table</span> the value(s) of the constant. If the shader constant is an array, the amount of values to update depends on how many values that are passed in the 'value' field.</dd>
-</dl>
+- `constants` (table<string|hash, material.constant_options>) - Constant options keyed by constant name. Partial updates are supported.
 
 **Examples**
 
@@ -250,53 +111,7 @@ To set actual textures that should be bound to the samplers, use the compute.set
 **Parameters**
 
 - `path` (hash | string) - The path to the resource
-- `samplers` (table) - A table keyed by sampler name with args tables as values. Partial updates are supported. Supported entries:
-<dl>
-<dt><code>u_wrap</code></dt>
-<dd><span class="type">number</span> the u wrap mode of the texture sampler. Supported values:</dd>
-</dl>
-<ul>
-<li><code>graphics.TEXTURE_WRAP_CLAMP_TO_BORDER</code></li>
-<li><code>graphics.TEXTURE_WRAP_CLAMP_TO_EDGE</code></li>
-<li><code>graphics.TEXTURE_WRAP_MIRRORED_REPEAT</code></li>
-<li><code>graphics.TEXTURE_WRAP_REPEAT</code></li>
-</ul>
-<dl>
-<dt><code>v_wrap</code></dt>
-<dd><span class="type">number</span> the v wrap mode of the texture sampler. Supported values:</dd>
-</dl>
-<ul>
-<li><code>graphics.TEXTURE_WRAP_CLAMP_TO_BORDER</code></li>
-<li><code>graphics.TEXTURE_WRAP_CLAMP_TO_EDGE</code></li>
-<li><code>graphics.TEXTURE_WRAP_MIRRORED_REPEAT</code></li>
-<li><code>graphics.TEXTURE_WRAP_REPEAT</code></li>
-</ul>
-<dl>
-<dt><code>min_filter</code></dt>
-<dd><span class="type">number</span> the min filter mode of the texture sampler. Supported values:</dd>
-</dl>
-<ul>
-<li><code>graphics.TEXTURE_FILTER_DEFAULT</code></li>
-<li><code>graphics.TEXTURE_FILTER_NEAREST</code></li>
-<li><code>graphics.TEXTURE_FILTER_LINEAR</code></li>
-<li><code>graphics.TEXTURE_FILTER_NEAREST_MIPMAP_NEAREST</code></li>
-<li><code>graphics.TEXTURE_FILTER_NEAREST_MIPMAP_LINEAR</code></li>
-<li><code>graphics.TEXTURE_FILTER_LINEAR_MIPMAP_NEAREST</code></li>
-<li><code>graphics.TEXTURE_FILTER_LINEAR_MIPMAP_LINEAR</code></li>
-</ul>
-<dl>
-<dt><code>mag_filter</code></dt>
-<dd><span class="type">number</span> the mag filter mode of the texture sampler</dd>
-</dl>
-<ul>
-<li><code>graphics.TEXTURE_FILTER_DEFAULT</code></li>
-<li><code>graphics.TEXTURE_FILTER_NEAREST</code></li>
-<li><code>graphics.TEXTURE_FILTER_LINEAR</code></li>
-</ul>
-<dl>
-<dt><code>max_anisotropy</code></dt>
-<dd><span class="type">number</span> the max anisotropy of the texture sampler</dd>
-</dl>
+- `samplers` (table<string|hash, material.sampler_options>) - Sampler options keyed by sampler name. Partial updates are supported.
 
 **Examples**
 
@@ -317,7 +132,7 @@ Sets textures in a compute program, if the samplers exist.
 **Parameters**
 
 - `path` (hash | string) - The path to the resource
-- `textures` (table) - A table keyed by sampler name with texture resources as values.
+- `textures` (table<string|hash, string|hash>) - A table keyed by sampler name with texture resources as values.
 
 **Examples**
 

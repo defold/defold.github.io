@@ -18,12 +18,12 @@ Get fixture AABB for a child shape.
 **Parameters**
 
 - `body` (b2Body) - body
-- `fixture_index` (number) - 1-based fixture index from <code>b2d.body.get_fixtures</code>
-- `child_index` (number) - 1-based child shape index
+- `fixture_index` (integer) - 1-based fixture index from <a href="#b2d">b2d.body.get_fixtures</a>
+- `child_index` (integer) - 1-based child shape index
 
 **Returns**
 
-- `aabb` (table) - table with <code>lower</code> and <code>upper</code>
+- `aabb` (b2d.aabb) - the fixture AABB
 
 ### b2d.fixture.get_density
 *Type:* FUNCTION
@@ -32,7 +32,7 @@ Get fixture density.
 **Parameters**
 
 - `body` (b2Body) - body
-- `fixture_index` (number) - 1-based fixture index from <code>b2d.body.get_fixtures</code>
+- `fixture_index` (integer) - 1-based fixture index from <a href="#b2d">b2d.body.get_fixtures</a>
 
 **Returns**
 
@@ -45,12 +45,12 @@ Get fixture filter data for a child shape.
 **Parameters**
 
 - `body` (b2Body) - body
-- `fixture_index` (number) - 1-based fixture index from <code>b2d.body.get_fixtures</code>
-- `child_index` (number) - 1-based child shape index
+- `fixture_index` (integer) - 1-based fixture index from <a href="#b2d">b2d.body.get_fixtures</a>
+- `child_index` (integer) - 1-based child shape index
 
 **Returns**
 
-- `filter` (table) - table with <code>category_bits</code>, <code>mask_bits</code>, and <code>group_index</code>
+- `filter` (b2d.filter) - the filter data
 
 ### b2d.fixture.get_friction
 *Type:* FUNCTION
@@ -59,7 +59,7 @@ Get fixture friction.
 **Parameters**
 
 - `body` (b2Body) - body
-- `fixture_index` (number) - 1-based fixture index from <code>b2d.body.get_fixtures</code>
+- `fixture_index` (integer) - 1-based fixture index from <a href="#b2d">b2d.body.get_fixtures</a>
 
 **Returns**
 
@@ -72,7 +72,7 @@ Get fixture restitution.
 **Parameters**
 
 - `body` (b2Body) - body
-- `fixture_index` (number) - 1-based fixture index from <code>b2d.body.get_fixtures</code>
+- `fixture_index` (integer) - 1-based fixture index from <a href="#b2d">b2d.body.get_fixtures</a>
 
 **Returns**
 
@@ -85,15 +85,11 @@ Get the fixture shape as a functional shape table.
 **Parameters**
 
 - `body` (b2Body) - body
-- `fixture_index` (number) - 1-based fixture index from <code>b2d.body.get_fixtures</code>
+- `fixture_index` (integer) - 1-based fixture index from <a href="#b2d">b2d.body.get_fixtures</a>
 
 **Returns**
 
-- `shape` (table) - shape table with numeric <code>type</code> from <code>b2d.shape.SHAPE_TYPE_*</code>,
-suitable for reuse in <code>b2d.body.create_fixture</code>.
-Circle shapes use <code>radius</code> and <code>center</code>, edge shapes use <code>v1</code>, <code>v2</code>, optional <code>v0</code>, <code>v3</code>,
-polygon shapes use <code>vertices</code>, and chain shapes use <code>vertices</code>, <code>loop</code>, optional <code>prev_vertex</code>, and <code>next_vertex</code>.
-Any angle values are in radians.
+- `shape` (b2d.shape.definition) - the shape definition, suitable for reuse in <a href="#b2d">b2d.body.create_fixture</a>
 
 ### b2d.fixture.get_type
 *Type:* FUNCTION
@@ -102,11 +98,11 @@ Get the fixture type.
 **Parameters**
 
 - `body` (b2Body) - body
-- `fixture_index` (number) - 1-based fixture index from <code>b2d.body.get_fixtures</code>
+- `fixture_index` (integer) - 1-based fixture index from <a href="#b2d">b2d.body.get_fixtures</a>
 
 **Returns**
 
-- `type` (number)
+- `type` (b2d.shape.SHAPE_TYPE)
 
 ### b2d.fixture.is_sensor
 *Type:* FUNCTION
@@ -115,7 +111,7 @@ Check if a fixture is a sensor.
 **Parameters**
 
 - `body` (b2Body) - body
-- `fixture_index` (number) - 1-based fixture index from <code>b2d.body.get_fixtures</code>
+- `fixture_index` (integer) - 1-based fixture index from <a href="#b2d">b2d.body.get_fixtures</a>
 
 **Returns**
 
@@ -128,7 +124,7 @@ Refilter a fixture.
 **Parameters**
 
 - `body` (b2Body) - body
-- `fixture_index` (number) - 1-based fixture index from <code>b2d.body.get_fixtures</code>
+- `fixture_index` (integer) - 1-based fixture index from <a href="#b2d">b2d.body.get_fixtures</a>
 - `touch_proxies` (boolean) - if true, touch broad-phase proxies
 
 ### b2d.fixture.set_density
@@ -138,7 +134,7 @@ Set fixture density.
 **Parameters**
 
 - `body` (b2Body) - body
-- `fixture_index` (number) - 1-based fixture index from <code>b2d.body.get_fixtures</code>
+- `fixture_index` (integer) - 1-based fixture index from <a href="#b2d">b2d.body.get_fixtures</a>
 - `density` (number) - density in kg/m^2
 - `update_mass` (boolean) - if true, reset body mass data after the change
 
@@ -149,9 +145,9 @@ Set fixture filter data for a child shape.
 **Parameters**
 
 - `body` (b2Body) - body
-- `fixture_index` (number) - 1-based fixture index from <code>b2d.body.get_fixtures</code>
-- `child_index` (number) - 1-based child shape index
-- `filter` (table) - table with <code>category_bits</code>, <code>mask_bits</code>, and <code>group_index</code>
+- `fixture_index` (integer) - 1-based fixture index from <a href="#b2d">b2d.body.get_fixtures</a>
+- `child_index` (integer) - 1-based child shape index
+- `filter` (b2d.filter) - the filter data
 
 ### b2d.fixture.set_friction
 *Type:* FUNCTION
@@ -160,7 +156,7 @@ Set fixture friction.
 **Parameters**
 
 - `body` (b2Body) - body
-- `fixture_index` (number) - 1-based fixture index from <code>b2d.body.get_fixtures</code>
+- `fixture_index` (integer) - 1-based fixture index from <a href="#b2d">b2d.body.get_fixtures</a>
 - `friction` (number)
 
 ### b2d.fixture.set_restitution
@@ -170,7 +166,7 @@ Set fixture restitution.
 **Parameters**
 
 - `body` (b2Body) - body
-- `fixture_index` (number) - 1-based fixture index from <code>b2d.body.get_fixtures</code>
+- `fixture_index` (integer) - 1-based fixture index from <a href="#b2d">b2d.body.get_fixtures</a>
 - `restitution` (number)
 
 ### b2d.fixture.set_sensor
@@ -180,7 +176,7 @@ Set sensor mode for a fixture.
 **Parameters**
 
 - `body` (b2Body) - body
-- `fixture_index` (number) - 1-based fixture index from <code>b2d.body.get_fixtures</code>
+- `fixture_index` (integer) - 1-based fixture index from <a href="#b2d">b2d.body.get_fixtures</a>
 - `enabled` (boolean)
 
 ### b2d.fixture.set_shape
@@ -194,8 +190,8 @@ The body mass is not updated unless update_mass is true.
 **Parameters**
 
 - `body` (b2Body) - body
-- `fixture_index` (number) - 1-based fixture index from <code>b2d.body.get_fixtures</code>
-- `shape` (table) - shape table with numeric <code>type</code> from <code>b2d.shape.SHAPE_TYPE_*</code>
+- `fixture_index` (integer) - 1-based fixture index from <a href="#b2d">b2d.body.get_fixtures</a>
+- `shape` (b2d.shape.definition) - the shape definition
 - `update_mass` (boolean) - if true, reset body mass data after the change
 
 **Examples**
@@ -234,7 +230,7 @@ Test a point against a fixture.
 **Parameters**
 
 - `body` (b2Body) - body
-- `fixture_index` (number) - 1-based fixture index from <code>b2d.body.get_fixtures</code>
+- `fixture_index` (integer) - 1-based fixture index from <a href="#b2d">b2d.body.get_fixtures</a>
 - `point` (vector3) - point in world coordinates
 
 **Returns**

@@ -36,6 +36,135 @@ vector
 
 ## API
 
+### matrix4
+*Type:* CLASS
+A 4x4 floating-point matrix used for 3D transformations and projections.
+Create an identity matrix with vmath.matrix4, or use constructors such
+as vmath.matrix4_translation and vmath.matrix4_rotation_z.
+Matrices can be multiplied by other matrices, numbers, and vector4
+values. Individual elements are exposed as m00 through m33, and columns
+as c0 through c3.
+
+**Members**
+
+- `m00` (number) - row 0, column 0
+- `m01` (number) - row 0, column 1
+- `m02` (number) - row 0, column 2
+- `m03` (number) - row 0, column 3
+- `m10` (number) - row 1, column 0
+- `m11` (number) - row 1, column 1
+- `m12` (number) - row 1, column 2
+- `m13` (number) - row 1, column 3
+- `m20` (number) - row 2, column 0
+- `m21` (number) - row 2, column 1
+- `m22` (number) - row 2, column 2
+- `m23` (number) - row 2, column 3
+- `m30` (number) - row 3, column 0
+- `m31` (number) - row 3, column 1
+- `m32` (number) - row 3, column 2
+- `m33` (number) - row 3, column 3
+- `c0` (vector4) - column 0
+- `c1` (vector4) - column 1
+- `c2` (vector4) - column 2
+- `c3` (vector4) - column 3
+
+**Examples**
+
+Transform a point using a translation matrix:
+```
+local transform = vmath.matrix4_translation(vmath.vector3(100, 50, 0))
+local point = transform * vmath.vector4(10, 20, 0, 1)
+print(point) --> vmath.vector4(110, 70, 0, 1)
+
+```
+
+### quaternion
+*Type:* CLASS
+A four-component value representing a 3D rotation. Create one with
+vmath.quat or a specialized constructor such as
+vmath.quat_rotation_z. Quaternion components are available as x,
+y, z, and w.
+
+**Members**
+
+- `x` (number) - x component
+- `y` (number) - y component
+- `z` (number) - z component
+- `w` (number) - w component
+
+**Examples**
+
+```
+local rotation = vmath.quat_rotation_z(math.rad(90))
+go.set_rotation(rotation)
+
+```
+
+### vector
+*Type:* TYPEDEF
+A vector containing an arbitrary number of floating-point values, created
+with vmath.vector. Unlike vector3 and vector4, its length
+is determined by the table supplied to the constructor. Dynamically sized
+vectors are primarily used to define custom animation easing curves.
+
+**Parameters**
+
+- `value` (userdata) - dynamically sized vector
+
+**Examples**
+
+```
+local easing = vmath.vector({ 0, 0.1, 0.8, 1 })
+go.animate(".", "position.x", go.PLAYBACK_ONCE_FORWARD, 100, easing, 1)
+
+```
+
+### vector3
+*Type:* CLASS
+A fixed-size value containing three floating-point components. Vector3
+values are commonly used for positions, directions, scales, and Euler
+angles. Create one with vmath.vector3, access its components through
+x, y, and z, and use arithmetic operators to combine or scale values.
+
+**Members**
+
+- `x` (number) - x component
+- `y` (number) - y component
+- `z` (number) - z component
+
+**Examples**
+
+```
+local position = vmath.vector3(100, 50, 0)
+local offset = vmath.vector3(10, 0, 0)
+go.set_position(position + offset)
+
+```
+
+### vector4
+*Type:* CLASS
+A fixed-size value containing four floating-point components. Vector4
+values are commonly used for colors, shader constants, and homogeneous
+coordinates. Create one with vmath.vector4, access its components
+through x, y, z, and w, and use arithmetic operators to combine or
+scale values.
+
+**Members**
+
+- `x` (number) - x component
+- `y` (number) - y component
+- `z` (number) - z component
+- `w` (number) - w component
+
+**Examples**
+
+```
+local tint = vmath.vector4(1, 0.5, 0.25, 1)
+local faded_tint = tint * 0.5
+go.set("#sprite", "tint", faded_tint)
+
+```
+
 ### vmath.clamp
 *Type:* FUNCTION
 Clamp input value to be in range of [min, max]. In case if input value has vector3|vector4 type
@@ -157,8 +286,8 @@ If the first argument is vector3, its values are used as x, y, z angles.
 **Parameters**
 
 - `x` (number | vector3) - rotation around x-axis in degrees or vector3 with euler angles in degrees
-- `y` (number) - rotation around y-axis in degrees
-- `z` (number) - rotation around z-axis in degrees
+- `y` (number) (optional) - rotation around y-axis in degrees
+- `z` (number) (optional) - rotation around z-axis in degrees
 
 **Returns**
 
@@ -1223,7 +1352,7 @@ value position in the vector.
 
 **Parameters**
 
-- `t` (table) - table of numbers
+- `t` (number[]) - table of numbers
 
 **Returns**
 

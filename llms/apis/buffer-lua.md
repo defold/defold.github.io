@@ -19,9 +19,9 @@ The source and destination buffer can be the same.
 
 **Parameters**
 
-- `dst` (buffer) - the destination buffer
+- `dst` (buffer_data) - the destination buffer
 - `dstoffset` (number) - the offset to start copying data to
-- `src` (buffer) - the source data buffer
+- `src` (buffer_data) - the source data buffer
 - `srcoffset` (number) - the offset to start copying data from
 - `count` (number) - the number of elements to copy
 
@@ -45,9 +45,9 @@ The source and destination streams can be the same.
 
 **Parameters**
 
-- `dst` (bufferstream) - the destination stream
+- `dst` (buffer_stream) - the destination stream
 - `dstoffset` (number) - the offset to start copying data to (measured in value type)
-- `src` (bufferstream) - the source data stream
+- `src` (buffer_stream) - the source data stream
 - `srcoffset` (number) - the offset to start copying data from (measured in value type)
 - `count` (number) - the number of values to copy (measured in value type)
 
@@ -72,16 +72,16 @@ vertex position, color, normal etc.
 **Parameters**
 
 - `element_count` (number) - The number of elements the buffer should hold
-- `declaration` (table) - A table where each entry (table) describes a stream
+- `declaration` (({ name:hash|string, type:buffer.VALUE_TYPE, count:number })[]) - A table where each entry (table) describes a stream
 <ul>
-<li><span class="type">hash | string</span> <code>name</code>: The name of the stream</li>
-<li><span class="type">constant</span> <code>type</code>: The data type of the stream</li>
-<li><span class="type">number</span> <code>count</code>: The number of values each element should hold</li>
+<li><span class="type"><a href="../builtins-lua/#hash">hash</a> | <a href="../../../manuals/lua/#variables-and-data-types">string</a></span> <code>name</code>: The name of the stream</li>
+<li><span class="type"><a href="#buffer.VALUE_TYPE">buffer.VALUE_TYPE</a></span> <code>type</code>: The data type of the stream</li>
+<li><span class="type"><a href="../../../manuals/lua/#variables-and-data-types">number</a></span> <code>count</code>: The number of values each element should hold</li>
 </ul>
 
 **Returns**
 
-- `buffer` (buffer) - the new buffer
+- `buffer` (buffer_data) - the new buffer
 
 **Examples**
 
@@ -109,7 +109,7 @@ Get a copy of all the bytes from a specified stream as a Lua string.
 
 **Parameters**
 
-- `buffer` (buffer) - the source buffer
+- `buffer` (buffer_data) - the source buffer
 - `stream_name` (hash) - the name of the stream
 
 **Returns**
@@ -122,13 +122,13 @@ Get a named metadata entry from a buffer along with its type.
 
 **Parameters**
 
-- `buf` (buffer) - the buffer to get the metadata from
+- `buf` (buffer_data) - the buffer to get the metadata from
 - `metadata_name` (hash | string) - name of the metadata entry
 
 **Returns**
 
-- `values` (table | nil) - table of metadata values or <code>nil</code> if the entry does not exist
-- `value_type` (constant | nil) - numeric type of values or <code>nil</code>
+- `values` (number[] | nil) - table of metadata values or <code>nil</code> if the entry does not exist
+- `value_type` (buffer.VALUE_TYPE | nil) - numeric type of values or <code>nil</code>
 
 **Examples**
 
@@ -146,12 +146,12 @@ Get a specified stream from a buffer.
 
 **Parameters**
 
-- `buffer` (buffer) - the buffer to get the stream from
+- `buffer` (buffer_data) - the buffer to get the stream from
 - `stream_name` (hash | string) - the stream name
 
 **Returns**
 
-- `stream` (bufferstream) - the data stream
+- `stream` (buffer_stream) - the data stream
 
 ### buffer.set_metadata
 *Type:* FUNCTION
@@ -160,10 +160,10 @@ Creates or updates a metadata array entry on a buffer.
 
 **Parameters**
 
-- `buf` (buffer) - the buffer to set the metadata on
+- `buf` (buffer_data) - the buffer to set the metadata on
 - `metadata_name` (hash | string) - name of the metadata entry
-- `values` (table) - actual metadata, an array of numeric values
-- `value_type` (constant) - type of values when stored
+- `values` (number[]) - actual metadata, an array of numeric values
+- `value_type` (buffer.VALUE_TYPE) - type of values when stored
 
 **Examples**
 
@@ -177,38 +177,61 @@ buffer.set_metadata(buf, hash("somefloats"), {-2.5, 10.0, 32.2}, buffer.VALUE_TY
 
 ```
 
-### buffer.VALUE_TYPE_FLOAT32
-*Type:* CONSTANT
-Float, single precision, 4 bytes
+### buffer.VALUE_TYPE
+*Type:* ENUM
+Buffer value types
 
-### buffer.VALUE_TYPE_INT16
-*Type:* CONSTANT
-Signed integer, 2 bytes
+**Members**
 
-### buffer.VALUE_TYPE_INT32
-*Type:* CONSTANT
-Signed integer, 4 bytes
+- `buffer.VALUE_TYPE_FLOAT32` - float32 Float, single precision, 4 bytes
+- `buffer.VALUE_TYPE_INT16` - int16 Signed integer, 2 bytes
+- `buffer.VALUE_TYPE_INT32` - int32 Signed integer, 4 bytes
+- `buffer.VALUE_TYPE_INT64` - int64 Signed integer, 8 bytes
+- `buffer.VALUE_TYPE_INT8` - int8 Signed integer, 1 byte
+- `buffer.VALUE_TYPE_UINT16` - uint16 Unsigned integer, 2 bytes
+- `buffer.VALUE_TYPE_UINT32` - uint32 Unsigned integer, 4 bytes
+- `buffer.VALUE_TYPE_UINT64` - uint64 Unsigned integer, 8 bytes
+- `buffer.VALUE_TYPE_UINT8` - uint8 Unsigned integer, 1 byte
 
-### buffer.VALUE_TYPE_INT64
-*Type:* CONSTANT
-Signed integer, 8 bytes
+### buffer_data
+*Type:* TYPEDEF
+A buffer stores one or more named streams of typed values. Create a buffer
+with buffer.create, or obtain one from APIs such as
+resource.get_buffer, sys.load_buffer, or image.load. Use
+buffer.get_stream to access the values in an individual stream.
 
-### buffer.VALUE_TYPE_INT8
-*Type:* CONSTANT
-Signed integer, 1 byte
+**Parameters**
 
-### buffer.VALUE_TYPE_UINT16
-*Type:* CONSTANT
-Unsigned integer, 2 bytes
+- `value` (userdata) - typed data buffer
 
-### buffer.VALUE_TYPE_UINT32
-*Type:* CONSTANT
-Unsigned integer, 4 bytes
+**Examples**
 
-### buffer.VALUE_TYPE_UINT64
-*Type:* CONSTANT
-Unsigned integer, 8 bytes
+```
+local vertices = buffer.create(3, {
+    { name = hash("position"), type = buffer.VALUE_TYPE_FLOAT32, count = 3 }
+})
 
-### buffer.VALUE_TYPE_UINT8
-*Type:* CONSTANT
-Unsigned integer, 1 byte
+```
+
+### buffer_stream
+*Type:* TYPEDEF
+An indexable view of one named stream in a buffer_data. Obtain a
+stream with buffer.get_stream. Reading or writing the stream accesses
+the values in its underlying buffer.
+
+**Parameters**
+
+- `value` (userdata) - named buffer stream
+
+**Examples**
+
+```
+local vertices = buffer.create(1, {
+    { name = hash("position"), type = buffer.VALUE_TYPE_FLOAT32, count = 3 }
+})
+local positions = buffer.get_stream(vertices, "position")
+positions[1] = 10
+positions[2] = 20
+positions[3] = 0
+
+```

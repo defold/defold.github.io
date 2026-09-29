@@ -19,7 +19,7 @@ from this function since the gui component is about to be destroyed.
 
 **Parameters**
 
-- `self` (userdata) - reference to the script state to be used for storing data
+- `self` (script_instance) - script instance used for storing state
 
 **Examples**
 
@@ -49,40 +49,27 @@ end
 
 ```
 
-### gui.ADJUST_FIT
-*Type:* CONSTANT
-Adjust mode is used when the screen resolution differs from the project settings.
-The fit mode ensures that the entire node is visible in the adjusted gui scene.
+### gui.ADJUST
+*Type:* ENUM
+Adjust modes
 
-### gui.ADJUST_STRETCH
-*Type:* CONSTANT
-Adjust mode is used when the screen resolution differs from the project settings.
-The stretch mode ensures that the node is displayed as is in the adjusted gui scene, which might scale it non-uniformally.
+**Members**
 
-### gui.ADJUST_ZOOM
-*Type:* CONSTANT
-Adjust mode is used when the screen resolution differs from the project settings.
-The zoom mode ensures that the node fills its entire area and might make the node exceed it.
+- `gui.ADJUST_FIT` - fit adjust mode Adjust mode is used when the screen resolution differs from the project settings. The fit mode ensures that the entire node is visible in the adjusted gui scene.
+- `gui.ADJUST_STRETCH` - stretch adjust mode Adjust mode is used when the screen resolution differs from the project settings. The stretch mode ensures that the node is displayed as is in the adjusted gui scene, which might scale it non-uniformally.
+- `gui.ADJUST_ZOOM` - zoom adjust mode Adjust mode is used when the screen resolution differs from the project settings. The zoom mode ensures that the node fills its entire area and might make the node exceed it.
 
-### gui.ANCHOR_BOTTOM
-*Type:* CONSTANT
-bottom y-anchor
+### gui.ANCHOR
+*Type:* ENUM
+Anchor modes
 
-### gui.ANCHOR_LEFT
-*Type:* CONSTANT
-left x-anchor
+**Members**
 
-### gui.ANCHOR_NONE
-*Type:* CONSTANT
-no anchor
-
-### gui.ANCHOR_RIGHT
-*Type:* CONSTANT
-right x-anchor
-
-### gui.ANCHOR_TOP
-*Type:* CONSTANT
-top y-anchor
+- `gui.ANCHOR_BOTTOM` - bottom y-anchor
+- `gui.ANCHOR_LEFT` - left x-anchor
+- `gui.ANCHOR_NONE` - no anchor
+- `gui.ANCHOR_RIGHT` - right x-anchor
+- `gui.ANCHOR_TOP` - top y-anchor
 
 ### gui.animate
 *Type:* FUNCTION
@@ -105,55 +92,16 @@ together. See the examples below for more information.
 **Parameters**
 
 - `node` (node) - node to animate
-- `property` (string | constant) - property to animate
-<ul>
-<li><code>"position"</code></li>
-<li><code>"rotation"</code></li>
-<li><code>"euler"</code></li>
-<li><code>"scale"</code></li>
-<li><code>"color"</code></li>
-<li><code>"outline"</code></li>
-<li><code>"shadow"</code></li>
-<li><code>"size"</code></li>
-<li><code>"fill_angle"</code> (pie)</li>
-<li><code>"inner_radius"</code> (pie)</li>
-<li><code>"leading"</code> (text)</li>
-<li><code>"tracking"</code> (text)</li>
-<li><code>"slice9"</code> (slice9)</li>
-</ul>
-The following property constants are defined equaling the corresponding property string names.
-<ul>
-<li><code>gui.PROP_POSITION</code></li>
-<li><code>gui.PROP_ROTATION</code></li>
-<li><code>gui.PROP_EULER</code></li>
-<li><code>gui.PROP_SCALE</code></li>
-<li><code>gui.PROP_COLOR</code></li>
-<li><code>gui.PROP_OUTLINE</code></li>
-<li><code>gui.PROP_SHADOW</code></li>
-<li><code>gui.PROP_SIZE</code></li>
-<li><code>gui.PROP_FILL_ANGLE</code></li>
-<li><code>gui.PROP_INNER_RADIUS</code></li>
-<li><code>gui.PROP_LEADING</code></li>
-<li><code>gui.PROP_TRACKING</code></li>
-<li><code>gui.PROP_SLICE9</code></li>
-</ul>
+- `property` (string | hash | gui.PROP) - property to animate; each <span class="type"><a href="#gui.PROP">gui.PROP</a></span> member equals its corresponding property name string
 - `to` (number | vector3 | vector4 | quaternion) - target property value
-- `easing` (constant | vector) - easing to use during animation.
+- `easing` (gui.EASING | vector) - easing to use during animation.
      Either specify one of the <code>gui.EASING_*</code> constants or provide a
-     <span class="type">vector</span> with a custom curve. See the <a href="/manuals/animation#_easing">animation guide</a> for more information.
+     <span class="type"><a href="../vmath-lua/#vector">vector</a></span> with a custom curve. See the <a href="/manuals/animation#_easing">animation guide</a> for more information.
 - `duration` (number) - duration of the animation in seconds.
 - `delay` (number) (optional) - delay before the animation starts in seconds.
-- `complete_function` (function(self, node)) (optional) - function to call when the
+- `complete_function` (fun(self:script_instance, node:node)) (optional) - function to call when the
      animation has completed
-- `playback` (constant) (optional) - playback mode
-<ul>
-<li><code>gui.PLAYBACK_ONCE_FORWARD</code></li>
-<li><code>gui.PLAYBACK_ONCE_BACKWARD</code></li>
-<li><code>gui.PLAYBACK_ONCE_PINGPONG</code></li>
-<li><code>gui.PLAYBACK_LOOP_FORWARD</code></li>
-<li><code>gui.PLAYBACK_LOOP_BACKWARD</code></li>
-<li><code>gui.PLAYBACK_LOOP_PINGPONG</code></li>
-</ul>
+- `playback` (gui.PLAYBACK) (optional) - playback mode
 
 **Examples**
 
@@ -200,25 +148,17 @@ end
 
 ```
 
-### gui.BLEND_ADD
-*Type:* CONSTANT
-additive blending
+### gui.BLEND
+*Type:* ENUM
+Blend modes
 
-### gui.BLEND_ADD_ALPHA
-*Type:* CONSTANT
-additive alpha blending
+**Members**
 
-### gui.BLEND_ALPHA
-*Type:* CONSTANT
-alpha blending
-
-### gui.BLEND_MULT
-*Type:* CONSTANT
-multiply blending
-
-### gui.BLEND_SCREEN
-*Type:* CONSTANT
-screen blending
+- `gui.BLEND_ADD` - additive blending
+- `gui.BLEND_ADD_ALPHA` - additive alpha blending
+- `gui.BLEND_ALPHA` - alpha blending
+- `gui.BLEND_MULT` - multiply blending
+- `gui.BLEND_SCREEN` - screen blending
 
 ### gui.cancel_animations
 *Type:* FUNCTION
@@ -227,7 +167,7 @@ If one or more animations of the specified node is currently running (started by
 **Parameters**
 
 - `node` (node) - node that should have its animation canceled
-- `property` (nil | string | constant) (optional) - optional property for which the animation should be canceled
+- `property` (nil | string | hash | gui.PROP) (optional) - optional property for which the animation should be canceled
 <ul>
 <li><code>"position"</code></li>
 <li><code>"rotation"</code></li>
@@ -287,13 +227,14 @@ gui.cancel_flipbook(node)
 
 ```
 
-### gui.CLIPPING_MODE_NONE
-*Type:* CONSTANT
-clipping mode none
+### gui.CLIPPING_MODE
+*Type:* ENUM
+Clipping modes
 
-### gui.CLIPPING_MODE_STENCIL
-*Type:* CONSTANT
-clipping mode stencil
+**Members**
+
+- `gui.CLIPPING_MODE_NONE` - clipping mode none
+- `gui.CLIPPING_MODE_STENCIL` - clipping mode stencil
 
 ### gui.clone
 *Type:* FUNCTION
@@ -322,7 +263,7 @@ Use gui.clone to clone a node excluding its children.
 
 **Returns**
 
-- `clones` (table) - a table mapping node ids to the corresponding cloned nodes
+- `clones` (table<hash, node>) - a table mapping node ids to the corresponding cloned nodes
 
 ### gui.delete_node
 *Type:* FUNCTION
@@ -366,169 +307,53 @@ end
 
 ```
 
-### gui.EASING_INBACK
-*Type:* CONSTANT
-in-back
+### gui.EASING
+*Type:* ENUM
+Easing curves
 
-### gui.EASING_INBOUNCE
-*Type:* CONSTANT
-in-bounce
+**Members**
 
-### gui.EASING_INCIRC
-*Type:* CONSTANT
-in-circlic
-
-### gui.EASING_INCUBIC
-*Type:* CONSTANT
-in-cubic
-
-### gui.EASING_INELASTIC
-*Type:* CONSTANT
-in-elastic
-
-### gui.EASING_INEXPO
-*Type:* CONSTANT
-in-exponential
-
-### gui.EASING_INOUTBACK
-*Type:* CONSTANT
-in-out-back
-
-### gui.EASING_INOUTBOUNCE
-*Type:* CONSTANT
-in-out-bounce
-
-### gui.EASING_INOUTCIRC
-*Type:* CONSTANT
-in-out-circlic
-
-### gui.EASING_INOUTCUBIC
-*Type:* CONSTANT
-in-out-cubic
-
-### gui.EASING_INOUTELASTIC
-*Type:* CONSTANT
-in-out-elastic
-
-### gui.EASING_INOUTEXPO
-*Type:* CONSTANT
-in-out-exponential
-
-### gui.EASING_INOUTQUAD
-*Type:* CONSTANT
-in-out-quadratic
-
-### gui.EASING_INOUTQUART
-*Type:* CONSTANT
-in-out-quartic
-
-### gui.EASING_INOUTQUINT
-*Type:* CONSTANT
-in-out-quintic
-
-### gui.EASING_INOUTSINE
-*Type:* CONSTANT
-in-out-sine
-
-### gui.EASING_INQUAD
-*Type:* CONSTANT
-in-quadratic
-
-### gui.EASING_INQUART
-*Type:* CONSTANT
-in-quartic
-
-### gui.EASING_INQUINT
-*Type:* CONSTANT
-in-quintic
-
-### gui.EASING_INSINE
-*Type:* CONSTANT
-in-sine
-
-### gui.EASING_LINEAR
-*Type:* CONSTANT
-linear interpolation
-
-### gui.EASING_OUTBACK
-*Type:* CONSTANT
-out-back
-
-### gui.EASING_OUTBOUNCE
-*Type:* CONSTANT
-out-bounce
-
-### gui.EASING_OUTCIRC
-*Type:* CONSTANT
-out-circlic
-
-### gui.EASING_OUTCUBIC
-*Type:* CONSTANT
-out-cubic
-
-### gui.EASING_OUTELASTIC
-*Type:* CONSTANT
-out-elastic
-
-### gui.EASING_OUTEXPO
-*Type:* CONSTANT
-out-exponential
-
-### gui.EASING_OUTINBACK
-*Type:* CONSTANT
-out-in-back
-
-### gui.EASING_OUTINBOUNCE
-*Type:* CONSTANT
-out-in-bounce
-
-### gui.EASING_OUTINCIRC
-*Type:* CONSTANT
-out-in-circlic
-
-### gui.EASING_OUTINCUBIC
-*Type:* CONSTANT
-out-in-cubic
-
-### gui.EASING_OUTINELASTIC
-*Type:* CONSTANT
-out-in-elastic
-
-### gui.EASING_OUTINEXPO
-*Type:* CONSTANT
-out-in-exponential
-
-### gui.EASING_OUTINQUAD
-*Type:* CONSTANT
-out-in-quadratic
-
-### gui.EASING_OUTINQUART
-*Type:* CONSTANT
-out-in-quartic
-
-### gui.EASING_OUTINQUINT
-*Type:* CONSTANT
-out-in-quintic
-
-### gui.EASING_OUTINSINE
-*Type:* CONSTANT
-out-in-sine
-
-### gui.EASING_OUTQUAD
-*Type:* CONSTANT
-out-quadratic
-
-### gui.EASING_OUTQUART
-*Type:* CONSTANT
-out-quartic
-
-### gui.EASING_OUTQUINT
-*Type:* CONSTANT
-out-quintic
-
-### gui.EASING_OUTSINE
-*Type:* CONSTANT
-out-sine
+- `gui.EASING_INBACK` - in-back
+- `gui.EASING_INBOUNCE` - in-bounce
+- `gui.EASING_INCIRC` - in-circlic
+- `gui.EASING_INCUBIC` - in-cubic
+- `gui.EASING_INELASTIC` - in-elastic
+- `gui.EASING_INEXPO` - in-exponential
+- `gui.EASING_INOUTBACK` - in-out-back
+- `gui.EASING_INOUTBOUNCE` - in-out-bounce
+- `gui.EASING_INOUTCIRC` - in-out-circlic
+- `gui.EASING_INOUTCUBIC` - in-out-cubic
+- `gui.EASING_INOUTELASTIC` - in-out-elastic
+- `gui.EASING_INOUTEXPO` - in-out-exponential
+- `gui.EASING_INOUTQUAD` - in-out-quadratic
+- `gui.EASING_INOUTQUART` - in-out-quartic
+- `gui.EASING_INOUTQUINT` - in-out-quintic
+- `gui.EASING_INOUTSINE` - in-out-sine
+- `gui.EASING_INQUAD` - in-quadratic
+- `gui.EASING_INQUART` - in-quartic
+- `gui.EASING_INQUINT` - in-quintic
+- `gui.EASING_INSINE` - in-sine
+- `gui.EASING_LINEAR` - linear interpolation
+- `gui.EASING_OUTBACK` - out-back
+- `gui.EASING_OUTBOUNCE` - out-bounce
+- `gui.EASING_OUTCIRC` - out-circlic
+- `gui.EASING_OUTCUBIC` - out-cubic
+- `gui.EASING_OUTELASTIC` - out-elastic
+- `gui.EASING_OUTEXPO` - out-exponential
+- `gui.EASING_OUTINBACK` - out-in-back
+- `gui.EASING_OUTINBOUNCE` - out-in-bounce
+- `gui.EASING_OUTINCIRC` - out-in-circlic
+- `gui.EASING_OUTINCUBIC` - out-in-cubic
+- `gui.EASING_OUTINELASTIC` - out-in-elastic
+- `gui.EASING_OUTINEXPO` - out-in-exponential
+- `gui.EASING_OUTINQUAD` - out-in-quadratic
+- `gui.EASING_OUTINQUART` - out-in-quartic
+- `gui.EASING_OUTINQUINT` - out-in-quintic
+- `gui.EASING_OUTINSINE` - out-in-sine
+- `gui.EASING_OUTQUAD` - out-quadratic
+- `gui.EASING_OUTQUART` - out-quartic
+- `gui.EASING_OUTQUINT` - out-quintic
+- `gui.EASING_OUTSINE` - out-sine
 
 ### gui.get
 *Type:* FUNCTION
@@ -558,9 +383,9 @@ You can also use this function to get material constants.
 **Parameters**
 
 - `node` (node) - node to get the property for
-- `property` (string | hash | constant) - the property to retrieve
-- `options` (table) (optional) - optional options table (only applicable for material constants)
-- <code>index</code> <span class="type">number</span> index into array property (1 based)
+- `property` (string | hash | gui.PROP) - the property to retrieve
+- `options` ({ index?:integer }) (optional) - optional options table (only applicable for material constants)
+- <code>index</code> <span class="type"><a href="../../../manuals/lua/#variables-and-data-types">integer</a></span> index into array property (1 based)
 
 **Examples**
 
@@ -583,12 +408,7 @@ resolutions that differs from the one in the project settings.
 
 **Returns**
 
-- `adjust_mode` (constant) - the current adjust mode
-<ul>
-<li><code>gui.ADJUST_FIT</code></li>
-<li><code>gui.ADJUST_ZOOM</code></li>
-<li><code>gui.ADJUST_STRETCH</code></li>
-</ul>
+- `adjust_mode` (gui.ADJUST) - the current adjust mode
 
 ### gui.get_alpha
 *Type:* FUNCTION
@@ -613,14 +433,7 @@ Blend mode defines how the node will be blended with the background.
 
 **Returns**
 
-- `blend_mode` (constant) - blend mode
-<ul>
-<li><code>gui.BLEND_ALPHA</code></li>
-<li><code>gui.BLEND_ADD</code></li>
-<li><code>gui.BLEND_ADD_ALPHA</code></li>
-<li><code>gui.BLEND_MULT</code></li>
-<li><code>gui.BLEND_SCREEN</code></li>
-</ul>
+- `blend_mode` (gui.BLEND) - blend mode
 
 ### gui.get_clipping_inverted
 *Type:* FUNCTION
@@ -644,7 +457,7 @@ Clipping mode defines how the node will clip it's children nodes
 
 **Returns**
 
-- `clipping_mode` (constant) - clipping mode
+- `clipping_mode` (gui.CLIPPING_MODE) - clipping mode
 <ul>
   <li><code>gui.CLIPPING_MODE_NONE</code></li>
   <li><code>gui.CLIPPING_MODE_STENCIL</code></li>
@@ -893,6 +706,20 @@ gets the scene current layout
 
 - `layout` (hash) - layout id
 
+### gui.get_layout_objects
+*Type:* FUNCTION
+Returns the sprites and links found in the text node's current layout.
+Each object's x and y identify its lower-left corner relative to the
+text node's upper-left layout origin.
+
+**Parameters**
+
+- `node` (node) - text node to inspect
+
+**Returns**
+
+- `objects` (gui.layout_object[]) - layout objects in source order
+
 ### gui.get_layouts
 *Type:* FUNCTION
 Returns a table mapping each layout id hash to a vector3(width, height, 0). For the default layout,
@@ -901,7 +728,7 @@ no display profiles are assigned), the width/height pair is 0.
 
 **Returns**
 
-- `return` (table) - layout_id_hash -&gt; vmath.vector3(width, height, 0)
+- `return` (table<hash, vector3>) - layout_id_hash -&gt; vmath.vector3(width, height, 0)
 
 ### gui.get_leading
 *Type:* FUNCTION
@@ -984,11 +811,7 @@ Returns the outer bounds mode for a pie node.
 
 **Returns**
 
-- `bounds_mode` (constant) - the outer bounds mode of the pie node:
-<ul>
-<li><code>gui.PIEBOUNDS_RECTANGLE</code></li>
-<li><code>gui.PIEBOUNDS_ELLIPSE</code></li>
-</ul>
+- `bounds_mode` (gui.PIEBOUNDS) - the outer bounds mode of the pie node
 
 ### gui.get_outline
 *Type:* FUNCTION
@@ -1051,7 +874,7 @@ The pivot specifies how the node is drawn and rotated from its position.
 
 **Returns**
 
-- `pivot` (constant) - pivot constant
+- `pivot` (gui.PIVOT) - pivot constant
 <ul>
   <li><code>gui.PIVOT_CENTER</code></li>
   <li><code>gui.PIVOT_N</code></li>
@@ -1155,11 +978,7 @@ any size mode setting.
 
 **Returns**
 
-- `size_mode` (constant) - the current size mode
-<ul>
-<li><code>gui.SIZE_MODE_MANUAL</code></li>
-<li><code>gui.SIZE_MODE_AUTO</code></li>
-</ul>
+- `size_mode` (gui.SIZE_MODE) - the current size mode
 
 ### gui.get_slice9
 *Type:* FUNCTION
@@ -1221,7 +1040,7 @@ Get a node and all its children as a Lua table.
 
 **Returns**
 
-- `clones` (table) - a table mapping node ids to the corresponding nodes
+- `clones` (table<hash, node>) - a table mapping node ids to the corresponding nodes
 
 ### gui.get_type
 *Type:* FUNCTION
@@ -1233,14 +1052,7 @@ gets the node type
 
 **Returns**
 
-- `type` (constant) - type
-<ul>
-<li><code>gui.TYPE_BOX</code></li>
-<li><code>gui.TYPE_TEXT</code></li>
-<li><code>gui.TYPE_PIE</code></li>
-<li><code>gui.TYPE_PARTICLEFX</code></li>
-<li><code>gui.TYPE_CUSTOM</code></li>
-</ul>
+- `type` (gui.TYPE) - type
 - `subtype` (number | nil) - id of the custom type
 
 ### gui.get_visible
@@ -1274,7 +1086,7 @@ The x-anchor specifies how the node is moved when the game is run in a different
 
 **Returns**
 
-- `anchor` (constant) - anchor constant
+- `anchor` (gui.ANCHOR) - anchor constant
 <ul>
 <li><code>gui.ANCHOR_NONE</code></li>
 <li><code>gui.ANCHOR_LEFT</code></li>
@@ -1291,7 +1103,7 @@ The y-anchor specifies how the node is moved when the game is run in a different
 
 **Returns**
 
-- `anchor` (constant) - anchor constant
+- `anchor` (gui.ANCHOR) - anchor constant
 <ul>
 <li><code>gui.ANCHOR_NONE</code></li>
 <li><code>gui.ANCHOR_TOP</code></li>
@@ -1316,21 +1128,32 @@ Disabled nodes are not rendered and animations acting on them are not evaluated.
 
 - `enabled` (boolean) - whether the node is enabled or not
 
-### gui.KEYBOARD_TYPE_DEFAULT
-*Type:* CONSTANT
-default keyboard
+### gui.KEYBOARD_TYPE
+*Type:* ENUM
+Keyboard types
 
-### gui.KEYBOARD_TYPE_EMAIL
-*Type:* CONSTANT
-email keyboard
+**Members**
 
-### gui.KEYBOARD_TYPE_NUMBER_PAD
-*Type:* CONSTANT
-number input keyboard
+- `gui.KEYBOARD_TYPE_DEFAULT` - default keyboard
+- `gui.KEYBOARD_TYPE_EMAIL` - email keyboard
+- `gui.KEYBOARD_TYPE_NUMBER_PAD` - number input keyboard
+- `gui.KEYBOARD_TYPE_PASSWORD` - password keyboard
 
-### gui.KEYBOARD_TYPE_PASSWORD
-*Type:* CONSTANT
-password keyboard
+### gui.layout_object
+*Type:* STRUCT
+Rich-text layout object
+
+**Members**
+
+- `type` (string) - object type, currently <code>link</code> or <code>sprite</code>
+- `id` (hash) - the object's <code>id</code> attribute, or its generated layout object id
+- `text_offset` (integer) - zero-based UTF-32 offset in the visible text
+- `text_length` (integer) - visible UTF-32 text length covered by the object
+- `x` (number) - lower-left x-coordinate relative to the text node's upper-left layout origin
+- `y` (number) - lower-left y-coordinate relative to the text node's upper-left layout origin
+- `width` (number) - resolved object width
+- `height` (number) - resolved object height
+- `attributes` (table<string, string>) - markup attributes keyed by name
 
 ### gui.move_above
 *Type:* FUNCTION
@@ -1415,11 +1238,11 @@ Dynamically create a new texture.
 - `texture_id` (string | hash) - texture id
 - `width` (number) - texture width
 - `height` (number) - texture height
-- `type` (string | constant) - texture type
+- `type` (string | image.TYPE) - texture type
 <ul>
-<li><code>"rgb"</code> - RGB</li></li>
-<li><code>"rgba"</code> - RGBA</li></li>
-<li><code>"l"</code> - LUMINANCE</li></li>
+<li><code>"rgb"</code> or <code>image.TYPE_RGB</code> - RGB</li></li>
+<li><code>"rgba"</code> or <code>image.TYPE_RGBA</code> - RGBA</li></li>
+<li><code>"l"</code> or <code>image.TYPE_LUMINANCE</code> - LUMINANCE</li></li>
 <li><code>"astc"</code> - ASTC compressed format</li></li>
 </ul>
 - `buffer` (string) - texture data
@@ -1428,7 +1251,7 @@ Dynamically create a new texture.
 **Returns**
 
 - `success` (boolean) - texture creation was successful
-- `code` (number) - one of the gui.RESULT_* codes if unsuccessful
+- `code` (gui.RESULT | nil) - one of the gui.RESULT_* codes if unsuccessful
 
 **Examples**
 
@@ -1456,9 +1279,11 @@ function init(self)
          end
      end
 end
-```How to create a texture using .astc format
 
-```lua
+```
+
+How to create a texture using .astc format
+```
 local path = "/assets/images/logo_4x4.astc"
 local buffer = sys.load_resource(path)
 local n = gui.new_box_node(pos, vmath.vector3(size, size, 0))
@@ -1484,49 +1309,30 @@ node.
 
 - `pickable` (boolean) - pick result
 
-### gui.PIEBOUNDS_ELLIPSE
-*Type:* CONSTANT
-elliptical pie node bounds
+### gui.PIEBOUNDS
+*Type:* ENUM
+Pie bounds modes
 
-### gui.PIEBOUNDS_RECTANGLE
-*Type:* CONSTANT
-rectangular pie node bounds
+**Members**
 
-### gui.PIVOT_CENTER
-*Type:* CONSTANT
-center pivot
+- `gui.PIEBOUNDS_ELLIPSE` - elliptical pie node bounds
+- `gui.PIEBOUNDS_RECTANGLE` - rectangular pie node bounds
 
-### gui.PIVOT_E
-*Type:* CONSTANT
-east pivot
+### gui.PIVOT
+*Type:* ENUM
+Pivot modes
 
-### gui.PIVOT_N
-*Type:* CONSTANT
-north pivot
+**Members**
 
-### gui.PIVOT_NE
-*Type:* CONSTANT
-north-east pivot
-
-### gui.PIVOT_NW
-*Type:* CONSTANT
-north-west pivot
-
-### gui.PIVOT_S
-*Type:* CONSTANT
-south pivot
-
-### gui.PIVOT_SE
-*Type:* CONSTANT
-south-east pivot
-
-### gui.PIVOT_SW
-*Type:* CONSTANT
-south-west pivot
-
-### gui.PIVOT_W
-*Type:* CONSTANT
-west pivot
+- `gui.PIVOT_CENTER` - center pivot
+- `gui.PIVOT_E` - east pivot
+- `gui.PIVOT_N` - north pivot
+- `gui.PIVOT_NE` - north-east pivot
+- `gui.PIVOT_NW` - north-west pivot
+- `gui.PIVOT_S` - south pivot
+- `gui.PIVOT_SE` - south-east pivot
+- `gui.PIVOT_SW` - south-west pivot
+- `gui.PIVOT_W` - west pivot
 
 ### gui.play_flipbook
 *Type:* FUNCTION
@@ -1538,24 +1344,14 @@ Use this function to set one-frame still images on the node.
 
 - `node` (node) - node to set animation for
 - `animation` (string | hash) - animation id
-- `complete_function` (function(self, node)) (optional) - optional function to call when the animation has completed
+- `complete_function` (fun(self:script_instance, node:node)) (optional) - optional function to call when the animation has completed
 <dl>
-<dt><code>self</code></dt>
-<dd>
-<span class="type">object</span> The current object.
-</dd>
-<dt><code>node</code></dt>
-<dd>
-<span class="type">node</span> The node that is animated.
-</dd>
+<dt class="api-lua-v2-type-definition"><code>self:<a href="../builtins-lua/#script_instance">script_instance</a></code></dt>
+<dd>The current script instance.</dd>
+<dt class="api-lua-v2-type-definition"><code>node:<a href="#node">node</a></code></dt>
+<dd>The node that is animated.</dd>
 </dl>
-- `play_properties` (table) (optional) - optional table with properties
-<dl>
-<dt><code>offset</code></dt>
-<dd><span class="type">number</span> The normalized initial value of the animation cursor when the animation starts playing</dd>
-<dt><code>playback_rate</code></dt>
-<dd><span class="type">number</span> The rate with which the animation will be played. Must be positive</dd>
-</dl>
+- `play_properties` (gui.play_properties) (optional) - optional playback properties
 
 **Examples**
 
@@ -1590,23 +1386,7 @@ Plays the paricle fx for a gui node
 **Parameters**
 
 - `node` (node) - node to play particle fx for
-- `emitter_state_function` (function(self, node, emitter, state)) (optional) - optional callback function that will be called when an emitter attached to this particlefx changes state.
-<dl>
-<dt><code>self</code></dt>
-<dd><span class="type">object</span> The current object</dd>
-<dt><code>node</code></dt>
-<dd><span class="type">hash</span> The particle fx node, or <code>nil</code> if the node was deleted</dd>
-<dt><code>emitter</code></dt>
-<dd><span class="type">hash</span> The id of the emitter</dd>
-<dt><code>state</code></dt>
-<dd><span class="type">constant</span> the new state of the emitter:</dd>
-</dl>
-<ul>
-<li><code>particlefx.EMITTER_STATE_SLEEPING</code></li>
-<li><code>particlefx.EMITTER_STATE_PRESPAWN</code></li>
-<li><code>particlefx.EMITTER_STATE_SPAWNING</code></li>
-<li><code>particlefx.EMITTER_STATE_POSTSPAWN</code></li>
-</ul>
+- `emitter_state_function` (fun(self:script_instance, node:node|nil, emitter:hash, state:particlefx.EMITTER_STATE)) (optional) - optional callback function that will be called when an emitter attached to this particlefx changes state.
 
 **Examples**
 
@@ -1626,81 +1406,47 @@ end
 
 ```
 
-### gui.PLAYBACK_LOOP_BACKWARD
-*Type:* CONSTANT
-loop backward
+### gui.play_properties
+*Type:* STRUCT
+GUI flipbook playback properties
 
-### gui.PLAYBACK_LOOP_FORWARD
-*Type:* CONSTANT
-loop forward
+**Members**
 
-### gui.PLAYBACK_LOOP_PINGPONG
-*Type:* CONSTANT
-ping pong loop
+- `offset?` (number) - Normalized initial animation cursor.
+- `playback_rate?` (number) - Positive animation playback rate.
 
-### gui.PLAYBACK_ONCE_BACKWARD
-*Type:* CONSTANT
-once backward
+### gui.PLAYBACK
+*Type:* ENUM
+Playback modes
 
-### gui.PLAYBACK_ONCE_FORWARD
-*Type:* CONSTANT
-once forward
+**Members**
 
-### gui.PLAYBACK_ONCE_PINGPONG
-*Type:* CONSTANT
-once forward and then backward
+- `gui.PLAYBACK_LOOP_BACKWARD` - loop backward
+- `gui.PLAYBACK_LOOP_FORWARD` - loop forward
+- `gui.PLAYBACK_LOOP_PINGPONG` - ping pong loop
+- `gui.PLAYBACK_ONCE_BACKWARD` - once backward
+- `gui.PLAYBACK_ONCE_FORWARD` - once forward
+- `gui.PLAYBACK_ONCE_PINGPONG` - once forward and then backward
 
-### gui.PROP_COLOR
-*Type:* CONSTANT
-color property
+### gui.PROP
+*Type:* ENUM
+GUI property names
 
-### gui.PROP_EULER
-*Type:* CONSTANT
-euler property
+**Members**
 
-### gui.PROP_FILL_ANGLE
-*Type:* CONSTANT
-fill_angle property
-
-### gui.PROP_INNER_RADIUS
-*Type:* CONSTANT
-inner_radius property
-
-### gui.PROP_LEADING
-*Type:* CONSTANT
-leading property
-
-### gui.PROP_OUTLINE
-*Type:* CONSTANT
-outline color property
-
-### gui.PROP_POSITION
-*Type:* CONSTANT
-position property
-
-### gui.PROP_ROTATION
-*Type:* CONSTANT
-rotation property
-
-### gui.PROP_SCALE
-*Type:* CONSTANT
-scale property
-
-### gui.PROP_SHADOW
-*Type:* CONSTANT
-shadow color property
-
-### gui.PROP_SIZE
-*Type:* CONSTANT
-size property
-
-### gui.PROP_SLICE9
-*Type:* CONSTANT
-slice9 property
-
-### gui.PROP_TRACKING
-*Type:* CONSTANT
-tracking property
+- `gui.PROP_COLOR` - color property
+- `gui.PROP_EULER` - euler property
+- `gui.PROP_FILL_ANGLE` - fill_angle property
+- `gui.PROP_INNER_RADIUS` - inner_radius property
+- `gui.PROP_LEADING` - leading property
+- `gui.PROP_OUTLINE` - outline color property
+- `gui.PROP_POSITION` - position property
+- `gui.PROP_ROTATION` - rotation property
+- `gui.PROP_SCALE` - scale property
+- `gui.PROP_SHADOW` - shadow color property
+- `gui.PROP_SIZE` - size property
+- `gui.PROP_SLICE9` - slice9 property
+- `gui.PROP_TRACKING` - tracking property
 
 ### gui.reset_keyboard
 *Type:* FUNCTION
@@ -1729,35 +1475,26 @@ Resets all nodes in the current GUI scene to their initial state.
 The reset only applies to static node loaded from the scene.
 Nodes that are created dynamically from script are not affected.
 
-### gui.RESULT_DATA_ERROR
-*Type:* CONSTANT
-The provided data is not in the expected format or is in some other way
-incorrect, for instance the image data provided to gui.new_texture().
+### gui.RESULT
+*Type:* ENUM
+GUI results
 
-### gui.RESULT_OUT_OF_RESOURCES
-*Type:* CONSTANT
-The system is out of resources, for instance when trying to create a new
-texture using gui.new_texture().
+**Members**
 
-### gui.RESULT_TEXTURE_ALREADY_EXISTS
-*Type:* CONSTANT
-The texture id already exists when trying to use gui.new_texture().
+- `gui.RESULT_DATA_ERROR` - data error The provided data is not in the expected format or is in some other way incorrect, for instance the image data provided to gui.new_texture().
+- `gui.RESULT_OUT_OF_RESOURCES` - out of resource The system is out of resources, for instance when trying to create a new texture using gui.new_texture().
+- `gui.RESULT_TEXTURE_ALREADY_EXISTS` - texture already exists The texture id already exists when trying to use gui.new_texture().
 
-### gui.SAFE_AREA_BOTH
-*Type:* CONSTANT
-Safe area mode that applies insets on all edges.
+### gui.SAFE_AREA
+*Type:* ENUM
+Safe-area modes
 
-### gui.SAFE_AREA_LONG
-*Type:* CONSTANT
-Safe area mode that applies insets only on the long edges.
+**Members**
 
-### gui.SAFE_AREA_NONE
-*Type:* CONSTANT
-Safe area mode that ignores safe area insets.
-
-### gui.SAFE_AREA_SHORT
-*Type:* CONSTANT
-Safe area mode that applies insets only on the short edges.
+- `gui.SAFE_AREA_BOTH` - both sides safe area Safe area mode that applies insets on all edges.
+- `gui.SAFE_AREA_LONG` - long side safe area Safe area mode that applies insets only on the long edges.
+- `gui.SAFE_AREA_NONE` - no safe area Safe area mode that ignores safe area insets.
+- `gui.SAFE_AREA_SHORT` - short side safe area Safe area mode that applies insets only on the short edges.
 
 ### gui.screen_to_local
 *Type:* FUNCTION
@@ -1828,11 +1565,9 @@ If the material has a constant array called 'tint_array' specified in the materi
 **Parameters**
 
 - `node` (node | url) - node to set the property for, or msg.url() to the gui itself
-- `property` (string | hash | constant) - the property to set
+- `property` (string | hash | gui.PROP) - the property to set
 - `value` (number | vector4 | vector3 | quaternion | nil) - the property to set. <code>nil</code> is only supported for removing runtime texture mappings with <code>gui.set(msg.url(), "textures", nil, {key = ...})</code>.
-- `options` (table) (optional) - optional options table (only applicable for material constants)
-- <code>index</code> <span class="type">number</span> index into array property (1 based)
-- <code>key</code> <span class="type">hash</span> name of internal property
+- `options` (gui.set_options) (optional) - optional material-constant options
 
 **Examples**
 
@@ -1912,12 +1647,7 @@ resolutions that differs from the one in the project settings.
 **Parameters**
 
 - `node` (node) - node to set adjust mode for
-- `adjust_mode` (constant) - adjust mode to set
-<ul>
-<li><code>gui.ADJUST_FIT</code></li>
-<li><code>gui.ADJUST_ZOOM</code></li>
-<li><code>gui.ADJUST_STRETCH</code></li>
-</ul>
+- `adjust_mode` (gui.ADJUST) - adjust mode to set
 
 ### gui.set_alpha
 *Type:* FUNCTION
@@ -1936,14 +1666,7 @@ Blend mode defines how the node will be blended with the background.
 **Parameters**
 
 - `node` (node) - node to set blend mode for
-- `blend_mode` (constant) - blend mode to set
-<ul>
-<li><code>gui.BLEND_ALPHA</code></li>
-<li><code>gui.BLEND_ADD</code></li>
-<li><code>gui.BLEND_ADD_ALPHA</code></li>
-<li><code>gui.BLEND_MULT</code></li>
-<li><code>gui.BLEND_SCREEN</code></li>
-</ul>
+- `blend_mode` (gui.BLEND) - blend mode to set
 
 ### gui.set_clipping_inverted
 *Type:* FUNCTION
@@ -1961,7 +1684,7 @@ Clipping mode defines how the node will clip it's children nodes
 **Parameters**
 
 - `node` (node) - node to set clipping mode for
-- `clipping_mode` (constant) - clipping mode to set
+- `clipping_mode` (gui.CLIPPING_MODE) - clipping mode to set
 <ul>
   <li><code>gui.CLIPPING_MODE_NONE</code></li>
   <li><code>gui.CLIPPING_MODE_STENCIL</code></li>
@@ -2165,6 +1888,15 @@ gui.set_material(node, "my_material")
 
 ```
 
+### gui.set_options
+*Type:* STRUCT
+Generic GUI property options
+
+**Members**
+
+- `index?` (integer) - One-based material-constant array index.
+- `key?` (hash) - Internal property name.
+
 ### gui.set_outer_bounds
 *Type:* FUNCTION
 Sets the outer bounds mode for a pie node.
@@ -2172,11 +1904,7 @@ Sets the outer bounds mode for a pie node.
 **Parameters**
 
 - `node` (node) - node for which to set the outer bounds mode
-- `bounds_mode` (constant) - the outer bounds mode of the pie node:
-<ul>
-<li><code>gui.PIEBOUNDS_RECTANGLE</code></li>
-<li><code>gui.PIEBOUNDS_ELLIPSE</code></li>
-</ul>
+- `bounds_mode` (gui.PIEBOUNDS) - the outer bounds mode of the pie node
 
 ### gui.set_outline
 *Type:* FUNCTION
@@ -2223,7 +1951,7 @@ The pivot specifies how the node is drawn and rotated from its position.
 **Parameters**
 
 - `node` (node) - node to set pivot for
-- `pivot` (constant) - pivot constant
+- `pivot` (gui.PIVOT) - pivot constant
 <ul>
   <li><code>gui.PIVOT_CENTER</code></li>
   <li><code>gui.PIVOT_N</code></li>
@@ -2273,13 +2001,7 @@ Sets how the safe area is applied to this gui scene.
 
 **Parameters**
 
-- `mode` (constant) - safe area mode
-<ul>
-<li><code>gui.SAFE_AREA_NONE</code></li>
-<li><code>gui.SAFE_AREA_LONG</code></li>
-<li><code>gui.SAFE_AREA_SHORT</code></li>
-<li><code>gui.SAFE_AREA_BOTH</code></li>
-</ul>
+- `mode` (gui.SAFE_AREA) - safe area mode
 
 ### gui.set_scale
 *Type:* FUNCTION
@@ -2331,11 +2053,7 @@ any size mode setting.
 **Parameters**
 
 - `node` (node) - node to set size mode for
-- `size_mode` (constant) - size mode to set
-<ul>
-<li><code>gui.SIZE_MODE_MANUAL</code></li>
-<li><code>gui.SIZE_MODE_AUTO</code></li>
-</ul>
+- `size_mode` (gui.SIZE_MODE) - size mode to set
 
 ### gui.set_slice9
 *Type:* FUNCTION
@@ -2404,11 +2122,11 @@ Set the texture buffer data for a dynamically created texture.
 - `texture` (string | hash) - texture id
 - `width` (number) - texture width
 - `height` (number) - texture height
-- `type` (string | constant) - texture type
+- `type` (string | image.TYPE) - texture type
 <ul>
-  <li><code>"rgb"</code> - RGB</li>
-  <li><code>"rgba"</code> - RGBA</li>
-  <li><code>"l"</code> - LUMINANCE</li>
+  <li><code>"rgb"</code> or <code>image.TYPE_RGB</code> - RGB</li>
+  <li><code>"rgba"</code> or <code>image.TYPE_RGBA</code> - RGBA</li>
+  <li><code>"l"</code> or <code>image.TYPE_LUMINANCE</code> - LUMINANCE</li>
   <li><code>"astc"</code> - ASTC compressed format</li>
 </ul>
 - `buffer` (string) - texture data
@@ -2473,7 +2191,7 @@ The x-anchor specifies how the node is moved when the game is run in a different
 **Parameters**
 
 - `node` (node) - node to set x-anchor for
-- `anchor` (constant) - anchor constant
+- `anchor` (gui.ANCHOR) - anchor constant
 <ul>
 <li><code>gui.ANCHOR_NONE</code></li>
 <li><code>gui.ANCHOR_LEFT</code></li>
@@ -2487,7 +2205,7 @@ The y-anchor specifies how the node is moved when the game is run in a different
 **Parameters**
 
 - `node` (node) - node to set y-anchor for
-- `anchor` (constant) - anchor constant
+- `anchor` (gui.ANCHOR) - anchor constant
 <ul>
 <li><code>gui.ANCHOR_NONE</code></li>
 <li><code>gui.ANCHOR_TOP</code></li>
@@ -2503,22 +2221,17 @@ This function is only available on iOS and Android.  .
 
 **Parameters**
 
-- `type` (constant) - keyboard type
-<ul>
-<li><code>gui.KEYBOARD_TYPE_DEFAULT</code></li>
-<li><code>gui.KEYBOARD_TYPE_EMAIL</code></li>
-<li><code>gui.KEYBOARD_TYPE_NUMBER_PAD</code></li>
-<li><code>gui.KEYBOARD_TYPE_PASSWORD</code></li>
-</ul>
+- `type` (gui.KEYBOARD_TYPE) - keyboard type
 - `autoclose` (boolean) - if the keyboard should automatically close when clicking outside
 
-### gui.SIZE_MODE_AUTO
-*Type:* CONSTANT
-The size of the node is determined by the currently assigned texture.
+### gui.SIZE_MODE
+*Type:* ENUM
+Size modes
 
-### gui.SIZE_MODE_MANUAL
-*Type:* CONSTANT
-The size of the node is determined by the size set in the editor, the constructor or by gui.set_size()
+**Members**
+
+- `gui.SIZE_MODE_AUTO` - automatic size mode The size of the node is determined by the currently assigned texture.
+- `gui.SIZE_MODE_MANUAL` - manual size mode The size of the node is determined by the size set in the editor, the constructor or by gui.set_size()
 
 ### gui.stop_particlefx
 *Type:* FUNCTION
@@ -2527,30 +2240,19 @@ Stops the particle fx for a gui node
 **Parameters**
 
 - `node` (node) - node to stop particle fx for
-- `options` (table) (optional) - options when stopping the particle fx. Supported options:
-<ul>
-<li><span class="type">boolean</span> <code>clear</code>: instantly clear spawned particles</li>
-</ul>
+- `options` (particlefx.stop_options) (optional) - options used when stopping the particle fx
 
-### gui.TYPE_BOX
-*Type:* CONSTANT
-box type
+### gui.TYPE
+*Type:* ENUM
+Node types
 
-### gui.TYPE_CUSTOM
-*Type:* CONSTANT
-custom type
+**Members**
 
-### gui.TYPE_PARTICLEFX
-*Type:* CONSTANT
-particlefx type
-
-### gui.TYPE_PIE
-*Type:* CONSTANT
-pie type
-
-### gui.TYPE_TEXT
-*Type:* CONSTANT
-text type
+- `gui.TYPE_BOX` - box type
+- `gui.TYPE_CUSTOM` - custom type
+- `gui.TYPE_PARTICLEFX` - particlefx type
+- `gui.TYPE_PIE` - pie type
+- `gui.TYPE_TEXT` - text type
 
 ### init
 *Type:* FUNCTION
@@ -2559,7 +2261,7 @@ to set the initial state of the script and gui scene.
 
 **Parameters**
 
-- `self` (userdata) - reference to the script state to be used for storing data
+- `self` (script_instance) - script instance used for storing state
 
 **Examples**
 
@@ -2628,6 +2330,26 @@ end
 
 ```
 
+### node
+*Type:* TYPEDEF
+An opaque handle to a node in the current GUI scene. Obtain a node with
+gui.get_node, create one with a gui.new_*_node function, or clone an
+existing node. A handle becomes invalid when its node is deleted.
+
+**Parameters**
+
+- `value` (userdata) - GUI node handle
+
+**Examples**
+
+```
+local health_bar = gui.get_node("health_bar")
+gui.set_color(health_bar, vmath.vector4(1, 0, 0, 1))
+
+local marker = gui.new_box_node(vmath.vector3(100, 100, 0), vmath.vector3(16, 16, 0))
+
+```
+
 ### on_input
 *Type:* FUNCTION
 This is a callback-function, which is called by the engine when user input is sent to the instance of the gui component.
@@ -2640,134 +2362,12 @@ end of stack is reached, or a listener returns true
 to signal that it wants input to be consumed.
 See the documentation of acquire_input_focus for more
 information.
-The action parameter is a table containing data about the input mapped to the
-action_id.
-For mapped actions it specifies the value of the input and if it was just pressed or released.
-Actions are mapped to input in an input_binding-file.
-Mouse movement is specifically handled and uses nil as its action_id.
-The action only contains positional parameters in this case, such as x and y of the pointer.
-Here is a brief description of the available table fields:
-
-Field
-Description
-
-value
-The amount of input given by the user. This is usually 1 for buttons and 0-1 for analogue inputs. This is not present for mouse movement and text input.
-
-pressed
-If the input was pressed this frame. This is not present for mouse movement and text input.
-
-released
-If the input was released this frame. This is not present for mouse movement and text input.
-
-repeated
-If the input was repeated this frame. This is similar to how a key on a keyboard is repeated when you hold it down. This is not present for mouse movement and text input.
-
-x
-The x value of a pointer device, if present. This is not present for gamepad, key and text input.
-
-y
-The y value of a pointer device, if present. This is not present for gamepad, key and text input.
-
-screen_x
-The screen space x value of a pointer device, if present. This is not present for gamepad, key and text input.
-
-screen_y
-The screen space y value of a pointer device, if present. This is not present for gamepad, key and text input.
-
-dx
-The change in x value of a pointer device, if present. This is not present for gamepad, key and text input.
-
-dy
-The change in y value of a pointer device, if present. This is not present for gamepad, key and text input.
-
-screen_dx
-The change in screen space x value of a pointer device, if present. This is not present for gamepad, key and text input.
-
-screen_dy
-The change in screen space y value of a pointer device, if present. This is not present for gamepad, key and text input.
-
-gamepad
-The index of the gamepad device that provided the input. See table below about gamepad input.
-
-touch
-List of touch input, one element per finger, if present. See table below about touch input
-
-text
-Text input from a (virtual) keyboard or similar.
-
-marked_text
-Sequence of entered symbols while entering a symbol combination, for example Japanese Kana.
-
-Gamepad specific fields:
-
-Field
-Description
-
-gamepad
-The index of the gamepad device that provided the input.
-
-userid
-Id of the user associated with the controller. Usually only relevant on consoles.
-
-gamepad_unknown
-True if the inout originated from an unknown/unmapped gamepad.
-
-gamepad_name
-Name of the gamepad
-
-gamepad_axis
-List of gamepad axis values. For raw gamepad input only.
-
-gamepadhats
-List of gamepad hat values. For raw gamepad input only.
-
-gamepad_buttons
-List of gamepad button values. For raw gamepad input only.
-
-Touch input table:
-
-Field
-Description
-
-id
-A number identifying the touch input during its duration.
-
-pressed
-True if the finger was pressed this frame.
-
-released
-True if the finger was released this frame.
-
-tap_count
-Number of taps, one for single, two for double-tap, etc
-
-x
-The x touch location.
-
-y
-The y touch location.
-
-dx
-The change in x value.
-
-dy
-The change in y value.
-
-acc_x
-Accelerometer x value (if present).
-
-acc_y
-Accelerometer y value (if present).
-
-acc_z
-Accelerometer z value (if present).
 
 **Parameters**
 
-- `self` (userdata) - reference to the script state to be used for storing data
-- `action_id` (hash) - id of the received input action, as mapped in the input_binding-file
-- `action` (table) - a table containing the input data, see above for a description
+- `self` (script_instance) - script instance used for storing state
+- `action_id` (hash | nil) - id of the received input action, as mapped in the input_binding-file, or <code>nil</code> for mouse movement
+- `action` (on_input.action) - input data for the action
 
 **Returns**
 
@@ -2798,9 +2398,10 @@ See the update function for examples on how to use this callback-function.
 
 **Parameters**
 
-- `self` (userdata) - reference to the script state to be used for storing data
+- `self` (script_instance) - script instance used for storing state
 - `message_id` (hash) - id of the received message
-- `message` (table) - a table containing the message data
+- `message` (table<any, any>) - a table containing the message data
+- `sender` (url) - address of the sender
 
 ### on_reload
 *Type:* FUNCTION
@@ -2809,7 +2410,7 @@ It can be used for live development, e.g. to tweak constants or set up the state
 
 **Parameters**
 
-- `self` (userdata) - reference to the script state to be used for storing data
+- `self` (script_instance) - script instance used for storing state
 
 **Examples**
 
@@ -2820,6 +2421,36 @@ function on_reload(self)
 end
 
 ```
+
+### text_object_clicked
+*Type:* MESSAGE
+Sent to the GUI script when an interactive rich-text object is clicked.
+
+**Parameters**
+
+- `id` (hash) - the object's <code>id</code> attribute, or its generated layout object id
+- `type` (hash) - the layout object type, currently <code>link</code>
+- `src` (string) - the application-defined target from the object's <code>src</code> attribute
+
+### text_object_hovered
+*Type:* MESSAGE
+Sent to the GUI script when the pointer enters an interactive rich-text object.
+
+**Parameters**
+
+- `id` (hash) - the object's <code>id</code> attribute, or its generated layout object id
+- `type` (hash) - the layout object type, currently <code>link</code>
+- `src` (string) - the application-defined target from the object's <code>src</code> attribute
+
+### text_object_unhovered
+*Type:* MESSAGE
+Sent to the GUI script when the pointer leaves an interactive rich-text object.
+
+**Parameters**
+
+- `id` (hash) - the object's <code>id</code> attribute, or its generated layout object id
+- `type` (hash) - the layout object type, currently <code>link</code>
+- `src` (string) - the application-defined target from the object's <code>src</code> attribute
 
 ### textures
 *Type:* PROPERTY
@@ -2846,7 +2477,7 @@ It can be used to perform any kind of gui related tasks, e.g. animating nodes.
 
 **Parameters**
 
-- `self` (userdata) - reference to the script state to be used for storing data
+- `self` (script_instance) - script instance used for storing state
 - `dt` (number) - the time-step of the frame update
 
 **Examples**

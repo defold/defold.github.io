@@ -50,7 +50,7 @@ resume returns  false plus the error message.
 
 - `co` (thread)
 - `val1` (any) (optional)
-- `...` (optional)
+- `...` (any) (optional)
 
 ### coroutine.running
 *Type:* FUNCTION
@@ -97,4 +97,4 @@ Any arguments to yield are passed as extra results to resume.
 
 **Parameters**
 
-- `...`
+- `...` (any)

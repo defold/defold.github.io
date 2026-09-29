@@ -28,10 +28,10 @@ If i is greater than j, returns the empty string.
 
 **Parameters**
 
-- `table` (table)
+- `table` ((string|number)[])
 - `sep` (string) (optional)
-- `i` (number) (optional)
-- `j` (number) (optional)
+- `i` (integer) (optional)
+- `j` (integer) (optional)
 
 ### table.insert
 *Type:* FUNCTION
@@ -44,8 +44,8 @@ of table t.
 
 **Parameters**
 
-- `table` (table)
-- `pos` (number) (optional)
+- `table` (any[])
+- `pos` (integer) (optional)
 - `value` (any)
 
 ### table.maxn
@@ -57,7 +57,7 @@ the whole table.)
 
 **Parameters**
 
-- `table` (table)
+- `table` (table<number, any>)
 
 ### table.remove
 *Type:* FUNCTION
@@ -71,8 +71,8 @@ of table t.
 
 **Parameters**
 
-- `table` (table)
-- `pos` (number) (optional)
+- `table` (any[])
+- `pos` (integer) (optional)
 
 ### table.sort
 *Type:* FUNCTION
@@ -92,5 +92,5 @@ may have their relative positions changed by the sort.
 
 **Parameters**
 
-- `table` (table)
-- `comp` (function) (optional)
+- `table` (any[])
+- `comp` (fun(a:any, b:any):boolean) (optional)

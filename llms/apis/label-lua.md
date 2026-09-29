@@ -3,10 +3,10 @@
 **Namespace:** `label`
 **Language:** Lua
 **Type:** Defold Lua
-**File:** `script_label.cpp`
-**Source:** `engine/gamesys/src/gamesys/scripts/script_label.cpp`
+**File:** `label_ddf.proto`
+**Source:** `engine/gamesys/proto/gamesys/label_ddf.proto`
 
-Functions to manipulate a label component.
+Label API documentation
 
 ## API
 
@@ -42,9 +42,42 @@ end
 
 ```
 
+### label.get_layout_objects
+*Type:* FUNCTION
+Returns the sprites and links found in the label's current layout.
+Each entry contains type, id, the zero-based UTF-32 text_offset,
+text_length, resolved x, y, width
+and height, and an attributes table. The position is the lower-left
+object corner relative to the label's upper-left layout origin.
+Inline resource rendering is not part of this MVP; sprites use their explicit
+dimensions or a one-em square fallback.
+
+**Parameters**
+
+- `url` (string | hash | url) - the label to inspect
+
+**Returns**
+
+- `objects` (label.layout_object[]) - layout objects in source order
+
+**Examples**
+
+```
+local objects = label.get_layout_objects("#label")
+for _, object in ipairs(objects) do
+    if object.type == "link" then
+        print(object.attributes.src, object.text_offset, object.text_length)
+    elseif object.type == "sprite" then
+        print(object.attributes.src, object.x, object.y, object.width, object.height)
+    end
+end
+
+```
+
 ### label.get_text
 *Type:* FUNCTION
 Gets the text from a label component
+ This function is deprecated. Use go.get("#label", "text") instead.
 
 **Parameters**
 
@@ -52,21 +85,38 @@ Gets the text from a label component
 
 **Returns**
 
-- `metrics` (string) - the label text
+- `text` (string) - the label text
 
 **Examples**
 
 ```
 function init(self)
-    local text = label.get_text("#label")
+    local text = go.get("#label", "text")
     print(text)
 end
 
 ```
 
+### label.layout_object
+*Type:* STRUCT
+Rich-text layout object
+
+**Members**
+
+- `type` (string) - object type, currently <code>link</code> or <code>sprite</code>
+- `id` (hash) - the object's <code>id</code> attribute, or its generated layout object id
+- `text_offset` (integer) - zero-based UTF-32 offset in the visible text
+- `text_length` (integer) - visible UTF-32 text length covered by the object
+- `x` (number) - lower-left x-coordinate relative to the label's upper-left layout origin
+- `y` (number) - lower-left y-coordinate relative to the label's upper-left layout origin
+- `width` (number) - resolved object width
+- `height` (number) - resolved object height
+- `attributes` (table<string, string>) - markup attributes keyed by name
+
 ### label.set_text
 *Type:* FUNCTION
 Sets the text of a label component
+ This function is deprecated. Use go.set("#label", "text", value) instead.
  This method uses the message passing that means the value will be set after dispatch messages step.
 More information is available in the Application Lifecycle manual.
 
@@ -79,7 +129,7 @@ More information is available in the Application Lifecycle manual.
 
 ```
 function init(self)
-    label.set_text("#label", "Hello World!")
+    go.set("#label", "text", "Hello World!")
 end
 
 ```
@@ -209,6 +259,50 @@ function init(self)
 end
 
 ```
+
+### text
+*Type:* PROPERTY
+The text of the label.
+
+**Examples**
+
+```
+function init(self)
+    go.set("#label", "text", "Hello World!")
+    local text = go.get("#label", "text")
+end
+
+```
+
+### text_object_clicked
+*Type:* MESSAGE
+Sent to the owning game object when an interactive rich-text object is clicked.
+
+**Parameters**
+
+- `id` (hash) - the object's <code>id</code> attribute, or its generated layout object id
+- `type` (hash) - the layout object type, currently <code>link</code>
+- `src` (string) - the application-defined target from the object's <code>src</code> attribute
+
+### text_object_hovered
+*Type:* MESSAGE
+Sent to the owning game object when the pointer enters an interactive rich-text object.
+
+**Parameters**
+
+- `id` (hash) - the object's <code>id</code> attribute, or its generated layout object id
+- `type` (hash) - the layout object type, currently <code>link</code>
+- `src` (string) - the application-defined target from the object's <code>src</code> attribute
+
+### text_object_unhovered
+*Type:* MESSAGE
+Sent to the owning game object when the pointer leaves an interactive rich-text object.
+
+**Parameters**
+
+- `id` (hash) - the object's <code>id</code> attribute, or its generated layout object id
+- `type` (hash) - the layout object type, currently <code>link</code>
+- `src` (string) - the application-defined target from the object's <code>src</code> attribute
 
 ### tracking
 *Type:* PROPERTY

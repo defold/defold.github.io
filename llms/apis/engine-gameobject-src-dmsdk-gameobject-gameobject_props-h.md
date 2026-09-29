@@ -36,6 +36,8 @@ It is required to fill out how many items of each type that is wanted.
 - `m_Vector4Count` (int32_t) - Number of items of type vector4 (float[4])
 - `m_QuatCount` (int32_t) - Number of items of type quaternion (float[4])
 - `m_BoolCount` (int32_t) - Number of items of type bool
+- `m_TextCount` (int32_t) - Number of items of type const char*
+- `m_TextSize` (int32_t) - Size of all text strings combined, including null terminators
 
 ### PropertyContainerCopy
 *Type:* FUNCTION
@@ -134,6 +136,17 @@ Add a property of type float4 to the container
 - `builder` (HPropertyContainerBuilder) - The container builder
 - `id` (dmhash_t) - The id of the property
 - `values` (float*) - The value of the property (4 floats)
+
+### PropertyContainerPushText
+*Type:* FUNCTION
+Add a property of type text string to the container
+
+**Parameters**
+
+- `builder` (HPropertyContainerBuilder) - The container builder
+- `id` (dmhash_t) - The id of the property
+- `value` (const char*) - The zero-terminated value of the property
+- `value_len` (uint32_t) - The length of the property value in bytes, excluding the null terminator
 
 ### PropertyContainerPushURL
 *Type:* FUNCTION

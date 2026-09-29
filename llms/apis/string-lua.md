@@ -179,7 +179,7 @@ Note that numerical codes are not necessarily portable across platforms.
 
 **Parameters**
 
-- `...`
+- `...` (any)
 
 ### string.dump
 *Type:* FUNCTION
@@ -259,7 +259,7 @@ except as arguments to the q option.
 **Parameters**
 
 - `formatstring` (string)
-- `...`
+- `...` (any)
 
 ### string.gmatch
 *Type:* FUNCTION

@@ -123,7 +123,7 @@ or release user input focus (see release_input_focus).
 
 **Parameters**
 
-- `self` (userdata) - reference to the script state to be used for storing data
+- `self` (script_instance) - script instance used for storing state
 
 **Examples**
 
@@ -144,7 +144,7 @@ physics (enabled by ticking 'Use Fixed Timestep' in the Physics section of game.
 
 **Parameters**
 
-- `self` (userdata) - reference to the script state to be used for storing data
+- `self` (script_instance) - script instance used for storing state
 - `dt` (number) - the time-step of the frame update
 
 ### go.animate
@@ -162,7 +162,7 @@ them.
 
 - `url` (string | hash | url) - url of the game object or component having the property
 - `property` (string | hash) - id of the property to animate
-- `playback` (go.PLAYBACK_ONCE_FORWARD | go.PLAYBACK_ONCE_BACKWARD | go.PLAYBACK_ONCE_PINGPONG | go.PLAYBACK_LOOP_FORWARD | go.PLAYBACK_LOOP_BACKWARD | go.PLAYBACK_LOOP_PINGPONG) - playback mode of the animation
+- `playback` (go.PLAYBACK) - playback mode of the animation
 <ul>
 <li><code>go.PLAYBACK_ONCE_FORWARD</code></li>
 <li><code>go.PLAYBACK_ONCE_BACKWARD</code></li>
@@ -172,23 +172,17 @@ them.
 <li><code>go.PLAYBACK_LOOP_PINGPONG</code></li>
 </ul>
 - `to` (number | vector3 | vector4 | quaternion) - target property value
-- `easing` (vector | go.EASING_INBACK | go.EASING_INBOUNCE | go.EASING_INCIRC | go.EASING_INCUBIC | go.EASING_INELASTIC | go.EASING_INEXPO | go.EASING_INOUTBACK | go.EASING_INOUTBOUNCE | go.EASING_INOUTCIRC | go.EASING_INOUTCUBIC | go.EASING_INOUTELASTIC | go.EASING_INOUTEXPO | go.EASING_INOUTQUAD | go.EASING_INOUTQUART | go.EASING_INOUTQUINT | go.EASING_INOUTSINE | go.EASING_INQUAD | go.EASING_INQUART | go.EASING_INQUINT | go.EASING_INSINE | go.EASING_LINEAR | go.EASING_OUTBACK | go.EASING_OUTBOUNCE | go.EASING_OUTCIRC | go.EASING_OUTCUBIC | go.EASING_OUTELASTIC | go.EASING_OUTEXPO | go.EASING_OUTINBACK | go.EASING_OUTINBOUNCE | go.EASING_OUTINCIRC | go.EASING_OUTINCUBIC | go.EASING_OUTINELASTIC | go.EASING_OUTINEXPO | go.EASING_OUTINQUAD | go.EASING_OUTINQUART | go.EASING_OUTINQUINT | go.EASING_OUTINSINE | go.EASING_OUTQUAD | go.EASING_OUTQUART | go.EASING_OUTQUINT | go.EASING_OUTSINE) - easing to use during animation. Either specify a constant, see the <a href="/manuals/animation#_easing">animation guide</a> for a complete list, or a vmath.vector with a curve
+- `easing` (vector | go.EASING) - easing to use during animation. Either specify a constant, see the <a href="/manuals/animation#_easing">animation guide</a> for a complete list, or a vmath.vector with a curve
 - `duration` (number) - duration of the animation in seconds
 - `delay` (number) (optional) - delay before the animation starts in seconds
-- `complete_function` (function(self, url, property)) (optional) - optional function to call when the animation has completed
+- `complete_function` (fun(self:script_instance, url:url, property:hash)) (optional) - optional function to call when the animation has completed
 <dl>
-<dt><code>self</code></dt>
-<dd>
-<span class="type">object</span> The current object.
-</dd>
-<dt><code>url</code></dt>
-<dd>
-<span class="type">url</span> The game object or component instance for which the property is animated.
-</dd>
-<dt><code>property</code></dt>
-<dd>
-<span class="type">hash</span> The id of the animated property.
-</dd>
+<dt class="api-lua-v2-type-definition"><code>self:<a href="../builtins-lua/#script_instance">script_instance</a></code></dt>
+<dd>The current script instance.</dd>
+<dt class="api-lua-v2-type-definition"><code>url:<a href="../msg-lua/#url">url</a></code></dt>
+<dd>The game object or component instance for which the property is animated.</dd>
+<dt class="api-lua-v2-type-definition"><code>property:<a href="../builtins-lua/#hash">hash</a></code></dt>
+<dd>The id of the animated property.</dd>
 </dl>
 
 **Examples**
@@ -261,7 +255,7 @@ max_instances in "game.project" until they are actually removed.
 
 **Parameters**
 
-- `id` (string | hash | url | table) (optional) - optional id or table of id's of the instance(s) to delete, the instance of the calling script is deleted by default
+- `id` (string | hash | url | (string|hash|url)[]) (optional) - optional id or table of id's of the instance(s) to delete, the instance of the calling script is deleted by default
 - `recursive` (boolean) (optional) - optional boolean, set to true to recursively delete child hiearchy in child to parent order
 
 **Examples**
@@ -292,169 +286,53 @@ go.delete(ids, true)
 
 ```
 
-### go.EASING_INBACK
-*Type:* CONSTANT
-in-back
+### go.EASING
+*Type:* ENUM
+Easing curves
 
-### go.EASING_INBOUNCE
-*Type:* CONSTANT
-in-bounce
+**Members**
 
-### go.EASING_INCIRC
-*Type:* CONSTANT
-in-circlic
-
-### go.EASING_INCUBIC
-*Type:* CONSTANT
-in-cubic
-
-### go.EASING_INELASTIC
-*Type:* CONSTANT
-in-elastic
-
-### go.EASING_INEXPO
-*Type:* CONSTANT
-in-exponential
-
-### go.EASING_INOUTBACK
-*Type:* CONSTANT
-in-out-back
-
-### go.EASING_INOUTBOUNCE
-*Type:* CONSTANT
-in-out-bounce
-
-### go.EASING_INOUTCIRC
-*Type:* CONSTANT
-in-out-circlic
-
-### go.EASING_INOUTCUBIC
-*Type:* CONSTANT
-in-out-cubic
-
-### go.EASING_INOUTELASTIC
-*Type:* CONSTANT
-in-out-elastic
-
-### go.EASING_INOUTEXPO
-*Type:* CONSTANT
-in-out-exponential
-
-### go.EASING_INOUTQUAD
-*Type:* CONSTANT
-in-out-quadratic
-
-### go.EASING_INOUTQUART
-*Type:* CONSTANT
-in-out-quartic
-
-### go.EASING_INOUTQUINT
-*Type:* CONSTANT
-in-out-quintic
-
-### go.EASING_INOUTSINE
-*Type:* CONSTANT
-in-out-sine
-
-### go.EASING_INQUAD
-*Type:* CONSTANT
-in-quadratic
-
-### go.EASING_INQUART
-*Type:* CONSTANT
-in-quartic
-
-### go.EASING_INQUINT
-*Type:* CONSTANT
-in-quintic
-
-### go.EASING_INSINE
-*Type:* CONSTANT
-in-sine
-
-### go.EASING_LINEAR
-*Type:* CONSTANT
-linear interpolation
-
-### go.EASING_OUTBACK
-*Type:* CONSTANT
-out-back
-
-### go.EASING_OUTBOUNCE
-*Type:* CONSTANT
-out-bounce
-
-### go.EASING_OUTCIRC
-*Type:* CONSTANT
-out-circlic
-
-### go.EASING_OUTCUBIC
-*Type:* CONSTANT
-out-cubic
-
-### go.EASING_OUTELASTIC
-*Type:* CONSTANT
-out-elastic
-
-### go.EASING_OUTEXPO
-*Type:* CONSTANT
-out-exponential
-
-### go.EASING_OUTINBACK
-*Type:* CONSTANT
-out-in-back
-
-### go.EASING_OUTINBOUNCE
-*Type:* CONSTANT
-out-in-bounce
-
-### go.EASING_OUTINCIRC
-*Type:* CONSTANT
-out-in-circlic
-
-### go.EASING_OUTINCUBIC
-*Type:* CONSTANT
-out-in-cubic
-
-### go.EASING_OUTINELASTIC
-*Type:* CONSTANT
-out-in-elastic
-
-### go.EASING_OUTINEXPO
-*Type:* CONSTANT
-out-in-exponential
-
-### go.EASING_OUTINQUAD
-*Type:* CONSTANT
-out-in-quadratic
-
-### go.EASING_OUTINQUART
-*Type:* CONSTANT
-out-in-quartic
-
-### go.EASING_OUTINQUINT
-*Type:* CONSTANT
-out-in-quintic
-
-### go.EASING_OUTINSINE
-*Type:* CONSTANT
-out-in-sine
-
-### go.EASING_OUTQUAD
-*Type:* CONSTANT
-out-quadratic
-
-### go.EASING_OUTQUART
-*Type:* CONSTANT
-out-quartic
-
-### go.EASING_OUTQUINT
-*Type:* CONSTANT
-out-quintic
-
-### go.EASING_OUTSINE
-*Type:* CONSTANT
-out-sine
+- `go.EASING_INBACK` - in-back
+- `go.EASING_INBOUNCE` - in-bounce
+- `go.EASING_INCIRC` - in-circlic
+- `go.EASING_INCUBIC` - in-cubic
+- `go.EASING_INELASTIC` - in-elastic
+- `go.EASING_INEXPO` - in-exponential
+- `go.EASING_INOUTBACK` - in-out-back
+- `go.EASING_INOUTBOUNCE` - in-out-bounce
+- `go.EASING_INOUTCIRC` - in-out-circlic
+- `go.EASING_INOUTCUBIC` - in-out-cubic
+- `go.EASING_INOUTELASTIC` - in-out-elastic
+- `go.EASING_INOUTEXPO` - in-out-exponential
+- `go.EASING_INOUTQUAD` - in-out-quadratic
+- `go.EASING_INOUTQUART` - in-out-quartic
+- `go.EASING_INOUTQUINT` - in-out-quintic
+- `go.EASING_INOUTSINE` - in-out-sine
+- `go.EASING_INQUAD` - in-quadratic
+- `go.EASING_INQUART` - in-quartic
+- `go.EASING_INQUINT` - in-quintic
+- `go.EASING_INSINE` - in-sine
+- `go.EASING_LINEAR` - linear interpolation
+- `go.EASING_OUTBACK` - out-back
+- `go.EASING_OUTBOUNCE` - out-bounce
+- `go.EASING_OUTCIRC` - out-circlic
+- `go.EASING_OUTCUBIC` - out-cubic
+- `go.EASING_OUTELASTIC` - out-elastic
+- `go.EASING_OUTEXPO` - out-exponential
+- `go.EASING_OUTINBACK` - out-in-back
+- `go.EASING_OUTINBOUNCE` - out-in-bounce
+- `go.EASING_OUTINCIRC` - out-in-circlic
+- `go.EASING_OUTINCUBIC` - out-in-cubic
+- `go.EASING_OUTINELASTIC` - out-in-elastic
+- `go.EASING_OUTINEXPO` - out-in-exponential
+- `go.EASING_OUTINQUAD` - out-in-quadratic
+- `go.EASING_OUTINQUART` - out-in-quartic
+- `go.EASING_OUTINQUINT` - out-in-quintic
+- `go.EASING_OUTINSINE` - out-in-sine
+- `go.EASING_OUTQUAD` - out-quadratic
+- `go.EASING_OUTQUART` - out-quartic
+- `go.EASING_OUTQUINT` - out-quintic
+- `go.EASING_OUTSINE` - out-sine
 
 ### go.exists
 *Type:* FUNCTION
@@ -491,14 +369,11 @@ gets a named property of the specified game object or component
 
 - `url` (string | hash | url) - url of the game object or component having the property
 - `property` (string | hash) - id of the property to retrieve
-- `options` (table) (optional) - optional options table
-- index <span class="type">number</span> index into array property (1 based)
-- key <span class="type">hash</span> name of internal property
-- keys <span class="type">table</span> array of internal component resources identified by key (e.g. a particle fx emitter, see examples below)
+- `options` (go.property_options) (optional) - optional property access options
 
 **Returns**
 
-- `value` (number | boolean | hash | url | vector3 | vector4 | quaternion | resource) - the value of the specified property
+- `value` (number | boolean | hash | string | url | vector3 | vector4 | quaternion | resource_data) - the value of the specified property
 
 **Examples**
 
@@ -511,9 +386,11 @@ go.property("speed", 50)
 Then in the calling script (assumed to belong to the same game object, but does not have to):
 ```
 local speed = go.get("#player", "speed")
-```Get a value in a material property array
 
-```lua
+```
+
+Get a value in a material property array
+```
 -- get the first vector4 in the array: example[0] (the glsl indices are 0-based)
 go.get(url, "example", {index=1})
 
@@ -526,23 +403,37 @@ go.get(url, "example.x", {index=1})
 ```
 
 Getting all values in a material property array as a table
-```lua
+```
 -- get all vector4's in the constant array
 go.get(url, "example")
 -- result: { vector4, vector4, ... }
+
 -- get all elements of the vector4's from an array
 go.get(url, "example.x")
 -- result: { number1, number2, ... }
-```Get a named property
-lua
+
+```
+
+Get a named property
+```
 -- get the resource of a certain gui font
-local font_hash = go.get("#gui", "fonts", {key = "system_font_BIG"})Get a property from a sub-component, using the "keys" options table
-lua
+local font_hash = go.get("#gui", "fonts", {key = "system_font_BIG"})
+
+```
+
+Get a property from a sub-component, using the "keys" options table
+```
 -- Addressing the first level of a component:
-go.get("#particlefx", "material", { keys = { "cone_emitter" } })Get a property into a deeper sub-hierarchy (if the component supports it).
-```lua
+go.get("#particlefx", "material", { keys = { "cone_emitter" } })
+
+```
+
+Get a property into a deeper sub-hierarchy (if the component supports it).
+```
 -- Note: There is currently no component that supports this, but a custom component could.
 go.get("#my_component", "some_property", { keys = { "root", "child_node" } })
+
+```
 
 ### go.get_id
 *Type:* FUNCTION
@@ -848,33 +739,19 @@ local m = go.get_world_transform("x")
 
 ```
 
-### go.PLAYBACK_LOOP_BACKWARD
-*Type:* CONSTANT
-loop backward
+### go.PLAYBACK
+*Type:* ENUM
+Playback modes
 
-### go.PLAYBACK_LOOP_FORWARD
-*Type:* CONSTANT
-loop forward
+**Members**
 
-### go.PLAYBACK_LOOP_PINGPONG
-*Type:* CONSTANT
-ping pong loop
-
-### go.PLAYBACK_NONE
-*Type:* CONSTANT
-no playback
-
-### go.PLAYBACK_ONCE_BACKWARD
-*Type:* CONSTANT
-once backward
-
-### go.PLAYBACK_ONCE_FORWARD
-*Type:* CONSTANT
-once forward
-
-### go.PLAYBACK_ONCE_PINGPONG
-*Type:* CONSTANT
-once ping pong
+- `go.PLAYBACK_LOOP_BACKWARD` - loop backward
+- `go.PLAYBACK_LOOP_FORWARD` - loop forward
+- `go.PLAYBACK_LOOP_PINGPONG` - ping pong loop
+- `go.PLAYBACK_NONE` - no playback
+- `go.PLAYBACK_ONCE_BACKWARD` - once backward
+- `go.PLAYBACK_ONCE_FORWARD` - once forward
+- `go.PLAYBACK_ONCE_PINGPONG` - once ping pong
 
 ### go.property
 *Type:* FUNCTION
@@ -885,7 +762,7 @@ Note that you can only use this function outside any callback-functions like ini
 **Parameters**
 
 - `name` (string) - the id of the property
-- `value` (number | hash | url | vector3 | vector4 | quaternion | resource | boolean) - default value of the property. In the case of a url, only the empty constructor msg.url() is allowed. In the case of a resource one of the resource constructors (eg resource.atlas(), resource.font() etc) is expected.
+- `value` (number | hash | string | url | vector3 | vector4 | quaternion | resource_data | boolean) - default value of the property. In the case of a url, only the empty constructor msg.url() is allowed. In the case of a resource one of the resource constructors (eg resource.atlas(), resource.font() etc) is expected.
 
 **Examples**
 
@@ -908,6 +785,23 @@ end
 
 ```
 
+Text properties can contain UTF-8 and newline characters:
+```
+go.property("player_name", "Player One")
+go.property("dialogue", "First line\nSecond line")
+
+```
+
+### go.property_options
+*Type:* STRUCT
+Options for accessing indexed or internal component properties with go.get and go.set.
+
+**Members**
+
+- `index?` (integer) - Index into an array property, starting at one.
+- `key?` (hash) - Name of an internal property.
+- `keys?` (hash[]) - Internal component resources identified by key, such as particle FX emitters.
+
 ### go.set
 *Type:* FUNCTION
 sets a named property of the specified game object or component, or a material constant
@@ -916,11 +810,8 @@ sets a named property of the specified game object or component, or a material c
 
 - `url` (string | hash | url) - url of the game object or component having the property
 - `property` (string | hash) - id of the property to set
-- `value` (number | boolean | hash | url | vector3 | vector4 | quaternion | resource) - the value to set
-- `options` (table) (optional) - optional options table
-- index <span class="type">integer</span> index into array property (1 based)
-- key <span class="type">hash</span> name of internal property
-- keys <span class="type">table</span> array of internal component resources identified by key (e.g. a particle fx emitter, see examples below)
+- `value` (number | boolean | hash | string | url | vector3 | vector4 | quaternion | resource_data) - the value to set
+- `options` (go.property_options) (optional) - optional property access options
 
 **Examples**
 
@@ -933,9 +824,11 @@ go.property("speed", 50)
 Then in the calling script (assumed to belong to the same game object, but does not have to):
 ```
 go.set("#player", "speed", 100)
-```Set a vector4 in a material property array
 
-```lua
+```
+
+Set a vector4 in a material property array
+```
 -- set the first vector4 in the array: example[0] = v (the glsl indices are 0-based)
 go.set(url, "example", vmath.vector4(1,1,1,1), {index=1})
 
@@ -948,24 +841,38 @@ go.set(url, "example.x", 7, {index=1})
 ```
 
 Set a material property array by a table of vector4
-lua
+```
 -- set the first two vector4's in the array
 -- if the array has more than two elements in the array they will not be set
-go.set(url, "example", { vmath.vector4(1,1,1,1), vmath.vector4(2,2,2,2) })Set a named property
-```lua
+go.set(url, "example", { vmath.vector4(1,1,1,1), vmath.vector4(2,2,2,2) })
+
+```
+
+Set a named property
+```
 go.property("big_font", resource.font())
+
 function init(self)
     go.set("#gui", "fonts", self.big_font, {key = "system_font_BIG"})
 end
-```Set a property on a sub-component, using the "keys" options table
-lua
+
+```
+
+Set a property on a sub-component, using the "keys" options table
+```
 go.property("my_material", resource.material)
 function init(self)
     go.set("#particlefx", "material", self.my_material, { keys = { "cone_emitter" } })
-endSet a property in a deeper sub-hierarchy (if the component supports it).
-```lua
+end
+
+```
+
+Set a property in a deeper sub-hierarchy (if the component supports it).
+```
 -- Note: There is currently no component that supports this, but a custom component could.
 go.set("#my_component", "some_property", some_value, { keys = { "root", "child_node" } })
+
+```
 
 ### go.set_parent
 *Type:* FUNCTION
@@ -1185,7 +1092,7 @@ to set the initial state of the script.
 
 **Parameters**
 
-- `self` (userdata) - reference to the script state to be used for storing data
+- `self` (script_instance) - script instance used for storing state
 
 **Examples**
 
@@ -1204,7 +1111,7 @@ component. Use it to make final adjustments to the game object instance.
 
 **Parameters**
 
-- `self` (userdata) - reference to the script state to be used for storing data
+- `self` (script_instance) - script instance used for storing state
 - `dt` (number) - the time-step of the frame update
 
 ### on_input
@@ -1219,161 +1126,12 @@ end of stack is reached, or a listener returns true
 to signal that it wants input to be consumed.
 See the documentation of acquire_input_focus for more
 information.
-The action parameter is a table containing data about the input mapped to the
-action_id.
-For mapped actions it specifies the value of the input and if it was just pressed or released.
-Actions are mapped to input in an input_binding-file.
-Mouse movement is specifically handled and uses nil as its action_id.
-The action only contains positional parameters in this case, such as x and y of the pointer.
-Here is a brief description of the available table fields:
-
-Field
-Description
-
-value
-The amount of input given by the user. This is usually 1 for buttons and 0-1 for analogue inputs. This is not present for mouse movement and text input.
-
-pressed
-If the input was pressed this frame. This is not present for mouse movement and text input.
-
-released
-If the input was released this frame. This is not present for mouse movement and text input.
-
-repeated
-If the input was repeated this frame. This is similar to how a key on a keyboard is repeated when you hold it down. This is not present for mouse movement and text input.
-
-x
-The x value of a pointer device, if present. This is not present for gamepad, key and text input.
-
-y
-The y value of a pointer device, if present. This is not present for gamepad, key and text input.
-
-screen_x
-The screen space x value of a pointer device, if present. This is not present for gamepad, key and text input.
-
-screen_y
-The screen space y value of a pointer device, if present. This is not present for gamepad, key and text input.
-
-dx
-The change in x value of a pointer device, if present. This is not present for gamepad, key and text input.
-
-dy
-The change in y value of a pointer device, if present. This is not present for gamepad, key and text input.
-
-screen_dx
-The change in screen space x value of a pointer device, if present. This is not present for gamepad, key and text input.
-
-screen_dy
-The change in screen space y value of a pointer device, if present. This is not present for gamepad, key and text input.
-
-gamepad
-The index of the gamepad device that provided the input. See table below about gamepad input.
-
-touch
-List of touch input, one element per finger, if present. See table below about touch input
-
-text
-Text input from a (virtual) keyboard or similar.
-
-marked_text
-Sequence of entered symbols while entering a symbol combination, for example Japanese Kana.
-
-Gamepad specific fields:
-
-Field
-Description
-
-gamepad
-The index of the gamepad device that provided the input.
-
-userid
-Id of the user associated with the controller. Usually only relevant on consoles.
-
-gamepad_guid
-The guid of the gamepad controller. Only passed with "connected" action.
-
-gamepad_guid_info
-Parsed guid info table. Only passed with "connected" action. See table below.
-
-gamepad_unknown
-True if the input originated from an unknown/unmapped gamepad.
-
-gamepad_name
-Name of the gamepad
-
-gamepad_axis
-List of gamepad axis values. For raw gamepad input only.
-
-gamepadhats
-List of gamepad hat values. For raw gamepad input only.
-
-gamepad_buttons
-List of gamepad button values. For raw gamepad input only.
-
-Touch input table:
-
-Field
-Description
-
-id
-A number identifying the touch input during its duration.
-
-pressed
-True if the finger was pressed this frame.
-
-released
-True if the finger was released this frame.
-
-tap_count
-Number of taps, one for single, two for double-tap, etc
-
-x
-The x touch location.
-
-y
-The y touch location.
-
-dx
-The change in x value.
-
-dy
-The change in y value.
-
-acc_x
-Accelerometer x value (if present).
-
-acc_y
-Accelerometer y value (if present).
-
-acc_z
-Accelerometer z value (if present).
-
-Guid info table:
-This info is only passed with a connected action.
-
-Field
-Description
-
-vendor
-USB vendor id. E.g. Nintendo 0x057e, Sony 0x054c, or Microsoft 0x045e
-
-product
-USB product id
-
-bus
-How device is communicating. E.g.0x0003 for USB devices and 0x0005 for Bluetooth devices.
-
-crc
-SDL CRC16 signature, typically used when vendor and product ids are unavailable
-
-version
-The device or firmware version
 
 **Parameters**
 
-- `self` (userdata) - reference to the script state to be used for storing data
-- `action_id` (hash) - id of the received input action, as mapped in the input_binding-file
-- `action` (table) - a table containing the input data, see above for a description
+- `self` (script_instance) - script instance used for storing state
+- `action_id` (hash | nil) - id of the received input action, as mapped in the input_binding-file, or <code>nil</code> for mouse movement
+- `action` (on_input.action) - input data for the action
 
 **Returns**
 
@@ -1410,6 +1168,70 @@ end
 
 ```
 
+### on_input.action
+*Type:* STRUCT
+Data supplied to the global on_input lifecycle function.
+
+**Members**
+
+- `value?` (number) - Amount of input, usually 1 for buttons or between 0 and 1 for analogue input; absent for pointer movement and text input.
+- `pressed?` (boolean) - Whether the input was pressed this frame; absent for pointer movement and text input.
+- `released?` (boolean) - Whether the input was released this frame; absent for pointer movement and text input.
+- `repeated?` (boolean) - Whether the input was repeated this frame; absent for pointer movement and text input.
+- `x?` (number) - Pointer x-coordinate; absent for gamepad, key, and text input.
+- `y?` (number) - Pointer y-coordinate; absent for gamepad, key, and text input.
+- `screen_x?` (number) - Pointer x-coordinate in screen space; absent for gamepad, key, and text input.
+- `screen_y?` (number) - Pointer y-coordinate in screen space; absent for gamepad, key, and text input.
+- `dx?` (number) - Change in the pointer x-coordinate; absent for gamepad, key, and text input.
+- `dy?` (number) - Change in the pointer y-coordinate; absent for gamepad, key, and text input.
+- `screen_dx?` (number) - Change in the pointer x-coordinate in screen space; absent for gamepad, key, and text input.
+- `screen_dy?` (number) - Change in the pointer y-coordinate in screen space; absent for gamepad, key, and text input.
+- `acc_x?` (number) - Accelerometer x value, when present.
+- `acc_y?` (number) - Accelerometer y value, when present.
+- `acc_z?` (number) - Accelerometer z value, when present.
+- `gamepad?` (integer) - Index of the gamepad that provided the input.
+- `userid?` (integer) - Id of the user associated with the controller.
+- `gamepad_guid?` (string) - SDL-compatible guid, supplied with a gamepad-connected action.
+- `gamepad_guid_info?` (on_input.gamepad_guid_info) - Parsed guid information, supplied with a gamepad-connected action.
+- `gamepad_unknown?` (boolean) - Whether the input originated from an unknown or unmapped gamepad.
+- `gamepad_name?` (string) - Name of a connected gamepad.
+- `gamepad_axis?` (number[]) - Axis values, supplied only for raw gamepad input.
+- `gamepad_hats?` (number[]) - Hat values, supplied only for raw gamepad input.
+- `gamepad_buttons?` (number[]) - Button values, supplied only for raw gamepad input.
+- `touch?` (on_input.touch[]) - Touch inputs, one entry per finger.
+- `text?` (string) - Text entered by a text action, or the current sequence for marked-text composition such as Japanese Kana.
+
+### on_input.gamepad_guid_info
+*Type:* STRUCT
+Parsed fields from a connected gamepad guid.
+
+**Members**
+
+- `vendor` (integer) - USB vendor id.
+- `product` (integer) - USB product id.
+- `bus` (integer) - Bus used to communicate with the device.
+- `crc` (integer) - SDL CRC16 signature.
+- `version` (integer) - Device or firmware version.
+
+### on_input.touch
+*Type:* STRUCT
+One touch entry in on_input.action.
+
+**Members**
+
+- `id` (integer) - Identifier for the touch during its lifetime.
+- `pressed` (boolean) - Whether the finger was pressed this frame.
+- `released` (boolean) - Whether the finger was released this frame.
+- `tap_count` (integer) - Number of taps, such as one for a single tap and two for a double tap.
+- `x` (number) - Touch x-coordinate.
+- `y` (number) - Touch y-coordinate.
+- `screen_x` (number) - Touch x-coordinate in screen space.
+- `screen_y` (number) - Touch y-coordinate in screen space.
+- `dx` (number) - Change in the touch x-coordinate.
+- `dy` (number) - Change in the touch y-coordinate.
+- `screen_dx` (number) - Change in the touch x-coordinate in screen space.
+- `screen_dy` (number) - Change in the touch y-coordinate in screen space.
+
 ### on_message
 *Type:* FUNCTION
 This is a callback-function, which is called by the engine whenever a message has been sent to the script component.
@@ -1419,9 +1241,9 @@ documentation of the message specifies which data is supplied.
 
 **Parameters**
 
-- `self` (userdata) - reference to the script state to be used for storing data
+- `self` (script_instance) - script instance used for storing state
 - `message_id` (hash) - id of the received message
-- `message` (table) - a table containing the message data
+- `message` (table<any, any>) - a table containing the message data
 - `sender` (url) - address of the sender
 
 **Examples**
@@ -1462,7 +1284,7 @@ It can be used for live development, e.g. to tweak constants or set up the state
 
 **Parameters**
 
-- `self` (userdata) - reference to the script state to be used for storing data
+- `self` (script_instance) - script instance used for storing state
 
 **Examples**
 
@@ -1605,7 +1427,7 @@ It can be used to perform any kind of game related tasks, e.g. moving the game o
 
 **Parameters**
 
-- `self` (userdata) - reference to the script state to be used for storing data
+- `self` (script_instance) - script instance used for storing state
 - `dt` (number) - the time-step of the frame update
 
 **Examples**

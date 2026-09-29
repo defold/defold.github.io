@@ -21,19 +21,19 @@ Cancelling a timer that is already executed or cancelled is safe.
 
 **Parameters**
 
-- `handle` (number) - the timer handle returned by timer.delay()
+- `handle` (timer_handle) - the timer handle returned by timer.delay()
 
 **Returns**
 
-- `true` (boolean) - if the timer was active, false if the timer is already cancelled / complete
+- `cancelled` (boolean) - <code>true</code> if the timer was active and cancelled, <code>false</code> if the timer was already cancelled or complete
 
 **Examples**
 
 ```
 self.handle = timer.delay(1, true, function() print("print every second") end)
 ...
-local result = timer.cancel(self.handle)
-if not result then
+local cancelled = timer.cancel(self.handle)
+if not cancelled then
    print("the timer is already cancelled")
 end
 
@@ -52,19 +52,19 @@ Timers created within a script will automatically die when the script is deleted
 
 - `delay` (number) - time interval in seconds
 - `repeating` (boolean) - true = repeat timer until cancel, false = one-shot timer
-- `callback` (function(self, handle, time_elapsed)) - timer callback function
+- `callback` (fun(self:script_instance, handle:timer_handle, time_elapsed:number)) - timer callback function
 <dl>
-<dt><code>self</code></dt>
-<dd><span class="type">object</span> The current object</dd>
-<dt><code>handle</code></dt>
-<dd><span class="type">number</span> The handle of the timer</dd>
-<dt><code>time_elapsed</code></dt>
-<dd><span class="type">number</span> The elapsed time - on first trigger it is time since timer.delay call, otherwise time since last trigger</dd>
+<dt class="api-lua-v2-type-definition"><code>self:<a href="../builtins-lua/#script_instance">script_instance</a></code></dt>
+<dd>The current script instance</dd>
+<dt class="api-lua-v2-type-definition"><code>handle:<a href="#timer_handle">timer_handle</a></code></dt>
+<dd>The handle of the timer</dd>
+<dt class="api-lua-v2-type-definition"><code>time_elapsed:<a href="../../../manuals/lua/#variables-and-data-types">number</a></code></dt>
+<dd>The elapsed time - on first trigger it is time since timer.delay call, otherwise time since last trigger</dd>
 </dl>
 
 **Returns**
 
-- `handle` (number) - identifier for the create timer, returns timer.INVALID_TIMER_HANDLE if the timer can not be created
+- `handle` (timer_handle) - identifier for the create timer, returns timer.INVALID_TIMER_HANDLE if the timer can not be created
 
 **Examples**
 
@@ -95,19 +95,11 @@ Get information about timer.
 
 **Parameters**
 
-- `handle` (number) - the timer handle returned by timer.delay()
+- `handle` (timer_handle) - the timer handle returned by timer.delay()
 
 **Returns**
 
-- `data` (table | nil) - table or <code>nil</code> if timer is cancelled/completed. table with data in the following fields:
-<dl>
-<dt><code>time_remaining</code></dt>
-<dd><span class="type">number</span> Time remaining until the next time a timer.delay() fires.</dd>
-<dt><code>delay</code></dt>
-<dd><span class="type">number</span> Time interval.</dd>
-<dt><code>repeating</code></dt>
-<dd><span class="type">boolean</span> true = repeat timer until cancel, false = one-shot timer.</dd>
-</dl>
+- `data` (timer.info | nil) - timer information, or <code>nil</code> if the timer is cancelled or complete
 
 **Examples**
 
@@ -123,9 +115,23 @@ end
 
 ```
 
+### timer.info
+*Type:* STRUCT
+Timer information
+
+**Members**
+
+- `time_remaining` (number) - Time remaining until the next callback.
+- `delay` (number) - Timer interval.
+- `repeating` (boolean) - Whether the timer repeats until cancelled.
+
 ### timer.INVALID_TIMER_HANDLE
 *Type:* CONSTANT
 Indicates an invalid timer handle
+
+**Parameters**
+
+- `value` (timer_handle)
 
 ### timer.trigger
 *Type:* FUNCTION
@@ -133,20 +139,43 @@ Manual triggering a callback for a timer.
 
 **Parameters**
 
-- `handle` (number) - the timer handle returned by timer.delay()
+- `handle` (timer_handle) - the timer handle returned by timer.delay()
 
 **Returns**
 
-- `true` (boolean) - if the timer was active, false if the timer is already cancelled / complete
+- `triggered` (boolean) - <code>true</code> if the timer was active and triggered, <code>false</code> if the timer was already cancelled or complete
 
 **Examples**
 
 ```
 self.handle = timer.delay(1, true, function() print("print every second or manually by timer.trigger") end)
 ...
-local result = timer.trigger(self.handle)
-if not result then
+local triggered = timer.trigger(self.handle)
+if not triggered then
    print("the timer is already cancelled or complete")
 end
+
+```
+
+### timer_handle
+*Type:* TYPEDEF
+An opaque numeric identifier returned by timer.delay. Pass it to
+timer.cancel, timer.trigger, or timer.get_info to control
+the timer. Timers are owned by the script that created them and are removed
+automatically when the script is deleted. A failed creation returns
+timer.INVALID_TIMER_HANDLE.
+
+**Parameters**
+
+- `value` (number) - timer identifier
+
+**Examples**
+
+```
+local handle = timer.delay(1, true, function()
+    print("tick")
+end)
+
+timer.cancel(handle)
 
 ```

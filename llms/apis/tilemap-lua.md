@@ -54,10 +54,10 @@ the bounds are calculated as if all layers were collapsed into one.
 
 **Returns**
 
-- `x` (number) - x coordinate of the bottom left corner
-- `y` (number) - y coordinate of the bottom left corner
-- `w` (number) - number of columns (width) in the tile map
-- `h` (number) - number of rows (height) in the tile map
+- `x` (integer) - x coordinate of the bottom left corner
+- `y` (integer) - y coordinate of the bottom left corner
+- `w` (integer) - number of columns (width) in the tile map
+- `h` (integer) - number of rows (height) in the tile map
 
 **Examples**
 
@@ -79,12 +79,12 @@ layer name parameters.
 
 - `url` (string | hash | url) - the tile map
 - `layer` (string | hash) - name of the layer for the tile
-- `x` (number) - x-coordinate of the tile
-- `y` (number) - y-coordinate of the tile
+- `x` (integer) - x-coordinate of the tile
+- `y` (integer) - y-coordinate of the tile
 
 **Returns**
 
-- `tile` (number) - index of the tile
+- `tile` (integer) - index of the tile
 
 **Examples**
 
@@ -106,12 +106,12 @@ layer name parameters.
 
 - `url` (string | hash | url) - the tile map
 - `layer` (string | hash) - name of the layer for the tile
-- `x` (number) - x-coordinate of the tile
-- `y` (number) - y-coordinate of the tile
+- `x` (integer) - x-coordinate of the tile
+- `y` (integer) - y-coordinate of the tile
 
 **Returns**
 
-- `tile_info` (table) - index of the tile
+- `tile_info` ({ index:integer, h_flip:boolean, v_flip:boolean, rotate_90:boolean }) - full tile information
 
 **Examples**
 
@@ -142,7 +142,7 @@ You can iterate it using tiles[row_index][column_index].
 
 **Returns**
 
-- `tiles` (table) - a table of rows representing the layer
+- `tiles` (table<integer, table<integer, integer>>) - a table of rows representing the layer
 
 **Examples**
 
@@ -158,10 +158,6 @@ for row_index = bottom, bottom + rows_count - 1 do
 end
 
 ```
-
-### tilemap.H_FLIP
-*Type:* CONSTANT
-flip tile horizontally
 
 ### tilemap.reset_constant
 *Type:* FUNCTION
@@ -187,18 +183,6 @@ end
 
 ```
 
-### tilemap.ROTATE_180
-*Type:* CONSTANT
-rotate tile 180 degrees clockwise
-
-### tilemap.ROTATE_270
-*Type:* CONSTANT
-rotate tile 270 degrees clockwise
-
-### tilemap.ROTATE_90
-*Type:* CONSTANT
-rotate tile 90 degrees clockwise
-
 ### tilemap.set_tile
 *Type:* FUNCTION
 Replace a tile in a tile map with a new tile.
@@ -219,18 +203,15 @@ Tiles to the left of and below origin are indexed 0, -1, -2 and so forth.
 The coordinates must be within the bounds of the tile map as it were created.
 That is, it is not possible to extend the size of a tile map by setting tiles outside the edges.
 To clear a tile, set the tile to number 0. Which tile map and layer to manipulate is identified by the URL and the layer name parameters.
-Transform bitmask is arithmetic sum of one or both FLIP constants (tilemap.H_FLIP, tilemap.V_FLIP) and/or one of ROTATION constants
-(tilemap.ROTATE_90, tilemap.ROTATE_180, tilemap.ROTATE_270).
-Flip always applies before rotation (clockwise).
 
 **Parameters**
 
 - `url` (string | hash | url) - the tile map
 - `layer` (string | hash) - name of the layer for the tile
-- `x` (number) - x-coordinate of the tile
-- `y` (number) - y-coordinate of the tile
-- `tile` (number) - index of new tile to set. 0 resets the cell
-- `transform_bitmask` (number) (optional) - optional flip and/or rotation should be applied to the tile
+- `x` (integer) - x-coordinate of the tile
+- `y` (integer) - y-coordinate of the tile
+- `tile` (integer) - index of new tile to set. 0 resets the cell
+- `transform_bitmask` (tilemap.TRANSFORM) (optional) - optional flip and/or rotation should be applied to the tile
 
 **Examples**
 
@@ -264,6 +245,15 @@ tilemap.set_visible("/level#tilemap", "foreground", false)
 
 ```
 
-### tilemap.V_FLIP
-*Type:* CONSTANT
-flip tile vertically
+### tilemap.TRANSFORM
+*Type:* ENUM
+A transform is the arithmetic sum of one or both flip members and/or one
+rotation member. Flipping is applied before clockwise rotation.
+
+**Members**
+
+- `tilemap.H_FLIP` - flip tile horizontally
+- `tilemap.ROTATE_180` - rotate tile 180 degrees clockwise
+- `tilemap.ROTATE_270` - rotate tile 270 degrees clockwise
+- `tilemap.ROTATE_90` - rotate tile 90 degrees clockwise
+- `tilemap.V_FLIP` - flip tile vertically

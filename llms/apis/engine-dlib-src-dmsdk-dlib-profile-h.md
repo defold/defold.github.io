@@ -567,6 +567,7 @@ Register a new profiler. Can be done after the profiling has started.
 **Parameters**
 
 - `name` (const char*) - Name of the profiler
+@ @param profiler <span class="type"> ProfileListener*</span> Instance of the profiler. Keep alive until calling ProfileUnregisterProfiler()!
 
 ### ProfileResult
 *Type:* ENUM

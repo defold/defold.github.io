@@ -119,21 +119,16 @@ profiler.log_text("Event: " .. name)
 
 ```
 
-### profiler.MODE_PAUSE
-*Type:* CONSTANT
-pause on current frame
+### profiler.MODE
+*Type:* ENUM
+Profiler modes
 
-### profiler.MODE_RECORD
-*Type:* CONSTANT
-start recording
+**Members**
 
-### profiler.MODE_RUN
-*Type:* CONSTANT
-continously show latest frame
-
-### profiler.MODE_SHOW_PEAK_FRAME
-*Type:* CONSTANT
-pause at peak frame
+- `profiler.MODE_PAUSE` - pause on the currently displayed frame
+- `profiler.MODE_RECORD` - record incoming frames to the recording buffer
+- `profiler.MODE_RUN` - continuously show the latest frame
+- `profiler.MODE_SHOW_PEAK_FRAME` - pause on the displayed frame, replacing it when a slower frame arrives
 
 ### profiler.recorded_frame_count
 *Type:* FUNCTION
@@ -189,13 +184,7 @@ Set the on-screen profile mode - run, pause, record or show peak frame
 
 **Parameters**
 
-- `mode` (constant) - the mode to set the ui profiler in
-<ul>
-<li><code>profiler.MODE_RUN</code> This is default mode that continously shows the last frame</li>
-<li><code>profiler.MODE_PAUSE</code> Pauses on the currently displayed frame</li>
-<li><code>profiler.MODE_SHOW_PEAK_FRAME</code> Pauses on the currently displayed frame but shows a new frame if that frame is slower</li>
-<li><code>profiler.MODE_RECORD</code> Records all incoming frames to the recording buffer</li>
-</ul>
+- `mode` (profiler.MODE) - the mode to set the ui profiler in
 To stop recording, switch to a different mode such as <code>MODE_PAUSE</code> or <code>MODE_RUN</code>.
 You can also use the <code>view_recorded_frame</code> function to display a recorded frame. Doing so stops the recording as well.
 Every time you switch to recording mode the recording buffer is cleared.
@@ -219,11 +208,7 @@ Set the on-screen profile view mode - minimized or expanded
 
 **Parameters**
 
-- `mode` (constant) - the view mode to set the ui profiler in
-<ul>
-<li><code>profiler.VIEW_MODE_FULL</code> The default mode which displays all the ui profiler details</li>
-<li><code>profiler.VIEW_MODE_MINIMIZED</code> Minimized mode which only shows the top header (fps counters and ui profiler mode)</li>
-</ul>
+- `mode` (profiler.VIEW_MODE) - the view mode to set the ui profiler in
 
 **Examples**
 
@@ -258,13 +243,14 @@ profiler.set_ui_vsync_wait_visible(false)
 
 ```
 
-### profiler.VIEW_MODE_FULL
-*Type:* CONSTANT
-show full profiler ui
+### profiler.VIEW_MODE
+*Type:* ENUM
+Profiler view modes
 
-### profiler.VIEW_MODE_MINIMIZED
-*Type:* CONSTANT
-show mimimal profiler ui
+**Members**
+
+- `profiler.VIEW_MODE_FULL` - show all profiler details
+- `profiler.VIEW_MODE_MINIMIZED` - show only the header with FPS counters and profiler mode
 
 ### profiler.view_recorded_frame
 *Type:* FUNCTION
@@ -273,7 +259,7 @@ The frame to show can either be an absolute frame or a relative frame to the cur
 
 **Parameters**
 
-- `frame_index` (table) - a table where you specify one of the following parameters:
+- `frame_index` ({ distance:integer } | { frame:integer }) - a table where you specify one of the following parameters:
 <ul>
 <li><code>distance</code> The offset from the currently displayed frame (this is truncated between zero and the number of recorded frames)</li>
 <li><code>frame</code> The frame index in the recording buffer (1 is first recorded frame)</li>

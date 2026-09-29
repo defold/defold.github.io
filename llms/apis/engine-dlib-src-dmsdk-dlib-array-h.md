@@ -142,6 +142,18 @@ The end is essentially outside of the used storage.
 
 - `pointer` (const T*) - pointer to end of memory
 
+### EnsureSize
+*Type:* FUNCTION
+Set size of the array, allocate if necessary
+
+**Notes**
+
+- May grow but not shrink capacity
+
+**Parameters**
+
+- `size` (uint32_t) - size of the array
+
 ### EraseSwap
 *Type:* FUNCTION
 Remove the element at the specified index.

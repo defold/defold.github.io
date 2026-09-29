@@ -45,10 +45,10 @@ or start playing sounds the first time the callback is invoked.
 
 **Parameters**
 
-- `callback` (function(self) | nil) - The interaction callback. Pass an empty function or <code>nil</code> if you no longer wish to receive callbacks.
+- `callback` (fun(self:script_instance) | nil) - The interaction callback. Pass an empty function or <code>nil</code> if you no longer wish to receive callbacks.
 <dl>
-<dt><code>self</code></dt>
-<dd><span class="type">object</span> The calling script</dd>
+<dt class="api-lua-v2-type-definition"><code>self:<a href="../builtins-lua/#script_instance">script_instance</a></code></dt>
+<dd>The calling script instance</dd>
 </dl>
 
 **Examples**

@@ -72,7 +72,7 @@ Check if the table is empty
 
 **Returns**
 
-- `true` - if the table is empty
+- `empty` (bool) - true if the table is empty
 
 ### Erase
 *Type:* FUNCTION
@@ -92,7 +92,7 @@ Check if the table is full
 
 **Returns**
 
-- `true` - if the table is full
+- `full` (bool) - true if the table is full
 
 ### Get
 *Type:* FUNCTION

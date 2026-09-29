@@ -246,30 +246,18 @@ a animation_done message is sent to the script that started the animation.
 
 - `url` (string | hash | url) - the sprite that should play the animation
 - `id` (string | hash) - hashed id of the animation to play
-- `complete_function` (function(self, message_id, message, sender)) (optional) - function to call when the animation has completed.
+- `complete_function` (fun(self:script_instance, message_id:hash, message:message.sprite.animation_done, sender:url)) (optional) - function to call when the animation has completed.
 <dl>
-<dt><code>self</code></dt>
-<dd><span class="type">object</span> The current object.</dd>
-<dt><code>message_id</code></dt>
-<dd><span class="type">hash</span> The name of the completion message, <code>"animation_done"</code>.</dd>
-<dt><code>message</code></dt>
-<dd><span class="type">table</span> Information about the completion:</dd>
+<dt class="api-lua-v2-type-definition"><code>self:<a href="../builtins-lua/#script_instance">script_instance</a></code></dt>
+<dd>The current script instance.</dd>
+<dt class="api-lua-v2-type-definition"><code>message_id:<a href="../builtins-lua/#hash">hash</a></code></dt>
+<dd>The name of the completion message, <code>"animation_done"</code>.</dd>
+<dt class="api-lua-v2-type-definition"><code>message:<a href="#animation_done">message.sprite.animation_done</a></code></dt>
+<dd>Information about the completion.</dd>
+<dt class="api-lua-v2-type-definition"><code>sender:<a href="../msg-lua/#url">url</a></code></dt>
+<dd>The invoker of the callback: the sprite component.</dd>
 </dl>
-<ul>
-<li><span class="type">number</span> <code>current_tile</code> - the current tile of the sprite.</li>
-<li><span class="type">hash</span> <code>id</code> - id of the animation that was completed.</li>
-</ul>
-<dl>
-<dt><code>sender</code></dt>
-<dd><span class="type">url</span> The invoker of the callback: the sprite component.</dd>
-</dl>
-- `play_properties` (table) (optional) - optional table with properties:
-<dl>
-<dt><code>offset</code></dt>
-<dd><span class="type">number</span> the normalized initial value of the animation cursor when the animation starts playing.</dd>
-<dt><code>playback_rate</code></dt>
-<dd><span class="type">number</span> the rate with which the animation will be played. Must be positive.</dd>
-</dl>
+- `play_properties` (sprite.play_properties) (optional) - optional playback properties
 
 **Examples**
 
@@ -294,6 +282,15 @@ function init(self)
 end
 
 ```
+
+### sprite.play_properties
+*Type:* STRUCT
+Sprite flipbook playback properties
+
+**Members**
+
+- `offset?` (number) - Normalized initial animation cursor.
+- `playback_rate?` (number) - Positive animation playback rate.
 
 ### sprite.reset_constant
 *Type:* FUNCTION

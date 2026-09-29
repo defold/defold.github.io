@@ -47,7 +47,7 @@ Frustum
 
 **Members**
 
-- `m_Planes` (dmIntersection::Plane[6) - ] plane equations: // left, right, bottom, top, near, far
+- `m_Planes` (dmIntersection::Plane[6]) - plane equations: // left, right, bottom, top, near, far
 
 ### Plane
 *Type:* TYPEDEF

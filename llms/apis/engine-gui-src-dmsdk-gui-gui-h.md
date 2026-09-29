@@ -16,9 +16,10 @@ Defold GUI system
 
 **Members**
 
-- `ADJUST_MODE_FIT` -     //!< 0
-- `ADJUST_MODE_ZOOM` -    //!< 1
-- `ADJUST_MODE_STRETCH` - //!< 2
+- `ADJUST_MODE_FIT` - <div class="codehilite"><pre><span></span><code>//!&lt; 0
+</code></pre></div>
+- `ADJUST_MODE_ZOOM` - //!&lt; 1
+- `ADJUST_MODE_STRETCH` - //!&lt; 2
 
 ### AdjustReference
 *Type:* ENUM
@@ -288,46 +289,53 @@ This enum denotes what kind of texture type the m_Texture pointer is referencing
 
 **Members**
 
-- `PROPERTY_POSITION` -    //!< 0
-- `PROPERTY_ROTATION` -    //!< 1
-- `PROPERTY_SCALE` -       //!< 2
-- `PROPERTY_COLOR` -       //!< 3
-- `PROPERTY_SIZE` -        //!< 4
-- `PROPERTY_OUTLINE` -     //!< 5
-- `PROPERTY_SHADOW` -      //!< 6
-- `PROPERTY_SLICE9` -      //!< 7
-- `PROPERTY_PIE_PARAMS` -  //!< 8
-- `PROPERTY_TEXT_PARAMS` - //!< 9
-- `PROPERTY_COUNT` -       //!< 10
+- `PROPERTY_POSITION` - //!&lt; 0
+- `PROPERTY_ROTATION` - //!&lt; 1
+- `PROPERTY_SCALE` - <div class="codehilite"><pre><span></span><code>  //!&lt; 2
+</code></pre></div>
+- `PROPERTY_COLOR` - <div class="codehilite"><pre><span></span><code>  //!&lt; 3
+</code></pre></div>
+- `PROPERTY_SIZE` - <div class="codehilite"><pre><span></span><code>   //!&lt; 4
+</code></pre></div>
+- `PROPERTY_OUTLINE` - <div class="codehilite"><pre><span></span><code>//!&lt; 5
+</code></pre></div>
+- `PROPERTY_SHADOW` - <div class="codehilite"><pre><span></span><code> //!&lt; 6
+</code></pre></div>
+- `PROPERTY_SLICE9` - <div class="codehilite"><pre><span></span><code> //!&lt; 7
+</code></pre></div>
+- `PROPERTY_PIE_PARAMS` - //!&lt; 8
+- `PROPERTY_TEXT_PARAMS` - //!&lt; 9
+- `PROPERTY_COUNT` - <div class="codehilite"><pre><span></span><code>  //!&lt; 10
+</code></pre></div>
 
 ### Result
 *Type:* ENUM
 
 **Members**
 
-- `NODE_TYPE_BOX` - //!< 0,
-- `NODE_TYPE_TEXT` - //!< 1,
-- `NODE_TYPE_PIE` - //!< 2,
-- `NODE_TYPE_TEMPLATE` - //!< 3,
-- `NODE_TYPE_PARTICLEFX` - //!< 5,
-- `NODE_TYPE_CUSTOM` - //!< 6,
-- `NODE_TYPE_COUNT` - //!< 7,
+- `NODE_TYPE_BOX` - //!&lt; 0,
+- `NODE_TYPE_TEXT` - //!&lt; 1,
+- `NODE_TYPE_PIE` - //!&lt; 2,
+- `NODE_TYPE_TEMPLATE` - //!&lt; 3,
+- `NODE_TYPE_PARTICLEFX` - //!&lt; 5,
+- `NODE_TYPE_CUSTOM` - //!&lt; 6,
+- `NODE_TYPE_COUNT` - //!&lt; 7,
 
 ### Result
 *Type:* ENUM
 
 **Members**
 
-- `RESULT_OK` - //!< 0
-- `RESULT_SYNTAX_ERROR` - //!< -1
-- `RESULT_SCRIPT_ERROR` - //!< -2
-- `RESULT_OUT_OF_RESOURCES` - //!< -4
-- `RESULT_RESOURCE_NOT_FOUND` - //!< -5
-- `RESULT_TEXTURE_ALREADY_EXISTS` - //!< -6
-- `RESULT_INVAL_ERROR` - //!< -7
-- `RESULT_INF_RECURSION` - //!< -8
-- `RESULT_DATA_ERROR` - //!< -9
-- `RESULT_WRONG_TYPE` - //!< -10
+- `RESULT_OK` - //!&lt; 0
+- `RESULT_SYNTAX_ERROR` - //!&lt; -1
+- `RESULT_SCRIPT_ERROR` - //!&lt; -2
+- `RESULT_OUT_OF_RESOURCES` - //!&lt; -4
+- `RESULT_RESOURCE_NOT_FOUND` - //!&lt; -5
+- `RESULT_TEXTURE_ALREADY_EXISTS` - //!&lt; -6
+- `RESULT_INVAL_ERROR` - //!&lt; -7
+- `RESULT_INF_RECURSION` - //!&lt; -8
+- `RESULT_DATA_ERROR` - //!&lt; -9
+- `RESULT_WRONG_TYPE` - //!&lt; -10
 
 ### SetNodeAdjustMode
 *Type:* FUNCTION

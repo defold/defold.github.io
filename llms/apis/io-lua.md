@@ -74,7 +74,7 @@ or  nil on end of file.
 
 **Parameters**
 
-- `...`
+- `...` (any)
 
 ### file:seek
 *Type:* FUNCTION
@@ -143,7 +143,7 @@ use tostring or string.format before write.
 
 **Parameters**
 
-- `...`
+- `...` (any)
 
 ### io.close
 *Type:* FUNCTION
@@ -258,7 +258,7 @@ Equivalent to io.input():read.
 
 **Parameters**
 
-- `...`
+- `...` (any)
 
 ### io.tmpfile
 *Type:* FUNCTION
@@ -283,4 +283,4 @@ Equivalent to io.output():write.
 
 **Parameters**
 
-- `...`
+- `...` (any)

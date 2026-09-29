@@ -152,4 +152,4 @@ To be used as an option to function module.
 
 **Parameters**
 
-- `module` (table)
+- `module` (table<any, any>)

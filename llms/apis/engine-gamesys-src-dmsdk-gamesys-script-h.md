@@ -170,8 +170,8 @@ Holds info about the buffer and who owns it.
 **Members**
 
 - `Union` - of
-    - m_BufferRes [type:void*]                       A buffer resource
-    - m_Buffer    [type:dmBuffer::HBuffer]           A buffer
+    - m_BufferRes <span class="type">void*</span>                       A buffer resource
+    - m_Buffer    <span class="type">dmBuffer::HBuffer</span>           A buffer
 - `m_Buffer` (dmBuffer::HBuffer) - The buffer (or resource)
 - `m_Owner` (dmScript::LuaBufferOwnership) - What ownership the pointer has
 

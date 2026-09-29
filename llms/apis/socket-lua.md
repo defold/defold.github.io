@@ -27,18 +27,14 @@ LuaSocket is free software, released under the MIT license (same license as the 
 
 ## API
 
-### client
-*Type:* TYPEDEF
-TCP client object
-
-**Parameters**
-
-- `value` (userdata)
-
 ### client:close
 *Type:* FUNCTION
 Closes the TCP object. The internal socket used by the object is closed and the local address to which the object was bound is made available to other applications. No further operations (except for further calls to the close method) are allowed on a closed socket.
  It is important to close all used sockets once they are not needed, since, in many systems, each socket uses a file descriptor, which are limited system resources. Garbage-collected objects are automatically closed before destruction, though.
+
+**Returns**
+
+- `success` (number) - the value <code>1</code>.
 
 ### client:dirty
 *Type:* FUNCTION
@@ -84,7 +80,9 @@ Returns information about the remote side of a connected client object.
 
 **Returns**
 
-- `info` (string) - a string with the IP address of the peer, the port number that peer is using for the connection, and the family ("inet" or "inet6"). In case of error, the method returns <code>nil</code>.
+- `address` (string | nil) - the IP address of the peer, or <code>nil</code> in case of error.
+- `port_or_error` (integer | string) - the peer port number, or the error message in case of error.
+- `family` (string | nil) - the socket family (<code>"inet"</code> or <code>"inet6"</code>), or <code>nil</code> in case of error.
 
 ### client:getsockname
 *Type:* FUNCTION
@@ -92,7 +90,9 @@ Returns the local address information associated to the object.
 
 **Returns**
 
-- `info` (string) - a string with local IP address, the local port number, and the family ("inet" or "inet6"). In case of error, the method returns <code>nil</code>.
+- `address` (string | nil) - the local IP address, or <code>nil</code> in case of error.
+- `port_or_error` (string) - the local port, or the error message in case of error.
+- `family` (string | nil) - the socket family (<code>"inet"</code> or <code>"inet6"</code>), or <code>nil</code> in case of error.
 
 ### client:getstats
 *Type:* FUNCTION
@@ -100,7 +100,9 @@ Returns accounting information on the socket, useful for throttling of bandwidth
 
 **Returns**
 
-- `stats` (string) - a string with the number of bytes received, the number of bytes sent, and the age of the socket object in seconds.
+- `received` (number) - the number of bytes received.
+- `sent` (number) - the number of bytes sent.
+- `age` (number) - the age of the socket object in seconds.
 
 ### client:receive
 *Type:* FUNCTION
@@ -165,8 +167,8 @@ Sets options for the TCP object. Options are only needed by low-level or time-cr
 <dd>Controls the action taken when unsent data are queued on a socket and a close is performed. The value is a table with the following keys:</dd>
 </dl>
 <ul>
-<li><span class="type">boolean</span> <code>on</code></li>
-<li><span class="type">number</span> <code>timeout</code> (seconds)</li>
+<li><span class="type"><a href="../../../manuals/lua/#variables-and-data-types">boolean</a></span> <code>on</code></li>
+<li><span class="type"><a href="../../../manuals/lua/#variables-and-data-types">number</a></span> <code>timeout</code> (seconds)</li>
 </ul>
 If the 'on' field is set to true, the system will block the process on the close attempt until it is able to transmit the data or until <code>timeout</code> has passed. If 'on' is false and a close is issued, the system will process the close in a manner that allows the process to continue as quickly as possible. It is not advised to set this to anything other than zero;
 <dl>
@@ -190,13 +192,13 @@ Resets accounting information on the socket, useful for throttling of bandwidth.
 
 **Parameters**
 
-- `received` (number) - the new number of bytes received.
-- `sent` (number) - the new number of bytes sent.
-- `age` (number) - the new age in seconds.
+- `received` (number | nil) (optional) - the new number of bytes received, or <code>nil</code> to preserve it.
+- `sent` (number | nil) (optional) - the new number of bytes sent, or <code>nil</code> to preserve it.
+- `age` (number | nil) (optional) - the new age in seconds, or <code>nil</code> to preserve it.
 
 **Returns**
 
-- `success` (number | nil) - the value <code>1</code> in case of success, or <code>nil</code> in case of error.
+- `success` (number) - the value <code>1</code>.
 
 ### client:settimeout
 *Type:* FUNCTION
@@ -206,7 +208,7 @@ There are two timeout modes and both can be used together for fine tuning.
 
 **Parameters**
 
-- `value` (number) - the amount of time to wait, in seconds. The <code>nil</code> timeout value allows operations to block indefinitely. Negative timeout values have the same effect.
+- `value` (number | nil) (optional) - the amount of time to wait, in seconds. The <code>nil</code> timeout value allows operations to block indefinitely. Negative timeout values have the same effect.
 - `mode` (string) (optional) - optional timeout mode to set:
 <dl>
 <dt><code>"b"</code></dt>
@@ -214,6 +216,10 @@ There are two timeout modes and both can be used together for fine tuning.
 <dt><code>"t"</code></dt>
 <dd>total timeout. Specifies the upper limit on the amount of time LuaSocket can block a Lua script before returning from a call.</dd>
 </dl>
+
+**Returns**
+
+- `success` (number) - the value <code>1</code>.
 
 ### client:shutdown
 *Type:* FUNCTION
@@ -239,6 +245,10 @@ Shuts down part of a full-duplex connection.
 *Type:* FUNCTION
 Closes a UDP object. The internal socket used by the object is closed and the local address to which the object was bound is made available to other applications. No further operations (except for further calls to the close method) are allowed on a closed socket.
  It is important to close all used sockets once they are not needed, since, in many systems, each socket uses a file descriptor, which are limited system resources. Garbage-collected objects are automatically closed before destruction, though.
+
+**Returns**
+
+- `success` (number) - the value <code>1</code>.
 
 ### connected:getoption
 *Type:* FUNCTION
@@ -272,7 +282,9 @@ Retrieves information about the peer associated with a connected UDP object.
 
 **Returns**
 
-- `info` (string) - a string with the IP address of the peer, the port number that peer is using for the connection, and the family ("inet" or "inet6"). In case of error, the method returns <code>nil</code>.
+- `address` (string | nil) - the IP address of the peer, or <code>nil</code> in case of error.
+- `port_or_error` (integer | string) - the peer port number, or the error message in case of error.
+- `family` (string | nil) - the socket family (<code>"inet"</code> or <code>"inet6"</code>), or <code>nil</code> in case of error.
 
 ### connected:getsockname
 *Type:* FUNCTION
@@ -281,7 +293,9 @@ Returns the local address information associated to the object.
 
 **Returns**
 
-- `info` (string) - a string with local IP address, a number with the local port, and the family ("inet" or "inet6"). In case of error, the method returns <code>nil</code>.
+- `address` (string | nil) - the local IP address, or <code>nil</code> in case of error.
+- `port_or_error` (string) - the local port, or the error message in case of error.
+- `family` (string | nil) - the socket family (<code>"inet"</code> or <code>"inet6"</code>), or <code>nil</code> in case of error.
 
 ### connected:receive
 *Type:* FUNCTION
@@ -337,16 +351,16 @@ Sets options for the UDP object. Options are only needed by low-level or time-cr
 </dl>
 <code>"ip-add-membership"</code>: Joins the multicast group specified. Receives a table with fields:
 <ul>
-<li><span class="type">string</span> <code>multiaddr</code> (IP address)</li>
-<li><span class="type">string</span> <code>interface</code> (IP address)</li>
+<li><span class="type"><a href="../../../manuals/lua/#variables-and-data-types">string</a></span> <code>multiaddr</code> (IP address)</li>
+<li><span class="type"><a href="../../../manuals/lua/#variables-and-data-types">string</a></span> <code>interface</code> (IP address)</li>
 </ul>
 <dl>
 <dt>"'ip-drop-membership"`</dt>
 <dd>Leaves the multicast group specified. Receives a table with fields:</dd>
 </dl>
 <ul>
-<li><span class="type">string</span> <code>multiaddr</code> (IP address)</li>
-<li><span class="type">string</span> <code>interface</code> (IP address)</li>
+<li><span class="type"><a href="../../../manuals/lua/#variables-and-data-types">string</a></span> <code>multiaddr</code> (IP address)</li>
+<li><span class="type"><a href="../../../manuals/lua/#variables-and-data-types">string</a></span> <code>interface</code> (IP address)</li>
 </ul>
 - `value` (any) (optional) - the value to set for the specified option.
 
@@ -363,7 +377,7 @@ For connected objects, outgoing datagrams will be sent to the specified peer, an
 
 **Parameters**
 
-- `"*"` (string) - if address is "*" and the object is connected, the peer association is removed and the object becomes an unconnected object again.
+- `address` (string) - must be <code>"*"</code>. The peer association is removed and the object becomes an unconnected object again.
 
 **Returns**
 
@@ -377,15 +391,11 @@ Changes the timeout values for the object. By default, the receive and receivefr
 
 **Parameters**
 
-- `value` (number) - the amount of time to wait, in seconds. The <code>nil</code> timeout value allows operations to block indefinitely. Negative timeout values have the same effect.
+- `value` (number | nil) (optional) - the amount of time to wait, in seconds. The <code>nil</code> timeout value allows operations to block indefinitely. Negative timeout values have the same effect.
 
-### master
-*Type:* TYPEDEF
-TCP master object
+**Returns**
 
-**Parameters**
-
-- `value` (userdata)
+- `success` (number) - the value <code>1</code>.
 
 ### master:bind
 *Type:* FUNCTION
@@ -405,6 +415,10 @@ Binds a master object to address and port on the local host.
 *Type:* FUNCTION
 Closes the TCP object. The internal socket used by the object is closed and the local address to which the object was bound is made available to other applications. No further operations (except for further calls to the close method) are allowed on a closed socket.
  It is important to close all used sockets once they are not needed, since, in many systems, each socket uses a file descriptor, which are limited system resources. Garbage-collected objects are automatically closed before destruction, though.
+
+**Returns**
+
+- `success` (number) - the value <code>1</code>.
 
 ### master:connect
 *Type:* FUNCTION
@@ -445,15 +459,9 @@ Returns the local address information associated to the object.
 
 **Returns**
 
-- `info` (string) - a string with local IP address, the local port number, and the family ("inet" or "inet6"). In case of error, the method returns <code>nil</code>.
-
-### master:getstats
-*Type:* FUNCTION
-Returns accounting information on the socket, useful for throttling of bandwidth.
-
-**Returns**
-
-- `stats` (string) - a string with the number of bytes received, the number of bytes sent, and the age of the socket object in seconds.
+- `address` (string | nil) - the local IP address, or <code>nil</code> in case of error.
+- `port_or_error` (string) - the local port, or the error message in case of error.
+- `family` (string | nil) - the socket family (<code>"inet"</code> or <code>"inet6"</code>), or <code>nil</code> in case of error.
 
 ### master:listen
 *Type:* FUNCTION
@@ -476,20 +484,6 @@ Sets the underling socket descriptor or handle associated to the object. The cur
 
 - `handle` (number) - the descriptor or handle to set.
 
-### master:setstats
-*Type:* FUNCTION
-Resets accounting information on the socket, useful for throttling of bandwidth.
-
-**Parameters**
-
-- `received` (number) - the new number of bytes received.
-- `sent` (number) - the new number of bytes sent.
-- `age` (number) - the new age in seconds.
-
-**Returns**
-
-- `success` (number | nil) - the value <code>1</code> in case of success, or <code>nil</code> in case of error.
-
 ### master:settimeout
 *Type:* FUNCTION
 Changes the timeout values for the object. By default, all I/O operations are blocking. That is, any call to the methods send, receive, and accept will block indefinitely, until the operation completes. The settimeout method defines a limit on the amount of time the I/O methods can block. When a timeout is set and the specified amount of time has elapsed, the affected methods give up and fail with an error code.
@@ -498,7 +492,7 @@ There are two timeout modes and both can be used together for fine tuning.
 
 **Parameters**
 
-- `value` (number) - the amount of time to wait, in seconds. The <code>nil</code> timeout value allows operations to block indefinitely. Negative timeout values have the same effect.
+- `value` (number | nil) (optional) - the amount of time to wait, in seconds. The <code>nil</code> timeout value allows operations to block indefinitely. Negative timeout values have the same effect.
 - `mode` (string) (optional) - optional timeout mode to set:
 <dl>
 <dt><code>"b"</code></dt>
@@ -507,6 +501,10 @@ There are two timeout modes and both can be used together for fine tuning.
 <dd>total timeout. Specifies the upper limit on the amount of time LuaSocket can block a Lua script before returning from a call.</dd>
 </dl>
 
+**Returns**
+
+- `success` (number) - the value <code>1</code>.
+
 ### server:accept
 *Type:* FUNCTION
 Waits for a remote connection on the server object and returns a client object representing that connection.
@@ -514,13 +512,17 @@ Waits for a remote connection on the server object and returns a client object r
 
 **Returns**
 
-- `tcp_client` (client | nil) - if a connection is successfully initiated, a client object is returned, or <code>nil</code> in case of error.
+- `tcp_client` (socket_client | nil) - if a connection is successfully initiated, a client object is returned, or <code>nil</code> in case of error.
 - `error` (string | nil) - the error message, or <code>nil</code> if no error occurred. The error is <code>"timeout"</code> if a timeout condition is met.
 
 ### server:close
 *Type:* FUNCTION
 Closes the TCP object. The internal socket used by the object is closed and the local address to which the object was bound is made available to other applications. No further operations (except for further calls to the close method) are allowed on a closed socket.
  It is important to close all used sockets once they are not needed, since, in many systems, each socket uses a file descriptor, which are limited system resources. Garbage-collected objects are automatically closed before destruction, though.
+
+**Returns**
+
+- `success` (number) - the value <code>1</code>.
 
 ### server:dirty
 *Type:* FUNCTION
@@ -565,15 +567,9 @@ Returns the local address information associated to the object.
 
 **Returns**
 
-- `info` (string) - a string with local IP address, the local port number, and the family ("inet" or "inet6"). In case of error, the method returns <code>nil</code>.
-
-### server:getstats
-*Type:* FUNCTION
-Returns accounting information on the socket, useful for throttling of bandwidth.
-
-**Returns**
-
-- `stats` (string) - a string with the number of bytes received, the number of bytes sent, and the age of the socket object in seconds.
+- `address` (string | nil) - the local IP address, or <code>nil</code> in case of error.
+- `port_or_error` (string) - the local port, or the error message in case of error.
+- `family` (string | nil) - the socket family (<code>"inet"</code> or <code>"inet6"</code>), or <code>nil</code> in case of error.
 
 ### server:setfd
 *Type:* FUNCTION
@@ -597,8 +593,8 @@ Sets options for the TCP object. Options are only needed by low-level or time-cr
 <dd>Controls the action taken when unsent data are queued on a socket and a close is performed. The value is a table with the following keys:</dd>
 </dl>
 <ul>
-<li><span class="type">boolean</span> <code>on</code></li>
-<li><span class="type">number</span> <code>timeout</code> (seconds)</li>
+<li><span class="type"><a href="../../../manuals/lua/#variables-and-data-types">boolean</a></span> <code>on</code></li>
+<li><span class="type"><a href="../../../manuals/lua/#variables-and-data-types">number</a></span> <code>timeout</code> (seconds)</li>
 </ul>
 If the 'on' field is set to true, the system will block the process on the close attempt until it is able to transmit the data or until <code>timeout</code> has passed. If 'on' is false and a close is issued, the system will process the close in a manner that allows the process to continue as quickly as possible. It is not advised to set this to anything other than zero;
 <dl>
@@ -616,20 +612,6 @@ If the 'on' field is set to true, the system will block the process on the close
 - `status` (number | nil) - the value <code>1</code>, or <code>nil</code> in case of error.
 - `error` (string | nil) - the error message, or <code>nil</code> if no error occurred.
 
-### server:setstats
-*Type:* FUNCTION
-Resets accounting information on the socket, useful for throttling of bandwidth.
-
-**Parameters**
-
-- `received` (number) - the new number of bytes received.
-- `sent` (number) - the new number of bytes sent.
-- `age` (number) - the new age in seconds.
-
-**Returns**
-
-- `success` (number | nil) - the value <code>1</code> in case of success, or <code>nil</code> in case of error.
-
 ### server:settimeout
 *Type:* FUNCTION
 Changes the timeout values for the object. By default, all I/O operations are blocking. That is, any call to the methods send, receive, and accept will block indefinitely, until the operation completes. The settimeout method defines a limit on the amount of time the I/O methods can block. When a timeout is set and the specified amount of time has elapsed, the affected methods give up and fail with an error code.
@@ -638,7 +620,7 @@ There are two timeout modes and both can be used together for fine tuning.
 
 **Parameters**
 
-- `value` (number) - the amount of time to wait, in seconds. The <code>nil</code> timeout value allows operations to block indefinitely. Negative timeout values have the same effect.
+- `value` (number | nil) (optional) - the amount of time to wait, in seconds. The <code>nil</code> timeout value allows operations to block indefinitely. Negative timeout values have the same effect.
 - `mode` (string) (optional) - optional timeout mode to set:
 <dl>
 <dt><code>"b"</code></dt>
@@ -647,13 +629,25 @@ There are two timeout modes and both can be used together for fine tuning.
 <dd>total timeout. Specifies the upper limit on the amount of time LuaSocket can block a Lua script before returning from a call.</dd>
 </dl>
 
+**Returns**
+
+- `success` (number) - the value <code>1</code>.
+
 ### socket._SETSIZE
 *Type:* CONSTANT
 This constant contains the maximum number of sockets that the select function can handle.
 
+**Parameters**
+
+- `value` (integer)
+
 ### socket._VERSION
 *Type:* CONSTANT
 This constant has a string describing the current LuaSocket version.
+
+**Parameters**
+
+- `value` (string)
 
 ### socket.connect
 *Type:* FUNCTION
@@ -673,30 +667,22 @@ your system configuration.
 
 **Returns**
 
-- `tcp_client` (client | nil) - a new IPv6 TCP client object, or <code>nil</code> in case of error.
+- `tcp_client` (socket_client | nil) - a new IPv6 TCP client object, or <code>nil</code> in case of error.
 - `error` (string | nil) - the error message, or <code>nil</code> if no error occurred.
+
+### socket.dns.address_info
+*Type:* STRUCT
+DNS address information
+
+**Members**
+
+- `family` (string) - <code>"inet"</code> for IPv4 or <code>"inet6"</code> for IPv6
+- `addr` (string) - resolved IP address
 
 ### socket.dns.getaddrinfo
 *Type:* FUNCTION
 This function converts a host name to IPv4 or IPv6 address.
 The supplied address can be an IPv4 or IPv6 address or host name.
-The function returns a table with all information returned by the resolver:
-```
-{
- [1] = {
-    family = family-name-1,
-    addr = address-1
-  },
-  ...
-  [n] = {
-    family = family-name-n,
-    addr = address-n
-  }
-}
-
-```
-
-Here, family contains the string "inet" for IPv4 addresses, and "inet6" for IPv6 addresses.
 In case of error, the function returns nil followed by an error message.
 
 **Parameters**
@@ -705,7 +691,7 @@ In case of error, the function returns nil followed by an error message.
 
 **Returns**
 
-- `resolved` (table | nil) - a table with all information returned by the resolver, or if an error occurs, <code>nil</code>.
+- `resolved` (socket.dns.address_info[] | nil) - resolver information, or <code>nil</code> on error
 - `error` (string | nil) - the error message, or <code>nil</code> if no error occurred.
 
 ### socket.dns.gethostname
@@ -736,8 +722,18 @@ The function returns a table with all information returned by the resolver:
 
 **Returns**
 
-- `resolved` (table | nil) - a table with all information returned by the resolver, or if an error occurs, <code>nil</code>.
+- `resolved` (string[] | nil) - a table with all information returned by the resolver, or if an error occurs, <code>nil</code>.
 - `error` (string | nil) - the error message, or <code>nil</code> if no error occurred.
+
+### socket.dns.host_info
+*Type:* STRUCT
+DNS host information
+
+**Members**
+
+- `name` (string) - canonical host name
+- `alias` (string[]) - host aliases
+- `ip` (string[]) - resolved IPv4 addresses
 
 ### socket.dns.tohostname
 *Type:* FUNCTION
@@ -751,7 +747,7 @@ The address can be an IPv4 address or a host name.
 **Returns**
 
 - `hostname` (string | nil) - the canonic host name of the given address, or <code>nil</code> in case of an error.
-- `resolved` (table | string) - a table with all information returned by the resolver, or if an error occurs, the error message string.
+- `resolved` (socket.dns.host_info | string) - resolver information, or an error message string
 
 ### socket.dns.toip
 *Type:* FUNCTION
@@ -765,7 +761,7 @@ The address can be an IP address or a host name.
 **Returns**
 
 - `ip_address` (string | nil) - the first IP address found for the hostname, or <code>nil</code> in case of an error.
-- `resolved` (table | string) - a table with all information returned by the resolver, or if an error occurs, the error message string.
+- `resolved` (socket.dns.host_info | string) - resolver information, or an error message string
 
 ### socket.gettime
 *Type:* FUNCTION
@@ -793,11 +789,11 @@ The finalizer function will be called in protected mode (see protect).
 
 **Parameters**
 
-- `finalizer` (function()) - a function that will be called before the try throws the exception.
+- `finalizer` (fun()) - a function that will be called before the try throws the exception.
 
 **Returns**
 
-- `try` (function) - the customized try function.
+- `try` (fun(...:any):any) - the customized try function.
 
 **Examples**
 
@@ -821,11 +817,11 @@ Converts a function that throws exceptions into a safe function. This function o
 
 **Parameters**
 
-- `func` (function) - a function that calls a try function (or assert, or error) to throw exceptions.
+- `func` (fun(...:any):any) - a function that calls a try function (or assert, or error) to throw exceptions.
 
 **Returns**
 
-- `safe_func` (function(function())) - an equivalent function that instead of throwing exceptions, returns <code>nil</code> followed by an error message.
+- `safe_func` (fun(...:any):any) - an equivalent function that instead of throwing exceptions, returns <code>nil</code> followed by an error message.
 
 **Examples**
 
@@ -856,14 +852,14 @@ The returned tables are doubly keyed both by integers and also by the sockets th
 
 **Parameters**
 
-- `recvt` (table) - array with the sockets to test for characters available for reading.
-- `sendt` (table) - array with sockets that are watched to see if it is OK to immediately write on them.
+- `recvt` (socket_selectable[]) - array with the sockets or compatible objects to test for characters available for reading.
+- `sendt` (socket_selectable[]) - array with sockets or compatible objects that are watched to see if it is OK to immediately write on them.
 - `timeout` (number) (optional) - the maximum amount of time (in seconds) to wait for a change in status. Nil, negative or omitted timeout value allows the function to block indefinitely.
 
 **Returns**
 
-- `sockets_r` (table) - a list with the sockets ready for reading.
-- `sockets_w` (table) - a list with the sockets ready for writing.
+- `sockets_r` (table<integer|socket_selectable, socket_selectable|integer>) - sockets ready for reading, keyed both by array index and by socket.
+- `sockets_w` (table<integer|socket_selectable, socket_selectable|integer>) - sockets ready for writing, keyed both by array index and by socket.
 - `error` (string | nil) - an error message. "timeout" if a timeout condition was met, otherwise <code>nil</code>.
 
 ### socket.skip
@@ -875,16 +871,12 @@ The function returns retD+1 to retN.
 
 **Parameters**
 
-- `d` (number) - the number of arguments to drop.
-- `ret1` (any) (optional) - argument 1.
-- `ret2` (any) (optional) - argument 2.
-- `retN` (any) (optional) - argument N.
+- `d` (integer) - the number of arguments to drop.
+- `...` (any) - the values from which to drop arguments.
 
 **Returns**
 
-- `retD+1` (any | nil) - argument D+1.
-- `retD+2` (any | nil) - argument D+2.
-- `retN` (any | nil) - argument N.
+- `...` (any) - the remaining values after the first <code>d</code> values are dropped.
 
 **Examples**
 
@@ -916,7 +908,7 @@ Creates and returns an IPv4 TCP master object. A master object can be transforme
 
 **Returns**
 
-- `tcp_master` (master | nil) - a new IPv4 TCP master object, or <code>nil</code> in case of error.
+- `tcp_master` (socket_master | nil) - a new IPv4 TCP master object, or <code>nil</code> in case of error.
 - `error` (string | nil) - the error message, or <code>nil</code> if no error occurred.
 
 ### socket.tcp6
@@ -926,7 +918,7 @@ Note: The TCP object returned will have the option "ipv6-v6only" set to true.
 
 **Returns**
 
-- `tcp_master` (master | nil) - a new IPv6 TCP master object, or <code>nil</code> in case of error.
+- `tcp_master` (socket_master | nil) - a new IPv6 TCP master object, or <code>nil</code> in case of error.
 - `error` (string | nil) - the error message, or <code>nil</code> if no error occurred.
 
 ### socket.udp
@@ -935,7 +927,7 @@ Creates and returns an unconnected IPv4 UDP object. Unconnected objects support 
 
 **Returns**
 
-- `udp_unconnected` (unconnected | nil) - a new unconnected IPv4 UDP object, or <code>nil</code> in case of error.
+- `udp_unconnected` (socket_unconnected | nil) - a new unconnected IPv4 UDP object, or <code>nil</code> in case of error.
 - `error` (string | nil) - the error message, or <code>nil</code> if no error occurred.
 
 ### socket.udp6
@@ -945,21 +937,135 @@ Note: The UDP object returned will have the option "ipv6-v6only" set to true.
 
 **Returns**
 
-- `udp_unconnected` (unconnected | nil) - a new unconnected IPv6 UDP object, or <code>nil</code> in case of error.
+- `udp_unconnected` (socket_unconnected | nil) - a new unconnected IPv6 UDP object, or <code>nil</code> in case of error.
 - `error` (string | nil) - the error message, or <code>nil</code> if no error occurred.
 
-### unconnected
+### socket_client
 *Type:* TYPEDEF
-unconnected UDP object
+A TCP socket connected to a remote endpoint. Create one with
+socket.connect, or by calling connect on a socket_master. Use
+send and receive to exchange stream data, and close when finished.
 
 **Parameters**
 
-- `value` (userdata)
+- `value` (userdata) - connected TCP socket
+
+**Examples**
+
+```
+local client = assert(socket.connect("127.0.0.1", 8000))
+assert(client:send("ping\n"))
+client:close()
+
+```
+
+### socket_connected
+*Type:* TYPEDEF
+A UDP socket associated with one remote peer. Start with a
+socket_unconnected from socket.udp or socket.udp6, then call
+setpeername. Connected UDP sockets use send and receive instead of
+sendto and receivefrom.
+
+**Parameters**
+
+- `value` (userdata) - connected UDP socket
+
+**Examples**
+
+```
+local udp = assert(socket.udp())
+assert(udp:setpeername("127.0.0.1", 8000))
+assert(udp:send("ping"))
+
+```
+
+### socket_master
+*Type:* TYPEDEF
+A newly created TCP socket that is not yet connected or listening. Obtain one
+from socket.tcp or socket.tcp6. Calling connect transforms it into
+a socket_client; calling bind followed by listen transforms it into a
+socket_server.
+
+**Parameters**
+
+- `value` (userdata) - unconfigured TCP socket
+
+**Examples**
+
+```
+local tcp = assert(socket.tcp())
+assert(tcp:bind("*", 8000))
+assert(tcp:listen(32))
+
+```
+
+### socket_selectable
+*Type:* TYPEDEF
+In addition to LuaSocket TCP and UDP objects, socket.select() accepts any
+object that implements compatible getfd and dirty methods.
+
+**Parameters**
+
+- `value` (socket_master | socket_client | socket_server | socket_connected | socket_unconnected | { getfd:fun(self:any):integer, dirty:fun(self:any):boolean })
+
+**Examples**
+
+Test whether a client can be read without blocking:
+```
+local client = assert(socket.connect("127.0.0.1", 8000))
+local readable = socket.select({ client }, {}, 0)
+if #readable > 0 then
+    local data = client:receive()
+end
+
+```
+
+### socket_server
+*Type:* TYPEDEF
+A TCP socket listening for incoming connections. Create one by binding a
+socket_master and calling its listen method. Calling accept returns a
+socket_client for an incoming connection.
+
+**Parameters**
+
+- `value` (userdata) - listening TCP socket
+
+**Examples**
+
+```
+local server = assert(socket.tcp())
+assert(server:bind("*", 8000))
+assert(server:listen(32))
+local client = assert(server:accept())
+
+```
+
+### socket_unconnected
+*Type:* TYPEDEF
+A UDP socket without a fixed remote peer, created by socket.udp or
+socket.udp6. Use sendto and receivefrom with explicit addresses, or
+call setpeername to transform it into a socket_connected.
+
+**Parameters**
+
+- `value` (userdata) - unconnected UDP socket
+
+**Examples**
+
+```
+local udp = assert(socket.udp())
+assert(udp:sendto("ping", "127.0.0.1", 8000))
+
+```
 
 ### unconnected:close
 *Type:* FUNCTION
 Closes a UDP object. The internal socket used by the object is closed and the local address to which the object was bound is made available to other applications. No further operations (except for further calls to the close method) are allowed on a closed socket.
  It is important to close all used sockets once they are not needed, since, in many systems, each socket uses a file descriptor, which are limited system resources. Garbage-collected objects are automatically closed before destruction, though.
+
+**Returns**
+
+- `success` (number) - the value <code>1</code>.
 
 ### unconnected:getoption
 *Type:* FUNCTION
@@ -993,7 +1099,9 @@ Returns the local address information associated to the object.
 
 **Returns**
 
-- `info` (string) - a string with local IP address, a number with the local port, and the family ("inet" or "inet6"). In case of error, the method returns <code>nil</code>.
+- `address` (string | nil) - the local IP address, or <code>nil</code> in case of error.
+- `port_or_error` (string) - the local port, or the error message in case of error.
+- `family` (string | nil) - the socket family (<code>"inet"</code> or <code>"inet6"</code>), or <code>nil</code> in case of error.
 
 ### unconnected:receive
 *Type:* FUNCTION
@@ -1065,16 +1173,16 @@ Sets options for the UDP object. Options are only needed by low-level or time-cr
 </dl>
 <code>"ip-add-membership"</code>: Joins the multicast group specified. Receives a table with fields:
 <ul>
-<li><span class="type">string</span> <code>multiaddr</code> (IP address)</li>
-<li><span class="type">string</span> <code>interface</code> (IP address)</li>
+<li><span class="type"><a href="../../../manuals/lua/#variables-and-data-types">string</a></span> <code>multiaddr</code> (IP address)</li>
+<li><span class="type"><a href="../../../manuals/lua/#variables-and-data-types">string</a></span> <code>interface</code> (IP address)</li>
 </ul>
 <dl>
 <dt>"'ip-drop-membership"`</dt>
 <dd>Leaves the multicast group specified. Receives a table with fields:</dd>
 </dl>
 <ul>
-<li><span class="type">string</span> <code>multiaddr</code> (IP address)</li>
-<li><span class="type">string</span> <code>interface</code> (IP address)</li>
+<li><span class="type"><a href="../../../manuals/lua/#variables-and-data-types">string</a></span> <code>multiaddr</code> (IP address)</li>
+<li><span class="type"><a href="../../../manuals/lua/#variables-and-data-types">string</a></span> <code>interface</code> (IP address)</li>
 </ul>
 - `value` (any) (optional) - the value to set for the specified option.
 
@@ -1121,4 +1229,8 @@ Changes the timeout values for the object. By default, the receive and receivefr
 
 **Parameters**
 
-- `value` (number) - the amount of time to wait, in seconds. The <code>nil</code> timeout value allows operations to block indefinitely. Negative timeout values have the same effect.
+- `value` (number | nil) (optional) - the amount of time to wait, in seconds. The <code>nil</code> timeout value allows operations to block indefinitely. Negative timeout values have the same effect.
+
+**Returns**
+
+- `success` (number) - the value <code>1</code>.

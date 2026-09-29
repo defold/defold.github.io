@@ -64,21 +64,16 @@ end
 
 ```
 
-### particlefx.EMITTER_STATE_POSTSPAWN
-*Type:* CONSTANT
-The emitter is not spawning any particles, but has particles that are still alive.
+### particlefx.EMITTER_STATE
+*Type:* ENUM
+Emitter states
 
-### particlefx.EMITTER_STATE_PRESPAWN
-*Type:* CONSTANT
-The emitter will be in this state when it has been started but before spawning any particles. Normally the emitter is in this state for a short time, depending on if a start delay has been set for this emitter or not.
+**Members**
 
-### particlefx.EMITTER_STATE_SLEEPING
-*Type:* CONSTANT
-The emitter does not have any living particles and will not spawn any particles in this state.
-
-### particlefx.EMITTER_STATE_SPAWNING
-*Type:* CONSTANT
-The emitter is spawning particles.
+- `particlefx.EMITTER_STATE_POSTSPAWN` - postspawn state The emitter is not spawning any particles, but has particles that are still alive.
+- `particlefx.EMITTER_STATE_PRESPAWN` - prespawn state The emitter will be in this state when it has been started but before spawning any particles. Normally the emitter is in this state for a short time, depending on if a start delay has been set for this emitter or not.
+- `particlefx.EMITTER_STATE_SLEEPING` - sleeping state The emitter does not have any living particles and will not spawn any particles in this state.
+- `particlefx.EMITTER_STATE_SPAWNING` - spawning state The emitter is spawning particles.
 
 ### particlefx.play
 *Type:* FUNCTION
@@ -90,23 +85,7 @@ Which particle FX to play is identified by the URL.
 **Parameters**
 
 - `url` (string | hash | url) - the particle fx that should start playing.
-- `emitter_state_function` (function(self, id, emitter, state)) (optional) - optional callback function that will be called when an emitter attached to this particlefx changes state.
-<dl>
-<dt><code>self</code></dt>
-<dd><span class="type">object</span> The current object</dd>
-<dt><code>id</code></dt>
-<dd><span class="type">hash</span> The id of the particle fx component</dd>
-<dt><code>emitter</code></dt>
-<dd><span class="type">hash</span> The id of the emitter</dd>
-<dt><code>state</code></dt>
-<dd><span class="type">constant</span> the new state of the emitter:</dd>
-</dl>
-<ul>
-<li><code>particlefx.EMITTER_STATE_SLEEPING</code></li>
-<li><code>particlefx.EMITTER_STATE_PRESPAWN</code></li>
-<li><code>particlefx.EMITTER_STATE_SPAWNING</code></li>
-<li><code>particlefx.EMITTER_STATE_POSTSPAWN</code></li>
-</ul>
+- `emitter_state_function` (fun(self:script_instance, id:hash, emitter:hash, state:particlefx.EMITTER_STATE)) (optional) - optional callback function that will be called when an emitter attached to this particlefx changes state.
 
 **Examples**
 
@@ -189,10 +168,7 @@ Which particle FX to stop is identified by the URL.
 **Parameters**
 
 - `url` (string | hash | url) - the particle fx that should stop playing
-- `options` (table) (optional) - Options when stopping the particle fx. Supported options:
-<ul>
-<li><span class="type">boolean</span> <code>clear</code>: instantly clear spawned particles</li>
-</ul>
+- `options` (particlefx.stop_options) (optional) - options used when stopping the particle fx
 
 **Examples**
 
@@ -204,3 +180,11 @@ function final(self)
 end
 
 ```
+
+### particlefx.stop_options
+*Type:* STRUCT
+Options used when stopping particle effects.
+
+**Members**
+
+- `clear?` (boolean) - Instantly clear spawned particles.

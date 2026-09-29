@@ -136,7 +136,7 @@ Returns object.
 **Parameters**
 
 - `object` (any)
-- `table` (table)
+- `table` (table<any, any>)
 
 ### debug.sethook
 *Type:* FUNCTION
@@ -205,7 +205,7 @@ Sets the metatable for the given object to the given table
 **Parameters**
 
 - `object` (any)
-- `table` (table)
+- `table` (table<any, any> | nil)
 
 ### debug.setupvalue
 *Type:* FUNCTION

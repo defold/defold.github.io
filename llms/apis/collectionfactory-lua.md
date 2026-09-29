@@ -33,12 +33,12 @@ using collectionfactory.load will synchronously load and create resources which 
 - `url` (string | hash | url) - the collection factory component to be used
 - `position` (vector3) (optional) - position to assign to the newly spawned collection
 - `rotation` (quaternion) (optional) - rotation to assign to the newly spawned collection
-- `properties` (table) (optional) - table of script properties to propagate to any new game object instances
+- `properties` (table<hash, table<string|hash, any>>) (optional) - table of script properties to propagate to any new game object instances
 - `scale` (number | vector3) (optional) - uniform scaling to apply to the newly spawned collection (must be greater than 0).
 
 **Returns**
 
-- `ids` (table) - a table mapping the id:s from the collection to the new instance id:s
+- `ids` (table<hash, hash>) - a table mapping the id:s from the collection to the new instance id:s
 
 **Examples**
 
@@ -90,12 +90,7 @@ Calling this function when the factory is not marked as dynamic loading always r
 
 **Returns**
 
-- `status` (constant) - status of the collection factory component
-<ul>
-<li><code>collectionfactory.STATUS_UNLOADED</code></li>
-<li><code>collectionfactory.STATUS_LOADING</code></li>
-<li><code>collectionfactory.STATUS_LOADED</code></li>
-</ul>
+- `status` (collectionfactory.STATUS) - status of the collection factory component
 
 ### collectionfactory.load
 *Type:* FUNCTION
@@ -105,14 +100,14 @@ Calling this function when the factory is not marked as dynamic loading does not
 **Parameters**
 
 - `url` (string | hash | url) (optional) - the collection factory component to load
-- `complete_function` (function(self, url, result)) (optional) - function to call when resources are loaded.
+- `complete_function` (fun(self:script_instance, url:url, result:boolean)) (optional) - function to call when resources are loaded.
 <dl>
-<dt><code>self</code></dt>
-<dd><span class="type">object</span> The current object.</dd>
-<dt><code>url</code></dt>
-<dd><span class="type">url</span> url of the collection factory component</dd>
-<dt><code>result</code></dt>
-<dd><span class="type">boolean</span> True if resource were loaded successfully</dd>
+<dt class="api-lua-v2-type-definition"><code>self:<a href="../builtins-lua/#script_instance">script_instance</a></code></dt>
+<dd>The current script instance.</dd>
+<dt class="api-lua-v2-type-definition"><code>url:<a href="../msg-lua/#url">url</a></code></dt>
+<dd>url of the collection factory component</dd>
+<dt class="api-lua-v2-type-definition"><code>result:<a href="../../../manuals/lua/#variables-and-data-types">boolean</a></code></dt>
+<dd>True if resource were loaded successfully</dd>
 </dl>
 
 **Examples**
@@ -149,17 +144,15 @@ local ids = collectionfactory.create("#factory", go.get_world_position(), vmath.
 
 ```
 
-### collectionfactory.STATUS_LOADED
-*Type:* CONSTANT
-loaded
+### collectionfactory.STATUS
+*Type:* ENUM
+Collection factory status values
 
-### collectionfactory.STATUS_LOADING
-*Type:* CONSTANT
-loading
+**Members**
 
-### collectionfactory.STATUS_UNLOADED
-*Type:* CONSTANT
-unloaded
+- `collectionfactory.STATUS_LOADED` - The collection factory resources are loaded.
+- `collectionfactory.STATUS_LOADING` - The collection factory resources are loading.
+- `collectionfactory.STATUS_UNLOADED` - The collection factory resources are unloaded.
 
 ### collectionfactory.unload
 *Type:* FUNCTION

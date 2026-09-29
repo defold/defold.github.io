@@ -11,6 +11,31 @@ Built-in scripting functions.
 ## API
 
 ### hash
+*Type:* TYPEDEF
+Defold represents resource paths, message names, object ids, and many other
+identifiers as 64-bit hash values. Create one from a string with hash,
+or receive one from an engine API. Hashes can be compared for equality and
+used as table keys, but the original string is not generally recoverable in
+release builds.
+
+**Parameters**
+
+- `value` (userdata) - hashed identifier
+
+**Examples**
+
+```
+local damage_message = hash("take_damage")
+
+function on_message(self, message_id, message, sender)
+    if message_id == damage_message then
+        self.health = self.health - message.amount
+    end
+end
+
+```
+
+### hash
 *Type:* FUNCTION
 All ids in the engine are represented as hashes, so a string needs to be hashed
 before it can be compared with an id.
@@ -66,7 +91,7 @@ will recurse.
 
 **Parameters**
 
-- `v` (any) - value to print
+- `...` (any) - values to print
 
 **Examples**
 
@@ -91,5 +116,33 @@ Lua tables is undefined):
   key2 = 1234,
   key = value,
 }
+
+```
+
+### script_instance
+*Type:* TYPEDEF
+An engine-created state container passed as self to script lifecycle
+functions and callbacks. Each script component, GUI script, and render
+script has its own instance. Values assigned to the instance remain
+available for that instance's lifetime.
+Script instances cannot be created directly. Store state by assigning
+fields to the self value supplied by the engine.
+
+**Parameters**
+
+- `value` (userdata) - script instance state
+
+**Examples**
+
+Initialize state and access it from an engine callback:
+```
+function init(self)
+    self.health = 100
+
+    timer.delay(1, false, function(self, handle, time_elapsed)
+        self.health = self.health - 10
+        print(self.health)
+    end)
+end
 
 ```

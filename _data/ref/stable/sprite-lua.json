@@ -2,7 +2,7 @@
     "elements": [
         {
             "brief": "<span class=\"type\">hash</span> sprite animation",
-            "description": "<span class=\"mark\">READ ONLY</span> The current animation id. An animation that plays currently for the sprite. The type of the property is <span class=\"type\">hash</span>.",
+            "description": "<span class=\"mark\">READ ONLY</span> The current animation id. An animation that plays currently for the sprite. The type of the property is <span class=\"type\"><a href=\"../builtins-lua/#hash\">hash</a></span>.",
             "error": "",
             "examples": "How to get the <code>animation</code> on component \"sprite\":\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"kd\">local</span> <span class=\"n\">animation</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">&quot;#sprite&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;animation&quot;</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
             "language": "",
@@ -31,6 +31,12 @@
                     "name": "current_tile",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -39,6 +45,12 @@
                     "name": "id",
                     "types": [
                         "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
                     ]
                 }
             ],
@@ -123,6 +135,12 @@
                     "name": "id",
                     "types": [
                         "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
                     ]
                 },
                 {
@@ -131,6 +149,12 @@
                     "name": "offset",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -139,6 +163,12 @@
                     "name": "playback_rate",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -149,7 +179,7 @@
         },
         {
             "brief": "<span class=\"type\">number</span> sprite playback_rate",
-            "description": "The animation playback rate. A multiplier to the animation playback rate. The type of the property is <span class=\"type\">number</span>.\nThe playback_rate is a non-negative number, a negative value will be clamped to 0.",
+            "description": "The animation playback rate. A multiplier to the animation playback rate. The type of the property is <span class=\"type\"><a href=\"../../../manuals/lua/#variables-and-data-types\">number</a></span>.\nThe playback_rate is a non-negative number, a negative value will be clamped to 0.",
             "error": "",
             "examples": "How to set the playback_rate on component \"sprite\" to play at double the current speed:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"c1\">-- Get the current value on component &quot;sprite&quot;</span>\n  <span class=\"n\">playback_rate</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">&quot;#sprite&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;playback_rate&quot;</span><span class=\"p\">)</span>\n  <span class=\"c1\">-- Set the playback_rate to double the previous value.</span>\n  <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"s2\">&quot;#sprite&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;playback_rate&quot;</span><span class=\"p\">,</span> <span class=\"n\">playback_rate</span> <span class=\"o\">*</span> <span class=\"mi\">2</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
             "language": "",
@@ -225,6 +255,16 @@
                         "string",
                         "hash",
                         "url"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
                     ]
                 },
                 {
@@ -234,22 +274,42 @@
                     "types": [
                         "string",
                         "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
                     ]
                 },
                 {
-                    "doc": "function to call when the animation has completed.\n<dl>\n<dt><code>self</code></dt>\n<dd><span class=\"type\">object</span> The current object.</dd>\n<dt><code>message_id</code></dt>\n<dd><span class=\"type\">hash</span> The name of the completion message, <code>\"animation_done\"</code>.</dd>\n<dt><code>message</code></dt>\n<dd><span class=\"type\">table</span> Information about the completion:</dd>\n</dl>\n<ul>\n<li><span class=\"type\">number</span> <code>current_tile</code> - the current tile of the sprite.</li>\n<li><span class=\"type\">hash</span> <code>id</code> - id of the animation that was completed.</li>\n</ul>\n<dl>\n<dt><code>sender</code></dt>\n<dd><span class=\"type\">url</span> The invoker of the callback: the sprite component.</dd>\n</dl>",
+                    "doc": "function to call when the animation has completed.\n<dl>\n<dt class=\"api-lua-v2-type-definition\"><code>self:<a href=\"../builtins-lua/#script_instance\">script_instance</a></code></dt>\n<dd>The current script instance.</dd>\n<dt class=\"api-lua-v2-type-definition\"><code>message_id:<a href=\"../builtins-lua/#hash\">hash</a></code></dt>\n<dd>The name of the completion message, <code>\"animation_done\"</code>.</dd>\n<dt class=\"api-lua-v2-type-definition\"><code>message:<a href=\"#animation_done\">message.sprite.animation_done</a></code></dt>\n<dd>Information about the completion.</dd>\n<dt class=\"api-lua-v2-type-definition\"><code>sender:<a href=\"../msg-lua/#url\">url</a></code></dt>\n<dd>The invoker of the callback: the sprite component.</dd>\n</dl>",
                     "is_optional": "True",
                     "name": "complete_function",
                     "types": [
-                        "function(self, message_id, message, sender)"
+                        "fun(self:script_instance, message_id:hash, message:message.sprite.animation_done, sender:url)"
+                    ],
+                    "types_html": [
+                        "fun(self:<a href=\"../builtins-lua/#script_instance\">script_instance</a>, message_id:<a href=\"../builtins-lua/#hash\">hash</a>, message:<a href=\"#animation_done\">message.sprite.animation_done</a>, sender:<a href=\"../msg-lua/#url\">url</a>)"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">function</a>(\n\tself:<a href=\"../builtins-lua/#script_instance\">script_instance</a>,\n\tmessage_id:<a href=\"../builtins-lua/#hash\">hash</a>,\n\tmessage:<a href=\"#animation_done\">message.sprite.animation_done</a>,\n\tsender:<a href=\"../msg-lua/#url\">url</a>)"
                     ]
                 },
                 {
-                    "doc": "optional table with properties:\n<dl>\n<dt><code>offset</code></dt>\n<dd><span class=\"type\">number</span> the normalized initial value of the animation cursor when the animation starts playing.</dd>\n<dt><code>playback_rate</code></dt>\n<dd><span class=\"type\">number</span> the rate with which the animation will be played. Must be positive.</dd>\n</dl>",
+                    "doc": "optional playback properties",
                     "is_optional": "True",
                     "name": "play_properties",
                     "types": [
-                        "table"
+                        "sprite.play_properties"
+                    ],
+                    "types_html": [
+                        "<a href=\"#sprite.play_properties\">sprite.play_properties</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#sprite.play_properties\">sprite.play_properties</a>"
                     ]
                 }
             ],
@@ -257,6 +317,38 @@
             "returnvalues": [],
             "tparams": [],
             "type": "FUNCTION"
+        },
+        {
+            "brief": "Sprite flipbook playback properties",
+            "description": "Sprite flipbook playback properties",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "offset",
+                    "doc": "Normalized initial animation cursor.",
+                    "is_optional": true,
+                    "name": "offset?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "playback_rate",
+                    "doc": "Positive animation playback rate.",
+                    "is_optional": true,
+                    "name": "playback_rate?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                }
+            ],
+            "name": "sprite.play_properties",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
         },
         {
             "brief": "DEPRECATED! reset a shader constant for a sprite",
@@ -276,6 +368,16 @@
                         "string",
                         "hash",
                         "url"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
                     ]
                 },
                 {
@@ -285,6 +387,14 @@
                     "types": [
                         "string",
                         "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
                     ]
                 }
             ],
@@ -311,6 +421,16 @@
                         "string",
                         "hash",
                         "url"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
                     ]
                 },
                 {
@@ -319,6 +439,12 @@
                     "name": "flip",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
@@ -345,6 +471,16 @@
                         "string",
                         "hash",
                         "url"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
                     ]
                 },
                 {
@@ -353,6 +489,12 @@
                     "name": "flip",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
@@ -362,6 +504,7 @@
             "type": "FUNCTION"
         }
     ],
+    "format_version": 2,
     "info": {
         "api_language": "Lua",
         "brief": "Sprite API documentation",

@@ -76,7 +76,7 @@ registered in the render context.
 
 **Returns**
 
-- `cameras` (table) - a table with all camera URLs
+- `cameras` (url[]) - a table with all camera URLs
 
 **Examples**
 
@@ -160,7 +160,7 @@ get orthographic zoom mode
 
 **Returns**
 
-- `mode` (number) - one of camera.ORTHO_MODE_FIXED, camera.ORTHO_MODE_AUTO_FIT or
+- `mode` (camera.ORTHO_MODE) - one of camera.ORTHO_MODE_FIXED, camera.ORTHO_MODE_AUTO_FIT or
 camera.ORTHO_MODE_AUTO_COVER
 
 ### camera.get_orthographic_zoom
@@ -200,21 +200,15 @@ get view matrix
 
 - `view` (matrix4) - the view matrix.
 
-### camera.ORTHO_MODE_AUTO_COVER
-*Type:* CONSTANT
-Computes zoom so the original display area covers the entire window while preserving aspect ratio.
-Equivalent to using max(window_width/width, window_height/height).
-The result is multiplied by the user-controlled orthographic zoom.
+### camera.ORTHO_MODE
+*Type:* ENUM
+Orthographic projection modes
 
-### camera.ORTHO_MODE_AUTO_FIT
-*Type:* CONSTANT
-Computes zoom so the original display area (game.project width/height) fits inside the window
-while preserving aspect ratio. Equivalent to using min(window_width/width, window_height/height).
-The result is multiplied by the user-controlled orthographic zoom.
+**Members**
 
-### camera.ORTHO_MODE_FIXED
-*Type:* CONSTANT
-Uses the manually set orthographic zoom value (camera.set_orthographic_zoom).
+- `camera.ORTHO_MODE_AUTO_COVER` - auto-cover orthographic zoom mode Computes zoom so the original display area covers the entire window while preserving aspect ratio. Equivalent to using max(window_width/width, window_height/height). The result is multiplied by the user-controlled orthographic zoom.
+- `camera.ORTHO_MODE_AUTO_FIT` - auto-fit orthographic zoom mode Computes zoom so the original display area (game.project width/height) fits inside the window while preserving aspect ratio. Equivalent to using min(window_width/width, window_height/height). The result is multiplied by the user-controlled orthographic zoom.
+- `camera.ORTHO_MODE_FIXED` - fixed orthographic zoom mode Uses the manually set orthographic zoom value (camera.set_orthographic_zoom).
 
 ### camera.screen_to_world
 *Type:* FUNCTION
@@ -334,7 +328,7 @@ set orthographic zoom mode
 **Parameters**
 
 - `camera` (url | number | nil) - camera id
-- `mode` (number) - camera.ORTHO_MODE_FIXED, camera.ORTHO_MODE_AUTO_FIT or camera.ORTHO_MODE_AUTO_COVER
+- `mode` (camera.ORTHO_MODE) - camera.ORTHO_MODE_FIXED, camera.ORTHO_MODE_AUTO_FIT or camera.ORTHO_MODE_AUTO_COVER
 
 ### camera.set_orthographic_zoom
 *Type:* FUNCTION
@@ -490,7 +484,7 @@ Post this message to a camera-component to set its properties at run-time.
 - `far_z` (number) - position of the far clipping plane (distance from camera along relative z)
 - `orthographic_projection` (boolean) - set to use an orthographic projection
 - `orthographic_zoom` (number) - positive zoom multiplier when the camera is using an orthographic projection
-- `orthographic_mode` (number) - orthographic zoom behavior when orthographic_projection is enabled
+- `orthographic_mode` (camera.ORTHO_MODE) - orthographic zoom behavior when orthographic_projection is enabled
 
 **Examples**
 

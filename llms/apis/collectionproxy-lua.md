@@ -3,8 +3,8 @@
 **Namespace:** `collectionproxy`
 **Language:** Lua
 **Type:** Defold Lua
-**File:** `script_collectionproxy.cpp`
-**Source:** `engine/gamesys/src/gamesys/scripts/script_collectionproxy.cpp`
+**File:** `collectionproxy_ddf.proto`
+**Source:** `engine/gamesys/proto/gamesys/collectionproxy_ddf.proto`
 
 Messages for controlling and interacting with collection proxies
 which are used to dynamically load collections into the runtime.
@@ -52,7 +52,7 @@ functionality.
 
 **Returns**
 
-- `resources` (table) - the resources, or an empty list if the
+- `resources` (string[]) - the resources, or an empty list if the
 collection was not excluded.
 
 **Examples**
@@ -76,8 +76,8 @@ proxy_error messages.
 **Parameters**
 
 - `url` (string | hash | url) - the collection proxy component
-- `options` (table | nil) - options table, currently unused
-- `callback` (function(self, message_id, message, sender)) - callback
+- `options` ({} | nil) - options table, currently unused
+- `callback` (fun(self:script_instance, message_id:hash, message:collectionproxy.load_data, sender:url)) - callback
 
 **Examples**
 
@@ -94,17 +94,25 @@ end)
 
 ```
 
-### collectionproxy.RESULT_ALREADY_LOADED
-*Type:* CONSTANT
-It's impossible to change the collection if the collection is already loaded.
+### collectionproxy.load_data
+*Type:* STRUCT
+Data delivered to a collectionproxy.load callback. The available
+field depends on the callback message identifier.
 
-### collectionproxy.RESULT_LOADING
-*Type:* CONSTANT
-It's impossible to change the collection while the collection proxy is loading.
+**Members**
 
-### collectionproxy.RESULT_NOT_EXCLUDED
-*Type:* CONSTANT
-It's impossible to change the collection for a proxy that isn't excluded.
+- `progress?` (number) - Loading progress from 0 to 1 for <code>proxy_loading</code>.
+- `code?` (integer) - Error code for <code>proxy_error</code>.
+
+### collectionproxy.RESULT
+*Type:* ENUM
+Collection proxy results
+
+**Members**
+
+- `collectionproxy.RESULT_ALREADY_LOADED` - The collection proxy is already loaded, so its collection cannot be changed.
+- `collectionproxy.RESULT_LOADING` - The collection proxy is loading, so its collection cannot be changed.
+- `collectionproxy.RESULT_NOT_EXCLUDED` - The collection proxy is not excluded from the bundle; only excluded proxies can change collections.
 
 ### collectionproxy.set_collection
 *Type:* FUNCTION
@@ -121,7 +129,7 @@ This functionality is designed to simplify the management of Live Update resourc
 **Returns**
 
 - `success` (boolean) - collection change was successful
-- `code` (number) - one of the collectionproxy.RESULT_* codes if unsuccessful
+- `code` (collectionproxy.RESULT) - the failure reason
 
 **Examples**
 
@@ -138,6 +146,15 @@ local ok, error = collectionproxy.set_collection("/go#collectionproxy", "/LU/3.c
  msg.post("/go#collectionproxy", "enable")
 
 ```
+
+### collectionproxy.TIME_STEP_MODE
+*Type:* TYPEDEF
+The runtime message uses numeric modes rather than exported Lua constants:
+0 updates continuously and 1 updates in discrete steps.
+
+**Parameters**
+
+- `value` (0 | 1) - time-step mode
 
 ### disable
 *Type:* MESSAGE
@@ -267,10 +284,69 @@ end
 
 ```
 
+### proxy_error
+*Type:* MESSAGE
+proxy
+
+**Parameters**
+
+- `code` (number) - error code
+
+**Examples**
+
+```
+function init(self)
+  collectionproxy.load("#proxy", {}, function(self, message_id, message, sender)
+     if message_id == hash("proxy_error") then
+        print("Proxy loading error:", message.code)
+     end
+  end)
+end
+
+```
+
 ### proxy_loaded
 *Type:* MESSAGE
 This message is sent back to the script that initiated a collection proxy load when the referenced
 collection is loaded. See documentation for load for examples how to use.
+
+### proxy_loading
+*Type:* MESSAGE
+reports that a collection proxy is loading
+
+**Parameters**
+
+- `progress` (number) - the loading progress (0.0 to 1.0)
+
+**Examples**
+
+```
+function init(self)
+  collectionproxy.load("#proxy", {}, function(self, message_id, message, sender)
+     if message_id == hash("proxy_loading") then
+        print("Proxy loading progress:", message.progress)
+     end
+  end)
+end
+
+```
+
+### proxy_ready
+*Type:* MESSAGE
+reports that a collection proxy has been loaded and is running
+
+**Examples**
+
+```
+function init(self)
+  collectionproxy.load("#proxy", {}, function(self, message_id, message, sender)
+     if message_id == hash("proxy_ready") then
+        print("Proxy has been loaded and is running")
+     end
+  end)
+end
+
+```
 
 ### proxy_unloaded
 *Type:* MESSAGE
@@ -291,7 +367,7 @@ which can be useful for debugging when each frame needs to be inspected.
 **Parameters**
 
 - `factor` (number) - time-step scaling factor
-- `mode` (number) - time-step mode: 0 for continuous and 1 for discrete
+- `mode` (collectionproxy.TIME_STEP_MODE) - time-step mode
 
 **Examples**
 

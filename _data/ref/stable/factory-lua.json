@@ -18,6 +18,16 @@
                         "string",
                         "hash",
                         "url"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
                     ]
                 },
                 {
@@ -26,6 +36,12 @@
                     "name": "position",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 },
                 {
@@ -34,6 +50,12 @@
                     "name": "rotation",
                     "types": [
                         "quaternion"
+                    ],
+                    "types_html": [
+                        "<a href=\"../vmath-lua/#quaternion\">quaternion</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../vmath-lua/#quaternion\">quaternion</a>"
                     ]
                 },
                 {
@@ -41,7 +63,13 @@
                     "is_optional": "True",
                     "name": "properties",
                     "types": [
-                        "table"
+                        "table<string|hash, any>"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">table</a>&lt;<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>|<a href=\"../builtins-lua/#hash\">hash</a>, <a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>&gt;"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">table</a>&lt;<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>|<a href=\"../builtins-lua/#hash\">hash</a>, <a href=\"../../../manuals/lua/#variables-and-data-types\">any</a>&gt;"
                     ]
                 },
                 {
@@ -51,6 +79,14 @@
                     "types": [
                         "number",
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                     ]
                 }
             ],
@@ -61,6 +97,12 @@
                     "name": "id",
                     "types": [
                         "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
                     ]
                 }
             ],
@@ -85,16 +127,32 @@
                         "string",
                         "hash",
                         "url"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
                     ]
                 }
             ],
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "status of the factory component\n<ul>\n<li><code>factory.STATUS_UNLOADED</code></li>\n<li><code>factory.STATUS_LOADING</code></li>\n<li><code>factory.STATUS_LOADED</code></li>\n</ul>",
+                    "doc": "status of the factory component",
                     "name": "status",
                     "types": [
-                        "constant"
+                        "factory.STATUS"
+                    ],
+                    "types_html": [
+                        "<a href=\"#factory.STATUS\">factory.STATUS</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#factory.STATUS\">factory.STATUS</a>"
                     ]
                 }
             ],
@@ -119,14 +177,30 @@
                         "string",
                         "hash",
                         "url"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
                     ]
                 },
                 {
-                    "doc": "function to call when resources are loaded.\n<dl>\n<dt><code>self</code></dt>\n<dd><span class=\"type\">object</span> The current object.</dd>\n<dt><code>url</code></dt>\n<dd><span class=\"type\">url</span> url of the factory component</dd>\n<dt><code>result</code></dt>\n<dd><span class=\"type\">boolean</span> True if resources were loaded successfully</dd>\n</dl>",
+                    "doc": "function to call when resources are loaded.\n<dl>\n<dt class=\"api-lua-v2-type-definition\"><code>self:<a href=\"../builtins-lua/#script_instance\">script_instance</a></code></dt>\n<dd>The current script instance.</dd>\n<dt class=\"api-lua-v2-type-definition\"><code>url:<a href=\"../msg-lua/#url\">url</a></code></dt>\n<dd>url of the factory component</dd>\n<dt class=\"api-lua-v2-type-definition\"><code>result:<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a></code></dt>\n<dd>True if resources were loaded successfully</dd>\n</dl>",
                     "is_optional": "True",
                     "name": "complete_function",
                     "types": [
-                        "function(self, url, result)"
+                        "fun(self:script_instance, url:url, result:boolean)"
+                    ],
+                    "types_html": [
+                        "fun(self:<a href=\"../builtins-lua/#script_instance\">script_instance</a>, url:<a href=\"../msg-lua/#url\">url</a>, result:<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>)"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">function</a>(\n\tself:<a href=\"../builtins-lua/#script_instance\">script_instance</a>,\n\turl:<a href=\"../msg-lua/#url\">url</a>,\n\tresult:<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>)"
                     ]
                 }
             ],
@@ -155,6 +229,16 @@
                         "string",
                         "hash",
                         "url"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
                     ]
                 },
                 {
@@ -164,6 +248,14 @@
                     "types": [
                         "string",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 }
             ],
@@ -173,49 +265,34 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "loaded",
-            "description": "loaded",
+            "brief": "Factory status values",
+            "description": "Factory status values",
             "error": "",
             "examples": "",
             "language": "",
-            "members": [],
-            "name": "factory.STATUS_LOADED",
+            "members": [
+                {
+                    "doc": "The factory resources are loaded.",
+                    "name": "factory.STATUS_LOADED"
+                },
+                {
+                    "doc": "The factory resources are loading.",
+                    "name": "factory.STATUS_LOADING"
+                },
+                {
+                    "doc": "The factory resources are unloaded.",
+                    "name": "factory.STATUS_UNLOADED"
+                }
+            ],
+            "name": "factory.STATUS",
             "notes": [],
             "parameters": [],
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "loading",
-            "description": "loading",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "factory.STATUS_LOADING",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "unloaded",
-            "description": "unloaded",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "factory.STATUS_UNLOADED",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
+            "type": "ENUM",
+            "value_type": "integer",
+            "value_type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
         },
         {
             "brief": "Unload resources previously loaded using factory.load",
@@ -235,6 +312,16 @@
                         "string",
                         "hash",
                         "url"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
                     ]
                 }
             ],
@@ -244,6 +331,7 @@
             "type": "FUNCTION"
         }
     ],
+    "format_version": 2,
     "info": {
         "api_language": "Lua",
         "brief": "Factory API documentation",

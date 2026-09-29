@@ -123,6 +123,10 @@ Get a resource from factory
 
 ### GetDescriptor
 *Type:* FUNCTION
+Generated from ResourceGetDescriptor
+
+### GetDescriptor
+*Type:* FUNCTION
 Get resource descriptor from resource (name)
 
 **Parameters**
@@ -134,6 +138,10 @@ Get resource descriptor from resource (name)
 **Returns**
 
 - `result` (ResourceResult) - RESULT_OK on success
+
+### GetDescriptorByHash
+*Type:* FUNCTION
+Generated from ResourceGetDescriptorByHash
 
 ### GetDescriptorByHash
 *Type:* FUNCTION
@@ -149,6 +157,10 @@ Get resource descriptor from resource (name)
 
 - `result` (ResourceResult) - RESULT_OK on success
 
+### GetNameHash
+*Type:* FUNCTION
+Generated from ResourceDescriptorGetNameHash
+
 ### GetPath
 *Type:* FUNCTION
 Returns the canonical path hash of a resource
@@ -162,6 +174,10 @@ Returns the canonical path hash of a resource
 **Returns**
 
 - `result` (ResourceResult) - RESULT_OK on success
+
+### GetPrevResource
+*Type:* FUNCTION
+Generated from ResourceDescriptorGetPrevResource
 
 ### GetRaw
 *Type:* FUNCTION
@@ -178,6 +194,18 @@ If successful, the returned resource data must be deallocated with free()
 **Returns**
 
 - `result` (ResourceResult) - RESULT_OK on success
+
+### GetResource
+*Type:* FUNCTION
+Generated from ResourceDescriptorGetResource
+
+### GetResourceSize
+*Type:* FUNCTION
+Generated from ResourceDescriptorGetResourceSize
+
+### GetType
+*Type:* FUNCTION
+Generated from ResourceDescriptorGetType
 
 ### HDescriptor
 *Type:* TYPEDEF
@@ -433,6 +461,7 @@ ResourceResult
 - `RESOURCE_RESULT_VERSION_MISMATCH`
 - `RESOURCE_RESULT_SIGNATURE_MISMATCH`
 - `RESOURCE_RESULT_UNKNOWN_ERROR`
+- `RESOURCE_RESULT_TOO_MANY_COMPONENTS`
 
 ### ResourceTypeCreatorDescBufferSize
 *Type:* FUNCTION
@@ -445,25 +474,38 @@ ResourceResult
 
 **Members**
 
-- `RESOURCE_RESULT_OK`
-- `RESOURCE_RESULT_INVALID_DATA`
-- `RESOURCE_RESULT_DDF_ERROR`
-- `RESOURCE_RESULT_RESOURCE_NOT_FOUND`
-- `RESOURCE_RESULT_MISSING_FILE_EXTENSION`
-- `RESOURCE_RESULT_ALREADY_REGISTERED`
-- `RESOURCE_RESULT_INVAL`
-- `RESOURCE_RESULT_UNKNOWN_RESOURCE_TYPE`
-- `RESOURCE_RESULT_OUT_OF_MEMORY`
-- `RESOURCE_RESULT_IO_ERROR`
-- `RESOURCE_RESULT_NOT_LOADED`
-- `RESOURCE_RESULT_OUT_OF_RESOURCES`
-- `RESOURCE_RESULT_STREAMBUFFER_TOO_SMALL`
-- `RESOURCE_RESULT_FORMAT_ERROR`
-- `RESOURCE_RESULT_CONSTANT_ERROR`
-- `RESOURCE_RESULT_NOT_SUPPORTED`
-- `RESOURCE_RESULT_RESOURCE_LOOP_ERROR`
-- `RESOURCE_RESULT_PENDING`
-- `RESOURCE_RESULT_INVALID_FILE_EXTENSION`
-- `RESOURCE_RESULT_VERSION_MISMATCH`
-- `RESOURCE_RESULT_SIGNATURE_MISMATCH`
-- `RESOURCE_RESULT_UNKNOWN_ERROR`
+- `RESULT_OK`
+- `RESULT_INVALID_DATA`
+- `RESULT_DDF_ERROR`
+- `RESULT_RESOURCE_NOT_FOUND`
+- `RESULT_MISSING_FILE_EXTENSION`
+- `RESULT_ALREADY_REGISTERED`
+- `RESULT_INVAL`
+- `RESULT_UNKNOWN_RESOURCE_TYPE`
+- `RESULT_OUT_OF_MEMORY`
+- `RESULT_IO_ERROR`
+- `RESULT_NOT_LOADED`
+- `RESULT_OUT_OF_RESOURCES`
+- `RESULT_STREAMBUFFER_TOO_SMALL`
+- `RESULT_FORMAT_ERROR`
+- `RESULT_CONSTANT_ERROR`
+- `RESULT_NOT_SUPPORTED`
+- `RESULT_RESOURCE_LOOP_ERROR`
+- `RESULT_PENDING`
+- `RESULT_INVALID_FILE_EXTENSION`
+- `RESULT_VERSION_MISMATCH`
+- `RESULT_SIGNATURE_MISMATCH`
+- `RESULT_UNKNOWN_ERROR`
+- `RESULT_TOO_MANY_COMPONENTS`
+
+### SetPrevResource
+*Type:* FUNCTION
+Generated from ResourceDescriptorSetPrevResource
+
+### SetResource
+*Type:* FUNCTION
+Generated from ResourceDescriptorSetResource
+
+### SetResourceSize
+*Type:* FUNCTION
+Generated from ResourceDescriptorSetResourceSize

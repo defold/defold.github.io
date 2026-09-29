@@ -1,6 +1,350 @@
 {
     "elements": [
         {
+            "brief": "Matrix with four rows and four columns",
+            "description": "A 4x4 floating-point matrix used for 3D transformations and projections.\nCreate an identity matrix with <a href=\"/ref/vmath#vmath.matrix4\">vmath.matrix4</a>, or use constructors such\nas <a href=\"/ref/vmath#vmath.matrix4_translation\">vmath.matrix4_translation</a> and <a href=\"/ref/vmath#vmath.matrix4_rotation_z\">vmath.matrix4_rotation_z</a>.\nMatrices can be multiplied by other matrices, numbers, and <span class=\"type\"><a href=\"#vector4\">vector4</a></span>\nvalues. Individual elements are exposed as <code>m00</code> through <code>m33</code>, and columns\nas <code>c0</code> through <code>c3</code>.",
+            "error": "",
+            "examples": "Transform a point using a translation matrix:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">transform</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">matrix4_translation</span><span class=\"p\">(</span><span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">100</span><span class=\"p\">,</span> <span class=\"mi\">50</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">))</span>\n<span class=\"kd\">local</span> <span class=\"n\">point</span> <span class=\"o\">=</span> <span class=\"n\">transform</span> <span class=\"o\">*</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector4</span><span class=\"p\">(</span><span class=\"mi\">10</span><span class=\"p\">,</span> <span class=\"mi\">20</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">)</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">point</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; vmath.vector4(110, 70, 0, 1)</span>\n</code></pre></div>",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "m00",
+                    "doc": "row 0, column 0",
+                    "is_optional": false,
+                    "name": "m00",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "m01",
+                    "doc": "row 0, column 1",
+                    "is_optional": false,
+                    "name": "m01",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "m02",
+                    "doc": "row 0, column 2",
+                    "is_optional": false,
+                    "name": "m02",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "m03",
+                    "doc": "row 0, column 3",
+                    "is_optional": false,
+                    "name": "m03",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "m10",
+                    "doc": "row 1, column 0",
+                    "is_optional": false,
+                    "name": "m10",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "m11",
+                    "doc": "row 1, column 1",
+                    "is_optional": false,
+                    "name": "m11",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "m12",
+                    "doc": "row 1, column 2",
+                    "is_optional": false,
+                    "name": "m12",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "m13",
+                    "doc": "row 1, column 3",
+                    "is_optional": false,
+                    "name": "m13",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "m20",
+                    "doc": "row 2, column 0",
+                    "is_optional": false,
+                    "name": "m20",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "m21",
+                    "doc": "row 2, column 1",
+                    "is_optional": false,
+                    "name": "m21",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "m22",
+                    "doc": "row 2, column 2",
+                    "is_optional": false,
+                    "name": "m22",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "m23",
+                    "doc": "row 2, column 3",
+                    "is_optional": false,
+                    "name": "m23",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "m30",
+                    "doc": "row 3, column 0",
+                    "is_optional": false,
+                    "name": "m30",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "m31",
+                    "doc": "row 3, column 1",
+                    "is_optional": false,
+                    "name": "m31",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "m32",
+                    "doc": "row 3, column 2",
+                    "is_optional": false,
+                    "name": "m32",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "m33",
+                    "doc": "row 3, column 3",
+                    "is_optional": false,
+                    "name": "m33",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "c0",
+                    "doc": "column 0",
+                    "is_optional": false,
+                    "name": "c0",
+                    "type": "vector4",
+                    "type_html": "<a href=\"#vector4\">vector4</a>"
+                },
+                {
+                    "display_name": "c1",
+                    "doc": "column 1",
+                    "is_optional": false,
+                    "name": "c1",
+                    "type": "vector4",
+                    "type_html": "<a href=\"#vector4\">vector4</a>"
+                },
+                {
+                    "display_name": "c2",
+                    "doc": "column 2",
+                    "is_optional": false,
+                    "name": "c2",
+                    "type": "vector4",
+                    "type_html": "<a href=\"#vector4\">vector4</a>"
+                },
+                {
+                    "display_name": "c3",
+                    "doc": "column 3",
+                    "is_optional": false,
+                    "name": "c3",
+                    "type": "vector4",
+                    "type_html": "<a href=\"#vector4\">vector4</a>"
+                }
+            ],
+            "name": "matrix4",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "CLASS"
+        },
+        {
+            "brief": "Quaternion rotation",
+            "description": "A four-component value representing a 3D rotation. Create one with\n<a href=\"/ref/vmath#vmath.quat\">vmath.quat</a> or a specialized constructor such as\n<a href=\"/ref/vmath#vmath.quat_rotation_z\">vmath.quat_rotation_z</a>. Quaternion components are available as <code>x</code>,\n<code>y</code>, <code>z</code>, and <code>w</code>.",
+            "error": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">rotation</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">quat_rotation_z</span><span class=\"p\">(</span><span class=\"nb\">math.rad</span><span class=\"p\">(</span><span class=\"mi\">90</span><span class=\"p\">))</span>\n<span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set_rotation</span><span class=\"p\">(</span><span class=\"n\">rotation</span><span class=\"p\">)</span>\n</code></pre></div>",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "x",
+                    "doc": "x component",
+                    "is_optional": false,
+                    "name": "x",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "y",
+                    "doc": "y component",
+                    "is_optional": false,
+                    "name": "y",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "z",
+                    "doc": "z component",
+                    "is_optional": false,
+                    "name": "z",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "w",
+                    "doc": "w component",
+                    "is_optional": false,
+                    "name": "w",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                }
+            ],
+            "name": "quaternion",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "CLASS"
+        },
+        {
+            "brief": "Dynamically sized numeric vector",
+            "description": "A vector containing an arbitrary number of floating-point values, created\nwith <a href=\"/ref/vmath#vmath.vector\">vmath.vector</a>. Unlike <span class=\"type\"><a href=\"#vector3\">vector3</a></span> and <span class=\"type\"><a href=\"#vector4\">vector4</a></span>, its length\nis determined by the table supplied to the constructor. Dynamically sized\nvectors are primarily used to define custom animation easing curves.",
+            "error": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">easing</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector</span><span class=\"p\">({</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mf\">0.1</span><span class=\"p\">,</span> <span class=\"mf\">0.8</span><span class=\"p\">,</span> <span class=\"mi\">1</span> <span class=\"p\">})</span>\n<span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">animate</span><span class=\"p\">(</span><span class=\"s2\">&quot;.&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;position.x&quot;</span><span class=\"p\">,</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">PLAYBACK_ONCE_FORWARD</span><span class=\"p\">,</span> <span class=\"mi\">100</span><span class=\"p\">,</span> <span class=\"n\">easing</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">)</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "vector",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "dynamically sized vector",
+                    "is_optional": "False",
+                    "name": "value",
+                    "types": [
+                        "userdata"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">userdata</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">userdata</a>"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "target_type": "userdata",
+            "target_type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">userdata</a>",
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "Vector with three components",
+            "description": "A fixed-size value containing three floating-point components. Vector3\nvalues are commonly used for positions, directions, scales, and Euler\nangles. Create one with <a href=\"/ref/vmath#vmath.vector3\">vmath.vector3</a>, access its components through\n<code>x</code>, <code>y</code>, and <code>z</code>, and use arithmetic operators to combine or scale values.",
+            "error": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">position</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">100</span><span class=\"p\">,</span> <span class=\"mi\">50</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">offset</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">10</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n<span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set_position</span><span class=\"p\">(</span><span class=\"n\">position</span> <span class=\"o\">+</span> <span class=\"n\">offset</span><span class=\"p\">)</span>\n</code></pre></div>",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "x",
+                    "doc": "x component",
+                    "is_optional": false,
+                    "name": "x",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "y",
+                    "doc": "y component",
+                    "is_optional": false,
+                    "name": "y",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "z",
+                    "doc": "z component",
+                    "is_optional": false,
+                    "name": "z",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                }
+            ],
+            "name": "vector3",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "CLASS"
+        },
+        {
+            "brief": "Vector with four components",
+            "description": "A fixed-size value containing four floating-point components. Vector4\nvalues are commonly used for colors, shader constants, and homogeneous\ncoordinates. Create one with <a href=\"/ref/vmath#vmath.vector4\">vmath.vector4</a>, access its components\nthrough <code>x</code>, <code>y</code>, <code>z</code>, and <code>w</code>, and use arithmetic operators to combine or\nscale values.",
+            "error": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">tint</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector4</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mf\">0.5</span><span class=\"p\">,</span> <span class=\"mf\">0.25</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">faded_tint</span> <span class=\"o\">=</span> <span class=\"n\">tint</span> <span class=\"o\">*</span> <span class=\"mf\">0.5</span>\n<span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"s2\">&quot;#sprite&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;tint&quot;</span><span class=\"p\">,</span> <span class=\"n\">faded_tint</span><span class=\"p\">)</span>\n</code></pre></div>",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "x",
+                    "doc": "x component",
+                    "is_optional": false,
+                    "name": "x",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "y",
+                    "doc": "y component",
+                    "is_optional": false,
+                    "name": "y",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "z",
+                    "doc": "z component",
+                    "is_optional": false,
+                    "name": "z",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "w",
+                    "doc": "w component",
+                    "is_optional": false,
+                    "name": "w",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                }
+            ],
+            "name": "vector4",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "CLASS"
+        },
+        {
             "brief": "clamp input value in range [min, max] and return clamped value",
             "description": "Clamp input value to be in range of [min, max]. In case if input value has vector3|vector4 type\nreturn new vector3|vector4 with clamped value at every vector's element.\nMin/max arguments can be vector3|vector4. In that case clamp excuted per every vector's element",
             "error": "",
@@ -18,6 +362,16 @@
                         "number",
                         "vector3",
                         "vector4"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"#vector3\">vector3</a>",
+                        "<a href=\"#vector4\">vector4</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"#vector3\">vector3</a>",
+                        "<a href=\"#vector4\">vector4</a>"
                     ]
                 },
                 {
@@ -28,6 +382,16 @@
                         "number",
                         "vector3",
                         "vector4"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"#vector3\">vector3</a>",
+                        "<a href=\"#vector4\">vector4</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"#vector3\">vector3</a>",
+                        "<a href=\"#vector4\">vector4</a>"
                     ]
                 },
                 {
@@ -38,6 +402,16 @@
                         "number",
                         "vector3",
                         "vector4"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"#vector3\">vector3</a>",
+                        "<a href=\"#vector4\">vector4</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"#vector3\">vector3</a>",
+                        "<a href=\"#vector4\">vector4</a>"
                     ]
                 }
             ],
@@ -50,6 +424,16 @@
                         "number",
                         "vector3",
                         "vector4"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"#vector3\">vector3</a>",
+                        "<a href=\"#vector4\">vector4</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"#vector3\">vector3</a>",
+                        "<a href=\"#vector4\">vector4</a>"
                     ]
                 }
             ],
@@ -72,6 +456,12 @@
                     "name": "q1",
                     "types": [
                         "quaternion"
+                    ],
+                    "types_html": [
+                        "<a href=\"#quaternion\">quaternion</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#quaternion\">quaternion</a>"
                     ]
                 }
             ],
@@ -82,6 +472,12 @@
                     "name": "q",
                     "types": [
                         "quaternion"
+                    ],
+                    "types_html": [
+                        "<a href=\"#quaternion\">quaternion</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#quaternion\">quaternion</a>"
                     ]
                 }
             ],
@@ -104,6 +500,12 @@
                     "name": "v1",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#vector3\">vector3</a>"
                     ]
                 },
                 {
@@ -112,6 +514,12 @@
                     "name": "v2",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#vector3\">vector3</a>"
                     ]
                 }
             ],
@@ -122,6 +530,12 @@
                     "name": "v",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#vector3\">vector3</a>"
                     ]
                 }
             ],
@@ -145,6 +559,14 @@
                     "types": [
                         "vector3",
                         "vector4"
+                    ],
+                    "types_html": [
+                        "<a href=\"#vector3\">vector3</a>",
+                        "<a href=\"#vector4\">vector4</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#vector3\">vector3</a>",
+                        "<a href=\"#vector4\">vector4</a>"
                     ]
                 },
                 {
@@ -154,6 +576,14 @@
                     "types": [
                         "vector3",
                         "vector4"
+                    ],
+                    "types_html": [
+                        "<a href=\"#vector3\">vector3</a>",
+                        "<a href=\"#vector4\">vector4</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#vector3\">vector3</a>",
+                        "<a href=\"#vector4\">vector4</a>"
                     ]
                 }
             ],
@@ -164,6 +594,12 @@
                     "name": "n",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -187,22 +623,42 @@
                     "types": [
                         "number",
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>",
+                        "<a href=\"#vector3\">vector3</a>"
                     ]
                 },
                 {
                     "doc": "rotation around y-axis in degrees",
-                    "is_optional": "False",
+                    "is_optional": "True",
                     "name": "y",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
                     "doc": "rotation around z-axis in degrees",
-                    "is_optional": "False",
+                    "is_optional": "True",
                     "name": "z",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -213,6 +669,12 @@
                     "name": "q",
                     "types": [
                         "quaternion"
+                    ],
+                    "types_html": [
+                        "<a href=\"#quaternion\">quaternion</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#quaternion\">quaternion</a>"
                     ]
                 }
             ],
@@ -235,6 +697,12 @@
                     "name": "m1",
                     "types": [
                         "matrix4"
+                    ],
+                    "types_html": [
+                        "<a href=\"#matrix4\">matrix4</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#matrix4\">matrix4</a>"
                     ]
                 }
             ],
@@ -245,6 +713,12 @@
                     "name": "m",
                     "types": [
                         "matrix4"
+                    ],
+                    "types_html": [
+                        "<a href=\"#matrix4\">matrix4</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#matrix4\">matrix4</a>"
                     ]
                 }
             ],
@@ -269,6 +743,16 @@
                         "vector3",
                         "vector4",
                         "quaternion"
+                    ],
+                    "types_html": [
+                        "<a href=\"#vector3\">vector3</a>",
+                        "<a href=\"#vector4\">vector4</a>",
+                        "<a href=\"#quaternion\">quaternion</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#vector3\">vector3</a>",
+                        "<a href=\"#vector4\">vector4</a>",
+                        "<a href=\"#quaternion\">quaternion</a>"
                     ]
                 }
             ],
@@ -279,6 +763,12 @@
                     "name": "n",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -303,6 +793,16 @@
                         "vector3",
                         "vector4",
                         "quaternion"
+                    ],
+                    "types_html": [
+                        "<a href=\"#vector3\">vector3</a>",
+                        "<a href=\"#vector4\">vector4</a>",
+                        "<a href=\"#quaternion\">quaternion</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#vector3\">vector3</a>",
+                        "<a href=\"#vector4\">vector4</a>",
+                        "<a href=\"#quaternion\">quaternion</a>"
                     ]
                 }
             ],
@@ -313,6 +813,12 @@
                     "name": "n",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -335,6 +841,12 @@
                     "name": "t",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -344,6 +856,14 @@
                     "types": [
                         "vector3",
                         "vector4"
+                    ],
+                    "types_html": [
+                        "<a href=\"#vector3\">vector3</a>",
+                        "<a href=\"#vector4\">vector4</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#vector3\">vector3</a>",
+                        "<a href=\"#vector4\">vector4</a>"
                     ]
                 },
                 {
@@ -353,6 +873,14 @@
                     "types": [
                         "vector3",
                         "vector4"
+                    ],
+                    "types_html": [
+                        "<a href=\"#vector3\">vector3</a>",
+                        "<a href=\"#vector4\">vector4</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#vector3\">vector3</a>",
+                        "<a href=\"#vector4\">vector4</a>"
                     ]
                 }
             ],
@@ -364,6 +892,14 @@
                     "types": [
                         "vector3",
                         "vector4"
+                    ],
+                    "types_html": [
+                        "<a href=\"#vector3\">vector3</a>",
+                        "<a href=\"#vector4\">vector4</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#vector3\">vector3</a>",
+                        "<a href=\"#vector4\">vector4</a>"
                     ]
                 }
             ],
@@ -386,6 +922,12 @@
                     "name": "t",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -394,6 +936,12 @@
                     "name": "q1",
                     "types": [
                         "quaternion"
+                    ],
+                    "types_html": [
+                        "<a href=\"#quaternion\">quaternion</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#quaternion\">quaternion</a>"
                     ]
                 },
                 {
@@ -402,6 +950,12 @@
                     "name": "q2",
                     "types": [
                         "quaternion"
+                    ],
+                    "types_html": [
+                        "<a href=\"#quaternion\">quaternion</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#quaternion\">quaternion</a>"
                     ]
                 }
             ],
@@ -412,6 +966,12 @@
                     "name": "q",
                     "types": [
                         "quaternion"
+                    ],
+                    "types_html": [
+                        "<a href=\"#quaternion\">quaternion</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#quaternion\">quaternion</a>"
                     ]
                 }
             ],
@@ -434,6 +994,12 @@
                     "name": "t",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -442,6 +1008,12 @@
                     "name": "n1",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -450,6 +1022,12 @@
                     "name": "n2",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -460,6 +1038,12 @@
                     "name": "n",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -483,6 +1067,12 @@
                     "name": "m",
                     "types": [
                         "matrix4"
+                    ],
+                    "types_html": [
+                        "<a href=\"#matrix4\">matrix4</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#matrix4\">matrix4</a>"
                     ]
                 }
             ],
@@ -505,6 +1095,12 @@
                     "name": "m1",
                     "types": [
                         "matrix4"
+                    ],
+                    "types_html": [
+                        "<a href=\"#matrix4\">matrix4</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#matrix4\">matrix4</a>"
                     ]
                 }
             ],
@@ -515,6 +1111,12 @@
                     "name": "m",
                     "types": [
                         "matrix4"
+                    ],
+                    "types_html": [
+                        "<a href=\"#matrix4\">matrix4</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#matrix4\">matrix4</a>"
                     ]
                 }
             ],
@@ -537,6 +1139,12 @@
                     "name": "v",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#vector3\">vector3</a>"
                     ]
                 },
                 {
@@ -545,6 +1153,12 @@
                     "name": "angle",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -555,6 +1169,12 @@
                     "name": "m",
                     "types": [
                         "matrix4"
+                    ],
+                    "types_html": [
+                        "<a href=\"#matrix4\">matrix4</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#matrix4\">matrix4</a>"
                     ]
                 }
             ],
@@ -578,6 +1198,14 @@
                     "types": [
                         "vector3",
                         "vector4"
+                    ],
+                    "types_html": [
+                        "<a href=\"#vector3\">vector3</a>",
+                        "<a href=\"#vector4\">vector4</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#vector3\">vector3</a>",
+                        "<a href=\"#vector4\">vector4</a>"
                     ]
                 },
                 {
@@ -586,6 +1214,12 @@
                     "name": "rotation",
                     "types": [
                         "quaternion"
+                    ],
+                    "types_html": [
+                        "<a href=\"#quaternion\">quaternion</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#quaternion\">quaternion</a>"
                     ]
                 },
                 {
@@ -594,6 +1228,12 @@
                     "name": "scale",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#vector3\">vector3</a>"
                     ]
                 }
             ],
@@ -604,6 +1244,12 @@
                     "name": "matrix",
                     "types": [
                         "matrix4"
+                    ],
+                    "types_html": [
+                        "<a href=\"#matrix4\">matrix4</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#matrix4\">matrix4</a>"
                     ]
                 }
             ],
@@ -626,6 +1272,12 @@
                     "name": "left",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -634,6 +1286,12 @@
                     "name": "right",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -642,6 +1300,12 @@
                     "name": "bottom",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -650,6 +1314,12 @@
                     "name": "top",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -658,6 +1328,12 @@
                     "name": "near",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -666,6 +1342,12 @@
                     "name": "far",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -676,6 +1358,12 @@
                     "name": "m",
                     "types": [
                         "matrix4"
+                    ],
+                    "types_html": [
+                        "<a href=\"#matrix4\">matrix4</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#matrix4\">matrix4</a>"
                     ]
                 }
             ],
@@ -698,6 +1386,12 @@
                     "name": "eye",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#vector3\">vector3</a>"
                     ]
                 },
                 {
@@ -706,6 +1400,12 @@
                     "name": "look_at",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#vector3\">vector3</a>"
                     ]
                 },
                 {
@@ -714,6 +1414,12 @@
                     "name": "up",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#vector3\">vector3</a>"
                     ]
                 }
             ],
@@ -724,6 +1430,12 @@
                     "name": "m",
                     "types": [
                         "matrix4"
+                    ],
+                    "types_html": [
+                        "<a href=\"#matrix4\">matrix4</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#matrix4\">matrix4</a>"
                     ]
                 }
             ],
@@ -746,6 +1458,12 @@
                     "name": "left",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -754,6 +1472,12 @@
                     "name": "right",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -762,6 +1486,12 @@
                     "name": "bottom",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -770,6 +1500,12 @@
                     "name": "top",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -778,6 +1514,12 @@
                     "name": "near",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -786,6 +1528,12 @@
                     "name": "far",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -796,6 +1544,12 @@
                     "name": "m",
                     "types": [
                         "matrix4"
+                    ],
+                    "types_html": [
+                        "<a href=\"#matrix4\">matrix4</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#matrix4\">matrix4</a>"
                     ]
                 }
             ],
@@ -818,6 +1572,12 @@
                     "name": "fov",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -826,6 +1586,12 @@
                     "name": "aspect",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -834,6 +1600,12 @@
                     "name": "near",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -842,6 +1614,12 @@
                     "name": "far",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -852,6 +1630,12 @@
                     "name": "m",
                     "types": [
                         "matrix4"
+                    ],
+                    "types_html": [
+                        "<a href=\"#matrix4\">matrix4</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#matrix4\">matrix4</a>"
                     ]
                 }
             ],
@@ -874,6 +1658,12 @@
                     "name": "q",
                     "types": [
                         "quaternion"
+                    ],
+                    "types_html": [
+                        "<a href=\"#quaternion\">quaternion</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#quaternion\">quaternion</a>"
                     ]
                 }
             ],
@@ -884,6 +1674,12 @@
                     "name": "m",
                     "types": [
                         "matrix4"
+                    ],
+                    "types_html": [
+                        "<a href=\"#matrix4\">matrix4</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#matrix4\">matrix4</a>"
                     ]
                 }
             ],
@@ -906,6 +1702,12 @@
                     "name": "angle",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -916,6 +1718,12 @@
                     "name": "m",
                     "types": [
                         "matrix4"
+                    ],
+                    "types_html": [
+                        "<a href=\"#matrix4\">matrix4</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#matrix4\">matrix4</a>"
                     ]
                 }
             ],
@@ -938,6 +1746,12 @@
                     "name": "angle",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -948,6 +1762,12 @@
                     "name": "m",
                     "types": [
                         "matrix4"
+                    ],
+                    "types_html": [
+                        "<a href=\"#matrix4\">matrix4</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#matrix4\">matrix4</a>"
                     ]
                 }
             ],
@@ -970,6 +1790,12 @@
                     "name": "angle",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -980,6 +1806,12 @@
                     "name": "m",
                     "types": [
                         "matrix4"
+                    ],
+                    "types_html": [
+                        "<a href=\"#matrix4\">matrix4</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#matrix4\">matrix4</a>"
                     ]
                 }
             ],
@@ -1002,6 +1834,12 @@
                     "name": "scale",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#vector3\">vector3</a>"
                     ]
                 }
             ],
@@ -1012,6 +1850,12 @@
                     "name": "matrix",
                     "types": [
                         "matrix4"
+                    ],
+                    "types_html": [
+                        "<a href=\"#matrix4\">matrix4</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#matrix4\">matrix4</a>"
                     ]
                 }
             ],
@@ -1034,6 +1878,12 @@
                     "name": "scale",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -1044,6 +1894,12 @@
                     "name": "matrix",
                     "types": [
                         "matrix4"
+                    ],
+                    "types_html": [
+                        "<a href=\"#matrix4\">matrix4</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#matrix4\">matrix4</a>"
                     ]
                 }
             ],
@@ -1066,6 +1922,12 @@
                     "name": "scale_x",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -1074,6 +1936,12 @@
                     "name": "scale_y",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -1082,6 +1950,12 @@
                     "name": "scale_z",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -1092,6 +1966,12 @@
                     "name": "matrix",
                     "types": [
                         "matrix4"
+                    ],
+                    "types_html": [
+                        "<a href=\"#matrix4\">matrix4</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#matrix4\">matrix4</a>"
                     ]
                 }
             ],
@@ -1115,6 +1995,14 @@
                     "types": [
                         "vector3",
                         "vector4"
+                    ],
+                    "types_html": [
+                        "<a href=\"#vector3\">vector3</a>",
+                        "<a href=\"#vector4\">vector4</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#vector3\">vector3</a>",
+                        "<a href=\"#vector4\">vector4</a>"
                     ]
                 }
             ],
@@ -1125,6 +2013,12 @@
                     "name": "m",
                     "types": [
                         "matrix4"
+                    ],
+                    "types_html": [
+                        "<a href=\"#matrix4\">matrix4</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#matrix4\">matrix4</a>"
                     ]
                 }
             ],
@@ -1148,6 +2042,14 @@
                     "types": [
                         "vector3",
                         "vector4"
+                    ],
+                    "types_html": [
+                        "<a href=\"#vector3\">vector3</a>",
+                        "<a href=\"#vector4\">vector4</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#vector3\">vector3</a>",
+                        "<a href=\"#vector4\">vector4</a>"
                     ]
                 },
                 {
@@ -1157,6 +2059,14 @@
                     "types": [
                         "vector3",
                         "vector4"
+                    ],
+                    "types_html": [
+                        "<a href=\"#vector3\">vector3</a>",
+                        "<a href=\"#vector4\">vector4</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#vector3\">vector3</a>",
+                        "<a href=\"#vector4\">vector4</a>"
                     ]
                 }
             ],
@@ -1168,6 +2078,14 @@
                     "types": [
                         "vector3",
                         "vector4"
+                    ],
+                    "types_html": [
+                        "<a href=\"#vector3\">vector3</a>",
+                        "<a href=\"#vector4\">vector4</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#vector3\">vector3</a>",
+                        "<a href=\"#vector4\">vector4</a>"
                     ]
                 }
             ],
@@ -1192,6 +2110,16 @@
                         "vector3",
                         "vector4",
                         "quaternion"
+                    ],
+                    "types_html": [
+                        "<a href=\"#vector3\">vector3</a>",
+                        "<a href=\"#vector4\">vector4</a>",
+                        "<a href=\"#quaternion\">quaternion</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#vector3\">vector3</a>",
+                        "<a href=\"#vector4\">vector4</a>",
+                        "<a href=\"#quaternion\">quaternion</a>"
                     ]
                 }
             ],
@@ -1204,6 +2132,16 @@
                         "vector3",
                         "vector4",
                         "quaternion"
+                    ],
+                    "types_html": [
+                        "<a href=\"#vector3\">vector3</a>",
+                        "<a href=\"#vector4\">vector4</a>",
+                        "<a href=\"#quaternion\">quaternion</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#vector3\">vector3</a>",
+                        "<a href=\"#vector4\">vector4</a>",
+                        "<a href=\"#quaternion\">quaternion</a>"
                     ]
                 }
             ],
@@ -1226,6 +2164,12 @@
                     "name": "m1",
                     "types": [
                         "matrix4"
+                    ],
+                    "types_html": [
+                        "<a href=\"#matrix4\">matrix4</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#matrix4\">matrix4</a>"
                     ]
                 }
             ],
@@ -1236,6 +2180,12 @@
                     "name": "m",
                     "types": [
                         "matrix4"
+                    ],
+                    "types_html": [
+                        "<a href=\"#matrix4\">matrix4</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#matrix4\">matrix4</a>"
                     ]
                 }
             ],
@@ -1258,6 +2208,12 @@
                     "name": "v1",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#vector3\">vector3</a>"
                     ]
                 },
                 {
@@ -1266,6 +2222,12 @@
                     "name": "v2",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#vector3\">vector3</a>"
                     ]
                 }
             ],
@@ -1276,6 +2238,12 @@
                     "name": "n",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -1299,6 +2267,12 @@
                     "name": "q",
                     "types": [
                         "quaternion"
+                    ],
+                    "types_html": [
+                        "<a href=\"#quaternion\">quaternion</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#quaternion\">quaternion</a>"
                     ]
                 }
             ],
@@ -1321,6 +2295,12 @@
                     "name": "q1",
                     "types": [
                         "quaternion"
+                    ],
+                    "types_html": [
+                        "<a href=\"#quaternion\">quaternion</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#quaternion\">quaternion</a>"
                     ]
                 }
             ],
@@ -1331,6 +2311,12 @@
                     "name": "q",
                     "types": [
                         "quaternion"
+                    ],
+                    "types_html": [
+                        "<a href=\"#quaternion\">quaternion</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#quaternion\">quaternion</a>"
                     ]
                 }
             ],
@@ -1353,6 +2339,12 @@
                     "name": "x",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -1361,6 +2353,12 @@
                     "name": "y",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -1369,6 +2367,12 @@
                     "name": "z",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -1377,6 +2381,12 @@
                     "name": "w",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -1387,6 +2397,12 @@
                     "name": "q",
                     "types": [
                         "quaternion"
+                    ],
+                    "types_html": [
+                        "<a href=\"#quaternion\">quaternion</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#quaternion\">quaternion</a>"
                     ]
                 }
             ],
@@ -1409,6 +2425,12 @@
                     "name": "v",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#vector3\">vector3</a>"
                     ]
                 },
                 {
@@ -1417,6 +2439,12 @@
                     "name": "angle",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -1427,6 +2455,12 @@
                     "name": "q",
                     "types": [
                         "quaternion"
+                    ],
+                    "types_html": [
+                        "<a href=\"#quaternion\">quaternion</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#quaternion\">quaternion</a>"
                     ]
                 }
             ],
@@ -1449,6 +2483,12 @@
                     "name": "x",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#vector3\">vector3</a>"
                     ]
                 },
                 {
@@ -1457,6 +2497,12 @@
                     "name": "y",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#vector3\">vector3</a>"
                     ]
                 },
                 {
@@ -1465,6 +2511,12 @@
                     "name": "z",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#vector3\">vector3</a>"
                     ]
                 }
             ],
@@ -1475,6 +2527,12 @@
                     "name": "q",
                     "types": [
                         "quaternion"
+                    ],
+                    "types_html": [
+                        "<a href=\"#quaternion\">quaternion</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#quaternion\">quaternion</a>"
                     ]
                 }
             ],
@@ -1497,6 +2555,12 @@
                     "name": "v1",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#vector3\">vector3</a>"
                     ]
                 },
                 {
@@ -1505,6 +2569,12 @@
                     "name": "v2",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#vector3\">vector3</a>"
                     ]
                 }
             ],
@@ -1515,6 +2585,12 @@
                     "name": "q",
                     "types": [
                         "quaternion"
+                    ],
+                    "types_html": [
+                        "<a href=\"#quaternion\">quaternion</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#quaternion\">quaternion</a>"
                     ]
                 }
             ],
@@ -1537,6 +2613,12 @@
                     "name": "matrix",
                     "types": [
                         "matrix4"
+                    ],
+                    "types_html": [
+                        "<a href=\"#matrix4\">matrix4</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#matrix4\">matrix4</a>"
                     ]
                 }
             ],
@@ -1547,6 +2629,12 @@
                     "name": "q",
                     "types": [
                         "quaternion"
+                    ],
+                    "types_html": [
+                        "<a href=\"#quaternion\">quaternion</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#quaternion\">quaternion</a>"
                     ]
                 }
             ],
@@ -1569,6 +2657,12 @@
                     "name": "angle",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -1579,6 +2673,12 @@
                     "name": "q",
                     "types": [
                         "quaternion"
+                    ],
+                    "types_html": [
+                        "<a href=\"#quaternion\">quaternion</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#quaternion\">quaternion</a>"
                     ]
                 }
             ],
@@ -1601,6 +2701,12 @@
                     "name": "angle",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -1611,6 +2717,12 @@
                     "name": "q",
                     "types": [
                         "quaternion"
+                    ],
+                    "types_html": [
+                        "<a href=\"#quaternion\">quaternion</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#quaternion\">quaternion</a>"
                     ]
                 }
             ],
@@ -1633,6 +2745,12 @@
                     "name": "angle",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -1643,6 +2761,12 @@
                     "name": "q",
                     "types": [
                         "quaternion"
+                    ],
+                    "types_html": [
+                        "<a href=\"#quaternion\">quaternion</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#quaternion\">quaternion</a>"
                     ]
                 }
             ],
@@ -1665,6 +2789,12 @@
                     "name": "q",
                     "types": [
                         "quaternion"
+                    ],
+                    "types_html": [
+                        "<a href=\"#quaternion\">quaternion</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#quaternion\">quaternion</a>"
                     ]
                 }
             ],
@@ -1675,6 +2805,12 @@
                     "name": "x",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -1682,6 +2818,12 @@
                     "name": "y",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -1689,6 +2831,12 @@
                     "name": "z",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -1711,6 +2859,12 @@
                     "name": "q",
                     "types": [
                         "quaternion"
+                    ],
+                    "types_html": [
+                        "<a href=\"#quaternion\">quaternion</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#quaternion\">quaternion</a>"
                     ]
                 },
                 {
@@ -1719,6 +2873,12 @@
                     "name": "v1",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#vector3\">vector3</a>"
                     ]
                 }
             ],
@@ -1729,6 +2889,12 @@
                     "name": "v",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#vector3\">vector3</a>"
                     ]
                 }
             ],
@@ -1751,6 +2917,12 @@
                     "name": "t",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -1760,6 +2932,14 @@
                     "types": [
                         "vector3",
                         "vector4"
+                    ],
+                    "types_html": [
+                        "<a href=\"#vector3\">vector3</a>",
+                        "<a href=\"#vector4\">vector4</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#vector3\">vector3</a>",
+                        "<a href=\"#vector4\">vector4</a>"
                     ]
                 },
                 {
@@ -1769,6 +2949,14 @@
                     "types": [
                         "vector3",
                         "vector4"
+                    ],
+                    "types_html": [
+                        "<a href=\"#vector3\">vector3</a>",
+                        "<a href=\"#vector4\">vector4</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#vector3\">vector3</a>",
+                        "<a href=\"#vector4\">vector4</a>"
                     ]
                 }
             ],
@@ -1780,6 +2968,14 @@
                     "types": [
                         "vector3",
                         "vector4"
+                    ],
+                    "types_html": [
+                        "<a href=\"#vector3\">vector3</a>",
+                        "<a href=\"#vector4\">vector4</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#vector3\">vector3</a>",
+                        "<a href=\"#vector4\">vector4</a>"
                     ]
                 }
             ],
@@ -1802,6 +2998,12 @@
                     "name": "t",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -1810,6 +3012,12 @@
                     "name": "q1",
                     "types": [
                         "quaternion"
+                    ],
+                    "types_html": [
+                        "<a href=\"#quaternion\">quaternion</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#quaternion\">quaternion</a>"
                     ]
                 },
                 {
@@ -1818,6 +3026,12 @@
                     "name": "q2",
                     "types": [
                         "quaternion"
+                    ],
+                    "types_html": [
+                        "<a href=\"#quaternion\">quaternion</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#quaternion\">quaternion</a>"
                     ]
                 }
             ],
@@ -1828,6 +3042,12 @@
                     "name": "q",
                     "types": [
                         "quaternion"
+                    ],
+                    "types_html": [
+                        "<a href=\"#quaternion\">quaternion</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#quaternion\">quaternion</a>"
                     ]
                 }
             ],
@@ -1849,7 +3069,13 @@
                     "is_optional": "False",
                     "name": "t",
                     "types": [
-                        "table"
+                        "number[]"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>[]"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>[]"
                     ]
                 }
             ],
@@ -1860,6 +3086,12 @@
                     "name": "v",
                     "types": [
                         "vector"
+                    ],
+                    "types_html": [
+                        "<a href=\"#vector\">vector</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#vector\">vector</a>"
                     ]
                 }
             ],
@@ -1883,6 +3115,12 @@
                     "name": "v",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#vector3\">vector3</a>"
                     ]
                 }
             ],
@@ -1905,6 +3143,12 @@
                     "name": "n",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -1915,6 +3159,12 @@
                     "name": "v",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#vector3\">vector3</a>"
                     ]
                 }
             ],
@@ -1937,6 +3187,12 @@
                     "name": "v1",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#vector3\">vector3</a>"
                     ]
                 }
             ],
@@ -1947,6 +3203,12 @@
                     "name": "v",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#vector3\">vector3</a>"
                     ]
                 }
             ],
@@ -1969,6 +3231,12 @@
                     "name": "x",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -1977,6 +3245,12 @@
                     "name": "y",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -1985,6 +3259,12 @@
                     "name": "z",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -1995,6 +3275,12 @@
                     "name": "v",
                     "types": [
                         "vector3"
+                    ],
+                    "types_html": [
+                        "<a href=\"#vector3\">vector3</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#vector3\">vector3</a>"
                     ]
                 }
             ],
@@ -2018,6 +3304,12 @@
                     "name": "v",
                     "types": [
                         "vector4"
+                    ],
+                    "types_html": [
+                        "<a href=\"#vector4\">vector4</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#vector4\">vector4</a>"
                     ]
                 }
             ],
@@ -2040,6 +3332,12 @@
                     "name": "n",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -2050,6 +3348,12 @@
                     "name": "v",
                     "types": [
                         "vector4"
+                    ],
+                    "types_html": [
+                        "<a href=\"#vector4\">vector4</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#vector4\">vector4</a>"
                     ]
                 }
             ],
@@ -2072,6 +3376,12 @@
                     "name": "v1",
                     "types": [
                         "vector4"
+                    ],
+                    "types_html": [
+                        "<a href=\"#vector4\">vector4</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#vector4\">vector4</a>"
                     ]
                 }
             ],
@@ -2082,6 +3392,12 @@
                     "name": "v",
                     "types": [
                         "vector4"
+                    ],
+                    "types_html": [
+                        "<a href=\"#vector4\">vector4</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#vector4\">vector4</a>"
                     ]
                 }
             ],
@@ -2104,6 +3420,12 @@
                     "name": "x",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -2112,6 +3434,12 @@
                     "name": "y",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -2120,6 +3448,12 @@
                     "name": "z",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 },
                 {
@@ -2128,6 +3462,12 @@
                     "name": "w",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -2138,6 +3478,12 @@
                     "name": "v",
                     "types": [
                         "vector4"
+                    ],
+                    "types_html": [
+                        "<a href=\"#vector4\">vector4</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#vector4\">vector4</a>"
                     ]
                 }
             ],
@@ -2145,6 +3491,7 @@
             "type": "FUNCTION"
         }
     ],
+    "format_version": 2,
     "info": {
         "api_language": "Lua",
         "brief": "Vector math API documentation",

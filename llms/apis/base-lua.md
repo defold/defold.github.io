@@ -77,7 +77,7 @@ Returns the previous value for step.
 
 **Parameters**
 
-- `opt` (table) (optional)
+- `opt` (string) (optional)
 - `arg` (number) (optional)
 
 ### dofile
@@ -138,7 +138,7 @@ Otherwise, returns the metatable of the given object.
 
 **Parameters**
 
-- `object` (table)
+- `object` (any)
 
 ### ipairs
 *Type:* FUNCTION
@@ -154,7 +154,7 @@ up to the first integer key absent from the table.
 
 **Parameters**
 
-- `t` (table)
+- `t` (table<integer, any>)
 
 ### load
 *Type:* FUNCTION
@@ -266,8 +266,8 @@ In particular, you may clear existing fields.
 
 **Parameters**
 
-- `table` (table)
-- `index` (number) (optional)
+- `table` (table<any, any>)
+- `index` (any) (optional)
 
 ### pairs
 *Type:* FUNCTION
@@ -339,8 +339,8 @@ index may be any value.
 
 **Parameters**
 
-- `table` (table)
-- `index` (number)
+- `table` (table<any, any>)
+- `index` (any)
 
 ### rawset
 *Type:* FUNCTION
@@ -353,8 +353,8 @@ This function returns table.
 
 **Parameters**
 
-- `table` (table)
-- `index` (number)
+- `table` (table<any, any>)
+- `index` (any)
 - `value` (any)
 
 ### require
@@ -423,7 +423,7 @@ In this case, setfenv returns no values.
 **Parameters**
 
 - `f` (function)
-- `table` (table)
+- `table` (table<any, any>)
 
 ### setmetatable
 *Type:* FUNCTION
@@ -437,8 +437,8 @@ This function returns table.
 
 **Parameters**
 
-- `table` (table)
-- `metatable` (table)
+- `table` (table<any, any>)
+- `metatable` (table<any, any> | nil)
 
 ### tonumber
 *Type:* FUNCTION
@@ -508,9 +508,9 @@ as defined by the length operator .
 
 **Parameters**
 
-- `list` (table)
-- `i` (number) (optional)
-- `j` (number) (optional)
+- `list` (any[])
+- `i` (integer) (optional)
+- `j` (integer) (optional)
 
 ### xpcall
 *Type:* FUNCTION

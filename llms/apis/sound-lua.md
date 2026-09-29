@@ -176,7 +176,7 @@ Get a table of all mixer group names (hashes).
 
 **Returns**
 
-- `groups` (table) - table of mixer group names
+- `groups` (hash[]) - table of mixer group names
 
 **Examples**
 
@@ -336,36 +336,17 @@ At -1 (full left) the channels are at 100%/0%, and 1 they're at 0%/100%.
 **Parameters**
 
 - `url` (string | hash | url) - the sound that should play
-- `play_properties` (table) (optional) - <dl>
-<dt>optional table with properties:</dt>
-<dt><code>delay</code></dt>
-<dd><span class="type">number</span> delay in seconds before the sound starts playing, default is 0.</dd>
-<dt><code>gain</code></dt>
-<dd><span class="type">number</span> sound gain between 0 and 1, default is 1. The final gain of the sound will be a combination of this gain, the group gain and the master gain.</dd>
-<dt><code>pan</code></dt>
-<dd><span class="type">number</span> sound pan between -1 and 1, default is 0. The final pan of the sound will be an addition of this pan and the sound pan.</dd>
-<dt><code>speed</code></dt>
-<dd><span class="type">number</span> sound speed where 1.0 is normal speed, 0.5 is half speed and 2.0 is double speed. Valid range is 0.0 to 50.0. The final speed of the sound will be a multiplication of this speed and the sound speed.</dd>
-<dt><code>start_time</code></dt>
-<dd><span class="type">number</span> start playback offset (seconds). Optional, mutually exclusive with <code>start_frame</code>.</dd>
-<dt><code>start_frame</code></dt>
-<dd><span class="type">number</span> start playback offset (frames/samples). Optional, mutually exclusive with <code>start_time</code>. If both are provided, <code>start_frame</code> is used.</dd>
-</dl>
-- `complete_function` (function(self, message_id, message, sender)) (optional) - function to call when the sound has finished playing or stopped manually via <a href="/ref/sound#sound.stop">sound.stop</a>.
+- `play_properties` (sound.play_properties) (optional) - optional playback properties
+- `complete_function` (fun(self:script_instance, message_id:hash, message:sound.play_completion, sender:url)) (optional) - function to call when the sound has finished playing or stopped manually via <a href="/ref/sound#sound.stop">sound.stop</a>.
 <dl>
-<dt><code>self</code></dt>
-<dd><span class="type">object</span> The current object.</dd>
-<dt><code>message_id</code></dt>
-<dd><span class="type">hash</span> The name of the completion message, which can be either <code>"sound_done"</code> if the sound has finished playing, or <code>"sound_stopped"</code> if it was stopped manually.</dd>
-<dt><code>message</code></dt>
-<dd><span class="type">table</span> Information about the completion:</dd>
-</dl>
-<ul>
-<li><span class="type">number</span> <code>play_id</code> - the sequential play identifier that was given by the sound.play function.</li>
-</ul>
-<dl>
-<dt><code>sender</code></dt>
-<dd><span class="type">url</span> The invoker of the callback: the sound component.</dd>
+<dt class="api-lua-v2-type-definition"><code>self:<a href="../builtins-lua/#script_instance">script_instance</a></code></dt>
+<dd>The current script instance.</dd>
+<dt class="api-lua-v2-type-definition"><code>message_id:<a href="../builtins-lua/#hash">hash</a></code></dt>
+<dd>The name of the completion message, which can be either <code>"sound_done"</code> if the sound has finished playing, or <code>"sound_stopped"</code> if it was stopped manually.</dd>
+<dt class="api-lua-v2-type-definition"><code>message:<a href="#sound.play_completion">sound.play_completion</a></code></dt>
+<dd>Information about the completed or stopped playback.</dd>
+<dt class="api-lua-v2-type-definition"><code>sender:<a href="../msg-lua/#url">url</a></code></dt>
+<dd>The invoker of the callback: the sound component.</dd>
 </dl>
 
 **Returns**
@@ -394,6 +375,28 @@ function init(self)
 end
 
 ```
+
+### sound.play_completion
+*Type:* STRUCT
+Data passed to the completion callback of sound.play. The callback's
+message_id indicates whether playback finished or was stopped manually.
+
+**Members**
+
+- `play_id` (number) - The sequential play identifier for the playback.
+
+### sound.play_properties
+*Type:* STRUCT
+Sound playback properties
+
+**Members**
+
+- `delay?` (number) - Delay in seconds before playback starts. The default is 0.
+- `gain?` (number) - Gain from 0 to 1. The default is 1; this combines with the group and master gains.
+- `pan?` (number) - Pan from -1 to 1. The default is 0; this is added to the component pan.
+- `speed?` (number) - Playback speed from 0 to 50. The default is 1; this is multiplied by the component speed.
+- `start_time?` (number) - Playback offset in seconds. Mutually exclusive with <code>start_frame</code>.
+- `start_frame?` (number) - Playback offset in frames or samples. Takes precedence over <code>start_time</code>.
 
 ### sound.set_gain
 *Type:* FUNCTION
@@ -459,11 +462,7 @@ Stop playing all active voices or just one voice if play_id provided
 **Parameters**
 
 - `url` (string | hash | url) - the sound component that should stop
-- `stop_properties` (table) (optional) - <dl>
-<dt>optional table with properties:</dt>
-<dt><code>play_id</code></dt>
-<dd><span class="type">number</span> the sequential play identifier that should be stopped (was given by the sound.play() function)</dd>
-</dl>
+- `stop_properties` (sound.stop_properties) (optional) - optional playback to stop
 
 **Examples**
 
@@ -474,6 +473,14 @@ local id = sound.play("#sound")
 sound.stop("#sound", {play_id = id})
 
 ```
+
+### sound.stop_properties
+*Type:* STRUCT
+Sound stop properties
+
+**Members**
+
+- `play_id` (number) - Sequential playback identifier returned by <a href="/ref/sound#sound.play">sound.play</a>.
 
 ### sound_done
 *Type:* MESSAGE

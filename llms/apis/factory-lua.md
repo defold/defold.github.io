@@ -25,7 +25,7 @@ using factory.load will synchronously load and create resources which may affect
 - `url` (string | hash | url) - the factory that should create a game object.
 - `position` (vector3) (optional) - the position of the new game object, the position of the game object calling <code>factory.create()</code> is used by default, or if the value is <code>nil</code>.
 - `rotation` (quaternion) (optional) - the rotation of the new game object, the rotation of the game object calling <code>factory.create()</code> is used by default, or if the value is <code>nil</code>.
-- `properties` (table) (optional) - the properties defined in a script attached to the new game object.
+- `properties` (table<string|hash, any>) (optional) - the properties defined in a script attached to the new game object.
 - `scale` (number | vector3) (optional) - the scale of the new game object (must be greater than 0), the scale of the game object containing the factory is used by default, or if the value is <code>nil</code>
 
 **Returns**
@@ -67,12 +67,7 @@ factory.STATUS_LOADED.
 
 **Returns**
 
-- `status` (constant) - status of the factory component
-<ul>
-<li><code>factory.STATUS_UNLOADED</code></li>
-<li><code>factory.STATUS_LOADING</code></li>
-<li><code>factory.STATUS_LOADED</code></li>
-</ul>
+- `status` (factory.STATUS) - status of the factory component
 
 ### factory.load
 *Type:* FUNCTION
@@ -82,14 +77,14 @@ Calling this function when the factory is not marked as dynamic loading does not
 **Parameters**
 
 - `url` (string | hash | url) (optional) - the factory component to load
-- `complete_function` (function(self, url, result)) (optional) - function to call when resources are loaded.
+- `complete_function` (fun(self:script_instance, url:url, result:boolean)) (optional) - function to call when resources are loaded.
 <dl>
-<dt><code>self</code></dt>
-<dd><span class="type">object</span> The current object.</dd>
-<dt><code>url</code></dt>
-<dd><span class="type">url</span> url of the factory component</dd>
-<dt><code>result</code></dt>
-<dd><span class="type">boolean</span> True if resources were loaded successfully</dd>
+<dt class="api-lua-v2-type-definition"><code>self:<a href="../builtins-lua/#script_instance">script_instance</a></code></dt>
+<dd>The current script instance.</dd>
+<dt class="api-lua-v2-type-definition"><code>url:<a href="../msg-lua/#url">url</a></code></dt>
+<dd>url of the factory component</dd>
+<dt class="api-lua-v2-type-definition"><code>result:<a href="../../../manuals/lua/#variables-and-data-types">boolean</a></code></dt>
+<dd>True if resources were loaded successfully</dd>
 </dl>
 
 **Examples**
@@ -125,17 +120,15 @@ local id = factory.create("#factory", go.get_world_position(), vmath.quat())
 
 ```
 
-### factory.STATUS_LOADED
-*Type:* CONSTANT
-loaded
+### factory.STATUS
+*Type:* ENUM
+Factory status values
 
-### factory.STATUS_LOADING
-*Type:* CONSTANT
-loading
+**Members**
 
-### factory.STATUS_UNLOADED
-*Type:* CONSTANT
-unloaded
+- `factory.STATUS_LOADED` - The factory resources are loaded.
+- `factory.STATUS_LOADING` - The factory resources are loading.
+- `factory.STATUS_UNLOADED` - The factory resources are unloaded.
 
 ### factory.unload
 *Type:* FUNCTION

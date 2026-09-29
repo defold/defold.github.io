@@ -162,7 +162,7 @@ date and difftime.
 
 **Parameters**
 
-- `table` (table) (optional)
+- `table` ({ year:integer, month:integer, day:integer, hour?:integer, min?:integer, sec?:integer, isdst?:boolean }) (optional)
 
 ### os.tmpname
 *Type:* FUNCTION

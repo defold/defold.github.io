@@ -31,6 +31,12 @@
                     "name": "enabled",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
@@ -55,6 +61,12 @@
                     "name": "enabled",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
@@ -80,6 +92,12 @@
                     "name": "percent",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -103,6 +121,12 @@
                     "name": "bytes",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -125,6 +149,12 @@
                     "name": "text",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 }
             ],
@@ -134,64 +164,38 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "pause on current frame",
-            "description": "pause on current frame",
+            "brief": "Profiler modes",
+            "description": "Profiler modes",
             "error": "",
             "examples": "",
             "language": "",
-            "members": [],
-            "name": "profiler.MODE_PAUSE",
+            "members": [
+                {
+                    "doc": "pause on the currently displayed frame",
+                    "name": "profiler.MODE_PAUSE"
+                },
+                {
+                    "doc": "record incoming frames to the recording buffer",
+                    "name": "profiler.MODE_RECORD"
+                },
+                {
+                    "doc": "continuously show the latest frame",
+                    "name": "profiler.MODE_RUN"
+                },
+                {
+                    "doc": "pause on the displayed frame, replacing it when a slower frame arrives",
+                    "name": "profiler.MODE_SHOW_PEAK_FRAME"
+                }
+            ],
+            "name": "profiler.MODE",
             "notes": [],
             "parameters": [],
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "start recording",
-            "description": "start recording",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "profiler.MODE_RECORD",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "continously show latest frame",
-            "description": "continously show latest frame",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "profiler.MODE_RUN",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "pause at peak frame",
-            "description": "pause at peak frame",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "profiler.MODE_SHOW_PEAK_FRAME",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
+            "type": "ENUM",
+            "value_type": "integer",
+            "value_type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
         },
         {
             "brief": "get the number of recorded frames in the on-screen profiler ui",
@@ -210,6 +214,12 @@
                     "name": "frame_count",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -234,6 +244,12 @@
                     "name": "name",
                     "types": [
                         "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
                     ]
                 }
             ],
@@ -270,11 +286,17 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "the mode to set the ui profiler in\n<ul>\n<li><code>profiler.MODE_RUN</code> This is default mode that continously shows the last frame</li>\n<li><code>profiler.MODE_PAUSE</code> Pauses on the currently displayed frame</li>\n<li><code>profiler.MODE_SHOW_PEAK_FRAME</code> Pauses on the currently displayed frame but shows a new frame if that frame is slower</li>\n<li><code>profiler.MODE_RECORD</code> Records all incoming frames to the recording buffer</li>\n</ul>\nTo stop recording, switch to a different mode such as <code>MODE_PAUSE</code> or <code>MODE_RUN</code>.\nYou can also use the <code>view_recorded_frame</code> function to display a recorded frame. Doing so stops the recording as well.\nEvery time you switch to recording mode the recording buffer is cleared.",
+                    "doc": "the mode to set the ui profiler in\nTo stop recording, switch to a different mode such as <code>MODE_PAUSE</code> or <code>MODE_RUN</code>.\nYou can also use the <code>view_recorded_frame</code> function to display a recorded frame. Doing so stops the recording as well.\nEvery time you switch to recording mode the recording buffer is cleared.",
                     "is_optional": "False",
                     "name": "mode",
                     "types": [
-                        "constant"
+                        "profiler.MODE"
+                    ],
+                    "types_html": [
+                        "<a href=\"#profiler.MODE\">profiler.MODE</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#profiler.MODE\">profiler.MODE</a>"
                     ]
                 }
             ],
@@ -294,11 +316,17 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "the view mode to set the ui profiler in\n<ul>\n<li><code>profiler.VIEW_MODE_FULL</code> The default mode which displays all the ui profiler details</li>\n<li><code>profiler.VIEW_MODE_MINIMIZED</code> Minimized mode which only shows the top header (fps counters and ui profiler mode)</li>\n</ul>",
+                    "doc": "the view mode to set the ui profiler in",
                     "is_optional": "False",
                     "name": "mode",
                     "types": [
-                        "constant"
+                        "profiler.VIEW_MODE"
+                    ],
+                    "types_html": [
+                        "<a href=\"#profiler.VIEW_MODE\">profiler.VIEW_MODE</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#profiler.VIEW_MODE\">profiler.VIEW_MODE</a>"
                     ]
                 }
             ],
@@ -323,6 +351,12 @@
                     "name": "visible",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
@@ -332,34 +366,30 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "show full profiler ui",
-            "description": "show full profiler ui",
+            "brief": "Profiler view modes",
+            "description": "Profiler view modes",
             "error": "",
             "examples": "",
             "language": "",
-            "members": [],
-            "name": "profiler.VIEW_MODE_FULL",
+            "members": [
+                {
+                    "doc": "show all profiler details",
+                    "name": "profiler.VIEW_MODE_FULL"
+                },
+                {
+                    "doc": "show only the header with FPS counters and profiler mode",
+                    "name": "profiler.VIEW_MODE_MINIMIZED"
+                }
+            ],
+            "name": "profiler.VIEW_MODE",
             "notes": [],
             "parameters": [],
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "CONSTANT"
-        },
-        {
-            "brief": "show mimimal profiler ui",
-            "description": "show mimimal profiler ui",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "profiler.VIEW_MODE_MINIMIZED",
-            "notes": [],
-            "parameters": [],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "CONSTANT"
+            "type": "ENUM",
+            "value_type": "integer",
+            "value_type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
         },
         {
             "brief": "displays a previously recorded frame in the on-screen profiler ui",
@@ -376,7 +406,16 @@
                     "is_optional": "False",
                     "name": "frame_index",
                     "types": [
-                        "table"
+                        "{ distance:integer }",
+                        "{ frame:integer }"
+                    ],
+                    "types_html": [
+                        "{ distance:<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a> }",
+                        "{ frame:<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a> }"
+                    ],
+                    "types_table_html": [
+                        "{distance:<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>}",
+                        "{frame:<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>}"
                     ]
                 }
             ],
@@ -386,6 +425,7 @@
             "type": "FUNCTION"
         }
     ],
+    "format_version": 2,
     "info": {
         "api_language": "Lua",
         "brief": "Profiler API documentation",

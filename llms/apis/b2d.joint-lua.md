@@ -18,7 +18,7 @@ Create a distance joint.
 
 - `body_a` (b2Body) - first body
 - `body_b` (b2Body) - second body
-- `definition` (table) - optional definition with <code>local_anchor_a</code>, <code>local_anchor_b</code>, <code>length</code>, <code>frequency</code>, <code>damping_ratio</code>, and <code>collide_connected</code>
+- `definition` (b2d.joint.distance_definition) (optional) - optional joint definition
 
 **Returns**
 
@@ -32,7 +32,7 @@ Create a distance joint.
 
 - `body_a` (b2Body) - first body
 - `body_b` (b2Body) - second body
-- `definition` (table) - optional definition with <code>local_anchor_a</code>, <code>local_anchor_b</code>, <code>length</code>, <code>min_length</code>, <code>max_length</code>, <code>enable_spring</code>, <code>hertz</code> or <code>frequency</code>, <code>damping_ratio</code>, <code>enable_limit</code>, <code>enable_motor</code>, <code>max_motor_force</code>, <code>motor_speed</code>, and <code>collide_connected</code>
+- `definition` (b2d.joint.distance_definition) (optional) - optional joint definition
 
 **Returns**
 
@@ -46,7 +46,7 @@ Create a filter joint.
 
 - `body_a` (b2Body) - first body
 - `body_b` (b2Body) - second body
-- `definition` (table) - optional definition table
+- `definition` (b2d.joint.filter_definition) (optional) - optional definition table
 
 **Returns**
 
@@ -60,7 +60,7 @@ Create a friction joint.
 
 - `body_a` (b2Body) - first body
 - `body_b` (b2Body) - second body
-- `definition` (table) - optional definition with <code>local_anchor_a</code>, <code>local_anchor_b</code>, <code>max_force</code>, <code>max_torque</code>, and <code>collide_connected</code>
+- `definition` (b2d.joint.friction_definition) (optional) - optional joint definition
 
 **Returns**
 
@@ -74,7 +74,7 @@ Create a gear joint.
 
 - `joint1` (b2Joint) - first revolute or prismatic joint
 - `joint2` (b2Joint) - second revolute or prismatic joint
-- `definition` (table) - optional definition with <code>ratio</code>
+- `definition` (b2d.joint.gear_definition) (optional) - optional joint definition
 
 **Returns**
 
@@ -88,7 +88,7 @@ Create a motor joint.
 
 - `body_a` (b2Body) - first body
 - `body_b` (b2Body) - second body
-- `definition` (table) - optional definition with <code>linear_offset</code>, <code>angular_offset</code>, <code>max_force</code>, <code>max_torque</code>, <code>correction_factor</code>, and <code>collide_connected</code>
+- `definition` (b2d.joint.motor_definition) (optional) - optional joint definition
 
 **Returns**
 
@@ -102,7 +102,7 @@ Create a mouse joint.
 
 - `body_a` (b2Body) - first body
 - `body_b` (b2Body) - second body
-- `definition` (table) - optional definition with <code>target</code>, <code>max_force</code>, <code>frequency</code>, <code>damping_ratio</code>, and <code>collide_connected</code>
+- `definition` (b2d.joint.mouse_definition) (optional) - optional joint definition
 
 **Returns**
 
@@ -116,7 +116,7 @@ Create a mouse joint.
 
 - `body_a` (b2Body) - first body
 - `body_b` (b2Body) - second body
-- `definition` (table) - optional definition with <code>target</code>, <code>hertz</code> or <code>frequency</code>, <code>damping_ratio</code>, <code>max_force</code>, and <code>collide_connected</code>
+- `definition` (b2d.joint.mouse_definition) (optional) - optional joint definition
 
 **Returns**
 
@@ -130,7 +130,7 @@ Create a prismatic joint.
 
 - `body_a` (b2Body) - first body
 - `body_b` (b2Body) - second body
-- `definition` (table) - optional definition with <code>local_anchor_a</code>, <code>local_anchor_b</code>, <code>local_axis_a</code>, <code>reference_angle</code>, <code>enable_limit</code>, <code>lower_translation</code>, <code>upper_translation</code>, <code>enable_motor</code>, <code>max_motor_force</code>, <code>motor_speed</code>, and <code>collide_connected</code>
+- `definition` (b2d.joint.prismatic_definition) (optional) - optional joint definition
 
 **Returns**
 
@@ -144,7 +144,7 @@ Create a prismatic joint.
 
 - `body_a` (b2Body) - first body
 - `body_b` (b2Body) - second body
-- `definition` (table) - optional definition with <code>local_anchor_a</code>, <code>local_anchor_b</code>, <code>local_axis_a</code>, <code>reference_angle</code>, <code>enable_spring</code>, <code>hertz</code> or <code>frequency</code>, <code>damping_ratio</code>, <code>enable_limit</code>, <code>lower_translation</code>, <code>upper_translation</code>, <code>enable_motor</code>, <code>max_motor_force</code>, <code>motor_speed</code>, and <code>collide_connected</code>
+- `definition` (b2d.joint.prismatic_definition) (optional) - optional joint definition
 
 **Returns**
 
@@ -158,7 +158,7 @@ Create a pulley joint.
 
 - `body_a` (b2Body) - first body
 - `body_b` (b2Body) - second body
-- `definition` (table) - optional definition with <code>ground_anchor_a</code>, <code>ground_anchor_b</code>, <code>local_anchor_a</code>, <code>local_anchor_b</code>, <code>length_a</code>, <code>length_b</code>, <code>ratio</code>, and <code>collide_connected</code>
+- `definition` (b2d.joint.pulley_definition) (optional) - optional joint definition
 
 **Returns**
 
@@ -172,7 +172,7 @@ Create a revolute joint.
 
 - `body_a` (b2Body) - first body
 - `body_b` (b2Body) - second body
-- `definition` (table) - optional definition with <code>local_anchor_a</code>, <code>local_anchor_b</code>, <code>reference_angle</code>, <code>enable_limit</code>, <code>lower_angle</code>, <code>upper_angle</code>, <code>enable_motor</code>, <code>max_motor_torque</code>, <code>motor_speed</code>, and <code>collide_connected</code>
+- `definition` (b2d.joint.revolute_definition) (optional) - optional joint definition
 
 **Returns**
 
@@ -186,7 +186,7 @@ Create a revolute joint.
 
 - `body_a` (b2Body) - first body
 - `body_b` (b2Body) - second body
-- `definition` (table) - optional definition with <code>local_anchor_a</code>, <code>local_anchor_b</code>, <code>reference_angle</code>, <code>enable_spring</code>, <code>hertz</code> or <code>frequency</code>, <code>damping_ratio</code>, <code>enable_limit</code>, <code>lower_angle</code>, <code>upper_angle</code>, <code>enable_motor</code>, <code>max_motor_torque</code>, <code>motor_speed</code>, and <code>collide_connected</code>
+- `definition` (b2d.joint.revolute_definition) (optional) - optional joint definition
 
 **Returns**
 
@@ -200,7 +200,7 @@ Create a rope joint.
 
 - `body_a` (b2Body) - first body
 - `body_b` (b2Body) - second body
-- `definition` (table) - optional definition with <code>local_anchor_a</code>, <code>local_anchor_b</code>, <code>max_length</code>, and <code>collide_connected</code>
+- `definition` (b2d.joint.rope_definition) (optional) - optional joint definition
 
 **Returns**
 
@@ -214,7 +214,7 @@ Create a weld joint.
 
 - `body_a` (b2Body) - first body
 - `body_b` (b2Body) - second body
-- `definition` (table) - optional definition with <code>local_anchor_a</code>, <code>local_anchor_b</code>, <code>reference_angle</code>, <code>frequency</code>, <code>damping_ratio</code>, and <code>collide_connected</code>
+- `definition` (b2d.joint.weld_definition) (optional) - optional joint definition
 
 **Returns**
 
@@ -228,7 +228,7 @@ Create a weld joint.
 
 - `body_a` (b2Body) - first body
 - `body_b` (b2Body) - second body
-- `definition` (table) - optional definition with <code>local_anchor_a</code>, <code>local_anchor_b</code>, <code>reference_angle</code>, <code>linear_hertz</code>, <code>angular_hertz</code>, <code>linear_damping_ratio</code>, <code>angular_damping_ratio</code>, and <code>collide_connected</code>
+- `definition` (b2d.joint.weld_definition) (optional) - optional joint definition
 
 **Returns**
 
@@ -242,7 +242,7 @@ Create a wheel joint.
 
 - `body_a` (b2Body) - first body
 - `body_b` (b2Body) - second body
-- `definition` (table) - optional definition with <code>local_anchor_a</code>, <code>local_anchor_b</code>, <code>local_axis_a</code>, <code>enable_motor</code>, <code>max_motor_torque</code>, <code>motor_speed</code>, <code>frequency</code>, <code>damping_ratio</code>, and <code>collide_connected</code>
+- `definition` (b2d.joint.wheel_definition) (optional) - optional joint definition
 
 **Returns**
 
@@ -256,7 +256,7 @@ Create a wheel joint.
 
 - `body_a` (b2Body) - first body
 - `body_b` (b2Body) - second body
-- `definition` (table) - optional definition with <code>local_anchor_a</code>, <code>local_anchor_b</code>, <code>local_axis_a</code>, <code>enable_spring</code>, <code>hertz</code> or <code>frequency</code>, <code>damping_ratio</code>, <code>enable_limit</code>, <code>lower_translation</code>, <code>upper_translation</code>, <code>enable_motor</code>, <code>max_motor_torque</code>, <code>motor_speed</code>, and <code>collide_connected</code>
+- `definition` (b2d.joint.wheel_definition) (optional) - optional joint definition
 
 **Returns**
 
@@ -753,7 +753,7 @@ Get rope limit state.
 
 **Returns**
 
-- `state` (number) - one of the <code>LIMIT_STATE_*</code> constants
+- `state` (b2d.joint.LIMIT_STATE) - one of the <code>LIMIT_STATE_*</code> constants
 
 ### b2d.joint.get_linear_damping_ratio
 *Type:* FUNCTION
@@ -1237,7 +1237,7 @@ Get the joint type.
 
 **Returns**
 
-- `type` (number) - one of the <code>JOINT_TYPE_*</code> constants
+- `type` (b2d.joint.JOINT_TYPE) - one of the <code>JOINT_TYPE_*</code> constants
 
 ### b2d.joint.get_type
 *Type:* FUNCTION
@@ -1249,7 +1249,7 @@ Get the joint type.
 
 **Returns**
 
-- `type` (number) - one of the <code>JOINT_TYPE_*</code> constants
+- `type` (b2d.joint.JOINT_TYPE) - one of the <code>JOINT_TYPE_*</code> constants
 
 ### b2d.joint.get_upper_limit
 *Type:* FUNCTION
@@ -1371,97 +1371,36 @@ Validate a joint handle.
 
 - `valid` (boolean) - true if the joint handle still refers to a live Box2D joint
 
-### b2d.joint.JOINT_TYPE_DISTANCE
-*Type:* CONSTANT
-Distance joint type.
+### b2d.joint.JOINT_TYPE
+*Type:* ENUM
+Box2D joint types.
 
-### b2d.joint.JOINT_TYPE_DISTANCE
-*Type:* CONSTANT
-Distance joint type.
+**Members**
 
-### b2d.joint.JOINT_TYPE_FILTER
-*Type:* CONSTANT
-Filter joint type.
+- `b2d.joint.JOINT_TYPE_DISTANCE` - Distance joint type.
+- `b2d.joint.JOINT_TYPE_FILTER` - Filter joint type.
+- `b2d.joint.JOINT_TYPE_FRICTION` - Friction joint type.
+- `b2d.joint.JOINT_TYPE_GEAR` - Gear joint type.
+- `b2d.joint.JOINT_TYPE_MOTOR` - Motor joint type.
+- `b2d.joint.JOINT_TYPE_MOUSE` - Mouse joint type.
+- `b2d.joint.JOINT_TYPE_PRISMATIC` - Prismatic joint type.
+- `b2d.joint.JOINT_TYPE_PULLEY` - Pulley joint type.
+- `b2d.joint.JOINT_TYPE_REVOLUTE` - Revolute joint type.
+- `b2d.joint.JOINT_TYPE_ROPE` - Rope joint type.
+- `b2d.joint.JOINT_TYPE_UNKNOWN` - Unknown joint type.
+- `b2d.joint.JOINT_TYPE_WELD` - Weld joint type.
+- `b2d.joint.JOINT_TYPE_WHEEL` - Wheel joint type.
 
-### b2d.joint.JOINT_TYPE_FRICTION
-*Type:* CONSTANT
-Friction joint type.
+### b2d.joint.LIMIT_STATE
+*Type:* ENUM
+Box2D joint limit states.
 
-### b2d.joint.JOINT_TYPE_GEAR
-*Type:* CONSTANT
-Gear joint type.
+**Members**
 
-### b2d.joint.JOINT_TYPE_MOTOR
-*Type:* CONSTANT
-Motor joint type.
-
-### b2d.joint.JOINT_TYPE_MOUSE
-*Type:* CONSTANT
-Mouse joint type.
-
-### b2d.joint.JOINT_TYPE_MOUSE
-*Type:* CONSTANT
-Mouse joint type.
-
-### b2d.joint.JOINT_TYPE_PRISMATIC
-*Type:* CONSTANT
-Prismatic joint type.
-
-### b2d.joint.JOINT_TYPE_PRISMATIC
-*Type:* CONSTANT
-Prismatic joint type.
-
-### b2d.joint.JOINT_TYPE_PULLEY
-*Type:* CONSTANT
-Pulley joint type.
-
-### b2d.joint.JOINT_TYPE_REVOLUTE
-*Type:* CONSTANT
-Revolute joint type.
-
-### b2d.joint.JOINT_TYPE_REVOLUTE
-*Type:* CONSTANT
-Revolute joint type.
-
-### b2d.joint.JOINT_TYPE_ROPE
-*Type:* CONSTANT
-Rope joint type.
-
-### b2d.joint.JOINT_TYPE_UNKNOWN
-*Type:* CONSTANT
-Unknown joint type.
-
-### b2d.joint.JOINT_TYPE_WELD
-*Type:* CONSTANT
-Weld joint type.
-
-### b2d.joint.JOINT_TYPE_WELD
-*Type:* CONSTANT
-Weld joint type.
-
-### b2d.joint.JOINT_TYPE_WHEEL
-*Type:* CONSTANT
-Wheel joint type.
-
-### b2d.joint.JOINT_TYPE_WHEEL
-*Type:* CONSTANT
-Wheel joint type.
-
-### b2d.joint.LIMIT_STATE_AT_LOWER
-*Type:* CONSTANT
-At lower limit state.
-
-### b2d.joint.LIMIT_STATE_AT_UPPER
-*Type:* CONSTANT
-At upper limit state.
-
-### b2d.joint.LIMIT_STATE_EQUAL
-*Type:* CONSTANT
-Equal limits state.
-
-### b2d.joint.LIMIT_STATE_INACTIVE
-*Type:* CONSTANT
-Inactive limit state.
+- `b2d.joint.LIMIT_STATE_AT_LOWER` - At lower limit state.
+- `b2d.joint.LIMIT_STATE_AT_UPPER` - At upper limit state.
+- `b2d.joint.LIMIT_STATE_EQUAL` - Equal limits state.
+- `b2d.joint.LIMIT_STATE_INACTIVE` - Inactive limit state.
 
 ### b2d.joint.set_angular_damping_ratio
 *Type:* FUNCTION
@@ -1827,16 +1766,46 @@ Wake the bodies connected to a joint.
 
 ### b2Joint
 *Type:* TYPEDEF
-Box2D joint
+An opaque handle connecting two b2Body values. Create one with a
+function such as b2d.joint.create_distance, use the functions in
+b2d.joint to inspect or configure it, and release it with
+b2d.joint.destroy. Joints are also destroyed when either connected body
+or its physics world is destroyed.
 
 **Parameters**
 
-- `value` (userdata)
+- `value` (userdata) - Box2D joint handle
+
+**Examples**
+
+```
+local body_a = b2d.get_body("#collisionobject_a")
+local body_b = b2d.get_body("#collisionobject_b")
+local joint = b2d.joint.create_distance(body_a, body_b)
+print(b2d.joint.get_type(joint))
+
+```
 
 ### b2Joint
 *Type:* TYPEDEF
-Box2D joint
+An opaque handle connecting two b2Body values. Create one with a
+function such as b2d.joint.create_distance, use the functions in
+b2d.joint to inspect or configure it, and release it with
+b2d.joint.destroy. Use b2d.joint.is_valid before retaining a
+handle across body or world destruction.
 
 **Parameters**
 
-- `value` (userdata)
+- `value` (userdata) - Box2D joint handle
+
+**Examples**
+
+```
+local body_a = b2d.get_body("#collisionobject_a")
+local body_b = b2d.get_body("#collisionobject_b")
+local joint = b2d.joint.create_distance(body_a, body_b)
+if b2d.joint.is_valid(joint) then
+    print(b2d.joint.get_type(joint))
+end
+
+```

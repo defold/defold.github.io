@@ -20,7 +20,7 @@ A table is returned containing the addresses of the call stack.
 
 **Returns**
 
-- `backtrace` (table) - table containing the backtrace
+- `backtrace` (string[]) - table containing the backtrace
 
 ### crash.get_extra_data
 *Type:* FUNCTION
@@ -38,8 +38,7 @@ but can be useful for manual inspection.
 
 ### crash.get_modules
 *Type:* FUNCTION
-The function returns a table containing entries with sub-tables that
-have fields 'name' and 'address' set for all loaded modules.
+get all loaded modules from when the crash occured
 
 **Parameters**
 
@@ -47,7 +46,7 @@ have fields 'name' and 'address' set for all loaded modules.
 
 **Returns**
 
-- `modules` (table) - module table
+- `modules` (crash.module_info[]) - loaded modules
 
 ### crash.get_signum
 *Type:* FUNCTION
@@ -68,7 +67,7 @@ reads a system field from a loaded crash dump
 **Parameters**
 
 - `handle` (number) - crash dump handle
-- `index` (number) - system field enum. Must be less than <a href="/ref/crash#crash.SYSFIELD_MAX">crash.SYSFIELD_MAX</a>
+- `index` (crash.SYSFIELD) - system field enum. Must be less than <a href="/ref/crash#crash.SYSFIELD_MAX">crash.SYSFIELD_MAX</a>
 
 **Returns**
 
@@ -81,7 +80,7 @@ reads user field from a loaded crash dump
 **Parameters**
 
 - `handle` (number) - crash dump handle
-- `index` (number) - user data slot index
+- `index` (crash.USERFIELD) - user data slot index
 
 **Returns**
 
@@ -95,6 +94,15 @@ load, so loading is one-shot.
 **Returns**
 
 - `handle` (number | nil) - handle to the loaded dump, or <code>nil</code> if no dump was found
+
+### crash.module_info
+*Type:* STRUCT
+Loaded crash module
+
+**Members**
+
+- `name` (string) - module name
+- `address` (string) - module load address
 
 ### crash.release
 *Type:* FUNCTION
@@ -120,60 +128,67 @@ There are 32 slots indexed from 0. Each slot stores at most 255 characters.
 
 **Parameters**
 
-- `index` (number) - slot index. 0-indexed
+- `index` (crash.USERFIELD) - slot index. 0-indexed
 - `value` (string) - string value to store
 
-### crash.SYSFIELD_ANDROID_BUILD_FINGERPRINT
-*Type:* CONSTANT
-android build fingerprint
+### crash.SYSFIELD
+*Type:* ENUM
+System crash fields
 
-### crash.SYSFIELD_DEVICE_LANGUAGE
-*Type:* CONSTANT
-system device language as reported by sys.get_sys_info
+**Members**
 
-### crash.SYSFIELD_DEVICE_MODEL
-*Type:* CONSTANT
-device model as reported by sys.get_sys_info
-
-### crash.SYSFIELD_ENGINE_HASH
-*Type:* CONSTANT
-engine version as hash
-
-### crash.SYSFIELD_ENGINE_VERSION
-*Type:* CONSTANT
-engine version as release number
-
-### crash.SYSFIELD_LANGUAGE
-*Type:* CONSTANT
-system language as reported by sys.get_sys_info
-
-### crash.SYSFIELD_MANUFACTURER
-*Type:* CONSTANT
-device manufacturer as reported by sys.get_sys_info
+- `crash.SYSFIELD_ENGINE_VERSION` - engine version as release number
+- `crash.SYSFIELD_ENGINE_HASH` - engine version as hash
+- `crash.SYSFIELD_DEVICE_MODEL` - device model as reported by sys.get_sys_info
+- `crash.SYSFIELD_MANUFACTURER` - device manufacturer as reported by sys.get_sys_info
+- `crash.SYSFIELD_SYSTEM_NAME` - system name as reported by sys.get_sys_info
+- `crash.SYSFIELD_SYSTEM_VERSION` - system version as reported by sys.get_sys_info
+- `crash.SYSFIELD_LANGUAGE` - system language as reported by sys.get_sys_info
+- `crash.SYSFIELD_DEVICE_LANGUAGE` - system device language as reported by sys.get_sys_info
+- `crash.SYSFIELD_TERRITORY` - system territory as reported by sys.get_sys_info
+- `crash.SYSFIELD_ANDROID_BUILD_FINGERPRINT` - android build fingerprint
 
 ### crash.SYSFIELD_MAX
 *Type:* CONSTANT
 The max number of sysfields.
 
-### crash.SYSFIELD_SYSTEM_NAME
-*Type:* CONSTANT
-system name as reported by sys.get_sys_info
+**Parameters**
 
-### crash.SYSFIELD_SYSTEM_VERSION
-*Type:* CONSTANT
-system version as reported by sys.get_sys_info
+- `value` (integer)
 
-### crash.SYSFIELD_TERRITORY
-*Type:* CONSTANT
-system territory as reported by sys.get_sys_info
+### crash.USERFIELD
+*Type:* TYPEDEF
+An integer index identifying one of the 32 user-defined fields stored in a
+crash dump. Valid indices are 0 through 31. Each field stores a string of at
+most crash.USERFIELD_SIZE bytes; longer strings are truncated.
+
+**Parameters**
+
+- `value` (integer) - zero-based user-field index
+
+**Examples**
+
+```
+crash.set_user_field(0, "level=forest")
+crash.set_user_field(1, "checkpoint=3")
+
+```
 
 ### crash.USERFIELD_MAX
 *Type:* CONSTANT
 The max number of user fields.
 
+**Parameters**
+
+- `value` (integer)
+
 ### crash.USERFIELD_SIZE
 *Type:* CONSTANT
 The max size of a single user field.
+
+**Parameters**
+
+- `value` (integer)
 
 ### crash.write_dump
 *Type:* FUNCTION

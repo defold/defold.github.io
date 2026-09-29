@@ -2,25 +2,33 @@
     "elements": [
         {
             "brief": "Box2D chain",
-            "description": "Box2D chain",
+            "description": "An opaque handle to a chain of connected segment shapes attached to a\n<span class=\"type\">b2Body</span>. Create one with <a href=\"#b2d\">b2d.body.create_chain</a>, use the functions\nin <code>b2d.chain</code> to inspect or configure it, and release it with\n<a href=\"#b2d\">b2d.chain.destroy</a>. Destroying its body also destroys the chain.",
             "error": "",
-            "examples": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">body</span> <span class=\"o\">=</span> <span class=\"n\">b2d</span><span class=\"p\">.</span><span class=\"n\">get_body</span><span class=\"p\">(</span><span class=\"s2\">&quot;#collisionobject&quot;</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">chain</span> <span class=\"o\">=</span> <span class=\"n\">b2d</span><span class=\"p\">.</span><span class=\"n\">body</span><span class=\"p\">.</span><span class=\"n\">create_chain</span><span class=\"p\">(</span><span class=\"n\">body</span><span class=\"p\">,</span> <span class=\"p\">{</span>\n    <span class=\"n\">vertices</span> <span class=\"o\">=</span> <span class=\"p\">{</span>\n        <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"o\">-</span><span class=\"mi\">64</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">),</span>\n        <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">16</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">),</span>\n        <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">64</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">),</span>\n    <span class=\"p\">},</span>\n<span class=\"p\">})</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">b2d</span><span class=\"p\">.</span><span class=\"n\">chain</span><span class=\"p\">.</span><span class=\"n\">get_segment_count</span><span class=\"p\">(</span><span class=\"n\">chain</span><span class=\"p\">))</span>\n</code></pre></div>",
             "language": "",
             "members": [],
             "name": "b2Chain",
             "notes": [],
             "parameters": [
                 {
-                    "doc": "",
+                    "doc": "Box2D chain handle",
                     "is_optional": "False",
                     "name": "value",
                     "types": [
                         "userdata"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">userdata</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">userdata</a>"
                     ]
                 }
             ],
             "replaces": "",
             "returnvalues": [],
+            "target_type": "userdata",
+            "target_type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">userdata</a>",
             "tparams": [],
             "type": "TYPEDEF"
         },
@@ -40,6 +48,12 @@
                     "name": "chain",
                     "types": [
                         "b2Chain"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Chain\">b2Chain</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Chain\">b2Chain</a>"
                     ]
                 }
             ],
@@ -64,6 +78,12 @@
                     "name": "shape_id",
                     "types": [
                         "b2Shape"
+                    ],
+                    "types_html": [
+                        "<a href=\"../b2d.shape-lua/#b2Shape\">b2Shape</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../b2d.shape-lua/#b2Shape\">b2Shape</a>"
                     ]
                 }
             ],
@@ -75,6 +95,14 @@
                     "types": [
                         "b2Chain",
                         "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Chain\">b2Chain</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Chain\">b2Chain</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
                     ]
                 }
             ],
@@ -97,6 +125,12 @@
                     "name": "chain",
                     "types": [
                         "b2Chain"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Chain\">b2Chain</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Chain\">b2Chain</a>"
                     ]
                 }
             ],
@@ -107,6 +141,12 @@
                     "name": "friction",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -115,7 +155,7 @@
         },
         {
             "brief": "Get the chain geometry.",
-            "description": "Returns a chain geometry table with <code>loop</code>, <code>segment_count</code>, and <code>vertices</code>.\nOpen chains also include <code>prev_vertex</code> and <code>next_vertex</code> ghost vertices.",
+            "description": "Get the chain geometry.",
             "error": "",
             "examples": "",
             "language": "",
@@ -129,16 +169,28 @@
                     "name": "chain",
                     "types": [
                         "b2Chain"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Chain\">b2Chain</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Chain\">b2Chain</a>"
                     ]
                 }
             ],
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "chain geometry table",
+                    "doc": "chain geometry",
                     "name": "geometry",
                     "types": [
-                        "table"
+                        "b2d.chain_geometry"
+                    ],
+                    "types_html": [
+                        "<a href=\"../b2d-lua/#b2d.chain_geometry\">b2d.chain_geometry</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../b2d-lua/#b2d.chain_geometry\">b2d.chain_geometry</a>"
                     ]
                 }
             ],
@@ -161,6 +213,12 @@
                     "name": "chain",
                     "types": [
                         "b2Chain"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Chain\">b2Chain</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Chain\">b2Chain</a>"
                     ]
                 }
             ],
@@ -170,7 +228,13 @@
                     "doc": "chain material id",
                     "name": "material",
                     "types": [
-                        "number"
+                        "integer"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
                     ]
                 }
             ],
@@ -193,6 +257,12 @@
                     "name": "chain",
                     "types": [
                         "b2Chain"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Chain\">b2Chain</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Chain\">b2Chain</a>"
                     ]
                 }
             ],
@@ -203,6 +273,12 @@
                     "name": "restitution",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -225,6 +301,12 @@
                     "name": "chain",
                     "types": [
                         "b2Chain"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Chain\">b2Chain</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Chain\">b2Chain</a>"
                     ]
                 }
             ],
@@ -234,7 +316,13 @@
                     "doc": "segment count",
                     "name": "count",
                     "types": [
-                        "number"
+                        "integer"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
                     ]
                 }
             ],
@@ -257,16 +345,28 @@
                     "name": "chain",
                     "types": [
                         "b2Chain"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Chain\">b2Chain</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Chain\">b2Chain</a>"
                     ]
                 }
             ],
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "array of shape info tables for the chain segments. Each entry includes <code>shape_id</code>.",
+                    "doc": "chain segment shapes",
                     "name": "segments",
                     "types": [
-                        "table"
+                        "b2d.shape_info[]"
+                    ],
+                    "types_html": [
+                        "<a href=\"../b2d-lua/#b2d.shape_info\">b2d.shape_info</a>[]"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../b2d-lua/#b2d.shape_info\">b2d.shape_info</a>[]"
                     ]
                 }
             ],
@@ -289,6 +389,12 @@
                     "name": "chain",
                     "types": [
                         "b2Chain"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Chain\">b2Chain</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Chain\">b2Chain</a>"
                     ]
                 }
             ],
@@ -298,6 +404,12 @@
                     "doc": "owning world",
                     "name": "world",
                     "types": [
+                        "b2World"
+                    ],
+                    "types_html": [
+                        "b2World"
+                    ],
+                    "types_table_html": [
                         "b2World"
                     ]
                 }
@@ -321,6 +433,12 @@
                     "name": "chain",
                     "types": [
                         "b2Chain"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Chain\">b2Chain</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Chain\">b2Chain</a>"
                     ]
                 }
             ],
@@ -331,6 +449,12 @@
                     "name": "valid",
                     "types": [
                         "boolean"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
                     ]
                 }
             ],
@@ -353,6 +477,12 @@
                     "name": "chain",
                     "types": [
                         "b2Chain"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Chain\">b2Chain</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Chain\">b2Chain</a>"
                     ]
                 },
                 {
@@ -361,6 +491,12 @@
                     "name": "friction",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -385,6 +521,12 @@
                     "name": "chain",
                     "types": [
                         "b2Chain"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Chain\">b2Chain</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Chain\">b2Chain</a>"
                     ]
                 },
                 {
@@ -392,7 +534,13 @@
                     "is_optional": "False",
                     "name": "material",
                     "types": [
-                        "number"
+                        "integer"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
                     ]
                 }
             ],
@@ -417,6 +565,12 @@
                     "name": "chain",
                     "types": [
                         "b2Chain"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Chain\">b2Chain</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Chain\">b2Chain</a>"
                     ]
                 },
                 {
@@ -425,6 +579,12 @@
                     "name": "restitution",
                     "types": [
                         "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -434,6 +594,7 @@
             "type": "FUNCTION"
         }
     ],
+    "format_version": 2,
     "info": {
         "api_language": "Lua",
         "brief": "Box2D b2Chain documentation",

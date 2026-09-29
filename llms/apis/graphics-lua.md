@@ -10,172 +10,168 @@ Graphics functions and constants.
 
 ## API
 
-### graphics.BLEND_EQUATION_ADD
-*Type:* CONSTANT
+### graphics.adapter_info
+*Type:* STRUCT
+Graphics adapter information
 
-### graphics.BLEND_EQUATION_MAX
-*Type:* CONSTANT
+**Members**
 
-### graphics.BLEND_EQUATION_MIN
-*Type:* CONSTANT
+- `family` (string) - Adapter family name.
+- `version_major` (integer) - Adapter API major version.
+- `version_minor` (integer) - Adapter API minor version.
+- `limits` (graphics.adapter_limits) - Hardware and driver limits.
+- `extensions` (string[]) - Driver-reported extension names.
+- `features` (graphics.CONTEXT_FEATURE[]) - Supported optional context features.
 
-### graphics.BLEND_EQUATION_REVERSE_SUBTRACT
-*Type:* CONSTANT
+### graphics.adapter_limits
+*Type:* STRUCT
+Graphics context limits
 
-### graphics.BLEND_EQUATION_SUBTRACT
-*Type:* CONSTANT
+**Members**
 
-### graphics.BLEND_FACTOR_CONSTANT_ALPHA
-*Type:* CONSTANT
+- `max_texture_size_2d` (integer) - Maximum 2D texture dimension in texels.
+- `max_texture_size_3d` (integer) - Maximum 3D texture dimension in texels.
+- `max_texture_size_cube` (integer) - Maximum cube-map face dimension in texels.
+- `max_texture_array_layers` (integer) - Maximum number of array texture layers.
+- `max_framebuffer_width` (integer) - Maximum framebuffer width in pixels.
+- `max_framebuffer_height` (integer) - Maximum framebuffer height in pixels.
+- `max_color_attachments` (integer) - Maximum number of simultaneous color attachments.
+- `max_samplers_per_stage` (integer) - Maximum number of texture samplers per shader stage.
+- `max_textures_per_stage` (integer) - Maximum number of sampled textures per shader stage.
+- `max_vertex_attributes` (integer) - Maximum number of vertex attributes.
+- `max_vertex_buffers` (integer) - Maximum number of vertex-buffer bindings.
+- `max_compute_workgroup_size_x` (integer) - Maximum compute workgroup size on the X axis.
+- `max_compute_workgroup_size_y` (integer) - Maximum compute workgroup size on the Y axis.
+- `max_compute_workgroup_size_z` (integer) - Maximum compute workgroup size on the Z axis.
+- `max_compute_workgroup_invocations` (integer) - Maximum invocations per compute workgroup.
+- `max_compute_shared_memory_size` (integer) - Maximum shared memory per compute workgroup in bytes.
+- `max_uniform_buffer_range` (integer) - Maximum bindable uniform-buffer range in bytes.
+- `max_storage_buffer_range` (integer) - Maximum bindable storage-buffer range in bytes.
 
-### graphics.BLEND_FACTOR_CONSTANT_COLOR
-*Type:* CONSTANT
+### graphics.BLEND_EQUATION
+*Type:* ENUM
+Blend equations
 
-### graphics.BLEND_FACTOR_DST_ALPHA
-*Type:* CONSTANT
+**Members**
 
-### graphics.BLEND_FACTOR_DST_COLOR
-*Type:* CONSTANT
+- `graphics.BLEND_EQUATION_ADD`
+- `graphics.BLEND_EQUATION_MAX`
+- `graphics.BLEND_EQUATION_MIN`
+- `graphics.BLEND_EQUATION_REVERSE_SUBTRACT`
+- `graphics.BLEND_EQUATION_SUBTRACT`
 
-### graphics.BLEND_FACTOR_ONE
-*Type:* CONSTANT
+### graphics.BLEND_FACTOR
+*Type:* ENUM
+Blend factors
 
-### graphics.BLEND_FACTOR_ONE_MINUS_CONSTANT_ALPHA
-*Type:* CONSTANT
+**Members**
 
-### graphics.BLEND_FACTOR_ONE_MINUS_CONSTANT_COLOR
-*Type:* CONSTANT
+- `graphics.BLEND_FACTOR_CONSTANT_ALPHA` - constant blend alpha for every component
+- `graphics.BLEND_FACTOR_CONSTANT_COLOR` - constant blend color
+- `graphics.BLEND_FACTOR_DST_ALPHA` - destination alpha for every component
+- `graphics.BLEND_FACTOR_DST_COLOR` - destination color
+- `graphics.BLEND_FACTOR_ONE` - one for every component
+- `graphics.BLEND_FACTOR_ONE_MINUS_CONSTANT_ALPHA` - one minus the constant blend alpha for every component
+- `graphics.BLEND_FACTOR_ONE_MINUS_CONSTANT_COLOR` - one minus the constant blend color
+- `graphics.BLEND_FACTOR_ONE_MINUS_DST_ALPHA` - one minus the destination alpha for every component
+- `graphics.BLEND_FACTOR_ONE_MINUS_DST_COLOR` - one minus the destination color
+- `graphics.BLEND_FACTOR_ONE_MINUS_SRC_ALPHA` - one minus the source alpha for every component
+- `graphics.BLEND_FACTOR_ONE_MINUS_SRC_COLOR` - one minus the source color
+- `graphics.BLEND_FACTOR_SRC_ALPHA` - source alpha for every component
+- `graphics.BLEND_FACTOR_SRC_ALPHA_SATURATE` - minimum of source alpha and one minus destination alpha for color, and one for alpha
+- `graphics.BLEND_FACTOR_SRC_COLOR` - source color
+- `graphics.BLEND_FACTOR_ZERO` - zero for every component
 
-### graphics.BLEND_FACTOR_ONE_MINUS_DST_ALPHA
-*Type:* CONSTANT
+### graphics.BUFFER_TYPE
+*Type:* ENUM
+Buffer types
 
-### graphics.BLEND_FACTOR_ONE_MINUS_DST_COLOR
-*Type:* CONSTANT
+**Members**
 
-### graphics.BLEND_FACTOR_ONE_MINUS_SRC_ALPHA
-*Type:* CONSTANT
+- `graphics.BUFFER_TYPE_COLOR0_BIT` - first color attachment
+- `graphics.BUFFER_TYPE_COLOR1_BIT` - second color attachment; may be nil if multiple render targets are unsupported
+- `graphics.BUFFER_TYPE_COLOR2_BIT` - third color attachment; may be nil if multiple render targets are unsupported
+- `graphics.BUFFER_TYPE_COLOR3_BIT` - fourth color attachment; may be nil if multiple render targets are unsupported
+- `graphics.BUFFER_TYPE_DEPTH_BIT` - depth attachment
+- `graphics.BUFFER_TYPE_STENCIL_BIT` - stencil attachment
 
-### graphics.BLEND_FACTOR_ONE_MINUS_SRC_COLOR
-*Type:* CONSTANT
+### graphics.COMPARE_FUNC
+*Type:* ENUM
+Comparison functions
 
-### graphics.BLEND_FACTOR_SRC_ALPHA
-*Type:* CONSTANT
+**Members**
 
-### graphics.BLEND_FACTOR_SRC_ALPHA_SATURATE
-*Type:* CONSTANT
+- `graphics.COMPARE_FUNC_ALWAYS` - always passes
+- `graphics.COMPARE_FUNC_EQUAL` - passes when the values are equal
+- `graphics.COMPARE_FUNC_GEQUAL` - passes when the incoming value is greater than or equal to the stored value
+- `graphics.COMPARE_FUNC_GREATER` - passes when the incoming value is greater than the stored value
+- `graphics.COMPARE_FUNC_LEQUAL` - passes when the incoming value is less than or equal to the stored value
+- `graphics.COMPARE_FUNC_LESS` - passes when the incoming value is less than the stored value
+- `graphics.COMPARE_FUNC_NEVER` - never passes
+- `graphics.COMPARE_FUNC_NOTEQUAL` - passes when the values are not equal
 
-### graphics.BLEND_FACTOR_SRC_COLOR
-*Type:* CONSTANT
+### graphics.COMPRESSION_TYPE
+*Type:* ENUM
+Texture compression types
 
-### graphics.BLEND_FACTOR_ZERO
-*Type:* CONSTANT
+**Members**
 
-### graphics.BUFFER_TYPE_COLOR0_BIT
-*Type:* CONSTANT
+- `graphics.COMPRESSION_TYPE_BASIS_ETC1S`
+- `graphics.COMPRESSION_TYPE_BASIS_UASTC`
+- `graphics.COMPRESSION_TYPE_DEFAULT`
+- `graphics.COMPRESSION_TYPE_WEBP`
+- `graphics.COMPRESSION_TYPE_WEBP_LOSSY`
 
-### graphics.BUFFER_TYPE_COLOR1_BIT
-*Type:* CONSTANT
-May be nil if multitarget rendering isn't supported
+### graphics.CONTEXT_FEATURE
+*Type:* ENUM
+Optional graphics-context features
 
-### graphics.BUFFER_TYPE_COLOR2_BIT
-*Type:* CONSTANT
-May be nil if multitarget rendering isn't supported
+**Members**
 
-### graphics.BUFFER_TYPE_COLOR3_BIT
-*Type:* CONSTANT
-May be nil if multitarget rendering isn't supported
+- `graphics.CONTEXT_FEATURE_3D_TEXTURES` - Context feature flag indicating support for 3D (volume) textures.
+- `graphics.CONTEXT_FEATURE_ASTC_ARRAY_TEXTURES` - Context feature flag indicating support for ASTC compressed 2D array textures. Some WebGL/GLES drivers fail array texture ASTC uploads while 2D ASTC works.
+- `graphics.CONTEXT_FEATURE_BC_ARRAY_TEXTURES` - Context feature flag indicating support for BC (S3TC/RGTC/BPTC) compressed 2D array and 3D textures. WebGL2 forbids these compressed families on array/3D targets while allowing them on 2D.
+- `graphics.CONTEXT_FEATURE_BLEND_EQUATION_MIN_MAX` - Context feature flag indicating support for min/max blend equations. Requires GLES3+ or EXT_blend_minmax.
+- `graphics.CONTEXT_FEATURE_COMPUTE_SHADER` - Context feature flag indicating support for compute shaders.
+- `graphics.CONTEXT_FEATURE_INSTANCING` - Context feature flag indicating support for hardware instancing.
+- `graphics.CONTEXT_FEATURE_MULTI_TARGET_RENDERING` - Context feature flag indicating support for rendering to multiple color targets simultaneously.
+- `graphics.CONTEXT_FEATURE_STORAGE_BUFFER` - Context feature flag indicating support for storage buffers.
+- `graphics.CONTEXT_FEATURE_TEXTURE_ARRAY` - Context feature flag indicating support for texture arrays.
+- `graphics.CONTEXT_FEATURE_VSYNC` - Context feature flag indicating support for vertical sync (vsync).
 
-### graphics.BUFFER_TYPE_DEPTH_BIT
-*Type:* CONSTANT
+### graphics.COORDINATE_SPACE
+*Type:* ENUM
+Vertex attribute coordinate spaces
 
-### graphics.BUFFER_TYPE_STENCIL_BIT
-*Type:* CONSTANT
+**Members**
 
-### graphics.COMPARE_FUNC_ALWAYS
-*Type:* CONSTANT
+- `graphics.COORDINATE_SPACE_DEFAULT` - Default vertex attribute coordinate space.
+- `graphics.COORDINATE_SPACE_LOCAL` - Local vertex attribute coordinate space.
+- `graphics.COORDINATE_SPACE_WORLD` - World vertex attribute coordinate space.
 
-### graphics.COMPARE_FUNC_EQUAL
-*Type:* CONSTANT
+### graphics.DATA_TYPE
+*Type:* ENUM
+Vertex attribute data types
 
-### graphics.COMPARE_FUNC_GEQUAL
-*Type:* CONSTANT
+**Members**
 
-### graphics.COMPARE_FUNC_GREATER
-*Type:* CONSTANT
+- `graphics.DATA_TYPE_BYTE` - Signed 8-bit vertex attribute data.
+- `graphics.DATA_TYPE_FLOAT` - 32-bit floating-point vertex attribute data.
+- `graphics.DATA_TYPE_INT` - Signed 32-bit vertex attribute data.
+- `graphics.DATA_TYPE_SHORT` - Signed 16-bit vertex attribute data.
+- `graphics.DATA_TYPE_UNSIGNED_BYTE` - Unsigned 8-bit vertex attribute data.
+- `graphics.DATA_TYPE_UNSIGNED_INT` - Unsigned 32-bit vertex attribute data.
+- `graphics.DATA_TYPE_UNSIGNED_SHORT` - Unsigned 16-bit vertex attribute data.
 
-### graphics.COMPARE_FUNC_LEQUAL
-*Type:* CONSTANT
+### graphics.FACE_TYPE
+*Type:* ENUM
+Face types
 
-### graphics.COMPARE_FUNC_LESS
-*Type:* CONSTANT
+**Members**
 
-### graphics.COMPARE_FUNC_NEVER
-*Type:* CONSTANT
-
-### graphics.COMPARE_FUNC_NOTEQUAL
-*Type:* CONSTANT
-
-### graphics.COMPRESSION_TYPE_BASIS_ETC1S
-*Type:* CONSTANT
-
-### graphics.COMPRESSION_TYPE_BASIS_UASTC
-*Type:* CONSTANT
-
-### graphics.COMPRESSION_TYPE_DEFAULT
-*Type:* CONSTANT
-
-### graphics.COMPRESSION_TYPE_WEBP
-*Type:* CONSTANT
-
-### graphics.COMPRESSION_TYPE_WEBP_LOSSY
-*Type:* CONSTANT
-
-### graphics.CONTEXT_FEATURE_3D_TEXTURES
-*Type:* CONSTANT
-Context feature flag indicating support for 3D (volume) textures.
-
-### graphics.CONTEXT_FEATURE_ASTC_ARRAY_TEXTURES
-*Type:* CONSTANT
-Context feature flag indicating support for ASTC compressed 2D array textures.
-Some WebGL/GLES drivers fail array texture ASTC uploads while 2D ASTC works.
-
-### graphics.CONTEXT_FEATURE_BLEND_EQUATION_MIN_MAX
-*Type:* CONSTANT
-Context feature flag indicating support for min/max blend equations.
-Requires GLES3+ or EXT_blend_minmax.
-
-### graphics.CONTEXT_FEATURE_COMPUTE_SHADER
-*Type:* CONSTANT
-Context feature flag indicating support for compute shaders.
-
-### graphics.CONTEXT_FEATURE_INSTANCING
-*Type:* CONSTANT
-Context feature flag indicating support for hardware instancing.
-
-### graphics.CONTEXT_FEATURE_MULTI_TARGET_RENDERING
-*Type:* CONSTANT
-Context feature flag indicating support for rendering to multiple color targets simultaneously.
-
-### graphics.CONTEXT_FEATURE_STORAGE_BUFFER
-*Type:* CONSTANT
-Context feature flag indicating support for storage buffers.
-
-### graphics.CONTEXT_FEATURE_TEXTURE_ARRAY
-*Type:* CONSTANT
-Context feature flag indicating support for texture arrays.
-
-### graphics.CONTEXT_FEATURE_VSYNC
-*Type:* CONSTANT
-Context feature flag indicating support for vertical sync (vsync).
-
-### graphics.FACE_TYPE_BACK
-*Type:* CONSTANT
-
-### graphics.FACE_TYPE_FRONT
-*Type:* CONSTANT
-
-### graphics.FACE_TYPE_FRONT_AND_BACK
-*Type:* CONSTANT
+- `graphics.FACE_TYPE_BACK` - back-facing polygons
+- `graphics.FACE_TYPE_FRONT` - front-facing polygons
+- `graphics.FACE_TYPE_FRONT_AND_BACK` - both front- and back-facing polygons
 
 ### graphics.get_adapter_info
 *Type:* FUNCTION
@@ -185,43 +181,7 @@ optional context features supported by the backend.
 
 **Returns**
 
-- `info` (table) - table with the following fields:
-<code>family</code>         <span class="type">string</span>   adapter family name (e.g. "opengl", "vulkan")
-  <code>version_major</code>  <span class="type">number</span>   adapter API major version (e.g. 1 for Vulkan 1.4)
-  <code>version_minor</code>  <span class="type">number</span>   adapter API minor version (e.g. 4 for Vulkan 1.4)
-<code>limits</code>         <span class="type">table</span>    hardware/driver limits:
-<div class="codehilite"><pre><span></span><code><span class="n n-Quoted">`max_texture_size_2d`</span><span class="w">              </span><span class="err">[</span><span class="k">type</span><span class="o">:</span><span class="k">number</span><span class="err">]</span><span class="w">  </span><span class="n">max</span><span class="w"> </span><span class="n">2D</span><span class="w"> </span><span class="n">texture</span><span class="w"> </span><span class="n">dimension</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">texels</span><span class="w"></span>
-<span class="n n-Quoted">`max_texture_size_3d`</span><span class="w">              </span><span class="err">[</span><span class="k">type</span><span class="o">:</span><span class="k">number</span><span class="err">]</span><span class="w">  </span><span class="n">max</span><span class="w"> </span><span class="n">3D</span><span class="w"> </span><span class="p">(</span><span class="n">volume</span><span class="p">)</span><span class="w"> </span><span class="n">texture</span><span class="w"> </span><span class="n">dimension</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">texels</span><span class="w"></span>
-<span class="n n-Quoted">`max_texture_size_cube`</span><span class="w">            </span><span class="err">[</span><span class="k">type</span><span class="o">:</span><span class="k">number</span><span class="err">]</span><span class="w">  </span><span class="n">max</span><span class="w"> </span><span class="k">cube</span><span class="w"> </span><span class="n">map</span><span class="w"> </span><span class="n">face</span><span class="w"> </span><span class="n">dimension</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">texels</span><span class="w"></span>
-<span class="n n-Quoted">`max_texture_array_layers`</span><span class="w">         </span><span class="err">[</span><span class="k">type</span><span class="o">:</span><span class="k">number</span><span class="err">]</span><span class="w">  </span><span class="n">max</span><span class="w"> </span><span class="n">layers</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">an</span><span class="w"> </span><span class="k">array</span><span class="w"> </span><span class="n">texture</span><span class="w"></span>
-<span class="n n-Quoted">`max_framebuffer_width`</span><span class="w">            </span><span class="err">[</span><span class="k">type</span><span class="o">:</span><span class="k">number</span><span class="err">]</span><span class="w">  </span><span class="n">max</span><span class="w"> </span><span class="n">framebuffer</span><span class="w"> </span><span class="n">width</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">pixels</span><span class="w"></span>
-<span class="n n-Quoted">`max_framebuffer_height`</span><span class="w">           </span><span class="err">[</span><span class="k">type</span><span class="o">:</span><span class="k">number</span><span class="err">]</span><span class="w">  </span><span class="n">max</span><span class="w"> </span><span class="n">framebuffer</span><span class="w"> </span><span class="n">height</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">pixels</span><span class="w"></span>
-<span class="n n-Quoted">`max_color_attachments`</span><span class="w">            </span><span class="err">[</span><span class="k">type</span><span class="o">:</span><span class="k">number</span><span class="err">]</span><span class="w">  </span><span class="n">max</span><span class="w"> </span><span class="n">simultaneous</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="n">attachments</span><span class="w"></span>
-<span class="n n-Quoted">`max_samplers_per_stage`</span><span class="w">           </span><span class="err">[</span><span class="k">type</span><span class="o">:</span><span class="k">number</span><span class="err">]</span><span class="w">  </span><span class="n">max</span><span class="w"> </span><span class="n">texture</span><span class="w"> </span><span class="n">samplers</span><span class="w"> </span><span class="n">per</span><span class="w"> </span><span class="n">shader</span><span class="w"> </span><span class="n">stage</span><span class="w"></span>
-<span class="n n-Quoted">`max_textures_per_stage`</span><span class="w">           </span><span class="err">[</span><span class="k">type</span><span class="o">:</span><span class="k">number</span><span class="err">]</span><span class="w">  </span><span class="n">max</span><span class="w"> </span><span class="n">sampled</span><span class="w"> </span><span class="n">textures</span><span class="w"> </span><span class="n">per</span><span class="w"> </span><span class="n">shader</span><span class="w"> </span><span class="n">stage</span><span class="w"></span>
-<span class="n n-Quoted">`max_vertex_attributes`</span><span class="w">            </span><span class="err">[</span><span class="k">type</span><span class="o">:</span><span class="k">number</span><span class="err">]</span><span class="w">  </span><span class="n">max</span><span class="w"> </span><span class="n">vertex</span><span class="w"> </span><span class="n">attributes</span><span class="w"></span>
-<span class="n n-Quoted">`max_vertex_buffers`</span><span class="w">               </span><span class="err">[</span><span class="k">type</span><span class="o">:</span><span class="k">number</span><span class="err">]</span><span class="w">  </span><span class="n">max</span><span class="w"> </span><span class="n">vertex</span><span class="w"> </span><span class="n">buffer</span><span class="w"> </span><span class="n">bindings</span><span class="w"></span>
-<span class="n n-Quoted">`max_compute_workgroup_size_x`</span><span class="w">     </span><span class="err">[</span><span class="k">type</span><span class="o">:</span><span class="k">number</span><span class="err">]</span><span class="w">  </span><span class="n">max</span><span class="w"> </span><span class="n">compute</span><span class="w"> </span><span class="n">workgroup</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="w"></span>
-<span class="n n-Quoted">`max_compute_workgroup_size_y`</span><span class="w">     </span><span class="err">[</span><span class="k">type</span><span class="o">:</span><span class="k">number</span><span class="err">]</span><span class="w">  </span><span class="n">max</span><span class="w"> </span><span class="n">compute</span><span class="w"> </span><span class="n">workgroup</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="p">(</span><span class="n">Y</span><span class="p">)</span><span class="w"></span>
-<span class="n n-Quoted">`max_compute_workgroup_size_z`</span><span class="w">     </span><span class="err">[</span><span class="k">type</span><span class="o">:</span><span class="k">number</span><span class="err">]</span><span class="w">  </span><span class="n">max</span><span class="w"> </span><span class="n">compute</span><span class="w"> </span><span class="n">workgroup</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="p">(</span><span class="n">Z</span><span class="p">)</span><span class="w"></span>
-<span class="n n-Quoted">`max_compute_workgroup_invocations`</span><span class="w"> </span><span class="err">[</span><span class="k">type</span><span class="o">:</span><span class="k">number</span><span class="err">]</span><span class="w"> </span><span class="n">max</span><span class="w"> </span><span class="n">invocations</span><span class="w"> </span><span class="n">per</span><span class="w"> </span><span class="n">compute</span><span class="w"> </span><span class="n">workgroup</span><span class="w"></span>
-<span class="n n-Quoted">`max_compute_shared_memory_size`</span><span class="w">   </span><span class="err">[</span><span class="k">type</span><span class="o">:</span><span class="k">number</span><span class="err">]</span><span class="w">  </span><span class="n">max</span><span class="w"> </span><span class="n">shared</span><span class="w"> </span><span class="k">memory</span><span class="w"> </span><span class="n">per</span><span class="w"> </span><span class="n">compute</span><span class="w"> </span><span class="n">workgroup</span><span class="w"> </span><span class="p">(</span><span class="n">bytes</span><span class="p">)</span><span class="w"></span>
-<span class="n n-Quoted">`max_uniform_buffer_range`</span><span class="w">         </span><span class="err">[</span><span class="k">type</span><span class="o">:</span><span class="k">number</span><span class="err">]</span><span class="w">  </span><span class="n">max</span><span class="w"> </span><span class="n">bindable</span><span class="w"> </span><span class="n">uniform</span><span class="w"> </span><span class="n">buffer</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="p">(</span><span class="n">bytes</span><span class="p">)</span><span class="w"></span>
-<span class="n n-Quoted">`max_storage_buffer_range`</span><span class="w">         </span><span class="err">[</span><span class="k">type</span><span class="o">:</span><span class="k">number</span><span class="err">]</span><span class="w">  </span><span class="n">max</span><span class="w"> </span><span class="n">bindable</span><span class="w"> </span><span class="k">storage</span><span class="w"> </span><span class="n">buffer</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="p">(</span><span class="n">bytes</span><span class="p">)</span><span class="w"></span>
-</code></pre></div>
-
-<code>extensions</code>     <span class="type">table</span>    array of driver-reported extension name strings
-<code>features</code>       <span class="type">table</span>    array of supported context feature ids:
-<div class="codehilite"><pre><span></span><code><span class="err">`</span><span class="n">graphics</span><span class="p">.</span><span class="n">CONTEXT_FEATURE_MULTI_TARGET_RENDERING</span><span class="err">`</span>  <span class="n">multi</span><span class="o">-</span><span class="n">target</span> <span class="n">rendering</span>
-<span class="err">`</span><span class="n">graphics</span><span class="p">.</span><span class="n">CONTEXT_FEATURE_TEXTURE_ARRAY</span><span class="err">`</span>           <span class="n">texture</span> <span class="n">arrays</span>
-<span class="err">`</span><span class="n">graphics</span><span class="p">.</span><span class="n">CONTEXT_FEATURE_COMPUTE_SHADER</span><span class="err">`</span>          <span class="n">compute</span> <span class="n">shaders</span>
-<span class="err">`</span><span class="n">graphics</span><span class="p">.</span><span class="n">CONTEXT_FEATURE_STORAGE_BUFFER</span><span class="err">`</span>          <span class="n">storage</span> <span class="n">buffers</span>
-<span class="err">`</span><span class="n">graphics</span><span class="p">.</span><span class="n">CONTEXT_FEATURE_VSYNC</span><span class="err">`</span>                   <span class="n">vertical</span> <span class="n">sync</span>
-<span class="err">`</span><span class="n">graphics</span><span class="p">.</span><span class="n">CONTEXT_FEATURE_INSTANCING</span><span class="err">`</span>              <span class="n">hardware</span> <span class="n">instancing</span>
-<span class="err">`</span><span class="n">graphics</span><span class="p">.</span><span class="n">CONTEXT_FEATURE_3D_TEXTURES</span><span class="err">`</span>             <span class="mi">3</span><span class="n">D</span> <span class="p">(</span><span class="n">volume</span><span class="p">)</span> <span class="n">textures</span>
-<span class="err">`</span><span class="n">graphics</span><span class="p">.</span><span class="n">CONTEXT_FEATURE_ASTC_ARRAY_TEXTURES</span><span class="err">`</span>     <span class="n">ASTC</span> <span class="n">compressed</span> <span class="mi">2</span><span class="n">D</span> <span class="n">array</span> <span class="n">textures</span>
-<span class="err">`</span><span class="n">graphics</span><span class="p">.</span><span class="n">CONTEXT_FEATURE_BLEND_EQUATION_MIN_MAX</span><span class="err">`</span>  <span class="n">min</span><span class="o">/</span><span class="n">max</span> <span class="n">blend</span> <span class="n">equations</span>
-</code></pre></div>
+- `info` (graphics.adapter_info) - information about the active graphics adapter and context
 
 ### graphics.get_engine_adapters
 *Type:* FUNCTION
@@ -229,250 +189,144 @@ get the list of graphics adapters that have been registered with the engine
 
 **Returns**
 
-- `adapters` (table) - array of adapter family name strings (e.g. "opengl", "vulkan", "webgpu")
-
-### graphics.STATE_ALPHA_TEST
-*Type:* CONSTANT
-
-### graphics.STATE_ALPHA_TEST_SUPPORTED
-*Type:* CONSTANT
-
-### graphics.STATE_BLEND
-*Type:* CONSTANT
-
-### graphics.STATE_CULL_FACE
-*Type:* CONSTANT
-
-### graphics.STATE_DEPTH_TEST
-*Type:* CONSTANT
-
-### graphics.STATE_POLYGON_OFFSET_FILL
-*Type:* CONSTANT
-
-### graphics.STATE_SCISSOR_TEST
-*Type:* CONSTANT
-
-### graphics.STATE_STENCIL_TEST
-*Type:* CONSTANT
-
-### graphics.STENCIL_OP_DECR
-*Type:* CONSTANT
-
-### graphics.STENCIL_OP_DECR_WRAP
-*Type:* CONSTANT
-
-### graphics.STENCIL_OP_INCR
-*Type:* CONSTANT
-
-### graphics.STENCIL_OP_INCR_WRAP
-*Type:* CONSTANT
-
-### graphics.STENCIL_OP_INVERT
-*Type:* CONSTANT
-
-### graphics.STENCIL_OP_KEEP
-*Type:* CONSTANT
-
-### graphics.STENCIL_OP_REPLACE
-*Type:* CONSTANT
-
-### graphics.STENCIL_OP_ZERO
-*Type:* CONSTANT
-
-### graphics.TEXTURE_FILTER_DEFAULT
-*Type:* CONSTANT
-
-### graphics.TEXTURE_FILTER_LINEAR
-*Type:* CONSTANT
-
-### graphics.TEXTURE_FILTER_LINEAR_MIPMAP_LINEAR
-*Type:* CONSTANT
-
-### graphics.TEXTURE_FILTER_LINEAR_MIPMAP_NEAREST
-*Type:* CONSTANT
-
-### graphics.TEXTURE_FILTER_NEAREST
-*Type:* CONSTANT
-
-### graphics.TEXTURE_FILTER_NEAREST_MIPMAP_LINEAR
-*Type:* CONSTANT
-
-### graphics.TEXTURE_FILTER_NEAREST_MIPMAP_NEAREST
-*Type:* CONSTANT
-
-### graphics.TEXTURE_FORMAT_BGRA8U
-*Type:* CONSTANT
-May be nil if the graphics driver doesn't support it
-
-### graphics.TEXTURE_FORMAT_DEPTH
-*Type:* CONSTANT
-
-### graphics.TEXTURE_FORMAT_LUMINANCE
-*Type:* CONSTANT
-May be nil if the graphics driver doesn't support it
-
-### graphics.TEXTURE_FORMAT_LUMINANCE_ALPHA
-*Type:* CONSTANT
-May be nil if the graphics driver doesn't support it
-
-### graphics.TEXTURE_FORMAT_R16F
-*Type:* CONSTANT
-May be nil if the graphics driver doesn't support it
-
-### graphics.TEXTURE_FORMAT_R32F
-*Type:* CONSTANT
-May be nil if the graphics driver doesn't support it
-
-### graphics.TEXTURE_FORMAT_R32UI
-*Type:* CONSTANT
-May be nil if the graphics driver doesn't support it
-
-### graphics.TEXTURE_FORMAT_R_BC4
-*Type:* CONSTANT
-May be nil if the graphics driver doesn't support it
-
-### graphics.TEXTURE_FORMAT_R_ETC2
-*Type:* CONSTANT
-May be nil if the graphics driver doesn't support it
-
-### graphics.TEXTURE_FORMAT_RG16F
-*Type:* CONSTANT
-May be nil if the graphics driver doesn't support it
-
-### graphics.TEXTURE_FORMAT_RG32F
-*Type:* CONSTANT
-May be nil if the graphics driver doesn't support it
-
-### graphics.TEXTURE_FORMAT_RG_BC5
-*Type:* CONSTANT
-May be nil if the graphics driver doesn't support it
-
-### graphics.TEXTURE_FORMAT_RG_ETC2
-*Type:* CONSTANT
-May be nil if the graphics driver doesn't support it
-
-### graphics.TEXTURE_FORMAT_RGB
-*Type:* CONSTANT
-May be nil if the graphics driver doesn't support it
-
-### graphics.TEXTURE_FORMAT_RGB16F
-*Type:* CONSTANT
-May be nil if the graphics driver doesn't support it
-
-### graphics.TEXTURE_FORMAT_RGB32F
-*Type:* CONSTANT
-May be nil if the graphics driver doesn't support it
-
-### graphics.TEXTURE_FORMAT_RGB_16BPP
-*Type:* CONSTANT
-May be nil if the graphics driver doesn't support it
-
-### graphics.TEXTURE_FORMAT_RGB_BC1
-*Type:* CONSTANT
-May be nil if the graphics driver doesn't support it
-
-### graphics.TEXTURE_FORMAT_RGB_ETC1
-*Type:* CONSTANT
-May be nil if the graphics driver doesn't support it
-
-### graphics.TEXTURE_FORMAT_RGB_PVRTC_2BPPV1
-*Type:* CONSTANT
-May be nil if the graphics driver doesn't support it
-
-### graphics.TEXTURE_FORMAT_RGB_PVRTC_4BPPV1
-*Type:* CONSTANT
-May be nil if the graphics driver doesn't support it
-
-### graphics.TEXTURE_FORMAT_RGBA
-*Type:* CONSTANT
-May be nil if the graphics driver doesn't support it
-
-### graphics.TEXTURE_FORMAT_RGBA16F
-*Type:* CONSTANT
-May be nil if the graphics driver doesn't support it
-
-### graphics.TEXTURE_FORMAT_RGBA32F
-*Type:* CONSTANT
-May be nil if the graphics driver doesn't support it
-
-### graphics.TEXTURE_FORMAT_RGBA32UI
-*Type:* CONSTANT
-May be nil if the graphics driver doesn't support it
-
-### graphics.TEXTURE_FORMAT_RGBA_16BPP
-*Type:* CONSTANT
-May be nil if the graphics driver doesn't support it
-
-### graphics.TEXTURE_FORMAT_RGBA_ASTC_4X4
-*Type:* CONSTANT
-May be nil if the graphics driver doesn't support it
-
-### graphics.TEXTURE_FORMAT_RGBA_BC3
-*Type:* CONSTANT
-May be nil if the graphics driver doesn't support it
-
-### graphics.TEXTURE_FORMAT_RGBA_BC7
-*Type:* CONSTANT
-May be nil if the graphics driver doesn't support it
-
-### graphics.TEXTURE_FORMAT_RGBA_ETC2
-*Type:* CONSTANT
-May be nil if the graphics driver doesn't support it
-
-### graphics.TEXTURE_FORMAT_RGBA_PVRTC_2BPPV1
-*Type:* CONSTANT
-May be nil if the graphics driver doesn't support it
-
-### graphics.TEXTURE_FORMAT_RGBA_PVRTC_4BPPV1
-*Type:* CONSTANT
-May be nil if the graphics driver doesn't support it
-
-### graphics.TEXTURE_FORMAT_STENCIL
-*Type:* CONSTANT
-
-### graphics.TEXTURE_TYPE_2D
-*Type:* CONSTANT
-
-### graphics.TEXTURE_TYPE_2D_ARRAY
-*Type:* CONSTANT
-
-### graphics.TEXTURE_TYPE_3D
-*Type:* CONSTANT
-May be nil if the graphics driver doesn't support it
-
-### graphics.TEXTURE_TYPE_CUBE_MAP
-*Type:* CONSTANT
-
-### graphics.TEXTURE_TYPE_IMAGE_2D
-*Type:* CONSTANT
-
-### graphics.TEXTURE_TYPE_IMAGE_3D
-*Type:* CONSTANT
-May be nil if the graphics driver doesn't support it
-
-### graphics.TEXTURE_USAGE_FLAG_COLOR
-*Type:* CONSTANT
-
-### graphics.TEXTURE_USAGE_FLAG_INPUT
-*Type:* CONSTANT
-
-### graphics.TEXTURE_USAGE_FLAG_MEMORYLESS
-*Type:* CONSTANT
-
-### graphics.TEXTURE_USAGE_FLAG_SAMPLE
-*Type:* CONSTANT
-
-### graphics.TEXTURE_USAGE_FLAG_STORAGE
-*Type:* CONSTANT
-
-### graphics.TEXTURE_WRAP_CLAMP_TO_BORDER
-*Type:* CONSTANT
-
-### graphics.TEXTURE_WRAP_CLAMP_TO_EDGE
-*Type:* CONSTANT
-
-### graphics.TEXTURE_WRAP_MIRRORED_REPEAT
-*Type:* CONSTANT
-
-### graphics.TEXTURE_WRAP_REPEAT
-*Type:* CONSTANT
+- `adapters` (string[]) - array of adapter family name strings (e.g. "opengl", "vulkan", "webgpu")
+
+### graphics.SEMANTIC_TYPE
+*Type:* ENUM
+Vertex attribute semantic types
+
+**Members**
+
+- `graphics.SEMANTIC_TYPE_BONE_INDICES` - Bone-index vertex attribute.
+- `graphics.SEMANTIC_TYPE_BONE_WEIGHTS` - Bone-weight vertex attribute.
+- `graphics.SEMANTIC_TYPE_COLOR` - Color vertex attribute.
+- `graphics.SEMANTIC_TYPE_MORPH_TARGET_WEIGHTS` - Morph-target-weight vertex attribute.
+- `graphics.SEMANTIC_TYPE_NONE` - Vertex attribute without a predefined semantic.
+- `graphics.SEMANTIC_TYPE_NORMAL` - Normal vertex attribute.
+- `graphics.SEMANTIC_TYPE_NORMAL_MATRIX` - Normal-matrix vertex attribute.
+- `graphics.SEMANTIC_TYPE_PAGE_INDEX` - Texture page-index vertex attribute.
+- `graphics.SEMANTIC_TYPE_POSITION` - Position vertex attribute.
+- `graphics.SEMANTIC_TYPE_TANGENT` - Tangent vertex attribute.
+- `graphics.SEMANTIC_TYPE_TEXCOORD` - Texture-coordinate vertex attribute.
+- `graphics.SEMANTIC_TYPE_TEXTURE_TRANSFORM_2D` - 2D texture-transform vertex attribute.
+- `graphics.SEMANTIC_TYPE_WORLD_MATRIX` - World-matrix vertex attribute.
+
+### graphics.STATE
+*Type:* ENUM
+Graphics states
+
+**Members**
+
+- `graphics.STATE_ALPHA_TEST`
+- `graphics.STATE_ALPHA_TEST_SUPPORTED`
+- `graphics.STATE_BLEND`
+- `graphics.STATE_CULL_FACE`
+- `graphics.STATE_DEPTH_TEST`
+- `graphics.STATE_POLYGON_OFFSET_FILL`
+- `graphics.STATE_SCISSOR_TEST`
+- `graphics.STATE_STENCIL_TEST`
+
+### graphics.STENCIL_OP
+*Type:* ENUM
+Stencil operations
+
+**Members**
+
+- `graphics.STENCIL_OP_DECR` - decrement and clamp at zero
+- `graphics.STENCIL_OP_DECR_WRAP` - decrement and wrap zero to the maximum unsigned value
+- `graphics.STENCIL_OP_INCR` - increment and clamp at the maximum unsigned value
+- `graphics.STENCIL_OP_INCR_WRAP` - increment and wrap the maximum unsigned value to zero
+- `graphics.STENCIL_OP_INVERT` - bitwise invert
+- `graphics.STENCIL_OP_KEEP` - keep the current value
+- `graphics.STENCIL_OP_REPLACE` - replace with the reference value from <a href="/ref/render#render.set_stencil_func">render.set_stencil_func</a>
+- `graphics.STENCIL_OP_ZERO` - set to zero
+
+### graphics.TEXTURE_FILTER
+*Type:* ENUM
+Texture filters
+
+**Members**
+
+- `graphics.TEXTURE_FILTER_DEFAULT`
+- `graphics.TEXTURE_FILTER_LINEAR`
+- `graphics.TEXTURE_FILTER_LINEAR_MIPMAP_LINEAR`
+- `graphics.TEXTURE_FILTER_LINEAR_MIPMAP_NEAREST`
+- `graphics.TEXTURE_FILTER_NEAREST`
+- `graphics.TEXTURE_FILTER_NEAREST_MIPMAP_LINEAR`
+- `graphics.TEXTURE_FILTER_NEAREST_MIPMAP_NEAREST`
+
+### graphics.TEXTURE_FORMAT
+*Type:* ENUM
+Texture formats
+
+**Members**
+
+- `graphics.TEXTURE_FORMAT_BGRA8U` - May be nil if the graphics driver doesn't support it
+- `graphics.TEXTURE_FORMAT_DEPTH`
+- `graphics.TEXTURE_FORMAT_LUMINANCE` - May be nil if the graphics driver doesn't support it
+- `graphics.TEXTURE_FORMAT_LUMINANCE_ALPHA` - May be nil if the graphics driver doesn't support it
+- `graphics.TEXTURE_FORMAT_R16F` - May be nil if the graphics driver doesn't support it
+- `graphics.TEXTURE_FORMAT_R32F` - May be nil if the graphics driver doesn't support it
+- `graphics.TEXTURE_FORMAT_R32UI` - May be nil if the graphics driver doesn't support it
+- `graphics.TEXTURE_FORMAT_RG16F` - May be nil if the graphics driver doesn't support it
+- `graphics.TEXTURE_FORMAT_RG32F` - May be nil if the graphics driver doesn't support it
+- `graphics.TEXTURE_FORMAT_RGB` - May be nil if the graphics driver doesn't support it
+- `graphics.TEXTURE_FORMAT_RGB16F` - May be nil if the graphics driver doesn't support it
+- `graphics.TEXTURE_FORMAT_RGB32F` - May be nil if the graphics driver doesn't support it
+- `graphics.TEXTURE_FORMAT_RGBA` - May be nil if the graphics driver doesn't support it
+- `graphics.TEXTURE_FORMAT_RGBA16F` - May be nil if the graphics driver doesn't support it
+- `graphics.TEXTURE_FORMAT_RGBA32F` - May be nil if the graphics driver doesn't support it
+- `graphics.TEXTURE_FORMAT_RGBA32UI` - May be nil if the graphics driver doesn't support it
+- `graphics.TEXTURE_FORMAT_RGBA_16BPP` - May be nil if the graphics driver doesn't support it
+- `graphics.TEXTURE_FORMAT_RGBA_ASTC_4X4` - May be nil if the graphics driver doesn't support it
+- `graphics.TEXTURE_FORMAT_RGBA_BC3` - May be nil if the graphics driver doesn't support it
+- `graphics.TEXTURE_FORMAT_RGBA_BC7` - May be nil if the graphics driver doesn't support it
+- `graphics.TEXTURE_FORMAT_RGBA_ETC2` - May be nil if the graphics driver doesn't support it
+- `graphics.TEXTURE_FORMAT_RGBA_PVRTC_2BPPV1` - May be nil if the graphics driver doesn't support it
+- `graphics.TEXTURE_FORMAT_RGBA_PVRTC_4BPPV1` - May be nil if the graphics driver doesn't support it
+- `graphics.TEXTURE_FORMAT_RGB_16BPP` - May be nil if the graphics driver doesn't support it
+- `graphics.TEXTURE_FORMAT_RGB_BC1` - May be nil if the graphics driver doesn't support it
+- `graphics.TEXTURE_FORMAT_RGB_ETC1` - May be nil if the graphics driver doesn't support it
+- `graphics.TEXTURE_FORMAT_RGB_PVRTC_2BPPV1` - May be nil if the graphics driver doesn't support it
+- `graphics.TEXTURE_FORMAT_RGB_PVRTC_4BPPV1` - May be nil if the graphics driver doesn't support it
+- `graphics.TEXTURE_FORMAT_RG_BC5` - May be nil if the graphics driver doesn't support it
+- `graphics.TEXTURE_FORMAT_RG_ETC2` - May be nil if the graphics driver doesn't support it
+- `graphics.TEXTURE_FORMAT_R_BC4` - May be nil if the graphics driver doesn't support it
+- `graphics.TEXTURE_FORMAT_R_ETC2` - May be nil if the graphics driver doesn't support it
+- `graphics.TEXTURE_FORMAT_STENCIL`
+
+### graphics.TEXTURE_TYPE
+*Type:* ENUM
+Texture types
+
+**Members**
+
+- `graphics.TEXTURE_TYPE_2D`
+- `graphics.TEXTURE_TYPE_2D_ARRAY`
+- `graphics.TEXTURE_TYPE_3D` - May be nil if the graphics driver doesn't support it
+- `graphics.TEXTURE_TYPE_CUBE_MAP`
+- `graphics.TEXTURE_TYPE_IMAGE_2D`
+- `graphics.TEXTURE_TYPE_IMAGE_3D` - May be nil if the graphics driver doesn't support it
+
+### graphics.TEXTURE_USAGE_FLAG
+*Type:* ENUM
+Texture usage flags
+
+**Members**
+
+- `graphics.TEXTURE_USAGE_FLAG_COLOR`
+- `graphics.TEXTURE_USAGE_FLAG_INPUT`
+- `graphics.TEXTURE_USAGE_FLAG_MEMORYLESS`
+- `graphics.TEXTURE_USAGE_FLAG_SAMPLE`
+- `graphics.TEXTURE_USAGE_FLAG_STORAGE`
+
+### graphics.TEXTURE_WRAP
+*Type:* ENUM
+Texture wrapping modes
+
+**Members**
+
+- `graphics.TEXTURE_WRAP_CLAMP_TO_BORDER`
+- `graphics.TEXTURE_WRAP_CLAMP_TO_EDGE`
+- `graphics.TEXTURE_WRAP_MIRRORED_REPEAT`
+- `graphics.TEXTURE_WRAP_REPEAT`

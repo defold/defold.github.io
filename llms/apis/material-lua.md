@@ -10,6 +10,92 @@ Functions for interacting with materials.
 
 ## API
 
+### material.constant_info
+*Type:* STRUCT
+Shader constant information
+
+**Members**
+
+- `name` (hash) - Constant name.
+- `type` (material.CONSTANT_TYPE) - Constant type.
+- `value?` (material.constant_info_value) - Constant value or values. Present for user constants.
+
+### material.constant_info_value
+*Type:* TYPEDEF
+The value of a user constant returned in a material.constant_info
+entry by material.get_constants. A scalar constant is returned as a
+vector4 or matrix4; a shader constant array is returned as an
+array of those values. Non-user constants do not include a value field.
+
+**Parameters**
+
+- `value` (vector4 | matrix4 | vector4[] | matrix4[])
+
+**Examples**
+
+```
+for _, constant in ipairs(material.get_constants(self.material)) do
+    if constant.value then
+        pprint(constant.name, constant.value)
+    end
+end
+
+```
+
+### material.constant_options
+*Type:* STRUCT
+Shader constant update
+
+**Members**
+
+- `type?` (material.CONSTANT_TYPE) - Constant type.
+- `value?` (material.constant_value) - Constant value or values.
+
+### material.CONSTANT_TYPE
+*Type:* ENUM
+Material constant types
+
+**Members**
+
+- `material.CONSTANT_TYPE_USER` - User vector constant.
+- `material.CONSTANT_TYPE_USER_COLOR` - User color constant.
+- `material.CONSTANT_TYPE_USER_MATRIX4` - User matrix constant.
+- `material.CONSTANT_TYPE_VIEWPROJ` - View-projection matrix constant.
+- `material.CONSTANT_TYPE_WORLD` - World matrix constant.
+- `material.CONSTANT_TYPE_TEXTURE` - Texture matrix constant.
+- `material.CONSTANT_TYPE_VIEW` - View matrix constant.
+- `material.CONSTANT_TYPE_PROJECTION` - Projection matrix constant.
+- `material.CONSTANT_TYPE_NORMAL` - Normal matrix constant.
+- `material.CONSTANT_TYPE_WORLDVIEW` - World-view matrix constant.
+- `material.CONSTANT_TYPE_WORLDVIEWPROJ` - World-view-projection matrix constant.
+- `material.CONSTANT_TYPE_TIME` - Time constant.
+- `material.CONSTANT_TYPE_WORLD_INVERSE` - Inverse world matrix constant.
+- `material.CONSTANT_TYPE_VIEW_INVERSE` - Inverse view matrix constant.
+- `material.CONSTANT_TYPE_PROJECTION_INVERSE` - Inverse projection matrix constant.
+- `material.CONSTANT_TYPE_VIEWPROJ_INVERSE` - Inverse view-projection matrix constant.
+- `material.CONSTANT_TYPE_WORLDVIEW_INVERSE` - Inverse world-view matrix constant.
+- `material.CONSTANT_TYPE_WORLDVIEWPROJ_INVERSE` - Inverse world-view-projection matrix constant.
+
+### material.constant_value
+*Type:* TYPEDEF
+A value accepted by material.set_constants when updating a shader
+constant. Use a number or vector for user vector constants, a matrix4
+for matrix constants, and an array to update a shader constant array.
+
+**Parameters**
+
+- `value` (number | vector3 | vector4 | matrix4 | (number|vector3|vector4|matrix4)[])
+
+**Examples**
+
+```
+material.set_constants(self.material, {
+    tint = { value = vmath.vector4(1, 0.5, 0.5, 1) },
+    weights = { value = { 0.25, 0.5, 0.75, 1 } }
+})
+
+```
+
 ### material.get_constants
 *Type:* FUNCTION
 Returns a table of all the shader constants in the material. This function will return all the shader constants
@@ -21,36 +107,7 @@ that are used in both the vertex and the fragment shaders.
 
 **Returns**
 
-- `table` (table) - A table of tables, where each entry contains info about the shader constants:
-<dl>
-<dt><code>name</code></dt>
-<dd><span class="type">hash</span> the hashed name of the constant</dd>
-<dt><code>type</code></dt>
-<dd><span class="type">number</span> the type of the constant. Supported values:</dd>
-</dl>
-<ul>
-<li><code>material.CONSTANT_TYPE_USER</code></li>
-<li><code>material.CONSTANT_TYPE_USER_MATRIX4</code></li>
-<li><code>material.CONSTANT_TYPE_VIEWPROJ</code></li>
-<li><code>material.CONSTANT_TYPE_WORLD</code></li>
-<li><code>material.CONSTANT_TYPE_TEXTURE</code></li>
-<li><code>material.CONSTANT_TYPE_VIEW</code></li>
-<li><code>material.CONSTANT_TYPE_PROJECTION</code></li>
-<li><code>material.CONSTANT_TYPE_NORMAL</code></li>
-<li><code>material.CONSTANT_TYPE_WORLDVIEW</code></li>
-<li><code>material.CONSTANT_TYPE_WORLDVIEWPROJ</code></li>
-<li><code>material.CONSTANT_TYPE_TIME</code></li>
-<li><code>material.CONSTANT_TYPE_WORLD_INVERSE</code></li>
-<li><code>material.CONSTANT_TYPE_VIEW_INVERSE</code></li>
-<li><code>material.CONSTANT_TYPE_PROJECTION_INVERSE</code></li>
-<li><code>material.CONSTANT_TYPE_VIEWPROJ_INVERSE</code></li>
-<li><code>material.CONSTANT_TYPE_WORLDVIEW_INVERSE</code></li>
-<li><code>material.CONSTANT_TYPE_WORLDVIEWPROJ_INVERSE</code></li>
-</ul>
-<dl>
-<dt><code>value</code></dt>
-<dd><span class="type">vmath.vector4 | vmath.matrix4</span> the value(s) of the constant. If the constant is an array, the value will be a table of vmath.vector4 or vmath.matrix4 if the type is <code>material.CONSTANT_TYPE_USER_MATRIX4</code>.</dd>
-</dl>
+- `constants` (material.constant_info[]) - Shader constant information.
 
 **Examples**
 
@@ -75,55 +132,7 @@ that are used in both the vertex and the fragment shaders.
 
 **Returns**
 
-- `table` (table) - A table of tables, where each entry contains info about the texture samplers:
-<dl>
-<dt><code>name</code></dt>
-<dd><span class="type">hash</span> the hashed name of the texture sampler</dd>
-<dt><code>u_wrap</code></dt>
-<dd><span class="type">number</span> the u wrap mode of the texture sampler. Supported values:</dd>
-</dl>
-<ul>
-<li><code>graphics.TEXTURE_WRAP_CLAMP_TO_BORDER</code></li>
-<li><code>graphics.TEXTURE_WRAP_CLAMP_TO_EDGE</code></li>
-<li><code>graphics.TEXTURE_WRAP_MIRRORED_REPEAT</code></li>
-<li><code>graphics.TEXTURE_WRAP_REPEAT</code></li>
-</ul>
-<dl>
-<dt><code>v_wrap</code></dt>
-<dd><span class="type">number</span> the v wrap mode of the texture sampler. Supported values:</dd>
-</dl>
-<ul>
-<li><code>graphics.TEXTURE_WRAP_CLAMP_TO_BORDER</code></li>
-<li><code>graphics.TEXTURE_WRAP_CLAMP_TO_EDGE</code></li>
-<li><code>graphics.TEXTURE_WRAP_MIRRORED_REPEAT</code></li>
-<li><code>graphics.TEXTURE_WRAP_REPEAT</code></li>
-</ul>
-<dl>
-<dt><code>min_filter</code></dt>
-<dd><span class="type">number</span> the min filter mode of the texture sampler. Supported values:</dd>
-</dl>
-<ul>
-<li><code>graphics.TEXTURE_FILTER_DEFAULT</code></li>
-<li><code>graphics.TEXTURE_FILTER_NEAREST</code></li>
-<li><code>graphics.TEXTURE_FILTER_LINEAR</code></li>
-<li><code>graphics.TEXTURE_FILTER_NEAREST_MIPMAP_NEAREST</code></li>
-<li><code>graphics.TEXTURE_FILTER_NEAREST_MIPMAP_LINEAR</code></li>
-<li><code>graphics.TEXTURE_FILTER_LINEAR_MIPMAP_NEAREST</code></li>
-<li><code>graphics.TEXTURE_FILTER_LINEAR_MIPMAP_LINEAR</code></li>
-</ul>
-<dl>
-<dt><code>mag_filter</code></dt>
-<dd><span class="type">number</span> the mag filter mode of the texture sampler</dd>
-</dl>
-<ul>
-<li><code>graphics.TEXTURE_FILTER_DEFAULT</code></li>
-<li><code>graphics.TEXTURE_FILTER_NEAREST</code></li>
-<li><code>graphics.TEXTURE_FILTER_LINEAR</code></li>
-</ul>
-<dl>
-<dt><code>max_anisotropy</code></dt>
-<dd><span class="type">number</span> the max anisotropy of the texture sampler</dd>
-</dl>
+- `samplers` (material.sampler_info[]) - texture sampler information
 
 **Examples**
 
@@ -147,42 +156,7 @@ Returns a table of all the textures from the material.
 
 **Returns**
 
-- `table` (table) - A table of tables, where each entry contains info about the material textures:
-<dl>
-<dt><code>path</code></dt>
-<dd><span class="type">hash</span> the resource path of the texture. Only available if the texture is a resource.</dd>
-<dt><code>handle</code></dt>
-<dd><span class="type">hash</span> the runtime handle of the texture.</dd>
-<dt><code>width</code></dt>
-<dd><span class="type">number</span> the width of the texture</dd>
-<dt><code>height</code></dt>
-<dd><span class="type">number</span> the height of the texture</dd>
-<dt><code>depth</code></dt>
-<dd><span class="type">number</span> the depth of the texture. Corresponds to the number of layers in an array texture.</dd>
-<dt><code>mipmaps</code></dt>
-<dd><span class="type">number</span> the number of mipmaps in the texture</dd>
-<dt><code>type</code></dt>
-<dd><span class="type">number</span> the type of the texture. Supported values:</dd>
-</dl>
-<ul>
-<li><code>graphics.TEXTURE_TYPE_2D</code></li>
-<li><code>graphics.TEXTURE_TYPE_2D_ARRAY</code></li>
-<li><code>graphics.TEXTURE_TYPE_CUBE_MAP</code></li>
-<li><code>graphics.TEXTURE_TYPE_IMAGE_2D</code></li>
-<li><code>graphics.TEXTURE_TYPE_3D</code></li>
-<li><code>graphics.TEXTURE_TYPE_IMAGE_3D</code></li>
-</ul>
-<dl>
-<dt><code>flags</code></dt>
-<dd><span class="type">number</span> the flags of the texture. This field is a bit mask of these supported flags:</dd>
-</dl>
-<ul>
-<li><code>graphics.TEXTURE_USAGE_FLAG_SAMPLE</code></li>
-<li><code>graphics.TEXTURE_USAGE_FLAG_MEMORYLESS</code></li>
-<li><code>graphics.TEXTURE_USAGE_FLAG_STORAGE</code></li>
-<li><code>graphics.TEXTURE_USAGE_FLAG_INPUT</code></li>
-<li><code>graphics.TEXTURE_USAGE_FLAG_COLOR</code></li>
-</ul>
+- `textures` (material.texture_info[]) - material texture information
 
 **Examples**
 
@@ -207,53 +181,7 @@ that are used in the vertex shader of the material.
 
 **Returns**
 
-- `table` (table) - A table of tables, where each entry contains info about the vertex attributes:
-<dl>
-<dt><code>name</code></dt>
-<dd><span class="type">hash</span> the hashed name of the vertex attribute</dd>
-<dt><code>value</code></dt>
-<dd><span class="type">vmath.vector4 | vmath.vector3 | vmath.matrix4 | number | table</span> the value of the vertex attribute. Matrix attributes that do not map to <code>vmath.matrix4</code> are returned as a table of numbers.</dd>
-<dt><code>normalize</code></dt>
-<dd><span class="type">boolean</span> whether the value is normalized when passed into the shader</dd>
-<dt><code>data_type</code></dt>
-<dd><span class="type">number</span> the data type of the vertex attribute. Supported values:</dd>
-</dl>
-<ul>
-<li><code>graphics.DATA_TYPE_BYTE</code></li>
-<li><code>graphics.DATA_TYPE_UNSIGNED_BYTE</code></li>
-<li><code>graphics.DATA_TYPE_SHORT</code></li>
-<li><code>graphics.DATA_TYPE_UNSIGNED_SHORT</code></li>
-<li><code>graphics.DATA_TYPE_INT</code></li>
-<li><code>graphics.DATA_TYPE_UNSIGNED_INT</code></li>
-<li><code>graphics.DATA_TYPE_FLOAT</code></li>
-</ul>
-<dl>
-<dt><code>coordinate_space</code></dt>
-<dd><span class="type">number</span> the coordinate space of the vertex attribute. Supported values:</dd>
-</dl>
-<ul>
-<li><code>graphics.COORDINATE_SPACE_WORLD</code></li>
-<li><code>graphics.COORDINATE_SPACE_LOCAL</code></li>
-</ul>
-<dl>
-<dt><code>semantic_type</code></dt>
-<dd><span class="type">number</span> the semantic type of the vertex attribute. Supported values:</dd>
-</dl>
-<ul>
-<li><code>graphics.SEMANTIC_TYPE_NONE</code></li>
-<li><code>graphics.SEMANTIC_TYPE_POSITION</code></li>
-<li><code>graphics.SEMANTIC_TYPE_TEXCOORD</code></li>
-<li><code>graphics.SEMANTIC_TYPE_PAGE_INDEX</code></li>
-<li><code>graphics.SEMANTIC_TYPE_COLOR</code></li>
-<li><code>graphics.SEMANTIC_TYPE_NORMAL</code></li>
-<li><code>graphics.SEMANTIC_TYPE_TANGENT</code></li>
-<li><code>graphics.SEMANTIC_TYPE_WORLD_MATRIX</code></li>
-<li><code>graphics.SEMANTIC_TYPE_NORMAL_MATRIX</code></li>
-<li><code>graphics.SEMANTIC_TYPE_BONE_WEIGHTS</code></li>
-<li><code>graphics.SEMANTIC_TYPE_BONE_INDICES</code></li>
-<li><code>graphics.SEMANTIC_TYPE_TEXTURE_TRANSFORM_2D</code></li>
-<li><code>graphics.SEMANTIC_TYPE_MORPH_TARGET_WEIGHTS</code></li>
-</ul>
+- `attributes` (material.vertex_attribute_info[]) - vertex attribute information
 
 **Examples**
 
@@ -267,6 +195,47 @@ end
 
 ```
 
+### material.named_vertex_attribute_options
+*Type:* STRUCT
+Named material vertex attribute update
+
+**Members**
+
+- `name` (string|hash) - Attribute name.
+- `value?` (material.vertex_attribute_value) - Attribute value.
+- `normalize?` (boolean) - Whether integer data is normalized.
+- `data_type?` (graphics.DATA_TYPE) - Attribute data type.
+- `coordinate_space?` (graphics.COORDINATE_SPACE) - Attribute coordinate space.
+- `semantic_type?` (graphics.SEMANTIC_TYPE) - Attribute semantic.
+
+### material.sampler_info
+*Type:* STRUCT
+Texture sampler information
+
+**Members**
+
+- `name` (hash) - Sampler name.
+- `type` (graphics.TEXTURE_TYPE) - Sampler texture type.
+- `u_wrap` (graphics.TEXTURE_WRAP) - Horizontal wrap mode.
+- `v_wrap` (graphics.TEXTURE_WRAP) - Vertical wrap mode.
+- `w_wrap` (graphics.TEXTURE_WRAP) - Depth wrap mode.
+- `min_filter` (graphics.TEXTURE_FILTER) - Minification filter.
+- `mag_filter` (graphics.TEXTURE_FILTER) - Magnification filter.
+- `max_anisotropy` (number) - Maximum anisotropy.
+
+### material.sampler_options
+*Type:* STRUCT
+Texture sampler update
+
+**Members**
+
+- `u_wrap?` (graphics.TEXTURE_WRAP) - Horizontal wrap mode.
+- `v_wrap?` (graphics.TEXTURE_WRAP) - Vertical wrap mode.
+- `w_wrap?` (graphics.TEXTURE_WRAP) - Depth wrap mode.
+- `min_filter?` (graphics.TEXTURE_FILTER) - Minification filter.
+- `mag_filter?` (graphics.TEXTURE_FILTER) - Magnification filter.
+- `max_anisotropy?` (number) - Maximum anisotropy.
+
 ### material.set_constants
 *Type:* FUNCTION
 Sets shader constants in a material, if the constants exist.
@@ -274,34 +243,7 @@ Sets shader constants in a material, if the constants exist.
 **Parameters**
 
 - `path` (hash | string) - The path to the resource
-- `constants` (table) - A table keyed by constant name with args tables as values. Constants can be partially updated. Supported entries:
-<dl>
-<dt><code>type</code></dt>
-<dd><span class="type">number</span> the type of the constant. Supported values:</dd>
-</dl>
-<ul>
-<li><code>material.CONSTANT_TYPE_USER</code></li>
-<li><code>material.CONSTANT_TYPE_USER_MATRIX4</code></li>
-<li><code>material.CONSTANT_TYPE_VIEWPROJ</code></li>
-<li><code>material.CONSTANT_TYPE_WORLD</code></li>
-<li><code>material.CONSTANT_TYPE_TEXTURE</code></li>
-<li><code>material.CONSTANT_TYPE_VIEW</code></li>
-<li><code>material.CONSTANT_TYPE_PROJECTION</code></li>
-<li><code>material.CONSTANT_TYPE_NORMAL</code></li>
-<li><code>material.CONSTANT_TYPE_WORLDVIEW</code></li>
-<li><code>material.CONSTANT_TYPE_WORLDVIEWPROJ</code></li>
-<li><code>material.CONSTANT_TYPE_TIME</code></li>
-<li><code>material.CONSTANT_TYPE_WORLD_INVERSE</code></li>
-<li><code>material.CONSTANT_TYPE_VIEW_INVERSE</code></li>
-<li><code>material.CONSTANT_TYPE_PROJECTION_INVERSE</code></li>
-<li><code>material.CONSTANT_TYPE_VIEWPROJ_INVERSE</code></li>
-<li><code>material.CONSTANT_TYPE_WORLDVIEW_INVERSE</code></li>
-<li><code>material.CONSTANT_TYPE_WORLDVIEWPROJ_INVERSE</code></li>
-</ul>
-<dl>
-<dt><code>value</code></dt>
-<dd><span class="type">vmath.vector4 | vmath.vector3 | vmath.matrix4 | number | table</span> the value(s) of the constant. If the shader constant is an array, the amount of values to update depends on how many values that are passed in the 'value' field.</dd>
-</dl>
+- `constants` (table<string|hash, material.constant_options>) - Shader constant updates keyed by constant name. Partial updates are supported.
 
 **Examples**
 
@@ -330,53 +272,7 @@ To set actual textures that should be bound to the samplers, use the material.se
 **Parameters**
 
 - `path` (hash | string) - The path to the resource
-- `samplers` (table) - A table keyed by sampler name with args tables as values. Partial updates are supported. Supported entries:
-<dl>
-<dt><code>u_wrap</code></dt>
-<dd><span class="type">number</span> the u wrap mode of the texture sampler. Supported values:</dd>
-</dl>
-<ul>
-<li><code>graphics.TEXTURE_WRAP_CLAMP_TO_BORDER</code></li>
-<li><code>graphics.TEXTURE_WRAP_CLAMP_TO_EDGE</code></li>
-<li><code>graphics.TEXTURE_WRAP_MIRRORED_REPEAT</code></li>
-<li><code>graphics.TEXTURE_WRAP_REPEAT</code></li>
-</ul>
-<dl>
-<dt><code>v_wrap</code></dt>
-<dd><span class="type">number</span> the v wrap mode of the texture sampler. Supported values:</dd>
-</dl>
-<ul>
-<li><code>graphics.TEXTURE_WRAP_CLAMP_TO_BORDER</code></li>
-<li><code>graphics.TEXTURE_WRAP_CLAMP_TO_EDGE</code></li>
-<li><code>graphics.TEXTURE_WRAP_MIRRORED_REPEAT</code></li>
-<li><code>graphics.TEXTURE_WRAP_REPEAT</code></li>
-</ul>
-<dl>
-<dt><code>min_filter</code></dt>
-<dd><span class="type">number</span> the min filter mode of the texture sampler. Supported values:</dd>
-</dl>
-<ul>
-<li><code>graphics.TEXTURE_FILTER_DEFAULT</code></li>
-<li><code>graphics.TEXTURE_FILTER_NEAREST</code></li>
-<li><code>graphics.TEXTURE_FILTER_LINEAR</code></li>
-<li><code>graphics.TEXTURE_FILTER_NEAREST_MIPMAP_NEAREST</code></li>
-<li><code>graphics.TEXTURE_FILTER_NEAREST_MIPMAP_LINEAR</code></li>
-<li><code>graphics.TEXTURE_FILTER_LINEAR_MIPMAP_NEAREST</code></li>
-<li><code>graphics.TEXTURE_FILTER_LINEAR_MIPMAP_LINEAR</code></li>
-</ul>
-<dl>
-<dt><code>mag_filter</code></dt>
-<dd><span class="type">number</span> the mag filter mode of the texture sampler</dd>
-</dl>
-<ul>
-<li><code>graphics.TEXTURE_FILTER_DEFAULT</code></li>
-<li><code>graphics.TEXTURE_FILTER_NEAREST</code></li>
-<li><code>graphics.TEXTURE_FILTER_LINEAR</code></li>
-</ul>
-<dl>
-<dt><code>max_anisotropy</code></dt>
-<dd><span class="type">number</span> the max anisotropy of the texture sampler</dd>
-</dl>
+- `samplers` (table<string|hash, material.sampler_options>) - Sampler updates keyed by sampler name. Partial updates are supported.
 
 **Examples**
 
@@ -399,7 +295,7 @@ Sets textures in a material, if the samplers exist.
 **Parameters**
 
 - `path` (hash | string) - The path to the resource
-- `textures` (table) - A table keyed by sampler name with texture resources as values.
+- `textures` (table<string|hash, string|hash>) - A table keyed by sampler name with texture resources as values.
 
 **Examples**
 
@@ -423,52 +319,7 @@ Sets vertex attributes in a material, if the vertex attributes exist.
 **Parameters**
 
 - `path` (hash | string) - The path to the resource
-- `attributes` (table) - A table keyed by vertex attribute name with args tables as values. Partial updates are supported. Supported entries:
-<dl>
-<dt><code>value</code></dt>
-<dd><span class="type">vmath.vector4 | vmath.vector3 | vmath.matrix4 | number | table</span> the value of the vertex attribute. Use a table of numbers for matrix attributes that do not map to <code>vmath.matrix4</code>.</dd>
-<dt><code>normalize</code></dt>
-<dd><span class="type">boolean</span> whether the value is normalized when passed into the shader</dd>
-<dt><code>data_type</code></dt>
-<dd><span class="type">number</span> the data type of the vertex attribute. Supported values:</dd>
-</dl>
-<ul>
-<li><code>graphics.DATA_TYPE_BYTE</code></li>
-<li><code>graphics.DATA_TYPE_UNSIGNED_BYTE</code></li>
-<li><code>graphics.DATA_TYPE_SHORT</code></li>
-<li><code>graphics.DATA_TYPE_UNSIGNED_SHORT</code></li>
-<li><code>graphics.DATA_TYPE_INT</code></li>
-<li><code>graphics.DATA_TYPE_UNSIGNED_INT</code></li>
-<li><code>graphics.DATA_TYPE_FLOAT</code></li>
-</ul>
-<dl>
-<dt><code>coordinate_space</code></dt>
-<dd><span class="type">number</span> the coordinate space of the vertex attribute. Supported values:</dd>
-</dl>
-<ul>
-<li><code>graphics.COORDINATE_SPACE_DEFAULT</code></li>
-<li><code>graphics.COORDINATE_SPACE_WORLD</code></li>
-<li><code>graphics.COORDINATE_SPACE_LOCAL</code></li>
-</ul>
-<dl>
-<dt><code>semantic_type</code></dt>
-<dd><span class="type">number</span> the semantic type of the vertex attribute. Supported values:</dd>
-</dl>
-<ul>
-<li><code>graphics.SEMANTIC_TYPE_NONE</code></li>
-<li><code>graphics.SEMANTIC_TYPE_POSITION</code></li>
-<li><code>graphics.SEMANTIC_TYPE_TEXCOORD</code></li>
-<li><code>graphics.SEMANTIC_TYPE_PAGE_INDEX</code></li>
-<li><code>graphics.SEMANTIC_TYPE_COLOR</code></li>
-<li><code>graphics.SEMANTIC_TYPE_NORMAL</code></li>
-<li><code>graphics.SEMANTIC_TYPE_TANGENT</code></li>
-<li><code>graphics.SEMANTIC_TYPE_WORLD_MATRIX</code></li>
-<li><code>graphics.SEMANTIC_TYPE_NORMAL_MATRIX</code></li>
-<li><code>graphics.SEMANTIC_TYPE_BONE_WEIGHTS</code></li>
-<li><code>graphics.SEMANTIC_TYPE_BONE_INDICES</code></li>
-<li><code>graphics.SEMANTIC_TYPE_TEXTURE_TRANSFORM_2D</code></li>
-<li><code>graphics.SEMANTIC_TYPE_MORPH_TARGET_WEIGHTS</code></li>
-</ul>
+- `attributes` (table<string|hash, material.vertex_attribute_options> | material.named_vertex_attribute_options[]) - Vertex attributes keyed by name, or an array with explicit <code>name</code> fields. Partial updates are supported.
 
 **Examples**
 
@@ -482,5 +333,67 @@ function init(self)
         weights        = { value = vmath.vec4(0, 1, 0, 0), semantic_type = graphics.SEMANTIC_TYPE_NONE }
     })
 end
+
+```
+
+### material.texture_info
+*Type:* STRUCT
+Texture information
+
+**Members**
+
+- `path?` (hash) - Texture resource path, if backed by a resource.
+- `handle` (texture) - Runtime texture handle.
+- `width` (integer) - Texture width.
+- `height` (integer) - Texture height.
+- `depth` (integer) - Texture depth or layer count.
+- `page_count` (integer) - Texture page count.
+- `mipmaps` (integer) - Mipmap count.
+- `type` (graphics.TEXTURE_TYPE) - Texture type.
+- `flags` (graphics.TEXTURE_USAGE_FLAG) - Texture usage flags.
+
+### material.vertex_attribute_info
+*Type:* STRUCT
+Material vertex attribute information
+
+**Members**
+
+- `name` (hash) - Attribute name.
+- `value` (material.vertex_attribute_value) - Attribute value.
+- `normalize` (boolean) - Whether integer data is normalized.
+- `data_type` (graphics.DATA_TYPE) - Attribute data type.
+- `coordinate_space` (graphics.COORDINATE_SPACE) - Attribute coordinate space.
+- `semantic_type` (graphics.SEMANTIC_TYPE) - Attribute semantic.
+
+### material.vertex_attribute_options
+*Type:* STRUCT
+Material vertex attribute update
+
+**Members**
+
+- `value?` (material.vertex_attribute_value) - Attribute value.
+- `normalize?` (boolean) - Whether integer data is normalized.
+- `data_type?` (graphics.DATA_TYPE) - Attribute data type.
+- `coordinate_space?` (graphics.COORDINATE_SPACE) - Attribute coordinate space.
+- `semantic_type?` (graphics.SEMANTIC_TYPE) - Attribute semantic.
+
+### material.vertex_attribute_value
+*Type:* TYPEDEF
+A vertex attribute value accepted by material.set_vertex_attributes
+and returned by material.get_vertex_attributes. Use a number or vector
+for scalar and vector attributes, matrix4 for a 4x4 matrix, and a flat
+array of numbers for matrix shapes that do not map to matrix4.
+
+**Parameters**
+
+- `value` (number | vector3 | vector4 | matrix4 | number[])
+
+**Examples**
+
+```
+material.set_vertex_attributes(self.material, {
+    tint = { value = vmath.vector4(1, 0, 0, 1) },
+    transform_2d = { value = { 1, 0, 0, 0, 1, 0, 0, 0, 1 } }
+})
 
 ```

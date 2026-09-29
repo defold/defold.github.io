@@ -37,7 +37,10 @@ static ExtensionResult AppInitialize(ExtensionAppParams* params)
 {
     float gravity = ConfigFileGetFloat(params->m_ConfigFile, "physics.gravity_y", -9.8f);
 }
-``````cpp
+
+```
+
+```
 static dmExtension::Result AppInitialize(dmExtension::AppParams* params)
 {
     float gravity = dmConfigFile::GetFloat(params->m_ConfigFile, "physics.gravity_y", -9.8f);
@@ -66,7 +69,10 @@ static ExtensionResult AppInitialize(ExtensionAppParams* params)
 {
     int32_t displayWidth = ConfigFileGetInt(params->m_ConfigFile, "display.width", 640);
 }
-``````cpp
+
+```
+
+```
 static dmExtension::Result AppInitialize(dmExtension::AppParams* params)
 {
     int32_t displayWidth = dmConfigFile::GetInt(params->m_ConfigFile, "display.width", 640);
@@ -95,7 +101,10 @@ static ExtensionResult AppInitialize(ExtensionAppParams* params)
 {
     const char* projectTitle = ConfigFileGetString(params->m_ConfigFile, "project.title", "Untitled");
 }
-``````cpp
+
+```
+
+```
 static dmExtension::Result AppInitialize(dmExtension::AppParams* params)
 {
     const char* projectTitle = dmConfigFile::GetString(params->m_ConfigFile, "project.title", "Untitled");
@@ -213,7 +222,10 @@ static ExtensionResult AppInitialize(ExtensionAppParams* params)
 {
     float gravity = ConfigFileGetFloat(params->m_ConfigFile, "physics.gravity_y", -9.8f);
 }
-``````cpp
+
+```
+
+```
 static dmExtension::Result AppInitialize(dmExtension::AppParams* params)
 {
     float gravity = dmConfigFile::GetFloat(params->m_ConfigFile, "physics.gravity_y", -9.8f);
@@ -242,7 +254,10 @@ static ExtensionResult AppInitialize(ExtensionAppParams* params)
 {
     int32_t displayWidth = ConfigFileGetInt(params->m_ConfigFile, "display.width", 640);
 }
-``````cpp
+
+```
+
+```
 static dmExtension::Result AppInitialize(dmExtension::AppParams* params)
 {
     int32_t displayWidth = dmConfigFile::GetInt(params->m_ConfigFile, "display.width", 640);
@@ -271,7 +286,10 @@ static ExtensionResult AppInitialize(ExtensionAppParams* params)
 {
     const char* projectTitle = ConfigFileGetString(params->m_ConfigFile, "project.title", "Untitled");
 }
-``````cpp
+
+```
+
+```
 static dmExtension::Result AppInitialize(dmExtension::AppParams* params)
 {
     const char* projectTitle = dmConfigFile::GetString(params->m_ConfigFile, "project.title", "Untitled");

@@ -71,16 +71,27 @@ msg.post("@system:", "resume_rendering")
 
 ### set_update_frequency
 *Type:* MESSAGE
-Set game update-frequency (frame cap). This option is equivalent to display.update_frequency in
-the "game.project" settings but set in run-time. If Vsync checked in "game.project", the rate will
-be clamped to a swap interval that matches any detected main monitor refresh rate. If Vsync is
-unchecked the engine will try to respect the rate in software using timers. There is no
-guarantee that the frame cap will be achieved depending on platform specifics and hardware settings.
+Set game update-frequency (frame cap). This option is equivalent to
+display.update_frequency in the "game.project" settings but set at run-time.
+On platforms where Defold owns the application loop, a positive value uses
+timer pacing and requests a swap interval of 0 to avoid an additional vsync
+wait where supported. Setting the frequency to 0 restores the requested swap
+interval and uses variable-rate updates. Platform-owned loops, such as HTML5
+and iOS, retain their platform scheduling and presentation behavior. There is
+no guarantee that the frame cap will be achieved depending on platform and
+hardware constraints.
+With engine-side timer pacing, the update dt can be shortened or enlarged to
+account for elapsed time; the frame cap does not guarantee a constant dt.
+Elapsed time beyond max(engine.max_time_step, 1 / frequency) is discarded,
+so accumulated dt can trail wall-clock time after hitches. An intentional
+fixed interval longer than engine.max_time_step is allowed. This setting
+is separate from the fixed_update() timestep.
 This message can only be sent to the designated @system socket.
 
 **Parameters**
 
-- `frequency` (number) - target frequency. 60 for 60 fps
+- `frequency` (number) - target frequency in hertz. 0 selects a variable
+frame rate; negative values are treated as 0.
 
 **Examples**
 
@@ -88,14 +99,16 @@ msg.post("@system:", "set_update_frequency", { frequency = 60 } )
 
 ### set_vsync
 *Type:* MESSAGE
-Set the vsync swap interval. The interval with which to swap the front and back buffers
-in sync with vertical blanks (v-blank), the hardware event where the screen image is updated
-with data from the front buffer. A value of 1 swaps the buffers at every v-blank, a value of
-2 swaps the buffers every other v-blank and so on. A value of 0 disables waiting for v-blank
-before swapping the buffers. Default value is 1.
-When setting the swap interval to 0 and having vsync disabled in
-"game.project", the engine will try to respect the set frame cap value from
-"game.project" in software instead.
+Request a presentation interval relative to vertical blanks (v-blank).
+0 requests disabling vsync and 1 requests presenting every refresh (the default).
+OpenGL may support larger intervals, such as 2 for every other refresh.
+Vulkan and Metal treat any nonzero interval as enabling vsync; DX12 clamps
+intervals to the supported range 0 through 4. Actual behavior depends on
+the backend, platform, and driver.
+On platforms where Defold owns the application loop, a positive
+display.update_frequency or a positive value set by sys.set_update_frequency()
+uses timer pacing and requests a swap interval of 0. The requested
+swap interval is retained and applied again when the update frequency is set to 0.
 This setting may be overridden by driver settings.
 This message can only be sent to the designated @system socket.
 
@@ -152,6 +165,14 @@ msg.post("@system:", "stop_record")
 
 ```
 
+### sys.application_info
+*Type:* STRUCT
+Application information
+
+**Members**
+
+- `installed` (boolean) - Whether the queried application is installed.
+
 ### sys.deserialize
 *Type:* FUNCTION
 This function will raise a Lua error if an error occurs while deserializing the buffer.
@@ -162,7 +183,7 @@ This function will raise a Lua error if an error occurs while deserializing the 
 
 **Returns**
 
-- `table` (table) - lua table with deserialized data
+- `table` (table<any, any>) - lua table with deserialized data
 
 **Examples**
 
@@ -172,6 +193,16 @@ local buffer = sys.serialize(my_table)
 local table = sys.deserialize(buffer)
 
 ```
+
+### sys.engine_info
+*Type:* STRUCT
+Engine information
+
+**Members**
+
+- `version` (string) - Defold engine version.
+- `version_sha1` (string) - Engine build SHA-1.
+- `is_debug` (boolean) - Whether this is a debug engine build.
 
 ### sys.exists
 *Type:* FUNCTION
@@ -231,11 +262,7 @@ in a custom "Info.plist".
 
 **Returns**
 
-- `app_info` (table) - table with application information in the following fields:
-<dl>
-<dt><code>installed</code></dt>
-<dd><span class="type">boolean</span> <code>true</code> if the application is installed, <code>false</code> otherwise.</dd>
-</dl>
+- `app_info` (sys.application_info) - application information
 
 **Examples**
 
@@ -383,13 +410,13 @@ Get string config value from the game.project configuration file with optional d
 
 **Returns**
 
-- `value` (string) - config value as a string. default_value if the config key does not exist. nil if no default value was supplied.
+- `value` (string | nil) - config value as a string. default_value if the config key does not exist. nil if no default value was supplied.
 
 **Examples**
 
 Get user config value
 ```
-local text = sys.get_config_string("my_game.text", "default text"))
+local text = sys.get_config_string("my_game.text", "default text")
 
 ```
 
@@ -413,12 +440,7 @@ On desktop, this function always return sys.NETWORK_CONNECTED.
 
 **Returns**
 
-- `status` (constant) - network connectivity status:
-<ul>
-<li><code>sys.NETWORK_DISCONNECTED</code> (no network connection is found)</li>
-<li><code>sys.NETWORK_CONNECTED_CELLULAR</code> (connected through mobile cellular)</li>
-<li><code>sys.NETWORK_CONNECTED</code> (otherwise, Wifi)</li>
-</ul>
+- `status` (sys.NETWORK) - network connectivity status
 
 **Examples**
 
@@ -436,15 +458,7 @@ Returns a table with engine information.
 
 **Returns**
 
-- `engine_info` (table) - table with engine information in the following fields:
-<dl>
-<dt><code>version</code></dt>
-<dd><span class="type">string</span> The current Defold engine version, i.e. "1.2.96"</dd>
-<dt><code>version_sha1</code></dt>
-<dd><span class="type">string</span> The SHA1 for the current engine build, i.e. "0060183cce2e29dbd09c85ece83cbb72068ee050"</dd>
-<dt><code>is_debug</code></dt>
-<dd><span class="type">boolean</span> If the engine is a debug or release version</dd>
-</dl>
+- `engine_info` (sys.engine_info) - engine information
 
 **Examples**
 
@@ -496,19 +510,7 @@ Returns an array of tables with information on network interfaces.
 
 **Returns**
 
-- `ifaddrs` (table) - an array of tables. Each table entry contain the following fields:
-<dl>
-<dt><code>name</code></dt>
-<dd><span class="type">string</span> Interface name</dd>
-<dt><code>address</code></dt>
-<dd><span class="type">string</span> IP address. <span class="icon-attention"></span> might be <code>nil</code> if not available.</dd>
-<dt><code>mac</code></dt>
-<dd><span class="type">string</span> Hardware MAC address. <span class="icon-attention"></span> might be nil if not available.</dd>
-<dt><code>up</code></dt>
-<dd><span class="type">boolean</span> <code>true</code> if the interface is up (available to transmit and receive data), <code>false</code> otherwise.</dd>
-<dt><code>running</code></dt>
-<dd><span class="type">boolean</span> <code>true</code> if the interface is running, <code>false</code> otherwise.</dd>
-</dl>
+- `ifaddrs` (sys.interface_info[]) - network interfaces
 
 **Examples**
 
@@ -573,36 +575,11 @@ Returns a table with system information.
 
 **Parameters**
 
-- `options` (table) (optional) - optional options table
-- ignore_secure <span class="type">boolean</span> this flag ignores values might be secured by OS e.g. <code>device_ident</code>
+- `options` (sys.sys_info_options) (optional) - optional system-information options
 
 **Returns**
 
-- `sys_info` (table) - table with system information in the following fields:
-<dl>
-<dt><code>device_model</code></dt>
-<dd><span class="type">string</span> <span class="icon-ios"></span><span class="icon-android"></span> Only available on iOS and Android.</dd>
-<dt><code>manufacturer</code></dt>
-<dd><span class="type">string</span> <span class="icon-ios"></span><span class="icon-android"></span> Only available on iOS and Android.</dd>
-<dt><code>system_name</code></dt>
-<dd><span class="type">string</span> The system name: "Darwin", "Linux", "Windows", "HTML5", "Android" or "iPhone OS"</dd>
-<dt><code>system_version</code></dt>
-<dd><span class="type">string</span> The system OS version.</dd>
-<dt><code>api_version</code></dt>
-<dd><span class="type">string</span> The API version on the system.</dd>
-<dt><code>language</code></dt>
-<dd><span class="type">string</span> Two character ISO-639 format, i.e. "en".</dd>
-<dt><code>device_language</code></dt>
-<dd><span class="type">string</span> Two character ISO-639 format (i.e. "sr") and, if applicable, followed by a dash (-) and an ISO 15924 script code (i.e. "sr-Cyrl" or "sr-Latn"). Reflects the device preferred language.</dd>
-<dt><code>territory</code></dt>
-<dd><span class="type">string</span> Two character ISO-3166 format, i.e. "US".</dd>
-<dt><code>gmt_offset</code></dt>
-<dd><span class="type">number</span> The current offset from GMT (Greenwich Mean Time), in minutes.</dd>
-<dt><code>device_ident</code></dt>
-<dd><span class="type">string</span> This value secured by OS. <span class="icon-ios"></span> "identifierForVendor" on iOS. <span class="icon-android"></span> "android_id" on Android. On Android, you need to add <code>READ_PHONE_STATE</code> permission to be able to get this data. We don't use this permission in Defold.</dd>
-<dt><code>user_agent</code></dt>
-<dd><span class="type">string</span> <span class="icon-html5"></span> The HTTP user agent, i.e. "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/602.4.8 (KHTML, like Gecko) Version/10.0.3 Safari/602.4.8"</dd>
-</dl>
+- `sys_info` (sys.sys_info) - system information
 
 **Examples**
 
@@ -615,6 +592,18 @@ end
 
 ```
 
+### sys.interface_info
+*Type:* STRUCT
+Network-interface information
+
+**Members**
+
+- `name` (string) - Interface name.
+- `address?` (string) - IP address, when available.
+- `mac?` (string) - Hardware MAC address, when available.
+- `up` (boolean) - Whether the interface can transmit and receive data.
+- `running` (boolean) - Whether the interface is running.
+
 ### sys.load
 *Type:* FUNCTION
 If the file exists, it must have been created by sys.save to be loaded.
@@ -626,7 +615,7 @@ This function will raise a Lua error if an error occurs while loading the file.
 
 **Returns**
 
-- `loaded` (table) - lua table, which is empty if the file could not be found
+- `loaded` (table<any, any>) - lua table, which is empty if the file could not be found
 
 **Examples**
 
@@ -659,7 +648,7 @@ For example "main/data/,assets/level_data.json".
 
 **Returns**
 
-- `buffer` (buffer) - the buffer with data
+- `buffer` (buffer_data) - the buffer with data
 
 **Examples**
 
@@ -691,38 +680,25 @@ in the resource list, all files and directories in that directory is recursively
 included:
 For example "main/data/,assets/level_data.json".
 Note that issuing multiple requests of the same resource will yield
-individual buffers per request. There is no implic caching of the buffers
+individual buffers per request. There is no implicit caching of the buffers
 based on request path.
 
 **Parameters**
 
 - `path` (string) - the path to load the buffer from
-- `status_callback` (function(self, request_id, result)) - A status callback that will be invoked when a request has been handled, or an error occured. The result is a table containing:
-<dl>
-<dt><code>status</code></dt>
-<dd><span class="type">number</span> The status of the request, supported values are:</dd>
-</dl>
-<ul>
-<li><code>resource.REQUEST_STATUS_FINISHED</code></li>
-<li><code>resource.REQUEST_STATUS_ERROR_IO_ERROR</code></li>
-<li><code>resource.REQUEST_STATUS_ERROR_NOT_FOUND</code></li>
-</ul>
-<dl>
-<dt><code>buffer</code></dt>
-<dd><span class="type">buffer</span> If the request was successfull, this will contain the request payload in a buffer object, and nil otherwise. Make sure to check the status before doing anything with the buffer value!</dd>
-</dl>
+- `status_callback` (fun(self:script_instance, request_id:integer, result:sys.load_buffer_result)) - callback invoked when the request completes or fails
 
 **Returns**
 
-- `handle` (number) - a handle to the request
+- `handle` (integer) - a handle to the request
 
 **Examples**
 
 Load binary data from a custom project resource and update a texture resource:
 ```
 function my_callback(self, request_id, result)
-  if result.status == resource.REQUEST_STATUS_FINISHED then
-     resource.set_texture("/my_texture", { ... }, result.buf)
+  if result.status == sys.REQUEST_STATUS_FINISHED then
+     resource.set_texture("/my_texture", { ... }, result.buffer)
   end
 end
 
@@ -735,21 +711,28 @@ Load binary data from non-custom resource files on disk:
 function my_callback(self, request_id, result)
   if result.status ~= sys.REQUEST_STATUS_FINISHED then
     -- uh oh! File could not be found, do something graceful
-  elseif request_id == self.first_asset then
+  elseif request_id == self.first_request then
     -- result.buffer contains data from my_level_asset.bin
-  elif request_id == self.second_asset then
+  elseif request_id == self.second_request then
     -- result.buffer contains data from 'my_level.bin'
   end
 end
 
 function init(self)
-  self.first_asset = hash("folder_next_to_binary/my_level_asset.bin")
-  self.second_asset = hash("/some_absolute_path/my_level.bin")
-  self.first_request = sys.load_buffer_async(self.first_asset, my_callback)
-  self.second_request = sys.load_buffer_async(self.second_asset, my_callback)
+  self.first_request = sys.load_buffer_async("folder_next_to_binary/my_level_asset.bin", my_callback)
+  self.second_request = sys.load_buffer_async("/some_absolute_path/my_level.bin", my_callback)
 end
 
 ```
+
+### sys.load_buffer_result
+*Type:* STRUCT
+Asynchronous buffer-load result
+
+**Members**
+
+- `status` (sys.REQUEST_STATUS) - Request status.
+- `buffer?` (buffer_data) - Loaded payload for a successful request.
 
 ### sys.load_resource
 *Type:* FUNCTION
@@ -787,17 +770,15 @@ end
 
 ```
 
-### sys.NETWORK_CONNECTED
-*Type:* CONSTANT
-network connected through other, non cellular, connection
+### sys.NETWORK
+*Type:* ENUM
+Network connectivity states
 
-### sys.NETWORK_CONNECTED_CELLULAR
-*Type:* CONSTANT
-network connected through mobile cellular
+**Members**
 
-### sys.NETWORK_DISCONNECTED
-*Type:* CONSTANT
-no network connection found
+- `sys.NETWORK_CONNECTED` - Connected through Wi-Fi or another non-cellular network.
+- `sys.NETWORK_CONNECTED_CELLULAR` - Connected through a cellular network.
+- `sys.NETWORK_DISCONNECTED` - No network connection was found.
 
 ### sys.open_url
 *Type:* FUNCTION
@@ -806,14 +787,7 @@ Open URL in default application, typically a browser
 **Parameters**
 
 - `url` (string) - url to open
-- `attributes` (table) (optional) - table with attributes
-<code>target</code>
-- <span class="type">string</span> <span class="icon-html5"></span>: Optional. Specifies the target attribute or the name of the window. The following values are supported:
-- <code>_self</code> - (default value) URL replaces the current page.
-- <code>_blank</code> - URL is loaded into a new window, or tab.
-- <code>_parent</code> - URL is loaded into the parent frame.
-- <code>_top</code> - URL replaces any framesets that may be loaded.
-- <code>name</code> - The name of the window (Note: the name does not specify the title of the new window).
+- `attributes` (sys.open_url_attributes) (optional) - optional URL opening attributes
 
 **Returns**
 
@@ -829,6 +803,14 @@ if not success then
 end
 
 ```
+
+### sys.open_url_attributes
+*Type:* STRUCT
+URL opening attributes
+
+**Members**
+
+- `target?` (string) - HTML5 browsing context: <code>_self</code>, <code>_blank</code>, <code>_parent</code>, <code>_top</code>, or a named window.
 
 ### sys.reboot
 *Type:* FUNCTION
@@ -857,17 +839,15 @@ sys.reboot(arg1, arg2)
 
 ```
 
-### sys.REQUEST_STATUS_ERROR_IO_ERROR
-*Type:* CONSTANT
-an asyncronous request is unable to read the resource
+### sys.REQUEST_STATUS
+*Type:* ENUM
+Asynchronous request status values
 
-### sys.REQUEST_STATUS_ERROR_NOT_FOUND
-*Type:* CONSTANT
-an asyncronous request is unable to locate the resource
+**Members**
 
-### sys.REQUEST_STATUS_FINISHED
-*Type:* CONSTANT
-an asyncronous request has finished successfully
+- `sys.REQUEST_STATUS_ERROR_IO_ERROR` - An I/O error occurred.
+- `sys.REQUEST_STATUS_ERROR_NOT_FOUND` - The requested resource was not found.
+- `sys.REQUEST_STATUS_FINISHED` - The request completed successfully.
 
 ### sys.save
 *Type:* FUNCTION
@@ -884,7 +864,7 @@ This function will raise a Lua error if an error occurs while saving the table.
 **Parameters**
 
 - `filename` (string) - file to write to
-- `table` (table) - lua table to save
+- `table` (table<any, any>) - lua table to save
 
 **Examples**
 
@@ -905,7 +885,7 @@ This function will raise a Lua error if an error occurs while serializing the ta
 
 **Parameters**
 
-- `table` (table) - lua table to serialize
+- `table` (table<any, any>) - lua table to serialize
 
 **Returns**
 
@@ -973,14 +953,14 @@ The error handler is a function which is called whenever a lua runtime error occ
 
 **Parameters**
 
-- `error_handler` (function(source, message, traceback)) - the function to be called on error
+- `error_handler` (fun(source:string, message:string, traceback:string)) - the function to be called on error
 <dl>
-<dt><code>source</code></dt>
-<dd><span class="type">string</span> The runtime context of the error. Currently, this is always <code>"lua"</code>.</dd>
-<dt><code>message</code></dt>
-<dd><span class="type">string</span> The source file, line number and error message.</dd>
-<dt><code>traceback</code></dt>
-<dd><span class="type">string</span> The stack traceback.</dd>
+<dt class="api-lua-v2-type-definition"><code>source:<a href="../../../manuals/lua/#variables-and-data-types">string</a></code></dt>
+<dd>The runtime context of the error. Currently, this is always <code>"lua"</code>.</dd>
+<dt class="api-lua-v2-type-definition"><code>message:<a href="../../../manuals/lua/#variables-and-data-types">string</a></code></dt>
+<dd>The source file, line number and error message.</dd>
+<dt class="api-lua-v2-type-definition"><code>traceback:<a href="../../../manuals/lua/#variables-and-data-types">string</a></code></dt>
+<dd>The stack traceback.</dd>
 </dl>
 
 **Examples**
@@ -1028,15 +1008,26 @@ sys.set_render_enable(false)
 
 ### sys.set_update_frequency
 *Type:* FUNCTION
-Set game update-frequency (frame cap). This option is equivalent to display.update_frequency in
-the "game.project" settings but set in run-time. If Vsync checked in "game.project", the rate will
-be clamped to a swap interval that matches any detected main monitor refresh rate. If Vsync is
-unchecked the engine will try to respect the rate in software using timers. There is no
-guarantee that the frame cap will be achieved depending on platform specifics and hardware settings.
+Set game update-frequency (frame cap). This option is equivalent to
+display.update_frequency in the "game.project" settings but set at run-time.
+On platforms where Defold owns the application loop, a positive value uses
+timer pacing and requests a swap interval of 0 to avoid an additional vsync
+wait where supported. Setting the frequency to 0 restores the requested swap
+interval and uses variable-rate updates. Platform-owned loops, such as HTML5
+and iOS, retain their platform scheduling and presentation behavior. There is
+no guarantee that the frame cap will be achieved depending on platform and
+hardware constraints.
+With engine-side timer pacing, the update dt can be shortened or enlarged to
+account for elapsed time; the frame cap does not guarantee a constant dt.
+Elapsed time beyond max(engine.max_time_step, 1 / frequency) is discarded,
+so accumulated dt can trail wall-clock time after hitches. An intentional
+fixed interval longer than engine.max_time_step is allowed. This setting
+is separate from the fixed_update() timestep.
 
 **Parameters**
 
-- `frequency` (number) - target frequency. 60 for 60 fps
+- `frequency` (number) - target frequency in hertz. 0 selects a variable
+frame rate; negative values are treated as 0.
 
 **Examples**
 
@@ -1048,14 +1039,16 @@ sys.set_update_frequency(60)
 
 ### sys.set_vsync_swap_interval
 *Type:* FUNCTION
-Set the vsync swap interval. The interval with which to swap the front and back buffers
-in sync with vertical blanks (v-blank), the hardware event where the screen image is updated
-with data from the front buffer. A value of 1 swaps the buffers at every v-blank, a value of
-2 swaps the buffers every other v-blank and so on. A value of 0 disables waiting for v-blank
-before swapping the buffers. Default value is 1.
-When setting the swap interval to 0 and having vsync disabled in
-"game.project", the engine will try to respect the set frame cap value from
-"game.project" in software instead.
+Request a presentation interval relative to vertical blanks (v-blank).
+0 requests disabling vsync and 1 requests presenting every refresh (the default).
+OpenGL may support larger intervals, such as 2 for every other refresh.
+Vulkan and Metal treat any nonzero interval as enabling vsync; DX12 clamps
+intervals to the supported range 0 through 4. Actual behavior depends on
+the backend, platform, and driver.
+On platforms where Defold owns the application loop, a positive
+display.update_frequency or a positive value set by sys.set_update_frequency()
+uses timer pacing and requests a swap interval of 0. The requested
+swap interval is retained and applied again when the update frequency is set to 0.
 This setting may be overridden by driver settings.
 
 **Parameters**
@@ -1064,11 +1057,37 @@ This setting may be overridden by driver settings.
 
 **Examples**
 
-Setting the swap intervall to swap every v-blank
+Setting the swap interval to swap every v-blank
 ```
 sys.set_vsync_swap_interval(1)
 
 ```
+
+### sys.sys_info
+*Type:* STRUCT
+System information
+
+**Members**
+
+- `device_model?` (string) - Device model on iOS and Android.
+- `manufacturer?` (string) - Device manufacturer on iOS and Android.
+- `system_name` (string) - Operating-system name.
+- `system_version` (string) - Operating-system version.
+- `api_version` (string) - Platform API version.
+- `language` (string) - ISO 639 language code.
+- `device_language` (string) - Preferred device language, optionally followed by an ISO 15924 script code.
+- `territory` (string) - ISO 3166-1 alpha-2 country code or UN M.49 numeric region code.
+- `gmt_offset` (number) - Current GMT offset in minutes.
+- `device_ident?` (string) - Operating-system-protected device identifier.
+- `user_agent?` (string) - HTTP user agent on HTML5.
+
+### sys.sys_info_options
+*Type:* STRUCT
+System-information options
+
+**Members**
+
+- `ignore_secure?` (boolean) - Omit operating-system-protected values such as <code>device_ident</code>.
 
 ### toggle_physics_debug
 *Type:* MESSAGE

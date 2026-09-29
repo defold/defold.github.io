@@ -84,24 +84,8 @@ For more detailed information, check for the contact_point_event.
 
 **Parameters**
 
-- `a` (table) - collision information for object A
-<dl>
-<dt><code>position</code></dt>
-<dd><span class="type">vector3</span> The world position of object A</dd>
-<dt><code>id</code></dt>
-<dd><span class="type">hash</span> The ID of object A</dd>
-<dt><code>group</code></dt>
-<dd><span class="type">hash</span> The collision group of object A</dd>
-</dl>
-- `b` (table) - collision information for object B
-<dl>
-<dt><code>position</code></dt>
-<dd><span class="type">vector3</span> The world position of object B</dd>
-<dt><code>id</code></dt>
-<dd><span class="type">hash</span> The ID of object B</dd>
-<dt><code>group</code></dt>
-<dd><span class="type">hash</span> The collision group of object B</dd>
-</dl>
+- `a` (message.physics.collision_info) - collision information for object A
+- `b` (message.physics.collision_info) - collision information for object B
 
 **Examples**
 
@@ -170,36 +154,8 @@ when the collision occurs, check for the collision_event event instead.
 
 - `applied_impulse` (number) - the impulse the contact resulted in
 - `distance` (number) - the penetration distance between the objects, which is always positive
-- `a` (table) - contact point information for object A
-<dl>
-<dt><code>position</code></dt>
-<dd><span class="type">vector3</span> The world position of object A</dd>
-<dt><code>id</code></dt>
-<dd><span class="type">hash</span> The ID of object A</dd>
-<dt><code>group</code></dt>
-<dd><span class="type">hash</span> The collision group of object A</dd>
-<dt><code>relative_velocity</code></dt>
-<dd><span class="type">vector3</span> The relative velocity of the collision object A as observed from B object</dd>
-<dt><code>mass</code></dt>
-<dd><span class="type">number</span> The mass of the collision object A in kg</dd>
-<dt><code>normal</code></dt>
-<dd><span class="type">vector3</span> normal in world space of the contact point, which points from B object towards A object</dd>
-</dl>
-- `b` (table) - contact point information for object B
-<dl>
-<dt><code>position</code></dt>
-<dd><span class="type">vector3</span> The world position of object B</dd>
-<dt><code>id</code></dt>
-<dd><span class="type">hash</span> The ID of object B</dd>
-<dt><code>group</code></dt>
-<dd><span class="type">hash</span> The collision group of object B</dd>
-<dt><code>relative_velocity</code></dt>
-<dd><span class="type">vector3</span> The relative velocity of the collision object B as observed from A object</dd>
-<dt><code>mass</code></dt>
-<dd><span class="type">number</span> The mass of the collision object B in kg</dd>
-<dt><code>normal</code></dt>
-<dd><span class="type">vector3</span> normal in world space of the contact point, which points from A object towards B object</dd>
-</dl>
+- `a` (message.physics.contact_point_info) - contact point information for object A
+- `b` (message.physics.contact_point_info) - contact point information for object B
 
 **Examples**
 
@@ -331,6 +287,39 @@ assert(mass > 1)
 
 ```
 
+### message.physics.collision_info
+*Type:* STRUCT
+collision object information
+
+**Members**
+
+- `position` (vector3) - object position in world space
+- `id` (hash) - object identifier
+- `group` (hash) - object collision group
+
+### message.physics.contact_point_info
+*Type:* STRUCT
+contact-point object information
+
+**Members**
+
+- `position` (vector3) - contact point position in world space
+- `instance_position` (vector3) - object position in world space
+- `normal` (vector3) - contact normal pointing from the other object toward this object
+- `relative_velocity` (vector3) - object velocity relative to the other object
+- `mass` (number) - object mass in kilograms
+- `id` (hash) - object identifier
+- `group` (hash) - object collision group
+
+### message.physics.trigger_info
+*Type:* STRUCT
+trigger interaction object information
+
+**Members**
+
+- `id` (hash) - object identifier
+- `group` (hash) - object collision group
+
 ### physics.create_joint
 *Type:* FUNCTION
 Create a physics joint between two collision object components.
@@ -338,15 +327,13 @@ Note: Currently only supported in 2D physics.
 
 **Parameters**
 
-- `joint_type` (number) - the joint type
+- `joint_type` (physics.JOINT_TYPE) - the joint type
 - `collisionobject_a` (string | hash | url) - first collision object
 - `joint_id` (string | hash) - id of the joint
 - `position_a` (vector3) - local position where to attach the joint on the first collision object
 - `collisionobject_b` (string | hash | url) - second collision object
 - `position_b` (vector3) - local position where to attach the joint on the second collision object
-- `properties` (table) (optional) - optional joint specific properties table
-See each joint type for possible properties field. The one field that is accepted for all joint types is:
-- <span class="type">boolean</span> <code>collide_connected</code>: Set this flag to true if the attached bodies should collide.
+- `properties` (physics.joint_properties) (optional) - optional joint-specific properties
 
 ### physics.destroy_joint
 *Type:* FUNCTION
@@ -358,6 +345,15 @@ Note: Currently only supported in 2D physics.
 
 - `collisionobject` (string | hash | url) - collision object where the joint exist
 - `joint_id` (string | hash) - id of the joint
+
+### physics.event
+*Type:* TYPEDEF
+An event delivered to a physics world listener. Inspect its type field to
+determine which event-specific fields are available.
+
+**Parameters**
+
+- `value` (message.physics.contact_point_event | message.physics.collision_event | message.physics.trigger_event | message.physics.ray_cast_response | message.physics.ray_cast_missed) - physics event data
 
 ### physics.get_gravity
 *Type:* FUNCTION
@@ -392,11 +388,16 @@ Returns the group name of a collision object as a hash.
 **Returns**
 
 - `group` (hash) - hash value of the group.
-<div class="codehilite"><pre><span></span><code><span class="kd">local</span> <span class="kr">function</span> <span class="nf">check_is_enemy</span><span class="p">()</span>
-    <span class="kd">local</span> <span class="n">group</span> <span class="o">=</span> <span class="n">physics</span><span class="p">.</span><span class="n">get_group</span><span class="p">(</span><span class="s2">&quot;#collisionobject&quot;</span><span class="p">)</span>
-    <span class="kr">return</span> <span class="n">group</span> <span class="o">==</span> <span class="n">hash</span><span class="p">(</span><span class="s2">&quot;enemy&quot;</span><span class="p">)</span>
-<span class="kr">end</span>
-</code></pre></div>
+
+**Examples**
+
+```
+local function check_is_enemy()
+    local group = physics.get_group("#collisionobject")
+    return group == hash("enemy")
+end
+
+```
 
 ### physics.get_joint_properties
 *Type:* FUNCTION
@@ -411,10 +412,7 @@ Note: Currently only supported in 2D physics.
 
 **Returns**
 
-- `properties` (table) - properties table. See the joint types for what fields are available, the only field available for all types is:
-<ul>
-<li><span class="type">boolean</span> <code>collide_connected</code>: Set this flag to true if the attached bodies should collide.</li>
-</ul>
+- `properties` (physics.joint_properties_info) - joint properties
 
 ### physics.get_joint_reaction_force
 *Type:* FUNCTION
@@ -459,12 +457,17 @@ object, false otherwise.
 **Returns**
 
 - `maskbit` (boolean) - boolean value of the maskbit. 'true' if present, 'false' otherwise.
-<div class="codehilite"><pre><span></span><code><span class="kd">local</span> <span class="kr">function</span> <span class="nf">is_invincible</span><span class="p">()</span>
-    <span class="c1">-- check if the collisionobject would collide with the &quot;bullet&quot; group</span>
-    <span class="kd">local</span> <span class="n">invincible</span> <span class="o">=</span> <span class="n">physics</span><span class="p">.</span><span class="n">get_maskbit</span><span class="p">(</span><span class="s2">&quot;#collisionobject&quot;</span><span class="p">,</span> <span class="s2">&quot;bullet&quot;</span><span class="p">)</span>
-    <span class="kr">return</span> <span class="n">invincible</span>
-<span class="kr">end</span>
-</code></pre></div>
+
+**Examples**
+
+```
+local function is_invincible()
+    -- check if the collisionobject would collide with the "bullet" group
+    local invincible = physics.get_maskbit("#collisionobject", "bullet")
+    return invincible
+end
+
+```
 
 ### physics.get_shape
 *Type:* FUNCTION
@@ -477,123 +480,80 @@ Gets collision shape data from a collision object
 
 **Returns**
 
-- `table` (table) - A table containing meta data about the physics shape
-<dl>
-<dt><code>type</code></dt>
-<dd><span class="type">number</span> The shape type. Supported values:</dd>
-</dl>
-<ul>
-<li><code>physics.SHAPE_TYPE_SPHERE</code></li>
-<li><code>physics.SHAPE_TYPE_BOX</code></li>
-<li><code>physics.SHAPE_TYPE_CAPSULE</code> <em>Only supported for 3D physics</em></li>
-<li><code>physics.SHAPE_TYPE_HULL</code></li>
-</ul>
-The returned table contains different fields depending on which type the shape is.
-If the shape is a sphere:
-<dl>
-<dt><code>diameter</code></dt>
-<dd><span class="type">number</span> the diameter of the sphere shape</dd>
-</dl>
-If the shape is a box:
-<dl>
-<dt><code>dimensions</code></dt>
-<dd><span class="type">vector3</span> a <code>vmath.vector3</code> of the box dimensions</dd>
-</dl>
-If the shape is a capsule:
-<dl>
-<dt><code>diameter</code></dt>
-<dd><span class="type">number</span> the diameter of the capsule poles</dd>
-<dt><code>height</code></dt>
-<dd><span class="type">number</span> the height of the capsule</dd>
-</dl>
-<div class="codehilite"><pre><span></span><code><span class="kd">local</span> <span class="kr">function</span> <span class="nf">get_shape_meta</span><span class="p">()</span>
-    <span class="kd">local</span> <span class="n">sphere</span> <span class="o">=</span> <span class="n">physics</span><span class="p">.</span><span class="n">get_shape</span><span class="p">(</span><span class="s2">&quot;#collisionobject&quot;</span><span class="p">,</span> <span class="s2">&quot;my_sphere_shape&quot;</span><span class="p">)</span>
-    <span class="c1">-- returns a table with sphere.diameter</span>
-    <span class="kr">return</span> <span class="n">sphere</span>
-<span class="kr">end</span>
-</code></pre></div>
+- `table` (physics.shape_data) - collision shape data
 
-### physics.JOINT_TYPE_FIXED
-*Type:* CONSTANT
-The following properties are available when connecting a joint of JOINT_TYPE_FIXED type:
+**Examples**
 
-**Parameters**
+```
+local function get_shape_meta()
+    local sphere = physics.get_shape("#collisionobject", "my_sphere_shape")
+    -- returns a table with sphere.diameter
+    return sphere
+end
 
-- `max_length` (number) - The maximum length of the rope.
+```
 
-### physics.JOINT_TYPE_HINGE
-*Type:* CONSTANT
-The following properties are available when connecting a joint of JOINT_TYPE_HINGE type:
+### physics.joint_properties
+*Type:* STRUCT
+The available fields depend on the joint type.
 
-**Parameters**
+**Members**
 
-- `reference_angle` (number) - The bodyB angle minus bodyA angle in the reference state (radians).
-- `lower_angle` (number) - The lower angle for the joint limit (radians).
-- `upper_angle` (number) - The upper angle for the joint limit (radians).
-- `max_motor_torque` (number) - The maximum motor torque used to achieve the desired motor speed. Usually in N-m.
-- `motor_speed` (number) - The desired motor speed. Usually in radians per second.
-- `enable_limit` (boolean) - A flag to enable joint limits.
-- `enable_motor` (boolean) - A flag to enable the joint motor.
-- `joint_angle` (number) - <span class="mark">READ ONLY</span>Current joint angle in radians.
-(Read only field, available from <code>physics.get_joint_properties()</code>)
-- `joint_speed` (number) - <span class="mark">READ ONLY</span>Current joint angle speed in radians per second.
-(Read only field, available from <code>physics.get_joint_properties()</code>)
+- `collide_connected?` (boolean) - whether the connected objects should collide
+- `length?` (number) - Natural spring length between the anchor points.
+- `frequency?` (number) - Mass-spring-damper frequency in Hertz; zero disables softness.
+- `damping?` (number) - Damping ratio, where zero is no damping and one is critical damping.
+- `max_length?` (number) - Maximum fixed-joint rope length.
+- `local_axis_a?` (vector3) - Local translation unit axis in the first body.
+- `reference_angle?` (number) - Angle of the second body relative to the first body, in radians.
+- `lower_angle?` (number) - Lower angular limit in radians.
+- `upper_angle?` (number) - Upper angular limit in radians.
+- `lower_translation?` (number) - Lower translation limit, usually in meters.
+- `upper_translation?` (number) - Upper translation limit, usually in meters.
+- `max_motor_torque?` (number) - Maximum motor torque used to reach the desired speed, usually in N-m.
+- `max_motor_force?` (number) - Maximum motor force used to reach the desired speed.
+- `motor_speed?` (number) - Desired motor speed.
+- `enable_limit?` (boolean) - Whether joint limits are enabled.
+- `enable_motor?` (boolean) - Whether the joint motor is enabled.
 
-### physics.JOINT_TYPE_SLIDER
-*Type:* CONSTANT
-The following properties are available when connecting a joint of JOINT_TYPE_SLIDER type:
+### physics.joint_properties_info
+*Type:* STRUCT
+The available optional fields depend on the joint type.
 
-**Parameters**
+**Members**
 
-- `local_axis_a` (vector3) - The local translation unit axis in bodyA.
-- `reference_angle` (number) - The constrained angle between the bodies: bodyB_angle - bodyA_angle.
-- `enable_limit` (boolean) - Enable/disable the joint limit.
-- `lower_translation` (number) - The lower translation limit, usually in meters.
-- `upper_translation` (number) - The upper translation limit, usually in meters.
-- `enable_motor` (boolean) - Enable/disable the joint motor.
-- `max_motor_force` (number) - The maximum motor torque, usually in N-m.
-- `motor_speed` (number) - The desired motor speed in radians per second.
-- `joint_translation` (number) - <span class="mark">READ ONLY</span>Current joint translation, usually in meters.
-(Read only field, available from <code>physics.get_joint_properties()</code>)
-- `joint_speed` (number) - <span class="mark">READ ONLY</span>Current joint translation speed, usually in meters per second.
-(Read only field, available from <code>physics.get_joint_properties()</code>)
+- `collide_connected` (boolean) - whether the connected objects collide
+- `length?` (number) - spring length
+- `frequency?` (number) - spring frequency
+- `damping?` (number) - damping ratio
+- `max_length?` (number) - fixed-joint maximum length
+- `local_axis_a?` (vector3) - local joint axis
+- `reference_angle?` (number) - reference angle
+- `lower_angle?` (number) - lower angular limit
+- `upper_angle?` (number) - upper angular limit
+- `lower_translation?` (number) - lower translation limit
+- `upper_translation?` (number) - upper translation limit
+- `max_motor_torque?` (number) - maximum motor torque
+- `max_motor_force?` (number) - maximum motor force
+- `motor_speed?` (number) - motor speed
+- `enable_limit?` (boolean) - whether limits are enabled
+- `enable_motor?` (boolean) - whether the motor is enabled
+- `joint_angle?` (number) - Read-only current hinge angle in radians.
+- `joint_speed?` (number) - Read-only current hinge angular speed or slider/wheel translation speed.
+- `joint_translation?` (number) - Read-only current slider or wheel translation, usually in meters.
 
-### physics.JOINT_TYPE_SPRING
-*Type:* CONSTANT
-The following properties are available when connecting a joint of JOINT_TYPE_SPRING type:
+### physics.JOINT_TYPE
+*Type:* ENUM
+Joint types
 
-**Parameters**
+**Members**
 
-- `length` (number) - The natural length between the anchor points.
-- `frequency` (number) - The mass-spring-damper frequency in Hertz. A value of 0 disables softness.
-- `damping` (number) - The damping ratio. 0 = no damping, 1 = critical damping.
-
-### physics.JOINT_TYPE_WELD
-*Type:* CONSTANT
-The following properties are available when connecting a joint of JOINT_TYPE_WELD type:
-
-**Parameters**
-
-- `reference_angle` (number) - <span class="mark">READ ONLY</span>The bodyB angle minus bodyA angle in the reference state (radians).
-- `frequency` (number) - The mass-spring-damper frequency in Hertz. Rotation only. Disable softness with a value of 0.
-- `damping` (number) - The damping ratio. 0 = no damping, 1 = critical damping.
-
-### physics.JOINT_TYPE_WHEEL
-*Type:* CONSTANT
-The following properties are available when connecting a joint of JOINT_TYPE_WHEEL type:
-
-**Parameters**
-
-- `local_axis_a` (vector3) - The local translation unit axis in bodyA.
-- `max_motor_torque` (number) - The maximum motor torque used to achieve the desired motor speed. Usually in N-m.
-- `motor_speed` (number) - The desired motor speed in radians per second.
-- `enable_motor` (boolean) - Enable/disable the joint motor.
-- `frequency` (number) - The mass-spring-damper frequency in Hertz. Rotation only. Disable softness with a value of 0.
-- `damping` (number) - The spring damping ratio. 0 = no damping, 1 = critical damping.
-- `joint_translation` (number) - <span class="mark">READ ONLY</span>Current joint translation, usually in meters.
-(Read only field, available from <code>physics.get_joint_properties()</code>)
-- `joint_speed` (number) - <span class="mark">READ ONLY</span>Current joint translation speed, usually in meters per second.
-(Read only field, available from <code>physics.get_joint_properties()</code>)
+- `physics.JOINT_TYPE_FIXED` - Fixed joint; uses <code>max_length</code> from <a href="/ref/physics#physics.joint_properties">physics.joint_properties</a>.
+- `physics.JOINT_TYPE_HINGE` - Hinge joint; uses the angular-limit and motor fields from <a href="/ref/physics#physics.joint_properties">physics.joint_properties</a>.
+- `physics.JOINT_TYPE_SLIDER` - Slider joint; uses the translation-limit and motor fields from <a href="/ref/physics#physics.joint_properties">physics.joint_properties</a>.
+- `physics.JOINT_TYPE_SPRING` - Spring joint; uses <code>length</code>, <code>frequency</code>, and <code>damping</code> from <a href="/ref/physics#physics.joint_properties">physics.joint_properties</a>.
+- `physics.JOINT_TYPE_WELD` - Weld joint; uses <code>reference_angle</code>, <code>frequency</code>, and <code>damping</code> from <a href="/ref/physics#physics.joint_properties">physics.joint_properties</a>.
+- `physics.JOINT_TYPE_WHEEL` - Wheel joint; uses the axis, motor, frequency, and damping fields from <a href="/ref/physics#physics.joint_properties">physics.joint_properties</a>.
 
 ### physics.raycast
 *Type:* FUNCTION
@@ -608,16 +568,12 @@ NOTE: Ray casts will ignore collision objects that contain the starting point of
 
 - `from` (vector3) - the world position of the start of the ray
 - `to` (vector3) - the world position of the end of the ray
-- `groups` (table) - a lua table containing the hashed groups for which to test collisions against
-- `options` (table) (optional) - a lua table containing options for the raycast.
-<dl>
-<dt><code>all</code></dt>
-<dd><span class="type">boolean</span> Set to <code>true</code> to return all ray cast hits. If <code>false</code>, it will only return the closest hit.</dd>
-</dl>
+- `groups` (hash[]) - a lua table containing the hashed groups for which to test collisions against
+- `options` (physics.raycast_options) (optional) - optional ray-cast options
 
 **Returns**
 
-- `result` (table | nil) - It returns a list. If missed it returns <code>nil</code>. See <a href="#ray_cast_response">ray_cast_response</a> for details on the returned values.
+- `result` (message.physics.ray_cast_response[] | message.physics.ray_cast_response | nil) - It returns a list. If missed it returns <code>nil</code>. See <a href="#ray_cast_response">ray_cast_response</a> for details on the returned values.
 
 **Examples**
 
@@ -658,8 +614,8 @@ NOTE: Ray casts will ignore collision objects that contain the starting point of
 
 - `from` (vector3) - the world position of the start of the ray
 - `to` (vector3) - the world position of the end of the ray
-- `groups` (table) - a lua table containing the hashed groups for which to test collisions against
-- `request_id` (number) (optional) - a number in range [0,255]. It will be sent back in the response for identification, 0 by default
+- `groups` (hash[]) - a lua table containing the hashed groups for which to test collisions against
+- `request_id` (integer) (optional) - a number in range [0,255]. It will be sent back in the response for identification, 0 by default
 
 **Examples**
 
@@ -685,18 +641,26 @@ end
 
 ```
 
+### physics.raycast_options
+*Type:* STRUCT
+Ray-cast options
+
+**Members**
+
+- `all?` (boolean) - Return every hit instead of only the closest hit.
+
 ### physics.set_event_listener
 *Type:* FUNCTION
 Only one physics world event listener can be set at a time.
 
 **Parameters**
 
-- `callback` (function(self, events) | nil) - A callback that receives an information about all the physics interactions in this physics world.
+- `callback` (fun(self:script_instance, events:physics.event[]) | nil) - A callback that receives information about all physics interactions in this physics world. Pass <code>nil</code> to remove the listener.
 <dl>
-<dt><code>self</code></dt>
-<dd><span class="type">object</span> The calling script</dd>
-<dt><code>event</code></dt>
-<dd><span class="type">constant</span> The type of event. Can be one of these messages:</dd>
+<dt class="api-lua-v2-type-definition"><code>self:<a href="../builtins-lua/#script_instance">script_instance</a></code></dt>
+<dd>The calling script instance</dd>
+<dt class="api-lua-v2-type-definition"><code>events:<a href="#physics.event">physics.event</a>[]</code></dt>
+<dd>An array of event tables. Each event table contains a <code>type</code> field with the hashed name of one of these messages, together with fields specific to that event type:</dd>
 </dl>
 <ul>
 <li><a href="#contact_point_event">contact_point_event</a></li>
@@ -705,10 +669,6 @@ Only one physics world event listener can be set at a time.
 <li><a href="#ray_cast_response">ray_cast_response</a></li>
 <li><a href="#ray_cast_missed">ray_cast_missed</a></li>
 </ul>
-<dl>
-<dt><code>data</code></dt>
-<dd><span class="type">table</span> The callback value data is a table that contains event-related data. See the documentation for details on the messages.</dd>
-</dl>
 
 **Examples**
 
@@ -821,10 +781,15 @@ a collision object in the editor.
 
 - `url` (string | hash | url) - the collision object affected.
 - `group` (string) - the new group name to be assigned.
-<div class="codehilite"><pre><span></span><code><span class="kd">local</span> <span class="kr">function</span> <span class="nf">change_collision_group</span><span class="p">()</span>
-     <span class="n">physics</span><span class="p">.</span><span class="n">set_group</span><span class="p">(</span><span class="s2">&quot;#collisionobject&quot;</span><span class="p">,</span> <span class="s2">&quot;enemy&quot;</span><span class="p">)</span>
-<span class="kr">end</span>
-</code></pre></div>
+
+**Examples**
+
+```
+local function change_collision_group()
+     physics.set_group("#collisionobject", "enemy")
+end
+
+```
 
 ### physics.set_hflip
 *Type:* FUNCTION
@@ -855,7 +820,7 @@ Note: Currently only supported in 2D physics.
 
 - `collisionobject` (string | hash | url) - collision object where the joint exist
 - `joint_id` (string | hash) - id of the joint
-- `properties` (table) - joint specific properties table
+- `properties` (physics.joint_properties) - joint specific properties table
 Note: The <code>collide_connected</code> field cannot be updated/changed after a connection has been made.
 
 ### physics.set_maskbit
@@ -867,11 +832,16 @@ Sets or clears the masking of a group (maskbit) in a collision object.
 - `url` (string | hash | url) - the collision object to change the mask of.
 - `group` (string) - the name of the group (maskbit) to modify in the mask.
 - `maskbit` (boolean) - boolean value of the new maskbit. 'true' to enable, 'false' to disable.
-<div class="codehilite"><pre><span></span><code><span class="kd">local</span> <span class="kr">function</span> <span class="nf">make_invincible</span><span class="p">()</span>
-    <span class="c1">-- no longer collide with the &quot;bullet&quot; group</span>
-    <span class="n">physics</span><span class="p">.</span><span class="n">set_maskbit</span><span class="p">(</span><span class="s2">&quot;#collisionobject&quot;</span><span class="p">,</span> <span class="s2">&quot;bullet&quot;</span><span class="p">,</span> <span class="kc">false</span><span class="p">)</span>
-<span class="kr">end</span>
-</code></pre></div>
+
+**Examples**
+
+```
+local function make_invincible()
+    -- no longer collide with the "bullet" group
+    physics.set_maskbit("#collisionobject", "bullet", false)
+end
+
+```
 
 ### physics.set_shape
 *Type:* FUNCTION
@@ -883,29 +853,34 @@ comes from having to recreate the shape objects when certain shapes needs to be 
 
 - `url` (string | hash | url) - the collision object.
 - `shape` (string | hash) - the name of the shape to get data for.
-- `table` (table) - the shape data to update the shape with.
-See <a href="/ref/physics#physics.get_shape">physics.get_shape</a> for a detailed description of each field in the data table.
-<div class="codehilite"><pre><span></span><code><span class="kd">local</span> <span class="kr">function</span> <span class="nf">set_shape_data</span><span class="p">()</span>
-    <span class="c1">-- set capsule shape data</span>
-    <span class="kd">local</span> <span class="n">data</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="n">data</span><span class="p">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">physics</span><span class="p">.</span><span class="n">SHAPE_TYPE_CAPSULE</span>
-    <span class="n">data</span><span class="p">.</span><span class="n">diameter</span> <span class="o">=</span> <span class="mi">10</span>
-    <span class="n">data</span><span class="p">.</span><span class="n">height</span> <span class="o">=</span> <span class="mi">20</span>
-    <span class="n">physics</span><span class="p">.</span><span class="n">set_shape</span><span class="p">(</span><span class="s2">&quot;#collisionobject&quot;</span><span class="p">,</span> <span class="s2">&quot;my_capsule_shape&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+- `table` (physics.shape_data) - updated collision shape data
+Hull and mesh geometry cannot be changed with this function.
 
-    <span class="c1">-- set sphere shape data</span>
-    <span class="n">data</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="n">data</span><span class="p">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">physics</span><span class="p">.</span><span class="n">SHAPE_TYPE_SPHERE</span>
-    <span class="n">data</span><span class="p">.</span><span class="n">diameter</span> <span class="o">=</span> <span class="mi">10</span>
-    <span class="n">physics</span><span class="p">.</span><span class="n">set_shape</span><span class="p">(</span><span class="s2">&quot;#collisionobject&quot;</span><span class="p">,</span> <span class="s2">&quot;my_sphere_shape&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+**Examples**
 
-    <span class="c1">-- set box shape data</span>
-    <span class="n">data</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="n">data</span><span class="p">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">physics</span><span class="p">.</span><span class="n">SHAPE_TYPE_BOX</span>
-    <span class="n">data</span><span class="p">.</span><span class="n">dimensions</span> <span class="o">=</span> <span class="n">vmath</span><span class="p">.</span><span class="n">vector3</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
-    <span class="n">physics</span><span class="p">.</span><span class="n">set_shape</span><span class="p">(</span><span class="s2">&quot;#collisionobject&quot;</span><span class="p">,</span> <span class="s2">&quot;my_box_shape&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
-<span class="kr">end</span>
-</code></pre></div>
+```
+local function set_shape_data()
+    -- set capsule shape data
+    local data = {}
+    data.type = physics.SHAPE_TYPE_CAPSULE
+    data.diameter = 10
+    data.height = 20
+    physics.set_shape("#collisionobject", "my_capsule_shape", data)
+
+    -- set sphere shape data
+    data = {}
+    data.type = physics.SHAPE_TYPE_SPHERE
+    data.diameter = 10
+    physics.set_shape("#collisionobject", "my_sphere_shape", data)
+
+    -- set box shape data
+    data = {}
+    data.type = physics.SHAPE_TYPE_BOX
+    data.dimensions = vmath.vector3(10, 10, 5)
+    physics.set_shape("#collisionobject", "my_box_shape", data)
+end
+
+```
 
 ### physics.set_vflip
 *Type:* FUNCTION
@@ -926,17 +901,28 @@ end
 
 ```
 
-### physics.SHAPE_TYPE_BOX
-*Type:* CONSTANT
+### physics.shape_data
+*Type:* STRUCT
+The available geometry fields depend on type.
 
-### physics.SHAPE_TYPE_CAPSULE
-*Type:* CONSTANT
+**Members**
 
-### physics.SHAPE_TYPE_HULL
-*Type:* CONSTANT
+- `type` (physics.SHAPE_TYPE) - shape type
+- `diameter?` (number) - sphere diameter or capsule pole diameter
+- `dimensions?` (vector3) - box dimensions
+- `height?` (number) - capsule height
 
-### physics.SHAPE_TYPE_SPHERE
-*Type:* CONSTANT
+### physics.SHAPE_TYPE
+*Type:* ENUM
+Shape types
+
+**Members**
+
+- `physics.SHAPE_TYPE_BOX` - Box shape.
+- `physics.SHAPE_TYPE_CAPSULE` - Capsule shape; supported only by 3D physics.
+- `physics.SHAPE_TYPE_HULL` - Convex hull shape.
+- `physics.SHAPE_TYPE_MESH` - Triangle mesh shape; supported only by the Bullet 3D backend.
+- `physics.SHAPE_TYPE_SPHERE` - Sphere shape.
 
 ### physics.update_mass
 *Type:* FUNCTION
@@ -963,12 +949,17 @@ efficiency reasons. This function wakes them up.
 **Parameters**
 
 - `url` (string | hash | url) - the collision object to wake.
-<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nf">on_input</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">action_id</span><span class="p">,</span> <span class="n">action</span><span class="p">)</span>
-    <span class="kr">if</span> <span class="n">action_id</span> <span class="o">==</span> <span class="n">hash</span><span class="p">(</span><span class="s2">&quot;test&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">action</span><span class="p">.</span><span class="n">pressed</span> <span class="kr">then</span>
-        <span class="n">physics</span><span class="p">.</span><span class="n">wakeup</span><span class="p">(</span><span class="s2">&quot;#collisionobject&quot;</span><span class="p">)</span>
-    <span class="kr">end</span>
-<span class="kr">end</span>
-</code></pre></div>
+
+**Examples**
+
+```
+function on_input(self, action_id, action)
+    if action_id == hash("test") and action.pressed then
+        physics.wakeup("#collisionobject")
+    end
+end
+
+```
 
 ### ray_cast_missed
 *Type:* MESSAGE
@@ -978,7 +969,7 @@ See physics.raycast_async for examples of how to use it.
 
 **Parameters**
 
-- `request_id` (number) - id supplied when the ray cast was requested
+- `request_id` (integer) - id supplied when the ray cast was requested
 
 ### ray_cast_response
 *Type:* MESSAGE
@@ -993,7 +984,7 @@ See physics.raycast_async for examples of how to use it.
 - `normal` (vector3) - the normal of the surface of the collision object where it was hit
 - `id` (hash) - the instance id of the hit collision object
 - `group` (hash) - the collision group of the hit collision object as a hashed name
-- `request_id` (number) - id supplied when the ray cast was requested
+- `request_id` (integer) - id supplied when the ray cast was requested
 
 ### trigger_event
 *Type:* MESSAGE
@@ -1006,20 +997,8 @@ For more detailed information, check for the contact_point_event.
 **Parameters**
 
 - `enter` (boolean) - if the interaction was an entry or not
-- `a` (table) - <dl>
-<dt>interaction information for object A</dt>
-<dt><code>id</code></dt>
-<dd><span class="type">hash</span> The ID of object A</dd>
-<dt><code>group</code></dt>
-<dd><span class="type">hash</span> The collision group of object A</dd>
-</dl>
-- `b` (table) - collision information for object B
-<dl>
-<dt><code>id</code></dt>
-<dd><span class="type">hash</span> The ID of object B</dd>
-<dt><code>group</code></dt>
-<dd><span class="type">hash</span> The collision group of object B</dd>
-</dl>
+- `a` (message.physics.trigger_info) - interaction information for object A
+- `b` (message.physics.trigger_info) - interaction information for object B
 
 **Examples**
 

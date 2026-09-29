@@ -490,14 +490,14 @@ Render objects represent an actual draw call
 
 **Members**
 
-- `m_Constants` (dmRender::HConstant[) - ] the shader constants
+- `m_Constants` (dmRender::HConstant[]) - the shader constants
 - `m_WorldTransform` (dmVMath::Matrix4) - the world transform (usually identity for batched objects)
 - `m_TextureTransform` (dmVMath::Matrix4) - the texture transform
 - `m_VertexBuffer` (dmGraphics::HVertexBuffer) - the vertex buffer
 - `m_VertexDeclaration` (dmGraphics::HVertexDeclaration) - the vertex declaration
 - `m_IndexBuffer` (dmGraphics::HIndexBuffer) - the index buffer
 - `m_Material` (dmRender::HMaterial) - the material
-- `m_Textures` (dmGraphics::HTexture[) - ] the textures
+- `m_Textures` (dmGraphics::HTexture[]) - the textures
 - `m_PrimitiveType` (dmGraphics::PrimitiveType) - the primitive type
 - `m_IndexType` (dmGraphics::Type) - the index type (16/32 bit)
 - `m_SourceBlendFactor` (dmGraphics::BlendFactor) - the source blend factor
@@ -514,8 +514,10 @@ Render order
 
 **Members**
 
-- `RENDER_ORDER_WORLD` -           Used by game objects
-- `RENDER_ORDER_AFTER_WORLD` -     Used by gui
+- `RENDER_ORDER_WORLD` - <div class="codehilite"><pre><span></span><code>      Used by game objects
+</code></pre></div>
+- `RENDER_ORDER_AFTER_WORLD` - <div class="codehilite"><pre><span></span><code>Used by gui
+</code></pre></div>
 
 ### Result
 *Type:* ENUM
@@ -570,6 +572,25 @@ Sets the shader program constant values
 - `unit` (uint32_t)
 - `u_wrap` (dmGraphics::TextureWrap)
 - `v_wrap` (dmGraphics::TextureWrap)
+- `w_wrap` (dmGraphics::TextureWrap)
+- `min_filter` (dmGraphics::TextureFilter)
+- `mag_filter` (dmGraphics::TextureFilter)
+- `max_anisotropy` (float)
+
+**Returns**
+
+- `is_succeed` (bool)
+
+### SetMaterialSampler
+*Type:* FUNCTION
+
+**Parameters**
+
+- `material` (dmRender::HMaterial)
+- `name_hash` (dmhash_t)
+- `unit` (uint32_t)
+- `u_wrap` (dmGraphics::TextureWrap)
+- `v_wrap` (dmGraphics::TextureWrap)
 - `min_filter` (dmGraphics::TextureFilter)
 - `mag_filter` (dmGraphics::TextureFilter)
 - `max_anisotropy` (float)
@@ -601,8 +622,8 @@ Sets one or more named constants to the buffer
 ### SetNamedConstant
 *Type:* FUNCTION
 Sets one or more named constants to the buffer with a specified data type.
-Currently only dmRenderDDF::MaterialDesc::CONSTANT_TYPE_USER and dmRenderDDF::MaterialDesc::CONSTANT_TYPE_USER_MATRIX4
-are supported.
+Currently only dmRenderDDF::MaterialDesc::CONSTANT_TYPE_USER, dmRenderDDF::MaterialDesc::CONSTANT_TYPE_USER_COLOR
+and dmRenderDDF::MaterialDesc::CONSTANT_TYPE_USER_MATRIX4 are supported.
 
 **Parameters**
 

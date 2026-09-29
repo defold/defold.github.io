@@ -382,9 +382,41 @@ This function is only available on iOS. [icon:ios]
 
 **Examples**
 
-```objective-c
+```
 // myextension_ios.mm
+
 id g_MyApplicationDelegate;
+
+@interface MyApplicationDelegate : NSObject
+
+- (void) applicationDidBecomeActive:(UIApplication *) application;
+
+@end
+
+@implementation MyApplicationDelegate
+
+- (void) applicationDidBecomeActive:(UIApplication *) application {
+    dmLogWarning("applicationDidBecomeActive - MyAppDelegate");
+}
+
+@end
+
+struct MyAppDelegateRegister
+{
+    MyApplicationDelegate* m_Delegate;
+    MyAppDelegateRegister() {
+        m_Delegate = [[FacebookAppDelegate alloc] init];
+        Extension::RegisteriOSUIApplicationDelegate(m_Delegate);
+    }
+    ~MyAppDelegateRegister() {
+        Extension::UnregisteriOSUIApplicationDelegate(m_Delegate);
+        [m_Delegate release];
+    }
+};
+
+MyAppDelegateRegister g_FacebookDelegateRegister;
+
+```
 
 ### ExtensionResult
 *Type:* ENUM
@@ -573,6 +605,10 @@ Sets a context using a specified name
 
 - `result` (int) - 0 if successful
 
+### RegisterCallback
+*Type:* FUNCTION
+Generated from ExtensionRegisterCallback
+
 ### RegisteriOSUIApplicationDelegate
 *Type:* FUNCTION
 Register an iOS application delegate to the engine. Multiple delegates are supported (Max 32)
@@ -590,9 +626,41 @@ This function is only available on iOS. [icon:ios]
 
 **Examples**
 
-```objective-c
+```
 // myextension_ios.mm
+
 id g_MyApplicationDelegate;
+
+@interface MyApplicationDelegate : NSObject
+
+- (void) applicationDidBecomeActive:(UIApplication *) application;
+
+@end
+
+@implementation MyApplicationDelegate
+
+- (void) applicationDidBecomeActive:(UIApplication *) application {
+    dmLogWarning("applicationDidBecomeActive - MyAppDelegate");
+}
+
+@end
+
+struct MyAppDelegateRegister
+{
+    MyApplicationDelegate* m_Delegate;
+    MyAppDelegateRegister() {
+        m_Delegate = [[FacebookAppDelegate alloc] init];
+        Extension::RegisteriOSUIApplicationDelegate(m_Delegate);
+    }
+    ~MyAppDelegateRegister() {
+        Extension::UnregisteriOSUIApplicationDelegate(m_Delegate);
+        [m_Delegate release];
+    }
+};
+
+MyAppDelegateRegister g_FacebookDelegateRegister;
+
+```
 
 ### Result
 *Type:* ENUM
