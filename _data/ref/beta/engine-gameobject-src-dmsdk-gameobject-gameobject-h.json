@@ -66,7 +66,7 @@
         },
         {
             "brief": "Assign an index to the instance, only if the insta...",
-            "description": "Assign an index to the instance, only if the instance is not null.",
+            "description": "Assign an index to the instance, only if the instance is valid.",
             "error": "",
             "examples": "",
             "language": "",
@@ -87,7 +87,7 @@
                     "is_optional": "False",
                     "name": "instance",
                     "types": [
-                        "dmGameObject::HInstance"
+                        "dmGameObject::HGameObject"
                     ]
                 }
             ],
@@ -158,7 +158,9 @@
             "language": "",
             "members": [],
             "name": "Delete",
-            "notes": [],
+            "notes": [
+                "Invalid, stale, or mismatched collection and instance handles are ignored."
+            ],
             "parameters": [
                 {
                     "doc": "Gameobject collection",
@@ -173,7 +175,7 @@
                     "is_optional": "False",
                     "name": "instance",
                     "types": [
-                        "dmGameObject::HInstance"
+                        "dmGameObject::HGameObject"
                     ]
                 },
                 {
@@ -198,14 +200,16 @@
             "language": "",
             "members": [],
             "name": "DeleteBones",
-            "notes": [],
+            "notes": [
+                "Invalid or stale instances are ignored."
+            ],
             "parameters": [
                 {
                     "doc": "Parent instance of the hierarchy",
                     "is_optional": "False",
                     "name": "parent",
                     "types": [
-                        "HInstance"
+                        "HGameObject"
                     ]
                 }
             ],
@@ -244,7 +248,7 @@
                     "is_optional": "False",
                     "name": "instance",
                     "types": [
-                        "dmGameObject::HInstance"
+                        "dmGameObject::HGameObject"
                     ]
                 },
                 {
@@ -259,7 +263,7 @@
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "Absolute identifier.",
+                    "doc": "Absolute identifier, or zero if the instance or identifier is invalid.",
                     "name": "",
                     "types": [
                         "dmhash_t"
@@ -284,17 +288,17 @@
                     "is_optional": "False",
                     "name": "instance",
                     "types": [
-                        "dmGameObject::HInstance"
+                        "dmGameObject::HGameObject"
                     ]
                 }
             ],
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "The collection the specified instance belongs to",
+                    "doc": "The collection the specified instance belongs to, or 0 if the instance is invalid or stale",
                     "name": "collection",
                     "types": [
-                        "dmGameObject::HInstance"
+                        "dmGameObject::HCollection"
                     ]
                 }
             ],
@@ -331,7 +335,7 @@
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "The collection if successful. 0 otherwise.",
+                    "doc": "The collection if successful, or 0 otherwise.",
                     "name": "collection",
                     "types": [
                         "dmGameObject::HCollection"
@@ -356,7 +360,7 @@
                     "is_optional": "False",
                     "name": "instance",
                     "types": [
-                        "dmGameObject::HInstance"
+                        "dmGameObject::HGameObject"
                     ]
                 },
                 {
@@ -395,7 +399,7 @@
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "RESULT_OK if the component was found",
+                    "doc": "RESULT_OK if the component was found, or RESULT_INVALID_INSTANCE if the instance is invalid or stale",
                     "name": "result",
                     "types": [
                         "dmGameObject::Result"
@@ -420,7 +424,7 @@
                     "is_optional": "False",
                     "name": "instance",
                     "types": [
-                        "dmGameObject::HInstance"
+                        "dmGameObject::HGameObject"
                     ]
                 },
                 {
@@ -443,7 +447,7 @@
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "RESULT_OK if the component was found",
+                    "doc": "RESULT_OK if the component was found, or RESULT_INVALID_INSTANCE if the instance is invalid or stale",
                     "name": "result",
                     "types": [
                         "dmGameObject::Result"
@@ -535,20 +539,22 @@
         },
         {
             "brief": "Get instance generation",
-            "description": "Get instance generation counter.\nThe generation changes whenever a new game object instance is allocated, even if it later reuses the same identifier.",
+            "description": "Get the generation encoded in an instance handle.",
             "error": "",
             "examples": "",
             "language": "",
             "members": [],
             "name": "GetGeneration",
-            "notes": [],
+            "notes": [
+                "Deprecated since Defold 1.14.1. The instance generation is an implementation detail."
+            ],
             "parameters": [
                 {
                     "doc": "Gameobject instance",
                     "is_optional": "False",
                     "name": "instance",
                     "types": [
-                        "dmGameObject::HInstance"
+                        "dmGameObject::HGameObject"
                     ]
                 }
             ],
@@ -556,7 +562,7 @@
             "returnvalues": [
                 {
                     "doc": "Generation counter for the instance.",
-                    "name": "",
+                    "name": "generation",
                     "types": [
                         "uint32_t"
                     ]
@@ -580,14 +586,14 @@
                     "is_optional": "False",
                     "name": "instance",
                     "types": [
-                        "dmGameObject::HInstance"
+                        "dmGameObject::HGameObject"
                     ]
                 }
             ],
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "Identifier. dmGameObject::UNNAMED_IDENTIFIER if not set.",
+                    "doc": "Identifier, or zero if the instance is invalid or stale.",
                     "name": "",
                     "types": [
                         "dmhash_t"
@@ -627,10 +633,10 @@
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "Instance. NULL if instance isn't found.",
+                    "doc": "Instance, or 0 if the collection or identifier is not found.",
                     "name": "instance",
                     "types": [
-                        "dmGameObject::HInstance"
+                        "dmGameObject::HGameObject"
                     ]
                 }
             ],
@@ -659,7 +665,7 @@
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "The message socket of the specified collection",
+                    "doc": "The message socket of the specified collection, or zero if the collection is invalid or stale",
                     "name": "socket",
                     "types": [
                         "dmMessage::HSocket"
@@ -684,14 +690,14 @@
                     "is_optional": "False",
                     "name": "instance",
                     "types": [
-                        "dmGameObject::HInstance"
+                        "dmGameObject::HGameObject"
                     ]
                 }
             ],
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "Position",
+                    "doc": "Position, or a zero vector if the instance is invalid or stale",
                     "name": "",
                     "types": [
                         "dmVMath::Point3"
@@ -716,7 +722,7 @@
                     "is_optional": "False",
                     "name": "instance",
                     "types": [
-                        "HInstance"
+                        "HGameObject"
                     ]
                 },
                 {
@@ -772,7 +778,7 @@
                     "is_optional": "False",
                     "name": "instance",
                     "types": [
-                        "HInstance"
+                        "HGameObject"
                     ]
                 },
                 {
@@ -828,7 +834,7 @@
                     "is_optional": "False",
                     "name": "instance",
                     "types": [
-                        "HInstance"
+                        "HGameObject"
                     ]
                 },
                 {
@@ -884,7 +890,7 @@
                     "is_optional": "False",
                     "name": "instance",
                     "types": [
-                        "HInstance"
+                        "HGameObject"
                     ]
                 },
                 {
@@ -940,7 +946,7 @@
                     "is_optional": "False",
                     "name": "instance",
                     "types": [
-                        "HInstance"
+                        "HGameObject"
                     ]
                 },
                 {
@@ -996,7 +1002,7 @@
                     "is_optional": "False",
                     "name": "instance",
                     "types": [
-                        "HInstance"
+                        "HGameObject"
                     ]
                 },
                 {
@@ -1052,7 +1058,7 @@
                     "is_optional": "False",
                     "name": "instance",
                     "types": [
-                        "HInstance"
+                        "HGameObject"
                     ]
                 },
                 {
@@ -1108,7 +1114,7 @@
                     "is_optional": "False",
                     "name": "instance",
                     "types": [
-                        "HInstance"
+                        "HGameObject"
                     ]
                 },
                 {
@@ -1164,7 +1170,7 @@
                     "is_optional": "False",
                     "name": "instance",
                     "types": [
-                        "HInstance"
+                        "HGameObject"
                     ]
                 },
                 {
@@ -1348,14 +1354,14 @@
                     "is_optional": "False",
                     "name": "instance",
                     "types": [
-                        "dmGameObject::HInstance"
+                        "dmGameObject::HGameObject"
                     ]
                 }
             ],
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "rotation",
+                    "doc": "Rotation, or the identity rotation if the instance is invalid or stale",
                     "name": "",
                     "types": [
                         "dmGameObject::Quat"
@@ -1380,14 +1386,14 @@
                     "is_optional": "False",
                     "name": "instance",
                     "types": [
-                        "dmGameObject::HInstance"
+                        "dmGameObject::HGameObject"
                     ]
                 }
             ],
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "Non-uniform scale",
+                    "doc": "Non-uniform scale, or a unit vector if the instance is invalid or stale",
                     "name": "",
                     "types": [
                         "dmGameObject::Vector3"
@@ -1412,14 +1418,14 @@
                     "is_optional": "False",
                     "name": "instance",
                     "types": [
-                        "dmGameObject::HInstance"
+                        "dmGameObject::HGameObject"
                     ]
                 }
             ],
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "Uniform scale",
+                    "doc": "Uniform scale, or 1 if the instance is invalid or stale",
                     "name": "",
                     "types": [
                         "float"
@@ -1484,14 +1490,14 @@
                     "is_optional": "False",
                     "name": "instance",
                     "types": [
-                        "dmGameObject::HInstance"
+                        "dmGameObject::HGameObject"
                     ]
                 }
             ],
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "World transform matrix.",
+                    "doc": "World transform matrix, or identity if the instance is invalid or stale.",
                     "name": "",
                     "types": [
                         "dmGameObject::Matrix4"
@@ -1516,14 +1522,14 @@
                     "is_optional": "False",
                     "name": "instance",
                     "types": [
-                        "dmGameObject::HInstance"
+                        "dmGameObject::HGameObject"
                     ]
                 }
             ],
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "World position",
+                    "doc": "World position, or a zero vector if the instance is invalid or stale",
                     "name": "",
                     "types": [
                         "dmGameObject::Point3"
@@ -1548,14 +1554,14 @@
                     "is_optional": "False",
                     "name": "instance",
                     "types": [
-                        "dmGameObject::HInstance"
+                        "dmGameObject::HGameObject"
                     ]
                 }
             ],
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "World rotation",
+                    "doc": "World rotation, or the identity rotation if the instance is invalid or stale",
                     "name": "",
                     "types": [
                         "dmGameObject::Quat"
@@ -1580,14 +1586,14 @@
                     "is_optional": "False",
                     "name": "instance",
                     "types": [
-                        "dmGameObject::HInstance"
+                        "dmGameObject::HGameObject"
                     ]
                 }
             ],
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "World scale",
+                    "doc": "World scale, or a unit vector if the instance is invalid or stale",
                     "name": "",
                     "types": [
                         "dmGameObject::Vector3"
@@ -1612,14 +1618,14 @@
                     "is_optional": "False",
                     "name": "instance",
                     "types": [
-                        "dmGameObject::HInstance"
+                        "dmGameObject::HGameObject"
                     ]
                 }
             ],
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "World transform",
+                    "doc": "World transform, or identity if the instance is invalid or stale",
                     "name": "",
                     "types": [
                         "dmTransform::Transform"
@@ -1644,14 +1650,14 @@
                     "is_optional": "False",
                     "name": "instance",
                     "types": [
-                        "dmGameObject::HInstance"
+                        "dmGameObject::HGameObject"
                     ]
                 }
             ],
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "World uniform scale",
+                    "doc": "World uniform scale, or 1 if the instance is invalid or stale",
                     "name": "",
                     "types": [
                         "float"
@@ -1662,8 +1668,8 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "Gameobject collection handle",
-            "description": "Gameobject collection handle",
+            "brief": "Opaque gameobject collection handle",
+            "description": "Opaque gameobject collection handle.\nThis is not a collection resource pointer. Load collection resources into\na CollectionResource* and use ResCollectionGetCollection to obtain this handle.",
             "error": "",
             "examples": "",
             "language": "",
@@ -1722,8 +1728,23 @@
             "type": "TYPEDEF"
         },
         {
-            "brief": "Gameobject instance handle",
-            "description": "Gameobject instance handle",
+            "brief": "Opaque gameobject handle",
+            "description": "Opaque gameobject handle",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "HGameObject",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "Source-compatibility name for HGameObject",
+            "description": "Source-compatibility name for HGameObject",
             "error": "",
             "examples": "",
             "language": "",
@@ -1947,14 +1968,14 @@
                     "is_optional": "False",
                     "name": "instance",
                     "types": [
-                        "HInstance"
+                        "HGameObject"
                     ]
                 }
             ],
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "True if flagged as a bone",
+                    "doc": "True if flagged as a bone; false if the instance is invalid or stale",
                     "name": "result",
                     "types": [
                         "bool"
@@ -1996,10 +2017,10 @@
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "New gameobject instance. NULL if any error occured",
+                    "doc": "New gameobject instance, or 0 if an error occurred",
                     "name": "instance",
                     "types": [
-                        "dmGameObject::HInstance"
+                        "dmGameObject::HGameObject"
                     ]
                 }
             ],
@@ -2385,6 +2406,11 @@
                 },
                 {
                     "doc": "",
+                    "name": "dmGameObject::RESULT_INVALID_INSTANCE",
+                    "type": ""
+                },
+                {
+                    "doc": "",
                     "name": "dmGameObject::RESULT_UNKNOWN_ERROR",
                     "type": ""
                 }
@@ -2586,14 +2612,16 @@
             "language": "",
             "members": [],
             "name": "SetBone",
-            "notes": [],
+            "notes": [
+                "Invalid or stale instances are ignored."
+            ],
             "parameters": [
                 {
                     "doc": "Instance",
                     "is_optional": "False",
                     "name": "instance",
                     "types": [
-                        "HInstance"
+                        "HGameObject"
                     ]
                 },
                 {
@@ -2625,7 +2653,7 @@
                     "is_optional": "False",
                     "name": "instance",
                     "types": [
-                        "HInstance"
+                        "HGameObject"
                     ]
                 },
                 {
@@ -2656,7 +2684,7 @@
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "of instances found",
+                    "doc": "of instances found, or zero if the instance is invalid or stale",
                     "name": "Number",
                     "types": [
                         ""
@@ -2689,7 +2717,7 @@
                     "is_optional": "False",
                     "name": "instance",
                     "types": [
-                        "dmGameObject::HInstance"
+                        "dmGameObject::HGameObject"
                     ]
                 },
                 {
@@ -2704,7 +2732,7 @@
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "RESULT_OK on success",
+                    "doc": "RESULT_OK on success, or RESULT_INVALID_INSTANCE if the handle pair is invalid",
                     "name": "result",
                     "types": [
                         "dmGameObject::Result"
@@ -2722,14 +2750,16 @@
             "language": "",
             "members": [],
             "name": "SetPosition",
-            "notes": [],
+            "notes": [
+                "Invalid or stale instances are ignored."
+            ],
             "parameters": [
                 {
                     "doc": "Gameobject instance",
                     "is_optional": "False",
                     "name": "instance",
                     "types": [
-                        "dmGameObject::HInstance"
+                        "dmGameObject::HGameObject"
                     ]
                 },
                 {
@@ -2761,7 +2791,7 @@
                     "is_optional": "False",
                     "name": "instance",
                     "types": [
-                        "HInstance"
+                        "HGameObject"
                     ]
                 },
                 {
@@ -2817,7 +2847,7 @@
                     "is_optional": "False",
                     "name": "instance",
                     "types": [
-                        "HInstance"
+                        "HGameObject"
                     ]
                 },
                 {
@@ -2873,7 +2903,7 @@
                     "is_optional": "False",
                     "name": "instance",
                     "types": [
-                        "HInstance"
+                        "HGameObject"
                     ]
                 },
                 {
@@ -2929,7 +2959,7 @@
                     "is_optional": "False",
                     "name": "instance",
                     "types": [
-                        "HInstance"
+                        "HGameObject"
                     ]
                 },
                 {
@@ -2985,7 +3015,7 @@
                     "is_optional": "False",
                     "name": "instance",
                     "types": [
-                        "HInstance"
+                        "HGameObject"
                     ]
                 },
                 {
@@ -3041,7 +3071,7 @@
                     "is_optional": "False",
                     "name": "instance",
                     "types": [
-                        "HInstance"
+                        "HGameObject"
                     ]
                 },
                 {
@@ -3097,7 +3127,7 @@
                     "is_optional": "False",
                     "name": "instance",
                     "types": [
-                        "HInstance"
+                        "HGameObject"
                     ]
                 },
                 {
@@ -3153,7 +3183,7 @@
                     "is_optional": "False",
                     "name": "instance",
                     "types": [
-                        "HInstance"
+                        "HGameObject"
                     ]
                 },
                 {
@@ -3209,7 +3239,7 @@
                     "is_optional": "False",
                     "name": "instance",
                     "types": [
-                        "HInstance"
+                        "HGameObject"
                     ]
                 },
                 {
@@ -3258,14 +3288,16 @@
             "language": "",
             "members": [],
             "name": "SetRotation",
-            "notes": [],
+            "notes": [
+                "Invalid or stale instances are ignored."
+            ],
             "parameters": [
                 {
                     "doc": "Gameobject instance",
                     "is_optional": "False",
                     "name": "instance",
                     "types": [
-                        "dmGameObject::HInstance"
+                        "dmGameObject::HGameObject"
                     ]
                 },
                 {
@@ -3290,14 +3322,16 @@
             "language": "",
             "members": [],
             "name": "SetScale",
-            "notes": [],
+            "notes": [
+                "Invalid or stale instances are ignored."
+            ],
             "parameters": [
                 {
                     "doc": "Gameobject instance",
                     "is_optional": "False",
                     "name": "instance",
                     "types": [
-                        "dmGameObject::HInstance"
+                        "dmGameObject::HGameObject"
                     ]
                 },
                 {
@@ -3322,14 +3356,16 @@
             "language": "",
             "members": [],
             "name": "SetScale",
-            "notes": [],
+            "notes": [
+                "Invalid or stale instances are ignored."
+            ],
             "parameters": [
                 {
                     "doc": "Gameobject instance",
                     "is_optional": "False",
                     "name": "instance",
                     "types": [
-                        "dmGameObject::HInstance"
+                        "dmGameObject::HGameObject"
                     ]
                 },
                 {
@@ -3354,14 +3390,16 @@
             "language": "",
             "members": [],
             "name": "SetScaleXY",
-            "notes": [],
+            "notes": [
+                "Invalid or stale instances are ignored."
+            ],
             "parameters": [
                 {
                     "doc": "Gameobject instance",
                     "is_optional": "False",
                     "name": "instance",
                     "types": [
-                        "dmGameObject::HInstance"
+                        "dmGameObject::HGameObject"
                     ]
                 },
                 {
@@ -3453,7 +3491,7 @@
                     ]
                 },
                 {
-                    "doc": "Scale of the spawned object\nreturn instance <span class=\"type\"> HInstance</span> the spawned instance, 0 at failure",
+                    "doc": "Scale of the spawned object",
                     "is_optional": "False",
                     "name": "scale",
                     "types": [
@@ -3462,7 +3500,15 @@
                 }
             ],
             "replaces": "",
-            "returnvalues": [],
+            "returnvalues": [
+                {
+                    "doc": "the spawned instance, or 0 at failure",
+                    "name": "instance",
+                    "types": [
+                        "HGameObject"
+                    ]
+                }
+            ],
             "tparams": [],
             "type": "FUNCTION"
         },
@@ -3492,7 +3538,7 @@
                     "is_optional": "False",
                     "name": "node",
                     "types": [
-                        "dmGameObject::HRegister"
+                        "dmGameObject::SceneNode*"
                     ]
                 }
             ],

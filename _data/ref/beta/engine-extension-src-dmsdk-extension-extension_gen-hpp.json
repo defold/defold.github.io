@@ -1121,18 +1121,44 @@
         },
         {
             "brief": "Register application delegate",
-            "description": "Register an iOS application delegate to the engine. Multiple delegates are supported (Max 32)",
+            "description": "Register an iOS application delegate for process-level callbacks such as launch\nand remote notification registration. Multiple delegates are supported (Max 32).\nUse application:willFinishLaunchingWithOptions: and\napplication:didFinishLaunchingWithOptions: for launch. The older\napplicationDidFinishLaunching: callback is not synthesized.\nDefold uses the UIScene lifecycle. Application activity, URL and user activity\ncallbacks are not forwarded from scenes; use <a href=\"#ExtensionRegisteriOSUISceneDelegate\">ExtensionRegisteriOSUISceneDelegate</a>.\nThe game window is created after application launch. Use scene connection to\naccess it, and scene connection options for cold-launch URLs and user activities.",
             "error": "",
-            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"c1\">// myextension_ios.mm</span>\n\n<span class=\"kt\">id</span><span class=\"o\">&lt;</span><span class=\"bp\">UIApplicationDelegate</span><span class=\"o\">&gt;</span><span class=\"w\"> </span><span class=\"n\">g_MyApplicationDelegate</span><span class=\"p\">;</span><span class=\"w\"></span>\n\n<span class=\"k\">@interface</span> <span class=\"nc\">MyApplicationDelegate</span> : <span class=\"bp\">NSObject</span><span class=\"w\"> </span><span class=\"o\">&lt;</span><span class=\"bp\">UIApplicationDelegate</span><span class=\"o\">&gt;</span><span class=\"w\"></span>\n\n<span class=\"o\">-</span><span class=\"w\"> </span><span class=\"p\">(</span><span class=\"kt\">void</span><span class=\"p\">)</span><span class=\"w\"> </span><span class=\"n\">applicationDidBecomeActive</span><span class=\"o\">:</span><span class=\"p\">(</span><span class=\"bp\">UIApplication</span><span class=\"w\"> </span><span class=\"o\">*</span><span class=\"p\">)</span><span class=\"w\"> </span><span class=\"n\">application</span><span class=\"p\">;</span><span class=\"w\"></span>\n\n<span class=\"k\">@end</span><span class=\"w\"></span>\n\n<span class=\"k\">@implementation</span> <span class=\"nc\">MyApplicationDelegate</span><span class=\"w\"></span>\n\n<span class=\"p\">-</span> <span class=\"p\">(</span><span class=\"kt\">void</span><span class=\"p\">)</span> <span class=\"nf\">applicationDidBecomeActive:</span><span class=\"p\">(</span><span class=\"bp\">UIApplication</span><span class=\"w\"> </span><span class=\"o\">*</span><span class=\"p\">)</span> <span class=\"nv\">application</span><span class=\"w\"> </span><span class=\"p\">{</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"n\">dmLogWarning</span><span class=\"p\">(</span><span class=\"s\">&quot;applicationDidBecomeActive - MyAppDelegate&quot;</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"p\">}</span><span class=\"w\"></span>\n\n<span class=\"k\">@end</span><span class=\"w\"></span>\n\n<span class=\"k\">struct</span><span class=\"w\"> </span><span class=\"nc\">MyAppDelegateRegister</span><span class=\"w\"></span>\n<span class=\"p\">{</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"n\">MyApplicationDelegate</span><span class=\"o\">*</span><span class=\"w\"> </span><span class=\"n\">m_Delegate</span><span class=\"p\">;</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"n\">MyAppDelegateRegister</span><span class=\"p\">()</span><span class=\"w\"> </span><span class=\"p\">{</span><span class=\"w\"></span>\n<span class=\"w\">        </span><span class=\"n\">m_Delegate</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"p\">[[</span><span class=\"n\">FacebookAppDelegate</span><span class=\"w\"> </span><span class=\"n\">alloc</span><span class=\"p\">]</span><span class=\"w\"> </span><span class=\"n\">init</span><span class=\"p\">];</span><span class=\"w\"></span>\n<span class=\"w\">        </span><span class=\"n\">Extension</span><span class=\"o\">::</span><span class=\"n\">RegisteriOSUIApplicationDelegate</span><span class=\"p\">(</span><span class=\"n\">m_Delegate</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"p\">}</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"o\">~</span><span class=\"n\">MyAppDelegateRegister</span><span class=\"p\">()</span><span class=\"w\"> </span><span class=\"p\">{</span><span class=\"w\"></span>\n<span class=\"w\">        </span><span class=\"n\">Extension</span><span class=\"o\">::</span><span class=\"n\">UnregisteriOSUIApplicationDelegate</span><span class=\"p\">(</span><span class=\"n\">m_Delegate</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"w\">        </span><span class=\"p\">[</span><span class=\"n\">m_Delegate</span><span class=\"w\"> </span><span class=\"k\">release</span><span class=\"p\">];</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"p\">}</span><span class=\"w\"></span>\n<span class=\"p\">};</span><span class=\"w\"></span>\n\n<span class=\"n\">MyAppDelegateRegister</span><span class=\"w\"> </span><span class=\"n\">g_FacebookDelegateRegister</span><span class=\"p\">;</span><span class=\"w\"></span>\n</code></pre></div>",
+            "examples": "",
             "language": "C",
             "members": [],
             "name": "ExtensionRegisteriOSUIApplicationDelegate",
             "notes": [
-                "Note that the delegate needs to be registered before the UIApplicationMain in order to\nhandle any earlier callbacks.\n\nThis function is only available on iOS. [icon:ios]"
+                "Register before UIApplicationMain to receive launch callbacks. Registration\ndoes not retain the delegate; keep it alive until it is unregistered.\nThis function is only available on iOS. [icon:ios]"
             ],
             "parameters": [
                 {
-                    "doc": "An id<UIApplicationDelegate>, see: https://developer.apple.com/documentation/uikit/uiapplicationdelegate?language=objc",
+                    "doc": "An id<UIApplicationDelegate>.",
+                    "is_optional": "False",
+                    "name": "delegate",
+                    "types": [
+                        "void*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Register a scene delegate",
+            "description": "Register an iOS scene observer. Multiple delegates are supported (Max 32).\nDefold owns the single game window and its scene configuration. Registered\nobservers receive scene connection/disconnection, activation/deactivation,\nforeground/background, openURLContexts, continueUserActivity,\nwillContinueUserActivityWithType, didFailToContinueUserActivityWithType:error:\nand didUpdateUserActivity callbacks. Other optional delegate methods are not\nforwarded. No legacy UIApplicationDelegate callbacks are synthesized.\nRegister before UIApplicationMain (for example in a static constructor) to\nreceive the initial scene connection. Extension app-initialize is too late.\nCold-launch URLs, user activities and notification responses are available in\nUISceneConnectionOptions. Scene connection may precede Lua initialization;\nextensions must retain any data they need to deliver to Lua later.",
+            "error": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"c1\">// myextension_ios.mm</span>\n<span class=\"k\">@interface</span> <span class=\"nc\">MySceneDelegate</span> : <span class=\"bp\">NSObject</span><span class=\"w\"> </span><span class=\"o\">&lt;</span><span class=\"bp\">UISceneDelegate</span><span class=\"o\">&gt;</span><span class=\"w\"></span>\n<span class=\"o\">-</span><span class=\"w\"> </span><span class=\"p\">(</span><span class=\"kt\">void</span><span class=\"p\">)</span><span class=\"n\">scene</span><span class=\"o\">:</span><span class=\"p\">(</span><span class=\"bp\">UIScene</span><span class=\"o\">*</span><span class=\"p\">)</span><span class=\"n\">scene</span><span class=\"w\"> </span><span class=\"n\">willConnectToSession</span><span class=\"o\">:</span><span class=\"p\">(</span><span class=\"bp\">UISceneSession</span><span class=\"o\">*</span><span class=\"p\">)</span><span class=\"n\">session</span><span class=\"w\"> </span><span class=\"n\">options</span><span class=\"o\">:</span><span class=\"p\">(</span><span class=\"bp\">UISceneConnectionOptions</span><span class=\"o\">*</span><span class=\"p\">)</span><span class=\"n\">options</span><span class=\"p\">;</span><span class=\"w\"></span>\n<span class=\"p\">-</span> <span class=\"p\">(</span><span class=\"kt\">void</span><span class=\"p\">)</span><span class=\"nf\">scene:</span><span class=\"p\">(</span><span class=\"bp\">UIScene</span><span class=\"o\">*</span><span class=\"p\">)</span><span class=\"nv\">scene</span><span class=\"w\"> </span><span class=\"nf\">openURLContexts:</span><span class=\"p\">(</span><span class=\"bp\">NSSet</span><span class=\"o\">&lt;</span><span class=\"bp\">UIOpenURLContext</span><span class=\"o\">*&gt;*</span><span class=\"p\">)</span><span class=\"nv\">contexts</span><span class=\"p\">;</span><span class=\"w\"></span>\n<span class=\"k\">@end</span><span class=\"w\"></span>\n\n<span class=\"k\">struct</span><span class=\"w\"> </span><span class=\"nc\">MySceneDelegateRegistration</span><span class=\"w\"></span>\n<span class=\"p\">{</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"n\">MySceneDelegate</span><span class=\"o\">*</span><span class=\"w\"> </span><span class=\"n\">m_Delegate</span><span class=\"p\">;</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"n\">MySceneDelegateRegistration</span><span class=\"p\">()</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"p\">{</span><span class=\"w\"></span>\n<span class=\"w\">        </span><span class=\"n\">m_Delegate</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"p\">[[</span><span class=\"n\">MySceneDelegate</span><span class=\"w\"> </span><span class=\"n\">alloc</span><span class=\"p\">]</span><span class=\"w\"> </span><span class=\"n\">init</span><span class=\"p\">];</span><span class=\"w\"></span>\n<span class=\"w\">        </span><span class=\"n\">dmExtension</span><span class=\"o\">::</span><span class=\"n\">RegisteriOSUISceneDelegate</span><span class=\"p\">(</span><span class=\"n\">m_Delegate</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"p\">}</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"o\">~</span><span class=\"n\">MySceneDelegateRegistration</span><span class=\"p\">()</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"p\">{</span><span class=\"w\"></span>\n<span class=\"w\">        </span><span class=\"n\">dmExtension</span><span class=\"o\">::</span><span class=\"n\">UnregisteriOSUISceneDelegate</span><span class=\"p\">(</span><span class=\"n\">m_Delegate</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"w\">        </span><span class=\"p\">[</span><span class=\"n\">m_Delegate</span><span class=\"w\"> </span><span class=\"k\">release</span><span class=\"p\">];</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"p\">}</span><span class=\"w\"></span>\n<span class=\"p\">};</span><span class=\"w\"></span>\n<span class=\"n\">MySceneDelegateRegistration</span><span class=\"w\"> </span><span class=\"n\">g_MySceneDelegateRegistration</span><span class=\"p\">;</span><span class=\"w\"></span>\n</code></pre></div>",
+            "language": "C",
+            "members": [],
+            "name": "ExtensionRegisteriOSUISceneDelegate",
+            "notes": [
+                "Register and unregister on the main thread. Registration does not retain\nthe delegate; keep it alive until unregistering. Each event retains a snapshot\nof its observers, so unregistering during delivery affects subsequent events.\nDuplicate registrations are ignored. Late registration does not replay events.\nThis function is only available on iOS. [icon:ios]"
+            ],
+            "parameters": [
+                {
+                    "doc": "An id<UISceneDelegate>.",
                     "is_optional": "False",
                     "name": "delegate",
                     "types": [
@@ -1173,7 +1199,7 @@
         },
         {
             "brief": "Unregister an application delegate",
-            "description": "Deregister a previously registered iOS application delegate\nThis function is only available on iOS. <span class=\"icon-ios\"></span>",
+            "description": "Deregister a previously registered iOS application delegate.\nThis function is only available on iOS. <span class=\"icon-ios\"></span>",
             "error": "",
             "examples": "",
             "language": "C",
@@ -1182,7 +1208,31 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "an id<UIApplicationDelegate>",
+                    "doc": "An id<UIApplicationDelegate>.",
+                    "is_optional": "False",
+                    "name": "delegate",
+                    "types": [
+                        "void*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Unregister a scene delegate",
+            "description": "Deregister a previously registered iOS scene observer on the main thread.\nThis function is only available on iOS. <span class=\"icon-ios\"></span>",
+            "error": "",
+            "examples": "",
+            "language": "C",
+            "members": [],
+            "name": "ExtensionUnregisteriOSUISceneDelegate",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "An id<UISceneDelegate>.",
                     "is_optional": "False",
                     "name": "delegate",
                     "types": [
@@ -1679,18 +1729,44 @@
         },
         {
             "brief": "Register application delegate",
-            "description": "Register an iOS application delegate to the engine. Multiple delegates are supported (Max 32)",
+            "description": "Register an iOS application delegate for process-level callbacks such as launch\nand remote notification registration. Multiple delegates are supported (Max 32).\nUse application:willFinishLaunchingWithOptions: and\napplication:didFinishLaunchingWithOptions: for launch. The older\napplicationDidFinishLaunching: callback is not synthesized.\nDefold uses the UIScene lifecycle. Application activity, URL and user activity\ncallbacks are not forwarded from scenes; use <a href=\"#ExtensionRegisteriOSUISceneDelegate\">ExtensionRegisteriOSUISceneDelegate</a>.\nThe game window is created after application launch. Use scene connection to\naccess it, and scene connection options for cold-launch URLs and user activities.",
             "error": "",
-            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"c1\">// myextension_ios.mm</span>\n\n<span class=\"kt\">id</span><span class=\"o\">&lt;</span><span class=\"bp\">UIApplicationDelegate</span><span class=\"o\">&gt;</span><span class=\"w\"> </span><span class=\"n\">g_MyApplicationDelegate</span><span class=\"p\">;</span><span class=\"w\"></span>\n\n<span class=\"k\">@interface</span> <span class=\"nc\">MyApplicationDelegate</span> : <span class=\"bp\">NSObject</span><span class=\"w\"> </span><span class=\"o\">&lt;</span><span class=\"bp\">UIApplicationDelegate</span><span class=\"o\">&gt;</span><span class=\"w\"></span>\n\n<span class=\"o\">-</span><span class=\"w\"> </span><span class=\"p\">(</span><span class=\"kt\">void</span><span class=\"p\">)</span><span class=\"w\"> </span><span class=\"n\">applicationDidBecomeActive</span><span class=\"o\">:</span><span class=\"p\">(</span><span class=\"bp\">UIApplication</span><span class=\"w\"> </span><span class=\"o\">*</span><span class=\"p\">)</span><span class=\"w\"> </span><span class=\"n\">application</span><span class=\"p\">;</span><span class=\"w\"></span>\n\n<span class=\"k\">@end</span><span class=\"w\"></span>\n\n<span class=\"k\">@implementation</span> <span class=\"nc\">MyApplicationDelegate</span><span class=\"w\"></span>\n\n<span class=\"p\">-</span> <span class=\"p\">(</span><span class=\"kt\">void</span><span class=\"p\">)</span> <span class=\"nf\">applicationDidBecomeActive:</span><span class=\"p\">(</span><span class=\"bp\">UIApplication</span><span class=\"w\"> </span><span class=\"o\">*</span><span class=\"p\">)</span> <span class=\"nv\">application</span><span class=\"w\"> </span><span class=\"p\">{</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"n\">dmLogWarning</span><span class=\"p\">(</span><span class=\"s\">&quot;applicationDidBecomeActive - MyAppDelegate&quot;</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"p\">}</span><span class=\"w\"></span>\n\n<span class=\"k\">@end</span><span class=\"w\"></span>\n\n<span class=\"k\">struct</span><span class=\"w\"> </span><span class=\"nc\">MyAppDelegateRegister</span><span class=\"w\"></span>\n<span class=\"p\">{</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"n\">MyApplicationDelegate</span><span class=\"o\">*</span><span class=\"w\"> </span><span class=\"n\">m_Delegate</span><span class=\"p\">;</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"n\">MyAppDelegateRegister</span><span class=\"p\">()</span><span class=\"w\"> </span><span class=\"p\">{</span><span class=\"w\"></span>\n<span class=\"w\">        </span><span class=\"n\">m_Delegate</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"p\">[[</span><span class=\"n\">FacebookAppDelegate</span><span class=\"w\"> </span><span class=\"n\">alloc</span><span class=\"p\">]</span><span class=\"w\"> </span><span class=\"n\">init</span><span class=\"p\">];</span><span class=\"w\"></span>\n<span class=\"w\">        </span><span class=\"n\">Extension</span><span class=\"o\">::</span><span class=\"n\">RegisteriOSUIApplicationDelegate</span><span class=\"p\">(</span><span class=\"n\">m_Delegate</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"p\">}</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"o\">~</span><span class=\"n\">MyAppDelegateRegister</span><span class=\"p\">()</span><span class=\"w\"> </span><span class=\"p\">{</span><span class=\"w\"></span>\n<span class=\"w\">        </span><span class=\"n\">Extension</span><span class=\"o\">::</span><span class=\"n\">UnregisteriOSUIApplicationDelegate</span><span class=\"p\">(</span><span class=\"n\">m_Delegate</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"w\">        </span><span class=\"p\">[</span><span class=\"n\">m_Delegate</span><span class=\"w\"> </span><span class=\"k\">release</span><span class=\"p\">];</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"p\">}</span><span class=\"w\"></span>\n<span class=\"p\">};</span><span class=\"w\"></span>\n\n<span class=\"n\">MyAppDelegateRegister</span><span class=\"w\"> </span><span class=\"n\">g_FacebookDelegateRegister</span><span class=\"p\">;</span><span class=\"w\"></span>\n</code></pre></div>",
+            "examples": "",
             "language": "C++",
             "members": [],
             "name": "RegisteriOSUIApplicationDelegate",
             "notes": [
-                "Note that the delegate needs to be registered before the UIApplicationMain in order to\nhandle any earlier callbacks.\n\nThis function is only available on iOS. [icon:ios]"
+                "Register before UIApplicationMain to receive launch callbacks. Registration\ndoes not retain the delegate; keep it alive until it is unregistered.\nThis function is only available on iOS. [icon:ios]"
             ],
             "parameters": [
                 {
-                    "doc": "An id<UIApplicationDelegate>, see: https://developer.apple.com/documentation/uikit/uiapplicationdelegate?language=objc",
+                    "doc": "An id<UIApplicationDelegate>.",
+                    "is_optional": "False",
+                    "name": "delegate",
+                    "types": [
+                        "void*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Register a scene delegate",
+            "description": "Register an iOS scene observer. Multiple delegates are supported (Max 32).\nDefold owns the single game window and its scene configuration. Registered\nobservers receive scene connection/disconnection, activation/deactivation,\nforeground/background, openURLContexts, continueUserActivity,\nwillContinueUserActivityWithType, didFailToContinueUserActivityWithType:error:\nand didUpdateUserActivity callbacks. Other optional delegate methods are not\nforwarded. No legacy UIApplicationDelegate callbacks are synthesized.\nRegister before UIApplicationMain (for example in a static constructor) to\nreceive the initial scene connection. Extension app-initialize is too late.\nCold-launch URLs, user activities and notification responses are available in\nUISceneConnectionOptions. Scene connection may precede Lua initialization;\nextensions must retain any data they need to deliver to Lua later.",
+            "error": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"c1\">// myextension_ios.mm</span>\n<span class=\"k\">@interface</span> <span class=\"nc\">MySceneDelegate</span> : <span class=\"bp\">NSObject</span><span class=\"w\"> </span><span class=\"o\">&lt;</span><span class=\"bp\">UISceneDelegate</span><span class=\"o\">&gt;</span><span class=\"w\"></span>\n<span class=\"o\">-</span><span class=\"w\"> </span><span class=\"p\">(</span><span class=\"kt\">void</span><span class=\"p\">)</span><span class=\"n\">scene</span><span class=\"o\">:</span><span class=\"p\">(</span><span class=\"bp\">UIScene</span><span class=\"o\">*</span><span class=\"p\">)</span><span class=\"n\">scene</span><span class=\"w\"> </span><span class=\"n\">willConnectToSession</span><span class=\"o\">:</span><span class=\"p\">(</span><span class=\"bp\">UISceneSession</span><span class=\"o\">*</span><span class=\"p\">)</span><span class=\"n\">session</span><span class=\"w\"> </span><span class=\"n\">options</span><span class=\"o\">:</span><span class=\"p\">(</span><span class=\"bp\">UISceneConnectionOptions</span><span class=\"o\">*</span><span class=\"p\">)</span><span class=\"n\">options</span><span class=\"p\">;</span><span class=\"w\"></span>\n<span class=\"p\">-</span> <span class=\"p\">(</span><span class=\"kt\">void</span><span class=\"p\">)</span><span class=\"nf\">scene:</span><span class=\"p\">(</span><span class=\"bp\">UIScene</span><span class=\"o\">*</span><span class=\"p\">)</span><span class=\"nv\">scene</span><span class=\"w\"> </span><span class=\"nf\">openURLContexts:</span><span class=\"p\">(</span><span class=\"bp\">NSSet</span><span class=\"o\">&lt;</span><span class=\"bp\">UIOpenURLContext</span><span class=\"o\">*&gt;*</span><span class=\"p\">)</span><span class=\"nv\">contexts</span><span class=\"p\">;</span><span class=\"w\"></span>\n<span class=\"k\">@end</span><span class=\"w\"></span>\n\n<span class=\"k\">struct</span><span class=\"w\"> </span><span class=\"nc\">MySceneDelegateRegistration</span><span class=\"w\"></span>\n<span class=\"p\">{</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"n\">MySceneDelegate</span><span class=\"o\">*</span><span class=\"w\"> </span><span class=\"n\">m_Delegate</span><span class=\"p\">;</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"n\">MySceneDelegateRegistration</span><span class=\"p\">()</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"p\">{</span><span class=\"w\"></span>\n<span class=\"w\">        </span><span class=\"n\">m_Delegate</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"p\">[[</span><span class=\"n\">MySceneDelegate</span><span class=\"w\"> </span><span class=\"n\">alloc</span><span class=\"p\">]</span><span class=\"w\"> </span><span class=\"n\">init</span><span class=\"p\">];</span><span class=\"w\"></span>\n<span class=\"w\">        </span><span class=\"n\">dmExtension</span><span class=\"o\">::</span><span class=\"n\">RegisteriOSUISceneDelegate</span><span class=\"p\">(</span><span class=\"n\">m_Delegate</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"p\">}</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"o\">~</span><span class=\"n\">MySceneDelegateRegistration</span><span class=\"p\">()</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"p\">{</span><span class=\"w\"></span>\n<span class=\"w\">        </span><span class=\"n\">dmExtension</span><span class=\"o\">::</span><span class=\"n\">UnregisteriOSUISceneDelegate</span><span class=\"p\">(</span><span class=\"n\">m_Delegate</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"w\">        </span><span class=\"p\">[</span><span class=\"n\">m_Delegate</span><span class=\"w\"> </span><span class=\"k\">release</span><span class=\"p\">];</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"p\">}</span><span class=\"w\"></span>\n<span class=\"p\">};</span><span class=\"w\"></span>\n<span class=\"n\">MySceneDelegateRegistration</span><span class=\"w\"> </span><span class=\"n\">g_MySceneDelegateRegistration</span><span class=\"p\">;</span><span class=\"w\"></span>\n</code></pre></div>",
+            "language": "C++",
+            "members": [],
+            "name": "RegisteriOSUISceneDelegate",
+            "notes": [
+                "Register and unregister on the main thread. Registration does not retain\nthe delegate; keep it alive until unregistering. Each event retains a snapshot\nof its observers, so unregistering during delivery affects subsequent events.\nDuplicate registrations are ignored. Late registration does not replay events.\nThis function is only available on iOS. [icon:ios]"
+            ],
+            "parameters": [
+                {
+                    "doc": "An id<UISceneDelegate>.",
                     "is_optional": "False",
                     "name": "delegate",
                     "types": [
@@ -1731,7 +1807,7 @@
         },
         {
             "brief": "Unregister an application delegate",
-            "description": "Deregister a previously registered iOS application delegate\nThis function is only available on iOS. <span class=\"icon-ios\"></span>",
+            "description": "Deregister a previously registered iOS application delegate.\nThis function is only available on iOS. <span class=\"icon-ios\"></span>",
             "error": "",
             "examples": "",
             "language": "C++",
@@ -1740,7 +1816,31 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "an id<UIApplicationDelegate>",
+                    "doc": "An id<UIApplicationDelegate>.",
+                    "is_optional": "False",
+                    "name": "delegate",
+                    "types": [
+                        "void*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Unregister a scene delegate",
+            "description": "Deregister a previously registered iOS scene observer on the main thread.\nThis function is only available on iOS. <span class=\"icon-ios\"></span>",
+            "error": "",
+            "examples": "",
+            "language": "C++",
+            "members": [],
+            "name": "UnregisteriOSUISceneDelegate",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "An id<UISceneDelegate>.",
                     "is_optional": "False",
                     "name": "delegate",
                     "types": [

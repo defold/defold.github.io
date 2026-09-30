@@ -790,6 +790,53 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "Get the game object id associated with a Box2D body",
+            "description": "Returns the id of the game object that owns the body's collision-object component.\nRaises a Lua error if the body handle is invalid or its game object has been deleted.",
+            "error": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">body</span> <span class=\"o\">=</span> <span class=\"n\">b2d</span><span class=\"p\">.</span><span class=\"n\">get_body</span><span class=\"p\">(</span><span class=\"s2\">&quot;#collisionobject&quot;</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">id</span> <span class=\"o\">=</span> <span class=\"n\">b2d</span><span class=\"p\">.</span><span class=\"n\">get_gameobject_id</span><span class=\"p\">(</span><span class=\"n\">body</span><span class=\"p\">)</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "b2d.get_gameobject_id",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the Box2D body",
+                    "is_optional": "False",
+                    "name": "body",
+                    "types": [
+                        "b2Body"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Body\">b2Body</a>"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "the game object id, or <code>nil</code> if the body has no associated game object",
+                    "name": "id",
+                    "types": [
+                        "hash",
+                        "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "Get the Box2D version information for the active backend.",
             "description": "Get the Box2D version information for the active backend.",
             "error": "",

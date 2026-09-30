@@ -653,6 +653,57 @@
             "type": "STRUCT"
         },
         {
+            "brief": "Cubemap faces\nThe six face values are contiguous,...",
+            "description": "Cubemap faces\nThe six face values are contiguous, zero-based, and may be used as array indices.\n<code>CUBEMAP_FACE_COUNT</code> is the number of cubemap faces and is not a valid face.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "Positive X face (array index 0)",
+                    "name": "CUBEMAP_FACE_POSITIVE_X",
+                    "type": ""
+                },
+                {
+                    "doc": "Negative X face (array index 1)",
+                    "name": "CUBEMAP_FACE_NEGATIVE_X",
+                    "type": ""
+                },
+                {
+                    "doc": "Positive Y face (array index 2)",
+                    "name": "CUBEMAP_FACE_POSITIVE_Y",
+                    "type": ""
+                },
+                {
+                    "doc": "Negative Y face (array index 3)",
+                    "name": "CUBEMAP_FACE_NEGATIVE_Y",
+                    "type": ""
+                },
+                {
+                    "doc": "Positive Z face (array index 4)",
+                    "name": "CUBEMAP_FACE_POSITIVE_Z",
+                    "type": ""
+                },
+                {
+                    "doc": "Negative Z face (array index 5)",
+                    "name": "CUBEMAP_FACE_NEGATIVE_Z",
+                    "type": ""
+                },
+                {
+                    "doc": "Number of cubemap faces",
+                    "name": "CUBEMAP_FACE_COUNT",
+                    "type": ""
+                }
+            ],
+            "name": "CubeMapFace",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "ENUM"
+        },
+        {
             "brief": "Destroys a graphics context",
             "description": "Destroys a graphics context.\nCleans up all resources associated with the graphics context.\nThe context becomes invalid after this call.",
             "error": "",
@@ -756,6 +807,38 @@
                     "name": "render_target",
                     "types": [
                         "dmGraphics::HRenderTarget"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Delete a shader storage buffer.",
+            "description": "Delete a shader storage buffer.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "DeleteStorageBuffer",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Graphics context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                },
+                {
+                    "doc": "Storage buffer",
+                    "is_optional": "False",
+                    "name": "storage_buffer",
+                    "types": [
+                        "dmGraphics::HStorageBuffer"
                     ]
                 }
             ],
@@ -916,6 +999,38 @@
                     "name": "state",
                     "types": [
                         "dmGraphics::State"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Remove all bindings of a shader storage buffer fro...",
+            "description": "Remove all bindings of a shader storage buffer from the graphics context.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "DisableStorageBuffer",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Graphics context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                },
+                {
+                    "doc": "Storage buffer",
+                    "is_optional": "False",
+                    "name": "storage_buffer",
+                    "types": [
+                        "dmGraphics::HStorageBuffer"
                     ]
                 }
             ],
@@ -1212,6 +1327,54 @@
                     "name": "state",
                     "types": [
                         "dmGraphics::State"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Bind a shader storage buffer to a reflected descri...",
+            "description": "Bind a shader storage buffer to a reflected descriptor set and binding.\nThe set and binding must match the shader declaration.\nOn DirectX 12, binding the same buffer to both readonly and writable\ndeclarations in one draw or dispatch is unsupported. The command is\nskipped with an error; use separate buffers or writable declarations for both bindings.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "EnableStorageBuffer",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Graphics context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                },
+                {
+                    "doc": "Storage buffer",
+                    "is_optional": "False",
+                    "name": "storage_buffer",
+                    "types": [
+                        "dmGraphics::HStorageBuffer"
+                    ]
+                },
+                {
+                    "doc": "Shader descriptor set",
+                    "is_optional": "False",
+                    "name": "set",
+                    "types": [
+                        "uint32_t"
+                    ]
+                },
+                {
+                    "doc": "Shader resource binding",
+                    "is_optional": "False",
+                    "name": "binding",
+                    "types": [
+                        "uint32_t"
                     ]
                 }
             ],
@@ -2117,6 +2280,86 @@
                     "name": "render_target_texture",
                     "types": [
                         "dmGraphics::HTexture"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "",
+            "description": "",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetRenderTargetTextureType",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Graphics context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                },
+                {
+                    "doc": "",
+                    "is_optional": "False",
+                    "name": "render_target",
+                    "types": [
+                        "dmGraphics::HRenderTarget"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "render target texture type",
+                    "name": "texture_type",
+                    "types": [
+                        "dmGraphics::TextureType"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Return the logical size of a shader storage buffer...",
+            "description": "Return the logical size of a shader storage buffer in bytes.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetStorageBufferSize",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Graphics context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                },
+                {
+                    "doc": "Storage buffer",
+                    "is_optional": "False",
+                    "name": "storage_buffer",
+                    "types": [
+                        "dmGraphics::HStorageBuffer"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Logical buffer size in bytes",
+                    "name": "size",
+                    "types": [
+                        "uint32_t"
                     ]
                 }
             ],
@@ -3408,6 +3651,62 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "Create a shader storage buffer",
+            "description": "Create a shader storage buffer.\nStorage buffers are available only when supported by the active graphics\nadapter. The size must be non-zero, four-byte aligned, and within the\nadapter's supported storage-buffer range.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "NewStorageBuffer",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Graphics context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                },
+                {
+                    "doc": "Buffer size in bytes",
+                    "is_optional": "False",
+                    "name": "size",
+                    "types": [
+                        "uint32_t"
+                    ]
+                },
+                {
+                    "doc": "Optional initial data",
+                    "is_optional": "False",
+                    "name": "data",
+                    "types": [
+                        "const void*"
+                    ]
+                },
+                {
+                    "doc": "CPU update frequency hint",
+                    "is_optional": "False",
+                    "name": "buffer_usage",
+                    "types": [
+                        "dmGraphics::BufferUsage"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Storage buffer, or 0 when unsupported or invalid",
+                    "name": "buffer",
+                    "types": [
+                        "dmGraphics::HStorageBuffer"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "Create new texture",
             "description": "Create new texture",
             "error": "",
@@ -3796,6 +4095,32 @@
             "returnvalues": [],
             "tparams": [],
             "type": "ENUM"
+        },
+        {
+            "brief": "Render target binding parameters.",
+            "description": "Render target binding parameters.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "BufferType bit mask identifying attachments whose contents may be discarded after the render pass",
+                    "name": "m_TransientBufferTypes",
+                    "type": "uint32_t"
+                },
+                {
+                    "doc": "Cubemap face to bind. For non-cubemap render targets this must remain <code>CUBEMAP_FACE_POSITIVE_X</code>, which is also the zero-initialized default",
+                    "name": "m_CubeMapFace",
+                    "type": "dmGraphics::CubeMapFace"
+                }
+            ],
+            "name": "RenderTargetBindingParams",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
         },
         {
             "brief": "",
@@ -4318,8 +4643,8 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "",
-            "description": "",
+            "brief": "Bind a render target with generic binding paramete...",
+            "description": "Bind a render target with generic binding parameters.",
             "error": "",
             "examples": "",
             "language": "",
@@ -4346,9 +4671,9 @@
                 {
                     "doc": "",
                     "is_optional": "False",
-                    "name": "transient_buffer_types",
+                    "name": "params",
                     "types": [
-                        "uint32_t"
+                        "dmGraphics::RenderTargetBindingParams"
                     ]
                 }
             ],
@@ -4733,6 +5058,118 @@
                     "name": "dppass",
                     "types": [
                         "dmGraphics::StencilOp"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Replace the complete contents and size of a shader...",
+            "description": "Replace the complete contents and size of a shader storage buffer.\nThe size follows the same restrictions as <code>NewStorageBuffer</code>.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "SetStorageBufferData",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Graphics context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                },
+                {
+                    "doc": "Storage buffer",
+                    "is_optional": "False",
+                    "name": "storage_buffer",
+                    "types": [
+                        "dmGraphics::HStorageBuffer"
+                    ]
+                },
+                {
+                    "doc": "New buffer size in bytes",
+                    "is_optional": "False",
+                    "name": "size",
+                    "types": [
+                        "uint32_t"
+                    ]
+                },
+                {
+                    "doc": "Data used to replace the buffer contents",
+                    "is_optional": "False",
+                    "name": "data",
+                    "types": [
+                        "const void*"
+                    ]
+                },
+                {
+                    "doc": "CPU update frequency hint",
+                    "is_optional": "False",
+                    "name": "buffer_usage",
+                    "types": [
+                        "dmGraphics::BufferUsage"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Update a byte range in a shader storage buffer",
+            "description": "Update a byte range in a shader storage buffer.\nThe offset and size must be four-byte aligned and the range must fit in\nthe existing buffer.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "SetStorageBufferSubData",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Graphics context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmGraphics::HContext"
+                    ]
+                },
+                {
+                    "doc": "Storage buffer",
+                    "is_optional": "False",
+                    "name": "storage_buffer",
+                    "types": [
+                        "dmGraphics::HStorageBuffer"
+                    ]
+                },
+                {
+                    "doc": "Destination byte offset",
+                    "is_optional": "False",
+                    "name": "offset",
+                    "types": [
+                        "uint32_t"
+                    ]
+                },
+                {
+                    "doc": "Number of bytes to update",
+                    "is_optional": "False",
+                    "name": "size",
+                    "types": [
+                        "uint32_t"
+                    ]
+                },
+                {
+                    "doc": "Source data",
+                    "is_optional": "False",
+                    "name": "data",
+                    "types": [
+                        "const void*"
                     ]
                 }
             ],
