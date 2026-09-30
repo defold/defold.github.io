@@ -1,0 +1,65 @@
+{
+    "elements": [
+        {
+            "brief": "collection resource",
+            "description": "Opaque pointer returned by dmResource::Get for a compiled collection\nresource. The pointer remains valid while the caller holds a resource\nreference, including across resource reloads.\nDo not load a collection resource directly into an HCollection. An\nHCollection is a numeric collection handle and is not resource storage.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "CollectionResource",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "get a collection handle from a collection resource",
+            "description": "Converts a live collection resource returned by dmResource::Get into the\nnumeric collection handle used by the game-object API. The caller retains\nownership of the resource reference and must release the original resource\npointer with dmResource::Release. The returned handle may change when the\nresource is reloaded; call this function again after a reload.",
+            "error": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">dmGameObject</span><span class=\"o\">::</span><span class=\"n\">CollectionResource</span><span class=\"o\">*</span><span class=\"w\"> </span><span class=\"n\">resource</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"mi\">0</span><span class=\"p\">;</span><span class=\"w\"></span>\n<span class=\"n\">dmResource</span><span class=\"o\">::</span><span class=\"n\">Result</span><span class=\"w\"> </span><span class=\"n\">result</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"n\">dmResource</span><span class=\"o\">::</span><span class=\"n\">Get</span><span class=\"p\">(</span><span class=\"n\">factory</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"s\">&quot;/main.collectionc&quot;</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"p\">(</span><span class=\"kt\">void</span><span class=\"o\">**</span><span class=\"p\">)</span><span class=\"o\">&amp;</span><span class=\"n\">resource</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"k\">if</span><span class=\"w\"> </span><span class=\"p\">(</span><span class=\"n\">result</span><span class=\"w\"> </span><span class=\"o\">==</span><span class=\"w\"> </span><span class=\"n\">dmResource</span><span class=\"o\">::</span><span class=\"n\">RESULT_OK</span><span class=\"p\">)</span><span class=\"w\"></span>\n<span class=\"p\">{</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"n\">dmGameObject</span><span class=\"o\">::</span><span class=\"n\">HCollection</span><span class=\"w\"> </span><span class=\"n\">collection</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"n\">dmGameObject</span><span class=\"o\">::</span><span class=\"n\">ResCollectionGetCollection</span><span class=\"p\">(</span><span class=\"n\">resource</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"c1\">// Use collection with the game-object API.</span>\n<span class=\"w\">    </span><span class=\"n\">dmResource</span><span class=\"o\">::</span><span class=\"n\">Release</span><span class=\"p\">(</span><span class=\"n\">factory</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">resource</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"p\">}</span><span class=\"w\"></span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "ResCollectionGetCollection",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Live collection resource returned by dmResource::Get.",
+                    "is_optional": "False",
+                    "name": "resource",
+                    "types": [
+                        "dmGameObject::CollectionResource*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Collection handle, or 0 if resource is null.",
+                    "name": "collection",
+                    "types": [
+                        "dmGameObject::HCollection"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        }
+    ],
+    "format_version": 2,
+    "info": {
+        "api_language": "C++",
+        "brief": "Collection resource functions",
+        "description": "API for accessing loaded game object collection resources.",
+        "description_html": "<p>API for accessing loaded game object collection resources.</p>",
+        "file": "res_collection.h",
+        "include": "dmsdk/gameobject/res_collection.h",
+        "name": "Collection Resource",
+        "namespace": "dmGameObject",
+        "notes": [],
+        "path": "engine/gameobject/src/dmsdk/gameobject/res_collection.h",
+        "type": "Defold C++"
+    }
+}
