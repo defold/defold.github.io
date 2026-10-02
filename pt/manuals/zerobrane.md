@@ -70,10 +70,6 @@ Debugging session started in '/Users/my_user/Documents/Projects/Defold_project'.
 
 Agora é possível usar os recursos de depuração disponíveis no ZeroBrane; você pode avançar passo a passo, inspecionar, adicionar e remover breakpoints etc.
 
-<div class='sidenote' markdown='1'>
-A depuração só será ativada para o contexto lua de onde a depuração foi iniciada. Ativar "shared_state" em *game.project* significa que você pode depurar toda a aplicação, independentemente de onde começou.
-</div>
-
 ![Stepping](/manuals/images/zerobrane/code.png)
 
 Se a tentativa de conexão falhar (possivelmente porque o servidor de depuração não está em execução), sua aplicação continuará a rodar normalmente depois que a tentativa de conexão for feita.

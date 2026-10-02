@@ -8,6 +8,8 @@ toc:
 - Bob, narzędzie do budowania
 - anchor: usage
   title: Użycie
+- anchor: build-server
+  title: Serwer budowania
 ---
 
 # Bob, narzędzie do budowania
@@ -244,3 +246,16 @@ drwxr-xr-x   27 sicher  staff       918  1 Dec 10:15 sound
 -rw-r--r--    1 sicher  staff    131926  1 Dec 10:15 state
 $
 ```
+
+## Serwer budowania {#build-server}
+
+Od wersji Defold 1.14.0 Bob wybiera domyślny serwer budowania natywnych rozszerzeń na podstawie kanału wydania swojej dystrybucji:
+
+| Kanał wydania Boba | Domyślny serwer budowania |
+|---|---|
+| `stable` | `https://build.defold.com` |
+| Dowolny inny kanał, w tym `beta` i `alpha` | `https://build-stage.defold.com` |
+
+Uruchom `java -jar bob.jar --version`, aby wyświetlić kanał wydania wraz z wersją Boba i informacjami o kompilacji. Opcja `--variant` steruje wariantem budowania silnika i nie zmienia tego kanału wydania.
+
+Przekaż `--build-server <url>`, aby jawnie wybrać serwer, w tym [własny serwer Extender](/pl/manuals/extender-local-setup/). Ta opcja zastępuje ustawienie domyślne dla każdego kanału wydania.

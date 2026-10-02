@@ -76,10 +76,6 @@ Debugging session started in '/Users/my_user/Documents/Projects/Defold_project'.
 
 Jetzt kannst du die Debugging-Funktionen von ZeroBrane nutzen: Du kannst den Code schrittweise ausführen, Werte untersuchen, Haltepunkte hinzufügen und entfernen usw.
 
-<div class='sidenote' markdown='1'>
-Das Debugging wird nur für den Lua-Kontext aktiviert, aus dem es gestartet wird. Wenn du "shared_state" in *game.project* aktivierst, kannst du deine gesamte Anwendung debuggen, unabhängig davon, wo du das Debugging gestartet hast.
-</div>
-
 ![Schrittweise Ausführung](/manuals/images/zerobrane/code.png)
 
 Falls der Verbindungsversuch fehlschlägt (möglicherweise weil der Debugging-Server nicht läuft), läuft deine Anwendung nach dem Verbindungsversuch wie gewohnt weiter.

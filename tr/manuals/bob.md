@@ -8,6 +8,8 @@ toc:
 - Derleyici Bob
 - anchor: usage
   title: Kullanım
+- anchor: build-server
+  title: Derleme sunucusu
 ---
 
 # Derleyici Bob
@@ -244,3 +246,16 @@ drwxr-xr-x   27 sicher  staff       918  1 Dec 10:15 sound
 -rw-r--r--    1 sicher  staff    131926  1 Dec 10:15 state
 $
 ```
+
+## Derleme sunucusu {#build-server}
+
+Defold 1.14.0'dan itibaren Bob, yerel kod eklentileri için varsayılan derleme sunucusunu dağıtımının sürüm kanalına göre seçer:
+
+| Bob sürüm kanalı | Varsayılan derleme sunucusu |
+|---|---|
+| `stable` | `https://build.defold.com` |
+| `beta` ve `alpha` dahil diğer tüm kanallar | `https://build-stage.defold.com` |
+
+Bob'un sürüm ve derleme bilgileriyle birlikte sürüm kanalını görüntülemek için `java -jar bob.jar --version` komutunu çalıştırın. `--variant` seçeneği, motorun derleme varyantını denetler ve bu sürüm kanalını değiştirmez.
+
+[Kendi barındırdığınız bir Extender sunucusu](/tr/manuals/extender-local-setup/) dahil olmak üzere bir sunucuyu açıkça seçmek için `--build-server <url>` seçeneğini geçirin. Bu seçenek, her sürüm kanalı için varsayılan sunucunun yerine geçer.
