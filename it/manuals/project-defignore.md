@@ -9,6 +9,8 @@ toc:
   title: Ignorare file
 - anchor: the-defignore-file
   title: Il file .defignore
+- anchor: wildcards
+  title: Caratteri jolly
 - anchor: the-defunload-file
   title: Il file .defunload
 ---
@@ -26,6 +28,26 @@ I file e le cartelle da escludere sono definiti in un file chiamato `.defignore`
 ```
 
 Questo esclude il file `/path/to/file.png` e tutto ciò che si trova nel percorso `/otherpath`.
+
+Ogni riga deve iniziare con un `/` e viene confrontata con i percorsi del progetto relativi alla radice del progetto. Uno schema corrisponde a un percorso se coincide con quel percorso o con quello di una delle sue cartelle superiori. La corrispondenza distingue tra maiuscole e minuscole.
+
+### Caratteri jolly {#wildcards}
+
+Gli schemi possono contenere caratteri jolly:
+
+* `*` corrisponde a un numero qualsiasi di caratteri tranne `/`
+* `?` corrisponde esattamente a un carattere tranne `/`
+* `**` corrisponde a un numero qualsiasi di cartelle intere, quindi `/**/name` corrisponde a `name` a qualsiasi profondità e `/folder/**` corrisponde alla cartella e a tutto il suo contenuto
+
+Tutti gli altri caratteri vengono interpretati letteralmente. Esempio:
+
+```
+/levels/*/tiled
+/**/generated
+/assets/temp_??.png
+```
+
+Questo esclude la cartella `tiled` in ogni sottocartella diretta di `/levels` (come `/levels/01/tiled`), tutte le cartelle chiamate `generated` a qualsiasi profondità, inclusa `/generated` nella radice del progetto, e file come `/assets/temp_01.png`.
 
 ## Il file `.defunload` {#the-defunload-file}
 

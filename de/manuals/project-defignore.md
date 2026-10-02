@@ -9,6 +9,8 @@ toc:
   title: Dateien ignorieren
 - anchor: the-defignore-file
   title: Die Datei .defignore
+- anchor: wildcards
+  title: Platzhalter
 - anchor: the-defunload-file
   title: Die Datei .defunload
 ---
@@ -26,6 +28,26 @@ Die auszuschließenden Dateien und Ordner werden in einer Datei namens `.defigno
 ```
 
 Dadurch werden die Datei `/path/to/file.png` und alle Inhalte unter dem Pfad `/otherpath` ausgeschlossen.
+
+Jede Zeile muss mit einem `/` beginnen und wird mit Projektpfaden relativ zum Stammverzeichnis des Projekts abgeglichen. Ein Muster passt zu einem Pfad, wenn es mit dem Pfad oder einem seiner übergeordneten Ordner übereinstimmt. Beim Abgleich wird zwischen Groß- und Kleinschreibung unterschieden.
+
+### Platzhalter {#wildcards}
+
+Muster können Platzhalter enthalten:
+
+* `*` entspricht einer beliebigen Anzahl von Zeichen außer `/`
+* `?` entspricht genau einem Zeichen außer `/`
+* `**` entspricht einer beliebigen Anzahl ganzer Ordner. Daher passt `/**/name` zu `name` auf jeder Ebene und `/folder/**` zum Ordner und allen darin enthaltenen Dateien und Ordnern
+
+Alle anderen Zeichen werden wörtlich abgeglichen. Beispiel:
+
+```
+/levels/*/tiled
+/**/generated
+/assets/temp_??.png
+```
+
+Dadurch werden der Ordner `tiled` in jedem direkten Unterordner von `/levels` (etwa `/levels/01/tiled`), alle Ordner namens `generated` auf jeder Ebene einschließlich `/generated` im Stammverzeichnis des Projekts sowie Dateien wie `/assets/temp_01.png` ausgeschlossen.
 
 ## Die Datei `.defunload` {#the-defunload-file}
 
