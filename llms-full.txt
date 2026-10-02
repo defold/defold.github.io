@@ -4398,7 +4398,7 @@ Track Active Tab in Asset Browser
 : The file edited in selected tab in the *Editor* pane will be selected in the Asset Browser (also known as the *Asset* pane).
 
 Lint Code on Build
-: Enables [code linting](#manuals:writing-code) when the project is built. This option is enabled by default, but can be disabled if the linting in a large project takes too much time.
+: Enables [code linting](#manuals:writing-code) when the project is built. This option is disabled by default.
 
 Engine Arguments
 : Arguments that will be passed to the dmengine executable when the editor builds and runs.
@@ -13230,9 +13230,9 @@ end
 
 ## Lua contexts in Defold
 
-All variables that you declare are by default global, meaning that they are available through all parts of the Lua runtime context. Defold has a setting *shared_state* setting in *game.project* that controls this context. If the option is set, all scripts, GUI scripts, and the render script are evaluated in the same Lua context and global variables are visible everywhere. If the option is not set, the engine executes scripts, GUI scripts, and the render script in separate contexts.
+Variables are global unless declared with `local`. All game object scripts, GUI scripts and render scripts share one Lua context, so globals and the cache of modules loaded with `require()` are shared between them. Store state that belongs to a single script instance in `self`, or create separate state tables explicitly, instead of keeping it in shared globals or module tables.
 
-Defold allows you to use the same script file in several separate game object components. Any locally declared variables are shared between components that run the same script file.
+Defold allows you to use the same script file in several separate game object components. Variables declared with `local` at the top level of the script file are shared between components that run that file. Variables declared with `local` inside a function are local to that function call.
 ```lua
 -- 'my_global_value' will be available from all scripts, gui_scripts, render script and modules (Lua files)
 my_global_value = "global scope"
@@ -14671,7 +14671,21 @@ go.set("#sprite", "sprite_position_2d", vmath.vector4(my_x,my_y,0,0))
 go.animate("#sprite", "sprite_position_2d", go.PLAYBACK_LOOP_PINGPONG, vmath.vector4(1,2,0,0), go.EASING_LINEAR, 2)
 ```
 
-The same is true for matrix attributes, if the attribute is a matrix type other than a `Mat4` you can still set the data using `go.set`.
+Since Defold 1.14.0, `Mat2`, `Mat3` and `Mat4` attributes all use `vmath.matrix4` values with `go.set()` and `go.get()`. Setting a `Mat2` or `Mat3` attribute takes the upper-left 2×2 or 3×3 part of the matrix. Reading it returns a `vmath.matrix4` with the unused rows and columns filled from an identity matrix.
+
+For example, with a `Mat2` attribute named `custom_mat2` and semantic type `None` in a model's material:
+```lua
+local value = vmath.matrix4()
+value.m00 = 2
+value.m11 = 3
+go.set("#model", "custom_mat2", value)
+
+local result = go.get("#model", "custom_mat2")
+print(result.m00, result.m11) -- 2, 3
+print(result.m22, result.m33) -- 1, 1 (identity padding)
+```
+
+Always assign the complete matrix. Flattened values such as `vmath.vector4` and assignments to individual attribute sub-properties are rejected for matrix attributes. To change an element, modify the matrix in Lua and pass it back with `go.set()`.
 
 ### Examples of using custom vertex attributes
 
@@ -17239,6 +17253,19 @@ drwxr-xr-x   27 sicher  staff       918  1 Dec 10:15 sound
 $
 ```
 
+## Build server
+
+Since Defold 1.14.0, Bob selects the default native extension build server from the release channel of its distribution:
+
+| Bob release channel | Default build server |
+|---|---|
+| `stable` | `https://build.defold.com` |
+| Any other channel, including `beta` and `alpha` | `https://build-stage.defold.com` |
+
+Run `java -jar bob.jar --version` to display the release channel together with Bob's version and build information. The `--variant` option controls the engine build variant and does not change this release channel.
+
+Pass `--build-server ` to select a server explicitly, including a [self-hosted Extender server](#manuals:extender-local-setup). This option overrides the default for every release channel.
+
 <!-- /manuals/hot-reload -->
 
 # Hot reloading resources {#manuals:hot-reload}
@@ -18113,6 +18140,9 @@ Another way of reducing initial application size is to exclude parts of the game
 Excluded content can be anything from entire levels to unlockable characters, skins, weapons or vehicles. If your game has a lot of content, organize the loading process so that the bootstrap collection and the first level collection include the bare minimum resources required for that level. You achieve this by using collection proxies or factories with the "Exclude" checkbox enabled. Split resources according to the player's progress. This approach ensures efficient resource loading and keeps initial memory usage low. Learn more in the [Live Update manual](#manuals:live-update).
 
 ## Android specific size optimizations
+
+Enable [R8 shrinking](#manuals:android) to remove unused Java code. With Defold 1.14.0 or later and a compatible Extender server, this also removes unused Android resources from extensions and their dependencies.
+
 Android builds must support both 32-bit and 64-bit CPU architectures. When you [bundle for Android](#manuals:android) you can specify which CPU architectures to include:
 
 By default a bundle includes the `armv7-android` and `arm64-android` architectures. A third architecture, `x86_64-android`, is available but not included by default since it is mainly useful for Android emulators, ChromeOS and Windows Subsystem for Android rather than for physical devices. Leave it unchecked to keep the bundle size down unless you specifically need to target one of those environments.
@@ -18569,9 +18599,9 @@ For this feature to work, you will need *ADB* installed and *USB debugging* enab
 
 An *.aab* file can be uploaded to Google Play via the [Google Play developer console](https://play.google.com/apps/publish/). It is also possible to generate an *`.apk`* file from an *.aab* file to install it locally using the [Android bundletool](https://developer.android.com/studio/command-line/bundletool).
 
-## Shrinking Java code with R8
+## Shrinking Java code and Android resources with R8 {#shrinking-java-code-with-r8}
 
-R8 reduces the size of Java code through shrinking, optimization and obfuscation.
+R8 reduces the size of Java code through shrinking, optimization and obfuscation. With Defold 1.14.0 or later and a compatible Extender build server, it also removes unused Android resources, such as layouts, drawables and raw resources supplied by extensions and their Android dependencies. Defold game assets in the game archive are not processed by R8.
 
 ### Enabling R8
 
@@ -18585,9 +18615,21 @@ Make sure every extension with Java code provides a `.keep` file for the classes
 
 Leaving **R8 Keep Rules** empty uses D8 without shrinking. Enabling R8 uses the native extension build service, even for a project without native extensions.
 
+Starting with Defold 1.14.0, Android resource shrinking is enabled by the same **R8 Keep Rules** setting; there is no separate project setting for it. Older Defold SDKs retain code-only R8 shrinking.
+
 ### Adding rules to an extension
 
 Keep rules for an extension belong in its `manifests/android` directory, next to `build.gradle`. See [R8 keep rules for Android extensions](#manuals:extensions) for how to add a file and preserve the extension's Java classes.
+
+### Keeping Android resources
+
+Resources looked up dynamically by name may need explicit keep rules. Android resources use an XML file with `tools:keep`, separately from the `.keep` rules for Java classes. For example, an extension can preserve a raw resource named `dynamic_data` by adding `/myextension/res/android/res/raw/com_example_myextension_keep.xml`:
+```xml
+<resources xmlns:tools="http://schemas.android.com/tools"
+    tools:keep="@raw/dynamic_data" />
+```
+
+Use a unique filename for each extension's XML keep file to avoid conflicts. The `tools:keep` value accepts a comma-separated list of resource names and supports `*` wildcards. See Android's [resource keep rules documentation](https://developer.android.com/topic/performance/app-optimization/customize-which-resources-to-keep) for details. Test features that load resources dynamically in a release build after enabling R8.
 
 ### Keeping the obfuscation mapping
 
@@ -19747,6 +19789,8 @@ If the extension relies on annotations at runtime, also include:
 
 These rules are combined with the project's selected keep file when [R8 is enabled](#manuals:android).
 
+With Defold 1.14.0 or later and a compatible Extender server, R8 also shrinks Android resources. If the extension looks up resources dynamically by name, add [XML resource keep rules](#manuals:android) under `res/android/res/raw` in the extension folder.
+
 ## Custom resources
 
 An extension can include data in the game archive by declaring custom resources in an `ext.properties` file next to its `ext.manifest`:
@@ -20354,12 +20398,14 @@ Select which graphics backends to include for each platform. A combined choice i
 | Field | Platforms | Choices | Default |
 |---|---|---|---|
 | **Graphics** | Windows and Linux | OpenGL, Vulkan, OpenGL & Vulkan | OpenGL |
-| **Graphics (macOS)** | macOS | OpenGL, Metal, Vulkan, OpenGL & Metal, OpenGL & Vulkan | Vulkan |
+| **Graphics (macOS)** | macOS | OpenGL, Metal, Vulkan, OpenGL & Metal, OpenGL & Vulkan | Metal |
 | **Graphics (iOS)** | iOS | OpenGL, Metal, Vulkan, OpenGL & Metal, OpenGL & Vulkan | OpenGL |
 | **Graphics (Android)** | Android | OpenGL+Vulkan, OpenGL, Vulkan | OpenGL+Vulkan |
 | **Graphics (HTML5)** | HTML5 | WebGL, WebGPU, WebGL & WebGPU | WebGL |
 
 On Linux ARM64, the **OpenGL** choice uses the OpenGL ES backend. The Android combined default prefers Vulkan when available and falls back to OpenGL ES.
+
+Since Defold 1.14.0, macOS uses the native Metal backend by default. The **Vulkan** choice on macOS and iOS uses Vulkan through MoltenVK. The iOS simulator (`arm64_sim-ios`) always uses Metal, regardless of the **Graphics (iOS)** choice for devices.
 
 ## Use full text layout system
 

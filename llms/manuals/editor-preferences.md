@@ -20,7 +20,7 @@ Track Active Tab in Asset Browser
 : The file edited in selected tab in the *Editor* pane will be selected in the Asset Browser (also known as the *Asset* pane).
 
 Lint Code on Build
-: Enables [code linting](https://defold.com/llms/manuals/writing-code.md) when the project is built. This option is enabled by default, but can be disabled if the linting in a large project takes too much time.
+: Enables [code linting](https://defold.com/llms/manuals/writing-code.md) when the project is built. This option is disabled by default.
 
 Engine Arguments
 : Arguments that will be passed to the dmengine executable when the editor builds and runs.

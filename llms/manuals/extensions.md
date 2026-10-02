@@ -86,6 +86,8 @@ If the extension relies on annotations at runtime, also include:
 
 These rules are combined with the project's selected keep file when [R8 is enabled](https://defold.com/llms/manuals/android.md).
 
+With Defold 1.14.0 or later and a compatible Extender server, R8 also shrinks Android resources. If the extension looks up resources dynamically by name, add [XML resource keep rules](https://defold.com/llms/manuals/android.md) under `res/android/res/raw` in the extension folder.
+
 ## Custom resources
 
 An extension can include data in the game archive by declaring custom resources in an `ext.properties` file next to its `ext.manifest`:
