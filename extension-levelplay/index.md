@@ -26,6 +26,8 @@ toc:
 
 This extension provides an object-based Lua API for Unity LevelPlay mediation on Android and iOS. It follows the SDK 9 lifecycle: initialize the SDK, create an ad object with an ad-unit ID, then explicitly load and show that object.
 
+The current catalog uses LevelPlay 9.6.1 and Ad Quality 9.10.0 on both platforms.
+
 ## Installation
 
 Add a released archive to the **Dependencies** field in `game.project`:
