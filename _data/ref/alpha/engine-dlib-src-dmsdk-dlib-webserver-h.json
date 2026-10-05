@@ -1,8 +1,8 @@
 {
     "elements": [
         {
-            "brief": "Add a new handler",
-            "description": "Add a new handler",
+            "brief": "Add a new handler without OpenAPI metadata",
+            "description": "Requests use the handler with the longest matching prefix, regardless of\nregistration order. A handler registered at \"/\" serves as a fallback.\nEquivalent to calling the four-argument overload with openapi_json set to 0.",
             "error": "",
             "examples": "",
             "language": "",
@@ -39,6 +39,62 @@
             "returnvalues": [
                 {
                     "doc": "RESULT_OK on success",
+                    "name": "",
+                    "types": [
+                        "Result"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Add a new handler with optional OpenAPI metadata",
+            "description": "Requests use the handler with the longest matching prefix, regardless of\nregistration order. A handler registered at \"/\" serves as a fallback.\nPass 0 to register without documenting the handler. Otherwise, the OpenAPI\nJSON is a non-empty Paths Object describing the paths and methods\nserved by this handler. Each path must start with the handler's prefix and\nmust not already be documented by another handler. Schemas should be inline\nor use references to paths in the resulting document.\nThe server retains the JSON pointer without copying it. Keep the string\nunchanged and valid until the handler is removed or the server is deleted;\na static const char array is recommended.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "AddHandler",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Server handle",
+                    "is_optional": "False",
+                    "name": "server",
+                    "types": [
+                        "HServer"
+                    ]
+                },
+                {
+                    "doc": "Location prefix for which locations this handler should handle",
+                    "is_optional": "False",
+                    "name": "prefix",
+                    "types": [
+                        "const char*"
+                    ]
+                },
+                {
+                    "doc": "Handler parameters",
+                    "is_optional": "False",
+                    "name": "handler_params",
+                    "types": [
+                        "HandlerParams"
+                    ]
+                },
+                {
+                    "doc": "OpenAPI 3.0.3 Paths Object encoded as a JSON string, or 0 to omit metadata",
+                    "is_optional": "False",
+                    "name": "openapi_json",
+                    "types": [
+                        "const char*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "RESULT_OK on success, RESULT_ERROR_INVAL for invalid or conflicting metadata",
                     "name": "",
                     "types": [
                         "Result"
