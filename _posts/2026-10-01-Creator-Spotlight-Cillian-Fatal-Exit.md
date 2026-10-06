@@ -52,7 +52,7 @@ Second is the ease of sharing games with the world and even with those very clos
 
 ##### Wavedash has become a recurring part of your recent work, from Draft Punks and Dead Sun to Death Cascade. What do you think about it?
 
-I think Wavedash is a wonderful platform, and I wish more folks knew about it (thank you for working with them on the wonderful Defold SDK support).
+I think [Wavedash](https://wavedash.com/?utm_source=defold&utm_medium=referral&utm_campaign=creator_spotlight_cillian_fatal_exit&utm_content=wavedash_platform) is a wonderful platform, and I wish more folks knew about it (thank you for working with them on the wonderful Defold SDK support).
 
 For those out of the loop, Wavedash is probably the closest platform on the web to feature parity with Steamworks. It offers things like leaderboards, achievements, player identity, even P2P multiplayer and lobbies like Steam has, and good support for UGC (think Steam Workshop). It’s still in its early stages, but there’s huge potential there. It’s also very open to smaller projects and game jam games, which you can monetize simply by opting into the creator fund and earning money from player engagement.
 
