@@ -21,7 +21,7 @@ layout: page
 			<div class="columns two"><br/></div>
 		</div>
 		<div class="row">
-			<div class="columns ten post content-flow" data-pagefind-body>
+			<div class="columns ten post content-flow{% if page.tags contains 'interview' %} post-interview{% endif %}" data-pagefind-body>
 				{% include anchor_headings.html html=content anchorClass="anchor-link" %}
 			</div>
 			<div class="columns two"><br/></div>
