@@ -58,9 +58,9 @@ For those out of the loop, Wavedash is probably the closest platform on the web 
 
 It’s just a super cool platform and the founders and team members who work on it are incredibly helpful and open to feedback from both developers and players.
 
-![Fatal Exit games on Wavedash](/images/posts/creator-spotlight-cillian-fatal-exit/fatal-exit-wavedash.webp)
 <div align="center">
-_Fatal Exit publishes many browser-first games on Wavedash_
+<div style="position:relative;box-sizing:content-box;width:100%;aspect-ratio:16 / 9;padding-bottom:40px;"><iframe src="https://wavedash.com/embed/games/draft-punks" style="position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:14px;" allow="autoplay; fullscreen; clipboard-read; clipboard-write; gamepad; cross-origin-isolated; pointer-lock; orientation-lock; accelerometer; gyroscope; magnetometer; xr-spatial-tracking; camera; microphone; focus-without-user-activation *; screen-wake-lock; keyboard-map;" allowfullscreen></iframe></div>
+_Play Draft Punks embedded from Wavedash directly here!_
 </div>
 
 ##### How do you assess the modern web games market?
@@ -74,6 +74,11 @@ On the other hand, don’t expect your very first game to make you massive amoun
 ##### What do you enjoy about working with web games?
 
 Some of that I mentioned above. The other thing I really like is that people don’t usually expect a crazy scope from games on the web. A single polished mechanic or a very refined, understandable game loop can be enough to engage people, with the depth and complexity becoming something you slowly dip into as you master the game.
+
+![Fatal Exit games on Wavedash](/images/posts/creator-spotlight-cillian-fatal-exit/fatal-exit-wavedash.webp)
+<div align="center">
+_Fatal Exit publishes many browser-first games on Wavedash_
+</div>
 
 ##### What do you find frustrating or worrying about web games?
 
@@ -169,6 +174,11 @@ _Juggernaut: Siegebreaker combines 3D assets with pixel art and billboard sprite
 As I stated, I may reboot *Juggernaut: Siegebreaker* as a PC-focused strategy game down the line, likely with significantly reworked gameplay. It may end up being an entirely different game with a different title by the time it is released.
 
 You mentioned *Dopaminer*, which is another game of mine that I recently released. I will likely continue to update it or use what I learned from it to build a deeper incremental game that is less focused on pure visuals and juice overload.
+
+<div align="center">
+<div style="position:relative;box-sizing:content-box;width:100%;aspect-ratio:16 / 9;padding-bottom:40px;"><iframe src="https://wavedash.com/embed/games/dopaminer" style="position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:14px;" allow="autoplay; fullscreen; clipboard-read; clipboard-write; gamepad; cross-origin-isolated; pointer-lock; orientation-lock; accelerometer; gyroscope; magnetometer; xr-spatial-tracking; camera; microphone; focus-without-user-activation *; screen-wake-lock; keyboard-map;" allowfullscreen></iframe></div>
+_Play Dopaminer embedded from Wavedash directly here!_
+</div>
 
 I also have several WIP games that you might be interested in:
 
