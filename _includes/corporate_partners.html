@@ -61,7 +61,7 @@
 				<h5 style="margin-bottom: 1rem; margin-top: 2rem;">Corporate Bronze Partners</h5>
 				<div class="grid-100">
 					{%- for partner in bronze -%}
-						<a href="{{ partner.link }}" target="_blank"><img src="{{ partner.logo }}" style="max-height: 33px" alt="{{ partner.name }} logo" loading="lazy" decoding="async"></a>
+						<a href="{{ partner.link }}" target="_blank"><img src="{{ partner.logo }}"{% if partner.logo2x %} srcset="{{ partner.logo2x }} 2x"{% endif %} style="max-height: 33px" alt="{{ partner.name }} logo" loading="lazy" decoding="async"></a>
 					{%- endfor -%}
 				</div>
 				{%- if include.button -%}{% include secondary_button.html link="/donate" text="Become a partner" %}{%- endif -%}
