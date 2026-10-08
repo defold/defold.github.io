@@ -22,6 +22,10 @@ For developers, Minit Games offers a new way to reach players. You build your ga
 
 Defold's lightweight HTML5 builds and fast loading times make it a natural fit for this new format of bite-sized gaming.
 
+> “Defold builds are small, fast and run anywhere, which is exactly what a feed of instant-play games needs. We're looking forward to seeing what the Defold community brings to Minit.”
+>
+> — Ole Schaper, Co-Founder and CEO, Minit Games
+
 ## Get started with Defold and Minit
 
 Defold developers can already start building for Minit Games using these resources:
