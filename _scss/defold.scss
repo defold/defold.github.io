@@ -2932,6 +2932,12 @@ a.page-text-panel.page-post-panel-link .page-post-preview-title {
 	grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
 }
 
+@media (min-width: 800px) {
+	.donors-and-partners-grid.donors-and-partners-grid-bronze {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
+
 .donors-and-partners-card {
 	--donors-and-partners-card-min-height: clamp(71px, 6.5vw, 86px);
 	--donors-and-partners-card-padding-block: clamp(0.3rem, 0.45vw, 0.42rem);

@@ -64,10 +64,10 @@
 				<div class="donors-and-partners-group-heading">
 					<h5>Corporate Bronze Partners</h5>
 				</div>
-				<div class="donors-and-partners-grid">
+				<div class="donors-and-partners-grid donors-and-partners-grid-bronze">
 					{%- for partner in bronze -%}
 						<a class="donors-and-partners-card donors-and-partners-card-compact" href="{{ partner.link }}" target="_blank" rel="noopener">
-							<img class="donors-and-partners-logo donors-and-partners-logo-compact" src="{{ partner.logo }}" loading="lazy" alt="{{ partner.name }} logo">
+							<img class="donors-and-partners-logo donors-and-partners-logo-compact" src="{{ partner.logo }}"{% if partner.logo2x %} srcset="{{ partner.logo2x }} 2x"{% endif %} loading="lazy" alt="{{ partner.name }} logo">
 						</a>
 					{%- endfor -%}
 				</div>
