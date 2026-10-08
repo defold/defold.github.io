@@ -20,11 +20,14 @@ Games on the platform are called **Posts**: short, portrait-oriented experiences
 
 For developers, Minit Games offers a new way to reach players. You build your games for Minit with the tools you already know. If a game runs in a browser, it can run on Minit Games. The platform provides free hosting and distribution, with creator monetization based on gameplay coming soon. Players will always be able to play for free.
 
-Defold's lightweight HTML5 builds and fast loading times make it a natural fit for this new format of bite-sized gaming.
+We believe that Defold's lightweight HTML5 builds and fast loading times make it a natural fit for this new format of bite-sized gaming.
 
-> “Defold builds are small, fast and run anywhere, which is exactly what a feed of instant-play games needs. We're looking forward to seeing what the Defold community brings to Minit.”
->
-> — Ole Schaper, Co-Founder and CEO, Minit Games
+
+<div align="center"><p style="font-size: larger"><i>“Defold builds are small, fast and run anywhere, which is exactly what a feed of instant-play games needs. We're looking forward to seeing what the Defold community brings to Minit.”</i></p>
+
+> Ole Schaper, Co-Founder and CEO, Minit Games
+
+</div>
 
 ## Get started with Defold and Minit
 
