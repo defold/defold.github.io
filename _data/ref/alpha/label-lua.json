@@ -32,7 +32,7 @@
         },
         {
             "brief": "gets the markup objects for a label",
-            "description": "Returns the sprites and links found in the label's current layout.\nEach entry contains <code>type</code>, <code>id</code>, the zero-based UTF-32 <code>text_offset</code>,\n<code>text_length</code>, resolved <code>x</code>, <code>y</code>, <code>width</code>\nand <code>height</code>, and an <code>attributes</code> table. The position is the lower-left\nobject corner relative to the label's upper-left layout origin.\nInline resource rendering is not part of this MVP; sprites use their explicit\ndimensions or a one-em square fallback.",
+            "description": "Returns the sprites and links found in the label's current layout.\nEach entry contains <code>type</code>, <code>id</code>, the zero-based UTF-32 <code>text_offset</code>,\n<code>text_length</code>, resolved <code>x</code>, <code>y</code>, <code>width</code>\nand <code>height</code>, and an <code>attributes</code> table. The position is the lower-left\nobject corner relative to the label's pivot, before applying scale and rotation.\nInline resource rendering is not part of this MVP; sprites use their explicit\ndimensions or a one-em square fallback.",
             "error": "",
             "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">objects</span> <span class=\"o\">=</span> <span class=\"n\">label</span><span class=\"p\">.</span><span class=\"n\">get_layout_objects</span><span class=\"p\">(</span><span class=\"s2\">&quot;#label&quot;</span><span class=\"p\">)</span>\n<span class=\"kr\">for</span> <span class=\"n\">_</span><span class=\"p\">,</span> <span class=\"n\">object</span> <span class=\"kr\">in</span> <span class=\"nb\">ipairs</span><span class=\"p\">(</span><span class=\"n\">objects</span><span class=\"p\">)</span> <span class=\"kr\">do</span>\n    <span class=\"kr\">if</span> <span class=\"n\">object</span><span class=\"p\">.</span><span class=\"n\">type</span> <span class=\"o\">==</span> <span class=\"s2\">&quot;link&quot;</span> <span class=\"kr\">then</span>\n        <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">object</span><span class=\"p\">.</span><span class=\"n\">attributes</span><span class=\"p\">.</span><span class=\"n\">src</span><span class=\"p\">,</span> <span class=\"n\">object</span><span class=\"p\">.</span><span class=\"n\">text_offset</span><span class=\"p\">,</span> <span class=\"n\">object</span><span class=\"p\">.</span><span class=\"n\">text_length</span><span class=\"p\">)</span>\n    <span class=\"kr\">elseif</span> <span class=\"n\">object</span><span class=\"p\">.</span><span class=\"n\">type</span> <span class=\"o\">==</span> <span class=\"s2\">&quot;sprite&quot;</span> <span class=\"kr\">then</span>\n        <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">object</span><span class=\"p\">.</span><span class=\"n\">attributes</span><span class=\"p\">.</span><span class=\"n\">src</span><span class=\"p\">,</span> <span class=\"n\">object</span><span class=\"p\">.</span><span class=\"n\">x</span><span class=\"p\">,</span> <span class=\"n\">object</span><span class=\"p\">.</span><span class=\"n\">y</span><span class=\"p\">,</span> <span class=\"n\">object</span><span class=\"p\">.</span><span class=\"n\">width</span><span class=\"p\">,</span> <span class=\"n\">object</span><span class=\"p\">.</span><span class=\"n\">height</span><span class=\"p\">)</span>\n    <span class=\"kr\">end</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
             "language": "",
@@ -171,7 +171,7 @@
                 },
                 {
                     "display_name": "x",
-                    "doc": "lower-left x-coordinate relative to the label's upper-left layout origin",
+                    "doc": "unscaled lower-left x-coordinate relative to the label's pivot",
                     "is_optional": false,
                     "name": "x",
                     "type": "number",
@@ -179,7 +179,7 @@
                 },
                 {
                     "display_name": "y",
-                    "doc": "lower-left y-coordinate relative to the label's upper-left layout origin",
+                    "doc": "unscaled lower-left y-coordinate relative to the label's pivot",
                     "is_optional": false,
                     "name": "y",
                     "type": "number",

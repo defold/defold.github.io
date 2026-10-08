@@ -1702,7 +1702,7 @@
         },
         {
             "brief": "gets the markup objects for a text node",
-            "description": "Returns the sprites and links found in the text node's current layout.\nEach object's <code>x</code> and <code>y</code> identify its lower-left corner relative to the\ntext node's upper-left layout origin.",
+            "description": "Returns the sprites and links found in the text node's current layout.\nEach object's <code>x</code> and <code>y</code> identify its lower-left corner relative to the\ntext node's pivot, before applying the node's scale and rotation.",
             "error": "",
             "examples": "",
             "language": "",
@@ -3116,7 +3116,7 @@
                 },
                 {
                     "display_name": "x",
-                    "doc": "lower-left x-coordinate relative to the text node's upper-left layout origin",
+                    "doc": "unscaled lower-left x-coordinate relative to the text node's pivot",
                     "is_optional": false,
                     "name": "x",
                     "type": "number",
@@ -3124,7 +3124,7 @@
                 },
                 {
                     "display_name": "y",
-                    "doc": "lower-left y-coordinate relative to the text node's upper-left layout origin",
+                    "doc": "unscaled lower-left y-coordinate relative to the text node's pivot",
                     "is_optional": false,
                     "name": "y",
                     "type": "number",
