@@ -32,7 +32,7 @@ After the request has been verified, the Defold Foundation will provide access t
 
 The [Microsoft Xbox development manual](/manuals/microsoft-xbox/) contains the current access and setup instructions.
 
-Xbox support is available from Defold 1.14.0, with platform-specific functionality and documentation provided free of charge to approved developers. Console development requires additional tools that we cannot distribute due to NDA restrictions. The manual explains how to access the setup instructions.
+Xbox support is available from [Defold 1.14.0](https://forum.defold.com/t/defold-1-14-0-has-been-released/83348), with platform-specific functionality and documentation provided free of charge to approved developers. Console development requires additional tools that we cannot distribute due to NDA restrictions. The manual explains how to access the setup instructions.
 
 ## Defold games on consoles
 
