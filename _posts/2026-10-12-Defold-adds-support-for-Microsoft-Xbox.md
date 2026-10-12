@@ -26,15 +26,13 @@ Once Microsoft has approved your organisation, sign in to the Xbox middleware pa
 
 After the request has been verified, the Defold Foundation will provide access to the Xbox-specific resources and instructions, including:
 
-* the Xbox extension with platform integrations such as user management and game saves;
-* information about the required development tools and the workflow for building, bundling, and testing Xbox games;
+* the Xbox extension with platform integrations such as user management and game saves,
+* information about the required development tools and the workflow for building, bundling, and testing Xbox games,
 * access to Xbox-specific developer support.
 
 The [Microsoft Xbox development manual](/manuals/microsoft-xbox/) contains the current access and setup instructions.
 
-Xbox support is available from Defold 1.14.0. As with all console platforms, development requires additional tools that we cannot distribute due to NDA restrictions. Setup instructions are provided to approved developers through the channels described in the manual.
-
-As with our other console integrations, access to platform-specific functionality and documentation is provided for approved developers for free, without any hidden fees.
+Xbox support is available from Defold 1.14.0, with platform-specific functionality and documentation provided free of charge to approved developers. Console development requires additional tools that we cannot distribute due to NDA restrictions. The manual explains how to access the setup instructions.
 
 ## Defold games on consoles
 
