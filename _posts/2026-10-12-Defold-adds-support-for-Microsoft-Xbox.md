@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Defold adds support for Microsoft Xbox
-excerpt: Defold introduces Microsoft Xbox support, allowing approved Xbox developers to bundle, install, and run Defold games on Xbox hardware.
+excerpt: Microsoft Xbox support is available from Defold 1.14.0, free of charge for approved Xbox developers.
 author: The Defold Foundation
 opengraph_image: https://www.defold.com/images/posts/xbox/xbox_defold_white.webp
 twitter_image: https://www.defold.com/images/posts/xbox/xbox_defold_white.webp
@@ -32,15 +32,7 @@ After the request has been verified, the Defold Foundation will provide access t
 
 The [Microsoft Xbox development manual](/manuals/microsoft-xbox/) contains the current access and setup instructions.
 
-Xbox support has been validated end to end using the Defold 1.14.0 Beta editor and [extension-xbox 1.1.0](https://github.com/defold/extension-xbox/releases/tag/1.1.0). A project can be bundled from the editor, installed on Xbox development hardware, and launched on the console.
-
-## Bundling from Defold 1.14.0
-
-Starting with Defold 1.14.0, approved developers can create Xbox bundles directly from the Defold editor. There is no need to manually select a specific engine SHA-1 for the normal editor workflow; the editor uses the SHA-1 belonging to the selected Defold release.
-
-If a command-line or specialised workflow requires a SHA-1, always obtain it from the [public Defold releases page](https://github.com/defold/defold/releases). This keeps builds tied to a published Defold version instead of an internal or temporary test revision.
-
-The Xbox integration is provided through [extension-xbox](https://github.com/defold/extension-xbox), with version 1.1.0 tested together with Defold 1.14.0 Beta.
+Xbox support is available from Defold 1.14.0. As with all console platforms, development requires additional tools that we cannot distribute due to NDA restrictions. Setup instructions are provided to approved developers through the channels described in the manual.
 
 As with our other console integrations, access to platform-specific functionality and documentation is provided for approved developers for free, without any hidden fees.
 
@@ -81,9 +73,5 @@ The Defold Foundation is the owner of the Defold game engine. The foundation wor
 Björn Ritzl<br>
 Chairperson, Defold Foundation<br>
 [bjorn@defold.se](mailto:bjorn@defold.se)
-
-Mathias Westerdahl<br>
-CTO, Defold Foundation<br>
-[mathias@defold.se](mailto:mathias@defold.se)
 
 Microsoft and Xbox are trademarks of the Microsoft group of companies. PlayStation is a trademark or registered trademark of Sony Interactive Entertainment Inc. Nintendo Switch is a trademark of Nintendo.
