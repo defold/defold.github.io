@@ -48,7 +48,7 @@ Returns the sprites and links found in the label's current layout.
 Each entry contains type, id, the zero-based UTF-32 text_offset,
 text_length, resolved x, y, width
 and height, and an attributes table. The position is the lower-left
-object corner relative to the label's upper-left layout origin.
+object corner relative to the label's pivot, before applying scale and rotation.
 Inline resource rendering is not part of this MVP; sprites use their explicit
 dimensions or a one-em square fallback.
 
@@ -107,8 +107,8 @@ Rich-text layout object
 - `id` (hash) - the object's <code>id</code> attribute, or its generated layout object id
 - `text_offset` (integer) - zero-based UTF-32 offset in the visible text
 - `text_length` (integer) - visible UTF-32 text length covered by the object
-- `x` (number) - lower-left x-coordinate relative to the label's upper-left layout origin
-- `y` (number) - lower-left y-coordinate relative to the label's upper-left layout origin
+- `x` (number) - unscaled lower-left x-coordinate relative to the label's pivot
+- `y` (number) - unscaled lower-left y-coordinate relative to the label's pivot
 - `width` (number) - resolved object width
 - `height` (number) - resolved object height
 - `attributes` (table<string, string>) - markup attributes keyed by name

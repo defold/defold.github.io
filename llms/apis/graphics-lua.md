@@ -149,6 +149,19 @@ Vertex attribute coordinate spaces
 - `graphics.COORDINATE_SPACE_LOCAL` - Local vertex attribute coordinate space.
 - `graphics.COORDINATE_SPACE_WORLD` - World vertex attribute coordinate space.
 
+### graphics.CUBEMAP_FACE
+*Type:* ENUM
+Cubemap faces
+
+**Members**
+
+- `graphics.CUBEMAP_FACE_NEGATIVE_X`
+- `graphics.CUBEMAP_FACE_NEGATIVE_Y`
+- `graphics.CUBEMAP_FACE_NEGATIVE_Z`
+- `graphics.CUBEMAP_FACE_POSITIVE_X`
+- `graphics.CUBEMAP_FACE_POSITIVE_Y`
+- `graphics.CUBEMAP_FACE_POSITIVE_Z`
+
 ### graphics.DATA_TYPE
 *Type:* ENUM
 Vertex attribute data types

@@ -186,6 +186,27 @@ Get the Box2D body from a collision object
 
 - `body` (b2Body | nil) - the body if successful. Otherwise <code>nil</code>.
 
+### b2d.get_gameobject_id
+*Type:* FUNCTION
+Returns the id of the game object that owns the body's collision-object component.
+Raises a Lua error if the body handle is invalid or its game object has been deleted.
+
+**Parameters**
+
+- `body` (b2Body) - the Box2D body
+
+**Returns**
+
+- `id` (hash | nil) - the game object id, or <code>nil</code> if the body has no associated game object
+
+**Examples**
+
+```
+local body = b2d.get_body("#collisionobject")
+local id = b2d.get_gameobject_id(body)
+
+```
+
 ### b2d.get_version
 *Type:* FUNCTION
 Get the Box2D version information for the active backend.

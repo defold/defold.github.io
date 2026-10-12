@@ -225,6 +225,22 @@ resolution, memory limits, and various debugging/validation options.
 - `m_PrintDeviceInfo` (bool) - Print graphics device information at startup
 - `m_UseValidationLayers` (bool) - Enable validation layers for debugging (Vulkan/DirectX 12 only)
 
+### CubeMapFace
+*Type:* ENUM
+Cubemap faces
+The six face values are contiguous, zero-based, and may be used as array indices.
+CUBEMAP_FACE_COUNT is the number of cubemap faces and is not a valid face.
+
+**Members**
+
+- `CUBEMAP_FACE_POSITIVE_X` - Positive X face (array index 0)
+- `CUBEMAP_FACE_NEGATIVE_X` - Negative X face (array index 1)
+- `CUBEMAP_FACE_POSITIVE_Y` - Positive Y face (array index 2)
+- `CUBEMAP_FACE_NEGATIVE_Y` - Negative Y face (array index 3)
+- `CUBEMAP_FACE_POSITIVE_Z` - Positive Z face (array index 4)
+- `CUBEMAP_FACE_NEGATIVE_Z` - Negative Z face (array index 5)
+- `CUBEMAP_FACE_COUNT` - Number of cubemap faces
+
 ### DeleteContext
 *Type:* FUNCTION
 Destroys a graphics context.
@@ -261,6 +277,15 @@ The handle becomes invalid after this call.
 
 - `context` (dmGraphics::HContext) - Graphics context
 - `render_target` (dmGraphics::HRenderTarget)
+
+### DeleteStorageBuffer
+*Type:* FUNCTION
+Delete a shader storage buffer.
+
+**Parameters**
+
+- `context` (dmGraphics::HContext) - Graphics context
+- `storage_buffer` (dmGraphics::HStorageBuffer) - Storage buffer
 
 ### DeleteTexture
 *Type:* FUNCTION
@@ -312,6 +337,15 @@ where no custom shader program is active.
 
 - `context` (dmGraphics::HContext) - Graphics context
 - `state` (dmGraphics::State) - Render state
+
+### DisableStorageBuffer
+*Type:* FUNCTION
+Remove all bindings of a shader storage buffer from the graphics context.
+
+**Parameters**
+
+- `context` (dmGraphics::HContext) - Graphics context
+- `storage_buffer` (dmGraphics::HStorageBuffer) - Storage buffer
 
 ### DisableTexture
 *Type:* FUNCTION
@@ -398,6 +432,21 @@ for all subsequent rendering operations until another program is activated or di
 
 - `context` (dmGraphics::HContext) - Graphics context
 - `state` (dmGraphics::State) - Render state
+
+### EnableStorageBuffer
+*Type:* FUNCTION
+Bind a shader storage buffer to a reflected descriptor set and binding.
+The set and binding must match the shader declaration.
+On DirectX 12, binding the same buffer to both readonly and writable
+declarations in one draw or dispatch is unsupported. The command is
+skipped with an error; use separate buffers or writable declarations for both bindings.
+
+**Parameters**
+
+- `context` (dmGraphics::HContext) - Graphics context
+- `storage_buffer` (dmGraphics::HStorageBuffer) - Storage buffer
+- `set` (uint32_t) - Shader descriptor set
+- `binding` (uint32_t) - Shader resource binding
 
 ### EnableTexture
 *Type:* FUNCTION
@@ -697,6 +746,31 @@ Get the attachment texture from a render target. Returns zero if no such attachm
 **Returns**
 
 - `render_target_texture` (dmGraphics::HTexture)
+
+### GetRenderTargetTextureType
+*Type:* FUNCTION
+
+**Parameters**
+
+- `context` (dmGraphics::HContext) - Graphics context
+- `render_target` (dmGraphics::HRenderTarget)
+
+**Returns**
+
+- `texture_type` (dmGraphics::TextureType) - render target texture type
+
+### GetStorageBufferSize
+*Type:* FUNCTION
+Return the logical size of a shader storage buffer in bytes.
+
+**Parameters**
+
+- `context` (dmGraphics::HContext) - Graphics context
+- `storage_buffer` (dmGraphics::HStorageBuffer) - Storage buffer
+
+**Returns**
+
+- `size` (uint32_t) - Logical buffer size in bytes
 
 ### GetSupportedExtension
 *Type:* FUNCTION
@@ -1117,6 +1191,24 @@ Returns a program handle that can be used for rendering.
 
 - `render_target` (dmGraphics::HRenderTarget) - Newly created render target
 
+### NewStorageBuffer
+*Type:* FUNCTION
+Create a shader storage buffer.
+Storage buffers are available only when supported by the active graphics
+adapter. The size must be non-zero, four-byte aligned, and within the
+adapter's supported storage-buffer range.
+
+**Parameters**
+
+- `context` (dmGraphics::HContext) - Graphics context
+- `size` (uint32_t) - Buffer size in bytes
+- `data` (const void*) - Optional initial data
+- `buffer_usage` (dmGraphics::BufferUsage) - CPU update frequency hint
+
+**Returns**
+
+- `buffer` (dmGraphics::HStorageBuffer) - Storage buffer, or 0 when unsupported or invalid
+
 ### NewTexture
 *Type:* FUNCTION
 Create new texture
@@ -1238,6 +1330,15 @@ Attachment points for render targets
 - `ATTACHMENT_DEPTH` - <div class="codehilite"><pre><span></span><code><span class="nv">A</span> <span class="nv">depth</span> <span class="nv">buffer</span> <span class="nv">attachment</span> <span class="ss">(</span><span class="nv">used</span> <span class="k">for</span> <span class="nv">depth</span> <span class="nv">testing</span><span class="ss">)</span>
 </code></pre></div>
 - `ATTACHMENT_STENCIL` - A stencil buffer attachment (used for stencil operations)
+
+### RenderTargetBindingParams
+*Type:* STRUCT
+Render target binding parameters.
+
+**Members**
+
+- `m_TransientBufferTypes` (uint32_t) - BufferType bit mask identifying attachments whose contents may be discarded after the render pass
+- `m_CubeMapFace` (dmGraphics::CubeMapFace) - Cubemap face to bind. For non-cubemap render targets this must remain <code>CUBEMAP_FACE_POSITIVE_X</code>, which is also the zero-initialized default
 
 ### RepackRGBToRGBA
 *Type:* FUNCTION
@@ -1364,12 +1465,13 @@ Set subset of index buffer data
 
 ### SetRenderTarget
 *Type:* FUNCTION
+Bind a render target with generic binding parameters.
 
 **Parameters**
 
 - `context` (dmGraphics::HContext) - Graphics context
 - `render_target` (dmGraphics::HRenderTarget)
-- `transient_buffer_types` (uint32_t)
+- `params` (dmGraphics::RenderTargetBindingParams)
 
 ### SetRenderTargetSize
 *Type:* FUNCTION
@@ -1456,6 +1558,33 @@ STATE_SCISSOR_TEST is enabled.
 - `sfail` (dmGraphics::StencilOp)
 - `dpfail` (dmGraphics::StencilOp)
 - `dppass` (dmGraphics::StencilOp)
+
+### SetStorageBufferData
+*Type:* FUNCTION
+Replace the complete contents and size of a shader storage buffer.
+The size follows the same restrictions as NewStorageBuffer.
+
+**Parameters**
+
+- `context` (dmGraphics::HContext) - Graphics context
+- `storage_buffer` (dmGraphics::HStorageBuffer) - Storage buffer
+- `size` (uint32_t) - New buffer size in bytes
+- `data` (const void*) - Data used to replace the buffer contents
+- `buffer_usage` (dmGraphics::BufferUsage) - CPU update frequency hint
+
+### SetStorageBufferSubData
+*Type:* FUNCTION
+Update a byte range in a shader storage buffer.
+The offset and size must be four-byte aligned and the range must fit in
+the existing buffer.
+
+**Parameters**
+
+- `context` (dmGraphics::HContext) - Graphics context
+- `storage_buffer` (dmGraphics::HStorageBuffer) - Storage buffer
+- `offset` (uint32_t) - Destination byte offset
+- `size` (uint32_t) - Number of bytes to update
+- `data` (const void*) - Source data
 
 ### SetTexture
 *Type:* FUNCTION

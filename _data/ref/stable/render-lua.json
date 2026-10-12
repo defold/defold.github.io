@@ -1283,7 +1283,7 @@
         },
         {
             "brief": "Render-target parameters",
-            "description": "<code>sample_count</code> defaults to 1 and is normalized by the graphics adapter to\na supported power-of-two value.",
+            "description": "<code>type</code> defaults to <code>graphics.TEXTURE_TYPE_2D</code>. Supported values are\n<code>graphics.TEXTURE_TYPE_2D</code> and <code>graphics.TEXTURE_TYPE_CUBE_MAP</code>.\n<code>sample_count</code> defaults to 1 and is normalized by the graphics adapter to\na supported power-of-two value.",
             "error": "",
             "examples": "",
             "language": "",
@@ -1292,24 +1292,24 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "Attachments keyed by buffer type, with an optional multisample count.",
+                    "doc": "Attachments keyed by buffer type, with optional texture type and multisample count.",
                     "is_optional": "False",
                     "name": "value",
                     "types": [
-                        "{ sample_count?:integer, [graphics.BUFFER_TYPE]:render.render_target_buffer_params }"
+                        "{ type?:graphics.TEXTURE_TYPE, sample_count?:integer, [graphics.BUFFER_TYPE]:render.render_target_buffer_params }"
                     ],
                     "types_html": [
-                        "{ sample_count?:<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>, [<a href=\"../graphics-lua/#graphics.BUFFER_TYPE\">graphics.BUFFER_TYPE</a>]:<a href=\"#render.render_target_buffer_params\">render.render_target_buffer_params</a> }"
+                        "{ type?:<a href=\"../graphics-lua/#graphics.TEXTURE_TYPE\">graphics.TEXTURE_TYPE</a>, sample_count?:<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>, [<a href=\"../graphics-lua/#graphics.BUFFER_TYPE\">graphics.BUFFER_TYPE</a>]:<a href=\"#render.render_target_buffer_params\">render.render_target_buffer_params</a> }"
                     ],
                     "types_table_html": [
-                        "{sample_count?:<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>,\n[<a href=\"../graphics-lua/#graphics.BUFFER_TYPE\">graphics.BUFFER_TYPE</a>]:<a href=\"#render.render_target_buffer_params\">render.render_target_buffer_params</a>}"
+                        "{type?:<a href=\"../graphics-lua/#graphics.TEXTURE_TYPE\">graphics.TEXTURE_TYPE</a>,\nsample_count?:<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>,\n[<a href=\"../graphics-lua/#graphics.BUFFER_TYPE\">graphics.BUFFER_TYPE</a>]:<a href=\"#render.render_target_buffer_params\">render.render_target_buffer_params</a>}"
                     ]
                 }
             ],
             "replaces": "",
             "returnvalues": [],
-            "target_type": "{ sample_count?:integer, [graphics.BUFFER_TYPE]:render.render_target_buffer_params }",
-            "target_type_html": "{ sample_count?:<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>, [<a href=\"../graphics-lua/#graphics.BUFFER_TYPE\">graphics.BUFFER_TYPE</a>]:<a href=\"#render.render_target_buffer_params\">render.render_target_buffer_params</a> }",
+            "target_type": "{ type?:graphics.TEXTURE_TYPE, sample_count?:integer, [graphics.BUFFER_TYPE]:render.render_target_buffer_params }",
+            "target_type_html": "{ type?:<a href=\"../graphics-lua/#graphics.TEXTURE_TYPE\">graphics.TEXTURE_TYPE</a>, sample_count?:<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>, [<a href=\"../graphics-lua/#graphics.BUFFER_TYPE\">graphics.BUFFER_TYPE</a>]:<a href=\"#render.render_target_buffer_params\">render.render_target_buffer_params</a> }",
             "tparams": [],
             "type": "TYPEDEF"
         },
@@ -1862,7 +1862,7 @@
                     ]
                 },
                 {
-                    "doc": "optional render-target activation options",
+                    "doc": "optional render-target activation options\n<dl>\n<dt class=\"api-lua-v2-type-definition\"><code>face:<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a></code></dt>\n<dd>Cubemap face selected for rendering. This option is valid only for cubemap render targets and defaults to <code>graphics.CUBEMAP_FACE_POSITIVE_X</code>.</dd>\n</dl>\n<ul>\n<li><code>graphics.CUBEMAP_FACE_POSITIVE_X</code></li>\n<li><code>graphics.CUBEMAP_FACE_NEGATIVE_X</code></li>\n<li><code>graphics.CUBEMAP_FACE_POSITIVE_Y</code></li>\n<li><code>graphics.CUBEMAP_FACE_NEGATIVE_Y</code></li>\n<li><code>graphics.CUBEMAP_FACE_POSITIVE_Z</code></li>\n<li><code>graphics.CUBEMAP_FACE_NEGATIVE_Z</code></li>\n</ul>",
                     "is_optional": "True",
                     "name": "options",
                     "types": [
@@ -1895,6 +1895,14 @@
                     "name": "transient?",
                     "type": "graphics.BUFFER_TYPE[]",
                     "type_html": "<a href=\"../graphics-lua/#graphics.BUFFER_TYPE\">graphics.BUFFER_TYPE</a>[]"
+                },
+                {
+                    "display_name": "face",
+                    "doc": "Cubemap face selected for rendering. Valid only for cubemap render targets.",
+                    "is_optional": true,
+                    "name": "face?",
+                    "type": "graphics.CUBEMAP_FACE",
+                    "type_html": "<a href=\"../graphics-lua/#graphics.CUBEMAP_FACE\">graphics.CUBEMAP_FACE</a>"
                 }
             ],
             "name": "render.set_render_target_options",
@@ -1907,7 +1915,7 @@
         },
         {
             "brief": "sets the render target size",
-            "description": "Sets the render target size for a render target created from\neither a render script, or from a render target resource.",
+            "description": "Sets the render target size for a render target created from\neither a render script, or from a render target resource.\nCubemap render targets require equal width and height.",
             "error": "",
             "examples": "Resize render targets to the current window size:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">set_render_target_size</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_render_target</span><span class=\"p\">,</span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">get_window_width</span><span class=\"p\">(),</span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">get_window_height</span><span class=\"p\">())</span>\n<span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">set_render_target_size</span><span class=\"p\">(</span><span class=\"s1\">&#39;my_rt_resource&#39;</span><span class=\"p\">,</span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">get_window_width</span><span class=\"p\">(),</span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">get_window_height</span><span class=\"p\">())</span>\n</code></pre></div>",
             "language": "",

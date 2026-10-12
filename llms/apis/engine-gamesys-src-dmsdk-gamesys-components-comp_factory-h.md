@@ -25,7 +25,7 @@ Spawns a new gameobject instance in a collection using a factory component.
 - `rotation` (dmVMath::Quat) - Rotation of the spawned object
 - `scale` (dmVMath::Vector3) - Scale of the spawned object
 - `properties` (dmGameObject::HPropertyContainer) - Property container with override properties
-- `out_instance` (dmGameObject::HInstance) - Output parameter for the new instance
+- `out_instance` (dmGameObject::HGameObject*) - Output parameter for the new instance. Set to 0 if spawning fails, including for an invalid or stale collection handle.
 
 **Returns**
 

@@ -22,11 +22,10 @@ Get current gameobject's collection handle
 **Parameters**
 
 - `L` (lua_State*) - lua state
-- `index` (int) - lua-arg
 
 **Returns**
 
-- `instance` (lua_State*) - gameobject instance
+- `collection` (dmGameObject::HCollection) - game object collection
 
 ### CheckGOInstance
 *Type:* FUNCTION
@@ -39,7 +38,7 @@ Works in both gameobjects and gui scripts
 
 **Returns**
 
-- `instance` (dmGameObject::HInstance)
+- `instance` (dmGameObject::HGameObject)
 
 ### CheckGOInstance
 *Type:* FUNCTION
@@ -57,7 +56,7 @@ The instance reference (url) at stack index "index" will be resolved to an insta
 
 **Returns**
 
-- `instance` (dmGameObject::HInstance) - gameobject instance
+- `instance` (dmGameObject::HGameObject) - gameobject instance
 
 **Examples**
 
@@ -66,7 +65,7 @@ How to get the position of a gameobject in a script extension
 static int get_position(lua_State* L)
 {
     DM_LUA_STACK_CHECK(L, 3);
-    dmGameObject::HInstance instance = dmScript::CheckGOInstance(L, 1);
+    dmGameObject::HGameObject instance = dmScript::CheckGOInstance(L, 1);
     dmVMath::Point3 position = dmGameObject::GetPosition(instance);
     lua_pushnumber(L, position.getX());
     lua_pushnumber(L, position.getY());

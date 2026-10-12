@@ -710,7 +710,7 @@ gets the scene current layout
 *Type:* FUNCTION
 Returns the sprites and links found in the text node's current layout.
 Each object's x and y identify its lower-left corner relative to the
-text node's upper-left layout origin.
+text node's pivot, before applying the node's scale and rotation.
 
 **Parameters**
 
@@ -1149,8 +1149,8 @@ Rich-text layout object
 - `id` (hash) - the object's <code>id</code> attribute, or its generated layout object id
 - `text_offset` (integer) - zero-based UTF-32 offset in the visible text
 - `text_length` (integer) - visible UTF-32 text length covered by the object
-- `x` (number) - lower-left x-coordinate relative to the text node's upper-left layout origin
-- `y` (number) - lower-left y-coordinate relative to the text node's upper-left layout origin
+- `x` (number) - unscaled lower-left x-coordinate relative to the text node's pivot
+- `y` (number) - unscaled lower-left y-coordinate relative to the text node's pivot
 - `width` (number) - resolved object width
 - `height` (number) - resolved object height
 - `attributes` (table<string, string>) - markup attributes keyed by name
@@ -1702,7 +1702,8 @@ If node is set as an visible clipping node, it will be shown as well as clipping
 ### gui.set_color
 *Type:* FUNCTION
 Sets the color of the supplied node. The components
-of the supplied vector3 or vector4 should contain the color channel values:
+of the supplied vector3 or vector4 should contain the color channel values
+in the range 0 to 1:
 
 Component
 Color value

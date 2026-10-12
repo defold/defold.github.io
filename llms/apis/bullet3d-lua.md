@@ -63,6 +63,28 @@ This function raises an error unless the collection uses 3D physics.
 
 - `object` (btCollisionObject | nil) - the collision object, or <code>nil</code>
 
+### bullet3d.get_gameobject_id
+*Type:* FUNCTION
+Returns the id of the game object that owns the collision-object component.
+Accepts both rigid bodies and ghost trigger objects.
+Raises a Lua error if the handle is invalid or its game object has been deleted.
+
+**Parameters**
+
+- `object` (btCollisionObject | btRigidBody) - the Bullet collision object
+
+**Returns**
+
+- `id` (hash | nil) - the game object id, or <code>nil</code> if the collision object has no associated game object
+
+**Examples**
+
+```
+local object = bullet3d.get_collision_object("#collisionobject")
+local id = bullet3d.get_gameobject_id(object)
+
+```
+
 ### bullet3d.get_rigid_body
 *Type:* FUNCTION
 Trigger components are ghost objects, so this function returns nil for them.

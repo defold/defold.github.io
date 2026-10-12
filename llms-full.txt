@@ -335,6 +335,7 @@ This document contains the Defold API reference, grouped by language.
 - [dmGameObject (Component)](#apis:engine-gameobject-src-dmsdk-gameobject-component-h) - Api for manipulating game object components (WIP)
 - [dmGameObject (Gameobject)](#apis:engine-gameobject-src-dmsdk-gameobject-gameobject-h) - API for manipulating game objects
 - [dmGameObject (PropertyContainer)](#apis:engine-gameobject-src-dmsdk-gameobject-gameobject_props-h) - API for game object property container
+- [dmGameObject (Collection Resource)](#apis:engine-gameobject-src-dmsdk-gameobject-res_collection-h) - API for accessing loaded game object collection resources
 - [dmGameObject (Script)](#apis:engine-gameobject-src-dmsdk-gameobject-script-h) - GameObject script API documentation
 - [dmGameSystem (Collection factory)](#apis:engine-gamesys-src-dmsdk-gamesys-components-comp_collection_factory-h) - API for spawning collections from a collection factory component
 - [dmGameSystem (Factory)](#apis:engine-gamesys-src-dmsdk-gamesys-components-comp_factory-h) - API for spawning gameobject instances from a factory component
@@ -24134,14 +24135,14 @@ Post a DDF message to a socket. A helper wrapper for Post()'ing a DDF message
 
 ```
 // dmMessage::URL sender, receiver;
-// dmGameObject::HInstance go;
+uintptr_t request_id = 1;
 
 dmGameSystemDDF::PlayAnimation msg;
 msg.m_Id = animation_id;
 msg.m_Offset = params.m_CursorStart;
 msg.m_PlaybackRate = params.m_PlaybackRate;
 
-dmMessage::Result result = dmMessage::Post(&msg, &sender, &receiver, (uintptr_t)go, 0, 0));
+dmMessage::Result result = dmMessage::Post(&msg, &sender, &receiver, request_id, 0, 0);
 
 ```
 
@@ -27853,54 +27854,77 @@ Extension declaration helper. Internal function. Use DM_DECLARE_EXTENSION
 
 ### ExtensionRegisteriOSUIApplicationDelegate
 *Type:* FUNCTION
-Register an iOS application delegate to the engine. Multiple delegates are supported (Max 32)
+Register an iOS application delegate for process-level callbacks such as launch
+and remote notification registration. Multiple delegates are supported (Max 32).
+Use application:willFinishLaunchingWithOptions: and
+application:didFinishLaunchingWithOptions: for launch. The older
+applicationDidFinishLaunching: callback is not synthesized.
+Defold uses the UIScene lifecycle. Application activity, URL and user activity
+callbacks are not forwarded from scenes; use ExtensionRegisteriOSUISceneDelegate.
+The game window is created after application launch. Use scene connection to
+access it, and scene connection options for cold-launch URLs and user activities.
 
 **Notes**
 
-- Note that the delegate needs to be registered before the UIApplicationMain in order to
-handle any earlier callbacks.
-
+- Register before UIApplicationMain to receive launch callbacks. Registration
+does not retain the delegate; keep it alive until it is unregistered.
 This function is only available on iOS. [icon:ios]
 
 **Parameters**
 
-- `delegate` (void*) - An id<UIApplicationDelegate>, see: https://developer.apple.com/documentation/uikit/uiapplicationdelegate?language=objc
+- `delegate` (void*) - An id<UIApplicationDelegate>.
+
+### ExtensionRegisteriOSUISceneDelegate
+*Type:* FUNCTION
+Register an iOS scene observer. Multiple delegates are supported (Max 32).
+Defold owns the single game window and its scene configuration. Registered
+observers receive scene connection/disconnection, activation/deactivation,
+foreground/background, openURLContexts, continueUserActivity,
+willContinueUserActivityWithType, didFailToContinueUserActivityWithType:error:
+and didUpdateUserActivity callbacks. Other optional delegate methods are not
+forwarded. No legacy UIApplicationDelegate callbacks are synthesized.
+Register before UIApplicationMain (for example in a static constructor) to
+receive the initial scene connection. Extension app-initialize is too late.
+Cold-launch URLs, user activities and notification responses are available in
+UISceneConnectionOptions. Scene connection may precede Lua initialization;
+extensions must retain any data they need to deliver to Lua later.
+
+**Notes**
+
+- Register and unregister on the main thread. Registration does not retain
+the delegate; keep it alive until unregistering. Each event retains a snapshot
+of its observers, so unregistering during delivery affects subsequent events.
+Duplicate registrations are ignored. Late registration does not replay events.
+This function is only available on iOS. [icon:ios]
+
+**Parameters**
+
+- `delegate` (void*) - An id<UISceneDelegate>.
 
 **Examples**
 
 ```
 // myextension_ios.mm
-
-id g_MyApplicationDelegate;
-
-@interface MyApplicationDelegate : NSObject
-
-- (void) applicationDidBecomeActive:(UIApplication *) application;
-
+@interface MySceneDelegate : NSObject
+- (void)scene:(UIScene*)scene willConnectToSession:(UISceneSession*)session options:(UISceneConnectionOptions*)options;
+- (void)scene:(UIScene*)scene openURLContexts:(NSSet*)contexts;
 @end
 
-@implementation MyApplicationDelegate
-
-- (void) applicationDidBecomeActive:(UIApplication *) application {
-    dmLogWarning("applicationDidBecomeActive - MyAppDelegate");
-}
-
-@end
-
-struct MyAppDelegateRegister
+struct MySceneDelegateRegistration
 {
-    MyApplicationDelegate* m_Delegate;
-    MyAppDelegateRegister() {
-        m_Delegate = [[FacebookAppDelegate alloc] init];
-        Extension::RegisteriOSUIApplicationDelegate(m_Delegate);
+    MySceneDelegate* m_Delegate;
+    MySceneDelegateRegistration()
+    {
+        m_Delegate = [[MySceneDelegate alloc] init];
+        dmExtension::RegisteriOSUISceneDelegate(m_Delegate);
     }
-    ~MyAppDelegateRegister() {
-        Extension::UnregisteriOSUIApplicationDelegate(m_Delegate);
+    ~MySceneDelegateRegistration()
+    {
+        dmExtension::UnregisteriOSUISceneDelegate(m_Delegate);
         [m_Delegate release];
     }
 };
-
-MyAppDelegateRegister g_FacebookDelegateRegister;
+MySceneDelegateRegistration g_MySceneDelegateRegistration;
 
 ```
 
@@ -27915,12 +27939,21 @@ Result enumeration.
 
 ### ExtensionUnregisteriOSUIApplicationDelegate
 *Type:* FUNCTION
-Deregister a previously registered iOS application delegate
+Deregister a previously registered iOS application delegate.
 This function is only available on iOS.
 
 **Parameters**
 
-- `delegate` (void*) - an id<UIApplicationDelegate>
+- `delegate` (void*) - An id<UIApplicationDelegate>.
+
+### ExtensionUnregisteriOSUISceneDelegate
+*Type:* FUNCTION
+Deregister a previously registered iOS scene observer on the main thread.
+This function is only available on iOS.
+
+**Parameters**
+
+- `delegate` (void*) - An id<UISceneDelegate>.
 
 ### FCallback
 *Type:* TYPEDEF
@@ -28097,54 +28130,77 @@ Generated from ExtensionRegisterCallback
 
 ### RegisteriOSUIApplicationDelegate
 *Type:* FUNCTION
-Register an iOS application delegate to the engine. Multiple delegates are supported (Max 32)
+Register an iOS application delegate for process-level callbacks such as launch
+and remote notification registration. Multiple delegates are supported (Max 32).
+Use application:willFinishLaunchingWithOptions: and
+application:didFinishLaunchingWithOptions: for launch. The older
+applicationDidFinishLaunching: callback is not synthesized.
+Defold uses the UIScene lifecycle. Application activity, URL and user activity
+callbacks are not forwarded from scenes; use ExtensionRegisteriOSUISceneDelegate.
+The game window is created after application launch. Use scene connection to
+access it, and scene connection options for cold-launch URLs and user activities.
 
 **Notes**
 
-- Note that the delegate needs to be registered before the UIApplicationMain in order to
-handle any earlier callbacks.
-
+- Register before UIApplicationMain to receive launch callbacks. Registration
+does not retain the delegate; keep it alive until it is unregistered.
 This function is only available on iOS. [icon:ios]
 
 **Parameters**
 
-- `delegate` (void*) - An id<UIApplicationDelegate>, see: https://developer.apple.com/documentation/uikit/uiapplicationdelegate?language=objc
+- `delegate` (void*) - An id<UIApplicationDelegate>.
+
+### RegisteriOSUISceneDelegate
+*Type:* FUNCTION
+Register an iOS scene observer. Multiple delegates are supported (Max 32).
+Defold owns the single game window and its scene configuration. Registered
+observers receive scene connection/disconnection, activation/deactivation,
+foreground/background, openURLContexts, continueUserActivity,
+willContinueUserActivityWithType, didFailToContinueUserActivityWithType:error:
+and didUpdateUserActivity callbacks. Other optional delegate methods are not
+forwarded. No legacy UIApplicationDelegate callbacks are synthesized.
+Register before UIApplicationMain (for example in a static constructor) to
+receive the initial scene connection. Extension app-initialize is too late.
+Cold-launch URLs, user activities and notification responses are available in
+UISceneConnectionOptions. Scene connection may precede Lua initialization;
+extensions must retain any data they need to deliver to Lua later.
+
+**Notes**
+
+- Register and unregister on the main thread. Registration does not retain
+the delegate; keep it alive until unregistering. Each event retains a snapshot
+of its observers, so unregistering during delivery affects subsequent events.
+Duplicate registrations are ignored. Late registration does not replay events.
+This function is only available on iOS. [icon:ios]
+
+**Parameters**
+
+- `delegate` (void*) - An id<UISceneDelegate>.
 
 **Examples**
 
 ```
 // myextension_ios.mm
-
-id g_MyApplicationDelegate;
-
-@interface MyApplicationDelegate : NSObject
-
-- (void) applicationDidBecomeActive:(UIApplication *) application;
-
+@interface MySceneDelegate : NSObject
+- (void)scene:(UIScene*)scene willConnectToSession:(UISceneSession*)session options:(UISceneConnectionOptions*)options;
+- (void)scene:(UIScene*)scene openURLContexts:(NSSet*)contexts;
 @end
 
-@implementation MyApplicationDelegate
-
-- (void) applicationDidBecomeActive:(UIApplication *) application {
-    dmLogWarning("applicationDidBecomeActive - MyAppDelegate");
-}
-
-@end
-
-struct MyAppDelegateRegister
+struct MySceneDelegateRegistration
 {
-    MyApplicationDelegate* m_Delegate;
-    MyAppDelegateRegister() {
-        m_Delegate = [[FacebookAppDelegate alloc] init];
-        Extension::RegisteriOSUIApplicationDelegate(m_Delegate);
+    MySceneDelegate* m_Delegate;
+    MySceneDelegateRegistration()
+    {
+        m_Delegate = [[MySceneDelegate alloc] init];
+        dmExtension::RegisteriOSUISceneDelegate(m_Delegate);
     }
-    ~MyAppDelegateRegister() {
-        Extension::UnregisteriOSUIApplicationDelegate(m_Delegate);
+    ~MySceneDelegateRegistration()
+    {
+        dmExtension::UnregisteriOSUISceneDelegate(m_Delegate);
         [m_Delegate release];
     }
 };
-
-MyAppDelegateRegister g_FacebookDelegateRegister;
+MySceneDelegateRegistration g_MySceneDelegateRegistration;
 
 ```
 
@@ -28159,12 +28215,21 @@ Result enumeration.
 
 ### UnregisteriOSUIApplicationDelegate
 *Type:* FUNCTION
-Deregister a previously registered iOS application delegate
+Deregister a previously registered iOS application delegate.
 This function is only available on iOS.
 
 **Parameters**
 
-- `delegate` (void*) - an id<UIApplicationDelegate>
+- `delegate` (void*) - An id<UIApplicationDelegate>.
+
+### UnregisteriOSUISceneDelegate
+*Type:* FUNCTION
+Deregister a previously registered iOS scene observer on the main thread.
+This function is only available on iOS.
+
+**Parameters**
+
+- `delegate` (void*) - An id<UISceneDelegate>.
 
 <!-- engine-gameobject-src-dmsdk-gameobject-component-h -->
 
@@ -28200,7 +28265,7 @@ Parameters to ComponentAddToUpdate callback.
 **Members**
 
 - `m_Collection` (HCollection) - Collection handle
-- `m_Instance` (HInstance) - Game object instance
+- `m_Instance` (HGameObject) - Game object instance
 - `m_World` (void*) - Component world
 - `m_Context` (void*) - User context
 - `m_UserData` (uintptr_t*) - User data storage pointer
@@ -28224,7 +28289,7 @@ Parameters to ComponentCreate callback.
 
 **Members**
 
-- `m_Instance` (HInstance) - Game object instance
+- `m_Instance` (HGameObject) - Game object instance
 - `m_Position` (dmVMath::Point3) - Local component position
 - `m_Rotation` (dmVMath::Quat) - Local component rotation
 - `m_Scale` (dmVMath::Vector3) - Local component scale
@@ -28275,7 +28340,7 @@ Parameters to ComponentDestroy callback.
 **Members**
 
 - `m_Collection` (HCollection) - Collection handle
-- `m_Instance` (HInstance) - Game object instance
+- `m_Instance` (HGameObject) - Game object instance
 - `m_World` (void*) - Component world
 - `m_Context` (void*) - User context
 - `m_UserData` (uintptr_t*) - User data storage pointer
@@ -28299,7 +28364,7 @@ Parameters to ComponentFinal callback.
 **Members**
 
 - `m_Collection` (HCollection) - Collection handle
-- `m_Instance` (HInstance) - Game object instance
+- `m_Instance` (HGameObject) - Game object instance
 - `m_World` (void*) - Component world
 - `m_Context` (void*) - User context
 - `m_UserData` (uintptr_t*) - User data storage pointer
@@ -28358,7 +28423,7 @@ Parameters to ComponentGetProperty callback.
 
 - `m_Context` (void*) - Context for the component type
 - `m_World` (void*) - Component world
-- `m_Instance` (HInstance) - Game object instance
+- `m_Instance` (HGameObject) - Game object instance
 - `m_PropertyId` (dmhash_t) - Id of the property
 - `m_UserData` (uintptr_t*) - User data storage pointer
 - `m_Options` (HPropertyOptions) - Options for getting the property
@@ -28382,7 +28447,7 @@ Parameters to ComponentInit callback.
 **Members**
 
 - `m_Collection` (HCollection) - Collection handle
-- `m_Instance` (HInstance) - Game object instance
+- `m_Instance` (HGameObject) - Game object instance
 - `m_World` (void*) - Component world
 - `m_Context` (void*) - User context
 - `m_UserData` (uintptr_t*) - User data storage pointer
@@ -28444,7 +28509,7 @@ Parameters to ComponentOnInput callback.
 
 **Members**
 
-- `m_Instance` (HInstance) - Instance handle
+- `m_Instance` (HGameObject) - Instance handle
 - `m_InputAction` (const InputAction*) - Information about the input that occurred (note that input being released is also treated as input)
 - `m_Context` (void*) - User context
 - `m_UserData` (uintptr_t*) - User data storage pointer
@@ -28467,7 +28532,7 @@ Parameters to ComponentOnMessage callback.
 
 **Members**
 
-- `m_Instance` (HInstance) - Instance handle
+- `m_Instance` (HGameObject) - Instance handle
 - `m_World` (void*) - World
 - `m_Context` (void*) - User context
 - `m_UserData` (uintptr_t*) - User data storage pointer
@@ -28487,7 +28552,7 @@ Parameters to ComponentOnReload callback.
 
 **Members**
 
-- `m_Instance` (HInstance) - Instance handle
+- `m_Instance` (HGameObject) - Instance handle
 - `m_Resource` (void*) - Resource that was reloaded
 - `m_World` (void*) - Component world
 - `m_Context` (void*) - User context
@@ -28511,7 +28576,7 @@ Parameters to ComponentSetProperties callback.
 
 **Members**
 
-- `m_Instance` (HInstance) - Instance handle
+- `m_Instance` (HGameObject) - Instance handle
 - `m_PropertySet` (PropertySet) - Property set to use
 - `m_UserData` (uintptr_t*) - User data storage pointer
 
@@ -28535,7 +28600,7 @@ Parameters to ComponentSetProperty callback.
 
 - `m_Context` (void*) - Context for the component type
 - `m_World` (void*) - Component world
-- `m_Instance` (HInstance) - Game object instance
+- `m_Instance` (HGameObject) - Game object instance
 - `m_PropertyId` (dmhash_t) - Id of the property
 - `m_UserData` (uintptr_t*) - User data storage pointer
 - `m_Value` (PropertyVar) - New value of the property. Text values are borrowed and must be copied if retained after the callback returns.
@@ -28935,12 +29000,12 @@ the collection will automatically free the resource.
 
 ### AssignInstanceIndex
 *Type:* FUNCTION
-Assign an index to the instance, only if the instance is not null.
+Assign an index to the instance, only if the instance is valid.
 
 **Parameters**
 
 - `index` (uint32_t) - The index to assign.
-- `instance` (dmGameObject::HInstance) - The instance that should be assigned the index.
+- `instance` (dmGameObject::HGameObject) - The instance that should be assigned the index.
 
 ### CreateInstanceId
 *Type:* FUNCTION
@@ -28964,10 +29029,14 @@ Create result enum.
 *Type:* FUNCTION
 Delete gameobject instance
 
+**Notes**
+
+- Invalid, stale, or mismatched collection and instance handles are ignored.
+
 **Parameters**
 
 - `collection` (dmGameObject::HCollection) - Gameobject collection
-- `instance` (dmGameObject::HInstance) - Gameobject instance
+- `instance` (dmGameObject::HGameObject) - Gameobject instance
 - `recursive` (bool) - If true, delete child hierarchy recursively in child to parent order (leaf first)
 
 ### DeleteBones
@@ -28975,9 +29044,13 @@ Delete gameobject instance
 Recursively delete all instances flagged as bones under the given parent instance.
 The order of deletion is depth-first, so that the children are deleted before the parents.
 
+**Notes**
+
+- Invalid or stale instances are ignored.
+
 **Parameters**
 
-- `parent` (HInstance) - Parent instance of the hierarchy
+- `parent` (HGameObject) - Parent instance of the hierarchy
 
 ### GAMEOBJECT_CONTEXT_NAME
 *Type:* CONSTANT
@@ -28993,12 +29066,12 @@ named "sub" and id == "a" the returned identifier represents the path "sub.a"
 
 **Parameters**
 
-- `instance` (dmGameObject::HInstance) - Gameobject instance to get absolute identifier to
+- `instance` (dmGameObject::HGameObject) - Gameobject instance to get absolute identifier to
 - `identifier` (const char*) - Identifier relative to instance
 
 **Returns**
 
-- `return` (dmhash_t) - Absolute identifier.
+- `return` (dmhash_t) - Absolute identifier, or zero if the instance or identifier is invalid.
 
 ### GetCollection
 *Type:* FUNCTION
@@ -29006,11 +29079,11 @@ Retrieve a collection from the specified instance
 
 **Parameters**
 
-- `instance` (dmGameObject::HInstance) - Game object instance
+- `instance` (dmGameObject::HGameObject) - Game object instance
 
 **Returns**
 
-- `collection` (dmGameObject::HInstance) - The collection the specified instance belongs to
+- `collection` (dmGameObject::HCollection) - The collection the specified instance belongs to, or 0 if the instance is invalid or stale
 
 ### GetCollectionByHash
 *Type:* FUNCTION
@@ -29024,7 +29097,7 @@ Note: in native extensions, the register can be retrieved during init using dmEn
 
 **Returns**
 
-- `collection` (dmGameObject::HCollection) - The collection if successful. 0 otherwise.
+- `collection` (dmGameObject::HCollection) - The collection if successful, or 0 otherwise.
 
 ### GetComponent
 *Type:* FUNCTION
@@ -29032,7 +29105,7 @@ Get the component, component type and its world
 
 **Parameters**
 
-- `instance` (dmGameObject::HInstance) - Instance
+- `instance` (dmGameObject::HGameObject) - Instance
 - `component_id` (dmhash_t) - Component id
 - `component_type` (uint32_t*) - (out) Component type. Used for validation.
 - `component` (HComponent*) - (out) The component.
@@ -29040,7 +29113,7 @@ Get the component, component type and its world
 
 **Returns**
 
-- `result` (dmGameObject::Result) - RESULT_OK if the component was found
+- `result` (dmGameObject::Result) - RESULT_OK if the component was found, or RESULT_INVALID_INSTANCE if the instance is invalid or stale
 
 ### GetComponentId
 *Type:* FUNCTION
@@ -29048,13 +29121,13 @@ Get component id from component index.
 
 **Parameters**
 
-- `instance` (dmGameObject::HInstance) - Instance
+- `instance` (dmGameObject::HGameObject) - Instance
 - `component_index` (uint16_t) - Component index
 - `component_id` (dmhash_t*) - Component id as out-argument
 
 **Returns**
 
-- `result` (dmGameObject::Result) - RESULT_OK if the component was found
+- `result` (dmGameObject::Result) - RESULT_OK if the component was found, or RESULT_INVALID_INSTANCE if the instance is invalid or stale
 
 ### GetComponentTypeIndex
 *Type:* FUNCTION
@@ -29084,16 +29157,19 @@ Retrieve the context for a component type
 
 ### GetGeneration
 *Type:* FUNCTION
-Get instance generation counter.
-The generation changes whenever a new game object instance is allocated, even if it later reuses the same identifier.
+Get the generation encoded in an instance handle.
+
+**Notes**
+
+- Deprecated since Defold 1.14.1. The instance generation is an implementation detail.
 
 **Parameters**
 
-- `instance` (dmGameObject::HInstance) - Gameobject instance
+- `instance` (dmGameObject::HGameObject) - Gameobject instance
 
 **Returns**
 
-- `return` (uint32_t) - Generation counter for the instance.
+- `generation` (uint32_t) - Generation counter for the instance.
 
 ### GetIdentifier
 *Type:* FUNCTION
@@ -29101,11 +29177,11 @@ Get instance identifier
 
 **Parameters**
 
-- `instance` (dmGameObject::HInstance) - Gameobject instance
+- `instance` (dmGameObject::HGameObject) - Gameobject instance
 
 **Returns**
 
-- `return` (dmhash_t) - Identifier. dmGameObject::UNNAMED_IDENTIFIER if not set.
+- `return` (dmhash_t) - Identifier, or zero if the instance is invalid or stale.
 
 ### GetInstanceFromIdentifier
 *Type:* FUNCTION
@@ -29118,7 +29194,7 @@ Get instance from identifier
 
 **Returns**
 
-- `instance` (dmGameObject::HInstance) - Instance. NULL if instance isn't found.
+- `instance` (dmGameObject::HGameObject) - Instance, or 0 if the collection or identifier is not found.
 
 ### GetMessageSocket
 *Type:* FUNCTION
@@ -29130,7 +29206,7 @@ Retrieve the message socket for the specified collection.
 
 **Returns**
 
-- `socket` (dmMessage::HSocket) - The message socket of the specified collection
+- `socket` (dmMessage::HSocket) - The message socket of the specified collection, or zero if the collection is invalid or stale
 
 ### GetPosition
 *Type:* FUNCTION
@@ -29138,11 +29214,11 @@ Get gameobject instance position
 
 **Parameters**
 
-- `instance` (dmGameObject::HInstance) - Gameobject instance
+- `instance` (dmGameObject::HGameObject) - Gameobject instance
 
 **Returns**
 
-- `return` (dmVMath::Point3) - Position
+- `return` (dmVMath::Point3) - Position, or a zero vector if the instance is invalid or stale
 
 ### GetPropertyAsBool
 *Type:* FUNCTION
@@ -29150,7 +29226,7 @@ Retrieve a boolean property from a component.
 
 **Parameters**
 
-- `instance` (HInstance) - Instance of the game object
+- `instance` (HGameObject) - Instance of the game object
 - `component_id` (dmhash_t) - Id of the component
 - `property_id` (dmhash_t) - Id of the property
 - `out_value` (bool*) - The retrieved property value
@@ -29165,7 +29241,7 @@ Retrieve a float property from a component.
 
 **Parameters**
 
-- `instance` (HInstance) - Instance of the game object
+- `instance` (HGameObject) - Instance of the game object
 - `component_id` (dmhash_t) - Id of the component
 - `property_id` (dmhash_t) - Id of the property
 - `out_value` (float*) - The retrieved property value
@@ -29180,7 +29256,7 @@ Retrieve a hash property from a component.
 
 **Parameters**
 
-- `instance` (HInstance) - Instance of the game object
+- `instance` (HGameObject) - Instance of the game object
 - `component_id` (dmhash_t) - Id of the component
 - `property_id` (dmhash_t) - Id of the property
 - `out_value` (dmhash_t*) - The retrieved property value
@@ -29195,7 +29271,7 @@ Retrieve a matrix4 property from a component.
 
 **Parameters**
 
-- `instance` (HInstance) - Instance of the game object
+- `instance` (HGameObject) - Instance of the game object
 - `component_id` (dmhash_t) - Id of the component
 - `property_id` (dmhash_t) - Id of the property
 - `out_value` (dmGameObject::Matrix4*) - The retrieved property value
@@ -29210,7 +29286,7 @@ Retrieve a quaternion property from a component.
 
 **Parameters**
 
-- `instance` (HInstance) - Instance of the game object
+- `instance` (HGameObject) - Instance of the game object
 - `component_id` (dmhash_t) - Id of the component
 - `property_id` (dmhash_t) - Id of the property
 - `out_value` (dmVMath::Quat*) - The retrieved property value
@@ -29226,7 +29302,7 @@ The returned pointer is borrowed from the component and must not be freed. Its l
 
 **Parameters**
 
-- `instance` (HInstance) - Instance of the game object
+- `instance` (HGameObject) - Instance of the game object
 - `component_id` (dmhash_t) - Id of the component
 - `property_id` (dmhash_t) - Id of the property
 - `out_value` (const char**) - The retrieved property value
@@ -29241,7 +29317,7 @@ Retrieve a url property from a component.
 
 **Parameters**
 
-- `instance` (HInstance) - Instance of the game object
+- `instance` (HGameObject) - Instance of the game object
 - `component_id` (dmhash_t) - Id of the component
 - `property_id` (dmhash_t) - Id of the property
 - `out_value` (dmMessage::URL*) - The retrieved property value
@@ -29256,7 +29332,7 @@ Retrieve a vector3 property from a component.
 
 **Parameters**
 
-- `instance` (HInstance) - Instance of the game object
+- `instance` (HGameObject) - Instance of the game object
 - `component_id` (dmhash_t) - Id of the component
 - `property_id` (dmhash_t) - Id of the property
 - `out_value` (dmVMath::Vector3*) - The retrieved property value
@@ -29271,7 +29347,7 @@ Retrieve a vector4 property from a component.
 
 **Parameters**
 
-- `instance` (HInstance) - Instance of the game object
+- `instance` (HGameObject) - Instance of the game object
 - `component_id` (dmhash_t) - Id of the component
 - `property_id` (dmhash_t) - Id of the property
 - `out_value` (dmVMath::Vector4*) - The retrieved property value
@@ -29326,11 +29402,11 @@ Get gameobject instance rotation
 
 **Parameters**
 
-- `instance` (dmGameObject::HInstance) - Gameobject instance
+- `instance` (dmGameObject::HGameObject) - Gameobject instance
 
 **Returns**
 
-- `return` (dmGameObject::Quat) - rotation
+- `return` (dmGameObject::Quat) - Rotation, or the identity rotation if the instance is invalid or stale
 
 ### GetScale
 *Type:* FUNCTION
@@ -29338,11 +29414,11 @@ Get gameobject instance scale
 
 **Parameters**
 
-- `instance` (dmGameObject::HInstance) - Gameobject instance
+- `instance` (dmGameObject::HGameObject) - Gameobject instance
 
 **Returns**
 
-- `return` (dmGameObject::Vector3) - Non-uniform scale
+- `return` (dmGameObject::Vector3) - Non-uniform scale, or a unit vector if the instance is invalid or stale
 
 ### GetUniformScale
 *Type:* FUNCTION
@@ -29350,11 +29426,11 @@ Get gameobject instance uniform scale
 
 **Parameters**
 
-- `instance` (dmGameObject::HInstance) - Gameobject instance
+- `instance` (dmGameObject::HGameObject) - Gameobject instance
 
 **Returns**
 
-- `return` (float) - Uniform scale
+- `return` (float) - Uniform scale, or 1 if the instance is invalid or stale
 
 ### GetWorld
 *Type:* FUNCTION
@@ -29375,11 +29451,11 @@ Get game object instance world transform as Matrix4.
 
 **Parameters**
 
-- `instance` (dmGameObject::HInstance) - Gameobject instance
+- `instance` (dmGameObject::HGameObject) - Gameobject instance
 
 **Returns**
 
-- `return` (dmGameObject::Matrix4) - World transform matrix.
+- `return` (dmGameObject::Matrix4) - World transform matrix, or identity if the instance is invalid or stale.
 
 ### GetWorldPosition
 *Type:* FUNCTION
@@ -29387,11 +29463,11 @@ Get gameobject instance world position
 
 **Parameters**
 
-- `instance` (dmGameObject::HInstance) - Gameobject instance
+- `instance` (dmGameObject::HGameObject) - Gameobject instance
 
 **Returns**
 
-- `return` (dmGameObject::Point3) - World position
+- `return` (dmGameObject::Point3) - World position, or a zero vector if the instance is invalid or stale
 
 ### GetWorldRotation
 *Type:* FUNCTION
@@ -29399,11 +29475,11 @@ Get gameobject instance world rotation
 
 **Parameters**
 
-- `instance` (dmGameObject::HInstance) - Gameobject instance
+- `instance` (dmGameObject::HGameObject) - Gameobject instance
 
 **Returns**
 
-- `return` (dmGameObject::Quat) - World rotation
+- `return` (dmGameObject::Quat) - World rotation, or the identity rotation if the instance is invalid or stale
 
 ### GetWorldScale
 *Type:* FUNCTION
@@ -29411,11 +29487,11 @@ Get game object instance world transform
 
 **Parameters**
 
-- `instance` (dmGameObject::HInstance) - Gameobject instance
+- `instance` (dmGameObject::HGameObject) - Gameobject instance
 
 **Returns**
 
-- `return` (dmGameObject::Vector3) - World scale
+- `return` (dmGameObject::Vector3) - World scale, or a unit vector if the instance is invalid or stale
 
 ### GetWorldTransform
 *Type:* FUNCTION
@@ -29423,11 +29499,11 @@ Get game object instance world transform
 
 **Parameters**
 
-- `instance` (dmGameObject::HInstance) - Gameobject instance
+- `instance` (dmGameObject::HGameObject) - Gameobject instance
 
 **Returns**
 
-- `return` (dmTransform::Transform) - World transform
+- `return` (dmTransform::Transform) - World transform, or identity if the instance is invalid or stale
 
 ### GetWorldUniformScale
 *Type:* FUNCTION
@@ -29435,15 +29511,17 @@ Get game object instance uniform scale
 
 **Parameters**
 
-- `instance` (dmGameObject::HInstance) - Gameobject instance
+- `instance` (dmGameObject::HGameObject) - Gameobject instance
 
 **Returns**
 
-- `return` (float) - World uniform scale
+- `return` (float) - World uniform scale, or 1 if the instance is invalid or stale
 
 ### HCollection
 *Type:* TYPEDEF
-Gameobject collection handle
+Opaque gameobject collection handle.
+This is not a collection resource pointer. Load collection resources into
+a CollectionResource* and use ResCollectionGetCollection to obtain this handle.
 
 ### HComponent
 *Type:* TYPEDEF
@@ -29457,9 +29535,13 @@ Opaque handle to internal representation of a component instance
 *Type:* TYPEDEF
 Opaque handle to a component world
 
+### HGameObject
+*Type:* TYPEDEF
+Opaque gameobject handle
+
 ### HInstance
 *Type:* TYPEDEF
-Gameobject instance handle
+Source-compatibility name for HGameObject
 
 ### HProperties
 *Type:* TYPEDEF
@@ -29521,11 +29603,11 @@ Check whether the instance is flagged as a bone.
 
 **Parameters**
 
-- `instance` (HInstance) - Instance
+- `instance` (HGameObject) - Instance
 
 **Returns**
 
-- `result` (bool) - True if flagged as a bone
+- `result` (bool) - True if flagged as a bone; false if the instance is invalid or stale
 
 ### New
 *Type:* FUNCTION
@@ -29542,7 +29624,7 @@ Create a new gameobject instance
 
 **Returns**
 
-- `instance` (dmGameObject::HInstance) - New gameobject instance. NULL if any error occured
+- `instance` (dmGameObject::HGameObject) - New gameobject instance, or 0 if an error occurred
 
 ### Playback
 *Type:* ENUM
@@ -29646,6 +29728,7 @@ Result enumeration.
 - `dmGameObject::RESULT_INVALID_PROPERTIES`
 - `dmGameObject::RESULT_UNABLE_TO_CREATE_COMPONENTS`
 - `dmGameObject::RESULT_UNABLE_TO_INIT_INSTANCE`
+- `dmGameObject::RESULT_INVALID_INSTANCE`
 - `dmGameObject::RESULT_UNKNOWN_ERROR`
 
 ### SceneNode
@@ -29725,9 +29808,13 @@ Set whether the instance should be flagged as a bone.
 Instances flagged as bones can have their transforms updated in a batch through SetBoneTransforms.
 Used for animated skeletons.
 
+**Notes**
+
+- Invalid or stale instances are ignored.
+
 **Parameters**
 
-- `instance` (HInstance) - Instance
+- `instance` (HGameObject) - Instance
 - `bone` (bool) - true if the instance is a bone
 
 ### SetBoneTransforms
@@ -29737,14 +29824,14 @@ The order of the transforms is depth-first.
 
 **Parameters**
 
-- `instance` (HInstance) - First Instance of the hierarchy to set
+- `instance` (HGameObject) - First Instance of the hierarchy to set
 - `component_transform` (dmTransform::Transform) - the transform for component root
 - `transforms` (dmTransform::Transform*) - Array of transforms to set depth-first for the bone instances
 - `transform_count` (uint32_t) - Size of the transforms array
 
 **Returns**
 
-- `Number` - of instances found
+- `Number` - of instances found, or zero if the instance is invalid or stale
 
 ### SetIdentifier
 *Type:* FUNCTION
@@ -29753,20 +29840,24 @@ Set instance identifier. Must be unique within the collection.
 **Parameters**
 
 - `collection` (dmGameObject::HCollection) - Collection
-- `instance` (dmGameObject::HInstance) - Instance
+- `instance` (dmGameObject::HGameObject) - Instance
 - `identifier` (dmhash_t) - Identifier
 
 **Returns**
 
-- `result` (dmGameObject::Result) - RESULT_OK on success
+- `result` (dmGameObject::Result) - RESULT_OK on success, or RESULT_INVALID_INSTANCE if the handle pair is invalid
 
 ### SetPosition
 *Type:* FUNCTION
 Set gameobject instance position
 
+**Notes**
+
+- Invalid or stale instances are ignored.
+
 **Parameters**
 
-- `instance` (dmGameObject::HInstance) - Gameobject instance
+- `instance` (dmGameObject::HGameObject) - Gameobject instance
 - `position` (dmVMath::Point3) - New Position
 
 ### SetPropertyFromBool
@@ -29775,7 +29866,7 @@ Sets the value of a boolean property on a component.
 
 **Parameters**
 
-- `instance` (HInstance) - Instance of the game object
+- `instance` (HGameObject) - Instance of the game object
 - `component_id` (dmhash_t) - Id of the component
 - `property_id` (dmhash_t) - Id of the property
 - `value` (bool) - Value of the property
@@ -29790,7 +29881,7 @@ Sets the value of a hash property on a component.
 
 **Parameters**
 
-- `instance` (HInstance) - Instance of the game object
+- `instance` (HGameObject) - Instance of the game object
 - `component_id` (dmhash_t) - Id of the component
 - `property_id` (dmhash_t) - Id of the property
 - `value` (dmhash_t) - Value of the property
@@ -29805,7 +29896,7 @@ Sets the value of a float property on a component.
 
 **Parameters**
 
-- `instance` (HInstance) - Instance of the game object
+- `instance` (HGameObject) - Instance of the game object
 - `component_id` (dmhash_t) - Id of the component
 - `property_id` (dmhash_t) - Id of the property
 - `value` (float) - Value of the property
@@ -29820,7 +29911,7 @@ Sets the value of a matrix4 property on a component.
 
 **Parameters**
 
-- `instance` (HInstance) - Instance of the game object
+- `instance` (HGameObject) - Instance of the game object
 - `component_id` (dmhash_t) - Id of the component
 - `property_id` (dmhash_t) - Id of the property
 - `value` (dmVMath::Matrix4) - Value of the property
@@ -29835,7 +29926,7 @@ Sets the value of a quaternion property on a component.
 
 **Parameters**
 
-- `instance` (HInstance) - Instance of the game object
+- `instance` (HGameObject) - Instance of the game object
 - `component_id` (dmhash_t) - Id of the component
 - `property_id` (dmhash_t) - Id of the property
 - `value` (dmVMath::Quat) - Value of the property
@@ -29851,7 +29942,7 @@ The component must copy the value if it needs to retain it after this function r
 
 **Parameters**
 
-- `instance` (HInstance) - Instance of the game object
+- `instance` (HGameObject) - Instance of the game object
 - `component_id` (dmhash_t) - Id of the component
 - `property_id` (dmhash_t) - Id of the property
 - `value` (const char*) - Null-terminated UTF-8 value of the property
@@ -29866,7 +29957,7 @@ Sets the value of a URL property on a component.
 
 **Parameters**
 
-- `instance` (HInstance) - Instance of the game object
+- `instance` (HGameObject) - Instance of the game object
 - `component_id` (dmhash_t) - Id of the component
 - `property_id` (dmhash_t) - Id of the property
 - `value` (dmMessage::URL) - Value of the property
@@ -29881,7 +29972,7 @@ Sets the value of a vector3 property on a component.
 
 **Parameters**
 
-- `instance` (HInstance) - Instance of the game object
+- `instance` (HGameObject) - Instance of the game object
 - `component_id` (dmhash_t) - Id of the component
 - `property_id` (dmhash_t) - Id of the property
 - `value` (dmVMath::vector3) - Value of the property
@@ -29896,7 +29987,7 @@ Sets the value of a vector4 property on a component.
 
 **Parameters**
 
-- `instance` (HInstance) - Instance of the game object
+- `instance` (HGameObject) - Instance of the game object
 - `component_id` (dmhash_t) - Id of the component
 - `property_id` (dmhash_t) - Id of the property
 - `value` (dmVMath::Vector4) - Value of the property
@@ -29909,36 +30000,52 @@ Sets the value of a vector4 property on a component.
 *Type:* FUNCTION
 Set gameobject instance rotation
 
+**Notes**
+
+- Invalid or stale instances are ignored.
+
 **Parameters**
 
-- `instance` (dmGameObject::HInstance) - Gameobject instance
+- `instance` (dmGameObject::HGameObject) - Gameobject instance
 - `rotation` (dmVmath::Quat) - New rotation
 
 ### SetScale
 *Type:* FUNCTION
 Set gameobject instance uniform scale
 
+**Notes**
+
+- Invalid or stale instances are ignored.
+
 **Parameters**
 
-- `instance` (dmGameObject::HInstance) - Gameobject instance
+- `instance` (dmGameObject::HGameObject) - Gameobject instance
 - `scale` (float) - New uniform scale
 
 ### SetScale
 *Type:* FUNCTION
 Set gameobject instance non-uniform scale
 
+**Notes**
+
+- Invalid or stale instances are ignored.
+
 **Parameters**
 
-- `instance` (dmGameObject::HInstance) - Gameobject instance
+- `instance` (dmGameObject::HGameObject) - Gameobject instance
 - `scale` (dmVmath::Vector3) - New non-uniform scale
 
 ### SetScaleXY
 *Type:* FUNCTION
 Set gameobject instance x and y scale
 
+**Notes**
+
+- Invalid or stale instances are ignored.
+
 **Parameters**
 
-- `instance` (dmGameObject::HInstance) - Gameobject instance
+- `instance` (dmGameObject::HGameObject) - Gameobject instance
 - `scale_x` (float) - New x scale
 - `scale_y` (float) - New y scale
 
@@ -29956,7 +30063,10 @@ Spawns a new gameobject instance. The actual creation is performed after the upd
 - `position` (dmVMath::Vector3) - Position of the spawed object
 - `rotation` (dmVMath::Quat) - Rotation of the spawned object
 - `scale` (dmVMath::Vector3) - Scale of the spawned object
-return instance <span class="type"> HInstance</span> the spawned instance, 0 at failure
+
+**Returns**
+
+- `instance` (HGameObject) - the spawned instance, or 0 at failure
 
 ### TraverseGetRoot
 *Type:* FUNCTION
@@ -29970,7 +30080,7 @@ Gets the top node of the whole game (the main collection)
 **Parameters**
 
 - `regist` (dmGameObject::HRegister) - the full gameobject register
-- `node` (dmGameObject::HRegister) - the node to inspect
+- `node` (dmGameObject::SceneNode*) - the node to inspect
 
 **Returns**
 
@@ -30279,6 +30389,59 @@ Add a property of type float4 to the container
 - `id` (dmhash_t) - The id of the property
 - `values` (float*) - The value of the property (4 floats)
 
+<!-- engine-gameobject-src-dmsdk-gameobject-res_collection-h -->
+
+# Collection Resource {#apis:engine-gameobject-src-dmsdk-gameobject-res_collection-h}
+
+**Namespace:** `dmGameObject`
+**Language:** C++
+**Type:** Defold C++
+**File:** `res_collection.h`
+**Source:** `engine/gameobject/src/dmsdk/gameobject/res_collection.h`
+**Include:** `dmsdk/gameobject/res_collection.h`
+
+API for accessing loaded game object collection resources.
+
+## API
+
+### CollectionResource
+*Type:* STRUCT
+Opaque pointer returned by dmResource::Get for a compiled collection
+resource. The pointer remains valid while the caller holds a resource
+reference, including across resource reloads.
+Do not load a collection resource directly into an HCollection. An
+HCollection is a numeric collection handle and is not resource storage.
+
+### ResCollectionGetCollection
+*Type:* FUNCTION
+Converts a live collection resource returned by dmResource::Get into the
+numeric collection handle used by the game-object API. The caller retains
+ownership of the resource reference and must release the original resource
+pointer with dmResource::Release. The returned handle may change when the
+resource is reloaded; call this function again after a reload.
+
+**Parameters**
+
+- `resource` (dmGameObject::CollectionResource*) - Live collection resource returned by dmResource::Get.
+
+**Returns**
+
+- `collection` (dmGameObject::HCollection) - Collection handle, or 0 if resource is null.
+
+**Examples**
+
+```
+dmGameObject::CollectionResource* resource = 0;
+dmResource::Result result = dmResource::Get(factory, "/main.collectionc", (void**)&resource);
+if (result == dmResource::RESULT_OK)
+{
+    dmGameObject::HCollection collection = dmGameObject::ResCollectionGetCollection(resource);
+    // Use collection with the game-object API.
+    dmResource::Release(factory, resource);
+}
+
+```
+
 <!-- engine-gameobject-src-dmsdk-gameobject-script-h -->
 
 # Script {#apis:engine-gameobject-src-dmsdk-gameobject-script-h}
@@ -30415,7 +30578,7 @@ Spawns a new gameobject instance in a collection using a factory component.
 - `rotation` (dmVMath::Quat) - Rotation of the spawned object
 - `scale` (dmVMath::Vector3) - Scale of the spawned object
 - `properties` (dmGameObject::HPropertyContainer) - Property container with override properties
-- `out_instance` (dmGameObject::HInstance) - Output parameter for the new instance
+- `out_instance` (dmGameObject::HGameObject*) - Output parameter for the new instance. Set to 0 if spawning fails, including for an invalid or stale collection handle.
 
 **Returns**
 
@@ -31133,11 +31296,10 @@ Get current gameobject's collection handle
 **Parameters**
 
 - `L` (lua_State*) - lua state
-- `index` (int) - lua-arg
 
 **Returns**
 
-- `instance` (lua_State*) - gameobject instance
+- `collection` (dmGameObject::HCollection) - game object collection
 
 ### CheckGOInstance
 *Type:* FUNCTION
@@ -31150,7 +31312,7 @@ Works in both gameobjects and gui scripts
 
 **Returns**
 
-- `instance` (dmGameObject::HInstance)
+- `instance` (dmGameObject::HGameObject)
 
 ### CheckGOInstance
 *Type:* FUNCTION
@@ -31168,7 +31330,7 @@ The instance reference (url) at stack index "index" will be resolved to an insta
 
 **Returns**
 
-- `instance` (dmGameObject::HInstance) - gameobject instance
+- `instance` (dmGameObject::HGameObject) - gameobject instance
 
 **Examples**
 
@@ -31177,7 +31339,7 @@ How to get the position of a gameobject in a script extension
 static int get_position(lua_State* L)
 {
     DM_LUA_STACK_CHECK(L, 3);
-    dmGameObject::HInstance instance = dmScript::CheckGOInstance(L, 1);
+    dmGameObject::HGameObject instance = dmScript::CheckGOInstance(L, 1);
     dmVMath::Point3 position = dmGameObject::GetPosition(instance);
     lua_pushnumber(L, position.getX());
     lua_pushnumber(L, position.getY());
@@ -31593,6 +31755,22 @@ resolution, memory limits, and various debugging/validation options.
 - `m_PrintDeviceInfo` (bool) - Print graphics device information at startup
 - `m_UseValidationLayers` (bool) - Enable validation layers for debugging (Vulkan/DirectX 12 only)
 
+### CubeMapFace
+*Type:* ENUM
+Cubemap faces
+The six face values are contiguous, zero-based, and may be used as array indices.
+CUBEMAP_FACE_COUNT is the number of cubemap faces and is not a valid face.
+
+**Members**
+
+- `CUBEMAP_FACE_POSITIVE_X` - Positive X face (array index 0)
+- `CUBEMAP_FACE_NEGATIVE_X` - Negative X face (array index 1)
+- `CUBEMAP_FACE_POSITIVE_Y` - Positive Y face (array index 2)
+- `CUBEMAP_FACE_NEGATIVE_Y` - Negative Y face (array index 3)
+- `CUBEMAP_FACE_POSITIVE_Z` - Positive Z face (array index 4)
+- `CUBEMAP_FACE_NEGATIVE_Z` - Negative Z face (array index 5)
+- `CUBEMAP_FACE_COUNT` - Number of cubemap faces
+
 ### DeleteContext
 *Type:* FUNCTION
 Destroys a graphics context.
@@ -31629,6 +31807,15 @@ The handle becomes invalid after this call.
 
 - `context` (dmGraphics::HContext) - Graphics context
 - `render_target` (dmGraphics::HRenderTarget)
+
+### DeleteStorageBuffer
+*Type:* FUNCTION
+Delete a shader storage buffer.
+
+**Parameters**
+
+- `context` (dmGraphics::HContext) - Graphics context
+- `storage_buffer` (dmGraphics::HStorageBuffer) - Storage buffer
 
 ### DeleteTexture
 *Type:* FUNCTION
@@ -31680,6 +31867,15 @@ where no custom shader program is active.
 
 - `context` (dmGraphics::HContext) - Graphics context
 - `state` (dmGraphics::State) - Render state
+
+### DisableStorageBuffer
+*Type:* FUNCTION
+Remove all bindings of a shader storage buffer from the graphics context.
+
+**Parameters**
+
+- `context` (dmGraphics::HContext) - Graphics context
+- `storage_buffer` (dmGraphics::HStorageBuffer) - Storage buffer
 
 ### DisableTexture
 *Type:* FUNCTION
@@ -31766,6 +31962,21 @@ for all subsequent rendering operations until another program is activated or di
 
 - `context` (dmGraphics::HContext) - Graphics context
 - `state` (dmGraphics::State) - Render state
+
+### EnableStorageBuffer
+*Type:* FUNCTION
+Bind a shader storage buffer to a reflected descriptor set and binding.
+The set and binding must match the shader declaration.
+On DirectX 12, binding the same buffer to both readonly and writable
+declarations in one draw or dispatch is unsupported. The command is
+skipped with an error; use separate buffers or writable declarations for both bindings.
+
+**Parameters**
+
+- `context` (dmGraphics::HContext) - Graphics context
+- `storage_buffer` (dmGraphics::HStorageBuffer) - Storage buffer
+- `set` (uint32_t) - Shader descriptor set
+- `binding` (uint32_t) - Shader resource binding
 
 ### EnableTexture
 *Type:* FUNCTION
@@ -32065,6 +32276,31 @@ Get the attachment texture from a render target. Returns zero if no such attachm
 **Returns**
 
 - `render_target_texture` (dmGraphics::HTexture)
+
+### GetRenderTargetTextureType
+*Type:* FUNCTION
+
+**Parameters**
+
+- `context` (dmGraphics::HContext) - Graphics context
+- `render_target` (dmGraphics::HRenderTarget)
+
+**Returns**
+
+- `texture_type` (dmGraphics::TextureType) - render target texture type
+
+### GetStorageBufferSize
+*Type:* FUNCTION
+Return the logical size of a shader storage buffer in bytes.
+
+**Parameters**
+
+- `context` (dmGraphics::HContext) - Graphics context
+- `storage_buffer` (dmGraphics::HStorageBuffer) - Storage buffer
+
+**Returns**
+
+- `size` (uint32_t) - Logical buffer size in bytes
 
 ### GetSupportedExtension
 *Type:* FUNCTION
@@ -32485,6 +32721,24 @@ Returns a program handle that can be used for rendering.
 
 - `render_target` (dmGraphics::HRenderTarget) - Newly created render target
 
+### NewStorageBuffer
+*Type:* FUNCTION
+Create a shader storage buffer.
+Storage buffers are available only when supported by the active graphics
+adapter. The size must be non-zero, four-byte aligned, and within the
+adapter's supported storage-buffer range.
+
+**Parameters**
+
+- `context` (dmGraphics::HContext) - Graphics context
+- `size` (uint32_t) - Buffer size in bytes
+- `data` (const void*) - Optional initial data
+- `buffer_usage` (dmGraphics::BufferUsage) - CPU update frequency hint
+
+**Returns**
+
+- `buffer` (dmGraphics::HStorageBuffer) - Storage buffer, or 0 when unsupported or invalid
+
 ### NewTexture
 *Type:* FUNCTION
 Create new texture
@@ -32606,6 +32860,15 @@ Attachment points for render targets
 - `ATTACHMENT_DEPTH` - <div class="codehilite"><pre><span></span><code><span class="nv">A</span> <span class="nv">depth</span> <span class="nv">buffer</span> <span class="nv">attachment</span> <span class="ss">(</span><span class="nv">used</span> <span class="k">for</span> <span class="nv">depth</span> <span class="nv">testing</span><span class="ss">)</span>
 </code></pre></div>
 - `ATTACHMENT_STENCIL` - A stencil buffer attachment (used for stencil operations)
+
+### RenderTargetBindingParams
+*Type:* STRUCT
+Render target binding parameters.
+
+**Members**
+
+- `m_TransientBufferTypes` (uint32_t) - BufferType bit mask identifying attachments whose contents may be discarded after the render pass
+- `m_CubeMapFace` (dmGraphics::CubeMapFace) - Cubemap face to bind. For non-cubemap render targets this must remain <code>CUBEMAP_FACE_POSITIVE_X</code>, which is also the zero-initialized default
 
 ### RepackRGBToRGBA
 *Type:* FUNCTION
@@ -32732,12 +32995,13 @@ Set subset of index buffer data
 
 ### SetRenderTarget
 *Type:* FUNCTION
+Bind a render target with generic binding parameters.
 
 **Parameters**
 
 - `context` (dmGraphics::HContext) - Graphics context
 - `render_target` (dmGraphics::HRenderTarget)
-- `transient_buffer_types` (uint32_t)
+- `params` (dmGraphics::RenderTargetBindingParams)
 
 ### SetRenderTargetSize
 *Type:* FUNCTION
@@ -32824,6 +33088,33 @@ STATE_SCISSOR_TEST is enabled.
 - `sfail` (dmGraphics::StencilOp)
 - `dpfail` (dmGraphics::StencilOp)
 - `dppass` (dmGraphics::StencilOp)
+
+### SetStorageBufferData
+*Type:* FUNCTION
+Replace the complete contents and size of a shader storage buffer.
+The size follows the same restrictions as NewStorageBuffer.
+
+**Parameters**
+
+- `context` (dmGraphics::HContext) - Graphics context
+- `storage_buffer` (dmGraphics::HStorageBuffer) - Storage buffer
+- `size` (uint32_t) - New buffer size in bytes
+- `data` (const void*) - Data used to replace the buffer contents
+- `buffer_usage` (dmGraphics::BufferUsage) - CPU update frequency hint
+
+### SetStorageBufferSubData
+*Type:* FUNCTION
+Update a byte range in a shader storage buffer.
+The offset and size must be four-byte aligned and the range must fit in
+the existing buffer.
+
+**Parameters**
+
+- `context` (dmGraphics::HContext) - Graphics context
+- `storage_buffer` (dmGraphics::HStorageBuffer) - Storage buffer
+- `offset` (uint32_t) - Destination byte offset
+- `size` (uint32_t) - Number of bytes to update
+- `data` (const void*) - Source data
 
 ### SetTexture
 *Type:* FUNCTION
@@ -37268,6 +37559,27 @@ Get the Box2D body from a collision object
 **Returns**
 
 - `body` (b2Body | nil) - the body if successful. Otherwise <code>nil</code>.
+
+### b2d.get_gameobject_id
+*Type:* FUNCTION
+Returns the id of the game object that owns the body's collision-object component.
+Raises a Lua error if the body handle is invalid or its game object has been deleted.
+
+**Parameters**
+
+- `body` (b2Body) - the Box2D body
+
+**Returns**
+
+- `id` (hash | nil) - the game object id, or <code>nil</code> if the body has no associated game object
+
+**Examples**
+
+```
+local body = b2d.get_body("#collisionobject")
+local id = b2d.get_gameobject_id(body)
+
+```
 
 ### b2d.get_version
 *Type:* FUNCTION
@@ -43511,6 +43823,28 @@ This function raises an error unless the collection uses 3D physics.
 **Returns**
 
 - `object` (btCollisionObject | nil) - the collision object, or <code>nil</code>
+
+### bullet3d.get_gameobject_id
+*Type:* FUNCTION
+Returns the id of the game object that owns the collision-object component.
+Accepts both rigid bodies and ghost trigger objects.
+Raises a Lua error if the handle is invalid or its game object has been deleted.
+
+**Parameters**
+
+- `object` (btCollisionObject | btRigidBody) - the Bullet collision object
+
+**Returns**
+
+- `id` (hash | nil) - the game object id, or <code>nil</code> if the collision object has no associated game object
+
+**Examples**
+
+```
+local object = bullet3d.get_collision_object("#collisionobject")
+local id = bullet3d.get_gameobject_id(object)
+
+```
 
 ### bullet3d.get_rigid_body
 *Type:* FUNCTION
@@ -50999,9 +51333,13 @@ Named object styles are resolved by text layouts without reshaping text.
 A link tag uses link by default. Callers may select another named style,
 such as link:hover or link:active, in response to input.
 Font collections initially define these named styles. Each default contains
-a normalized RGBA face-color multiplier and no effects. The default link
-style also uses a solid underline, which remains when hover or active colors
-are applied:
+a normalized RGBA face color and no effects. Style RGB overrides the base
+text color, while alpha uses the lower of the style and base text alpha.
+Gradients override RGB and use the lower alpha in the same way. Inline colors
+and gradients take precedence over object styles, which take precedence over
+the named base style. Nested color or gradient tags override enclosing RGB
+in inline markup and named style definitions. The default link style also
+uses a solid underline, which remains when hover or active colors are applied:
 
 link: (0.10, 0.45, 0.90, 1.0), solid underline
 link:hover: (0.30, 0.65, 1.00, 1.0)
@@ -52629,6 +52967,19 @@ Vertex attribute coordinate spaces
 - `graphics.COORDINATE_SPACE_LOCAL` - Local vertex attribute coordinate space.
 - `graphics.COORDINATE_SPACE_WORLD` - World vertex attribute coordinate space.
 
+### graphics.CUBEMAP_FACE
+*Type:* ENUM
+Cubemap faces
+
+**Members**
+
+- `graphics.CUBEMAP_FACE_NEGATIVE_X`
+- `graphics.CUBEMAP_FACE_NEGATIVE_Y`
+- `graphics.CUBEMAP_FACE_NEGATIVE_Z`
+- `graphics.CUBEMAP_FACE_POSITIVE_X`
+- `graphics.CUBEMAP_FACE_POSITIVE_Y`
+- `graphics.CUBEMAP_FACE_POSITIVE_Z`
+
 ### graphics.DATA_TYPE
 *Type:* ENUM
 Vertex attribute data types
@@ -53525,7 +53876,7 @@ gets the scene current layout
 *Type:* FUNCTION
 Returns the sprites and links found in the text node's current layout.
 Each object's x and y identify its lower-left corner relative to the
-text node's upper-left layout origin.
+text node's pivot, before applying the node's scale and rotation.
 
 **Parameters**
 
@@ -53964,8 +54315,8 @@ Rich-text layout object
 - `id` (hash) - the object's <code>id</code> attribute, or its generated layout object id
 - `text_offset` (integer) - zero-based UTF-32 offset in the visible text
 - `text_length` (integer) - visible UTF-32 text length covered by the object
-- `x` (number) - lower-left x-coordinate relative to the text node's upper-left layout origin
-- `y` (number) - lower-left y-coordinate relative to the text node's upper-left layout origin
+- `x` (number) - unscaled lower-left x-coordinate relative to the text node's pivot
+- `y` (number) - unscaled lower-left y-coordinate relative to the text node's pivot
 - `width` (number) - resolved object width
 - `height` (number) - resolved object height
 - `attributes` (table<string, string>) - markup attributes keyed by name
@@ -54517,7 +54868,8 @@ If node is set as an visible clipping node, it will be shown as well as clipping
 ### gui.set_color
 *Type:* FUNCTION
 Sets the color of the supplied node. The components
-of the supplied vector3 or vector4 should contain the color channel values:
+of the supplied vector3 or vector4 should contain the color channel values
+in the range 0 to 1:
 
 Component
 Color value
@@ -56089,7 +56441,7 @@ Returns the sprites and links found in the label's current layout.
 Each entry contains type, id, the zero-based UTF-32 text_offset,
 text_length, resolved x, y, width
 and height, and an attributes table. The position is the lower-left
-object corner relative to the label's upper-left layout origin.
+object corner relative to the label's pivot, before applying scale and rotation.
 Inline resource rendering is not part of this MVP; sprites use their explicit
 dimensions or a one-em square fallback.
 
@@ -56148,8 +56500,8 @@ Rich-text layout object
 - `id` (hash) - the object's <code>id</code> attribute, or its generated layout object id
 - `text_offset` (integer) - zero-based UTF-32 offset in the visible text
 - `text_length` (integer) - visible UTF-32 text length covered by the object
-- `x` (number) - lower-left x-coordinate relative to the label's upper-left layout origin
-- `y` (number) - lower-left y-coordinate relative to the label's upper-left layout origin
+- `x` (number) - unscaled lower-left x-coordinate relative to the label's pivot
+- `y` (number) - unscaled lower-left y-coordinate relative to the label's pivot
 - `width` (number) - resolved object width
 - `height` (number) - resolved object height
 - `attributes` (table<string, string>) - markup attributes keyed by name
@@ -60440,12 +60792,14 @@ Render-target creation flags
 
 ### render.render_target_params
 *Type:* TYPEDEF
+type defaults to graphics.TEXTURE_TYPE_2D. Supported values are
+graphics.TEXTURE_TYPE_2D and graphics.TEXTURE_TYPE_CUBE_MAP.
 sample_count defaults to 1 and is normalized by the graphics adapter to
 a supported power-of-two value.
 
 **Parameters**
 
-- `value` ({ sample_count?:integer, [graphics.BUFFER_TYPE]:render.render_target_buffer_params }) - Attachments keyed by buffer type, with an optional multisample count.
+- `value` ({ type?:graphics.TEXTURE_TYPE, sample_count?:integer, [graphics.BUFFER_TYPE]:render.render_target_buffer_params }) - Attachments keyed by buffer type, with optional texture type and multisample count.
 
 ### render.set_blend_equation_separate
 *Type:* FUNCTION
@@ -60748,6 +61102,18 @@ This function supports render targets created by a render script, or a render ta
 
 - `render_target` (render_target | string | hash | nil) (optional) - render target to set. Omit it, pass <code>nil</code>, or use render.RENDER_TARGET_DEFAULT to set the default render target
 - `options` (render.set_render_target_options) (optional) - optional render-target activation options
+<dl>
+<dt class="api-lua-v2-type-definition"><code>face:<a href="../../../manuals/lua/#variables-and-data-types">number</a></code></dt>
+<dd>Cubemap face selected for rendering. This option is valid only for cubemap render targets and defaults to <code>graphics.CUBEMAP_FACE_POSITIVE_X</code>.</dd>
+</dl>
+<ul>
+<li><code>graphics.CUBEMAP_FACE_POSITIVE_X</code></li>
+<li><code>graphics.CUBEMAP_FACE_NEGATIVE_X</code></li>
+<li><code>graphics.CUBEMAP_FACE_POSITIVE_Y</code></li>
+<li><code>graphics.CUBEMAP_FACE_NEGATIVE_Y</code></li>
+<li><code>graphics.CUBEMAP_FACE_POSITIVE_Z</code></li>
+<li><code>graphics.CUBEMAP_FACE_NEGATIVE_Z</code></li>
+</ul>
 
 **Examples**
 
@@ -60791,11 +61157,13 @@ Render-target activation options
 **Members**
 
 - `transient?` (graphics.BUFFER_TYPE[]) - Buffers whose contents become undefined after the target is deactivated. Missing buffers are ignored; combined depth-stencil buffers remain non-transient unless both are selected.
+- `face?` (graphics.CUBEMAP_FACE) - Cubemap face selected for rendering. Valid only for cubemap render targets.
 
 ### render.set_render_target_size
 *Type:* FUNCTION
 Sets the render target size for a render target created from
 either a render script, or from a render target resource.
+Cubemap render targets require equal width and height.
 
 **Parameters**
 

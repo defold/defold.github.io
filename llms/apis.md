@@ -46,6 +46,7 @@ These are per-namespace API reference files generated for LLM usage.
 - [dmGameObject (Component)](https://defold.com/llms/apis/engine-gameobject-src-dmsdk-gameobject-component-h.md) - Api for manipulating game object components (WIP)
 - [dmGameObject (Gameobject)](https://defold.com/llms/apis/engine-gameobject-src-dmsdk-gameobject-gameobject-h.md) - API for manipulating game objects
 - [dmGameObject (PropertyContainer)](https://defold.com/llms/apis/engine-gameobject-src-dmsdk-gameobject-gameobject_props-h.md) - API for game object property container
+- [dmGameObject (Collection Resource)](https://defold.com/llms/apis/engine-gameobject-src-dmsdk-gameobject-res_collection-h.md) - API for accessing loaded game object collection resources
 - [dmGameObject (Script)](https://defold.com/llms/apis/engine-gameobject-src-dmsdk-gameobject-script-h.md) - GameObject script API documentation
 - [dmGameSystem (Collection factory)](https://defold.com/llms/apis/engine-gamesys-src-dmsdk-gamesys-components-comp_collection_factory-h.md) - API for spawning collections from a collection factory component
 - [dmGameSystem (Factory)](https://defold.com/llms/apis/engine-gamesys-src-dmsdk-gamesys-components-comp_factory-h.md) - API for spawning gameobject instances from a factory component

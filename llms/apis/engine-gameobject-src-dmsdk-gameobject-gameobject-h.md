@@ -36,12 +36,12 @@ the collection will automatically free the resource.
 
 ### AssignInstanceIndex
 *Type:* FUNCTION
-Assign an index to the instance, only if the instance is not null.
+Assign an index to the instance, only if the instance is valid.
 
 **Parameters**
 
 - `index` (uint32_t) - The index to assign.
-- `instance` (dmGameObject::HInstance) - The instance that should be assigned the index.
+- `instance` (dmGameObject::HGameObject) - The instance that should be assigned the index.
 
 ### CreateInstanceId
 *Type:* FUNCTION
@@ -65,10 +65,14 @@ Create result enum.
 *Type:* FUNCTION
 Delete gameobject instance
 
+**Notes**
+
+- Invalid, stale, or mismatched collection and instance handles are ignored.
+
 **Parameters**
 
 - `collection` (dmGameObject::HCollection) - Gameobject collection
-- `instance` (dmGameObject::HInstance) - Gameobject instance
+- `instance` (dmGameObject::HGameObject) - Gameobject instance
 - `recursive` (bool) - If true, delete child hierarchy recursively in child to parent order (leaf first)
 
 ### DeleteBones
@@ -76,9 +80,13 @@ Delete gameobject instance
 Recursively delete all instances flagged as bones under the given parent instance.
 The order of deletion is depth-first, so that the children are deleted before the parents.
 
+**Notes**
+
+- Invalid or stale instances are ignored.
+
 **Parameters**
 
-- `parent` (HInstance) - Parent instance of the hierarchy
+- `parent` (HGameObject) - Parent instance of the hierarchy
 
 ### GAMEOBJECT_CONTEXT_NAME
 *Type:* CONSTANT
@@ -94,12 +102,12 @@ named "sub" and id == "a" the returned identifier represents the path "sub.a"
 
 **Parameters**
 
-- `instance` (dmGameObject::HInstance) - Gameobject instance to get absolute identifier to
+- `instance` (dmGameObject::HGameObject) - Gameobject instance to get absolute identifier to
 - `identifier` (const char*) - Identifier relative to instance
 
 **Returns**
 
-- `return` (dmhash_t) - Absolute identifier.
+- `return` (dmhash_t) - Absolute identifier, or zero if the instance or identifier is invalid.
 
 ### GetCollection
 *Type:* FUNCTION
@@ -107,11 +115,11 @@ Retrieve a collection from the specified instance
 
 **Parameters**
 
-- `instance` (dmGameObject::HInstance) - Game object instance
+- `instance` (dmGameObject::HGameObject) - Game object instance
 
 **Returns**
 
-- `collection` (dmGameObject::HInstance) - The collection the specified instance belongs to
+- `collection` (dmGameObject::HCollection) - The collection the specified instance belongs to, or 0 if the instance is invalid or stale
 
 ### GetCollectionByHash
 *Type:* FUNCTION
@@ -125,7 +133,7 @@ Note: in native extensions, the register can be retrieved during init using dmEn
 
 **Returns**
 
-- `collection` (dmGameObject::HCollection) - The collection if successful. 0 otherwise.
+- `collection` (dmGameObject::HCollection) - The collection if successful, or 0 otherwise.
 
 ### GetComponent
 *Type:* FUNCTION
@@ -133,7 +141,7 @@ Get the component, component type and its world
 
 **Parameters**
 
-- `instance` (dmGameObject::HInstance) - Instance
+- `instance` (dmGameObject::HGameObject) - Instance
 - `component_id` (dmhash_t) - Component id
 - `component_type` (uint32_t*) - (out) Component type. Used for validation.
 - `component` (HComponent*) - (out) The component.
@@ -141,7 +149,7 @@ Get the component, component type and its world
 
 **Returns**
 
-- `result` (dmGameObject::Result) - RESULT_OK if the component was found
+- `result` (dmGameObject::Result) - RESULT_OK if the component was found, or RESULT_INVALID_INSTANCE if the instance is invalid or stale
 
 ### GetComponentId
 *Type:* FUNCTION
@@ -149,13 +157,13 @@ Get component id from component index.
 
 **Parameters**
 
-- `instance` (dmGameObject::HInstance) - Instance
+- `instance` (dmGameObject::HGameObject) - Instance
 - `component_index` (uint16_t) - Component index
 - `component_id` (dmhash_t*) - Component id as out-argument
 
 **Returns**
 
-- `result` (dmGameObject::Result) - RESULT_OK if the component was found
+- `result` (dmGameObject::Result) - RESULT_OK if the component was found, or RESULT_INVALID_INSTANCE if the instance is invalid or stale
 
 ### GetComponentTypeIndex
 *Type:* FUNCTION
@@ -185,16 +193,19 @@ Retrieve the context for a component type
 
 ### GetGeneration
 *Type:* FUNCTION
-Get instance generation counter.
-The generation changes whenever a new game object instance is allocated, even if it later reuses the same identifier.
+Get the generation encoded in an instance handle.
+
+**Notes**
+
+- Deprecated since Defold 1.14.1. The instance generation is an implementation detail.
 
 **Parameters**
 
-- `instance` (dmGameObject::HInstance) - Gameobject instance
+- `instance` (dmGameObject::HGameObject) - Gameobject instance
 
 **Returns**
 
-- `return` (uint32_t) - Generation counter for the instance.
+- `generation` (uint32_t) - Generation counter for the instance.
 
 ### GetIdentifier
 *Type:* FUNCTION
@@ -202,11 +213,11 @@ Get instance identifier
 
 **Parameters**
 
-- `instance` (dmGameObject::HInstance) - Gameobject instance
+- `instance` (dmGameObject::HGameObject) - Gameobject instance
 
 **Returns**
 
-- `return` (dmhash_t) - Identifier. dmGameObject::UNNAMED_IDENTIFIER if not set.
+- `return` (dmhash_t) - Identifier, or zero if the instance is invalid or stale.
 
 ### GetInstanceFromIdentifier
 *Type:* FUNCTION
@@ -219,7 +230,7 @@ Get instance from identifier
 
 **Returns**
 
-- `instance` (dmGameObject::HInstance) - Instance. NULL if instance isn't found.
+- `instance` (dmGameObject::HGameObject) - Instance, or 0 if the collection or identifier is not found.
 
 ### GetMessageSocket
 *Type:* FUNCTION
@@ -231,7 +242,7 @@ Retrieve the message socket for the specified collection.
 
 **Returns**
 
-- `socket` (dmMessage::HSocket) - The message socket of the specified collection
+- `socket` (dmMessage::HSocket) - The message socket of the specified collection, or zero if the collection is invalid or stale
 
 ### GetPosition
 *Type:* FUNCTION
@@ -239,11 +250,11 @@ Get gameobject instance position
 
 **Parameters**
 
-- `instance` (dmGameObject::HInstance) - Gameobject instance
+- `instance` (dmGameObject::HGameObject) - Gameobject instance
 
 **Returns**
 
-- `return` (dmVMath::Point3) - Position
+- `return` (dmVMath::Point3) - Position, or a zero vector if the instance is invalid or stale
 
 ### GetPropertyAsBool
 *Type:* FUNCTION
@@ -251,7 +262,7 @@ Retrieve a boolean property from a component.
 
 **Parameters**
 
-- `instance` (HInstance) - Instance of the game object
+- `instance` (HGameObject) - Instance of the game object
 - `component_id` (dmhash_t) - Id of the component
 - `property_id` (dmhash_t) - Id of the property
 - `out_value` (bool*) - The retrieved property value
@@ -266,7 +277,7 @@ Retrieve a float property from a component.
 
 **Parameters**
 
-- `instance` (HInstance) - Instance of the game object
+- `instance` (HGameObject) - Instance of the game object
 - `component_id` (dmhash_t) - Id of the component
 - `property_id` (dmhash_t) - Id of the property
 - `out_value` (float*) - The retrieved property value
@@ -281,7 +292,7 @@ Retrieve a hash property from a component.
 
 **Parameters**
 
-- `instance` (HInstance) - Instance of the game object
+- `instance` (HGameObject) - Instance of the game object
 - `component_id` (dmhash_t) - Id of the component
 - `property_id` (dmhash_t) - Id of the property
 - `out_value` (dmhash_t*) - The retrieved property value
@@ -296,7 +307,7 @@ Retrieve a matrix4 property from a component.
 
 **Parameters**
 
-- `instance` (HInstance) - Instance of the game object
+- `instance` (HGameObject) - Instance of the game object
 - `component_id` (dmhash_t) - Id of the component
 - `property_id` (dmhash_t) - Id of the property
 - `out_value` (dmGameObject::Matrix4*) - The retrieved property value
@@ -311,7 +322,7 @@ Retrieve a quaternion property from a component.
 
 **Parameters**
 
-- `instance` (HInstance) - Instance of the game object
+- `instance` (HGameObject) - Instance of the game object
 - `component_id` (dmhash_t) - Id of the component
 - `property_id` (dmhash_t) - Id of the property
 - `out_value` (dmVMath::Quat*) - The retrieved property value
@@ -327,7 +338,7 @@ The returned pointer is borrowed from the component and must not be freed. Its l
 
 **Parameters**
 
-- `instance` (HInstance) - Instance of the game object
+- `instance` (HGameObject) - Instance of the game object
 - `component_id` (dmhash_t) - Id of the component
 - `property_id` (dmhash_t) - Id of the property
 - `out_value` (const char**) - The retrieved property value
@@ -342,7 +353,7 @@ Retrieve a url property from a component.
 
 **Parameters**
 
-- `instance` (HInstance) - Instance of the game object
+- `instance` (HGameObject) - Instance of the game object
 - `component_id` (dmhash_t) - Id of the component
 - `property_id` (dmhash_t) - Id of the property
 - `out_value` (dmMessage::URL*) - The retrieved property value
@@ -357,7 +368,7 @@ Retrieve a vector3 property from a component.
 
 **Parameters**
 
-- `instance` (HInstance) - Instance of the game object
+- `instance` (HGameObject) - Instance of the game object
 - `component_id` (dmhash_t) - Id of the component
 - `property_id` (dmhash_t) - Id of the property
 - `out_value` (dmVMath::Vector3*) - The retrieved property value
@@ -372,7 +383,7 @@ Retrieve a vector4 property from a component.
 
 **Parameters**
 
-- `instance` (HInstance) - Instance of the game object
+- `instance` (HGameObject) - Instance of the game object
 - `component_id` (dmhash_t) - Id of the component
 - `property_id` (dmhash_t) - Id of the property
 - `out_value` (dmVMath::Vector4*) - The retrieved property value
@@ -427,11 +438,11 @@ Get gameobject instance rotation
 
 **Parameters**
 
-- `instance` (dmGameObject::HInstance) - Gameobject instance
+- `instance` (dmGameObject::HGameObject) - Gameobject instance
 
 **Returns**
 
-- `return` (dmGameObject::Quat) - rotation
+- `return` (dmGameObject::Quat) - Rotation, or the identity rotation if the instance is invalid or stale
 
 ### GetScale
 *Type:* FUNCTION
@@ -439,11 +450,11 @@ Get gameobject instance scale
 
 **Parameters**
 
-- `instance` (dmGameObject::HInstance) - Gameobject instance
+- `instance` (dmGameObject::HGameObject) - Gameobject instance
 
 **Returns**
 
-- `return` (dmGameObject::Vector3) - Non-uniform scale
+- `return` (dmGameObject::Vector3) - Non-uniform scale, or a unit vector if the instance is invalid or stale
 
 ### GetUniformScale
 *Type:* FUNCTION
@@ -451,11 +462,11 @@ Get gameobject instance uniform scale
 
 **Parameters**
 
-- `instance` (dmGameObject::HInstance) - Gameobject instance
+- `instance` (dmGameObject::HGameObject) - Gameobject instance
 
 **Returns**
 
-- `return` (float) - Uniform scale
+- `return` (float) - Uniform scale, or 1 if the instance is invalid or stale
 
 ### GetWorld
 *Type:* FUNCTION
@@ -476,11 +487,11 @@ Get game object instance world transform as Matrix4.
 
 **Parameters**
 
-- `instance` (dmGameObject::HInstance) - Gameobject instance
+- `instance` (dmGameObject::HGameObject) - Gameobject instance
 
 **Returns**
 
-- `return` (dmGameObject::Matrix4) - World transform matrix.
+- `return` (dmGameObject::Matrix4) - World transform matrix, or identity if the instance is invalid or stale.
 
 ### GetWorldPosition
 *Type:* FUNCTION
@@ -488,11 +499,11 @@ Get gameobject instance world position
 
 **Parameters**
 
-- `instance` (dmGameObject::HInstance) - Gameobject instance
+- `instance` (dmGameObject::HGameObject) - Gameobject instance
 
 **Returns**
 
-- `return` (dmGameObject::Point3) - World position
+- `return` (dmGameObject::Point3) - World position, or a zero vector if the instance is invalid or stale
 
 ### GetWorldRotation
 *Type:* FUNCTION
@@ -500,11 +511,11 @@ Get gameobject instance world rotation
 
 **Parameters**
 
-- `instance` (dmGameObject::HInstance) - Gameobject instance
+- `instance` (dmGameObject::HGameObject) - Gameobject instance
 
 **Returns**
 
-- `return` (dmGameObject::Quat) - World rotation
+- `return` (dmGameObject::Quat) - World rotation, or the identity rotation if the instance is invalid or stale
 
 ### GetWorldScale
 *Type:* FUNCTION
@@ -512,11 +523,11 @@ Get game object instance world transform
 
 **Parameters**
 
-- `instance` (dmGameObject::HInstance) - Gameobject instance
+- `instance` (dmGameObject::HGameObject) - Gameobject instance
 
 **Returns**
 
-- `return` (dmGameObject::Vector3) - World scale
+- `return` (dmGameObject::Vector3) - World scale, or a unit vector if the instance is invalid or stale
 
 ### GetWorldTransform
 *Type:* FUNCTION
@@ -524,11 +535,11 @@ Get game object instance world transform
 
 **Parameters**
 
-- `instance` (dmGameObject::HInstance) - Gameobject instance
+- `instance` (dmGameObject::HGameObject) - Gameobject instance
 
 **Returns**
 
-- `return` (dmTransform::Transform) - World transform
+- `return` (dmTransform::Transform) - World transform, or identity if the instance is invalid or stale
 
 ### GetWorldUniformScale
 *Type:* FUNCTION
@@ -536,15 +547,17 @@ Get game object instance uniform scale
 
 **Parameters**
 
-- `instance` (dmGameObject::HInstance) - Gameobject instance
+- `instance` (dmGameObject::HGameObject) - Gameobject instance
 
 **Returns**
 
-- `return` (float) - World uniform scale
+- `return` (float) - World uniform scale, or 1 if the instance is invalid or stale
 
 ### HCollection
 *Type:* TYPEDEF
-Gameobject collection handle
+Opaque gameobject collection handle.
+This is not a collection resource pointer. Load collection resources into
+a CollectionResource* and use ResCollectionGetCollection to obtain this handle.
 
 ### HComponent
 *Type:* TYPEDEF
@@ -558,9 +571,13 @@ Opaque handle to internal representation of a component instance
 *Type:* TYPEDEF
 Opaque handle to a component world
 
+### HGameObject
+*Type:* TYPEDEF
+Opaque gameobject handle
+
 ### HInstance
 *Type:* TYPEDEF
-Gameobject instance handle
+Source-compatibility name for HGameObject
 
 ### HProperties
 *Type:* TYPEDEF
@@ -622,11 +639,11 @@ Check whether the instance is flagged as a bone.
 
 **Parameters**
 
-- `instance` (HInstance) - Instance
+- `instance` (HGameObject) - Instance
 
 **Returns**
 
-- `result` (bool) - True if flagged as a bone
+- `result` (bool) - True if flagged as a bone; false if the instance is invalid or stale
 
 ### New
 *Type:* FUNCTION
@@ -643,7 +660,7 @@ Create a new gameobject instance
 
 **Returns**
 
-- `instance` (dmGameObject::HInstance) - New gameobject instance. NULL if any error occured
+- `instance` (dmGameObject::HGameObject) - New gameobject instance, or 0 if an error occurred
 
 ### Playback
 *Type:* ENUM
@@ -747,6 +764,7 @@ Result enumeration.
 - `dmGameObject::RESULT_INVALID_PROPERTIES`
 - `dmGameObject::RESULT_UNABLE_TO_CREATE_COMPONENTS`
 - `dmGameObject::RESULT_UNABLE_TO_INIT_INSTANCE`
+- `dmGameObject::RESULT_INVALID_INSTANCE`
 - `dmGameObject::RESULT_UNKNOWN_ERROR`
 
 ### SceneNode
@@ -826,9 +844,13 @@ Set whether the instance should be flagged as a bone.
 Instances flagged as bones can have their transforms updated in a batch through SetBoneTransforms.
 Used for animated skeletons.
 
+**Notes**
+
+- Invalid or stale instances are ignored.
+
 **Parameters**
 
-- `instance` (HInstance) - Instance
+- `instance` (HGameObject) - Instance
 - `bone` (bool) - true if the instance is a bone
 
 ### SetBoneTransforms
@@ -838,14 +860,14 @@ The order of the transforms is depth-first.
 
 **Parameters**
 
-- `instance` (HInstance) - First Instance of the hierarchy to set
+- `instance` (HGameObject) - First Instance of the hierarchy to set
 - `component_transform` (dmTransform::Transform) - the transform for component root
 - `transforms` (dmTransform::Transform*) - Array of transforms to set depth-first for the bone instances
 - `transform_count` (uint32_t) - Size of the transforms array
 
 **Returns**
 
-- `Number` - of instances found
+- `Number` - of instances found, or zero if the instance is invalid or stale
 
 ### SetIdentifier
 *Type:* FUNCTION
@@ -854,20 +876,24 @@ Set instance identifier. Must be unique within the collection.
 **Parameters**
 
 - `collection` (dmGameObject::HCollection) - Collection
-- `instance` (dmGameObject::HInstance) - Instance
+- `instance` (dmGameObject::HGameObject) - Instance
 - `identifier` (dmhash_t) - Identifier
 
 **Returns**
 
-- `result` (dmGameObject::Result) - RESULT_OK on success
+- `result` (dmGameObject::Result) - RESULT_OK on success, or RESULT_INVALID_INSTANCE if the handle pair is invalid
 
 ### SetPosition
 *Type:* FUNCTION
 Set gameobject instance position
 
+**Notes**
+
+- Invalid or stale instances are ignored.
+
 **Parameters**
 
-- `instance` (dmGameObject::HInstance) - Gameobject instance
+- `instance` (dmGameObject::HGameObject) - Gameobject instance
 - `position` (dmVMath::Point3) - New Position
 
 ### SetPropertyFromBool
@@ -876,7 +902,7 @@ Sets the value of a boolean property on a component.
 
 **Parameters**
 
-- `instance` (HInstance) - Instance of the game object
+- `instance` (HGameObject) - Instance of the game object
 - `component_id` (dmhash_t) - Id of the component
 - `property_id` (dmhash_t) - Id of the property
 - `value` (bool) - Value of the property
@@ -891,7 +917,7 @@ Sets the value of a hash property on a component.
 
 **Parameters**
 
-- `instance` (HInstance) - Instance of the game object
+- `instance` (HGameObject) - Instance of the game object
 - `component_id` (dmhash_t) - Id of the component
 - `property_id` (dmhash_t) - Id of the property
 - `value` (dmhash_t) - Value of the property
@@ -906,7 +932,7 @@ Sets the value of a float property on a component.
 
 **Parameters**
 
-- `instance` (HInstance) - Instance of the game object
+- `instance` (HGameObject) - Instance of the game object
 - `component_id` (dmhash_t) - Id of the component
 - `property_id` (dmhash_t) - Id of the property
 - `value` (float) - Value of the property
@@ -921,7 +947,7 @@ Sets the value of a matrix4 property on a component.
 
 **Parameters**
 
-- `instance` (HInstance) - Instance of the game object
+- `instance` (HGameObject) - Instance of the game object
 - `component_id` (dmhash_t) - Id of the component
 - `property_id` (dmhash_t) - Id of the property
 - `value` (dmVMath::Matrix4) - Value of the property
@@ -936,7 +962,7 @@ Sets the value of a quaternion property on a component.
 
 **Parameters**
 
-- `instance` (HInstance) - Instance of the game object
+- `instance` (HGameObject) - Instance of the game object
 - `component_id` (dmhash_t) - Id of the component
 - `property_id` (dmhash_t) - Id of the property
 - `value` (dmVMath::Quat) - Value of the property
@@ -952,7 +978,7 @@ The component must copy the value if it needs to retain it after this function r
 
 **Parameters**
 
-- `instance` (HInstance) - Instance of the game object
+- `instance` (HGameObject) - Instance of the game object
 - `component_id` (dmhash_t) - Id of the component
 - `property_id` (dmhash_t) - Id of the property
 - `value` (const char*) - Null-terminated UTF-8 value of the property
@@ -967,7 +993,7 @@ Sets the value of a URL property on a component.
 
 **Parameters**
 
-- `instance` (HInstance) - Instance of the game object
+- `instance` (HGameObject) - Instance of the game object
 - `component_id` (dmhash_t) - Id of the component
 - `property_id` (dmhash_t) - Id of the property
 - `value` (dmMessage::URL) - Value of the property
@@ -982,7 +1008,7 @@ Sets the value of a vector3 property on a component.
 
 **Parameters**
 
-- `instance` (HInstance) - Instance of the game object
+- `instance` (HGameObject) - Instance of the game object
 - `component_id` (dmhash_t) - Id of the component
 - `property_id` (dmhash_t) - Id of the property
 - `value` (dmVMath::vector3) - Value of the property
@@ -997,7 +1023,7 @@ Sets the value of a vector4 property on a component.
 
 **Parameters**
 
-- `instance` (HInstance) - Instance of the game object
+- `instance` (HGameObject) - Instance of the game object
 - `component_id` (dmhash_t) - Id of the component
 - `property_id` (dmhash_t) - Id of the property
 - `value` (dmVMath::Vector4) - Value of the property
@@ -1010,36 +1036,52 @@ Sets the value of a vector4 property on a component.
 *Type:* FUNCTION
 Set gameobject instance rotation
 
+**Notes**
+
+- Invalid or stale instances are ignored.
+
 **Parameters**
 
-- `instance` (dmGameObject::HInstance) - Gameobject instance
+- `instance` (dmGameObject::HGameObject) - Gameobject instance
 - `rotation` (dmVmath::Quat) - New rotation
 
 ### SetScale
 *Type:* FUNCTION
 Set gameobject instance uniform scale
 
+**Notes**
+
+- Invalid or stale instances are ignored.
+
 **Parameters**
 
-- `instance` (dmGameObject::HInstance) - Gameobject instance
+- `instance` (dmGameObject::HGameObject) - Gameobject instance
 - `scale` (float) - New uniform scale
 
 ### SetScale
 *Type:* FUNCTION
 Set gameobject instance non-uniform scale
 
+**Notes**
+
+- Invalid or stale instances are ignored.
+
 **Parameters**
 
-- `instance` (dmGameObject::HInstance) - Gameobject instance
+- `instance` (dmGameObject::HGameObject) - Gameobject instance
 - `scale` (dmVmath::Vector3) - New non-uniform scale
 
 ### SetScaleXY
 *Type:* FUNCTION
 Set gameobject instance x and y scale
 
+**Notes**
+
+- Invalid or stale instances are ignored.
+
 **Parameters**
 
-- `instance` (dmGameObject::HInstance) - Gameobject instance
+- `instance` (dmGameObject::HGameObject) - Gameobject instance
 - `scale_x` (float) - New x scale
 - `scale_y` (float) - New y scale
 
@@ -1057,7 +1099,10 @@ Spawns a new gameobject instance. The actual creation is performed after the upd
 - `position` (dmVMath::Vector3) - Position of the spawed object
 - `rotation` (dmVMath::Quat) - Rotation of the spawned object
 - `scale` (dmVMath::Vector3) - Scale of the spawned object
-return instance <span class="type"> HInstance</span> the spawned instance, 0 at failure
+
+**Returns**
+
+- `instance` (HGameObject) - the spawned instance, or 0 at failure
 
 ### TraverseGetRoot
 *Type:* FUNCTION
@@ -1071,7 +1116,7 @@ Gets the top node of the whole game (the main collection)
 **Parameters**
 
 - `regist` (dmGameObject::HRegister) - the full gameobject register
-- `node` (dmGameObject::HRegister) - the node to inspect
+- `node` (dmGameObject::SceneNode*) - the node to inspect
 
 **Returns**
 

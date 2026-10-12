@@ -367,54 +367,77 @@ Extension declaration helper. Internal function. Use DM_DECLARE_EXTENSION
 
 ### ExtensionRegisteriOSUIApplicationDelegate
 *Type:* FUNCTION
-Register an iOS application delegate to the engine. Multiple delegates are supported (Max 32)
+Register an iOS application delegate for process-level callbacks such as launch
+and remote notification registration. Multiple delegates are supported (Max 32).
+Use application:willFinishLaunchingWithOptions: and
+application:didFinishLaunchingWithOptions: for launch. The older
+applicationDidFinishLaunching: callback is not synthesized.
+Defold uses the UIScene lifecycle. Application activity, URL and user activity
+callbacks are not forwarded from scenes; use ExtensionRegisteriOSUISceneDelegate.
+The game window is created after application launch. Use scene connection to
+access it, and scene connection options for cold-launch URLs and user activities.
 
 **Notes**
 
-- Note that the delegate needs to be registered before the UIApplicationMain in order to
-handle any earlier callbacks.
-
+- Register before UIApplicationMain to receive launch callbacks. Registration
+does not retain the delegate; keep it alive until it is unregistered.
 This function is only available on iOS. [icon:ios]
 
 **Parameters**
 
-- `delegate` (void*) - An id<UIApplicationDelegate>, see: https://developer.apple.com/documentation/uikit/uiapplicationdelegate?language=objc
+- `delegate` (void*) - An id<UIApplicationDelegate>.
+
+### ExtensionRegisteriOSUISceneDelegate
+*Type:* FUNCTION
+Register an iOS scene observer. Multiple delegates are supported (Max 32).
+Defold owns the single game window and its scene configuration. Registered
+observers receive scene connection/disconnection, activation/deactivation,
+foreground/background, openURLContexts, continueUserActivity,
+willContinueUserActivityWithType, didFailToContinueUserActivityWithType:error:
+and didUpdateUserActivity callbacks. Other optional delegate methods are not
+forwarded. No legacy UIApplicationDelegate callbacks are synthesized.
+Register before UIApplicationMain (for example in a static constructor) to
+receive the initial scene connection. Extension app-initialize is too late.
+Cold-launch URLs, user activities and notification responses are available in
+UISceneConnectionOptions. Scene connection may precede Lua initialization;
+extensions must retain any data they need to deliver to Lua later.
+
+**Notes**
+
+- Register and unregister on the main thread. Registration does not retain
+the delegate; keep it alive until unregistering. Each event retains a snapshot
+of its observers, so unregistering during delivery affects subsequent events.
+Duplicate registrations are ignored. Late registration does not replay events.
+This function is only available on iOS. [icon:ios]
+
+**Parameters**
+
+- `delegate` (void*) - An id<UISceneDelegate>.
 
 **Examples**
 
 ```
 // myextension_ios.mm
-
-id g_MyApplicationDelegate;
-
-@interface MyApplicationDelegate : NSObject
-
-- (void) applicationDidBecomeActive:(UIApplication *) application;
-
+@interface MySceneDelegate : NSObject
+- (void)scene:(UIScene*)scene willConnectToSession:(UISceneSession*)session options:(UISceneConnectionOptions*)options;
+- (void)scene:(UIScene*)scene openURLContexts:(NSSet*)contexts;
 @end
 
-@implementation MyApplicationDelegate
-
-- (void) applicationDidBecomeActive:(UIApplication *) application {
-    dmLogWarning("applicationDidBecomeActive - MyAppDelegate");
-}
-
-@end
-
-struct MyAppDelegateRegister
+struct MySceneDelegateRegistration
 {
-    MyApplicationDelegate* m_Delegate;
-    MyAppDelegateRegister() {
-        m_Delegate = [[FacebookAppDelegate alloc] init];
-        Extension::RegisteriOSUIApplicationDelegate(m_Delegate);
+    MySceneDelegate* m_Delegate;
+    MySceneDelegateRegistration()
+    {
+        m_Delegate = [[MySceneDelegate alloc] init];
+        dmExtension::RegisteriOSUISceneDelegate(m_Delegate);
     }
-    ~MyAppDelegateRegister() {
-        Extension::UnregisteriOSUIApplicationDelegate(m_Delegate);
+    ~MySceneDelegateRegistration()
+    {
+        dmExtension::UnregisteriOSUISceneDelegate(m_Delegate);
         [m_Delegate release];
     }
 };
-
-MyAppDelegateRegister g_FacebookDelegateRegister;
+MySceneDelegateRegistration g_MySceneDelegateRegistration;
 
 ```
 
@@ -429,12 +452,21 @@ Result enumeration.
 
 ### ExtensionUnregisteriOSUIApplicationDelegate
 *Type:* FUNCTION
-Deregister a previously registered iOS application delegate
+Deregister a previously registered iOS application delegate.
 This function is only available on iOS.
 
 **Parameters**
 
-- `delegate` (void*) - an id<UIApplicationDelegate>
+- `delegate` (void*) - An id<UIApplicationDelegate>.
+
+### ExtensionUnregisteriOSUISceneDelegate
+*Type:* FUNCTION
+Deregister a previously registered iOS scene observer on the main thread.
+This function is only available on iOS.
+
+**Parameters**
+
+- `delegate` (void*) - An id<UISceneDelegate>.
 
 ### FCallback
 *Type:* TYPEDEF
@@ -611,54 +643,77 @@ Generated from ExtensionRegisterCallback
 
 ### RegisteriOSUIApplicationDelegate
 *Type:* FUNCTION
-Register an iOS application delegate to the engine. Multiple delegates are supported (Max 32)
+Register an iOS application delegate for process-level callbacks such as launch
+and remote notification registration. Multiple delegates are supported (Max 32).
+Use application:willFinishLaunchingWithOptions: and
+application:didFinishLaunchingWithOptions: for launch. The older
+applicationDidFinishLaunching: callback is not synthesized.
+Defold uses the UIScene lifecycle. Application activity, URL and user activity
+callbacks are not forwarded from scenes; use ExtensionRegisteriOSUISceneDelegate.
+The game window is created after application launch. Use scene connection to
+access it, and scene connection options for cold-launch URLs and user activities.
 
 **Notes**
 
-- Note that the delegate needs to be registered before the UIApplicationMain in order to
-handle any earlier callbacks.
-
+- Register before UIApplicationMain to receive launch callbacks. Registration
+does not retain the delegate; keep it alive until it is unregistered.
 This function is only available on iOS. [icon:ios]
 
 **Parameters**
 
-- `delegate` (void*) - An id<UIApplicationDelegate>, see: https://developer.apple.com/documentation/uikit/uiapplicationdelegate?language=objc
+- `delegate` (void*) - An id<UIApplicationDelegate>.
+
+### RegisteriOSUISceneDelegate
+*Type:* FUNCTION
+Register an iOS scene observer. Multiple delegates are supported (Max 32).
+Defold owns the single game window and its scene configuration. Registered
+observers receive scene connection/disconnection, activation/deactivation,
+foreground/background, openURLContexts, continueUserActivity,
+willContinueUserActivityWithType, didFailToContinueUserActivityWithType:error:
+and didUpdateUserActivity callbacks. Other optional delegate methods are not
+forwarded. No legacy UIApplicationDelegate callbacks are synthesized.
+Register before UIApplicationMain (for example in a static constructor) to
+receive the initial scene connection. Extension app-initialize is too late.
+Cold-launch URLs, user activities and notification responses are available in
+UISceneConnectionOptions. Scene connection may precede Lua initialization;
+extensions must retain any data they need to deliver to Lua later.
+
+**Notes**
+
+- Register and unregister on the main thread. Registration does not retain
+the delegate; keep it alive until unregistering. Each event retains a snapshot
+of its observers, so unregistering during delivery affects subsequent events.
+Duplicate registrations are ignored. Late registration does not replay events.
+This function is only available on iOS. [icon:ios]
+
+**Parameters**
+
+- `delegate` (void*) - An id<UISceneDelegate>.
 
 **Examples**
 
 ```
 // myextension_ios.mm
-
-id g_MyApplicationDelegate;
-
-@interface MyApplicationDelegate : NSObject
-
-- (void) applicationDidBecomeActive:(UIApplication *) application;
-
+@interface MySceneDelegate : NSObject
+- (void)scene:(UIScene*)scene willConnectToSession:(UISceneSession*)session options:(UISceneConnectionOptions*)options;
+- (void)scene:(UIScene*)scene openURLContexts:(NSSet*)contexts;
 @end
 
-@implementation MyApplicationDelegate
-
-- (void) applicationDidBecomeActive:(UIApplication *) application {
-    dmLogWarning("applicationDidBecomeActive - MyAppDelegate");
-}
-
-@end
-
-struct MyAppDelegateRegister
+struct MySceneDelegateRegistration
 {
-    MyApplicationDelegate* m_Delegate;
-    MyAppDelegateRegister() {
-        m_Delegate = [[FacebookAppDelegate alloc] init];
-        Extension::RegisteriOSUIApplicationDelegate(m_Delegate);
+    MySceneDelegate* m_Delegate;
+    MySceneDelegateRegistration()
+    {
+        m_Delegate = [[MySceneDelegate alloc] init];
+        dmExtension::RegisteriOSUISceneDelegate(m_Delegate);
     }
-    ~MyAppDelegateRegister() {
-        Extension::UnregisteriOSUIApplicationDelegate(m_Delegate);
+    ~MySceneDelegateRegistration()
+    {
+        dmExtension::UnregisteriOSUISceneDelegate(m_Delegate);
         [m_Delegate release];
     }
 };
-
-MyAppDelegateRegister g_FacebookDelegateRegister;
+MySceneDelegateRegistration g_MySceneDelegateRegistration;
 
 ```
 
@@ -673,9 +728,18 @@ Result enumeration.
 
 ### UnregisteriOSUIApplicationDelegate
 *Type:* FUNCTION
-Deregister a previously registered iOS application delegate
+Deregister a previously registered iOS application delegate.
 This function is only available on iOS.
 
 **Parameters**
 
-- `delegate` (void*) - an id<UIApplicationDelegate>
+- `delegate` (void*) - An id<UIApplicationDelegate>.
+
+### UnregisteriOSUISceneDelegate
+*Type:* FUNCTION
+Deregister a previously registered iOS scene observer on the main thread.
+This function is only available on iOS.
+
+**Parameters**
+
+- `delegate` (void*) - An id<UISceneDelegate>.

@@ -223,14 +223,14 @@ Post a DDF message to a socket. A helper wrapper for Post()'ing a DDF message
 
 ```
 // dmMessage::URL sender, receiver;
-// dmGameObject::HInstance go;
+uintptr_t request_id = 1;
 
 dmGameSystemDDF::PlayAnimation msg;
 msg.m_Id = animation_id;
 msg.m_Offset = params.m_CursorStart;
 msg.m_PlaybackRate = params.m_PlaybackRate;
 
-dmMessage::Result result = dmMessage::Post(&msg, &sender, &receiver, (uintptr_t)go, 0, 0));
+dmMessage::Result result = dmMessage::Post(&msg, &sender, &receiver, request_id, 0, 0);
 
 ```
 

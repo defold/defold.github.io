@@ -30,7 +30,7 @@ Parameters to ComponentAddToUpdate callback.
 **Members**
 
 - `m_Collection` (HCollection) - Collection handle
-- `m_Instance` (HInstance) - Game object instance
+- `m_Instance` (HGameObject) - Game object instance
 - `m_World` (void*) - Component world
 - `m_Context` (void*) - User context
 - `m_UserData` (uintptr_t*) - User data storage pointer
@@ -54,7 +54,7 @@ Parameters to ComponentCreate callback.
 
 **Members**
 
-- `m_Instance` (HInstance) - Game object instance
+- `m_Instance` (HGameObject) - Game object instance
 - `m_Position` (dmVMath::Point3) - Local component position
 - `m_Rotation` (dmVMath::Quat) - Local component rotation
 - `m_Scale` (dmVMath::Vector3) - Local component scale
@@ -105,7 +105,7 @@ Parameters to ComponentDestroy callback.
 **Members**
 
 - `m_Collection` (HCollection) - Collection handle
-- `m_Instance` (HInstance) - Game object instance
+- `m_Instance` (HGameObject) - Game object instance
 - `m_World` (void*) - Component world
 - `m_Context` (void*) - User context
 - `m_UserData` (uintptr_t*) - User data storage pointer
@@ -129,7 +129,7 @@ Parameters to ComponentFinal callback.
 **Members**
 
 - `m_Collection` (HCollection) - Collection handle
-- `m_Instance` (HInstance) - Game object instance
+- `m_Instance` (HGameObject) - Game object instance
 - `m_World` (void*) - Component world
 - `m_Context` (void*) - User context
 - `m_UserData` (uintptr_t*) - User data storage pointer
@@ -188,7 +188,7 @@ Parameters to ComponentGetProperty callback.
 
 - `m_Context` (void*) - Context for the component type
 - `m_World` (void*) - Component world
-- `m_Instance` (HInstance) - Game object instance
+- `m_Instance` (HGameObject) - Game object instance
 - `m_PropertyId` (dmhash_t) - Id of the property
 - `m_UserData` (uintptr_t*) - User data storage pointer
 - `m_Options` (HPropertyOptions) - Options for getting the property
@@ -212,7 +212,7 @@ Parameters to ComponentInit callback.
 **Members**
 
 - `m_Collection` (HCollection) - Collection handle
-- `m_Instance` (HInstance) - Game object instance
+- `m_Instance` (HGameObject) - Game object instance
 - `m_World` (void*) - Component world
 - `m_Context` (void*) - User context
 - `m_UserData` (uintptr_t*) - User data storage pointer
@@ -274,7 +274,7 @@ Parameters to ComponentOnInput callback.
 
 **Members**
 
-- `m_Instance` (HInstance) - Instance handle
+- `m_Instance` (HGameObject) - Instance handle
 - `m_InputAction` (const InputAction*) - Information about the input that occurred (note that input being released is also treated as input)
 - `m_Context` (void*) - User context
 - `m_UserData` (uintptr_t*) - User data storage pointer
@@ -297,7 +297,7 @@ Parameters to ComponentOnMessage callback.
 
 **Members**
 
-- `m_Instance` (HInstance) - Instance handle
+- `m_Instance` (HGameObject) - Instance handle
 - `m_World` (void*) - World
 - `m_Context` (void*) - User context
 - `m_UserData` (uintptr_t*) - User data storage pointer
@@ -317,7 +317,7 @@ Parameters to ComponentOnReload callback.
 
 **Members**
 
-- `m_Instance` (HInstance) - Instance handle
+- `m_Instance` (HGameObject) - Instance handle
 - `m_Resource` (void*) - Resource that was reloaded
 - `m_World` (void*) - Component world
 - `m_Context` (void*) - User context
@@ -341,7 +341,7 @@ Parameters to ComponentSetProperties callback.
 
 **Members**
 
-- `m_Instance` (HInstance) - Instance handle
+- `m_Instance` (HGameObject) - Instance handle
 - `m_PropertySet` (PropertySet) - Property set to use
 - `m_UserData` (uintptr_t*) - User data storage pointer
 
@@ -365,7 +365,7 @@ Parameters to ComponentSetProperty callback.
 
 - `m_Context` (void*) - Context for the component type
 - `m_World` (void*) - Component world
-- `m_Instance` (HInstance) - Game object instance
+- `m_Instance` (HGameObject) - Game object instance
 - `m_PropertyId` (dmhash_t) - Id of the property
 - `m_UserData` (uintptr_t*) - User data storage pointer
 - `m_Value` (PropertyVar) - New value of the property. Text values are borrowed and must be copied if retained after the callback returns.

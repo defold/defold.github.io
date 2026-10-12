@@ -789,12 +789,14 @@ Render-target creation flags
 
 ### render.render_target_params
 *Type:* TYPEDEF
+type defaults to graphics.TEXTURE_TYPE_2D. Supported values are
+graphics.TEXTURE_TYPE_2D and graphics.TEXTURE_TYPE_CUBE_MAP.
 sample_count defaults to 1 and is normalized by the graphics adapter to
 a supported power-of-two value.
 
 **Parameters**
 
-- `value` ({ sample_count?:integer, [graphics.BUFFER_TYPE]:render.render_target_buffer_params }) - Attachments keyed by buffer type, with an optional multisample count.
+- `value` ({ type?:graphics.TEXTURE_TYPE, sample_count?:integer, [graphics.BUFFER_TYPE]:render.render_target_buffer_params }) - Attachments keyed by buffer type, with optional texture type and multisample count.
 
 ### render.set_blend_equation_separate
 *Type:* FUNCTION
@@ -1097,6 +1099,18 @@ This function supports render targets created by a render script, or a render ta
 
 - `render_target` (render_target | string | hash | nil) (optional) - render target to set. Omit it, pass <code>nil</code>, or use render.RENDER_TARGET_DEFAULT to set the default render target
 - `options` (render.set_render_target_options) (optional) - optional render-target activation options
+<dl>
+<dt class="api-lua-v2-type-definition"><code>face:<a href="../../../manuals/lua/#variables-and-data-types">number</a></code></dt>
+<dd>Cubemap face selected for rendering. This option is valid only for cubemap render targets and defaults to <code>graphics.CUBEMAP_FACE_POSITIVE_X</code>.</dd>
+</dl>
+<ul>
+<li><code>graphics.CUBEMAP_FACE_POSITIVE_X</code></li>
+<li><code>graphics.CUBEMAP_FACE_NEGATIVE_X</code></li>
+<li><code>graphics.CUBEMAP_FACE_POSITIVE_Y</code></li>
+<li><code>graphics.CUBEMAP_FACE_NEGATIVE_Y</code></li>
+<li><code>graphics.CUBEMAP_FACE_POSITIVE_Z</code></li>
+<li><code>graphics.CUBEMAP_FACE_NEGATIVE_Z</code></li>
+</ul>
 
 **Examples**
 
@@ -1140,11 +1154,13 @@ Render-target activation options
 **Members**
 
 - `transient?` (graphics.BUFFER_TYPE[]) - Buffers whose contents become undefined after the target is deactivated. Missing buffers are ignored; combined depth-stencil buffers remain non-transient unless both are selected.
+- `face?` (graphics.CUBEMAP_FACE) - Cubemap face selected for rendering. Valid only for cubemap render targets.
 
 ### render.set_render_target_size
 *Type:* FUNCTION
 Sets the render target size for a render target created from
 either a render script, or from a render target resource.
+Cubemap render targets require equal width and height.
 
 **Parameters**
 
