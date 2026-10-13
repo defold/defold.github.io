@@ -1334,6 +1334,14 @@ def sort_asset_release_entries(asset):
     return asset
 
 
+def asset_frontmatter(asset_id, name, description, image):
+    # JSON strings are valid YAML scalars, including colons and newlines.
+    values = (asset_id, name, description, image, image)
+    return ASSET_MD_FRONTMATTER.format(
+        *(json.dumps(value, ensure_ascii=False) for value in values)
+    )
+
+
 def process_assets(tmp_dir):
     asset_source_dir = os.path.join(tmp_dir, "asset-portal-master", "assets")
     validate_asset_tags(asset_source_dir)
@@ -1427,7 +1435,7 @@ def process_assets(tmp_dir):
                 asset_image = "https://www.defold.com/images/assets/" + asset_image
             else:
                 asset_image = "https://www.defold.com/images/asset-nohero.jpg"
-            f.write(ASSET_MD_FRONTMATTER.format(asset_id, asset_name, asset_desc, asset_image, asset_image))
+            f.write(asset_frontmatter(asset_id, asset_name, asset_desc, asset_image))
 
     # write asset index
     assetindex.sort(key=lambda x: x.get("id").lower())
