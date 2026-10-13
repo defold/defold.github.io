@@ -2,9 +2,10 @@
 	<div class="container">
 		<div class="page-section-heading page-section-heading-center">
 			<h2>What's new?</h2>
-			<p>Follow recent blog posts and release news from the Defold team.</p>
+			<p>Follow recent posts from the Defold Blog.</p>
 		</div>
 
+		{%- if include.split_news -%}
 		<div class="page-feature-grid page-grid-two page-grid-flush">
 			<div class="page-card-group">
 				<h3 class="news-and-blog-section-column-title">Blog updates</h3>
@@ -32,17 +33,38 @@
 			<div class="page-card-group">
 				<h3 class="news-and-blog-section-column-title">Latest news</h3>
 				<div class="page-post-list">
-				{%- assign posts = site.posts | where: "tags", "news" -%}
-				{%- for post in posts limit: 3-%}
+				{%- assign count = 0 -%}
+				{%- for post in site.posts -%}
+				{%- if post.tags contains "news" or post.tags contains "newsletter" -%}
 					<a class="page-text-panel page-surface-panel page-post-panel-link" href="{{ post.url }}">
 						{%- include post_preview_excerpt.html post=post linked_card=true date_only=true -%}
 					</a>
+					{%- assign count = count | plus: 1 -%}
+				{%- endif -%}
+				{%- if count == 3 -%}
+					{%- break -%}
+				{%- endif -%}
 				{%- endfor -%}
 				</div>
 				<div class="page-text-panel-actions news-and-blog-section-actions">
-					{% include secondary_button.html link="/news" text="More news" %}
+					{% include secondary_button.html link="/blog" text="More blog posts" %}
 				</div>
 			</div>
 		</div>
+		{%- else -%}
+		<div class="page-card-group">
+			<h3 class="news-and-blog-section-column-title">Latest blog posts</h3>
+			<div class="page-feature-grid page-grid-three page-grid-flush">
+			{%- for post in site.posts limit: 6 -%}
+				<a class="page-text-panel page-surface-panel page-post-panel-link" href="{{ post.url }}">
+					{%- include post_preview_excerpt.html post=post linked_card=true date_only=true -%}
+				</a>
+			{%- endfor -%}
+			</div>
+			<div class="page-text-panel-actions news-and-blog-section-actions">
+				{% include secondary_button.html link="/blog" text="More blog posts" %}
+			</div>
+		</div>
+		{%- endif -%}
 	</div>
 </div>
