@@ -1,8 +1,8 @@
 ---
 layout: asset
-asset: crowd-runner-defold
-title: Crowd Runner Defold
-description: Defold example with up to 32765 entities support with simple physics
-opengraph_image: https://www.defold.com/images/assets/crowd-runner-thumb.jpg
-twitter_image: https://www.defold.com/images/assets/crowd-runner-thumb.jpg
+asset: "crowd-runner-defold"
+title: "Crowd Runner Defold"
+description: "Defold example with up to 32765 entities support with simple physics"
+opengraph_image: "https://www.defold.com/images/assets/crowd-runner-thumb.jpg"
+twitter_image: "https://www.defold.com/images/assets/crowd-runner-thumb.jpg"
 ---
