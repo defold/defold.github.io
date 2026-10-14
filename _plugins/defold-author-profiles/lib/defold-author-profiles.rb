@@ -9,7 +9,8 @@ module Defold
     ID_PATTERN = /\A[a-z0-9]+(?:-[a-z0-9]+)*\z/
     GITHUB_PATTERN = /\A[A-Za-z0-9](?:[A-Za-z0-9-]{0,37}[A-Za-z0-9])?\z/
     MAX_BIO_LENGTH = 400
-    PROFILE_FIELDS = %w[id name github bio avatar links support].freeze
+    LEGACY_ID_PATTERN = /\A[0-9a-f]{32}\z/
+    PROFILE_FIELDS = %w[id name github bio avatar links support legacy_ids].freeze
     LINK_TYPES = %w[website github external x bluesky mastodon linkedin youtube].freeze
     SUPPORT_DESTINATIONS = {
       "github_sponsors" => ["github.com", "/sponsors/"],
@@ -27,6 +28,7 @@ module Defold
 
       @profiles = []
       @by_id = {}
+      @legacy_ids = {}
       records.each_with_index { |record, index| add_profile(record, index) }
     end
 
@@ -66,6 +68,7 @@ module Defold
       end
 
       validate_github(profile)
+      validate_legacy_ids(profile)
       validate_bio(profile)
       validate_avatar(profile)
       profile["links"] = validate_links(profile["links"], profile["name"])
@@ -80,6 +83,22 @@ module Defold
 
       profile["github"] = clean_string(profile["github"], "#{profile['name']}: github").delete_prefix("@")
       fail_with("#{profile['name']}: malformed GitHub username") unless GITHUB_PATTERN.match?(profile["github"])
+    end
+
+    # Old /authors/<md5 of display name>/ ids from before author ids existed.
+    # Kept verbatim so renames never break the redirects.
+    def validate_legacy_ids(profile)
+      return unless profile.key?("legacy_ids")
+
+      legacy_ids = profile["legacy_ids"]
+      fail_with("#{profile['name']}: legacy_ids must be an array") unless legacy_ids.is_a?(Array)
+      legacy_ids.each do |legacy_id|
+        unless legacy_id.is_a?(String) && LEGACY_ID_PATTERN.match?(legacy_id)
+          fail_with("#{profile['name']}: legacy_ids must be 32-character lowercase hex strings")
+        end
+        fail_with("Duplicate legacy author id #{legacy_id.inspect}") if @legacy_ids.key?(legacy_id)
+        @legacy_ids[legacy_id] = profile["id"]
+      end
     end
 
     def validate_bio(profile)
@@ -187,6 +206,35 @@ module Defold
     end
   end
 
+  # Static redirect from a legacy /authors/<hash>/ URL (GitHub Pages has no
+  # server-side redirects). Not indexed and excluded from sitemap.xml.
+  class LegacyAuthorRedirectPage < Jekyll::PageWithoutAFile
+    def initialize(site, legacy_id, target)
+      super(site, site.source, File.join("authors", legacy_id), "index.html")
+      canonical = "https://defold.com#{target}"
+      self.data = {
+        "layout" => nil,
+        "sitemap" => false,
+        "legacy_author_redirect" => true
+      }
+      self.content = <<~HTML
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+        <meta charset="utf-8">
+        <title>Redirecting&hellip;</title>
+        <link rel="canonical" href="#{canonical}">
+        <meta name="robots" content="noindex">
+        <meta http-equiv="refresh" content="0; url=#{target}">
+        </head>
+        <body>
+        <p>This page has moved to <a href="#{target}">#{canonical}</a>.</p>
+        </body>
+        </html>
+      HTML
+    end
+  end
+
   class AuthorProfilesGenerator < Jekyll::Generator
     safe true
     priority :highest
@@ -212,11 +260,38 @@ module Defold
         )
       end
       site.data["author_directory"] = directory.sort_by { |profile| profile["name"].downcase }
+      generate_legacy_redirects(site, registry)
     rescue AuthorProfileError => error
       Jekyll.logger.abort_with("Author profiles:", error.message)
     end
 
     private
+
+    def generate_legacy_redirects(site, registry)
+      registry.profiles.each do |profile|
+        Array(profile["legacy_ids"]).each do |legacy_id|
+          site.pages << LegacyAuthorRedirectPage.new(site, legacy_id, "/authors/#{profile['id']}/")
+        end
+      end
+
+      extra = site.data["author_legacy_redirects"] || []
+      raise AuthorProfileError, "_data/author_legacy_redirects.json must contain an array" unless extra.is_a?(Array)
+      extra.each_with_index do |entry, index|
+        context = "_data/author_legacy_redirects.json[#{index}]"
+        legacy_id = entry.is_a?(Hash) ? entry["legacy_id"] : nil
+        target = entry.is_a?(Hash) ? entry["target"] : nil
+        unless legacy_id.is_a?(String) && AuthorRegistry::LEGACY_ID_PATTERN.match?(legacy_id)
+          raise AuthorProfileError, "#{context}: legacy_id must be a 32-character lowercase hex string"
+        end
+        unless target.is_a?(String) && target.start_with?("/") && !target.start_with?("//")
+          raise AuthorProfileError, "#{context}: target must be a site-relative path"
+        end
+        if registry.profiles.any? { |profile| Array(profile["legacy_ids"]).include?(legacy_id) }
+          raise AuthorProfileError, "#{context}: legacy_id #{legacy_id} is already used in _data/authors.json"
+        end
+        site.pages << LegacyAuthorRedirectPage.new(site, legacy_id, target)
+      end
+    end
 
     def resolve_assets(site, registry, assets_by_author)
       assets = site.data["assets"]
