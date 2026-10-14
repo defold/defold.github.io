@@ -211,7 +211,7 @@ module Defold
   class LegacyAuthorRedirectPage < Jekyll::PageWithoutAFile
     def initialize(site, legacy_id, target)
       super(site, site.source, File.join("authors", legacy_id), "index.html")
-      canonical = "https://defold.com#{target}"
+      canonical = "#{site.config["url"].to_s.chomp("/")}#{target}"
       self.data = {
         "layout" => nil,
         "sitemap" => false,
