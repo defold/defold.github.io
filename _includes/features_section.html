@@ -21,7 +21,8 @@
 				</div>
 			</div>
 			<div class="column one-half">
-				{%- include webp_picture.html src="/images/editor/nosetup-editor.webp" alt="Bring me Cakes by PotatoJam" class="slideinright features-section-image" loading="lazy" -%}
+				{%- assign editor_image_srcset = site.data.responsive_images["/images/editor/nosetup-editor.webp"] -%}
+				{%- include webp_picture.html src="/images/editor/nosetup-editor.webp" srcset=editor_image_srcset sizes="(max-width: 399px) calc(100vw - 40px), (max-width: 799px) 85vw, (max-width: 1199px) 38.4vw, 461px" width=779 height=538 alt="Bring me Cakes by PotatoJam" class="slideinright features-section-image" loading="lazy" -%}
 			</div>
 		</div>
 		<div class="row feature-row-spaced">

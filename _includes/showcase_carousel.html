@@ -1,3 +1,4 @@
+{%- assign carousel_image_sizes = include.image_sizes | default: site.data.image_sizes.showcase_fullwidth -%}
 {%- assign showcase_placement = include.placement | default: "showcase" -%}
 {%- assign showcase_games = site.data.games | where: showcase_placement, "full" -%}
 {%- assign initial_showcase_limit = include.initial_limit | default: 3 -%}
@@ -37,7 +38,8 @@
 									<a href="/showcase#{{ game.id }}" class="frontpage-showcase-card game-banner-link" data-game-id="{{ game.id }}" aria-label="{{ game.name }}">
 										<span class="frontpage-showcase-card-media">
 											{% if game_image_src and game_image_src != "" %}
-											{%- include webp_picture.html src=game_image_path alt=game.name loading=game_image_loading fetchpriority=game_image_fetchpriority -%}
+											{%- assign game_image_srcset = site.data.responsive_images[game_image_path] -%}
+											{%- include webp_picture.html src=game_image_path srcset=game_image_srcset sizes=carousel_image_sizes alt=game.name loading=game_image_loading fetchpriority=game_image_fetchpriority -%}
 											{% endif %}
 										</span>
 										<span class="frontpage-showcase-card-copy">
@@ -60,7 +62,8 @@
 							<a href="/showcase#{{ game.id }}" class="frontpage-showcase-card game-banner-link" data-game-id="{{ game.id }}" aria-label="{{ game.name }}">
 								<span class="frontpage-showcase-card-media">
 									{% if game_image_src and game_image_src != "" %}
-									{%- include webp_picture.html src=game_image_path alt=game.name loading=game_image_loading fetchpriority=game_image_fetchpriority -%}
+									{%- assign game_image_srcset = site.data.responsive_images[game_image_path] -%}
+									{%- include webp_picture.html src=game_image_path srcset=game_image_srcset sizes=carousel_image_sizes alt=game.name loading=game_image_loading fetchpriority=game_image_fetchpriority -%}
 									{% endif %}
 								</span>
 								<span class="frontpage-showcase-card-copy">
@@ -99,6 +102,7 @@
 							"developer": {{ game.developer | jsonify }},
 							"images": {
 								"third": {{ game.images.third | jsonify }},
+								"thirdSrcset": {{ site.data.responsive_images[game_image_path] | default: "" | jsonify }},
 								"thirdFallback": {{ game_image_fallback_src | strip | jsonify }}
 							}
 						}
@@ -124,6 +128,7 @@
 						"developer": {{ game.developer | jsonify }},
 						"images": {
 							"third": {{ game.images.third | jsonify }},
+							"thirdSrcset": {{ site.data.responsive_images[game_image_path] | default: "" | jsonify }},
 							"thirdFallback": {{ game_image_fallback_src | strip | jsonify }}
 						}
 					}

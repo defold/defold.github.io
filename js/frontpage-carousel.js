@@ -71,6 +71,7 @@
 
 		let prefersReducedMotion = Boolean(reducedMotionMedia && reducedMotionMedia.matches);
 		let cardsPerView = 1;
+		let imageSlotSize = '256px';
 		let logicalPages = [];
 		let dotAnchors = [];
 		let dotButtons = [];
@@ -154,8 +155,8 @@
 			return {
 				src: getImagePath(fallbackImage || preferredImage),
 				webpSrc: getImagePath(preferredImage),
-				srcset: '',
-				sizes: ''
+				srcset: images.thirdSrcset || '',
+				sizes: imageSlotSize
 			};
 		}
 
@@ -200,7 +201,8 @@
 
 		function createCard(game, copyIndex, baseIndex) {
 			const imageData = getResponsiveImageData(game);
-			const isInitiallyVisible = copyIndex === 0 && baseIndex < cardsPerView;
+			// The carousel starts in the middle copy to allow looping both ways.
+			const isInitiallyVisible = copyIndex === 1 && baseIndex < cardsPerView;
 
 			const card = document.createElement('a');
 			card.href = '/showcase#' + game.id;
@@ -226,21 +228,26 @@
 				img.decoding = 'async';
 				img.draggable = false;
 				img.loading = isInitiallyVisible ? 'eager' : 'lazy';
-				img.setAttribute('fetchpriority', 'high');
-				img.src = imageData.src;
+				img.setAttribute('fetchpriority', isInitiallyVisible ? 'high' : 'auto');
 				if (imageData.webpSrc && imageData.webpSrc !== imageData.src && /\.webp($|\?)/i.test(imageData.webpSrc)) {
 					const picture = document.createElement('picture');
 					const source = document.createElement('source');
 					picture.className = 'webp-fallback-picture';
-					source.srcset = imageData.webpSrc;
+					source.sizes = imageData.sizes;
+					source.srcset = imageData.srcset || imageData.webpSrc;
 					source.type = 'image/webp';
 					picture.appendChild(source);
 					picture.appendChild(img);
 					media.appendChild(picture);
 				}
 				else {
+					if (imageData.srcset) {
+						img.sizes = imageData.sizes;
+						img.srcset = imageData.srcset;
+					}
 					media.appendChild(img);
 				}
+				img.src = imageData.src;
 			}
 
 			const copy = document.createElement('span');
@@ -563,12 +570,19 @@
 			});
 		}
 
+		function updateImageSlotSize() {
+			const layoutCards = getLayoutCards(carousel.clientWidth);
+			const gap = parseFloat(window.getComputedStyle(track).columnGap) || 0;
+			imageSlotSize = Math.ceil((track.clientWidth - (layoutCards - 1) * gap) / layoutCards) + 'px';
+		}
+
 		function renderTrack(anchorDotIndex) {
 			const width = carousel.clientWidth || window.innerWidth || 0;
 			cardsPerView = getCardsPerView();
 			logicalPages = buildPages(games, cardsPerView);
 			carousel.style.setProperty('--frontpage-showcase-visible-cards', String(cardsPerView));
 			carousel.style.setProperty('--frontpage-showcase-layout-cards', String(getLayoutCards(width)));
+			updateImageSlotSize();
 			track.innerHTML = '';
 			const trackFragment = document.createDocumentFragment();
 			resetPointerState();
@@ -834,6 +848,10 @@
 				resizeTimer = window.setTimeout(function() {
 					const nextCardsPerView = getCardsPerView();
 					if (nextCardsPerView === cardsPerView) {
+						updateImageSlotSize();
+						track.querySelectorAll('img[sizes], source[sizes]').forEach(function(image) {
+							image.sizes = imageSlotSize;
+						});
 						return;
 					}
 

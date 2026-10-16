@@ -7,6 +7,8 @@
 {%- if image_ext == "webp" and fallback_src != image_src -%}
 	{%- assign use_picture = true -%}
 {%- endif -%}
+{%- assign responsive_srcset = include.srcset | default: "" -%}
+{%- assign responsive_sizes = include.sizes | default: "100vw" -%}
 {%- assign image_alt = include.alt | default: "" -%}
 {%- assign image_class = include.class | default: "" -%}
 {%- assign image_loading = include.loading | default: "lazy" -%}
@@ -15,9 +17,10 @@
 {%- if image_fetchpriority == "" and image_class contains "page-hero-graphic" -%}
 	{%- assign image_fetchpriority = "high" -%}
 {%- endif -%}
-{%- if use_picture -%}<picture class="webp-fallback-picture"><source srcset="{{ image_src }}" type="image/webp">{%- endif -%}
+{%- if use_picture -%}<picture class="webp-fallback-picture"><source srcset="{{ responsive_srcset | default: image_src }}"{% if responsive_srcset != "" %} sizes="{{ responsive_sizes }}"{% endif %} type="image/webp">{%- endif -%}
 <img
 	src="{{ fallback_src }}"
+	{% if responsive_srcset != "" and use_picture == false %}srcset="{{ responsive_srcset }}" sizes="{{ responsive_sizes }}"{% endif %}
 	alt="{{ image_alt | escape }}"
 	{% if image_class != "" %}class="{{ image_class }}"{% endif %}
 	{% if include.width %}width="{{ include.width }}"{% endif %}
