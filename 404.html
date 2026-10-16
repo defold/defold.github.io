@@ -3,6 +3,13 @@ layout: text
 permalink: /404.html
 ---
 
+<script>
+  const path = window.location.pathname;
+  if (path.startsWith('/ref/') && /[A-Z]/.test(path)) {
+    window.location.replace(path.toLowerCase() + window.location.search + window.location.hash);
+  }
+</script>
+
 <div class="section">
 	<div class="container">
 		<div class="row center">
