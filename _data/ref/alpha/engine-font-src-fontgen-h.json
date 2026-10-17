@@ -1,0 +1,207 @@
+{
+    "elements": [
+        {
+            "brief": "Inserts a generated glyph into the caller-owned cache.",
+            "description": "Returning FONT_RESULT_OK transfers ownership of the glyph to the callback.\nFor every other result, font_gen retains ownership and frees the glyph.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "FFontGenAddGlyph",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "Reports completion of a glyph generation batch.",
+            "description": "Reports completion of a glyph generation batch.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "FFontGenComplete",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "Looks up a glyph in the caller-owned cache.",
+            "description": "Looks up a glyph in the caller-owned cache.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "FFontGenIsGlyphCached",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "Allocates scratch data for one generation batch.",
+            "description": "Allocates scratch data for one generation batch.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "FontGenCreateJobData",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Generation settings and callbacks. The values are copied.",
+                    "is_optional": "False",
+                    "name": "params",
+                    "types": [
+                        "FontGenParams*"
+                    ]
+                },
+                {
+                    "doc": "Maximum number of glyphs in the batch.",
+                    "is_optional": "False",
+                    "name": "num_glyphs",
+                    "types": [
+                        "uint32_t"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Job data, or null when unsupported.",
+                    "name": "job_data",
+                    "types": [
+                        "FontGenJobData*"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Tests whether runtime glyph generation is linked into the engine.",
+            "description": "Tests whether runtime glyph generation is linked into the engine.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "FontGenIsSupported",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "True when the full font_gen library is linked.",
+                    "name": "supported",
+                    "types": [
+                        "bool"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Runtime glyph generation parameters.",
+            "description": "Runtime glyph generation parameters.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "Opaque context passed to all callbacks.",
+                    "name": "m_UserContext",
+                    "type": "void*"
+                },
+                {
+                    "doc": "Cache lookup callback.",
+                    "name": "m_IsGlyphCached",
+                    "type": "FFontGenIsGlyphCached"
+                },
+                {
+                    "doc": "Glyph insertion callback.",
+                    "name": "m_AddGlyph",
+                    "type": "FFontGenAddGlyph"
+                },
+                {
+                    "doc": "Batch completion callback.",
+                    "name": "m_Complete",
+                    "type": "FFontGenComplete"
+                },
+                {
+                    "doc": "Job system used for asynchronous generation.",
+                    "name": "m_Jobs",
+                    "type": "HJobContext"
+                },
+                {
+                    "doc": "Glyph generation size in pixels.",
+                    "name": "m_Size",
+                    "type": "float"
+                },
+                {
+                    "doc": "Outline width in pixels.",
+                    "name": "m_OutlineWidth",
+                    "type": "float"
+                },
+                {
+                    "doc": "Shadow blur spread in pixels.",
+                    "name": "m_ShadowBlur",
+                    "type": "float"
+                },
+                {
+                    "doc": "Non-zero when SDF output is requested.",
+                    "name": "m_IsSdf",
+                    "type": "uint8_t"
+                },
+                {
+                    "doc": "Non-zero when Vector glyph output is requested.",
+                    "name": "m_IsVector",
+                    "type": "uint8_t"
+                },
+                {
+                    "doc": "Generate RGB vector effect bitmaps on the CPU.",
+                    "name": "m_BitmapEffects",
+                    "type": "uint8_t"
+                },
+                {
+                    "doc": "Include the authored outline in the effect bitmaps.",
+                    "name": "m_HasOutline",
+                    "type": "uint8_t"
+                },
+                {
+                    "doc": "Generate the authored shadow bitmap.",
+                    "name": "m_HasShadow",
+                    "type": "uint8_t"
+                }
+            ],
+            "name": "FontGenParams",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        }
+    ],
+    "format_version": 2,
+    "info": {
+        "api_language": "C++",
+        "brief": "Runtime font glyph generation",
+        "description": "Asynchronously generates glyphs and hands them to a caller-owned cache.\nThe callbacks are invoked on the main thread. The caller context must remain\nvalid until the completion callback has run or the job has been cancelled.",
+        "description_html": "<p>Asynchronously generates glyphs and hands them to a caller-owned cache.\nThe callbacks are invoked on the main thread. The caller context must remain\nvalid until the completion callback has run or the job has been cancelled.</p>",
+        "file": "fontgen.h",
+        "include": "engine/font/src/fontgen.h",
+        "name": "Font Generation",
+        "namespace": "FontGeneration",
+        "notes": [],
+        "path": "engine/font/src/fontgen.h",
+        "type": "Defold C++"
+    }
+}
