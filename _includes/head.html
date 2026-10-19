@@ -216,7 +216,7 @@
 {%- if hero_showcase_game and hero_showcase_game.images.third -%}
 {%- assign hero_showcase_src = "/images/games/" | append: hero_showcase_game.images.third -%}
 {%- assign hero_showcase_webp = hero_showcase_src | replace_first: ".png", ".webp" | replace_first: ".jpg", ".webp" | replace_first: ".jpeg", ".webp" -%}
-<link rel="preload" as="image" href="{{ hero_showcase_webp }}" type="image/webp" fetchpriority="high">
+<link rel="preload" as="image" href="{{ hero_showcase_webp }}"{% if site.data.responsive_images[hero_showcase_src] %} imagesrcset="{{ site.data.responsive_images[hero_showcase_src] }}" imagesizes="{{ site.data.image_sizes.showcase }}"{% endif %} type="image/webp" fetchpriority="high">
 {%- endif -%}
 {%- endif -%}
 
@@ -285,7 +285,12 @@
 {%- if page.stylesheets -%}
 {%- for stylesheet in page.stylesheets -%}
 {%- unless stylesheet == "learn" or stylesheet == "catalog" or stylesheet == "asset-detail" or stylesheet == "api" or stylesheet == "code" -%}
+{%- if page.deferred_stylesheets contains stylesheet -%}
+<link rel="stylesheet" type="text/css" href="/css/{{ stylesheet }}.css" media="print" onload="this.onload=null;this.media='all'">
+<noscript><link rel="stylesheet" type="text/css" href="/css/{{ stylesheet }}.css"></noscript>
+{%- else -%}
 <link rel="stylesheet" type="text/css" href="/css/{{ stylesheet }}.css">
+{%- endif -%}
 {%- endunless -%}
 {%- endfor -%}
 {%- endif -%}
