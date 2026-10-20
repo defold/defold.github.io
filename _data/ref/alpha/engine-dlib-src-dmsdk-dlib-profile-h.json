@@ -1284,14 +1284,50 @@
             "error": "",
             "examples": "",
             "language": "",
-            "members": [],
+            "members": [
+                {
+                    "doc": "Property value as a bool",
+                    "name": "m_Bool",
+                    "type": "bool"
+                },
+                {
+                    "doc": "Property value as a int32_t",
+                    "name": "m_S32",
+                    "type": "int32_t"
+                },
+                {
+                    "doc": "Property value as an uint32_t",
+                    "name": "m_U32",
+                    "type": "uint32_t"
+                },
+                {
+                    "doc": "Property value as a float",
+                    "name": "m_F32",
+                    "type": "float"
+                },
+                {
+                    "doc": "Property value as a int64_t",
+                    "name": "m_S64",
+                    "type": "int64_t"
+                },
+                {
+                    "doc": "Property value as an uint64_t",
+                    "name": "m_U64",
+                    "type": "uint64_t"
+                },
+                {
+                    "doc": "Property value as a double",
+                    "name": "m_F64",
+                    "type": "double"
+                }
+            ],
             "name": "ProfilePropertyValue",
             "notes": [],
             "parameters": [],
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "FUNCTION"
+            "type": "STRUCT"
         },
         {
             "brief": "Register a new profiler.",
@@ -1304,11 +1340,19 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "Name of the profiler\n@ @param profiler <span class=\"type\"> ProfileListener*</span> Instance of the profiler. Keep alive until calling ProfileUnregisterProfiler()!",
+                    "doc": "Name of the profiler",
                     "is_optional": "False",
                     "name": "name",
                     "types": [
                         "const char*"
+                    ]
+                },
+                {
+                    "doc": "Instance of the profiler. Keep alive until calling ProfileUnregisterProfiler()!",
+                    "is_optional": "False",
+                    "name": "profiler",
+                    "types": [
+                        "ProfileListener*"
                     ]
                 }
             ],
