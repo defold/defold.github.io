@@ -105,8 +105,8 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "Get http header value for key",
-            "description": "Get http header value for key",
+            "brief": "Get http header value for key, ignoring ASCII case in the header name",
+            "description": "Get http header value for key, ignoring ASCII case in the header name",
             "error": "",
             "examples": "",
             "language": "",
@@ -396,6 +396,11 @@
                 },
                 {
                     "doc": "",
+                    "name": "RESULT_TRY_AGAIN",
+                    "type": ""
+                },
+                {
+                    "doc": "",
                     "name": "RESULT_INTERNAL_ERROR",
                     "type": ""
                 },
@@ -415,7 +420,7 @@
         },
         {
             "brief": "Send response data",
-            "description": "Send response data",
+            "description": "Copies data into an owned response sent asynchronously after the handler returns.\nSocket errors are handled by the server; RESULT_OK means the data was queued.",
             "error": "",
             "examples": "",
             "language": "",
