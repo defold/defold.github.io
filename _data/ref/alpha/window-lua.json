@@ -93,7 +93,7 @@
         },
         {
             "brief": "get the display scale",
-            "description": "This returns the content scale of the current display.",
+            "description": "This returns the content scale of the current display.\nOn HTML5, the scale respects <code>display.high_dpi</code>, <code>html5.min_pixel_ratio</code>\nand <code>html5.max_pixel_ratio</code>. When High DPI is disabled, the scale is 1.",
             "error": "",
             "examples": "",
             "language": "",
@@ -143,6 +143,35 @@
                     ],
                     "types_table_html": [
                         "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "get reserved areas",
+            "description": "Returns an array of active occlusion rectangles intersecting the game window,\nsuch as camera cutouts and the Dynamic Island. Each rectangle is clipped to\nthe window and uses a bottom-left origin and pixel units matching\n<a href=\"/ref/window#window.get_size\">window.get_size</a>. These coordinates are independent of GUI adjustment\nand the project's logical resolution.\nSupported on iOS 27.1+ and Android 9 (API level 28)+. On iOS, rectangles\ninclude the interaction margins supplied by UIKit. On Android, rectangles\ndescribe display cutouts. Folds, system bars, keyboards, and gesture areas\nare not reported by this API.\nUnsupported platforms and windows with no reported occlusions return an\nempty table. An empty result does not guarantee that the whole window is\nsafe; use <a href=\"/ref/window#window.get_safe_area\">window.get_safe_area</a> when a safe layout rectangle is needed.\nQuery once during initialization and again following\n<a href=\"/ref/window#window.WINDOW_EVENT_RESIZED\">window.WINDOW_EVENT_RESIZED</a>. On supported platforms this event also\nrefreshes reserved areas when their geometry changes without a size change.\nThe returned table is a snapshot and is not modified by subsequent events.",
+            "error": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"kr\">function</span> <span class=\"nf\">update_reserved_areas</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">reserved_areas</span> <span class=\"o\">=</span> <span class=\"n\">window</span><span class=\"p\">.</span><span class=\"n\">get_reserved_areas</span><span class=\"p\">()</span>\n<span class=\"kr\">end</span>\n\n<span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"n\">update_reserved_areas</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"n\">window</span><span class=\"p\">.</span><span class=\"n\">set_listener</span><span class=\"p\">(</span><span class=\"kr\">function</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">event</span><span class=\"p\">,</span> <span class=\"n\">data</span><span class=\"p\">)</span>\n        <span class=\"kr\">if</span> <span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">window</span><span class=\"p\">.</span><span class=\"n\">WINDOW_EVENT_RESIZED</span> <span class=\"kr\">then</span>\n            <span class=\"n\">update_reserved_areas</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n        <span class=\"kr\">end</span>\n    <span class=\"kr\">end</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "window.get_reserved_areas",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "array of <a href=\"/ref/window#window.reserved_area\">window.reserved_area</a> rectangles",
+                    "name": "areas",
+                    "types": [
+                        "window.reserved_area[]"
+                    ],
+                    "types_html": [
+                        "<a href=\"#window.reserved_area\">window.reserved_area</a>[]"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#window.reserved_area\">window.reserved_area</a>[]"
                     ]
                 }
             ],
@@ -219,6 +248,54 @@
             ],
             "tparams": [],
             "type": "FUNCTION"
+        },
+        {
+            "brief": "Window reserved-area data",
+            "description": "Window reserved-area data",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "x",
+                    "doc": "Left edge in window pixels.",
+                    "is_optional": false,
+                    "name": "x",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "y",
+                    "doc": "Bottom edge in window pixels.",
+                    "is_optional": false,
+                    "name": "y",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "width",
+                    "doc": "Rectangle width in window pixels.",
+                    "is_optional": false,
+                    "name": "width",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "height",
+                    "doc": "Rectangle height in window pixels.",
+                    "is_optional": false,
+                    "name": "height",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                }
+            ],
+            "name": "window.reserved_area",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
         },
         {
             "brief": "Window safe-area data",
@@ -535,7 +612,7 @@
                     "name": "window.WINDOW_EVENT_ICONIFIED"
                 },
                 {
-                    "doc": "resized window event This event is sent to a window event listener when the game window or app screen is resized. On iOS, it is also sent after orientation transitions and safe-area inset changes, even when the size is unchanged. The current size is passed along in the data field to the event listener.",
+                    "doc": "resized window event This event is sent to a window event listener when the game window or app screen is resized. On iOS, it is also sent after orientation transitions and safe-area inset changes, even when the size is unchanged. After <a href=\"/ref/window#window.get_reserved_areas\">window.get_reserved_areas</a> has been queried, changes to reserved areas also trigger this event on supported platforms. The current size is passed along in the data field to the event listener.",
                     "name": "window.WINDOW_EVENT_RESIZED"
                 }
             ],
