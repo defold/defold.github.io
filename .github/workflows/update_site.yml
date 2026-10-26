@@ -57,7 +57,7 @@ jobs:
           distribution: 'temurin'
 
       - name: Install Python dependencies
-        run: python -m pip install --user requests pyyaml markdown==3.4.1 pygments==2.13.0
+        run: python -m pip install --user requests pyyaml Pillow markdown==3.4.1 pygments==2.13.0
 
       - name: Show action and event
         run: 'echo "Event: ${{ github.event_name }} Action: ${{ env.ACTION }}"'

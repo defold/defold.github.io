@@ -35,7 +35,7 @@ jobs:
           architecture: x64
 
       - name: Install Python dependencies
-        run: python -m pip install --user requests pyyaml markdown==3.4.1 pygments==2.13.0
+        run: python -m pip install --user requests pyyaml Pillow markdown==3.4.1 pygments==2.13.0
 
       - name: Test example script resolution
         run: python -m unittest test_example_scripts.py
@@ -43,8 +43,10 @@ jobs:
       - name: Test author profiles, reference docs, and import boundaries
         run: |
           bundle exec ruby -I_plugins/defold-author-profiles/lib tests/test_author_profiles.rb
+          bundle exec ruby tests/test_legacy_redirects.rb
           bundle exec ruby tests/test_api_lua_v2_rendering.rb
           bundle exec ruby tests/test_search_engine_indexing.rb
+          bundle exec ruby tests/test_platform_images.rb
           bundle exec ruby tests/test_pagefind_api_channels.rb
           python -m unittest discover -s tests
 
