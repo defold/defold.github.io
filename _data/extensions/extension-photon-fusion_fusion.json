@@ -44,10 +44,17 @@
             "name": "fusion.connect",
             "parameters": [
                 {
-                    "doc": "",
+                    "doc": "Player display name, separate from the authentication user id.\n",
                     "name": "user",
                     "types": [
                         "string"
+                    ]
+                },
+                {
+                    "doc": "Authentication options. Omit or pass nil for anonymous authentication.\nOptional fields: `type` (a `fusion.AUTH_TYPE_*` constant, defaults to `AUTH_TYPE_NONE`),\n`user_id` (string), `parameters` (URL-encoded query string without a leading `?`),\nand `data` (POST data: a string or a table with string keys and string, number or\nboolean values). An empty table is an empty property map. Nested tables are not\nsupported. Configure the provider and disable anonymous access in the Photon\ndashboard to require authentication.\n",
+                    "name": "auth",
+                    "types": [
+                        "table"
                     ]
                 }
             ],
@@ -1088,6 +1095,102 @@
             "description": "OWNERMODE_GAMEGLOBAL\n",
             "examples": "",
             "name": "OWNERMODE_GAMEGLOBAL",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "No custom authentication (default).\n",
+            "examples": "",
+            "name": "AUTH_TYPE_NONE",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "Custom authentication.\n",
+            "examples": "",
+            "name": "AUTH_TYPE_CUSTOM",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "Steam authentication.\n",
+            "examples": "",
+            "name": "AUTH_TYPE_STEAM",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "Facebook authentication.\n",
+            "examples": "",
+            "name": "AUTH_TYPE_FACEBOOK",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "Oculus authentication.\n",
+            "examples": "",
+            "name": "AUTH_TYPE_OCULUS",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "PlayStation4 authentication.\n",
+            "examples": "",
+            "name": "AUTH_TYPE_PLAYSTATION4",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "Xbox authentication.\n",
+            "examples": "",
+            "name": "AUTH_TYPE_XBOX",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "Viveport authentication.\n",
+            "examples": "",
+            "name": "AUTH_TYPE_VIVEPORT",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "NintendoSwitch authentication.\n",
+            "examples": "",
+            "name": "AUTH_TYPE_NINTENDOSWITCH",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "PlayStation5 authentication.\n",
+            "examples": "",
+            "name": "AUTH_TYPE_PLAYSTATION5",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "Epic authentication.\n",
+            "examples": "",
+            "name": "AUTH_TYPE_EPIC",
+            "parameters": [],
+            "returnvalues": [],
+            "type": "VARIABLE"
+        },
+        {
+            "description": "FacebookGaming authentication.\n",
+            "examples": "",
+            "name": "AUTH_TYPE_FACEBOOKGAMING",
             "parameters": [],
             "returnvalues": [],
             "type": "VARIABLE"

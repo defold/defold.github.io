@@ -8,6 +8,7 @@ toc:
 - Connection & Matchmaking
 - Initialization
 - Connecting
+- Authentication
 - Connecting and Joining
 - Room Operations
 - Connection Status
@@ -43,6 +44,42 @@ Use `fusion.connect()` to connect to the master server:
 fusion.connect(username)
 ```
 
+### Authentication
+
+Pass an optional second argument to send authentication values to Photon:
+
+```lua
+fusion.connect("Player", {
+    type = fusion.AUTH_TYPE_CUSTOM,
+    user_id = "player_123",
+    data = { token = login_token }
+})
+```
+
+The display name and authentication user id are separate. All fields in the authentication table are optional:
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `type` | number | A `fusion.AUTH_TYPE_*` constant. Defaults to `fusion.AUTH_TYPE_NONE`. |
+| `user_id` | string | User id to send to Photon. The authentication provider can assign or override it. |
+| `parameters` | string | URL-encoded query string, without a leading `?`. Encode individual names and values before joining them with `=` and `&`. |
+| `data` | string or table | POST data: a string or a table with string keys and string, finite number or boolean values. Property tables are sent as JSON. Nested tables are not supported; an empty table is an empty property map. |
+
+Available types are `AUTH_TYPE_NONE`, `AUTH_TYPE_CUSTOM`, `AUTH_TYPE_STEAM`, `AUTH_TYPE_FACEBOOK`, `AUTH_TYPE_OCULUS`, `AUTH_TYPE_PLAYSTATION4`, `AUTH_TYPE_XBOX`, `AUTH_TYPE_VIVEPORT`, `AUTH_TYPE_NINTENDOSWITCH`, `AUTH_TYPE_PLAYSTATION5`, `AUTH_TYPE_EPIC` and `AUTH_TYPE_FACEBOOKGAMING` (all prefixed with `fusion.`).
+
+For Steam, obtain a ticket through your Steam integration and pass its hexadecimal encoding in the `ticket` parameter, as described in [Photon's Steam authentication guide](https://doc.photonengine.com/pun/current/connection-and-authentication/authentication/steam-auth):
+
+```lua
+fusion.connect("Player", {
+    type = fusion.AUTH_TYPE_STEAM,
+    parameters = "ticket=" .. steam_ticket_hex
+})
+```
+
+Calling `fusion.connect()`, `fusion.connect(username)` or `fusion.connect(username, nil)` keeps anonymous authentication. Use `fusion.connect(nil, auth)` to authenticate without a display name. Invalid option names, types or data raise a Lua error before connecting.
+
+Configure the selected provider in the Photon dashboard. To require authentication, disable **Allow anonymous clients** there; supplying authentication values in the client does not itself prevent other clients from connecting anonymously. Keep provider secrets on the server or in the dashboard. See [Photon's custom authentication setup](https://doc.photonengine.com/realtime/current/connection-and-authentication/authentication/custom-authentication).
+
 ## Connecting and Joining
 Connecting and joining are separate steps. Connect to the Photon master server first, then join or create a room once the connection succeeds.
 
@@ -53,7 +90,7 @@ fusion.on_event(function(self, event_id, data)
 	end
 end)
 
-fusion.connect("player_123", "eu")
+fusion.connect("player_123")
 ```
 
 ## Room Operations

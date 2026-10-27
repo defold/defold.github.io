@@ -78129,7 +78129,15 @@ Connect Fusion.
 
 **Parameters**
 
-- `user` (string)
+- `user` (string) - Player display name, separate from the authentication user id.
+
+- `auth` (table) - Authentication options. Omit or pass nil for anonymous authentication.
+Optional fields: `type` (a `fusion.AUTH_TYPE_*` constant, defaults to `AUTH_TYPE_NONE`),
+`user_id` (string), `parameters` (URL-encoded query string without a leading `?`),
+and `data` (POST data: a string or a table with string keys and string, number or
+boolean values). An empty table is an empty property map. Nested tables are not
+supported. Configure the provider and disable anonymous access in the Photon
+dashboard to require authentication.
 
 ### fusion.disconnect
 *Type:* FUNCTION
@@ -78626,6 +78634,54 @@ OWNERMODE_MASTERCLIENT
 ### OWNERMODE_GAMEGLOBAL
 *Type:* VARIABLE
 OWNERMODE_GAMEGLOBAL
+
+### AUTH_TYPE_NONE
+*Type:* VARIABLE
+No custom authentication (default).
+
+### AUTH_TYPE_CUSTOM
+*Type:* VARIABLE
+Custom authentication.
+
+### AUTH_TYPE_STEAM
+*Type:* VARIABLE
+Steam authentication.
+
+### AUTH_TYPE_FACEBOOK
+*Type:* VARIABLE
+Facebook authentication.
+
+### AUTH_TYPE_OCULUS
+*Type:* VARIABLE
+Oculus authentication.
+
+### AUTH_TYPE_PLAYSTATION4
+*Type:* VARIABLE
+PlayStation4 authentication.
+
+### AUTH_TYPE_XBOX
+*Type:* VARIABLE
+Xbox authentication.
+
+### AUTH_TYPE_VIVEPORT
+*Type:* VARIABLE
+Viveport authentication.
+
+### AUTH_TYPE_NINTENDOSWITCH
+*Type:* VARIABLE
+NintendoSwitch authentication.
+
+### AUTH_TYPE_PLAYSTATION5
+*Type:* VARIABLE
+PlayStation5 authentication.
+
+### AUTH_TYPE_EPIC
+*Type:* VARIABLE
+Epic authentication.
+
+### AUTH_TYPE_FACEBOOKGAMING
+*Type:* VARIABLE
+FacebookGaming authentication.
 
 ### STATE_DISCONNECTED
 *Type:* VARIABLE
