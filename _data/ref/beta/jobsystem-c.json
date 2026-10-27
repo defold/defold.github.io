@@ -211,12 +211,12 @@
             "brief": "cancel a job (and its children)",
             "description": "cancel a job (and its children)",
             "error": "",
-            "examples": "How to wait until a job has been cancelled or finished\n<div class=\"codehilite\"><pre><span></span><code><span class=\"k\">enum</span><span class=\"w\"> </span><span class=\"n\">JobSystemResult</span><span class=\"w\"> </span><span class=\"n\">jr</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"n\">JobSystemCancelJob</span><span class=\"p\">(</span><span class=\"n\">job_context</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">hjob</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"k\">while</span><span class=\"w\"> </span><span class=\"p\">(</span><span class=\"n\">JOBSYSTEM_RESULT_PENDING</span><span class=\"w\"> </span><span class=\"o\">==</span><span class=\"w\"> </span><span class=\"n\">jr</span><span class=\"p\">)</span><span class=\"w\"></span>\n<span class=\"p\">{</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"n\">dmTime</span><span class=\"o\">::</span><span class=\"n\">Sleep</span><span class=\"p\">(</span><span class=\"mi\">1000</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"n\">jr</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"n\">JobSystemCancelJob</span><span class=\"p\">(</span><span class=\"n\">job_context</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">hjob</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"p\">}</span><span class=\"w\"></span>\n<span class=\"c1\">// If the loop observed PENDING before this point, INVALID_HANDLE means the</span>\n<span class=\"c1\">// job was flushed by JobSystemUpdate() between polls.</span>\n</code></pre></div>",
+            "examples": "How to wait until a job has been cancelled or finished\n<div class=\"codehilite\"><pre><span></span><code><span class=\"k\">enum</span><span class=\"w\"> </span><span class=\"n\">JobSystemResult</span><span class=\"w\"> </span><span class=\"n\">jr</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"n\">JobSystemCancelJob</span><span class=\"p\">(</span><span class=\"n\">job_context</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">hjob</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"k\">while</span><span class=\"w\"> </span><span class=\"p\">(</span><span class=\"n\">JOBSYSTEM_RESULT_PENDING</span><span class=\"w\"> </span><span class=\"o\">==</span><span class=\"w\"> </span><span class=\"n\">jr</span><span class=\"p\">)</span><span class=\"w\"></span>\n<span class=\"p\">{</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"n\">dmTime</span><span class=\"o\">::</span><span class=\"n\">Sleep</span><span class=\"p\">(</span><span class=\"mi\">1000</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"n\">jr</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"n\">JobSystemCancelJob</span><span class=\"p\">(</span><span class=\"n\">job_context</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">hjob</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"p\">}</span><span class=\"w\"></span>\n<span class=\"c1\">// If the loop observed PENDING before this point, INVALID_HANDLE means the</span>\n<span class=\"c1\">// job was retired between polls.</span>\n</code></pre></div>",
             "language": "",
             "members": [],
             "name": "JobSystemCancelJob",
             "notes": [
-                "Cancelled jobs will be flushed at the next JobSystemUpdate()"
+                "Cancelled jobs with callbacks will be flushed at the next JobSystemUpdate().\nQueued jobs without their own or outstanding child callbacks are retired by the processor, including when canceled."
             ],
             "parameters": [
                 {
@@ -290,7 +290,8 @@
             "members": [],
             "name": "JobSystemCreateJob",
             "notes": [
-                "Parent job will only run after all children has finished"
+                "Parent job will only run after all children has finished",
+                "Without a callback, the handle may become invalid as soon as the queued job finishes."
             ],
             "parameters": [
                 {
@@ -671,7 +672,7 @@
         },
         {
             "brief": "update job system",
-            "description": "Flush finished jobs and invoke callbacks on the main thread.\nIn single-threaded mode, this also processes jobs on the calling thread up to the time limit.",
+            "description": "Flush finished jobs and invoke callbacks on the thread that created the context.\nCalls from other threads log an error and do not process jobs or dispatch callbacks.\nThe engine creates its shared context on the main thread.\nIn single-threaded mode, this also processes jobs on the calling thread up to the time limit.",
             "error": "",
             "examples": "",
             "language": "",
@@ -706,8 +707,8 @@
     "info": {
         "api_language": "C",
         "brief": "Job System for asynchronous tasks",
-        "description": "Job system for asynchronous work with optional worker threads.\n\nEach job provides a process function and an optional callback.\n- The process function performs the work and may run on a worker thread.\n- The callback runs on the main thread and can interact with non-threaded systems (for example Lua).\n\nJobs can have dependencies. A parent job will only run after all child jobs have finished.",
-        "description_html": "<p>Job system for asynchronous work with optional worker threads.</p>\n<p>Each job provides a process function and an optional callback.\n- The process function performs the work and may run on a worker thread.\n- The callback runs on the main thread and can interact with non-threaded systems (for example Lua).</p>\n<p>Jobs can have dependencies. A parent job will only run after all child jobs have finished.</p>",
+        "description": "Job system for asynchronous work with optional worker threads.\n\nEach job provides a process function and an optional callback.\n- The process function performs the work and may run on a worker thread.\n- The callback runs on the main thread and can interact with non-threaded systems (for example Lua).\n- Jobs without their own or outstanding child callbacks are retired when processing finishes, without waiting for JobSystemUpdate.\n\nJobs can have dependencies. A parent job will only run after all child jobs have finished.",
+        "description_html": "<p>Job system for asynchronous work with optional worker threads.</p>\n<p>Each job provides a process function and an optional callback.\n- The process function performs the work and may run on a worker thread.\n- The callback runs on the main thread and can interact with non-threaded systems (for example Lua).\n- Jobs without their own or outstanding child callbacks are retired when processing finishes, without waiting for JobSystemUpdate.</p>\n<p>Jobs can have dependencies. A parent job will only run after all child jobs have finished.</p>",
         "file": "jobsystem.h",
         "include": "dmsdk/dlib/jobsystem.h",
         "name": "Job System",

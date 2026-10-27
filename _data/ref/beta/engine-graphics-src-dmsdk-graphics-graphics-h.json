@@ -3994,8 +3994,8 @@
             "type": "ENUM"
         },
         {
-            "brief": "Read frame buffer pixels in BGRA format",
-            "description": "Read frame buffer pixels in BGRA format",
+            "brief": "Read the current render target's first color attac...",
+            "description": "Read the current render target's first color attachment (or the backbuffer).\nCall between BeginFrame and Flip, after drawing the pixels to read. The call\nwaits for preceding rendering and returns tightly packed BGRA8 pixels, with\nthe top row first. Region coordinates have their origin at the bottom left.\nMultisampled attachments are resolved; cubemaps use the currently bound face.\nRGBA8/BGRA8 attachments are supported. Other formats are adapter-dependent.\nBackbuffer readback is adapter- and surface-dependent. On WebGPU, the\nsurface must support copy-source usage. If it does not, an error is logged\nand the destination is left unchanged.\nThe region must fit the attachment and buffer_size must be at least\nwidth * height * 4 bytes. Invalid regions leave the destination unchanged.\nSubsequent rendering can continue on the same target.",
             "error": "",
             "examples": "",
             "language": "",

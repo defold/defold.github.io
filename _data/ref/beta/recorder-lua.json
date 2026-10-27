@@ -1,0 +1,276 @@
+{
+    "elements": [
+        {
+            "brief": "recording events",
+            "description": "recording events",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "Recording has started.",
+                    "name": "recorder.EVENT_STARTED"
+                },
+                {
+                    "doc": "Recording has stopped and the MP4 is ready to read.",
+                    "name": "recorder.EVENT_STOPPED"
+                },
+                {
+                    "doc": "Recording failed; result.error contains the reason.",
+                    "name": "recorder.EVENT_ERROR"
+                }
+            ],
+            "name": "recorder.EVENT",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "ENUM",
+            "value_type": "integer",
+            "value_type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+        },
+        {
+            "brief": "recording options",
+            "description": "recording options",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "path",
+                    "doc": "Writable MP4 output path, for example from <a href=\"/ref/sys#sys.get_save_file\">sys.get_save_file</a>. Uses the host path encoding (Windows ANSI code page; UTF-8 elsewhere). The parent directory must exist.",
+                    "is_optional": false,
+                    "name": "path",
+                    "type": "string",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                },
+                {
+                    "display_name": "fps",
+                    "doc": "Capture rate from 1 to 60; defaults to 30.",
+                    "is_optional": true,
+                    "name": "fps?",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "audio",
+                    "doc": "Record application audio; defaults to false.",
+                    "is_optional": true,
+                    "name": "audio?",
+                    "type": "boolean",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                }
+            ],
+            "name": "recorder.options",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "recording event result",
+            "description": "recording event result",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "path",
+                    "doc": "Output file path, preserving the path supplied to <a href=\"/ref/recorder#recorder.start\">recorder.start</a>.",
+                    "is_optional": false,
+                    "name": "path",
+                    "type": "string",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                },
+                {
+                    "display_name": "width",
+                    "doc": "Recorded video width in pixels.",
+                    "is_optional": false,
+                    "name": "width",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "height",
+                    "doc": "Recorded video height in pixels.",
+                    "is_optional": false,
+                    "name": "height",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "fps",
+                    "doc": "Capture rate.",
+                    "is_optional": false,
+                    "name": "fps",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "audio",
+                    "doc": "Whether application audio is included.",
+                    "is_optional": false,
+                    "name": "audio",
+                    "type": "boolean",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>"
+                },
+                {
+                    "display_name": "error",
+                    "doc": "Failure reason, present for <a href=\"/ref/recorder#recorder.EVENT_ERROR\">recorder.EVENT_ERROR</a>.",
+                    "is_optional": true,
+                    "name": "error?",
+                    "type": "string",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                }
+            ],
+            "name": "recorder.result",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "start recording",
+            "description": "Starts an asynchronous recording of the game window at its native pixel size.\nThe caller owns the output file, which remains on disk after engine shutdown.\nAn existing file at the specified path may be overwritten.\nA successful return only means the request was accepted. The callback receives\n<a href=\"/ref/recorder#recorder.EVENT_STARTED\">recorder.EVENT_STARTED</a> when capture starts, followed by\n<a href=\"/ref/recorder#recorder.EVENT_STOPPED\">recorder.EVENT_STOPPED</a> or <a href=\"/ref/recorder#recorder.EVENT_ERROR\">recorder.EVENT_ERROR</a>. Startup failure produces\nonly EVENT_ERROR. Callbacks run during engine update, never inside start/stop.\nWindow resizing stops and finalizes the recording. Deleting the calling script\ndiscards its callback but does not stop recording. Engine shutdown finalizes\nrecording without invoking callbacks.",
+            "error": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">ok</span><span class=\"p\">,</span> <span class=\"n\">err</span> <span class=\"o\">=</span> <span class=\"n\">recorder</span><span class=\"p\">.</span><span class=\"n\">start</span><span class=\"p\">({</span>\n    <span class=\"n\">path</span> <span class=\"o\">=</span> <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">get_save_file</span><span class=\"p\">(</span><span class=\"s2\">&quot;my_game&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;capture.mp4&quot;</span><span class=\"p\">),</span>\n    <span class=\"n\">fps</span> <span class=\"o\">=</span> <span class=\"mi\">30</span><span class=\"p\">,</span>\n    <span class=\"n\">audio</span> <span class=\"o\">=</span> <span class=\"kc\">false</span><span class=\"p\">,</span>\n<span class=\"p\">},</span> <span class=\"kr\">function</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">event</span><span class=\"p\">,</span> <span class=\"n\">result</span><span class=\"p\">)</span>\n    <span class=\"kr\">if</span> <span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">recorder</span><span class=\"p\">.</span><span class=\"n\">EVENT_STOPPED</span> <span class=\"kr\">then</span>\n        <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;Saved:&quot;</span><span class=\"p\">,</span> <span class=\"n\">result</span><span class=\"p\">.</span><span class=\"n\">path</span><span class=\"p\">)</span>\n    <span class=\"kr\">elseif</span> <span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">recorder</span><span class=\"p\">.</span><span class=\"n\">EVENT_ERROR</span> <span class=\"kr\">then</span>\n        <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">result</span><span class=\"p\">.</span><span class=\"n\">error</span><span class=\"p\">)</span>\n    <span class=\"kr\">end</span>\n<span class=\"kr\">end</span><span class=\"p\">)</span>\n<span class=\"kr\">if</span> <span class=\"ow\">not</span> <span class=\"n\">ok</span> <span class=\"kr\">then</span> <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">err</span><span class=\"p\">)</span> <span class=\"kr\">end</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "recorder.start",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "recording options",
+                    "is_optional": "False",
+                    "name": "options",
+                    "types": [
+                        "recorder.options"
+                    ],
+                    "types_html": [
+                        "<a href=\"#recorder.options\">recorder.options</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#recorder.options\">recorder.options</a>"
+                    ]
+                },
+                {
+                    "doc": "recording event callback",
+                    "is_optional": "False",
+                    "name": "callback",
+                    "types": [
+                        "fun(self:script_instance, event:recorder.EVENT, result:recorder.result)"
+                    ],
+                    "types_html": [
+                        "fun(self:<a href=\"../builtins-lua/#script_instance\">script_instance</a>, event:<a href=\"#recorder.EVENT\">recorder.EVENT</a>, result:<a href=\"#recorder.result\">recorder.result</a>)"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">function</a>(\n\tself:<a href=\"../builtins-lua/#script_instance\">script_instance</a>,\n\tevent:<a href=\"#recorder.EVENT\">recorder.EVENT</a>,\n\tresult:<a href=\"#recorder.result\">recorder.result</a>)"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "true if accepted, otherwise nil",
+                    "name": "accepted",
+                    "types": [
+                        "boolean",
+                        "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ]
+                },
+                {
+                    "doc": "reason the request was rejected",
+                    "name": "error",
+                    "types": [
+                        "string",
+                        "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "stop recording",
+            "description": "Requests finalization of the current recording, including one started through\nHTTP. Wait for <a href=\"/ref/recorder#recorder.EVENT_STARTED\">recorder.EVENT_STARTED</a> before calling stop for a Lua recording.\nThe original start callback receives <a href=\"/ref/recorder#recorder.EVENT_STOPPED\">recorder.EVENT_STOPPED</a> only after the\nMP4 is finalized and ready to read, or <a href=\"/ref/recorder#recorder.EVENT_ERROR\">recorder.EVENT_ERROR</a> on failure.\nReturns an error if no recording is active or an operation is pending.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "recorder.stop",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "true if accepted, otherwise nil",
+                    "name": "accepted",
+                    "types": [
+                        "boolean",
+                        "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ]
+                },
+                {
+                    "doc": "reason the request was rejected",
+                    "name": "error",
+                    "types": [
+                        "string",
+                        "nil"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        }
+    ],
+    "format_version": 2,
+    "info": {
+        "api_language": "Lua",
+        "brief": "Video recording",
+        "description": "Record the game window to an MP4 file. One recording may run at a time,\nshared with the engine's HTTP recording service.\n\nRecording is supported by desktop debug engines. The module is omitted from\nrelease, headless, mobile and web builds, and when recording is excluded through\nan app manifest. Unsupported desktop operating systems or capture environments\nreturn an error from [ref:recorder.start].\nApplication audio support depends on the platform; audio is disabled by default.",
+        "description_html": "<p>Record the game window to an MP4 file. One recording may run at a time,\nshared with the engine's HTTP recording service.</p>\n<p>Recording is supported by desktop debug engines. The module is omitted from\nrelease, headless, mobile and web builds, and when recording is excluded through\nan app manifest. Unsupported desktop operating systems or capture environments\nreturn an error from [ref:recorder.start].\nApplication audio support depends on the platform; audio is disabled by default.</p>",
+        "file": "record_script_extension.cpp",
+        "name": "Video recording",
+        "namespace": "recorder",
+        "notes": [],
+        "path": "engine/record/src/record/record_script_extension.cpp",
+        "type": "Defold Lua"
+    }
+}

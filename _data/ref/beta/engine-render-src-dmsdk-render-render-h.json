@@ -265,6 +265,46 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "delete a persistent render item",
+            "description": "Disables the item, invalidates its handle and releases its slot for reuse.\nCall before subsequent draws and outside dispatch callbacks. User data is not\nreleased.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "DeleteRenderItem",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the render context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmRender::HRenderContext"
+                    ]
+                },
+                {
+                    "doc": "an item created in this context",
+                    "is_optional": "False",
+                    "name": "item",
+                    "types": [
+                        "dmRender::HRenderItem"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "true on success, or false if the item handle is invalid or deleted",
+                    "name": "result",
+                    "types": [
+                        "bool"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "Get the vertex space (local or world)",
             "description": "Get the vertex space (local or world)",
             "error": "",
@@ -310,6 +350,54 @@
             "returnvalues": [],
             "tparams": [],
             "type": "CONSTANT"
+        },
+        {
+            "brief": "enable or disable a render item",
+            "description": "Changes draw eligibility without releasing the handle or its data. Repeating\nthe current enabled state has no effect. The dispatch must also be submitted\nfor the item to participate in the current frame.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "Enable",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the render context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmRender::HRenderContext"
+                    ]
+                },
+                {
+                    "doc": "an item created in this context",
+                    "is_optional": "False",
+                    "name": "item",
+                    "types": [
+                        "dmRender::HRenderItem"
+                    ]
+                },
+                {
+                    "doc": "true to enable the item, or false to disable it",
+                    "is_optional": "False",
+                    "name": "enabled",
+                    "types": [
+                        "bool"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "true on success, or false if the item handle is invalid or deleted",
+                    "name": "result",
+                    "types": [
+                        "bool"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
         },
         {
             "brief": "Frustum options used when setting up a draw call",
@@ -937,6 +1025,36 @@
             "type": "TYPEDEF"
         },
         {
+            "brief": "persistent render item handle",
+            "description": "Identifies a renderer-owned item until DeleteRenderItem() invalidates it.\nZero is invalid. Use the handle only with the context that created it.\nCreate and update items before the draw that consumes them, outside render\ndispatch callbacks. Item setters return false for invalid or deleted handles.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "HRenderItem",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "persistent render dispatch handle",
+            "description": "Identifies a registration created by RegisterRenderListDispatch(). Use it\nonly with its creating context, and never after UnregisterRenderListDispatch().\nThis handle is separate from the frame-local HRenderListDispatch used in\nRenderListEntry. Zero is invalid.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "HRenderItemDispatch",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
             "brief": "Render dispatch function handle.",
             "description": "Render dispatch function handle.",
             "error": "",
@@ -1134,6 +1252,110 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "create a persistent render item",
+            "description": "The new item is disabled, with an identity transform, no material tags or bounds,\nand world-position ordering. Its dispatch and user data are fixed\nfor its lifetime. Any data referenced by user_data must outlive the item.\nCreating an item does not invalidate outstanding RenderListAlloc() ranges.\nDelete the item before unregistering its dispatch.",
+            "error": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"cp\">#include</span><span class=\"w\"> </span><span class=\"cpf\">&lt;dmsdk/render/render.h&gt;</span><span class=\"cp\"></span>\n\n<span class=\"c1\">// context, dispatch and material are owned by the component or its world.</span>\n<span class=\"n\">dmRender</span><span class=\"o\">::</span><span class=\"n\">HRenderItem</span><span class=\"w\"> </span><span class=\"n\">item</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"n\">dmRender</span><span class=\"o\">::</span><span class=\"n\">NewRenderItem</span><span class=\"p\">(</span><span class=\"n\">context</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">dispatch</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">user_data</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"n\">dmRender</span><span class=\"o\">::</span><span class=\"n\">SetMaterial</span><span class=\"p\">(</span><span class=\"n\">context</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">item</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">material</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"n\">dmRender</span><span class=\"o\">::</span><span class=\"n\">SetWorldTransform</span><span class=\"p\">(</span><span class=\"n\">context</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">item</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">world_transform</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"n\">dmRender</span><span class=\"o\">::</span><span class=\"n\">SetBoundingOBB</span><span class=\"p\">(</span><span class=\"n\">context</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">item</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">local_min</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">local_max</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"n\">dmRender</span><span class=\"o\">::</span><span class=\"n\">Enable</span><span class=\"p\">(</span><span class=\"n\">context</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">item</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"nb\">true</span><span class=\"p\">);</span><span class=\"w\"></span>\n\n<span class=\"c1\">// In the component render callback each frame:</span>\n<span class=\"n\">dmRender</span><span class=\"o\">::</span><span class=\"n\">SubmitRenderListDispatch</span><span class=\"p\">(</span><span class=\"n\">context</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">dispatch</span><span class=\"p\">);</span><span class=\"w\"></span>\n\n<span class=\"c1\">// When the component is destroyed, outside dispatch callbacks:</span>\n<span class=\"n\">dmRender</span><span class=\"o\">::</span><span class=\"n\">DeleteRenderItem</span><span class=\"p\">(</span><span class=\"n\">context</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">item</span><span class=\"p\">);</span><span class=\"w\"></span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "NewRenderItem",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the render context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmRender::HRenderContext"
+                    ]
+                },
+                {
+                    "doc": "a registration created in this context",
+                    "is_optional": "False",
+                    "name": "dispatch",
+                    "types": [
+                        "dmRender::HRenderItemDispatch"
+                    ]
+                },
+                {
+                    "doc": "item data exposed as RenderListEntry::m_UserData in callbacks",
+                    "is_optional": "False",
+                    "name": "user_data",
+                    "types": [
+                        "uint64_t"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "the item handle",
+                    "name": "item",
+                    "types": [
+                        "dmRender::HRenderItem"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "register a persistent render dispatch",
+            "description": "Callbacks and user data remain caller-owned and must stay valid until\nunregistration. Register before submitting. Delete all associated items before\nunregistering, after the current render list has finished drawing.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "RegisterRenderListDispatch",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the render context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmRender::HRenderContext"
+                    ]
+                },
+                {
+                    "doc": "the render batch callback",
+                    "is_optional": "False",
+                    "name": "dispatch_fn",
+                    "types": [
+                        "dmRender::RenderListDispatchFn"
+                    ]
+                },
+                {
+                    "doc": "visibility callback for items without typed bounds, or 0 for always visible",
+                    "is_optional": "False",
+                    "name": "visibility_fn",
+                    "types": [
+                        "dmRender::RenderListVisibilityFn"
+                    ]
+                },
+                {
+                    "doc": "user data passed to both callbacks",
+                    "is_optional": "False",
+                    "name": "user_data",
+                    "types": [
+                        "void*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "the registration, or 0 if the registration limit is reached",
+                    "name": "dispatch",
+                    "types": [
+                        "dmRender::HRenderItemDispatch"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "Removes a named constant from the buffer",
             "description": "Removes a named constant from the buffer",
             "error": "",
@@ -1181,16 +1403,14 @@
             "type": "CONSTANT"
         },
         {
-            "brief": "Allocates an array of render entries",
-            "description": "Allocates an array of render entries",
+            "brief": "Allocate frame-local render entries\nDeprecated: us...",
+            "description": "Allocate frame-local render entries\nDeprecated: use NewRenderItem() and the render item setters. Emits a warning\nonce per process. Do not retain pointers across frames; another allocation\ncan also invalidate the returned range.",
             "error": "",
             "examples": "",
             "language": "",
             "members": [],
             "name": "RenderListAlloc",
-            "notes": [
-                "Do not store a pointer into this array, as they're reused next frame"
-            ],
+            "notes": [],
             "parameters": [
                 {
                     "doc": "the context",
@@ -1259,7 +1479,7 @@
                     "type": "dmRender::HRenderContext"
                 },
                 {
-                    "doc": "the callback user data (registered with RenderListMakeDispatch())",
+                    "doc": "the callback user data supplied to RegisterRenderListDispatch() or RenderListMakeDispatch()",
                     "name": "m_UserData",
                     "type": "void*"
                 },
@@ -1389,8 +1609,8 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "Register a render dispatch function",
-            "description": "Register a render dispatch function",
+            "brief": "Register a frame-local render dispatch function\nDe...",
+            "description": "Register a frame-local render dispatch function\nDeprecated: use RegisterRenderListDispatch() and SubmitRenderListDispatch().\nEmits a warning once per process. The overload without a visibility\ncallback is also deprecated.",
             "error": "",
             "examples": "",
             "language": "",
@@ -1476,8 +1696,8 @@
             "type": "ENUM"
         },
         {
-            "brief": "Adds a render object to the current render frame",
-            "description": "Adds a render object to the current render frame",
+            "brief": "Submit frame-local render entries\nDeprecated: use ...",
+            "description": "Submit frame-local render entries\nDeprecated: use Enable() and SubmitRenderListDispatch(). Emits a warning\nonce per process. The range must come from a single RenderListAlloc() call.",
             "error": "",
             "examples": "",
             "language": "",
@@ -1547,7 +1767,7 @@
             "language": "",
             "members": [
                 {
-                    "doc": "the callback user data (registered with RenderListMakeDispatch())",
+                    "doc": "the callback user data supplied to RegisterRenderListDispatch() or RenderListMakeDispatch()",
                     "name": "m_UserData",
                     "type": "void*"
                 },
@@ -1679,6 +1899,11 @@
             "language": "",
             "members": [
                 {
+                    "doc": "Drawn before world-sorted items",
+                    "name": "RENDER_ORDER_BEFORE_WORLD",
+                    "type": ""
+                },
+                {
                     "doc": "<div class=\"codehilite\"><pre><span></span><code>      Used by game objects\n</code></pre></div>",
                     "name": "RENDER_ORDER_WORLD",
                     "type": ""
@@ -1737,6 +1962,222 @@
             "returnvalues": [],
             "tparams": [],
             "type": "ENUM"
+        },
+        {
+            "brief": "set the render item batch key",
+            "description": "Sets the caller's batch compatibility key. Equal keys allow batching only when\nthe remaining state is compatible. The renderer also separates batches by\ndispatch and ordering.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "SetBatchKey",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the render context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmRender::HRenderContext"
+                    ]
+                },
+                {
+                    "doc": "an item created in this context",
+                    "is_optional": "False",
+                    "name": "item",
+                    "types": [
+                        "dmRender::HRenderItem"
+                    ]
+                },
+                {
+                    "doc": "the batch compatibility key",
+                    "is_optional": "False",
+                    "name": "key",
+                    "types": [
+                        "uint32_t"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "true on success, or false if the item handle is invalid or deleted",
+                    "name": "result",
+                    "types": [
+                        "bool"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "set world-space axis-aligned bounds",
+            "description": "Replaces the previous volume. If any minimum coordinate exceeds its maximum,\nremoves typed bounds and restores the registration's visibility callback, or\nalways-visible behavior when no callback is registered. Equal corners define\na valid point. SetWorldTransform() does not transform this box.\nVisibility is invalidated only when the volume type or values change.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "SetBoundingAABB",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the render context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmRender::HRenderContext"
+                    ]
+                },
+                {
+                    "doc": "an item created in this context",
+                    "is_optional": "False",
+                    "name": "item",
+                    "types": [
+                        "dmRender::HRenderItem"
+                    ]
+                },
+                {
+                    "doc": "the world-space minimum corner",
+                    "is_optional": "False",
+                    "name": "world_min",
+                    "types": [
+                        "dmVMath::Vector3"
+                    ]
+                },
+                {
+                    "doc": "the world-space maximum corner",
+                    "is_optional": "False",
+                    "name": "world_max",
+                    "types": [
+                        "dmVMath::Vector3"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "true on success, or false if the item handle is invalid or deleted",
+                    "name": "result",
+                    "types": [
+                        "bool"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "set local bounds for an oriented box",
+            "description": "Replaces the previous volume. Each minimum coordinate must be no greater than\nits maximum coordinate. The item's world transform supplies position,\norientation and scale, including reflection and shear. Visibility is\ninvalidated only when the volume type or values change.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "SetBoundingOBB",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the render context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmRender::HRenderContext"
+                    ]
+                },
+                {
+                    "doc": "an item created in this context",
+                    "is_optional": "False",
+                    "name": "item",
+                    "types": [
+                        "dmRender::HRenderItem"
+                    ]
+                },
+                {
+                    "doc": "the local-space minimum corner",
+                    "is_optional": "False",
+                    "name": "local_min",
+                    "types": [
+                        "dmVMath::Vector3"
+                    ]
+                },
+                {
+                    "doc": "the local-space maximum corner",
+                    "is_optional": "False",
+                    "name": "local_max",
+                    "types": [
+                        "dmVMath::Vector3"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "true on success, or false if the item handle is invalid or deleted",
+                    "name": "result",
+                    "types": [
+                        "bool"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "set world-space sphere bounds",
+            "description": "Replaces the previous volume. The radius is a non-negative distance, not a\nsquared radius. SetWorldTransform() does not move or scale this sphere.\nVisibility is invalidated only when the volume type or values change.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "SetBoundingSphere",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the render context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmRender::HRenderContext"
+                    ]
+                },
+                {
+                    "doc": "an item created in this context",
+                    "is_optional": "False",
+                    "name": "item",
+                    "types": [
+                        "dmRender::HRenderItem"
+                    ]
+                },
+                {
+                    "doc": "the world-space sphere center",
+                    "is_optional": "False",
+                    "name": "world_center",
+                    "types": [
+                        "dmVMath::Point3"
+                    ]
+                },
+                {
+                    "doc": "the non-negative sphere radius in world units",
+                    "is_optional": "False",
+                    "name": "radius",
+                    "types": [
+                        "float"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "true on success, or false if the item handle is invalid or deleted",
+                    "name": "result",
+                    "types": [
+                        "bool"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
         },
         {
             "brief": "Sets the shader program constant location",
@@ -1844,6 +2285,54 @@
                     "name": "result",
                     "types": [
                         "dmRender::Result"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "set the render item material",
+            "description": "Copies the material's predicate tags. Call again after changing material tags\nto refresh cached metadata. A null material clears the tags. The material is\nnot retained. Ordering is unchanged; use SetOrder() to configure it.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "SetMaterial",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the render context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmRender::HRenderContext"
+                    ]
+                },
+                {
+                    "doc": "an item created in this context",
+                    "is_optional": "False",
+                    "name": "item",
+                    "types": [
+                        "dmRender::HRenderItem"
+                    ]
+                },
+                {
+                    "doc": "the material supplying predicate tags, or 0 to clear them",
+                    "is_optional": "False",
+                    "name": "material",
+                    "types": [
+                        "dmRender::HMaterial"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "true on success, or false if the item handle is invalid or deleted",
+                    "name": "result",
+                    "types": [
+                        "bool"
                     ]
                 }
             ],
@@ -2275,6 +2764,110 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "set explicit render item ordering",
+            "description": "Overrides the default world-position ordering. World order sorts by position.\nBefore-world and after-world order use the supplied order value; only its low\n24 bits are retained. Material changes and render-script material overrides\npreserve this ordering.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "SetOrder",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the render context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmRender::HRenderContext"
+                    ]
+                },
+                {
+                    "doc": "an item created in this context",
+                    "is_optional": "False",
+                    "name": "item",
+                    "types": [
+                        "dmRender::HRenderItem"
+                    ]
+                },
+                {
+                    "doc": "the major rendering order",
+                    "is_optional": "False",
+                    "name": "render_order",
+                    "types": [
+                        "dmRender::RenderOrder"
+                    ]
+                },
+                {
+                    "doc": "the 24-bit order value, ignored for world-position sorting",
+                    "is_optional": "False",
+                    "name": "order",
+                    "types": [
+                        "uint32_t"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "true on success, or false if the item handle is invalid or deleted",
+                    "name": "result",
+                    "types": [
+                        "bool"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "set the render item world transform",
+            "description": "Copies the local-to-world affine transform. Its translation supplies the sort\nposition, and it transforms local OBB bounds. World-space sphere and AABB\nbounds are unaffected. Every call invalidates cached visibility; also call\nwhen callback-owned visibility data changes without a transform change.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "SetWorldTransform",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the render context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmRender::HRenderContext"
+                    ]
+                },
+                {
+                    "doc": "an item created in this context",
+                    "is_optional": "False",
+                    "name": "item",
+                    "types": [
+                        "dmRender::HRenderItem"
+                    ]
+                },
+                {
+                    "doc": "the affine local-to-world transform to copy",
+                    "is_optional": "False",
+                    "name": "world_transform",
+                    "types": [
+                        "dmVMath::Matrix4"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "true on success, or false if the item handle is invalid or deleted",
+                    "name": "result",
+                    "types": [
+                        "bool"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "Struct holding stencil operation setup",
             "description": "Struct holding stencil operation setup",
             "error": "",
@@ -2334,6 +2927,70 @@
             "returnvalues": [],
             "tparams": [],
             "type": "STRUCT"
+        },
+        {
+            "brief": "submit persistent render items for the current frame",
+            "description": "Makes the registration's enabled items eligible for this frame. Call between\nRenderListBegin() and RenderListEnd(), before render-script draws. Repeated\nsubmission in one frame has no effect. Only submitted registrations consume\nframe dispatch IDs; at most 255 are available, shared with legacy dispatches.\nIf that limit is reached, an error is logged and this submission is skipped.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "SubmitRenderListDispatch",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the render context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmRender::HRenderContext"
+                    ]
+                },
+                {
+                    "doc": "a registration created in this context",
+                    "is_optional": "False",
+                    "name": "dispatch",
+                    "types": [
+                        "dmRender::HRenderItemDispatch"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "unregister a persistent render dispatch",
+            "description": "Delete all items belonging to this registration first. Call only after all\ndraws using the current render list have finished, before the next render list\nis submitted. The registration handle becomes invalid. This does not release\ncaller-owned callbacks or user data.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "UnregisterRenderListDispatch",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the render context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "dmRender::HRenderContext"
+                    ]
+                },
+                {
+                    "doc": "a registration created in this context",
+                    "is_optional": "False",
+                    "name": "dispatch",
+                    "types": [
+                        "dmRender::HRenderItemDispatch"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
         },
         {
             "brief": "Visibility status",

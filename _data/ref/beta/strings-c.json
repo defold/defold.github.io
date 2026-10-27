@@ -89,6 +89,46 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "Case-sensitive string equality",
+            "description": "Compares two null-terminated strings by their contents. Both pointers must be non-null.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "dmStrEq",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "First string to compare",
+                    "is_optional": "False",
+                    "name": "s1",
+                    "types": [
+                        "const char*"
+                    ]
+                },
+                {
+                    "doc": "Second string to compare",
+                    "is_optional": "False",
+                    "name": "s2",
+                    "types": [
+                        "const char*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "True if the strings are equal, false otherwise",
+                    "name": "",
+                    "types": [
+                        "bool"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "Error code to string representation",
             "description": "Error code to string representation. Wrapper for thread-safe strerror_s/r variants.\nIf the size of the buffer is too small, the message will be truncated to fit the buffer.\nIf the buffer is null, or if size is zero, nothing will happen.",
             "error": "",
