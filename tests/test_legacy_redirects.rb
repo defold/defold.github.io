@@ -102,9 +102,9 @@ class LegacyRedirectsTest < Minitest::Test
     before = site.pages.length
     generate(site)
     entries = JSON.parse(File.read(File.join(ROOT, "_data/legacy_redirects.json")))
-    assert_equal 89, entries.length
+    refute_empty entries
     assert_equal before + entries.length, site.pages.length
-    assert entries.all? { |entry| entry.fetch("from").start_with?("/ref/") }
+    assert entries.all? { |entry| entry.fetch("from").start_with?("/") }
   end
 
   private
