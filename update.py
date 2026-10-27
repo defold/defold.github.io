@@ -20,6 +20,7 @@ from llms import LLMS_DIR, generate_llms_manuals, generate_llms_apis, generate_l
 from utils import list_files, read_as_json, read_as_string, rmtree, write_as_string
 from scripts import dedupe_examples_wasm
 from scripts.example_images import copy_documentation_images
+from scripts.frontpage_images import regenerate_game_images
 from argparse import ArgumentParser
 from contextlib import contextmanager
 from example_scripts import (
@@ -1542,6 +1543,7 @@ def process_games(tmp_dir):
         raise RuntimeError("Featured IDs must exactly match games with showcase=full")
 
     copy_game_images(tmp_dir, referenced_images)
+    regenerate_game_images(games)
     write_as_json(GAMES_JSON, games, False)
     write_as_json(SHOWCASE_FEATURED_FULL_JSON, featured_full, False)
 

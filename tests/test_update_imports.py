@@ -10,6 +10,8 @@ from pathlib import Path
 from unittest import mock
 
 import yaml
+from PIL import Image
+from scripts.frontpage_images import regenerate_game_images
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -62,6 +64,7 @@ def load_game_importer(games_json: Path, featured_json: Path):
         "read_as_json": read_as_json,
         "write_as_json": write_as_json,
         "copy_game_images": load_image_copier(),
+        "regenerate_game_images": regenerate_game_images,
         "GAMES_JSON": str(games_json),
         "SHOWCASE_FEATURED_FULL_JSON": str(featured_json),
     }
@@ -160,7 +163,7 @@ class GamesShowcaseImportTests(unittest.TestCase):
         for game_id, game in games.items():
             write_json(source / "games" / f"{game_id}.json", game)
         for filename in ("alpha-full.webp", "alpha-third.webp", "beta-half.webp"):
-            (images / filename).write_bytes(b"fixture")
+            Image.new("RGB", (800, 600), "red").save(images / filename, "WEBP")
         write_json(source / "games_order.json", ["beta", "alpha"])
         write_json(source / "showcase_featured_full.json", ["alpha"])
         return source
@@ -168,7 +171,7 @@ class GamesShowcaseImportTests(unittest.TestCase):
     def run_import(self, root: Path):
         games_output = root / "output" / "games.json"
         featured_output = root / "output" / "featured.json"
-        games_output.parent.mkdir()
+        games_output.parent.mkdir(exist_ok=True)
         importer = load_game_importer(games_output, featured_output)
         with working_directory(root), contextlib.redirect_stdout(io.StringIO()):
             importer(str(root))
@@ -188,7 +191,8 @@ class GamesShowcaseImportTests(unittest.TestCase):
             self.assertEqual(featured, ["alpha"])
             self.assertEqual(
                 {path.name for path in (root / "images" / "games").iterdir()},
-                {"alpha-full.webp", "alpha-third.webp", "beta-half.webp"},
+                {"alpha-full.webp", "alpha-third.webp", "beta-half.webp",
+                 "alpha-third-256w.webp", "alpha-third-384w.webp", "alpha-third-512w.webp"},
             )
 
     def test_import_rejects_featured_list_different_from_full_games(self):
@@ -207,9 +211,9 @@ class GamesShowcaseImportTests(unittest.TestCase):
             (source / "unused.webp").write_bytes(b"unused upstream image")
             destination = root / "images" / "games"
             destination.mkdir(parents=True)
-            (destination / "alpha-full.webp").write_bytes(b"fixture")
+            (destination / "alpha-full.webp").write_bytes((source / "alpha-full.webp").read_bytes())
             # Same size and timestamp must not hide changed image content.
-            (destination / "alpha-third.webp").write_bytes(b"changed")
+            (destination / "alpha-third.webp").write_bytes(bytes((source / "alpha-third.webp").stat().st_size))
             timestamp = (source / "alpha-third.webp").stat().st_mtime_ns
             os.utime(destination / "alpha-third.webp", ns=(timestamp, timestamp))
             (destination / "obsolete.webp").write_bytes(b"old image")
@@ -223,14 +227,49 @@ class GamesShowcaseImportTests(unittest.TestCase):
             )
             self.assertEqual(
                 {path.name for path in destination.iterdir()},
-                {"alpha-full.webp", "alpha-third.webp", "beta-half.webp"},
+                {"alpha-full.webp", "alpha-third.webp", "beta-half.webp",
+                 "alpha-third-256w.webp", "alpha-third-384w.webp", "alpha-third-512w.webp"},
             )
-            for path in destination.iterdir():
-                self.assertEqual(path.read_bytes(), b"fixture")
+            for path in source.iterdir():
+                if path.name != "unused.webp":
+                    self.assertEqual((destination / path.name).read_bytes(), path.read_bytes())
 
             with working_directory(root), mock.patch.object(shutil, "copyfile") as copy:
-                load_image_copier()(str(root), {path.name for path in destination.iterdir()})
+                load_image_copier()(str(root), {"alpha-full.webp", "alpha-third.webp", "beta-half.webp"})
             copy.assert_not_called()
+
+    def test_repeated_import_regenerates_variants_and_replaces_game_manifest_entries(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            source = self.make_source(root)
+            manifest_path = root / "_data/responsive_images.json"
+            unrelated = {"/images/editor/editor.webp": "/images/editor/editor-350w.webp 350w"}
+            write_json(manifest_path, {**unrelated, "/images/games/deleted.webp": "/missing.webp 256w"})
+            self.run_import(root)
+            variant = root / "images/games/alpha-third-256w.webp"
+            before = variant.read_bytes()
+
+            # The importer prunes all variants; changed originals must generate
+            # fresh image content, with no stale or missing manifest candidates.
+            Image.new("RGB", (800, 600), "blue").save(source / "games/images/alpha-third.webp", "WEBP")
+            self.run_import(root)
+            self.assertNotEqual(variant.read_bytes(), before)
+            manifest = json.loads(manifest_path.read_text())
+            self.assertEqual(set(manifest), {*unrelated, "/images/games/alpha-third.webp"})
+            self.assertEqual(manifest["/images/editor/editor.webp"], unrelated["/images/editor/editor.webp"])
+            for candidate in manifest["/images/games/alpha-third.webp"].split(", "):
+                url, width = candidate.split()
+                with Image.open(root / url.lstrip("/")) as image:
+                    self.assertEqual(image.width, int(width[:-1]))
+
+            # Removing a full showcase game also removes its manifest entries
+            # and variants, rather than preserving URLs for obsolete images.
+            (source / "games/alpha.json").unlink()
+            write_json(source / "games_order.json", ["beta"])
+            write_json(source / "showcase_featured_full.json", [])
+            self.run_import(root)
+            self.assertEqual(json.loads(manifest_path.read_text()), unrelated)
+            self.assertEqual([p.name for p in (root / "images/games").iterdir()], ["beta-half.webp"])
 
     def test_missing_image_does_not_change_existing_snapshots(self):
         with tempfile.TemporaryDirectory() as temporary:
@@ -239,7 +278,7 @@ class GamesShowcaseImportTests(unittest.TestCase):
             self.run_import(root)
             snapshots = {
                 path: path.read_bytes()
-                for directory in (root / "output", root / "images")
+                for directory in (root / "output", root / "images", root / "_data")
                 for path in directory.rglob("*") if path.is_file()
             }
             (source / "games" / "images" / "alpha-third.webp").unlink()
