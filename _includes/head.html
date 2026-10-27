@@ -7,7 +7,7 @@
 {%- if page_heatmap == true or layout_heatmap == true -%}
 {%- endif -%}
 
-{%- assign site_url = site.url | default: "https://www.defold.com" -%}
+{%- assign site_url = site.url | default: "https://defold.com" -%}
 {%- include search_engine_metadata.html page=page -%}
 
 {%- assign page_title = page.title | default: site.name | strip_html | normalize_whitespace | strip -%}
