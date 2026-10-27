@@ -86,6 +86,30 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "Releases a generation batch and its untransferred glyphs.",
+            "description": "Batches started with FontGenStartGlyphs cancel and wait for their own jobs.\nOther batches must already have finished or been canceled by the caller.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "FontGenDestroyJobData",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Batch to release.",
+                    "is_optional": "False",
+                    "name": "jobdata",
+                    "types": [
+                        "FontGenJobData*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "Tests whether runtime glyph generation is linked into the engine.",
             "description": "Tests whether runtime glyph generation is linked into the engine.",
             "error": "",
@@ -188,14 +212,102 @@
             "returnvalues": [],
             "tparams": [],
             "type": "STRUCT"
+        },
+        {
+            "brief": "Starts a batch whose results are consumed by its caller.",
+            "description": "Worker jobs generate glyphs without invoking callbacks. Call FontGenUpdateGlyphs\non the resource's creation thread to install the results. That update can take\nover queued glyphs, including when the caller occupies the last worker. With\nno workers it generates all glyphs. The job context must outlive the batch.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "FontGenStartGlyphs",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Fresh batch; keep alive until completion or destruction.",
+                    "is_optional": "False",
+                    "name": "jobdata",
+                    "types": [
+                        "FontGenJobData*"
+                    ]
+                },
+                {
+                    "doc": "Input glyphs, copied during this call.",
+                    "is_optional": "False",
+                    "name": "glyphs",
+                    "types": [
+                        "::TextGlyph*"
+                    ]
+                },
+                {
+                    "doc": "Number of input glyphs.",
+                    "is_optional": "False",
+                    "name": "num_glyphs",
+                    "types": [
+                        "uint32_t"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "False when runtime generation is unsupported.",
+                    "name": "started",
+                    "types": [
+                        "bool"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Consumes results for a batch started with FontGenStartGlyphs.",
+            "description": "Generates queued glyphs or consumes finished results without dispatching other\njobs or callbacks. Running jobs keep ownership until they finish. The completion\ncallback may destroy the batch. Calls for one batch must be serialized by its owner.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "FontGenUpdateGlyphs",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Batch to advance.",
+                    "is_optional": "False",
+                    "name": "jobdata",
+                    "types": [
+                        "FontGenJobData*"
+                    ]
+                },
+                {
+                    "doc": "Soft time limit in microseconds; 0 processes at most one glyph.",
+                    "is_optional": "False",
+                    "name": "time_limit",
+                    "types": [
+                        "uint64_t"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "True once all glyphs and the completion callback have been processed.",
+                    "name": "complete",
+                    "types": [
+                        "bool"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
         }
     ],
     "format_version": 2,
     "info": {
         "api_language": "C++",
         "brief": "Runtime font glyph generation",
-        "description": "Asynchronously generates glyphs and hands them to a caller-owned cache.\nThe callbacks are invoked on the main thread. The caller context must remain\nvalid until the completion callback has run or the job has been cancelled.",
-        "description_html": "<p>Asynchronously generates glyphs and hands them to a caller-owned cache.\nThe callbacks are invoked on the main thread. The caller context must remain\nvalid until the completion callback has run or the job has been cancelled.</p>",
+        "description": "Asynchronously generates glyphs and hands them to a caller-owned cache.\nGlyph insertion and completion callbacks run on the job context owner, or on\nthe caller of FontGenUpdateGlyphs for a batch started with FontGenStartGlyphs.\nCache lookup runs while preparing the batch. The caller context must remain\nvalid until the completion callback has run or the job has been cancelled.",
+        "description_html": "<p>Asynchronously generates glyphs and hands them to a caller-owned cache.\nGlyph insertion and completion callbacks run on the job context owner, or on\nthe caller of FontGenUpdateGlyphs for a batch started with FontGenStartGlyphs.\nCache lookup runs while preparing the batch. The caller context must remain\nvalid until the completion callback has run or the job has been cancelled.</p>",
         "file": "fontgen.h",
         "include": "engine/font/src/fontgen.h",
         "name": "Font Generation",
