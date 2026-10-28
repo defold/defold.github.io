@@ -1,5 +1,8 @@
 import contextlib
 import io
+import json
+import shutil
+import subprocess
 from pathlib import Path
 import tempfile
 import unittest
@@ -26,6 +29,50 @@ def loader_fixture():
 
 
 class WasmCacheTests(unittest.TestCase):
+    @unittest.skipUnless(shutil.which("node"), "Node.js is required to execute the loader")
+    def test_current_loader_selects_shared_assets_for_both_thread_modes(self):
+        selection = '''
+    selectEngine: function(exeName) {
+        const pthread = Module['isWASMPthreadSupported'];
+        return {
+            script: {
+                url: exeName + (pthread ? "_pthread_wasm.js" : "_wasm.js"),
+                size: pthread ? this.wasmjs_pthread_size : this.wasmjs_size
+            },
+            wasm: {
+                url: exeName + (pthread ? "_pthread.wasm" : ".wasm"),
+                size: pthread ? this.wasm_pthread_size : this.wasm_size
+            }
+        };
+    },
+'''
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            loader = root / "examples/animation/fixture/dmloader.js"
+            loader.parent.mkdir(parents=True)
+            loader.write_text(loader_fixture().replace("};", selection + "};", 1))
+            for index, artifact in enumerate(wasm.ARTIFACTS):
+                (loader.parent / artifact.filename).write_bytes(bytes([index]) * (index + 1))
+            cache = root / "examples/wasm"
+            with patch.multiple(wasm, ROOT=root, EXAMPLES_DIR=root / "examples", DEDUP_DIR=cache), contextlib.redirect_stdout(io.StringIO()):
+                wasm.run()
+                self.assertFalse(wasm.run())
+            javascript = 'var Module = {};\n' + loader.read_text() + '''
+console.log(JSON.stringify([false, true].map(threaded => {
+    Module.isWASMPthreadSupported = threaded;
+    return EngineLoader.selectEngine("Defoldexamples");
+})));
+'''
+            results = json.loads(subprocess.check_output(["node", "-e", javascript], text=True))
+            for threaded, result in zip((False, True), results):
+                for kind in ("script", "wasm"):
+                    url = result[kind]["url"]
+                    self.assertTrue(url.startswith("/examples/wasm/"), url)
+                    cached = root / url.lstrip("/")
+                    self.assertTrue(cached.is_file(), url)
+                    self.assertEqual(result[kind]["size"], cached.stat().st_size)
+            self.assertNotEqual(results[0]["wasm"]["url"], results[1]["wasm"]["url"])
+
     def test_existing_loaders_survive_repeated_runs_and_stale_cache_is_removed(self):
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)
