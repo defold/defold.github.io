@@ -111,6 +111,21 @@ def set_numeric_property(content: str, key: str, value: int) -> str:
 
 
 def update_wasm_name_helpers(content: str) -> str:
+    # New loaders select both assets together instead of using getWasmName().
+    for suffix, threaded, regular in (
+        ("_wasm.js", "wasmjs_pthread_file", "wasmjs_file"),
+        (".wasm", "wasm_pthread_file", "wasm_file"),
+    ):
+        threaded_suffix = "_pthread_wasm.js" if suffix == "_wasm.js" else "_pthread.wasm"
+        pattern = re.compile(
+            r'exeName\s*\+\s*\(pthread\s*\?\s*[\"\x27]'
+            + re.escape(threaded_suffix)
+            + r'[\"\x27]\s*:\s*[\"\x27]' + re.escape(suffix) + r'[\"\x27]\s*\)'
+        )
+        content = pattern.sub(
+            f"(pthread ? EngineLoader.{threaded} : EngineLoader.{regular})", content
+        )
+
     content = content.replace(
         "    getWasmName: function(exeName) {\n"
         "        if (Module['isWASMPthreadSupported'])\n"
