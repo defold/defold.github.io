@@ -80,6 +80,7 @@ memory_size = 512
 
 [shader]
 output_spirv = 0
+exclude_gles_sm100 = 1
 glsl_es_default_precision_float = mediump
 glsl_es_default_precision_int = highp
 
@@ -101,6 +102,7 @@ stream_cache_size = 2097152
 [resource]
 http_cache = 0
 max_resources = 1024
+profile = 0
 
 [input]
 repeat_delay = 0.5
@@ -108,7 +110,7 @@ repeat_interval = 0.05
 gamepads = /builtins/input/default.gamepadsc
 gamepad_deadzone = 0.2
 game_binding = /builtins/input/all.input_bindingc
-use_accelerometer = 1
+use_accelerometer = 0
 
 [sprite]
 max_count = 32765
@@ -149,6 +151,7 @@ max_count = 128
 max_count = 128
 
 [ios]
+home_indicator_mode = deferred
 launch_screen = /builtins/manifests/ios/LaunchScreen.storyboardc
 pre_renderered_icons = 0
 bundle_identifier = com.defold.examples
@@ -167,6 +170,7 @@ package = com.defold.examples
 gcm_sender_id = 
 fcm_application_id = 
 manifest = /builtins/manifests/android/AndroidManifest.xml
+vkquality_database = /builtins/manifests/android/vkqualitydata.vkq
 iap_provider = GooglePlay
 input_method = KeyEvent
 immersive_mode = 0
@@ -200,6 +204,8 @@ show_fullscreen_button = 0
 show_made_with_defold = 0
 show_console_banner = 1
 scale_mode = no_scale
+min_pixel_ratio = 0
+max_pixel_ratio = 0
 transparent_graphics_context = 0
 
 [particle_fx]
@@ -217,9 +223,6 @@ http_cache_enabled = 1
 [library]
 include_dirs = 
 defold_min_version = 
-
-[script]
-shared_state = 1
 
 [label]
 max_count = 64
@@ -249,4 +252,7 @@ max_time_step = 0.033333
 [font]
 
 [native_extension]
+
+[script]
+shared_state = 1
 
