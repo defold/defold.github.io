@@ -428,12 +428,12 @@ var EngineLoader = {
         const pthread = Module['isWASMPthreadSupported'];
         return {
             script: {
-                url: exeName + (pthread ? "_pthread_wasm.js" : "_wasm.js"),
+                url: (pthread ? EngineLoader.wasmjs_pthread_file : EngineLoader.wasmjs_file),
                 size: pthread ? this.wasmjs_pthread_size : this.wasmjs_size,
                 sha1: pthread ? this.wasmjs_pthread_sha1 : this.wasmjs_sha1
             },
             wasm: {
-                url: exeName + (pthread ? "_pthread.wasm" : ".wasm"),
+                url: (pthread ? EngineLoader.wasm_pthread_file : EngineLoader.wasm_file),
                 size: pthread ? this.wasm_pthread_size : this.wasm_size,
                 sha1: pthread ? this.wasm_pthread_sha1 : this.wasm_sha1
             },
