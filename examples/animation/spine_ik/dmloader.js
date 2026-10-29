@@ -114,17 +114,21 @@ var CUSTOM_PARAMETERS = {
         CUSTOM_PARAMETERS.resize_window_prev_inner_height = innerHeight;
         CUSTOM_PARAMETERS.resize_window_prev_pixel_ratio = dpi;
         CUSTOM_PARAMETERS.resize_window_prev_fullscreen = fullscreen;
-        var width = 960;
-        var height = 640;
+        var width = 720;
+        var height = 720;
         var targetRatio = width / height;
         var actualRatio = innerWidth / innerHeight;
     
     
-        //Stretch
-        width = innerWidth;
-        height = innerHeight;
     
     
+        //No scale
+        var margin_left = ((innerWidth - width) / 2);
+        margin_left = margin_left > 0 ? margin_left : 0;
+        var margin_top = ((innerHeight - height) / 2);
+        margin_top = margin_top > 0 ? margin_top : 0;
+        app_container.style.marginLeft = margin_left + "px";
+        app_container.style.marginTop = margin_top + "px";
     
         app_container.style.width = width + "px";
         app_container.style.height = height + buttonHeight + "px";
@@ -403,16 +407,16 @@ var FileLoader = {
 var EngineLoader = {
     arc_sha1: "",
     wasm_sha1: "",
-    wasm_size: 3908938,
+    wasm_size: 3909066,
     wasmjs_sha1: "",
     wasmjs_size: 270286,
     wasm_pthread_sha1: "",
-    wasm_pthread_size: 3908938,
+    wasm_pthread_size: 3909066,
     wasmjs_pthread_sha1: "",
     wasmjs_pthread_size: 270286,
 
-    wasm_file: "/examples/wasm/198d1e5abac3a57d18758f181f0e11ff.wasm",
-    wasm_pthread_file: "/examples/wasm/198d1e5abac3a57d18758f181f0e11ff.wasm",
+    wasm_file: "/examples/wasm/e1dfdbb3c734a53ad80c95b1e9bb337b.wasm",
+    wasm_pthread_file: "/examples/wasm/e1dfdbb3c734a53ad80c95b1e9bb337b.wasm",
     wasmjs_file: "/examples/wasm/b8a02a1cd0e5a97e3e432de6fd14b92b.wasm.js",
     wasmjs_pthread_file: "/examples/wasm/b8a02a1cd0e5a97e3e432de6fd14b92b.wasm.js",
     stream_wasm: "false" === "true",
@@ -1128,7 +1132,7 @@ var Progress = {
 
 var Module = {
     engineVersion: "1.14.2",
-    engineSdkSha1: "b2761b44abc6f6003d1ea523be637aa51756c09e",
+    engineSdkSha1: "1c97ad751f8a0d993df07faf3590d7447522ed04",
     noInitialRun: true,
 
     // Shared with the browser backend so fullscreen and display scale use the same rendering ratio.
