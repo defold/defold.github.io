@@ -43,8 +43,7 @@
 				});
 			});
 		});
-
-		updateVisibility();
+		scheduleUpdate();
 		window.addEventListener("scroll", scheduleUpdate, { passive: true });
 		window.addEventListener("resize", scheduleUpdate, { passive: true });
 	}

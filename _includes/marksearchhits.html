@@ -1,12 +1,31 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js"></script>
 <script>
-	var query = new URLSearchParams(window.location.search).get('q');
-	if (query) {
-		var instance = new Mark("div.{{ include.div }}");
-		instance.mark(query);
-		var elements = document.getElementsByTagName("mark");
-		if (elements.length > 0) {
-			elements[0].scrollIntoView();
+	(function() {
+		// Only pages opened from search results (?q=...) need mark.js, so load it on demand
+		// instead of as a parser-blocking script on every learn page.
+		var query = new URLSearchParams(window.location.search).get('q');
+		if (!query) {
+			return;
 		}
-	}
+
+		function markHits() {
+			var instance = new Mark("div.{{ include.div }}");
+			instance.mark(query);
+			var elements = document.getElementsByTagName("mark");
+			if (elements.length > 0) {
+				elements[0].scrollIntoView();
+			}
+		}
+
+		var script = document.createElement('script');
+		script.src = 'https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js';
+		script.async = true;
+		script.onload = function() {
+			if (document.readyState === 'loading') {
+				document.addEventListener('DOMContentLoaded', markHits, { once: true });
+			} else {
+				markHits();
+			}
+		};
+		document.head.appendChild(script);
+	})();
 </script>
