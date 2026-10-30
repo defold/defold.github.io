@@ -825,6 +825,27 @@
             "type": "ENUM"
         },
         {
+            "brief": "extension parameter enumeration",
+            "description": "Parameters available through <a href=\"#ExtensionParamsGetFloat\">ExtensionParamsGetFloat</a>.",
+            "error": "",
+            "examples": "",
+            "language": "C",
+            "members": [
+                {
+                    "doc": "engine update delta time",
+                    "name": "EXTENSION_PARAM_DT",
+                    "type": ""
+                }
+            ],
+            "name": "ExtensionParam",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "ENUM"
+        },
+        {
             "brief": "The global parameters avalable when registering an...",
             "description": "The global parameters avalable when registering and unregistering an extension",
             "error": "",
@@ -953,6 +974,54 @@
                     "name": "context",
                     "types": [
                         "void*"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Gets a float from the extension callback parameter...",
+            "description": "Gets a float from the extension callback parameters.\nSupported parameters:\n<table>\n<thead>\n<tr>\n<th>Parameter</th>\n<th>Description</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><code>EXTENSION_PARAM_DT</code></td>\n<td>Current engine update delta in seconds, before collection-proxy time scaling. Zero outside the extension update callback.</td>\n</tr>\n</tbody>\n</table>",
+            "error": "",
+            "examples": "",
+            "language": "C",
+            "members": [],
+            "name": "ExtensionParamsGetFloat",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "valid parameters for the current callback",
+                    "is_optional": "False",
+                    "name": "params",
+                    "types": [
+                        "const ExtensionParams*"
+                    ]
+                },
+                {
+                    "doc": "parameter to read, for example <code>EXTENSION_PARAM_DT</code>",
+                    "is_optional": "False",
+                    "name": "param",
+                    "types": [
+                        "ExtensionParam"
+                    ]
+                },
+                {
+                    "doc": "output value; left unchanged if the parameter is unsupported",
+                    "is_optional": "False",
+                    "name": "out_value",
+                    "types": [
+                        "float*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "true if the parameter is supported, otherwise false",
+                    "name": "result",
+                    "types": [
+                        "bool"
                     ]
                 }
             ],
@@ -1506,6 +1575,27 @@
             "type": "TYPEDEF"
         },
         {
+            "brief": "extension parameter enumeration",
+            "description": "Parameters available through <a href=\"#ParamsGetFloat\">ParamsGetFloat</a>.",
+            "error": "",
+            "examples": "",
+            "language": "C++",
+            "members": [
+                {
+                    "doc": "engine update delta time",
+                    "name": "PARAM_DT",
+                    "type": ""
+                }
+            ],
+            "name": "Param",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "ENUM"
+        },
+        {
             "brief": "The global parameters avalable when registering an...",
             "description": "The global parameters avalable when registering and unregistering an extension",
             "error": "",
@@ -1634,6 +1724,54 @@
                     "name": "context",
                     "types": [
                         "void*"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Gets a float from the extension callback parameter...",
+            "description": "Gets a float from the extension callback parameters.\nSupported parameters:\n<table>\n<thead>\n<tr>\n<th>Parameter</th>\n<th>Description</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><code>PARAM_DT</code></td>\n<td>Current engine update delta in seconds, before collection-proxy time scaling. Zero outside the extension update callback.</td>\n</tr>\n</tbody>\n</table>",
+            "error": "",
+            "examples": "",
+            "language": "C++",
+            "members": [],
+            "name": "ParamsGetFloat",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "valid parameters for the current callback",
+                    "is_optional": "False",
+                    "name": "params",
+                    "types": [
+                        "const Params*"
+                    ]
+                },
+                {
+                    "doc": "parameter to read, for example <code>PARAM_DT</code>",
+                    "is_optional": "False",
+                    "name": "param",
+                    "types": [
+                        "Param"
+                    ]
+                },
+                {
+                    "doc": "output value; left unchanged if the parameter is unsupported",
+                    "is_optional": "False",
+                    "name": "out_value",
+                    "types": [
+                        "float*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "true if the parameter is supported, otherwise false",
+                    "name": "result",
+                    "types": [
+                        "bool"
                     ]
                 }
             ],
