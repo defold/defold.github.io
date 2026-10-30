@@ -505,78 +505,6 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "Create a mouse joint.",
-            "description": "Create a mouse joint.",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "b2d.joint.create_mouse",
-            "notes": [],
-            "parameters": [
-                {
-                    "doc": "first body",
-                    "is_optional": "False",
-                    "name": "body_a",
-                    "types": [
-                        "b2Body"
-                    ],
-                    "types_html": [
-                        "b2Body"
-                    ],
-                    "types_table_html": [
-                        "b2Body"
-                    ]
-                },
-                {
-                    "doc": "second body",
-                    "is_optional": "False",
-                    "name": "body_b",
-                    "types": [
-                        "b2Body"
-                    ],
-                    "types_html": [
-                        "b2Body"
-                    ],
-                    "types_table_html": [
-                        "b2Body"
-                    ]
-                },
-                {
-                    "doc": "optional joint definition",
-                    "is_optional": "True",
-                    "name": "definition",
-                    "types": [
-                        "b2d.joint.mouse_definition"
-                    ],
-                    "types_html": [
-                        "<a href=\"../b2d-lua/#b2d.joint.mouse_definition\">b2d.joint.mouse_definition</a>"
-                    ],
-                    "types_table_html": [
-                        "<a href=\"../b2d-lua/#b2d.joint.mouse_definition\">b2d.joint.mouse_definition</a>"
-                    ]
-                }
-            ],
-            "replaces": "",
-            "returnvalues": [
-                {
-                    "doc": "created joint",
-                    "name": "joint",
-                    "types": [
-                        "b2Joint"
-                    ],
-                    "types_html": [
-                        "<a href=\"#b2Joint\">b2Joint</a>"
-                    ],
-                    "types_table_html": [
-                        "<a href=\"#b2Joint\">b2Joint</a>"
-                    ]
-                }
-            ],
-            "tparams": [],
-            "type": "FUNCTION"
-        },
-        {
             "brief": "Create a prismatic joint.",
             "description": "Create a prismatic joint.",
             "error": "",
@@ -1753,8 +1681,8 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "Get weld joint angular damping ratio.",
-            "description": "Get weld joint angular damping ratio.",
+            "brief": "Get weld or motor joint angular damping ratio.",
+            "description": "Get weld or motor joint angular damping ratio.",
             "error": "",
             "examples": "",
             "language": "",
@@ -1763,7 +1691,7 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "weld joint",
+                    "doc": "weld or motor joint",
                     "is_optional": "False",
                     "name": "joint",
                     "types": [
@@ -1797,8 +1725,8 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "Get weld joint angular frequency.",
-            "description": "Get weld joint angular frequency.",
+            "brief": "Get weld or motor joint angular frequency.",
+            "description": "Get weld or motor joint angular frequency.",
             "error": "",
             "examples": "",
             "language": "",
@@ -1807,7 +1735,7 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "weld joint",
+                    "doc": "weld or motor joint",
                     "is_optional": "False",
                     "name": "joint",
                     "types": [
@@ -1841,13 +1769,13 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "Get motor joint angular offset.",
-            "description": "Get motor joint angular offset.",
+            "brief": "Get motor joint angular velocity.",
+            "description": "Get motor joint angular velocity.",
             "error": "",
             "examples": "",
             "language": "",
             "members": [],
-            "name": "b2d.joint.get_angular_offset",
+            "name": "b2d.joint.get_angular_velocity",
             "notes": [],
             "parameters": [
                 {
@@ -1868,8 +1796,8 @@
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "angular offset in radians",
-                    "name": "offset",
+                    "doc": "angular velocity",
+                    "name": "value",
                     "types": [
                         "number"
                     ],
@@ -2149,17 +2077,17 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "Get motor joint correction factor.",
-            "description": "Get motor joint correction factor.",
+            "brief": "Get the stiffness of an individual joint constraint (Box2D v3).",
+            "description": "Get the stiffness of an individual joint constraint (Box2D v3).",
             "error": "",
             "examples": "",
             "language": "",
             "members": [],
-            "name": "b2d.joint.get_correction_factor",
+            "name": "b2d.joint.get_constraint_tuning",
             "notes": [],
             "parameters": [
                 {
-                    "doc": "motor joint",
+                    "doc": "joint",
                     "is_optional": "False",
                     "name": "joint",
                     "types": [
@@ -2176,8 +2104,21 @@
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "correction factor",
-                    "name": "factor",
+                    "doc": "constraint frequency in hertz",
+                    "name": "hertz",
+                    "types": [
+                        "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ]
+                },
+                {
+                    "doc": "constraint damping ratio",
+                    "name": "damping_ratio",
                     "types": [
                         "number"
                     ],
@@ -2291,7 +2232,7 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "distance, mouse, prismatic, revolute, or wheel joint",
+                    "doc": "distance, prismatic, revolute, or wheel joint",
                     "is_optional": "False",
                     "name": "joint",
                     "types": [
@@ -2379,7 +2320,7 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "distance, mouse, prismatic, revolute, or wheel joint",
+                    "doc": "distance, prismatic, revolute, or wheel joint",
                     "is_optional": "False",
                     "name": "joint",
                     "types": [
@@ -2555,7 +2496,7 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "distance, mouse, prismatic, revolute, or wheel joint",
+                    "doc": "distance, prismatic, revolute, or wheel joint",
                     "is_optional": "False",
                     "name": "joint",
                     "types": [
@@ -3161,8 +3102,8 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "Get weld joint linear damping ratio.",
-            "description": "Get weld joint linear damping ratio.",
+            "brief": "Get weld or motor joint linear damping ratio.",
+            "description": "Get weld or motor joint linear damping ratio.",
             "error": "",
             "examples": "",
             "language": "",
@@ -3171,7 +3112,7 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "weld joint",
+                    "doc": "weld or motor joint",
                     "is_optional": "False",
                     "name": "joint",
                     "types": [
@@ -3205,8 +3146,8 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "Get weld joint linear frequency.",
-            "description": "Get weld joint linear frequency.",
+            "brief": "Get weld or motor joint linear frequency.",
+            "description": "Get weld or motor joint linear frequency.",
             "error": "",
             "examples": "",
             "language": "",
@@ -3215,7 +3156,7 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "weld joint",
+                    "doc": "weld or motor joint",
                     "is_optional": "False",
                     "name": "joint",
                     "types": [
@@ -3249,13 +3190,13 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "Get motor joint linear offset.",
-            "description": "Get motor joint linear offset.",
+            "brief": "Get motor joint linear velocity.",
+            "description": "Get motor joint linear velocity.",
             "error": "",
             "examples": "",
             "language": "",
             "members": [],
-            "name": "b2d.joint.get_linear_offset",
+            "name": "b2d.joint.get_linear_velocity",
             "notes": [],
             "parameters": [
                 {
@@ -3276,8 +3217,8 @@
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "linear offset in project units",
-                    "name": "offset",
+                    "doc": "linear velocity",
+                    "name": "value",
                     "types": [
                         "vector3"
                     ],
@@ -3300,94 +3241,6 @@
             "language": "",
             "members": [],
             "name": "b2d.joint.get_local_anchor_a",
-            "notes": [],
-            "parameters": [
-                {
-                    "doc": "joint",
-                    "is_optional": "False",
-                    "name": "joint",
-                    "types": [
-                        "b2Joint"
-                    ],
-                    "types_html": [
-                        "<a href=\"#b2Joint\">b2Joint</a>"
-                    ],
-                    "types_table_html": [
-                        "<a href=\"#b2Joint\">b2Joint</a>"
-                    ]
-                }
-            ],
-            "replaces": "",
-            "returnvalues": [
-                {
-                    "doc": "local anchor",
-                    "name": "anchor",
-                    "types": [
-                        "vector3"
-                    ],
-                    "types_html": [
-                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
-                    ],
-                    "types_table_html": [
-                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
-                    ]
-                }
-            ],
-            "tparams": [],
-            "type": "FUNCTION"
-        },
-        {
-            "brief": "Get the local anchor on body A.",
-            "description": "Get the local anchor on body A.",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "b2d.joint.get_local_anchor_a",
-            "notes": [],
-            "parameters": [
-                {
-                    "doc": "joint",
-                    "is_optional": "False",
-                    "name": "joint",
-                    "types": [
-                        "b2Joint"
-                    ],
-                    "types_html": [
-                        "<a href=\"#b2Joint\">b2Joint</a>"
-                    ],
-                    "types_table_html": [
-                        "<a href=\"#b2Joint\">b2Joint</a>"
-                    ]
-                }
-            ],
-            "replaces": "",
-            "returnvalues": [
-                {
-                    "doc": "local anchor",
-                    "name": "anchor",
-                    "types": [
-                        "vector3"
-                    ],
-                    "types_html": [
-                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
-                    ],
-                    "types_table_html": [
-                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
-                    ]
-                }
-            ],
-            "tparams": [],
-            "type": "FUNCTION"
-        },
-        {
-            "brief": "Get the local anchor on body B.",
-            "description": "Get the local anchor on body B.",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "b2d.joint.get_local_anchor_b",
             "notes": [],
             "parameters": [
                 {
@@ -3513,6 +3366,94 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "Get the local frame on body A.",
+            "description": "Get the local frame on body A.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.joint.get_local_frame_a",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "joint",
+                    "is_optional": "False",
+                    "name": "joint",
+                    "types": [
+                        "b2Joint"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Joint\">b2Joint</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Joint\">b2Joint</a>"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Local frame with position (vector3) and angle (radians).",
+                    "name": "frame",
+                    "types": [
+                        "b2d.transform"
+                    ],
+                    "types_html": [
+                        "<a href=\"../b2d-lua/#b2d.transform\">b2d.transform</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../b2d-lua/#b2d.transform\">b2d.transform</a>"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get the local frame on body B.",
+            "description": "Get the local frame on body B.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.joint.get_local_frame_b",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "joint",
+                    "is_optional": "False",
+                    "name": "joint",
+                    "types": [
+                        "b2Joint"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Joint\">b2Joint</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Joint\">b2Joint</a>"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Local frame with position (vector3) and angle (radians).",
+                    "name": "frame",
+                    "types": [
+                        "b2d.transform"
+                    ],
+                    "types_html": [
+                        "<a href=\"../b2d-lua/#b2d.transform\">b2d.transform</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../b2d-lua/#b2d.transform\">b2d.transform</a>"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "Get the lower joint limit.",
             "description": "Get the lower joint limit.",
             "error": "",
@@ -3612,50 +3553,6 @@
             "parameters": [
                 {
                     "doc": "mouse or friction joint",
-                    "is_optional": "False",
-                    "name": "joint",
-                    "types": [
-                        "b2Joint"
-                    ],
-                    "types_html": [
-                        "<a href=\"#b2Joint\">b2Joint</a>"
-                    ],
-                    "types_table_html": [
-                        "<a href=\"#b2Joint\">b2Joint</a>"
-                    ]
-                }
-            ],
-            "replaces": "",
-            "returnvalues": [
-                {
-                    "doc": "maximum force",
-                    "name": "force",
-                    "types": [
-                        "number"
-                    ],
-                    "types_html": [
-                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
-                    ],
-                    "types_table_html": [
-                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
-                    ]
-                }
-            ],
-            "tparams": [],
-            "type": "FUNCTION"
-        },
-        {
-            "brief": "Get maximum force.",
-            "description": "Get maximum force.",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "b2d.joint.get_max_force",
-            "notes": [],
-            "parameters": [
-                {
-                    "doc": "mouse or motor joint",
                     "is_optional": "False",
                     "name": "joint",
                     "types": [
@@ -3953,6 +3850,94 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "Get motor joint max spring force.",
+            "description": "Get motor joint max spring force.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.joint.get_max_spring_force",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "motor joint",
+                    "is_optional": "False",
+                    "name": "joint",
+                    "types": [
+                        "b2Joint"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Joint\">b2Joint</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Joint\">b2Joint</a>"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "max spring force",
+                    "name": "value",
+                    "types": [
+                        "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Get motor joint max spring torque.",
+            "description": "Get motor joint max spring torque.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.joint.get_max_spring_torque",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "motor joint",
+                    "is_optional": "False",
+                    "name": "joint",
+                    "types": [
+                        "b2Joint"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Joint\">b2Joint</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Joint\">b2Joint</a>"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "max spring torque",
+                    "name": "value",
+                    "types": [
+                        "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "Get maximum torque.",
             "description": "Get maximum torque.",
             "error": "",
@@ -3997,13 +3982,57 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "Get motor joint max velocity force.",
+            "description": "Get motor joint max velocity force.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.joint.get_max_velocity_force",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "motor joint",
+                    "is_optional": "False",
+                    "name": "joint",
+                    "types": [
+                        "b2Joint"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Joint\">b2Joint</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Joint\">b2Joint</a>"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "max velocity force",
+                    "name": "value",
+                    "types": [
+                        "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "Get maximum torque.",
             "description": "Get maximum torque.",
             "error": "",
             "examples": "",
             "language": "",
             "members": [],
-            "name": "b2d.joint.get_max_torque",
+            "name": "b2d.joint.get_max_velocity_torque",
             "notes": [],
             "parameters": [
                 {
@@ -4421,50 +4450,6 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "Get the target for a mouse joint.",
-            "description": "Get the target for a mouse joint.",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "b2d.joint.get_mouse_target",
-            "notes": [],
-            "parameters": [
-                {
-                    "doc": "mouse joint",
-                    "is_optional": "False",
-                    "name": "joint",
-                    "types": [
-                        "b2Joint"
-                    ],
-                    "types_html": [
-                        "<a href=\"#b2Joint\">b2Joint</a>"
-                    ],
-                    "types_table_html": [
-                        "<a href=\"#b2Joint\">b2Joint</a>"
-                    ]
-                }
-            ],
-            "replaces": "",
-            "returnvalues": [
-                {
-                    "doc": "world target",
-                    "name": "target",
-                    "types": [
-                        "vector3"
-                    ],
-                    "types_html": [
-                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
-                    ],
-                    "types_table_html": [
-                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
-                    ]
-                }
-            ],
-            "tparams": [],
-            "type": "FUNCTION"
-        },
-        {
             "brief": "Get joint ratio.",
             "description": "Get joint ratio.",
             "error": "",
@@ -4757,50 +4742,6 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "Get weld joint reference angle.",
-            "description": "Get weld joint reference angle.",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "b2d.joint.get_reference_angle",
-            "notes": [],
-            "parameters": [
-                {
-                    "doc": "weld joint",
-                    "is_optional": "False",
-                    "name": "joint",
-                    "types": [
-                        "b2Joint"
-                    ],
-                    "types_html": [
-                        "<a href=\"#b2Joint\">b2Joint</a>"
-                    ],
-                    "types_table_html": [
-                        "<a href=\"#b2Joint\">b2Joint</a>"
-                    ]
-                }
-            ],
-            "replaces": "",
-            "returnvalues": [
-                {
-                    "doc": "reference angle in radians",
-                    "name": "angle",
-                    "types": [
-                        "number"
-                    ],
-                    "types_html": [
-                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
-                    ],
-                    "types_table_html": [
-                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
-                    ]
-                }
-            ],
-            "tparams": [],
-            "type": "FUNCTION"
-        },
-        {
             "brief": "Alias for <code>b2d.joint.get_damping_ratio</code>.",
             "description": "Alias for <code>b2d.joint.get_damping_ratio</code>.",
             "error": "",
@@ -4855,7 +4796,7 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "distance, mouse, prismatic, revolute, or wheel joint",
+                    "doc": "distance, prismatic, revolute, or wheel joint",
                     "is_optional": "False",
                     "name": "joint",
                     "types": [
@@ -4899,7 +4840,7 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "distance, mouse, prismatic, revolute, or wheel joint",
+                    "doc": "distance, prismatic, revolute, or wheel joint",
                     "is_optional": "False",
                     "name": "joint",
                     "types": [
@@ -5565,8 +5506,8 @@
             "value_type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
         },
         {
-            "brief": "Set weld joint angular damping ratio.",
-            "description": "Set weld joint angular damping ratio.",
+            "brief": "Set weld or motor joint angular damping ratio.",
+            "description": "Set weld or motor joint angular damping ratio.",
             "error": "",
             "examples": "",
             "language": "",
@@ -5575,7 +5516,7 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "weld joint",
+                    "doc": "weld or motor joint",
                     "is_optional": "False",
                     "name": "joint",
                     "types": [
@@ -5609,8 +5550,8 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "Set weld joint angular frequency.",
-            "description": "Set weld joint angular frequency.",
+            "brief": "Set weld or motor joint angular frequency.",
+            "description": "Set weld or motor joint angular frequency.",
             "error": "",
             "examples": "",
             "language": "",
@@ -5619,7 +5560,7 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "weld joint",
+                    "doc": "weld or motor joint",
                     "is_optional": "False",
                     "name": "joint",
                     "types": [
@@ -5653,13 +5594,13 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "Set motor joint angular offset.",
-            "description": "Set motor joint angular offset.",
+            "brief": "Set motor joint angular velocity.",
+            "description": "Set motor joint angular velocity.",
             "error": "",
             "examples": "",
             "language": "",
             "members": [],
-            "name": "b2d.joint.set_angular_offset",
+            "name": "b2d.joint.set_angular_velocity",
             "notes": [],
             "parameters": [
                 {
@@ -5677,9 +5618,9 @@
                     ]
                 },
                 {
-                    "doc": "angular offset in radians",
+                    "doc": "angular velocity",
                     "is_optional": "False",
-                    "name": "offset",
+                    "name": "value",
                     "types": [
                         "number"
                     ],
@@ -5741,17 +5682,17 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "Set motor joint correction factor.",
-            "description": "Set motor joint correction factor.",
+            "brief": "Set the stiffness of an individual joint constraint (Box2D v3).",
+            "description": "Replaces world-wide joint tuning in Box2D 3.2.",
             "error": "",
             "examples": "",
             "language": "",
             "members": [],
-            "name": "b2d.joint.set_correction_factor",
+            "name": "b2d.joint.set_constraint_tuning",
             "notes": [],
             "parameters": [
                 {
-                    "doc": "motor joint",
+                    "doc": "joint",
                     "is_optional": "False",
                     "name": "joint",
                     "types": [
@@ -5765,9 +5706,23 @@
                     ]
                 },
                 {
-                    "doc": "correction factor",
+                    "doc": "constraint frequency in hertz",
                     "is_optional": "False",
-                    "name": "factor",
+                    "name": "hertz",
+                    "types": [
+                        "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ]
+                },
+                {
+                    "doc": "constraint damping ratio",
+                    "is_optional": "False",
+                    "name": "damping_ratio",
                     "types": [
                         "number"
                     ],
@@ -5839,7 +5794,7 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "distance, mouse, prismatic, revolute, or wheel joint",
+                    "doc": "distance, prismatic, revolute, or wheel joint",
                     "is_optional": "False",
                     "name": "joint",
                     "types": [
@@ -5927,7 +5882,7 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "distance, mouse, prismatic, revolute, or wheel joint",
+                    "doc": "distance, prismatic, revolute, or wheel joint",
                     "is_optional": "False",
                     "name": "joint",
                     "types": [
@@ -6015,7 +5970,7 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "distance, mouse, prismatic, revolute, or wheel joint",
+                    "doc": "distance, prismatic, revolute, or wheel joint",
                     "is_optional": "False",
                     "name": "joint",
                     "types": [
@@ -6311,8 +6266,8 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "Set weld joint linear damping ratio.",
-            "description": "Set weld joint linear damping ratio.",
+            "brief": "Set weld or motor joint linear damping ratio.",
+            "description": "Set weld or motor joint linear damping ratio.",
             "error": "",
             "examples": "",
             "language": "",
@@ -6321,7 +6276,7 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "weld joint",
+                    "doc": "weld or motor joint",
                     "is_optional": "False",
                     "name": "joint",
                     "types": [
@@ -6355,8 +6310,8 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "Set weld joint linear frequency.",
-            "description": "Set weld joint linear frequency.",
+            "brief": "Set weld or motor joint linear frequency.",
+            "description": "Set weld or motor joint linear frequency.",
             "error": "",
             "examples": "",
             "language": "",
@@ -6365,7 +6320,7 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "weld joint",
+                    "doc": "weld or motor joint",
                     "is_optional": "False",
                     "name": "joint",
                     "types": [
@@ -6399,13 +6354,13 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "Set motor joint linear offset.",
-            "description": "Set motor joint linear offset.",
+            "brief": "Set motor joint linear velocity.",
+            "description": "Set motor joint linear velocity.",
             "error": "",
             "examples": "",
             "language": "",
             "members": [],
-            "name": "b2d.joint.set_linear_offset",
+            "name": "b2d.joint.set_linear_velocity",
             "notes": [],
             "parameters": [
                 {
@@ -6423,9 +6378,9 @@
                     ]
                 },
                 {
-                    "doc": "linear offset in project units",
+                    "doc": "linear velocity",
                     "is_optional": "False",
-                    "name": "offset",
+                    "name": "value",
                     "types": [
                         "vector3"
                     ],
@@ -6434,6 +6389,94 @@
                     ],
                     "types_table_html": [
                         "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Set the local frame on body A.",
+            "description": "Set the local frame on body A.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.joint.set_local_frame_a",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "joint",
+                    "is_optional": "False",
+                    "name": "joint",
+                    "types": [
+                        "b2Joint"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Joint\">b2Joint</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Joint\">b2Joint</a>"
+                    ]
+                },
+                {
+                    "doc": "Local frame with optional position (vector3) and angle (radians). Omitted fields are preserved.",
+                    "is_optional": "False",
+                    "name": "frame",
+                    "types": [
+                        "b2d.transform"
+                    ],
+                    "types_html": [
+                        "<a href=\"../b2d-lua/#b2d.transform\">b2d.transform</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../b2d-lua/#b2d.transform\">b2d.transform</a>"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Set the local frame on body B.",
+            "description": "Set the local frame on body B.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.joint.set_local_frame_b",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "joint",
+                    "is_optional": "False",
+                    "name": "joint",
+                    "types": [
+                        "b2Joint"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Joint\">b2Joint</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Joint\">b2Joint</a>"
+                    ]
+                },
+                {
+                    "doc": "Local frame with optional position (vector3) and angle (radians). Omitted fields are preserved.",
+                    "is_optional": "False",
+                    "name": "frame",
+                    "types": [
+                        "b2d.transform"
+                    ],
+                    "types_html": [
+                        "<a href=\"../b2d-lua/#b2d.transform\">b2d.transform</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../b2d-lua/#b2d.transform\">b2d.transform</a>"
                     ]
                 }
             ],
@@ -6454,50 +6497,6 @@
             "parameters": [
                 {
                     "doc": "mouse or friction joint",
-                    "is_optional": "False",
-                    "name": "joint",
-                    "types": [
-                        "b2Joint"
-                    ],
-                    "types_html": [
-                        "<a href=\"#b2Joint\">b2Joint</a>"
-                    ],
-                    "types_table_html": [
-                        "<a href=\"#b2Joint\">b2Joint</a>"
-                    ]
-                },
-                {
-                    "doc": "maximum force",
-                    "is_optional": "False",
-                    "name": "force",
-                    "types": [
-                        "number"
-                    ],
-                    "types_html": [
-                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
-                    ],
-                    "types_table_html": [
-                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
-                    ]
-                }
-            ],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "FUNCTION"
-        },
-        {
-            "brief": "Set maximum force.",
-            "description": "Set maximum force.",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "b2d.joint.set_max_force",
-            "notes": [],
-            "parameters": [
-                {
-                    "doc": "mouse or motor joint",
                     "is_optional": "False",
                     "name": "joint",
                     "types": [
@@ -6795,6 +6794,94 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "Set motor joint max spring force.",
+            "description": "Set motor joint max spring force.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.joint.set_max_spring_force",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "motor joint",
+                    "is_optional": "False",
+                    "name": "joint",
+                    "types": [
+                        "b2Joint"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Joint\">b2Joint</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Joint\">b2Joint</a>"
+                    ]
+                },
+                {
+                    "doc": "max spring force",
+                    "is_optional": "False",
+                    "name": "value",
+                    "types": [
+                        "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Set motor joint max spring torque.",
+            "description": "Set motor joint max spring torque.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.joint.set_max_spring_torque",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "motor joint",
+                    "is_optional": "False",
+                    "name": "joint",
+                    "types": [
+                        "b2Joint"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Joint\">b2Joint</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Joint\">b2Joint</a>"
+                    ]
+                },
+                {
+                    "doc": "max spring torque",
+                    "is_optional": "False",
+                    "name": "value",
+                    "types": [
+                        "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "Set maximum torque.",
             "description": "Set maximum torque.",
             "error": "",
@@ -6839,13 +6926,57 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "Set motor joint max velocity force.",
+            "description": "Set motor joint max velocity force.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "b2d.joint.set_max_velocity_force",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "motor joint",
+                    "is_optional": "False",
+                    "name": "joint",
+                    "types": [
+                        "b2Joint"
+                    ],
+                    "types_html": [
+                        "<a href=\"#b2Joint\">b2Joint</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#b2Joint\">b2Joint</a>"
+                    ]
+                },
+                {
+                    "doc": "max velocity force",
+                    "is_optional": "False",
+                    "name": "value",
+                    "types": [
+                        "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "Set maximum torque.",
             "description": "Set maximum torque.",
             "error": "",
             "examples": "",
             "language": "",
             "members": [],
-            "name": "b2d.joint.set_max_torque",
+            "name": "b2d.joint.set_max_velocity_torque",
             "notes": [],
             "parameters": [
                 {
@@ -7059,50 +7190,6 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "Set the target for a mouse joint.",
-            "description": "Set the target for a mouse joint.",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "b2d.joint.set_mouse_target",
-            "notes": [],
-            "parameters": [
-                {
-                    "doc": "mouse joint",
-                    "is_optional": "False",
-                    "name": "joint",
-                    "types": [
-                        "b2Joint"
-                    ],
-                    "types_html": [
-                        "<a href=\"#b2Joint\">b2Joint</a>"
-                    ],
-                    "types_table_html": [
-                        "<a href=\"#b2Joint\">b2Joint</a>"
-                    ]
-                },
-                {
-                    "doc": "world target",
-                    "is_optional": "False",
-                    "name": "target",
-                    "types": [
-                        "vector3"
-                    ],
-                    "types_html": [
-                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
-                    ],
-                    "types_table_html": [
-                        "<a href=\"../vmath-lua/#vector3\">vector3</a>"
-                    ]
-                }
-            ],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "FUNCTION"
-        },
-        {
             "brief": "Set gear joint ratio.",
             "description": "Set gear joint ratio.",
             "error": "",
@@ -7130,50 +7217,6 @@
                     "doc": "gear ratio",
                     "is_optional": "False",
                     "name": "ratio",
-                    "types": [
-                        "number"
-                    ],
-                    "types_html": [
-                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
-                    ],
-                    "types_table_html": [
-                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
-                    ]
-                }
-            ],
-            "replaces": "",
-            "returnvalues": [],
-            "tparams": [],
-            "type": "FUNCTION"
-        },
-        {
-            "brief": "Set weld joint reference angle.",
-            "description": "Set weld joint reference angle.",
-            "error": "",
-            "examples": "",
-            "language": "",
-            "members": [],
-            "name": "b2d.joint.set_reference_angle",
-            "notes": [],
-            "parameters": [
-                {
-                    "doc": "weld joint",
-                    "is_optional": "False",
-                    "name": "joint",
-                    "types": [
-                        "b2Joint"
-                    ],
-                    "types_html": [
-                        "<a href=\"#b2Joint\">b2Joint</a>"
-                    ],
-                    "types_table_html": [
-                        "<a href=\"#b2Joint\">b2Joint</a>"
-                    ]
-                },
-                {
-                    "doc": "reference angle in radians",
-                    "is_optional": "False",
-                    "name": "angle",
                     "types": [
                         "number"
                     ],
@@ -7245,7 +7288,7 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "distance, mouse, prismatic, revolute, or wheel joint",
+                    "doc": "distance, prismatic, revolute, or wheel joint",
                     "is_optional": "False",
                     "name": "joint",
                     "types": [
@@ -7289,7 +7332,7 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "distance, mouse, prismatic, revolute, or wheel joint",
+                    "doc": "distance, prismatic, revolute, or wheel joint",
                     "is_optional": "False",
                     "name": "joint",
                     "types": [

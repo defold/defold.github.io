@@ -906,7 +906,7 @@
             "members": [
                 {
                     "display_name": "local_anchor_a",
-                    "doc": "Local anchor on the first body.",
+                    "doc": "Local anchor on the first body (Box2D v2).",
                     "is_optional": true,
                     "name": "local_anchor_a?",
                     "type": "vector3",
@@ -914,11 +914,27 @@
                 },
                 {
                     "display_name": "local_anchor_b",
-                    "doc": "Local anchor on the second body.",
+                    "doc": "Local anchor on the second body (Box2D v2).",
                     "is_optional": true,
                     "name": "local_anchor_b?",
                     "type": "vector3",
                     "type_html": "<a href=\"../vmath-lua/#vector3\">vector3</a>"
+                },
+                {
+                    "display_name": "local_frame_a",
+                    "doc": "Local joint frame on the first body (Box2D v3).",
+                    "is_optional": true,
+                    "name": "local_frame_a?",
+                    "type": "b2d.transform",
+                    "type_html": "<a href=\"#b2d.transform\">b2d.transform</a>"
+                },
+                {
+                    "display_name": "local_frame_b",
+                    "doc": "Local joint frame on the second body (Box2D v3).",
+                    "is_optional": true,
+                    "name": "local_frame_b?",
+                    "type": "b2d.transform",
+                    "type_html": "<a href=\"#b2d.transform\">b2d.transform</a>"
                 },
                 {
                     "display_name": "length",
@@ -1161,42 +1177,98 @@
             "language": "",
             "members": [
                 {
-                    "display_name": "linear_offset",
-                    "doc": "Linear target offset.",
+                    "display_name": "local_frame_a",
+                    "doc": "Local joint frame on the first body.",
                     "is_optional": true,
-                    "name": "linear_offset?",
+                    "name": "local_frame_a?",
+                    "type": "b2d.transform",
+                    "type_html": "<a href=\"#b2d.transform\">b2d.transform</a>"
+                },
+                {
+                    "display_name": "local_frame_b",
+                    "doc": "Local joint frame on the second body.",
+                    "is_optional": true,
+                    "name": "local_frame_b?",
+                    "type": "b2d.transform",
+                    "type_html": "<a href=\"#b2d.transform\">b2d.transform</a>"
+                },
+                {
+                    "display_name": "linear_velocity",
+                    "doc": "Target relative linear velocity.",
+                    "is_optional": true,
+                    "name": "linear_velocity?",
                     "type": "vector3",
                     "type_html": "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                 },
                 {
-                    "display_name": "angular_offset",
-                    "doc": "Angular target offset.",
+                    "display_name": "angular_velocity",
+                    "doc": "Target relative angular velocity in radians per second.",
                     "is_optional": true,
-                    "name": "angular_offset?",
+                    "name": "angular_velocity?",
                     "type": "number",
                     "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                 },
                 {
-                    "display_name": "max_force",
-                    "doc": "Maximum motor force.",
+                    "display_name": "max_velocity_force",
+                    "doc": "Maximum velocity motor force. Defaults to zero.",
                     "is_optional": true,
-                    "name": "max_force?",
+                    "name": "max_velocity_force?",
                     "type": "number",
                     "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                 },
                 {
-                    "display_name": "max_torque",
-                    "doc": "Maximum motor torque.",
+                    "display_name": "max_velocity_torque",
+                    "doc": "Maximum velocity motor torque. Defaults to zero.",
                     "is_optional": true,
-                    "name": "max_torque?",
+                    "name": "max_velocity_torque?",
                     "type": "number",
                     "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                 },
                 {
-                    "display_name": "correction_factor",
-                    "doc": "Position correction factor.",
+                    "display_name": "linear_hertz",
+                    "doc": "Linear spring frequency.",
                     "is_optional": true,
-                    "name": "correction_factor?",
+                    "name": "linear_hertz?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "linear_damping_ratio",
+                    "doc": "Linear spring damping ratio.",
+                    "is_optional": true,
+                    "name": "linear_damping_ratio?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "max_spring_force",
+                    "doc": "Maximum spring force. Defaults to zero.",
+                    "is_optional": true,
+                    "name": "max_spring_force?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "angular_hertz",
+                    "doc": "Angular spring frequency.",
+                    "is_optional": true,
+                    "name": "angular_hertz?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "angular_damping_ratio",
+                    "doc": "Angular spring damping ratio.",
+                    "is_optional": true,
+                    "name": "angular_damping_ratio?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "max_spring_torque",
+                    "doc": "Maximum spring torque. Defaults to zero.",
+                    "is_optional": true,
+                    "name": "max_spring_torque?",
                     "type": "number",
                     "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                 },
@@ -1218,8 +1290,8 @@
             "type": "STRUCT"
         },
         {
-            "brief": "Box2D mouse-joint definition",
-            "description": "Box2D mouse-joint definition",
+            "brief": "Box2D v2 mouse-joint definition",
+            "description": "Box2D v2 mouse-joint definition",
             "error": "",
             "examples": "",
             "language": "",
@@ -1298,7 +1370,7 @@
             "members": [
                 {
                     "display_name": "local_anchor_a",
-                    "doc": "Local anchor on the first body.",
+                    "doc": "Local anchor on the first body (Box2D v2).",
                     "is_optional": true,
                     "name": "local_anchor_a?",
                     "type": "vector3",
@@ -1306,15 +1378,31 @@
                 },
                 {
                     "display_name": "local_anchor_b",
-                    "doc": "Local anchor on the second body.",
+                    "doc": "Local anchor on the second body (Box2D v2).",
                     "is_optional": true,
                     "name": "local_anchor_b?",
                     "type": "vector3",
                     "type_html": "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                 },
                 {
+                    "display_name": "local_frame_a",
+                    "doc": "Local joint frame on the first body (Box2D v3). Its x-axis defines the translation or suspension axis.",
+                    "is_optional": true,
+                    "name": "local_frame_a?",
+                    "type": "b2d.transform",
+                    "type_html": "<a href=\"#b2d.transform\">b2d.transform</a>"
+                },
+                {
+                    "display_name": "local_frame_b",
+                    "doc": "Local joint frame on the second body (Box2D v3). Relative frame angles replace reference_angle.",
+                    "is_optional": true,
+                    "name": "local_frame_b?",
+                    "type": "b2d.transform",
+                    "type_html": "<a href=\"#b2d.transform\">b2d.transform</a>"
+                },
+                {
                     "display_name": "local_axis_a",
-                    "doc": "Local translation axis on the first body.",
+                    "doc": "Local translation axis on the first body (Box2D v2).",
                     "is_optional": true,
                     "name": "local_axis_a?",
                     "type": "vector3",
@@ -1322,7 +1410,7 @@
                 },
                 {
                     "display_name": "reference_angle",
-                    "doc": "Reference angle.",
+                    "doc": "Reference angle (Box2D v2).",
                     "is_optional": true,
                     "name": "reference_angle?",
                     "type": "number",
@@ -1522,7 +1610,7 @@
             "members": [
                 {
                     "display_name": "local_anchor_a",
-                    "doc": "Local anchor on the first body.",
+                    "doc": "Local anchor on the first body (Box2D v2).",
                     "is_optional": true,
                     "name": "local_anchor_a?",
                     "type": "vector3",
@@ -1530,15 +1618,31 @@
                 },
                 {
                     "display_name": "local_anchor_b",
-                    "doc": "Local anchor on the second body.",
+                    "doc": "Local anchor on the second body (Box2D v2).",
                     "is_optional": true,
                     "name": "local_anchor_b?",
                     "type": "vector3",
                     "type_html": "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                 },
                 {
+                    "display_name": "local_frame_a",
+                    "doc": "Local joint frame on the first body (Box2D v3).",
+                    "is_optional": true,
+                    "name": "local_frame_a?",
+                    "type": "b2d.transform",
+                    "type_html": "<a href=\"#b2d.transform\">b2d.transform</a>"
+                },
+                {
+                    "display_name": "local_frame_b",
+                    "doc": "Local joint frame on the second body (Box2D v3). Relative frame angles replace reference_angle.",
+                    "is_optional": true,
+                    "name": "local_frame_b?",
+                    "type": "b2d.transform",
+                    "type_html": "<a href=\"#b2d.transform\">b2d.transform</a>"
+                },
+                {
                     "display_name": "reference_angle",
-                    "doc": "Reference angle.",
+                    "doc": "Reference angle (Box2D v2).",
                     "is_optional": true,
                     "name": "reference_angle?",
                     "type": "number",
@@ -1706,7 +1810,7 @@
             "members": [
                 {
                     "display_name": "local_anchor_a",
-                    "doc": "Local anchor on the first body.",
+                    "doc": "Local anchor on the first body (Box2D v2).",
                     "is_optional": true,
                     "name": "local_anchor_a?",
                     "type": "vector3",
@@ -1714,15 +1818,31 @@
                 },
                 {
                     "display_name": "local_anchor_b",
-                    "doc": "Local anchor on the second body.",
+                    "doc": "Local anchor on the second body (Box2D v2).",
                     "is_optional": true,
                     "name": "local_anchor_b?",
                     "type": "vector3",
                     "type_html": "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                 },
                 {
+                    "display_name": "local_frame_a",
+                    "doc": "Local joint frame on the first body (Box2D v3).",
+                    "is_optional": true,
+                    "name": "local_frame_a?",
+                    "type": "b2d.transform",
+                    "type_html": "<a href=\"#b2d.transform\">b2d.transform</a>"
+                },
+                {
+                    "display_name": "local_frame_b",
+                    "doc": "Local joint frame on the second body (Box2D v3). Relative frame angles replace reference_angle.",
+                    "is_optional": true,
+                    "name": "local_frame_b?",
+                    "type": "b2d.transform",
+                    "type_html": "<a href=\"#b2d.transform\">b2d.transform</a>"
+                },
+                {
                     "display_name": "reference_angle",
-                    "doc": "Reference angle.",
+                    "doc": "Reference angle (Box2D v2).",
                     "is_optional": true,
                     "name": "reference_angle?",
                     "type": "number",
@@ -1818,7 +1938,7 @@
             "members": [
                 {
                     "display_name": "local_anchor_a",
-                    "doc": "Local anchor on the first body.",
+                    "doc": "Local anchor on the first body (Box2D v2).",
                     "is_optional": true,
                     "name": "local_anchor_a?",
                     "type": "vector3",
@@ -1826,15 +1946,31 @@
                 },
                 {
                     "display_name": "local_anchor_b",
-                    "doc": "Local anchor on the second body.",
+                    "doc": "Local anchor on the second body (Box2D v2).",
                     "is_optional": true,
                     "name": "local_anchor_b?",
                     "type": "vector3",
                     "type_html": "<a href=\"../vmath-lua/#vector3\">vector3</a>"
                 },
                 {
+                    "display_name": "local_frame_a",
+                    "doc": "Local joint frame on the first body (Box2D v3). Its x-axis defines the translation or suspension axis.",
+                    "is_optional": true,
+                    "name": "local_frame_a?",
+                    "type": "b2d.transform",
+                    "type_html": "<a href=\"#b2d.transform\">b2d.transform</a>"
+                },
+                {
+                    "display_name": "local_frame_b",
+                    "doc": "Local joint frame on the second body (Box2D v3).",
+                    "is_optional": true,
+                    "name": "local_frame_b?",
+                    "type": "b2d.transform",
+                    "type_html": "<a href=\"#b2d.transform\">b2d.transform</a>"
+                },
+                {
                     "display_name": "local_axis_a",
-                    "doc": "Local suspension axis on the first body.",
+                    "doc": "Local suspension axis on the first body (Box2D v2).",
                     "is_optional": true,
                     "name": "local_axis_a?",
                     "type": "vector3",
@@ -2358,14 +2494,14 @@
         },
         {
             "brief": "Box2D transform",
-            "description": "World transform for a Box2D body.",
+            "description": "Transform for a Box2D body or local joint frame.",
             "error": "",
             "examples": "",
             "language": "",
             "members": [
                 {
                     "display_name": "position",
-                    "doc": "World position of the body origin.",
+                    "doc": "Position of the body origin or local joint anchor.",
                     "is_optional": false,
                     "name": "position",
                     "type": "vector3",
@@ -2373,7 +2509,7 @@
                 },
                 {
                     "display_name": "angle",
-                    "doc": "World rotation angle in radians.",
+                    "doc": "Rotation angle in radians.",
                     "is_optional": false,
                     "name": "angle",
                     "type": "number",
@@ -2612,26 +2748,18 @@
                     "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                 },
                 {
-                    "display_name": "merge_islands",
-                    "doc": "Island merge time.",
-                    "is_optional": false,
-                    "name": "merge_islands",
-                    "type": "number",
-                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
-                },
-                {
-                    "display_name": "prepare_stages",
+                    "display_name": "solver_setup",
                     "doc": "Stage preparation time.",
                     "is_optional": false,
-                    "name": "prepare_stages",
+                    "name": "solver_setup",
                     "type": "number",
                     "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                 },
                 {
-                    "display_name": "solve_constraints",
+                    "display_name": "constraints",
                     "doc": "Constraint solver time.",
                     "is_optional": false,
-                    "name": "solve_constraints",
+                    "name": "constraints",
                     "type": "number",
                     "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                 },
@@ -2684,10 +2812,10 @@
                     "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                 },
                 {
-                    "display_name": "apply_restitution",
+                    "display_name": "restitution",
                     "doc": "Restitution time.",
                     "is_optional": false,
-                    "name": "apply_restitution",
+                    "name": "restitution",
                     "type": "number",
                     "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                 },
