@@ -105,7 +105,7 @@ We also improved the Scene View navigation including smarter zooming behaviour (
 
 ![](/images/posts/defold-2025-retrospective/camera.png)
 
-We revamped the [camera aspect-ratio APIs](](https://github.com/defold/defold/pull/11077)) so they finally reflect what developers expect. We also have functions to [convert between world and screen coordinates](https://github.com/defold/defold/pull/11403) or to [set orthographic zoom](https://github.com/defold/defold/pull/10624).
+We revamped the [camera aspect-ratio APIs](https://github.com/defold/defold/pull/11077) so they finally reflect what developers expect. We also have functions to [convert between world and screen coordinates](https://github.com/defold/defold/pull/11403) or to [set orthographic zoom](https://github.com/defold/defold/pull/10624).
 
 Orthographic cameras got also a major upgrade with [orthographic projection modes](https://forum.defold.com/t/defold-1-11-1-has-been-released/81704): Fixed, Auto Fit (contain), and Auto Cover (zoom) – including editor support and dedicated Lua APIs.
 
