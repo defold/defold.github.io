@@ -188,6 +188,7 @@ These are per-manual files generated for LLM usage.
 - [Debugging native code on Android](https://defold.com/llms/manuals/debugging-native-code-android.md)
 - [Debugging native code on iOS](https://defold.com/llms/manuals/debugging-native-code-ios.md)
 - [Reading game and system logs](https://defold.com/llms/manuals/debugging-game-and-system-logs.md)
+- [Video recording](https://defold.com/llms/manuals/recording.md)
 
 ## Optimization
 

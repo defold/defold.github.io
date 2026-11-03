@@ -2,6 +2,10 @@
 
 Developing Defold applications for the Windows platform is a straight forward process with very few considerations to make.
 
+## Graphics backends
+
+Windows builds use OpenGL by default. Use **Graphics (Windows)** in an [application manifest](https://defold.com/llms/manuals/app-manifest.md) to select OpenGL, Vulkan or DirectX 12 (**DX12**). You can include multiple backends to allow fallback when the preferred backend is unavailable.
+
 ## Project settings
 
 Windows specific application configuration is done from the [Windows section](https://defold.com/llms/manuals/project-settings.md) of the *game.project* settings file.

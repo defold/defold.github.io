@@ -17,7 +17,7 @@ A capsule has a position, rotation, diameter and height:
 Capsule shapes are only supported when using 3D physics (configured in the Physics section of the *game.project* file).
 
 ### Complex shapes
-Complex shapes can use tilemap geometry or convex hull data. Since Defold 1.13.2, 3D collision objects can also create hulls and triangle mesh shapes from meshes in glTF or GLB scenes.
+Complex shapes can use tilemap geometry or convex hull data. 3D collision objects can also create hulls and triangle mesh shapes from meshes in glTF or GLB scenes.
 
 ## Hull and mesh shapes in 3D
 

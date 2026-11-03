@@ -2,7 +2,17 @@
 
 Defold supports many kinds of visual components frequently used in 2D games. You can use Defold to create static and animated sprites, UI components, particle effects, tile maps and bitmap fonts. Before you can create any of these visual components you need to import image files with the graphics that you wish to use. To import image files you simply drag the files from the file system on your computer and drop them in an appropriate place in the Defold editor *Assets pane*.
 
-Defold supports images in the PNG and JPEG image formats. Other image formats need to be converted before they can be used.
+Use PNG or JPEG images for atlases and tile sources. KTX2 source textures can also be imported for use as model textures; see below.
+
+## KTX2 textures
+
+Import a standalone *.ktx2* file by dragging it into the *Assets* pane, then assign it to a Model component's material texture field. [glTF and GLB models](https://defold.com/llms/manuals/importing-models.md) can also reference external KTX2 files or contain embedded KTX2 images. Atlas, tile-source and cubemap-face inputs continue to use their existing image formats.
+
+Supported KTX2 inputs are 2D textures using ETC1S/BasisLZ, UASTC, BC7, or 8-bit R/RG/RGB/RGBA UNORM or sRGB data. KTX2 arrays, cubemaps, volumes and HDR textures are not supported. KTX2 is processed at build time into Defold's *.texturec* resources; the runtime does not read KTX2 containers.
+
+Open a KTX2 asset to inspect its source format, dimensions, color space, alpha metadata and mip levels. The *Outline* lets you select individual authored mip levels. These show the source images even if a texture profile resizes the compiled texture or disables its mipmaps.
+
+Use [texture profiles](https://defold.com/llms/manuals/texture-profiles.md) to choose between keeping the source format and converting it to other formats. Choose output formats supported by your target devices. Recompressing an already lossy source can reduce quality further, including when **Keep KTX2 Format** needs to re-encode after image processing.
 
 ## Creating Defold assets
 

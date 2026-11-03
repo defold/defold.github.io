@@ -21,7 +21,7 @@ A collision object component has a set of *Properties* that sets its type and ph
 To add a collision object component to a game object:
 
 1. In the *Outline* view, `right click` the game object and select `Add Component ▸ Collision Object` from the context menu. This creates a new component with no shapes.
-2. `Right click` the new component and select `Add Shape`, then choose a shape: `Box`, `Capsule`, `Sphere`, `Hull` or `Mesh` in projects using 3D physics, `Box` or `Circle` in projects using 2D physics. Hull and Mesh shapes are available since Defold 1.13.2 and use a named mesh from a glTF or GLB scene. You can add several shapes to the component. You can also use a tilemap or a `.convexshape` resource through the *Collision Shape* property.
+2. `Right click` the new component and select `Add Shape`, then choose a shape: `Box`, `Capsule`, `Sphere`, `Hull` or `Mesh` in projects using 3D physics, `Box` or `Circle` in projects using 2D physics. Hull and Mesh shapes use a named mesh from a glTF or GLB scene. You can add several shapes to the component. You can also use a tilemap or a `.convexshape` resource through the *Collision Shape* property.
 3. Use the move, rotate and scale tools to edit the shapes.
 4. Select the component in the *Outline* and edit the collision object's *Properties*.
 

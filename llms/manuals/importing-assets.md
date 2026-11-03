@@ -6,7 +6,7 @@ A game project usually consists of a large number of external assets that are pr
 
 Defold needs all the assets used in your project to be located somewhere in the project hierarchy. You therefore need to import all assets before you can use them. To import assets, simply drag the files from the file system on your computer and drop them in an appropriate place in the Defold editor *Assets pane*.
 
-Defold supports images in the PNG and JPEG image formats. PNG images must be in 32 bit RGBA format. Other image formats need to be converted before they can be used.
+Use PNG or JPEG images for atlases and tile sources. PNG support includes RGB, RGBA and indexed color (palette) images. [KTX2 source textures](https://defold.com/llms/manuals/importing-graphics.md) can also be imported for use as model textures.
 
 ## Using assets
 
@@ -15,7 +15,7 @@ When the assets are imported into Defold they can be used by the various compone
 * Images can be used to create many kinds of visual components frequently used in 2D games. Read more about [how to import and use 2D graphics here](https://defold.com/llms/manuals/importing-graphics.md).
 * Sounds can be used by the [Sound component](https://defold.com/llms/manuals/sound.md) to play sounds.
 * Fonts are used by the [Label component](https://defold.com/llms/manuals/label.md) and by [text nodes](https://defold.com/llms/manuals/gui-text.md) in a GUI.
-* glTF models (*.gltf* and *.glb*) can be used by the [Model component](https://defold.com/llms/manuals/model.md) to show 3D models with animations. Import any texture images used by the model as separate assets and assign them on the Model component material texture properties. Read more about [how to import and use 3D models here](https://defold.com/llms/manuals/importing-models.md).
+* glTF models (*.gltf* and *.glb*) can be used by the [Model component](https://defold.com/llms/manuals/model.md) to show 3D models with animations. Expand these files in the *Assets* pane to browse their meshes, generated materials and embedded images. Embedded images can be used directly; include any externally referenced images and buffers as separate project files. [Draco- and Meshopt-compressed geometry](https://defold.com/llms/manuals/importing-models.md) is also supported and is decoded during import/build. When selecting a scene or mesh in a Model component, the editor can offer to fill its material and texture bindings. Choose `Auto Fill` to apply them, replacing existing bindings, or `Keep Current` to preserve your own. Read more about [how to import and use 3D models here](https://defold.com/llms/manuals/importing-models.md).
 
 ## Editing external assets
 

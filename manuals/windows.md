@@ -6,6 +6,7 @@ locale: en
 title: Defold development for the Windows platform
 toc:
 - Windows development
+- Graphics backends
 - Project settings
 - Application icon
 - Creating .ico file locally using ImageMagick software suite.
@@ -15,6 +16,10 @@ toc:
 # Windows development
 
 Developing Defold applications for the Windows platform is a straight forward process with very few considerations to make.
+
+## Graphics backends
+
+Windows builds use OpenGL by default. Use **Graphics (Windows)** in an [application manifest](/manuals/app-manifest/#graphics) to select OpenGL, Vulkan or DirectX 12 (**DX12**). You can include multiple backends to allow fallback when the preferred backend is unavailable.
 
 ## Project settings
 
