@@ -9,11 +9,11 @@ opengraph_image_alt: Monkey Mart, a web game made with Defold
 twitter_image: https://defold.com/images/games/monkeymart-half.webp
 ---
 
-When you launch your own game for the hundredth time, it is easy to ignore its first phase. You know the controls and move through the screens that stand between you and the gameplay without thinking. You may even have saved progress. New players, however, will be still trying to understand what to click and how to play.
+When you launch your own game for the hundredth time, it is easy to ignore its first phase. You know the controls and move through the screens that stand between you and the gameplay without thinking. You may even have saved progress. New players, however, will still be trying to understand what to click and how to play.
 
 ## First impression
 
-The opening is the most important part of the game. Competition in the web-game market is intense, and it is becoming harder to make a game stand out. This is different from the premium game market, where a player who buys a game may already be convinced by a trailer or a review. Players choosing free browser games often judge them by a thumbnail - which is also very crucial, and perhaps by a few seconds of gameplay presented on hover. In the first 10-20 seconds, they decide whether to give the game more of their time. Once you have their attention, make the most of those first seconds.
+The opening is the most important part of the game. Competition in the web-game market is intense, and it is becoming harder to make a game stand out. This is different from the premium game market, where a player who buys a game may already be convinced by a trailer or a review. Players choosing free browser games often judge them by a thumbnail, which is also very crucial, and perhaps by a few seconds of gameplay presented on hover. In the first 10-20 seconds, they decide whether to give the game more of their time. Once you have their attention, make the most of those first seconds.
 
 > **Observe how players behave - from opening the game page to finishing the first round.**
 
@@ -25,9 +25,9 @@ On a player's first visit, show a situation where they can do something interest
 
 ![Monkey Mart, a Defold game available on Poki](/images/posts/web-games-poki/monkey-mart.webp)
 
-*Monkey Mart is a shop-management game made with Defold. When you open it, you see immediately a simple goal. [Read our interview with its creators](/2023/03/22/Monkey-Mart-is-bananas/).*
+*Monkey Mart is a shop-management game made with Defold. When you open it, you immediately see a simple goal. [Read our interview with its creators](/2023/03/22/Monkey-Mart-is-bananas/).*
 
-Show a reachable longer-term goal too. It could be a character to unlock or a bonus level for collecting all the stars. In our [interview with Flazm](/2021/06/01/Developer-Case-Study-Flazm-and-Poki/), Alexey Davydov described gently introducing players to the first five levels of the Duo series, then adding new challenges and mechanics. A bonus level gave players a reason to collect stars. The level structure supported both the pace of learning and an additional goal.
+Also show an achieveable longer-term goal. It could be a character to unlock or a bonus level for collecting all the stars. In our [interview with Flazm](/2021/06/01/Developer-Case-Study-Flazm-and-Poki/), Alexey Davydov described gently introducing players to the first five levels of the Duo series, then adding new challenges and mechanics. A bonus level gave players a reason to collect stars. The level structure supported both the pace of learning and an additional goal.
 
 ![Duo Vikings, a Defold game available on Poki](/images/posts/developer-case-study-flazm-and-poki/duovikings2.jpg)
 
@@ -41,7 +41,7 @@ Give players time to master the controls, and reduce frustration caused by not k
 
 ![Level Devil available on Poki](/images/posts/web-games-poki/level-devil.webp)
 
-*Level Devil is a troll platformer game that is easy to read and doesn't need explaining controls.*
+*Level Devil is a troll platformer game that is easy to read and doesn't need an explanation of its controls.*
 
 It is also a good example of how simple, familiar mechanics do not need an explanation or tutorial. Platform games have existed for decades. When players see a character and a goal, with no distracting elements, they will try to reach it and may test the arrow keys first. Often, intuitive actions do not need to be presented explicitly-but only when the game is clear enough for that to work. In the first level of *Level Devil*, the goal is the only thing visible. There is no need for a control pop-up or an explanation of what to do, and the game can still surprise the player.
 
@@ -49,7 +49,7 @@ For more complex games, explain the controls and make a control diagram availabl
 
 ![It's good to present controls or input actions with simple icons](/images/posts/web-games-poki/sample-poki-controls.webp)
 
-*It's good to present controls or input actions with simple icons, and eventually show them in the pause menu or popup too.*
+*It's good to present controls or input actions with simple icons, and make them accessible from the pause menu or a pop-up.*
 
 Use Poki Playtests to observe where players get stuck. Those are the moments to find before release. Choose one problem visible in the data and recordings. You might shorten the route to the first move, improve a hint, or change when a reward offer appears. Then compare the versions.
 
@@ -59,13 +59,13 @@ In our earlier article, [Best practices when building for the web](/2026/06/02/B
 
 Measure the time from opening the game page to the first interaction on the devices and connections your players will actually use. Test with the browser cache disabled. Repeated launches on a development computer can hide the cost of the first download. If loading takes several seconds or more, use that time to show the game's logo, an instruction screen, or a tip. It is also good to show loading progress.
 
-To speed up loading, reduce the game size, compress textures and/or audio. Consider making resources needed later available for download through [Live Update](https://defold.com/manuals/live-update/). The first level must still include everything it needs to work. Content that is not shown at the beginning can be loaded asynchronously later, during gameplay. Remember to handle errors and allow another attempt when a delayed download fails.
+To speed up loading, reduce the game size by compressing textures and audio. Consider making resources that are only needed later available for download through [Live Update](https://defold.com/manuals/live-update/). The first level must still include everything it needs to work. Content that is not shown at the beginning can be loaded asynchronously later, during gameplay. Remember to handle errors and allow players to retry if a download fails.
 
 ## Mobile devices
 
-Test your game on mobile devices too. Close to half of Poki's players use Android or iOS devices, according to its [player device report](https://developers.poki.com/guide/player-device-report), making mobile an important target. Adapt your game for mobile and touch controls. Check that a finger does not cover important information and that buttons remain comfortable to use when the game area changes size.
+Test your game on mobile devices as well. Close to half of Poki's players use Android or iOS devices, according to its [player device report](https://developers.poki.com/guide/player-device-report), making mobile an important target. Adapt your game for mobile and touch controls. Check that a finger does not cover important information and that buttons remain comfortable to use when the game area changes size.
 
-Poki allows mobile games in portrait, landscape, or both orientations. It [recommends supporting portrait](https://developers.poki.com/guide/easy-access), which also makes Gamebar Display ads available. Consider orientation when designing the camera framing and interface. Use Defold's Safe Area functionality so that important information does not appear beneath notches, camera cutouts, rounded corners, and similar areas. Test on as many real mobile devices as possible, and use Poki Playtests to see how players manage on mobile.
+Poki allows mobile games in portrait, landscape, or both orientations. It [recommends supporting portrait](https://developers.poki.com/guide/easy-access), which also makes Gamebar Display ads available. Consider orientation when designing the camera framing and interface. Test on as many real mobile devices as possible, so that important information does not appear beneath notches, camera cutouts, rounded corners, and similar areas, and use Poki Playtests to see how players interact with the game on mobile devices.
 
 ## Completed level
 
@@ -75,7 +75,7 @@ Put the **Retry** or **Continue** button somewhere visible and easy to find. If 
 
 ![After failing show what can players do next, or offer them a bonus for a rewarded ad](/images/posts/web-games-poki/sample-poki-mission-failed.webp)
 
-*After failing show what can players do next, or offer them a bonus for a rewarded ad*
+*After failing, show what can players do next, or offer them a bonus for a rewarded ad*
 
 In its [engagement guide](https://developers.poki.com/guide/engagement), Poki suggests short, repeatable loops of around three minutes as a good starting point. Adjust the length to your game. The important thing is to give players time to understand the task, try to complete it, and see the result.
 
@@ -93,7 +93,7 @@ Poki manages ad frequency. Report the appropriate opportunities, but do not impl
 
 ## Rewarded video with a specific benefit
 
-Place a rewarded-ad offer where its value is clear and meaningful to players. After a failure, it might offer an extra attempt. After a completed round, it might offer extra coins, a reward, or a score multiplier. In a puzzle, it might provide a hint for the current problem. Poki collects examples in its [monetization guide](https://developers.poki.com/guide/monetization).
+Place a rewarded-ad offer where its value is clear and meaningful to players. After failing, it might offer an extra attempt. After a completed round, it might offer extra coins, a reward, or a score multiplier. In a puzzle, it might provide a hint for the current problem. Poki collects examples in its [monetization guide](https://developers.poki.com/guide/monetization).
 
 Describe the result on the button-for example, “Watch an ad and return to the game with one life”-or show the reward with an appropriate icon. Players should understand both the benefit and the condition for receiving it. The layout must also meet [Poki's requirements](https://developers.poki.com/guide/requirements-quality#advertisement-integration). A rewarded button must have a clear video icon and must not be green. It is best to assign the usual keyboard confirmation to the standard action.
 
@@ -101,7 +101,7 @@ Design a normal way to continue playing that does not require watching a rewarde
 
 Check the offer against the whole progression. A revive can save an attempt where a player was close to a record. But if beginners regularly need it in the first levels, review the difficulty. The core game should remain accessible without watching rewarded videos.
 
-After a successful offer, show the benefit and apply it straight away when possible. Making players visit a shop just to collect an upgrade they already selected adds unnecessary time away from the game.
+After a player successfully completes a rewarded ad, show the benefit and apply it straight away when possible. Making players visit a shop just to collect an upgrade they already selected adds unnecessary time away from the game.
 
 ## Ad handling is part of the game state
 
@@ -119,11 +119,11 @@ Use [Poki Inspector](https://developers.poki.com/guide/inspector) to check event
 
 ## Saving game state
 
-Start by saving the game state. Preserve completed levels, unlocked items, and audio settings. Also remember whether the player has completed the tutorial. Test what happens when the browser denies access to storage. A save error should leave the current game session playable. Handling limited storage access is part of [Poki's requirements](https://developers.poki.com/guide/requirements-quality).
+Make sure your game saves its state. Preserve completed levels, unlocked items, and audio settings. Also remember whether the player has completed the tutorial. Test what happens when the browser denies access to storage. A save error should leave the current game session playable. Handling limited storage access is part of [Poki's requirements](https://developers.poki.com/guide/requirements-quality).
 
 When the player reopens the game, offer a way to continue and show the goal they were last working on. Keep the controls available for review, for example in the pause menu.
 
-A player returning the next day should be checked separately. If you want to evaluate day-one retention (D1), measure the share of new players who return the following day, using the same definition in every version you compare. Average playtime alone will not show this.
+You should also measure whether players return the next day. If you want to evaluate day-one retention (D1), measure the share of new players who return the following day, using the same definition in every version you compare. Average playtime alone will not show this.
 
 Play through the first visit with an empty save, then return with progress saved. Repeat the test on a phone and with an ad blocker enabled. Separately test a rewarded ad that grants its reward, a request that does not grant a reward, and rapid repeated taps on the offer.
 
@@ -131,7 +131,7 @@ Play through the first visit with an empty save, then return with progress saved
 
 In Defold, call <code>poki_sdk.gameplay_start()</code> when the player's first deliberate input and movement begin gameplay. Clicking in an interactive tutorial is already part of gameplay. A screen or pop-up with instructions that is waiting for a click is still a waiting state. This distinction matters for [SDK measurements](https://developers.poki.com/guide/sdk-overview). Send start and stop events when the game changes state, and avoid sending two starts or two stops in a row. This is an error that will be reported in Poki Inspector.
 
-Add a few measurements to your game. <code>poki_sdk.measure()</code> can track when the tutorial starts and finishes, as well as attempts to complete later levels. For one attempt, send <code>start</code>, followed by either <code>complete</code> or <code>fail</code>. For rewarded offers, the <code>visible</code> and <code>interact</code> pair shows how often an offer is displayed and how often it is chosen. The SDK tracks ad playback and its result automatically. These patterns are described in the [Game Events documentation](https://developers.poki.com/guide/game-events).
+Add a few tracking events to your game. <code>poki_sdk.measure()</code> can track when the tutorial starts and finishes, as well as attempts to complete later levels. For one attempt, send <code>start</code>, followed by either <code>complete</code> or <code>fail</code>. For rewarded offers, the <code>visible</code> and <code>interact</code> pair shows how often an offer is displayed and how often it is chosen. The SDK tracks ad playback and its result automatically. These patterns are described in the [Game Events documentation](https://developers.poki.com/guide/game-events).
 
 Read the results together with recordings. A low Conversion to Play (C2P)-the share of visitors who reach their first <code>gameplayStart()</code>-points to loading and the route into the game. If players drop off at a specific level, watch that part. You may find a sudden jump in difficulty or an unclear instruction.
 
