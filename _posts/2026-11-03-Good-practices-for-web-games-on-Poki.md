@@ -11,9 +11,13 @@ twitter_image: https://defold.com/images/games/monkeymart-half.webp
 
 When you launch your own game for the hundredth time, it is easy to ignore its first phase. You know the controls and move through the screens that stand between you and the gameplay without thinking. You may even have saved progress. New players, however, will still be trying to understand what to click and how to play.
 
+![Poki - the biggest portal with web games](/images/posts/web-games-poki/poki-good-practices.webp)
+
+*How to succeed on the biggest portal with web games - Poki?*
+
 ## First impression
 
-The opening is the most important part of the game. Competition in the web-game market is intense, and it is becoming harder to make a game stand out. This is different from the premium game market, where a player who buys a game may already be convinced by a trailer or a review. Players choosing free browser games often judge them by a thumbnail, which is also very crucial, and perhaps by a few seconds of gameplay presented on hover. In the first 10-20 seconds, they decide whether to give the game more of their time. Once you have their attention, make the most of those first seconds.
+The opening is the most important part of the game. Competition in the web games market is intense, and it is becoming harder to make a game stand out. This is different from the premium game market, where a player who buys a game may already be convinced by a trailer or a review. Players choosing free browser games often judge them by a thumbnail, which is also very crucial, and perhaps by a few seconds of gameplay presented on hover. In the first 10-20 seconds, they decide whether to give the game more of their time. Once you have their attention, make the most of those first seconds.
 
 > **Observe how players behave - from opening the game page to finishing the first round.**
 
@@ -37,13 +41,17 @@ Show a hint for the action the player needs to take at that moment. If jumping s
 
 ## Mastering controls and rules
 
-Give players time to master the controls, and reduce frustration caused by not knowing how to use them. In our platform-game example, the first failed attempt could return the player to the obstacle quickly. A full failure screen, reloading the level, and replaying it would only make learning take longer. *Level Devil* is an extremely punishing and trolling platform game, yet it lets players try again straight away without a loading screen.
+Give players time to master the controls, and reduce frustration caused by not knowing how to use them. In our platform game example, after the first failed attempt we could return the player to the obstacle quickly. A full failure screen, reloading the level, and replaying it would only make learning take longer. *Level Devil* is an extremely punishing and trolling platform game, yet it lets players try again straight away without a loading screen.
 
 ![Level Devil available on Poki](/images/posts/web-games-poki/level-devil.webp)
 
 *Level Devil is a troll platformer game that is easy to read and doesn't need an explanation of its controls.*
 
-It is also a good example of how simple, familiar mechanics do not need an explanation or tutorial. Platform games have existed for decades. When players see a character and a goal, with no distracting elements, they will try to reach it and may test the arrow keys first. Often, intuitive actions do not need to be presented explicitly-but only when the game is clear enough for that to work. In the first level of *Level Devil*, the goal is the only thing visible. There is no need for a control pop-up or an explanation of what to do, and the game can still surprise the player.
+It is also a good example of how simple, familiar mechanics do not need an explanation or tutorial. Platform games have existed for decades. When players see a character and a goal, with no distracting elements, they will try to reach it and may test the arrow keys first.
+
+> **Often, intuitive actions do not need to be presented explicitly, but only when the game is clear enough for that to work.**
+
+In the first level of *Level Devil*, the goal is the only thing visible. There is no need for a control pop-up or an explanation of what to do, and the game can still surprise the player.
 
 For more complex games, explain the controls and make a control diagram available in the options or pause menu. This helps both new players and returning players who need a reminder. Simple icons showing the input and the action are usually best. Add explanatory text only if the pictograms are not enough, and localize it into as many languages as possible. The Poki audience is international.
 
@@ -93,23 +101,23 @@ Poki manages ad frequency. Report the appropriate opportunities, but do not impl
 
 ## Rewarded video with a specific benefit
 
-Place a rewarded-ad offer where its value is clear and meaningful to players. After failing, it might offer an extra attempt. After a completed round, it might offer extra coins, a reward, or a score multiplier. In a puzzle, it might provide a hint for the current problem. Poki collects examples in its [monetization guide](https://developers.poki.com/guide/monetization).
+Place a rewarded ad offer where its value is clear and meaningful to players. After failing, it might offer an extra attempt. After a completed round, it might offer extra coins, a reward, or a score multiplier. In a puzzle, it might provide a hint for the current problem. Poki collects examples in its [monetization guide](https://developers.poki.com/guide/monetization).
 
-Describe the result on the button-for example, “Watch an ad and return to the game with one life”-or show the reward with an appropriate icon. Players should understand both the benefit and the condition for receiving it. The layout must also meet [Poki's requirements](https://developers.poki.com/guide/requirements-quality#advertisement-integration). A rewarded button must have a clear video icon and must not be green. It is best to assign the usual keyboard confirmation to the standard action.
+Describe the result on the button - for example, “Watch an ad and return to the game with one life” - or show the reward with an appropriate icon. Players should understand both the benefit and the condition for receiving it. The layout must also meet [Poki's requirements](https://developers.poki.com/guide/requirements-quality#advertisement-integration). A rewarded button must have a clear video icon and must not be green. It is best to assign the usual keyboard confirmation to the standard action.
 
 Design a normal way to continue playing that does not require watching a rewarded video. The standard option must appear at the same time as the rewarded offer, be at least as large, and be beside or above it.
 
-Check the offer against the whole progression. A revive can save an attempt where a player was close to a record. But if beginners regularly need it in the first levels, review the difficulty. The core game should remain accessible without watching rewarded videos.
+Check the offer against the whole progression. For example, a revive can save an attempt where a player was close to a record. But if beginners regularly need it in the first levels, review the difficulty. The core game should remain accessible without watching rewarded videos.
 
 After a player successfully completes a rewarded ad, show the benefit and apply it straight away when possible. Making players visit a shop just to collect an upgrade they already selected adds unnecessary time away from the game.
 
 ## Ad handling is part of the game state
 
-Before requesting an ad, stop the game world and block controls. A shared pending-request lock should cover both commercial and rewarded breaks. Repeated taps on the button must not start multiple calls. Wait for the final callback status, including when no ad is shown. Do not send additional gameplay events or measurements through <code>measure()</code> while the ad is playing.
+Before requesting an ad, stop the game world and block controls, for both commercial and rewarded breaks. Make sure not to start multiple calls on repeated taps on the button. Wait for the final callback status, including when no ad is shown. Do not send additional gameplay events or measurements through <code>measure()</code> while the ad is playing.
 
-In the Defold extension, grant the reward exactly once, after <code>REWARDED_BREAK_SUCCESS</code>. <code>REWARDED_BREAK_ERROR</code> should leave the player with the normal way to continue. Check both outcomes. Unlocking an item from a menu may return the player to the menu; reviving a character requires preparing it and resuming the game safely.
+In the Defold extension, grant the reward exactly once, after <code>REWARDED_BREAK_SUCCESS</code>. And when the <code>REWARDED_BREAK_ERROR</code> occurs, we should leave the player with the normal way to continue. Check both outcomes. Unlocking an item from a menu may return the player to the menu. Reviving a character requires preparing it and resuming the game safely.
 
-<code>gameplay_stop()</code> tells Poki that gameplay has stopped. You must handle stopping the simulation in Defold separately. Game audio should be muted during an ad, and the player's previous settings should still apply afterwards. From version 3.3.0, the extension automatically mutes audio during ads. See the [Poki SDK guide for Defold](https://github.com/defold/extension-poki-sdk/blob/main/docs/index.md) for callback details and handling breaks.
+Function <code>gameplay_stop()</code> tells Poki that gameplay has stopped. You must handle stopping the simulation in Defold separately. Game audio should be muted during an ad, and the player's previous settings should still apply afterwards. From version 3.3.0, the extension automatically mutes audio during ads. See the [Poki SDK guide for Defold](https://github.com/defold/extension-poki-sdk/blob/main/docs/index.md) for callback details and handling breaks.
 
 Use [Poki Inspector](https://developers.poki.com/guide/inspector) to check event order and behavior during pauses, browser-tab or window changes, and ads.
 
@@ -131,12 +139,12 @@ Play through the first visit with an empty save, then return with progress saved
 
 In Defold, call <code>poki_sdk.gameplay_start()</code> when the player's first deliberate input and movement begin gameplay. Clicking in an interactive tutorial is already part of gameplay. A screen or pop-up with instructions that is waiting for a click is still a waiting state. This distinction matters for [SDK measurements](https://developers.poki.com/guide/sdk-overview). Send start and stop events when the game changes state, and avoid sending two starts or two stops in a row. This is an error that will be reported in Poki Inspector.
 
-Add a few tracking events to your game. <code>poki_sdk.measure()</code> can track when the tutorial starts and finishes, as well as attempts to complete later levels. For one attempt, send <code>start</code>, followed by either <code>complete</code> or <code>fail</code>. For rewarded offers, the <code>visible</code> and <code>interact</code> pair shows how often an offer is displayed and how often it is chosen. The SDK tracks ad playback and its result automatically. These patterns are described in the [Game Events documentation](https://developers.poki.com/guide/game-events).
+Add a few tracking events to your game. For example, <code>poki_sdk.measure()</code> can track when the tutorial starts and finishes, as well as attempts to complete later levels. For one attempt, send <code>start</code>, followed by either <code>complete</code> or <code>fail</code>. For rewarded offers, the <code>visible</code> and <code>interact</code> pair shows how often an offer is displayed and how often it is chosen. The SDK tracks ad playback and its result automatically. These patterns are described in the [Game Events documentation](https://developers.poki.com/guide/game-events).
 
-Read the results together with recordings. A low Conversion to Play (C2P)-the share of visitors who reach their first <code>gameplayStart()</code>-points to loading and the route into the game. If players drop off at a specific level, watch that part. You may find a sudden jump in difficulty or an unclear instruction.
+Read the results together with recordings. A low Conversion to Play (C2P) - the share of visitors who reach their first <code>gameplayStart()</code> - points to loading and the route into the game. If players drop off at a specific level, watch that part. You may find a sudden jump in difficulty or an unclear instruction.
 
 [Poki gives](https://developers.poki.com/guide/reading-results) general targets of at least **65% C2P** and an average of at least **five minutes of playtime**. For management and simulation games, the target is at least **ten minutes**. Results also depend on genre and the stage of testing. The [Player Fit Test](https://developers.poki.com/guide/player-fit-test) has its own threshold for progressing: an average of more than three minutes and at least 25% of sessions lasting longer than three minutes. C2P is measured only later, in the Web Fit Test.
 
 ## Summary
 
-A strong first session helps new players understand what to do, gives them time to learn the controls, and makes it easy to continue after a round. Test the complete journey-from the first load through the first attempt and the next decision-on the devices your players use. Then use playtests, recordings, and events to find where they struggle and improve one thing at a time.
+A strong first session helps new players understand what to do, gives them time to learn the controls, and makes it easy to continue after a round. Test the complete journey - from the first load through the first attempt and the next decision - on the devices your players use. Then use playtests, recordings, and events to find where they struggle and improve one thing at a time.
