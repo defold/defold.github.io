@@ -6,6 +6,8 @@ locale: pt
 title: Desenvolvimento Defold para a plataforma Windows
 toc:
 - Desenvolvimento para Windows
+- anchor: graphics-backends
+  title: Backends gráficos
 - Configurações do projeto
 - Ícone da aplicação
 - Criando arquivo .ico localmente usando a suíte ImageMagick.
@@ -15,6 +17,10 @@ toc:
 # Desenvolvimento para Windows
 
 Desenvolver aplicações Defold para a plataforma Windows é um processo simples, com muito poucas considerações a fazer.
+
+## Backends gráficos {#graphics-backends}
+
+Builds Windows usam OpenGL por padrão. Use **Graphics (Windows)** em um [manifesto de aplicação](/pt/manuals/app-manifest/#graphics) para selecionar OpenGL, Vulkan ou DirectX 12 (**DX12**). Você pode incluir vários backends para permitir fallback quando o preferido estiver indisponível.
 
 ## Configurações do projeto
 

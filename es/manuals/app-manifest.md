@@ -5,51 +5,69 @@ layout: manual
 locale: es
 title: Manifiesto de la aplicación
 toc:
-- Manifiesto de la aplicación
-- Aplicar el manifiesto
+- anchor: app-manifest
+  title: Manifiesto de la aplicación
+- anchor: applying-the-manifest
+  title: Aplicar el manifiesto
 - anchor: physics-2d
   title: Físicas 2D (Physics 2D)
-- Físicas 3D (Physics 3D)
-- Rig + modelo (Rig + Model)
-- Excluir grabación (Exclude Record)
+- anchor: physics-3d
+  title: Físicas 3D (Physics 3D)
+- anchor: rig-model
+  title: Rig + modelo (Rig + Model)
+- anchor: exclude-record
+  title: Excluir grabación (Exclude Record)
 - anchor: profiler
   title: Profiler
 - anchor: sound
   title: Sonido
-- Excluir sonido (Exclude Sound)
-- 'Excluir decodificador de sonido: WAV (Exclude Sound Decoder: WAV)'
-- 'Excluir decodificador de sonido: OGG (Exclude Sound Decoder: OGG)'
-- 'Incluir decodificador de sonido: Opus (Include Sound Decoder: Opus)'
-- Excluir input (Exclude Input)
+- anchor: exclude-sound
+  title: Excluir sonido (Exclude Sound)
+- anchor: exclude-sound-decoder-wav
+  title: 'Excluir decodificador de sonido: WAV (Exclude Sound Decoder: WAV)'
+- anchor: exclude-sound-decoder-ogg
+  title: 'Excluir decodificador de sonido: OGG (Exclude Sound Decoder: OGG)'
+- anchor: include-sound-decoder-opus
+  title: 'Incluir decodificador de sonido: Opus (Include Sound Decoder: Opus)'
+- anchor: exclude-input
+  title: Excluir input (Exclude Input)
 - anchor: exclude-gui
   title: Excluir GUI (Exclude GUI)
 - anchor: exclude-particle-fx
   title: Excluir efectos de partículas (Exclude Particle FX)
 - anchor: exclude-tilemaps
   title: Excluir tilemaps (Exclude Tilemaps)
-- Excluir Live Update (Exclude Live Update)
-- Excluir módulo image (Exclude Image)
-- Excluir módulo types (Exclude Types)
-- Excluir transcodificador Basis (Exclude Basis Transcoder)
-- Usar Android Support Lib (Use Android Support Lib)
-- Gráficos (Graphics)
-- Usar el sistema completo de layout de texto (Use full text layout system)
+- anchor: exclude-live-update
+  title: Excluir Live Update (Exclude Live Update)
+- anchor: exclude-image
+  title: Excluir módulo image (Exclude Image)
+- anchor: exclude-types
+  title: Excluir módulo types (Exclude Types)
+- anchor: exclude-basis-transcoder
+  title: Excluir transcodificador Basis (Exclude Basis Transcoder)
+- anchor: use-android-support-lib
+  title: Usar Android Support Lib (Use Android Support Lib)
+- anchor: graphics
+  title: Gráficos (Graphics)
+- anchor: use-full-text-layout-system
+  title: Usar el sistema completo de layout de texto (Use full text layout system)
 - anchor: use-rich-text
   title: Usar texto enriquecido (Use Rich Text)
-- Versiones mínimas del navegador
-- Memoria inicial (HTML5)
-- Tamaño del stack (HTML5)
+- anchor: minimum-browser-versions
+  title: Versiones mínimas del navegador
+- anchor: initial-memory-html5
+  title: Memoria inicial (HTML5)
+- anchor: stack-size-html5
+  title: Tamaño del stack (HTML5)
 ---
 
-# Manifiesto de la aplicación
+# Manifiesto de la aplicación {#app-manifest}
 
 El manifiesto de la aplicación controla qué funcionalidades y backends se enlazan con el motor. Se recomienda excluir las funcionalidades que no se usan porque reduce el tamaño binario final del juego. El manifiesto de la aplicación también contiene opciones de compilación, como las versiones mínimas de navegador compatibles con HTML5 y los ajustes de memoria de WebAssembly.
 
 ![](/manuals/images/app_manifest/create-app-manifest.png)
 
-![](/manuals/images/app_manifest/app-manifest.png)
-
-# Aplicar el manifiesto
+# Aplicar el manifiesto {#applying-the-manifest}
 
 En `game.project`, asigna el manifiesto en `Native Extensions` -> `App Manifest`.
 
@@ -63,18 +81,18 @@ Selecciona qué implementación de Box2D incluir:
 
 Los ajustes del solver de Box2D son específicos de cada versión. Consulta las [opciones de proyecto de Box2D](/es/manuals/project-settings/#box2d) para más detalles.
 
-## Físicas 3D (`Physics 3D`)
+## Físicas 3D (`Physics 3D`) {#physics-3d}
 
 Incluye la implementación de físicas Bullet 3D. Se incluye de forma predeterminada; desactiva este ajuste para excluir las físicas 3D.
 
-## Rig + modelo (`Rig + Model`)
+## Rig + modelo (`Rig + Model`) {#rig-model}
 
 Controla la funcionalidad de rig y modelo, o selecciona None para excluir por completo modelo y rig. (Consulta la documentación de [`Model`](https://defold.com/es/manuals/model/#model-component)).
 
 
-## Excluir grabación (`Exclude Record`)
+## Excluir grabación (`Exclude Record`) {#exclude-record}
 
-Excluye la capacidad de grabación de video del motor (consulta la documentación del mensaje [`start_record`](https://defold.com/ref/sys/#start_record)).
+Excluye la grabación nativa de MP4, el [módulo Lua `recorder`](/ref/recorder/) y el servicio HTTP de grabación de las builds de depuración de escritorio. La grabación ya se omite en builds release, headless, móviles y web. Consulta el [manual de grabación](/es/manuals/recording) para conocer el procedimiento.
 
 
 ## Profiler {#profiler}
@@ -92,24 +110,24 @@ El ajuste del manifiesto de la aplicación controla si el código del profiler s
 
 Los controles de sonido determinan qué sistema de sonido y decodificadores se enlazan con el motor.
 
-### Excluir sonido (`Exclude Sound`)
+### Excluir sonido (`Exclude Sound`) {#exclude-sound}
 
 Excluye todas las capacidades de reproducción de sonido del motor.
 
-### Excluir decodificador de sonido: WAV (`Exclude Sound Decoder: WAV`)
+### Excluir decodificador de sonido: WAV (`Exclude Sound Decoder: WAV`) {#exclude-sound-decoder-wav}
 
 Excluye el soporte para recursos de sonido WAV.
 
-### Excluir decodificador de sonido: OGG (`Exclude Sound Decoder: OGG`)
+### Excluir decodificador de sonido: OGG (`Exclude Sound Decoder: OGG`) {#exclude-sound-decoder-ogg}
 
 Excluye el soporte para recursos de sonido Ogg Vorbis.
 
-### Incluir decodificador de sonido: Opus (`Include Sound Decoder: Opus`)
+### Incluir decodificador de sonido: Opus (`Include Sound Decoder: Opus`) {#include-sound-decoder-opus}
 
 Incluye soporte para recursos de sonido Ogg Opus. El decodificador Opus se excluye de forma predeterminada, por lo que esta opción debe activarse antes de poder reproducir recursos `.opus`. Consulta el [manual de sonido](/es/manuals/sound/) para conocer los formatos compatibles.
 
 
-## Excluir input (`Exclude Input`)
+## Excluir input (`Exclude Input`) {#exclude-input}
 
 Excluye todo el manejo de input del motor.
 
@@ -129,38 +147,41 @@ Elimina los recursos y componentes de efectos de partículas y el módulo Lua `p
 Elimina los recursos y componentes de tilemap y el módulo Lua `tilemap`. Activa esta opción solo si el proyecto no usa componentes tilemap ni sus APIs. Las tile sources usadas por otros componentes siguen disponibles. Esta opción está desactivada de forma predeterminada.
 
 
-## Excluir Live Update (`Exclude Live Update`)
+## Excluir Live Update (`Exclude Live Update`) {#exclude-live-update}
 
 Excluye la [funcionalidad Live Update](/es/manuals/live-update) del motor.
 
 
-## Excluir módulo `image` (`Exclude Image`)
+## Excluir módulo `image` (`Exclude Image`) {#exclude-image}
 
 Excluye del motor el módulo de script `image` [enlace](https://defold.com/ref/image/).
 
 
-## Excluir módulo `types` (`Exclude Types`)
+## Excluir módulo `types` (`Exclude Types`) {#exclude-types}
 
 Excluye del motor el módulo de script `types` [enlace](https://defold.com/ref/types/).
 
 
-## Excluir transcodificador Basis (`Exclude Basis Transcoder`)
+## Excluir transcodificador Basis (`Exclude Basis Transcoder`) {#exclude-basis-transcoder}
 
 Excluye del motor la [biblioteca de compresión de texturas](/es/manuals/texture-profiles) Basis Universal.
 
 
-## Usar Android Support Lib (`Use Android Support Lib`)
+## Usar Android Support Lib (`Use Android Support Lib`) {#use-android-support-lib}
 
 Usa la Android Support Library obsoleta en lugar de Android X. [Más información](https://defold.com/es/manuals/android/#using-androidx).
 
 
-## Gráficos (`Graphics`)
+## Gráficos (`Graphics`) {#graphics}
 
-Selecciona qué backends gráficos incluir para cada plataforma. Una opción combinada incluye ambos backends para que el preferido pueda recurrir al otro cuando no esté disponible.
+Selecciona los backends gráficos que se incluirán para cada plataforma. Una opción combinada incluye varios backends para que el motor pueda usar otro si el preferido no está disponible. Incluir más backends aumenta el tamaño del motor.
+
+Windows y Linux usan campos independientes. La opción **DX12** selecciona DirectX 12 en Windows.
 
 | Campo | Plataformas | Opciones | Predeterminado |
 |---|---|---|---|
-| **Graphics** | Windows y Linux | OpenGL, Vulkan, OpenGL & Vulkan | OpenGL |
+| **Graphics (Linux)** | Linux | OpenGL, Vulkan, OpenGL & Vulkan | OpenGL |
+| **Graphics (Windows)** | Windows | OpenGL, Vulkan, DX12, OpenGL & Vulkan, OpenGL & DX12, Vulkan & DX12, OpenGL & Vulkan & DX12 | OpenGL |
 | **Graphics (macOS)** | macOS | OpenGL, Metal, Vulkan, OpenGL & Metal, OpenGL & Vulkan | Metal |
 | **Graphics (iOS)** | iOS | OpenGL, Metal, Vulkan, OpenGL & Metal, OpenGL & Vulkan | OpenGL |
 | **Graphics (Android)** | Android | OpenGL+Vulkan, OpenGL, Vulkan | OpenGL+Vulkan |
@@ -168,11 +189,11 @@ Selecciona qué backends gráficos incluir para cada plataforma. Una opción com
 
 En Linux ARM64, la opción **OpenGL** usa el backend OpenGL ES. En Android, la opción combinada predeterminada prefiere Vulkan cuando está disponible y recurre a OpenGL ES en caso contrario.
 
-Desde Defold 1.14.0, macOS usa el backend Metal nativo de forma predeterminada. La opción **Vulkan** en macOS e iOS usa Vulkan mediante MoltenVK. El simulador de iOS (`arm64_sim-ios`) siempre usa Metal, independientemente de la opción **Graphics (iOS)** para los dispositivos.
+macOS usa el backend nativo Metal de forma predeterminada. La opción **Vulkan** en macOS e iOS usa Vulkan mediante MoltenVK. El simulador de iOS (`arm64_sim-ios`) siempre usa Metal, independientemente de la opción **Graphics (iOS)** seleccionada para los dispositivos.
 
-## Usar el sistema completo de layout de texto (`Use full text layout system`)
+## Usar el sistema completo de layout de texto (`Use full text layout system`) {#use-full-text-layout-system}
 
-Si está activado (`true`), incluye el sistema completo de layout de texto para dar forma al texto, incluidos los idiomas de derecha a izquierda. Activa esta opción junto con `font.runtime_generation` en *game.project* para usar la generación en runtime de fuentes SDF a partir de recursos TrueType (`.ttf`) u OpenType (`.otf`). La generación en runtime a partir de recursos `.otf` está disponible desde Defold 1.13.2. Lee más en el [manual de fuentes](/es/manuals/font/#enabling-runtime-fonts).
+Si está activado (`true`), incluye el sistema completo de layout de texto para dar forma al texto, incluidos los idiomas que se escriben de derecha a izquierda. Activa esta opción para generar fuentes TrueType (`.ttf`) u OpenType (`.otf`) en runtime, y establece *Glyph Generation* en **Dynamic** en cada recurso de fuente que lo necesite. La generación dinámica admite los modos **SDF** y **Vector**. Consulta el [manual de fuentes](/es/manuals/font/#enabling-runtime-fonts).
 
 
 ## Usar texto enriquecido (`Use Rich Text`) {#use-rich-text}
@@ -180,7 +201,7 @@ Si está activado (`true`), incluye el sistema completo de layout de texto para 
 Incluye el análisis de marcado de texto enriquecido y efectos de estilo para labels y texto GUI. Esta opción está activada de forma predeterminada. Desactívala para reducir el tamaño del motor cuando el proyecto solo necesite texto sin formato. Los labels y el texto GUI siguen siendo compatibles, pero el marcado se muestra como texto sin formato en lugar de aplicar formato o efectos.
 
 
-## Versiones mínimas del navegador
+## Versiones mínimas del navegador {#minimum-browser-versions}
 
 Los campos YAML **`minSafariVersion`**, **`minFirefoxVersion`** y **`minChromeVersion`** especifican las versiones mínimas de navegador para las que compila Emscripten. Los valores predeterminados actuales y las versiones mínimas compatibles difieren entre los targets sin threads y con threads:
 
@@ -191,7 +212,7 @@ Los campos YAML **`minSafariVersion`**, **`minFirefoxVersion`** y **`minChromeVe
 
 Especifica los valores personalizados en el contexto del target correspondiente. El target con threads también tiene [requisitos de alojamiento](/es/manuals/html5/#creating-html5-bundle) adicionales. Consulta la referencia de ajustes de Emscripten para [`MIN_SAFARI_VERSION`](https://emscripten.org/docs/tools_reference/settings_reference.html#min-safari-version), [`MIN_FIREFOX_VERSION`](https://emscripten.org/docs/tools_reference/settings_reference.html#min-firefox-version) y [`MIN_CHROME_VERSION`](https://emscripten.org/docs/tools_reference/settings_reference.html#min-chrome-version).
 
-## Memoria inicial (HTML5)
+## Memoria inicial (HTML5) {#initial-memory-html5}
 Nombre del campo YAML: **`initialMemory`**
 Valor predeterminado: **33554432**
 
@@ -199,7 +220,7 @@ La cantidad inicial de memoria asignada a la aplicación web, en bytes. El valor
 
 Esta opción proporciona el valor predeterminado en tiempo de compilación. El valor [`html5.heap_size`](/es/manuals/html5/#heap-size) de *game.project* lo sobrescribe en runtime.
 
-## Tamaño del stack (HTML5)
+## Tamaño del stack (HTML5) {#stack-size-html5}
 Nombre del campo YAML: **`stackSize`**
 Valor predeterminado: **5242880**
 

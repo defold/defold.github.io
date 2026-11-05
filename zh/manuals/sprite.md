@@ -79,7 +79,7 @@ toc:
 : 精灵的非均匀缩放（`vector3`）。
 
 `size`
-: 精灵的大小（`vector3`）。只有当精灵的`大小模式`设置为`手动`时才能更改。
+: 精灵的大小（`vector3`）。只有当精灵的`Size Mode`设置为`Manual`时才能更改。
 
 ## 材质常量
 
@@ -129,7 +129,7 @@ run:
     ...
 ```
 
-因此，我们在[图集](/zh/manuals/material/)中使用`重命名模式`来重命名它们。
+因此，我们在[图集](/zh/manuals/material/)中使用`Rename patterns`来重命名它们。
 在相应的图集中设置 `_color=` 和 `_normal=`，您将在两个图集中得到如下帧名：
 
 ```

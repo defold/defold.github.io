@@ -6,6 +6,8 @@ locale: ko
 title: Windows 플랫폼용 Defold 개발
 toc:
 - Windows 개발
+- anchor: graphics-backends
+  title: 그래픽 백엔드
 - 프로젝트 설정
 - 어플리케이션 아이콘
 - ImageMagick 소프트웨어 모음을 사용해 로컬에서 .ico 파일 생성하기.
@@ -15,6 +17,10 @@ toc:
 # Windows 개발
 
 Windows 플랫폼용 Defold 어플리케이션 개발은 고려할 사항이 매우 적은 간단한 과정입니다.
+
+## 그래픽 백엔드 {#graphics-backends}
+
+Windows 빌드는 기본적으로 OpenGL을 사용합니다. [어플리케이션 메니페스트](/ko/manuals/app-manifest/#graphics)의 **Graphics (Windows)**에서 OpenGL, Vulkan, DirectX 12(**DX12**)를 선택하세요. 우선하는 백엔드를 사용할 수 없을 때 대체하도록 여러 백엔드를 포함할 수 있습니다.
 
 ## 프로젝트 설정
 

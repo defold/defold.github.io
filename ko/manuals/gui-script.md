@@ -7,6 +7,8 @@ title: Defold의 GUI 스크립트
 toc:
 - GUI 스크립트
 - GUI에 스크립트 추가하기
+- anchor: input
+  title: 입력
 - gui 네임스페이스
 - 메세지 전달
 - 노드 주소 지정
@@ -61,6 +63,12 @@ end
 ![Script](/manuals/images/gui-script/set_script.png)
 
 GUI 컴포넌트가 게임 안의 어딘가에 있는 게임 오브젝트에 추가되어 있다면 이제 스크립트가 실행됩니다.
+
+## 입력 {#input}
+
+GUI 스크립트에서 입력을 받으려면 `init()`에서 `msg.post(".", "acquire_input_focus")`를 보내고 `on_input(self, action_id, action)`에서 동작을 처리합니다.
+
+GUI 스크립트도 게임 오브젝트 스크립트와 같은 `action.source` 해쉬를 사용하므로 처음 누르는 시점부터 물리 마우스 클릭과 탭을 구분할 수 있습니다. [입력 기기 출처](/ko/manuals/input/#input-device-source)와 [마우스 및 터치 예제](/ko/manuals/input-mouse-and-touch/#distinguishing-mouse-clicks-from-touch)를 참고하세요. 포인터 이동과 가속도계 샘플은 모두 `action_id == nil`을 사용하므로 출처로 구분합니다.
 
 ## "gui" 네임스페이스
 

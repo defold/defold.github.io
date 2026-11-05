@@ -5,24 +5,29 @@ layout: manual
 locale: de
 title: Entwicklung mit Defold für Microsoft Xbox
 toc:
-- anchor: xbox-support
+- anchor: game-development-for-microsoft-xbox-consoles
   title: Spieleentwicklung für Microsoft Xbox-Konsolen
-- Registrierung als Xbox-Entwickler
-- Zugang zur Xbox-Unterstützung in Defold
-- Häufig gestellte Fragen (FAQ)
+- anchor: registering-as-an-xbox-developer
+  title: Registrierung als Xbox-Entwickler
+- anchor: xbox-access-in-defold
+  title: Zugang zur Xbox-Unterstützung in Defold
+- anchor: faq
+  title: Häufig gestellte Fragen (FAQ)
 ---
 
-# Spieleentwicklung für Microsoft Xbox-Konsolen {#xbox-support}
+<a id="xbox-support"></a>
+
+# Spieleentwicklung für Microsoft Xbox-Konsolen {#game-development-for-microsoft-xbox-consoles}
 
 Um mit Defold Spiele für Xbox-Konsolen zu entwickeln, musst du ein zugelassener Xbox-Entwickler sein und Zugang zur Xbox-Unterstützung von Defold sowie zu den Entwicklungswerkzeugen von Microsoft für Konsolen haben.
 
-## Registrierung als Xbox-Entwickler
+## Registrierung als Xbox-Entwickler {#registering-as-an-xbox-developer}
 
 Informiere dich auf der [Xbox-Veröffentlichungsseite](https://developer.microsoft.com/en-US/games/publish) von Microsoft über die Veröffentlichungsprogramme, einschließlich ID@Xbox, und folge dem Registrierungs- und Zulassungsverfahren für die Entwicklung für Xbox-Konsolen.
 
 Sobald Microsoft deine Organisation für die Entwicklung für Xbox-Konsolen zugelassen hat, melde dich auf der Xbox-Middleware-Seite mit einem Konto an, das dieser Organisation zugeordnet ist. Suche nach Defold und beantrage den Zugang über diese Seite.
 
-## Zugang zur Xbox-Unterstützung in Defold
+## Zugang zur Xbox-Unterstützung in Defold {#xbox-access-in-defold}
 
 Sobald wir die Bestätigung deines Entwicklerstatus über die Xbox-Middleware-Seite erhalten und überprüft haben, gewähren wir dir Zugang zu Xbox-spezifischen Defold-Ressourcen und Anleitungen für den Einstieg, darunter:
 
@@ -32,12 +37,12 @@ Sobald wir die Bestätigung deines Entwicklerstatus über die Xbox-Middleware-Se
 
 Details zur Konsolenentwicklung, die unter die Geheimhaltungsvereinbarung von Microsoft fallen, werden über autorisierte Dokumentations- und Supportkanäle bereitgestellt.
 
-## Häufig gestellte Fragen (FAQ)
+## Häufig gestellte Fragen (FAQ) {#faq}
 
-#### Q: Muss ich zusätzliche Werkzeuge installieren, um für Xbox zu entwickeln?
+#### Q: Muss ich zusätzliche Werkzeuge installieren, um für Xbox zu entwickeln? {#q-do-i-need-to-install-additional-tools-to-develop-for-xbox}
 
 A: Ja. Informationen über die erforderlichen Entwicklungswerkzeuge und das Testen auf Xbox-Hardware erhältst du, sobald wir deinen Entwicklerstatus überprüft und dir Zugang zur Xbox-Unterstützung von Defold gewährt haben.
 
-#### Q: Kann ich eine gemeinsame Codebasis für Xbox und andere Plattformen verwenden?
+#### Q: Kann ich eine gemeinsame Codebasis für Xbox und andere Plattformen verwenden? {#q-can-i-use-a-single-code-base-for-xbox-and-other-platforms}
 
 A: Du kannst Spiellogik und Assets auf den unterstützten Defold-Plattformen gemeinsam nutzen. Xbox-spezifische Integrationen, etwa für Benutzerverwaltung und Spielstände, verwenden die Xbox-Erweiterung und können plattformspezifischen Code erfordern.

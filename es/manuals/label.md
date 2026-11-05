@@ -6,19 +6,27 @@ locale: es
 title: Componentes de texto Label en Defold
 toc:
 - Label
-- Crear un label
-- Propiedades de Label
-- Modos de mezcla
-- Pivote y alineación
-- Manipulación en runtime
-- Configuración del proyecto
+- anchor: creating-a-label
+  title: Crear un label
+- anchor: vector-fonts-and-color-emoji
+  title: Fuentes vectoriales y emoji a color
+- anchor: label-properties
+  title: Propiedades de Label
+- anchor: blend-modes
+  title: Modos de mezcla
+- anchor: pivot-and-alignment
+  title: Pivote y alineación
+- anchor: runtime-manipulation
+  title: Manipulación en runtime
+- anchor: project-configuration
+  title: Configuración del proyecto
 ---
 
 # Label
 
 Un componente *Label* renderiza una porción de texto en pantalla, en el espacio del juego. Por defecto se ordena y dibuja junto con todos los gráficos de sprites y tiles. El componente tiene un conjunto de propiedades que controla cómo se renderiza el texto. La GUI de Defold permite usar texto, pero puede ser complicado colocar elementos GUI en el mundo del juego. Los componentes Label facilitan esto.
 
-## Crear un label
+## Crear un label {#creating-a-label}
 
 Para crear un componente Label, haz <kbd>click derecho</kbd> en el objeto de juego y selecciona <kbd>Add Component ▸ Label</kbd>.
 
@@ -32,7 +40,31 @@ Define la propiedad *Font* con la fuente que quieres usar y asegúrate de defini
 
 ![Font and material](/manuals/images/label/font_material.png)
 
-## Propiedades de Label
+## Fuentes vectoriales y emoji a color {#vector-fonts-and-color-emoji}
+
+Para usar una fuente Vector, sigue la [configuración de fuentes vectoriales](/es/manuals/font/#vector-fonts), asigna el recurso `.font` a la propiedad *Font* del Label y establece su *Material* en `/builtins/fonts/label-vector.material`. Usa *Font Size* para controlar el tamaño mostrado.
+
+Para emoji a color, completa también la [configuración de la fuente alternativa COLRv1 y su inclusión en el bundle](/es/manuals/font/#color-emoji). El ejemplo siguiente supone que hay un Label con id `label` y un script en el mismo objeto de juego. Deja el *Text* del Label vacío para mostrar el saludo solo cuando sus glifos estén listos:
+
+```lua
+function init(self)
+    local text = "Hello 😀 🍎 🚀"
+    local font_resource = go.get("#label", "font")
+    -- Agrega la fuente alternativa una sola vez para este recurso de fuente compartido.
+    font.add_font(font_resource, "/fonts/NotoColorEmoji-Regular.ttf")
+    font.prewarm_text(font_resource, text, function(self, request_id, result, err)
+        if result then
+            go.set("#label", "text", text)
+        else
+            print("Could not prepare label text:", err)
+        end
+    end)
+end
+```
+
+Las letras normales usan la fuente original y los emoji usan la fuente a color agregada. Si otros Label o nodos de texto GUI comparten este recurso de fuente, inicializa la alternativa en un solo lugar y reutilízala.
+
+## Propiedades de Label {#label-properties}
 
 Además de las propiedades *Id*, *Position*, *Rotation* y *Scale*, existen las siguientes propiedades específicas del componente:
 
@@ -74,12 +106,12 @@ Ten en cuenta que el material predeterminado tiene desactivado el renderizado de
 : El recurso de fuente que se usa para este label.
 
 *Material*
-: El material que se usa para renderizar este label. Asegúrate de seleccionar un material creado para el tipo de fuente que usas (bitmap, distance field o BMFont).
+: El material que se usará para renderizar esta etiqueta. Selecciona un material que corresponda al modo o tipo de la fuente (Bitmap, SDF, Vector o BMFont). Consulta [Materiales de fuentes](/es/manuals/font/#font-materials) para conocer los materiales Label integrados correspondientes.
 
-### Modos de mezcla
+### Modos de mezcla {#blend-modes}
 {% include shared/es/blend-modes.md %}
 
-### Pivote y alineación
+### Pivote y alineación {#pivot-and-alignment}
 
 Al definir la propiedad *Pivot*, puedes cambiar el modo de alineación del texto.
 
@@ -94,12 +126,12 @@ Al definir la propiedad *Pivot*, puedes cambiar el modo de alineación del texto
 
 ![Text alignment](/manuals/images/label/align.png)
 
-## Manipulación en runtime
+## Manipulación en runtime {#runtime-manipulation}
 
 Puedes manipular labels en runtime obteniendo y definiendo el texto del label, así como sus distintas propiedades.
 
 `text`
-: El contenido de texto del label (`string`). Disponible mediante `go.get()` y `go.set()` desde Defold 1.13.2.
+: El contenido de texto de la etiqueta (`string`). Disponible mediante `go.get()` y `go.set()`.
 
 `color`
 : El color del label (`vector4`)
@@ -118,8 +150,8 @@ Puedes manipular labels en runtime obteniendo y definiendo el texto del label, a
 
 ```lua
 function init(self)
-    -- Set the text of the "my_label" component in the same game object
-    -- as this script.
+    -- Establece el texto del componente "my_label" del mismo objeto de juego
+    -- que este script.
     go.set("#my_label", "text", "New text")
     local text = go.get("#my_label", "text")
     print(text) -- New text
@@ -127,7 +159,7 @@ end
 ```
 
 <div class='sidenote' markdown='1'>
-Desde Defold 1.13.2, `label.set_text()` y `label.get_text()` están obsoletas en favor de la propiedad `text`. Las funciones anteriores siguen disponibles por compatibilidad. La función anterior para definir el texto encola un mensaje, mientras que `go.set()` actualiza el texto inmediatamente.
+`label.set_text()` y `label.get_text()` están obsoletas en favor de la propiedad `text`. Las funciones antiguas siguen disponibles por compatibilidad. El setter antiguo encola un mensaje, mientras que `go.set()` actualiza el texto inmediatamente.
 </div>
 
 ```lua
@@ -146,6 +178,6 @@ function init(self)
 end
 ```
 
-## Configuración del proyecto
+## Configuración del proyecto {#project-configuration}
 
 El archivo *game.project* tiene algunas [configuraciones del proyecto](/es/manuals/project-settings#label) relacionadas con labels.

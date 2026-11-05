@@ -5,47 +5,62 @@ layout: manual
 locale: tr
 title: Çarpışma şekilleri
 toc:
-- Çarpışma şekilleri
-- Temel şekiller
-- Kutu şekli
-- Küre şekli
-- Kapsül şekli
-- Karmaşık şekiller
+- anchor: collision-shapes
+  title: Çarpışma şekilleri
+- anchor: primitive-shapes
+  title: Temel şekiller
+- anchor: box-shape
+  title: Kutu şekli
+- anchor: sphere-shape
+  title: Küre şekli
+- anchor: capsule-shape
+  title: Kapsül şekli
+- anchor: complex-shapes
+  title: Karmaşık şekiller
 - anchor: hull-and-mesh-shapes-in-3d
   title: 3B fizikte zarf ve örgü şekilleri
-- Karo haritası çarpışma şekli
-- Dışbükey zarf şekli
-- Dosya biçimi
-- Harici araçlar
+- anchor: tilemap-collision-shape
+  title: Karo haritası çarpışma şekli
+- anchor: convex-hull-shape
+  title: Dışbükey zarf şekli
+- anchor: file-format
+  title: Dosya biçimi
+- anchor: external-tools
+  title: Harici araçlar
 - anchor: scaling-collision-shapes
   title: Çarpışma şekillerini ölçekleme
-- Çarpışma şekillerini yeniden boyutlandırma
-- Çarpışma şekillerini döndürme
-- 3B fizikte çarpışma şekillerini döndürme
-- 2B fizikte çarpışma şekillerini döndürme
-- Hata ayıklama
+- anchor: resizing-collision-shapes
+  title: Çarpışma şekillerini yeniden boyutlandırma
+- anchor: rotating-collision-shapes
+  title: Çarpışma şekillerini döndürme
+- anchor: rotating-collision-shapes-in-3d-physics
+  title: 3B fizikte çarpışma şekillerini döndürme
+- anchor: rotating-collision-shapes-in-2d-physics
+  title: 2B fizikte çarpışma şekillerini döndürme
+- anchor: debugging
+  title: Hata ayıklama
 ---
 
-# Çarpışma şekilleri
+# Çarpışma şekilleri {#collision-shapes}
 
 Bir çarpışma nesnesi (collision object) birden çok gömülü şekil içerebilir. 3B fizikte bunlar glTF veya GLB dosyalarından gelen zarfları (hull) ve üçgen örgülerini (triangle mesh) içerebilir. Çarpışma nesnesinin *Collision Shape* özelliği aracılığıyla bir karo haritası (tilemap) veya dışbükey şekil (convex shape) kaynağı da kullanabilirsiniz.
 
-### Temel şekiller
+### Temel şekiller {#primitive-shapes}
 Temel şekiller (primitive shapes) *kutu*, *küre* ve *kapsül* şekilleridir. Çarpışma nesnesine <kbd>sağ tıklayıp</kbd> <kbd>Add Shape</kbd> seçeneğini seçerek temel bir şekil ekleyebilirsiniz:
 
 ![Temel bir şekil ekleme](/manuals/images/physics/add_shape.png)
 
-## Kutu şekli
+## Kutu şekli {#box-shape}
 Bir kutunun konumu, dönmesi ve boyutları (genişlik, yükseklik ve derinlik) vardır:
 
 ![Kutu şekli](/manuals/images/physics/box.png)
 
-## Küre şekli
+## Küre şekli {#sphere-shape}
 Bir kürenin konumu, dönmesi ve çapı vardır:
 
 ![Küre şekli](/manuals/images/physics/sphere.png)
 
-## Kapsül şekli
+## Kapsül şekli {#capsule-shape}
 Bir kapsülün konumu, dönmesi, çapı ve yüksekliği vardır:
 
 ![Küre şekli](/manuals/images/physics/capsule.png)
@@ -54,8 +69,8 @@ Bir kapsülün konumu, dönmesi, çapı ve yüksekliği vardır:
 Kapsül şekilleri yalnızca 3B fizik kullanılırken desteklenir (*game.project* dosyasının Physics bölümünde yapılandırılır).
 </div>
 
-### Karmaşık şekiller
-Karmaşık şekiller karo haritası geometrisini veya dışbükey zarf (convex hull) verilerini kullanabilir. Defold 1.13.2 sürümünden itibaren 3B çarpışma nesneleri glTF veya GLB sahnelerindeki örgülerden zarf ve üçgen örgüsü şekilleri de oluşturabilir.
+### Karmaşık şekiller {#complex-shapes}
+Karmaşık şekiller karo haritası geometrisini veya dışbükey zarf (convex hull) verilerini kullanabilir. 3B çarpışma nesneleri glTF veya GLB sahnelerindeki örgülerden zarf ve üçgen örgüsü şekilleri de oluşturabilir.
 
 ## 3B fizikte zarf ve örgü şekilleri {#hull-and-mesh-shapes-in-3d}
 
@@ -71,7 +86,7 @@ Seçilen örgü, kendi yerel geometrisini sağlar; glTF düğüm dönüşümleri
 
 Üçgen örgüsü geometrisi, çalışma zamanı şekil API'leri üzerinden yalnızca okunabilir. Üçgenlerini değiştirmek için kaynak örgüyü düzenleyin ve projeyi yeniden derleyin. Oyun nesnesinin ölçeği için [çarpışma şekillerini ölçekleme](#scaling-collision-shapes) bölümüne bakın.
 
-## Karo haritası çarpışma şekli
+## Karo haritası çarpışma şekli {#tilemap-collision-shape}
 Defold, bir karo haritasının kullandığı karo kaynağı (tile source) için kolayca fizik şekilleri oluşturmanızı sağlayan bir özellik içerir. [Karo kaynağı kılavuzu](/tr/manuals/tilesource/#tile-source-collision-shapes), bir karo kaynağına çarpışma gruplarının nasıl ekleneceğini ve karoların çarpışma gruplarına nasıl atanacağını açıklar ([örnek](/examples/tilemap/collisions/)).
 
 Bir karo haritasına çarpışma eklemek için:
@@ -87,14 +102,14 @@ Bir karo haritasına çarpışma eklemek için:
 Çarpışma grupları karo haritasının karo kaynağında tanımlandığı için burada *Group* özelliğinin **kullanılmadığını** unutmayın.
 </div>
 
-## Dışbükey zarf şekli
+## Dışbükey zarf şekli {#convex-hull-shape}
 3B fizikte [yukarıdaki düzenleyici iş akışını](#hull-and-mesh-shapes-in-3d) kullanarak doğrudan bir örgüden zarf oluşturabilirsiniz. Eski `.convexshape` kaynağı da desteklenir ve harici bir düzenleyici kullanılarak noktalardan oluşturulabilir:
 
 1. Harici bir düzenleyici kullanarak dışbükey zarf şekli dosyası (`.convexshape` dosya uzantısıyla) oluşturun.
 2. Dosyayı bir metin düzenleyici veya harici araç kullanarak elle düzenleyin (aşağıya bakın)
 3. Çarpışma nesnesi bileşenine şekiller eklemek yerine *Collision Shape* özelliğini *dışbükey şekil* dosyasına ayarlayın.
 
-### Dosya biçimi
+### Dosya biçimi {#file-format}
 Dışbükey zarf dosya biçimi, diğer tüm Defold dosyalarıyla aynı veri biçimini, yani protobuf metin biçimini kullanır. Bir dışbükey zarf şekli, zarfın noktalarını tanımlar. 2B fizikte noktaların saat yönünün tersine sıralanarak verilmesi önerilir. 3B fizik modunda soyut bir nokta bulutu kullanılır. 2B örneği:
 
 ```
@@ -126,7 +141,7 @@ Yukarıdaki örnek bir dikdörtgenin dört köşesini tanımlar:
  200x100   400x100
 ```
 
-## Harici araçlar
+## Harici araçlar {#external-tools}
 
 Çarpışma şekilleri oluşturmak için kullanılabilecek çeşitli harici araçlar vardır:
 
@@ -138,7 +153,7 @@ Yukarıdaki örnek bir dikdörtgenin dört köşesini tanımlar:
 # Çarpışma şekillerini ölçekleme {#scaling-collision-shapes}
 Çarpışma nesnesi ve şekilleri, oyun nesnesinin ölçeğini devralır. Bu davranışı devre dışı bırakmak için *game.project* dosyasının Physics bölümündeki [Allow Dynamic Transforms](/tr/manuals/project-settings/#allow-dynamic-transforms) onay kutusunun işaretini kaldırın. Yalnızca tüm eksenlerde aynı oranda ölçeklemenin desteklendiğini ve ölçek tüm eksenlerde aynı değilse en küçük ölçek değerinin kullanılacağını unutmayın.
 
-# Çarpışma şekillerini yeniden boyutlandırma
+# Çarpışma şekillerini yeniden boyutlandırma {#resizing-collision-shapes}
 Temel şekiller, çalışma sırasında `physics.set_shape()` kullanılarak yeniden boyutlandırılabilir. Bu işlev, zarfın köşelerini veya üçgen örgüsü geometrisini değiştirmez. Örnek:
 
 ```lua
@@ -169,15 +184,15 @@ physics.set_shape("#collisionobject", "my_box_shape", box_data)
 Belirtilen kimliğe sahip ve doğru türde bir şekil, çarpışma nesnesinde zaten bulunmalıdır.
 </div>
 
-# Çarpışma şekillerini döndürme
+# Çarpışma şekillerini döndürme {#rotating-collision-shapes}
 
-## 3B fizikte çarpışma şekillerini döndürme
+## 3B fizikte çarpışma şekillerini döndürme {#rotating-collision-shapes-in-3d-physics}
 3B fizikte çarpışma şekilleri tüm eksenler etrafında döndürülebilir.
 
 
-## 2B fizikte çarpışma şekillerini döndürme
+## 2B fizikte çarpışma şekillerini döndürme {#rotating-collision-shapes-in-2d-physics}
 2B fizikte çarpışma şekilleri yalnızca z ekseni etrafında döndürülebilir. x veya y ekseni etrafında döndürme yanlış sonuçlar verir ve bundan kaçınmanız önerilir; buna, şekli x veya y ekseni boyunca ters çevirmek için 180 derece döndürme de dahildir. Bir fizik şeklini ters çevirmek için [`physics.set_hlip(url, flip)`](/ref/physics/?#physics.set_hflip:url-flip) ve [`physics.set_vlip(url, flip)`](/ref/physics/?#physics.set_vflip:url-flip) kullanılması önerilir.
 
 
-# Hata ayıklama
+# Hata ayıklama {#debugging}
 Çalışma sırasında çarpışma şekillerini görmek için [fizik hata ayıklamasını etkinleştirebilirsiniz](/tr/manuals/debugging-game-logic/#debugging-problems-with-physics).

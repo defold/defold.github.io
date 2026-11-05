@@ -5,14 +5,15 @@ layout: manual
 locale: es
 title: Manual del constructor de proyectos Defold
 toc:
-- Bob el constructor
+- anchor: bob-the-builder
+  title: Bob el constructor
 - anchor: usage
   title: Uso
 - anchor: build-server
   title: Servidor de build
 ---
 
-# Bob el constructor
+# Bob el constructor {#bob-the-builder}
 
 Bob es una herramienta de línea de comando para crear builds de proyectos Defold fuera del flujo de trabajo normal del editor.
 
@@ -249,7 +250,7 @@ $
 
 ## Servidor de build {#build-server}
 
-Desde Defold 1.14.0, Bob selecciona el servidor predeterminado de build de extensiones nativas según el canal de release de su distribución:
+Bob selecciona el servidor de build predeterminado para extensiones nativas según el canal de lanzamiento de su distribución:
 
 | Canal de release de Bob | Servidor de build predeterminado |
 |---|---|

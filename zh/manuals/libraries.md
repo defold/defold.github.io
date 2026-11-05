@@ -44,7 +44,7 @@ toc:
 ![GitHub Library URL](/manuals/images/libraries/libraries_library_url_github.png)
 
 <div class='important' markdown='1'>
-建议始终依赖库项目的特定版本，而不是`主分支`。这样，作为开发者，您可以决定何时合并库项目的更改，而不是总是从库项目的`主分支`获取最新的（可能具有破坏性的）更改。
+建议始终依赖库项目的特定版本，而不是`master`。这样，作为开发者，您可以决定何时合并库项目的更改，而不是总是从库项目的`master`获取最新的（可能具有破坏性的）更改。
 </div>
 
 <div class='important' markdown='1'>

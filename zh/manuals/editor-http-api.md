@@ -8,7 +8,8 @@ toc:
 - 自动操作 Defold 编辑器
 - 从外部工具启动编辑器
 - 定位编辑器服务器
-- 通过 OpenAPI 发现操作
+- anchor: discovering-operations-through-openapi
+  title: 通过 OpenAPI 发现操作
 - 执行编辑器命令
 - 命令响应和异步工作
 - anchor: building-html5
@@ -88,7 +89,7 @@ BASE_URL="http://127.0.0.1:$PORT"
 编辑器服务器是受信任的本地控制接口。不要通过公共地址、端口转发或不受信任的隧道将其公开。
 </div>
 
-## 通过 OpenAPI 发现操作
+## 通过 OpenAPI 发现操作 {#discovering-operations-through-openapi}
 
 外部工具唯一需要了解的 Defold 专用引导信息，是编辑器端口和 OpenAPI 文档：
 

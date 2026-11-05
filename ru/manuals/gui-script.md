@@ -7,6 +7,8 @@ title: GUI-скриптинг
 toc:
 - GUI-скриптинг
 - Добавление скрипта в GUI
+- anchor: input
+  title: Ввод
 - Пространство имен в gui
 - Передача сообщений
 - Обращение к нодам
@@ -31,7 +33,7 @@ function init(self)
 end
 
 function final(self)
-   -- Добавьте здесь код инициализации
+   -- Добавьте здесь код завершения
    -- Удалите эту функцию, если она не нужна
 end
 
@@ -61,6 +63,12 @@ end
 ![Script](/manuals/images/gui-script/set_script.png)
 
 Если компонент GUI был добавлен к игровому объекту где-либо в игре, скрипт будет запущен.
+
+## Ввод {#input}
+
+Для получения ввода в GUI-скрипте отправьте `msg.post(".", "acquire_input_focus")` из `init()` и обрабатывайте действия в `on_input(self, action_id, action)`.
+
+GUI-скрипты используют те же хеши `action.source`, что и скрипты игровых объектов, поэтому клик физической мыши можно отличить от касания уже при начальном нажатии. См. [Источник устройства ввода](/ru/manuals/input/#input-device-source) и [пример мыши и касаний](/ru/manuals/input-mouse-and-touch/#distinguishing-mouse-clicks-from-touch). Движение указателя и данные акселерометра используют `action_id == nil`; различайте их по источнику.
 
 ## Пространство имен в "gui"
 
@@ -134,7 +142,7 @@ gui.set_color(new_textnode, vmath.vector4(0.69, 0.6, 0.8, 1.0))
 local healthbar_node = gui.get_node("healthbar")
 local healthbar_node_2 = gui.clone(healthbar_node)
 
--- кнопка клонирования дерева нод
+-- клонировать дерево нод кнопки
 local button = gui.get_node("my_button")
 local new_button_nodes = gui.clone_tree(button)
 

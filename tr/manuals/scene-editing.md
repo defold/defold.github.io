@@ -5,39 +5,55 @@ layout: manual
 locale: tr
 title: Defold sahne düzenleyicisi
 toc:
-- Defold sahne düzenleyicisi
-- Sahne düzenleyicisini açma
-- Hatırlanan sahne görünümleri
-- Sahne görünümünde gezinme (kamera denetimleri)
-- Standart gezinme (tüm görsel düzenleyiciler)
+- anchor: the-defold-scene-editor
+  title: Defold sahne düzenleyicisi
+- anchor: opening-the-scene-editor
+  title: Sahne düzenleyicisini açma
+- anchor: remembered-scene-views
+  title: Hatırlanan sahne görünümleri
+- anchor: scene-view-navigation-camera-controls
+  title: Sahne görünümünde gezinme (kamera denetimleri)
+- anchor: standard-navigation-all-visual-editors
+  title: Standart gezinme (tüm görsel düzenleyiciler)
+- anchor: axis-gizmo
+  title: Eksen kontrol aracı
 - anchor: 2d-and-3d-scene-orientation
   title: 2B ve 3B sahne yönelimi
-- Araç çubuğuna genel bakış
+- anchor: toolbar-overview
+  title: Araç çubuğuna genel bakış
 - anchor: manipulating-objects
   title: Nesneleri seçme ve değiştirme
-- Nesneleri seçme
+- anchor: selecting-objects
+  title: Nesneleri seçme
 - anchor: visibility-filters
   title: Görünürlük filtreleri
 - anchor: grid-settings
   title: Izgara ayarları
-- 'Kamera türü: perspektif ve ortografik'
+- anchor: camera-type-perspective-vs-orthographic
+  title: 'Kamera türü: perspektif ve ortografik'
 - anchor: free-camera-mode
   title: Serbest kamera modu
-- Serbest kamera modunu etkinleştirme
-- Serbest kamera modundan çıkma
-- Etrafa bakma (fareyle bakış)
-- Hareket etme
-- Yürüme modu (isteğe bağlı)
-- Kamera ayarları açılır penceresi
+- anchor: activating-free-camera-mode
+  title: Serbest kamera modunu etkinleştirme
+- anchor: exiting-free-camera-mode
+  title: Serbest kamera modundan çıkma
+- anchor: looking-around-mouse-look
+  title: Etrafa bakma (fareyle bakış)
+- anchor: moving
+  title: Hareket etme
+- anchor: walking-mode-optional
+  title: Yürüme modu (isteğe bağlı)
+- anchor: camera-settings-popup
+  title: Kamera ayarları açılır penceresi
 ---
 
-# Defold sahne düzenleyicisi
+# Defold sahne düzenleyicisi {#the-defold-scene-editor}
 
 **Sahne düzenleyicisi (Scene Editor)**, koleksiyonlar (collection), oyun nesneleri (game object) ve diğer görsel varlıklar (asset) gibi sahneleri oluşturmak ve düzenlemek için kullanılan görsel düzenleyicidir.
 
 Başlangıçtaki kamera görünümü kaynağa (resource) bağlıdır. Modeller ve glTF sahneleri gibi 3B kaynaklarda varsayılan olarak **perspektif (perspective)**, sprite bileşenleri, karo haritaları ve GUI sahneleri gibi 2B kaynaklarda ise **ortografik (orthographic)** izdüşüm kullanılır. Kamera yönelimini, izdüşümü ve ızgarayı sahne araç çubuğundan değiştirebilirsiniz.
 
-## Sahne düzenleyicisini açma
+## Sahne düzenleyicisini açma {#opening-the-scene-editor}
 
 Sahne düzenleyicisini açmak için *Assets* bölmesinde aşağıdakiler gibi bir görsel kaynağa çift tıklayın:
 
@@ -48,7 +64,7 @@ Sahne düzenleyicisini açmak için *Assets* bölmesinde aşağıdakiler gibi bi
 - **Efektler** — parçacık efektleri (particle effect) (`.particlefx`)
 - Ve diğerleri
 
-## Hatırlanan sahne görünümleri
+## Hatırlanan sahne görünümleri {#remembered-scene-views}
 
 Düzenleyici, bir sahne kaynağının sekmesi kapatıldığında veya düzenleyiciden çıkıldığında o kaynağın kamera durumunu hatırlar. Aynı kaynağı yeniden açmak görünümünü geri yükler; böylece farklı koleksiyonlar veya modeller farklı kamera konumlarını, yönelimlerini ve izdüşümlerini koruyabilir.
 
@@ -56,11 +72,11 @@ Görünürlük filtreleri de her sahne için ayrı ayrı hatırlanır. Bir sahne
 
 Kaydedilmiş kamera durumu olmayan kaynaklarda model, örgü (mesh) ve glTF kaynakları perspektif görünümde başlar. Çarpışma nesnelerinin görünümü projenin 2B/3B fizik ayarına göre seçilir; koleksiyonların ve oyun nesnelerinin başlangıç görünümü ise sahne geometrilerine göre seçilir.
 
-## Sahne görünümünde gezinme (kamera denetimleri)
+## Sahne görünümünde gezinme (kamera denetimleri) {#scene-view-navigation-camera-controls}
 
 Sahne düzenleyicisinin kamerası fare ve klavyeyle denetlenebilir. Kullanılabilir denetimler, standart kamera gezinmesini mi yoksa **serbest kamera modunu (Free Camera Mode)** mu kullandığınıza bağlıdır.
 
-### Standart gezinme (tüm görsel düzenleyiciler)
+### Standart gezinme (tüm görsel düzenleyiciler) {#standard-navigation-all-visual-editors}
 
 Görsel düzenleyicilerde şu denetimler kullanılabilir:
 
@@ -74,6 +90,22 @@ Görsel düzenleyicilerde şu denetimler kullanılabilir:
 
 Kamerayı geçerli seçime odaklamak için **Frame Selection** (<kbd>F</kbd>) komutunu da kullanabilirsiniz.
 
+### Eksen kontrol aracı {#axis-gizmo}
+
+**Scene View Axis Gizmo**, 3B modunda sahne görünümünün sağ alt köşesinde görünür. Kameranın dünya eksenlerine göre yönelimini gösterir: **X** kırmızı, **Y** yeşil ve **Z** mavidir.
+
+![Sağ alt köşesinde eksen kontrol aracı bulunan sahne görünümü](/manuals/images/editor/axis_gizmo.gif)
+
+| Denetim | Eylem |
+| --- | --- |
+| Bir eksen tutamacına <kbd>sol fare tuşuyla tıklama</kbd> | Kamerayı o eksen boyunca bakacak şekilde hizalar. Karşı tutamaçlar diğer taraftan görünüm sağlar. |
+| Zaten hizalanmış bir eksen tutamacına tıklama | Aynı eksendeki karşı görünüme geçer. |
+| <kbd>Left Mouse Button</kbd> tuşunu basılı tutup aracı sürükleme | Kameranın geçerli odak noktasının çevresinde döndürür. Değiştirici tuş basılı tutmadan bir eksen tutamacından veya tutamaçların etrafındaki dairesel alandan sürükleyebilirsiniz. |
+
+Eksen hizalaması, kameranın odak noktasını, uzaklığını ve izdüşümünü korur. Önce bir nesneye odaklanmak için **Frame Selection** (<kbd>F</kbd>) kullanın, ardından nesneyi farklı yönlerden incelemek için aracı kullanın. Standart kaydırma, yakınlaştırma ve <kbd>Ctrl</kbd>/<kbd>^ Control</kbd> + <kbd>Left Mouse Button</kbd> yörüngede döndürme denetimleri kullanılabilir durumda kalır.
+
+Araç, 3B modunda hem perspektif hem de ortografik izdüşümle kullanılabilir. 2B modunda gizlidir; 3B'ye geçmek için [araç çubuğundaki](#toolbar-overview) **Align/Realign Camera 2D/3D** seçeneğini kullanın veya <kbd>.</kbd> tuşuna basın. Perspektif veya ortografik izdüşüm seçmek için ayrı [kamera izdüşümü anahtarını](#camera-type-perspective-vs-orthographic) kullanın. Araç, sahne düzenleyicisinin sahnenizi nasıl gördüğünü kontrol eder.
+
 ## 2B ve 3B sahne yönelimi {#2d-and-3d-scene-orientation}
 
 Sahne görünümü hem 2B hem de 3B iş akışlarında kullanılabilir:
@@ -84,11 +116,11 @@ Sahne görünümü hem 2B hem de 3B iş akışlarında kullanılabilir:
   - **Perspektif** kamera kullanırsınız,
   - Uygun bir ızgara düzlemi seçersiniz ("zemin" için genellikle **Y**).
 
-Bu işlevlere araç çubuğundan ve **View** menüsünden erişebilirsiniz.
+Bu işlevlere araç çubuğundan ve **View** menüsünden erişebilirsiniz. 3B modunda görünümü bir eksene hizalamak veya fareyle yörüngede döndürmek için [eksen kontrol aracını](#axis-gizmo) kullanın.
 
 ![3B sahne düzenleyicisi](/manuals/images/editor/3d_scene.png)
 
-## Araç çubuğuna genel bakış
+## Araç çubuğuna genel bakış {#toolbar-overview}
 
 Sahne görünümünün sağ üst köşesinde, sık kullanılan araçları ve görünüm seçeneklerini içeren bir araç çubuğu bulunur (soldan sağa):
 
@@ -104,7 +136,7 @@ Sahne görünümünün sağ üst köşesinde, sık kullanılan araçları ve gö
 
 ## Nesneleri seçme ve değiştirme {#manipulating-objects}
 
-### Nesneleri seçme
+### Nesneleri seçme {#selecting-objects}
 
 Nesneleri seçmek için ana pencerede üzerlerine <kbd>farenin sol düğmesiyle tıklayın</kbd>. Düzenleyici görünümünde nesneyi çevreleyen dikdörtgen (veya dikdörtgenler prizması), hangi öğenin seçildiğini belirtmek için camgöbeği renkle vurgulanır. Seçilen nesne, yukarıdaki resimde olduğu gibi `Outline` görünümünde de vurgulanır.
 
@@ -113,7 +145,7 @@ Nesneleri seçmek için ana pencerede üzerlerine <kbd>farenin sol düğmesiyle 
 - <kbd>Farenin sol düğmesiyle tıklayın</kbd> ve seçim bölgesindeki tüm nesneleri seçmek için <kbd>sürükleyin</kbd>.
 - <kbd>Farenin sol düğmesiyle tıklayarak</kbd> `Outline` görünümündeki nesneleri seçin; <kbd>⇧ Shift</kbd> tuşunu basılı tutarken seçimi genişletebilir veya <kbd>Ctrl</kbd>/<kbd>⌘ Cmd</kbd> tuşunu basılı tutarken tıkladığınız nesneleri seçebilir ya da seçimden çıkarabilirsiniz.
 
-#### Taşıma aracı
+#### Taşıma aracı {#move-tool}
 
 ![Taşıma aracı](/manuals/images/editor/icon_move.png)
 
@@ -127,7 +159,7 @@ Dönüşüm denetimi (gizmo) değişerek kareler ve oklardan oluşan bir dizi tu
 - her eksen boyunca uzanan kırmızı, yeşil ve mavi 3 ok, nesneyi yalnızca ilgili X, Y veya Z ekseni boyunca taşır.
 - kırmızı, yeşil ve mavi 3 kare tutamaç (dış çizgileri görünür, içleri saydam), nesneyi yalnızca ilgili düzlemde taşır; örneğin X-Y (mavi) düzleminde ve (kamera 3B olarak döndürüldüğünde görünen) X-Z (yeşil) ve Y-Z (kırmızı) düzlemlerinde.
 
-#### Döndürme aracı
+#### Döndürme aracı {#rotate-tool}
 
 ![Döndürme aracı](/manuals/images/editor/icon_rotate.png)
 
@@ -140,7 +172,7 @@ Bu araç, döndürmek için <kbd>sürükleyebileceğiniz</kbd> dört dairesel tu
 - camgöbeği tutamaç (dıştaki, en büyük daire), nesneyi ekran uzayında döndürür
 - daha küçük kırmızı, yeşil ve mavi 3 dairesel tutamaç, X, Y ve Z eksenlerinin her biri etrafında ayrı ayrı döndürmeye olanak tanır. 2B ortografik görünümde bunlardan ikisi X ve Y eksenlerine dik olduğundan, daireler yalnızca nesnenin içinden geçen iki çizgi olarak görünür.
 
-#### Ölçekleme aracı
+#### Ölçekleme aracı {#scale-tool}
 
 ![Ölçekleme aracı](/manuals/images/editor/icon_scale.png)
 
@@ -181,7 +213,7 @@ Ayarlar şunları içerir:
 - **Reset to Defaults** düğmesi
   Tüm ızgara ayarlarını özgün değerlerine geri yükler.
 
-## Kamera türü: perspektif ve ortografik
+## Kamera türü: perspektif ve ortografik {#camera-type-perspective-vs-orthographic}
 
 Sahne düzenleyicisi her ikisini de destekler:
 
@@ -194,7 +226,7 @@ Aralarında geçiş yapmak için araç çubuğundaki kamera düğmesini kullanı
 
 Sahne düzenleyicisi, 3B sahnelerde hızlı gezinmek için birinci şahıs / "FPS tarzı" bir kamera olan **serbest kamera modunu (Free Camera Mode)** sunar.
 
-### Serbest kamera modunu etkinleştirme
+### Serbest kamera modunu etkinleştirme {#activating-free-camera-mode}
 
 - <kbd>Right Mouse Button</kbd> düğmesini basılı tutun — serbest kamera modu, düğme basılı tutulduğu sürece etkindir
 - <kbd>Shift</kbd> + <kbd>`</kbd> (ters tırnak) — serbest kamera modunu açar ve tuşlar bırakıldıktan sonra da etkin tutar
@@ -206,12 +238,12 @@ Bazı klavye düzenlerinde (ör. İsveççe) ters tırnak tuşu bir ölü tuştu
 
 Serbest kamera modu etkinken sahne görünümü, kenarları boyunca uzanan bir çizgiyle vurgulanır.
 
-### Serbest kamera modundan çıkma
+### Serbest kamera modundan çıkma {#exiting-free-camera-mode}
 
 - <kbd>Right Mouse Button</kbd> düğmesini bırakın (basılı tutarak etkinleştirildiğinde) veya
 - Serbest kamera modu açılıp kapanabilen bir mod olarak etkinleştirildiyse <kbd>Left Mouse Button</kbd> veya <kbd>Right Mouse Button</kbd> düğmesine basıp bırakın ya da <kbd>Esc</kbd> tuşuna basın.
 
-### Etrafa bakma (fareyle bakış)
+### Etrafa bakma (fareyle bakış) {#looking-around-mouse-look}
 
 Serbest kamera modu etkinken aşağıdaki tuşlar (düzenleyici araçları yerine) kamera hareketini denetler:
 
@@ -220,7 +252,7 @@ Serbest kamera modu etkinken aşağıdaki tuşlar (düzenleyici araçları yerin
 
 İsteğe bağlı olarak Y eksenini tersine de çevirebilirsiniz (aşağıdaki **Serbest kamera ayarları** bölümüne bakın).
 
-### Hareket etme
+### Hareket etme {#moving}
 
 Serbest kamera modu etkinken:
 
@@ -240,7 +272,7 @@ Hızı değiştiren tuşlar:
 - <kbd>Shift</kbd> tuşunu basılı tutun — daha hızlı hareket edin
 - <kbd>Alt</kbd>/<kbd>⌥ Option</kbd> tuşunu basılı tutun — daha yavaş / daha hassas hareket edin
 
-### Yürüme modu (isteğe bağlı)
+### Yürüme modu (isteğe bağlı) {#walking-mode-optional}
 
 Serbest kamera modu, **Walking Mode** özelliğini destekler.
 
@@ -248,7 +280,7 @@ Etkinleştirildiğinde:
 - Yukarı/aşağı hareket, bir zemin düzleminde yere basarak birinci şahıs bakış açısıyla yürümeye daha çok benzeyecek şekilde kısıtlanır.
 - Bu, bir bölümü keşfederken tutarlı bir "yere basma" hareketi istediğinizde yararlıdır.
 
-## Kamera ayarları açılır penceresi
+## Kamera ayarları açılır penceresi {#camera-settings-popup}
 
 Araç çubuğundaki perspektif kamera düğmesinde, kamerayla ilgili tercihleri içeren bir açılır pencere bulunur.
 

@@ -9,6 +9,8 @@ toc:
   title: Scripts dinterface graphique
 - anchor: adding-a-script-to-a-gui
   title: Ajouter un script à une interface graphique
+- anchor: input
+  title: Entrées
 - anchor: the-gui-namespace
   title: Lespace de noms « gui »
 - anchor: message-passing
@@ -68,6 +70,12 @@ Pour attacher le script à un composant (component) d'interface graphique, ouvre
 ![Script](/manuals/images/gui-script/set_script.png)
 
 Si le composant d'interface graphique a été ajouté à un objet de jeu quelque part dans votre jeu, le script s'exécutera désormais.
+
+## Entrées {#input}
+
+Pour recevoir les entrées dans un script GUI, envoyez `msg.post(".", "acquire_input_focus")` depuis `init()` et traitez les actions dans `on_input(self, action_id, action)`.
+
+Les scripts GUI utilisent les mêmes hachages `action.source` que les scripts d'objets de jeu ; vous pouvez donc distinguer un clic de souris physique d'un toucher dès l'appui initial. Consultez [Source du périphérique d'entrée](/fr/manuals/input/#input-device-source) et l'[exemple de souris et de tactile](/fr/manuals/input-mouse-and-touch/#distinguishing-mouse-clicks-from-touch). Le déplacement du pointeur et les mesures de l'accéléromètre utilisent tous deux `action_id == nil` ; utilisez leur source pour les distinguer.
 
 ## L'espace de noms « gui » {#the-gui-namespace}
 

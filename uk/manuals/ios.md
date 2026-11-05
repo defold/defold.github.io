@@ -13,6 +13,10 @@ toc:
   title: Розробка з безкоштовним обліковим записом розробника Apple
 - anchor: creating-an-ios-application-bundle
   title: Створення пакета застосунку iOS
+- anchor: home-indicator-behavior
+  title: Поведінка індикатора Home
+- anchor: reserved-areas-and-rotation
+  title: Зарезервовані області й поворот
 - anchor: custom-infoplist-and-local-target-discovery
   title: Власний Info.plist і виявлення локальних цільових пристроїв
 - anchor: installing-and-launching-bundle-on-a-connected-iphone
@@ -128,6 +132,23 @@ Provisioning Profiles
 ![Пакет застосунку iOS у форматі ipa](/manuals/images/ios/ipa_file.png)
 
 Піктограму застосунку, розкадрування екрана запуску (storyboard) та інші параметри задають у файлі налаштувань проєкту *game.project* у [розділі iOS](/uk/manuals/project-settings/#ios).
+
+### Поведінка індикатора Home {#home-indicator-behavior}
+
+У розділі *iOS* файлу *game.project* можна вибрати *Home Indicator Mode*. Типове значення *Deferred* захищає всі краї екрана й потребує двох змахів для повернення на головний екран. Виберіть *System*, щоб використовувати звичайні системні жести, зокрема один змах для повернення на головний екран.
+
+Виберіть *Auto Hide*, щоб використовувати звичайні системні жести й також запитувати автоматичне приховування індикатора Home. Цей режим можна задати безпосередньо в *game.project*:
+
+```ini
+[ios]
+home_indicator_mode = auto_hide
+```
+
+Заново створіть пакет і перевірте його на пристрої з індикатором Home. iOS визначає, коли індикатор видимий; вибір *Auto Hide* не гарантує, що він залишатиметься прихованим. На iOS 26 і новіших версіях система може приховувати його як у режимі *System*, так і в *Auto Hide*. Усі значення та їхню поведінку жестів див. у розділі [Home Indicator Mode](/uk/manuals/project-settings/#home-indicator-mode).
+
+### Зарезервовані області й поворот {#reserved-areas-and-rotation}
+
+`window.get_reserved_areas()` повідомляє про вирізи камери й Dynamic Island на iOS 27.1 і новіших версіях, включно з відступами взаємодії UIKit. Зміни орієнтації iOS також надсилають `window.WINDOW_EVENT_RESIZED`, зокрема повороти, які не змінюють розміри вікна й відступи безпечної області. Оновлюйте розміщення інтерфейсу на основі цих областей у кожному зворотному виклику зміни розміру. Координати, обмеження й приклад оновлення див. у розділі [Зарезервовані області екрана](/uk/manuals/porting-guidelines/#reserved-screen-areas).
 
 ### Власний Info.plist і виявлення локальних цільових пристроїв {#custom-infoplist-and-local-target-discovery}
 

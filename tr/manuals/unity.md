@@ -5,60 +5,104 @@ layout: manual
 locale: tr
 title: Unity kullanıcıları için Defold
 toc:
-- Unity kullanıcıları için Defold
-- Giriş
-- Kurulum
-- Sürümler
-- Karşılama ekranı
-- Merhaba dünya
-- Defold düzenleyicisine genel bakış
-- Düzenleyicilerin karşılaştırması
-- Defold bölmelerine genel bakış
-- Temel kavramlar
-- Yapı taşları
-- Oyun nesneleri
-- Bileşenler
-- Kaynaklar
-- Koleksiyon ve sahne karşılaştırması
-- Proje kaynakları ve varlıkları
-- Varlıklar
-- Kaynak biçimleri
-- Kütüphane önbelleği
-- Kod yazma
+- anchor: defold-for-unity-users
+  title: Unity kullanıcıları için Defold
+- anchor: introduction
+  title: Giriş
+- anchor: installation
+  title: Kurulum
+- anchor: versions
+  title: Sürümler
+- anchor: welcome-screen
+  title: Karşılama ekranı
+- anchor: hello-world
+  title: Merhaba dünya
+- anchor: defold-editor-overview
+  title: Defold düzenleyicisine genel bakış
+- anchor: editors-comparison
+  title: Düzenleyicilerin karşılaştırması
+- anchor: defold-panes-overview
+  title: Defold bölmelerine genel bakış
+- anchor: key-concepts
+  title: Temel kavramlar
+- anchor: building-blocks
+  title: Yapı taşları
+- anchor: game-objects
+  title: Oyun nesneleri
+- anchor: components
+  title: Bileşenler
+- anchor: resources
+  title: Kaynaklar
+- anchor: collection-vs-scene
+  title: Koleksiyon ve sahne karşılaştırması
+- anchor: project-resources-and-assets
+  title: Proje kaynakları ve varlıkları
+- anchor: assets
+  title: Varlıklar
+- anchor: resource-formats
+  title: Kaynak biçimleri
+- anchor: library-cache
+  title: Kütüphane önbelleği
+- anchor: code-writing
+  title: Kod yazma
 - Lua
 - Teal
-- C++/C yerel kod eklentileri
-- MonoBehaviour betiklerinden Lua modüllerine
-- Yerleşik kod düzenleyicisi
-- VS Code ve diğer düzenleyiciler
-- Gölgelendiriciler - GLSL
-- İleti sistemi
-- İleti gönderme
-- Adresleme
-- GUI ve işleme sistemine ileti gönderme
-- Prefablar ve örnekler
-- Fabrika
-- Koleksiyon fabrikası
-- Koleksiyon vekili
-- Uygulama yaşam döngüsü
-- Başlangıç işlemleri
-- İletiler ne zaman işlenir?
-- Güncelleme döngüsü
-- Sonlandırma işlemleri
-- İşleme
+- anchor: cc-native-extensions
+  title: C++/C yerel kod eklentileri
+- anchor: from-monobehaviours-to-lua-modules
+  title: MonoBehaviour betiklerinden Lua modüllerine
+- anchor: built-in-code-editor
+  title: Yerleşik kod düzenleyicisi
+- anchor: vs-code-and-other-editors
+  title: VS Code ve diğer düzenleyiciler
+- anchor: shaders-glsl
+  title: Gölgelendiriciler - GLSL
+- anchor: messaging-system
+  title: İleti sistemi
+- anchor: sending-a-message
+  title: İleti gönderme
+- anchor: addressing
+  title: Adresleme
+- anchor: messaging-to-gui-and-render
+  title: GUI ve işleme sistemine ileti gönderme
+- anchor: prefabs-and-instances
+  title: Prefablar ve örnekler
+- anchor: factory
+  title: Fabrika
+- anchor: collection-factory
+  title: Koleksiyon fabrikası
+- anchor: collection-proxy
+  title: Koleksiyon vekili
+- anchor: application-lifecycle
+  title: Uygulama yaşam döngüsü
+- anchor: initialization
+  title: Başlangıç işlemleri
+- anchor: when-messages-are-handled
+  title: İletiler ne zaman işlenir?
+- anchor: update-loop
+  title: Güncelleme döngüsü
+- anchor: finalization
+  title: Sonlandırma işlemleri
+- anchor: rendering
+  title: İşleme
 - GUI
-- GUI düğümleri
-- GUI betiği
-- GUI işleme
-- Sorting Layers nerede?
-- Buradan sonra nereye geçmeli?
+- anchor: gui-nodes
+  title: GUI düğümleri
+- anchor: gui-script
+  title: GUI betiği
+- anchor: gui-rendering
+  title: GUI işleme
+- anchor: where-are-sorting-layers
+  title: Sorting Layers nerede?
+- anchor: where-to-go-from-here
+  title: Buradan sonra nereye geçmeli?
 ---
 
-# Unity kullanıcıları için Defold
+# Unity kullanıcıları için Defold {#defold-for-unity-users}
 
 Unity deneyiminiz varsa bu kılavuz, Defold'da kısa sürede verimli çalışmaya başlamanıza yardımcı olur. Temel noktalara odaklanır ve daha ayrıntılı bilgi gerektiğinde sizi resmî Defold kılavuzlarına yönlendirir.
 
-## Giriş
+## Giriş {#introduction}
 
 Defold, Windows, Linux ve macOS için bir düzenleyici sunan, tamamen ücretsiz ve gerçekten platformlar arası bir 3B oyun motorudur. Kaynak kodunun tamamı [GitHub](https://github.com/defold/defold/) üzerinde bulunur.
 
@@ -77,7 +121,7 @@ Ayrıca Game From Scratch'in [Unity geliştiricileri için Defold](https://www.y
 
 ---
 
-## Kurulum
+## Kurulum {#installation}
 
 1. İşletim sisteminiz için Defold'u indirin.
 2. Arşivi çıkarın ve başlatın.
@@ -86,13 +130,13 @@ Hepsi bu kadar. Bir merkez uygulaması, ek SDK, araç zincirleri veya platform p
 
 Daha fazla ayrıntıya ihtiyacınız varsa bu kısa [Kurulum kılavuzunu](/tr/manuals/install/) okuyun.
 
-### Sürümler
+### Sürümler {#versions}
 
 Defold sık güncellenir ve bir "LTS" sürüm kolu yoktur. Her zaman en yeni sürümü kullanmanızı öneririz. Yeni sürümler düzenli olarak, genellikle aylık ve yaklaşık iki haftalık herkese açık beta sürecinin ardından yayımlanır. Defold'u doğrudan düzenleyiciden güncelleyebilirsiniz.
 
 ---
 
-## Karşılama ekranı
+## Karşılama ekranı {#welcome-screen}
 
 Defold sizi Unity Hub'a benzer bir karşılama ekranıyla karşılar; buradan son projeleri açabilirsiniz:
 
@@ -107,7 +151,7 @@ Veya aşağıdakilerden yeni bir proje başlatabilirsiniz:
 
 İlk projenizi oluşturduğunuzda ve/veya açtığınızda proje Defold düzenleyicisinde açılır.
 
-## Merhaba dünya
+## Merhaba dünya {#hello-world}
 
 Bu bölüm, Defold'da hızla bir şeyler ortaya çıkarmanın kısa bir yoludur. Adımları izleyin, ardından kılavuzun geri kalanını okumaya dönün.
 
@@ -129,11 +173,11 @@ Defold'da ilk projenizi derlediniz; metninizi pencerede görmeniz gerekir. Oyun 
 
 ---
 
-## Defold düzenleyicisine genel bakış
+## Defold düzenleyicisine genel bakış {#defold-editor-overview}
 
 Burada Defold düzenleyicisini, bir Unity kullanıcısının ilk başta bilmek isteyebileceği noktalar üzerinden tanıtacağız; ancak sonrasında [Düzenleyiciye genel bakış kılavuzunun](/tr/manuals/editor) tamamına göz atmanızı öneririz.
 
-### Düzenleyicilerin karşılaştırması
+### Düzenleyicilerin karşılaştırması {#editors-comparison}
 
 Unity ile Defold arasında ilk fark edeceğiniz şey varsayılan düzenleyici yerleşimidir. Burada Unity düzenleyicisini, Defold'un varsayılan yerleşimine uyacak şekilde biraz değiştirilmiş bir yerleşimle gösteriyoruz. Unity sekmelerini daha rahat tanıyabileceğiniz için ana bölmeleri görsel olarak daha kolay karşılaştırmanız amacıyla düzenleyiciler yan yana yerleştirilmiştir.
 
@@ -147,7 +191,7 @@ Araç çubuğundaki `Grid Settings` ayarlarını da Unity'deki gibi `Y` düzlemi
 
 ![Defold 3B ayarları](/manuals/images/unity/defold_3d.png)
 
-### Defold bölmelerine genel bakış
+### Defold bölmelerine genel bakış {#defold-panes-overview}
 
 Defold düzenleyicisi 6 ana bölmeye ayrılır.
 
@@ -179,11 +223,11 @@ Düzenleyiciyle ilgili diğer yararlı adlandırmalar:
 
 ---
 
-## Temel kavramlar
+## Temel kavramlar {#key-concepts}
 
 Yeterince genel bakarsanız çoğu oyun motorunun temel kavramları birbirine çok benzer. Geliştiricilerin yapı taşlarını bir araya getirir gibi daha kolay oyun yapmasına yardımcı olmayı amaçlarlar ve karmaşık, platforma özgü işleri kendileri yürütürler.
 
-### Yapı taşları
+### Yapı taşları {#building-blocks}
 
 Defold yalnızca birkaç temel yapı taşıyla çalışır:
 
@@ -191,15 +235,15 @@ Defold yalnızca birkaç temel yapı taşıyla çalışır:
 
 Daha fazla ayrıntı için [Defold yapı taşları](/tr/manuals/building-blocks/) hakkındaki kılavuzun tamamına göz atın.
 
-### Oyun nesneleri 
+### Oyun nesneleri {#game-objects}
 Defold, Unity'ye benzer şekilde **"oyun nesneleri"** kullanır. Her iki motorda da oyun nesneleri, bir tanımlayıcıya sahip veri kapsayıcılarıdır ve hepsinin konum, dönme ve ölçekten oluşan dönüşümleri vardır; ancak Defold'da dönüşüm ayrı bir bileşen olmak yerine yerleşiktir.
 
 Oyun nesneleri arasında üst-alt nesne ilişkileri oluşturabilirsiniz. Defold'da bu yalnızca düzenleyicide bir "koleksiyon" (collection, aşağıda açıklanmıştır) içinde veya betikte dinamik olarak yapılabilir. Oyun nesneleri, Unity'deki gibi başka oyun nesnelerini iç içe nesneler olarak barındıramaz.
 
-### Bileşenler
+### Bileşenler {#components}
 Her iki motorda da oyun nesneleri **"bileşenlerle"** genişletilebilir. Defold, temel bileşenlerden oluşan küçük bir küme sunar. 2B ve 3B arasındaki ayrım Unity'dekinden daha azdır (ör. çarpıştırıcılar); bu nedenle toplam bileşen sayısı daha azdır ve Unity'deki bazı bileşenleri arayabilirsiniz.
 
-#### Davranış bileşenleri
+#### Davranış bileşenleri {#behaviour-components}
 
 Unity'de "bileşen" genellikle bir `GameObject` nesnesine eklenen `MonoBehaviour` anlamına gelir. `MonoBehaviour` sınıfından türeterek kendi bileşenlerinizi oluşturabilir veya Light, bazı fizik öğeleri ve benzeri yerleşik bileşenleri kullanabilirsiniz.
 
@@ -215,7 +259,7 @@ Aşağıdaki tablo, hızlıca karşılaştırabilmeniz için benzer Unity bileş
 |---|---|---|
 | [Sprite](/tr/manuals/sprite/) | Sprite Renderer | Defold'da sprite bileşeninin renk çarpanını (renk özelliği) yalnızca kod yoluyla değiştirebilirsiniz. |
 | [Karo haritası](/tr/manuals/tilemap/) | Tilemap / Grid | Defold'da kare ızgaraları destekleyen yerleşik bir karo haritası düzenleyicisi bulunur (ancak örneğin [altıgenler](https://github.com/selimanac/defold-hexagon/) için bir eklenti vardır) ve yerleşik otomatik karo yerleştirme kuralları yoktur. [Tiled](https://defold.com/assets/tiled/), [TileSetter](https://defold.com/assets/tilesetter/) veya [Sprite Fusion](https://defold.com/assets/spritefusion/) gibi araçlar Defold'a dışa aktarma seçenekleri sunar. |
-| [Etiket](/tr/manuals/label/) | Text / TextMeshPro | Defold 1.13.2'den itibaren etiket bileşenleri ve GUI metin düğümleri; renkler, renk geçişleri, dış çizgiler ve animasyonlu efektler için yerleşik [zengin metin işaretlemesini](/tr/manuals/font-richtext/) destekler. Ayrı bir [RichText eklentisi](https://defold.com/assets/richtext/) de mevcuttur. |
+| [Etiket](/tr/manuals/label/) | Text / TextMeshPro | Etiket bileşenleri ve GUI metin düğümleri; renkler, renk geçişleri, dış çizgiler ve animasyonlu efektler için yerleşik [zengin metin işaretlemesini](/tr/manuals/font-richtext/) destekler. Ayrı bir [RichText eklentisi](https://defold.com/assets/richtext/) de mevcuttur. |
 | [Ses](/tr/manuals/sound/) | AudioSource | Defold'da yalnızca genel bir ses kaynağı bulunur (uzamsal değildir). Defold için resmî bir [FMOD eklentisi](https://github.com/defold/extension-fmod) vardır. |
 | [Fabrika](/tr/manuals/factory/) | Prefab Instantiate() | Defold'da fabrika (factory), belirli bir prototipe (prefab; yeniden kullanılabilir nesne tanımı) sahip bir bileşendir. |
 | [Koleksiyon fabrikası](/tr/manuals/collection-factory/) | - (Doğrudan bir bileşen karşılığı yoktur) | Defold'daki bir koleksiyon fabrikası (collection factory) bileşeni, üst-alt nesne ilişkilerine sahip birden çok oyun nesnesini aynı anda oluşturabilir. |
@@ -229,7 +273,7 @@ Aşağıdaki tablo, hızlıca karşılaştırabilmeniz için benzer Unity bileş
 | [ParticleFX](/tr/manuals/particlefx/) | Particle System | Defold'un parçacık düzenleyicisi birçok özelliğe sahip 2B/3B parçacık efektlerini destekler ve Curve Editor içindeki eğrileri kullanarak bunlara zaman içinde animasyon uygulamanızı sağlar. Trails veya Collisions özellikleri yoktur. |
 | [Betik](/tr/manuals/script/) | Script | Programlama farkları hakkında daha fazla ayrıntı aşağıda açıklanmıştır. |
 
-#### Eklentiler ve özel bileşenler
+#### Eklentiler ve özel bileşenler {#extensions-and-custom-components}
 
 Defold ayrıca eklentiler üzerinden sunulan resmî [Spine](/extension-spine/) ve [Rive](/extension-rive/) bileşenlerine sahiptir.
 
@@ -237,7 +281,7 @@ Yerel kod eklentilerini kullanarak kendi [özel bileşenlerinizi](https://github
 
 Bazı Unity bileşenlerinin Defold'da hazır bir karşılığı yoktur; örneğin Audio Listener, Light, Terrain, LineRenderer, TrailRenderer, Cloth veya Animator. Ancak bu işlevlerin tamamı betiklerde uygulanabilir ve hâlihazırda mevcut çözümler vardır: örneğin farklı aydınlatma hatları, isteğe göre örgüler (arazi dahil) üretmek için örgü bileşeni veya özelleştirilebilir iz efektleri için [Hyper Trails](https://defold.com/assets/hypertrails/). Defold gelecekte ışıklar gibi yeni yerleşik bileşenler de ekleyebilir.
 
-### Kaynaklar
+### Kaynaklar {#resources}
 
 Unity'ye benzer şekilde bazı bileşenler **"kaynaklara" (resources)** ihtiyaç duyar; örneğin sprite ve model bileşenlerinin dokulara ihtiyacı vardır. Bunlardan birkaçı aşağıdaki tabloda karşılaştırılmıştır:
 
@@ -248,13 +292,13 @@ Unity'ye benzer şekilde bazı bileşenler **"kaynaklara" (resources)** ihtiyaç
 | [Yazı tipi](/tr/manuals/font/) | Font | Unity'deki Text/TextMeshPro'ya benzer şekilde, Defold etiket bileşeni veya GUI içindeki metin düğümleri tarafından kullanılır. |
 | [Materyal](/tr/manuals/material/) | Material | Defold'da gölgelendiriciler köşe programı ve parça programı olarak adlandırılır. |
 
-### Koleksiyon ve sahne karşılaştırması
+### Koleksiyon ve sahne karşılaştırması {#collection-vs-scene}
 
 Defold'da oyun nesneleri ve bileşenler, Unity prefabları gibi ayrı dosyalara yerleştirilebilir veya onları bir araya getiren bir **"koleksiyon"** dosyasında tanımlanabilir.
 
 Defold'da bir koleksiyon temelde statik bir sahne açıklaması içeren metin dosyasıdır. Bir çalışma zamanı nesnesi **değildir**. Yalnızca oyunda hangi oyun nesnelerinin örneklerinin oluşturulacağını ve bu nesneler arasındaki üst-alt nesne ilişkilerinin nasıl kurulacağını tanımlar.
 
-#### Oyun dünyaları
+#### Oyun dünyaları {#game-worlds}
 
 Unity sahneleri varsayılan olarak aynı genel oyun durumunu ve fizik simülasyonunu, dolayısıyla aynı *dünyayı* (*oyun dünyasını*) paylaşır. Defold'da iki seçeneğiniz vardır:
 1. Prefablarda olduğu gibi, tek bir oyun nesnesi dosyasından `Factory` aracılığıyla veya bir koleksiyon dosyasından `Collection Factory` aracılığıyla, örneği zaten oluşturulmuş belirli bir *dünyada* oyun nesnelerinin örneklerini oluşturmak.
@@ -265,15 +309,15 @@ Koleksiyonlar hakkında daha fazla bilgi için [Yapı taşları kılavuzunu](/tr
 
 ---
 
-## Proje kaynakları ve varlıkları
+## Proje kaynakları ve varlıkları {#project-resources-and-assets}
 
 Unity ve Defold, oyun içeriğini proje dizininde saklar; ancak varlıkların (asset) nasıl izlendiği ve hazırlandığı konusunda farklılık gösterir.
 
-### Varlıklar
+### Varlıklar {#assets}
 
 Unity varlıkları `Assets/` içinde tutar ve `.meta` dosyaları oluşturur. Defold'da meta dosyaları yoktur. Defold'daki proje, diskte olduğu hâliyle klasör yapınızdan ibarettir ve `Assets` bölmesi her zaman bu yapıyı yansıtır.
 
-### Kaynak biçimleri
+### Kaynak biçimleri {#resource-formats}
 
 Unity varlıkları içe aktarır ve arka planda başka biçimlere dönüştürür. Defold'da doğrudan kaynaklarla (`.png`, `.gltf`, `.wav`, `.ogg` vb.) çalışır ve bunları `Components` öğelerine atarsınız.
 
@@ -281,13 +325,13 @@ Unity tek bir görüntüyü Sprite olarak kullanabilir. Defold'da görüntüler 
 
 Defold kaynaklarının çoğu metin olarak saklanır; bu da sürüm kontrolüne uygundur.
 
-### Kütüphane önbelleği
+### Kütüphane önbelleği {#library-cache}
 
 Unity, içe aktarılan varlıklar için bir `Library/` klasörü oluşturur. Defold'da böyle bir dizin yoktur; varlıklar derleme sırasında işlenir ve çıktılar derleme klasöründe (ve isteğe bağlı yerel/uzak derleme önbelleklerinde) önbelleğe alınır.
 
 ---
 
-## Kod yazma
+## Kod yazma {#code-writing}
 
 `MonoBehaviour` betiklerinin Defold'daki karşılığı bir betik bileşenidir; ancak bilinmesi gereken bazı farklar vardır.
 
@@ -301,14 +345,14 @@ Birkaç Lua betiği türü vardır: `*.script`, `*.gui_script`, `*.render_script
 
 Defold, Lua'nın statik türlere sahip bir lehçesi olan [Teal](https://teal-language.org/) gibi Lua kodu üreten kaynak kod dönüştürücülerinin kullanımını destekler; ancak bu işlev daha sınırlıdır ve ek kurulum gerektirir. Ayrıntılar [Teal eklenti deposunda](https://github.com/defold/extension-teal) bulunur.
 
-### C++/C# yerel kod eklentileri
+### C++/C# yerel kod eklentileri {#cc-native-extensions}
 
 Defold'da yerel kod eklentileri, hedef platforma bağlı olarak başka birkaç dilde yazılabilir: C, C++, C#, Objective-C, Java veya JS. C# diline çok hâkimseniz oyun mantığınızın çoğunu bir C# eklentisinde yapılandırıp yalnızca küçük bir Lua başlangıç betiğinden çağırmak teknik olarak mümkündür; ancak bu, ileri düzey API bilgisi gerektirir ve yeni başlayanlara önerilmez.
 
 Eklentiler hakkında daha fazla bilgi için [Defold yerel kod eklentileri kılavuzunu](/tr/manuals/extensions/) okuyun.
 
 
-### MonoBehaviour betiklerinden Lua modüllerine
+### MonoBehaviour betiklerinden Lua modüllerine {#from-monobehaviours-to-lua-modules}
 
 Unity açık bir betik yazma modeline sahiptir. `MonoBehaviour` düzenleyicide davranış eklemenin başlıca yolu olduğu için birçok Unity projesi, önemli her GameObject için denetleyici tarzında bir betikle başlar: `PlayerController`, `EnemyController`, `BulletController`, `GameManager`, `EnemyManager` vb.
 
@@ -391,13 +435,13 @@ Kod yazma hakkında yararlı kılavuzlar:
 - [Hata ayıklama](/tr/manuals/debugging/)
 
 
-### Yerleşik kod düzenleyicisi
+### Yerleşik kod düzenleyicisi {#built-in-code-editor}
 
 Defold düzenleyicisi; kod tamamlama, sözdizimi vurgulama, belgelere hızlı erişim, statik kod denetimi ve yerleşik hata ayıklayıcı sunan bir kod düzenleyicisi içerir.
 
 ![Defold kod düzenleyicisi](/images/editor/code-editor.png)
 
-### VS Code ve diğer düzenleyiciler
+### VS Code ve diğer düzenleyiciler {#vs-code-and-other-editors}
 
 İsterseniz kendi harici düzenleyicinizi kullanmaya devam edebilirsiniz. Tüm Defold bileşenleri ve ilgili dosyalar metin tabanlı olduğundan bunları herhangi bir metin düzenleyicisiyle düzenleyebilirsiniz; ancak Protobuf tabanlı oldukları için doğru biçimlendirmeye ve öğe yapısına uymanız gerekir.
 
@@ -405,13 +449,13 @@ VS Code'a alışkınsanız ve oyununuzun kodunu yazmak için onu kullanmak istiy
 
 Defold düzenleyicisinin tercihlerini, metin dosyalarını varsayılan olarak VS Code'da (veya başka bir harici düzenleyicide) açacak şekilde de yapılandırabilirsiniz. Ayrıntılar için [Düzenleyici tercihleri](/tr/manuals/editor-preferences/) bölümüne bakın.
 
-### Gölgelendiriciler - GLSL
+### Gölgelendiriciler - GLSL {#shaders-glsl}
 
 Defold, Unity'ye benzer şekilde `Vertex Programs` ve `Fragment Programs` gölgelendiricileri için GLSL (OpenGL Shading Language) kullanır. Defold, Unity gibi bir Shader Graph sunmasa da (bu bir dezavantaj olabilir) kod yazarak eşdeğer gölgelendiriciler oluşturabilirsiniz.
 
 Gölgelendiriciler hakkında daha fazla bilgi için [Gölgelendiriciler kılavuzunu](/tr/manuals/shader) okuyun.
 
-#### Materyaller
+#### Materyaller {#materials}
 
 Defold, `.fp` ve `.vp` gölgelendiricilerini, örnekleyicileri (dokuları) ve Vertex Attributes veya Constants gibi diğer öğeleri birbirine bağlayan bir `Material` kavramı kullanır.
 
@@ -419,7 +463,7 @@ Materyaller hakkında daha fazla bilgi için [Materyaller kılavuzunu](/tr/manua
 
 ---
 
-## İleti sistemi
+## İleti sistemi {#messaging-system}
 
 Defold'da nesneler birbirlerine doğrudan başvuru tutmaz. `GetComponent`, betikler arasında nesneler arası yöntem çağrıları veya Unity'deki gibi genel sahne erişimi yoktur.
 
@@ -428,7 +472,7 @@ Bunun yerine betikler ileti aktarımı yoluyla iletişim kurar: yöntem çağır
 Bu yaklaşım başta yabancı gelebilir; ancak gevşek bağlılığı teşvik eder ve sıkı karşılıklı bağımlılıkları azaltır.
 
 
-### İleti gönderme
+### İleti gönderme {#sending-a-message}
 
 Unity'de iletişim genellikle şöyle görünür:
 
@@ -457,7 +501,7 @@ end
 
 Şimdilik `#` ve `hash` öğelerini dikkate almayın; bunları daha sonra ele alacağız. Geri kalanı anlaşılır olmalıdır. Örneği oluşturulmuş herhangi bir oyun nesnesinin herhangi bir bileşenine (aynı betiğe bile) ileti gönderebilirsiniz.
 
-#### Betik dışındaki bileşenler
+#### Betik dışındaki bileşenler {#components-other-than-scripts}
 
 Bazen `Sprite` veya `Collision` gibi bileşenlere, örneğin bunları etkinleştirmek veya devre dışı bırakmak için ileti gönderirsiniz. Bazen de `Components` öğeleri, örneğin bir çarpışma olduğunda bunu işleyebilmeniz için betiğinize ileti gönderir. Defold, motor olayları ve oynanış iletişimi için dahili olarak aynı ileti sistemini kullanır. 
 
@@ -465,7 +509,7 @@ Adresleme ve kullanım kuralları farklı olsa da ileti sistemi Unity'nin SendMe
 
 Daha fazla ayrıntı için [İleti aktarımı kılavuzunu](/tr/manuals/message-passing/) okuyabilirsiniz.
 
-### Adresleme
+### Adresleme {#addressing}
 
 Defold'da nesneler ve bileşenler, URL olarak bilinen adreslerle tanımlanır.
 
@@ -501,11 +545,11 @@ Basitçe ifade etmek gerekirse:
 2. `/path`, tanımlayıcıdan önce `/` gelecek şekilde oyun nesnesini tanımlar.
 3. `#fragment`, tanımlayıcıdan önce `#` gelecek şekilde o nesne üzerindeki belirli bileşeni (betik, sprite veya çarpışma bileşeni gibi) tanımlar.
 
-#### Statik adres
+#### Statik adres {#static-address}
 
 Bu tanımlayıcılar her öğe oluşturulduğunda belirlenir ve üst-alt nesne ilişkilerini değiştirseniz bile hiçbir zaman değişmez. Bunları dosyalardaki `Id` özelliğinde ayarlayabilir veya çalışma sırasında örnek oluştururken yapılan `factory.create` ya da `collectionfactory.create` çağrılarından alabilirsiniz.
 
-#### Göreli adresleme
+#### Göreli adresleme {#relative-addressing}
 
 Her zaman tam bir URL kullanmanız gerekmez.
 
@@ -526,7 +570,7 @@ Aynı oyun nesnesi içindeki bir bileşene gönderiyorsanız oyun nesnesi bölü
 
 Göreli adresleme ve kısa gösterimler, tam yollar belirtmeden farklı bağlamlarda ve oyun nesnelerinde yeniden kullanılabilen URL adresleri yazmanızı sağlar.
 
-### GUI ve işleme sistemine ileti gönderme
+### GUI ve işleme sistemine ileti gönderme {#messaging-to-gui-and-render}
 
 Defold GUI dünyasını oyun nesnesi dünyasından ayırdığı için oyun nesnelerinin `.scripts` dosyalarından `.gui_scripts` dosyalarına da ileti gönderebilirsiniz.
 
@@ -540,7 +584,7 @@ Daha fazla ayrıntıyı [Adresleme kılavuzunda](/tr/manuals/addressing/) bulabi
 
 ---
 
-## Prefablar ve örnekler
+## Prefablar ve örnekler {#prefabs-and-instances}
 
 Unity, sahnedeki herhangi bir şeyin örneğini statik veya dinamik olarak oluşturabilir; Defold da aynısını yapabilir. Unity'de bir prefab alıp `Instantiate(prefab)` çağrısını yaparsınız. Defold'da içerik örnekleri oluşturmak için 3 bileşen vardır:
 
@@ -548,7 +592,7 @@ Unity, sahnedeki herhangi bir şeyin örneğini statik veya dinamik olarak oluş
 - `Collection Factory` - verilen bir prototipten, yani bir `*.collection` dosyasından, üst-alt nesne ilişkilerine sahip **bir oyun nesnesi kümesinin** örneklerini oluşturur.
 - `Collection Proxy` - bir `*.collection` dosyasından yeni bir *dünyayı* **yükler** ve örneğini oluşturur.
 
-### Fabrika
+### Fabrika {#factory}
 
 `Prototype` özelliği uygun oyun nesnesi dosyasına ayarlanmış bir `Factory` bileşeni tanımladıktan sonra çalışma sırasında nesne oluşturmak, kodda şu çağrıyı yapmak kadar basittir:
 
@@ -568,7 +612,7 @@ Defold'da nesneleri elle bir havuzda yönetmeniz gerekmediğini unutmayın; moto
 
 Daha fazla ayrıntı için [Fabrika kılavuzuna](/tr/manuals/factory/) göz atın. 
 
-### Koleksiyon fabrikası
+### Koleksiyon fabrikası {#collection-factory}
 
 `Factory` ile `Collection Factory` bileşeni arasındaki fark, koleksiyon fabrikasının aynı anda **birden çok** oyun nesnesi oluşturabilmesi ve oluşturma sırasında `*.collection` dosyasında tanımlanan üst-alt nesne ilişkilerini kurabilmesidir.
 
@@ -582,7 +626,7 @@ local spawned_instances = collectionfactory.create("#my_collectionfactory")
 
 Daha fazla ayrıntı için [Koleksiyon fabrikası kılavuzuna](/tr/manuals/collection-factory/) göz atın.
 
-#### Örneklerin özel özellikleri
+#### Örneklerin özel özellikleri {#custom-properties-of-instances}
 
 `factory.create()` veya `collectionfactory.create()` çağrısında konum, dönme, ölçek ve betik özellikleri gibi isteğe bağlı parametreler de belirtebilirsiniz. Böylece örneğin tam olarak nasıl ve nerede ortaya çıkacağını ve nasıl davranacağını yönetebilirsiniz. Örneğin:
 
@@ -593,13 +637,13 @@ factory.create("#my_factory", my_position, my_rotation, my_properties, scale_2d)
 
 İsteğe bağlı bağımsız değişkenlerin sırası önce özellikler, ardından ölçektir. Bir 2B nesnenin yalnızca X ve Y eksenlerini ölçeklerken Z değeri açıkça `1.0` olarak ayarlanmış bir `vector3` kullanın; sayısal bir ölçek üç eksene de eşit şekilde uygulanır.
 
-#### Dinamik yükleme
+#### Dinamik yükleme {#dynamic-loading}
 
 Hem `Factory` hem de `Collection Factory` bileşenlerinde, büyük varlıklarının yalnızca gerektiğinde belleğe alınması ve artık kullanılmadıklarında bellekten kaldırılması için bir Prototype öğesini dinamik kaynak yükleme amacıyla işaretleyebilirsiniz.
 
 Daha fazla ayrıntı için [Kaynak yönetimi kılavuzuna](/tr/manuals/resource/) göz atın. 
 
-### Koleksiyon vekili
+### Koleksiyon vekili {#collection-proxy}
 
 `Collection Proxy` belirli bir `*.collection` dosyasına başvurur; ancak nesneleri (fabrikalar gibi) *geçerli dünyaya* eklemek yerine **yeni bir oyun dünyası yükler ve örneğini oluşturur**. Bu, Unity'de bir sahnenin tamamını yüklemeye bir ölçüde benzer; ancak ayrım daha katıdır.
 
@@ -629,7 +673,7 @@ Daha fazla ayrıntı için [Koleksiyon vekili kılavuzuna](/tr/manuals/collectio
 
 ---
 
-## Uygulama yaşam döngüsü
+## Uygulama yaşam döngüsü {#application-lifecycle}
 
 Unity'nin `Awake`, `Start`, `Update`, `FixedUpdate`, `LateUpdate`, `OnDestroy` veya `OnApplicationQuit` gibi yaşam döngüsü olaylarını biliyorsunuz.
 
@@ -641,7 +685,7 @@ Defold'un da iyi tanımlanmış bir uygulama yaşam döngüsü vardır; ancak ka
 |-|-|-|
 | `init()` | `Awake()` / `Start()` / `OnEnable()`| Defold'un başlangıç işlemleri için tek bir giriş noktası ve geri çağırımı vardır: init(). Her bileşen oluşturulduğunda çağrılır. |
 | `on_input` | Girdi yöntemleri | Defold, [betik için girdi odağı ayarlandığında](/tr/manuals/input/#input-focus) girdileri alır. Güncelleme döngüsünde ilk olarak işlenir. |
-| `fixed_update()` | `FixedUpdate()` | Sabit zaman adımıyla çağrılır. Defold'da etkinleştirmek için `Use Fixed Timestep` ayarını yapmanız gerekir - [ayrıntılar](https://defold.com/tr/manuals/project-settings/#use-fixed-timestep). 1.12.0'dan itibaren `update()` çağrısından önce çalışır. |
+| `fixed_update()` | `FixedUpdate()` | Sabit zaman adımıyla çağrılır. Defold'da etkinleştirmek için `Use Fixed Timestep` ayarını yapmanız gerekir - [ayrıntılar](https://defold.com/tr/manuals/project-settings/#use-fixed-timestep). `update()` çağrısından önce çalışır. |
 | `update()` | `Update()` | Geçen süreyle birlikte kare başına bir kez çağrılır. |
 | `late_update()` | `LateUpdate()` | `update()` çağrısından sonra, kare işlenmeden hemen önce çağrılır. 1.12.0'dan itibaren mevcuttur. |
 | `on_message` | İleti alıcısı | Defold'un iletileri almak için kullandığı temel geri çağırımdır. Kuyrukta herhangi bir ileti olduğunda işlenir. |
@@ -651,27 +695,27 @@ Defold'un da iyi tanımlanmış bir uygulama yaşam döngüsü vardır; ancak ka
 Birden çok bileşenin başlangıç işlemleri/güncellemesi/kaldırılması aynı anda yapıldığında Defold'un bileşenler arasında herhangi bir yürütme sırasını garanti etmediğini unutmayın. Birbirine bağımlılığı azaltılmış tasarım önerilir.
 </div>
 
-### Başlangıç işlemleri
+### Başlangıç işlemleri {#initialization}
 
 Defold'un `init()` geri çağırımını, Unity'nin `Awake()`, `Start()` ve `OnEnable()` öğelerini tek bir giriş noktasında birleştiren bir yapı olarak düşünün. Motor bu noktada her şeyi zaten hazırlamıştır ve bileşeninizin durumunu güvenle hazırlayabilirsiniz.
 
-### İletiler ne zaman işlenir?
+### İletiler ne zaman işlenir? {#when-messages-are-handled}
 
 `init()` içinde ileti gönderebildiğiniz için iletiler ilk kez başlangıç işlemlerinin hemen ardından dağıtılır.
 
 İletiler daha sonra her dahili işleme döngüsünün ardından, kuyrukta bir şey olduğu her seferde işlenir; bu nedenle örneğin `on_message()` bir güncelleme döngüsünde birkaç kez bile çağrılabilir.
 
-### Güncelleme döngüsü
+### Güncelleme döngüsü {#update-loop}
 
 Defold her karede bir dizi işlem yürütür: girdileri işler, iletileri dağıtır, betik ve GUI güncellemelerini tetikler, fiziği ve dönüşümleri uygular ve sonunda grafikleri işler.
 
-### Sonlandırma işlemleri
+### Sonlandırma işlemleri {#finalization}
 
 Defold'da temizleme her zaman silmeye veya dünyanın bellekten kaldırılmasına bağlıdır ve bileşen başına tek çıkış kancanız `final()` geri çağırımıdır.
 
 Unity'nin modelinden ince bir farkı, bir bileşenin devre dışı bırakılması ile uygulamanın tamamının kapanması arasında ayrım olmamasıdır.
 
-### İşleme
+### İşleme {#rendering}
 
 İşleme betiği (`*.render_script`), işleme hattının bir parçasıdır ve kendi `init()`, `update()` ve `on_message()` geri çağırımlarıyla yaşam döngüsüne de katılır; ancak bu geri çağırımlar işleme iş parçacığında çalışır ve oyun nesnesi ile GUI betiği mantığından ayrıdır.
 
@@ -685,7 +729,7 @@ Defold'un GUI sistemi, UI Toolkit veya Canvas kullanan uGUI'ye benzer şekilde; 
 
 GUI bir bileşendir ve oyun nesneleriyle koleksiyonlardan ayrıdır. Oyun nesneleri yerine, hiyerarşi içinde düzenlenmiş ve bir GUI betiğiyle yönetilen GUI düğümleriyle çalışırsınız.
 
-### GUI düğümleri
+### GUI düğümleri {#gui-nodes}
 
 Defold'da bir `*.gui` bileşen dosyasını açtığınızda `"GUI nodes"` öğelerini yerleştirdiğiniz bir tuval sunulur. Bunlar GUI'nin yapı taşlarıdır. Şu türlerde GUI düğümleri ekleyebilirsiniz:
 
@@ -696,17 +740,17 @@ Defold'da bir `*.gui` bileşen dosyasını açtığınızda `"GUI nodes"` öğel
 - Template (GUI prefabı gibi, iç içe yerleştirilmiş başka bir `.gui` dosyasının tamamı)
 - ve Spine eklentisini kullanırken Spine düğümü.
 
-### GUI betiği
+### GUI betiği {#gui-script}
 
 GUI bileşeninin GUI betikleri için özel bir özelliği vardır: bileşen başına bir `*.gui_script` dosyası atarsınız ve bu, bileşenin davranışını değiştirmenizi sağlar. Dolayısıyla normal betiklere çok benzer; ancak oyun nesnesi betiklerine yönelik olan `go.*` ad alanını kullanmaz. Bunun yerine yalnızca GUI betiklerinin (`*.gui_script`) içinde çalışan özel `gui.*` ad alanı API'sini kullanır. Bunu, Canvas kullanan Unity UI (uGUI) gibi ayrı bir sahne olarak düşünebilirsiniz.
 
-### GUI işleme
+### GUI işleme {#gui-rendering}
 
 GUI öğeleri, oyun kamerasından bağımsız olarak ve genellikle ekran uzayında işlenir; ancak bu davranış özel işleme hatlarında değiştirilebilir.
 
 Daha fazla ayrıntı için [GUI kılavuzunu](/tr/manuals/gui/) okuyun.
 
-## Sorting Layers nerede?
+## Sorting Layers nerede? {#where-are-sorting-layers}
 
 Unity'den geçerken bu konu çok sık kafa karışıklığına yol açar.
 
@@ -720,7 +764,7 @@ Ancak çok sayıda etiketle Unity Sorting Layers davranışını taklit etmeniz 
 
 ---
 
-## Buradan sonra nereye geçmeli?
+## Buradan sonra nereye geçmeli? {#where-to-go-from-here}
 
 - [Defold örnekleri](/examples)
 - [Öğreticiler](/tutorials)

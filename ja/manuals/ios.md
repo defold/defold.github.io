@@ -13,6 +13,10 @@ toc:
   title: 無料の Apple 開発者アカウントを使った開発
 - anchor: creating-an-ios-application-bundle
   title: iOS アプリケーションバンドルの作成
+- anchor: home-indicator-behavior
+  title: ホームインジケーターの動作
+- anchor: reserved-areas-and-rotation
+  title: 予約領域と回転
 - anchor: custom-infoplist-and-local-target-discovery
   title: カスタム Info.plist とローカルターゲットの検出
 - anchor: installing-and-launching-bundle-on-a-connected-iphone
@@ -128,6 +132,23 @@ Defold プロジェクトで同じバンドル識別子を使用する必要が�
 ![ipa 形式の iOS アプリケーションバンドル](/manuals/images/ios/ipa_file.png)
 
 アプリに使用するアイコンや起動画面のストーリーボードなどは、プロジェクト設定ファイル *game.project* の [iOS セクション](/ja/manuals/project-settings/#ios) で指定します。
+
+### ホームインジケーターの動作 {#home-indicator-behavior}
+
+*game.project* の *iOS* セクションで *Home Indicator Mode* を選択できます。デフォルトの *Deferred* は、画面のすべての端を保護し、ホームに戻るには2回のスワイプが必要です。通常のシステムジェスチャーを使い、1回のスワイプでホームに戻るには、*System* を選択します。
+
+通常のシステムジェスチャーを使い、ホームインジケーターの自動非表示も要求するには、*Auto Hide* を選択します。このモードは *game.project* に直接設定できます。
+
+```ini
+[ios]
+home_indicator_mode = auto_hide
+```
+
+再びバンドルを作成し、ホームインジケーターのあるデバイスでテストします。表示のタイミングは iOS が決めるため、*Auto Hide* を選んでも、常に非表示になるとは限りません。iOS 26 以降では、*System* と *Auto Hide* の両方で非表示になることがあります。すべての値とジェスチャーの動作は、[Home Indicator Mode](/ja/manuals/project-settings/#home-indicator-mode) を参照してください。
+
+### 予約領域と回転 {#reserved-areas-and-rotation}
+
+`window.get_reserved_areas()` は、iOS 27.1 以降で、UIKit の操作用マージンを含むカメラのカットアウトと Dynamic Island を報告します。iOS では、画面の向きが変わると、ウィンドウ寸法とセーフエリアのインセットが変わらない回転も含めて、`window.WINDOW_EVENT_RESIZED` が送られます。サイズ変更コールバックのたびに、これらの領域に基づく UI 配置を更新してください。座標、制限、更新例は、[画面の予約領域](/ja/manuals/porting-guidelines/#reserved-screen-areas)を参照してください。
 
 ### カスタム Info.plist とローカルターゲットの検出 {#custom-infoplist-and-local-target-discovery}
 

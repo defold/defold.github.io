@@ -8,7 +8,8 @@ toc:
 - Defold düzenleyicisini otomatikleştirme
 - Düzenleyiciyi harici bir araçtan başlatma
 - Düzenleyici sunucusunu bulma
-- OpenAPI aracılığıyla işlemleri keşfetme
+- anchor: discovering-operations-through-openapi
+  title: OpenAPI aracılığıyla işlemleri keşfetme
 - Düzenleyici komutlarını yürütme
 - Komut yanıtları ve eşzamansız işlemler
 - anchor: building-html5
@@ -88,7 +89,7 @@ Bağlantı noktası dosyası geçerli düzenleyici oturumuna aittir. Düzenleyic
 Düzenleyici sunucusu, güvenilir bir yerel denetim arayüzüdür. Herkese açık bir adres, bağlantı noktası yönlendirmesi veya güvenilmeyen bir tünel üzerinden erişime açmayın.
 </div>
 
-## OpenAPI aracılığıyla işlemleri keşfetme
+## OpenAPI aracılığıyla işlemleri keşfetme {#discovering-operations-through-openapi}
 
 Harici bir aracın ihtiyaç duyması gereken Defold'a özgü başlangıç bilgileri yalnızca düzenleyicinin bağlantı noktası ve OpenAPI belgesidir:
 

@@ -5,9 +5,10 @@ layout: manual
 locale: gr
 title: Εγχειρίδιο 2D γραφικών του Defold
 toc:
-- Γραφικά 2D
+- anchor: 2d-graphics
+  title: Γραφικά 2D
 ---
 
-# Γραφικά 2D
+# Γραφικά 2D {#2d-graphics}
 
 Αυτό το εγχειρίδιο έχει αντικατασταθεί από το [εγχειρίδιο επισκόπησης γραφικών](/manuals/graphics).

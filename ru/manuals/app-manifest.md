@@ -40,8 +40,6 @@ toc:
 
 ![](/manuals/images/app_manifest/create-app-manifest.png)
 
-![](/manuals/images/app_manifest/app-manifest.png)
-
 # Применение манифеста
 
 В `game.project` назначьте манифест в разделе `Native Extensions` -> `App Manifest`.
@@ -66,7 +64,7 @@ toc:
 
 ## Exclude Record
 
-Исключает из движка возможность записи видео. См. документацию по сообщению [`start_record`](https://defold.com/ref/sys/#start_record).
+Исключает нативную запись MP4, [модуль Lua `recorder`](/ref/recorder/) и HTTP-сервис записи из отладочных сборок для настольных платформ. Запись уже исключена из релизных сборок, сборок без графики, а также мобильных и веб-сборок. О работе с записью см. в [руководстве по записи видео](/ru/manuals/recording).
 
 ## Profiler
 
@@ -136,11 +134,14 @@ toc:
 
 ## Graphics
 
-Позволяет выбрать графические бэкенды, включаемые для каждой платформы. Комбинированный вариант включает оба бэкенда, чтобы при недоступности предпочтительного можно было использовать резервный.
+Позволяет выбрать графические бэкенды, включаемые для каждой платформы. Комбинированный вариант включает несколько бэкендов, чтобы движок мог перейти на резервный, если предпочтительный недоступен. Включение дополнительных бэкендов увеличивает размер движка.
+
+Для Windows и Linux используются отдельные поля. Вариант **DX12** выбирает DirectX 12 в Windows.
 
 | Поле | Платформы | Варианты | По умолчанию |
 |---|---|---|---|
-| **Graphics** | Windows и Linux | OpenGL, Vulkan, OpenGL & Vulkan | OpenGL |
+| **Graphics (Linux)** | Linux | OpenGL, Vulkan, OpenGL & Vulkan | OpenGL |
+| **Graphics (Windows)** | Windows | OpenGL, Vulkan, DX12, OpenGL & Vulkan, OpenGL & DX12, Vulkan & DX12, OpenGL & Vulkan & DX12 | OpenGL |
 | **Graphics (macOS)** | macOS | OpenGL, Metal, Vulkan, OpenGL & Metal, OpenGL & Vulkan | Metal |
 | **Graphics (iOS)** | iOS | OpenGL, Metal, Vulkan, OpenGL & Metal, OpenGL & Vulkan | OpenGL |
 | **Graphics (Android)** | Android | OpenGL+Vulkan, OpenGL, Vulkan | OpenGL+Vulkan |
@@ -148,11 +149,11 @@ toc:
 
 В Linux ARM64 вариант **OpenGL** использует backend OpenGL ES. Комбинированный вариант Android по умолчанию предпочитает Vulkan, а если он недоступен, переходит на OpenGL ES.
 
-Начиная с Defold 1.14.0, macOS по умолчанию использует нативный бэкенд Metal. Вариант **Vulkan** на macOS и iOS использует Vulkan через MoltenVK. Симулятор iOS (`arm64_sim-ios`) всегда использует Metal независимо от выбранного для устройств варианта **Graphics (iOS)**.
+macOS по умолчанию использует нативный бэкенд Metal. Вариант **Vulkan** на macOS и iOS использует Vulkan через MoltenVK. Симулятор iOS (`arm64_sim-ios`) всегда использует Metal независимо от выбранного для устройств варианта **Graphics (iOS)**.
 
 ## Use full text layout system
 
-Если включено (`true`), включает полную систему раскладки текста с поддержкой формирования глифов, в том числе для языков с письмом справа налево. Включите этот параметр вместе с `font.runtime_generation` в *game.project*, чтобы использовать генерацию SDF-шрифтов во время выполнения из ресурсов TrueType (`.ttf`) или OpenType (`.otf`). Генерация из ресурсов `.otf` во время выполнения поддерживается начиная с Defold 1.13.2. Подробнее см. в [руководстве по шрифтам](/ru/manuals/font/#enabling-runtime-fonts).
+Если включено (`true`), включает полную систему раскладки текста с поддержкой формирования глифов, в том числе для языков с письмом справа налево. Включите этот параметр для генерации шрифтов TrueType (`.ttf`) или OpenType (`.otf`) во время выполнения и установите *Glyph Generation* в **Dynamic** в каждом ресурсе шрифта, которому это необходимо. Динамическая генерация поддерживает режимы **SDF** и **Vector**. Подробнее см. в [руководстве по шрифтам](/ru/manuals/font/#enabling-runtime-fonts).
 
 ## Use Rich Text
 

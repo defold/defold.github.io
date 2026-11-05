@@ -7,6 +7,8 @@ title: Defold의 Label 텍스트 컴포넌트
 toc:
 - Label
 - Label 만들기
+- anchor: vector-fonts-and-color-emoji
+  title: 벡터 폰트와 컬러 이모지
 - Label 프로퍼티
 - Blend modes
 - 피벗과 정렬
@@ -31,6 +33,30 @@ Label 컴포넌트를 만들려면 게임 오브젝트를 <kbd>오른쪽 클릭<
 *Font* 프로퍼티를 사용하려는 폰트로 설정하고, *Material* 프로퍼티는 폰트 타입과 맞는 메터리얼로 설정해야 합니다.
 
 ![Font and material](/manuals/images/label/font_material.png)
+
+## 벡터 폰트와 컬러 이모지 {#vector-fonts-and-color-emoji}
+
+Vector 폰트를 사용하려면 [벡터 폰트 설정](/ko/manuals/font/#vector-fonts)에 따라 `.font` 리소스를 Label의 *Font* 프로퍼티에 지정하고 Label의 *Material*을 `/builtins/fonts/label-vector.material`로 설정합니다. 표시 크기는 *Font Size*로 제어합니다.
+
+컬러 이모지는 [COLRv1 대체 폰트 및 번들 설정](/ko/manuals/font/#color-emoji)도 완료하세요. 다음 예제는 같은 게임 오브젝트에 아이디가 `label`인 Label과 스크립트가 있다고 가정합니다. 글리프가 준비된 후에만 인사말을 표시하도록 Label의 *Text*를 비워 둡니다:
+
+```lua
+function init(self)
+    local text = "Hello 😀 🍎 🚀"
+    local font_resource = go.get("#label", "font")
+    -- 이 공유 폰트 리소스에는 대체 폰트를 한 번만 추가합니다.
+    font.add_font(font_resource, "/fonts/NotoColorEmoji-Regular.ttf")
+    font.prewarm_text(font_resource, text, function(self, request_id, result, err)
+        if result then
+            go.set("#label", "text", text)
+        else
+            print("Could not prepare label text:", err)
+        end
+    end)
+end
+```
+
+일반 문자는 원래 폰트를 사용하고 이모지는 추가한 컬러 폰트를 사용합니다. 다른 Label이나 GUI 텍스트 노드가 이 폰트 리소스를 공유한다면 대체 폰트를 한 곳에서 초기화하고 재사용하세요.
 
 ## Label 프로퍼티
 
@@ -74,7 +100,7 @@ Label 컴포넌트를 만들려면 게임 오브젝트를 <kbd>오른쪽 클릭<
 : 이 라벨에 사용할 폰트 리소스입니다.
 
 *Material*
-: 이 라벨을 렌더링할 때 사용할 메터리얼입니다. 사용하는 폰트 타입(bitmap, distance field 또는 BMFont)에 맞게 만들어진 메터리얼을 선택해야 합니다.
+: 이 라벨을 렌더링할 메터리얼입니다. 폰트의 모드 또는 소스(Bitmap, SDF, Vector, BMFont)에 맞는 메터리얼을 선택하세요. 해당하는 내장 Label 메터리얼은 [폰트 메터리얼](/ko/manuals/font/#font-materials)을 참고하세요.
 
 ### Blend modes
 {% include shared/ko/blend-modes.md %}
@@ -99,7 +125,7 @@ Label 컴포넌트를 만들려면 게임 오브젝트를 <kbd>오른쪽 클릭<
 런타임에 라벨 텍스트를 가져오고 설정할 수 있으며, 그 밖의 여러 프로퍼티도 조작할 수 있습니다.
 
 `text`
-: 라벨의 텍스트 내용(`string`)입니다. Defold 1.13.2부터 `go.get()` 및 `go.set()`으로 사용할 수 있습니다.
+: 라벨의 텍스트 내용입니다(`string`). `go.get()`과 `go.set()`으로 접근할 수 있습니다.
 
 `color`
 : 라벨 색상(`vector4`)
@@ -118,8 +144,8 @@ Label 컴포넌트를 만들려면 게임 오브젝트를 <kbd>오른쪽 클릭<
 
 ```lua
 function init(self)
-    -- Set the text of the "my_label" component in the same game object
-    -- as this script.
+    -- 이 스크립트와 같은 게임 오브젝트에 있는
+    -- "my_label" 컴포넌트의 텍스트를 설정합니다.
     go.set("#my_label", "text", "New text")
     local text = go.get("#my_label", "text")
     print(text) -- New text
@@ -127,7 +153,7 @@ end
 ```
 
 <div class='sidenote' markdown='1'>
-Defold 1.13.2부터 `label.set_text()` 및 `label.get_text()` 대신 `text` 프로퍼티 사용을 권장하며, 이전 함수들은 사용 중단되었습니다. 호환성을 위해 이전 함수들도 계속 사용할 수 있습니다. 이전 setter는 메세지를 큐에 넣지만 `go.set()`은 텍스트를 즉시 업데이트합니다.
+`label.set_text()`와 `label.get_text()`는 더 이상 권장되지 않으며 `text` 프로퍼티로 대체되었습니다. 기존 함수는 호환성을 위해 계속 사용할 수 있습니다. 기존 setter는 메세지를 큐에 넣지만 `go.set()`은 텍스트를 즉시 갱신합니다.
 </div>
 
 ```lua

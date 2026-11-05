@@ -7,6 +7,8 @@ title: Розробка застосунків Defold для платформи 
 toc:
 - anchor: windows-development
   title: Розробка для Windows
+- anchor: graphics-backends
+  title: Графічні бекенди
 - anchor: project-settings
   title: Налаштування проєкту
 - anchor: application-icon
@@ -20,6 +22,10 @@ toc:
 # Розробка для Windows {#windows-development}
 
 Розробка застосунків Defold для платформи Windows — простий процес, що потребує врахування лише кількох особливостей.
+
+## Графічні бекенди {#graphics-backends}
+
+Збірки для Windows за замовчуванням використовують OpenGL. Налаштування **Graphics (Windows)** у [маніфесті застосунку](/uk/manuals/app-manifest/#graphics) дає змогу вибрати OpenGL, Vulkan або DirectX 12 (**DX12**). Можна включити кілька бекендів, щоб перейти на резервний, якщо пріоритетний недоступний.
 
 ## Налаштування проєкту {#project-settings}
 

@@ -9,6 +9,8 @@ toc:
   title: Текстова мітка
 - anchor: creating-a-label
   title: Створення текстової мітки
+- anchor: vector-fonts-and-color-emoji
+  title: Векторні шрифти й кольорові емодзі
 - anchor: label-properties
   title: Властивості текстової мітки
 - anchor: blend-modes
@@ -38,6 +40,30 @@ toc:
 У властивості *Font* вкажіть потрібний шрифт і обов’язково встановіть для властивості *Material* матеріал, що відповідає типу шрифту:
 
 ![Шрифт і матеріал](/manuals/images/label/font_material.png)
+
+## Векторні шрифти й кольорові емодзі {#vector-fonts-and-color-emoji}
+
+Щоб використати шрифт Vector, виконайте [налаштування векторного шрифту](/uk/manuals/font/#vector-fonts), призначте ресурс `.font` властивості *Font* компонента Label і задайте його *Material* як `/builtins/fonts/label-vector.material`. Керуйте розміром відображення через *Font Size*.
+
+Для кольорових емодзі також виконайте [налаштування резервного COLRv1-шрифту й пакування](/uk/manuals/font/#color-emoji). Приклад нижче передбачає Label з ідентифікатором `label` і скрипт на тому самому ігровому об’єкті. Залиште *Text* компонента Label порожнім, щоб показати привітання лише після підготовки його гліфів:
+
+```lua
+function init(self)
+    local text = "Hello 😀 🍎 🚀"
+    local font_resource = go.get("#label", "font")
+    -- Add the fallback once for this shared font resource.
+    font.add_font(font_resource, "/fonts/NotoColorEmoji-Regular.ttf")
+    font.prewarm_text(font_resource, text, function(self, request_id, result, err)
+        if result then
+            go.set("#label", "text", text)
+        else
+            print("Could not prepare label text:", err)
+        end
+    end)
+end
+```
+
+Звичайні літери використовують початковий шрифт, а емодзі — доданий кольоровий. Якщо інші компоненти Label або текстові вузли GUI спільно використовують цей ресурс шрифту, ініціалізуйте резервний шрифт в одному місці й використовуйте його повторно.
 
 ## Властивості текстової мітки {#label-properties}
 
@@ -81,7 +107,7 @@ toc:
 : Ресурс шрифту для цієї мітки.
 
 *Material*
-: Матеріал для рендерингу цієї мітки. Обов’язково виберіть матеріал, створений для типу шрифту, який ви використовуєте (растровий, на основі поля відстаней або BMFont).
+: Матеріал для рендерингу цього напису. Виберіть матеріал, що відповідає режиму або джерелу шрифту (Bitmap, SDF, Vector або BMFont). Відповідні вбудовані матеріали Label див. у розділі [Матеріали шрифтів](/uk/manuals/font/#font-materials).
 
 ### Режими змішування {#blend-modes}
 {% include shared/uk/blend-modes.md %}
@@ -106,7 +132,7 @@ toc:
 Ви можете керувати мітками під час виконання, отримуючи й установлюючи текст мітки та різні інші властивості.
 
 `text`
-: Текстовий вміст напису (`string`). Доступний через `go.get()` і `go.set()` починаючи з Defold 1.13.2.
+: Текстовий вміст напису (`string`). Доступний через `go.get()` і `go.set()`.
 
 `color`
 : Колір мітки (`vector4`)
@@ -134,7 +160,7 @@ end
 ```
 
 <div class='sidenote' markdown='1'>
-Починаючи з Defold 1.13.2, `label.set_text()` і `label.get_text()` застаріли на користь властивості `text`. Старі функції залишаються доступними для сумісності. Старий засіб установлення тексту ставить повідомлення в чергу, а `go.set()` оновлює текст негайно.
+`label.set_text()` і `label.get_text()` застаріли на користь властивості `text`. Старі функції залишаються доступними для сумісності. Старий засіб установлення тексту ставить повідомлення в чергу, а `go.set()` оновлює текст негайно.
 </div>
 
 ```lua

@@ -5,14 +5,15 @@ layout: manual
 locale: tr
 title: Defold proje derleyicisi kılavuzu
 toc:
-- Derleyici Bob
+- anchor: bob-the-builder
+  title: Derleyici Bob
 - anchor: usage
   title: Kullanım
 - anchor: build-server
   title: Derleme sunucusu
 ---
 
-# Derleyici Bob
+# Derleyici Bob {#bob-the-builder}
 
 Bob, Defold projelerini normal düzenleyici iş akışının dışında derlemek (build) için kullanılan bir komut satırı aracıdır.
 
@@ -249,7 +250,7 @@ $
 
 ## Derleme sunucusu {#build-server}
 
-Defold 1.14.0'dan itibaren Bob, yerel kod eklentileri için varsayılan derleme sunucusunu dağıtımının sürüm kanalına göre seçer:
+Bob, yerel kod eklentileri için varsayılan derleme sunucusunu dağıtımının sürüm kanalına göre seçer:
 
 | Bob sürüm kanalı | Varsayılan derleme sunucusu |
 |---|---|

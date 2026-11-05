@@ -15,6 +15,8 @@ toc:
   title: Navegación de la vista de escena (controles de cámara)
 - anchor: standard-navigation-all-visual-editors
   title: Navegación estándar (todos los editores visuales)
+- anchor: axis-gizmo
+  title: Gizmo de ejes
 - anchor: 2d-and-3d-scene-orientation
   title: Orientación de escena 2D y 3D
 - anchor: toolbar-overview
@@ -88,6 +90,22 @@ Estos controles están disponibles en los editores visuales:
 
 También puedes usar **Frame Selection** (<kbd>F</kbd>) para enfocar la cámara en la selección actual.
 
+### Gizmo de ejes {#axis-gizmo}
+
+El **Scene View Axis Gizmo** aparece en la esquina inferior derecha de la vista de escena en modo 3D. Muestra la orientación de la cámara respecto a los ejes del mundo: **X** en rojo, **Y** en verde y **Z** en azul.
+
+![Scene view with the axis gizmo in the bottom-right corner](/manuals/images/editor/axis_gizmo.gif)
+
+| Control | Acción |
+| --- | --- |
+| <kbd>Left Mouse Click</kbd> en un control de eje | Alinea la cámara para mirar a lo largo de ese eje. Los controles opuestos ofrecen vistas desde el otro lado. |
+| Click en un control de eje ya alineado | Cambia a la vista opuesta a lo largo del mismo eje. |
+| Mantener <kbd>Left Mouse Button</kbd> y arrastrar el gizmo | Orbita alrededor del punto de enfoque actual de la cámara. Puedes arrastrar desde un control de eje o desde el área circular que rodea los controles, sin mantener ninguna tecla modificadora. |
+
+La alineación de ejes conserva el punto de enfoque, la distancia y la proyección de la cámara. Usa primero **Frame Selection** (<kbd>F</kbd>) para enfocar un objeto y después el gizmo para inspeccionarlo desde distintas direcciones. Los controles normales de desplazamiento, zoom y órbita con <kbd>Ctrl</kbd>/<kbd>^ Control</kbd> + <kbd>Left Mouse Button</kbd> siguen disponibles.
+
+El gizmo está disponible con proyección tanto en perspectiva como ortográfica en modo 3D. En modo 2D está oculto; usa **Align/Realign Camera 2D/3D** en la [barra de herramientas](#toolbar-overview) o presiona <kbd>.</kbd> para cambiar a 3D. Usa el [control independiente de proyección de cámara](#camera-type-perspective-vs-orthographic) para elegir perspectiva u ortográfica. El gizmo controla la vista de tu escena en el editor de escenas.
+
 ## Orientación de escena 2D y 3D {#2d-and-3d-scene-orientation}
 
 La vista de escena puede usarse en flujos de trabajo 2D y 3D:
@@ -98,7 +116,7 @@ La vista de escena puede usarse en flujos de trabajo 2D y 3D:
   - Usas una cámara de **perspectiva**,
   - Eliges un plano de Grid adecuado (a menudo **Y** para “suelo”).
 
-Puedes acceder a estas funciones desde la barra de herramientas y el menú **View**.
+Puedes acceder a estas funciones mediante la barra de herramientas y el menú **View**. Usa el [gizmo de ejes](#axis-gizmo) en modo 3D para alinear la vista con un eje u orbitar con el ratón.
 
 ![Scene Editor 3D](/manuals/images/editor/3d_scene.png)
 
@@ -215,6 +233,7 @@ Para una navegación 3D rápida, el Scene Editor ofrece **Free Camera Mode**, un
 
 <div class='sidenote' markdown='1'>
 En algunas distribuciones de teclado (por ejemplo, sueca), la tecla backtick es una tecla muerta y puede no activar el atajo como se espera. Puedes reasignar este atajo en `File ▸ Preferences ▸ Keys` e introducir un atajo para `Scene -> Free Camera -> Activate`
+
 </div>
 
 Cuando Free Camera Mode está activo, la vista de escena se resalta con una línea alrededor de los bordes.

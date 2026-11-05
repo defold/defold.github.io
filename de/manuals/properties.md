@@ -112,7 +112,7 @@ Es gibt auch spezifische Funktionen für die Transformation des Spielobjekts: `g
 
 | Eigenschaft   | Beschreibung                            | Typ            |                  |
 | ---------- | -------------------------------------- | --------------- | ---------------- |
-| *text* | Der Textinhalt der Beschriftung (label). Verfügbar seit Defold 1.13.2. | `string` | `get+set` |
+| *text* | Der Textinhalt der Beschriftung. | `string` | `get+set` |
 | *scale* | Die Skalierung der Beschriftung. | `vector3` | `get+set` |
 | *scale.xy* | Die Skalierung der Beschriftung entlang der X- und Y-Achse. | `vector3` | `get+set`|
 | *color*     | Die Farbe der Beschriftung. | `vector4` | `get+set` |

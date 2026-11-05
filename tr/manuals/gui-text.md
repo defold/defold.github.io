@@ -5,19 +5,25 @@ layout: manual
 locale: tr
 title: Defold GUI metin düğümleri
 toc:
-- GUI metin düğümleri
-- Metin düğümleri ekleme
-- Hizalama
-- Çalışma sırasında metin düğümlerini değiştirme
+- anchor: gui-text-nodes
+  title: GUI metin düğümleri
+- anchor: adding-text-nodes
+  title: Metin düğümleri ekleme
+- anchor: vector-fonts-and-color-emoji
+  title: Vektör yazı tipleri ve renkli emoji
+- anchor: alignment
+  title: Hizalama
+- anchor: modifying-text-nodes-in-runtime
+  title: Çalışma sırasında metin düğümlerini değiştirme
 ---
 
-# GUI metin düğümleri
+# GUI metin düğümleri {#gui-text-nodes}
 
 Defold, GUI sahnesinde metin işleme (rendering) için özel bir GUI düğümü (GUI node) türünü destekler. Projeye eklenen herhangi bir yazı tipi kaynağı, metin düğümlerini (text node) işlemek için kullanılabilir.
 
 Düzenleyici önizlemesi, motorun yazı tipi işleyicisini kullanarak metin şekillendirmeyi ve sağdan sola yerleşimi destekler. Gerekli yazı tipi ve App Manifest ayarları için [metin yerleşimi desteğine](/tr/manuals/font/#text-layout-support-eg-right-to-left) bakın.
 
-## Metin düğümleri ekleme
+## Metin düğümleri ekleme {#adding-text-nodes}
 
 GUI metin düğümlerinde kullanmak istediğiniz yazı tiplerinin GUI bileşenine (GUI component) eklenmesi gerekir. Bunun için *Fonts* klasörüne sağ tıklayın, üstteki <kbd>GUI</kbd> menüsünü kullanın veya ilgili klavye kısayoluna basın.
 
@@ -34,7 +40,32 @@ Metin düğümlerinin bir dizi özel özelliği vardır:
 *Line Break*
 : Metin hizalaması, dayanak noktası (pivot) ayarını izler ve bu özelliğin ayarlanması, metnin birden çok satıra yayılmasını sağlar. Düğümün genişliği, metnin nerede alt satıra kaydırılacağını belirler.
 
-## Hizalama
+## Vektör yazı tipleri ve renkli emoji {#vector-fonts-and-color-emoji}
+
+[Vektör yazı tipi kurulumunu](/tr/manuals/font/#vector-fonts) izleyin, `.font` kaynağını GUI sahnesinin *Fonts* listesine ekleyin ve metin düğümünde seçin. Yazı tipi kaynağının *Material* özelliğini `/builtins/fonts/font-vector.material` olarak ayarlayın. Görüntülenen boyutu kontrol etmek için düğümün *Font Size* özelliğini kullanın.
+
+Renkli emoji için [COLRv1 yedek yazı tipi ve paketleme kurulumunu](/tr/manuals/font/#color-emoji) da tamamlayın. `text` kimliğine sahip bir metin düğümü oluşturun, *Text* alanını boş bırakın ve GUI sahnesinin `.gui_script` dosyasına şunu ekleyin:
+
+```lua
+function init(self)
+    local node = gui.get_node("text")
+    local text = "Hello 😀 🍎 🚀"
+    local font_resource = gui.get_font_resource(gui.get_font(node))
+    -- Add the fallback once for this shared font resource.
+    font.add_font(font_resource, "/fonts/NotoColorEmoji-Regular.ttf")
+    font.prewarm_text(font_resource, text, function(self, request_id, result, err)
+        if result then
+            gui.set_text(node, text)
+        else
+            print("Could not prepare GUI text:", err)
+        end
+    end)
+end
+```
+
+[`gui.get_font()`](/ref/gui/#gui.get_font), GUI sahnesindeki yazı tipi adını döndürür; [`gui.get_font_resource()`](/ref/gui/#gui.get_font_resource) ise bu adı `font.add_font()` işlevinin kullandığı yazı tipi kaynağına çözümler. Bu kaynağı paylaşan diğer düğümler ve etiketler de yedek yazı tipini alır; bu nedenle onu yalnızca bir kez başlatın. Metin, ön hazırlık başarıyla tamamlandıktan sonra ayarlanır.
+
+## Hizalama {#alignment}
 
 Düğümün dayanak noktasını ayarlayarak metnin hizalama modunu değiştirebilirsiniz.
 
@@ -49,7 +80,7 @@ Düğümün dayanak noktasını ayarlayarak metnin hizalama modunu değiştirebi
 
 ![Metin hizalaması](/manuals/images/gui-text/align.png)
 
-## Çalışma sırasında metin düğümlerini değiştirme
+## Çalışma sırasında metin düğümlerini değiştirme {#modifying-text-nodes-in-runtime}
 
 Metin düğümleri, boyut, dayanak noktası, renk ve benzerlerini ayarlayan tüm genel düğüm düzenleme işlevleriyle değiştirilebilir. Yalnızca metin düğümlerine özgü birkaç işlev de vardır:
 
