@@ -3165,7 +3165,7 @@
         },
         {
             "brief": "moves the first node above the second",
-            "description": "Alters the ordering of the two supplied nodes by moving the first node\nabove the second.\nIf the second argument is <code>nil</code> the first node is moved to the top.",
+            "description": "Alters the ordering of the two supplied nodes by moving the first node\nabove the second.\nIf the second argument is <code>nil</code> the first node is moved to the top.\nThe moved node adopts the reference node's parent, or becomes a root node\nif the reference is <code>nil</code>. Moving a node relative to one of its descendants\nraises an error and leaves the hierarchy unchanged.",
             "error": "",
             "examples": "",
             "language": "",
@@ -3212,7 +3212,7 @@
         },
         {
             "brief": "moves the first node below the second",
-            "description": "Alters the ordering of the two supplied nodes by moving the first node\nbelow the second.\nIf the second argument is <code>nil</code> the first node is moved to the bottom.",
+            "description": "Alters the ordering of the two supplied nodes by moving the first node\nbelow the second.\nIf the second argument is <code>nil</code> the first node is moved to the bottom.\nThe moved node adopts the reference node's parent, or becomes a root node\nif the reference is <code>nil</code>. Moving a node relative to one of its descendants\nraises an error and leaves the hierarchy unchanged.",
             "error": "",
             "examples": "",
             "language": "",
