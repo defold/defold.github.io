@@ -116,6 +116,7 @@ These are per-example files generated for LLM usage.
 - [Move to target](https://defold.com/llms/examples/movement/move_to.md) - This example shows how to make a game object move to the position the user clicks
 - [Movement speed](https://defold.com/llms/examples/movement/movement_speed.md) - This example shows how to move a game object with accelerating speed
 - [Moving game object](https://defold.com/llms/examples/movement/simple_move.md) - This example shows how to move a game object
+- [Rotate 3D object towards the mouse cursor](https://defold.com/llms/examples/movement/look_at_3d.md) - Learn how to rotate a 3D object towards the mouse cursor
 
 ## Particles
 
