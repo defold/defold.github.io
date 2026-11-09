@@ -9,6 +9,8 @@ toc:
 - Android and Google Play signing process
 - Creating a keystore
 - Creating an Android application bundle
+- anchor: estimating-the-google-play-download-size
+  title: Estimating the Google Play download size
 - Installing an Android application bundle
 - Display cutouts
 - anchor: shrinking-java-code-with-r8
@@ -76,6 +78,35 @@ Defold supports the creation of both APK and AAB files. Select APK or AAB from t
 Press <kbd>Create Bundle</kbd> when you have configured the application bundle settings. You will then be prompted to specify where on your computer the bundle will be created.
 
 ![Android Application Package file](../images/android/apk_file.png)
+
+### Estimating the Google Play download size {#estimating-the-google-play-download-size}
+
+Google Play doesn't deliver the *`.aab`* file to players. It generates APKs optimized for each device configuration, so the download a player gets is smaller than the *`.aab`* or the universal *`.apk`*. Check the *Estimate download size* check-box in the Bundle dialog to get the estimated download size when the bundle is created. The estimate works for both the APK and AAB bundle formats.
+
+![Estimate download size](../images/android/sign_bundle.png)
+
+The estimate is printed to the console:
+
+```
+Estimated Play Store download size: 18.2 MB - 25.0 MB (arm64-v8a: 25.0 MB, armeabi-v7a: 18.2 MB - 18.9 MB)
+```
+
+It is also saved as `download_size.json` in the bundle output folder. The file contains the minimum and maximum download size in bytes across all device configurations, and the same range for each CPU architecture:
+
+```json
+{
+  "min" : 18208826,
+  "max" : 25009450,
+  "abis" : {
+    "arm64-v8a" : { "min" : 25009448, "max" : 25009450 },
+    "armeabi-v7a" : { "min" : 18208826, "max" : 18908828 }
+  }
+}
+```
+
+When bundling from the command line, pass the path of the report file to [Bob](/manuals/bob) with `--download-size-report <path>`. This is useful for tracking the download size of your game over time in continuous integration.
+
+The estimate is calculated with [bundletool](https://developer.android.com/tools/bundletool) from the APKs Google Play would generate from your bundle, signed with the same keystore. Generating them takes about as long as creating the *`.aab`* file, which is why the estimate is off by default. If the estimate fails, a warning is printed and the bundle is created as usual, but no report file is written.
 
 {% include shared/en/build-variants.md %}
 

@@ -81,6 +81,8 @@ Excluded content can be anything from entire levels to unlockable characters, sk
 
 ## Android specific size optimizations
 
+To see what your players will actually download, enable the [Google Play download size estimate](https://defold.com/llms/manuals/android.md) when you bundle. It reports the size Google Play delivers for each CPU architecture, which is smaller than the size of the *`.aab`* file.
+
 Enable [R8 shrinking](https://defold.com/llms/manuals/android.md) to remove unused Java code. With a compatible Extender server, this also removes unused Android resources from extensions and their dependencies.
 
 Android builds must support both 32-bit and 64-bit CPU architectures. When you [bundle for Android](https://defold.com/llms/manuals/android.md) you can specify which CPU architectures to include:
