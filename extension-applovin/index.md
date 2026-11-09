@@ -67,7 +67,7 @@ listeners weakly, so the subscribing extension must retain its listener.
 | Defold | 1.13.0 |
 | Android | API 24 |
 | iOS | iOS 15 |
-| AppLovin MAX | 13.6.4 |
+| AppLovin MAX | 13.7.0 |
 
 ## Install
 
