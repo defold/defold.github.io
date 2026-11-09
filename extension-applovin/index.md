@@ -64,7 +64,7 @@ listeners weakly, so the subscribing extension must retain its listener.
 
 | Component | Minimum |
 | --- | --- |
-| Defold | 1.13.0 |
+| Defold | 1.13.2 |
 | Android | API 24 |
 | iOS | iOS 15 |
 | AppLovin MAX | 13.7.0 |
@@ -89,6 +89,11 @@ In the `game.project` editor, also configure:
 Register your Android package and iOS bundle identifier in MAX. Use the SDK key
 from **Account > General > Keys**, and create separate ad units for each
 platform and format.
+
+Android resource keep files are included automatically with the extension.
+They preserve Mintegral resources loaded by name, AppLovin mediation-debugger
+icons, and AppLovin consent strings when R8 resource shrinking is enabled.
+No additional `custom_resources` or `bundle_resources` setting is needed.
 
 The extension is not available on desktop or HTML5. Guard shared code:
 
