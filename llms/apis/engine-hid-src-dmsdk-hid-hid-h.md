@@ -305,6 +305,21 @@ gets a touch device handle
 *Type:* CONSTANT
 Name used when registering the HID context with the engine context registry.
 
+### InputSource
+*Type:* ENUM
+Device category of an input action. Clicks and pointer movement simulated
+from touch retain the touch source. Zero-initialized actions default
+to keyboard input.
+
+**Members**
+
+- `dmHID::INPUT_SOURCE_KEYBOARD`
+- `dmHID::INPUT_SOURCE_TEXT`
+- `dmHID::INPUT_SOURCE_MOUSE`
+- `dmHID::INPUT_SOURCE_TOUCH`
+- `dmHID::INPUT_SOURCE_GAMEPAD`
+- `dmHID::INPUT_SOURCE_ACCELEROMETER`
+
 ### Key
 *Type:* ENUM
 keyboard key enumeration

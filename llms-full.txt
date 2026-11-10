@@ -334,6 +334,7 @@ This document contains the Defold API reference, grouped by language.
 - [dmEngine (Engine)](#apis:engine-engine-src-dmsdk-engine-extension-hpp) - SDK Engine extension API documentation
 - [engine (Engine runtime)](#apis:engine-engine-src-engine_doc-h) - Engine runtime documentation
 - [dmExtension (Extension)](#apis:engine-extension-src-dmsdk-extension-extension_gen-hpp) - Functions for creating and controlling engine native extension libraries
+- [FontGeneration (Font Generation)](#apis:engine-font-src-fontgen-h) - Asynchronously generates glyphs and hands them to a caller-owned cache
 - [dmGameObject (Component)](#apis:engine-gameobject-src-dmsdk-gameobject-component-h) - Api for manipulating game object components (WIP)
 - [dmGameObject (Gameobject)](#apis:engine-gameobject-src-dmsdk-gameobject-gameobject-h) - API for manipulating game objects
 - [dmGameObject (PropertyContainer)](#apis:engine-gameobject-src-dmsdk-gameobject-gameobject_props-h) - API for game object property container
@@ -411,6 +412,7 @@ This document contains the Defold API reference, grouped by language.
 - [particlefx (Particle effects)](#apis:particlefx-lua) - Functions and properties for controlling particle effect component playback and shader constants
 - [physics (Collision object)](#apis:physics-lua) - Collision object physics API documentation
 - [profiler (Profiler)](#apis:profiler-lua) - Functions for getting profiling data in runtime
+- [recorder (Video recording)](#apis:recorder-lua) - Record the game window to an MP4 file
 - [render (Render)](#apis:render-lua) - Rendering API documentation
 - [resource (Resource)](#apis:resource-lua) - Functions and constants to access resources
 - [socket (LuaSocket)](#apis:socket-lua) - [LuaSocket](https://github
@@ -24428,6 +24430,7 @@ type enumeration
 - `dmImage::TYPE_RGBA` - = 1
 - `dmImage::TYPE_LUMINANCE` - = 2
 - `dmImage::TYPE_LUMINANCE_ALPHA` - = 3
+- `dmImage::TYPE_RGBA32F` - = 4 Floating-point RGBA used by the texture build pipeline.
 
 <!-- engine-dlib-src-dmsdk-dlib-intersection-h -->
 
@@ -25992,8 +25995,18 @@ Enum to describe type of a property
 - `PROFILE_PROPERTY_TYPE_F64`
 
 ### ProfilePropertyValue
-*Type:* FUNCTION
+*Type:* STRUCT
 Union to hold a property value
+
+**Members**
+
+- `m_Bool` (bool) - Property value as a bool
+- `m_S32` (int32_t) - Property value as a int32_t
+- `m_U32` (uint32_t) - Property value as an uint32_t
+- `m_F32` (float) - Property value as a float
+- `m_S64` (int64_t) - Property value as a int64_t
+- `m_U64` (uint64_t) - Property value as an uint64_t
+- `m_F64` (double) - Property value as a double
 
 ### ProfileRegisterProfiler
 *Type:* FUNCTION
@@ -26001,8 +26014,8 @@ Register a new profiler. Can be done after the profiling has started.
 
 **Parameters**
 
-- `name` (const char*) - Name of the profiler
-@ @param profiler <span class="type"> ProfileListener*</span> Instance of the profiler. Keep alive until calling ProfileUnregisterProfiler()!
+- `name` (const char*) - Name of the profiler. Only the first 15 characters are used to identify it.
+- `profiler` (ProfileListener*) - Instance of the profiler. Keep alive until calling ProfileUnregisterProfiler()!
 
 ### ProfileResult
 *Type:* ENUM
@@ -26058,7 +26071,7 @@ Unregister a profiler
 
 **Parameters**
 
-- `name` (const char*) - Name of the profiler
+- `name` (const char*) - Name of the profiler. Only the first 15 characters are used to identify it.
 
 <!-- engine-dlib-src-dmsdk-dlib-shared_library-h -->
 
@@ -28160,7 +28173,9 @@ The web-server has a handler concept similar to servlets in Java
 
 ### AddHandler
 *Type:* FUNCTION
-Add a new handler
+Requests use the handler with the longest matching prefix, regardless of
+registration order. A handler registered at "/" serves as a fallback.
+Equivalent to calling the four-argument overload with openapi_json set to 0.
 
 **Parameters**
 
@@ -28172,9 +28187,33 @@ Add a new handler
 
 - `return` (Result) - RESULT_OK on success
 
+### AddHandler
+*Type:* FUNCTION
+Requests use the handler with the longest matching prefix, regardless of
+registration order. A handler registered at "/" serves as a fallback.
+Pass 0 to register without documenting the handler. Otherwise, the OpenAPI
+JSON is a non-empty Paths Object describing the paths and methods
+served by this handler. Each path must start with the handler's prefix and
+must not already be documented by another handler. Schemas should be inline
+or use references to paths in the resulting document.
+The server retains the JSON pointer without copying it. Keep the string
+unchanged and valid until the handler is removed or the server is deleted;
+a static const char array is recommended.
+
+**Parameters**
+
+- `server` (HServer) - Server handle
+- `prefix` (const char*) - Location prefix for which locations this handler should handle
+- `handler_params` (HandlerParams) - Handler parameters
+- `openapi_json` (const char*) - OpenAPI 3.0.3 Paths Object encoded as a JSON string, or 0 to omit metadata
+
+**Returns**
+
+- `return` (Result) - RESULT_OK on success, RESULT_ERROR_INVAL for invalid or conflicting metadata
+
 ### GetHeader
 *Type:* FUNCTION
-Get http header value for key
+Get http header value for key, ignoring ASCII case in the header name
 
 **Parameters**
 
@@ -28262,12 +28301,14 @@ result codes
 - `RESULT_ERROR_INVAL`
 - `RESULT_HANDLER_ALREADY_REGISTRED`
 - `RESULT_HANDLER_NOT_REGISTRED`
+- `RESULT_TRY_AGAIN`
 - `RESULT_INTERNAL_ERROR`
 - `RESULT_UNKNOWN`
 
 ### Send
 *Type:* FUNCTION
-Send response data
+Copies data into an owned response sent asynchronously after the handler returns.
+Socket errors are handled by the server; RESULT_OK means the data was queued.
 
 **Parameters**
 
@@ -28879,6 +28920,26 @@ Defold uses the UIScene lifecycle. Application activity, URL and user activity
 callbacks are not forwarded from scenes; use ExtensionRegisteriOSUISceneDelegate.
 The game window is created after application launch. Use scene connection to
 access it, and scene connection options for cold-launch URLs and user activities.
+application:supportedInterfaceOrientationsForWindow: can override the game's
+orientation settings, including on iOS 27 and later. The last nonzero mask
+containing only valid UIInterfaceOrientationMask bits in delegate dispatch
+order is used. Invalid masks are ignored. The application, scene, and root
+view controller share this policy, including during full-screen presentations.
+The game's default mask comes from the DefoldSupportedInterfaceOrientations
+Info.plist array, with DefoldSupportedInterfaceOrientations~ipad taking
+precedence on iPad. If neither contains usable orientations, Defold falls back
+to UISupportedInterfaceOrientations~ipad on iPad, then
+UISupportedInterfaceOrientations. Arrays contain UIKit orientation names such
+as UIInterfaceOrientationPortrait. The default policy excludes upside-down
+portrait on iPhone. If no array is usable, all device-supported orientations
+are allowed. The built-in manifest keeps the UIKit arrays broad and uses the
+Defold array for the game's orientation settings.
+UIKit may ignore orientation restrictions, including on iPhone Duo's inner
+display. Games must still handle window size changes.
+Register before scene connection to affect the initial orientation.
+To update the policy after scene connection, call
+setNeedsUpdateOfSupportedInterfaceOrientations on the root view controller
+(iOS 16+) or attemptRotationToDeviceOrientation (iOS 15).
 
 **Notes**
 
@@ -29155,6 +29216,26 @@ Defold uses the UIScene lifecycle. Application activity, URL and user activity
 callbacks are not forwarded from scenes; use ExtensionRegisteriOSUISceneDelegate.
 The game window is created after application launch. Use scene connection to
 access it, and scene connection options for cold-launch URLs and user activities.
+application:supportedInterfaceOrientationsForWindow: can override the game's
+orientation settings, including on iOS 27 and later. The last nonzero mask
+containing only valid UIInterfaceOrientationMask bits in delegate dispatch
+order is used. Invalid masks are ignored. The application, scene, and root
+view controller share this policy, including during full-screen presentations.
+The game's default mask comes from the DefoldSupportedInterfaceOrientations
+Info.plist array, with DefoldSupportedInterfaceOrientations~ipad taking
+precedence on iPad. If neither contains usable orientations, Defold falls back
+to UISupportedInterfaceOrientations~ipad on iPad, then
+UISupportedInterfaceOrientations. Arrays contain UIKit orientation names such
+as UIInterfaceOrientationPortrait. The default policy excludes upside-down
+portrait on iPhone. If no array is usable, all device-supported orientations
+are allowed. The built-in manifest keeps the UIKit arrays broad and uses the
+Defold array for the game's orientation settings.
+UIKit may ignore orientation restrictions, including on iPhone Duo's inner
+display. Games must still handle window size changes.
+Register before scene connection to affect the initial orientation.
+To update the policy after scene connection, call
+setNeedsUpdateOfSupportedInterfaceOrientations on the root view controller
+(iOS 16+) or attemptRotationToDeviceOrientation (iOS 15).
 
 **Notes**
 
@@ -29246,6 +29327,120 @@ This function is only available on iOS.
 **Parameters**
 
 - `delegate` (void*) - An id<UISceneDelegate>.
+
+<!-- engine-font-src-fontgen-h -->
+
+# Font Generation {#apis:engine-font-src-fontgen-h}
+
+**Namespace:** `FontGeneration`
+**Language:** C++
+**Type:** Defold C++
+**File:** `fontgen.h`
+**Source:** `engine/font/src/fontgen.h`
+**Include:** `engine/font/src/fontgen.h`
+
+Asynchronously generates glyphs and hands them to a caller-owned cache.
+Glyph insertion and completion callbacks run on the job context owner, or on
+the caller of FontGenUpdateGlyphs for a batch started with FontGenStartGlyphs.
+Cache lookup runs while preparing the batch. The caller context must remain
+valid until the completion callback has run or the job has been cancelled.
+
+## API
+
+### FFontGenAddGlyph
+*Type:* TYPEDEF
+Returning FONT_RESULT_OK transfers ownership of the glyph to the callback.
+For every other result, font_gen retains ownership and frees the glyph.
+
+### FFontGenComplete
+*Type:* TYPEDEF
+Reports completion of a glyph generation batch.
+
+### FFontGenIsGlyphCached
+*Type:* TYPEDEF
+Looks up a glyph in the caller-owned cache.
+
+### FontGenCreateJobData
+*Type:* FUNCTION
+Allocates scratch data for one generation batch.
+
+**Parameters**
+
+- `params` (FontGenParams*) - Generation settings and callbacks. The values are copied.
+- `num_glyphs` (uint32_t) - Maximum number of glyphs in the batch.
+
+**Returns**
+
+- `job_data` (FontGenJobData*) - Job data, or null when unsupported.
+
+### FontGenDestroyJobData
+*Type:* FUNCTION
+Batches started with FontGenStartGlyphs cancel and wait for their own jobs.
+Other batches must already have finished or been canceled by the caller.
+
+**Parameters**
+
+- `jobdata` (FontGenJobData*) - Batch to release.
+
+### FontGenIsSupported
+*Type:* FUNCTION
+Tests whether runtime glyph generation is linked into the engine.
+
+**Returns**
+
+- `supported` (bool) - True when the full font_gen library is linked.
+
+### FontGenParams
+*Type:* STRUCT
+Runtime glyph generation parameters.
+
+**Members**
+
+- `m_UserContext` (void*) - Opaque context passed to all callbacks.
+- `m_IsGlyphCached` (FFontGenIsGlyphCached) - Cache lookup callback.
+- `m_AddGlyph` (FFontGenAddGlyph) - Glyph insertion callback.
+- `m_Complete` (FFontGenComplete) - Batch completion callback.
+- `m_Jobs` (HJobContext) - Job system used for asynchronous generation.
+- `m_Size` (float) - Glyph generation size in pixels.
+- `m_OutlineWidth` (float) - Outline width in pixels.
+- `m_ShadowBlur` (float) - Shadow blur spread in pixels.
+- `m_IsSdf` (uint8_t) - Non-zero when SDF output is requested.
+- `m_IsVector` (uint8_t) - Non-zero when Vector glyph output is requested.
+- `m_BitmapEffects` (uint8_t) - Generate RGB vector effect bitmaps on the CPU.
+- `m_HasOutline` (uint8_t) - Include the authored outline in the effect bitmaps.
+- `m_HasShadow` (uint8_t) - Generate the authored shadow bitmap.
+
+### FontGenStartGlyphs
+*Type:* FUNCTION
+Worker jobs generate glyphs without invoking callbacks. Call FontGenUpdateGlyphs
+on the resource's creation thread to install the results. That update can take
+over queued glyphs, including when the caller occupies the last worker. With
+no workers it generates all glyphs. The job context must outlive the batch.
+
+**Parameters**
+
+- `jobdata` (FontGenJobData*) - Fresh batch; keep alive until completion or destruction.
+- `glyphs` (::TextGlyph*) - Input glyphs, copied during this call.
+- `num_glyphs` (uint32_t) - Number of input glyphs.
+
+**Returns**
+
+- `started` (bool) - False when runtime generation is unsupported.
+
+### FontGenUpdateGlyphs
+*Type:* FUNCTION
+Generates queued glyphs or consumes finished results without dispatching other
+jobs or callbacks. Running jobs keep ownership until they finish. The completion
+callback may destroy the batch. Calls for one batch must be serialized by its owner.
+
+**Parameters**
+
+- `jobdata` (FontGenJobData*) - Batch to advance.
+- `time_limit` (uint64_t) - Soft time limit in microseconds; 0 processes at most one glyph.
+
+**Returns**
+
+- `complete` (bool) - True once all glyphs and the completion callback have been processed.
 
 <!-- engine-gameobject-src-dmsdk-gameobject-component-h -->
 
@@ -32066,7 +32261,7 @@ Used to retrieve the information of a font.
 
 **Members**
 
-- `m_Size` (uint32_t) - The size of the font (in points)
+- `m_Size` (float) - The font generation size in pixels
 - `m_ShadowX` (float) - The shadow distance in X-axis (in pixels)
 - `m_ShadowY` (float) - The shadow distance in Y-axis (in pixels)
 - `m_ShadowBlur` (uint32_t) - The shadow blur spread [0.255] (in pixels)
@@ -32092,7 +32287,9 @@ Handle to font resource
 
 ### PrewarmText
 *Type:* FUNCTION
-Make sure each glyph in the text gets rasterized and put into the glyph cache
+The generation size comes from the compiled font resource. Vector fonts
+with outline/shadow SDF effects use the Size authored in the .font file;
+curve-only Vector fonts use an internal normalization reference.
 
 **Parameters**
 
@@ -33853,7 +34050,18 @@ Defines how vertex data is assembled into primitives
 
 ### ReadPixels
 *Type:* FUNCTION
-Read frame buffer pixels in BGRA format
+Read the current render target's first color attachment (or the backbuffer).
+Call between BeginFrame and Flip, after drawing the pixels to read. The call
+waits for preceding rendering and returns tightly packed BGRA8 pixels, with
+the top row first. Region coordinates have their origin at the bottom left.
+Multisampled attachments are resolved; cubemaps use the currently bound face.
+RGBA8/BGRA8 attachments are supported. Other formats are adapter-dependent.
+Backbuffer readback is adapter- and surface-dependent. On WebGPU, the
+surface must support copy-source usage. If it does not, an error is logged
+and the destination is left unchanged.
+The region must fit the attachment and buffer_size must be at least
+width * height * 4 bytes. Invalid regions leave the destination unchanged.
+Subsequent rendering can continue on the same target.
 
 **Parameters**
 
@@ -35635,6 +35843,21 @@ gets a touch device handle
 *Type:* CONSTANT
 Name used when registering the HID context with the engine context registry.
 
+### InputSource
+*Type:* ENUM
+Device category of an input action. Clicks and pointer movement simulated
+from touch retain the touch source. Zero-initialized actions default
+to keyboard input.
+
+**Members**
+
+- `dmHID::INPUT_SOURCE_KEYBOARD`
+- `dmHID::INPUT_SOURCE_TEXT`
+- `dmHID::INPUT_SOURCE_MOUSE`
+- `dmHID::INPUT_SOURCE_TOUCH`
+- `dmHID::INPUT_SOURCE_GAMEPAD`
+- `dmHID::INPUT_SOURCE_ACCELEROMETER`
+
 ### Key
 *Type:* ENUM
 keyboard key enumeration
@@ -36006,6 +36229,21 @@ Deletes a named constant buffer
 
 - `buffer` (dmRender::HNamedConstantBuffer) - the constants buffer
 
+### DeleteRenderItem
+*Type:* FUNCTION
+Disables the item, invalidates its handle and releases its slot for reuse.
+Call before subsequent draws and outside dispatch callbacks. User data is not
+released.
+
+**Parameters**
+
+- `context` (dmRender::HRenderContext) - the render context
+- `item` (dmRender::HRenderItem) - an item created in this context
+
+**Returns**
+
+- `result` (bool) - true on success, or false if the item handle is invalid or deleted
+
 ### dmRender::GetMaterialVertexSpace
 *Type:* FUNCTION
 Get the vertex space (local or world)
@@ -36021,6 +36259,22 @@ Get the vertex space (local or world)
 ### dmRender::RenderObject::MAX_TEXTURE_COUNT
 *Type:* CONSTANT
 The maximum number of textures the render object can hold (16)
+
+### Enable
+*Type:* FUNCTION
+Changes draw eligibility without releasing the handle or its data. Repeating
+the current enabled state has no effect. The dispatch must also be submitted
+for the item to participate in the current frame.
+
+**Parameters**
+
+- `context` (dmRender::HRenderContext) - the render context
+- `item` (dmRender::HRenderItem) - an item created in this context
+- `enabled` (bool) - true to enable the item, or false to disable it
+
+**Returns**
+
+- `result` (bool) - true on success, or false if the item handle is invalid or deleted
 
 ### FrustumOptions
 *Type:* STRUCT
@@ -36223,6 +36477,20 @@ Shader constant buffer handle. Holds name and values for a constant.
 *Type:* TYPEDEF
 The render context
 
+### HRenderItem
+*Type:* TYPEDEF
+Identifies a renderer-owned item until DeleteRenderItem() invalidates it.
+Zero is invalid. Use the handle only with the context that created it.
+Create and update items before the draw that consumes them, outside render
+dispatch callbacks. Item setters return false for invalid or deleted handles.
+
+### HRenderItemDispatch
+*Type:* TYPEDEF
+Identifies a registration created by RegisterRenderListDispatch(). Use it
+only with its creating context, and never after UnregisterRenderListDispatch().
+This handle is separate from the frame-local HRenderListDispatch used in
+RenderListEntry. Zero is invalid.
+
 ### HRenderListDispatch
 *Type:* TYPEDEF
 Render dispatch function handle.
@@ -36281,6 +36549,61 @@ Allocates a named constant buffer
 
 - `buffer` (dmRender::HNamedConstantBuffer) - the constants buffer
 
+### NewRenderItem
+*Type:* FUNCTION
+The new item is disabled, with an identity transform, no material tags or bounds,
+and world-position ordering. Its dispatch and user data are fixed
+for its lifetime. Any data referenced by user_data must outlive the item.
+Creating an item does not invalidate outstanding RenderListAlloc() ranges.
+Delete the item before unregistering its dispatch.
+
+**Parameters**
+
+- `context` (dmRender::HRenderContext) - the render context
+- `dispatch` (dmRender::HRenderItemDispatch) - a registration created in this context
+- `user_data` (uint64_t) - item data exposed as RenderListEntry::m_UserData in callbacks
+
+**Returns**
+
+- `item` (dmRender::HRenderItem) - the item handle
+
+**Examples**
+
+```
+#include
+
+// context, dispatch and material are owned by the component or its world.
+dmRender::HRenderItem item = dmRender::NewRenderItem(context, dispatch, user_data);
+dmRender::SetMaterial(context, item, material);
+dmRender::SetWorldTransform(context, item, world_transform);
+dmRender::SetBoundingOBB(context, item, local_min, local_max);
+dmRender::Enable(context, item, true);
+
+// In the component render callback each frame:
+dmRender::SubmitRenderListDispatch(context, dispatch);
+
+// When the component is destroyed, outside dispatch callbacks:
+dmRender::DeleteRenderItem(context, item);
+
+```
+
+### RegisterRenderListDispatch
+*Type:* FUNCTION
+Callbacks and user data remain caller-owned and must stay valid until
+unregistration. Register before submitting. Delete all associated items before
+unregistering, after the current render list has finished drawing.
+
+**Parameters**
+
+- `context` (dmRender::HRenderContext) - the render context
+- `dispatch_fn` (dmRender::RenderListDispatchFn) - the render batch callback
+- `visibility_fn` (dmRender::RenderListVisibilityFn) - visibility callback for items without typed bounds, or 0 for always visible
+- `user_data` (void*) - user data passed to both callbacks
+
+**Returns**
+
+- `dispatch` (dmRender::HRenderItemDispatch) - the registration, or 0 if the registration limit is reached
+
 ### RemoveNamedConstant
 *Type:* FUNCTION
 Removes a named constant from the buffer
@@ -36296,11 +36619,10 @@ Name used when registering the render context with the engine context registry.
 
 ### RenderListAlloc
 *Type:* FUNCTION
-Allocates an array of render entries
-
-**Notes**
-
-- Do not store a pointer into this array, as they're reused next frame
+Allocate frame-local render entries
+Deprecated: use NewRenderItem() and the render item setters. Emits a warning
+once per process. Do not retain pointers across frames; another allocation
+can also invalidate the returned range.
 
 **Parameters**
 
@@ -36326,7 +36648,7 @@ Render dispatch function callback.
 **Members**
 
 - `m_Context` (dmRender::HRenderContext) - the context
-- `m_UserData` (void*) - the callback user data (registered with RenderListMakeDispatch())
+- `m_UserData` (void*) - the callback user data supplied to RegisterRenderListDispatch() or RenderListMakeDispatch()
 - `m_Operation` (dmRender::RenderListOperation) - the operation
 - `m_Buf` (dmRender::RenderListEntry) - the render entry array
 - `m_Begin` (uint32_t*) - the start of the render batch. contains index into the m_Buf array
@@ -36356,7 +36678,10 @@ Otherwise the sorting uses the m_Order value directly.
 
 ### RenderListMakeDispatch
 *Type:* FUNCTION
-Register a render dispatch function
+Register a frame-local render dispatch function
+Deprecated: use RegisterRenderListDispatch() and SubmitRenderListDispatch().
+Emits a warning once per process. The overload without a visibility
+callback is also deprecated.
 
 **Parameters**
 
@@ -36381,7 +36706,9 @@ Render batch callback states
 
 ### RenderListSubmit
 *Type:* FUNCTION
-Adds a render object to the current render frame
+Submit frame-local render entries
+Deprecated: use Enable() and SubmitRenderListDispatch(). Emits a warning
+once per process. The range must come from a single RenderListAlloc() call.
 
 **Parameters**
 
@@ -36403,7 +36730,7 @@ Visibility dispatch function callback.
 
 **Members**
 
-- `m_UserData` (void*) - the callback user data (registered with RenderListMakeDispatch())
+- `m_UserData` (void*) - the callback user data supplied to RegisterRenderListDispatch() or RenderListMakeDispatch()
 - `m_Entries` (dmRender::RenderListEntry) - the render entry array
 - `m_NumEntries` (uint32_t) - the number of render entries in the array
 
@@ -36437,6 +36764,7 @@ Render order
 
 **Members**
 
+- `RENDER_ORDER_BEFORE_WORLD` - Drawn before world-sorted items
 - `RENDER_ORDER_WORLD` - <div class="codehilite"><pre><span></span><code>      Used by game objects
 </code></pre></div>
 - `RENDER_ORDER_AFTER_WORLD` - <div class="codehilite"><pre><span></span><code>Used by gui
@@ -36452,6 +36780,76 @@ Render order
 - `RESULT_OUT_OF_RESOURCES`
 - `RESULT_BUFFER_IS_FULL`
 - `RESULT_INVALID_PARAMETER`
+
+### SetBatchKey
+*Type:* FUNCTION
+Sets the caller's batch compatibility key. Equal keys allow batching only when
+the remaining state is compatible. The renderer also separates batches by
+dispatch and ordering.
+
+**Parameters**
+
+- `context` (dmRender::HRenderContext) - the render context
+- `item` (dmRender::HRenderItem) - an item created in this context
+- `key` (uint32_t) - the batch compatibility key
+
+**Returns**
+
+- `result` (bool) - true on success, or false if the item handle is invalid or deleted
+
+### SetBoundingAABB
+*Type:* FUNCTION
+Replaces the previous volume. If any minimum coordinate exceeds its maximum,
+removes typed bounds and restores the registration's visibility callback, or
+always-visible behavior when no callback is registered. Equal corners define
+a valid point. SetWorldTransform() does not transform this box.
+Visibility is invalidated only when the volume type or values change.
+
+**Parameters**
+
+- `context` (dmRender::HRenderContext) - the render context
+- `item` (dmRender::HRenderItem) - an item created in this context
+- `world_min` (dmVMath::Vector3) - the world-space minimum corner
+- `world_max` (dmVMath::Vector3) - the world-space maximum corner
+
+**Returns**
+
+- `result` (bool) - true on success, or false if the item handle is invalid or deleted
+
+### SetBoundingOBB
+*Type:* FUNCTION
+Replaces the previous volume. Each minimum coordinate must be no greater than
+its maximum coordinate. The item's world transform supplies position,
+orientation and scale, including reflection and shear. Visibility is
+invalidated only when the volume type or values change.
+
+**Parameters**
+
+- `context` (dmRender::HRenderContext) - the render context
+- `item` (dmRender::HRenderItem) - an item created in this context
+- `local_min` (dmVMath::Vector3) - the local-space minimum corner
+- `local_max` (dmVMath::Vector3) - the local-space maximum corner
+
+**Returns**
+
+- `result` (bool) - true on success, or false if the item handle is invalid or deleted
+
+### SetBoundingSphere
+*Type:* FUNCTION
+Replaces the previous volume. The radius is a non-negative distance, not a
+squared radius. SetWorldTransform() does not move or scale this sphere.
+Visibility is invalidated only when the volume type or values change.
+
+**Parameters**
+
+- `context` (dmRender::HRenderContext) - the render context
+- `item` (dmRender::HRenderItem) - an item created in this context
+- `world_center` (dmVMath::Point3) - the world-space sphere center
+- `radius` (float) - the non-negative sphere radius in world units
+
+**Returns**
+
+- `result` (bool) - true on success, or false if the item handle is invalid or deleted
 
 ### SetConstantLocation
 *Type:* FUNCTION
@@ -36484,6 +36882,22 @@ Sets the shader program constant values
 **Returns**
 
 - `result` (dmRender::Result) - the result
+
+### SetMaterial
+*Type:* FUNCTION
+Copies the material's predicate tags. Call again after changing material tags
+to refresh cached metadata. A null material clears the tags. The material is
+not retained. Ordering is unchanged; use SetOrder() to configure it.
+
+**Parameters**
+
+- `context` (dmRender::HRenderContext) - the render context
+- `item` (dmRender::HRenderItem) - an item created in this context
+- `material` (dmRender::HMaterial) - the material supplying predicate tags, or 0 to clear them
+
+**Returns**
+
+- `result` (bool) - true on success, or false if the item handle is invalid or deleted
 
 ### SetMaterialSampler
 *Type:* FUNCTION
@@ -36581,6 +36995,41 @@ Sets a list of named constants to the buffer
 - `constants` (dmRender::HConstant*) - the constants
 - `num_constants` (uint32_t) - the number of constants
 
+### SetOrder
+*Type:* FUNCTION
+Overrides the default world-position ordering. World order sorts by position.
+Before-world and after-world order use the supplied order value; only its low
+24 bits are retained. Material changes and render-script material overrides
+preserve this ordering.
+
+**Parameters**
+
+- `context` (dmRender::HRenderContext) - the render context
+- `item` (dmRender::HRenderItem) - an item created in this context
+- `render_order` (dmRender::RenderOrder) - the major rendering order
+- `order` (uint32_t) - the 24-bit order value, ignored for world-position sorting
+
+**Returns**
+
+- `result` (bool) - true on success, or false if the item handle is invalid or deleted
+
+### SetWorldTransform
+*Type:* FUNCTION
+Copies the local-to-world affine transform. Its translation supplies the sort
+position, and it transforms local OBB bounds. World-space sphere and AABB
+bounds are unaffected. Every call invalidates cached visibility; also call
+when callback-owned visibility data changes without a transform change.
+
+**Parameters**
+
+- `context` (dmRender::HRenderContext) - the render context
+- `item` (dmRender::HRenderItem) - an item created in this context
+- `world_transform` (dmVMath::Matrix4) - the affine local-to-world transform to copy
+
+**Returns**
+
+- `result` (bool) - true on success, or false if the item handle is invalid or deleted
+
 ### StencilTestParams
 *Type:* STRUCT
 Struct holding stencil operation setup
@@ -36596,6 +37045,31 @@ Struct holding stencil operation setup
 - `m_BufferMask` (uint8_t)
 - `m_ColorBufferMask` (uint8_t:4)
 - `m_ClearBuffer` (uint8_t:1)
+
+### SubmitRenderListDispatch
+*Type:* FUNCTION
+Makes the registration's enabled items eligible for this frame. Call between
+RenderListBegin() and RenderListEnd(), before render-script draws. Repeated
+submission in one frame has no effect. Only submitted registrations consume
+frame dispatch IDs; at most 255 are available, shared with legacy dispatches.
+If that limit is reached, an error is logged and this submission is skipped.
+
+**Parameters**
+
+- `context` (dmRender::HRenderContext) - the render context
+- `dispatch` (dmRender::HRenderItemDispatch) - a registration created in this context
+
+### UnregisterRenderListDispatch
+*Type:* FUNCTION
+Delete all items belonging to this registration first. Call only after all
+draws using the current render list have finished, before the next render list
+is submitted. The registration handle becomes invalid. This does not release
+caller-owned callbacks or user data.
+
+**Parameters**
+
+- `context` (dmRender::HRenderContext) - the render context
+- `dispatch` (dmRender::HRenderItemDispatch) - a registration created in this context
 
 ### Visibility
 *Type:* ENUM
@@ -50337,6 +50811,32 @@ Project resource attributes
 - `is_file` (boolean) - whether the resource represents a file with some content
 - `is_directory` (boolean) - whether the resource represents a directory
 
+### editor.resource_children
+*Type:* FUNCTION
+List resource paths directly inside a folder or file. For example, a glTF file can contain meshes, materials, and images. Call this function on each returned path to explore all contents.
+Returns an empty list if there are no children. Throws an error if the path does not exist.
+
+**Parameters**
+
+- `resource_path` (string) - Resource path (starting with <code>/</code>)
+
+**Returns**
+
+- `children` (string[]) - child resource paths, starting with <code>/</code>
+
+**Examples**
+
+```
+local function walk(path)
+    print(path)
+    for _, child in ipairs(editor.resource_children(path)) do
+        walk(child)
+    end
+end
+walk("/assets")
+
+```
+
 ### editor.save
 *Type:* FUNCTION
 Persist any unsaved changes to disk
@@ -52289,7 +52789,15 @@ Font resource information
 
 ### font.prewarm_text
 *Type:* FUNCTION
-prepopulates the font glyph cache with rasterised glyphs
+prepopulates the font glyph cache with generated glyphs
+
+**Notes**
+
+- This function can only be used with fonts whose **Glyph Generation**
+property is set to **Dynamic**.
+Vector fonts can be prewarmed before rendering. When outline/shadow SDF
+effects are enabled, generation uses the Size set in the .font resource,
+independently of label/GUI Font Size. Curve-only fonts use an internal reference.
 
 **Parameters**
 
@@ -53514,7 +54022,7 @@ information.
 **Parameters**
 
 - `self` (script_instance) - script instance used for storing state
-- `action_id` (hash | nil) - id of the received input action, as mapped in the input_binding-file, or <code>nil</code> for mouse movement
+- `action_id` (hash | nil) - id of the received input action, as mapped in the input_binding-file, or <code>nil</code> for pointer movement and accelerometer samples; check <code>action.source</code> to distinguish them
 - `action` (on_input.action) - input data for the action
 
 **Returns**
@@ -53555,21 +54063,40 @@ end
 ### on_input.action
 *Type:* STRUCT
 Data supplied to the global on_input lifecycle function.
+The source identifies the input device category independently of the action
+name. Clicks and pointer movement simulated from touch report hash("touch"),
+as do separate touch actions. Text and marked-text input report
+hash("text"), including input entered with a physical keyboard.
+If a named action merges contributions from several devices, the last
+contributing device processed wins, in keyboard, text, mouse, then touch
+order. Keyboard keys and mouse buttons contribute to source selection only
+while pressed or held. Their releases keep the previously reported source
+unless another input contributes in the same frame. Idle device polling
+does not change the source. Gamepad actions remain separate per controller.
+Pointer movement and accelerometer samples are delivered in separate callbacks,
+both with action_id == nil. Pointer movement reports hash("mouse") or
+hash("touch") and has pointer coordinates but no accelerometer fields.
+Accelerometer samples report hash("accelerometer") and have acc_x, acc_y,
+and acc_z but no pointer coordinates. If both occur in a frame, two callbacks
+are delivered and each can be consumed independently. Check source to
+distinguish these callbacks. Accelerometer samples are delivered even when
+their values have not changed.
 
 **Members**
 
-- `value?` (number) - Amount of input, usually 1 for buttons or between 0 and 1 for analogue input; absent for pointer movement and text input.
-- `pressed?` (boolean) - Whether the input was pressed this frame; absent for pointer movement and text input.
-- `released?` (boolean) - Whether the input was released this frame; absent for pointer movement and text input.
-- `repeated?` (boolean) - Whether the input was repeated this frame; absent for pointer movement and text input.
-- `x?` (number) - Pointer x-coordinate; absent for gamepad, key, and text input.
-- `y?` (number) - Pointer y-coordinate; absent for gamepad, key, and text input.
-- `screen_x?` (number) - Pointer x-coordinate in screen space; absent for gamepad, key, and text input.
-- `screen_y?` (number) - Pointer y-coordinate in screen space; absent for gamepad, key, and text input.
-- `dx?` (number) - Change in the pointer x-coordinate; absent for gamepad, key, and text input.
-- `dy?` (number) - Change in the pointer y-coordinate; absent for gamepad, key, and text input.
-- `screen_dx?` (number) - Change in the pointer x-coordinate in screen space; absent for gamepad, key, and text input.
-- `screen_dy?` (number) - Change in the pointer y-coordinate in screen space; absent for gamepad, key, and text input.
+- `source` (hash) - Input device category: <code>hash("keyboard")</code>, <code>hash("text")</code>, <code>hash("mouse")</code>, <code>hash("touch")</code>, <code>hash("gamepad")</code>, or <code>hash("accelerometer")</code>.
+- `value?` (number) - Amount of input, usually 1 for buttons or between 0 and 1 for analogue input; absent for pointer movement, accelerometer samples, and text input.
+- `pressed?` (boolean) - Whether the input was pressed this frame; absent for pointer movement, accelerometer samples, and text input.
+- `released?` (boolean) - Whether the input was released this frame; absent for pointer movement, accelerometer samples, and text input.
+- `repeated?` (boolean) - Whether the input was repeated this frame; absent for pointer movement, accelerometer samples, and text input.
+- `x?` (number) - Pointer x-coordinate; absent for gamepad, key, text, and accelerometer input.
+- `y?` (number) - Pointer y-coordinate; absent for gamepad, key, text, and accelerometer input.
+- `screen_x?` (number) - Pointer x-coordinate in screen space; absent for gamepad, key, text, and accelerometer input.
+- `screen_y?` (number) - Pointer y-coordinate in screen space; absent for gamepad, key, text, and accelerometer input.
+- `dx?` (number) - Change in the pointer x-coordinate; absent for gamepad, key, text, and accelerometer input.
+- `dy?` (number) - Change in the pointer y-coordinate; absent for gamepad, key, text, and accelerometer input.
+- `screen_dx?` (number) - Change in the pointer x-coordinate in screen space; absent for gamepad, key, text, and accelerometer input.
+- `screen_dy?` (number) - Change in the pointer y-coordinate in screen space; absent for gamepad, key, text, and accelerometer input.
 - `acc_x?` (number) - Accelerometer x value, when present.
 - `acc_y?` (number) - Accelerometer y value, when present.
 - `acc_z?` (number) - Accelerometer z value, when present.
@@ -53966,6 +54493,7 @@ Optional graphics-context features
 - `graphics.CONTEXT_FEATURE_ASTC_ARRAY_TEXTURES` - Context feature flag indicating support for ASTC compressed 2D array textures. Some WebGL/GLES drivers fail array texture ASTC uploads while 2D ASTC works.
 - `graphics.CONTEXT_FEATURE_BC_ARRAY_TEXTURES` - Context feature flag indicating support for BC (S3TC/RGTC/BPTC) compressed 2D array and 3D textures. WebGL2 forbids these compressed families on array/3D targets while allowing them on 2D.
 - `graphics.CONTEXT_FEATURE_BLEND_EQUATION_MIN_MAX` - Context feature flag indicating support for min/max blend equations. Requires GLES3+ or EXT_blend_minmax.
+- `graphics.CONTEXT_FEATURE_BACKBUFFER_READBACK` - Context feature flag indicating backbuffer readback support for the current surface. On WebGPU, availability is established when the surface is configured.
 - `graphics.CONTEXT_FEATURE_COMPUTE_SHADER` - Context feature flag indicating support for compute shaders.
 - `graphics.CONTEXT_FEATURE_INSTANCING` - Context feature flag indicating support for hardware instancing.
 - `graphics.CONTEXT_FEATURE_MULTI_TARGET_RENDERING` - Context feature flag indicating support for rendering to multiple color targets simultaneously.
@@ -56460,6 +56988,9 @@ end
 *Type:* MESSAGE
 This message is broadcast to every GUI component when a layout change has been initiated
 on device.
+Layout changes before or during init() are applied immediately, but their notifications
+are coalesced and delivered after init() completes successfully. If the final layout
+matches the layout before these changes, no notification is sent.
 
 **Parameters**
 
@@ -56549,7 +57080,7 @@ information.
 **Parameters**
 
 - `self` (script_instance) - script instance used for storing state
-- `action_id` (hash | nil) - id of the received input action, as mapped in the input_binding-file, or <code>nil</code> for mouse movement
+- `action_id` (hash | nil) - id of the received input action, as mapped in the input_binding-file, or <code>nil</code> for pointer movement and accelerometer samples; check <code>action.source</code> to distinguish them
 - `action` (on_input.action) - input data for the action
 
 **Returns**
@@ -60147,7 +60678,8 @@ end
 
 ### physics.get_shape
 *Type:* FUNCTION
-Gets collision shape data from a collision object
+Gets collision shape data from a collision object. Dimensions are in game units,
+independent of the physics.scale setting.
 
 **Parameters**
 
@@ -60521,7 +61053,8 @@ end
 
 ### physics.set_shape
 *Type:* FUNCTION
-Sets collision shape data for a collision object. Please note that updating data in 3D
+Sets collision shape data for a collision object. Dimensions are in game units,
+independent of the physics.scale setting. Please note that updating data in 3D
 can be quite costly for box and capsules. Because of the physics engine, the cost
 comes from having to recreate the shape objects when certain shapes needs to be updated.
 
@@ -61014,6 +61547,114 @@ The frame to show can either be an absolute frame or a relative frame to the cur
 profiler.view_recorded_frame({distance = -1})
 
 ```
+
+<!-- recorder-lua -->
+
+# Video recording {#apis:recorder-lua}
+
+**Namespace:** `recorder`
+**Language:** Lua
+**Type:** Defold Lua
+**File:** `record_script_extension.cpp`
+**Source:** `engine/record/src/record/record_script_extension.cpp`
+
+Record the game window to an MP4 file. One recording may run at a time,
+shared with the engine's HTTP recording service.
+
+Recording is supported by desktop debug engines. The module is omitted from
+release, headless, mobile and web builds, and when recording is excluded through
+an app manifest. Unsupported desktop operating systems or capture environments
+return an error from [ref:recorder.start].
+Application audio support depends on the platform; audio is disabled by default.
+
+## API
+
+### recorder.EVENT
+*Type:* ENUM
+recording events
+
+**Members**
+
+- `recorder.EVENT_STARTED` - Recording has started.
+- `recorder.EVENT_STOPPED` - Recording has stopped and the MP4 is ready to read.
+- `recorder.EVENT_ERROR` - Recording failed; result.error contains the reason.
+
+### recorder.options
+*Type:* STRUCT
+recording options
+
+**Members**
+
+- `path` (string) - Writable MP4 output path, for example from <a href="/ref/sys#sys.get_save_file">sys.get_save_file</a>. Uses the host path encoding (Windows ANSI code page; UTF-8 elsewhere). The parent directory must exist.
+- `fps?` (integer) - Capture rate from 1 to 60; defaults to 30.
+- `audio?` (boolean) - Record application audio; defaults to false.
+
+### recorder.result
+*Type:* STRUCT
+recording event result
+
+**Members**
+
+- `path` (string) - Output file path, preserving the path supplied to <a href="/ref/recorder#recorder.start">recorder.start</a>.
+- `width` (integer) - Recorded video width in pixels.
+- `height` (integer) - Recorded video height in pixels.
+- `fps` (integer) - Capture rate.
+- `audio` (boolean) - Whether application audio is included.
+- `error?` (string) - Failure reason, present for <a href="/ref/recorder#recorder.EVENT_ERROR">recorder.EVENT_ERROR</a>.
+
+### recorder.start
+*Type:* FUNCTION
+Starts an asynchronous recording of the game window at its native pixel size.
+The caller owns the output file, which remains on disk after engine shutdown.
+An existing file at the specified path may be overwritten.
+A successful return only means the request was accepted. The callback receives
+recorder.EVENT_STARTED when capture starts, followed by
+recorder.EVENT_STOPPED or recorder.EVENT_ERROR. Startup failure produces
+only EVENT_ERROR. Callbacks run during engine update, never inside start/stop.
+Window resizing stops and finalizes the recording. Deleting the calling script
+discards its callback but does not stop recording. Engine shutdown finalizes
+recording without invoking callbacks.
+
+**Parameters**
+
+- `options` (recorder.options) - recording options
+- `callback` (fun(self:script_instance, event:recorder.EVENT, result:recorder.result)) - recording event callback
+
+**Returns**
+
+- `accepted` (boolean | nil) - true if accepted, otherwise nil
+- `error` (string | nil) - reason the request was rejected
+
+**Examples**
+
+```
+local ok, err = recorder.start({
+    path = sys.get_save_file("my_game", "capture.mp4"),
+    fps = 30,
+    audio = false,
+}, function(self, event, result)
+    if event == recorder.EVENT_STOPPED then
+        print("Saved:", result.path)
+    elseif event == recorder.EVENT_ERROR then
+        print(result.error)
+    end
+end)
+if not ok then print(err) end
+
+```
+
+### recorder.stop
+*Type:* FUNCTION
+Requests finalization of the current recording, including one started through
+HTTP. Wait for recorder.EVENT_STARTED before calling stop for a Lua recording.
+The original start callback receives recorder.EVENT_STOPPED only after the
+MP4 is finalized and ready to read, or recorder.EVENT_ERROR on failure.
+Returns an error if no recording is active or an operation is pending.
+
+**Returns**
+
+- `accepted` (boolean | nil) - true if accepted, otherwise nil
+- `error` (string | nil) - reason the request was rejected
 
 <!-- render-lua -->
 
@@ -65198,7 +65839,11 @@ end
 
 ### set_gain
 *Type:* MESSAGE
-Post this message to a sound-component to set gain on all active playing voices.
+Post this message to a sound-component to set gain on all voices, or just the voice
+identified by play_id. Without play_id, the component gain is also updated for
+future playback. A targeted update leaves other voices and the component gain unchanged.
+Delayed and paused voices can be updated; an unknown or completed play_id has no effect.
+The gain is multiplied by the gain in the sound resource.
  Note that gain is in linear scale, between 0 and 1.
 To get the dB value from the gain, use the formula 20 * log(gain).
 Inversely, to find the linear value from a dB value, use the formula
@@ -65207,12 +65852,37 @@ Inversely, to find the linear value from a dB value, use the formula
 **Parameters**
 
 - `gain` (number) (optional) - sound gain between 0 and 1, default is 1.
+- `play_id` (number) (optional) - optional playback identifier returned by <a href="/ref/sound#sound.play">sound.play</a>.
 
 **Examples**
 
 Assuming the script belongs to an instance with a sound-component with id "sound", this will set the gain to 0.5
 ```
 msg.post("#sound", "set_gain", {gain = 0.5})
+local id = sound.play("#sound")
+msg.post("#sound", "set_gain", {gain = 0.4, play_id = id})
+
+```
+
+### set_pan
+*Type:* MESSAGE
+Post this message to a sound-component to set panning on all voices, or just the voice
+identified by play_id. Without play_id, the component pan is also updated for
+future playback. A targeted update leaves other voices and the component pan unchanged.
+Delayed and paused voices can be updated; an unknown or completed play_id has no effect.
+The pan is added to the pan in the sound resource.
+
+**Parameters**
+
+- `pan` (number) (optional) - sound panning between -1.0 and 1.0, default is 0.
+- `play_id` (number) (optional) - optional playback identifier returned by <a href="/ref/sound#sound.play">sound.play</a>.
+
+**Examples**
+
+```
+msg.post("#sound", "set_pan", {pan = 0.5})
+local id = sound.play("#sound")
+msg.post("#sound", "set_pan", {pan = -0.5, play_id = id})
 
 ```
 
@@ -65421,6 +66091,14 @@ end
 
 ```
 
+### sound.parameter_properties
+*Type:* STRUCT
+Sound parameter properties
+
+**Members**
+
+- `play_id?` (number) - Playback identifier returned by <a href="/ref/sound#sound.play">sound.play</a>. If omitted, all voices and the component defaults are updated.
+
 ### sound.pause
 *Type:* FUNCTION
 Pause all active voices
@@ -65515,18 +66193,25 @@ Sound playback properties
 
 ### sound.set_gain
 *Type:* FUNCTION
-Set gain on all active playing voices of a sound.
+Set gain on all voices of a sound, or just the voice identified by play_id.
+Without play_id, this also updates the component gain used for future playback.
+With play_id, other voices and the component gain are unchanged. Delayed and paused
+voices can be updated. If the voice no longer exists, this call has no effect.
+The gain is multiplied by the gain in the sound resource.
 
 **Parameters**
 
 - `url` (string | hash | url) - the sound to set the gain of
 - `gain` (number) (optional) - sound gain between 0 and 1 [-60dB .. 0dB]. The final gain of the sound will be a combination of this gain, the group gain and the master gain.
+- `properties` (sound.parameter_properties) (optional) - optional playback to update
 
 **Examples**
 
 Assuming the script belongs to an instance with a sound-component with id "sound", this will set the gain to 0.9
 ```
 sound.set_gain("#sound", 0.9)
+local id = sound.play("#sound")
+sound.set_gain("#sound", 0.4, { play_id = id })
 
 ```
 
@@ -65549,7 +66234,11 @@ sound.set_group_gain("soundfx", 0.5)
 
 ### sound.set_pan
 *Type:* FUNCTION
-Set panning on all active playing voices of a sound.
+Set panning on all voices of a sound, or just the voice identified by play_id.
+Without play_id, this also updates the component pan used for future playback.
+With play_id, other voices and the component pan are unchanged. Delayed and paused
+voices can be updated. If the voice no longer exists, this call has no effect.
+The pan is added to the pan in the sound resource.
 The valid range is from -1.0 to 1.0, representing -45 degrees left, to +45 degrees right.
 
 **Notes**
@@ -65561,12 +66250,15 @@ At -1 (full left) the channels are at 100%/0%, and 1 they're at 0%/100%.
 
 - `url` (string | hash | url) - the sound to set the panning value to
 - `pan` (number) (optional) - sound panning between -1.0 and 1.0
+- `properties` (sound.parameter_properties) (optional) - optional playback to update
 
 **Examples**
 
-Assuming the script belongs to an instance with a sound-component with id "sound", this will set the gain to 0.5
+Assuming the script belongs to an instance with a sound-component with id "sound", this will set the pan to 0.5
 ```
 sound.set_pan("#sound", 0.5) -- pan to the right
+local id = sound.play("#sound")
+sound.set_pan("#sound", -0.5, { play_id = id }) -- pan this voice to the left
 
 ```
 
@@ -65967,6 +66659,7 @@ end
 Sets horizontal flipping of the provided sprite's animations.
 The sprite is identified by its URL.
 If the currently playing animation is flipped by default, flipping it again will make it appear like the original texture.
+The sprite is flipped around the pivot of its image, which gives the same result as a negative x scale.
 
 **Parameters**
 
@@ -65991,6 +66684,7 @@ It is assumed that the sprite component has id "sprite" and that the original an
 Sets vertical flipping of the provided sprite's animations.
 The sprite is identified by its URL.
 If the currently playing animation is flipped by default, flipping it again will make it appear like the original texture.
+The sprite is flipped around the pivot of its image, which gives the same result as a negative y scale.
 
 **Parameters**
 
@@ -66517,6 +67211,8 @@ This message can only be sent to the designated @system socket.
 - `arg4` (string) - argument 4
 - `arg5` (string) - argument 5
 - `arg6` (string) - argument 6
+- `arg7` (string) - argument 7
+- `arg8` (string) - argument 8
 
 **Examples**
 
@@ -66587,51 +67283,6 @@ This message can only be sent to the designated @system socket.
 **Examples**
 
 msg.post("@system:", "set_vsync", { swap_interval = 1 } )
-
-### start_record
-*Type:* MESSAGE
-Starts video recording of the game frame-buffer to file. Current video format is the
-open vp8 codec in the ivf container. It's possible to upload this format directly
-to YouTube. The VLC video player has native support but with the known issue that
-not the entire file is played back. It's probably an issue with VLC.
-The Miro Video Converter has support for vp8/ivf.
-   Video recording is only supported on desktop platforms.
- Audio is currently not supported
- Window width and height must be a multiple of 8 to be able to record video.
-This message can only be sent to the designated @system socket.
-
-**Parameters**
-
-- `file_name` (string) - file name to write the video to
-- `frame_period` (number) - frame period to record, ie write every nth frame. Default value is <code>2</code>
-- `fps` (number) - frames per second. Playback speed for the video. Default value is <code>30</code>. The fps value doens't affect the recording. It's only meta-data in the written video file.
-
-**Examples**
-
-Record a video in 30 fps given that the native game fps is 60:
-```
-msg.post("@system:", "start_record", { file_name = "test_rec.ivf" } )
-
-```
-
-To write a video in 60 fps given that the native game fps is 60:
-```
-msg.post("@system:", "start_record", { file_name = "test_rec.ivf", frame_period = 1, fps = 60 } )
-
-```
-
-### stop_record
-*Type:* MESSAGE
-Stops the currently active video recording.
-   Video recording is only supported on desktop platforms.
-This message can only be sent to the designated @system socket.
-
-**Examples**
-
-```
-msg.post("@system:", "stop_record")
-
-```
 
 ### sys.application_info
 *Type:* STRUCT
@@ -67296,6 +67947,8 @@ project root.
 - `arg4` (string) (optional) - argument 4
 - `arg5` (string) (optional) - argument 5
 - `arg6` (string) (optional) - argument 6
+- `arg7` (string) (optional) - argument 7
+- `arg8` (string) (optional) - argument 8
 
 **Examples**
 
@@ -69846,6 +70499,8 @@ On platforms that does not support dimming, window.DIMMING_UNKNOWN is always ret
 ### window.get_display_scale
 *Type:* FUNCTION
 This returns the content scale of the current display.
+On HTML5, the scale respects display.high_dpi, html5.min_pixel_ratio
+and html5.max_pixel_ratio. When High DPI is disabled, the scale is 1.
 
 **Returns**
 
@@ -69858,6 +70513,47 @@ This returns the current lock state of the mouse cursor
 **Returns**
 
 - `state` (boolean) - The lock state
+
+### window.get_reserved_areas
+*Type:* FUNCTION
+Returns an array of active occlusion rectangles intersecting the game window,
+such as camera cutouts and the Dynamic Island. Each rectangle is clipped to
+the window and uses a bottom-left origin and pixel units matching
+window.get_size. These coordinates are independent of GUI adjustment
+and the project's logical resolution.
+Supported on iOS 27.1+ and Android 9 (API level 28)+. On iOS, rectangles
+include the interaction margins supplied by UIKit. On Android, rectangles
+describe display cutouts. Folds, system bars, keyboards, and gesture areas
+are not reported by this API.
+Unsupported platforms and windows with no reported occlusions return an
+empty table. An empty result does not guarantee that the whole window is
+safe; use window.get_safe_area when a safe layout rectangle is needed.
+Query once during initialization and again following
+window.WINDOW_EVENT_RESIZED. On supported platforms this event also
+refreshes reserved areas when their geometry changes without a size change.
+The returned table is a snapshot and is not modified by subsequent events.
+
+**Returns**
+
+- `areas` (window.reserved_area[]) - array of <a href="/ref/window#window.reserved_area">window.reserved_area</a> rectangles
+
+**Examples**
+
+```
+local function update_reserved_areas(self)
+    self.reserved_areas = window.get_reserved_areas()
+end
+
+function init(self)
+    update_reserved_areas(self)
+    window.set_listener(function(self, event, data)
+        if event == window.WINDOW_EVENT_RESIZED then
+            update_reserved_areas(self)
+        end
+    end)
+end
+
+```
 
 ### window.get_safe_area
 *Type:* FUNCTION
@@ -69877,6 +70573,17 @@ This returns the current window size (width and height).
 
 - `width` (integer) - The window width
 - `height` (integer) - The window height
+
+### window.reserved_area
+*Type:* STRUCT
+Window reserved-area data
+
+**Members**
+
+- `x` (integer) - Left edge in window pixels.
+- `y` (integer) - Bottom edge in window pixels.
+- `width` (integer) - Rectangle width in window pixels.
+- `height` (integer) - Rectangle height in window pixels.
 
 ### window.safe_area
 *Type:* STRUCT
@@ -69980,7 +70687,7 @@ Window events
 - `window.WINDOW_EVENT_FOCUS_GAINED` - focus gained window event This event is sent to a window event listener when the game window or app screen has gained focus. This event is also sent at game startup and the engine gives focus to the game.
 - `window.WINDOW_EVENT_FOCUS_LOST` - focus lost window event This event is sent to a window event listener when the game window or app screen has lost focus.
 - `window.WINDOW_EVENT_ICONIFIED` - iconify window event <span class="icon-osx"></span> <span class="icon-windows"></span> <span class="icon-linux"></span> This event is sent to a window event listener when the game window or app screen is iconified (reduced to an application icon in a toolbar, application tray or similar).
-- `window.WINDOW_EVENT_RESIZED` - resized window event This event is sent to a window event listener when the game window or app screen is resized. The new size is passed along in the data field to the event listener.
+- `window.WINDOW_EVENT_RESIZED` - resized window event This event is sent to a window event listener when the game window or app screen is resized. On iOS, it is also sent after orientation transitions and safe-area inset changes, even when the size is unchanged. After <a href="/ref/window#window.get_reserved_areas">window.get_reserved_areas</a> has been queried, changes to reserved areas also trigger this event on supported platforms. The current size is passed along in the data field to the event listener.
 
 <!-- zlib-lua -->
 

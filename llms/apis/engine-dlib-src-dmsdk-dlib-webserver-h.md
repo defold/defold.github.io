@@ -14,7 +14,9 @@ The web-server has a handler concept similar to servlets in Java
 
 ### AddHandler
 *Type:* FUNCTION
-Add a new handler
+Requests use the handler with the longest matching prefix, regardless of
+registration order. A handler registered at "/" serves as a fallback.
+Equivalent to calling the four-argument overload with openapi_json set to 0.
 
 **Parameters**
 
@@ -26,9 +28,33 @@ Add a new handler
 
 - `return` (Result) - RESULT_OK on success
 
+### AddHandler
+*Type:* FUNCTION
+Requests use the handler with the longest matching prefix, regardless of
+registration order. A handler registered at "/" serves as a fallback.
+Pass 0 to register without documenting the handler. Otherwise, the OpenAPI
+JSON is a non-empty Paths Object describing the paths and methods
+served by this handler. Each path must start with the handler's prefix and
+must not already be documented by another handler. Schemas should be inline
+or use references to paths in the resulting document.
+The server retains the JSON pointer without copying it. Keep the string
+unchanged and valid until the handler is removed or the server is deleted;
+a static const char array is recommended.
+
+**Parameters**
+
+- `server` (HServer) - Server handle
+- `prefix` (const char*) - Location prefix for which locations this handler should handle
+- `handler_params` (HandlerParams) - Handler parameters
+- `openapi_json` (const char*) - OpenAPI 3.0.3 Paths Object encoded as a JSON string, or 0 to omit metadata
+
+**Returns**
+
+- `return` (Result) - RESULT_OK on success, RESULT_ERROR_INVAL for invalid or conflicting metadata
+
 ### GetHeader
 *Type:* FUNCTION
-Get http header value for key
+Get http header value for key, ignoring ASCII case in the header name
 
 **Parameters**
 
@@ -116,12 +142,14 @@ result codes
 - `RESULT_ERROR_INVAL`
 - `RESULT_HANDLER_ALREADY_REGISTRED`
 - `RESULT_HANDLER_NOT_REGISTRED`
+- `RESULT_TRY_AGAIN`
 - `RESULT_INTERNAL_ERROR`
 - `RESULT_UNKNOWN`
 
 ### Send
 *Type:* FUNCTION
-Send response data
+Copies data into an owned response sent asynchronously after the handler returns.
+Socket errors are handled by the server; RESULT_OK means the data was queued.
 
 **Parameters**
 

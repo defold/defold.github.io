@@ -44,6 +44,8 @@ On platforms that does not support dimming, window.DIMMING_UNKNOWN is always ret
 ### window.get_display_scale
 *Type:* FUNCTION
 This returns the content scale of the current display.
+On HTML5, the scale respects display.high_dpi, html5.min_pixel_ratio
+and html5.max_pixel_ratio. When High DPI is disabled, the scale is 1.
 
 **Returns**
 
@@ -56,6 +58,47 @@ This returns the current lock state of the mouse cursor
 **Returns**
 
 - `state` (boolean) - The lock state
+
+### window.get_reserved_areas
+*Type:* FUNCTION
+Returns an array of active occlusion rectangles intersecting the game window,
+such as camera cutouts and the Dynamic Island. Each rectangle is clipped to
+the window and uses a bottom-left origin and pixel units matching
+window.get_size. These coordinates are independent of GUI adjustment
+and the project's logical resolution.
+Supported on iOS 27.1+ and Android 9 (API level 28)+. On iOS, rectangles
+include the interaction margins supplied by UIKit. On Android, rectangles
+describe display cutouts. Folds, system bars, keyboards, and gesture areas
+are not reported by this API.
+Unsupported platforms and windows with no reported occlusions return an
+empty table. An empty result does not guarantee that the whole window is
+safe; use window.get_safe_area when a safe layout rectangle is needed.
+Query once during initialization and again following
+window.WINDOW_EVENT_RESIZED. On supported platforms this event also
+refreshes reserved areas when their geometry changes without a size change.
+The returned table is a snapshot and is not modified by subsequent events.
+
+**Returns**
+
+- `areas` (window.reserved_area[]) - array of <a href="/ref/window#window.reserved_area">window.reserved_area</a> rectangles
+
+**Examples**
+
+```
+local function update_reserved_areas(self)
+    self.reserved_areas = window.get_reserved_areas()
+end
+
+function init(self)
+    update_reserved_areas(self)
+    window.set_listener(function(self, event, data)
+        if event == window.WINDOW_EVENT_RESIZED then
+            update_reserved_areas(self)
+        end
+    end)
+end
+
+```
 
 ### window.get_safe_area
 *Type:* FUNCTION
@@ -75,6 +118,17 @@ This returns the current window size (width and height).
 
 - `width` (integer) - The window width
 - `height` (integer) - The window height
+
+### window.reserved_area
+*Type:* STRUCT
+Window reserved-area data
+
+**Members**
+
+- `x` (integer) - Left edge in window pixels.
+- `y` (integer) - Bottom edge in window pixels.
+- `width` (integer) - Rectangle width in window pixels.
+- `height` (integer) - Rectangle height in window pixels.
 
 ### window.safe_area
 *Type:* STRUCT
@@ -178,4 +232,4 @@ Window events
 - `window.WINDOW_EVENT_FOCUS_GAINED` - focus gained window event This event is sent to a window event listener when the game window or app screen has gained focus. This event is also sent at game startup and the engine gives focus to the game.
 - `window.WINDOW_EVENT_FOCUS_LOST` - focus lost window event This event is sent to a window event listener when the game window or app screen has lost focus.
 - `window.WINDOW_EVENT_ICONIFIED` - iconify window event <span class="icon-osx"></span> <span class="icon-windows"></span> <span class="icon-linux"></span> This event is sent to a window event listener when the game window or app screen is iconified (reduced to an application icon in a toolbar, application tray or similar).
-- `window.WINDOW_EVENT_RESIZED` - resized window event This event is sent to a window event listener when the game window or app screen is resized. The new size is passed along in the data field to the event listener.
+- `window.WINDOW_EVENT_RESIZED` - resized window event This event is sent to a window event listener when the game window or app screen is resized. On iOS, it is also sent after orientation transitions and safe-area inset changes, even when the size is unchanged. After <a href="/ref/window#window.get_reserved_areas">window.get_reserved_areas</a> has been queried, changes to reserved areas also trigger this event on supported platforms. The current size is passed along in the data field to the event listener.

@@ -43,6 +43,7 @@ These are per-namespace API reference files generated for LLM usage.
 - [dmEngine (Engine)](https://defold.com/llms/apis/engine-engine-src-dmsdk-engine-extension-hpp.md) - SDK Engine extension API documentation
 - [engine (Engine runtime)](https://defold.com/llms/apis/engine-engine-src-engine_doc-h.md) - Engine runtime documentation
 - [dmExtension (Extension)](https://defold.com/llms/apis/engine-extension-src-dmsdk-extension-extension_gen-hpp.md) - Functions for creating and controlling engine native extension libraries
+- [FontGeneration (Font Generation)](https://defold.com/llms/apis/engine-font-src-fontgen-h.md) - Asynchronously generates glyphs and hands them to a caller-owned cache
 - [dmGameObject (Component)](https://defold.com/llms/apis/engine-gameobject-src-dmsdk-gameobject-component-h.md) - Api for manipulating game object components (WIP)
 - [dmGameObject (Gameobject)](https://defold.com/llms/apis/engine-gameobject-src-dmsdk-gameobject-gameobject-h.md) - API for manipulating game objects
 - [dmGameObject (PropertyContainer)](https://defold.com/llms/apis/engine-gameobject-src-dmsdk-gameobject-gameobject_props-h.md) - API for game object property container
@@ -120,6 +121,7 @@ These are per-namespace API reference files generated for LLM usage.
 - [particlefx (Particle effects)](https://defold.com/llms/apis/particlefx-lua.md) - Functions and properties for controlling particle effect component playback and shader constants
 - [physics (Collision object)](https://defold.com/llms/apis/physics-lua.md) - Collision object physics API documentation
 - [profiler (Profiler)](https://defold.com/llms/apis/profiler-lua.md) - Functions for getting profiling data in runtime
+- [recorder (Video recording)](https://defold.com/llms/apis/recorder-lua.md) - Record the game window to an MP4 file
 - [render (Render)](https://defold.com/llms/apis/render-lua.md) - Rendering API documentation
 - [resource (Resource)](https://defold.com/llms/apis/resource-lua.md) - Functions and constants to access resources
 - [socket (LuaSocket)](https://defold.com/llms/apis/socket-lua.md) - [LuaSocket](https://github

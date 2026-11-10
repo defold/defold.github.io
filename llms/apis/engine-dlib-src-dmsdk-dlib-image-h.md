@@ -63,3 +63,4 @@ type enumeration
 - `dmImage::TYPE_RGBA` - = 1
 - `dmImage::TYPE_LUMINANCE` - = 2
 - `dmImage::TYPE_LUMINANCE_ALPHA` - = 3
+- `dmImage::TYPE_RGBA32F` - = 4 Floating-point RGBA used by the texture build pipeline.

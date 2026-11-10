@@ -17,7 +17,7 @@ Used to retrieve the information of a font.
 
 **Members**
 
-- `m_Size` (uint32_t) - The size of the font (in points)
+- `m_Size` (float) - The font generation size in pixels
 - `m_ShadowX` (float) - The shadow distance in X-axis (in pixels)
 - `m_ShadowY` (float) - The shadow distance in Y-axis (in pixels)
 - `m_ShadowBlur` (uint32_t) - The shadow blur spread [0.255] (in pixels)
@@ -43,7 +43,9 @@ Handle to font resource
 
 ### PrewarmText
 *Type:* FUNCTION
-Make sure each glyph in the text gets rasterized and put into the glyph cache
+The generation size comes from the compiled font resource. Vector fonts
+with outline/shadow SDF effects use the Size authored in the .font file;
+curve-only Vector fonts use an internal normalization reference.
 
 **Parameters**
 

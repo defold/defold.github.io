@@ -1,6 +1,104 @@
 {
     "elements": [
         {
+            "brief": "One command in a glyph outline. The command type d...",
+            "description": "One command in a glyph outline. The command type determines which points are used.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "Control and endpoint coordinates. See #FontCurveType.",
+                    "name": "m_Points",
+                    "type": "FontCurvePoint[2]"
+                },
+                {
+                    "doc": "Command type from #FontCurveType.",
+                    "name": "m_Type",
+                    "type": "uint8_t"
+                },
+                {
+                    "doc": "Reserved; must be zero.",
+                    "name": "m_Reserved0",
+                    "type": "uint8_t"
+                },
+                {
+                    "doc": "Reserved; must be zero.",
+                    "name": "m_Reserved1",
+                    "type": "uint16_t"
+                }
+            ],
+            "name": "FontCurveCommand",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "A point in a glyph outline, measured in pixels at ...",
+            "description": "A point in a glyph outline, measured in pixels at the requested glyph size.\nCoordinates are relative to the glyph's pen origin on the baseline.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "Horizontal coordinate, increasing to the right.",
+                    "name": "m_X",
+                    "type": "float"
+                },
+                {
+                    "doc": "Vertical coordinate, increasing above the baseline.",
+                    "name": "m_Y",
+                    "type": "float"
+                }
+            ],
+            "name": "FontCurvePoint",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Commands used to describe a glyph's analytical out...",
+            "description": "Commands used to describe a glyph's analytical outline.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "Starts a contour at m_Points[0].",
+                    "name": "FONT_CURVE_MOVE_TO",
+                    "type": ""
+                },
+                {
+                    "doc": "Adds a line from the current point to m_Points[0].",
+                    "name": "FONT_CURVE_LINE_TO",
+                    "type": ""
+                },
+                {
+                    "doc": "Adds a quadratic curve with control point m_Points[0] and endpoint m_Points[1].",
+                    "name": "FONT_CURVE_QUADRATIC_TO",
+                    "type": ""
+                },
+                {
+                    "doc": "Closes the current contour; no points are used.",
+                    "name": "FONT_CURVE_CLOSE",
+                    "type": ""
+                }
+            ],
+            "name": "FontCurveType",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "ENUM"
+        },
+        {
             "brief": "Destroys a loaded font",
             "description": "Destroys a loaded font",
             "error": "",
@@ -519,6 +617,16 @@
                     "type": "FontGlyphBitmap"
                 },
                 {
+                    "doc": "Analytical outline commands and unpadded bounds.",
+                    "name": "m_Outline",
+                    "type": "FontGlyphOutline"
+                },
+                {
+                    "doc": "Prebaked normalized vector curves, when available.",
+                    "name": "m_Vector",
+                    "type": "FontGlyphVector"
+                },
+                {
                     "doc": "The unicode code point",
                     "name": "m_Codepoint",
                     "type": "uint32_t"
@@ -649,8 +757,18 @@
                     "type": "float"
                 },
                 {
+                    "doc": "For metrics-only queries, use unpadded outline bounds when available. Older glyph banks retain their bitmap bounds.",
+                    "name": "m_UseUnpaddedBounds",
+                    "type": "bool"
+                },
+                {
                     "doc": "If true, generates an SDF image and uses its sampled bounds and origin for glyph dimensions and left bearing. Advances remain unchanged.",
                     "name": "m_GenerateImage",
+                    "type": "bool"
+                },
+                {
+                    "doc": "If true, generates outline data and fills out the glyph.m_Outline structure.",
+                    "name": "m_GenerateOutline",
                     "type": "bool"
                 },
                 {
@@ -665,6 +783,93 @@
                 }
             ],
             "name": "FontGlyphOptions",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Analytical glyph outline and unpadded bounds at th...",
+            "description": "Analytical glyph outline and unpadded bounds at the requested glyph size.\nGenerated commands belong to the glyph and are released by FontFreeGlyph.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "Contour commands, or null when no outline was generated.",
+                    "name": "m_Commands",
+                    "type": "FontCurveCommand*"
+                },
+                {
+                    "doc": "Number of contour commands.",
+                    "name": "m_CommandCount",
+                    "type": "uint32_t"
+                },
+                {
+                    "doc": "Reserved; must be zero.",
+                    "name": "m_Flags",
+                    "type": "uint32_t"
+                },
+                {
+                    "doc": "Unpadded outline width in pixels.",
+                    "name": "m_Width",
+                    "type": "float"
+                },
+                {
+                    "doc": "Unpadded outline height in pixels.",
+                    "name": "m_Height",
+                    "type": "float"
+                },
+                {
+                    "doc": "Horizontal offset from the pen origin to the outline's left edge.",
+                    "name": "m_LeftBearing",
+                    "type": "float"
+                },
+                {
+                    "doc": "Outline extent above the baseline in pixels.",
+                    "name": "m_Ascent",
+                    "type": "float"
+                },
+                {
+                    "doc": "Distance from the baseline to the outline's bottom edge in pixels; positive below the baseline.",
+                    "name": "m_Descent",
+                    "type": "float"
+                }
+            ],
+            "name": "FontGlyphOutline",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "Holds prebaked normalized quadratic curves for a v...",
+            "description": "Holds prebaked normalized quadratic curves for a vector glyph.\nEvery curve contains P0, P1, P2, start tangent angle, and end tangent angle\nas eight consecutive float32 values.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "Encoded curve data, or null when unavailable.",
+                    "name": "m_Data",
+                    "type": "const uint8_t*"
+                },
+                {
+                    "doc": "Encoded curve data size in bytes.",
+                    "name": "m_DataSize",
+                    "type": "uint32_t"
+                },
+                {
+                    "doc": "Number of encoded quadratic curves.",
+                    "name": "m_CurveCount",
+                    "type": "uint32_t"
+                }
+            ],
+            "name": "FontGlyphVector",
             "notes": [],
             "parameters": [],
             "replaces": "",

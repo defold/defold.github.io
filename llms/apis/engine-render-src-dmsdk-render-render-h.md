@@ -83,6 +83,21 @@ Deletes a named constant buffer
 
 - `buffer` (dmRender::HNamedConstantBuffer) - the constants buffer
 
+### DeleteRenderItem
+*Type:* FUNCTION
+Disables the item, invalidates its handle and releases its slot for reuse.
+Call before subsequent draws and outside dispatch callbacks. User data is not
+released.
+
+**Parameters**
+
+- `context` (dmRender::HRenderContext) - the render context
+- `item` (dmRender::HRenderItem) - an item created in this context
+
+**Returns**
+
+- `result` (bool) - true on success, or false if the item handle is invalid or deleted
+
 ### dmRender::GetMaterialVertexSpace
 *Type:* FUNCTION
 Get the vertex space (local or world)
@@ -98,6 +113,22 @@ Get the vertex space (local or world)
 ### dmRender::RenderObject::MAX_TEXTURE_COUNT
 *Type:* CONSTANT
 The maximum number of textures the render object can hold (16)
+
+### Enable
+*Type:* FUNCTION
+Changes draw eligibility without releasing the handle or its data. Repeating
+the current enabled state has no effect. The dispatch must also be submitted
+for the item to participate in the current frame.
+
+**Parameters**
+
+- `context` (dmRender::HRenderContext) - the render context
+- `item` (dmRender::HRenderItem) - an item created in this context
+- `enabled` (bool) - true to enable the item, or false to disable it
+
+**Returns**
+
+- `result` (bool) - true on success, or false if the item handle is invalid or deleted
 
 ### FrustumOptions
 *Type:* STRUCT
@@ -300,6 +331,20 @@ Shader constant buffer handle. Holds name and values for a constant.
 *Type:* TYPEDEF
 The render context
 
+### HRenderItem
+*Type:* TYPEDEF
+Identifies a renderer-owned item until DeleteRenderItem() invalidates it.
+Zero is invalid. Use the handle only with the context that created it.
+Create and update items before the draw that consumes them, outside render
+dispatch callbacks. Item setters return false for invalid or deleted handles.
+
+### HRenderItemDispatch
+*Type:* TYPEDEF
+Identifies a registration created by RegisterRenderListDispatch(). Use it
+only with its creating context, and never after UnregisterRenderListDispatch().
+This handle is separate from the frame-local HRenderListDispatch used in
+RenderListEntry. Zero is invalid.
+
 ### HRenderListDispatch
 *Type:* TYPEDEF
 Render dispatch function handle.
@@ -358,6 +403,61 @@ Allocates a named constant buffer
 
 - `buffer` (dmRender::HNamedConstantBuffer) - the constants buffer
 
+### NewRenderItem
+*Type:* FUNCTION
+The new item is disabled, with an identity transform, no material tags or bounds,
+and world-position ordering. Its dispatch and user data are fixed
+for its lifetime. Any data referenced by user_data must outlive the item.
+Creating an item does not invalidate outstanding RenderListAlloc() ranges.
+Delete the item before unregistering its dispatch.
+
+**Parameters**
+
+- `context` (dmRender::HRenderContext) - the render context
+- `dispatch` (dmRender::HRenderItemDispatch) - a registration created in this context
+- `user_data` (uint64_t) - item data exposed as RenderListEntry::m_UserData in callbacks
+
+**Returns**
+
+- `item` (dmRender::HRenderItem) - the item handle
+
+**Examples**
+
+```
+#include
+
+// context, dispatch and material are owned by the component or its world.
+dmRender::HRenderItem item = dmRender::NewRenderItem(context, dispatch, user_data);
+dmRender::SetMaterial(context, item, material);
+dmRender::SetWorldTransform(context, item, world_transform);
+dmRender::SetBoundingOBB(context, item, local_min, local_max);
+dmRender::Enable(context, item, true);
+
+// In the component render callback each frame:
+dmRender::SubmitRenderListDispatch(context, dispatch);
+
+// When the component is destroyed, outside dispatch callbacks:
+dmRender::DeleteRenderItem(context, item);
+
+```
+
+### RegisterRenderListDispatch
+*Type:* FUNCTION
+Callbacks and user data remain caller-owned and must stay valid until
+unregistration. Register before submitting. Delete all associated items before
+unregistering, after the current render list has finished drawing.
+
+**Parameters**
+
+- `context` (dmRender::HRenderContext) - the render context
+- `dispatch_fn` (dmRender::RenderListDispatchFn) - the render batch callback
+- `visibility_fn` (dmRender::RenderListVisibilityFn) - visibility callback for items without typed bounds, or 0 for always visible
+- `user_data` (void*) - user data passed to both callbacks
+
+**Returns**
+
+- `dispatch` (dmRender::HRenderItemDispatch) - the registration, or 0 if the registration limit is reached
+
 ### RemoveNamedConstant
 *Type:* FUNCTION
 Removes a named constant from the buffer
@@ -373,11 +473,10 @@ Name used when registering the render context with the engine context registry.
 
 ### RenderListAlloc
 *Type:* FUNCTION
-Allocates an array of render entries
-
-**Notes**
-
-- Do not store a pointer into this array, as they're reused next frame
+Allocate frame-local render entries
+Deprecated: use NewRenderItem() and the render item setters. Emits a warning
+once per process. Do not retain pointers across frames; another allocation
+can also invalidate the returned range.
 
 **Parameters**
 
@@ -403,7 +502,7 @@ Render dispatch function callback.
 **Members**
 
 - `m_Context` (dmRender::HRenderContext) - the context
-- `m_UserData` (void*) - the callback user data (registered with RenderListMakeDispatch())
+- `m_UserData` (void*) - the callback user data supplied to RegisterRenderListDispatch() or RenderListMakeDispatch()
 - `m_Operation` (dmRender::RenderListOperation) - the operation
 - `m_Buf` (dmRender::RenderListEntry) - the render entry array
 - `m_Begin` (uint32_t*) - the start of the render batch. contains index into the m_Buf array
@@ -433,7 +532,10 @@ Otherwise the sorting uses the m_Order value directly.
 
 ### RenderListMakeDispatch
 *Type:* FUNCTION
-Register a render dispatch function
+Register a frame-local render dispatch function
+Deprecated: use RegisterRenderListDispatch() and SubmitRenderListDispatch().
+Emits a warning once per process. The overload without a visibility
+callback is also deprecated.
 
 **Parameters**
 
@@ -458,7 +560,9 @@ Render batch callback states
 
 ### RenderListSubmit
 *Type:* FUNCTION
-Adds a render object to the current render frame
+Submit frame-local render entries
+Deprecated: use Enable() and SubmitRenderListDispatch(). Emits a warning
+once per process. The range must come from a single RenderListAlloc() call.
 
 **Parameters**
 
@@ -480,7 +584,7 @@ Visibility dispatch function callback.
 
 **Members**
 
-- `m_UserData` (void*) - the callback user data (registered with RenderListMakeDispatch())
+- `m_UserData` (void*) - the callback user data supplied to RegisterRenderListDispatch() or RenderListMakeDispatch()
 - `m_Entries` (dmRender::RenderListEntry) - the render entry array
 - `m_NumEntries` (uint32_t) - the number of render entries in the array
 
@@ -514,6 +618,7 @@ Render order
 
 **Members**
 
+- `RENDER_ORDER_BEFORE_WORLD` - Drawn before world-sorted items
 - `RENDER_ORDER_WORLD` - <div class="codehilite"><pre><span></span><code>      Used by game objects
 </code></pre></div>
 - `RENDER_ORDER_AFTER_WORLD` - <div class="codehilite"><pre><span></span><code>Used by gui
@@ -529,6 +634,76 @@ Render order
 - `RESULT_OUT_OF_RESOURCES`
 - `RESULT_BUFFER_IS_FULL`
 - `RESULT_INVALID_PARAMETER`
+
+### SetBatchKey
+*Type:* FUNCTION
+Sets the caller's batch compatibility key. Equal keys allow batching only when
+the remaining state is compatible. The renderer also separates batches by
+dispatch and ordering.
+
+**Parameters**
+
+- `context` (dmRender::HRenderContext) - the render context
+- `item` (dmRender::HRenderItem) - an item created in this context
+- `key` (uint32_t) - the batch compatibility key
+
+**Returns**
+
+- `result` (bool) - true on success, or false if the item handle is invalid or deleted
+
+### SetBoundingAABB
+*Type:* FUNCTION
+Replaces the previous volume. If any minimum coordinate exceeds its maximum,
+removes typed bounds and restores the registration's visibility callback, or
+always-visible behavior when no callback is registered. Equal corners define
+a valid point. SetWorldTransform() does not transform this box.
+Visibility is invalidated only when the volume type or values change.
+
+**Parameters**
+
+- `context` (dmRender::HRenderContext) - the render context
+- `item` (dmRender::HRenderItem) - an item created in this context
+- `world_min` (dmVMath::Vector3) - the world-space minimum corner
+- `world_max` (dmVMath::Vector3) - the world-space maximum corner
+
+**Returns**
+
+- `result` (bool) - true on success, or false if the item handle is invalid or deleted
+
+### SetBoundingOBB
+*Type:* FUNCTION
+Replaces the previous volume. Each minimum coordinate must be no greater than
+its maximum coordinate. The item's world transform supplies position,
+orientation and scale, including reflection and shear. Visibility is
+invalidated only when the volume type or values change.
+
+**Parameters**
+
+- `context` (dmRender::HRenderContext) - the render context
+- `item` (dmRender::HRenderItem) - an item created in this context
+- `local_min` (dmVMath::Vector3) - the local-space minimum corner
+- `local_max` (dmVMath::Vector3) - the local-space maximum corner
+
+**Returns**
+
+- `result` (bool) - true on success, or false if the item handle is invalid or deleted
+
+### SetBoundingSphere
+*Type:* FUNCTION
+Replaces the previous volume. The radius is a non-negative distance, not a
+squared radius. SetWorldTransform() does not move or scale this sphere.
+Visibility is invalidated only when the volume type or values change.
+
+**Parameters**
+
+- `context` (dmRender::HRenderContext) - the render context
+- `item` (dmRender::HRenderItem) - an item created in this context
+- `world_center` (dmVMath::Point3) - the world-space sphere center
+- `radius` (float) - the non-negative sphere radius in world units
+
+**Returns**
+
+- `result` (bool) - true on success, or false if the item handle is invalid or deleted
 
 ### SetConstantLocation
 *Type:* FUNCTION
@@ -561,6 +736,22 @@ Sets the shader program constant values
 **Returns**
 
 - `result` (dmRender::Result) - the result
+
+### SetMaterial
+*Type:* FUNCTION
+Copies the material's predicate tags. Call again after changing material tags
+to refresh cached metadata. A null material clears the tags. The material is
+not retained. Ordering is unchanged; use SetOrder() to configure it.
+
+**Parameters**
+
+- `context` (dmRender::HRenderContext) - the render context
+- `item` (dmRender::HRenderItem) - an item created in this context
+- `material` (dmRender::HMaterial) - the material supplying predicate tags, or 0 to clear them
+
+**Returns**
+
+- `result` (bool) - true on success, or false if the item handle is invalid or deleted
 
 ### SetMaterialSampler
 *Type:* FUNCTION
@@ -658,6 +849,41 @@ Sets a list of named constants to the buffer
 - `constants` (dmRender::HConstant*) - the constants
 - `num_constants` (uint32_t) - the number of constants
 
+### SetOrder
+*Type:* FUNCTION
+Overrides the default world-position ordering. World order sorts by position.
+Before-world and after-world order use the supplied order value; only its low
+24 bits are retained. Material changes and render-script material overrides
+preserve this ordering.
+
+**Parameters**
+
+- `context` (dmRender::HRenderContext) - the render context
+- `item` (dmRender::HRenderItem) - an item created in this context
+- `render_order` (dmRender::RenderOrder) - the major rendering order
+- `order` (uint32_t) - the 24-bit order value, ignored for world-position sorting
+
+**Returns**
+
+- `result` (bool) - true on success, or false if the item handle is invalid or deleted
+
+### SetWorldTransform
+*Type:* FUNCTION
+Copies the local-to-world affine transform. Its translation supplies the sort
+position, and it transforms local OBB bounds. World-space sphere and AABB
+bounds are unaffected. Every call invalidates cached visibility; also call
+when callback-owned visibility data changes without a transform change.
+
+**Parameters**
+
+- `context` (dmRender::HRenderContext) - the render context
+- `item` (dmRender::HRenderItem) - an item created in this context
+- `world_transform` (dmVMath::Matrix4) - the affine local-to-world transform to copy
+
+**Returns**
+
+- `result` (bool) - true on success, or false if the item handle is invalid or deleted
+
 ### StencilTestParams
 *Type:* STRUCT
 Struct holding stencil operation setup
@@ -673,6 +899,31 @@ Struct holding stencil operation setup
 - `m_BufferMask` (uint8_t)
 - `m_ColorBufferMask` (uint8_t:4)
 - `m_ClearBuffer` (uint8_t:1)
+
+### SubmitRenderListDispatch
+*Type:* FUNCTION
+Makes the registration's enabled items eligible for this frame. Call between
+RenderListBegin() and RenderListEnd(), before render-script draws. Repeated
+submission in one frame has no effect. Only submitted registrations consume
+frame dispatch IDs; at most 255 are available, shared with legacy dispatches.
+If that limit is reached, an error is logged and this submission is skipped.
+
+**Parameters**
+
+- `context` (dmRender::HRenderContext) - the render context
+- `dispatch` (dmRender::HRenderItemDispatch) - a registration created in this context
+
+### UnregisterRenderListDispatch
+*Type:* FUNCTION
+Delete all items belonging to this registration first. Call only after all
+draws using the current render list have finished, before the next render list
+is submitted. The registration handle becomes invalid. This does not release
+caller-owned callbacks or user data.
+
+**Parameters**
+
+- `context` (dmRender::HRenderContext) - the render context
+- `dispatch` (dmRender::HRenderItemDispatch) - a registration created in this context
 
 ### Visibility
 *Type:* ENUM

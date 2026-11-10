@@ -118,9 +118,9 @@
         },
         {
             "brief": "set sound gain",
-            "description": "Post this message to a sound-component to set gain on all active playing voices.\n<span class=\"icon-attention\"></span> Note that gain is in linear scale, between 0 and 1.\nTo get the dB value from the gain, use the formula <code>20 * log(gain)</code>.\nInversely, to find the linear value from a dB value, use the formula\n<code>10<sup>db/20</sup></code>.",
+            "description": "Post this message to a sound-component to set gain on all voices, or just the voice\nidentified by <code>play_id</code>. Without <code>play_id</code>, the component gain is also updated for\nfuture playback. A targeted update leaves other voices and the component gain unchanged.\nDelayed and paused voices can be updated; an unknown or completed <code>play_id</code> has no effect.\nThe gain is multiplied by the gain in the sound resource.\n<span class=\"icon-attention\"></span> Note that gain is in linear scale, between 0 and 1.\nTo get the dB value from the gain, use the formula <code>20 * log(gain)</code>.\nInversely, to find the linear value from a dB value, use the formula\n<code>10<sup>db/20</sup></code>.",
             "error": "",
-            "examples": "Assuming the script belongs to an instance with a sound-component with id \"sound\", this will set the gain to 0.5\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"s2\">&quot;#sound&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;set_gain&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">gain</span> <span class=\"o\">=</span> <span class=\"mf\">0.5</span><span class=\"p\">})</span>\n</code></pre></div>",
+            "examples": "Assuming the script belongs to an instance with a sound-component with id \"sound\", this will set the gain to 0.5\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"s2\">&quot;#sound&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;set_gain&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">gain</span> <span class=\"o\">=</span> <span class=\"mf\">0.5</span><span class=\"p\">})</span>\n<span class=\"kd\">local</span> <span class=\"n\">id</span> <span class=\"o\">=</span> <span class=\"n\">sound</span><span class=\"p\">.</span><span class=\"n\">play</span><span class=\"p\">(</span><span class=\"s2\">&quot;#sound&quot;</span><span class=\"p\">)</span>\n<span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"s2\">&quot;#sound&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;set_gain&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">gain</span> <span class=\"o\">=</span> <span class=\"mf\">0.4</span><span class=\"p\">,</span> <span class=\"n\">play_id</span> <span class=\"o\">=</span> <span class=\"n\">id</span><span class=\"p\">})</span>\n</code></pre></div>",
             "language": "",
             "members": [],
             "name": "set_gain",
@@ -130,6 +130,64 @@
                     "doc": "sound gain between 0 and 1, default is 1.",
                     "is_optional": "True",
                     "name": "gain",
+                    "types": [
+                        "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ]
+                },
+                {
+                    "doc": "optional playback identifier returned by <a href=\"/ref/sound#sound.play\">sound.play</a>.",
+                    "is_optional": "True",
+                    "name": "play_id",
+                    "types": [
+                        "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "MESSAGE"
+        },
+        {
+            "brief": "set sound pan",
+            "description": "Post this message to a sound-component to set panning on all voices, or just the voice\nidentified by <code>play_id</code>. Without <code>play_id</code>, the component pan is also updated for\nfuture playback. A targeted update leaves other voices and the component pan unchanged.\nDelayed and paused voices can be updated; an unknown or completed <code>play_id</code> has no effect.\nThe pan is added to the pan in the sound resource.",
+            "error": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"s2\">&quot;#sound&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;set_pan&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">pan</span> <span class=\"o\">=</span> <span class=\"mf\">0.5</span><span class=\"p\">})</span>\n<span class=\"kd\">local</span> <span class=\"n\">id</span> <span class=\"o\">=</span> <span class=\"n\">sound</span><span class=\"p\">.</span><span class=\"n\">play</span><span class=\"p\">(</span><span class=\"s2\">&quot;#sound&quot;</span><span class=\"p\">)</span>\n<span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"s2\">&quot;#sound&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;set_pan&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">pan</span> <span class=\"o\">=</span> <span class=\"o\">-</span><span class=\"mf\">0.5</span><span class=\"p\">,</span> <span class=\"n\">play_id</span> <span class=\"o\">=</span> <span class=\"n\">id</span><span class=\"p\">})</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "set_pan",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "sound panning between -1.0 and 1.0, default is 0.",
+                    "is_optional": "True",
+                    "name": "pan",
+                    "types": [
+                        "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ]
+                },
+                {
+                    "doc": "optional playback identifier returned by <a href=\"/ref/sound#sound.play\">sound.play</a>.",
+                    "is_optional": "True",
+                    "name": "play_id",
                     "types": [
                         "number"
                     ],
@@ -491,6 +549,30 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "Sound parameter properties",
+            "description": "Sound parameter properties",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "play_id",
+                    "doc": "Playback identifier returned by <a href=\"/ref/sound#sound.play\">sound.play</a>. If omitted, all voices and the component defaults are updated.",
+                    "is_optional": true,
+                    "name": "play_id?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                }
+            ],
+            "name": "sound.parameter_properties",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
             "brief": "pause a playing a sound(s)",
             "description": "Pause all active voices",
             "error": "",
@@ -710,9 +792,9 @@
         },
         {
             "brief": "set sound gain",
-            "description": "Set gain on all active playing voices of a sound.",
+            "description": "Set gain on all voices of a sound, or just the voice identified by <code>play_id</code>.\nWithout <code>play_id</code>, this also updates the component gain used for future playback.\nWith <code>play_id</code>, other voices and the component gain are unchanged. Delayed and paused\nvoices can be updated. If the voice no longer exists, this call has no effect.\nThe gain is multiplied by the gain in the sound resource.",
             "error": "",
-            "examples": "Assuming the script belongs to an instance with a sound-component with id \"sound\", this will set the gain to 0.9\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">sound</span><span class=\"p\">.</span><span class=\"n\">set_gain</span><span class=\"p\">(</span><span class=\"s2\">&quot;#sound&quot;</span><span class=\"p\">,</span> <span class=\"mf\">0.9</span><span class=\"p\">)</span>\n</code></pre></div>",
+            "examples": "Assuming the script belongs to an instance with a sound-component with id \"sound\", this will set the gain to 0.9\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">sound</span><span class=\"p\">.</span><span class=\"n\">set_gain</span><span class=\"p\">(</span><span class=\"s2\">&quot;#sound&quot;</span><span class=\"p\">,</span> <span class=\"mf\">0.9</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">id</span> <span class=\"o\">=</span> <span class=\"n\">sound</span><span class=\"p\">.</span><span class=\"n\">play</span><span class=\"p\">(</span><span class=\"s2\">&quot;#sound&quot;</span><span class=\"p\">)</span>\n<span class=\"n\">sound</span><span class=\"p\">.</span><span class=\"n\">set_gain</span><span class=\"p\">(</span><span class=\"s2\">&quot;#sound&quot;</span><span class=\"p\">,</span> <span class=\"mf\">0.4</span><span class=\"p\">,</span> <span class=\"p\">{</span> <span class=\"n\">play_id</span> <span class=\"o\">=</span> <span class=\"n\">id</span> <span class=\"p\">})</span>\n</code></pre></div>",
             "language": "",
             "members": [],
             "name": "sound.set_gain",
@@ -750,6 +832,20 @@
                     ],
                     "types_table_html": [
                         "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ]
+                },
+                {
+                    "doc": "optional playback to update",
+                    "is_optional": "True",
+                    "name": "properties",
+                    "types": [
+                        "sound.parameter_properties"
+                    ],
+                    "types_html": [
+                        "<a href=\"#sound.parameter_properties\">sound.parameter_properties</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#sound.parameter_properties\">sound.parameter_properties</a>"
                     ]
                 }
             ],
@@ -807,9 +903,9 @@
         },
         {
             "brief": "set sound pan",
-            "description": "Set panning on all active playing voices of a sound.\nThe valid range is from -1.0 to 1.0, representing -45 degrees left, to +45 degrees right.",
+            "description": "Set panning on all voices of a sound, or just the voice identified by <code>play_id</code>.\nWithout <code>play_id</code>, this also updates the component pan used for future playback.\nWith <code>play_id</code>, other voices and the component pan are unchanged. Delayed and paused\nvoices can be updated. If the voice no longer exists, this call has no effect.\nThe pan is added to the pan in the sound resource.\nThe valid range is from -1.0 to 1.0, representing -45 degrees left, to +45 degrees right.",
             "error": "",
-            "examples": "Assuming the script belongs to an instance with a sound-component with id \"sound\", this will set the gain to 0.5\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">sound</span><span class=\"p\">.</span><span class=\"n\">set_pan</span><span class=\"p\">(</span><span class=\"s2\">&quot;#sound&quot;</span><span class=\"p\">,</span> <span class=\"mf\">0.5</span><span class=\"p\">)</span> <span class=\"c1\">-- pan to the right</span>\n</code></pre></div>",
+            "examples": "Assuming the script belongs to an instance with a sound-component with id \"sound\", this will set the pan to 0.5\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">sound</span><span class=\"p\">.</span><span class=\"n\">set_pan</span><span class=\"p\">(</span><span class=\"s2\">&quot;#sound&quot;</span><span class=\"p\">,</span> <span class=\"mf\">0.5</span><span class=\"p\">)</span> <span class=\"c1\">-- pan to the right</span>\n<span class=\"kd\">local</span> <span class=\"n\">id</span> <span class=\"o\">=</span> <span class=\"n\">sound</span><span class=\"p\">.</span><span class=\"n\">play</span><span class=\"p\">(</span><span class=\"s2\">&quot;#sound&quot;</span><span class=\"p\">)</span>\n<span class=\"n\">sound</span><span class=\"p\">.</span><span class=\"n\">set_pan</span><span class=\"p\">(</span><span class=\"s2\">&quot;#sound&quot;</span><span class=\"p\">,</span> <span class=\"o\">-</span><span class=\"mf\">0.5</span><span class=\"p\">,</span> <span class=\"p\">{</span> <span class=\"n\">play_id</span> <span class=\"o\">=</span> <span class=\"n\">id</span> <span class=\"p\">})</span> <span class=\"c1\">-- pan this voice to the left</span>\n</code></pre></div>",
             "language": "",
             "members": [],
             "name": "sound.set_pan",
@@ -849,6 +945,20 @@
                     ],
                     "types_table_html": [
                         "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ]
+                },
+                {
+                    "doc": "optional playback to update",
+                    "is_optional": "True",
+                    "name": "properties",
+                    "types": [
+                        "sound.parameter_properties"
+                    ],
+                    "types_html": [
+                        "<a href=\"#sound.parameter_properties\">sound.parameter_properties</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#sound.parameter_properties\">sound.parameter_properties</a>"
                     ]
                 }
             ],

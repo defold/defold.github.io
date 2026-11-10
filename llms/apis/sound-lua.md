@@ -83,7 +83,11 @@ end
 
 ### set_gain
 *Type:* MESSAGE
-Post this message to a sound-component to set gain on all active playing voices.
+Post this message to a sound-component to set gain on all voices, or just the voice
+identified by play_id. Without play_id, the component gain is also updated for
+future playback. A targeted update leaves other voices and the component gain unchanged.
+Delayed and paused voices can be updated; an unknown or completed play_id has no effect.
+The gain is multiplied by the gain in the sound resource.
  Note that gain is in linear scale, between 0 and 1.
 To get the dB value from the gain, use the formula 20 * log(gain).
 Inversely, to find the linear value from a dB value, use the formula
@@ -92,12 +96,37 @@ Inversely, to find the linear value from a dB value, use the formula
 **Parameters**
 
 - `gain` (number) (optional) - sound gain between 0 and 1, default is 1.
+- `play_id` (number) (optional) - optional playback identifier returned by <a href="/ref/sound#sound.play">sound.play</a>.
 
 **Examples**
 
 Assuming the script belongs to an instance with a sound-component with id "sound", this will set the gain to 0.5
 ```
 msg.post("#sound", "set_gain", {gain = 0.5})
+local id = sound.play("#sound")
+msg.post("#sound", "set_gain", {gain = 0.4, play_id = id})
+
+```
+
+### set_pan
+*Type:* MESSAGE
+Post this message to a sound-component to set panning on all voices, or just the voice
+identified by play_id. Without play_id, the component pan is also updated for
+future playback. A targeted update leaves other voices and the component pan unchanged.
+Delayed and paused voices can be updated; an unknown or completed play_id has no effect.
+The pan is added to the pan in the sound resource.
+
+**Parameters**
+
+- `pan` (number) (optional) - sound panning between -1.0 and 1.0, default is 0.
+- `play_id` (number) (optional) - optional playback identifier returned by <a href="/ref/sound#sound.play">sound.play</a>.
+
+**Examples**
+
+```
+msg.post("#sound", "set_pan", {pan = 0.5})
+local id = sound.play("#sound")
+msg.post("#sound", "set_pan", {pan = -0.5, play_id = id})
 
 ```
 
@@ -306,6 +335,14 @@ end
 
 ```
 
+### sound.parameter_properties
+*Type:* STRUCT
+Sound parameter properties
+
+**Members**
+
+- `play_id?` (number) - Playback identifier returned by <a href="/ref/sound#sound.play">sound.play</a>. If omitted, all voices and the component defaults are updated.
+
 ### sound.pause
 *Type:* FUNCTION
 Pause all active voices
@@ -400,18 +437,25 @@ Sound playback properties
 
 ### sound.set_gain
 *Type:* FUNCTION
-Set gain on all active playing voices of a sound.
+Set gain on all voices of a sound, or just the voice identified by play_id.
+Without play_id, this also updates the component gain used for future playback.
+With play_id, other voices and the component gain are unchanged. Delayed and paused
+voices can be updated. If the voice no longer exists, this call has no effect.
+The gain is multiplied by the gain in the sound resource.
 
 **Parameters**
 
 - `url` (string | hash | url) - the sound to set the gain of
 - `gain` (number) (optional) - sound gain between 0 and 1 [-60dB .. 0dB]. The final gain of the sound will be a combination of this gain, the group gain and the master gain.
+- `properties` (sound.parameter_properties) (optional) - optional playback to update
 
 **Examples**
 
 Assuming the script belongs to an instance with a sound-component with id "sound", this will set the gain to 0.9
 ```
 sound.set_gain("#sound", 0.9)
+local id = sound.play("#sound")
+sound.set_gain("#sound", 0.4, { play_id = id })
 
 ```
 
@@ -434,7 +478,11 @@ sound.set_group_gain("soundfx", 0.5)
 
 ### sound.set_pan
 *Type:* FUNCTION
-Set panning on all active playing voices of a sound.
+Set panning on all voices of a sound, or just the voice identified by play_id.
+Without play_id, this also updates the component pan used for future playback.
+With play_id, other voices and the component pan are unchanged. Delayed and paused
+voices can be updated. If the voice no longer exists, this call has no effect.
+The pan is added to the pan in the sound resource.
 The valid range is from -1.0 to 1.0, representing -45 degrees left, to +45 degrees right.
 
 **Notes**
@@ -446,12 +494,15 @@ At -1 (full left) the channels are at 100%/0%, and 1 they're at 0%/100%.
 
 - `url` (string | hash | url) - the sound to set the panning value to
 - `pan` (number) (optional) - sound panning between -1.0 and 1.0
+- `properties` (sound.parameter_properties) (optional) - optional playback to update
 
 **Examples**
 
-Assuming the script belongs to an instance with a sound-component with id "sound", this will set the gain to 0.5
+Assuming the script belongs to an instance with a sound-component with id "sound", this will set the pan to 0.5
 ```
 sound.set_pan("#sound", 0.5) -- pan to the right
+local id = sound.play("#sound")
+sound.set_pan("#sound", -0.5, { play_id = id }) -- pan this voice to the left
 
 ```
 

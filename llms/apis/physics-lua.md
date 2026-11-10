@@ -471,7 +471,8 @@ end
 
 ### physics.get_shape
 *Type:* FUNCTION
-Gets collision shape data from a collision object
+Gets collision shape data from a collision object. Dimensions are in game units,
+independent of the physics.scale setting.
 
 **Parameters**
 
@@ -845,7 +846,8 @@ end
 
 ### physics.set_shape
 *Type:* FUNCTION
-Sets collision shape data for a collision object. Please note that updating data in 3D
+Sets collision shape data for a collision object. Dimensions are in game units,
+independent of the physics.scale setting. Please note that updating data in 3D
 can be quite costly for box and capsules. Because of the physics engine, the cost
 comes from having to recreate the shape objects when certain shapes needs to be updated.
 

@@ -2278,6 +2278,9 @@ end
 *Type:* MESSAGE
 This message is broadcast to every GUI component when a layout change has been initiated
 on device.
+Layout changes before or during init() are applied immediately, but their notifications
+are coalesced and delivered after init() completes successfully. If the final layout
+matches the layout before these changes, no notification is sent.
 
 **Parameters**
 
@@ -2367,7 +2370,7 @@ information.
 **Parameters**
 
 - `self` (script_instance) - script instance used for storing state
-- `action_id` (hash | nil) - id of the received input action, as mapped in the input_binding-file, or <code>nil</code> for mouse movement
+- `action_id` (hash | nil) - id of the received input action, as mapped in the input_binding-file, or <code>nil</code> for pointer movement and accelerometer samples; check <code>action.source</code> to distinguish them
 - `action` (on_input.action) - input data for the action
 
 **Returns**
