@@ -1,10 +1,10 @@
   `.`
-  : Shorthand resolving to the current game object.
+  : Συντόμευση που αναφέρεται στο τρέχον αντικείμενο παιχνιδιού.
 
   `#`
-  : Shorthand resolving to the current component.
+  : Συντόμευση που αναφέρεται στο τρέχον στοιχείο.
 
-  For example:
+  Για παράδειγμα:
 
   ```lua
    -- Let this game object acquire input focus

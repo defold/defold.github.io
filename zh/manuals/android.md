@@ -13,6 +13,8 @@ toc:
   title: 创建密钥库
 - anchor: creating-an-android-application-bundle
   title: 创建 Android 应用包
+- anchor: estimating-the-google-play-download-size
+  title: 估算 Google Play 下载大小
 - anchor: installing-an-android-application-bundle
   title: 安装 Android 应用包
 - anchor: display-cutouts
@@ -91,6 +93,35 @@ Defold 支持创建 APK 和 AAB 文件。从 *Bundle Format* 下拉菜单中选�
 配置好应用包设置后，按 <kbd>Create Bundle</kbd>。然后系统会提示你指定在计算机上创建包的位置。
 
 ![Android Application Package file](/manuals/images/android/apk_file.png)
+
+### 估算 Google Play 下载大小 {#estimating-the-google-play-download-size}
+
+Google Play 不会将 *`.aab`* 文件分发给玩家，而是生成针对每种设备配置优化的 APK，因此玩家实际下载的文件比 *`.aab`* 文件或通用 *`.apk`* 文件更小。在打包对话框中勾选 *Estimate download size* 复选框，即可在创建应用包时获得预计下载大小。APK 和 AAB 两种打包格式都支持此估算。
+
+![估算下载大小](/manuals/images/android/sign_bundle.png)
+
+估算结果会输出到控制台：
+
+```
+Estimated Play Store download size: 18.2 MB - 25.0 MB (arm64-v8a: 25.0 MB, armeabi-v7a: 18.2 MB - 18.9 MB)
+```
+
+结果还会保存到应用包输出文件夹中的 `download_size.json`。此文件包含所有设备配置的最小和最大下载大小（以字节为单位），以及每种 CPU 架构对应的下载大小范围：
+
+```json
+{
+  "min" : 18208826,
+  "max" : 25009450,
+  "abis" : {
+    "arm64-v8a" : { "min" : 25009448, "max" : 25009450 },
+    "armeabi-v7a" : { "min" : 18208826, "max" : 18908828 }
+  }
+}
+```
+
+从命令行打包时，使用 `--download-size-report <path>` 向 [Bob](/zh/manuals/bob) 传递报告文件的路径。这样可以在持续集成中跟踪游戏的下载大小随时间的变化。
+
+估算使用 [bundletool](https://developer.android.com/tools/bundletool) 进行计算，依据的是 Google Play 将从你的应用包生成、并使用同一密钥库签名的 APK。生成这些 APK 所需的时间与创建 *`.aab`* 文件大致相同，因此默认不启用估算。如果估算失败，控制台会输出警告，应用包仍会正常创建，但不会写入报告文件。
 
 {% include shared/zh/build-variants.md %}
 
