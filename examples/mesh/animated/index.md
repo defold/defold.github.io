@@ -4,13 +4,13 @@ author_ids:
 brief: This example shows how to create and animate a textured mesh component in the shape of a rectangle.
 category: mesh
 layout: example
-opengraph_image: https://www.defold.com/examples/mesh/animated/setup.png
+opengraph_image: https://www.defold.com/examples/mesh/animated/thumbnail.webp
 path: mesh/animated
 scripts: flag.script, flag.fp, flag.vp
 tags: mesh
-thumbnail: setup.png
+thumbnail: thumbnail.webp
 title: Animated Mesh - Flag
-twitter_image: https://www.defold.com/examples/mesh/animated/setup.png
+twitter_image: https://www.defold.com/examples/mesh/animated/thumbnail.webp
 
 ---
 

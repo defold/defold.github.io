@@ -407,16 +407,16 @@ var FileLoader = {
 var EngineLoader = {
     arc_sha1: "",
     wasm_sha1: "",
-    wasm_size: 3702569,
+    wasm_size: 3706935,
     wasmjs_sha1: "",
     wasmjs_size: 270392,
     wasm_pthread_sha1: "",
-    wasm_pthread_size: 3702569,
+    wasm_pthread_size: 3706935,
     wasmjs_pthread_sha1: "",
     wasmjs_pthread_size: 270392,
 
-    wasm_file: "/examples/wasm/d9aa2544008a211d6180cfaaeb21ff00.wasm",
-    wasm_pthread_file: "/examples/wasm/d9aa2544008a211d6180cfaaeb21ff00.wasm",
+    wasm_file: "/examples/wasm/b49ff8309eb9894ae24e7cf4890946a2.wasm",
+    wasm_pthread_file: "/examples/wasm/b49ff8309eb9894ae24e7cf4890946a2.wasm",
     wasmjs_file: "/examples/wasm/96126d20678bca793da360cad2ef0f18.wasm.js",
     wasmjs_pthread_file: "/examples/wasm/96126d20678bca793da360cad2ef0f18.wasm.js",
     stream_wasm: "false" === "true",
@@ -1132,7 +1132,7 @@ var Progress = {
 
 var Module = {
     engineVersion: "1.14.2",
-    engineSdkSha1: "9066bb952b42ddfd2cd6a68c48352b0937dab4e3",
+    engineSdkSha1: "8dc9127ea06b17881f0c1227b48c7113fd288f97",
     noInitialRun: true,
 
     // Shared with the browser backend so fullscreen and display scale use the same rendering ratio.

@@ -403,16 +403,16 @@ var FileLoader = {
 var EngineLoader = {
     arc_sha1: "",
     wasm_sha1: "",
-    wasm_size: 4485133,
+    wasm_size: 4489504,
     wasmjs_sha1: "",
     wasmjs_size: 270399,
     wasm_pthread_sha1: "",
-    wasm_pthread_size: 4485133,
+    wasm_pthread_size: 4489504,
     wasmjs_pthread_sha1: "",
     wasmjs_pthread_size: 270399,
 
-    wasm_file: "/examples/wasm/41081a378131317af2238dcf01d7cb00.wasm",
-    wasm_pthread_file: "/examples/wasm/41081a378131317af2238dcf01d7cb00.wasm",
+    wasm_file: "/examples/wasm/8b8799906ee7c6b6a2def0c8244aeba2.wasm",
+    wasm_pthread_file: "/examples/wasm/8b8799906ee7c6b6a2def0c8244aeba2.wasm",
     wasmjs_file: "/examples/wasm/bc9891a94a9fc9372193291f1763d39c.wasm.js",
     wasmjs_pthread_file: "/examples/wasm/bc9891a94a9fc9372193291f1763d39c.wasm.js",
     stream_wasm: "false" === "true",
@@ -1128,7 +1128,7 @@ var Progress = {
 
 var Module = {
     engineVersion: "1.14.2",
-    engineSdkSha1: "9066bb952b42ddfd2cd6a68c48352b0937dab4e3",
+    engineSdkSha1: "8dc9127ea06b17881f0c1227b48c7113fd288f97",
     noInitialRun: true,
 
     // Shared with the browser backend so fullscreen and display scale use the same rendering ratio.

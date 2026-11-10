@@ -67,6 +67,7 @@ These are per-example files generated for LLM usage.
 - [Pointer over](https://defold.com/llms/examples/gui/pointer_over.md) - A GUI box node with an image texture and a script that react when pointer over this node
 - [Slice-9](https://defold.com/llms/examples/gui/slice9.md) - This example demonstrates slice-9 scaling gui box node
 - [Stencil](https://defold.com/llms/examples/gui/stencil.md) - A GUI box node with "Clipping mode" set to "STENCIL"
+- [Vector Fonts, Rich Text and Emoji](https://defold.com/llms/examples/gui/vector_emoji_rich_text.md) - This example shows how to use vector fonts, Rich Text effects and full-color emoji
 
 ## Input
 
