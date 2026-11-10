@@ -91,6 +91,7 @@ These are per-example files generated for LLM usage.
 
 ## Mesh
 
+- [Animated Mesh - Flag](https://defold.com/llms/examples/mesh/animated.md) - This example shows how to create and animate a textured mesh component in the shape of a rectangle
 - [Mesh](https://defold.com/llms/examples/mesh/triangle.md) - This example shows how to create a basic mesh component in the shape of a triangle
 - [Textured Mesh](https://defold.com/llms/examples/mesh/textured.md) - This example shows how to create a textured mesh component in the shape of a rectangle
 
