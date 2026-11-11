@@ -1147,7 +1147,13 @@
             "error": "",
             "examples": "",
             "language": "",
-            "members": [],
+            "members": [
+                {
+                    "doc": "Optional thread-exit callback. Release the current thread's data and allow repeated notifications.",
+                    "name": "m_ThreadExited",
+                    "type": "ProfileThreadExitedFn"
+                }
+            ],
             "name": "ProfileListener",
             "notes": [],
             "parameters": [],
@@ -1495,6 +1501,61 @@
             "returnvalues": [
                 {
                     "doc": "Status for the thread name operation",
+                    "name": "result",
+                    "types": [
+                        "ProfileResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "enter profiling on the current thread",
+            "description": "Registers the current thread's name with each profiler. Called automatically\nfor dmThread threads. Other threads may call this before their profiling work.\nSample storage is allocated by the profiler as needed.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ProfileThreadEntered",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Name of the current thread",
+                    "is_optional": "False",
+                    "name": "name",
+                    "types": [
+                        "const char*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Status for the thread entry operation",
+                    "name": "result",
+                    "types": [
+                        "ProfileResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "exit profiling on the current thread",
+            "description": "Releases the current thread's data in profilers supporting thread cleanup.\nClose profiling scopes before calling. Called automatically when a dmThread\nworker returns. Threads created outside dmThread must call this before exiting\nto release their data. Repeated calls without intervening profiling work are safe.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ProfileThreadExited",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Status for the thread exit operation",
                     "name": "result",
                     "types": [
                         "ProfileResult"
