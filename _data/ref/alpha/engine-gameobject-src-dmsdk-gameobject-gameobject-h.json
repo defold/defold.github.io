@@ -307,7 +307,7 @@
         },
         {
             "brief": "Retrieve a collection by socket name hash\nNote: in...",
-            "description": "Retrieve a collection by socket name hash\nNote: in native extensions, the register can be retrieved during init using dmEngine::GetGameObjectRegister(dmExtension::AppParams *params)",
+            "description": "Retrieve a collection by socket name hash\nNote: in native extensions, retrieve the register from the extension context registry using GAMEOBJECT_CONTEXT_NAME.",
             "error": "",
             "examples": "",
             "language": "",
@@ -3521,7 +3521,7 @@
             "members": [],
             "name": "TraverseGetRoot",
             "notes": [
-                "The dmGameObject::HRegister is obtained from the `dmEngine::GetGameObjectRegister(dmExtension::AppParams)`",
+                "Obtain dmGameObject::HRegister from the extension context registry using GAMEOBJECT_CONTEXT_NAME.",
                 "Traversing the scene like this is not efficient. These functions are here for inspection and testing purposes only."
             ],
             "parameters": [

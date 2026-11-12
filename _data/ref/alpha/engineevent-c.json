@@ -1,0 +1,244 @@
+{
+    "elements": [
+        {
+            "brief": "engine state notification",
+            "description": "Identifier for EngineStateEvent notifications.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ENGINE_STATE_EVENT",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "CONSTANT"
+        },
+        {
+            "brief": "engine window notification",
+            "description": "Identifier for EngineWindowEvent notifications.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ENGINE_WINDOW_EVENT",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "CONSTANT"
+        },
+        {
+            "brief": "initialize a window event",
+            "description": "Brace initializer for an EngineWindowEvent declaration, with zeroed event data.\nEach argument is evaluated once. Available with the same name in C and C++.",
+            "error": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">EngineWindowEvent</span><span class=\"w\"> </span><span class=\"n\">event</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"n\">ENGINE_WINDOW_EVENT_INITIALIZER</span><span class=\"p\">(</span><span class=\"n\">window</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">ENGINE_WINDOW_EVENT_FOCUS_GAINED</span><span class=\"p\">);</span><span class=\"w\"></span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "ENGINE_WINDOW_EVENT_INITIALIZER",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "borrowed source window, or null",
+                    "is_optional": "False",
+                    "name": "window",
+                    "types": [
+                        "HWindow"
+                    ]
+                },
+                {
+                    "doc": "window notification kind",
+                    "is_optional": "False",
+                    "name": "type",
+                    "types": [
+                        "EngineWindowEventType"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "MACRO"
+        },
+        {
+            "brief": "initialize a window resize event",
+            "description": "Brace initializer for an EngineWindowEvent declaration with type ENGINE_WINDOW_EVENT_RESIZED.\nEach argument is evaluated once. Available with the same name in C and C++.",
+            "error": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">EngineWindowEvent</span><span class=\"w\"> </span><span class=\"n\">event</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"n\">ENGINE_WINDOW_EVENT_RESIZED_INITIALIZER</span><span class=\"p\">(</span><span class=\"n\">window</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"mi\">800</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"mi\">600</span><span class=\"p\">);</span><span class=\"w\"></span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "ENGINE_WINDOW_EVENT_RESIZED_INITIALIZER",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "borrowed source window, or null",
+                    "is_optional": "False",
+                    "name": "window",
+                    "types": [
+                        "HWindow"
+                    ]
+                },
+                {
+                    "doc": "physical framebuffer width",
+                    "is_optional": "False",
+                    "name": "width",
+                    "types": [
+                        "uint32_t"
+                    ]
+                },
+                {
+                    "doc": "physical framebuffer height",
+                    "is_optional": "False",
+                    "name": "height",
+                    "types": [
+                        "uint32_t"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "MACRO"
+        },
+        {
+            "brief": "engine state notification kind",
+            "description": "Identifies the initialization or deletion notification in EngineStateEvent.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "Successful engine initialization has completed.",
+                    "name": "ENGINE_STATE_INITIALIZED",
+                    "type": ""
+                },
+                {
+                    "doc": "Engine deletion begins, before collections and systems are torn down. Also delivered after initialization failure if AppInitialize succeeded.",
+                    "name": "ENGINE_STATE_DELETE_BEGIN",
+                    "type": ""
+                }
+            ],
+            "name": "EngineState",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "ENUM"
+        },
+        {
+            "brief": "engine state event payload",
+            "description": "Payload for ENGINE_STATE_EVENT with data_size equal to sizeof(EngineStateEvent).\nObtain the source engine from the extension context registry using ENGINE_CONTEXT_NAME.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "notification being delivered",
+                    "name": "m_State",
+                    "type": "EngineState"
+                }
+            ],
+            "name": "EngineStateEvent",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "engine window event payload",
+            "description": "Payload for ENGINE_WINDOW_EVENT with data_size equal to sizeof(EngineWindowEvent).\nm_Type selects the valid union member. Only ENGINE_WINDOW_EVENT_RESIZED has\nevent-specific data: m_Data.m_Resized contains the physical framebuffer dimensions.\nDo not read that member for other notification types.\nResize delivery follows the existing window state updates and notifications,\nonce per native resize callback with no initial-size replay. Window events may\narrive before engine Initialize; m_Window can be null during early startup.\nObtain the source engine from the extension context registry using ENGINE_CONTEXT_NAME.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "borrowed source window, or null if not yet available",
+                    "name": "m_Window",
+                    "type": "HWindow"
+                },
+                {
+                    "doc": "notification selecting the valid payload",
+                    "name": "m_Type",
+                    "type": "EngineWindowEventType"
+                },
+                {
+                    "doc": "physical framebuffer width; valid only for ENGINE_WINDOW_EVENT_RESIZED",
+                    "name": "m_Data.m_Resized.m_Width",
+                    "type": "uint32_t"
+                },
+                {
+                    "doc": "physical framebuffer height; valid only for ENGINE_WINDOW_EVENT_RESIZED",
+                    "name": "m_Data.m_Resized.m_Height",
+                    "type": "uint32_t"
+                }
+            ],
+            "name": "EngineWindowEvent",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "window notification kind",
+            "description": "Identifies the active payload in EngineWindowEvent.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "Resize notification. Read physical dimensions from m_Data.m_Resized.",
+                    "name": "ENGINE_WINDOW_EVENT_RESIZED",
+                    "type": ""
+                },
+                {
+                    "doc": "The window was minimized; not a hide notification.",
+                    "name": "ENGINE_WINDOW_EVENT_MINIMIZED",
+                    "type": ""
+                },
+                {
+                    "doc": "The window was restored from minimization; not a show notification.",
+                    "name": "ENGINE_WINDOW_EVENT_RESTORED",
+                    "type": ""
+                },
+                {
+                    "doc": "The window or app screen gained focus.",
+                    "name": "ENGINE_WINDOW_EVENT_FOCUS_GAINED",
+                    "type": ""
+                },
+                {
+                    "doc": "The window or app screen lost focus.",
+                    "name": "ENGINE_WINDOW_EVENT_FOCUS_LOST",
+                    "type": ""
+                }
+            ],
+            "name": "EngineWindowEventType",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "ENUM"
+        }
+    ],
+    "format_version": 2,
+    "info": {
+        "api_language": "C",
+        "brief": "Engine event definitions",
+        "description": "Built-in event identifiers and payloads published through the generic extension\nevent transport in `<dmsdk/extension/extension.h>`. Custom events may use\ntheir own identifiers and payloads without central registration.\n\nPayloads and their handles are borrowed for the synchronous callback. Obtain\nthe source engine from the callback registry using ENGINE_CONTEXT_NAME.\nGet the registry with ExtensionParamsGetContextRegistry, then use ContextRegistryGet\nand cast the result to HEngine. Use EngineGetWindow for its current window.\nWindow payloads identify the source window directly. A window\nhandle may be null during early startup or failure cleanup.\nWindow notifications retain the backend focus/minimize semantics. Minimization\nis distinct from hide/show visibility; platform callback availability is unchanged.",
+        "description_html": "<p>Built-in event identifiers and payloads published through the generic extension\nevent transport in <code>&lt;dmsdk/extension/extension.h&gt;</code>. Custom events may use\ntheir own identifiers and payloads without central registration.</p>\n<p>Payloads and their handles are borrowed for the synchronous callback. Obtain\nthe source engine from the callback registry using ENGINE_CONTEXT_NAME.\nGet the registry with ExtensionParamsGetContextRegistry, then use ContextRegistryGet\nand cast the result to HEngine. Use EngineGetWindow for its current window.\nWindow payloads identify the source window directly. A window\nhandle may be null during early startup or failure cleanup.\nWindow notifications retain the backend focus/minimize semantics. Minimization\nis distinct from hide/show visibility; platform callback availability is unchanged.</p>",
+        "file": "engine_event.h",
+        "include": "dmsdk/engine/engine_event.h",
+        "name": "EngineEvent",
+        "namespace": "EngineEvent",
+        "notes": [],
+        "path": "engine/engine/src/dmsdk/engine/engine_event.h",
+        "type": "Defold C"
+    }
+}
