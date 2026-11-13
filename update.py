@@ -990,24 +990,19 @@ def process_extension(extension_name, download = False):
 
 
 def process_examples(download = False, examples_ref = "master", changed_examples = None):
-    examples_sha1 = get_sha1(EXAMPLES_DEFOLD_CHANNEL)
+    snapshot_path = os.environ.get("EXAMPLES_SNAPSHOT", "examples-bundles.zip")
+    if not os.path.isfile(snapshot_path):
+        raise RuntimeError("Examples bundle snapshot is required")
+    with zipfile.ZipFile(snapshot_path) as snapshot:
+        manifest = json.loads(snapshot.read("manifest.json"))
+    examples_ref = manifest["examples_sha"]
 
     if download:
         if os.path.exists(EXAMPLES_ZIP):
             os.remove(EXAMPLES_ZIP)
         download_file("https://github.com/defold/examples/archive/{}.zip".format(examples_ref), ".", EXAMPLES_ZIP)
-        download_bob(examples_sha1)
-
     if not os.path.exists(EXAMPLES_ZIP):
-        print("File {} does not exist".format(EXAMPLES_ZIP))
-        sys.exit(1)
-
-    bob_jar = get_bob_filename(examples_sha1)
-    if not os.path.exists(bob_jar):
-        print("File {} does not exist".format(bob_jar))
-        sys.exit(1)
-
-    rebuild = True
+        raise RuntimeError("Examples source archive is missing")
 
     includes_dir = os.path.join("_includes", "examples")
     rmmkdir(includes_dir)
@@ -1021,7 +1016,15 @@ def process_examples(download = False, examples_ref = "master", changed_examples
             print("Unable to find unzipped examples directory")
             sys.exit(1)
 
+        with zipfile.ZipFile(snapshot_path) as snapshot:
+            for entry in snapshot.infolist():
+                path = Path(entry.filename)
+                if path.is_absolute() or ".." in path.parts:
+                    raise RuntimeError("Invalid bundle snapshot path")
+            snapshot.extractall(os.path.join(tmp_dir, "snapshot"))
+        bundles = Path(tmp_dir) / "snapshot" / "bundles"
         data_index_file = os.path.join("_data", "examplesindex.json")
+        old_examples = read_as_json(data_index_file) if os.path.exists(data_index_file) else []
         examplesindex = []
         category_dirs = os.listdir(unzipped_examples_dir)
         for category in category_dirs:
@@ -1029,9 +1032,6 @@ def process_examples(download = False, examples_ref = "master", changed_examples
             category_dst_dir = os.path.join("examples", category)
             if os.path.isfile(category_src_dir) or category == ".github":
                 continue
-
-            if rebuild:
-                rmmkdir(category_dst_dir)
 
             for example in os.listdir(category_src_dir):
                 example_src_dir = os.path.join(category_src_dir, example)
@@ -1051,29 +1051,13 @@ def process_examples(download = False, examples_ref = "master", changed_examples
                     sys.exit(1)
 
                 print("..processing %s" % example)
-                if rebuild:
-                    print("...building %s" % example)
-                    bob_out = os.path.join(example_src_dir, bob_jar)
-                    shutil.copyfile(bob_jar, bob_out)
-                    game_project = os.path.join(example_src_dir, "game.project")
-                    replace_in_file(game_project, r"title = .*", r"title = Defold-examples")
-                    subprocess.run([ "java", "-jar", bob_out, "--archive", "--platform", "wasm-web", "--architectures", "wasm-web", "--variant", "debug", "--build-server", EXAMPLES_BUILD_SERVER, "resolve", "build", "bundle" ], cwd=example_src_dir, check=True)
-                    os.remove(bob_out)
-
-                    print("...copying %s" % example)
-                    bundle_index_file = find_file(os.path.join(example_src_dir, "build", "default"), "index.html")
-                    if not bundle_index_file:
-                        print("File index.html not found")
-                        sys.exit(1)
-                    print(bundle_index_file, os.path.dirname(bundle_index_file))
-
-                    bundle_dir = os.path.dirname(bundle_index_file)
-                    rmtree(example_dst_dir)
-                    makedirs(category_dst_dir)
-                    shutil.copytree(bundle_dir, example_dst_dir)
-                    os.remove(os.path.join(example_dst_dir, "index.html"))
-                else:
-                    os.makedirs(example_dst_dir, exist_ok=True)
+                bundle_dir = bundles / category / example
+                if not (bundle_dir / "index.html").is_file():
+                    raise RuntimeError("Missing bundle for {}".format(example_path))
+                rmtree(example_dst_dir)
+                makedirs(category_dst_dir)
+                shutil.copytree(bundle_dir, example_dst_dir)
+                os.remove(os.path.join(example_dst_dir, "index.html"))
 
                 print("...parsing example.md")
                 fm["category"] = category
@@ -1110,6 +1094,13 @@ def process_examples(download = False, examples_ref = "master", changed_examples
 
                 print("...copying documentation images")
                 copy_documentation_images(example_src_dir, example_dst_dir, read_as_string(md_file))
+
+        current = {entry["path"] for entry in examplesindex}
+        for entry in old_examples:
+            path = normalize_example_path(entry.get("path", ""))
+            if path and path not in current:
+                rmtree(os.path.join("examples", path))
+        write_as_json(os.path.join("_data", "examples_build.json"), manifest)
 
         print("...generating index")
         if os.path.exists(data_index_file):
