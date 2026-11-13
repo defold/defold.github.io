@@ -24,7 +24,8 @@ jobs:
     if: ${{ !contains(github.event.head_commit.message || '', 'skip-ci') }}
     env:
       ACTION: ${{ github.event.action || github.event.inputs.action }}
-      EXAMPLES_REF: ${{ github.event.client_payload.examples_sha || github.event.client_payload.after || github.event.client_payload.sha || 'master' }}
+      EXAMPLES_REF: ${{ github.event.client_payload.examples_sha || '' }}
+      EXAMPLES_RUN_ID: ${{ github.event.client_payload.examples_run_id || '' }}
     steps:
       - name: Checkout
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
@@ -50,7 +51,7 @@ jobs:
           architecture: x64
 
       - name: Install Java
-        if: env.ACTION == 'examples' || env.ACTION == 'codepad' || env.ACTION == 'all'
+        if: env.ACTION == 'codepad' || env.ACTION == 'all'
         uses: actions/setup-java@f2beeb24e141e01a676f977032f5a29d81c9e27e
         with:
           java-version: '25'
@@ -77,6 +78,32 @@ jobs:
       - if: env.ACTION == 'refdoc'
         name: Update refdoc
         run: python update.py --download refdoc
+
+      - name: Download built example bundles
+        if: env.ACTION == 'examples' || env.ACTION == 'all'
+        env:
+          GH_TOKEN: ${{ secrets.SERVICES_GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          run_id="$EXAMPLES_RUN_ID"
+          if [ -z "$run_id" ]; then
+            run_id=$(gh run list --repo defold/examples --workflow trigger-site-rebuild.yml --branch master --status success --limit 50 --json databaseId --jq '.[].databaseId' | while read -r candidate; do
+              if gh api "repos/defold/examples/actions/runs/$candidate/artifacts" --jq '.artifacts[] | select(.name == "examples-bundles" and .expired == false) | .id' | grep -q .; then echo "$candidate"; break; fi
+            done)
+          fi
+          test -n "$run_id"
+          gh run download "$run_id" --repo defold/examples --name examples-bundles --dir .
+          snapshot_sha=$(python -c 'import json, zipfile; print(json.loads(zipfile.ZipFile("examples-bundles.zip").read("manifest.json"))["examples_sha"])')
+          if [ -n "$EXAMPLES_REF" ] && [ "$EXAMPLES_REF" != "$snapshot_sha" ]; then
+            echo "Snapshot SHA does not match the dispatch" >&2; exit 1
+          fi
+          if [ -f _data/examples_build.json ]; then
+            previous_sha=$(python -c 'import json; print(json.load(open("_data/examples_build.json"))["examples_sha"])')
+            status=$(gh api "repos/defold/examples/compare/$previous_sha...$snapshot_sha" --jq .status)
+            if [ "$status" != ahead ] && [ "$status" != identical ]; then
+              echo "Refusing to publish an older or divergent examples snapshot" >&2; exit 1
+            fi
+          fi
 
       - if: env.ACTION == 'examples'
         name: Update examples
