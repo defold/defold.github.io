@@ -19,6 +19,7 @@ import yaml
 from llms import LLMS_DIR, generate_llms_manuals, generate_llms_apis, generate_llms_examples, path_to_manuals_anchor
 from utils import list_files, read_as_json, read_as_string, rmtree, write_as_string
 from scripts import dedupe_examples_wasm
+from scripts.example_bundle_validation import validate_example_bundle, validate_source_archive
 from scripts.example_images import copy_documentation_images
 from scripts.frontpage_images import regenerate_game_images
 from argparse import ArgumentParser
@@ -1004,17 +1005,16 @@ def process_examples(download = False, examples_ref = "master", changed_examples
     if not os.path.exists(EXAMPLES_ZIP):
         raise RuntimeError("Examples source archive is missing")
 
+    source_root = validate_source_archive(EXAMPLES_ZIP, examples_ref)
     includes_dir = os.path.join("_includes", "examples")
-    rmmkdir(includes_dir)
 
     print("Processing examples")
     with tmpdir() as tmp_dir:
         shutil.copyfile(EXAMPLES_ZIP, os.path.join(tmp_dir, EXAMPLES_ZIP))
         unzip(os.path.join(tmp_dir, EXAMPLES_ZIP), tmp_dir)
-        unzipped_examples_dir = find_unzipped_repo_dir(tmp_dir, "examples-")
-        if not unzipped_examples_dir:
-            print("Unable to find unzipped examples directory")
-            sys.exit(1)
+        unzipped_examples_dir = os.path.join(tmp_dir, source_root)
+        if not os.path.isdir(unzipped_examples_dir):
+            raise RuntimeError("Examples source root is missing")
 
         with zipfile.ZipFile(snapshot_path) as snapshot:
             for entry in snapshot.infolist():
@@ -1023,6 +1023,16 @@ def process_examples(download = False, examples_ref = "master", changed_examples
                     raise RuntimeError("Invalid bundle snapshot path")
             snapshot.extractall(os.path.join(tmp_dir, "snapshot"))
         bundles = Path(tmp_dir) / "snapshot" / "bundles"
+        # Reject an incomplete snapshot before modifying any existing examples.
+        for category in os.listdir(unzipped_examples_dir):
+            category_src_dir = os.path.join(unzipped_examples_dir, category)
+            if not os.path.isdir(category_src_dir) or category == ".github":
+                continue
+            for example in os.listdir(category_src_dir):
+                example_src_dir = os.path.join(category_src_dir, example)
+                if os.path.isdir(example_src_dir):
+                    validate_example_bundle(bundles / category / example, "{}/{}".format(category, example))
+        rmmkdir(includes_dir)
         data_index_file = os.path.join("_data", "examplesindex.json")
         old_examples = read_as_json(data_index_file) if os.path.exists(data_index_file) else []
         examplesindex = []
@@ -1052,8 +1062,6 @@ def process_examples(download = False, examples_ref = "master", changed_examples
 
                 print("..processing %s" % example)
                 bundle_dir = bundles / category / example
-                if not (bundle_dir / "index.html").is_file():
-                    raise RuntimeError("Missing bundle for {}".format(example_path))
                 rmtree(example_dst_dir)
                 makedirs(category_dst_dir)
                 shutil.copytree(bundle_dir, example_dst_dir)
