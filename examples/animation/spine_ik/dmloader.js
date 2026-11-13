@@ -407,18 +407,18 @@ var FileLoader = {
 var EngineLoader = {
     arc_sha1: "",
     wasm_sha1: "",
-    wasm_size: 3970878,
+    wasm_size: 4020470,
     wasmjs_sha1: "",
     wasmjs_size: 270392,
     wasm_pthread_sha1: "",
-    wasm_pthread_size: 3970878,
+    wasm_pthread_size: 4020470,
     wasmjs_pthread_sha1: "",
     wasmjs_pthread_size: 270392,
 
-    wasm_file: "/examples/wasm/70c2f7579dffbd258b3ba3c4e4a6a993.wasm",
-    wasm_pthread_file: "/examples/wasm/70c2f7579dffbd258b3ba3c4e4a6a993.wasm",
-    wasmjs_file: "/examples/wasm/f10e4443e3216c50fd8d8c4349114f6a.wasm.js",
-    wasmjs_pthread_file: "/examples/wasm/f10e4443e3216c50fd8d8c4349114f6a.wasm.js",
+    wasm_file: "/examples/wasm/b724b4bb30c2c89ebd6400fbe35fc784.wasm",
+    wasm_pthread_file: "/examples/wasm/b724b4bb30c2c89ebd6400fbe35fc784.wasm",
+    wasmjs_file: "/examples/wasm/9eff76ac86faf342ddac16934177df66.wasm.js",
+    wasmjs_pthread_file: "/examples/wasm/9eff76ac86faf342ddac16934177df66.wasm.js",
     stream_wasm: "false" === "true",
 
     // Capture the variant once so every request and verification uses the same metadata.
@@ -1132,7 +1132,7 @@ var Progress = {
 
 var Module = {
     engineVersion: "1.14.2",
-    engineSdkSha1: "8dc9127ea06b17881f0c1227b48c7113fd288f97",
+    engineSdkSha1: "84bd27aed6f5d3ed1451aaa2e55d832edcdd401e",
     noInitialRun: true,
 
     // Shared with the browser backend so fullscreen and display scale use the same rendering ratio.

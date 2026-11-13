@@ -184,6 +184,7 @@ These are per-example files generated for LLM usage.
 - [Bunnymark](https://defold.com/llms/examples/sprite/bunnymark.md) - This is a performance test for sprites
 - [Change sprite image](https://defold.com/llms/examples/sprite/changeimage.md) - This example shows how to change the image of a sprite
 - [Flip](https://defold.com/llms/examples/sprite/flip.md) - This example demonstrates flipping a sprite animation vertically and horizontally
+- [Flipbook frame events - Footsteps](https://defold.com/llms/examples/sprite/events_on_frames.md) - Detect selected frames while a sprite flipbook animation plays and loops
 - [Multiple Sprite Samplers](https://defold.com/llms/examples/sprite/samplers.md) - This example shows how to sample from more than one image when drawing a sprite
 - [Sprite cursor](https://defold.com/llms/examples/sprite/cursor.md) - This example shows how to use the sprite animation cursor and frame count to manually select a specific frame
 - [Sprite size](https://defold.com/llms/examples/sprite/size.md) - This example shows how to get the size of a sprite at run-time
