@@ -1,6 +1,38 @@
 {
     "elements": [
         {
+            "brief": "change the current working directory",
+            "description": "Change the process current working directory for all threads.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ChDir",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "directory to change to",
+                    "is_optional": "False",
+                    "name": "path",
+                    "types": [
+                        "const char*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "RESULT_OK on success, or a filesystem error",
+                    "name": "result",
+                    "types": [
+                        "dmSys::Result"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "Checks if a path exists",
             "description": "Checks if a path exists",
             "error": "",
@@ -26,6 +58,94 @@
                     "name": "result",
                     "types": [
                         "bool"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "resolve an absolute filesystem path",
+            "description": "Resolve a path against the current working directory without requiring it to exist.\nBuffer contents are unspecified on failure.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetAbsolutePath",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "null-terminated input path, which must not overlap path_out",
+                    "is_optional": "False",
+                    "name": "path",
+                    "types": [
+                        "const char*"
+                    ]
+                },
+                {
+                    "doc": "caller-owned output buffer",
+                    "is_optional": "False",
+                    "name": "path_out",
+                    "types": [
+                        "char*"
+                    ]
+                },
+                {
+                    "doc": "output buffer size, including the terminating null",
+                    "is_optional": "False",
+                    "name": "path_len",
+                    "types": [
+                        "uint32_t"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "RESULT_OK on success, RESULT_INVAL if the buffer is too small, or another filesystem error",
+                    "name": "result",
+                    "types": [
+                        "dmSys::Result"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "get the current working directory",
+            "description": "Get the current working directory of the process.\nBuffer contents are unspecified on failure.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "GetCwd",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "caller-owned output buffer",
+                    "is_optional": "False",
+                    "name": "path",
+                    "types": [
+                        "char*"
+                    ]
+                },
+                {
+                    "doc": "output buffer size, including the terminating null",
+                    "is_optional": "False",
+                    "name": "path_len",
+                    "types": [
+                        "uint32_t"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "RESULT_OK on success, RESULT_INVAL if the buffer size is invalid or too small, or another filesystem error",
+                    "name": "result",
+                    "types": [
+                        "dmSys::Result"
                     ]
                 }
             ],

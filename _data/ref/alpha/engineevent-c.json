@@ -1,6 +1,21 @@
 {
     "elements": [
         {
+            "brief": "input actions have been resolved",
+            "description": "Event identifier for EngineInputActionsEvent notifications.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "ENGINE_EVENT_INPUT_ACTIONS",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "CONSTANT"
+        },
+        {
             "brief": "engine state notification",
             "description": "Identifier for EngineStateEvent notifications.",
             "error": "",
@@ -101,6 +116,27 @@
             "returnvalues": [],
             "tparams": [],
             "type": "MACRO"
+        },
+        {
+            "brief": "resolved input actions",
+            "description": "Published once per completed input update after application bindings are\nresolved, coordinates converted and text/marked-text ordered last, before\nfocused game-object dispatch. Empty updates are published; skipped input\nupdates are not. This is independent of extension Update and rendered-frame\ncount. Input events use the generic handler's application lifetime.\nIterate the current resolved batch through InputIterateActions and the iterator\ngetters. The batch belongs to input and remains valid until the next binding\nupdate starts or the context is destroyed. Iteration cannot consume input or\nchange focused dispatch. Obtain the source engine from the extension context\nregistry using ENGINE_CONTEXT_NAME. Focused gameplay should use native\ncomponent input/update callbacks.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "valid borrowed input context, including empty updates",
+                    "name": "m_Input",
+                    "type": "HInputContext"
+                }
+            ],
+            "name": "EngineInputActionsEvent",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
         },
         {
             "brief": "engine state notification kind",

@@ -1,0 +1,100 @@
+{
+    "elements": [
+        {
+            "brief": "native physics world event",
+            "description": "Payload for EVENT_POST_STEP with data_size equal to sizeof(Event).\nInterpret m_World using the physics backend configured for the project and build.\nLegacy Defold Box2D supplies a b2World pointer, Box2D 3 a pointer to a b2WorldId\nvalue, and Bullet a btDiscreteDynamicsWorld pointer. For Box2D 3, copy the\nb2WorldId value from the supplied pointer. Native headers and libraries must\nmatch the backend bundled with this SDK.\nThe payload and native world access are borrowed only during the callback.\nRead native event buffers and perform queries using that backend's own API.\nDo not step or destroy the world, destroy Defold-managed bodies, replace reserved\nuser data or callbacks, or invalidate event buffers for other listeners. Defer\ndestructive changes through Defold's normal lifecycle operations. Delivery order\nbetween extensions is unspecified. This event cannot change contact response\nfor the completed step; that requires the backend's own pre-solve mechanism.",
+            "error": "",
+            "examples": "",
+            "language": "C++",
+            "members": [
+                {
+                    "doc": "borrowed native world access for the configured physics backend",
+                    "name": "m_World",
+                    "type": "const void*"
+                },
+                {
+                    "doc": "time-scaled world update interval in seconds; native simulated time can differ",
+                    "name": "m_Dt",
+                    "type": "float"
+                }
+            ],
+            "name": "Event",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "physics world step completed",
+            "description": "Event identifier for Event notifications after each Defold physics-world\nupdate. Delivery is synchronous on the engine thread after native stepping and\ngame-object world-transform propagation, before the collection's queued message\ndispatch. Fixed updates publish once per completed world update; paused or skipped\nworld updates do not publish. A backend can perform zero or multiple internal\nsimulation substeps in one world update, as Bullet does with fixed substeps.\nThese substeps do not publish separate events. m_Dt carries the supplied world\nupdate interval; the amount of native simulation time advanced can differ.",
+            "error": "",
+            "examples": "",
+            "language": "C++",
+            "members": [],
+            "name": "EVENT_POST_STEP",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "CONSTANT"
+        },
+        {
+            "brief": "physics world step completed",
+            "description": "Event identifier for PhysicsEvent notifications after each Defold physics-world\nupdate. Delivery is synchronous on the engine thread after native stepping and\ngame-object world-transform propagation, before the collection's queued message\ndispatch. Fixed updates publish once per completed world update; paused or skipped\nworld updates do not publish. A backend can perform zero or multiple internal\nsimulation substeps in one world update, as Bullet does with fixed substeps.\nThese substeps do not publish separate events. m_Dt carries the supplied world\nupdate interval; the amount of native simulation time advanced can differ.",
+            "error": "",
+            "examples": "",
+            "language": "C",
+            "members": [],
+            "name": "PHYSICS_EVENT_POST_STEP",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "CONSTANT"
+        },
+        {
+            "brief": "native physics world event",
+            "description": "Payload for PHYSICS_EVENT_POST_STEP with data_size equal to sizeof(PhysicsEvent).\nInterpret m_World using the physics backend configured for the project and build.\nLegacy Defold Box2D supplies a b2World pointer, Box2D 3 a pointer to a b2WorldId\nvalue, and Bullet a btDiscreteDynamicsWorld pointer. For Box2D 3, copy the\nb2WorldId value from the supplied pointer. Native headers and libraries must\nmatch the backend bundled with this SDK.\nThe payload and native world access are borrowed only during the callback.\nRead native event buffers and perform queries using that backend's own API.\nDo not step or destroy the world, destroy Defold-managed bodies, replace reserved\nuser data or callbacks, or invalidate event buffers for other listeners. Defer\ndestructive changes through Defold's normal lifecycle operations. Delivery order\nbetween extensions is unspecified. This event cannot change contact response\nfor the completed step; that requires the backend's own pre-solve mechanism.",
+            "error": "",
+            "examples": "",
+            "language": "C",
+            "members": [
+                {
+                    "doc": "borrowed native world access for the configured physics backend",
+                    "name": "m_World",
+                    "type": "const void*"
+                },
+                {
+                    "doc": "time-scaled world update interval in seconds; native simulated time can differ",
+                    "name": "m_Dt",
+                    "type": "float"
+                }
+            ],
+            "name": "PhysicsEvent",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        }
+    ],
+    "format_version": 2,
+    "info": {
+        "api_language": "C++",
+        "brief": "Physics events",
+        "description": "Native physics-world notifications delivered through the extension broadcast.\nDefold owns simulation, collision objects and transform synchronization.",
+        "description_html": "<p>Native physics-world notifications delivered through the extension broadcast.\nDefold owns simulation, collision objects and transform synchronization.</p>",
+        "file": "physics_event_gen.hpp",
+        "include": "dmsdk/physics/physics_event_gen.hpp",
+        "name": "Physics events",
+        "namespace": "dmPhysics",
+        "notes": [],
+        "path": "engine/physics/src/dmsdk/physics/physics_event_gen.hpp",
+        "type": "Defold C++"
+    }
+}
