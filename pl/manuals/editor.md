@@ -23,6 +23,8 @@ toc:
   title: Położenie okna silnika
 - anchor: resetting-the-engine-window-size
   title: Resetowanie rozmiaru okna silnika
+- anchor: 2d-and-3d-scene-orientation
+  title: Orientacja sceny 2D i 3D
 - Rozmiar i widoczność paneli
 - Zakładki
 - Edycja obok siebie
@@ -186,6 +188,10 @@ Wybierz <kbd>Debug ▸ Reset Simulated Resolution</kbd>, aby wrócić do skonfig
 - Zachowuje zapisane pozycje okien.
 
 Okna wybranych działających instancji silnika są zmieniane do wartości [Display Width i Height](/pl/manuals/project-settings/#display) projektu. Reset można wykonać również bez uruchomionego silnika; następne uruchomienie użyje skonfigurowanego rozmiaru. Późniejsze przesunięcie lub zmiana rozmiaru okna ponownie zapisze jego nowy stan.
+
+## Orientacja sceny 2D i 3D {#2d-and-3d-scene-orientation}
+
+{% include shared/pl/2d-and-3d-scene-orientation.md %}
 
 ## Rozmiar i widoczność paneli
 

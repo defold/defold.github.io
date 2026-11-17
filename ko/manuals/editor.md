@@ -23,6 +23,8 @@ toc:
   title: 엔진 창 배치
 - anchor: resetting-the-engine-window-size
   title: 엔진 창 크기 초기화
+- anchor: 2d-and-3d-scene-orientation
+  title: 2D와 3D 씬 방향
 - 창 크기와 표시 여부
 - 탭
 - 나란히 편집하기
@@ -183,6 +185,10 @@ Tools pane은 통합 디버거와 상호작용하는 데에도 사용됩니다. 
 - 저장된 창 위치는 유지합니다.
 
 선택한 실행 중 엔진 인스턴스의 창 크기를 프로젝트의 [Display Width와 Height](/ko/manuals/project-settings/#display)에 맞춥니다. 엔진이 실행 중이지 않아도 초기화할 수 있으며, 다음 실행에서 설정된 크기를 사용합니다. 이후 창을 이동하거나 크기를 바꾸면 새 배치를 다시 저장합니다.
+
+## 2D와 3D 씬 방향 {#2d-and-3d-scene-orientation}
+
+{% include shared/ko/2d-and-3d-scene-orientation.md %}
 
 ## 창 크기와 표시 여부
 

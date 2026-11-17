@@ -30,6 +30,8 @@ Casos de uso comuns incluem definir a vida ou a velocidade de uma IA inimiga esp
 
 Propriedades de script são adicionadas a um componente de script ao defini-las com a função especial `go.property()`. A função precisa ser usada no nível superior - fora de quaisquer funções de ciclo de vida, como `init()` e `update()`. O valor padrão fornecido para a propriedade determina o tipo da propriedade: `number`, `boolean`, `string`, `hash`, `msg.url`, `vmath.vector3`, `vmath.vector4`, `vmath.quaternion` e `resource` (veja abaixo).
 
+![Properties](/manuals/images/script-properties/properties.png)
+
 <div class='important' markdown='1'>
 Observe que a reversão do valor de hash funciona apenas na build Debug para facilitar a depuração. Na build Release, o valor de string revertido não existe, portanto usar `tostring()` em um valor `hash` para extrair a string dele não faz sentido.
 </div>
@@ -65,7 +67,7 @@ Qualquer instância de componente de script criada a partir desse script pode en
 
 Selecione o componente de script na visualização *Outline* no editor e as propriedades aparecerão na visualização *Properties*, permitindo editá-las:
 
-![Properties](/manuals/images/script-properties/properties.png)
+![Properties](/manuals/images/script-properties/properties2.png)
 
 Qualquer propriedade sobrescrita com um novo valor específico da instância é marcada em azul. Clique no botão de redefinição ao lado do nome da propriedade para retornar o valor ao padrão (como definido no script).
 

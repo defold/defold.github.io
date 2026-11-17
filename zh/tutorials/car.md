@@ -30,7 +30,7 @@ title: 在 Defold 中构建一个简单的汽车
 
 首先创建一个[新项目](/zh/manuals/project-setup/)并在编辑器中打开它。如果您双击文件 *main/main.collection*，该文件将会打开：
 
-![编辑器概览](../manuals/images/editor/editor2_overview.png)
+![编辑器概览](../manuals/images/editor/editor_overview.png)
 
 编辑器由以下主要区域组成：
 

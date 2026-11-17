@@ -33,6 +33,8 @@ toc:
   title: Розміщення вікна рушія
 - anchor: resetting-the-engine-window-size
   title: Скидання розміру вікна рушія
+- anchor: 2d-and-3d-scene-orientation
+  title: Орієнтація сцени у 2D та 3D
 - anchor: panes-size-and-visibility
   title: Розмір і видимість панелей
 - anchor: tabs
@@ -203,6 +205,10 @@ SAMPLES
 - Зберігає записані позиції вікон.
 
 Розміри вікон вибраних запущених екземплярів рушія змінюються відповідно до [Display Width і Height](/uk/manuals/project-settings/#display) проєкту. Скидання можна виконати й без запущеного рушія; наступний запуск використовуватиме налаштований розмір. Подальше переміщення або зміна розміру вікна знову збереже його нове розміщення.
+
+## Орієнтація сцени у 2D та 3D {#2d-and-3d-scene-orientation}
+
+{% include shared/uk/2d-and-3d-scene-orientation.md %}
 
 ## Розмір і видимість панелей {#panes-size-and-visibility}
 

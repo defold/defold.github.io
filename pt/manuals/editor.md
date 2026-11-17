@@ -23,6 +23,8 @@ toc:
   title: Posicionamento da janela da engine
 - anchor: resetting-the-engine-window-size
   title: Redefinindo o tamanho da janela da engine
+- anchor: 2d-and-3d-scene-orientation
+  title: Orientação de cena 2D e 3D
 - Tamanho e visibilidade dos painéis
 - Abas
 - Edição lado a lado
@@ -183,6 +185,10 @@ Escolha <kbd>Debug ▸ Reset Simulated Resolution</kbd> para voltar ao tamanho c
 - Mantém as posições de janela salvas.
 
 As janelas das instâncias da engine em execução selecionadas são redimensionadas para [Display Width e Height](/pt/manuals/project-settings/#display) do projeto. Você também pode redefinir sem nenhuma engine em execução; a próxima inicialização usa o tamanho configurado. Mover ou redimensionar a janela depois disso salva novamente seu novo posicionamento.
+
+## Orientação de cena 2D e 3D {#2d-and-3d-scene-orientation}
+
+{% include shared/pt/2d-and-3d-scene-orientation.md %}
 
 ## Tamanho e visibilidade dos painéis
 

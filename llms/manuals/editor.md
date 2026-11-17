@@ -122,6 +122,16 @@ Choose `Debug ▸ Reset Simulated Resolution` to return to the configured size. 
 
 Windows for the selected running engine instances are resized to the project's [Display Width and Height](https://defold.com/llms/manuals/project-settings.md). You can also reset with no engine running; the next launch uses the configured size. Moving or resizing the window afterward saves its new placement again.
 
+## 2D and 3D scene orientation
+
+The scene view can be used in both 2D and 3D workflows. A typical 2D setup uses an orthographic view with the grid on the X-Y plane:
+
+To work in 3D, turn off the **2D** toggle in the toolbar. This changes the view orientation and switches to the 3D grid settings. You can use the **Grid Settings** dropdown to adjust the grid plane and appearance.
+
+For a perspective view, enable **Perspective camera** in the toolbar:
+
+You can also change the view through the **View** menu.
+
 ## Panes Size and Visibility
 
 Panes size can be adjusted inside the Editor by `Dragging` the section borders between all described above 6 Panes.

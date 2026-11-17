@@ -17,6 +17,8 @@ toc:
 
 ![Physics collision group](/manuals/images/physics/collision_group.png)
 
+![Physics collision group](/manuals/images/physics/collision_groups.png)
+
 Поле *Mask* может содержать множество имен групп, допуская сложные сценарии взаимодействия.
 
 ## Определение столкновений

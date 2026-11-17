@@ -34,6 +34,8 @@ toc:
 
 脚本属性是通过使用`go.property()`特殊函数将它们添加到脚本组件中的。该函数必须在顶层使用---在任何生命周期函数（如`init()`和`update()`）之外。为属性提供的默认值决定了属性的类型：`number`、`boolean`、`string`、`hash`、`msg.url`、`vmath.vector3`、`vmath.vector4`、`vmath.quaternion`和`resource`（见下文）。
 
+![Properties](/manuals/images/script-properties/properties.png)
+
 <div class='important' markdown='1'>
 请注意，哈希值的反转仅在Debug构建中有效，以方便调试。在Release构建中，反转的字符串值不存在，因此对`hash`值使用`tostring()`来从中提取字符串是没有意义的。
 </div>
@@ -69,7 +71,7 @@ end
 
  在编辑器中的*Outline*视图中选择脚本组件，属性会出现在*Properties*视图中，允许您编辑它们：
 
-![Properties](/manuals/images/script-properties/properties.png)
+![Properties](/manuals/images/script-properties/properties2.png)
 
 任何被新的实例特定值覆盖的属性都会标记为蓝色。单击属性名称旁边的重置按钮可以将值恢复为默认值（在脚本中设置）。
 

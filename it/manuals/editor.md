@@ -33,6 +33,8 @@ toc:
   title: Posizionamento della finestra del motore
 - anchor: resetting-the-engine-window-size
   title: Ripristino delle dimensioni della finestra del motore
+- anchor: 2d-and-3d-scene-orientation
+  title: Orientamento della scena in 2D e 3D
 - anchor: panes-size-and-visibility
   title: Dimensioni e visibilità dei pannelli
 - anchor: tabs
@@ -202,6 +204,10 @@ Scegli <kbd>Debug ▸ Reset Simulated Resolution</kbd> per tornare alle dimensio
 - Conserva le posizioni salvate delle finestre.
 
 Le finestre delle istanze in esecuzione selezionate vengono ridimensionate secondo [Display Width e Height](/it/manuals/project-settings/#display) del progetto. Puoi eseguire il ripristino anche senza un motore in esecuzione; il lancio successivo userà le dimensioni configurate. Spostare o ridimensionare in seguito la finestra ne salva nuovamente il posizionamento.
+
+## Orientamento della scena in 2D e 3D {#2d-and-3d-scene-orientation}
+
+{% include shared/it/2d-and-3d-scene-orientation.md %}
 
 ## Dimensioni e visibilità dei pannelli {#panes-size-and-visibility}
 

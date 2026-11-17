@@ -8,6 +8,7 @@ These are per-manual files generated for LLM usage.
 - [Installing Defold](https://defold.com/llms/manuals/install.md)
 - [Glossary](https://defold.com/llms/manuals/glossary.md)
 - [Defold for Unity users](https://defold.com/llms/manuals/unity.md)
+- [Defold for Godot users](https://defold.com/llms/manuals/godot.md)
 - [Defold for Flash users](https://defold.com/llms/manuals/flash.md)
 - [Getting help](https://defold.com/llms/manuals/getting-help.md)
 

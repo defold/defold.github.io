@@ -33,6 +33,8 @@ toc:
   title: Placement de la fenêtre du moteur
 - anchor: resetting-the-engine-window-size
   title: Réinitialiser la taille de la fenêtre du moteur
+- anchor: 2d-and-3d-scene-orientation
+  title: Orientation de la scène en 2D et en 3D
 - anchor: panes-size-and-visibility
   title: Taille et visibilité des volets
 - anchor: tabs
@@ -204,6 +206,9 @@ Choisissez <kbd>Debug ▸ Reset Simulated Resolution</kbd> pour revenir à la ta
 
 Les fenêtres des instances en cours d'exécution sélectionnées sont redimensionnées selon [Display Width et Height](/fr/manuals/project-settings/#display) du projet. Vous pouvez aussi effectuer la réinitialisation sans moteur en cours d'exécution ; le lancement suivant utilise alors la taille configurée. Un déplacement ou redimensionnement ultérieur de la fenêtre enregistre à nouveau son placement.
 
+## Orientation de la scène en 2D et en 3D {#2d-and-3d-scene-orientation}
+
+{% include shared/fr/2d-and-3d-scene-orientation.md %}
 
 ## Taille et visibilité des volets {#panes-size-and-visibility}
 

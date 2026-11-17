@@ -34,7 +34,7 @@ Die Protokollierung in der Konsole bzw. auf dem Bildschirm zeigt nur in Debug-Bu
 
 Wenn du dein Spiel lokal aus dem Editor oder über eine Verbindung zur [mobilen Entwicklungs-App](/de/manuals/dev-app) ausführst, werden alle Ausgaben im Konsolenbereich des Editors angezeigt:
 
-![Editor 2](/manuals/images/editor/editor2_overview.png)
+![Editor 2](/manuals/images/editor/editor_overview.png)
 
 ## Das Spielprotokoll im Terminal lesen {#reading-the-game-log-from-the-terminal}
 

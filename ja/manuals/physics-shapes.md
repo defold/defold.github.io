@@ -7,14 +7,8 @@ title: コリジョン形状
 toc:
 - anchor: collision-shapes
   title: コリジョン形状
-- anchor: primitive-shapes
-  title: プリミティブ形状
-- anchor: box-shape
-  title: ボックス形状
-- anchor: sphere-shape
-  title: 球形状
-- anchor: capsule-shape
-  title: カプセル形状
+- anchor: collision-shapes-list
+  title: コリジョンシェイプ
 - anchor: complex-shapes
   title: 複雑な形状
 - anchor: hull-and-mesh-shapes-in-3d
@@ -45,32 +39,52 @@ toc:
 
 コリジョンオブジェクト（collision object）には、複数の埋め込み形状を含められます。3D 物理では、glTF または GLB ファイルの凸包や三角形メッシュも含められます。また、コリジョンオブジェクトの *Collision Shape* プロパティを通じて、タイルマップや凸形状のリソースを使用できます。
 
-### プリミティブ形状 {#primitive-shapes}
-プリミティブ形状（primitive shape）には、 *ボックス（box）* 、 *球（sphere）* 、 *カプセル（capsule）* があります。衝突判定や物理特性を持つコンポーネントであるコリジョンオブジェクト（collision object）を <kbd>右クリック</kbd> し、<kbd>Add Shape</kbd> を選択すると、プリミティブ形状を追加できます。
+2D と 3D では使用できるコリジョンシェイプが異なります。`game.project` の `Physics` セクションにある `Type`（`2D`/`3D`）で物理タイプを設定できます。
 
-![プリミティブ形状の追加](/manuals/images/physics/add_shape.png)
+![物理設定](/manuals/images/physics/physics_settings.png)
 
-## ボックス形状 {#box-shape}
-ボックスには位置、回転、寸法（幅、高さ、奥行き）があります。
+### コリジョンシェイプ {#collision-shapes-list}
 
-![ボックス形状](/manuals/images/physics/box.png)
+コリジョンオブジェクトを右クリックし、<kbd>Add Shape</kbd> を選択してシェイプを追加します。
 
-## 球形状 {#sphere-shape}
-球には位置、回転、直径があります。
+![2D](/manuals/images/physics/collision_shapes_2d.png)
 
-![球形状](/manuals/images/physics/sphere.png)
+2D 物理で使用できるシェイプ:
 
-## カプセル形状 {#capsule-shape}
-カプセルには位置、回転、直径、高さがあります。
+- **Circle** (位置, 回転, 直径)
 
-![球形状](/manuals/images/physics/capsule.png)
+![Circle](/manuals/images/physics/circle.png)
 
-<div class='important' markdown='1'>
-カプセル形状は、3D 物理を使用する場合にのみサポートされます（*game.project* ファイルの Physics セクションで設定します）。
-</div>
+- **Rectangle** (位置, 回転, 2 寸法, 奥行きは無視されます)
+
+![Rectangle](/manuals/images/physics/rectangle.png)
+
+3D 物理で使用できるシェイプ:
+
+![3D](/manuals/images/physics/collision_shapes_3d.png)
+
+- **Box** (位置, 回転, 3 寸法)
+
+![Box](/manuals/images/physics/box.png)
+
+- **Capsule** (位置, 回転, 直径, 高さ)
+
+![Capsule](/manuals/images/physics/capsule.png)
+
+- **Hull** (位置, 回転, シーン, メッシュ)
+
+![Hull](/manuals/images/physics/hull.png)
+
+- **Mesh** (位置, 回転, シーン, メッシュ)
+
+![Mesh](/manuals/images/physics/mesh.png)
+
+- **Sphere** (位置, 回転, 直径)
+
+![Sphere](/manuals/images/physics/sphere.png)
 
 ### 複雑な形状 {#complex-shapes}
-複雑な形状には、タイルマップのジオメトリや凸包データを使えます。3D コリジョンオブジェクトでは、glTF または GLB シーンのメッシュから、凸包や三角形メッシュの形状を作成することもできます。
+複雑な形状には、タイルマップ（tilemap）のジオメトリや凸包（convex hull）のデータを使えます。Defold 1.13.2 以降では、3D コリジョンオブジェクトで、glTF または GLB シーンのメッシュから凸包や三角形メッシュの形状を作成することもできます。
 
 ## 3D の Hull 形状と Mesh 形状 {#hull-and-mesh-shapes-in-3d}
 

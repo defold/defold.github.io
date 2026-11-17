@@ -33,6 +33,8 @@ toc:
   title: Platzierung des Engine-Fensters
 - anchor: resetting-the-engine-window-size
   title: Die Größe des Engine-Fensters zurücksetzen
+- anchor: 2d-and-3d-scene-orientation
+  title: Szenenausrichtung in 2D und 3D
 - anchor: panes-size-and-visibility
   title: Größe und Sichtbarkeit der Bereiche
 - anchor: tabs
@@ -202,6 +204,10 @@ Wähle <kbd>Debug ▸ Reset Simulated Resolution</kbd>, um zur konfigurierten Gr
 - Behält gespeicherte Fensterpositionen bei.
 
 Die Fenster der ausgewählten laufenden Engine-Instanzen werden auf die [Display Width und Height](/de/manuals/project-settings/#display) des Projekts gesetzt. Du kannst das Zurücksetzen auch ohne laufende Engine ausführen; der nächste Start verwendet dann die konfigurierte Größe. Wenn du das Fenster danach verschiebst oder seine Größe änderst, wird die neue Platzierung erneut gespeichert.
+
+## Szenenausrichtung in 2D und 3D {#2d-and-3d-scene-orientation}
+
+{% include shared/de/2d-and-3d-scene-orientation.md %}
 
 ## Größe und Sichtbarkeit der Bereiche {#panes-size-and-visibility}
 

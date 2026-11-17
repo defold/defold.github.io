@@ -51,7 +51,7 @@ Gdy uruchamiasz edytor po raz pierwszy, startuje on pusty, bez otwartego projekt
 
 W panelu *Assets pane* zobaczysz wszystkie pliki należące do projektu. Jeśli dwukrotnie klikniesz plik "main/main.collection", otworzy się on w centralnym widoku edytora:
 
-![Widok edytora](/tutorials/images/runner/1/editor2_overview.png)
+![Widok edytora](/tutorials/images/runner/1/editor_overview.png)
 
 Edytor składa się z następujących głównych obszarów:
 

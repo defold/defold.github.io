@@ -29,7 +29,7 @@ toc:
 
 Когда вы запускаете игру локально из редактора или подключаетесь к [мобильному приложению для разработки](/ru/manuals/dev-app), весь вывод будет отображаться на панели консоли редактора: 
 
-![Editor 2](/manuals/images/editor/editor2_overview.png)
+![Editor 2](/manuals/images/editor/editor_overview.png)
 
 ## Чтение лога игры с терминала
 

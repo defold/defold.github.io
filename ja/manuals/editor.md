@@ -33,6 +33,8 @@ toc:
   title: エンジンウィンドウの配置
 - anchor: resetting-the-engine-window-size
   title: エンジンウィンドウのサイズをリセットする
+- anchor: 2d-and-3d-scene-orientation
+  title: 2D と 3D のシーンの向き
 - anchor: panes-size-and-visibility
   title: ペインのサイズと表示
 - anchor: tabs
@@ -203,6 +205,10 @@ Tools ペインは、統合デバッガーの操作にも使用します。詳�
 - 保存したウィンドウ位置は保持します。
 
 選択した実行中のエンジンインスタンスのウィンドウは、プロジェクトの [Display の Width と Height](/ja/manuals/project-settings/#display) に合わせてサイズを変更します。エンジンを実行していない状態でもリセットでき、次回の起動で設定したサイズを使います。その後ウィンドウを移動したりサイズを変更したりすると、新しい配置を再び保存します。
+
+## 2D と 3D のシーンの向き {#2d-and-3d-scene-orientation}
+
+{% include shared/ja/2d-and-3d-scene-orientation.md %}
 
 ## ペインのサイズと表示 {#panes-size-and-visibility}
 

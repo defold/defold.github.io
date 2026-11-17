@@ -7,14 +7,8 @@ title: Форми колізій
 toc:
 - anchor: collision-shapes
   title: Форми колізій
-- anchor: primitive-shapes
-  title: Примітивні форми
-- anchor: box-shape
-  title: Форма прямокутного паралелепіпеда
-- anchor: sphere-shape
-  title: Форма сфери
-- anchor: capsule-shape
-  title: Форма капсули
+- anchor: collision-shapes-list
+  title: Форми колізії
 - anchor: complex-shapes
   title: Складні форми
 - anchor: hull-and-mesh-shapes-in-3d
@@ -45,32 +39,52 @@ toc:
 
 Об’єкт колізії (collision object) може містити кілька вбудованих форм. У 3D-фізиці до них можуть належати оболонки й трикутні сітки з файлів glTF або GLB. Також можна використати ресурс карти плиток або опуклої форми через властивість *Collision Shape* об’єкта колізії.
 
-### Примітивні форми {#primitive-shapes}
-Примітивні форми — це *прямокутний паралелепіпед*, *сфера* та *капсула*. Щоб додати примітивну форму, <kbd>клацніть правою кнопкою миші</kbd> об’єкт колізії та виберіть <kbd>Add Shape</kbd>:
+Для фізики 2D і 3D доступні різні форми колізії. Тип фізики налаштовується параметром `Type` (`2D`/`3D`) у розділі `Physics` файлу `game.project`:
 
-![Додавання примітивної форми](/manuals/images/physics/add_shape.png)
+![Налаштування фізики](/manuals/images/physics/physics_settings.png)
 
-## Форма прямокутного паралелепіпеда {#box-shape}
-Прямокутний паралелепіпед має позицію, поворот і розміри (ширину, висоту та глибину):
+### Форми колізії {#collision-shapes-list}
 
-![Форма прямокутного паралелепіпеда](/manuals/images/physics/box.png)
+Щоб додати форму, клацніть правою кнопкою миші об’єкт колізії та виберіть <kbd>Add Shape</kbd>:
 
-## Форма сфери {#sphere-shape}
-Сфера має позицію, поворот і діаметр:
+![2D](/manuals/images/physics/collision_shapes_2d.png)
 
-![Форма сфери](/manuals/images/physics/sphere.png)
+Форми для фізики 2D:
 
-## Форма капсули {#capsule-shape}
-Капсула має позицію, поворот, діаметр і висоту:
+- **Circle** (позиція, обертання, діаметр)
 
-![Форма сфери](/manuals/images/physics/capsule.png)
+![Circle](/manuals/images/physics/circle.png)
 
-<div class='important' markdown='1'>
-Форми капсули підтримуються лише під час використання 3D-фізики (налаштовується в розділі Physics файлу *game.project*).
-</div>
+- **Rectangle** (позиція, обертання, 2 розміри, глибина ігнорується)
+
+![Rectangle](/manuals/images/physics/rectangle.png)
+
+Форми для фізики 3D:
+
+![3D](/manuals/images/physics/collision_shapes_3d.png)
+
+- **Box** (позиція, обертання, 3 розміри)
+
+![Box](/manuals/images/physics/box.png)
+
+- **Capsule** (позиція, обертання, діаметр, висота)
+
+![Capsule](/manuals/images/physics/capsule.png)
+
+- **Hull** (позиція, обертання, сцена, меш)
+
+![Hull](/manuals/images/physics/hull.png)
+
+- **Mesh** (позиція, обертання, сцена, меш)
+
+![Mesh](/manuals/images/physics/mesh.png)
+
+- **Sphere** (позиція, обертання, діаметр)
+
+![Sphere](/manuals/images/physics/sphere.png)
 
 ### Складні форми {#complex-shapes}
-Складні форми можуть використовувати геометрію карти плиток або дані опуклої оболонки. Об’єкти колізій у 3D також можуть створювати оболонки й форми трикутних сіток із сіток у сценах glTF або GLB.
+Складні форми можуть використовувати геометрію карти плиток або дані опуклої оболонки. Починаючи з Defold 1.13.2, об’єкти колізій у 3D також можуть створювати оболонки й форми трикутних сіток із сіток у сценах glTF або GLB.
 
 ## Форми оболонок і сіток у 3D {#hull-and-mesh-shapes-in-3d}
 

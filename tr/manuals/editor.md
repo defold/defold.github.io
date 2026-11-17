@@ -33,6 +33,8 @@ toc:
   title: Motor penceresinin yerleşimi
 - anchor: resetting-the-engine-window-size
   title: Motor penceresinin boyutunu sıfırlama
+- anchor: 2d-and-3d-scene-orientation
+  title: 2B ve 3B sahne yönelimi
 - anchor: panes-size-and-visibility
   title: Bölme boyutu ve görünürlüğü
 - anchor: tabs
@@ -203,6 +205,10 @@ Yapılandırılmış boyuta dönmek için <kbd>Debug ▸ Reset Simulated Resolut
 - Kaydedilmiş pencere konumlarını korur.
 
 Seçili çalışan motor örneklerinin pencereleri, projenin [Display Width ve Height](/tr/manuals/project-settings/#display) boyutlarına getirilir. Hiçbir motor çalışmıyorken de sıfırlayabilirsiniz; sonraki başlatmada yapılandırılmış boyut kullanılır. Daha sonra pencereyi taşımak veya yeniden boyutlandırmak yeni yerleşimini tekrar kaydeder.
+
+## 2B ve 3B sahne yönelimi {#2d-and-3d-scene-orientation}
+
+{% include shared/tr/2d-and-3d-scene-orientation.md %}
 
 ## Bölme boyutu ve görünürlüğü {#panes-size-and-visibility}
 

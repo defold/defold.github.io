@@ -6,10 +6,8 @@ locale: pl
 title: Kształty kolizji
 toc:
 - Kształty kolizji
-- Kształty podstawowe
-- Kształt prostopadłościanu
-- Kształt sfery
-- Kształt kapsuły
+- anchor: collision-shapes-list
+  title: Kształty kolizji
 - Kształty złożone
 - anchor: hull-and-mesh-shapes-in-3d
   title: Kształty Hull i Mesh w 3D
@@ -29,37 +27,53 @@ toc:
 
 Obiekt kolizji może zawierać kilka osadzonych kształtów. W fizyce 3D mogą to być otoczki wypukłe i siatki trójkątów z plików glTF lub GLB. Możesz też używać zasobu mapy kafelków lub kształtu wypukłego przez właściwość *Collision Shape* obiektu kolizji.
 
-### Kształty podstawowe
+Dostępne kształty kolizji różnią się dla fizyki 2D i 3D. Typ fizyki ustawisz w sekcji `Physics` pliku `game.project` za pomocą `Type` (`2D`/`3D`):
 
-Kształty podstawowe to *box*, *sphere* i *capsule*. Aby dodać kształt podstawowy, kliknij prawym przyciskiem myszy obiekt kolizji i wybierz <kbd>Add Shape</kbd>:
+![Ustawienia fizyki](/manuals/images/physics/physics_settings.png)
 
-![Dodawanie kształtu podstawowego](/manuals/images/physics/add_shape.png)
+### Kształty kolizji {#collision-shapes-list}
 
-## Kształt prostopadłościanu
+Aby dodać kształt, kliknij obiekt kolizji prawym przyciskiem myszy i wybierz <kbd>Add Shape</kbd>:
 
-Kształt prostopadłościanu ma pozycję, obrót i wymiary: szerokość, wysokość oraz głębokość:
+![2D](/manuals/images/physics/collision_shapes_2d.png)
 
-![Kształt prostopadłościanu](/manuals/images/physics/box.png)
+Kształty dla fizyki 2D:
 
-## Kształt sfery
+- **Circle** (pozycja, obrót, średnica)
 
-Kształt sfery ma pozycję, obrót i średnicę:
+![Circle](/manuals/images/physics/circle.png)
 
-![Kształt sfery](/manuals/images/physics/sphere.png)
+- **Rectangle** (pozycja, obrót, 2 wymiary, głębokość jest ignorowana)
 
-## Kształt kapsuły
+![Rectangle](/manuals/images/physics/rectangle.png)
 
-Kształt kapsuły ma pozycję, obrót, średnicę i wysokość:
+Kształty dla fizyki 3D:
 
-![Kształt kapsuły](/manuals/images/physics/capsule.png)
+![3D](/manuals/images/physics/collision_shapes_3d.png)
 
-<div class='important' markdown='1'>
-Kształty kapsuły są obsługiwane tylko w fizyce 3D, skonfigurowanej w sekcji Physics pliku *game.project*.
-</div>
+- **Box** (pozycja, obrót, 3 wymiary)
+
+![Box](/manuals/images/physics/box.png)
+
+- **Capsule** (pozycja, obrót, średnica, wysokość)
+
+![Capsule](/manuals/images/physics/capsule.png)
+
+- **Hull** (pozycja, obrót, scena, siatka)
+
+![Hull](/manuals/images/physics/hull.png)
+
+- **Mesh** (pozycja, obrót, scena, siatka)
+
+![Mesh](/manuals/images/physics/mesh.png)
+
+- **Sphere** (pozycja, obrót, średnica)
+
+![Sphere](/manuals/images/physics/sphere.png)
 
 ### Kształty złożone
 
-Kształty złożone mogą korzystać z geometrii mapy kafelków lub danych otoczki wypukłej. Obiekty kolizji 3D mogą też tworzyć otoczki wypukłe i kształty siatek trójkątów z siatek w scenach glTF lub GLB.
+Kształty złożone mogą korzystać z geometrii mapy kafelków lub danych otoczki wypukłej. Od wersji Defold 1.13.2 obiekty kolizji 3D mogą też tworzyć otoczki wypukłe i kształty siatek trójkątów z siatek w scenach glTF lub GLB.
 
 ## Kształty Hull i Mesh w 3D {#hull-and-mesh-shapes-in-3d}
 

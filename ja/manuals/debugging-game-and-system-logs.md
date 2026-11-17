@@ -34,7 +34,7 @@ toc:
 
 エディターからローカルでゲームを実行するか、[モバイル開発用アプリ](/ja/manuals/dev-app) に接続して実行すると、すべての出力がエディターのコンソールペインに表示されます。
 
-![エディター 2](/manuals/images/editor/editor2_overview.png)
+![エディター 2](/manuals/images/editor/editor_overview.png)
 
 ## ターミナルでゲームログを確認する {#reading-the-game-log-from-the-terminal}
 

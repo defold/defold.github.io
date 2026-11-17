@@ -6,10 +6,8 @@ locale: ru
 title: Формы столкновения
 toc:
 - Формы столкновения
-- Примитивные формы
-- Форма Box
-- Форма Sphere
-- Форма Capsule
+- anchor: collision-shapes-list
+  title: Формы столкновений
 - Комплексные формы
 - anchor: hull-and-mesh-shapes-in-3d
   title: Формы Hull и Mesh в 3D
@@ -29,32 +27,52 @@ toc:
 
 Объект столкновения может содержать несколько встроенных форм. В 3D-физике среди них могут быть выпуклые оболочки и треугольные сетки из файлов glTF или GLB. Также можно использовать ресурс тайловой карты или выпуклой формы через свойство *Collision Shape* объекта столкновения.
 
-### Примитивные формы
-Примитивные формы --- это *Box*, *Sphere* и *Capsule*. Добавить примитивную форму можно выполнив <kbd>клик ПКМ</kbd> на объекте столкновения и выбрав <kbd>Add Shape</kbd>:
+Для физики 2D и 3D доступны разные формы столкновений. Тип физики задаётся параметром `Type` (`2D`/`3D`) в разделе `Physics` файла `game.project`:
 
-![Add a primitive shape](/manuals/images/physics/add_shape.png)
+![Настройки физики](/manuals/images/physics/physics_settings.png)
 
-## Форма Box
-У бокса есть позиция, вращение и размеры (ширина, высота и глубина):
+### Формы столкновений {#collision-shapes-list}
 
-![Box shape](/manuals/images/physics/box.png)
+Чтобы добавить форму, щёлкните правой кнопкой по объекту столкновения и выберите <kbd>Add Shape</kbd>:
 
-## Форма Sphere
-У сферы есть позиция, вращение и диаметр:
+![2D](/manuals/images/physics/collision_shapes_2d.png)
 
-![Sphere shape](/manuals/images/physics/sphere.png)
+Формы для физики 2D:
 
-## Форма Capsule
-У капсулы есть позиция, вращение, диаметр и высота:
+- **Circle** (позиция, поворот, диаметр)
 
-![Sphere shape](/manuals/images/physics/capsule.png)
+![Circle](/manuals/images/physics/circle.png)
 
-<div class='important' markdown='1'>
-Форма капсулы поддерживается только при использовании 3D физики (настраивается в секции Physics файла *game.project*).
-</div>
+- **Rectangle** (позиция, поворот, 2 размеры, глубина игнорируется)
+
+![Rectangle](/manuals/images/physics/rectangle.png)
+
+Формы для физики 3D:
+
+![3D](/manuals/images/physics/collision_shapes_3d.png)
+
+- **Box** (позиция, поворот, 3 размеры)
+
+![Box](/manuals/images/physics/box.png)
+
+- **Capsule** (позиция, поворот, диаметр, высота)
+
+![Capsule](/manuals/images/physics/capsule.png)
+
+- **Hull** (позиция, поворот, сцена, меш)
+
+![Hull](/manuals/images/physics/hull.png)
+
+- **Mesh** (позиция, поворот, сцена, меш)
+
+![Mesh](/manuals/images/physics/mesh.png)
+
+- **Sphere** (позиция, поворот, диаметр)
+
+![Sphere](/manuals/images/physics/sphere.png)
 
 ### Комплексные формы
-Сложные формы могут использовать геометрию тайловой карты или данные выпуклой оболочки. 3D-объекты столкновения также могут создавать формы в виде выпуклых оболочек и треугольных сеток из сеток в сценах glTF или GLB.
+Сложные формы могут использовать геометрию тайловой карты или данные выпуклой оболочки. Начиная с Defold 1.13.2, 3D-объекты столкновения также могут создавать формы в виде выпуклых оболочек и треугольных сеток из сеток в сценах glTF или GLB.
 
 ## Формы Hull и Mesh в 3D {#hull-and-mesh-shapes-in-3d}
 

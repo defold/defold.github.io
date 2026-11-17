@@ -21,6 +21,7 @@ toc:
 - Status Bar
 - Engine window placement
 - Resetting the engine window size
+- 2D and 3D scene orientation
 - Panes Size and Visibility
 - Tabs
 - Side-by-side editing
@@ -178,6 +179,10 @@ Choose <kbd>Debug ▸ Reset Simulated Resolution</kbd> to return to the configur
 - Keeps saved window positions.
 
 Windows for the selected running engine instances are resized to the project's [Display Width and Height](/manuals/project-settings/#display). You can also reset with no engine running; the next launch uses the configured size. Moving or resizing the window afterward saves its new placement again.
+
+## 2D and 3D scene orientation
+
+{% include shared/en/2d-and-3d-scene-orientation.md %}
 
 ## Panes Size and Visibility
 
