@@ -728,6 +728,19 @@ def process_docs(download = False):
         index = read_as_json(index_file)
         apply_learn_tags(index, existing_learn_tags)
 
+        # Prepare includes before generating llms content from manuals.
+        for locale in locales["languages"].keys():
+            print("...shared includes ({})".format(locale))
+            shared_includes_src_dir_en = os.path.join(DOC_DIR, "docs", "en", "shared")
+            shared_includes_src_dir = os.path.join(DOC_DIR, "docs", locale, "shared")
+            shared_includes_dst_dir = os.path.join("_includes", "shared", locale)
+            rmcopytree(shared_includes_src_dir_en, shared_includes_dst_dir)
+            if os.path.exists(shared_includes_src_dir):
+                copytree(shared_includes_src_dir, shared_includes_dst_dir, overwrite = True)
+            shutil.rmtree(os.path.join(shared_includes_dst_dir, "images"))
+            for filename in find_files(shared_includes_dst_dir, "*.md"):
+                process_doc_file(filename, locale)
+
         for locale in locales["languages"].keys():
             print("...manuals ({})".format(locale))
             manuals_src_dir = os.path.join(DOC_DIR, "docs", locale, "manuals")
@@ -790,18 +803,6 @@ def process_docs(download = False):
                         update_file_links_with_locale(filename, r'\/manuals\/[^)#]+', locale)
                         replace_in_file(filename, r"\.\.\/images\/", r"/manuals/images/")
                         replace_in_file(filename, r"\.\.\/assets\/", r"/manuals/assets/")
-
-        for locale in locales["languages"].keys():
-            print("...shared includes ({})".format(locale))
-            shared_includes_src_dir_en = os.path.join(DOC_DIR, "docs", "en", "shared")
-            shared_includes_src_dir = os.path.join(DOC_DIR, "docs", locale, "shared")
-            shared_includes_dst_dir = os.path.join("_includes", "shared", locale)
-            rmcopytree(shared_includes_src_dir_en, shared_includes_dst_dir)
-            if os.path.exists(shared_includes_src_dir):
-                copytree(shared_includes_src_dir, shared_includes_dst_dir, overwrite = True)
-            shutil.rmtree(os.path.join(shared_includes_dst_dir, "images"))
-            for filename in find_files(shared_includes_dst_dir, "*.md"):
-                process_doc_file(filename, locale)
 
         for locale in locales["languages"].keys():
             print("...tutorials ({})".format(locale))
