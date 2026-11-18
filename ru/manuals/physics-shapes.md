@@ -15,7 +15,8 @@ toc:
 - Выпуклые формы
 - Формат файла
 - Внешние инструменты
-- Масштабирование форм столкновения
+- anchor: scaling-collision-shapes
+  title: Масштабирование форм столкновения
 - Изменение размеров форм столкновения
 - Вращение форм столкновения
 - Вращение форм столкновения в 3D физике
@@ -33,43 +34,45 @@ toc:
 
 ### Формы столкновений {#collision-shapes-list}
 
-Чтобы добавить форму, щёлкните правой кнопкой по объекту столкновения и выберите <kbd>Add Shape</kbd>:
+Чтобы добавить форму, <kbd>щёлкните правой кнопкой мыши</kbd> по объекту столкновения и выберите <kbd>Add Shape</kbd>:
 
-![2D](/manuals/images/physics/collision_shapes_2d.png)
+![Добавление примитивной формы столкновения в режиме 2D-физики](/manuals/images/physics/collision_shapes_2d.png)
 
 Формы для физики 2D:
 
 - **Circle** (позиция, поворот, диаметр)
 
-![Circle](/manuals/images/physics/circle.png)
+![Форма столкновения Circle (круг)](/manuals/images/physics/circle.png)
 
-- **Rectangle** (позиция, поворот, 2 размеры, глубина игнорируется)
+- **Rectangle** (позиция, поворот, ширина и высота, глубина игнорируется)
 
-![Rectangle](/manuals/images/physics/rectangle.png)
+![Форма столкновения Rectangle (прямоугольник)](/manuals/images/physics/rectangle.png)
+
+В режиме 3D-физики форма добавляется таким же способом:
+
+![Добавление примитивной формы столкновения в режиме 3D-физики](/manuals/images/physics/collision_shapes_3d.png)
 
 Формы для физики 3D:
 
-![3D](/manuals/images/physics/collision_shapes_3d.png)
+- **Box** (позиция, поворот, ширина, высота и глубина)
 
-- **Box** (позиция, поворот, 3 размеры)
-
-![Box](/manuals/images/physics/box.png)
+![Форма столкновения Box (прямоугольный параллелепипед)](/manuals/images/physics/box.png)
 
 - **Capsule** (позиция, поворот, диаметр, высота)
 
-![Capsule](/manuals/images/physics/capsule.png)
+![Форма столкновения Capsule (капсула)](/manuals/images/physics/capsule.png)
 
 - **Hull** (позиция, поворот, сцена, меш)
 
-![Hull](/manuals/images/physics/hull.png)
+![Форма столкновения Hull (выпуклая оболочка)](/manuals/images/physics/hull.png)
 
 - **Mesh** (позиция, поворот, сцена, меш)
 
-![Mesh](/manuals/images/physics/mesh.png)
+![Форма столкновения Mesh (треугольная сетка)](/manuals/images/physics/mesh.png)
 
 - **Sphere** (позиция, поворот, диаметр)
 
-![Sphere](/manuals/images/physics/sphere.png)
+![Форма столкновения Sphere (сфера)](/manuals/images/physics/sphere.png)
 
 ### Комплексные формы
 Сложные формы могут использовать геометрию тайловой карты или данные выпуклой оболочки. Начиная с Defold 1.13.2, 3D-объекты столкновения также могут создавать формы в виде выпуклых оболочек и треугольных сеток из сеток в сценах glTF или GLB.
@@ -152,9 +155,7 @@ data: 0.0
 * [Physics Body Editor](https://selimanac.github.io/physics-body-editor/) также может использоваться для создания выпуклых форм.
 
 
-<a id="scaling-collision-shapes"></a>
-
-# Масштабирование форм столкновения
+# Масштабирование форм столкновения {#scaling-collision-shapes}
 Объект столкновения и его формы наследуют масштаб игрового объекта. Чтобы отключить это поведение, отключите опция [Allow Dynamic Transforms](/ru/manuals/project-settings/#allow-dynamic-transforms) в секции Physics файла *game.project*. Учтите, что поддерживается только равномерное масштабирование, а также то, что будет применено наименьшее значение масштабирования, если было задано не равномерное масштабирование.
 
 # Изменение размеров форм столкновения

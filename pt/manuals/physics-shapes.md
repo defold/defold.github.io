@@ -15,7 +15,8 @@ toc:
 - Forma de casco convexo
 - Formato do arquivo
 - Ferramentas externas
-- Escalando formas de colisão
+- anchor: scaling-collision-shapes
+  title: Escalando formas de colisão
 - Redimensionando formas de colisão
 - Rotacionando formas de colisão
 - Rotacionando formas de colisão em física 3D
@@ -33,43 +34,45 @@ As formas de colisão disponíveis são diferentes para física 2D e 3D. Configu
 
 ### Formas de colisão {#collision-shapes-list}
 
-Para adicionar uma forma, clique com o botão direito no objeto de colisão e selecione <kbd>Add Shape</kbd>:
+Para adicionar uma forma, <kbd>clique com o botão direito</kbd> no objeto de colisão e selecione <kbd>Adicionar Forma</kbd> (Add Shape).
 
-![2D](/manuals/images/physics/collision_shapes_2d.png)
+![Como adicionar uma forma primitiva na física 2D](/manuals/images/physics/collision_shapes_2d.png)
 
 Formas para física 2D:
 
 - **Circle** (posição, rotação, diâmetro)
 
-![Circle](/manuals/images/physics/circle.png)
+![Forma circular](/manuals/images/physics/circle.png)
 
 - **Rectangle** (posição, rotação, 2 dimensões, a profundidade é ignorada)
 
-![Rectangle](/manuals/images/physics/rectangle.png)
+![Forma retangular](/manuals/images/physics/rectangle.png)
+
+Na física 3D, você adiciona a forma da mesma maneira.
+
+![Como adicionar uma forma primitiva na física 3D](/manuals/images/physics/collision_shapes_3d.png)
 
 Formas para física 3D:
 
-![3D](/manuals/images/physics/collision_shapes_3d.png)
-
 - **Box** (posição, rotação, 3 dimensões)
 
-![Box](/manuals/images/physics/box.png)
+![Forma de caixa](/manuals/images/physics/box.png)
 
 - **Capsule** (posição, rotação, diâmetro, altura)
 
-![Capsule](/manuals/images/physics/capsule.png)
+![Forma de cápsula](/manuals/images/physics/capsule.png)
 
 - **Hull** (posição, rotação, cena, malha)
 
-![Hull](/manuals/images/physics/hull.png)
+![Forma de casco convexo](/manuals/images/physics/hull.png)
 
 - **Mesh** (posição, rotação, cena, malha)
 
-![Mesh](/manuals/images/physics/mesh.png)
+![Forma de malha](/manuals/images/physics/mesh.png)
 
 - **Sphere** (posição, rotação, diâmetro)
 
-![Sphere](/manuals/images/physics/sphere.png)
+![Forma esférica](/manuals/images/physics/sphere.png)
 
 ### Formas complexas
 Formas complexas podem usar a geometria de tilemaps ou dados de cascos convexos. Desde o Defold 1.13.2, objetos de colisão 3D também podem criar cascos convexos e formas de malhas de triângulos a partir de malhas em cenas glTF ou GLB.
@@ -152,9 +155,7 @@ Há várias ferramentas externas diferentes que podem ser usadas para criar form
 * [Physics Body Editor](https://selimanac.github.io/physics-body-editor/) pode ser usado para criar formas de casco convexo.
 
 
-<a id="scaling-collision-shapes"></a>
-
-# Escalando formas de colisão
+# Escalando formas de colisão {#scaling-collision-shapes}
 O objeto de colisão e suas formas herdam a escala do objeto de jogo. Para desabilitar esse comportamento, desmarque a caixa de seleção [Allow Dynamic Transforms](/pt/manuals/project-settings/#allow-dynamic-transforms) na seção Physics de *game.project*. Observe que apenas escala uniforme é suportada e que o menor valor de escala será usado se a escala não for uniforme.
 
 # Redimensionando formas de colisão

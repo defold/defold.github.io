@@ -45,43 +45,45 @@ toc:
 
 ### Форми колізії {#collision-shapes-list}
 
-Щоб додати форму, клацніть правою кнопкою миші об’єкт колізії та виберіть <kbd>Add Shape</kbd>:
+Щоб додати форму, <kbd>клацніть правою кнопкою миші</kbd> об’єкт колізії та виберіть <kbd>Add Shape</kbd>:
 
-![2D](/manuals/images/physics/collision_shapes_2d.png)
+![Додавання примітивної форми у 2D-фізиці](/manuals/images/physics/collision_shapes_2d.png)
 
 Форми для фізики 2D:
 
 - **Circle** (позиція, обертання, діаметр)
 
-![Circle](/manuals/images/physics/circle.png)
+![Кругла форма колізії](/manuals/images/physics/circle.png)
 
 - **Rectangle** (позиція, обертання, 2 розміри, глибина ігнорується)
 
-![Rectangle](/manuals/images/physics/rectangle.png)
+![Прямокутна форма колізії](/manuals/images/physics/rectangle.png)
+
+У 3D-фізиці форми додають так само.
+
+![Додавання примітивної форми у 3D-фізиці](/manuals/images/physics/collision_shapes_3d.png)
 
 Форми для фізики 3D:
 
-![3D](/manuals/images/physics/collision_shapes_3d.png)
-
 - **Box** (позиція, обертання, 3 розміри)
 
-![Box](/manuals/images/physics/box.png)
+![Форма колізії у вигляді прямокутного паралелепіпеда](/manuals/images/physics/box.png)
 
 - **Capsule** (позиція, обертання, діаметр, висота)
 
-![Capsule](/manuals/images/physics/capsule.png)
+![Форма колізії у вигляді капсули](/manuals/images/physics/capsule.png)
 
 - **Hull** (позиція, обертання, сцена, меш)
 
-![Hull](/manuals/images/physics/hull.png)
+![Опукла оболонка як форма колізії](/manuals/images/physics/hull.png)
 
 - **Mesh** (позиція, обертання, сцена, меш)
 
-![Mesh](/manuals/images/physics/mesh.png)
+![Трикутна сітка як форма колізії](/manuals/images/physics/mesh.png)
 
 - **Sphere** (позиція, обертання, діаметр)
 
-![Sphere](/manuals/images/physics/sphere.png)
+![Сферична форма колізії](/manuals/images/physics/sphere.png)
 
 ### Складні форми {#complex-shapes}
 Складні форми можуть використовувати геометрію карти плиток або дані опуклої оболонки. Починаючи з Defold 1.13.2, об’єкти колізій у 3D також можуть створювати оболонки й форми трикутних сіток із сіток у сценах glTF або GLB.

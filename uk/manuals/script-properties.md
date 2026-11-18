@@ -34,7 +34,7 @@ toc:
 
 Властивості скриптів додають до компонента-скрипту (script component), визначаючи їх за допомогою спеціальної функції `go.property()`. Цю функцію потрібно використовувати на верхньому рівні — поза функціями життєвого циклу, як-от `init()` і `update()`. Надане значення за замовчуванням визначає тип властивості: `number`, `boolean`, `string`, `hash`, `msg.url`, `vmath.vector3`, `vmath.vector4`, `vmath.quaternion` і `resource` (див. нижче).
 
-![Властивості](/manuals/images/script-properties/properties.png)
+![Властивості в редакторі Defold](/manuals/images/script-properties/properties.png)
 
 <div class='important' markdown='1'>
 Зауважте, що відновлення початкового рядка за значенням хешу працює лише у збірці Debug, щоб полегшити налагодження. У збірці Release початкове рядкове значення відсутнє, тому використовувати `tostring()` для значення `hash`, щоб отримати з нього рядок, немає сенсу.

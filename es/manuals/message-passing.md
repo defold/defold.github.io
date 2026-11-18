@@ -11,7 +11,8 @@ toc:
 - Atajos
 - Recibir mensajes
 - Mensajes entre mundos de juego
-- Cadenas de mensajes
+- anchor: message-chains
+  title: Cadenas de mensajes
 ---
 
 # Paso de mensajes
@@ -212,7 +213,7 @@ msg.post("level:/player#controller", "wake_up")
 ```
 Puedes encontrar una descripción más detallada de cómo funcionan los proxies en la documentación de [proxies de colección](/es/manuals/collection-proxy).
 
-## Cadenas de mensajes
+## Cadenas de mensajes {#message-chains}
 
 Cuando un mensaje que se ha enviado finalmente se despacha, se llama al `on_message()` de los destinatarios. Es bastante común que el código de reacción envíe nuevos mensajes, que se agregan a la cola de mensajes.
 

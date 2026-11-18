@@ -9,15 +9,18 @@ toc:
 - Pisanie kodu Lua
 - Używanie innych języków transpilujących do Lua
 - Pisanie kodu natywnego
-- Używanie wbudowanego edytora kodu
-- Uzupełnianie kodu
+- anchor: using-the-built-in-code-editor
+  title: Używanie wbudowanego edytora kodu
+- anchor: code-completion
+  title: Uzupełnianie kodu
 - anchor: formatting-code
   title: Formatowanie kodu
 - anchor: jump-to-symbol
   title: Przejście do symbolu
 - anchor: linting-configuration
   title: Konfiguracja lintingu
-- Używanie zewnętrznego edytora kodu
+- anchor: using-an-external-code-editor
+  title: Używanie zewnętrznego edytora kodu
 - Visual Studio Code - Defold Kit
 - Oprogramowanie dokumentacyjne
 ---
@@ -38,15 +41,13 @@ Defold obsługuje transpilatory generujące kod Lua. Po zainstalowaniu rozszerze
 
 Defold pozwala rozszerzać silnik kodem natywnym, aby uzyskać dostęp do funkcji specyficznych dla platformy, których sam silnik nie udostępnia. Kod natywny przydaje się też wtedy, gdy wydajność Lua nie wystarcza, na przykład przy kosztownych obliczeniach lub przetwarzaniu obrazów. Więcej informacji znajdziesz w [instrukcjach o Native Extensions](/pl/manuals/extensions/).
 
-## Używanie wbudowanego edytora kodu
+## Używanie wbudowanego edytora kodu {#using-the-built-in-code-editor}
 
 Defold ma wbudowany edytor kodu, który pozwala otwierać i edytować pliki Lua (.lua), pliki skryptów Defold (.script, .gui_script i .render_script), a także inne pliki z rozszerzeniami, których edytor nie obsługuje natywnie. Edytor zapewnia też podświetlanie składni dla plików Lua i plików skryptów.
 
 ![](/images/editor/code-editor.png)
 
-<a id="code-completion"></a>
-
-### Uzupełnianie kodu
+### Uzupełnianie kodu {#code-completion}
 
 Wbudowany edytor kodu wyświetla podpowiedzi dotyczące funkcji podczas pisania:
 
@@ -88,7 +89,7 @@ ignore = {
 },
 ```
 
-## Używanie zewnętrznego edytora kodu
+## Używanie zewnętrznego edytora kodu {#using-an-external-code-editor}
 
 Edytor kodu w Defold zapewnia podstawowe możliwości potrzebne do pisania kodu, ale w bardziej zaawansowanych zastosowaniach lub jeśli wolisz własny edytor, możesz skonfigurować Defold tak, aby otwierał pliki w zewnętrznym edytorze. W [oknie Preferences, na karcie Code](/pl/manuals/editor-preferences/#code) można wskazać zewnętrzny edytor, którego Defold ma używać do pracy z kodem.
 

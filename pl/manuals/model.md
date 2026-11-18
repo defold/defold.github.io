@@ -7,7 +7,8 @@ title: Modele 3D w Defold
 toc:
 - Komponent Model
 - Tworzenie komponentu modelu
-- Właściwości modelu
+- anchor: model-properties
+  title: Właściwości modelu
 - Modyfikowanie w edytorze
 - Modyfikowanie w czasie działania
 - Animacja w czasie działania
@@ -34,9 +35,7 @@ Komponenty modelu tworzy się tak samo jak każdy inny komponent obiektu gry. Mo
 
 Gdy model jest już utworzony, musisz określić kilka właściwości:
 
-<a id="model-properties"></a>
-
-### Właściwości modelu
+### Właściwości modelu {#model-properties}
 
 Oprócz właściwości *Id*, *Position* i *Rotation* istnieją następujące właściwości specyficzne dla komponentu:
 

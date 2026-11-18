@@ -105,7 +105,7 @@ end
 http.request("https://www.foobar.com/myimage.png", "GET", handle_response, nil, nil, options)
 ```
 
-Ağ üzerinden büyük miktarda veri yüklemenin bir başka kullanım alanı da akış yoluyla ses oynatmadır (sound streaming). Bu işlemde, ses verilerinin "parçaları" bir URL adresinden yüklenir ve bir ses kaynağına (sound resource) aktarılır. Eksiksiz bir örneği [Akış yoluyla ses oynatma kılavuzunda](/sound-streaming#sound-streaming) bulabilirsiniz.
+Ağ üzerinden büyük miktarda veri yüklemenin bir başka kullanım alanı da akış yoluyla ses oynatmadır (sound streaming). Bu işlemde, ses verilerinin "parçaları" bir URL adresinden yüklenir ve bir ses kaynağına (sound resource) aktarılır. Eksiksiz bir örneği [Akış yoluyla ses oynatma kılavuzunda](/tr/manuals/sound-streaming/#sound-streaming) bulabilirsiniz.
 
 
 ### İstek üstbilgileri
@@ -144,7 +144,7 @@ Defold bazı istek üstbilgilerini otomatik olarak ayarlar:
 * `If-None-Match: <etag>`, daha önce önbelleğe alınmış bir yanıt varsa bu yanıtın ETag değeriyle ayarlanır.
 * İstek gövdesi 16384 bayttan büyükse `Transfer-Encoding: chunked` ayarlanır.
 * `Content-Length`, istek gövdesinin boyutuyla ayarlanır (istek parçalara bölünmüş değilse).
-* Örneğin [akış yoluyla ses oynatırken](/sound-streaming#sound-streaming) olduğu gibi kısmi bir yanıt isteniyorsa `Range: bytes=<from>-<to>` ayarlanır.
+* Örneğin [akış yoluyla ses oynatırken](/tr/manuals/sound-streaming/#sound-streaming) olduğu gibi kısmi bir yanıt isteniyorsa `Range: bytes=<from>-<to>` ayarlanır.
 
 
 ### Yanıt üstbilgileri

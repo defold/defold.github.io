@@ -307,9 +307,7 @@ editor.transact({
 })
 ```
 
-<a id="editing-tilesources"></a>
-
-#### Editando tilesources
+#### Editando tilesources {#editing-tilesources}
 
 Além das propriedades de outline, tilesources definem as seguintes propriedades:
 

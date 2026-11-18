@@ -7,7 +7,8 @@ title: Fonty w silniku Defold
 toc:
 - Pliki fontów
 - Fonty offline i runtime fonts
-- Obsługa układu tekstu, np. right-to-left
+- anchor: text-layout-support-eg-right-to-left
+  title: Obsługa układu tekstu, np. right-to-left
 - Kolekcja fontów
 - Tworzenie fontu
 - anchor: properties
@@ -62,9 +63,7 @@ Fonty SDF i Vector obsługują obie opcje. Fonty Bitmap i źródła BMFont używ
 
 Generowanie dynamiczne może zmniejszyć rozmiar paczki i zużycie pamięci w czasie działania, szczególnie dla fontów z dużym zestawem znaków. Wymaga pełnego systemu układu tekstu w silniku; zobacz [Włączanie generowania fontów w czasie działania](#enabling-runtime-fonts).
 
-<a id="text-layout-support-eg-right-to-left"></a>
-
-## Obsługa układu tekstu, np. right-to-left
+## Obsługa układu tekstu, np. right-to-left {#text-layout-support-eg-right-to-left}
 
 Runtime fonts mają też tę zaletę, że obsługują pełny układ tekstu, np. right-to-left.
 Obecnie używamy bibliotek [HarfBuzz](https://github.com/harfbuzz/harfbuzz), [SheenBidi](https://github.com/Tehreer/SheenBidi), [libunibreak](https://github.com/adah1972/libunibreak) oraz [SkriBidi](https://github.com/memononen/Skribidi).

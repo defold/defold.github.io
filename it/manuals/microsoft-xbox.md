@@ -14,8 +14,6 @@ toc:
 - FAQ
 ---
 
-<a id="xbox-support"></a>
-
 # Sviluppo di giochi per console Microsoft Xbox {#game-development-for-microsoft-xbox-consoles}
 
 Per sviluppare giochi per console Xbox con Defold, devi essere uno sviluppatore Xbox approvato e avere accesso al supporto Xbox di Defold e agli strumenti di sviluppo per console di Microsoft.

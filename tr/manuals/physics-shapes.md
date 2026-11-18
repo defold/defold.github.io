@@ -45,43 +45,33 @@ Bir çarpışma nesnesi (collision object) birden çok gömülü şekil içerebi
 
 ### Çarpışma şekilleri {#collision-shapes-list}
 
-Şekil eklemek için çarpışma nesnesine sağ tıklayıp <kbd>Add Shape</kbd> seçin:
+Şekil eklemek için çarpışma nesnesine <kbd>sağ tıklayın</kbd> ve <kbd>Add Shape</kbd> seçeneğini seçin:
 
-![2D](/manuals/images/physics/collision_shapes_2d.png)
+![2B fizikte temel çarpışma şekli ekleme](/manuals/images/physics/collision_shapes_2d.png)
 
-2B fizik şekilleri:
+2B fizikte şu şekilleri kullanabilirsiniz:
 
-- **Circle** (konum, dönüş, çap)
+- **Circle** (konum, dönme ve çap)
+  ![Daire şekli](/manuals/images/physics/circle.png)
+- **Rectangle** (konum, dönme ve iki boyut). Derinlik yok sayılır.
+  ![Dikdörtgen şekli](/manuals/images/physics/rectangle.png)
 
-![Circle](/manuals/images/physics/circle.png)
+3B fizikte de şekilleri aynı yolla eklersiniz.
 
-- **Rectangle** (konum, dönüş, 2 boyut, derinlik yok sayılır)
+![3B fizikte temel çarpışma şekli ekleme](/manuals/images/physics/collision_shapes_3d.png)
 
-![Rectangle](/manuals/images/physics/rectangle.png)
+3B fizikte şu şekilleri kullanabilirsiniz:
 
-3B fizik şekilleri:
-
-![3D](/manuals/images/physics/collision_shapes_3d.png)
-
-- **Box** (konum, dönüş, 3 boyut)
-
-![Box](/manuals/images/physics/box.png)
-
-- **Capsule** (konum, dönüş, çap, yükseklik)
-
-![Capsule](/manuals/images/physics/capsule.png)
-
-- **Hull** (konum, dönüş, sahne, mesh)
-
-![Hull](/manuals/images/physics/hull.png)
-
-- **Mesh** (konum, dönüş, sahne, mesh)
-
-![Mesh](/manuals/images/physics/mesh.png)
-
-- **Sphere** (konum, dönüş, çap)
-
-![Sphere](/manuals/images/physics/sphere.png)
+- **Box** (konum, dönme ve üç boyut)
+  ![Kutu şekli](/manuals/images/physics/box.png)
+- **Capsule** (konum, dönme, çap ve yükseklik)
+  ![Kapsül şekli](/manuals/images/physics/capsule.png)
+- **Hull** (konum, dönme, sahne ve örgü)
+  ![Dışbükey zarf şekli](/manuals/images/physics/hull.png)
+- **Mesh** (konum, dönme, sahne ve örgü)
+  ![Örgü şekli](/manuals/images/physics/mesh.png)
+- **Sphere** (konum, dönme ve çap)
+  ![Küre şekli](/manuals/images/physics/sphere.png)
 
 ### Karmaşık şekiller {#complex-shapes}
 Karmaşık şekiller karo haritası geometrisini veya dışbükey zarf (convex hull) verilerini kullanabilir. Defold 1.13.2 sürümünden itibaren 3B çarpışma nesneleri glTF veya GLB sahnelerindeki örgülerden zarf ve üçgen örgüsü şekilleri de oluşturabilir.

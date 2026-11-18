@@ -7,13 +7,15 @@ title: Modelos 3D no Defold
 toc:
 - Componente Model
 - Criando um componente model
-- Propriedades de model
+- anchor: model-properties
+  title: Propriedades de model
 - Manipulação no editor
 - Manipulação em tempo de execução
 - Animação em tempo de execução
 - Alterando propriedades
 - Material
-- Constantes de material
+- anchor: material-constants
+  title: Constantes de material
 - Renderização
 ---
 
@@ -32,9 +34,7 @@ Componentes Model são criados como qualquer outro componente de objeto de jogo.
 
 Com o modelo criado, você precisa especificar algumas propriedades:
 
-<a id="model-properties"></a>
-
-### Propriedades de model
+### Propriedades de model {#model-properties}
 
 Além das propriedades *Id*, *Position* e *Rotation*, existem as seguintes propriedades específicas do componente:
 
@@ -141,9 +141,7 @@ O cache de matrizes de ossos usa uma textura `RGBA32F`. Se o adaptador gráfico 
 Se você precisar criar materiais personalizados para seus modelos, consulte a [documentação de Material](/pt/manuals/material) para informações. O [manual de Shader](/pt/manuals/shader) contém informações sobre como os programas de shader funcionam.
 
 
-<a id="material-constants"></a>
-
-### Constantes de material
+### Constantes de material {#material-constants}
 
 {% include shared/pt/material-constants.md component='model' variable='tint' %}
 

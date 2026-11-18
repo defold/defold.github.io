@@ -5,7 +5,8 @@ layout: manual
 locale: es
 title: Streaming de sonido en Defold
 toc:
-- Streaming de sonido
+- anchor: sound-streaming
+  title: Streaming de sonido
 - Ejemplo
 - Cómo habilitar sonidos en streaming
 - Forma sencilla
@@ -14,7 +15,7 @@ toc:
 - Caché de fragmentos de sonido
 ---
 
-# Streaming de sonido
+# Streaming de sonido {#sound-streaming}
 
 Aunque el comportamiento por defecto es cargar los datos de sonido completos, también puede ser beneficioso cargar los datos en fragmentos antes de usarlos. Esto suele llamarse "streaming".
 

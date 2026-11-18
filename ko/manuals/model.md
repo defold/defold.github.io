@@ -7,7 +7,8 @@ title: Defold의 3D 모델
 toc:
 - 모델 컴포넌트
 - 모델 컴포넌트 생성하기
-- 모델 프로퍼티
+- anchor: model-properties
+  title: 모델 프로퍼티
 - 에디터 조작
 - 런타임 조작
 - 런타임 애니메이션
@@ -34,9 +35,7 @@ Defold는 기본적으로 3D 엔진입니다. 2D 메터리얼만으로 작업하
 
 모델을 만들고 나면 여러 프로퍼티를 지정해야 합니다:
 
-<a id="model-properties"></a>
-
-### 모델 프로퍼티
+### 모델 프로퍼티 {#model-properties}
 
 *Id*, *Position*, *Rotation* 프로퍼티 외에 다음 컴포넌트별 프로퍼티가 있습니다:
 

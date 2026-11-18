@@ -11,7 +11,8 @@ toc:
 - Kısa gösterimler
 - İleti alma
 - Oyun dünyaları arasında ileti aktarımı
-- İleti zincirleri
+- anchor: message-chains
+  title: İleti zincirleri
 ---
 
 # İleti aktarımı
@@ -212,7 +213,7 @@ msg.post("level:/player#controller", "wake_up")
 ```
 Vekillerin nasıl çalıştığına ilişkin daha ayrıntılı bir açıklamayı [Koleksiyon vekilleri](/tr/manuals/collection-proxy) belgesinde bulabilirsiniz.
 
-## İleti zincirleri
+## İleti zincirleri {#message-chains}
 
 Gönderilmiş bir ileti sonunda dağıtıldığında alıcıların `on_message()` işlevi çağrılır. Tepki veren kodun, ileti kuyruğuna eklenen yeni iletiler göndermesi oldukça yaygındır.
 

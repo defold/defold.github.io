@@ -19,7 +19,7 @@ Perché una collisione tra due oggetti venga rilevata, entrambi gli oggetti devo
 
 ![Gruppo di collisione fisica](/manuals/images/physics/collision_group.png)
 
-![Gruppo di collisione fisica](/manuals/images/physics/collision_groups.png)
+![Gruppi e maschere di collisione](/manuals/images/physics/collision_groups.png)
 
 Il campo *Mask* può contenere più nomi di gruppi, consentendo scenari di interazione complessi.
 

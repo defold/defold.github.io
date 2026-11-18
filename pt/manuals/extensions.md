@@ -15,7 +15,8 @@ toc:
   title: Recursos personalizados
 - Compartilhando uma extensão
 - Um exemplo simples de extensão
-- Ciclo de vida da extensão
+- anchor: extension-lifecycle
+  title: Ciclo de vida da extensão
 - Identificadores de plataforma definidos
 - anchor: build-server-logs
   title: Logs do servidor de build
@@ -269,9 +270,7 @@ print(reverse_s) --> ZYXWVUTSRQPONMLKJIHGFEDCBAzyxwvutsrqponmlkjihgfedcba
 E pronto! Criamos uma extensão nativa totalmente funcional.
 
 
-<a id="extension-lifecycle"></a>
-
-## Ciclo de vida da extensão
+## Ciclo de vida da extensão {#extension-lifecycle}
 
 Como vimos acima, a macro `DM_DECLARE_EXTENSION` é usada para declarar os vários pontos de entrada no código da extensão:
 

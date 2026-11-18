@@ -11,7 +11,8 @@ toc:
 - Skróty
 - Odbieranie wiadomości
 - Wiadomości między światami gry
-- Łańcuchy wiadomości
+- anchor: message-chains
+  title: Łańcuchy wiadomości
 ---
 
 # Przekazywanie wiadomości
@@ -210,7 +211,7 @@ msg.post("level:/player#controller", "wake_up")
 ```
 Bardziej szczegółowy opis działania pełnomocników kolekcji znajdziesz w dokumentacji [Collection Proxies](/pl/manuals/collection-proxy).
 
-## Łańcuchy wiadomości
+## Łańcuchy wiadomości {#message-chains}
 
 Gdy wysłana wiadomość zostanie ostatecznie dostarczona, wywoływana jest funkcja `on_message()` odbiorcy. Dość często kod reakcji wysyła kolejne wiadomości, które trafiają do kolejki wiadomości.
 

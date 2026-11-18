@@ -15,8 +15,6 @@ toc:
   title: Häufig gestellte Fragen (FAQ)
 ---
 
-<a id="xbox-support"></a>
-
 # Spieleentwicklung für Microsoft Xbox-Konsolen {#game-development-for-microsoft-xbox-consoles}
 
 Um mit Defold Spiele für Xbox-Konsolen zu entwickeln, musst du ein zugelassener Xbox-Entwickler sein und Zugang zur Xbox-Unterstützung von Defold sowie zu den Entwicklungswerkzeugen von Microsoft für Konsolen haben.

@@ -45,43 +45,45 @@ Hay distintas formas de colisión para físicas 2D y 3D. Configura el tipo de f�
 
 ### Formas de colisión {#collision-shapes-list}
 
-Para añadir una forma, haz clic derecho en el objeto de colisión y selecciona <kbd>Add Shape</kbd>:
+Para añadir una forma, haz <kbd>clic derecho</kbd> en el objeto de colisión y selecciona <kbd>Add Shape</kbd>.
 
-![2D](/manuals/images/physics/collision_shapes_2d.png)
+![Añadir una forma primitiva con la física 2D activada](/manuals/images/physics/collision_shapes_2d.png)
 
 Formas para físicas 2D:
 
 - **Circle** (posición, rotación, diámetro)
 
-![Circle](/manuals/images/physics/circle.png)
+![Forma de colisión circular](/manuals/images/physics/circle.png)
 
 - **Rectangle** (posición, rotación, 2 dimensiones, se ignora la profundidad)
 
-![Rectangle](/manuals/images/physics/rectangle.png)
+![Forma de colisión rectangular](/manuals/images/physics/rectangle.png)
+
+En la física 3D, las formas se añaden del mismo modo.
+
+![Añadir una forma primitiva con la física 3D activada](/manuals/images/physics/collision_shapes_3d.png)
 
 Formas para físicas 3D:
 
-![3D](/manuals/images/physics/collision_shapes_3d.png)
-
 - **Box** (posición, rotación, 3 dimensiones)
 
-![Box](/manuals/images/physics/box.png)
+![Forma de colisión de caja](/manuals/images/physics/box.png)
 
 - **Capsule** (posición, rotación, diámetro, altura)
 
-![Capsule](/manuals/images/physics/capsule.png)
+![Forma de colisión de cápsula](/manuals/images/physics/capsule.png)
 
 - **Hull** (posición, rotación, escena, malla)
 
-![Hull](/manuals/images/physics/hull.png)
+![Forma de colisión de envolvente convexa](/manuals/images/physics/hull.png)
 
 - **Mesh** (posición, rotación, escena, malla)
 
-![Mesh](/manuals/images/physics/mesh.png)
+![Forma de colisión de malla triangular](/manuals/images/physics/mesh.png)
 
 - **Sphere** (posición, rotación, diámetro)
 
-![Sphere](/manuals/images/physics/sphere.png)
+![Forma de colisión esférica](/manuals/images/physics/sphere.png)
 
 ### Formas complejas {#complex-shapes}
 Las formas complejas pueden usar geometría de tilemap o datos de una envolvente convexa. Desde Defold 1.13.2, los objetos de colisión 3D también pueden crear envolventes convexas y formas de malla de triángulos a partir de mallas de escenas glTF o GLB.

@@ -7,7 +7,8 @@ title: Manual de fontes no Defold
 toc:
 - Arquivos de fonte
 - Fontes offline ou em runtime
-- Suporte a layout de texto (por exemplo, da direita para a esquerda)
+- anchor: text-layout-support-eg-right-to-left
+  title: Suporte a layout de texto (por exemplo, da direita para a esquerda)
 - Coleção de fontes
 - Criando uma fonte
 - anchor: properties
@@ -62,9 +63,7 @@ Fontes SDF e Vector oferecem suporte às duas opções. Fontes Bitmap e BMFont u
 
 A geração Dynamic pode reduzir o tamanho do bundle e o uso de memória em tempo de execução, principalmente em fontes com grandes conjuntos de caracteres. Ela exige o sistema completo de layout de texto na engine; consulte [Habilitando fontes em tempo de execução](#enabling-runtime-fonts).
 
-<a id="text-layout-support-eg-right-to-left"></a>
-
-## Suporte a layout de texto (por exemplo, da direita para a esquerda)
+## Suporte a layout de texto (por exemplo, da direita para a esquerda) {#text-layout-support-eg-right-to-left}
 
 As fontes em runtime também têm o benefício de oferecer suporte completo a layout de texto, por exemplo, da direita para a esquerda.
 Atualmente usamos as bibliotecas [HarfBuzz](https://github.com/harfbuzz/harfbuzz), [SheenBidi](https://github.com/Tehreer/SheenBidi), [libunibreak](https://github.com/adah1972/libunibreak) e [SkriBidi](https://github.com/memononen/Skribidi).

@@ -110,13 +110,13 @@ toc:
 
 {% include shared/ja/2d-and-3d-scene-orientation.md %}
 
-これらの機能は、ツールバーと **View** メニューから使えます。3D モードでは、[軸ギズモ](#axis-gizmo)で表示を軸に揃えたり、マウスで周回したりできます。
+3D モードでは、[軸ギズモ](#axis-gizmo)でビューを軸に揃えたり、マウスで視点を回転させたりできます。
 
 ## ツールバーの概要 {#toolbar-overview}
 
 シーンビューの右上には、よく使うツールと表示オプションを備えたツールバーがあります。
 
-![Toolbar](/manuals/images/editor/toolbar.png)
+![操作項目に1から7までの番号を付けたシーンエディターのツールバー](/manuals/images/editor/toolbar.png)
 
 ツールバーの番号付きオプションは左から次のとおりです。
 
@@ -126,7 +126,7 @@ toc:
 4. **Grid** - グリッドを表示または非表示にします。メニューから Grid Settings を開きます。
 5. **2D mode** (`2D`) - 2D と 3D の向きを切り替えます。**Realign Camera**（<kbd>.</kbd>）も使用できます。
 6. **Perspective camera** - 3D の透視投影と正投影を切り替えます。メニューからカメラ設定を開きます。
-7. **Visibility filters** - コンポーネントの種類とガイドを表示または非表示にします。
+7. **Visibility filters** - シーンビューでコンポーネントの種類とガイドの表示・非表示を切り替えます。
 
 ## オブジェクトの選択と操作 {#manipulating-objects}
 

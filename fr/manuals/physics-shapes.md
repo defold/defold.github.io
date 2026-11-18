@@ -45,43 +45,45 @@ Les formes de collision disponibles diffèrent en physique 2D et 3D. Configurez 
 
 ### Formes de collision {#collision-shapes-list}
 
-Pour ajouter une forme, faites un clic droit sur l’objet de collision et choisissez <kbd>Add Shape</kbd> :
+Pour ajouter une forme, <kbd>faites un clic droit</kbd> sur l’objet de collision et choisissez <kbd>Add Shape</kbd> :
 
-![2D](/manuals/images/physics/collision_shapes_2d.png)
+![Ajout d’une forme primitive en physique 2D](/manuals/images/physics/collision_shapes_2d.png)
 
 Formes en physique 2D :
 
 - **Circle** (position, rotation, diamètre)
 
-![Circle](/manuals/images/physics/circle.png)
+![Forme de collision circulaire](/manuals/images/physics/circle.png)
 
 - **Rectangle** (position, rotation, 2 dimensions, la profondeur est ignorée)
 
-![Rectangle](/manuals/images/physics/rectangle.png)
+![Forme de collision rectangulaire](/manuals/images/physics/rectangle.png)
 
-Formes en physique 3D :
+En physique 3D, procédez de la même façon.
 
-![3D](/manuals/images/physics/collision_shapes_3d.png)
+![Ajout d’une forme primitive en physique 3D](/manuals/images/physics/collision_shapes_3d.png)
+
+Formes en physique 3D :
 
 - **Box** (position, rotation, 3 dimensions)
 
-![Box](/manuals/images/physics/box.png)
+![Forme de collision en boîte](/manuals/images/physics/box.png)
 
 - **Capsule** (position, rotation, diamètre, hauteur)
 
-![Capsule](/manuals/images/physics/capsule.png)
+![Forme de collision en capsule](/manuals/images/physics/capsule.png)
 
 - **Hull** (position, rotation, scène, maillage)
 
-![Hull](/manuals/images/physics/hull.png)
+![Enveloppe convexe de collision](/manuals/images/physics/hull.png)
 
 - **Mesh** (position, rotation, scène, maillage)
 
-![Mesh](/manuals/images/physics/mesh.png)
+![Maillage triangulaire de collision](/manuals/images/physics/mesh.png)
 
 - **Sphere** (position, rotation, diamètre)
 
-![Sphere](/manuals/images/physics/sphere.png)
+![Forme de collision sphérique](/manuals/images/physics/sphere.png)
 
 ### Formes complexes {#complex-shapes}
 Les formes complexes peuvent utiliser la géométrie d'une tilemap ou les données d'une enveloppe convexe. Depuis Defold 1.13.2, les objets de collision 3D peuvent également créer des enveloppes convexes et des formes de maillage triangulé à partir des maillages de scènes glTF ou GLB.

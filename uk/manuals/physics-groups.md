@@ -19,7 +19,7 @@ toc:
 
 ![Група фізичних колізій](/manuals/images/physics/collision_group.png)
 
-![Група фізичних колізій](/manuals/images/physics/collision_groups.png)
+![Групи й маски фізичних колізій](/manuals/images/physics/collision_groups.png)
 
 Поле *Mask* може містити кілька назв груп, що дає змогу створювати складні сценарії взаємодії.
 

@@ -19,7 +19,7 @@ Pour qu'une collision entre deux objets soit détectée, chacun des deux objets 
 
 ![Groupe de collision physique](/manuals/images/physics/collision_group.png)
 
-![Groupe de collision physique](/manuals/images/physics/collision_groups.png)
+![Groupes et masques de collision dans Defold](/manuals/images/physics/collision_groups.png)
 
 Le champ *Mask* peut contenir plusieurs noms de groupes, ce qui permet des scénarios d'interaction complexes.
 
