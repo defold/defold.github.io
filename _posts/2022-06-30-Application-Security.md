@@ -91,5 +91,5 @@ When excluded content is downloaded and prepared for use in a game, the content 
 * Is the downloaded content signed with the correct public-private key pair?
 * Is the downloaded content complete and not missing any files?
 
-You can read more about this process in the [Live Update manual](https://defold.com/manuals/live-update/#manifest-verification).
+You can read more about this process in the [Live Update manual](https://defold.com/manuals/live-update/#content-verification).
 

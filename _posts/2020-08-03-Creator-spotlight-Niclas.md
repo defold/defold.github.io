@@ -19,7 +19,7 @@ I moved from Sweden to London about 20 years ago. After a couple of years of web
 
 
 #### When and how did you learn of Defold?
-I had self published a few games in 2015 using Gideros, another Lua engine, when I first heard about Defold. At the time monetisation was too limited for it to be an option, but I kept an eye on the development. In 2019 I made my first game, Monkey Kick, in Defold. It was a [Facebook Instant game](/manuals/instant-games) which needed to load quickly, and at that time Gideros’ export size was a bit too big.
+I had self published a few games in 2015 using Gideros, another Lua engine, when I first heard about Defold. At the time monetisation was too limited for it to be an option, but I kept an eye on the development. In 2019 I made my first game, Monkey Kick, in Defold. It was a [Facebook Instant game](/extension-fbinstant/) which needed to load quickly, and at that time Gideros’ export size was a bit too big.
 
 ![](/images/posts/developer-spotlight-niclas-aberg/monkeykick.png)
 

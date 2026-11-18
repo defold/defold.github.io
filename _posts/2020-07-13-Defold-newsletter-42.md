@@ -39,11 +39,11 @@ _"Brain Please Don’t lets you try Cameron’s week with various different vers
 ## Web Monetization update
 The Defold Foundation was [awarded a grant from Grant for the Web](https://defold.com/2020/06/09/Defold-is-awarded-a-grant-from-Grant-for-the-Web/) on the 9th of June. The Defold Foundation will use the grant to integrate, promote and support the use of Web Monetization in web games created using Defold.
 
-The first milestone of the project has been reached with the launch of the Web Monetization extension, template project and new manual. With the help of the new [Web Monetization manual and the extension](https://defold.com/manuals/web-monetization/) developers can now get started with Web Monetization in Defold games.
+The first milestone of the project has been reached with the launch of the Web Monetization extension, template project and new manual. With the help of the new [Web Monetization manual and the extension](https://defold.com/extension-webmonetization/) developers can now get started with Web Monetization in Defold games.
 
 Next milestone is the release of a sample game and the announcement of the web monetization game jam.
 
-[LEARN MORE](https://defold.com/manuals/web-monetization/)
+[LEARN MORE](https://defold.com/extension-webmonetization/)
 
 
 ## Updated community sponsor goal
