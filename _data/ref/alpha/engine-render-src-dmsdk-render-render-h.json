@@ -2821,7 +2821,7 @@
         },
         {
             "brief": "set the render item world transform",
-            "description": "Copies the local-to-world affine transform. Its translation supplies the sort\nposition, and it transforms local OBB bounds. World-space sphere and AABB\nbounds are unaffected. Every call invalidates cached visibility; also call\nwhen callback-owned visibility data changes without a transform change.",
+            "description": "Copies the local-to-world affine transform. Its translation supplies the sort\nposition, and it transforms local OBB bounds. World-space sphere and AABB\nbounds are unaffected. Every call invalidates cached visibility; also call\nwhen callback-owned visibility data changes between draws within a frame,\neven without a transform change.",
             "error": "",
             "examples": "",
             "language": "",
@@ -2930,7 +2930,7 @@
         },
         {
             "brief": "submit persistent render items for the current frame",
-            "description": "Makes the registration's enabled items eligible for this frame. Call between\nRenderListBegin() and RenderListEnd(), before render-script draws. Repeated\nsubmission in one frame has no effect. Only submitted registrations consume\nframe dispatch IDs; at most 255 are available, shared with legacy dispatches.\nIf that limit is reached, an error is logged and this submission is skipped.",
+            "description": "Makes the registration's enabled items eligible for this frame. Call between\nRenderListBegin() and RenderListEnd(), before render-script draws. Repeated\nsubmission in one frame has no effect. Only submitted registrations consume\nframe dispatch IDs; at most 255 are available, shared with legacy dispatches.\nIf that limit is reached, an error is logged and this submission is skipped.\nCustom visibility is rechecked on the first draw with a frustum each frame,\nsince callback data may have changed. Typed bounds keep their cached result\nuntil their bounds, transform or the view changes.",
             "error": "",
             "examples": "",
             "language": "",
