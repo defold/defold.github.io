@@ -106,7 +106,7 @@
                     ]
                 },
                 {
-                    "doc": "Result",
+                    "doc": "Result, valid only when RESULT_OK is returned",
                     "is_optional": "False",
                     "name": "parts",
                     "types": [
@@ -117,7 +117,7 @@
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "on success",
+                    "doc": "on success, RESULT_TOO_SMALL_BUFFER if a URI component does not fit including its null terminator",
                     "name": "RESULT_OK",
                     "types": [
                         ""
