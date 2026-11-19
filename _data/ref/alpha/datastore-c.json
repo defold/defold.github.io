@@ -2234,6 +2234,46 @@
             "type": "STRUCT"
         },
         {
+            "brief": "Borrow writable contiguous native rows",
+            "description": "Returns the current batch as a native array. Uses the layout and write rules of\n<a href=\"#DataStoreRowIterGetDataMutable\">DataStoreRowIterGetDataMutable</a>. Requires DATASTORE_ROW_MUTABLE.\nThe count covers only this batch, not all matching rows. The pointer is borrowed\nuntil the next batch advance or query end; finish all jobs before ending access.\nNo layout checks, copying or additional reservations occur.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "DataStoreIterGetDataMutable",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Iterator on the current batch.",
+                    "is_optional": "False",
+                    "name": "iterator",
+                    "types": [
+                        "const DataStoreIterator*"
+                    ]
+                },
+                {
+                    "doc": "Required output receiving the contiguous row count, or zero without an accessible batch.",
+                    "is_optional": "False",
+                    "name": "out_count",
+                    "types": [
+                        "uint32_t*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "Borrowed native row array, or zero without a current batch, value storage or whole-row access.",
+                    "name": "rows",
+                    "types": [
+                        "void*"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "Get the current table type",
             "description": "Get the current table type",
             "error": "",
@@ -3165,7 +3205,7 @@
             "examples": "",
             "language": "",
             "members": [],
-            "name": "DataStoreRowIterGetBooleanMut",
+            "name": "DataStoreRowIterGetBooleanMutable",
             "notes": [],
             "parameters": [
                 {
@@ -3237,7 +3277,7 @@
             "examples": "",
             "language": "",
             "members": [],
-            "name": "DataStoreRowIterGetDataMut",
+            "name": "DataStoreRowIterGetDataMutable",
             "notes": [],
             "parameters": [
                 {
@@ -3309,7 +3349,7 @@
             "examples": "",
             "language": "",
             "members": [],
-            "name": "DataStoreRowIterGetFloatMut",
+            "name": "DataStoreRowIterGetFloatMutable",
             "notes": [],
             "parameters": [
                 {
@@ -3453,7 +3493,7 @@
             "examples": "",
             "language": "",
             "members": [],
-            "name": "DataStoreRowIterGetMatrix4Mut",
+            "name": "DataStoreRowIterGetMatrix4Mutable",
             "notes": [],
             "parameters": [
                 {
@@ -3533,7 +3573,7 @@
             "examples": "",
             "language": "",
             "members": [],
-            "name": "DataStoreRowIterGetNumberMut",
+            "name": "DataStoreRowIterGetNumberMutable",
             "notes": [],
             "parameters": [
                 {
@@ -3613,7 +3653,7 @@
             "examples": "",
             "language": "",
             "members": [],
-            "name": "DataStoreRowIterGetUInt32Mut",
+            "name": "DataStoreRowIterGetUInt32Mutable",
             "notes": [],
             "parameters": [
                 {
@@ -3693,7 +3733,7 @@
             "examples": "",
             "language": "",
             "members": [],
-            "name": "DataStoreRowIterGetVector3Mut",
+            "name": "DataStoreRowIterGetVector3Mutable",
             "notes": [],
             "parameters": [
                 {
@@ -3773,7 +3813,7 @@
             "examples": "",
             "language": "",
             "members": [],
-            "name": "DataStoreRowIterGetVector4Mut",
+            "name": "DataStoreRowIterGetVector4Mutable",
             "notes": [],
             "parameters": [
                 {
