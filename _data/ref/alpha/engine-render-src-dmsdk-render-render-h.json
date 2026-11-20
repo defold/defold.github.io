@@ -352,6 +352,21 @@
             "type": "CONSTANT"
         },
         {
+            "brief": "The maximum number of uniform buffer bindings the ...",
+            "description": "The maximum number of uniform buffer bindings the render object can hold (4)",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "dmRender::RenderObject::MAX_UNIFORM_BUFFER_COUNT",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "CONSTANT"
+        },
+        {
             "brief": "enable or disable a render item",
             "description": "Changes draw eligibility without releasing the handle or its data. Repeating\nthe current enabled state has no effect. The dispatch must also be submitted\nfor the item to participate in the current frame.",
             "error": "",
@@ -1077,6 +1092,21 @@
             "language": "",
             "members": [],
             "name": "HSampler",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "Uniform buffer binding handle",
+            "description": "Uniform buffer binding handle",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "HUniformBufferBinding",
             "notes": [],
             "parameters": [],
             "replaces": "",
@@ -1836,6 +1866,11 @@
                     "doc": "the textures",
                     "name": "m_Textures",
                     "type": "dmGraphics::HTexture[]"
+                },
+                {
+                    "doc": "the uniform buffer bindings; zero marks an unused slot",
+                    "name": "m_UniformBuffers",
+                    "type": "dmRender::HUniformBufferBinding[]"
                 },
                 {
                     "doc": "the primitive type",
