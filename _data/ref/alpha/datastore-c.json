@@ -4112,7 +4112,7 @@
         },
         {
             "brief": "Synchronize ready scheduled work",
-            "description": "Pumps jobs until running functions and ready functions finish, including their\ndependents. Functions waiting on unsignaled events remain pending. Keeps the\nschedule active so later events can use earlier completions without rerunning work.\nQuery reservations are released as functions finish; this does not lock the store.\nCall on the scheduler's main thread, outside jobs and completion callbacks.",
+            "description": "Pumps jobs until running functions and ready functions finish, including their\ndependents. Functions waiting on unsignaled events remain pending. Keeps the\nschedule active so later events can use earlier completions without rerunning work.\nQuery reservations are released as functions finish; this does not lock the store.\nCall on the scheduler's main thread, outside jobs and completion callbacks.\nWith worker threads, the caller also processes this store's ready jobs. Other users'\nqueued jobs stay on workers; their completion callbacks may still be dispatched on\nthe main thread by the shared job context's normal update.\nWhen only running jobs remain, waits for worker progress instead of polling their queue.",
             "error": "",
             "examples": "",
             "language": "",
