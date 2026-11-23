@@ -275,6 +275,7 @@ These are per-manual files generated for LLM usage.
 - [Gradle dependencies](https://defold.com/llms/manuals/extensions-gradle.md)
 - [Cocoapod dependencies](https://defold.com/llms/manuals/extensions-cocoapods.md)
 - [Swift Package Manager dependencies](https://defold.com/llms/manuals/extensions-spm.md)
+- [Swift in native extensions](https://defold.com/llms/manuals/extensions-swift.md)
 - [Adding auto-complete definition](https://defold.com/llms/manuals/extensions-script-api.md)
 - [Best Practices](https://defold.com/llms/manuals/extensions-best-practices.md)
 - [Debugging](https://defold.com/llms/manuals/debugging-native-code.md)

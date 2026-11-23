@@ -40,7 +40,7 @@ To create a new extension, create a folder in the project root. This folder will
 : The extension folder _must_ contain an *ext.manifest* file. This file is a configuration file with flags and defines used when building a single extension. File format definition can be found in the [Extension Manifest manual](https://defold.com/llms/manuals/extensions-ext-manifests.md).
 
 *src*
-: This folder should contain all source code files.
+: This folder should contain all source code files. Swift files (`.swift`) for iOS and macOS also go here, see [Swift in native extensions](https://defold.com/llms/manuals/extensions-swift.md).
 
 *include*
 : This optional folder contains any include files.
