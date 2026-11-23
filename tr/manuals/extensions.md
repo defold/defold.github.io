@@ -78,7 +78,7 @@ Yeni bir eklenti oluşturmak için projenin kök dizininde bir klasör oluşturu
 : Eklenti klasörü bir *ext.manifest* dosyası _içermek zorundadır_. Bu dosya, tek bir eklenti derlenirken kullanılan bayrakları ve tanımları içeren bir yapılandırma dosyasıdır. Dosya biçiminin tanımını [Eklenti bildirimi kılavuzunda](https://defold.com/tr/manuals/extensions-ext-manifests/) bulabilirsiniz.
 
 *src*
-: Bu klasörün tüm kaynak kod dosyalarını içermesi önerilir.
+: Bu klasörün tüm kaynak kod dosyalarını içermesi önerilir. iOS ve macOS için Swift dosyalarını (`.swift`) da buraya ekleyin. Ayrıntılar için [Yerel kod eklentilerinde Swift](/tr/manuals/extensions-swift) kılavuzuna bakın.
 
 *include*
 : Bu isteğe bağlı klasör, dahil etme (include) dosyalarını içerir.

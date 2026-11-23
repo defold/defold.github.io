@@ -70,7 +70,7 @@ Aby utworzyć nowe rozszerzenie, utwórz folder w katalogu głównym projektu. T
 : Folder rozszerzenia _musi_ zawierać plik *ext.manifest*. Jest to plik konfiguracyjny z flagami i definicjami używanymi podczas budowania pojedynczego rozszerzenia. Definicję formatu pliku znajdziesz w [instrukcji o manifestach rozszerzenia](https://defold.com/pl/manuals/extensions-ext-manifests/).
 
 *src*
-: Ten folder powinien zawierać wszystkie pliki z kodem źródłowym.
+: Ten folder powinien zawierać wszystkie pliki z kodem źródłowym. Umieść w nim także pliki Swift (`.swift`) dla iOS i macOS. Więcej informacji znajdziesz w instrukcji [Swift w rozszerzeniach natywnych](/pl/manuals/extensions-swift).
 
 *include*
 : Ten opcjonalny folder zawiera pliki include.
