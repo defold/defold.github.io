@@ -319,6 +319,38 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "get display density",
+            "description": "Returns a platform specific estimate of the display density, in dots per inch. 96 is returned on\nplatforms that do not have a density of their own. The value is a logical density used for pixel\nscaling rather than a measurement of the display: Android reports the density bucket\n(<code>densityDpi</code>), which a user or an OEM can override, iOS reports the native scale of the screen\nexpressed as dpi, HTML5 reports the device pixel ratio expressed as dpi and the desktop platforms\nderive it from the monitor physical size. Use it to scale sizes against a reference density, not\nto measure the display.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "WindowGetDisplayDensity",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "window handle",
+                    "is_optional": "False",
+                    "name": "window",
+                    "types": [
+                        "HWindow"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "platform specific display density estimate in dots per inch",
+                    "name": "density",
+                    "types": [
+                        "float"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "get display scale factor",
             "description": "get display scale factor",
             "error": "",

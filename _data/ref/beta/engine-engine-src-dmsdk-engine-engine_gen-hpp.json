@@ -1,0 +1,127 @@
+{
+    "elements": [
+        {
+            "brief": "engine context name",
+            "description": "Engine-owned entry in the extension context registry, containing a borrowed\nHEngine. Available from engine creation through application finalization,\nincluding early events and cleanup after initialization failure.\nObtain the registry with ExtensionAppParamsGetContextRegistry or\nExtensionParamsGetContextRegistry, then look up this name with ContextRegistryGet.\nA standalone host may have no registry or no engine entry.",
+            "error": "",
+            "examples": "",
+            "language": "C",
+            "members": [],
+            "name": "ENGINE_CONTEXT_NAME",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "CONSTANT"
+        },
+        {
+            "brief": "get the engine window",
+            "description": "The engine owns the returned window. Do not destroy it or retain it across\nengine deletion or reboot. Call only on the engine thread with a live engine.",
+            "error": "",
+            "examples": "",
+            "language": "C",
+            "members": [],
+            "name": "EngineGetWindow",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "live engine instance",
+                    "is_optional": "False",
+                    "name": "engine",
+                    "types": [
+                        "HEngine"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "borrowed window, or null if the engine has no window",
+                    "name": "window",
+                    "types": [
+                        "HWindow"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "get the engine window",
+            "description": "The engine owns the returned window. Do not destroy it or retain it across\nengine deletion or reboot. Call only on the engine thread with a live engine.",
+            "error": "",
+            "examples": "",
+            "language": "C++",
+            "members": [],
+            "name": "GetWindow",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "live engine instance",
+                    "is_optional": "False",
+                    "name": "engine",
+                    "types": [
+                        "HEngine"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "borrowed window, or null if the engine has no window",
+                    "name": "window",
+                    "types": [
+                        "HWindow"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "engine instance handle",
+            "description": "Identifies an engine instance. Extension callbacks borrow the handle for the\ncallback; do not destroy the engine or retain the handle after engine deletion.\nEngine initialization may be incomplete when handling events during startup\nor cleanup after an initialization failure. Reboot creates a new instance.",
+            "error": "",
+            "examples": "",
+            "language": "C++",
+            "members": [],
+            "name": "HEngine",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "engine instance handle",
+            "description": "Identifies an engine instance. Extension callbacks borrow the handle for the\ncallback; do not destroy the engine or retain the handle after engine deletion.\nEngine initialization may be incomplete when handling events during startup\nor cleanup after an initialization failure. Reboot creates a new instance.",
+            "error": "",
+            "examples": "",
+            "language": "C",
+            "members": [],
+            "name": "HEngine",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "TYPEDEF"
+        }
+    ],
+    "format_version": 2,
+    "info": {
+        "api_language": "C++",
+        "brief": "Engine API documentation",
+        "description": "Engine instance handles and access to the engine-owned window.",
+        "description_html": "<p>Engine instance handles and access to the engine-owned window.</p>",
+        "file": "engine_gen.hpp",
+        "include": "dmsdk/engine/engine_gen.hpp",
+        "name": "Engine",
+        "namespace": "dmEngine",
+        "notes": [],
+        "path": "engine/engine/src/dmsdk/engine/engine_gen.hpp",
+        "type": "Defold C++"
+    }
+}

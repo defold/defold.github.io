@@ -1555,7 +1555,7 @@
         },
         {
             "brief": "Finalizes the graphics system",
-            "description": "Finalizes the graphics system.\nCleans up global graphics resources and shuts down the graphics system.\nThis should be called when the application is exiting.",
+            "description": "Finalizes the graphics system.\nCleans up global graphics resources and clears the installed adapter.\nDelete any graphics context before calling this when the application is exiting.",
             "error": "",
             "examples": "",
             "language": "",
@@ -3245,8 +3245,8 @@
             "type": "ENUM"
         },
         {
-            "brief": "Installs a graphics adapter",
-            "description": "Installs a graphics adapter.\nInitializes the specified graphics backend (OpenGL, Vulkan, etc.).\nThis must be called before creating any graphics context.",
+            "brief": "Installs a specific graphics adapter",
+            "description": "Installs a specific graphics adapter.\nOnly the requested family is considered; this function never falls back to another family.\nReinstalling the current adapter succeeds without reinitializing it. Delete any graphics\ncontext before changing adapters. ADAPTER_FAMILY_NONE does not request automatic selection;\nuse the overload without arguments instead.",
             "error": "",
             "examples": "",
             "language": "",
@@ -3266,10 +3266,33 @@
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "True if the adapter was successfully installed, false otherwise",
-                    "name": "success",
+                    "doc": "RESULT_OK, RESULT_ADAPTER_UNAVAILABLE, or RESULT_ADAPTER_UNSUPPORTED",
+                    "name": "result",
                     "types": [
-                        "bool"
+                        "dmGraphics::Result"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Installs the highest-priority supported graphics a...",
+            "description": "Installs the highest-priority supported graphics adapter.\nTries registered adapters in priority order until one is supported. Delete any graphics\ncontext before changing adapters. This checks support; it does not create a window or context.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "InstallAdapter",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "RESULT_OK on success, RESULT_ADAPTER_UNAVAILABLE if no adapters are registered, or RESULT_ADAPTER_UNSUPPORTED if none are supported",
+                    "name": "result",
+                    "types": [
+                        "dmGraphics::Result"
                     ]
                 }
             ],
@@ -4161,6 +4184,37 @@
             "returnvalues": [],
             "tparams": [],
             "type": "FUNCTION"
+        },
+        {
+            "brief": "Graphics adapter installation results.",
+            "description": "Graphics adapter installation results.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "No matching graphics adapter is registered",
+                    "name": "RESULT_ADAPTER_UNAVAILABLE",
+                    "type": ""
+                },
+                {
+                    "doc": "A matching graphics adapter is registered but unsupported on this client",
+                    "name": "RESULT_ADAPTER_UNSUPPORTED",
+                    "type": ""
+                },
+                {
+                    "doc": "The graphics adapter was successfully installed",
+                    "name": "RESULT_OK",
+                    "type": ""
+                }
+            ],
+            "name": "Result",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "ENUM"
         },
         {
             "brief": "Set separate blend equations for color and alpha c...",

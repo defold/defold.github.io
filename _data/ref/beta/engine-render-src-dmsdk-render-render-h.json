@@ -352,6 +352,21 @@
             "type": "CONSTANT"
         },
         {
+            "brief": "The maximum number of uniform buffer bindings the ...",
+            "description": "The maximum number of uniform buffer bindings the render object can hold (4)",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "dmRender::RenderObject::MAX_UNIFORM_BUFFER_COUNT",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "CONSTANT"
+        },
+        {
             "brief": "enable or disable a render item",
             "description": "Changes draw eligibility without releasing the handle or its data. Repeating\nthe current enabled state has no effect. The dispatch must also be submitted\nfor the item to participate in the current frame.",
             "error": "",
@@ -1085,6 +1100,21 @@
             "type": "TYPEDEF"
         },
         {
+            "brief": "Uniform buffer binding handle",
+            "description": "Uniform buffer binding handle",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "HUniformBufferBinding",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
             "brief": "Iterates over the constants",
             "description": "Iterates over the constants",
             "error": "",
@@ -1443,8 +1473,8 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "Render dispatch function callback.",
-            "description": "Render dispatch function callback.",
+            "brief": "Render dispatch function callback",
+            "description": "Render dispatch function callback.\nEach draw calls BEGIN once before any batches and END once after all batches\nfor dispatches with entries matching the predicate and frustum. Dispatches\nwith no selected entries receive no operations.",
             "error": "",
             "examples": "",
             "language": "",
@@ -1836,6 +1866,11 @@
                     "doc": "the textures",
                     "name": "m_Textures",
                     "type": "dmGraphics::HTexture[]"
+                },
+                {
+                    "doc": "the uniform buffer bindings; zero marks an unused slot",
+                    "name": "m_UniformBuffers",
+                    "type": "dmRender::HUniformBufferBinding[]"
                 },
                 {
                     "doc": "the primitive type",
@@ -2821,7 +2856,7 @@
         },
         {
             "brief": "set the render item world transform",
-            "description": "Copies the local-to-world affine transform. Its translation supplies the sort\nposition, and it transforms local OBB bounds. World-space sphere and AABB\nbounds are unaffected. Every call invalidates cached visibility; also call\nwhen callback-owned visibility data changes without a transform change.",
+            "description": "Copies the local-to-world affine transform. Its translation supplies the sort\nposition, and it transforms local OBB bounds. World-space sphere and AABB\nbounds are unaffected. Every call invalidates cached visibility; also call\nwhen callback-owned visibility data changes between draws within a frame,\neven without a transform change.",
             "error": "",
             "examples": "",
             "language": "",
@@ -2930,7 +2965,7 @@
         },
         {
             "brief": "submit persistent render items for the current frame",
-            "description": "Makes the registration's enabled items eligible for this frame. Call between\nRenderListBegin() and RenderListEnd(), before render-script draws. Repeated\nsubmission in one frame has no effect. Only submitted registrations consume\nframe dispatch IDs; at most 255 are available, shared with legacy dispatches.\nIf that limit is reached, an error is logged and this submission is skipped.",
+            "description": "Makes the registration's enabled items eligible for this frame. Call between\nRenderListBegin() and RenderListEnd(), before render-script draws. Repeated\nsubmission in one frame has no effect. Only submitted registrations consume\nframe dispatch IDs; at most 255 are available, shared with legacy dispatches.\nIf that limit is reached, an error is logged and this submission is skipped.\nCustom visibility is rechecked on the first draw with a frustum each frame,\nsince callback data may have changed. Typed bounds keep their cached result\nuntil their bounds, transform or the view changes.",
             "error": "",
             "examples": "",
             "language": "",

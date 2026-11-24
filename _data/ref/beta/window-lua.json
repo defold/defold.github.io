@@ -92,6 +92,79 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "get the display density",
+            "description": "Returns a platform specific estimate of the display density, in dots per inch. Returns 96 on\nplatforms that do not support it. This is not the same value as <code>window.get_display_scale()</code>,\nwhich reports the ratio between framebuffer pixels and logical pixels and is therefore 1 on most\nmobile devices.\nThe value is a logical density used for pixel scaling rather than a measurement of the display:\nthe density bucket on Android, which a user or an OEM can override and which <code>densityDpi</code> reports,\nthe native scale of the screen expressed as dpi on iOS, the device pixel ratio expressed as dpi on\nHTML5 and the monitor size on desktop platforms.\nUse it together with <code>window.get_display_density_scale()</code> to scale sizes against a reference\ndensity rather than to measure the display.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "window.get_display_density",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "platform specific display density estimate in dots per inch",
+                    "name": "density",
+                    "types": [
+                        "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "get the display density relative to a reference density",
+            "description": "Returns the display density divided by a reference density, which is the multiplier UI code\nmultiplies its sizes with. A common reference is 160 dots per inch, the Android mdpi baseline that\ndensity values are normally expressed against; a project tuned against another baseline passes\nthat one instead.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "window.get_display_density_scale",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "reference density in dots per inch",
+                    "is_optional": "False",
+                    "name": "reference_dpi",
+                    "types": [
+                        "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "display density divided by the reference density",
+                    "name": "scale",
+                    "types": [
+                        "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "get the display scale",
             "description": "This returns the content scale of the current display.\nOn HTML5, the scale respects <code>display.high_dpi</code>, <code>html5.min_pixel_ratio</code>\nand <code>html5.max_pixel_ratio</code>. When High DPI is disabled, the scale is 1.",
             "error": "",

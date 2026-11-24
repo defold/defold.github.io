@@ -2,7 +2,7 @@
     "elements": [
         {
             "brief": "<span class=\"type\">hash</span> model animation",
-            "description": "The current animation set on the component. The type of the property is hash.",
+            "description": "The current animation set on the component. The type of the property is hash.\nPass <code>{ key = hash(\"layer_name\") }</code> in the <a href=\"/ref/go#go.get\">go.get</a>\noptions to address a layer on this model. Omit the key to address base playback.\nThe name remains usable while the model retains the layer, even after its handle is destroyed.\nThis property is read-only; use <a href=\"/ref/model#model.play_anim\">model.play_anim</a> to change the animation.",
             "error": "",
             "examples": "How to read the current animation from a model component:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"c1\">-- Get the current animation on component &quot;model&quot;</span>\n  <span class=\"kd\">local</span> <span class=\"n\">animation</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">&quot;#model&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;animation&quot;</span><span class=\"p\">)</span>\n  <span class=\"kr\">if</span> <span class=\"n\">animation</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;run_left&quot;</span><span class=\"p\">)</span> <span class=\"kr\">then</span>\n    <span class=\"c1\">-- Running left. Do something...</span>\n  <span class=\"kr\">end</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
             "language": "",
@@ -17,9 +17,9 @@
         },
         {
             "brief": "<span class=\"type\">number</span> model cursor",
-            "description": "The normalized animation cursor. The type of the property is number.\n<span class=\"icon-attention\"></span> Please note that model events may not fire as expected when the cursor is manipulated directly.",
+            "description": "The normalized animation cursor. The type of the property is number.\nPass <code>{ key = hash(\"layer_name\") }</code> in the <a href=\"/ref/go#go.get\">go.get</a>\noptions to address a layer on this model. Omit the key to address base playback.\nThe name remains usable while the model retains the layer, even after its handle is destroyed.\n<span class=\"icon-attention\"></span> Please note that model events may not fire as expected when the cursor is manipulated directly.\n<a href=\"/ref/go#go.set\">go.set</a> accepts the same selector. Changes affect only this model's layer playback.",
             "error": "",
-            "examples": "How to get the normalized cursor value:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"c1\">-- Get the cursor value on component &quot;model&quot;</span>\n  <span class=\"n\">cursor</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">&quot;#model&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;cursor&quot;</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>\n\nHow to animate the cursor from 0.0 to 1.0 using linear easing for 2.0 seconds:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"c1\">-- Get the current value on component &quot;model&quot;</span>\n  <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"s2\">&quot;#model&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;cursor&quot;</span><span class=\"p\">,</span> <span class=\"mf\">0.0</span><span class=\"p\">)</span>\n  <span class=\"c1\">-- Animate the cursor value</span>\n  <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">animate</span><span class=\"p\">(</span><span class=\"s2\">&quot;#model&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;cursor&quot;</span><span class=\"p\">,</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">PLAYBACK_LOOP_FORWARD</span><span class=\"p\">,</span> <span class=\"mf\">1.0</span><span class=\"p\">,</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">EASING_LINEAR</span><span class=\"p\">,</span> <span class=\"mi\">2</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+            "examples": "How to read and change a layer's cursor by name:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">cursor</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">&quot;#model&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;cursor&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span> <span class=\"n\">key</span> <span class=\"o\">=</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;upper_body&quot;</span><span class=\"p\">)</span> <span class=\"p\">})</span>\n<span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"s2\">&quot;#model&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;cursor&quot;</span><span class=\"p\">,</span> <span class=\"n\">cursor</span><span class=\"p\">,</span> <span class=\"p\">{</span> <span class=\"n\">key</span> <span class=\"o\">=</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;upper_body&quot;</span><span class=\"p\">)</span> <span class=\"p\">})</span>\n</code></pre></div>\n\nHow to get the normalized cursor value:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"c1\">-- Get the cursor value on component &quot;model&quot;</span>\n  <span class=\"n\">cursor</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">&quot;#model&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;cursor&quot;</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>\n\nHow to animate the cursor from 0.0 to 1.0 using linear easing for 2.0 seconds:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"c1\">-- Get the current value on component &quot;model&quot;</span>\n  <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"s2\">&quot;#model&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;cursor&quot;</span><span class=\"p\">,</span> <span class=\"mf\">0.0</span><span class=\"p\">)</span>\n  <span class=\"c1\">-- Animate the cursor value</span>\n  <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">animate</span><span class=\"p\">(</span><span class=\"s2\">&quot;#model&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;cursor&quot;</span><span class=\"p\">,</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">PLAYBACK_LOOP_FORWARD</span><span class=\"p\">,</span> <span class=\"mf\">1.0</span><span class=\"p\">,</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">EASING_LINEAR</span><span class=\"p\">,</span> <span class=\"mi\">2</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
             "language": "",
             "members": [],
             "name": "cursor",
@@ -63,10 +63,111 @@
             "type": "STRUCT"
         },
         {
-            "brief": "cancel all animation on a model",
-            "description": "Cancels all animation on a model component.",
+            "brief": "create a reusable animation layer",
+            "description": "Creates an immutable layer definition, independent of any model component.\nReuse the returned handle in the <code>layer</code> property of <a href=\"/ref/model#model.play_anim\">model.play_anim</a>.\nEach model keeps its own playback cursor, crossfade and completion callback.\nRelease the definition with <a href=\"/ref/model#model.destroy_animation_layer\">model.destroy_animation_layer</a> when it is no longer\nneeded. Storing or discarding the numeric handle does not affect its lifetime.\nDestroying a handle prevents reuse but leaves existing playback undisturbed.\nThe base animation is evaluated first, followed by layers in increasing order.\nLayers override the pose beneath them with their weight; weights are not normalized.\nMasks select local bone transforms, including descendants of each listed bone.\nBones still inherit movement from their parents. Missing animation channels use\nthe skeleton's rest transforms. Additional layers only affect skeletal animation.",
+            "error": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">upper_body</span> <span class=\"o\">=</span> <span class=\"n\">model</span><span class=\"p\">.</span><span class=\"n\">animation_layer</span><span class=\"p\">(</span><span class=\"s2\">&quot;upper_body&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span>\n    <span class=\"n\">order</span> <span class=\"o\">=</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"n\">weight</span> <span class=\"o\">=</span> <span class=\"mf\">0.8</span><span class=\"p\">,</span> <span class=\"n\">bones</span> <span class=\"o\">=</span> <span class=\"p\">{</span> <span class=\"s2\">&quot;spine&quot;</span> <span class=\"p\">}</span>\n<span class=\"p\">})</span>\n<span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"n\">model</span><span class=\"p\">.</span><span class=\"n\">play_anim</span><span class=\"p\">(</span><span class=\"s2\">&quot;#model&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;run&quot;</span><span class=\"p\">,</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">PLAYBACK_LOOP_FORWARD</span><span class=\"p\">)</span>\n    <span class=\"n\">model</span><span class=\"p\">.</span><span class=\"n\">play_anim</span><span class=\"p\">(</span><span class=\"s2\">&quot;#model&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;wave&quot;</span><span class=\"p\">,</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">PLAYBACK_ONCE_FORWARD</span><span class=\"p\">,</span> <span class=\"p\">{</span> <span class=\"n\">layer</span> <span class=\"o\">=</span> <span class=\"n\">upper_body</span> <span class=\"p\">})</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "model.animation_layer",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "non-empty layer name",
+                    "is_optional": "False",
+                    "name": "name",
+                    "types": [
+                        "string",
+                        "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ]
+                },
+                {
+                    "doc": "layer configuration, copied at creation",
+                    "is_optional": "False",
+                    "name": "options",
+                    "types": [
+                        "model.animation_layer_options"
+                    ],
+                    "types_html": [
+                        "<a href=\"#model.animation_layer_options\">model.animation_layer_options</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#model.animation_layer_options\">model.animation_layer_options</a>"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "opaque layer handle",
+                    "name": "layer_id",
+                    "types": [
+                        "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Model animation layer options",
+            "description": "Model animation layer options",
             "error": "",
             "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "order",
+                    "doc": "positive evaluation order; names and orders must be unique among layers on a model",
+                    "is_optional": false,
+                    "name": "order",
+                    "type": "integer",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">integer</a>"
+                },
+                {
+                    "display_name": "weight",
+                    "doc": "influence in [0, 1], defaults to 1; a zero-weight layer still advances and completes",
+                    "is_optional": true,
+                    "name": "weight?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "bones",
+                    "doc": "bone names whose subtrees are selected; omit or pass an empty array to select all bones; names must exist on each target model",
+                    "is_optional": true,
+                    "name": "bones?",
+                    "type": "(string|hash)[]",
+                    "type_html": "(<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>|<a href=\"../builtins-lua/#hash\">hash</a>)[]"
+                }
+            ],
+            "name": "model.animation_layer_options",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "cancel animation on a model",
+            "description": "Without a layer, cancels all animation, freezes the base pose and releases\nadditional layers, without invoking their completion callbacks.\nWith a layer, removes only that layer from this model. Its contribution disappears\non the next pose update, revealing the base and remaining layers. Their playback\nis unaffected. The cancelled layer's completion callback is not invoked.\nCancelling a layer that is not attached to the model has no effect.\nThe handle remains reusable and other models using it are unaffected.",
+            "error": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">model</span><span class=\"p\">.</span><span class=\"n\">cancel</span><span class=\"p\">(</span><span class=\"s2\">&quot;#model&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span> <span class=\"n\">layer</span> <span class=\"o\">=</span> <span class=\"n\">upper_body</span> <span class=\"p\">})</span>\n</code></pre></div>",
             "language": "",
             "members": [],
             "name": "model.cancel",
@@ -90,6 +191,74 @@
                         "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
                         "<a href=\"../builtins-lua/#hash\">hash</a>",
                         "<a href=\"../msg-lua/#url\">url</a>"
+                    ]
+                },
+                {
+                    "doc": "optional cancellation properties",
+                    "is_optional": "True",
+                    "name": "options",
+                    "types": [
+                        "model.cancel_options"
+                    ],
+                    "types_html": [
+                        "<a href=\"#model.cancel_options\">model.cancel_options</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"#model.cancel_options\">model.cancel_options</a>"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Model animation cancellation options",
+            "description": "Model animation cancellation options",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "display_name": "layer",
+                    "doc": "handle returned by <a href=\"/ref/model#model.animation_layer\">model.animation_layer</a>; omit to cancel all animation",
+                    "is_optional": true,
+                    "name": "layer?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                }
+            ],
+            "name": "model.cancel_options",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "destroy an animation layer definition",
+            "description": "Invalidates a handle returned by <a href=\"/ref/model#model.animation_layer\">model.animation_layer</a>. Further use of the\nhandle, including another destroy, raises an error. Existing animations continue\nand keep the definition alive until cancelled or their model is destroyed/reloaded.\nOnce-mode animations retain their final pose. Cancel individual layers before\ndestroying their handle if their contribution should be removed immediately.\nRemaining definitions are released when the script context is finalized.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "model.destroy_animation_layer",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "opaque animation layer handle",
+                    "is_optional": "False",
+                    "name": "layer_id",
+                    "types": [
+                        "number"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                     ]
                 }
             ],
@@ -387,7 +556,7 @@
         },
         {
             "brief": "play an animation on a model",
-            "description": "Plays an animation on a model component with specified playback\nmode and parameters.\nAn optional completion callback function can be provided that will be called when\nthe animation has completed playing. If no function is provided,\na <a href=\"#model_animation_done\">model_animation_done</a> message is sent to the script that started the animation.\n<span class=\"icon-attention\"></span> The callback is not called (or message sent) if the animation is\ncancelled with <a href=\"/ref/model#model.cancel\">model.cancel</a>. The callback is called (or message sent) only for\nanimations that play with the following playback modes:\n<ul>\n<li><code>go.PLAYBACK_ONCE_FORWARD</code></li>\n<li><code>go.PLAYBACK_ONCE_BACKWARD</code></li>\n<li><code>go.PLAYBACK_ONCE_PINGPONG</code></li>\n</ul>",
+            "description": "Plays an animation on a model component with specified playback\nmode and parameters.\nWith <code>play_properties.layer</code>, only playback on that layer is replaced. Other\nlayers and base playback continue independently. <code>blend_duration</code> crossfades\nwithin the selected layer, or fades its influence in on first use. Once-mode\nanimations hold their final pose until replaced or cancelled. Layered completion\ncallbacks and messages include the layer name hash in <code>message.layer</code>.\nBase playback omits this field. Callback arguments are unchanged.\nAn optional completion callback function can be provided that will be called when\nthe animation has completed playing. If no function is provided,\na <a href=\"#model_animation_done\">model_animation_done</a> message is sent to the script that started the animation.\n<span class=\"icon-attention\"></span> The callback is not called (or message sent) if the animation is\ncancelled with <a href=\"/ref/model#model.cancel\">model.cancel</a>. The callback is called (or message sent) only for\nanimations that play with the following playback modes:\n<ul>\n<li><code>go.PLAYBACK_ONCE_FORWARD</code></li>\n<li><code>go.PLAYBACK_ONCE_BACKWARD</code></li>\n<li><code>go.PLAYBACK_ONCE_PINGPONG</code></li>\n</ul>",
             "error": "",
             "examples": "The following examples assumes that the model has id \"model\".\nHow to play the \"jump\" animation followed by the \"run\" animation:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"kr\">function</span> <span class=\"nf\">anim_done</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">message_id</span><span class=\"p\">,</span> <span class=\"n\">message</span><span class=\"p\">,</span> <span class=\"n\">sender</span><span class=\"p\">)</span>\n  <span class=\"kr\">if</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;model_animation_done&quot;</span><span class=\"p\">)</span> <span class=\"kr\">then</span>\n    <span class=\"kr\">if</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">animation_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;jump&quot;</span><span class=\"p\">)</span> <span class=\"kr\">then</span>\n      <span class=\"c1\">-- open animation done, chain with &quot;run&quot;</span>\n      <span class=\"kd\">local</span> <span class=\"n\">properties</span> <span class=\"o\">=</span> <span class=\"p\">{</span> <span class=\"n\">blend_duration</span> <span class=\"o\">=</span> <span class=\"mf\">0.2</span> <span class=\"p\">}</span>\n      <span class=\"n\">model</span><span class=\"p\">.</span><span class=\"n\">play_anim</span><span class=\"p\">(</span><span class=\"n\">url</span><span class=\"p\">,</span> <span class=\"s2\">&quot;run&quot;</span><span class=\"p\">,</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">PLAYBACK_LOOP_FORWARD</span><span class=\"p\">,</span> <span class=\"n\">properties</span><span class=\"p\">,</span> <span class=\"n\">anim_done</span><span class=\"p\">)</span>\n    <span class=\"kr\">end</span>\n  <span class=\"kr\">end</span>\n<span class=\"kr\">end</span>\n\n<span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"kd\">local</span> <span class=\"n\">url</span> <span class=\"o\">=</span> <span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">url</span><span class=\"p\">(</span><span class=\"s2\">&quot;#model&quot;</span><span class=\"p\">)</span>\n    <span class=\"kd\">local</span> <span class=\"n\">play_properties</span> <span class=\"o\">=</span> <span class=\"p\">{</span> <span class=\"n\">blend_duration</span> <span class=\"o\">=</span> <span class=\"mf\">0.1</span> <span class=\"p\">}</span>\n    <span class=\"c1\">-- first blend during 0.1 sec into the jump, then during 0.2 s into the run animation</span>\n    <span class=\"n\">model</span><span class=\"p\">.</span><span class=\"n\">play_anim</span><span class=\"p\">(</span><span class=\"n\">url</span><span class=\"p\">,</span> <span class=\"s2\">&quot;jump&quot;</span><span class=\"p\">,</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">PLAYBACK_ONCE_FORWARD</span><span class=\"p\">,</span> <span class=\"n\">play_properties</span><span class=\"p\">,</span> <span class=\"n\">anim_done</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
             "language": "",
@@ -500,6 +669,14 @@
                     "doc": "normalized initial animation cursor",
                     "is_optional": true,
                     "name": "offset?",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "layer",
+                    "doc": "animation layer returned by <a href=\"/ref/model#model.animation_layer\">model.animation_layer</a>; omit to play on the base layer",
+                    "is_optional": true,
+                    "name": "layer?",
                     "type": "number",
                     "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                 },
@@ -733,6 +910,20 @@
                     "types_table_html": [
                         "<a href=\"../go-lua/#go.PLAYBACK\">go.PLAYBACK</a>"
                     ]
+                },
+                {
+                    "doc": "the layer name for layered playback; absent for base playback",
+                    "is_optional": "False",
+                    "name": "layer",
+                    "types": [
+                        "hash"
+                    ],
+                    "types_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../builtins-lua/#hash\">hash</a>"
+                    ]
                 }
             ],
             "replaces": "",
@@ -742,7 +933,7 @@
         },
         {
             "brief": "<span class=\"type\">number</span> model playback_rate",
-            "description": "The animation playback rate. A multiplier to the animation playback rate. The type of the property is number.",
+            "description": "The animation playback rate. A multiplier to the animation playback rate. The type of the property is number.\nPass <code>{ key = hash(\"layer_name\") }</code> in the <a href=\"/ref/go#go.get\">go.get</a>\noptions to address a layer on this model. Omit the key to address base playback.\nThe name remains usable while the model retains the layer, even after its handle is destroyed.\n<a href=\"/ref/go#go.set\">go.set</a> accepts the same selector. Changes affect only this model's layer playback.",
             "error": "",
             "examples": "How to set the playback_rate on component \"model\" to play at double the current speed:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"c1\">-- Get the current value on component &quot;model&quot;</span>\n  <span class=\"n\">playback_rate</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">&quot;#model&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;playback_rate&quot;</span><span class=\"p\">)</span>\n  <span class=\"c1\">-- Set the playback_rate to double the previous value.</span>\n  <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"s2\">&quot;#model&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;playback_rate&quot;</span><span class=\"p\">,</span> <span class=\"n\">playback_rate</span> <span class=\"o\">*</span> <span class=\"mi\">2</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>\n\nThe playback_rate is a non-negative number, a negative value will be clamped to 0.",
             "language": "",
