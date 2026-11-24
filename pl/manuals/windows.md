@@ -6,6 +6,8 @@ locale: pl
 title: Tworzenie aplikacji Defold na Windows
 toc:
 - Tworzenie aplikacji na Windows
+- anchor: graphics-backends
+  title: Backendy graficzne
 - Ustawienia projektu
 - Ikona aplikacji
 - Tworzenie lokalnego pliku .ico za pomocą ImageMagick
@@ -15,6 +17,10 @@ toc:
 # Tworzenie aplikacji na Windows
 
 Tworzenie aplikacji Defold na Windows jest prostym procesem i wymaga niewielu dodatkowych uwag.
+
+## Backendy graficzne {#graphics-backends}
+
+Buildy Windows domyślnie używają OpenGL. Ustaw **Graphics (Windows)** w [manifeście aplikacji](/pl/manuals/app-manifest/#graphics), aby wybrać OpenGL, Vulkan lub DirectX 12 (**DX12**). Możesz dołączyć kilka backendów, aby umożliwić użycie rozwiązania zapasowego, gdy preferowany backend jest niedostępny.
 
 ## Ustawienia projektu
 

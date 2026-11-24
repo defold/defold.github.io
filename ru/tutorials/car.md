@@ -30,7 +30,7 @@ title: Создаем простую машину в Defold
 
 Сначала создайте [новый проект](/ru/manuals/project-setup/) и откройте его в редакторе. Если дважды щелкнуть файл *main/main.collection*, он откроется в редакторе:
 
-![Editor overview](../manuals/images/editor/editor2_overview.png)
+![Editor overview](../manuals/images/editor/editor_overview.png)
 
 Редактор состоит из нескольких основных областей:
 

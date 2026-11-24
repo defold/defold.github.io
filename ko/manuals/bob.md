@@ -84,6 +84,9 @@ usage: bob [options] [commands]
     --debug-output-wgsl <arg>            Force build WGSL shaders
     --defoldsdk <arg>                    What version of the defold sdk
                                          (sha1) to use
+    --download-size-report <arg>         Filepath where to save the
+                                         estimated Google Play download
+                                         size as JSON (Android)
  -e,--email <arg>                        User email
  -ea,--exclude-archive                   Exclude resource archives from
                                          application bundle. Use this to
@@ -249,7 +252,7 @@ $
 
 ## 빌드 서버 {#build-server}
 
-Defold 1.14.0부터 Bob은 배포본의 릴리스 채널에 따라 기본 네이티브 익스텐션 빌드 서버를 선택합니다.
+Bob은 배포본의 릴리스 채널에 따라 기본 네이티브 익스텐션 빌드 서버를 선택합니다:
 
 | Bob 릴리스 채널 | 기본 빌드 서버 |
 |---|---|

@@ -30,7 +30,7 @@ Ao longo do tutorial, descrições detalhadas sobre conceitos e sobre como fazer
 
 Comece criando um [novo projeto](/pt/manuals/project-setup/) e abrindo-o no editor. Se você der um duplo clique no arquivo *main/main.collection*, o arquivo será aberto:
 
-![Editor overview](../manuals/images/editor/editor2_overview.png)
+![Editor overview](../manuals/images/editor/editor_overview.png)
 
 O editor consiste nas seguintes áreas principais:
 
@@ -291,7 +291,7 @@ Sempre que um objeto se move no mundo real, a força de arrasto atua contra ele,
 Na seção de constantes no topo do script, adicione a seguinte constante
 
 ```lua
-local drag = 1.1	        -- a constante de arrasto <1>
+local drag = 1.1	        --a constante de arrasto <1>
 ```
 
 Depois, na função `update`, logo acima desta linha, adicione as seguintes linhas e salve o arquivo.

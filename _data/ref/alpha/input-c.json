@@ -1,0 +1,491 @@
+{
+    "elements": [
+        {
+            "brief": "input context handle",
+            "description": "Borrowed engine-owned input context. Do not destroy it. Actions are empty\nbefore the first binding update.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "HInputContext",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "read the gamepad index",
+            "description": "read the gamepad index",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "InputActionGetGamepadIndex",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "iterator positioned by a successful InputActionIterateNext",
+                    "is_optional": "False",
+                    "name": "iterator",
+                    "types": [
+                        "const InputActionIterator*"
+                    ]
+                },
+                {
+                    "doc": "non-null output; unchanged for a non-gamepad action",
+                    "is_optional": "False",
+                    "name": "out_index",
+                    "types": [
+                        "uint32_t*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "true if the current action belongs to a gamepad",
+                    "name": "result",
+                    "types": [
+                        "bool"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "read the gamepad name hash",
+            "description": "Hash of the input mapping's device name, retained on disconnect.\nIdentical names have the same hash; use the gamepad index to distinguish devices.\nThe value can be retained; reverse lookup of the name is not guaranteed.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "InputActionGetGamepadNameHash",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "iterator positioned by a successful InputActionIterateNext",
+                    "is_optional": "False",
+                    "name": "iterator",
+                    "types": [
+                        "const InputActionIterator*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "dmHashString64 of the name, or zero for a non-gamepad action or unavailable name",
+                    "name": "hash",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "read the action identifier",
+            "description": "read the action identifier",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "InputActionGetId",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "iterator positioned by a successful InputActionIterateNext",
+                    "is_optional": "False",
+                    "name": "iterator",
+                    "types": [
+                        "const InputActionIterator*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "hashed binding name; zero for unnamed pointer or acceleration samples",
+                    "name": "id",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "read the device category",
+            "description": "read the device category",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "InputActionGetSource",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "iterator positioned by a successful InputActionIterateNext",
+                    "is_optional": "False",
+                    "name": "iterator",
+                    "types": [
+                        "const InputActionIterator*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "device category, or INPUT_ACTION_SOURCE_UNKNOWN",
+                    "name": "source",
+                    "types": [
+                        "InputActionSource"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "read the scalar binding value",
+            "description": "read the scalar binding value",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "InputActionGetValue",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "iterator positioned by a successful InputActionIterateNext",
+                    "is_optional": "False",
+                    "name": "iterator",
+                    "types": [
+                        "const InputActionIterator*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "resolved scalar value, including zero on release",
+                    "name": "value",
+                    "types": [
+                        "float"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "test a gamepad connection notification",
+            "description": "True only when this action reports a connection transition, not while the\ndevice remains connected. Requires a GAMEPAD_CONNECTED input binding.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "InputActionIsGamepadConnected",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "iterator positioned by a successful InputActionIterateNext",
+                    "is_optional": "False",
+                    "name": "iterator",
+                    "types": [
+                        "const InputActionIterator*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "true for a connection notification; false for other actions",
+                    "name": "connected",
+                    "types": [
+                        "bool"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "test a gamepad disconnection notification",
+            "description": "True only when this action reports a disconnection transition. Requires a\nGAMEPAD_DISCONNECTED input binding. The gamepad index may later be reused.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "InputActionIsGamepadDisconnected",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "iterator positioned by a successful InputActionIterateNext",
+                    "is_optional": "False",
+                    "name": "iterator",
+                    "types": [
+                        "const InputActionIterator*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "true for a disconnection notification; false for other actions",
+                    "name": "disconnected",
+                    "types": [
+                        "bool"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "test the press transition",
+            "description": "test the press transition",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "InputActionIsPressed",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "iterator positioned by a successful InputActionIterateNext",
+                    "is_optional": "False",
+                    "name": "iterator",
+                    "types": [
+                        "const InputActionIterator*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "true if the binding became active this input update",
+                    "name": "pressed",
+                    "types": [
+                        "bool"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "test the release transition",
+            "description": "test the release transition",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "InputActionIsReleased",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "iterator positioned by a successful InputActionIterateNext",
+                    "is_optional": "False",
+                    "name": "iterator",
+                    "types": [
+                        "const InputActionIterator*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "true if the binding became inactive this input update",
+                    "name": "released",
+                    "types": [
+                        "bool"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "test binding repeat",
+            "description": "test binding repeat",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "InputActionIsRepeated",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "iterator positioned by a successful InputActionIterateNext",
+                    "is_optional": "False",
+                    "name": "iterator",
+                    "types": [
+                        "const InputActionIterator*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "true if repeat was triggered this input update",
+                    "name": "repeated",
+                    "types": [
+                        "bool"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "advance to the next resolved action",
+            "description": "A false result invalidates the current action. Further advances remain false.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "InputActionIterateNext",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "iterator initialized by InputIterateActions",
+                    "is_optional": "False",
+                    "name": "iterator",
+                    "types": [
+                        "InputActionIterator*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "true when positioned on an action; false when exhausted or empty",
+                    "name": "result",
+                    "types": [
+                        "bool"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "input action iterator",
+            "description": "Small value-type cursor with reserved opaque state. Do not access its members;\ninitialize it with InputIterateActions and advance with InputActionIterateNext.\nIts ABI occupies two uintptr_t words and requires no allocation or destruction.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "InputActionIterator",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "STRUCT"
+        },
+        {
+            "brief": "resolved action source",
+            "description": "resolved action source",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [
+                {
+                    "doc": "Unrecognized device category.",
+                    "name": "INPUT_ACTION_SOURCE_UNKNOWN",
+                    "type": ""
+                },
+                {
+                    "doc": "Keyboard binding.",
+                    "name": "INPUT_ACTION_SOURCE_KEYBOARD",
+                    "type": ""
+                },
+                {
+                    "doc": "Text or marked-text binding.",
+                    "name": "INPUT_ACTION_SOURCE_TEXT",
+                    "type": ""
+                },
+                {
+                    "doc": "Mouse binding or pointer movement.",
+                    "name": "INPUT_ACTION_SOURCE_MOUSE",
+                    "type": ""
+                },
+                {
+                    "doc": "Touch binding.",
+                    "name": "INPUT_ACTION_SOURCE_TOUCH",
+                    "type": ""
+                },
+                {
+                    "doc": "Gamepad binding or connectivity notification.",
+                    "name": "INPUT_ACTION_SOURCE_GAMEPAD",
+                    "type": ""
+                },
+                {
+                    "doc": "Accelerometer sample.",
+                    "name": "INPUT_ACTION_SOURCE_ACCELEROMETER",
+                    "type": ""
+                }
+            ],
+            "name": "InputActionSource",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "ENUM"
+        },
+        {
+            "brief": "iterate resolved input actions",
+            "description": "Iterates the latest completed binding update, with text actions last.\nThe iterator starts before the first action. Multiple iterators advance\nindependently. The next binding update invalidates existing iterators and\ncurrent actions.",
+            "error": "",
+            "examples": "",
+            "language": "",
+            "members": [],
+            "name": "InputIterateActions",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "live borrowed input context",
+                    "is_optional": "False",
+                    "name": "context",
+                    "types": [
+                        "HInputContext"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "cursor positioned before the first action",
+                    "name": "iterator",
+                    "types": [
+                        "InputActionIterator"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        }
+    ],
+    "format_version": 2,
+    "info": {
+        "api_language": "C",
+        "brief": "Input action API",
+        "description": "Iterate the resolved actions from the most recent binding update. Action\nstorage is private; getters read the iterator's current action. Getters require\nthe last InputActionIterateNext call to have returned true.\n\nCall only on the engine thread. Iterators and actions are borrowed until\nthe next binding update starts or the context is destroyed. Reloading bindings\npreserves the completed batch.\nIteration is read-only, allocation-free and independent between listeners.",
+        "description_html": "<p>Iterate the resolved actions from the most recent binding update. Action\nstorage is private; getters read the iterator's current action. Getters require\nthe last InputActionIterateNext call to have returned true.</p>\n<p>Call only on the engine thread. Iterators and actions are borrowed until\nthe next binding update starts or the context is destroyed. Reloading bindings\npreserves the completed batch.\nIteration is read-only, allocation-free and independent between listeners.</p>",
+        "file": "input.h",
+        "include": "dmsdk/input/input.h",
+        "name": "Input",
+        "namespace": "Input",
+        "notes": [],
+        "path": "engine/input/src/dmsdk/input/input.h",
+        "type": "Defold C"
+    }
+}

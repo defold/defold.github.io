@@ -85,6 +85,9 @@ usage: bob [options] [commands]
     --debug-output-wgsl <arg>            Force build WGSL shaders
     --defoldsdk <arg>                    What version of the defold sdk
                                          (sha1) to use
+    --download-size-report <arg>         Filepath where to save the
+                                         estimated Google Play download
+                                         size as JSON (Android)
  -e,--email <arg>                        User email
  -ea,--exclude-archive                   Exclude resource archives from
                                          application bundle. Use this to
@@ -250,7 +253,7 @@ $
 
 ## Build-Server {#build-server}
 
-Seit Defold 1.14.0 wählt Bob den Standard-Build-Server für native Erweiterungen anhand des Veröffentlichungskanals seiner Distribution aus:
+Bob wählt den standardmäßigen Build-Server für native Erweiterungen anhand des Veröffentlichungskanals seiner Distribution aus:
 
 | Veröffentlichungskanal von Bob | Standard-Build-Server |
 |---|---|

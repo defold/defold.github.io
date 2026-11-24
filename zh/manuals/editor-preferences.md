@@ -5,23 +5,27 @@ layout: manual
 locale: zh
 title: 编辑器首选项
 toc:
-- 编辑器首选项
-- 通用
+- anchor: editor-preferences
+  title: 编辑器首选项
+- anchor: general
+  title: 通用
 - anchor: code
   title: 代码
-- 在Visual Studio Code中打开脚本文件
+- anchor: open-script-files-in-visual-studio-code
+  title: 在Visual Studio Code中打开脚本文件
 - anchor: extensions
   title: 扩展
 - anchor: tools
   title: 工具
-- 键映射
+- anchor: keymap
+  title: 键映射
 ---
 
-# 编辑器首选项
+# 编辑器首选项 {#editor-preferences}
 
 您可以从首选项窗口修改编辑器的设置。首选项窗口通过 <kbd>File -> Preferences</kbd> 菜单打开。
 
-## 通用
+## 通用 {#general}
 
 ![](/manuals/images/editor/preferences_general.png)
 
@@ -46,7 +50,7 @@ Lint Code on Build
 Engine Arguments
 : 当编辑器构建和运行时，将传递给dmengine可执行文件的参数。
 每行使用一个参数。例如：
-```
+ ```
 --config=bootstrap.main_collection=/my dir/1.collectionc
 --verbose
 --graphics-adapter=vulkan
@@ -79,7 +83,7 @@ Format on save
 : 保存时，对已修改且处于打开状态的代码文件运行语言服务器的格式化工具。默认禁用。语言服务器必须支持格式化；有关如何手动格式化整个文档或选区，请参阅[格式化代码](/zh/manuals/writing-code/#formatting-code)。
 
 
-### 在Visual Studio Code中打开脚本文件
+### 在Visual Studio Code中打开脚本文件 {#open-script-files-in-visual-studio-code}
 
 ![](/manuals/images/editor/preferences_vscode.png)
 
@@ -123,7 +127,7 @@ ADB path
 ios-deploy path
 : 安装在此系统上的[ios-deploy](https://github.com/ios-control/ios-deploy)命令行工具的路径（仅与macOS相关）。与ADB路径类似，Defold编辑器将使用此工具将打包的iOS应用程序安装并运行到连接的iPhone上。默认情况下，编辑器检查ios-deploy是否安装在已知位置，因此只有当您使用自定义安装的ios-deploy时才需要指定路径。
 
-## 键映射
+## 键映射 {#keymap}
 
 ![](/manuals/images/editor/preferences_keymap.png)
 

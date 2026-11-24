@@ -10,6 +10,10 @@ toc:
 - Разработка с использованием бесплатного аккаунта Apple developer
 - anchor: creating-an-ios-application-bundle
   title: Создание iOS application bundle
+- anchor: home-indicator-behavior
+  title: Поведение Home Indicator
+- anchor: reserved-areas-and-rotation
+  title: Зарезервированные области и поворот
 - Пользовательский Info.plist и обнаружение локальных целей
 - Установка и запуск бандла на подключенном iPhone
 - anchor: creating-a-storyboard
@@ -119,6 +123,23 @@ Device identifier (UDID)
 ![ipa iOS application bundle](/manuals/images/ios/ipa_file.png)
 
 Иконку приложения, launch screen storyboard и другие параметры вы задаете в файле настроек проекта *game.project* в [разделе iOS](/ru/manuals/project-settings/#ios).
+
+### Поведение Home Indicator {#home-indicator-behavior}
+
+В разделе *iOS* файла *game.project* можно выбрать *Home Indicator Mode*. Значение по умолчанию, *Deferred*, защищает все края экрана и требует двух свайпов для возврата на главный экран. Выберите *System*, чтобы использовать обычные системные жесты, включая возврат на главный экран одним свайпом.
+
+Выберите *Auto Hide*, чтобы использовать обычные системные жесты и дополнительно запросить автоматическое скрытие Home Indicator. Этот режим можно задать прямо в *game.project*:
+
+```ini
+[ios]
+home_indicator_mode = auto_hide
+```
+
+Пересоберите бандл и проверьте его на устройстве с Home Indicator. iOS сама решает, когда индикатор видим; выбор *Auto Hide* не гарантирует постоянного скрытия. В iOS 26 и новее система может скрывать его как в *System*, так и в *Auto Hide*. Все значения и поведение жестов описаны в разделе [Home Indicator Mode](/ru/manuals/project-settings/#home-indicator-mode).
+
+### Зарезервированные области и поворот {#reserved-areas-and-rotation}
+
+`window.get_reserved_areas()` сообщает о вырезах камеры и Dynamic Island на iOS 27.1 и новее, включая отступы взаимодействия UIKit. Переходы ориентации iOS также отправляют `window.WINDOW_EVENT_RESIZED`, включая повороты, при которых размеры окна и отступы безопасной области не меняются. Обновляйте размещение UI, зависящее от этих областей, в каждом callback изменения размера. Координаты, ограничения и пример обновления см. в разделе [Зарезервированные области экрана](/ru/manuals/porting-guidelines/#reserved-screen-areas).
 
 ### Пользовательский Info.plist и обнаружение локальных целей
 

@@ -5,10 +5,11 @@ layout: manual
 locale: gr
 title: Κίνηση στο Defold
 toc:
-- Κίνηση
+- anchor: animation
+  title: Κίνηση
 ---
 
-# Κίνηση
+# Κίνηση {#animation}
 
 Το Defold έχει ενσωματωμένη υποστήριξη για πολλούς τύπους κίνησης (animation), τους οποίους μπορείτε να χρησιμοποιήσετε ως πηγές γραφικών για στοιχεία (components):
 

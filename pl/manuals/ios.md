@@ -10,6 +10,10 @@ toc:
 - Tworzenie przy użyciu bezpłatnego konta Apple Developer
 - anchor: creating-an-ios-application-bundle
   title: Tworzenie pakietu aplikacji iOS
+- anchor: home-indicator-behavior
+  title: Zachowanie wskaźnika Home Indicator
+- anchor: reserved-areas-and-rotation
+  title: Zarezerwowane obszary i obrót
 - Własny Info.plist i wykrywanie celów w sieci lokalnej
 - Instalowanie i uruchamianie pakietu na podłączonym iPhonie
 - anchor: creating-a-storyboard
@@ -119,6 +123,23 @@ Naciśnij *Create Bundle*, a potem zostaniesz poproszony o wskazanie miejsca na 
 ![plik aplikacji ipa iOS](/manuals/images/ios/ipa_file.png)
 
 Ikonę aplikacji, storyboard ekranu startowego i inne ustawienia określasz w pliku ustawień projektu *game.project* w [sekcji iOS](/pl/manuals/project-settings/#ios).
+
+### Zachowanie wskaźnika Home Indicator {#home-indicator-behavior}
+
+Możesz wybrać *Home Indicator Mode* w sekcji *iOS* pliku *game.project*. Domyślne *Deferred* chroni wszystkie krawędzie ekranu i wymaga dwóch przesunięć, aby wrócić do ekranu początkowego. Wybierz *System*, aby używać zwykłych gestów systemowych, w tym pojedynczego przesunięcia do ekranu początkowego.
+
+Wybierz *Auto Hide*, aby używać zwykłych gestów systemowych i dodatkowo żądać automatycznego ukrywania wskaźnika Home Indicator. Ten tryb możesz ustawić bezpośrednio w *game.project*:
+
+```ini
+[ios]
+home_indicator_mode = auto_hide
+```
+
+Ponownie utwórz paczkę i przetestuj ją na urządzeniu z Home Indicator. To iOS decyduje, kiedy wskaźnik jest widoczny; wybór *Auto Hide* nie gwarantuje, że pozostanie ukryty. W iOS 26 i nowszych system może ukrywać go zarówno w trybie *System*, jak i *Auto Hide*. Wszystkie wartości i ich wpływ na gesty opisano w [Home Indicator Mode](/pl/manuals/project-settings/#home-indicator-mode).
+
+### Zarezerwowane obszary i obrót {#reserved-areas-and-rotation}
+
+`window.get_reserved_areas()` zgłasza wycięcia na kamerę i Dynamic Island w iOS 27.1 i nowszych, uwzględniając marginesy interakcji UIKit. Zmiany orientacji w iOS wysyłają również `window.WINDOW_EVENT_RESIZED`, w tym obroty, które nie zmieniają wymiarów okna ani wcięć bezpiecznego obszaru. Odświeżaj rozmieszczenie interfejsu oparte na tych obszarach przy każdym wywołaniu zwrotnym zmiany rozmiaru. Sekcja [Zarezerwowane obszary ekranu](/pl/manuals/porting-guidelines/#reserved-screen-areas) opisuje współrzędne, ograniczenia i przykład odświeżania.
 
 ### Własny Info.plist i wykrywanie celów w sieci lokalnej
 
@@ -254,16 +275,16 @@ Edytor zapisuje plik *.ipa*, który jest pakietem aplikacji iOS. Aby zainstalowa
 Możesz też użyć narzędzia wiersza poleceń `xcrun simctl`, aby pracować z symulatorami iOS dostępnymi przez Xcode:
 
 ```
-# pokaż listę dostępnych urządzeń
+# show a list of available devices
 xcrun simctl list
 
-# uruchom symulator iPhone X
+# boot an iPhone X simulator
 xcrun simctl boot "iPhone X"
 
-# zainstaluj your.app na uruchomionym symulatorze
+# install your.app to a booted simulator
 xcrun simctl install booted your.app
 
-# uruchom symulator
+# launch the simulator
 open /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app
 ```
 

@@ -122,7 +122,7 @@ $ mv <AppName>.dSYM/Contents/Resources/DWARF/dmengine <AppName>.dSYM/Contents/Re
 (lldb) add-dsym <PathTo.dSYM>
 ```
 
-	![dSYM の追加](/manuals/images/extensions/debugging/ios/add_dsym.png)
+![dSYM の追加](/manuals/images/extensions/debugging/ios/add_dsym.png)
 
 * `lldb` がシンボルを正常に読み込んだことを確認します。
 

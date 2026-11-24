@@ -5,14 +5,15 @@ layout: manual
 locale: tr
 title: Defold proje derleyicisi kılavuzu
 toc:
-- Derleyici Bob
+- anchor: bob-the-builder
+  title: Derleyici Bob
 - anchor: usage
   title: Kullanım
 - anchor: build-server
   title: Derleme sunucusu
 ---
 
-# Derleyici Bob
+# Derleyici Bob {#bob-the-builder}
 
 Bob, Defold projelerini normal düzenleyici iş akışının dışında derlemek (build) için kullanılan bir komut satırı aracıdır.
 
@@ -84,6 +85,9 @@ usage: bob [options] [commands]
     --debug-output-wgsl <arg>            Force build WGSL shaders
     --defoldsdk <arg>                    What version of the defold sdk
                                          (sha1) to use
+    --download-size-report <arg>         Filepath where to save the
+                                         estimated Google Play download
+                                         size as JSON (Android)
  -e,--email <arg>                        User email
  -ea,--exclude-archive                   Exclude resource archives from
                                          application bundle. Use this to
@@ -249,7 +253,7 @@ $
 
 ## Derleme sunucusu {#build-server}
 
-Defold 1.14.0'dan itibaren Bob, yerel kod eklentileri için varsayılan derleme sunucusunu dağıtımının sürüm kanalına göre seçer:
+Bob, yerel kod eklentileri için varsayılan derleme sunucusunu dağıtımının sürüm kanalına göre seçer:
 
 | Bob sürüm kanalı | Varsayılan derleme sunucusu |
 |---|---|

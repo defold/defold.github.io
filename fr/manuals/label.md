@@ -9,6 +9,8 @@ toc:
   title: Libellé
 - anchor: creating-a-label
   title: Création dun libellé
+- anchor: vector-fonts-and-color-emoji
+  title: Polices vectorielles et émojis en couleur
 - anchor: label-properties
   title: Propriétés du libellé
 - anchor: blend-modes
@@ -38,6 +40,31 @@ Pour créer un composant Label, faites un <kbd>clic droit</kbd> sur l'objet de j
 Définissez la propriété *Font* sur la police que vous souhaitez utiliser et veillez à définir la propriété *Material* sur un matériau correspondant au type de police :
 
 ![Police et matériau](/manuals/images/label/font_material.png)
+
+## Polices vectorielles et émojis en couleur {#vector-fonts-and-color-emoji}
+
+Pour utiliser une police Vector, suivez la [configuration des polices vectorielles](/fr/manuals/font/#vector-fonts), affectez la ressource `.font` à la propriété *Font* du Label et définissez son *Material* sur `/builtins/fonts/label-vector.material`. Utilisez *Font Size* pour contrôler la taille affichée.
+
+Pour les émojis en couleur, effectuez également la [configuration de la police de repli COLRv1 et de sa mise en bundle](/fr/manuals/font/#color-emoji). L'exemple ci-dessous suppose un Label d'identifiant `label` et un script sur le même objet de jeu. Laissez le champ *Text* du Label vide pour n'afficher le message qu'une fois ses glyphes prêts :
+
+```lua
+function init(self)
+    local text = "Hello 😀 🍎 🚀"
+    local font_resource = go.get("#label", "font")
+    -- Add the fallback once for this shared font resource.
+    font.add_font(font_resource, "/fonts/NotoColorEmoji-Regular.ttf")
+    font.prewarm_text(font_resource, text, function(self, request_id, result, err)
+        if result then
+            go.set("#label", "text", text)
+        else
+            print("Could not prepare label text:", err)
+        end
+    end)
+end
+```
+
+Les lettres ordinaires utilisent la police d'origine, et les émojis utilisent la police couleur ajoutée. Si d'autres Labels ou nœuds de texte GUI partagent cette ressource de police, initialisez la police de repli à un seul endroit et réutilisez-la.
+
 
 ## Propriétés du libellé {#label-properties}
 
@@ -81,7 +108,7 @@ Notez que le rendu de l'ombre est désactivé dans le matériau par défaut pour
 : La ressource de police à utiliser pour ce libellé.
 
 *Material*
-: Le matériau à utiliser pour le rendu de ce libellé. Veillez à sélectionner un matériau créé pour le type de police que vous utilisez (bitmap, à champ de distance ou BMFont).
+: Le matériau à utiliser pour le rendu de ce libellé. Sélectionnez un matériau correspondant au mode ou à la source de la police (Bitmap, SDF, Vector ou BMFont). Consultez [Matériaux des polices](/fr/manuals/font/#font-materials) pour les matériaux Label intégrés correspondants.
 
 ### Modes de fusion {#blend-modes}
 {% include shared/fr/blend-modes.md %}
@@ -106,7 +133,7 @@ La propriété *Pivot* vous permet de modifier le mode d'alignement du texte.
 Vous pouvez manipuler les libellés à l'exécution en récupérant et en définissant leur texte ainsi que leurs diverses autres propriétés.
 
 `text`
-: Le contenu textuel du label (`string`). Accessible avec `go.get()` et `go.set()` depuis Defold 1.13.2.
+: Le contenu textuel du label (`string`). Accessible avec `go.get()` et `go.set()`.
 
 `color`
 : La couleur du libellé (`vector4`)
@@ -134,7 +161,7 @@ end
 ```
 
 <div class='sidenote' markdown='1'>
-Depuis Defold 1.13.2, `label.set_text()` et `label.get_text()` sont obsolètes au profit de la propriété `text`. Les anciennes fonctions restent disponibles pour assurer la compatibilité. L'ancienne fonction d'écriture met un message en file d'attente, tandis que `go.set()` met le texte à jour immédiatement.
+`label.set_text()` et `label.get_text()` sont obsolètes au profit de la propriété `text`. Les anciennes fonctions restent disponibles pour assurer la compatibilité. L'ancienne fonction d'écriture met un message en file d'attente, tandis que `go.set()` met le texte à jour immédiatement.
 </div>
 
 ```lua

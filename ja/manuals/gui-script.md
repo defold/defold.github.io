@@ -9,6 +9,8 @@ toc:
   title: GUI スクリプト
 - anchor: adding-a-script-to-a-gui
   title: GUI へのスクリプトの追加
+- anchor: input
+  title: 入力
 - anchor: the-gui-namespace
   title: 「gui」名前空間
 - anchor: message-passing
@@ -68,6 +70,12 @@ GUI コンポーネント（GUI component）にスクリプトを関連付ける
 ![スクリプト](/manuals/images/gui-script/set_script.png)
 
 GUI コンポーネントがゲーム内のいずれかのゲームオブジェクトに追加されていれば、これでスクリプトが実行されます。
+
+## 入力 {#input}
+
+GUI スクリプトで入力を受け取るには、`init()` から `msg.post(".", "acquire_input_focus")` を送信し、`on_input(self, action_id, action)` でアクションを処理します。
+
+GUI スクリプトはゲームオブジェクトのスクリプトと同じ `action.source` ハッシュを使うため、最初の押下時から物理マウスのクリックとタップを区別できます。[入力デバイスの種類](/ja/manuals/input/#input-device-source)と[マウスとタッチの例](/ja/manuals/input-mouse-and-touch/#distinguishing-mouse-clicks-from-touch)を参照してください。ポインターの移動と加速度センサーのサンプルは、どちらも `action_id == nil` を使うため、入力元で区別します。
 
 ## 「gui」名前空間 {#the-gui-namespace}
 

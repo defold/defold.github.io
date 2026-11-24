@@ -16,7 +16,7 @@ title: 视差代码示例
 这些层以不同的速度移动，以产生视差效果。这是在下面的*background1.script*和*background2.script*的`update()`中完成的。
 
 ```lua
--- file: background1.script
+-- 文件：background1.script
 
 function init(self)
     msg.post("@render:", "clear_color", { color = vmath.vector4(0.52, 0.80, 1, 0) } )
@@ -34,7 +34,7 @@ end
 ```
 
 ```lua
--- file: background2.script
+-- 文件：background2.script
 
 -- 背景是游戏对象中的瓦片地图
 -- 我们移动游戏对象以产生视差效果
@@ -52,7 +52,7 @@ end
 
 
 ```lua
--- file: spaceship.script
+-- 文件：spaceship.script
 
 function init(self)
     -- 记住初始y位置，这样我们

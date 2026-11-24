@@ -5,21 +5,26 @@ layout: manual
 locale: tr
 title: Defold kare dizisi animasyonları kılavuzu
 toc:
-- Kare dizisi animasyonu
-- Kare dizisi animasyonlarını oynatma
-- Sprite örneği
-- GUI kutu düğümü örneği
-- Tamamlanma geri çağırımları
+- anchor: flip-book-animation
+  title: Kare dizisi animasyonu
+- anchor: playing-flip-book-animations
+  title: Kare dizisi animasyonlarını oynatma
+- anchor: sprite-example
+  title: Sprite örneği
+- anchor: gui-box-node-example
+  title: GUI kutu düğümü örneği
+- anchor: completion-callbacks
+  title: Tamamlanma geri çağırımları
 ---
 
-# Kare dizisi animasyonu
+# Kare dizisi animasyonu {#flip-book-animation}
 
-Kare dizisi animasyonu (flipbook animation), art arda gösterilen bir dizi durağan görüntüden oluşur. Bu teknik, geleneksel selüloit animasyonuna çok benzer (bkz. http://en.wikipedia.org/wiki/Traditional_animation). Her kare ayrı ayrı değiştirilebildiği için bu teknik sınırsız olanak sunar. Ancak her kare ayrı bir görüntüde saklandığından bellekte kaplanan alan yüksek olabilir. Animasyonun akıcılığı da saniyede gösterilen görüntü sayısına bağlıdır, ancak görüntü sayısını artırmak genellikle gereken iş miktarını da artırır. Defold kare dizisi animasyonları, bir [atlasa](/tr/manuals/atlas) eklenen ayrı görüntüler olarak ya da tüm karelerin yatay bir sıra halinde yerleştirildiği bir [karo kaynağı](/tr/manuals/tilesource) (tile source) olarak saklanır.
+Kare dizisi animasyonu (flipbook animation), art arda gösterilen bir dizi durağan görüntüden oluşur. Bu teknik, geleneksel selüloit animasyonuna çok benzer (bkz. http://en.wikipedia.org/wiki/Traditional_animation). Her kare ayrı ayrı değiştirilebildiği için bu teknik sınırsız olanak sunar. Ancak çok sayıda farklı görüntüyü saklamak çok fazla doku belleği gerektirebilir. Animasyonun akıcılığı da saniyede gösterilen görüntü sayısına bağlıdır, ancak görüntü sayısını artırmak genellikle gereken iş miktarını da artırır. Defold kare dizisi animasyonları, bir [atlasa](/tr/manuals/atlas) eklenen ayrı görüntüler olarak ya da bir [karo kaynağındaki](/tr/manuals/tilesource) (tile source) karolar olarak saklanır. Karo kaynağı animasyonları, görüntü ızgarasından tekrarlar dahil herhangi bir sırada karo seçmek için bir *Frames* listesi kullanır.
 
   ![Animasyon sayfası](/manuals/images/animation/animsheet.png)
   ![Koşma döngüsü](/manuals/images/animation/runloop.gif)
 
-## Kare dizisi animasyonlarını oynatma
+## Kare dizisi animasyonlarını oynatma {#playing-flip-book-animations}
 
 Sprite bileşenleri ve GUI kutu düğümleri (GUI box nodes) kare dizisi animasyonlarını oynatabilir ve çalışma sırasında bu animasyonlar üzerinde geniş bir denetiminiz vardır.
 
@@ -33,7 +38,7 @@ GUI kutu düğümleri
 `Once Ping Pong` oynatma modu, animasyonu son kareye kadar oynatır, ardından sırayı tersine çevirerek ilk kareye değil, animasyonun **ikinci** karesine kadar geri oynatır. Bu davranış, animasyonları birbirine bağlamayı kolaylaştırır.
 </div>
 
-### Sprite örneği
+### Sprite örneği {#sprite-example}
 
 Oyununuzda, oyuncunun belirli bir düğmeye basarak kaçınmasını sağlayan bir "dodge" (kaçınma) özelliği olduğunu varsayalım. Bu özelliği görsel geri bildirimle desteklemek için dört animasyon oluşturdunuz:
 
@@ -77,7 +82,7 @@ function on_input(self, action_id, action)
 end
 ```
 
-### GUI kutu düğümü örneği
+### GUI kutu düğümü örneği {#gui-box-node-example}
 
 Bir düğüm için animasyon veya görüntü seçtiğinizde, aslında görüntü kaynağını (atlas veya karo kaynağı) ve varsayılan animasyonu tek seferde atarsınız. Görüntü kaynağı düğümde statik olarak belirlenir, ancak oynatılacak geçerli animasyon çalışma sırasında değiştirilebilir. Durağan görüntüler tek karelik animasyonlar olarak ele alındığından, çalışma sırasında bir görüntüyü değiştirmek, düğüm için farklı bir kare dizisi animasyonu oynatmakla eşdeğerdir:
 
@@ -91,7 +96,7 @@ end
 ```
 
 
-## Tamamlanma geri çağırımları
+## Tamamlanma geri çağırımları {#completion-callbacks}
 
 `sprite.play_flipbook()` ve `gui.play_flipbook()` işlevleri, son bağımsız değişken olarak isteğe bağlı bir Lua geri çağırım işlevini (callback function) destekler. Bu işlev, animasyon sonuna kadar oynatıldığında çağrılır. Döngüde oynatılan animasyonlar için bu işlev hiçbir zaman çağrılmaz. Geri çağırım, animasyon tamamlandığında olayları tetiklemek veya birden çok animasyonu birbirine bağlamak için kullanılabilir. Örnekler:
 

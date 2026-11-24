@@ -11,7 +11,8 @@ toc:
 - 简写形式
 - 接收消息
 - 游戏世界之间的消息传递
-- 消息链
+- anchor: message-chains
+  title: 消息链
 ---
 
 # 消息传递
@@ -211,7 +212,7 @@ msg.post("level:/player#controller", "wake_up")
 ```
 关于代理如何工作的更深入描述可以在[集合代理](/zh/manuals/collection-proxy)文档中找到。
 
-## 消息链
+## 消息链 {#message-chains}
 
 当已发布的消息最终被分发时，接收者的 `on_message()` 会被调用。响应代码发布新消息是很常见的，这些新消息会被添加到消息队列中。
 

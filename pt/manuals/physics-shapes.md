@@ -6,10 +6,8 @@ locale: pt
 title: Formas de colisão
 toc:
 - Formas de colisão
-- Formas primitivas
-- Forma box
-- Forma sphere
-- Forma capsule
+- anchor: collision-shapes-list
+  title: Formas de colisão
 - Formas complexas
 - anchor: hull-and-mesh-shapes-in-3d
   title: Formas Hull e Mesh em 3D
@@ -17,7 +15,8 @@ toc:
 - Forma de casco convexo
 - Formato do arquivo
 - Ferramentas externas
-- Escalando formas de colisão
+- anchor: scaling-collision-shapes
+  title: Escalando formas de colisão
 - Redimensionando formas de colisão
 - Rotacionando formas de colisão
 - Rotacionando formas de colisão em física 3D
@@ -29,29 +28,51 @@ toc:
 
 Um objeto de colisão pode conter várias formas incorporadas. Na física 3D, elas podem incluir cascos convexos e malhas de triângulos de arquivos glTF ou GLB. Você também pode usar um tilemap ou um recurso de forma convexa pela propriedade *Collision Shape* do objeto de colisão.
 
-### Formas primitivas
-As formas primitivas são *box*, *sphere* e *capsule*. Você adiciona uma forma primitiva clicando com o botão direito no objeto de colisão e selecionando <kbd>Add Shape</kbd>:
+As formas de colisão disponíveis são diferentes para física 2D e 3D. Configure o tipo de física em `Physics` no arquivo `game.project` usando `Type` (`2D`/`3D`):
 
-![Add a primitive shape](/manuals/images/physics/add_shape.png)
+![Configurações de física](/manuals/images/physics/physics_settings.png)
 
-## Forma box
-Uma box tem posição, rotação e dimensões (largura, altura e profundidade):
+### Formas de colisão {#collision-shapes-list}
 
-![Box shape](/manuals/images/physics/box.png)
+Para adicionar uma forma, <kbd>clique com o botão direito</kbd> no objeto de colisão e selecione <kbd>Adicionar Forma</kbd> (Add Shape).
 
-## Forma sphere
-Uma sphere tem posição, rotação e diâmetro:
+![Como adicionar uma forma primitiva na física 2D](/manuals/images/physics/collision_shapes_2d.png)
 
-![Sphere shape](/manuals/images/physics/sphere.png)
+Formas para física 2D:
 
-## Forma capsule
-Uma capsule tem posição, rotação, diâmetro e altura:
+- **Circle** (posição, rotação, diâmetro)
 
-![Sphere shape](/manuals/images/physics/capsule.png)
+![Forma circular](/manuals/images/physics/circle.png)
 
-<div class='important' markdown='1'>
-Formas capsule são suportadas apenas ao usar física 3D (configurada na seção Physics do arquivo *game.project*).
-</div>
+- **Rectangle** (posição, rotação, 2 dimensões, a profundidade é ignorada)
+
+![Forma retangular](/manuals/images/physics/rectangle.png)
+
+Na física 3D, você adiciona a forma da mesma maneira.
+
+![Como adicionar uma forma primitiva na física 3D](/manuals/images/physics/collision_shapes_3d.png)
+
+Formas para física 3D:
+
+- **Box** (posição, rotação, 3 dimensões)
+
+![Forma de caixa](/manuals/images/physics/box.png)
+
+- **Capsule** (posição, rotação, diâmetro, altura)
+
+![Forma de cápsula](/manuals/images/physics/capsule.png)
+
+- **Hull** (posição, rotação, cena, malha)
+
+![Forma de casco convexo](/manuals/images/physics/hull.png)
+
+- **Mesh** (posição, rotação, cena, malha)
+
+![Forma de malha](/manuals/images/physics/mesh.png)
+
+- **Sphere** (posição, rotação, diâmetro)
+
+![Forma esférica](/manuals/images/physics/sphere.png)
 
 ### Formas complexas
 Formas complexas podem usar a geometria de tilemaps ou dados de cascos convexos. Desde o Defold 1.13.2, objetos de colisão 3D também podem criar cascos convexos e formas de malhas de triângulos a partir de malhas em cenas glTF ou GLB.
@@ -134,9 +155,7 @@ Há várias ferramentas externas diferentes que podem ser usadas para criar form
 * [Physics Body Editor](https://selimanac.github.io/physics-body-editor/) pode ser usado para criar formas de casco convexo.
 
 
-<a id="scaling-collision-shapes"></a>
-
-# Escalando formas de colisão
+# Escalando formas de colisão {#scaling-collision-shapes}
 O objeto de colisão e suas formas herdam a escala do objeto de jogo. Para desabilitar esse comportamento, desmarque a caixa de seleção [Allow Dynamic Transforms](/pt/manuals/project-settings/#allow-dynamic-transforms) na seção Physics de *game.project*. Observe que apenas escala uniforme é suportada e que o menor valor de escala será usado se a escala não for uniforme.
 
 # Redimensionando formas de colisão

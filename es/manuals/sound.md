@@ -5,19 +5,31 @@ layout: manual
 locale: es
 title: Sonido en Defold
 toc:
-- Sonido
-- Crear un componente Sound
-- Reproducir el sonido
-- Detener el sonido
-- Ganancia
-- Grupos de sonido
-- Compuerta de sonidos
-- Manipulación en tiempo de ejecución
-- Configuración del proyecto
-- Streaming de sonido
+- anchor: sound
+  title: Sonido
+- anchor: creating-a-sound-component
+  title: Crear un componente Sound
+- anchor: playing-the-sound
+  title: Reproducir el sonido
+- anchor: controlling-individual-voices
+  title: Controlar voces individuales
+- anchor: stopping-the-sound
+  title: Detener el sonido
+- anchor: gain
+  title: Ganancia
+- anchor: sound-groups
+  title: Grupos de sonido
+- anchor: gating-sounds
+  title: Compuerta de sonidos
+- anchor: runtime-manipulation
+  title: Manipulación en tiempo de ejecución
+- anchor: project-configuration
+  title: Configuración del proyecto
+- anchor: sound-streaming
+  title: Streaming de sonido
 ---
 
-# Sonido
+# Sonido {#sound}
 
 La implementación de sonido de Defold es simple pero potente. Solo hay dos conceptos que debes conocer:
 
@@ -27,7 +39,7 @@ Componentes de sonido
 Grupos de sonido
 : Cada componente Sound puede designarse para pertenecer a un _grupo_. Los grupos ofrecen una forma sencilla de gestionar sonidos relacionados entre sí de manera intuitiva. Por ejemplo, se puede configurar un grupo `sound_fx` y cualquier sonido que pertenezca a ese grupo se puede atenuar con una simple llamada a una función.
 
-## Crear un componente Sound
+## Crear un componente Sound {#creating-a-sound-component}
 
 Los componentes Sound solo se pueden instanciar en el lugar dentro de un objeto de juego. Crea un nuevo objeto de juego, haz click derecho sobre él, selecciona <kbd>Add Component ▸ Sound</kbd> y presiona *OK*.
 
@@ -59,20 +71,50 @@ El componente creado tiene un conjunto de propiedades que se deben definir:
 : Puedes definir el valor de velocidad del sonido directamente en el componente. Un valor de 1.0 es la velocidad normal, 0.5 es media velocidad y 2.0 es el doble de velocidad.
 
 
-## Reproducir el sonido
+## Reproducir el sonido {#playing-the-sound}
 
 Cuando tienes un componente Sound configurado correctamente, puedes hacer que reproduzca su sonido llamando a [`sound.play()`](/ref/sound/#sound.play:url-[play_properties]-[complete_function]):
 
 ```lua
-sound.play("go#sound", {delay = 1, gain = 0.5, pan = -1.0, speed = 1.25})
+local play_id = sound.play("go#sound", {delay = 1, gain = 0.5, pan = -1.0, speed = 1.25})
 ```
+
+Cada reproducción es una *voz* independiente. `sound.play()` devuelve su identificador numérico de reproducción (`play_id`); guarda este ID para [controlar esa voz individual](#controlling-individual-voices).
 
 <div class='sidenote' markdown='1'>
 Un sonido seguirá reproduciéndose incluso si se elimina el objeto de juego al que pertenecía el componente Sound. Puedes llamar a [`sound.stop()`](/ref/sound/#sound.stop:url) para detener el sonido (ver más abajo).
 </div>
 Cada mensaje enviado a un componente hará que reproduzca otra instancia del sonido, hasta que el buffer de sonido disponible esté lleno y el motor imprima errores en la consola. Se recomienda implementar algún tipo de mecanismo de compuerta y agrupación de sonidos.
 
-## Detener el sonido
+### Controlar voces individuales {#controlling-individual-voices}
+
+[`sound.set_gain()`](/ref/sound/#sound.set_gain) y [`sound.set_pan()`](/ref/sound/#sound.set_pan) aceptan un tercer argumento opcional con un `play_id`. Usa el ID devuelto por `sound.play()` y la URL del mismo componente Sound:
+
+```lua
+function init(self)
+    -- Guarda el ID de una voz que comenzará en un segundo.
+    self.voice_id = sound.play("go#sound", { delay = 1 })
+    -- Inicia otra voz en el mismo componente.
+    sound.play("go#sound")
+
+    -- Cambia únicamente la voz retrasada.
+    sound.set_gain("go#sound", 0.4, { play_id = self.voice_id })
+    sound.set_pan("go#sound", -0.5, { play_id = self.voice_id })
+end
+```
+
+Estas llamadas dirigidas no modifican las demás voces ni los valores predeterminados de ganancia y panorámica del componente. Funcionan con voces retrasadas y pausadas, por lo que los nuevos valores se aplican al iniciar o reanudar la voz. Un ID desconocido o cuya reproducción ya haya terminado no tiene efecto.
+
+Omite `play_id` para actualizar todas las voces y los valores predeterminados del componente que usarán las reproducciones futuras:
+
+```lua
+sound.set_gain("go#sound", 0.8)
+sound.set_pan("go#sound", 0.0)
+```
+
+Pasar `{ play_id = nil }` también omite el ID. Si borras un ID guardado cuando termina la reproducción, comprueba que no sea `nil` antes de usarlo en una actualización dirigida.
+
+## Detener el sonido {#stopping-the-sound}
 
 Si quieres detener la reproducción de un sonido, puedes llamar a [`sound.stop()`](/ref/sound/#sound.stop:url):
 
@@ -80,20 +122,20 @@ Si quieres detener la reproducción de un sonido, puedes llamar a [`sound.stop()
 sound.stop("go#sound")
 ```
 
-## Ganancia
+## Ganancia {#gain}
 
 ![Ganancia](/manuals/images/sound/sound_gain.png)
 
 El sistema de sonido tiene 4 niveles de ganancia:
 
 - La ganancia definida en el componente Sound.
-- La ganancia definida al iniciar el sonido mediante una llamada a `sound.play()` o al cambiar la ganancia de la voz mediante una llamada a `sound.set_gain()`.
+- La ganancia establecida al iniciar el sonido mediante una llamada a `sound.play()` o al cambiar la ganancia de [una o todas las voces](#controlling-individual-voices) mediante una llamada a `sound.set_gain()`.
 - La ganancia definida en el grupo mediante una llamada a la función [`sound.set_group_gain()`](/ref/sound#sound.set_group_gain).
 - La ganancia definida en el grupo `master`. Esto se puede modificar con `sound.set_group_gain(hash("master"), gain)`.
 
 Cuando **Use Linear Gain** está activado en las [opciones de proyecto de Sound](/es/manuals/project-settings/#sound) (el valor predeterminado), la ganancia de salida es el resultado de multiplicar estas cuatro ganancias. Una ganancia de `1.0` es la ganancia unitaria (0 dB). Cuando la ganancia lineal está desactivada, Defold aplica una curva no lineal durante la mezcla, por lo que la multiplicación directa de los cuatro valores y la conversión a decibelios que se muestra a continuación no describen el nivel de salida resultante.
 
-## Grupos de sonido
+## Grupos de sonido {#sound-groups}
 
 Cualquier componente Sound con un nombre de grupo de sonido especificado se colocará en un grupo de sonido con ese nombre. Si no especificas un grupo, el sonido se asignará al grupo `master`. También puedes definir explícitamente el grupo de un componente Sound como `master`, lo que tiene el mismo efecto.
 
@@ -148,7 +190,7 @@ sound.set_group_gain("master", 1.995)
 
 Defold 1.10.2 corrigió una atenuación de aproximadamente 3 dB que llevaba mucho tiempo presente en el mezclador de sonido. Si la mezcla de un proyecto antiguo compensaba esa atenuación y suena más fuerte después de actualizar, reajusta la opción global **Sound ▸ Gain** o las ganancias de los grupos afectados.
 
-## Compuerta de sonidos
+## Compuerta de sonidos {#gating-sounds}
 
 Si tu juego reproduce el mismo sonido en un evento y ese evento se dispara con frecuencia, corres el riesgo de reproducir el mismo sonido dos veces o más casi al mismo tiempo. Si eso ocurre, los sonidos quedarán _desfasados_, lo que puede provocar artefactos muy notorios.
 
@@ -203,7 +245,7 @@ No funciona hacer que la compuerta escuche mensajes `play_sound`, ya que ese nom
 </div>
 
 
-## Manipulación en tiempo de ejecución
+## Manipulación en tiempo de ejecución {#runtime-manipulation}
 Puedes manipular sonidos en tiempo de ejecución mediante varias propiedades diferentes (consulta la [documentación de la API para el uso](/ref/sound/)). Las siguientes propiedades se pueden manipular con `go.get()` y `go.set()`:
 
 `gain`
@@ -225,10 +267,10 @@ resource.set_sound(path, boom)
 ```
 
 
-## Configuración del proyecto
+## Configuración del proyecto {#project-configuration}
 
 El archivo *game.project* tiene algunas [opciones del proyecto](/es/manuals/project-settings#sound) relacionadas con los componentes Sound.
 
-## Streaming de sonido
+## Streaming de sonido {#sound-streaming}
 
 También es posible admitir [sonidos en streaming](/es/manuals/sound-streaming)

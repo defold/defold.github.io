@@ -9,15 +9,18 @@ toc:
 - Lua 코드 작성
 - Lua로 트랜스파일되는 다른 언어 사용하기
 - 네이티브 코드 작성
-- 내장 코드 에디터 사용하기
-- 코드 자동 완성
+- anchor: using-the-built-in-code-editor
+  title: 내장 코드 에디터 사용하기
+- anchor: code-completion
+  title: 코드 자동 완성
 - anchor: formatting-code
   title: 코드 포멧팅
 - anchor: jump-to-symbol
   title: 심볼로 이동
 - anchor: linting-configuration
   title: 린팅 설정
-- 외부 코드 에디터 사용하기
+- anchor: using-an-external-code-editor
+  title: 외부 코드 에디터 사용하기
 - Visual Studio Code - Defold Kit
 - 문서 소프트웨어
 ---
@@ -38,24 +41,22 @@ Defold는 Lua 코드를 생성하는 트랜스파일러 사용을 지원합니�
 
 Defold에서는 엔진 자체에서 제공하지 않는 플랫폼별 기능에 액세스하기 위해 네이티브 코드로 게임엔진을 확장할 수 있습니다. Lua의 성능이 충분하지 않은 경우(리소스 집약적인 계산, 이미지 처리 등)에도 네이티브 코드를 사용할 수 있습니다. 자세한 내용은 [네이티브 익스텐션 매뉴얼](/ko/manuals/extensions/)을 참고하세요.
 
-## 내장 코드 에디터 사용하기
+## 내장 코드 에디터 사용하기 {#using-the-built-in-code-editor}
 
 Defold에는 Lua 파일(.lua), Defold 스크립트 파일(.script, .gui_script 및 .render_script)은 물론 에디터가 기본적으로 처리하지 않는 파일 확장자를 가진 다른 파일도 열고 편집할 수 있는 내장 코드 에디터가 있습니다. 또한 에디터는 Lua 및 스크립트 파일에 구문 강조를 제공합니다.
 
-![](/images/editor/code-editor.png)
+![](/manuals/images/editor/code-editor.png)
 
 
-<a id="code-completion"></a>
-
-### 코드 자동 완성
+### 코드 자동 완성 {#code-completion}
 
 내장 코드 에디터는 코드를 작성하는 동안 함수의 코드 자동 완성을 표시합니다.
 
-![](/images/editor/codecompletion.png)
+![](/manuals/images/editor/codecompletion.png)
 
 <kbd>CTRL</kbd> + <kbd>Space</kbd>를 누르면 함수, 인자, 반환값에 대한 추가 정보가 표시됩니다.
 
-![](/images/editor/apireference.png)
+![](/manuals/images/editor/apireference.png)
 
 기본으로 제공되는 Lua 언어 서버에는 Defold API의 타입 어노테이션이 포함되어 있습니다. 자동 완성, 마우스를 올렸을 때 표시되는 정보, 진단 기능은 해쉬, URL, 벡터, 쿼터니언 같은 Defold 타입뿐 아니라 함수 인자와 반환값도 이해합니다. 에디터는 게임 스크립트와 `.editor_script` 파일에서 사용하는 `editor.*` API용 어노테이션을 제공합니다. Defold 코드 에디터를 사용할 때 내장 API를 위한 별도의 어노테이션 라이브러리는 필요하지 않습니다.
 
@@ -73,7 +74,7 @@ Defold에는 Lua 파일(.lua), Defold 스크립트 파일(.script, .gui_script �
 
 입력을 시작해 심볼을 퍼지 검색하고, 화살표 키를 사용해 결과 사이를 이동하면서 에디터에서 해당 위치를 미리 본 다음, <kbd>Enter</kbd>를 눌러 선택한 심볼로 이동합니다. <kbd>Esc</kbd>를 누르면 다이얼로그가 닫히고 이전 커서 및 스크롤 위치로 돌아갑니다.
 
-![](/images/editor/jump-to-symbol.png)
+![](/manuals/images/editor/jump-to-symbol.png)
 
 ### 린팅 설정 {#linting-configuration}
 
@@ -89,7 +90,7 @@ ignore = {
 },
 ```
 
-## 외부 코드 에디터 사용하기
+## 외부 코드 에디터 사용하기 {#using-an-external-code-editor}
 
 Defold의 코드 에디터는 코드 작성에 필요한 기본 기능을 제공하지만, 더 고급 사용 사례나 선호하는 코드 에디터가 있는 숙련된 사용자를 위해 Defold가 외부 에디터로 파일을 열도록 설정할 수 있습니다. [Preferences 창의 Code 탭](/ko/manuals/editor-preferences/#code)에서 코드를 편집할 때 사용할 외부 에디터를 정의할 수 있습니다.
 

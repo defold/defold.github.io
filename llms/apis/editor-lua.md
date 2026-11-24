@@ -802,6 +802,32 @@ Project resource attributes
 - `is_file` (boolean) - whether the resource represents a file with some content
 - `is_directory` (boolean) - whether the resource represents a directory
 
+### editor.resource_children
+*Type:* FUNCTION
+List resource paths directly inside a folder or file. For example, a glTF file can contain meshes, materials, and images. Call this function on each returned path to explore all contents.
+Returns an empty list if there are no children. Throws an error if the path does not exist.
+
+**Parameters**
+
+- `resource_path` (string) - Resource path (starting with <code>/</code>)
+
+**Returns**
+
+- `children` (string[]) - child resource paths, starting with <code>/</code>
+
+**Examples**
+
+```
+local function walk(path)
+    print(path)
+    for _, child in ipairs(editor.resource_children(path)) do
+        walk(child)
+    end
+end
+walk("/assets")
+
+```
+
 ### editor.save
 *Type:* FUNCTION
 Persist any unsaved changes to disk

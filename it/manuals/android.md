@@ -13,8 +13,12 @@ toc:
   title: Creazione di un keystore
 - anchor: creating-an-android-application-bundle
   title: Creazione di un bundle di unapplicazione Android
+- anchor: estimating-the-google-play-download-size
+  title: Stimare le dimensioni del download da Google Play
 - anchor: installing-an-android-application-bundle
   title: Installazione di un bundle di unapplicazione Android
+- anchor: display-cutouts
+  title: Ritagli dello schermo
 - anchor: shrinking-java-code-with-r8
   title: Ridurre il codice Java e le risorse Android con R8
 - anchor: enabling-r8
@@ -89,6 +93,35 @@ Premi <kbd>Create Bundle</kbd> dopo aver configurato le impostazioni del bundle 
 
 ![File del pacchetto dell'applicazione Android](/manuals/images/android/apk_file.png)
 
+### Stimare le dimensioni del download da Google Play {#estimating-the-google-play-download-size}
+
+Google Play non distribuisce il file *`.aab`* ai giocatori. Genera APK ottimizzati per ogni configurazione del dispositivo, quindi il download ricevuto dal giocatore è più piccolo del file *`.aab`* o dell'APK universale *`.apk`*. Seleziona la casella di controllo *Estimate download size* nella finestra di dialogo Bundle per ottenere una stima delle dimensioni del download quando viene creato il bundle. La stima funziona per entrambi i formati di bundle, APK e AAB.
+
+![Stima delle dimensioni del download](/manuals/images/android/sign_bundle.png)
+
+La stima viene stampata nella console:
+
+```
+Estimated Play Store download size: 18.2 MB - 25.0 MB (arm64-v8a: 25.0 MB, armeabi-v7a: 18.2 MB - 18.9 MB)
+```
+
+Viene anche salvata come `download_size.json` nella cartella di output del bundle. Il file contiene le dimensioni minime e massime del download in byte per tutte le configurazioni dei dispositivi, oltre allo stesso intervallo per ogni architettura CPU:
+
+```json
+{
+  "min" : 18208826,
+  "max" : 25009450,
+  "abis" : {
+    "arm64-v8a" : { "min" : 25009448, "max" : 25009450 },
+    "armeabi-v7a" : { "min" : 18208826, "max" : 18908828 }
+  }
+}
+```
+
+Quando crei un bundle dalla riga di comando, passa il percorso del file di report a [Bob](/it/manuals/bob) con `--download-size-report <path>`. Questo permette di monitorare nel tempo le dimensioni del download del gioco nell'integrazione continua.
+
+La stima viene calcolata con [bundletool](https://developer.android.com/tools/bundletool) a partire dagli APK che Google Play genererebbe dal bundle, firmati con lo stesso keystore. La loro generazione richiede circa lo stesso tempo della creazione del file *`.aab`*, per questo la stima è disattivata per impostazione predefinita. Se la stima non riesce, viene stampato un avviso e il bundle viene creato come di consueto, ma non viene scritto alcun file di report.
+
 {% include shared/it/build-variants.md %}
 
 ### Installazione di un bundle di un'applicazione Android {#installing-an-android-application-bundle}
@@ -118,6 +151,10 @@ Per utilizzare questa funzionalità, devi avere *ADB* installato e *USB debuggin
 
 Un file *.aab* può essere caricato su Google Play tramite la [console per sviluppatori di Google Play](https://play.google.com/apps/publish/). Puoi anche generare un file *`.apk`* da un file *.aab* per installarlo localmente utilizzando [Android bundletool](https://developer.android.com/studio/command-line/bundletool).
 
+## Ritagli dello schermo {#display-cutouts}
+
+`window.get_reserved_areas()` restituisce i rettangoli dei ritagli dello schermo su Android 9 (livello API 28) e versioni successive. Usa `window.get_safe_area()` quando ti serve un rettangolo sicuro per il layout. Consulta [Aree riservate dello schermo](/it/manuals/porting-guidelines/#reserved-screen-areas) per le unità delle coordinate, il comportamento sulle piattaforme non supportate e come aggiornare il layout quando cambiano le aree riportate.
+
 ## Ridurre il codice Java e le risorse Android con R8 {#shrinking-java-code-with-r8}
 
 R8 riduce le dimensioni del codice Java eliminando quello inutilizzato, ottimizzandolo e offuscandolo. Con Defold 1.14.0 o versioni successive e un server di build Extender compatibile, rimuove anche le risorse Android inutilizzate, come layout, drawable e risorse raw fornite dalle estensioni e dalle loro dipendenze Android. Le risorse di gioco Defold contenute nell'archivio del gioco non vengono elaborate da R8.
@@ -135,7 +172,7 @@ Assicurati che ogni estensione con codice Java fornisca un file `.keep` per le c
 
 Lasciando vuoto **R8 Keep Rules**, viene usato D8 senza rimuovere il codice inutilizzato. Abilitando R8 viene utilizzato il servizio di build delle estensioni native, anche per un progetto privo di estensioni native.
 
-A partire da Defold 1.14.0, la rimozione delle risorse Android inutilizzate viene abilitata dalla stessa impostazione **R8 Keep Rules**; non esiste un'impostazione separata del progetto. Gli SDK Defold precedenti mantengono la rimozione tramite R8 limitata al codice.
+La rimozione delle risorse Android inutilizzate è abilitata dalla stessa impostazione **R8 Keep Rules**; non esiste un'impostazione separata del progetto. Gli SDK Defold precedenti mantengono la rimozione tramite R8 del solo codice inutilizzato.
 
 ### Aggiungere regole a un'estensione {#adding-rules-to-an-extension}
 

@@ -19,6 +19,12 @@ toc:
 - 6. Panel Changed Files
 - Pasek menu
 - Pasek stanu
+- anchor: engine-window-placement
+  title: Położenie okna silnika
+- anchor: resetting-the-engine-window-size
+  title: Resetowanie rozmiaru okna silnika
+- anchor: 2d-and-3d-scene-orientation
+  title: Orientacja sceny 2D i 3D
 - Rozmiar i widoczność paneli
 - Zakładki
 - Edycja obok siebie
@@ -102,11 +108,11 @@ Dwukrotne kliknięcie kolekcji, obiektu gry albo pliku komponentu wizualnego otw
 
 Kilka podstawowych funkcji edytora scen:
 
-- [nawigacja sceny 2D i 3D](/pl/manuals/scene-editing/#orientacja-sceny-2d-i-3d) z trybami kamery ortograficznej i perspektywicznej,
+- [nawigacja sceny 2D i 3D](/pl/manuals/scene-editing/#2d-and-3d-scene-orientation) z trybami kamery ortograficznej i perspektywicznej,
 - [narzędzia transformacji](/pl/manuals/scene-editing/#manipulating-objects) do przesuwania, obracania i skalowania obiektów,
 - [Free Camera Mode](/pl/manuals/scene-editing/#free-camera-mode) do nawigacji 3D z perspektywy pierwszej osoby,
-- [ustawienia siatki](/pl/manuals/scene-editing/#ustawienia-siatki) z konfigurowalnym rozmiarem, płaszczyzną i wyglądem,
-- [filtry widoczności](/pl/manuals/scene-editing/#filtry-widocznosci) do przełączania typów komponentów i prowadnic.
+- [ustawienia siatki](/pl/manuals/scene-editing/#grid-settings) z konfigurowalnym rozmiarem, płaszczyzną i wyglądem,
+- [filtry widoczności](/pl/manuals/scene-editing/#visibility-filters) do przełączania typów komponentów i prowadnic.
 
 Więcej informacji znajdziesz w [podręczniku edytora scen](/pl/manuals/scene-editing/).
 
@@ -166,6 +172,26 @@ Na dolnym pasku edytora znajduje się wąski obszar, w którym wyświetlany jest
 
 - gdy dostępna jest nowa wersja, zobaczysz klikalny przycisk `Update Available`; patrz sekcja o aktualizowaniu edytora poniżej
 - podczas budowania lub bundlowania będzie tam widoczny postęp operacji
+
+## Położenie okna silnika {#engine-window-placement}
+
+Na platformach desktopowych okna silnika otwierane z edytora zapamiętują swój zwykły rozmiar i położenie w trybie okienkowym między uruchomieniami i restartami silnika. Dane są zapisywane osobno dla każdego projektu i instancji silnika. Uruchomienie pojedynczej instancji używa tego samego zapisanego położenia co pierwsza instancja przy uruchamianiu kilku.
+
+Jeśli przesuniesz okno silnika lub zmienisz jego rozmiar, kolejne uruchomienie przywróci ten stan. Zapamiętany rozmiar jest używany, dopóki skonfigurowane wymiary okna nie ulegną zmianie; ich zmiana sprawia, że następne uruchomienie używa nowego rozmiaru. W systemie Linux Wayland przywracany jest tylko rozmiar, ponieważ położeniem okna steruje kompozytor pulpitu.
+
+### Resetowanie rozmiaru okna silnika {#resetting-the-engine-window-size}
+
+Wybierz <kbd>Debug ▸ Reset Simulated Resolution</kbd>, aby wrócić do skonfigurowanego rozmiaru. To polecenie:
+
+- Czyści zapamiętane rozmiary okien wszystkich instancji silnika w bieżącym projekcie, również tych nieuruchomionych.
+- Czyści wybraną symulowaną rozdzielczość i wyłącza **Rotated Device**.
+- Zachowuje zapisane pozycje okien.
+
+Okna wybranych działających instancji silnika są zmieniane do wartości [Display Width i Height](/pl/manuals/project-settings/#display) projektu. Reset można wykonać również bez uruchomionego silnika; następne uruchomienie użyje skonfigurowanego rozmiaru. Późniejsze przesunięcie lub zmiana rozmiaru okna ponownie zapisze jego nowy stan.
+
+## Orientacja sceny 2D i 3D {#2d-and-3d-scene-orientation}
+
+{% include shared/pl/2d-and-3d-scene-orientation.md %}
 
 ## Rozmiar i widoczność paneli
 
@@ -278,7 +304,7 @@ Możesz też uzyskać dostęp do logów edytora, gdy uruchomisz go z terminala l
 $ ./path/to/Defold/Defold
 
 # macOS:
-$ ./path/to/Defold.app/Contents/MacOS/Defold
+$ > ./path/to/Defold.app/Contents/MacOS/Defold
 ```
 
 ## Serwer edytora

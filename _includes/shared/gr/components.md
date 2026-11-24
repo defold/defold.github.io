@@ -1,8 +1,8 @@
-Components are used to give specific expression and/or functionality to game objects. Components have to be contained inside game objects and are affected by the position, rotation and scale of the game object that contains the component:
+Τα στοιχεία δίνουν συγκεκριμένη μορφή ή λειτουργικότητα στα αντικείμενα παιχνιδιού. Κάθε στοιχείο πρέπει να περιέχεται σε ένα αντικείμενο παιχνιδιού και επηρεάζεται από τη θέση, την περιστροφή και την κλίμακα του αντικειμένου που το περιέχει:
 
-![Components](/shared/images/components.png)
+![Στοιχεία](/shared/images/components.png)
 
-Many components have type specific properties that can be manipulated and there are component type specific functions available for interacting with them in runtime:
+Πολλά στοιχεία διαθέτουν ιδιότητες ειδικές για τον τύπο τους, τις οποίες μπορείτε να τροποποιήσετε. Υπάρχουν επίσης συναρτήσεις για κάθε τύπο στοιχείου, με τις οποίες μπορείτε να αλληλεπιδράσετε κατά τον χρόνο εκτέλεσης:
 
 ```lua
 -- disable the can "body" sprite
@@ -12,11 +12,11 @@ msg.post("can#body", "disable")
 sound.play("bean#hoohoo", { delay = 1, gain = 0.5 } )
 ```
 
-Components are either added in-place in a game object, or added to a game object as a reference to a component file:
+Τα στοιχεία είτε προστίθενται επιτόπου σε ένα αντικείμενο παιχνιδιού είτε προστίθενται ως αναφορά σε αρχείο στοιχείου:
 
-<kbd>Right-click</kbd> the game object in the *Outline* view and select <kbd>Add Component</kbd> (add in-place) or <kbd>Add Component File</kbd> (add as file reference).
+Κάντε δεξί κλικ στο αντικείμενο παιχνιδιού στην προβολή *Outline* και επιλέξτε <kbd>Add Component</kbd> για προσθήκη επιτόπου ή <kbd>Add Component File</kbd> για προσθήκη ως αναφορά σε αρχείο.
 
-In most cases it makes most sense to create components in-place, but the following component types must be created in separate resource files before being added by reference to a game object:
+Στις περισσότερες περιπτώσεις είναι προτιμότερο να δημιουργείτε τα στοιχεία επιτόπου. Οι ακόλουθοι τύποι στοιχείων, ωστόσο, πρέπει πρώτα να δημιουργούνται σε ξεχωριστά αρχεία πόρων και έπειτα να προστίθενται μέσω αναφοράς σε ένα αντικείμενο παιχνιδιού:
 
 * Script
 * GUI

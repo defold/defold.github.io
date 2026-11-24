@@ -86,7 +86,7 @@ end
 Когда ответ содержит большой бинарный блок данных, например изображение или музыкальный трек, может иметь смысл записать данные в файл, а не загружать их в память:
 
 ```lua
--- в этом примере мы загружаем myimage.png и сразу записываем его в файл на диске
+-- в этом примере мы скачиваем myimage.png и записываем его прямо в файл на диске
 
 local options = {
 	path = sys.get_save_file("mygame", "myimage.png")
@@ -94,18 +94,18 @@ local options = {
 
 local function handle_response(self, id, response)
 	if response.status == 200 then
-		print("Файл был успешно записан в:", response.path)
-		print("Размер файла:", response.document_size)
-		print("Путь к файлу:", response.path)
+		print("File was successfully written to:", response.path)
+		print("File size:", response.document_size)
+		print("File path:", response.path)
 	else
-		print("Файл не был записан на диск:", response.error)
+		print("File was not written to disk:", response.error)
 	end
 end
 
 http.request("https://www.foobar.com/myimage.png", "GET", handle_response, nil, nil, options)
 ```
 
-Еще один сценарий использования загрузки больших объемов данных по сети это потоковая передача звука, когда "фрагменты" звуковых данных загружаются по URL и передаются в звуковой ресурс. Полный пример можно найти в [руководстве по потоковой передаче звука](/sound-streaming#sound-streaming).
+Еще один сценарий использования загрузки больших объемов данных по сети это потоковая передача звука, когда "фрагменты" звуковых данных загружаются по URL и передаются в звуковой ресурс. Полный пример можно найти в [руководстве по потоковой передаче звука](/ru/manuals/sound-streaming/#sound-streaming).
 
 
 ### Заголовки запроса
@@ -144,7 +144,7 @@ Defold автоматически устанавливает несколько 
 * `If-None-Match: <etag>` будет установлен с ETag любого ранее кэшированного ответа.
 * `Transfer-Encoding: chunked` будет установлен, если тело запроса больше 16384 байт.
 * `Content-Length` будет установлен с размером тела запроса (если запрос не использует chunked).
-* `Range: bytes=<from>-<to>` будет установлен при запросе частичного ответа, например при [потоковой передаче звука](/sound-streaming#sound-streaming).
+* `Range: bytes=<from>-<to>` будет установлен при запросе частичного ответа, например при [потоковой передаче звука](/ru/manuals/sound-streaming/#sound-streaming).
 
 
 ### Заголовки ответа

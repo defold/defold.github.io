@@ -51,7 +51,7 @@ Gdy uruchamiasz edytor po raz pierwszy, startuje on pusty, bez otwartego projekt
 
 W panelu *Assets pane* zobaczysz wszystkie pliki należące do projektu. Jeśli dwukrotnie klikniesz plik "main/main.collection", otworzy się on w centralnym widoku edytora:
 
-![Widok edytora](/tutorials/images/runner/1/editor2_overview.png)
+![Widok edytora](/tutorials/images/runner/1/editor_overview.png)
 
 Edytor składa się z następujących głównych obszarów:
 
@@ -429,7 +429,7 @@ Powinniśmy też dodać obiekt gry controller z komponentem skryptu do kolekcji 
 2. Otwórz plik skryptu, skopiuj do niego poniższy kod i zapisz plik:
 
     ```lua
-    -- controller.script
+    -- plik: controller.script
     go.property("speed", 360) -- <1>
 
     function init(self)
@@ -464,7 +464,7 @@ Id obiektu gry kontrolera jest ustawione na `"ground/controller"`, ponieważ zna
 2. Dodaj poniższy kod i zapisz plik:
 
 ```lua
--- ground.script
+-- plik: ground.script
 function on_message(self, message_id, message, sender)
     if message_id == hash("set_speed") then -- <1>
         self.speed = message.speed -- <2>
@@ -910,7 +910,7 @@ local coins = 3 -- <1>
 1. Liczba monet tworzonych na zwykłej platformie.
 
 ```lua
--- controller.script
+-- plik: controller.script
 ...
 local coins = coins
 if math.random() > 0.5 then
@@ -921,7 +921,7 @@ end
 ```
 
 ```lua
--- controller.script
+-- plik: controller.script
 ...
 msg.post(p, "set_speed", { speed = self.speed })
 msg.post(p, "create_coins", { coins = coins })

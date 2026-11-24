@@ -2,21 +2,32 @@
 
 A collision object can contain several embedded shapes. In 3D physics these can include hulls and triangle meshes from glTF or GLB files. You can also use a tilemap or a convex shape resource through the collision object's *Collision Shape* property.
 
-### Primitive shapes
-The primitive shapes are *box*, *sphere* and *capsule*. You add a primitive shape by `right clicking` the collision object and selecting `Add Shape`:
+Different collision shapes are available for 2D and 3D physics. You can configure the physics type in the `Physics` section of the `game.project` file using the `Type` setting (`2D`/`3D`):
 
-## Box shape
-A box has a position, rotation and dimensions (width, height and depth):
+### Collision shapes
 
-## Sphere shape
-A sphere has a position, rotation and diameter:
+You add a shape by `right-clicking` the collision object and selecting `Add Shape`:
 
-## Capsule shape
-A capsule has a position, rotation, diameter and height:
+The shapes when using 2D physics are:
+- **Circle** (position, rotation and diameter)
 
-Capsule shapes are only supported when using 3D physics (configured in the Physics section of the *game.project* file).
+- **Rectangle** (position, rotation and 2 dimensions (depth is ignored))
+
+Similarly, when using 3D physics:
+
+The shapes when using 3D physics are:
+- **Box** (position, rotation and 3 dimensions)
+
+- **Capsule** (position, rotation, diameter and height)
+
+- **Hull** (position, rotation, scene and mesh)
+
+- **Mesh** (position, rotation, scene and mesh)
+
+- **Sphere** (position, rotation and diameter)
 
 ### Complex shapes
+
 Complex shapes can use tilemap geometry or convex hull data. Since Defold 1.13.2, 3D collision objects can also create hulls and triangle mesh shapes from meshes in glTF or GLB scenes.
 
 ## Hull and mesh shapes in 3D

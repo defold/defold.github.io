@@ -13,8 +13,12 @@ toc:
   title: キーストアの作成
 - anchor: creating-an-android-application-bundle
   title: Android アプリケーションバンドルの作成
+- anchor: estimating-the-google-play-download-size
+  title: Google Play のダウンロードサイズの推定
 - anchor: installing-an-android-application-bundle
   title: Android アプリケーションバンドルのインストール
+- anchor: display-cutouts
+  title: ディスプレイのカットアウト
 - anchor: shrinking-java-code-with-r8
   title: R8 による Java コードと Android リソースの縮小
 - anchor: enabling-r8
@@ -90,6 +94,35 @@ Defold は APK ファイルと AAB ファイルの両方の作成に対応して
 
 ![Android アプリケーションパッケージファイル](/manuals/images/android/apk_file.png)
 
+### Google Play のダウンロードサイズの推定 {#estimating-the-google-play-download-size}
+
+Google Play は、*`.aab`* ファイルをそのままプレイヤーに配信するわけではありません。デバイスの構成ごとに最適化した APK を生成するため、プレイヤーがダウンロードするデータのサイズは、*`.aab`* やユニバーサル *`.apk`* より小さくなります。Bundle ダイアログの *Estimate download size* チェックボックスを有効にすると、バンドルの作成時に推定ダウンロードサイズを確認できます。この推定は、APK と AAB の両方のバンドル形式で利用できます。
+
+![ダウンロードサイズの推定](/manuals/images/android/sign_bundle.png)
+
+推定値はコンソールに出力されます:
+
+```
+Estimated Play Store download size: 18.2 MB - 25.0 MB (arm64-v8a: 25.0 MB, armeabi-v7a: 18.2 MB - 18.9 MB)
+```
+
+また、バンドルの出力フォルダーに `download_size.json` として保存されます。このファイルには、すべてのデバイス構成における最小および最大のダウンロードサイズと、CPU アーキテクチャごとの同じ範囲が、バイト単位で記録されます:
+
+```json
+{
+  "min" : 18208826,
+  "max" : 25009450,
+  "abis" : {
+    "arm64-v8a" : { "min" : 25009448, "max" : 25009450 },
+    "armeabi-v7a" : { "min" : 18208826, "max" : 18908828 }
+  }
+}
+```
+
+コマンドラインからバンドルを作成する場合は、`--download-size-report <path>` を使ってレポートファイルのパスを [Bob](/ja/manuals/bob) に渡します。これは、継続的インテグレーションでゲームのダウンロードサイズの推移を追跡する場合に役立ちます。
+
+推定には [bundletool](https://developer.android.com/tools/bundletool) を使います。Google Play がバンドルから生成する APK を、同じキーストアで署名して生成し、その APK から推定値を計算します。APK の生成には *`.aab`* ファイルの作成と同程度の時間がかかるため、推定はデフォルトでは無効です。推定に失敗した場合は警告が出力され、バンドルは通常どおり作成されますが、レポートファイルは書き込まれません。
+
 {% include shared/ja/build-variants.md %}
 
 ### Android アプリケーションバンドルのインストール {#installing-an-android-application-bundle}
@@ -119,6 +152,10 @@ Success
 
 *.aab* ファイルは、[Google Play デベロッパーコンソール](https://play.google.com/apps/publish/) 経由で Google Play にアップロードできます。[Android bundletool](https://developer.android.com/studio/command-line/bundletool) を使い、*.aab* ファイルから *`.apk`* ファイルを生成してローカルにインストールすることもできます。
 
+## ディスプレイのカットアウト {#display-cutouts}
+
+`window.get_reserved_areas()` は、Android 9（API レベル 28）以降でディスプレイのカットアウトの矩形を返します。安全に配置できるレイアウト矩形が必要な場合は `window.get_safe_area()` を使います。座標の単位、非対応プラットフォームでの動作、報告された領域が変化したときのレイアウトの更新方法については、[画面の予約領域](/ja/manuals/porting-guidelines/#reserved-screen-areas)を参照してください。
+
 ## R8 による Java コードと Android リソースの縮小 {#shrinking-java-code-with-r8}
 
 R8 は、縮小、最適化、難読化によって Java コードのサイズを削減します。Defold 1.14.0 以降を、対応する Extender ビルドサーバーと組み合わせて使用すると、拡張とその Android 依存関係が提供するレイアウト、ドローアブル、raw リソースなど、未使用の Android リソースも削除します。ゲームアーカイブ内の Defold のゲームアセットは、R8 の処理対象ではありません。
@@ -136,7 +173,7 @@ Java コードを持つすべての拡張に、実行時に必要なクラスの
 
 **R8 Keep Rules** を空にすると、縮小を行わない D8 を使います。R8 を有効にすると、ネイティブ拡張を含まないプロジェクトでもネイティブ拡張ビルドサービスを使います。
 
-Defold 1.14.0 以降では、同じ **R8 Keep Rules** 設定で Android リソースの縮小も有効になります。この機能専用のプロジェクト設定はありません。以前の Defold SDK では、R8 による縮小はコードのみを対象とします。
+Android のリソース縮小も同じ **R8 Keep Rules** 設定で有効になります。専用のプロジェクト設定はありません。古い Defold SDK では、R8 による縮小の対象はコードのみです。
 
 ### 拡張へのルールの追加 {#adding-rules-to-an-extension}
 

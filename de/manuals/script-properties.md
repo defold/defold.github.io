@@ -34,6 +34,8 @@ Typische Anwendungsfälle sind das Festlegen der Lebenspunkte oder Geschwindigke
 
 Skripteigenschaften werden einer Skriptkomponente (script component) hinzugefügt, indem du sie mit der speziellen Funktion `go.property()` definierst. Die Funktion muss auf der obersten Ebene verwendet werden---außerhalb von Lebenszyklusfunktionen wie `init()` und `update()`. Der für die Eigenschaft angegebene Standardwert bestimmt ihren Typ: `number`, `boolean`, `string`, `hash`, `msg.url`, `vmath.vector3`, `vmath.vector4`, `vmath.quaternion` und `resource` (siehe unten).
 
+![Eigenschaften im Defold-Editor](/manuals/images/script-properties/properties.png)
+
 <div class='important' markdown='1'>
 Beachte, dass sich der ursprüngliche Zeichenfolgenwert eines Hash-Werts nur im Debug-Build ermitteln lässt, um die Fehlersuche zu erleichtern. Im Release-Build ist dieser Zeichenfolgenwert nicht vorhanden. Daher ist es dort nicht sinnvoll, mit `tostring()` die Zeichenfolge aus einem `hash`-Wert auszulesen.
 </div>
@@ -69,7 +71,7 @@ Für jede aus diesem Skript erstellte Skriptkomponenteninstanz lassen sich dann 
 
  Wähle die Skriptkomponente in der Ansicht *Outline* im Editor aus. Die Eigenschaften erscheinen in der Ansicht *Properties*, wo du sie bearbeiten kannst:
 
-![Properties](/manuals/images/script-properties/properties.png)
+![Properties](/manuals/images/script-properties/properties2.png)
 
 Jede Eigenschaft, die mit einem neuen, für die Instanz spezifischen Wert überschrieben wird, ist blau markiert. Klicke auf die Schaltfläche zum Zurücksetzen neben dem Eigenschaftsnamen, um den Wert auf den im Skript festgelegten Standardwert zurückzusetzen.
 
@@ -80,7 +82,7 @@ Skripteigenschaften werden beim Erstellen des Projekts geparst. Wertausdrücke w
 
 ### Texteigenschaften {#text-properties}
 
-Seit Defold 1.13.2 definiert eine Zeichenfolge als Standardwert eine Texteigenschaft. Texteigenschaften unterstützen UTF-8 und Zeilenumbruchzeichen und werden im Editor in einem mehrzeiligen Feld bearbeitet:
+Ein Zeichenfolgen-Standardwert definiert eine Texteigenschaft. Texteigenschaften unterstützen UTF-8 und Zeilenumbrüche und werden im Editor in einem mehrzeiligen Feld bearbeitet:
 
 ```lua
 go.property("greeting", "Hello!\nWelcome, José!")

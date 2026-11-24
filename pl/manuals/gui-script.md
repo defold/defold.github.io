@@ -7,6 +7,8 @@ title: Skrypty GUI w Defold
 toc:
 - Skrypty GUI
 - Dodawanie skryptu do GUI
+- anchor: input
+  title: Wejście
 - Przestrzeń nazw gui
 - Przesyłanie wiadomości
 - Adresowanie węzłów
@@ -51,7 +53,7 @@ function on_input(self, action_id, action)
 end
 
 function on_reload(self)
-   -- Dodaj tutaj kod obsługi ponownego wczytania
+   -- Dodaj tutaj kod obsługi wejścia
    -- Usuń tę funkcję, jeśli nie jest potrzebna
 end
 ```
@@ -61,6 +63,12 @@ Aby dołączyć skrypt do komponentu GUI, otwórz plik prototypu komponentu GUI,
 ![Script](/manuals/images/gui-script/set_script.png)
 
 Jeśli komponent GUI został dodany do obiektu gry w dowolnym miejscu projektu, skrypt zacznie teraz działać.
+
+## Wejście {#input}
+
+Aby odbierać wejście w skrypcie GUI, wyślij `msg.post(".", "acquire_input_focus")` z `init()` i obsługuj akcje w `on_input(self, action_id, action)`.
+
+Skrypty GUI używają tych samych haszy `action.source` co skrypty obiektów gry, dzięki czemu można odróżnić fizyczne kliknięcie myszy od dotknięcia ekranu już przy pierwszym naciśnięciu. Zobacz [Źródło urządzenia wejściowego](/pl/manuals/input/#input-device-source) i [przykład myszy i dotyku](/pl/manuals/input-mouse-and-touch/#distinguishing-mouse-clicks-from-touch). Zarówno ruch wskaźnika, jak i próbki akcelerometru używają `action_id == nil`; rozróżniaj je na podstawie źródła.
 
 ## Przestrzeń nazw "gui"
 

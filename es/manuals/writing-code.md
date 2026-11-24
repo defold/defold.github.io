@@ -9,15 +9,18 @@ toc:
 - Escribir código Lua
 - Usar otros lenguajes que transpilan a Lua
 - Escribir código nativo
-- Usar el editor de código integrado
-- Autocompletado de código
+- anchor: using-the-built-in-code-editor
+  title: Usar el editor de código integrado
+- anchor: code-completion
+  title: Autocompletado de código
 - anchor: formatting-code
   title: Formatear código
 - anchor: jump-to-symbol
   title: Ir a un símbolo
 - anchor: linting-configuration
   title: Configuración de linting
-- Usar un editor de código externo
+- anchor: using-an-external-code-editor
+  title: Usar un editor de código externo
 - Visual Studio Code - Defold Kit
 - Software de documentación
 ---
@@ -38,24 +41,22 @@ Defold soporta el uso de transpiladores que emiten código Lua. Con una extensi�
 
 Defold te permite extender el motor de videojuegos con código nativo para acceder a funcionalidad específica de la plataforma que no proporciona el propio motor. También puedes usar código nativo cuando el rendimiento de Lua no sea suficiente (cálculos intensivos en recursos, procesamiento de imágenes, etc.). Consulta nuestros [manuales sobre extensiones nativas (Native Extensions)](/es/manuals/extensions/) para aprender más.
 
-## Usar el editor de código integrado
+## Usar el editor de código integrado {#using-the-built-in-code-editor}
 
 Defold tiene un editor de código integrado que te permite abrir y editar archivos Lua (.lua), archivos script de Defold (.script, .gui_script y .render_script), así como cualquier otro archivo con una extensión que el editor no maneje de forma nativa. Además, el editor proporciona resaltado de sintaxis para archivos Lua y script.
 
-![](/images/editor/code-editor.png)
+![](/manuals/images/editor/code-editor.png)
 
 
-<a id="code-completion"></a>
-
-### Autocompletado de código
+### Autocompletado de código {#code-completion}
 
 El editor de código integrado mostrará autocompletado de funciones mientras escribes código:
 
-![](/images/editor/codecompletion.png)
+![](/manuals/images/editor/codecompletion.png)
 
 Presionar <kbd>CTRL</kbd> + <kbd>Space</kbd> mostrará información adicional sobre funciones, argumentos y valores de retorno:
 
-![](/images/editor/apireference.png)
+![](/manuals/images/editor/apireference.png)
 
 El servidor de lenguaje Lua incluido contiene anotaciones de tipos para las APIs de Defold. El completado, la información al pasar el cursor y los diagnósticos reconocen tipos de Defold como hashes, URL, vectores y cuaterniones, además de los argumentos y valores de retorno de las funciones. El editor proporciona anotaciones para los scripts del juego y para las APIs `editor.*` usadas en archivos `.editor_script`. No se necesita una biblioteca de anotaciones adicional para las APIs integradas al usar el editor de código de Defold.
 
@@ -73,7 +74,7 @@ El editor de código integrado puede mostrar una lista en la que puedes buscar l
 
 Empieza a escribir para buscar coincidencias aproximadas entre los símbolos, usa las teclas de flecha para recorrer los resultados y previsualizar su ubicación en el editor y, a continuación, presiona <kbd>Enter</kbd> para ir al símbolo seleccionado. Presiona <kbd>Esc</kbd> para cerrar el cuadro de diálogo y volver a las posiciones anteriores del cursor y del desplazamiento.
 
-![](/images/editor/jump-to-symbol.png)
+![](/manuals/images/editor/jump-to-symbol.png)
 
 ### Configuración de linting {#linting-configuration}
 
@@ -89,7 +90,7 @@ ignore = {
 },
 ```
 
-## Usar un editor de código externo
+## Usar un editor de código externo {#using-an-external-code-editor}
 
 El editor de código de Defold proporciona la funcionalidad básica que necesitas para escribir código, pero para casos de uso más avanzados o para usuarios avanzados con un editor de código favorito, es posible hacer que Defold abra los archivos usando un editor externo. En la [ventana Preferences, en la pestaña Code](/es/manuals/editor-preferences/#code), es posible definir un editor externo que se debe usar al editar código.
 

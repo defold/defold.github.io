@@ -11,15 +11,21 @@ toc:
   title: Zapamiętywanie widoków scen
 - Nawigacja widoku sceny (sterowanie kamerą)
 - Standardowa nawigacja (wszystkie edytory wizualne)
-- Orientacja sceny 2D i 3D
-- Przegląd paska narzędzi
+- anchor: axis-gizmo
+  title: Manipulator osi
+- anchor: 2d-and-3d-scene-orientation
+  title: Orientacja sceny 2D i 3D
+- anchor: toolbar-overview
+  title: Przegląd paska narzędzi
 - anchor: manipulating-objects
   title: Zaznaczanie i manipulowanie obiektami
 - Zaznaczanie obiektów
-- anchor: filtry-widocznosci
+- anchor: visibility-filters
   title: Filtry widoczności
-- Ustawienia siatki
-- 'Typ kamery: Perspective i Orthographic'
+- anchor: grid-settings
+  title: Ustawienia siatki
+- anchor: camera-type-perspective-vs-orthographic
+  title: 'Typ kamery: Perspective i Orthographic'
 - Free Camera Mode
 - Włączanie Free Camera Mode
 - Wyłączanie Free Camera Mode
@@ -72,33 +78,43 @@ Te działania są dostępne w edytorach wizualnych:
 
 Możesz też użyć **Frame Selection** (<kbd>F</kbd>), aby ustawić kamerę na bieżącym zaznaczeniu.
 
-## Orientacja sceny 2D i 3D
+### Manipulator osi {#axis-gizmo}
 
-Widok sceny może być używany zarówno w przepływie pracy 2D, jak i 3D:
+**Scene View Axis Gizmo** pojawia się w prawym dolnym rogu widoku sceny w trybie 3D. Pokazuje orientację kamery względem osi świata: **X** jest czerwona, **Y** zielona, a **Z** niebieska.
 
-- W **2D** zwykle pracujesz w widoku ortograficznym z siatką zorientowaną na 2D.
-- W **3D** zwykle:
-  - zmieniasz orientację widoku na 3D,
-  - używasz kamery **perspektywicznej**,
-  - wybierasz odpowiednią płaszczyznę siatki, często **Y** jako „podłoże”.
+![Widok sceny z manipulatorem osi w prawym dolnym rogu](/manuals/images/editor/axis_gizmo.gif)
 
-Te funkcje są dostępne z paska narzędzi oraz menu **View**.
+| Sterowanie | Działanie |
+| --- | --- |
+| <kbd>Left Mouse Click</kbd> na uchwycie osi | Ustawienie kamery do patrzenia wzdłuż tej osi. Przeciwległe uchwyty zapewniają widok z drugiej strony. |
+| Kliknięcie już wyrównanego uchwytu osi | Przełączenie na przeciwny widok wzdłuż tej samej osi. |
+| Przytrzymanie <kbd>Left Mouse Button</kbd> i przeciąganie manipulatora | Obracanie wokół bieżącego punktu skupienia kamery. Możesz przeciągać uchwyt osi lub okrągły obszar wokół uchwytów bez przytrzymywania klawisza modyfikującego. |
 
-![Edytor scen 3D](/manuals/images/editor/3d_scene.png)
+Wyrównanie do osi zachowuje punkt skupienia, odległość i projekcję kamery. Najpierw użyj **Frame Selection** (<kbd>F</kbd>), aby skupić widok na obiekcie, a następnie manipulatora, aby obejrzeć go z różnych kierunków. Standardowe sterowanie przesuwaniem, powiększaniem i orbitowaniem przez <kbd>Ctrl</kbd>/<kbd>^ Control</kbd> + <kbd>Left Mouse Button</kbd> nadal jest dostępne.
 
-## Przegląd paska narzędzi
+Manipulator jest dostępny w trybie 3D zarówno przy projekcji perspektywicznej, jak i ortograficznej. W trybie 2D jest ukryty; użyj **Align/Realign Camera 2D/3D** na [pasku narzędzi](#toolbar-overview) albo naciśnij <kbd>.</kbd>, aby przełączyć na 3D. Użyj osobnego [przełącznika projekcji kamery](#camera-type-perspective-vs-orthographic), aby wybrać perspektywę lub projekcję ortograficzną. Manipulator steruje widokiem sceny w edytorze scen.
 
-W prawym górnym rogu widoku sceny znajduje się pasek narzędzi z często używanymi narzędziami i opcjami widoku (od lewej do prawej):
+## Orientacja sceny 2D i 3D {#2d-and-3d-scene-orientation}
 
-- **Move tool** (<kbd>W</kbd>)
-- **Rotate tool** (<kbd>E</kbd>)
-- **Scale tool** (<kbd>R</kbd>)
-- **Grid Settings** (`▦`)
-- **Align/Realign Camera 2D/3D** (`2D`) - przełącza orientację 2D i 3D (skrót <kbd>.</kbd>)
-- **Camera Perspective/Orthographic**
-- **Visibility Filters** (`👁`)
+{% include shared/pl/2d-and-3d-scene-orientation.md %}
 
-![Pasek narzędzi](/manuals/images/editor/toolbar.png)
+W trybie 3D użyj [manipulatora osi](#axis-gizmo), aby wyrównać widok do wybranej osi lub obracać go myszą.
+
+## Przegląd paska narzędzi {#toolbar-overview}
+
+W prawym górnym rogu widoku sceny znajduje się pasek z często używanymi narzędziami i opcjami widoku.
+
+![Pasek narzędzi edytora scen z elementami ponumerowanymi od 1 do 7](/manuals/images/editor/toolbar.png)
+
+Ponumerowane opcje paska od lewej do prawej:
+
+1. **Move tool** (<kbd>W</kbd>) - Przesuwa zaznaczone obiekty.
+2. **Rotate tool** (<kbd>E</kbd>) - Obraca zaznaczone obiekty.
+3. **Scale tool** (<kbd>R</kbd>) - Zmienia rozmiar zaznaczonych obiektów.
+4. **Grid** - Włącza lub wyłącza siatkę. Menu rozwijane otwiera Grid Settings.
+5. **2D mode** (`2D`) - Przełącza orientację 2D i 3D. Można też użyć **Realign Camera** (<kbd>.</kbd>).
+6. **Perspective camera** - Przełącza projekcję perspektywiczną i ortograficzną w 3D. Menu rozwijane otwiera ustawienia kamery.
+7. **Visibility filters** - Pokazuje lub ukrywa typy komponentów i linie pomocnicze w widoku sceny.
 
 ## Zaznaczanie i manipulowanie obiektami {#manipulating-objects}
 
@@ -152,13 +168,13 @@ To narzędzie składa się z zestawu kwadratowych lub sześciennych manipulator�
 - 3 czerwone, niebieskie i zielone sześcienne manipulatory skalują obiekt osobno wzdłuż osi X, Y i Z,
 - 3 czerwone, zielone i niebieskie kwadratowe manipulatory z przezroczystym wypełnieniem skalują obiekt osobno na płaszczyznach X-Y, X-Z lub Y-Z.
 
-### Filtry widoczności {#filtry-widocznosci}
+### Filtry widoczności {#visibility-filters}
 
 Kliknij **ikonę oka** (`👁`) na pasku narzędzi, aby przełączać widoczność różnych typów komponentów oraz obwiedni i linii pomocniczych (`Component Guides` albo skrót <kbd>Ctrl</kbd> + <kbd>H</kbd> w Windows/Linux lub <kbd>^ Ctrl</kbd> + <kbd>⌘ Cmd</kbd> + <kbd>H</kbd> na Macu).
 
 ![Filtry widoczności](/manuals/images/editor/visibilityfilters.png)
 
-## Ustawienia siatki
+## Ustawienia siatki {#grid-settings}
 
 Siatkę można dostosować do swojego przepływu pracy, co jest szczególnie przydatne w 3D. Kliknij przycisk **Grid Settings** (`▦`), aby otworzyć okno ustawień siatki.
 
@@ -179,7 +195,7 @@ Ustawienia obejmują:
 - Przycisk **Reset to Defaults**
   Przywraca ustawienia siatki aktywnego trybu do wartości początkowych.
 
-## Typ kamery: Perspective i Orthographic
+## Typ kamery: Perspective i Orthographic {#camera-type-perspective-vs-orthographic}
 
 Edytor scen obsługuje oba typy:
 
@@ -191,6 +207,8 @@ Do przełączania użyj przełącznika kamery na pasku narzędzi. W scenach 3D n
 ## Free Camera Mode
 
 Do szybkiej nawigacji 3D edytor scen udostępnia **Free Camera Mode**, czyli kamerę pierwszoosobową w stylu FPS.
+
+![Tryb swobodnej kamery](/manuals/images/editor/free_camera.png)
 
 ### Włączanie Free Camera Mode
 

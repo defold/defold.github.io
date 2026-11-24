@@ -23,6 +23,12 @@ toc:
 - Rozważania dotyczące wydajności
 - Pamięć i gromadzenie śmieci
 - Najlepsze praktyki
+- anchor: behaviors-in-a-module
+  title: Zachowania w module
+- anchor: a-helper-game-object-with-encapsulated-behavior
+  title: Pomocniczy obiekt gry z kapsułkowanym zachowaniem
+- anchor: grouping-game-object-with-helper-behavior-object-inside-a-collection
+  title: Grupowanie obiektu gry z pomocniczym obiektem zachowania w kolekcji
 ---
 
 # Lua w silniku Defold
@@ -139,8 +145,8 @@ number
   print(10.0) --> '10'
   print(10.000000000001) --> '10.000000000001'
 
-  a = 5 -- integer
-  b = 7/3 -- float
+  a = 5 -- liczba całkowita
+  b = 7/3 -- liczba zmiennoprzecinkowa
   print(a - b) --> '2.6666666666667'
   ```
 
@@ -180,13 +186,13 @@ string
   print("\097bc") --> "abc"
 
   multi_line_string = [[
-  Oto kawałek tekstu, który rozciąga się na wiele linii. To jest wszystko
-  umieszczone w ciągu znaków i czasami jest to bardzo przydatne.
+  Here is a chunk of text that runs over several lines. This is all
+  put into the string and is sometimes very handy.
   ]]
   ```
 
 function
-: Funkcje w Lua są wartościami pierwszej klasy, co oznacza, że można je przekazywać jako parametry do funkcji i zwracać jako wartości. Zmienne przypisane do funkcji zawierają referencję do funkcji. Możesz przypisywać zmienne do anonimowych funkcji, ale Lua dostarcza składni ułatwiającej pracę (`function nazwa(param1, param2) ... end`).
+: Funkcje w Lua są wartościami pierwszej klasy, co oznacza, że można je przekazywać jako parametry do funkcji i zwracać jako wartości. Zmienne przypisane do funkcji zawierają referencję do funkcji. Możesz przypisywać zmienne do anonimowych funkcji, ale Lua dostarcza składni ułatwiającej pracę (`function name(param1, param2) ... end`).
 
   ```lua
   -- Przypisz 'my_plus' do funkcji
@@ -458,7 +464,7 @@ function my_func(a, b)
 
     print(x) --> nil. 'x' nie jest dostępne poza zakresem do-end
     print(foo) --> nil. 'foo' jest zadeklarowane po 'my_func'
-    print(foo_global) --> "value 2", ponieważ jest globalna
+    print(foo_global) --> "value 2"
 end
 
 local foo = "value 1"
@@ -564,6 +570,10 @@ end
 
 Zmienne są globalne, chyba że zadeklarowano je z użyciem `local`. Wszystkie skrypty obiektów gry, skrypty GUI i skrypty renderowania współdzielą jeden kontekst Lua, więc zmienne globalne i pamięć podręczna modułów załadowanych przez `require()` są wspólne dla wszystkich tych skryptów. Stan należący do jednej instancji skryptu przechowuj w `self` albo jawnie twórz osobne tablice stanu, zamiast przechowywać go we współdzielonych zmiennych globalnych lub tablicach modułów.
 
+![Dane jednej instancji skryptu a zmienna lokalna wspólna dla instancji w Defold](/manuals/images/lua/self_local.png)
+
+W powyższym przykładzie zmiana `self.has_shield` na `true` w jednej instancji nie wpłynie na pozostałe, więc tylko jeden przeciwnik może mieć tarczę. Z kolei lokalna zmienna `color` jest współdzielona przez wszystkie instancje, więc zmiana koloru może wpłynąć na nie wszystkie.
+
 Defold pozwala na użycie tego samego pliku skryptu w kilku osobnych komponentach obiektu gry. Zmienne zadeklarowane z użyciem `local` na najwyższym poziomie pliku skryptu są współdzielone między komponentami, które używają tego pliku. Zmienne zadeklarowane z użyciem `local` wewnątrz funkcji są lokalne dla danego wywołania funkcji.
 ```lua
 -- 'my_global_value' będzie dostępna we wszystkich skryptach, skryptach GUI, skrypcie renderowania i modułach (plikach Lua)
@@ -664,20 +674,23 @@ print(collectgarbage("count") * 1024)
 
 Jednym z ważnych pytań projektowych jest to, jak strukturyzować kod dla współdzielonych zachowań. Można przyjąć kilka różnych podejść.
 
-Zachowania w module
-: Umieszczenie zachowania w module ułatwia współdzielenie kodu między komponentami skryptów obiektów gry i skryptami GUI. Przy pisaniu funkcji modułu zazwyczaj najlepiej trzymać się kodu czysto funkcyjnego. Zdarzają się jednak przypadki, w których przechowywanie stanu lub skutków ubocznych jest konieczne albo po prostu daje czystszy projekt. Jeśli musisz przechowywać stan w module, pamiętaj, że komponenty współdzielą konteksty Lua. Szczegóły znajdziesz w [instrukcji do modułów](/pl/manuals/modules).
+### Zachowania w module {#behaviors-in-a-module}
+
+Umieszczenie zachowania w module ułatwia współdzielenie kodu między komponentami skryptów obiektów gry i skryptami GUI. Przy pisaniu funkcji modułu zazwyczaj najlepiej trzymać się kodu czysto funkcyjnego. Zdarzają się jednak przypadki, w których przechowywanie stanu lub skutków ubocznych jest konieczne albo po prostu daje czystszy projekt. Jeśli musisz przechowywać stan w module, pamiętaj, że komponenty współdzielą konteksty Lua. Szczegóły znajdziesz w [instrukcji do modułów](/pl/manuals/modules).
 
   ![Module](/manuals/images/lua/lua_module.png)
 
   Nawet jeśli kod modułu może bezpośrednio modyfikować wnętrze obiektu gry przez przekazanie `self` do funkcji modułu, zdecydowanie tego odradzamy, bo prowadzi to do bardzo silnego sprzężenia.
 
-Pomocniczy obiekt gry z kapsułkowanym zachowaniem
-: Tak samo jak można umieścić kod skryptu w module Lua, można go umieścić w obiekcie gry z komponentem skryptowym. Różnica polega na tym, że wtedy komunikacja z nim odbywa się wyłącznie przez wiadomości.
+### Pomocniczy obiekt gry z kapsułkowanym zachowaniem {#a-helper-game-object-with-encapsulated-behavior}
+
+Tak samo jak można umieścić kod skryptu w module Lua, można go umieścić w obiekcie gry z komponentem skryptowym. Różnica polega na tym, że wtedy komunikacja z nim odbywa się wyłącznie przez wiadomości.
 
   ![Helper](/manuals/images/lua/lua_helper.png)
   
-Grupowanie obiektu gry z pomocniczym obiektem zachowania w kolekcji
-: W takim układzie można stworzyć obiekt gry, który automatycznie działa na innym obiekcie docelowym, albo przez z góry zdefiniowaną nazwę, którą użytkownik musi dopasować, albo przez adres URL z `go.property()`, wskazujący obiekt docelowy.
+### Grupowanie obiektu gry z pomocniczym obiektem zachowania w kolekcji {#grouping-game-object-with-helper-behavior-object-inside-a-collection}
+
+W takim układzie można stworzyć obiekt gry, który automatycznie działa na innym obiekcie docelowym, albo przez z góry zdefiniowaną nazwę, którą użytkownik musi dopasować, albo przez adres URL z `go.property()`, wskazujący obiekt docelowy.
 
   ![Collection](/manuals/images/lua/lua_collection.png)
 

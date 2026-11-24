@@ -29,7 +29,7 @@ El logging en consola/en pantalla solo muestra información en builds Debug. En 
 
 Cuando ejecutas tu juego localmente desde el editor o conectado a la [app de desarrollo móvil](/es/manuals/dev-app), toda la salida se mostrará en el panel de consola del editor:
 
-![Editor 2](/manuals/images/editor/editor2_overview.png)
+![Editor 2](/manuals/images/editor/editor_overview.png)
 
 ## Leer el log del juego desde la terminal
 
@@ -90,7 +90,7 @@ Tienes varias opciones para leer logs del juego y del sistema en iOS:
 Para lanzar el juego y conectar el depurador necesitarás una herramienta llamada [ios-deploy](https://github.com/phonegap/ios-deploy). Instala y depura tu juego ejecutando lo siguiente en una terminal:
 
 ```txt
-$ ios-deploy --debug --bundle <path_to_game.app> # NOTA: no es el archivo .ipa
+$ ios-deploy --debug --bundle <path_to_game.app> # NOTE: not the .ipa file
 ```
 
 Esto instalará la app en tu dispositivo, la iniciará y conectará automáticamente un depurador LLDB. Si no conoces LLDB, lee [Getting Started with LLDB](https://developer.apple.com/library/content/documentation/IDEs/Conceptual/gdb_to_lldb_transition_guide/document/lldb-basics.html).

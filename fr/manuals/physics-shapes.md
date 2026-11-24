@@ -7,14 +7,8 @@ title: Formes de collision
 toc:
 - anchor: collision-shapes
   title: Formes de collision
-- anchor: primitive-shapes
-  title: Formes primitives
-- anchor: box-shape
-  title: Forme de boîte
-- anchor: sphere-shape
-  title: Forme de sphère
-- anchor: capsule-shape
-  title: Forme de capsule
+- anchor: collision-shapes-list
+  title: Formes de collision
 - anchor: complex-shapes
   title: Formes complexes
 - anchor: hull-and-mesh-shapes-in-3d
@@ -45,29 +39,51 @@ toc:
 
 Un objet de collision peut contenir plusieurs formes intégrées. En physique 3D, celles-ci peuvent inclure des enveloppes convexes et des maillages triangulés provenant de fichiers glTF ou GLB. Vous pouvez également utiliser une tilemap ou une ressource de forme convexe via la propriété *Collision Shape* de l'objet de collision.
 
-### Formes primitives {#primitive-shapes}
-Les formes primitives sont la *boîte*, la *sphère* et la *capsule*. Pour ajouter une forme primitive, <kbd>faites un clic droit</kbd> sur l'objet de collision et sélectionnez <kbd>Add Shape</kbd> :
+Les formes de collision disponibles diffèrent en physique 2D et 3D. Configurez le type dans `Physics` de `game.project` avec `Type` (`2D`/`3D`) :
 
-![Ajouter une forme primitive](/manuals/images/physics/add_shape.png)
+![Paramètres physiques](/manuals/images/physics/physics_settings.png)
 
-## Forme de boîte {#box-shape}
-Une boîte possède une position, une rotation et des dimensions (largeur, hauteur et profondeur) :
+### Formes de collision {#collision-shapes-list}
 
-![Forme de boîte](/manuals/images/physics/box.png)
+Pour ajouter une forme, <kbd>faites un clic droit</kbd> sur l’objet de collision et choisissez <kbd>Add Shape</kbd> :
 
-## Forme de sphère {#sphere-shape}
-Une sphère possède une position, une rotation et un diamètre :
+![Ajout d’une forme primitive en physique 2D](/manuals/images/physics/collision_shapes_2d.png)
 
-![Forme de sphère](/manuals/images/physics/sphere.png)
+Formes en physique 2D :
 
-## Forme de capsule {#capsule-shape}
-Une capsule possède une position, une rotation, un diamètre et une hauteur :
+- **Circle** (position, rotation, diamètre)
 
-![Forme de sphère](/manuals/images/physics/capsule.png)
+![Forme de collision circulaire](/manuals/images/physics/circle.png)
 
-<div class='important' markdown='1'>
-Les formes de capsule sont prises en charge uniquement avec la physique 3D (configurée dans la section Physics du fichier *game.project*).
-</div>
+- **Rectangle** (position, rotation, 2 dimensions, la profondeur est ignorée)
+
+![Forme de collision rectangulaire](/manuals/images/physics/rectangle.png)
+
+En physique 3D, procédez de la même façon.
+
+![Ajout d’une forme primitive en physique 3D](/manuals/images/physics/collision_shapes_3d.png)
+
+Formes en physique 3D :
+
+- **Box** (position, rotation, 3 dimensions)
+
+![Forme de collision en boîte](/manuals/images/physics/box.png)
+
+- **Capsule** (position, rotation, diamètre, hauteur)
+
+![Forme de collision en capsule](/manuals/images/physics/capsule.png)
+
+- **Hull** (position, rotation, scène, maillage)
+
+![Enveloppe convexe de collision](/manuals/images/physics/hull.png)
+
+- **Mesh** (position, rotation, scène, maillage)
+
+![Maillage triangulaire de collision](/manuals/images/physics/mesh.png)
+
+- **Sphere** (position, rotation, diamètre)
+
+![Forme de collision sphérique](/manuals/images/physics/sphere.png)
 
 ### Formes complexes {#complex-shapes}
 Les formes complexes peuvent utiliser la géométrie d'une tilemap ou les données d'une enveloppe convexe. Depuis Defold 1.13.2, les objets de collision 3D peuvent également créer des enveloppes convexes et des formes de maillage triangulé à partir des maillages de scènes glTF ou GLB.

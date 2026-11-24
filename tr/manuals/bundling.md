@@ -5,8 +5,10 @@ layout: manual
 locale: tr
 title: Bir uygulamayı paketleme
 toc:
-- Bir uygulamayı paketleme
-- Düzenleyiciden paketleme
+- anchor: bundling-an-application
+  title: Bir uygulamayı paketleme
+- anchor: bundling-from-within-the-editor
+  title: Düzenleyiciden paketleme
 - anchor: build-reports
   title: Derleme raporları
 - Android
@@ -15,18 +17,21 @@ toc:
 - Linux
 - Windows
 - HTML5
-- Komut satırından paketleme
-- Dağıtım paketinin yapısı
-- Yayıma yönelik paketler ve hata ayıklama paketleri
+- anchor: bundling-from-the-command-line
+  title: Komut satırından paketleme
+- anchor: the-bundle-layout
+  title: Dağıtım paketinin yapısı
+- anchor: release-vs-debug
+  title: Yayıma yönelik paketler ve hata ayıklama paketleri
 ---
 
-# Bir uygulamayı paketleme
+# Bir uygulamayı paketleme {#bundling-an-application}
 
 Uygulamanızı geliştirirken oyunu hedef platformlarda mümkün olduğunca sık test etmeyi alışkanlık haline getirmeniz önerilir. Böylece performans sorunlarını, çözmenin çok daha kolay olduğu geliştirme sürecinin erken aşamalarında tespit edebilirsiniz. Gölgelendiriciler (shader) gibi konulardaki farklılıkları bulmak için de tüm hedef platformlarda test yapmanız önerilir. Mobil cihazlar için geliştirme yaparken, tam bir paketleme (bundling) ve uygulamayı kaldırıp yeniden kurma döngüsü yerine [mobil geliştirme uygulamasını](/tr/manuals/dev-app/) kullanarak içeriği uygulamaya gönderebilirsiniz.
 
 Defold'un desteklediği tüm platformlar için, harici araçlara gerek duymadan doğrudan Defold düzenleyicisinden bir uygulama dağıtım paketi (application bundle) oluşturabilirsiniz. Komut satırı araçlarımızı kullanarak komut satırından da paketleme yapabilirsiniz. Projeniz bir veya daha fazla [yerel kod eklentisi (native extension)](/tr/manuals/extensions) içeriyorsa uygulamayı paketlemek için ağ bağlantısı gerekir.
 
-## Düzenleyiciden paketleme
+## Düzenleyiciden paketleme {#bundling-from-within-the-editor}
 
 Project menüsündeki Bundle seçeneğiyle bir uygulama dağıtım paketi oluşturabilirsiniz:
 
@@ -70,13 +75,13 @@ HTML5 uygulama dağıtım paketi oluşturma işlemi ve isteğe bağlı kurulum [
 
 Bir HTML5 uygulama dağıtım paketinin, özellikle Facebook Instant Games için hazırlanmış özel bir sürümünü oluşturabilirsiniz. Bu işlem [Facebook Instant Games kılavuzunda](/tr/manuals/instant-games/) açıklanır.
 
-## Komut satırından paketleme
+## Komut satırından paketleme {#bundling-from-the-command-line}
 
 Düzenleyici, uygulamayı paketlemek için [Bob](/tr/manuals/bob/) adlı komut satırı aracımızı kullanır.
 
 Uygulamanızın günlük geliştirme sürecinde derleme ve paketleme işlemlerini büyük olasılıkla Defold düzenleyicisinden yaparsınız. Başka durumlarda uygulama dağıtım paketlerini otomatik oluşturmak isteyebilirsiniz. Örneğin yeni bir sürüm yayımlarken tüm hedefler için toplu derleme yaparken veya oyunun en son sürümünün gece derlemelerini oluştururken bunu isteyebilirsiniz; bu işlemler bir sürekli tümleştirme (CI) ortamında da yapılabilir. Bir uygulamanın derlenmesi ve paketlenmesi, [Bob komut satırı aracı](/tr/manuals/bob/) kullanılarak olağan düzenleyici iş akışının dışında gerçekleştirilebilir.
 
-## Dağıtım paketinin yapısı
+## Dağıtım paketinin yapısı {#the-bundle-layout}
 
 Dağıtım paketinin mantıksal yapısı şöyledir:
 
@@ -94,12 +99,12 @@ Oyun varlıkları `game.arcd` dosyasında bulunur ve LZ4 sıkıştırması kulla
 [custom_resources](https://defold.com/tr/manuals/project-settings/#custom-resources) ayarını kullanarak, `game.arcd` dosyasına (sıkıştırılarak) yerleştirilmesi gereken varlıkları yapılandırabilirsiniz.
 Bu varlıklara [`sys.load_resource()`](https://defold.com/ref/sys/#sys.load_resource) işlevi aracılığıyla erişilebilir.
 
-## Yayıma yönelik paketler ve hata ayıklama paketleri
+## Yayıma yönelik paketler ve hata ayıklama paketleri {#release-vs-debug}
 
 Bir uygulama dağıtım paketi oluştururken hata ayıklama paketi (debug) veya yayıma yönelik paket (release) oluşturmayı seçebilirsiniz. Bu iki paket arasındaki farklar küçüktür, ancak bunları akılda tutmak önemlidir:
 
 * Yayıma yönelik derlemeler varsayılan olarak [profil çıkarıcıyı (profiler)](/tr/manuals/profiling) içermez. Hem hata ayıklama derlemelerine hem de yayıma yönelik derlemelere profil çıkarıcı desteği eklemek için [uygulama bildiriminde (App Manifest)](/tr/manuals/app-manifest/#profiler) **Profiler** ayarını **Always** olarak ayarlayın.
-* Yayıma yönelik derlemeler [ekran kaydediciyi](/ref/sys/#start_record) içermez
+* Yayıma yönelik derlemeler [video kaydını](/tr/manuals/recording) veya [`recorder` Lua modülünü](/ref/recorder/) içermez. [Uygulama bildiriminde](/tr/manuals/app-manifest/#exclude-record) **Exclude Record** etkinleştirilmediği sürece kayıt, masaüstü hata ayıklama derlemelerinde kullanılabilir.
 * Yayıma yönelik derlemeler, `print()` çağrılarının veya herhangi bir yerel kod eklentisinin çıktısını göstermez
 * Yayıma yönelik derlemelerde `is_debug` değeri, `sys.get_engine_info()` içinde `false` olarak ayarlanır
 * Yayıma yönelik derlemeler, `hash` değerleri için `tostring()` çağrıldığında ters arama yapmaz. Pratikte bu, `tostring()` işlevinin `url` veya `hash` türündeki bir değer için özgün dize yerine sayısal gösterimi döndürmesi anlamına gelir (`'hash: [/camera_001]'` yerine `'hash: [11844936738040519888 (unknown)]'`)

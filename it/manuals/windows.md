@@ -7,6 +7,8 @@ title: Sviluppo con Defold per la piattaforma Windows
 toc:
 - anchor: windows-development
   title: Sviluppo per Windows
+- anchor: graphics-backends
+  title: Backend grafici
 - anchor: project-settings
   title: Impostazioni del progetto
 - anchor: application-icon
@@ -19,6 +21,10 @@ toc:
 # Sviluppo per Windows {#windows-development}
 
 Sviluppare applicazioni Defold per la piattaforma Windows è un processo semplice che richiede pochi accorgimenti.
+
+## Backend grafici {#graphics-backends}
+
+Le build Windows usano OpenGL per impostazione predefinita. Usa **Graphics (Windows)** in un [manifest dell'applicazione](/it/manuals/app-manifest/#graphics) per selezionare OpenGL, Vulkan o DirectX 12 (**DX12**). Puoi includere più backend per consentire il ripiego quando quello preferito non è disponibile.
 
 ## Impostazioni del progetto {#project-settings}
 

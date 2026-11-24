@@ -2071,7 +2071,7 @@
                     ]
                 },
                 {
-                    "doc": "id of the received input action, as mapped in the input_binding-file, or <code>nil</code> for mouse movement",
+                    "doc": "id of the received input action, as mapped in the input_binding-file, or <code>nil</code> for pointer movement and accelerometer samples; check <code>action.source</code> to distinguish them",
                     "is_optional": "False",
                     "name": "action_id",
                     "types": [
@@ -2126,14 +2126,22 @@
         },
         {
             "brief": "Input action",
-            "description": "Data supplied to the global <code>on_input</code> lifecycle function.",
+            "description": "Data supplied to the global <code>on_input</code> lifecycle function.\nThe source identifies the input device category independently of the action\nname. Clicks and pointer movement simulated from touch report <code>hash(\"touch\")</code>,\nas do separate touch actions. Text and marked-text input report\n<code>hash(\"text\")</code>, including input entered with a physical keyboard.\nIf a named action merges contributions from several devices, the last\ncontributing device processed wins, in keyboard, text, mouse, then touch\norder. Keyboard keys and mouse buttons contribute to source selection only\nwhile pressed or held. Their releases keep the previously reported source\nunless another input contributes in the same frame. Idle device polling\ndoes not change the source. Gamepad actions remain separate per controller.\nPointer movement and accelerometer samples are delivered in separate callbacks,\nboth with <code>action_id == nil</code>. Pointer movement reports <code>hash(\"mouse\")</code> or\n<code>hash(\"touch\")</code> and has pointer coordinates but no accelerometer fields.\nAccelerometer samples report <code>hash(\"accelerometer\")</code> and have <code>acc_x</code>, <code>acc_y</code>,\nand <code>acc_z</code> but no pointer coordinates. If both occur in a frame, two callbacks\nare delivered and each can be consumed independently. Check <code>source</code> to\ndistinguish these callbacks. Accelerometer samples are delivered even when\ntheir values have not changed.",
             "error": "",
             "examples": "",
             "language": "",
             "members": [
                 {
+                    "display_name": "source",
+                    "doc": "Input device category: <code>hash(\"keyboard\")</code>, <code>hash(\"text\")</code>, <code>hash(\"mouse\")</code>, <code>hash(\"touch\")</code>, <code>hash(\"gamepad\")</code>, or <code>hash(\"accelerometer\")</code>.",
+                    "is_optional": false,
+                    "name": "source",
+                    "type": "hash",
+                    "type_html": "<a href=\"../builtins-lua/#hash\">hash</a>"
+                },
+                {
                     "display_name": "value",
-                    "doc": "Amount of input, usually 1 for buttons or between 0 and 1 for analogue input; absent for pointer movement and text input.",
+                    "doc": "Amount of input, usually 1 for buttons or between 0 and 1 for analogue input; absent for pointer movement, accelerometer samples, and text input.",
                     "is_optional": true,
                     "name": "value?",
                     "type": "number",
@@ -2141,7 +2149,7 @@
                 },
                 {
                     "display_name": "pressed",
-                    "doc": "Whether the input was pressed this frame; absent for pointer movement and text input.",
+                    "doc": "Whether the input was pressed this frame; absent for pointer movement, accelerometer samples, and text input.",
                     "is_optional": true,
                     "name": "pressed?",
                     "type": "boolean",
@@ -2149,7 +2157,7 @@
                 },
                 {
                     "display_name": "released",
-                    "doc": "Whether the input was released this frame; absent for pointer movement and text input.",
+                    "doc": "Whether the input was released this frame; absent for pointer movement, accelerometer samples, and text input.",
                     "is_optional": true,
                     "name": "released?",
                     "type": "boolean",
@@ -2157,7 +2165,7 @@
                 },
                 {
                     "display_name": "repeated",
-                    "doc": "Whether the input was repeated this frame; absent for pointer movement and text input.",
+                    "doc": "Whether the input was repeated this frame; absent for pointer movement, accelerometer samples, and text input.",
                     "is_optional": true,
                     "name": "repeated?",
                     "type": "boolean",
@@ -2165,7 +2173,7 @@
                 },
                 {
                     "display_name": "x",
-                    "doc": "Pointer x-coordinate; absent for gamepad, key, and text input.",
+                    "doc": "Pointer x-coordinate; absent for gamepad, key, text, and accelerometer input.",
                     "is_optional": true,
                     "name": "x?",
                     "type": "number",
@@ -2173,7 +2181,7 @@
                 },
                 {
                     "display_name": "y",
-                    "doc": "Pointer y-coordinate; absent for gamepad, key, and text input.",
+                    "doc": "Pointer y-coordinate; absent for gamepad, key, text, and accelerometer input.",
                     "is_optional": true,
                     "name": "y?",
                     "type": "number",
@@ -2181,7 +2189,7 @@
                 },
                 {
                     "display_name": "screen_x",
-                    "doc": "Pointer x-coordinate in screen space; absent for gamepad, key, and text input.",
+                    "doc": "Pointer x-coordinate in screen space; absent for gamepad, key, text, and accelerometer input.",
                     "is_optional": true,
                     "name": "screen_x?",
                     "type": "number",
@@ -2189,7 +2197,7 @@
                 },
                 {
                     "display_name": "screen_y",
-                    "doc": "Pointer y-coordinate in screen space; absent for gamepad, key, and text input.",
+                    "doc": "Pointer y-coordinate in screen space; absent for gamepad, key, text, and accelerometer input.",
                     "is_optional": true,
                     "name": "screen_y?",
                     "type": "number",
@@ -2197,7 +2205,7 @@
                 },
                 {
                     "display_name": "dx",
-                    "doc": "Change in the pointer x-coordinate; absent for gamepad, key, and text input.",
+                    "doc": "Change in the pointer x-coordinate; absent for gamepad, key, text, and accelerometer input.",
                     "is_optional": true,
                     "name": "dx?",
                     "type": "number",
@@ -2205,7 +2213,7 @@
                 },
                 {
                     "display_name": "dy",
-                    "doc": "Change in the pointer y-coordinate; absent for gamepad, key, and text input.",
+                    "doc": "Change in the pointer y-coordinate; absent for gamepad, key, text, and accelerometer input.",
                     "is_optional": true,
                     "name": "dy?",
                     "type": "number",
@@ -2213,7 +2221,7 @@
                 },
                 {
                     "display_name": "screen_dx",
-                    "doc": "Change in the pointer x-coordinate in screen space; absent for gamepad, key, and text input.",
+                    "doc": "Change in the pointer x-coordinate in screen space; absent for gamepad, key, text, and accelerometer input.",
                     "is_optional": true,
                     "name": "screen_dx?",
                     "type": "number",
@@ -2221,7 +2229,7 @@
                 },
                 {
                     "display_name": "screen_dy",
-                    "doc": "Change in the pointer y-coordinate in screen space; absent for gamepad, key, and text input.",
+                    "doc": "Change in the pointer y-coordinate in screen space; absent for gamepad, key, text, and accelerometer input.",
                     "is_optional": true,
                     "name": "screen_dy?",
                     "type": "number",

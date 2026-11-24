@@ -7,14 +7,8 @@ title: Kollisionsformen
 toc:
 - anchor: collision-shapes
   title: Kollisionsformen
-- anchor: primitive-shapes
-  title: Primitive Formen
-- anchor: box-shape
-  title: Quaderform
-- anchor: sphere-shape
-  title: Kugelform
-- anchor: capsule-shape
-  title: Kapselform
+- anchor: collision-shapes-list
+  title: Kollisionsformen
 - anchor: complex-shapes
   title: Komplexe Formen
 - anchor: hull-and-mesh-shapes-in-3d
@@ -45,29 +39,51 @@ toc:
 
 Ein Kollisionsobjekt (collision object) kann mehrere eingebettete Kollisionsformen (collision shapes) enthalten. In der 3D-Physik können dazu auch Hüllen und Dreiecksmeshes aus glTF- oder GLB-Dateien gehören. Du kannst auch eine Kachelkarte (tile map) oder eine Ressource für eine konvexe Form über die Eigenschaft *Collision Shape* des Kollisionsobjekts verwenden.
 
-### Primitive Formen {#primitive-shapes}
-Die primitiven Formen sind *Quader*, *Kugel* und *Kapsel*. Du fügst eine primitive Form hinzu, indem du mit der <kbd>rechten Maustaste</kbd> auf das Kollisionsobjekt klickst und <kbd>Add Shape</kbd> auswählst:
+Für 2D und 3D stehen unterschiedliche Kollisionsformen zur Verfügung. Den Physiktyp stellst du in `game.project` unter `Physics` mit `Type` (`2D`/`3D`) ein:
 
-![Eine primitive Form hinzufügen](/manuals/images/physics/add_shape.png)
+![Physikeinstellungen](/manuals/images/physics/physics_settings.png)
 
-## Quaderform {#box-shape}
-Ein Quader hat eine Position, eine Drehung und Abmessungen (Breite, Höhe und Tiefe):
+### Kollisionsformen {#collision-shapes-list}
 
-![Quaderform](/manuals/images/physics/box.png)
+Klicke mit der <kbd>rechten Maustaste</kbd> auf das Kollisionsobjekt und wähle <kbd>Add Shape</kbd>, um eine Form hinzuzufügen.
 
-## Kugelform {#sphere-shape}
-Eine Kugel hat eine Position, eine Drehung und einen Durchmesser:
+![Eine primitive Kollisionsform in der 2D-Physik hinzufügen](/manuals/images/physics/collision_shapes_2d.png)
 
-![Kugelform](/manuals/images/physics/sphere.png)
+Formen für 2D-Physik:
 
-## Kapselform {#capsule-shape}
-Eine Kapsel hat eine Position, eine Drehung, einen Durchmesser und eine Höhe:
+- **Circle** (Position, Drehung, Durchmesser)
 
-![Kugelform](/manuals/images/physics/capsule.png)
+![Kreisförmige Kollisionsform](/manuals/images/physics/circle.png)
 
-<div class='important' markdown='1'>
-Kapselformen werden nur bei Verwendung der 3D-Physik unterstützt (konfiguriert im Bereich Physics der Datei *game.project*).
-</div>
+- **Rectangle** (Position, Drehung, 2 Abmessungen, Tiefe wird ignoriert)
+
+![Rechteckige Kollisionsform](/manuals/images/physics/rectangle.png)
+
+In der 3D-Physik fügst du Formen auf dieselbe Weise hinzu.
+
+![Eine primitive Kollisionsform in der 3D-Physik hinzufügen](/manuals/images/physics/collision_shapes_3d.png)
+
+Formen für 3D-Physik:
+
+- **Box** (Position, Drehung, 3 Abmessungen)
+
+![Quaderförmige Kollisionsform](/manuals/images/physics/box.png)
+
+- **Capsule** (Position, Drehung, Durchmesser, Höhe)
+
+![Kapselförmige Kollisionsform](/manuals/images/physics/capsule.png)
+
+- **Hull** (Position, Drehung, Szene, Mesh)
+
+![Konvexe Hülle als Kollisionsform](/manuals/images/physics/hull.png)
+
+- **Mesh** (Position, Drehung, Szene, Mesh)
+
+![Dreiecksmesh als Kollisionsform](/manuals/images/physics/mesh.png)
+
+- **Sphere** (Position, Drehung, Durchmesser)
+
+![Kugelförmige Kollisionsform](/manuals/images/physics/sphere.png)
 
 ### Komplexe Formen {#complex-shapes}
 Komplexe Formen können die Geometrie einer Kachelkarte oder Daten einer konvexen Hülle (convex hull) verwenden. Seit Defold 1.13.2 können 3D-Kollisionsobjekte auch Hüllen und Dreiecksmesh-Formen aus Meshes in glTF- oder GLB-Szenen erstellen.

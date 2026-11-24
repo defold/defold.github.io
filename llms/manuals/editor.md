@@ -106,6 +106,32 @@ On the bottom bar of the Editor you can find a narrow space in which the Status 
 - when a new update is available a clickable button `Update Available` will be visible - check section Updating the Editor in this manual below.
 - when building or bundling a progress of it will be presented there.
 
+## Engine window placement
+
+On desktop platforms, engine windows opened from the editor remember their normal windowed size and position across launches and engine reboots. Placement is saved separately for each project and engine instance. Launching a single engine instance uses the same saved placement as the first instance when launching several.
+
+If you move or resize the engine window, a later launch restores that placement. A remembered size is used while the configured window dimensions are unchanged; changing those dimensions makes the next launch use the new size. On Linux Wayland, only the size is restored because the desktop compositor controls window positioning.
+
+### Resetting the engine window size
+
+Choose `Debug ▸ Reset Simulated Resolution` to return to the configured size. This command:
+
+- Clears remembered window sizes for all engine instances in the current project, including instances that are not running.
+- Clears the selected simulated resolution and turns off **Rotated Device**.
+- Keeps saved window positions.
+
+Windows for the selected running engine instances are resized to the project's [Display Width and Height](https://defold.com/llms/manuals/project-settings.md). You can also reset with no engine running; the next launch uses the configured size. Moving or resizing the window afterward saves its new placement again.
+
+## 2D and 3D scene orientation
+
+The scene view can be used in both 2D and 3D workflows. A typical 2D setup uses an orthographic view with the grid on the X-Y plane:
+
+To work in 3D, turn off the **2D** toggle in the toolbar. This changes the view orientation and switches to the 3D grid settings. You can use the **Grid Settings** dropdown to adjust the grid plane and appearance.
+
+For a perspective view, enable **Perspective camera** in the toolbar:
+
+You can also change the view through the **View** menu.
+
 ## Panes Size and Visibility
 
 Panes size can be adjusted inside the Editor by `Dragging` the section borders between all described above 6 Panes.

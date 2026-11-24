@@ -49,6 +49,8 @@ This message can only be sent to the designated @system socket.
 - `arg4` (string) - argument 4
 - `arg5` (string) - argument 5
 - `arg6` (string) - argument 6
+- `arg7` (string) - argument 7
+- `arg8` (string) - argument 8
 
 **Examples**
 
@@ -119,51 +121,6 @@ This message can only be sent to the designated @system socket.
 **Examples**
 
 msg.post("@system:", "set_vsync", { swap_interval = 1 } )
-
-### start_record
-*Type:* MESSAGE
-Starts video recording of the game frame-buffer to file. Current video format is the
-open vp8 codec in the ivf container. It's possible to upload this format directly
-to YouTube. The VLC video player has native support but with the known issue that
-not the entire file is played back. It's probably an issue with VLC.
-The Miro Video Converter has support for vp8/ivf.
-   Video recording is only supported on desktop platforms.
- Audio is currently not supported
- Window width and height must be a multiple of 8 to be able to record video.
-This message can only be sent to the designated @system socket.
-
-**Parameters**
-
-- `file_name` (string) - file name to write the video to
-- `frame_period` (number) - frame period to record, ie write every nth frame. Default value is <code>2</code>
-- `fps` (number) - frames per second. Playback speed for the video. Default value is <code>30</code>. The fps value doens't affect the recording. It's only meta-data in the written video file.
-
-**Examples**
-
-Record a video in 30 fps given that the native game fps is 60:
-```
-msg.post("@system:", "start_record", { file_name = "test_rec.ivf" } )
-
-```
-
-To write a video in 60 fps given that the native game fps is 60:
-```
-msg.post("@system:", "start_record", { file_name = "test_rec.ivf", frame_period = 1, fps = 60 } )
-
-```
-
-### stop_record
-*Type:* MESSAGE
-Stops the currently active video recording.
-   Video recording is only supported on desktop platforms.
-This message can only be sent to the designated @system socket.
-
-**Examples**
-
-```
-msg.post("@system:", "stop_record")
-
-```
 
 ### sys.application_info
 *Type:* STRUCT
@@ -828,6 +785,8 @@ project root.
 - `arg4` (string) (optional) - argument 4
 - `arg5` (string) (optional) - argument 5
 - `arg6` (string) (optional) - argument 6
+- `arg7` (string) (optional) - argument 7
+- `arg8` (string) (optional) - argument 8
 
 **Examples**
 

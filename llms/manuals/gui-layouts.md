@@ -78,6 +78,8 @@ end
 
 When orientation is switched, the GUI layout manager will automatically scale and reposition GUI nodes according to your layout and node properties. In-game content, however, is rendered in a separate pass (by default) with a stretch-fit projection into the current window. To change this behavior, either supply your own modified render script, or use a camera [library](https://defold.com/assets/).
 
+For custom UI placement around camera cutouts, refresh `window.get_reserved_areas()` on `window.WINDOW_EVENT_RESIZED` even when the selected GUI layout stays the same. On iOS, a 180° rotation can leave the window dimensions and safe-area insets unchanged while moving the obstruction. See [Reserved screen areas](https://defold.com/llms/manuals/porting-guidelines.md) for the refresh example and how its coordinates in window pixels relate to GUI adjustment.
+
 ## Manual layout selection (Lua)
 
 When Auto Layout Selection is OFF for the Display Profiles in use, the engine won’t switch layouts automatically. Use these functions from a GUI script to manage layouts manually:

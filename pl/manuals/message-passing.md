@@ -11,7 +11,8 @@ toc:
 - Skróty
 - Odbieranie wiadomości
 - Wiadomości między światami gry
-- Łańcuchy wiadomości
+- anchor: message-chains
+  title: Łańcuchy wiadomości
 ---
 
 # Przekazywanie wiadomości
@@ -127,7 +128,7 @@ Możesz wysyłać dowolne wiadomości do dowolnego istniejącego obiektu lub kom
 Silnik sprawdza adres docelowy wiadomości. Jeśli spróbujesz wysłać wiadomość do nieznanego odbiorcy, Defold zgłosi błąd w konsoli:
 
 ```lua
--- Try to post to a non existing object
+-- Spróbuj wysłać wiadomość do nieistniejącego obiektu
 msg.post("dont_exist#script", "hello")
 ```
 
@@ -149,7 +150,7 @@ message_id
 : Opcjonalna tabela Lua zawierająca pary klucz-wartość z danymi wiadomości. W tabeli można umieścić niemal każdy typ danych. Możesz przekazać liczby, ciągi znaków, wartości logiczne, URL-e, hashe i zagnieżdżone tabele. Nie możesz przekazać funkcji.
 
   ```lua
-  -- Send table data containing a nested table
+  -- Wyślij dane tabeli zawierającej zagnieżdżoną tabelę
   local inventory_table = { sword = true, shield = true, bow = true, arrows = 9 }
   local stats = { score = 100, stars = 2, health = 4, inventory = inventory_table }
   msg.post("other_object#script", "set_stats", stats)
@@ -210,7 +211,7 @@ msg.post("level:/player#controller", "wake_up")
 ```
 Bardziej szczegółowy opis działania pełnomocników kolekcji znajdziesz w dokumentacji [Collection Proxies](/pl/manuals/collection-proxy).
 
-## Łańcuchy wiadomości
+## Łańcuchy wiadomości {#message-chains}
 
 Gdy wysłana wiadomość zostanie ostatecznie dostarczona, wywoływana jest funkcja `on_message()` odbiorcy. Dość często kod reakcji wysyła kolejne wiadomości, które trafiają do kolejki wiadomości.
 

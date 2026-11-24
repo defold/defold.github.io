@@ -7,6 +7,7 @@ title: GUI scripts in Defold
 toc:
 - GUI scripts
 - Adding a script to a GUI
+- Input
 - The gui namespace
 - Message passing
 - Addressing nodes
@@ -61,6 +62,12 @@ To attach the script to a GUI component, open the GUI component prototype file (
 ![Script](../images/gui-script/set_script.png)
 
 If the GUI component has been added to a game object somewhere in your game, the script will now run.
+
+## Input
+
+To receive input in a GUI script, send `msg.post(".", "acquire_input_focus")` from `init()` and handle actions in `on_input(self, action_id, action)`.
+
+GUI scripts use the same `action.source` hashes as game object scripts, so you can distinguish a physical mouse click from a tap even on the initial press. See [Input device source](/manuals/input/#input-device-source) and the [mouse and touch example](/manuals/input-mouse-and-touch/#distinguishing-mouse-clicks-from-touch). Pointer movement and accelerometer samples both use `action_id == nil`; use their source to tell them apart.
 
 ## The "gui" namespace
 

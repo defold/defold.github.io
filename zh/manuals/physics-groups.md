@@ -17,6 +17,8 @@ toc:
 
 ![Physics collision group](/manuals/images/physics/collision_group.png)
 
+![物理碰撞分组与掩码](/manuals/images/physics/collision_groups.png)
+
 *掩码(Mask)* 字段可以包含多个组名，从而允许实现复杂的交互场景。
 
 ## 检测碰撞

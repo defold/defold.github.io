@@ -9,6 +9,8 @@ toc:
   title: Скрипти GUI
 - anchor: adding-a-script-to-a-gui
   title: Додавання скрипта до GUI
+- anchor: input
+  title: Введення
 - anchor: the-gui-namespace
   title: Простір імен «gui»
 - anchor: message-passing
@@ -68,6 +70,12 @@ end
 ![Скрипт](/manuals/images/gui-script/set_script.png)
 
 Якщо компонент GUI додано до ігрового об’єкта десь у вашій грі, скрипт тепер виконуватиметься.
+
+## Введення {#input}
+
+Щоб отримувати введення у скрипті GUI, надішліть `msg.post(".", "acquire_input_focus")` із `init()` і обробляйте дії в `on_input(self, action_id, action)`.
+
+Скрипти GUI використовують ті самі хеші `action.source`, що й скрипти ігрових об’єктів, тож клацання фізичної миші можна відрізнити від дотику навіть під час початкового натискання. Див. розділ [Джерело введення](/uk/manuals/input/#input-device-source) і [приклад для миші та дотику](/uk/manuals/input-mouse-and-touch/#distinguishing-mouse-clicks-from-touch). І рух вказівника, і зразки акселерометра використовують `action_id == nil`; розрізняйте їх за джерелом.
 
 ## Простір імен «gui» {#the-gui-namespace}
 

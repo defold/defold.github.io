@@ -8,9 +8,9 @@
             "language": "",
             "members": [
                 {
-                    "doc": "The size of the font (in points)",
+                    "doc": "The font generation size in pixels",
                     "name": "m_Size",
-                    "type": "uint32_t"
+                    "type": "float"
                 },
                 {
                     "doc": "The shadow distance in X-axis (in pixels)",
@@ -122,8 +122,8 @@
             "type": "TYPEDEF"
         },
         {
-            "brief": "Make sure each glyph in the text gets rasterized and put into the glyph cache",
-            "description": "Make sure each glyph in the text gets rasterized and put into the glyph cache",
+            "brief": "Make sure each glyph in the text gets generated and put into the glyph cache.",
+            "description": "The generation size comes from the compiled font resource. Vector fonts\nwith outline/shadow SDF effects use the Size authored in the .font file;\ncurve-only Vector fonts use an internal normalization reference.",
             "error": "",
             "examples": "",
             "language": "",

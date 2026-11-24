@@ -9,17 +9,17 @@
             "members": [
                 {
                     "doc": "",
-                    "name": "EXTENSION_APP_EXIT_CODE_NONE",
+                    "name": "APP_EXIT_CODE_NONE",
                     "type": ""
                 },
                 {
                     "doc": "",
-                    "name": "EXTENSION_APP_EXIT_CODE_REBOOT",
+                    "name": "APP_EXIT_CODE_REBOOT",
                     "type": ""
                 },
                 {
                     "doc": "",
-                    "name": "EXTENSION_APP_EXIT_CODE_EXIT",
+                    "name": "APP_EXIT_CODE_EXIT",
                     "type": ""
                 }
             ],
@@ -46,7 +46,7 @@
                 {
                     "doc": "App exit code",
                     "name": "m_ExitStatus",
-                    "type": "ExtensionAppExitCode"
+                    "type": "AppExitCode"
                 }
             ],
             "name": "AppParams",
@@ -72,7 +72,7 @@
                     "is_optional": "False",
                     "name": "app_params",
                     "types": [
-                        "ExtensionAppParams*"
+                        "AppParams*"
                     ]
                 }
             ],
@@ -106,7 +106,7 @@
                     "doc": "engine exit code",
                     "name": "code",
                     "types": [
-                        "ExtensionAppExitCode"
+                        "AppExitCode"
                     ]
                 }
             ],
@@ -121,14 +121,16 @@
             "language": "C++",
             "members": [],
             "name": "AppParamsGetContext",
-            "notes": [],
+            "notes": [
+                "Deprecated. Use [ref:ContextRegistryGetByHash] on [ref:HContextRegistry] instead."
+            ],
             "parameters": [
                 {
                     "doc": "the params",
                     "is_optional": "False",
                     "name": "params",
                     "types": [
-                        "ExtensionAppParams"
+                        "AppParams"
                     ]
                 },
                 {
@@ -161,14 +163,16 @@
             "language": "C++",
             "members": [],
             "name": "AppParamsGetContextByName",
-            "notes": [],
+            "notes": [
+                "Deprecated. Use [ref:ContextRegistryGet] on [ref:HContextRegistry] instead."
+            ],
             "parameters": [
                 {
                     "doc": "the params",
                     "is_optional": "False",
                     "name": "params",
                     "types": [
-                        "ExtensionAppParams"
+                        "AppParams"
                     ]
                 },
                 {
@@ -194,6 +198,70 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "Gets the context registry used by the extension ap...",
+            "description": "Gets the context registry used by the extension app params.",
+            "error": "",
+            "examples": "",
+            "language": "C++",
+            "members": [],
+            "name": "AppParamsGetContextRegistry",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the params",
+                    "is_optional": "False",
+                    "name": "params",
+                    "types": [
+                        "AppParams*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "the context registry",
+                    "name": "context_registry",
+                    "types": [
+                        "HContextRegistry"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "get the extension's application user data",
+            "description": "Returns the pointer associated with this extension by SetUserData.\nAvailable during AppInitialize and AppFinalize, including failed initialization\ncleanup. Returns null if no pointer was set or outside an extension callback.\nThe extension owns the memory; do not retain the borrowed parameters.",
+            "error": "",
+            "examples": "",
+            "language": "C++",
+            "members": [],
+            "name": "AppParamsGetUserData",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "valid application callback parameters",
+                    "is_optional": "False",
+                    "name": "params",
+                    "types": [
+                        "const AppParams*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "this extension's user data, or null",
+                    "name": "user_data",
+                    "types": [
+                        "void*"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "Initializes an extension app params struct\nNOTE: t...",
             "description": "Initializes an extension app params struct\nNOTE: this is an opaque struct, do not use it's members directly!",
             "error": "",
@@ -208,7 +276,7 @@
                     "is_optional": "False",
                     "name": "app_params",
                     "types": [
-                        "ExtensionAppParams*"
+                        "AppParams*"
                     ]
                 }
             ],
@@ -225,14 +293,16 @@
             "language": "C++",
             "members": [],
             "name": "AppParamsSetContext",
-            "notes": [],
+            "notes": [
+                "Deprecated. Use [ref:ContextRegistrySet] on [ref:HContextRegistry] instead."
+            ],
             "parameters": [
                 {
                     "doc": "the params",
                     "is_optional": "False",
                     "name": "params",
                     "types": [
-                        "ExtensionAppParams"
+                        "AppParams"
                     ]
                 },
                 {
@@ -266,6 +336,54 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "broadcast an extension event",
+            "description": "Synchronously delivers an event to every eligible generic extension handler.\nThe engine accepts arbitrary event hashes and opaque payloads without event\nor payload registration. Receivers ignore event ids they do not recognize.\nUse extension-specific names for custom events; names beginning with <code>_dm_event_</code>\nare reserved for engine events.\nThis function is not thread-safe. Call only on the engine thread. Callbacks run\non the calling thread; no queuing or worker-thread marshalling occurs. Nested\ndispatch is supported. Delivery order is unspecified; events cannot be consumed.\nThe context registry and payload are borrowed until return. Each broadcast\nsupplies callback parameters using the registry's contexts and each receiver's\nuser data. Event parameters have a delta time of zero.\nThe sender retains ownership. Data is read-only to receivers. Passing null\ndata with data_size zero sends a payload-free event. The engine forwards\nthe payload without interpreting its contents.",
+            "error": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">HContextRegistry</span><span class=\"w\"> </span><span class=\"n\">context_registry</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"n\">ParamsGetContextRegistry</span><span class=\"p\">(</span><span class=\"n\">params</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"kt\">uint32_t</span><span class=\"w\"> </span><span class=\"n\">value</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"mi\">42</span><span class=\"p\">;</span><span class=\"w\"></span>\n<span class=\"n\">BroadcastEvent</span><span class=\"p\">(</span><span class=\"n\">context_registry</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">dmHashString64</span><span class=\"p\">(</span><span class=\"s\">&quot;my_extension.changed&quot;</span><span class=\"p\">),</span><span class=\"w\"> </span><span class=\"o\">&amp;</span><span class=\"n\">value</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"k\">sizeof</span><span class=\"p\">(</span><span class=\"n\">value</span><span class=\"p\">));</span><span class=\"w\"></span>\n</code></pre></div>",
+            "language": "C++",
+            "members": [],
+            "name": "BroadcastEvent",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "borrowed engine context registry, or null for no contexts",
+                    "is_optional": "False",
+                    "name": "context_registry",
+                    "types": [
+                        "HContextRegistry"
+                    ]
+                },
+                {
+                    "doc": "hash of the event name",
+                    "is_optional": "False",
+                    "name": "event_id",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                },
+                {
+                    "doc": "borrowed payload, or null for a payload-free event",
+                    "is_optional": "False",
+                    "name": "data",
+                    "types": [
+                        "const void*"
+                    ]
+                },
+                {
+                    "doc": "payload size in bytes; zero for a payload-free event",
+                    "is_optional": "False",
+                    "name": "data_size",
+                    "types": [
+                        "uint32_t"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "extra callback type",
             "description": "Extra callback type for RegisterCallback function.",
             "error": "",
@@ -274,12 +392,12 @@
             "members": [
                 {
                     "doc": "",
-                    "name": "EXTENSION_CALLBACK_PRE_RENDER",
+                    "name": "CALLBACK_PRE_RENDER",
                     "type": ""
                 },
                 {
                     "doc": "",
-                    "name": "EXTENSION_CALLBACK_POST_RENDER",
+                    "name": "CALLBACK_POST_RENDER",
                     "type": ""
                 }
             ],
@@ -292,10 +410,10 @@
             "type": "ENUM"
         },
         {
-            "brief": "declare a new extension",
-            "description": "Declare and register new extension to the engine.\nThis macro is used to declare the extension callback functions used by the engine to communicate with the extension.",
+            "brief": "declare an extension",
+            "description": "Declare an extension using its identifier and register/unregister\ncallbacks. The identifier is also its exported registration symbol and name.\nRegister configures lifecycle callbacks on the opaque extension handle, before\nAppInitialize. Unregister runs after AppFinalize. Both repeat on engine reboot.\nThe legacy eight-argument form remains supported and emits a compiler\ndeprecation warning: DM_DECLARE_EXTENSION(symbol, name, app_init, app_final,\ninit, update, on_event, final). It keeps its callbacks and ABI. Do not add new\ncallbacks to that form; use setters through the three-argument form.",
             "error": "",
-            "examples": "Register a new extension:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">DM_DECLARE_EXTENSION</span><span class=\"p\">(</span><span class=\"n\">MyExt</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"s\">&quot;MyExt&quot;</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">AppInitializeMyExt</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">AppFinalizeMyExt</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">InitializeMyExt</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">UpdateMyExt</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">OnEventMyExt</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">FinalizeMyExt</span><span class=\"p\">);</span><span class=\"w\"></span>\n</code></pre></div>",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"k\">static</span><span class=\"w\"> </span><span class=\"n\">ExtensionResult</span><span class=\"w\"> </span><span class=\"nf\">RegisterMyExtension</span><span class=\"p\">(</span><span class=\"n\">HExtension</span><span class=\"w\"> </span><span class=\"n\">extension</span><span class=\"p\">)</span><span class=\"w\"></span>\n<span class=\"p\">{</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"n\">ExtensionSetUpdateFn</span><span class=\"p\">(</span><span class=\"n\">extension</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">UpdateMyExtension</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"k\">return</span><span class=\"w\"> </span><span class=\"n\">EXTENSION_RESULT_OK</span><span class=\"p\">;</span><span class=\"w\"></span>\n<span class=\"p\">}</span><span class=\"w\"></span>\n<span class=\"n\">DM_DECLARE_EXTENSION</span><span class=\"p\">(</span><span class=\"n\">MyExtension</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">RegisterMyExtension</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"mi\">0</span><span class=\"p\">);</span><span class=\"w\"></span>\n</code></pre></div>",
             "language": "C",
             "members": [],
             "name": "DM_DECLARE_EXTENSION",
@@ -402,9 +520,17 @@
             "error": "",
             "examples": "",
             "language": "C++",
-            "members": [],
+            "members": [
+                {
+                    "doc": "",
+                    "name": "m_Event",
+                    "type": "EventID"
+                }
+            ],
             "name": "Event",
-            "notes": [],
+            "notes": [
+                "Deprecated. Use FEventCallback with SetEventFn."
+            ],
             "parameters": [],
             "replaces": "",
             "returnvalues": [],
@@ -420,32 +546,32 @@
             "members": [
                 {
                     "doc": "",
-                    "name": "EXTENSION_EVENT_ID_ACTIVATEAPP",
+                    "name": "EVENT_ID_ACTIVATEAPP",
                     "type": ""
                 },
                 {
                     "doc": "",
-                    "name": "EXTENSION_EVENT_ID_DEACTIVATEAPP",
+                    "name": "EVENT_ID_DEACTIVATEAPP",
                     "type": ""
                 },
                 {
                     "doc": "",
-                    "name": "EXTENSION_EVENT_ID_ICONIFYAPP",
+                    "name": "EVENT_ID_ICONIFYAPP",
                     "type": ""
                 },
                 {
                     "doc": "",
-                    "name": "EXTENSION_EVENT_ID_DEICONIFYAPP",
+                    "name": "EVENT_ID_DEICONIFYAPP",
                     "type": ""
                 },
                 {
                     "doc": "",
-                    "name": "EXTENSION_EVENT_ID_ENGINE_INITIALIZED",
+                    "name": "EVENT_ID_ENGINE_INITIALIZED",
                     "type": ""
                 },
                 {
                     "doc": "",
-                    "name": "EXTENSION_EVENT_ID_ENGINE_DELETE",
+                    "name": "EVENT_ID_ENGINE_DELETE",
                     "type": ""
                 }
             ],
@@ -578,7 +704,9 @@
             "language": "C",
             "members": [],
             "name": "ExtensionAppParamsGetContext",
-            "notes": [],
+            "notes": [
+                "Deprecated. Use [ref:ContextRegistryGetByHash] on [ref:HContextRegistry] instead."
+            ],
             "parameters": [
                 {
                     "doc": "the params",
@@ -618,7 +746,9 @@
             "language": "C",
             "members": [],
             "name": "ExtensionAppParamsGetContextByName",
-            "notes": [],
+            "notes": [
+                "Deprecated. Use [ref:ContextRegistryGet] on [ref:HContextRegistry] instead."
+            ],
             "parameters": [
                 {
                     "doc": "the params",
@@ -642,6 +772,70 @@
                 {
                     "doc": "The context, if it exists",
                     "name": "context",
+                    "types": [
+                        "void*"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Gets the context registry used by the extension ap...",
+            "description": "Gets the context registry used by the extension app params.",
+            "error": "",
+            "examples": "",
+            "language": "C",
+            "members": [],
+            "name": "ExtensionAppParamsGetContextRegistry",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the params",
+                    "is_optional": "False",
+                    "name": "params",
+                    "types": [
+                        "ExtensionAppParams*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "the context registry",
+                    "name": "context_registry",
+                    "types": [
+                        "HContextRegistry"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "get the extension's application user data",
+            "description": "Returns the pointer associated with this extension by ExtensionSetUserData.\nAvailable during AppInitialize and AppFinalize, including failed initialization\ncleanup. Returns null if no pointer was set or outside an extension callback.\nThe extension owns the memory; do not retain the borrowed parameters.",
+            "error": "",
+            "examples": "",
+            "language": "C",
+            "members": [],
+            "name": "ExtensionAppParamsGetUserData",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "valid application callback parameters",
+                    "is_optional": "False",
+                    "name": "params",
+                    "types": [
+                        "const ExtensionAppParams*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "this extension's user data, or null",
+                    "name": "user_data",
                     "types": [
                         "void*"
                     ]
@@ -682,7 +876,9 @@
             "language": "C",
             "members": [],
             "name": "ExtensionAppParamsSetContext",
-            "notes": [],
+            "notes": [
+                "Deprecated. Use [ref:ContextRegistrySet] on [ref:HContextRegistry] instead."
+            ],
             "parameters": [
                 {
                     "doc": "the params",
@@ -719,6 +915,54 @@
                     ]
                 }
             ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "broadcast an extension event",
+            "description": "Synchronously delivers an event to every eligible generic extension handler.\nThe engine accepts arbitrary event hashes and opaque payloads without event\nor payload registration. Receivers ignore event ids they do not recognize.\nUse extension-specific names for custom events; names beginning with <code>_dm_event_</code>\nare reserved for engine events.\nThis function is not thread-safe. Call only on the engine thread. Callbacks run\non the calling thread; no queuing or worker-thread marshalling occurs. Nested\ndispatch is supported. Delivery order is unspecified; events cannot be consumed.\nThe context registry and payload are borrowed until return. Each broadcast\nsupplies callback parameters using the registry's contexts and each receiver's\nuser data. Event parameters have a delta time of zero.\nThe sender retains ownership. Data is read-only to receivers. Passing null\ndata with data_size zero sends a payload-free event. The engine forwards\nthe payload without interpreting its contents.",
+            "error": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">HContextRegistry</span><span class=\"w\"> </span><span class=\"n\">context_registry</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"n\">ExtensionParamsGetContextRegistry</span><span class=\"p\">(</span><span class=\"n\">params</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"kt\">uint32_t</span><span class=\"w\"> </span><span class=\"n\">value</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"mi\">42</span><span class=\"p\">;</span><span class=\"w\"></span>\n<span class=\"n\">ExtensionBroadcastEvent</span><span class=\"p\">(</span><span class=\"n\">context_registry</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">dmHashString64</span><span class=\"p\">(</span><span class=\"s\">&quot;my_extension.changed&quot;</span><span class=\"p\">),</span><span class=\"w\"> </span><span class=\"o\">&amp;</span><span class=\"n\">value</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"k\">sizeof</span><span class=\"p\">(</span><span class=\"n\">value</span><span class=\"p\">));</span><span class=\"w\"></span>\n</code></pre></div>",
+            "language": "C",
+            "members": [],
+            "name": "ExtensionBroadcastEvent",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "borrowed engine context registry, or null for no contexts",
+                    "is_optional": "False",
+                    "name": "context_registry",
+                    "types": [
+                        "HContextRegistry"
+                    ]
+                },
+                {
+                    "doc": "hash of the event name",
+                    "is_optional": "False",
+                    "name": "event_id",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                },
+                {
+                    "doc": "borrowed payload, or null for a payload-free event",
+                    "is_optional": "False",
+                    "name": "data",
+                    "types": [
+                        "const void*"
+                    ]
+                },
+                {
+                    "doc": "payload size in bytes; zero for a payload-free event",
+                    "is_optional": "False",
+                    "name": "data_size",
+                    "types": [
+                        "uint32_t"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
             "tparams": [],
             "type": "FUNCTION"
         },
@@ -761,7 +1005,7 @@
             "replaces": "",
             "returnvalues": [],
             "tparams": [],
-            "type": "FUNCTION"
+            "type": "CONSTANT"
         },
         {
             "brief": "Extension event",
@@ -769,9 +1013,17 @@
             "error": "",
             "examples": "",
             "language": "C",
-            "members": [],
+            "members": [
+                {
+                    "doc": "",
+                    "name": "m_Event",
+                    "type": "ExtensionEventID"
+                }
+            ],
             "name": "ExtensionEvent",
-            "notes": [],
+            "notes": [
+                "Deprecated. Use FExtensionEventCallback with ExtensionSetEventFn."
+            ],
             "parameters": [],
             "replaces": "",
             "returnvalues": [],
@@ -825,6 +1077,38 @@
             "type": "ENUM"
         },
         {
+            "brief": "get an extension's user data",
+            "description": "Use during register or unregister to retrieve the pointer associated with\nthis extension by ExtensionSetUserData. The extension owns the memory.",
+            "error": "",
+            "examples": "",
+            "language": "C",
+            "members": [],
+            "name": "ExtensionGetUserData",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "borrowed extension configuration handle",
+                    "is_optional": "False",
+                    "name": "extension",
+                    "types": [
+                        "HExtension"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "this extension's user data, or null",
+                    "name": "user_data",
+                    "types": [
+                        "void*"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "extension parameter enumeration",
             "description": "Parameters available through <a href=\"#ExtensionParamsGetFloat\">ExtensionParamsGetFloat</a>.",
             "error": "",
@@ -846,8 +1130,8 @@
             "type": "ENUM"
         },
         {
-            "brief": "The global parameters avalable when registering an...",
-            "description": "The global parameters avalable when registering and unregistering an extension",
+            "brief": "Parameters for an extension's engine lifecycle, up...",
+            "description": "Parameters for an extension's engine lifecycle, update, render and event callbacks.",
             "error": "",
             "examples": "",
             "language": "C",
@@ -908,7 +1192,9 @@
             "language": "C",
             "members": [],
             "name": "ExtensionParamsGetContext",
-            "notes": [],
+            "notes": [
+                "Deprecated. Use [ref:ContextRegistryGetByHash] on [ref:HContextRegistry] instead."
+            ],
             "parameters": [
                 {
                     "doc": "the params",
@@ -948,7 +1234,9 @@
             "language": "C",
             "members": [],
             "name": "ExtensionParamsGetContextByName",
-            "notes": [],
+            "notes": [
+                "Deprecated. Use [ref:ContextRegistryGet] on [ref:HContextRegistry] instead."
+            ],
             "parameters": [
                 {
                     "doc": "the params",
@@ -974,6 +1262,38 @@
                     "name": "context",
                     "types": [
                         "void*"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Gets the context registry used by the extension pa...",
+            "description": "Gets the context registry used by the extension params.",
+            "error": "",
+            "examples": "",
+            "language": "C",
+            "members": [],
+            "name": "ExtensionParamsGetContextRegistry",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the params",
+                    "is_optional": "False",
+                    "name": "params",
+                    "types": [
+                        "ExtensionParams*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "the context registry",
+                    "name": "context_registry",
+                    "types": [
+                        "HContextRegistry"
                     ]
                 }
             ],
@@ -1029,6 +1349,38 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "get the extension's user data",
+            "description": "Returns the pointer associated with this extension by ExtensionSetUserData\nduring Initialize, Update, Finalize, pre/post-render and event callbacks.\nNested callback delivery restores the outer callback's pointer on return.\nReturns null if no pointer was set or outside an extension callback.\nThe extension owns the memory; do not retain the borrowed parameters.",
+            "error": "",
+            "examples": "",
+            "language": "C",
+            "members": [],
+            "name": "ExtensionParamsGetUserData",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "valid callback parameters",
+                    "is_optional": "False",
+                    "name": "params",
+                    "types": [
+                        "const ExtensionParams*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "this extension's user data, or null",
+                    "name": "user_data",
+                    "types": [
+                        "void*"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "Initializes an extension params struct\nNOTE: this ...",
             "description": "Initializes an extension params struct\nNOTE: this is an opaque struct, do not use it's members directly!",
             "error": "",
@@ -1060,14 +1412,16 @@
             "language": "C",
             "members": [],
             "name": "ExtensionParamsSetContext",
-            "notes": [],
+            "notes": [
+                "Deprecated. Use [ref:ContextRegistrySet] on [ref:HContextRegistry] instead."
+            ],
             "parameters": [
                 {
                     "doc": "the params",
                     "is_optional": "False",
                     "name": "params",
                     "types": [
-                        "ExtensionAppParams"
+                        "ExtensionParams"
                     ]
                 },
                 {
@@ -1108,7 +1462,9 @@
             "language": "C",
             "members": [],
             "name": "ExtensionRegister",
-            "notes": [],
+            "notes": [
+                "Deprecated. Use the three-argument declaration and setters instead."
+            ],
             "parameters": [
                 {
                     "doc": "A persistent buffer of at least 128 bytes.",
@@ -1127,7 +1483,7 @@
                     ]
                 },
                 {
-                    "doc": "extension name. human readble. max 16 characters long.",
+                    "doc": "extension name. Copied for the process lifetime, retaining at most 15 bytes plus NUL.",
                     "is_optional": "False",
                     "name": "name",
                     "types": [
@@ -1180,6 +1536,62 @@
                     "name": "on_event",
                     "types": [
                         "FExtensionOnEvent"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "extension declaration helper",
+            "description": "Internal function used by the three-argument DM_DECLARE_EXTENSION macro.\nThe descriptor storage and name must remain valid for the process lifetime.",
+            "error": "",
+            "examples": "",
+            "language": "C",
+            "members": [],
+            "name": "ExtensionRegisterDesc",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "aligned descriptor buffer",
+                    "is_optional": "False",
+                    "name": "desc",
+                    "types": [
+                        "void*"
+                    ]
+                },
+                {
+                    "doc": "descriptor buffer size in bytes",
+                    "is_optional": "False",
+                    "name": "desc_size",
+                    "types": [
+                        "uint32_t"
+                    ]
+                },
+                {
+                    "doc": "extension name",
+                    "is_optional": "False",
+                    "name": "name",
+                    "types": [
+                        "const char*"
+                    ]
+                },
+                {
+                    "doc": "configuration callback",
+                    "is_optional": "False",
+                    "name": "register_fn",
+                    "types": [
+                        "FExtensionRegister"
+                    ]
+                },
+                {
+                    "doc": "cleanup callback, or null",
+                    "is_optional": "False",
+                    "name": "unregister_fn",
+                    "types": [
+                        "FExtensionUnregister"
                     ]
                 }
             ],
@@ -1267,6 +1679,294 @@
             "type": "ENUM"
         },
         {
+            "brief": "set the application finalization callback",
+            "description": "Call only from the register callback. Passing null clears the callback.",
+            "error": "",
+            "examples": "",
+            "language": "C",
+            "members": [],
+            "name": "ExtensionSetAppFinalizeFn",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "extension configuration handle",
+                    "is_optional": "False",
+                    "name": "extension",
+                    "types": [
+                        "HExtension"
+                    ]
+                },
+                {
+                    "doc": "callback, or null",
+                    "is_optional": "False",
+                    "name": "fn",
+                    "types": [
+                        "FExtensionAppFinalize"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "set the application initialization callback",
+            "description": "Call only from the register callback. Passing null clears the callback.",
+            "error": "",
+            "examples": "",
+            "language": "C",
+            "members": [],
+            "name": "ExtensionSetAppInitializeFn",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "extension configuration handle",
+                    "is_optional": "False",
+                    "name": "extension",
+                    "types": [
+                        "HExtension"
+                    ]
+                },
+                {
+                    "doc": "callback, or null",
+                    "is_optional": "False",
+                    "name": "fn",
+                    "types": [
+                        "FExtensionAppInitialize"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "set the generic event callback",
+            "description": "Call only from the register callback. One handler receives all generic\nevents; use the callback's event_id to select events. No event-name argument\nor per-event registration is needed. Passing null clears it.\nRegistration resets on engine reboot; no event is replayed to a late receiver.",
+            "error": "",
+            "examples": "",
+            "language": "C",
+            "members": [],
+            "name": "ExtensionSetEventFn",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "extension configuration handle",
+                    "is_optional": "False",
+                    "name": "extension",
+                    "types": [
+                        "HExtension"
+                    ]
+                },
+                {
+                    "doc": "callback, or null",
+                    "is_optional": "False",
+                    "name": "fn",
+                    "types": [
+                        "FExtensionEventCallback"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "set the engine finalization callback",
+            "description": "Call only from the register callback. Passing null clears the callback.",
+            "error": "",
+            "examples": "",
+            "language": "C",
+            "members": [],
+            "name": "ExtensionSetFinalizeFn",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "extension configuration handle",
+                    "is_optional": "False",
+                    "name": "extension",
+                    "types": [
+                        "HExtension"
+                    ]
+                },
+                {
+                    "doc": "callback, or null",
+                    "is_optional": "False",
+                    "name": "fn",
+                    "types": [
+                        "FExtensionFinalize"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "set the engine initialization callback",
+            "description": "Call only from the register callback. Passing null clears the callback.",
+            "error": "",
+            "examples": "",
+            "language": "C",
+            "members": [],
+            "name": "ExtensionSetInitializeFn",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "extension configuration handle",
+                    "is_optional": "False",
+                    "name": "extension",
+                    "types": [
+                        "HExtension"
+                    ]
+                },
+                {
+                    "doc": "callback, or null",
+                    "is_optional": "False",
+                    "name": "fn",
+                    "types": [
+                        "FExtensionInitialize"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "set the post-render callback",
+            "description": "Call only from the register callback. Passing null clears the callback.\nDelivery requires successful AppInitialize, or no AppInitialize callback, and\nstops before AppFinalize. It does not require an Initialize callback.",
+            "error": "",
+            "examples": "",
+            "language": "C",
+            "members": [],
+            "name": "ExtensionSetPostRenderFn",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "extension configuration handle",
+                    "is_optional": "False",
+                    "name": "extension",
+                    "types": [
+                        "HExtension"
+                    ]
+                },
+                {
+                    "doc": "callback, or null",
+                    "is_optional": "False",
+                    "name": "fn",
+                    "types": [
+                        "FExtensionCallback"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "set the pre-render callback",
+            "description": "Call only from the register callback. Passing null clears the callback.\nDelivery requires successful AppInitialize, or no AppInitialize callback, and\nstops before AppFinalize. It does not require an Initialize callback.",
+            "error": "",
+            "examples": "",
+            "language": "C",
+            "members": [],
+            "name": "ExtensionSetPreRenderFn",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "extension configuration handle",
+                    "is_optional": "False",
+                    "name": "extension",
+                    "types": [
+                        "HExtension"
+                    ]
+                },
+                {
+                    "doc": "callback, or null",
+                    "is_optional": "False",
+                    "name": "fn",
+                    "types": [
+                        "FExtensionCallback"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "set the engine update callback",
+            "description": "Call only from the register callback. Passing null clears the callback.\nUpdates begin after successful engine initialization and stop before Finalize,\neven when no Initialize or Finalize callback is configured.",
+            "error": "",
+            "examples": "",
+            "language": "C",
+            "members": [],
+            "name": "ExtensionSetUpdateFn",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "extension configuration handle",
+                    "is_optional": "False",
+                    "name": "extension",
+                    "types": [
+                        "HExtension"
+                    ]
+                },
+                {
+                    "doc": "callback, or null",
+                    "is_optional": "False",
+                    "name": "fn",
+                    "types": [
+                        "FExtensionUpdate"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "associate user data with an extension",
+            "description": "Call only from the register callback. The engine borrows this pointer;\nit does not allocate, copy or free the memory. Passing null clears it.\nRetrieve it from callback parameters with ExtensionParamsGetUserData or\nExtensionAppParamsGetUserData, and from the unregister callback with\nExtensionGetUserData. Keep it valid through all callbacks, then release\nit in unregister. If registration fails, release it before returning because\nunregister is not called. The pointer resets to null before each registration\nand after unregister, including engine reboot.",
+            "error": "",
+            "examples": "",
+            "language": "C",
+            "members": [],
+            "name": "ExtensionSetUserData",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "borrowed extension configuration handle",
+                    "is_optional": "False",
+                    "name": "extension",
+                    "types": [
+                        "HExtension"
+                    ]
+                },
+                {
+                    "doc": "extension-owned pointer, or null",
+                    "is_optional": "False",
+                    "name": "user_data",
+                    "types": [
+                        "void*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "Unregister an application delegate",
             "description": "Deregister a previously registered iOS application delegate.\nThis function is only available on iOS. <span class=\"icon-ios\"></span>",
             "error": "",
@@ -1329,7 +2029,7 @@
                     "is_optional": "False",
                     "name": "params",
                     "types": [
-                        "ExtensionParams"
+                        "Params"
                     ]
                 }
             ],
@@ -1339,10 +2039,58 @@
                     "doc": "",
                     "name": "",
                     "types": [
-                        "ExtensionResult"
+                        "Result"
                     ]
                 }
             ],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "receive a generic engine event",
+            "description": "Synchronous delivery on the engine thread, after successful AppInitialize (or\nwhen it is omitted) until that extension's AppFinalize begins. Engine Initialize is not required:\nwindow events and cleanup after a failed initialization may have partial contexts.\nEngine-owned registry entries are cleared as their contexts are destroyed;\nLua and resource-factory parameters can be null during application finalization.\nEvent dispatch is not thread-safe. Publish events only on the engine thread.\nCallbacks run synchronously on the calling thread; dispatch\ndoes not marshal calls from worker threads. Nested dispatch on the same\nengine thread is supported.\nOne catch-all callback receives every generic event. Parameters and data are\nborrowed for this call only. Inspect event_id to choose which events to handle;\nno per-event registration is required. Payload-free events pass null data and\ndata_size zero. Receivers interpret data according to the event's documented\npayload type and size. Delivery order between extensions is unspecified.\nAll events are broadcasts; every eligible handler is called\nand events cannot be consumed. Extensions can publish custom events through\nBroadcastEvent. Ignore ids you do not recognize.\nBuilt-in engine event definitions are available in\n<code>&lt;dmsdk/engine/engine_event.h&gt;</code>.",
+            "error": "",
+            "examples": "",
+            "language": "C++",
+            "members": [],
+            "name": "FEventCallback",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "callback parameters; available contexts depend on lifecycle phase",
+                    "is_optional": "False",
+                    "name": "params",
+                    "types": [
+                        "Params*"
+                    ]
+                },
+                {
+                    "doc": "event name hash",
+                    "is_optional": "False",
+                    "name": "event_id",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                },
+                {
+                    "doc": "immutable borrowed payload, or null",
+                    "is_optional": "False",
+                    "name": "data",
+                    "types": [
+                        "const void*"
+                    ]
+                },
+                {
+                    "doc": "payload size in bytes; zero for payload-free events",
+                    "is_optional": "False",
+                    "name": "data_size",
+                    "types": [
+                        "uint32_t"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
             "tparams": [],
             "type": "TYPEDEF"
         },
@@ -1445,6 +2193,54 @@
             "type": "TYPEDEF"
         },
         {
+            "brief": "receive a generic engine event",
+            "description": "Synchronous delivery on the engine thread, after successful AppInitialize (or\nwhen it is omitted) until that extension's AppFinalize begins. Engine Initialize is not required:\nwindow events and cleanup after a failed initialization may have partial contexts.\nEngine-owned registry entries are cleared as their contexts are destroyed;\nLua and resource-factory parameters can be null during application finalization.\nEvent dispatch is not thread-safe. Publish events only on the engine thread.\nCallbacks run synchronously on the calling thread; dispatch\ndoes not marshal calls from worker threads. Nested dispatch on the same\nengine thread is supported.\nOne catch-all callback receives every generic event. Parameters and data are\nborrowed for this call only. Inspect event_id to choose which events to handle;\nno per-event registration is required. Payload-free events pass null data and\ndata_size zero. Receivers interpret data according to the event's documented\npayload type and size. Delivery order between extensions is unspecified.\nAll events are broadcasts; every eligible handler is called\nand events cannot be consumed. Extensions can publish custom events through\nExtensionBroadcastEvent. Ignore ids you do not recognize.\nBuilt-in engine event definitions are available in\n<code>&lt;dmsdk/engine/engine_event.h&gt;</code>.",
+            "error": "",
+            "examples": "",
+            "language": "C",
+            "members": [],
+            "name": "FExtensionEventCallback",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "callback parameters; available contexts depend on lifecycle phase",
+                    "is_optional": "False",
+                    "name": "params",
+                    "types": [
+                        "ExtensionParams*"
+                    ]
+                },
+                {
+                    "doc": "event name hash",
+                    "is_optional": "False",
+                    "name": "event_id",
+                    "types": [
+                        "dmhash_t"
+                    ]
+                },
+                {
+                    "doc": "immutable borrowed payload, or null",
+                    "is_optional": "False",
+                    "name": "data",
+                    "types": [
+                        "const void*"
+                    ]
+                },
+                {
+                    "doc": "payload size in bytes; zero for payload-free events",
+                    "is_optional": "False",
+                    "name": "data_size",
+                    "types": [
+                        "uint32_t"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
             "brief": "Calls for the finalization of an extension",
             "description": "Calls for the finalization of an extension",
             "error": "",
@@ -1479,8 +2275,8 @@
             "type": "TYPEDEF"
         },
         {
-            "brief": "Callback when the app is being finalized",
-            "description": "Callback when the app is being finalized",
+            "brief": "Callback after all extensions have been called wit...",
+            "description": "Callback after all extensions have been called with <a href=\"#FExtensionAppInitialize\">FExtensionAppInitialize</a>",
             "error": "",
             "examples": "",
             "language": "C",
@@ -1493,7 +2289,7 @@
                     "is_optional": "False",
                     "name": "params",
                     "types": [
-                        "ExtensionAppParams"
+                        "ExtensionParams"
                     ]
                 }
             ],
@@ -1518,7 +2314,9 @@
             "language": "C",
             "members": [],
             "name": "FExtensionOnEvent",
-            "notes": [],
+            "notes": [
+                "Deprecated. Use FExtensionEventCallback with ExtensionSetEventFn. A warning is logged once per registered legacy handler."
+            ],
             "parameters": [
                 {
                     "doc": "",
@@ -1539,6 +2337,70 @@
             ],
             "replaces": "",
             "returnvalues": [],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "configure an extension",
+            "description": "Called before any AppInitialize on each engine creation. Set the extension's\nlifecycle callbacks through the ExtensionSet*Fn functions. Callbacks not\nset are optional. An update-only extension does not need an Initialize callback.\nIf registration fails, release any partially created state\nbefore returning; unregister is called only after successful registration.",
+            "error": "",
+            "examples": "",
+            "language": "C",
+            "members": [],
+            "name": "FExtensionRegister",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "borrowed extension configuration handle",
+                    "is_optional": "False",
+                    "name": "extension",
+                    "types": [
+                        "HExtension"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "EXTENSION_RESULT_OK on success",
+                    "name": "result",
+                    "types": [
+                        "ExtensionResult"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "unregister an extension",
+            "description": "Called after all AppFinalize callbacks for each successfully registered extension,\nincluding when a later initialization callback failed. The handle remains\nvalid for this call. Release registration-owned state here.",
+            "error": "",
+            "examples": "",
+            "language": "C",
+            "members": [],
+            "name": "FExtensionUnregister",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "borrowed extension configuration handle",
+                    "is_optional": "False",
+                    "name": "extension",
+                    "types": [
+                        "HExtension"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "EXTENSION_RESULT_OK on success",
+                    "name": "result",
+                    "types": [
+                        "ExtensionResult"
+                    ]
+                }
+            ],
             "tparams": [],
             "type": "TYPEDEF"
         },
@@ -1575,6 +2437,132 @@
             "type": "TYPEDEF"
         },
         {
+            "brief": "configure an extension",
+            "description": "Called before any AppInitialize on each engine creation. Set the extension's\nlifecycle callbacks through the Set*Fn functions. Callbacks not\nset are optional. An update-only extension does not need an Initialize callback.\nIf registration fails, release any partially created state\nbefore returning; unregister is called only after successful registration.",
+            "error": "",
+            "examples": "",
+            "language": "C++",
+            "members": [],
+            "name": "FRegister",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "borrowed extension configuration handle",
+                    "is_optional": "False",
+                    "name": "extension",
+                    "types": [
+                        "HExtension"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "RESULT_OK on success",
+                    "name": "result",
+                    "types": [
+                        "Result"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "unregister an extension",
+            "description": "Called after all AppFinalize callbacks for each successfully registered extension,\nincluding when a later initialization callback failed. The handle remains\nvalid for this call. Release registration-owned state here.",
+            "error": "",
+            "examples": "",
+            "language": "C++",
+            "members": [],
+            "name": "FUnregister",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "borrowed extension configuration handle",
+                    "is_optional": "False",
+                    "name": "extension",
+                    "types": [
+                        "HExtension"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "RESULT_OK on success",
+                    "name": "result",
+                    "types": [
+                        "Result"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "get an extension's user data",
+            "description": "Use during register or unregister to retrieve the pointer associated with\nthis extension by SetUserData. The extension owns the memory.",
+            "error": "",
+            "examples": "",
+            "language": "C++",
+            "members": [],
+            "name": "GetUserData",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "borrowed extension configuration handle",
+                    "is_optional": "False",
+                    "name": "extension",
+                    "types": [
+                        "HExtension"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "this extension's user data, or null",
+                    "name": "user_data",
+                    "types": [
+                        "void*"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "extension handle",
+            "description": "Opaque extension configuration handle. Borrowed during the register and\nunregister callbacks; do not retain it. Configure callbacks only in register.",
+            "error": "",
+            "examples": "",
+            "language": "C++",
+            "members": [],
+            "name": "HExtension",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
+            "brief": "extension handle",
+            "description": "Opaque extension configuration handle. Borrowed during the register and\nunregister callbacks; do not retain it. Configure callbacks only in register.",
+            "error": "",
+            "examples": "",
+            "language": "C",
+            "members": [],
+            "name": "HExtension",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "TYPEDEF"
+        },
+        {
             "brief": "extension parameter enumeration",
             "description": "Parameters available through <a href=\"#ParamsGetFloat\">ParamsGetFloat</a>.",
             "error": "",
@@ -1596,8 +2584,8 @@
             "type": "ENUM"
         },
         {
-            "brief": "The global parameters avalable when registering an...",
-            "description": "The global parameters avalable when registering and unregistering an extension",
+            "brief": "Parameters for an extension's engine lifecycle, up...",
+            "description": "Parameters for an extension's engine lifecycle, update, render and event callbacks.",
             "error": "",
             "examples": "",
             "language": "C++",
@@ -1641,7 +2629,7 @@
                     "is_optional": "False",
                     "name": "app_params",
                     "types": [
-                        "ExtensionParams*"
+                        "Params*"
                     ]
                 }
             ],
@@ -1658,14 +2646,16 @@
             "language": "C++",
             "members": [],
             "name": "ParamsGetContext",
-            "notes": [],
+            "notes": [
+                "Deprecated. Use [ref:ContextRegistryGetByHash] on [ref:HContextRegistry] instead."
+            ],
             "parameters": [
                 {
                     "doc": "the params",
                     "is_optional": "False",
                     "name": "params",
                     "types": [
-                        "ExtensionParams"
+                        "Params"
                     ]
                 },
                 {
@@ -1698,14 +2688,16 @@
             "language": "C++",
             "members": [],
             "name": "ParamsGetContextByName",
-            "notes": [],
+            "notes": [
+                "Deprecated. Use [ref:ContextRegistryGet] on [ref:HContextRegistry] instead."
+            ],
             "parameters": [
                 {
                     "doc": "the params",
                     "is_optional": "False",
                     "name": "params",
                     "types": [
-                        "ExtensionParams"
+                        "Params"
                     ]
                 },
                 {
@@ -1724,6 +2716,38 @@
                     "name": "context",
                     "types": [
                         "void*"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "Gets the context registry used by the extension pa...",
+            "description": "Gets the context registry used by the extension params.",
+            "error": "",
+            "examples": "",
+            "language": "C++",
+            "members": [],
+            "name": "ParamsGetContextRegistry",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "the params",
+                    "is_optional": "False",
+                    "name": "params",
+                    "types": [
+                        "Params*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "the context registry",
+                    "name": "context_registry",
+                    "types": [
+                        "HContextRegistry"
                     ]
                 }
             ],
@@ -1779,6 +2803,38 @@
             "type": "FUNCTION"
         },
         {
+            "brief": "get the extension's user data",
+            "description": "Returns the pointer associated with this extension by SetUserData\nduring Initialize, Update, Finalize, pre/post-render and event callbacks.\nNested callback delivery restores the outer callback's pointer on return.\nReturns null if no pointer was set or outside an extension callback.\nThe extension owns the memory; do not retain the borrowed parameters.",
+            "error": "",
+            "examples": "",
+            "language": "C++",
+            "members": [],
+            "name": "ParamsGetUserData",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "valid callback parameters",
+                    "is_optional": "False",
+                    "name": "params",
+                    "types": [
+                        "const Params*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "this extension's user data, or null",
+                    "name": "user_data",
+                    "types": [
+                        "void*"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "Initializes an extension params struct\nNOTE: this ...",
             "description": "Initializes an extension params struct\nNOTE: this is an opaque struct, do not use it's members directly!",
             "error": "",
@@ -1793,7 +2849,7 @@
                     "is_optional": "False",
                     "name": "app_params",
                     "types": [
-                        "ExtensionParams*"
+                        "Params*"
                     ]
                 }
             ],
@@ -1810,14 +2866,16 @@
             "language": "C++",
             "members": [],
             "name": "ParamsSetContext",
-            "notes": [],
+            "notes": [
+                "Deprecated. Use [ref:ContextRegistrySet] on [ref:HContextRegistry] instead."
+            ],
             "parameters": [
                 {
                     "doc": "the params",
                     "is_optional": "False",
                     "name": "params",
                     "types": [
-                        "ExtensionAppParams"
+                        "Params"
                     ]
                 },
                 {
@@ -1867,7 +2925,7 @@
         },
         {
             "brief": "Register application delegate",
-            "description": "Register an iOS application delegate for process-level callbacks such as launch\nand remote notification registration. Multiple delegates are supported (Max 32).\nUse application:willFinishLaunchingWithOptions: and\napplication:didFinishLaunchingWithOptions: for launch. The older\napplicationDidFinishLaunching: callback is not synthesized.\nDefold uses the UIScene lifecycle. Application activity, URL and user activity\ncallbacks are not forwarded from scenes; use <a href=\"#ExtensionRegisteriOSUISceneDelegate\">ExtensionRegisteriOSUISceneDelegate</a>.\nThe game window is created after application launch. Use scene connection to\naccess it, and scene connection options for cold-launch URLs and user activities.\napplication:supportedInterfaceOrientationsForWindow: can override the game's\norientation settings, including on iOS 27 and later. The last nonzero mask\ncontaining only valid UIInterfaceOrientationMask bits in delegate dispatch\norder is used. Invalid masks are ignored. The application, scene, and root\nview controller share this policy, including during full-screen presentations.\nThe game's default mask comes from the DefoldSupportedInterfaceOrientations\nInfo.plist array, with DefoldSupportedInterfaceOrientations~ipad taking\nprecedence on iPad. If neither contains usable orientations, Defold falls back\nto UISupportedInterfaceOrientations~ipad on iPad, then\nUISupportedInterfaceOrientations. Arrays contain UIKit orientation names such\nas UIInterfaceOrientationPortrait. The default policy excludes upside-down\nportrait on iPhone. If no array is usable, all device-supported orientations\nare allowed. The built-in manifest keeps the UIKit arrays broad and uses the\nDefold array for the game's orientation settings.\nUIKit may ignore orientation restrictions, including on iPhone Duo's inner\ndisplay. Games must still handle window size changes.\nRegister before scene connection to affect the initial orientation.\nTo update the policy after scene connection, call\nsetNeedsUpdateOfSupportedInterfaceOrientations on the root view controller\n(iOS 16+) or attemptRotationToDeviceOrientation (iOS 15).",
+            "description": "Register an iOS application delegate for process-level callbacks such as launch\nand remote notification registration. Multiple delegates are supported (Max 32).\nUse application:willFinishLaunchingWithOptions: and\napplication:didFinishLaunchingWithOptions: for launch. The older\napplicationDidFinishLaunching: callback is not synthesized.\nDefold uses the UIScene lifecycle. Application activity, URL and user activity\ncallbacks are not forwarded from scenes; use <a href=\"#RegisteriOSUISceneDelegate\">RegisteriOSUISceneDelegate</a>.\nThe game window is created after application launch. Use scene connection to\naccess it, and scene connection options for cold-launch URLs and user activities.\napplication:supportedInterfaceOrientationsForWindow: can override the game's\norientation settings, including on iOS 27 and later. The last nonzero mask\ncontaining only valid UIInterfaceOrientationMask bits in delegate dispatch\norder is used. Invalid masks are ignored. The application, scene, and root\nview controller share this policy, including during full-screen presentations.\nThe game's default mask comes from the DefoldSupportedInterfaceOrientations\nInfo.plist array, with DefoldSupportedInterfaceOrientations~ipad taking\nprecedence on iPad. If neither contains usable orientations, Defold falls back\nto UISupportedInterfaceOrientations~ipad on iPad, then\nUISupportedInterfaceOrientations. Arrays contain UIKit orientation names such\nas UIInterfaceOrientationPortrait. The default policy excludes upside-down\nportrait on iPhone. If no array is usable, all device-supported orientations\nare allowed. The built-in manifest keeps the UIKit arrays broad and uses the\nDefold array for the game's orientation settings.\nUIKit may ignore orientation restrictions, including on iPhone Duo's inner\ndisplay. Games must still handle window size changes.\nRegister before scene connection to affect the initial orientation.\nTo update the policy after scene connection, call\nsetNeedsUpdateOfSupportedInterfaceOrientations on the root view controller\n(iOS 16+) or attemptRotationToDeviceOrientation (iOS 15).",
             "error": "",
             "examples": "",
             "language": "C++",
@@ -1926,12 +2984,12 @@
             "members": [
                 {
                     "doc": "",
-                    "name": "EXTENSION_RESULT_OK",
+                    "name": "RESULT_OK",
                     "type": ""
                 },
                 {
                     "doc": "",
-                    "name": "EXTENSION_RESULT_INIT_ERROR",
+                    "name": "RESULT_INIT_ERROR",
                     "type": ""
                 }
             ],
@@ -1942,6 +3000,294 @@
             "returnvalues": [],
             "tparams": [],
             "type": "ENUM"
+        },
+        {
+            "brief": "set the application finalization callback",
+            "description": "Call only from the register callback. Passing null clears the callback.",
+            "error": "",
+            "examples": "",
+            "language": "C++",
+            "members": [],
+            "name": "SetAppFinalizeFn",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "extension configuration handle",
+                    "is_optional": "False",
+                    "name": "extension",
+                    "types": [
+                        "HExtension"
+                    ]
+                },
+                {
+                    "doc": "callback, or null",
+                    "is_optional": "False",
+                    "name": "fn",
+                    "types": [
+                        "FExtensionAppFinalize"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "set the application initialization callback",
+            "description": "Call only from the register callback. Passing null clears the callback.",
+            "error": "",
+            "examples": "",
+            "language": "C++",
+            "members": [],
+            "name": "SetAppInitializeFn",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "extension configuration handle",
+                    "is_optional": "False",
+                    "name": "extension",
+                    "types": [
+                        "HExtension"
+                    ]
+                },
+                {
+                    "doc": "callback, or null",
+                    "is_optional": "False",
+                    "name": "fn",
+                    "types": [
+                        "FExtensionAppInitialize"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "set the generic event callback",
+            "description": "Call only from the register callback. One handler receives all generic\nevents; use the callback's event_id to select events. No event-name argument\nor per-event registration is needed. Passing null clears it.\nRegistration resets on engine reboot; no event is replayed to a late receiver.",
+            "error": "",
+            "examples": "",
+            "language": "C++",
+            "members": [],
+            "name": "SetEventFn",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "extension configuration handle",
+                    "is_optional": "False",
+                    "name": "extension",
+                    "types": [
+                        "HExtension"
+                    ]
+                },
+                {
+                    "doc": "callback, or null",
+                    "is_optional": "False",
+                    "name": "fn",
+                    "types": [
+                        "FEventCallback"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "set the engine finalization callback",
+            "description": "Call only from the register callback. Passing null clears the callback.",
+            "error": "",
+            "examples": "",
+            "language": "C++",
+            "members": [],
+            "name": "SetFinalizeFn",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "extension configuration handle",
+                    "is_optional": "False",
+                    "name": "extension",
+                    "types": [
+                        "HExtension"
+                    ]
+                },
+                {
+                    "doc": "callback, or null",
+                    "is_optional": "False",
+                    "name": "fn",
+                    "types": [
+                        "FExtensionFinalize"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "set the engine initialization callback",
+            "description": "Call only from the register callback. Passing null clears the callback.",
+            "error": "",
+            "examples": "",
+            "language": "C++",
+            "members": [],
+            "name": "SetInitializeFn",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "extension configuration handle",
+                    "is_optional": "False",
+                    "name": "extension",
+                    "types": [
+                        "HExtension"
+                    ]
+                },
+                {
+                    "doc": "callback, or null",
+                    "is_optional": "False",
+                    "name": "fn",
+                    "types": [
+                        "FExtensionInitialize"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "set the post-render callback",
+            "description": "Call only from the register callback. Passing null clears the callback.\nDelivery requires successful AppInitialize, or no AppInitialize callback, and\nstops before AppFinalize. It does not require an Initialize callback.",
+            "error": "",
+            "examples": "",
+            "language": "C++",
+            "members": [],
+            "name": "SetPostRenderFn",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "extension configuration handle",
+                    "is_optional": "False",
+                    "name": "extension",
+                    "types": [
+                        "HExtension"
+                    ]
+                },
+                {
+                    "doc": "callback, or null",
+                    "is_optional": "False",
+                    "name": "fn",
+                    "types": [
+                        "FCallback"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "set the pre-render callback",
+            "description": "Call only from the register callback. Passing null clears the callback.\nDelivery requires successful AppInitialize, or no AppInitialize callback, and\nstops before AppFinalize. It does not require an Initialize callback.",
+            "error": "",
+            "examples": "",
+            "language": "C++",
+            "members": [],
+            "name": "SetPreRenderFn",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "extension configuration handle",
+                    "is_optional": "False",
+                    "name": "extension",
+                    "types": [
+                        "HExtension"
+                    ]
+                },
+                {
+                    "doc": "callback, or null",
+                    "is_optional": "False",
+                    "name": "fn",
+                    "types": [
+                        "FCallback"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "set the engine update callback",
+            "description": "Call only from the register callback. Passing null clears the callback.\nUpdates begin after successful engine initialization and stop before Finalize,\neven when no Initialize or Finalize callback is configured.",
+            "error": "",
+            "examples": "",
+            "language": "C++",
+            "members": [],
+            "name": "SetUpdateFn",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "extension configuration handle",
+                    "is_optional": "False",
+                    "name": "extension",
+                    "types": [
+                        "HExtension"
+                    ]
+                },
+                {
+                    "doc": "callback, or null",
+                    "is_optional": "False",
+                    "name": "fn",
+                    "types": [
+                        "FExtensionUpdate"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
+            "brief": "associate user data with an extension",
+            "description": "Call only from the register callback. The engine borrows this pointer;\nit does not allocate, copy or free the memory. Passing null clears it.\nRetrieve it from callback parameters with ParamsGetUserData or\nAppParamsGetUserData, and from the unregister callback with\nGetUserData. Keep it valid through all callbacks, then release\nit in unregister. If registration fails, release it before returning because\nunregister is not called. The pointer resets to null before each registration\nand after unregister, including engine reboot.",
+            "error": "",
+            "examples": "",
+            "language": "C++",
+            "members": [],
+            "name": "SetUserData",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "borrowed extension configuration handle",
+                    "is_optional": "False",
+                    "name": "extension",
+                    "types": [
+                        "HExtension"
+                    ]
+                },
+                {
+                    "doc": "extension-owned pointer, or null",
+                    "is_optional": "False",
+                    "name": "user_data",
+                    "types": [
+                        "void*"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
         },
         {
             "brief": "Unregister an application delegate",

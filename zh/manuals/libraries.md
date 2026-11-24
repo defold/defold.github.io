@@ -6,7 +6,8 @@ locale: zh
 title: Defold库项目
 toc:
 - 库
-- 设置库共享
+- anchor: setting-up-library-sharing
+  title: 设置库共享
 - 库URL
 - 基本访问认证
 - 高级访问认证
@@ -27,9 +28,7 @@ toc:
 * 构建一个模板库，您可以将其复制到项目中，然后进行定制或专门化。
 * 构建一个或多个包含现成对象或脚本的库，您可以直接引用它们。这对于存储通用脚本模块或构建共享的图形、声音和动画资源库非常方便。
 
-<a id="setting-up-library-sharing"></a>
-
-## 设置库共享
+## 设置库共享 {#setting-up-library-sharing}
 
 假设您想要构建一个包含共享精灵和图块源的库。首先从[设置新项目](/zh/manuals/project-setup/)开始。确定您要从项目中共享哪些文件夹，并将这些文件夹的名称添加到项目设置中的*`include_dirs`*属性中。如果您想列出多个文件夹，请用空格分隔名称：
 
@@ -44,7 +43,7 @@ toc:
 ![GitHub Library URL](/manuals/images/libraries/libraries_library_url_github.png)
 
 <div class='important' markdown='1'>
-建议始终依赖库项目的特定版本，而不是`主分支`。这样，作为开发者，您可以决定何时合并库项目的更改，而不是总是从库项目的`主分支`获取最新的（可能具有破坏性的）更改。
+建议始终依赖库项目的特定版本，而不是`master`。这样，作为开发者，您可以决定何时合并库项目的更改，而不是总是从库项目的`master`获取最新的（可能具有破坏性的）更改。
 </div>
 
 <div class='important' markdown='1'>

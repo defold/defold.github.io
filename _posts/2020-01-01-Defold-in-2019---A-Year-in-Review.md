@@ -21,7 +21,7 @@ Since the announcement from Apple to deprecate OpenGL in favour of Metal on macO
 We want to provide a way for developers to extend the functionality of the editor to build their own tools. The editor extension script support is the first step towards this goal and we have already seen some useful scripts being shared between users on our forum. [Learn more about editor extension scripts in the manual](https://defold.com/manuals/editor-scripts/).
 
 #### Physics Joints
-A long requested addition to the physics system has been support for joints and in 2019 we were finally able to add support for several types of both 2D and 3D joints. Joints can be used to create ropes, chains, springs and also motors. [Learn more about joints in the physics manual](https://defold.com/manuals/physics/#joints).
+A long requested addition to the physics system has been support for joints and in 2019 we were finally able to add support for several types of both 2D and 3D joints. Joints can be used to create ropes, chains, springs and also motors. [Learn more in the physics joints manual](https://defold.com/manuals/physics-joints/).
 
 #### Reduced engine size and improved engine modularity
 During the year we have trimmed down the engine size and modularized the engine by moving non-critical components into extensions. The Facebook and Google Game Services integrations along with support for push notifications, in-app purchase and the web view have all been moved into separate native extensions. This gives developers a smaller engine core and a choice of which additional components to include in their games.

@@ -14,7 +14,7 @@ toc:
 
 # Animação flip-book
 
-Uma animação flip-book consiste em uma série de imagens estáticas exibidas em sequência. A técnica é muito semelhante à animação tradicional em célula (veja http://en.wikipedia.org/wiki/Traditional_animation). Ela oferece possibilidades ilimitadas, já que cada frame pode ser manipulado individualmente. Porém, como cada frame é armazenado em uma imagem única, o uso de memória pode ser alto. A suavidade da animação também depende do número de imagens exibidas por segundo, mas aumentar o número de imagens normalmente também aumenta a quantidade de trabalho. Animações flip-book do Defold são armazenadas como imagens individuais adicionadas a um [Atlas](/pt/manuals/atlas), ou como um [Tile Source](/pt/manuals/tilesource) com todos os frames organizados em uma sequência horizontal.
+Uma animação flipbook consiste em uma série de imagens estáticas exibidas em sequência. A técnica é muito semelhante à animação tradicional em células (consulte http://en.wikipedia.org/wiki/Traditional_animation). Ela oferece possibilidades ilimitadas, pois cada frame pode ser manipulado individualmente. No entanto, armazenar muitas imagens distintas pode exigir bastante memória de textura. A suavidade da animação também depende do número de imagens exibidas por segundo, mas aumentar esse número geralmente também aumenta o trabalho necessário. As animações flipbook do Defold são armazenadas como imagens individuais adicionadas a um [Atlas](/pt/manuals/atlas) ou como tiles em uma [fonte de tiles](/pt/manuals/tilesource). Animações de fontes de tiles usam uma lista *Frames* para selecionar tiles da grade de imagens em qualquer ordem, incluindo repetições.
 
   ![Folha de animação](/manuals/images/animation/animsheet.png)
   ![Loop de corrida](/manuals/images/animation/runloop.gif)
@@ -30,7 +30,7 @@ Nodes GUI do tipo box
 : Para executar uma animação em tempo de execução, use a função [`gui.play_flipbook()`](/ref/gui/?q=play_flipbook#gui.play_flipbook:node-animation-[complete_function]-[play_properties]). Veja um exemplo abaixo.
 
 <div class='sidenote' markdown='1'>
-O modo de reprodução `once ping-pong` reproduz a animação até o último frame e então inverte a ordem e reproduz de volta até o **segundo** frame da animação, não até o primeiro. Isso é feito para facilitar o encadeamento de animações.
+O modo de reprodução `Once Ping Pong` reproduz a animação até o último frame e então inverte a ordem e reproduz de volta até o **segundo** frame da animação, não até o primeiro. Isso é feito para facilitar o encadeamento de animações.
 </div>
 
 ### Exemplo de sprite

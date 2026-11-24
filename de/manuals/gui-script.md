@@ -9,6 +9,8 @@ toc:
   title: GUI-Skripte
 - anchor: adding-a-script-to-a-gui
   title: Einer GUI ein Skript hinzufügen
+- anchor: input
+  title: Eingabe
 - anchor: the-gui-namespace
   title: Der Namensraum „gui“
 - anchor: message-passing
@@ -68,6 +70,12 @@ Um das Skript einer GUI-Komponente (GUI component) zuzuweisen, öffne die Protot
 ![Skript](/manuals/images/gui-script/set_script.png)
 
 Wenn die GUI-Komponente einem Spielobjekt irgendwo in deinem Spiel hinzugefügt wurde, wird das Skript jetzt ausgeführt.
+
+## Eingabe {#input}
+
+Sende `msg.post(".", "acquire_input_focus")` aus `init()`, um Eingaben in einem GUI-Skript zu empfangen, und verarbeite Aktionen in `on_input(self, action_id, action)`.
+
+GUI-Skripte verwenden dieselben Hashes für `action.source` wie Spielobjekt-Skripte. Dadurch kannst du bereits beim ersten Drücken einen physischen Mausklick von einer Berührung unterscheiden. Siehe [Quelle des Eingabegeräts](/de/manuals/input/#input-device-source) und das [Maus- und Touch-Beispiel](/de/manuals/input-mouse-and-touch/#distinguishing-mouse-clicks-from-touch). Zeigerbewegungen und Beschleunigungssensorwerte verwenden beide `action_id == nil`; unterscheide sie anhand ihrer Quelle.
 
 ## Der Namensraum „gui“ {#the-gui-namespace}
 

@@ -321,6 +321,7 @@ end
 Sets horizontal flipping of the provided sprite's animations.
 The sprite is identified by its URL.
 If the currently playing animation is flipped by default, flipping it again will make it appear like the original texture.
+The sprite is flipped around the pivot of its image, which gives the same result as a negative x scale.
 
 **Parameters**
 
@@ -345,6 +346,7 @@ It is assumed that the sprite component has id "sprite" and that the original an
 Sets vertical flipping of the provided sprite's animations.
 The sprite is identified by its URL.
 If the currently playing animation is flipped by default, flipping it again will make it appear like the original texture.
+The sprite is flipped around the pivot of its image, which gives the same result as a negative y scale.
 
 **Parameters**
 

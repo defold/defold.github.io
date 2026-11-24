@@ -8,7 +8,8 @@ toc:
 - Automatizar el editor Defold
 - Iniciar el editor desde una herramienta externa
 - Localizar el servidor del editor
-- Detectar operaciones mediante OpenAPI
+- anchor: discovering-operations-through-openapi
+  title: Detectar operaciones mediante OpenAPI
 - Ejecutar comandos del editor
 - Respuestas de comandos y trabajo asíncrono
 - anchor: building-html5
@@ -88,7 +89,7 @@ El archivo del puerto pertenece a la sesión actual del editor. Vuelve a leerlo 
 El servidor del editor es una interfaz local de control de confianza. No lo expongas mediante una dirección pública, reenvío de puertos ni un túnel que no sea de confianza.
 </div>
 
-## Detectar operaciones mediante OpenAPI
+## Detectar operaciones mediante OpenAPI {#discovering-operations-through-openapi}
 
 La única información de arranque específica de Defold que debería necesitar una herramienta externa es el puerto del editor y el documento OpenAPI:
 

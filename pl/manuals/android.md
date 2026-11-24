@@ -11,7 +11,11 @@ toc:
   title: Tworzenie keystore
 - anchor: creating-an-android-application-bundle
   title: Tworzenie pakietu aplikacji Android
+- anchor: estimating-the-google-play-download-size
+  title: Szacowanie rozmiaru pobierania z Google Play
 - Instalowanie pakietu aplikacji Android
+- anchor: display-cutouts
+  title: Wycięcia ekranu
 - anchor: shrinking-java-code-with-r8
   title: Zmniejszanie kodu Java i zasobów Androida za pomocą R8
 - anchor: enabling-r8
@@ -81,6 +85,35 @@ Naciśnij <kbd>Create Bundle</kbd>, gdy skonfigurujesz ustawienia pakietu aplika
 
 ![Android Application Package file](/manuals/images/android/apk_file.png)
 
+### Szacowanie rozmiaru pobierania z Google Play {#estimating-the-google-play-download-size}
+
+Google Play nie dostarcza graczom pliku *`.aab`*. Generuje pliki APK zoptymalizowane pod kątem konfiguracji poszczególnych urządzeń, więc dane pobierane przez gracza zajmują mniej miejsca niż plik *`.aab`* lub uniwersalny plik *`.apk`*. Zaznacz pole wyboru *Estimate download size* w oknie Bundle, aby podczas tworzenia pakietu uzyskać szacunkowy rozmiar pobieranych danych. Szacowanie działa dla pakietów w formatach APK i AAB.
+
+![Szacowanie rozmiaru pobierania](/manuals/images/android/sign_bundle.png)
+
+Szacunkowy rozmiar jest wypisywany w konsoli:
+
+```
+Estimated Play Store download size: 18.2 MB - 25.0 MB (arm64-v8a: 25.0 MB, armeabi-v7a: 18.2 MB - 18.9 MB)
+```
+
+Jest też zapisywany jako `download_size.json` w folderze wyjściowym pakietu. Plik zawiera minimalny i maksymalny rozmiar pobieranych danych w bajtach dla wszystkich konfiguracji urządzeń oraz taki sam zakres dla każdej architektury CPU:
+
+```json
+{
+  "min" : 18208826,
+  "max" : 25009450,
+  "abis" : {
+    "arm64-v8a" : { "min" : 25009448, "max" : 25009450 },
+    "armeabi-v7a" : { "min" : 18208826, "max" : 18908828 }
+  }
+}
+```
+
+Podczas pakowania z wiersza poleceń przekaż narzędziu [Bob](/pl/manuals/bob) ścieżkę do pliku raportu za pomocą `--download-size-report <path>`. Przydaje się to do śledzenia zmian rozmiaru pobieranej gry w procesie ciągłej integracji.
+
+Do obliczania szacunkowego rozmiaru służy [bundletool](https://developer.android.com/tools/bundletool). Obliczenia opierają się na plikach APK, które Google Play wygenerowałoby z twojego pakietu, podpisanych przy użyciu tego samego keystore. Ich wygenerowanie trwa mniej więcej tyle samo co utworzenie pliku *`.aab`*, dlatego szacowanie jest domyślnie wyłączone. Jeśli oszacowanie się nie powiedzie, pojawi się ostrzeżenie, a pakiet zostanie utworzony jak zwykle, ale plik raportu nie zostanie zapisany.
+
 {% include shared/pl/build-variants.md %}
 
 ### Instalowanie pakietu aplikacji Android
@@ -91,7 +124,7 @@ Plik *`.apk`* można skopiować na urządzenie za pomocą narzędzia `adb` albo 
 
 {% include shared/pl/android-adb.md %}
 
-```bash
+```
 $ adb install Defold\ examples.apk
 4826 KB/s (18774344 bytes in 3.798s)
   pkg: /data/local/tmp/my_app.apk
@@ -110,6 +143,10 @@ Aby ta funkcja działała, musisz mieć zainstalowany *ADB* oraz włączone *USB
 
 Plik *.aab* można przesłać do Google Play przez [konsolę deweloperską Google Play](https://play.google.com/apps/publish/). Można też wygenerować plik *`.apk`* z pliku *.aab*, aby zainstalować go lokalnie za pomocą [Android bundletool](https://developer.android.com/studio/command-line/bundletool).
 
+## Wycięcia ekranu {#display-cutouts}
+
+`window.get_reserved_areas()` zwraca prostokąty wycięć ekranu w systemie Android 9 (poziom API 28) i nowszych. Użyj `window.get_safe_area()`, jeśli potrzebujesz prostokątnego obszaru bezpiecznego do rozmieszczenia interfejsu. Sekcja [Zarezerwowane obszary ekranu](/pl/manuals/porting-guidelines/#reserved-screen-areas) opisuje jednostki współrzędnych, zachowanie na nieobsługiwanych platformach i odświeżanie układu po zmianie zgłaszanych obszarów.
+
 ## Zmniejszanie kodu Java i zasobów Androida za pomocą R8 {#shrinking-java-code-with-r8}
 
 R8 zmniejsza rozmiar kodu Java przez usuwanie nieużywanego kodu, optymalizację i zaciemnianie nazw. W wersji Defold 1.14.0 lub nowszej, przy użyciu zgodnego serwera budowania Extender, usuwa również nieużywane zasoby Androida, takie jak układy, zasoby graficzne drawable i zasoby raw dostarczane przez rozszerzenia oraz ich zależności dla Androida. Zasoby gry Defold znajdujące się w archiwum gry nie są przetwarzane przez R8.
@@ -127,7 +164,7 @@ Upewnij się, że każde rozszerzenie zawierające kod Java dostarcza plik `.kee
 
 Pozostawienie pustego pola **R8 Keep Rules** oznacza użycie D8 bez usuwania nieużywanego kodu. Włączenie R8 wymaga usługi budowania natywnych rozszerzeń, nawet w projekcie, który takich rozszerzeń nie zawiera.
 
-Od wersji Defold 1.14.0 usuwanie nieużywanych zasobów Androida jest włączane tym samym ustawieniem **R8 Keep Rules**; nie ma dla niego osobnego ustawienia projektu. Starsze wersje SDK Defold obsługują usuwanie przez R8 wyłącznie nieużywanego kodu.
+Usuwanie nieużywanych zasobów Androida jest włączane tym samym ustawieniem **R8 Keep Rules**; nie ma dla niego osobnego ustawienia projektu. Starsze wersje SDK Defold obsługują usuwanie przez R8 wyłącznie nieużywanego kodu.
 
 ### Dodawanie reguł do rozszerzenia {#adding-rules-to-an-extension}
 

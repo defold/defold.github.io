@@ -5,13 +5,20 @@ layout: manual
 locale: zh
 title: Android 平台开发
 toc:
-- Android 开发
-- Android 和 Google Play 签名流程
+- anchor: android-development
+  title: Android 开发
+- anchor: android-and-google-play-signing-process
+  title: Android 和 Google Play 签名流程
 - anchor: creating-a-keystore
   title: 创建密钥库
 - anchor: creating-an-android-application-bundle
   title: 创建 Android 应用包
-- 安装 Android 应用包
+- anchor: estimating-the-google-play-download-size
+  title: 估算 Google Play 下载大小
+- anchor: installing-an-android-application-bundle
+  title: 安装 Android 应用包
+- anchor: display-cutouts
+  title: 屏幕缺口
 - anchor: shrinking-java-code-with-r8
   title: 使用 R8 缩减 Java 代码和 Android 资源
 - anchor: enabling-r8
@@ -22,18 +29,23 @@ toc:
   title: 保留 Android 资源
 - anchor: keeping-the-obfuscation-mapping
   title: 保存混淆映射
-- 权限
-- 'android.permission.INTERNET 和 android.permission.ACCESS_NETWORK_STATE (保护级别: normal)'
-- 'android.permission.WAKE_LOCK (保护级别: normal)'
-- 使用 AndroidX
-- 常见问题
+- anchor: permissions
+  title: 权限
+- anchor: androidpermissioninternet-and-androidpermissionaccess_network_state-protection-level-normal
+  title: 'android.permission.INTERNET 和 android.permission.ACCESS_NETWORK_STATE (保护级别: normal)'
+- anchor: androidpermissionwake_lock-protection-level-normal
+  title: 'android.permission.WAKE_LOCK (保护级别: normal)'
+- anchor: using-androidx
+  title: 使用 AndroidX
+- anchor: faq
+  title: 常见问题
 ---
 
-# Android 开发
+# Android 开发 {#android-development}
 
 Android 设备允许你自由运行自己的应用程序。构建游戏版本并将其复制到 Android 设备上非常容易。本手册解释了为 Android 打包游戏所涉及的步骤。在开发过程中，通过[开发应用](/zh/manuals/dev-app)运行游戏通常是首选，因为它允许你直接将内容和代码热重载到设备上。
 
-## Android 和 Google Play 签名流程
+## Android 和 Google Play 签名流程 {#android-and-google-play-signing-process}
 
 Android 要求所有 APK 在安装到设备上或更新之前都必须使用证书进行数字签名。如果你使用 Android App Bundles，只需在上传到 Play Console 之前对你的应用包进行签名，[Play App Signing](https://developer.android.com/studio/publish/app-signing#app-signing-google-play)会处理其余部分。但是，你也可以手动为应用签名，以便上传到 Google Play、其他应用商店以及在任何商店之外分发。
 
@@ -82,11 +94,40 @@ Defold 支持创建 APK 和 AAB 文件。从 *Bundle Format* 下拉菜单中选�
 
 ![Android Application Package file](/manuals/images/android/apk_file.png)
 
+### 估算 Google Play 下载大小 {#estimating-the-google-play-download-size}
+
+Google Play 不会将 *`.aab`* 文件分发给玩家，而是生成针对每种设备配置优化的 APK，因此玩家实际下载的文件比 *`.aab`* 文件或通用 *`.apk`* 文件更小。在打包对话框中勾选 *Estimate download size* 复选框，即可在创建应用包时获得预计下载大小。APK 和 AAB 两种打包格式都支持此估算。
+
+![估算下载大小](/manuals/images/android/sign_bundle.png)
+
+估算结果会输出到控制台：
+
+```
+Estimated Play Store download size: 18.2 MB - 25.0 MB (arm64-v8a: 25.0 MB, armeabi-v7a: 18.2 MB - 18.9 MB)
+```
+
+结果还会保存到应用包输出文件夹中的 `download_size.json`。此文件包含所有设备配置的最小和最大下载大小（以字节为单位），以及每种 CPU 架构对应的下载大小范围：
+
+```json
+{
+  "min" : 18208826,
+  "max" : 25009450,
+  "abis" : {
+    "arm64-v8a" : { "min" : 25009448, "max" : 25009450 },
+    "armeabi-v7a" : { "min" : 18208826, "max" : 18908828 }
+  }
+}
+```
+
+从命令行打包时，使用 `--download-size-report <path>` 向 [Bob](/zh/manuals/bob) 传递报告文件的路径。这样可以在持续集成中跟踪游戏的下载大小随时间的变化。
+
+估算使用 [bundletool](https://developer.android.com/tools/bundletool) 进行计算，依据的是 Google Play 将从你的应用包生成、并使用同一密钥库签名的 APK。生成这些 APK 所需的时间与创建 *`.aab`* 文件大致相同，因此默认不启用估算。如果估算失败，控制台会输出警告，应用包仍会正常创建，但不会写入报告文件。
+
 {% include shared/zh/build-variants.md %}
 
-### 安装 Android 应用包
+### 安装 Android 应用包 {#installing-an-android-application-bundle}
 
-#### 安装 APK
+#### 安装 APK {#installing-an-apk}
 
 一个 *`.apk`* 文件可以使用 `adb` 工具复制到你的设备上，或者通过 [Google Play 开发者控制台](https://play.google.com/apps/publish/) 复制到 Google Play。
 
@@ -99,7 +140,7 @@ $ adb install Defold\ examples.apk
 Success
 ```
 
-#### 使用编辑器安装 APK
+#### 使用编辑器安装 APK {#installing-an-apk-using-editor}
 
 你可以使用编辑器打包对话框中的"在连接的设备上安装"和"启动已安装的应用"复选框来安装和启动 *`.apk`* 文件：
 
@@ -107,9 +148,13 @@ Success
 
 要使此功能正常工作，你需要安装 *ADB* 并在连接的设备上启用 *USB 调试*。如果编辑器无法检测到 ADB 命令行工具的安装位置，你需要在[首选项](/zh/manuals/editor-preferences/#tools)中指定它。
 
-#### 安装 AAB
+#### 安装 AAB {#installing-an-aab}
 
-一个 *.aab* 文件可以通过 [Google Play 开发者控制台](https://play.google.com/apps/publish/) 上传到 Google Play。也可以使用 *.aab* 文件制作 *.apk* 以便使用 [`bundletool`](https://developer.android.com/studio/command-line/bundletool) 在本地安装。
+*.aab* 文件可以通过 [Google Play 开发者控制台](https://play.google.com/apps/publish/) 上传到 Google Play。也可以使用 [Android bundletool](https://developer.android.com/studio/command-line/bundletool) 从 *.aab* 文件生成 *`.apk`* 文件，以便在本地安装。
+
+## 屏幕缺口 {#display-cutouts}
+
+在 Android 9（API 级别 28）及更高版本上，`window.get_reserved_areas()` 返回屏幕缺口的矩形区域。需要安全布局矩形时，请使用 `window.get_safe_area()`。有关坐标单位、不支持的平台上的行为以及返回区域变化时如何刷新布局，请参阅[屏幕保留区域](/zh/manuals/porting-guidelines/#reserved-screen-areas)。
 
 ## 使用 R8 缩减 Java 代码和 Android 资源 {#shrinking-java-code-with-r8}
 
@@ -128,7 +173,7 @@ r8_keep_rules = /builtins/manifests/android/dmengine.keep
 
 将 **R8 Keep Rules** 留空会使用 D8，不执行缩减。启用 R8 会使用原生扩展构建服务，即使项目没有原生扩展也是如此。
 
-从 Defold 1.14.0 开始，同一个 **R8 Keep Rules** 设置也会启用 Android 资源缩减，无需单独的项目设置。较旧的 Defold SDK 中，R8 仍然只缩减代码。
+Android 资源缩减也由同一个 **R8 Keep Rules** 设置启用，没有单独的项目设置。较早的 Defold SDK 仍然只进行 R8 代码缩减。
 
 ### 向扩展添加规则 {#adding-rules-to-an-extension}
 
@@ -159,24 +204,21 @@ java -jar bob.jar --platform arm64-android --variant release \
 
 请将映射文件与生成它的对应发布版本一同保存。该文件将混淆后的 Java 名称映射回原始名称，以便解读堆栈跟踪；使用其他构建的映射文件可能得到错误结果。
 
-## 权限
+## 权限 {#permissions}
 
 Defold 引擎需要许多不同的权限才能使所有引擎功能正常工作。权限在 `AndroidManifest.xml` 中定义，在 *game.project* [项目设置文件](/zh/manuals/project-settings/#android) 中指定。你可以在[官方文档](https://developer.android.com/guide/topics/permissions/overview)中阅读更多关于 Android 权限的信息。默认清单中请求以下权限：
 
-### android.permission.INTERNET 和 android.permission.ACCESS_NETWORK_STATE (保护级别: normal)
-
+### android.permission.INTERNET 和 android.permission.ACCESS_NETWORK_STATE (保护级别: normal) {#androidpermissioninternet-and-androidpermissionaccess_network_state-protection-level-normal}
 允许应用程序打开*网络套接字*并访问网络信息。这些权限是访问互联网所必需的。（[Android 官方文档](https://developer.android.com/reference/android/Manifest.permission#INTERNET)）和（[Android 官方文档](https://developer.android.com/reference/android/Manifest.permission#ACCESS_NETWORK_STATE)）。
 
-### android.permission.WAKE_LOCK (保护级别: normal)
-
+### android.permission.WAKE_LOCK (保护级别: normal) {#androidpermissionwake_lock-protection-level-normal}
 允许使用 PowerManager WakeLocks 来防止处理器休眠或屏幕变暗。在接收推送通知时暂时防止设备休眠需要此权限。（[Android 官方文档](https://developer.android.com/reference/android/Manifest.permission#WAKE_LOCK)）
 
 
-## 使用 AndroidX
-
+## 使用 AndroidX {#using-androidx}
 AndroidX 是对原始 Android 支持库重大改进，该支持库已不再维护。AndroidX 包通过提供功能对等和新库完全取代了支持库。[资源门户](/assets) 中的大多数 Android 扩展都支持 AndroidX。如果你不想使用 AndroidX，可以通过在[应用程序清单](https://defold.com/zh/manuals/app-manifest/)中勾选 `Use Android Support Lib` 来明确禁用它，转而使用旧的 Android 支持库。
 
 ![](/manuals/images/android/enable_supportlibrary.png)
 
-## 常见问题
+## 常见问题 {#faq}
 {% include shared/zh/android-faq.md %}

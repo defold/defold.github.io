@@ -9,7 +9,8 @@ toc:
 - Lua kodu yazma
 - Luaya dönüştürülen diğer dilleri kullanma
 - Yerel kod yazma
-- Yerleşik kod düzenleyicisini kullanma
+- anchor: using-the-built-in-code-editor
+  title: Yerleşik kod düzenleyicisini kullanma
 - anchor: code-completion
   title: Kod tamamlama
 - anchor: formatting-code
@@ -17,7 +18,8 @@ toc:
 - Simgeye gitme
 - anchor: linting-configuration
   title: Statik kod denetimini yapılandırma
-- Harici bir kod düzenleyicisi kullanma
+- anchor: using-an-external-code-editor
+  title: Harici bir kod düzenleyicisi kullanma
 - Visual Studio Code - Defold Kit
 - Belge yazılımları
 ---
@@ -38,21 +40,21 @@ Defold, Lua kodu üreten kaynak kod dönüştürücülerin (transpiler) kullanı
 
 Defold, motorun kendisinin sunmadığı platforma özgü işlevlere erişmek için oyun motorunu yerel kodla (native code) genişletmenize olanak tanır. Lua'nın performansı yeterli olmadığında da yerel kod kullanabilirsiniz (yoğun kaynak gerektiren hesaplamalar, görüntü işleme vb.). Daha fazla bilgi için [yerel kod eklentileri kılavuzlarımıza](/tr/manuals/extensions/) bakın.
 
-## Yerleşik kod düzenleyicisini kullanma
+## Yerleşik kod düzenleyicisini kullanma {#using-the-built-in-code-editor}
 
 Defold'un yerleşik kod düzenleyicisi, Lua dosyalarını (.lua), Defold betik dosyalarını (.script, .gui_script ve .render_script) ve düzenleyicinin doğrudan işlemediği dosya uzantılarına sahip diğer tüm dosyaları açıp düzenlemenize olanak tanır. Ayrıca düzenleyici, Lua ve betik dosyaları için sözdizimi vurgulaması sağlar.
 
-![](/images/editor/code-editor.png)
+![](/manuals/images/editor/code-editor.png)
 
 ### Kod tamamlama {#code-completion}
 
 Yerleşik kod düzenleyicisi, kod yazarken işlevler için kod tamamlama önerileri gösterir:
 
-![](/images/editor/codecompletion.png)
+![](/manuals/images/editor/codecompletion.png)
 
 <kbd>CTRL</kbd> + <kbd>Space</kbd> tuşlarına bastığınızda işlevler, bağımsız değişkenler ve dönüş değerleri hakkında ek bilgiler gösterilir:
 
-![](/images/editor/apireference.png)
+![](/manuals/images/editor/apireference.png)
 
 Birlikte gelen Lua dil sunucusu, Defold API'leri için tür açıklamaları (type annotations) içerir. Kod tamamlama, üzerine gelindiğinde gösterilen bilgiler ve tanılama işlevleri; karma değerleri (hash), URL'ler, vektörler ve kuaterniyonlar (quaternion) gibi Defold türlerini, işlev bağımsız değişkenlerini ve dönüş değerlerini tanır. Düzenleyici, oyun betikleri ve `.editor_script` dosyalarında kullanılan `editor.*` API'leri için açıklamalar sağlar. Defold kod düzenleyicisini kullanırken yerleşik API'ler için ayrı bir açıklama kütüphanesine gerek yoktur.
 
@@ -70,7 +72,7 @@ Yerleşik kod düzenleyicisi, geçerli kod dosyasındaki işlevler, nesneler ve 
 
 Simgeler arasında yaklaşık eşleşmeyle arama yapmak için yazmaya başlayın. Sonuçlar arasında ilerlemek ve düzenleyicideki konumlarını önizlemek için ok tuşlarını kullanın, ardından seçili simgeye gitmek için <kbd>Enter</kbd> tuşuna basın. İletişim kutusunu kapatıp önceki imleç ve kaydırma konumuna dönmek için <kbd>Esc</kbd> tuşuna basın.
 
-![](/images/editor/jump-to-symbol.png)
+![](/manuals/images/editor/jump-to-symbol.png)
 
 ### Statik kod denetimini yapılandırma {#linting-configuration}
 
@@ -86,7 +88,7 @@ ignore = {
 },
 ```
 
-## Harici bir kod düzenleyicisi kullanma
+## Harici bir kod düzenleyicisi kullanma {#using-an-external-code-editor}
 
 Defold'un kod düzenleyicisi, kod yazmak için gereken temel işlevleri sağlar. Ancak daha gelişmiş kullanım durumlarında veya tercih ettiği bir kod düzenleyicisi olan ileri düzey kullanıcılar için Defold'un dosyaları harici bir düzenleyiciyle açmasını sağlamak mümkündür. [Preferences penceresinin Code sekmesinde](/tr/manuals/editor-preferences/#code), kod düzenlerken kullanılacak harici bir düzenleyici tanımlayabilirsiniz.
 

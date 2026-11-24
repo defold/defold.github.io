@@ -29,7 +29,7 @@ Defold richiede che tutti gli asset usati nel progetto si trovino all'interno de
 ![Importazione dei file](/manuals/images/graphics/import.png)
 
 <div class='sidenote' markdown='1'>
-Defold supporta immagini nei formati PNG e JPEG. Le immagini PNG devono essere in formato RGBA a 32 bit. Gli altri formati di immagine devono essere convertiti prima di poter essere usati.
+Usa immagini PNG o JPEG per atlas e sorgenti di tile. Il supporto PNG comprende immagini RGB, RGBA e a colori indicizzati (palette). Puoi anche importare [texture sorgente KTX2](/it/manuals/importing-graphics/#ktx2-textures) da usare come texture dei modelli.
 </div>
 
 
@@ -40,7 +40,7 @@ Una volta importati in Defold, gli asset possono essere usati dai vari tipi di c
 * Le immagini possono essere usate per creare molti tipi di componenti visivi di uso comune nei giochi 2D. Per saperne di più, consulta [come importare e usare la grafica 2D](/it/manuals/importing-graphics).
 * I suoni possono essere usati dal [componente Sound](/it/manuals/sound) per riprodurre audio.
 * I font vengono usati dal [componente Label](/it/manuals/label) e dai [nodi di testo](/it/manuals/gui-text) in una GUI.
-* I modelli glTF (*.gltf* e *.glb*) possono essere usati dal [componente Model](/it/manuals/model) per mostrare modelli 3D con animazioni. Importa tutte le immagini delle texture usate dal modello come asset separati e assegnale nelle proprietà delle texture del materiale del componente Model. Per saperne di più, consulta [come importare e usare i modelli 3D](/it/manuals/importing-models).
+* I modelli glTF (*.gltf* e *.glb*) possono essere usati dal [componente Model](/it/manuals/model) per mostrare modelli 3D con animazioni. Espandi questi file nel pannello *Assets* per esplorarne mesh, materiali generati e immagini incorporate. Le immagini incorporate possono essere usate direttamente; includi invece le immagini e i buffer referenziati esternamente come file separati del progetto. È supportata anche la [geometria compressa con Draco e Meshopt](/it/manuals/importing-models/#compressed-geometry), che viene decodificata durante l'importazione e la build. Quando selezioni una scena o una mesh in un componente Model, l'editor può proporti di compilare le associazioni di materiali e texture. Scegli <kbd>Auto Fill</kbd> per applicarle, sostituendo quelle esistenti, oppure <kbd>Keep Current</kbd> per conservare le tue. Per ulteriori informazioni, consulta [come importare e usare i modelli 3D](/it/manuals/importing-models).
 
 
 ## Modifica degli asset esterni {#editing-external-assets}

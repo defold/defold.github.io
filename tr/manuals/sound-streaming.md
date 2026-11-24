@@ -5,7 +5,8 @@ layout: manual
 locale: tr
 title: Defold'da akış yoluyla ses oynatma
 toc:
-- Akış yoluyla ses oynatma
+- anchor: sound-streaming
+  title: Akış yoluyla ses oynatma
 - Örnek
 - Akış yoluyla ses oynatmayı etkinleştirme
 - Kolay yol
@@ -14,7 +15,7 @@ toc:
 - Ses parçası önbelleği
 ---
 
-# Akış yoluyla ses oynatma
+# Akış yoluyla ses oynatma {#sound-streaming}
 
 Varsayılan davranış ses verisini bütünüyle yüklemek olsa da, veriyi kullanılmadan önce parçalar hâlinde yüklemek de yararlı olabilir. Bu yöntem genellikle "akış" (streaming) olarak adlandırılır.
 

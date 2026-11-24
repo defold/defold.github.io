@@ -7,6 +7,8 @@ title: Windows プラットフォーム向けの Defold 開発
 toc:
 - anchor: windows-development
   title: Windows 向けの開発
+- anchor: graphics-backends
+  title: グラフィックスバックエンド
 - anchor: project-settings
   title: プロジェクト設定
 - anchor: application-icon
@@ -20,6 +22,10 @@ toc:
 # Windows 向けの開発 {#windows-development}
 
 Windows プラットフォーム向けの Defold アプリケーション開発では、考慮すべき点はごく少なく、手順もシンプルです。
+
+## グラフィックスバックエンド {#graphics-backends}
+
+Windows ビルドは、デフォルトで OpenGL を使います。[アプリケーションマニフェスト](/ja/manuals/app-manifest/#graphics)の **Graphics (Windows)** で、OpenGL、Vulkan、DirectX 12（**DX12**）を選択します。複数のバックエンドを含めると、優先バックエンドを利用できない場合にフォールバックできます。
 
 ## プロジェクト設定 {#project-settings}
 

@@ -2653,6 +2653,50 @@
             "type": "STRUCT"
         },
         {
+            "brief": "list resource paths directly inside a folder or file. For example, a glTF file can contain meshes, materials, and images. Call this function on each returned path to explore all contents.",
+            "description": "List resource paths directly inside a folder or file. For example, a glTF file can contain meshes, materials, and images. Call this function on each returned path to explore all contents.\nReturns an empty list if there are no children. Throws an error if the path does not exist.",
+            "error": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"nv\">local</span> <span class=\"nv\">function</span> <span class=\"nv\">walk</span><span class=\"ss\">(</span><span class=\"nv\">path</span><span class=\"ss\">)</span>\n    <span class=\"nv\">print</span><span class=\"ss\">(</span><span class=\"nv\">path</span><span class=\"ss\">)</span>\n    <span class=\"k\">for</span> <span class=\"nv\">_</span>, <span class=\"nv\">child</span> <span class=\"nv\">in</span> <span class=\"nv\">ipairs</span><span class=\"ss\">(</span><span class=\"nv\">editor</span>.<span class=\"nv\">resource_children</span><span class=\"ss\">(</span><span class=\"nv\">path</span><span class=\"ss\">))</span> <span class=\"k\">do</span>\n        <span class=\"nv\">walk</span><span class=\"ss\">(</span><span class=\"nv\">child</span><span class=\"ss\">)</span>\n    <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n<span class=\"nv\">walk</span><span class=\"ss\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">/assets</span><span class=\"s2\">&quot;</span><span class=\"ss\">)</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "editor.resource_children",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "Resource path (starting with <code>/</code>)",
+                    "is_optional": "False",
+                    "name": "resource_path",
+                    "types": [
+                        "string"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [
+                {
+                    "doc": "child resource paths, starting with <code>/</code>",
+                    "name": "children",
+                    "types": [
+                        "string[]"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>[]"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>[]"
+                    ]
+                }
+            ],
+            "tparams": [],
+            "type": "FUNCTION"
+        },
+        {
             "brief": "persist any unsaved changes to disk",
             "description": "Persist any unsaved changes to disk",
             "error": "",

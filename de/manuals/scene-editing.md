@@ -15,6 +15,8 @@ toc:
   title: Navigation in der Szenenansicht (Kamerasteuerung)
 - anchor: standard-navigation-all-visual-editors
   title: Normale Navigation (alle visuellen Editoren)
+- anchor: axis-gizmo
+  title: Achsen-Gizmo
 - anchor: 2d-and-3d-scene-orientation
   title: Szenenausrichtung in 2D und 3D
 - anchor: toolbar-overview
@@ -88,33 +90,43 @@ Diese Steuerelemente stehen in visuellen Editoren zur Verfügung:
 
 Du kannst auch **Frame Selection** (<kbd>F</kbd>) verwenden, um die Kamera auf die aktuelle Auswahl auszurichten.
 
+### Achsen-Gizmo {#axis-gizmo}
+
+Das **Scene View Axis Gizmo** erscheint im 3D-Modus unten rechts in der Szenenansicht. Es zeigt die Ausrichtung der Kamera relativ zu den Weltachsen: **X** ist rot, **Y** grün und **Z** blau.
+
+![Szenenansicht mit dem Achsen-Gizmo unten rechts](/manuals/images/editor/axis_gizmo.gif)
+
+| Steuerung | Aktion |
+| --- | --- |
+| <kbd>Linksklick</kbd> auf einen Achsengriff | Richtet die Kamera auf eine Ansicht entlang dieser Achse aus. Gegenüberliegende Griffe bieten Ansichten von der anderen Seite. |
+| Klick auf einen bereits ausgerichteten Achsengriff | Wechselt zur gegenüberliegenden Ansicht entlang derselben Achse. |
+| <kbd>Left Mouse Button</kbd> halten und das Gizmo ziehen | Kreist um den aktuellen Fokuspunkt der Kamera. Du kannst von einem Achsengriff oder dem kreisförmigen Bereich um die Griffe ziehen, ohne eine Zusatztaste zu halten. |
+
+Die Achsenausrichtung erhält Fokuspunkt, Abstand und Projektion der Kamera. Verwende zuerst **Frame Selection** (<kbd>F</kbd>), um ein Objekt zu fokussieren, und anschließend das Gizmo, um es aus verschiedenen Richtungen zu betrachten. Die üblichen Steuerungen zum Verschieben und Zoomen sowie zum Umkreisen mit <kbd>Ctrl</kbd>/<kbd>^ Control</kbd> + <kbd>Left Mouse Button</kbd> bleiben verfügbar.
+
+Das Gizmo ist im 3D-Modus sowohl bei perspektivischer als auch bei orthografischer Projektion verfügbar. Im 2D-Modus ist es ausgeblendet; verwende **Align/Realign Camera 2D/3D** in der [Werkzeugleiste](#toolbar-overview) oder drücke <kbd>.</kbd>, um zu 3D zu wechseln. Verwende den separaten [Schalter für die Kameraprojektion](#camera-type-perspective-vs-orthographic), um perspektivische oder orthografische Projektion auszuwählen. Das Gizmo steuert die Ansicht des Szeneneditors auf deine Szene.
+
 ## Szenenausrichtung in 2D und 3D {#2d-and-3d-scene-orientation}
 
-Du kannst die Szenenansicht sowohl für die Arbeit in 2D als auch in 3D verwenden:
+{% include shared/de/2d-and-3d-scene-orientation.md %}
 
-- In **2D** arbeitest du normalerweise in einer orthografischen Ansicht mit einem für 2D ausgerichteten Raster.
-- In **3D** gehst du normalerweise so vor:
-  - Du richtest die Ansicht für 3D neu aus,
-  - verwendest eine **perspektivische** Kamera,
-  - wählst eine geeignete Rasterebene (häufig **Y** für den „Boden“).
-
-Diese Funktionen erreichst du über die Werkzeugleiste und das Menü **View**.
-
-![Szeneneditor in 3D](/manuals/images/editor/3d_scene.png)
+Verwende im 3D-Modus das [Achsen-Gizmo](#axis-gizmo), um die Ansicht an einer Achse auszurichten oder sie mit der Maus um den Fokuspunkt zu drehen.
 
 ## Übersicht der Werkzeugleiste {#toolbar-overview}
 
-Oben rechts in der Szenenansicht befindet sich eine Werkzeugleiste mit häufig verwendeten Werkzeugen und Ansichtsoptionen (von links nach rechts):
+Oben rechts in der Szenenansicht befindet sich eine Werkzeugleiste mit häufig verwendeten Werkzeugen und Ansichtsoptionen.
 
-- **Move tool** (<kbd>W</kbd>)
-- **Rotate tool** (<kbd>E</kbd>)
-- **Scale tool** (<kbd>R</kbd>)
-- **Grid Settings** (`▦`)
-- **Align/Realign Camera 2D/3D** (`2D`) — wechselt zwischen der Ausrichtung in 2D und 3D (Tastenkürzel <kbd>.</kbd>)
-- **Camera Perspective/Orthographic**
-- **Visibility Filters** (`👁`)
+![Werkzeugleiste des Szeneneditors mit den von 1 bis 7 nummerierten Bedienelementen](/manuals/images/editor/toolbar.png)
 
-![Werkzeugleiste](/manuals/images/editor/toolbar.png)
+Die nummerierten Optionen der Werkzeugleiste von links nach rechts:
+
+1. **Move tool** (<kbd>W</kbd>) - Ausgewählte Objekte verschieben.
+2. **Rotate tool** (<kbd>E</kbd>) - Ausgewählte Objekte drehen.
+3. **Scale tool** (<kbd>R</kbd>) - Ausgewählte Objekte skalieren.
+4. **Grid** - Raster ein- oder ausblenden. Das Dropdown öffnet Grid Settings.
+5. **2D mode** (`2D`) - Zwischen 2D- und 3D-Ausrichtung wechseln. Alternativ **Realign Camera** (<kbd>.</kbd>) verwenden.
+6. **Perspective camera** - Zwischen perspektivischer und orthografischer Projektion in 3D wechseln. Das Dropdown öffnet die Kameraeinstellungen.
+7. **Visibility filters** - Komponententypen und Hilfslinien in der Szenenansicht ein- oder ausblenden.
 
 ## Objekte auswählen und verändern {#manipulating-objects}
 
@@ -207,6 +219,8 @@ Verwende den Kameraumschalter in der Werkzeugleiste, um zwischen ihnen zu wechse
 ## Freier Kameramodus {#free-camera-mode}
 
 Für die schnelle Navigation in 3D bietet der Szeneneditor den **freien Kameramodus**, eine Kamera aus der Ichperspektive im Stil eines „Ego-Shooters“.
+
+![Freier Kameramodus](/manuals/images/editor/free_camera.png)
 
 ### Den freien Kameramodus aktivieren {#activating-free-camera-mode}
 

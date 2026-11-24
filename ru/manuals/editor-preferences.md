@@ -31,7 +31,7 @@ Load External Changes on App Focus
 Open Bundle Target Folder
 : Автоматически открывает папку с итоговым бандлом после завершения процесса упаковки.
 
-Включить Сжатие Текстур
+Enable Texture Compression
 : Включает [сжатие текстур](/ru/manuals/texture-profiles) для всех сборок, сделанных в редакторе.
 
 Escape Quits Game
@@ -46,7 +46,7 @@ Lint Code on Build
 Engine Arguments
 : Аргументы, которые будут переданы исполняемому файлу dmengine при сборке и запуске проекта из редактора.
 Используйте один аргумент на строку. Например:
-```
+ ```
 --config=bootstrap.main_collection=/my dir/1.collectionc
 --verbose
 --graphics-adapter=vulkan

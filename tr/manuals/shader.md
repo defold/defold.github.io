@@ -5,26 +5,41 @@ layout: manual
 locale: tr
 title: Defold'da gölgelendirici programları
 toc:
-- Gölgelendiriciler
-- Kavramlar
-- Modern GLSL gölgelendiricileri yazma
-- Sürüm bildirimi
-- Öznitelikler
-- Varying değişkenleri
-- Uniform değişkenleri (Defoldda sabitler olarak adlandırılır)
-- Yerleşik değişkenler
-- Doku işlevleri
+- anchor: shaders
+  title: Gölgelendiriciler
+- anchor: concepts
+  title: Kavramlar
+- anchor: writing-modern-glsl-shaders
+  title: Modern GLSL gölgelendiricileri yazma
+- anchor: version-declaration
+  title: Sürüm bildirimi
+- anchor: attributes
+  title: Öznitelikler
+- anchor: varyings
+  title: Varying değişkenleri
+- anchor: uniforms-called-constants-in-defold
+  title: Uniform değişkenleri (Defoldda sabitler olarak adlandırılır)
+- anchor: built-in-variables
+  title: Yerleşik değişkenler
+- anchor: texture-functions
+  title: Doku işlevleri
 - anchor: precision
   title: Hassasiyet
-- Hepsini bir araya getirme
-- Gölgelendiricilere kod parçaları dahil etme
-- Başlık koruyucuları
-- Düzenleyiciye özgü gölgelendirici kodu
-- İşleme süreci
-- İleri okuma
+- anchor: putting-it-together
+  title: Hepsini bir araya getirme
+- anchor: including-snippets-into-shaders
+  title: Gölgelendiricilere kod parçaları dahil etme
+- anchor: header-guards
+  title: Başlık koruyucuları
+- anchor: editor-specific-shader-code
+  title: Düzenleyiciye özgü gölgelendirici kodu
+- anchor: the-rendering-process
+  title: İşleme süreci
+- anchor: further-study
+  title: İleri okuma
 ---
 
-# Gölgelendiriciler
+# Gölgelendiriciler {#shaders}
 
 Gölgelendirici (shader) programları, grafiklerden görüntü oluşturan işleme (rendering) sürecinin temelindedir. Bunlar, GLSL (GL Shading Language) adı verilen C benzeri bir dilde yazılan ve grafik donanımının, temel alınan 3B veriler (köşeler) veya ekranda beliren pikseller ("parçalar") üzerinde işlemler yapmak için çalıştırdığı programlardır. Gölgelendiriciler; sprite bileşenlerini çizmek, 3B modelleri aydınlatmak, tam ekran son işleme efektleri oluşturmak ve daha pek çok şey için kullanılır.
 
@@ -39,7 +54,7 @@ OpenGL ES 2.0 (OpenGL for Embedded Systems) ve OpenGL ES Shading Language belirt
 Masaüstü bilgisayarlarda, OpenGL ES 2.0'da bulunmayan özellikleri kullanarak gölgelendiriciler yazmanın mümkün olduğunu unutmayın. Ekran kartı sürücünüz, mobil cihazlarda çalışmayacak gölgelendirici kodunu sorunsuzca derleyip çalıştırabilir.
 
 
-## Kavramlar
+## Kavramlar {#concepts}
 
 Köşe gölgelendiricisi
 : Bir köşe gölgelendiricisi (vertex shader) köşe oluşturamaz veya silemez; yalnızca bir köşenin konumunu değiştirebilir. Köşe gölgelendiricileri genellikle köşelerin konumlarını 3B dünya uzayından 2B ekran uzayına dönüştürmek için kullanılır.
@@ -126,16 +141,16 @@ Varying değişkenleri
 
   ![Varying ara değerlemesi](/manuals/images/shader/varying.png)
 
-## Modern GLSL gölgelendiricileri yazma
+## Modern GLSL gölgelendiricileri yazma {#writing-modern-glsl-shaders}
 
 Defold motoru birden çok platformu ve grafik API'sini desteklediği için geliştiricilerin her yerde çalışan gölgelendiriciler yazması basit olmalıdır. Varlık işleme hattı bunu başlıca iki yolla sağlar (bunlar bundan sonra gölgelendirici hatları, yani `shader pipelines` olarak anılacaktır):
 
 1. Gölgelendiricilerin ES2 uyumlu GLSL koduyla yazıldığı eski hat.
 2. Gölgelendiricilerin SPIR-v uyumlu GLSL koduyla yazıldığı modern hat.
 
-Defold 1.9.2'den itibaren yeni hattı kullanan gölgelendiriciler yazmanız önerilir; bunu sağlamak için çoğu gölgelendiricinin en az sürüm 140 (OpenGL 3.1) ile yazılmış gölgelendiricilere dönüştürülmesi gerekir. Bir gölgelendiriciyi dönüştürmek için şu gereksinimlerin karşılandığından emin olun:
+Modern hat için gölgelendiricileri en az GLSL sürüm 140 (OpenGL 3.1) kullanarak yazın. Bir gölgelendiriciyi dönüştürmek için şu gereksinimlerin karşılandığından emin olun:
 
-### Sürüm bildirimi
+### Sürüm bildirimi {#version-declaration}
 Gölgelendiricinin en üstüne en az #version 140 yerleştirin:
 
 ```glsl
@@ -144,7 +159,7 @@ Gölgelendiricinin en üstüne en az #version 140 yerleştirin:
 
 Proje derleme sürecinde gölgelendirici hattı bu şekilde seçilir; bu nedenle eski gölgelendiricileri kullanmaya devam edebilirsiniz. Sürüm belirten bir önişlemci yönergesi bulunmazsa Defold eski hattı kullanır.
 
-### Öznitelikler
+### Öznitelikler {#attributes}
 Köşe gölgelendiricilerinde `attribute` anahtar sözcüğünü `in` ile değiştirin:
 
 ```glsl
@@ -156,7 +171,7 @@ in vec4 position;
 
 Not: Parça gölgelendiricileri (ve hesaplama gölgelendiricileri) köşe girdisi almaz.
 
-### Varying değişkenleri
+### Varying değişkenleri {#varyings}
 Köşe gölgelendiricilerinde varying değişkenlerinin önüne `out` eklenmelidir. Parça gölgelendiricilerinde varying değişkenleri `in` olur:
 
 ```glsl
@@ -171,7 +186,7 @@ out vec4 var_color;
 in vec4 var_color;
 ```
 
-### Uniform değişkenleri (Defold'da sabitler olarak adlandırılır)
+### Uniform değişkenleri (Defold'da sabitler olarak adlandırılır) {#uniforms-called-constants-in-defold}
 
 Opak (opaque) uniform türleri (örnekleyiciler, görüntüler, atomik türler, SSBO'lar) için herhangi bir dönüşüm gerekmez; bunları bugün olduğu gibi kullanabilirsiniz:
 
@@ -201,7 +216,7 @@ void main()
 
 Uniform bloğundaki tüm üyeler, materyallere ve bileşenlere ayrı sabitler olarak sunulur. İşleme sabit arabelleklerini veya `go.set` ve `go.get` işlevlerini kullanmak için herhangi bir dönüşüm gerekmez.
 
-### Yerleşik değişkenler
+### Yerleşik değişkenler {#built-in-variables}
 
 Parça gölgelendiricilerinde, sürüm 140'tan itibaren `gl_FragColor` kullanımı önerilmez. Bunun yerine `out` kullanın:
 
@@ -217,7 +232,7 @@ void main()
 }
 ```
 
-### Doku işlevleri
+### Doku işlevleri {#texture-functions}
 
 `texture2D` ve `texture2DArray` gibi belirli doku örnekleme işlevleri artık yoktur. Bunların yerine yalnızca `texture` işlevini kullanın:
 
@@ -239,7 +254,7 @@ Defold, gölgelendiricileri GLSL ES için çapraz derlerken genel varsayılan ha
 
 Bir değişken, girdi veya çıktı üzerindeki açık niteleyici, oluşturulan genel varsayılan değere göre önceliklidir. OpenGL ES 2.0 ve WebGL 1.0 parça gölgelendiricilerinde `highp`, her cihazda desteklenmez. Genel varsayılan olarak `highp` seçildiğinde Defold bunu `GL_FRAGMENT_PRECISION_HIGH` ile korur ve desteklemeyen cihazlarda `mediump` değerine geri döner.
 
-### Hepsini bir araya getirme
+### Hepsini bir araya getirme {#putting-it-together}
 
 Tüm bu kuralların uygulandığı son bir örnek olarak, yeni biçime dönüştürülmüş yerleşik sprite gölgelendiricileri aşağıdadır:
 
@@ -287,7 +302,7 @@ void main()
 
 ```
 
-## Gölgelendiricilere kod parçaları dahil etme
+## Gölgelendiricilere kod parçaları dahil etme {#including-snippets-into-shaders}
 
 Defold'daki gölgelendiriciler, proje içindeki `.glsl` uzantılı dosyalardan kaynak kod dahil etmeyi destekler. Bir gölgelendiriciden glsl dosyası dahil etmek için `#include` pragmasını çift tırnak veya ayraçlarla kullanın. Dahil etme yolları, projeye veya dosyayı dahil eden dosyaya göreli olmalıdır:
 
@@ -311,7 +326,7 @@ Dahil edilen dosyaların nasıl bulunacağıyla ilgili dikkat edilmesi gereken b
   - Dosyalar projeye göreli olmalıdır; yani yalnızca proje içindeki dosyaları dahil edebilirsiniz. Mutlak yolların başında `/` bulunmalıdır
   - Dosyanın herhangi bir yerine kod dahil edebilirsiniz, ancak bir dosyayı bir deyimin içine satır içi olarak dahil edemezsiniz. Örneğin, `const float #include "my-float-name.glsl" = 1.0` çalışmaz
 
-### Başlık koruyucuları
+### Başlık koruyucuları {#header-guards}
 
 Kod parçaları da başka `.glsl` dosyalarını dahil edebilir; bu, sonunda üretilen gölgelendiricinin aynı kodu birkaç kez içerebileceği anlamına gelir. Dosyaların içeriğine bağlı olarak aynı sembollerin birden fazla kez bildirilmesi nedeniyle kod derleme sorunlarıyla karşılaşabilirsiniz. Bunu önlemek için birçok programlama dilinde yaygın bir kavram olan *başlık koruyucularını* (header guards) kullanabilirsiniz. Örnek:
 
@@ -361,7 +376,7 @@ vec3 get_red_color_inverted()
 }
 ```
 
-## Düzenleyiciye özgü gölgelendirici kodu
+## Düzenleyiciye özgü gölgelendirici kodu {#editor-specific-shader-code}
 
 Gölgelendiriciler Defold düzenleyicisinin görünüm alanında işlendiğinde `EDITOR` önişlemci tanımı kullanılabilir. Bu, düzenleyicide çalışırken asıl oyun motorunda çalıştığından farklı davranan gölgelendirici kodu yazmanızı sağlar.
 
@@ -382,7 +397,7 @@ Yalnızca düzenleyicide çalışması gereken kodu koşullu olarak derlemek iç
 #endif
 ```
 
-## İşleme süreci
+## İşleme süreci {#the-rendering-process}
 
 Oyununuz için oluşturduğunuz veriler, ekrana ulaşmadan önce bir dizi adımdan geçer:
 
@@ -471,7 +486,7 @@ Elde edilen parça değeri daha sonra testlerden geçer. Yaygın bir test olan *
 
 Test, parçanın kare arabelleğine yazılması gerektiği sonucuna varırsa parça, arabellekte zaten bulunan piksel verileriyle *harmanlanır*. İşleme betiğinde (render script) ayarlanan harmanlama parametreleri, kaynak rengin (parça gölgelendiricisinin yazdığı değer) ve hedef rengin (kare arabelleğindeki görüntünün rengi) çeşitli şekillerde birleştirilmesini sağlar. Harmanlamanın yaygın kullanımlarından biri, saydam nesnelerin işlenmesini sağlamaktır.
 
-## İleri okuma
+## İleri okuma {#further-study}
 
 - [Shadertoy](https://www.shadertoy.com), kullanıcıların katkıda bulunduğu çok sayıda gölgelendirici içerir. Çeşitli gölgelendirme tekniklerini öğrenebileceğiniz harika bir ilham kaynağıdır. Sitede sergilenen gölgelendiricilerin birçoğu çok az çalışmayla Defold'a taşınabilir. [Shadertoy öğreticisi](https://www.defold.com/tutorials/shadertoy/), mevcut bir gölgelendiriciyi Defold'a dönüştürme adımlarını anlatır.
 

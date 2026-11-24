@@ -79,7 +79,7 @@ end
 http.request("https://www.foobar.com/myimage.png", "GET", handle_response, nil, nil, options)
 ```
 
-Another use-case for loading large amounts of data over the network is sound streaming, when "chunks" of sound data are loaded from a URL and fed into a sound resource. A complete example can be found in the [Sound Streaming manual](/sound-streaming#sound-streaming).
+Another use-case for loading large amounts of data over the network is sound streaming, when "chunks" of sound data are loaded from a URL and fed into a sound resource. A complete example can be found in the [Sound Streaming manual](https://defold.com/llms/manuals/sound-streaming.md).
 
 ### Request headers
 
@@ -116,7 +116,7 @@ Defold will automatically set a couple of request headers:
 * `If-None-Match: ` will be set with the ETag of any previously cached response.
 * `Transfer-Encoding: chunked` will be set if the request body is larger than 16384 bytes.
 * `Content-Length` will be set with the size of the request body (unless the request is chunked).
-* `Range: bytes=-` will be set if requesting a partial response, for instance when [streaming sounds](/sound-streaming#sound-streaming).
+* `Range: bytes=-` will be set if requesting a partial response, for instance when [streaming sounds](https://defold.com/llms/manuals/sound-streaming.md).
 
 ### Response headers
 

@@ -5,9 +5,10 @@ layout: manual
 locale: gr
 title: Εγχειρίδιο 3D γραφικών του Defold
 toc:
-- Γραφικά 3D
+- anchor: 3d-graphics
+  title: Γραφικά 3D
 ---
 
-# Γραφικά 3D
+# Γραφικά 3D {#3d-graphics}
 
 Αυτό το εγχειρίδιο έχει αντικατασταθεί από το [εγχειρίδιο επισκόπησης γραφικών](/manuals/graphics).

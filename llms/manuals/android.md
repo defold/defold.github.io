@@ -37,6 +37,31 @@ Defold supports the creation of both APK and AAB files. Select APK or AAB from t
 
 Press `Create Bundle` when you have configured the application bundle settings. You will then be prompted to specify where on your computer the bundle will be created.
 
+### Estimating the Google Play download size {#estimating-the-google-play-download-size}
+
+Google Play doesn't deliver the *`.aab`* file to players. It generates APKs optimized for each device configuration, so the download a player gets is smaller than the *`.aab`* or the universal *`.apk`*. Check the *Estimate download size* check-box in the Bundle dialog to get the estimated download size when the bundle is created. The estimate works for both the APK and AAB bundle formats.
+
+The estimate is printed to the console:
+```
+Estimated Play Store download size: 18.2 MB - 25.0 MB (arm64-v8a: 25.0 MB, armeabi-v7a: 18.2 MB - 18.9 MB)
+```
+
+It is also saved as `download_size.json` in the bundle output folder. The file contains the minimum and maximum download size in bytes across all device configurations, and the same range for each CPU architecture:
+```json
+{
+  "min" : 18208826,
+  "max" : 25009450,
+  "abis" : {
+    "arm64-v8a" : { "min" : 25009448, "max" : 25009450 },
+    "armeabi-v7a" : { "min" : 18208826, "max" : 18908828 }
+  }
+}
+```
+
+When bundling from the command line, pass the path of the report file to [Bob](https://defold.com/llms/manuals/bob.md) with `--download-size-report `. This is useful for tracking the download size of your game over time in continuous integration.
+
+The estimate is calculated with [bundletool](https://developer.android.com/tools/bundletool) from the APKs Google Play would generate from your bundle, signed with the same keystore. Generating them takes about as long as creating the *`.aab`* file, which is why the estimate is off by default. If the estimate fails, a warning is printed and the bundle is created as usual, but no report file is written.
+
 ## Build variants
 
 When you bundle a game, you need to choose what type of engine you wish to use. You have three basic options:
@@ -121,6 +146,10 @@ For this feature to work, you will need *ADB* installed and *USB debugging* enab
 
 An *.aab* file can be uploaded to Google Play via the [Google Play developer console](https://play.google.com/apps/publish/). It is also possible to generate an *`.apk`* file from an *.aab* file to install it locally using the [Android bundletool](https://developer.android.com/studio/command-line/bundletool).
 
+## Display cutouts
+
+`window.get_reserved_areas()` reports display cutout rectangles on Android 9 (API level 28) and later. Use `window.get_safe_area()` when you need a safe layout rectangle. See [Reserved screen areas](https://defold.com/llms/manuals/porting-guidelines.md) for coordinate units, behavior on unsupported platforms, and how to refresh your layout when the reported areas change.
+
 ## Shrinking Java code and Android resources with R8 {#shrinking-java-code-with-r8}
 
 R8 reduces the size of Java code through shrinking, optimization and obfuscation. With Defold 1.14.0 or later and a compatible Extender build server, it also removes unused Android resources, such as layouts, drawables and raw resources supplied by extensions and their Android dependencies. Defold game assets in the game archive are not processed by R8.
@@ -137,7 +166,7 @@ Make sure every extension with Java code provides a `.keep` file for the classes
 
 Leaving **R8 Keep Rules** empty uses D8 without shrinking. Enabling R8 uses the native extension build service, even for a project without native extensions.
 
-Starting with Defold 1.14.0, Android resource shrinking is enabled by the same **R8 Keep Rules** setting; there is no separate project setting for it. Older Defold SDKs retain code-only R8 shrinking.
+Android resource shrinking is enabled by the same **R8 Keep Rules** setting; there is no separate project setting for it. Older Defold SDKs retain code-only R8 shrinking.
 
 ### Adding rules to an extension
 

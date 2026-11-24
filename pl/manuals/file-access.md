@@ -71,10 +71,10 @@ if not ok then
 	return
 end
 
--- load the data
+-- wczytaj dane
 local ok, data = pcall(sys.load, path)
 if not ok then
-	-- The file exists, but is corrupt, foreign, or uses an unsupported format.
+	-- Plik istnieje, ale jest uszkodzony, pochodzi z innego źródła lub używa nieobsługiwanego formatu.
 	print("Failed to load save data:", data)
 	data = {}
 end
@@ -99,9 +99,7 @@ Podczas zapisywania i odczytywania plików specyficznych dla aplikacji, takich j
 ### Jak uzyskiwać dostęp do plików dołączonych do aplikacji {#how-to-access-files-bundled-with-the-application}
 Pliki możesz dołączać do aplikacji za pomocą zasobów pakietu i zasobów niestandardowych.
 
-<a id="custom-resources"></a>
-
-#### Zasoby niestandardowe
+#### Zasoby niestandardowe {#custom-resources}
 {% include shared/pl/custom-resources.md %}
 
 Rozszerzenia mogą też dostarczać takie pliki przez `ext.properties`. Ich ścieżki są łączone z zasobami niestandardowymi projektu zarówno podczas budowania w edytorze, jak i w archiwach Bob. Zobacz [zasoby niestandardowe rozszerzeń](/pl/manuals/extensions/#custom-resources).

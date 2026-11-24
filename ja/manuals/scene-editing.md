@@ -15,6 +15,8 @@ toc:
   title: シーンビューの移動（カメラ操作）
 - anchor: standard-navigation-all-visual-editors
   title: 標準の操作（すべてのビジュアルエディター）
+- anchor: axis-gizmo
+  title: 軸ギズモ
 - anchor: 2d-and-3d-scene-orientation
   title: 2D と 3D のシーンの向き
 - anchor: toolbar-overview
@@ -88,33 +90,43 @@ toc:
 
 **Frame Selection**（<kbd>F</kbd>）を使用して、現在の選択対象にカメラを合わせることもできます。
 
+### 軸ギズモ {#axis-gizmo}
+
+**Scene View Axis Gizmo** は、3D モードのシーンビューの右下に表示されます。ワールド軸に対するカメラの向きを示し、**X** は赤、**Y** は緑、**Z** は青です。
+
+![右下に軸ギズモがあるシーンビュー](/manuals/images/editor/axis_gizmo.gif)
+
+| 操作 | 動作 |
+| --- | --- |
+| 軸ハンドルを<kbd>マウス左クリック</kbd> | その軸に沿った方向から見るようカメラを揃えます。反対側のハンドルでは、反対方向からの表示になります。 |
+| すでに揃っている軸ハンドルをクリック | 同じ軸に沿った反対側の表示に切り替えます。 |
+| <kbd>Left Mouse Button</kbd> を押したままギズモをドラッグ | カメラの現在の注視点を中心に周回します。修飾キーを押さずに、軸ハンドルや、その周囲の円形領域からドラッグできます。 |
+
+軸への整列では、カメラの注視点、距離、射影を保持します。まず **Frame Selection**（<kbd>F</kbd>）でオブジェクトに注目し、ギズモで異なる方向から調べます。標準のパン、ズーム、<kbd>Ctrl</kbd>/<kbd>^ Control</kbd> + <kbd>Left Mouse Button</kbd> による周回操作も引き続き使えます。
+
+ギズモは、3D モードの透視投影と正投影の両方で利用できます。2D モードでは非表示です。[ツールバー](#toolbar-overview)の **Align/Realign Camera 2D/3D** または <kbd>.</kbd> キーで 3D に切り替えます。透視投影と正投影の選択には、別の[カメラ投影切り替え](#camera-type-perspective-vs-orthographic)を使います。このギズモは、シーンエディターでのシーンの見え方を操作します。
+
 ## 2D と 3D のシーンの向き {#2d-and-3d-scene-orientation}
 
-シーンビューは、2D と 3D の両方のワークフローで使用できます。
+{% include shared/ja/2d-and-3d-scene-orientation.md %}
 
-- **2D** では、通常、2D 向けのグリッドを表示した正投影ビューで作業します。
-- **3D** では、通常、次のように設定します。
-  - ビューの向きを 3D 向けに変更します。
-  - **透視投影** カメラを使用します。
-  - 適切なグリッド平面を選択します（「地面」には **Y** を使用することがよくあります）。
-
-これらの機能は、ツールバーと **View** メニューから利用できます。
-
-![3D のシーンエディター](/manuals/images/editor/3d_scene.png)
+3D モードでは、[軸ギズモ](#axis-gizmo)でビューを軸に揃えたり、マウスで視点を回転させたりできます。
 
 ## ツールバーの概要 {#toolbar-overview}
 
-シーンビューの右上には、よく使うツールと表示オプションを備えたツールバーがあります（左から右の順）。
+シーンビューの右上には、よく使うツールと表示オプションを備えたツールバーがあります。
 
-- **Move tool**（<kbd>W</kbd>）
-- **Rotate tool**（<kbd>E</kbd>）
-- **Scale tool**（<kbd>R</kbd>）
-- **Grid Settings**（`▦`）
-- **Align/Realign Camera 2D/3D**（`2D`）— 2D と 3D の向きを切り替えます（ショートカットは <kbd>.</kbd>）。
-- **Camera Perspective/Orthographic**
-- **Visibility Filters**（`👁`）
+![操作項目に1から7までの番号を付けたシーンエディターのツールバー](/manuals/images/editor/toolbar.png)
 
-![ツールバー](/manuals/images/editor/toolbar.png)
+ツールバーの番号付きオプションは左から次のとおりです。
+
+1. **Move tool** (<kbd>W</kbd>) - 選択したオブジェクトを移動します。
+2. **Rotate tool** (<kbd>E</kbd>) - 選択したオブジェクトを回転します。
+3. **Scale tool** (<kbd>R</kbd>) - 選択したオブジェクトのサイズを変更します。
+4. **Grid** - グリッドを表示または非表示にします。メニューから Grid Settings を開きます。
+5. **2D mode** (`2D`) - 2D と 3D の向きを切り替えます。**Realign Camera**（<kbd>.</kbd>）も使用できます。
+6. **Perspective camera** - 3D の透視投影と正投影を切り替えます。メニューからカメラ設定を開きます。
+7. **Visibility filters** - シーンビューでコンポーネントの種類とガイドの表示・非表示を切り替えます。
 
 ## オブジェクトの選択と操作 {#manipulating-objects}
 
@@ -207,6 +219,8 @@ toc:
 ## フリーカメラモード {#free-camera-mode}
 
 3D 内をすばやく移動できるよう、シーンエディターには一人称視点の「FPS スタイル」のカメラである **フリーカメラモード** が用意されています。
+
+![フリーカメラモード](/manuals/images/editor/free_camera.png)
 
 ### フリーカメラモードの有効化 {#activating-free-camera-mode}
 

@@ -7,14 +7,8 @@ title: コリジョン形状
 toc:
 - anchor: collision-shapes
   title: コリジョン形状
-- anchor: primitive-shapes
-  title: プリミティブ形状
-- anchor: box-shape
-  title: ボックス形状
-- anchor: sphere-shape
-  title: 球形状
-- anchor: capsule-shape
-  title: カプセル形状
+- anchor: collision-shapes-list
+  title: コリジョンシェイプ
 - anchor: complex-shapes
   title: 複雑な形状
 - anchor: hull-and-mesh-shapes-in-3d
@@ -45,29 +39,51 @@ toc:
 
 コリジョンオブジェクト（collision object）には、複数の埋め込み形状を含められます。3D 物理では、glTF または GLB ファイルの凸包や三角形メッシュも含められます。また、コリジョンオブジェクトの *Collision Shape* プロパティを通じて、タイルマップや凸形状のリソースを使用できます。
 
-### プリミティブ形状 {#primitive-shapes}
-プリミティブ形状（primitive shape）には、 *ボックス（box）* 、 *球（sphere）* 、 *カプセル（capsule）* があります。衝突判定や物理特性を持つコンポーネントであるコリジョンオブジェクト（collision object）を <kbd>右クリック</kbd> し、<kbd>Add Shape</kbd> を選択すると、プリミティブ形状を追加できます。
+2D と 3D では使用できるコリジョンシェイプが異なります。`game.project` の `Physics` セクションにある `Type`（`2D`/`3D`）で物理タイプを設定できます。
 
-![プリミティブ形状の追加](/manuals/images/physics/add_shape.png)
+![物理設定](/manuals/images/physics/physics_settings.png)
 
-## ボックス形状 {#box-shape}
-ボックスには位置、回転、寸法（幅、高さ、奥行き）があります。
+### コリジョンシェイプ {#collision-shapes-list}
+
+コリジョンオブジェクトを <kbd>右クリック</kbd> し、<kbd>Add Shape</kbd> を選択して形状を追加します。
+
+![2D 物理でプリミティブ形状を追加する](/manuals/images/physics/collision_shapes_2d.png)
+
+2D 物理で使用できる形状は次のとおりです。
+
+- **Circle** (位置, 回転, 直径)
+
+![円形のコリジョン形状](/manuals/images/physics/circle.png)
+
+- **Rectangle** (位置, 回転, 2 寸法, 奥行きは無視されます)
+
+![長方形のコリジョン形状](/manuals/images/physics/rectangle.png)
+
+3D 物理でも、同様の手順で形状を追加します。
+
+![3D 物理でプリミティブ形状を追加する](/manuals/images/physics/collision_shapes_3d.png)
+
+3D 物理で使用できる形状は次のとおりです。
+
+- **Box** (位置, 回転, 3 寸法)
 
 ![ボックス形状](/manuals/images/physics/box.png)
 
-## 球形状 {#sphere-shape}
-球には位置、回転、直径があります。
+- **Capsule** (位置, 回転, 直径, 高さ)
 
-![球形状](/manuals/images/physics/sphere.png)
+![カプセル形状](/manuals/images/physics/capsule.png)
 
-## カプセル形状 {#capsule-shape}
-カプセルには位置、回転、直径、高さがあります。
+- **Hull** (位置, 回転, シーン, メッシュ)
 
-![球形状](/manuals/images/physics/capsule.png)
+![凸包形状](/manuals/images/physics/hull.png)
 
-<div class='important' markdown='1'>
-カプセル形状は、3D 物理を使用する場合にのみサポートされます（*game.project* ファイルの Physics セクションで設定します）。
-</div>
+- **Mesh** (位置, 回転, シーン, メッシュ)
+
+![メッシュ形状](/manuals/images/physics/mesh.png)
+
+- **Sphere** (位置, 回転, 直径)
+
+![球形のコリジョン形状](/manuals/images/physics/sphere.png)
 
 ### 複雑な形状 {#complex-shapes}
 複雑な形状には、タイルマップ（tilemap）のジオメトリや凸包（convex hull）のデータを使えます。Defold 1.13.2 以降では、3D コリジョンオブジェクトで、glTF または GLB シーンのメッシュから凸包や三角形メッシュの形状を作成することもできます。

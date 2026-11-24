@@ -6,7 +6,8 @@ locale: pt
 title: Trabalhando com projetos de biblioteca no Defold
 toc:
 - Bibliotecas
-- Configurando o compartilhamento de bibliotecas
+- anchor: setting-up-library-sharing
+  title: Configurando o compartilhamento de bibliotecas
 - URL da biblioteca
 - Autenticação de acesso básico
 - Autenticação de acesso avançada
@@ -27,9 +28,7 @@ Bibliotecas são úteis para os seguintes fins:
 * Criar uma biblioteca de modelos que você pode copiar para seus projetos e depois personalizar ou especializar.
 * Criar uma ou mais bibliotecas de objetos prontos ou scripts que você pode referenciar diretamente. Isso é muito prático para armazenar módulos de script comuns ou criar uma biblioteca compartilhada de gráficos, sons e assets de animação.
 
-<a id="setting-up-library-sharing"></a>
-
-## Configurando o compartilhamento de bibliotecas
+## Configurando o compartilhamento de bibliotecas {#setting-up-library-sharing}
 
 Suponha que você queira criar uma biblioteca contendo sprites e tile sources compartilhados. Comece [configurando um novo projeto](/pt/manuals/project-setup/). Decida quais pastas do projeto você quer compartilhar e adicione os nomes dessas pastas à propriedade *`include_dirs`* nas configurações do projeto. Se quiser listar mais de uma pasta, separe os nomes com espaços:
 

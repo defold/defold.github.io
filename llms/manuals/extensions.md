@@ -40,7 +40,7 @@ To create a new extension, create a folder in the project root. This folder will
 : The extension folder _must_ contain an *ext.manifest* file. This file is a configuration file with flags and defines used when building a single extension. File format definition can be found in the [Extension Manifest manual](https://defold.com/llms/manuals/extensions-ext-manifests.md).
 
 *src*
-: This folder should contain all source code files.
+: This folder should contain all source code files. Swift files (`.swift`) for iOS and macOS also go here, see [Swift in native extensions](https://defold.com/llms/manuals/extensions-swift.md).
 
 *include*
 : This optional folder contains any include files.
@@ -67,7 +67,10 @@ The optional *manifests* folder of an extension contains additional files used i
   * Extensions with Java code should include an [R8 keep-rule file](#r8-keep-rules-for-android) (`.keep`) for the classes they need at runtime.
 * `ios` - This folder accepts a manifest stub file to be merged into the main application ([as described here](https://defold.com/llms/manuals/extensions-manifest-merge-tool.md)).
   * The folder can also contain a `Podfile` file with dependencies to be [resolved by Cocoapods](https://defold.com/llms/manuals/extensions-cocoapods.md).
+  * The folder can also contain a `SwiftPackages.json` file with dependencies to be [resolved by Swift Package Manager](https://defold.com/llms/manuals/extensions-spm.md).
 * `osx` - This folder accepts a manifest stub file to be merged into the main application ([as described here](https://defold.com/llms/manuals/extensions-manifest-merge-tool.md)).
+  * The folder can also contain a `Podfile` file with dependencies to be [resolved by Cocoapods](https://defold.com/llms/manuals/extensions-cocoapods.md).
+  * The folder can also contain a `SwiftPackages.json` file with dependencies to be [resolved by Swift Package Manager](https://defold.com/llms/manuals/extensions-spm.md).
 * `web` - This folder accepts a manifest stub file to be merged into the main application ([as described here](https://defold.com/llms/manuals/extensions-manifest-merge-tool.md)).
 
 ### R8 keep rules for Android
@@ -86,7 +89,7 @@ If the extension relies on annotations at runtime, also include:
 
 These rules are combined with the project's selected keep file when [R8 is enabled](https://defold.com/llms/manuals/android.md).
 
-With Defold 1.14.0 or later and a compatible Extender server, R8 also shrinks Android resources. If the extension looks up resources dynamically by name, add [XML resource keep rules](https://defold.com/llms/manuals/android.md) under `res/android/res/raw` in the extension folder.
+With a compatible Extender server, R8 also shrinks Android resources. If the extension looks up resources dynamically by name, add [XML resource keep rules](https://defold.com/llms/manuals/android.md) under `res/android/res/raw` in the extension folder.
 
 ## Custom resources
 

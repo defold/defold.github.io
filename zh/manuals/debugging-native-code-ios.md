@@ -115,7 +115,7 @@ $ mv <AppName>.dSYM/Contents/Resources/DWARF/dmengine <AppName>.dSYM/Contents/Re
 (lldb) add-dsym <PathTo.dSYM>
 ```
 
-	![add_dsym](/manuals/images/extensions/debugging/ios/add_dsym.png)
+![add_dsym](/manuals/images/extensions/debugging/ios/add_dsym.png)
 
 * 验证 `lldb` 是否成功读取了符号
 
@@ -136,6 +136,7 @@ $ mv <AppName>.dSYM/Contents/Resources/DWARF/dmengine <AppName>.dSYM/Contents/Re
 
 ```sh
 $ dsymutil -dump-debug-map <executable> 2>&1 >/dev/null | grep /job
+
 ```
 
 * 验证源代码映射

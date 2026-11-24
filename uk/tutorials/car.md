@@ -30,7 +30,7 @@ title: Створення простого автомобіля в Defold.
 
 Почніть зі створення [нового проєкту](/uk/manuals/project-setup/) і відкрийте його в редакторі. Двічі клацніть файл *main/main.collection*, щоб відкрити його:
 
-![Огляд редактора](../manuals/images/editor/editor2_overview.png)
+![Огляд редактора](../manuals/images/editor/editor_overview.png)
 
 Редактор складається з таких основних областей:
 

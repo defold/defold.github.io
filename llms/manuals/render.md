@@ -152,7 +152,7 @@ Frustum culling is implemented in the engine per component type. Current status:
 
 1 = Mesh bounding box needs to be set by the developer. [Learn more](https://defold.com/llms/manuals/mesh.md).
 
-Starting with Defold 1.13.0, component primitives use counter-clockwise vertex winding, with the primitive normal pointing towards the camera. Sprites, GUI nodes, tilemaps (tilegrids), and Particle FX use the same winding as other component types, so the same face-culling settings can be used for all components.
+Component primitives use counter-clockwise vertex winding, with the primitive normal pointing towards the camera. Sprites, GUI nodes, tilemaps (tilegrids), and Particle FX use the same winding as other component types, so the same face-culling settings can be used for all components.
 
 This may affect projects that set face culling for components other than models. If a component is unexpectedly culled, make sure back faces are selected with `render.set_cull_face(graphics.FACE_TYPE_BACK)`, or remove the `render.set_cull_face()` call to use the default `graphics.FACE_TYPE_BACK` mode.
 
@@ -392,14 +392,16 @@ The Defold render script API translates render operations into the following gra
 
 | System   | Graphics API               | Note                     |
 |----------|----------------------------|--------------------------|
-| macOS    | Metal, OpenGL 3.3 or Vulkan | Metal is the default since Defold 1.14.0; Vulkan via MoltenVK |
-| Windows  | OpenGL 3.3 or Vulkan 1.1   |                          |
+| macOS    | Metal, OpenGL 3.3 or Vulkan | Metal is the default; Vulkan via MoltenVK |
+| Windows  | OpenGL 3.3, Vulkan 1.1 or DirectX 12 | OpenGL is the default; select backends in the [app manifest](https://defold.com/llms/manuals/app-manifest.md) |
 | Linux x86-64 | OpenGL 3.3 or Vulkan 1.1 |                        |
 | Linux ARM64  | OpenGL ES or Vulkan 1.1   | EGL/GLES is the default |
-| Android  | OpenGLES 3.0 or Vulkan 1.1 | Fallback to OpenGLES 2.0 |
+| Android  | OpenGLES 3.0 or Vulkan 1.1 | Optional fallback to OpenGLES 2.0 (see below) |
 | iOS devices | OpenGLES 3.0, Metal or Vulkan | OpenGLES is the default; Vulkan via MoltenVK |
-| iOS simulator | Metal                | Always Metal since Defold 1.14.0 |
-| HTML5    | WebGL 2.0 or WebGPU        | Fallback to WebGL 1.0    |
+| iOS simulator | Metal                | Always Metal |
+| HTML5    | WebGL 2.0 or WebGPU        | Optional fallback to WebGL 1.0 (see below) |
+
+Since Defold 1.14.1, OpenGLES 2.0 and WebGL 1.0 shaders are excluded by default. To support these graphics APIs, disable [Exclude GLES 2.0](https://defold.com/llms/manuals/project-settings.md) in *game.project* (`shader.exclude_gles_sm100 = 0`).
 
 ## System messages
 

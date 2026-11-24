@@ -38,6 +38,12 @@ toc:
   title: Speicher und automatische Speicherbereinigung
 - anchor: best-practices
   title: Bewährte Verfahren
+- anchor: behaviors-in-a-module
+  title: Verhaltensweisen in einem Modul
+- anchor: a-helper-game-object-with-encapsulated-behavior
+  title: Ein Hilfsspielobjekt mit gekapseltem Verhalten
+- anchor: grouping-game-object-with-helper-behavior-object-inside-a-collection
+  title: Spielobjekt und Hilfsobjekt für das Verhalten in einer Sammlung gruppieren
 ---
 
 # Lua in Defold
@@ -582,6 +588,10 @@ end
 
 Variablen sind global, sofern sie nicht mit `local` deklariert werden. Alle Spielobjektskripte, GUI-Skripte und Render-Skripte teilen sich einen Lua-Kontext. Daher werden globale Variablen und der Cache der mit `require()` geladenen Module von allen gemeinsam genutzt. Speichere den Zustand, der zu einer einzelnen Skriptinstanz gehört, in `self` oder erstelle explizit separate Zustandstabellen, statt ihn in gemeinsam genutzten globalen Variablen oder Modultabellen zu speichern.
 
+![Unterschied zwischen Instanzdaten und lokalen Daten in Defold](/manuals/images/lua/self_local.png)
+
+Wenn du im Beispiel `self.has_shield` einer einzelnen Instanz auf `true` setzt, bleiben die anderen Instanzen unverändert. Nur ein Gegner könnte also einen Schild tragen. Die lokale Variable `color` wird dagegen von allen Instanzen gemeinsam genutzt. Eine Änderung ihrer Farbe kann sich daher auf alle Instanzen auswirken.
+
 In Defold kannst du dieselbe Skriptdatei in mehreren separaten Komponenten (components) von Spielobjekten verwenden. Variablen, die mit `local` auf der obersten Ebene der Skriptdatei deklariert werden, werden von den Komponenten gemeinsam genutzt, die diese Datei ausführen. Variablen, die mit `local` innerhalb einer Funktion deklariert werden, sind lokal für diesen Funktionsaufruf.
 ```lua
 -- 'my_global_value' will be available from all scripts, gui_scripts, render script and modules (Lua files)
@@ -682,20 +692,23 @@ print(collectgarbage("count") * 1024)
 
 Eine häufige Überlegung beim Entwurf einer Implementierung ist, wie Code für gemeinsam genutzte Verhaltensweisen strukturiert werden sollte. Dafür gibt es mehrere Ansätze.
 
-Verhaltensweisen in einem Modul
-: Wenn du eine Verhaltensweise in einem Modul kapselst, kannst du Code leicht zwischen den Skriptkomponenten verschiedener Spielobjekte (und GUI-Skripten) gemeinsam nutzen. Beim Schreiben von Modulfunktionen ist es in der Regel am besten, streng funktionalen Code zu schreiben. Es gibt Fälle, in denen ein gespeicherter Zustand oder Seiteneffekte erforderlich sind oder zu einem übersichtlicheren Entwurf führen. Wenn du den internen Zustand im Modul speichern musst, beachte, dass Komponenten Lua-Kontexte gemeinsam nutzen. Einzelheiten findest du in der [Dokumentation zu Modulen](/de/manuals/modules).
+### Verhaltensweisen in einem Modul {#behaviors-in-a-module}
+
+Wenn du eine Verhaltensweise in einem Modul kapselst, kannst du Code leicht zwischen den Skriptkomponenten verschiedener Spielobjekte (und GUI-Skripten) gemeinsam nutzen. Beim Schreiben von Modulfunktionen ist es in der Regel am besten, streng funktionalen Code zu schreiben. Es gibt Fälle, in denen ein gespeicherter Zustand oder Seiteneffekte erforderlich sind oder zu einem übersichtlicheren Entwurf führen. Wenn du den internen Zustand im Modul speichern musst, beachte, dass Komponenten Lua-Kontexte gemeinsam nutzen. Einzelheiten findest du in der [Dokumentation zu Modulen](/de/manuals/modules).
 
   ![Modul](/manuals/images/lua/lua_module.png)
 
   Auch wenn Modulcode das Innere eines Spielobjekts direkt ändern kann, indem du `self` an eine Modulfunktion übergibst, raten wir dringend davon ab, da dadurch eine sehr enge Kopplung entsteht.
 
-Ein Hilfsspielobjekt mit gekapseltem Verhalten
-: So wie du Skriptcode in einem Lua-Modul kapseln kannst, kannst du ihn auch in einem Spielobjekt mit einer Skriptkomponente kapseln. Der Unterschied besteht darin, dass du bei der Kapselung in einem Spielobjekt ausschließlich über Nachrichten mit ihm kommunizieren kannst.
+### Ein Hilfsspielobjekt mit gekapseltem Verhalten {#a-helper-game-object-with-encapsulated-behavior}
+
+So wie du Skriptcode in einem Lua-Modul kapseln kannst, kannst du ihn auch in einem Spielobjekt mit einer Skriptkomponente kapseln. Der Unterschied besteht darin, dass du bei der Kapselung in einem Spielobjekt ausschließlich über Nachrichten mit ihm kommunizieren kannst.
 
   ![Hilfsspielobjekt](/manuals/images/lua/lua_helper.png)
 
-Spielobjekt und Hilfsobjekt für das Verhalten in einer Sammlung gruppieren
-: Bei diesem Entwurf kannst du ein Spielobjekt für eine Verhaltensweise erstellen, das automatisch auf ein anderes Zielspielobjekt einwirkt. Dies geschieht entweder über einen vordefinierten Namen, an den der Name des Zielspielobjekts angepasst werden muss, oder über eine URL in `go.property()`, die auf das Zielspielobjekt verweist.
+### Spielobjekt und Hilfsobjekt für das Verhalten in einer Sammlung gruppieren {#grouping-game-object-with-helper-behavior-object-inside-a-collection}
+
+Bei diesem Entwurf kannst du ein Spielobjekt für eine Verhaltensweise erstellen, das automatisch auf ein anderes Zielspielobjekt einwirkt. Dies geschieht entweder über einen vordefinierten Namen, an den der Name des Zielspielobjekts angepasst werden muss, oder über eine URL in `go.property()`, die auf das Zielspielobjekt verweist.
 
   ![Sammlung](/manuals/images/lua/lua_collection.png)
 

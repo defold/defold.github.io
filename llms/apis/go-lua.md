@@ -1130,7 +1130,7 @@ information.
 **Parameters**
 
 - `self` (script_instance) - script instance used for storing state
-- `action_id` (hash | nil) - id of the received input action, as mapped in the input_binding-file, or <code>nil</code> for mouse movement
+- `action_id` (hash | nil) - id of the received input action, as mapped in the input_binding-file, or <code>nil</code> for pointer movement and accelerometer samples; check <code>action.source</code> to distinguish them
 - `action` (on_input.action) - input data for the action
 
 **Returns**
@@ -1171,21 +1171,40 @@ end
 ### on_input.action
 *Type:* STRUCT
 Data supplied to the global on_input lifecycle function.
+The source identifies the input device category independently of the action
+name. Clicks and pointer movement simulated from touch report hash("touch"),
+as do separate touch actions. Text and marked-text input report
+hash("text"), including input entered with a physical keyboard.
+If a named action merges contributions from several devices, the last
+contributing device processed wins, in keyboard, text, mouse, then touch
+order. Keyboard keys and mouse buttons contribute to source selection only
+while pressed or held. Their releases keep the previously reported source
+unless another input contributes in the same frame. Idle device polling
+does not change the source. Gamepad actions remain separate per controller.
+Pointer movement and accelerometer samples are delivered in separate callbacks,
+both with action_id == nil. Pointer movement reports hash("mouse") or
+hash("touch") and has pointer coordinates but no accelerometer fields.
+Accelerometer samples report hash("accelerometer") and have acc_x, acc_y,
+and acc_z but no pointer coordinates. If both occur in a frame, two callbacks
+are delivered and each can be consumed independently. Check source to
+distinguish these callbacks. Accelerometer samples are delivered even when
+their values have not changed.
 
 **Members**
 
-- `value?` (number) - Amount of input, usually 1 for buttons or between 0 and 1 for analogue input; absent for pointer movement and text input.
-- `pressed?` (boolean) - Whether the input was pressed this frame; absent for pointer movement and text input.
-- `released?` (boolean) - Whether the input was released this frame; absent for pointer movement and text input.
-- `repeated?` (boolean) - Whether the input was repeated this frame; absent for pointer movement and text input.
-- `x?` (number) - Pointer x-coordinate; absent for gamepad, key, and text input.
-- `y?` (number) - Pointer y-coordinate; absent for gamepad, key, and text input.
-- `screen_x?` (number) - Pointer x-coordinate in screen space; absent for gamepad, key, and text input.
-- `screen_y?` (number) - Pointer y-coordinate in screen space; absent for gamepad, key, and text input.
-- `dx?` (number) - Change in the pointer x-coordinate; absent for gamepad, key, and text input.
-- `dy?` (number) - Change in the pointer y-coordinate; absent for gamepad, key, and text input.
-- `screen_dx?` (number) - Change in the pointer x-coordinate in screen space; absent for gamepad, key, and text input.
-- `screen_dy?` (number) - Change in the pointer y-coordinate in screen space; absent for gamepad, key, and text input.
+- `source` (hash) - Input device category: <code>hash("keyboard")</code>, <code>hash("text")</code>, <code>hash("mouse")</code>, <code>hash("touch")</code>, <code>hash("gamepad")</code>, or <code>hash("accelerometer")</code>.
+- `value?` (number) - Amount of input, usually 1 for buttons or between 0 and 1 for analogue input; absent for pointer movement, accelerometer samples, and text input.
+- `pressed?` (boolean) - Whether the input was pressed this frame; absent for pointer movement, accelerometer samples, and text input.
+- `released?` (boolean) - Whether the input was released this frame; absent for pointer movement, accelerometer samples, and text input.
+- `repeated?` (boolean) - Whether the input was repeated this frame; absent for pointer movement, accelerometer samples, and text input.
+- `x?` (number) - Pointer x-coordinate; absent for gamepad, key, text, and accelerometer input.
+- `y?` (number) - Pointer y-coordinate; absent for gamepad, key, text, and accelerometer input.
+- `screen_x?` (number) - Pointer x-coordinate in screen space; absent for gamepad, key, text, and accelerometer input.
+- `screen_y?` (number) - Pointer y-coordinate in screen space; absent for gamepad, key, text, and accelerometer input.
+- `dx?` (number) - Change in the pointer x-coordinate; absent for gamepad, key, text, and accelerometer input.
+- `dy?` (number) - Change in the pointer y-coordinate; absent for gamepad, key, text, and accelerometer input.
+- `screen_dx?` (number) - Change in the pointer x-coordinate in screen space; absent for gamepad, key, text, and accelerometer input.
+- `screen_dy?` (number) - Change in the pointer y-coordinate in screen space; absent for gamepad, key, text, and accelerometer input.
 - `acc_x?` (number) - Accelerometer x value, when present.
 - `acc_y?` (number) - Accelerometer y value, when present.
 - `acc_z?` (number) - Accelerometer z value, when present.

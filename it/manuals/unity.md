@@ -15,12 +15,12 @@ toc:
   title: Versioni
 - anchor: welcome-screen
   title: Schermata iniziale
-- anchor: hello-world
-  title: Ciao mondo
 - anchor: defold-editor-overview
   title: Panoramica delleditor Defold
 - anchor: editors-comparison
   title: Confronto degli editor
+- anchor: 2d-and-3d-scene-orientation
+  title: Orientamento della scena in 2D e 3D
 - anchor: defold-panes-overview
   title: Panoramica dei pannelli di Defold
 - anchor: key-concepts
@@ -150,25 +150,7 @@ Oppure crearne uno nuovo a partire da:
 
 Quando crei il tuo primo progetto e/o lo apri, viene visualizzato nell'editor Defold.
 
-## Ciao mondo {#hello-world}
-
-Ecco un modo per ottenere rapidamente un primo risultato in Defold: segui questi passaggi, poi torna a leggere il resto del manuale.
-
-1. Seleziona un progetto vuoto da `Templates`, assegnagli un nome in `Title`, scegli la posizione e crealo facendo clic su `Create New Project`. Si aprirà nell'editor Defold.
-![Ciao mondo, passaggio 1](/manuals/images/unity/helloworld_1.png)
-2. A sinistra, nel pannello `Assets`, apri la cartella `main` e fai doppio clic su `main.collection` per aprirla.
-3. A destra, nel pannello `Outline`, fai clic con il pulsante destro su `Collection` e seleziona `Add Game Object`.
-![Ciao mondo, passaggio 2](/manuals/images/unity/helloworld_2.png)
-4. Fai clic con il pulsante destro sull'oggetto di gioco `go` appena creato e seleziona `Add Component`, poi `Label`.
-![Ciao mondo, passaggio 3](/manuals/images/unity/helloworld_3.png)
-5. Più in basso, a sinistra, nel pannello `Properties`, scrivi qualcosa nella proprietà `Text`.
-6. Nella vista centrale principale della scena, trascina l'etichetta e rilasciala in una posizione vicina a `(480,320,0)`, oppure modifica la posizione in `Properties`: `Position`.
-![Ciao mondo, passaggio 4](/manuals/images/unity/helloworld_4.png)
-7. Dopo aver cambiato la posizione dell'etichetta, salva il progetto facendo clic su `File` -> `Save All` o usando la scorciatoia <kbd>Ctrl</kbd>+<kbd>S</kbd> (<kbd>Cmd</kbd>+<kbd>S</kbd> su Mac).
-8. Crea una build del progetto facendo clic su `Project` -> `Build` o usando la scorciatoia <kbd>Ctrl</kbd>+<kbd>B</kbd> (<kbd>Cmd</kbd>+<kbd>B</kbd> su Mac).
-![Ciao mondo, passaggio 5](/manuals/images/unity/helloworld_5.png)
-
-Hai appena creato la build del tuo primo progetto in Defold e dovresti vedere il testo nella finestra. I concetti di oggetto di gioco e componente dovrebbero esserti già noti. Qui sotto trovi una spiegazione delle collezioni, della vista Outline, delle proprietà e del motivo per cui abbiamo dovuto spostare leggermente l'etichetta in alto a destra.
+{% include shared/it/hello-world.md %}
 
 ---
 
@@ -182,13 +164,9 @@ La prima differenza che noterai tra Unity e Defold è il layout predefinito dell
 
 ![Confronto degli editor](/manuals/images/unity/defold_unity_editor.png)
 
-Per impostazione predefinita, l'editor Defold si apre con un'anteprima ortografica 2D. Se lavorerai a un progetto 3D o desideri semplicemente un'esperienza più simile a Unity, ti consigliamo di passare dal 2D al 3D disattivando l'opzione `2D` nella barra degli strumenti e di impostare la proiezione prospettica della camera attivando l'opzione `Perspective`:
+### Orientamento della scena in 2D e 3D {#2d-and-3d-scene-orientation}
 
-![Barra degli strumenti di Defold](/manuals/images/unity/defold_2d.png)
-
-Puoi anche regolare le `Grid Settings` nella barra degli strumenti per usare il piano `Y`, come in Unity:
-
-![Impostazioni 3D di Defold](/manuals/images/unity/defold_3d.png)
+{% include shared/it/2d-and-3d-scene-orientation.md %}
 
 ### Panoramica dei pannelli di Defold {#defold-panes-overview}
 
@@ -258,7 +236,7 @@ La tabella seguente presenta i componenti Unity simili per un rapido confronto, 
 |---|---|---|
 | [Sprite](/it/manuals/sprite/) | Sprite Renderer | In Defold puoi cambiare la tinta (proprietà del colore) soltanto tramite codice. |
 | [Tilemap](/it/manuals/tilemap/) | Tilemap / Grid | Defold dispone di un editor di tilemap integrato che supporta griglie quadrate (ma esistono estensioni, per esempio per [Hexagon](https://github.com/selimanac/defold-hexagon/)) e non ha regole integrate per il posizionamento automatico dei tile. Strumenti come [Tiled](https://defold.com/assets/tiled/), [TileSetter](https://defold.com/assets/tilesetter/) o [Sprite Fusion](https://defold.com/assets/spritefusion/) offrono opzioni di esportazione per Defold. |
-| [Label](/it/manuals/label/) | Text / TextMeshPro | Da Defold 1.13.2, i componenti Label e i nodi di testo GUI supportano il [markup del testo formattato](/it/manuals/font-richtext/) integrato per colori, gradienti, contorni ed effetti animati. È disponibile anche un'[estensione RichText](https://defold.com/assets/richtext/) separata. |
+| [Label](/it/manuals/label/) | Text / TextMeshPro | I componenti Label e i nodi di testo GUI supportano la [sintassi rich text integrata](/it/manuals/font-richtext/) per colori, gradienti, contorni ed effetti animati. È disponibile anche un'[estensione RichText](https://defold.com/assets/richtext/) separata. |
 | [Sound](/it/manuals/sound/) | AudioSource | Defold dispone soltanto di una sorgente sonora globale (non spaziale). È disponibile un'[estensione FMOD](https://github.com/defold/extension-fmod) ufficiale per Defold. |
 | [Fabbrica](/it/manuals/factory/) | Prefab Instantiate() | In Defold una fabbrica (factory) è un componente con un prototipo specifico (prefab). |
 | [Fabbrica di collezioni](/it/manuals/collection-factory/) | - (Nessun componente direttamente equivalente) | Un componente fabbrica di collezioni (collection factory) in Defold può generare contemporaneamente più oggetti di gioco con relazioni genitore-figlio. |
@@ -438,7 +416,7 @@ Manuali utili sulla scrittura del codice:
 
 L'editor Defold include un editor di codice integrato con completamento del codice, evidenziazione della sintassi, consultazione rapida della documentazione, analisi del codice e un debugger integrato.
 
-![Editor di codice di Defold](/images/editor/code-editor.png)
+![Editor di codice di Defold](/manuals/images/editor/code-editor.png)
 
 ### VS Code e altri editor {#vs-code-and-other-editors}
 
@@ -684,7 +662,7 @@ Ecco un confronto:
 |-|-|-|
 | `init()` | `Awake()` / `Start()` / `OnEnable()`| Defold ha un unico punto di ingresso e una sola callback di inizializzazione: init(). Viene chiamata su ogni componente alla sua creazione. |
 | `on_input` | Metodi di input | Defold riceve gli input quando [lo script ha acquisito il focus dell'input](/it/manuals/input/#input-focus). Vengono elaborati per primi nel ciclo di aggiornamento. |
-| `fixed_update()` | `FixedUpdate()` | Chiamata a intervalli di tempo fissi. Per abilitarla in Defold devi impostare `Use Fixed Timestep` - [dettagli](https://defold.com/it/manuals/project-settings/#use-fixed-timestep). Dalla versione 1.12.0 viene eseguita prima di `update()`. |
+| `fixed_update()` | `FixedUpdate()` | Chiamata a intervalli di tempo fissi. Per abilitarla in Defold, devi impostare `Use Fixed Timestep` - [dettagli](https://defold.com/it/manuals/project-settings/#use-fixed-timestep). Viene eseguita prima di `update()`. |
 | `update()` | `Update()` | Chiamata una volta per fotogramma, con il tempo trascorso dal fotogramma precedente. |
 | `late_update()` | `LateUpdate()` | Chiamata dopo `update()`, immediatamente prima del rendering del fotogramma. Disponibile dalla versione 1.12.0. |
 | `on_message` | Ricevitore di messaggi | La callback principale di Defold per ricevere messaggi. Viene elaborata quando c'è un messaggio in coda. |

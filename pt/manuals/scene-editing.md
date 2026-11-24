@@ -11,9 +11,12 @@ toc:
   title: Visualizações de cena salvas
 - Navegação na visualização de cena (controles de câmera)
 - Navegação padrão (todos os editores visuais)
+- anchor: axis-gizmo
+  title: Gizmo de eixos
 - anchor: 2d-and-3d-scene-orientation
   title: Orientação de cena 2D e 3D
-- Visão geral da barra de ferramentas
+- anchor: toolbar-overview
+  title: Visão geral da barra de ferramentas
 - anchor: manipulating-objects
   title: Selecionando e manipulando objetos
 - Selecionando objetos
@@ -21,7 +24,8 @@ toc:
   title: Filtros de visibilidade
 - anchor: grid-settings
   title: Configurações da grade
-- 'Tipo de câmera: Perspective vs Orthographic'
+- anchor: camera-type-perspective-vs-orthographic
+  title: 'Tipo de câmera: Perspective vs Orthographic'
 - Free Camera Mode
 - Ativando o Free Camera Mode
 - Saindo do Free Camera Mode
@@ -74,33 +78,43 @@ Estes controles estão disponíveis em editores visuais:
 
 Você também pode usar **Frame Selection** (<kbd>F</kbd>) para focar a câmera na seleção atual.
 
+### Gizmo de eixos {#axis-gizmo}
+
+O **Scene View Axis Gizmo** aparece no canto inferior direito da visualização da cena no modo 3D. Ele mostra a orientação da câmera em relação aos eixos globais: **X** em vermelho, **Y** em verde e **Z** em azul.
+
+![Visualização da cena com o gizmo de eixos no canto inferior direito](/manuals/images/editor/axis_gizmo.gif)
+
+| Controle | Ação |
+| --- | --- |
+| <kbd>Clique com o botão esquerdo do mouse</kbd> em uma alça de eixo | Alinha a câmera para visualizar ao longo daquele eixo. As alças opostas fornecem vistas do outro lado. |
+| Clique em uma alça de eixo já alinhada | Alterna para a vista oposta ao longo do mesmo eixo. |
+| Segure o <kbd>botão esquerdo do mouse</kbd> e arraste o gizmo | Orbita ao redor do ponto de foco atual da câmera. Você pode arrastar a partir de uma alça de eixo ou da área circular ao redor das alças, sem segurar uma tecla modificadora. |
+
+O alinhamento de eixos preserva o ponto de foco, a distância e a projeção da câmera. Use primeiro **Frame Selection** (<kbd>F</kbd>) para focar em um objeto e depois use o gizmo para inspecioná-lo de diferentes direções. Os controles normais de deslocamento, zoom e órbita com <kbd>Ctrl</kbd>/<kbd>^ Control</kbd> + <kbd>Left Mouse Button</kbd> continuam disponíveis.
+
+O gizmo está disponível com projeção em perspectiva e ortográfica no modo 3D. No modo 2D, ele fica oculto; use **Align/Realign Camera 2D/3D** na [barra de ferramentas](#toolbar-overview) ou pressione <kbd>.</kbd> para mudar para 3D. Use o [controle separado de projeção da câmera](#camera-type-perspective-vs-orthographic) para escolher projeção em perspectiva ou ortográfica. O gizmo controla a visualização da cena no editor de cenas.
+
 ## Orientação de cena 2D e 3D {#2d-and-3d-scene-orientation}
 
-A visualização de cena pode ser usada em fluxos de trabalho 2D e 3D:
+{% include shared/pt/2d-and-3d-scene-orientation.md %}
 
-- Em **2D**, você normalmente trabalha em uma visualização ortográfica com uma grade orientada a 2D.
-- Em **3D**, você normalmente:
-  - Realinha a visualização para uma orientação 3D,
-  - Usa uma câmera **perspectiva**,
-  - Escolhe um plano de grade apropriado (frequentemente **Y** para "chão").
+Use o [gizmo de eixos](#axis-gizmo) no modo 3D para alinhar a visualização a um eixo ou girar a vista em torno da cena com o mouse.
 
-Você pode acessar essas funções pela barra de ferramentas e pelo menu **View**.
+## Visão geral da barra de ferramentas {#toolbar-overview}
 
-![Scene Editor 3D](/manuals/images/editor/3d_scene.png)
+No canto superior direito da visualização de cena há uma barra com ferramentas e opções de visualização comuns.
 
-## Visão geral da barra de ferramentas
+![Barra de ferramentas do editor de cenas com controles numerados de 1 a 7](/manuals/images/editor/toolbar.png)
 
-No canto superior direito da visualização de cena há uma barra de ferramentas com ferramentas e opções de visualização usadas com frequência (da esquerda para a direita):
+Opções numeradas da barra da esquerda para a direita:
 
-- **Move tool** (<kbd>W</kbd>)
-- **Rotate tool** (<kbd>E</kbd>)
-- **Scale tool** (<kbd>R</kbd>)
-- **Grid Settings** (`▦`)
-- **Align/Realign Camera 2D/3D** (`2D`) - alterna entre orientação 2D e 3D (atalho <kbd>.</kbd>)
-- **Camera Perspective/Orthographic**
-- **Visibility Filters** (`👁`)
-
-![Toolbar](/manuals/images/editor/toolbar.png)
+1. **Move tool** (<kbd>W</kbd>) - Move os objetos selecionados.
+2. **Rotate tool** (<kbd>E</kbd>) - Gira os objetos selecionados.
+3. **Scale tool** (<kbd>R</kbd>) - Redimensiona os objetos selecionados.
+4. **Grid** - Mostra ou oculta a grade. O menu abre Grid Settings.
+5. **2D mode** (`2D`) - Alterna entre orientação 2D e 3D. Também é possível usar **Realign Camera** (<kbd>.</kbd>).
+6. **Perspective camera** - Alterna entre projeção em perspectiva e ortográfica em 3D. O menu abre as configurações da câmera.
+7. **Visibility filters** - Mostra ou oculta tipos de componentes e guias na visualização de cena.
 
 ## Selecionando e manipulando objetos {#manipulating-objects}
 
@@ -181,7 +195,7 @@ As configurações incluem:
 - Um botão **Reset to Defaults**
   Restaura todas as configurações da grade para seus valores originais.
 
-## Tipo de câmera: Perspective vs Orthographic
+## Tipo de câmera: Perspective vs Orthographic {#camera-type-perspective-vs-orthographic}
 
 O Scene Editor suporta ambos:
 
@@ -193,6 +207,8 @@ Use o alternador de câmera na barra de ferramentas para trocar. Em cenas 3D, a 
 ## Free Camera Mode
 
 Para navegação 3D rápida, o Scene Editor fornece o **Free Camera Mode**, uma câmera em primeira pessoa / estilo "FPS".
+
+![Modo de câmera livre](/manuals/images/editor/free_camera.png)
 
 ### Ativando o Free Camera Mode
 

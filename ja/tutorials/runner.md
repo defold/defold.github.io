@@ -51,7 +51,7 @@ Defold エディターをまだダウンロードしてインストールして�
 
 *Assets pane* には、プロジェクトに含まれるすべてのファイルが表示されます。「main/main.collection」ファイルをダブルクリックすると、中央のエディタービューにファイルが開きます。
 
-![エディターの概要](/tutorials/images/runner/1/editor2_overview.png)
+![エディターの概要](/tutorials/images/runner/1/editor_overview.png)
 
 エディターは、主に次の領域で構成されています。
 

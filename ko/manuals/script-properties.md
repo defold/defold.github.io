@@ -30,6 +30,8 @@ toc:
 
 스크립트 프로퍼티는 `go.property()` 특수 함수로 정의해 스크립트 컴포넌트에 추가합니다. 이 함수는 `init()`과 `update()` 같은 라이프사이클 함수 바깥의 최상위 레벨에서 사용해야 합니다. 프로퍼티에 제공한 기본값이 프로퍼티의 타입을 결정합니다: `number`, `boolean`, `string`, `hash`, `msg.url`, `vmath.vector3`, `vmath.vector4`, `vmath.quaternion`, `resource`(아래 참고).
 
+![Defold 에디터의 프로퍼티](/manuals/images/script-properties/properties.png)
+
 <div class='important' markdown='1'>
 해쉬값의 역변환은 디버깅을 돕기 위해 Debug 빌드에서만 동작합니다. Release 빌드에는 역변환된 문자열 값이 존재하지 않으므로, `hash` 값에서 문자열을 추출하려고 `tostring()`을 사용하는 것은 의미가 없습니다.
 </div>
@@ -65,7 +67,7 @@ end
 
 에디터의 *Outline* 뷰에서 스크립트 컴포넌트를 선택하면 *Properties* 뷰에 프로퍼티가 나타나고, 여기에서 값을 편집할 수 있습니다:
 
-![프로퍼티](/manuals/images/script-properties/properties.png)
+![프로퍼티](/manuals/images/script-properties/properties2.png)
 
 새 인스턴스별 값으로 오버라이드된 모든 프로퍼티는 파란색으로 표시됩니다. 프로퍼티 이름 옆의 재설정 버튼을 클릭하면 값을 기본값(스크립트에 설정된 값)으로 되돌릴 수 있습니다.
 
@@ -76,7 +78,7 @@ end
 
 ### 텍스트 프로퍼티 {#text-properties}
 
-Defold 1.13.2부터 문자열 기본값으로 텍스트 프로퍼티를 정의할 수 있습니다. 텍스트 프로퍼티는 UTF-8과 줄바꿈 문자를 지원하며 에디터의 여러 줄 입력 필드에서 편집합니다.
+문자열 기본값은 텍스트 프로퍼티를 정의합니다. 텍스트 프로퍼티는 UTF-8과 줄바꿈 문자를 지원하며 에디터의 여러 줄 필드에서 편집합니다:
 
 ```lua
 go.property("greeting", "Hello!\nWelcome, José!")

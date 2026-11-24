@@ -30,6 +30,8 @@ Typowe zastosowania to ustawianie zdrowia lub prędkości konkretnego przeciwnik
 
 Właściwości skryptu dodaje się do komponentu skryptu przez zdefiniowanie ich za pomocą specjalnej funkcji `go.property()`. Funkcję trzeba wywołać na najwyższym poziomie, poza funkcjami cyklu życia, takimi jak `init()` i `update()`. Domyślna wartość podana dla właściwości określa jej typ: `number`, `boolean`, `string`, `hash`, `msg.url`, `vmath.vector3`, `vmath.vector4`, `vmath.quaternion` oraz `resource` (patrz niżej).
 
+![Właściwości w edytorze Defold](/manuals/images/script-properties/properties.png)
+
 <div class='important' markdown='1'>
 Odwracanie wartości hash działa tylko w buildzie Debug, co ułatwia debugowanie. W buildzie Release odwrócony ciąg znaków nie istnieje, więc używanie `tostring()` na wartości `hash` w celu wyciągnięcia z niej tekstu nie ma sensu.
 </div>
@@ -65,7 +67,7 @@ Każda instancja komponentu skryptu utworzona z tego skryptu może następnie us
 
 Wybierz komponent skryptu w widoku *<kbd>Outline</kbd>* w edytorze, a właściwości pojawią się w widoku *<kbd>Properties</kbd>*, co pozwoli je edytować:
 
-![Properties](/manuals/images/script-properties/properties.png)
+![Properties](/manuals/images/script-properties/properties2.png)
 
 Każda właściwość, która zostanie nadpisana nową wartością właściwą dla danej instancji, jest oznaczona na niebiesko. Kliknij przycisk resetowania obok nazwy właściwości, aby przywrócić wartość domyślną ustawioną w skrypcie.
 
@@ -76,7 +78,7 @@ Właściwości skryptu są parsowane podczas budowania projektu. Wyrażenia wart
 
 ### Właściwości tekstowe {#text-properties}
 
-Od wersji Defold 1.13.2 domyślna wartość będąca ciągiem znaków definiuje właściwość tekstową. Właściwości tekstowe obsługują UTF-8 i znaki nowego wiersza, a w edytorze można je zmieniać w polu wielowierszowym:
+Domyślna wartość będąca ciągiem znaków definiuje właściwość tekstową. Właściwości tekstowe obsługują UTF-8 i znaki nowego wiersza, a w edytorze można je zmieniać w polu wielowierszowym:
 
 ```lua
 go.property("greeting", "Hello!\nWelcome, José!")

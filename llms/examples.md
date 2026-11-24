@@ -67,6 +67,7 @@ These are per-example files generated for LLM usage.
 - [Pointer over](https://defold.com/llms/examples/gui/pointer_over.md) - A GUI box node with an image texture and a script that react when pointer over this node
 - [Slice-9](https://defold.com/llms/examples/gui/slice9.md) - This example demonstrates slice-9 scaling gui box node
 - [Stencil](https://defold.com/llms/examples/gui/stencil.md) - A GUI box node with "Clipping mode" set to "STENCIL"
+- [Vector Fonts, Rich Text and Emoji](https://defold.com/llms/examples/gui/vector_emoji_rich_text.md) - This example shows how to use vector fonts, Rich Text effects and full-color emoji
 
 ## Input
 
@@ -91,6 +92,7 @@ These are per-example files generated for LLM usage.
 
 ## Mesh
 
+- [Animated Mesh - Flag](https://defold.com/llms/examples/mesh/animated.md) - This example shows how to create and animate a textured mesh component in the shape of a rectangle
 - [Mesh](https://defold.com/llms/examples/mesh/triangle.md) - This example shows how to create a basic mesh component in the shape of a triangle
 - [Textured Mesh](https://defold.com/llms/examples/mesh/textured.md) - This example shows how to create a textured mesh component in the shape of a rectangle
 
@@ -116,6 +118,7 @@ These are per-example files generated for LLM usage.
 - [Move to target](https://defold.com/llms/examples/movement/move_to.md) - This example shows how to make a game object move to the position the user clicks
 - [Movement speed](https://defold.com/llms/examples/movement/movement_speed.md) - This example shows how to move a game object with accelerating speed
 - [Moving game object](https://defold.com/llms/examples/movement/simple_move.md) - This example shows how to move a game object
+- [Rotate 3D object towards the mouse cursor](https://defold.com/llms/examples/movement/look_at_3d.md) - Learn how to rotate a 3D object towards the mouse cursor
 
 ## Particles
 
@@ -181,6 +184,7 @@ These are per-example files generated for LLM usage.
 - [Bunnymark](https://defold.com/llms/examples/sprite/bunnymark.md) - This is a performance test for sprites
 - [Change sprite image](https://defold.com/llms/examples/sprite/changeimage.md) - This example shows how to change the image of a sprite
 - [Flip](https://defold.com/llms/examples/sprite/flip.md) - This example demonstrates flipping a sprite animation vertically and horizontally
+- [Flipbook frame events - Footsteps](https://defold.com/llms/examples/sprite/events_on_frames.md) - Detect selected frames while a sprite flipbook animation plays and loops
 - [Multiple Sprite Samplers](https://defold.com/llms/examples/sprite/samplers.md) - This example shows how to sample from more than one image when drawing a sprite
 - [Sprite cursor](https://defold.com/llms/examples/sprite/cursor.md) - This example shows how to use the sprite animation cursor and frame count to manually select a specific frame
 - [Sprite size](https://defold.com/llms/examples/sprite/size.md) - This example shows how to get the size of a sprite at run-time

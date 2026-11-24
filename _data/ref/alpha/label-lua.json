@@ -1,6 +1,36 @@
 {
     "elements": [
         {
+            "brief": "<span class=\"type\">number</span> label arc angle",
+            "description": "Angular span available for text, between 0 and 360 degrees, inclusive.\n360 forms a full circle. Defaults to 0, which selects ordinary textbox layout. Arc layout ignores size. When\nline_break is enabled, text wraps at the arc length (absolute radius times the absolute\nangle in radians). Each line preserves its laid-out character spacing along\nits own radius. A zero-radius baseline follows a straight tangent through the origin.\nExplicit newlines and glyph-cluster size are preserved.",
+            "error": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"s2\">&quot;#label&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;arc_angle&quot;</span><span class=\"p\">,</span> <span class=\"mi\">360</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">angle</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">&quot;#label&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;arc_angle&quot;</span><span class=\"p\">)</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "arc_angle",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "PROPERTY"
+        },
+        {
+            "brief": "<span class=\"type\">number</span> label arc radius",
+            "description": "Signed radius of the first text baseline in local units, default 100.\nThe arc is centered on the component origin. Later lines retain their layout baseline spacing.",
+            "error": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"s2\">&quot;#label&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;arc_radius&quot;</span><span class=\"p\">,</span> <span class=\"mi\">200</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">radius</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">&quot;#label&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;arc_radius&quot;</span><span class=\"p\">)</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "arc_radius",
+            "notes": [],
+            "parameters": [],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "PROPERTY"
+        },
+        {
             "brief": "<span class=\"type\">vector4</span> label color",
             "description": "The color of the label. The type of the property is vector4.",
             "error": "",
@@ -32,7 +62,7 @@
         },
         {
             "brief": "gets the markup objects for a label",
-            "description": "Returns the sprites and links found in the label's current layout.\nEach entry contains <code>type</code>, <code>id</code>, the zero-based UTF-32 <code>text_offset</code>,\n<code>text_length</code>, resolved <code>x</code>, <code>y</code>, <code>width</code>\nand <code>height</code>, and an <code>attributes</code> table. The position is the lower-left\nobject corner relative to the label's pivot, before applying scale and rotation.\nInline resource rendering is not part of this MVP; sprites use their explicit\ndimensions or a one-em square fallback.",
+            "description": "Returns the sprites and links found in the label's current layout.\nEach entry contains <code>type</code>, <code>id</code>, the zero-based UTF-32 <code>text_offset</code>,\n<code>text_length</code>, resolved <code>x</code>, <code>y</code>, <code>z</code>, <code>width</code>\nand <code>height</code>, and an <code>attributes</code> table. The position is the lower-left\nobject corner after arc/curve mapping, before applying component scale and rotation.\nFlat text coordinates remain relative to the label's pivot. Width and height are layout dimensions.\nInline resource rendering is not part of this MVP; sprites use their explicit\ndimensions or a one-em square fallback.",
             "error": "",
             "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">objects</span> <span class=\"o\">=</span> <span class=\"n\">label</span><span class=\"p\">.</span><span class=\"n\">get_layout_objects</span><span class=\"p\">(</span><span class=\"s2\">&quot;#label&quot;</span><span class=\"p\">)</span>\n<span class=\"kr\">for</span> <span class=\"n\">_</span><span class=\"p\">,</span> <span class=\"n\">object</span> <span class=\"kr\">in</span> <span class=\"nb\">ipairs</span><span class=\"p\">(</span><span class=\"n\">objects</span><span class=\"p\">)</span> <span class=\"kr\">do</span>\n    <span class=\"kr\">if</span> <span class=\"n\">object</span><span class=\"p\">.</span><span class=\"n\">type</span> <span class=\"o\">==</span> <span class=\"s2\">&quot;link&quot;</span> <span class=\"kr\">then</span>\n        <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">object</span><span class=\"p\">.</span><span class=\"n\">attributes</span><span class=\"p\">.</span><span class=\"n\">src</span><span class=\"p\">,</span> <span class=\"n\">object</span><span class=\"p\">.</span><span class=\"n\">text_offset</span><span class=\"p\">,</span> <span class=\"n\">object</span><span class=\"p\">.</span><span class=\"n\">text_length</span><span class=\"p\">)</span>\n    <span class=\"kr\">elseif</span> <span class=\"n\">object</span><span class=\"p\">.</span><span class=\"n\">type</span> <span class=\"o\">==</span> <span class=\"s2\">&quot;sprite&quot;</span> <span class=\"kr\">then</span>\n        <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">object</span><span class=\"p\">.</span><span class=\"n\">attributes</span><span class=\"p\">.</span><span class=\"n\">src</span><span class=\"p\">,</span> <span class=\"n\">object</span><span class=\"p\">.</span><span class=\"n\">x</span><span class=\"p\">,</span> <span class=\"n\">object</span><span class=\"p\">.</span><span class=\"n\">y</span><span class=\"p\">,</span> <span class=\"n\">object</span><span class=\"p\">.</span><span class=\"n\">width</span><span class=\"p\">,</span> <span class=\"n\">object</span><span class=\"p\">.</span><span class=\"n\">height</span><span class=\"p\">)</span>\n    <span class=\"kr\">end</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
             "language": "",
@@ -171,7 +201,7 @@
                 },
                 {
                     "display_name": "x",
-                    "doc": "unscaled lower-left x-coordinate relative to the label's pivot",
+                    "doc": "local lower-left x-coordinate after arc/curve mapping",
                     "is_optional": false,
                     "name": "x",
                     "type": "number",
@@ -179,9 +209,17 @@
                 },
                 {
                     "display_name": "y",
-                    "doc": "unscaled lower-left y-coordinate relative to the label's pivot",
+                    "doc": "local lower-left y-coordinate after arc/curve mapping",
                     "is_optional": false,
                     "name": "y",
+                    "type": "number",
+                    "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
+                },
+                {
+                    "display_name": "z",
+                    "doc": "local lower-left z-coordinate after curve mapping; zero for flat text and arcs",
+                    "is_optional": false,
+                    "name": "z",
                     "type": "number",
                     "type_html": "<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>"
                 },
@@ -217,6 +255,73 @@
             "returnvalues": [],
             "tparams": [],
             "type": "STRUCT"
+        },
+        {
+            "brief": "sets a text curve",
+            "description": "Maps each glyph cluster onto an ordered cubic Bezier chain in local space.\nAll text lines use the same curve, offset by their baseline distance along up.\nEach knot has position, optional in_handle/out_handle offsets, roll_degrees\n(default zero), and positive uniform scale (default one).\nOnly the first knot accepts up, the initial direction to transport along the\ncurve. It defaults to {0, 1, 0}; its length does not affect scale. Vectors can\nbe vector3 values or {x, y, z} tables. Handles default to zero offsets.\nA curve overrides arc and size. Line Break wraps at the curve's length.\nOpen endpoints extrapolate their tangents. Passing nil restores arc/textbox mapping.\nEach call copies and bakes the knots; call again when the path changes.",
+            "error": "",
+            "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">label</span><span class=\"p\">.</span><span class=\"n\">set_curve</span><span class=\"p\">(</span><span class=\"s2\">&quot;#label&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span>\n    <span class=\"p\">{</span><span class=\"n\">position</span> <span class=\"o\">=</span> <span class=\"p\">{</span><span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">},</span> <span class=\"n\">out_handle</span> <span class=\"o\">=</span> <span class=\"p\">{</span><span class=\"mi\">80</span><span class=\"p\">,</span> <span class=\"mi\">80</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">},</span> <span class=\"n\">up</span> <span class=\"o\">=</span> <span class=\"p\">{</span><span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">}},</span>\n    <span class=\"p\">{</span><span class=\"n\">position</span> <span class=\"o\">=</span> <span class=\"p\">{</span><span class=\"mi\">240</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">},</span> <span class=\"n\">in_handle</span> <span class=\"o\">=</span> <span class=\"p\">{</span><span class=\"o\">-</span><span class=\"mi\">80</span><span class=\"p\">,</span> <span class=\"o\">-</span><span class=\"mi\">80</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">},</span> <span class=\"n\">roll_degrees</span> <span class=\"o\">=</span> <span class=\"mi\">30</span><span class=\"p\">,</span> <span class=\"n\">scale</span> <span class=\"o\">=</span> <span class=\"mf\">1.2</span><span class=\"p\">},</span>\n<span class=\"p\">})</span>\n</code></pre></div>",
+            "language": "",
+            "members": [],
+            "name": "label.set_curve",
+            "notes": [],
+            "parameters": [
+                {
+                    "doc": "label component",
+                    "is_optional": "False",
+                    "name": "url",
+                    "types": [
+                        "string",
+                        "hash",
+                        "url"
+                    ],
+                    "types_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
+                    ],
+                    "types_table_html": [
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">string</a>",
+                        "<a href=\"../builtins-lua/#hash\">hash</a>",
+                        "<a href=\"../msg-lua/#url\">url</a>"
+                    ]
+                },
+                {
+                    "doc": "ordered array of at least two knots, or nil to clear",
+                    "is_optional": "False",
+                    "name": "knots",
+                    "types": [
+                        "{ position:vector3|number[], in_handle?:vector3|number[], out_handle?:vector3|number[], up?:vector3|number[], roll_degrees?:number, scale?:number }[]",
+                        "nil"
+                    ],
+                    "types_html": [
+                        "{ position:<a href=\"../vmath-lua/#vector3\">vector3</a>|<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>[], in_handle?:<a href=\"../vmath-lua/#vector3\">vector3</a>|<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>[], out_handle?:<a href=\"../vmath-lua/#vector3\">vector3</a>|<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>[], up?:<a href=\"../vmath-lua/#vector3\">vector3</a>|<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>[], roll_degrees?:<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>, scale?:<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a> }[]",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ],
+                    "types_table_html": [
+                        "{position:<a href=\"../vmath-lua/#vector3\">vector3</a>|<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>[],\nin_handle?:<a href=\"../vmath-lua/#vector3\">vector3</a>|<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>[],\nout_handle?:<a href=\"../vmath-lua/#vector3\">vector3</a>|<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>[],\nup?:<a href=\"../vmath-lua/#vector3\">vector3</a>|<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>[],\nroll_degrees?:<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>,\nscale?:<a href=\"../../../manuals/lua/#variables-and-data-types\">number</a>}[]",
+                        "<a href=\"../../../manuals/lua/#variables-and-data-types\">nil</a>"
+                    ]
+                },
+                {
+                    "doc": "optional table with closed (boolean, default false)",
+                    "is_optional": "True",
+                    "name": "options",
+                    "types": [
+                        "{ closed?:boolean }"
+                    ],
+                    "types_html": [
+                        "{ closed?:<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a> }"
+                    ],
+                    "types_table_html": [
+                        "{closed?:<a href=\"../../../manuals/lua/#variables-and-data-types\">boolean</a>}"
+                    ]
+                }
+            ],
+            "replaces": "",
+            "returnvalues": [],
+            "tparams": [],
+            "type": "FUNCTION"
         },
         {
             "brief": "set the text for a label",
@@ -288,7 +393,7 @@
         },
         {
             "brief": "<span class=\"type\">boolean</span> label line break",
-            "description": "The line break of the label.\nThis value is used to adjust the vertical spacing of characters in the text.\nThe type of the property is boolean.",
+            "description": "The line break of the label.\nIn arc layout, automatic wrapping uses the arc length instead of size.x.\nThis value is used to adjust the vertical spacing of characters in the text.\nThe type of the property is boolean.",
             "error": "",
             "examples": "How to query a label's line break:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n <span class=\"c1\">-- get line_break from component &quot;label&quot;</span>\n <span class=\"kd\">local</span> <span class=\"n\">line_break</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">&quot;#label&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;line_break&quot;</span><span class=\"p\">)</span>\n <span class=\"c1\">-- do something useful</span>\n <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"s2\">&quot;#label&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;line_break&quot;</span><span class=\"p\">,</span> <span class=\"kc\">false</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
             "language": "",

@@ -17,7 +17,7 @@ As camadas de nuvens são construídas como dois objetos de jogo separados, cada
 As camadas se movem em velocidades diferentes para criar o efeito de parallax. Isso é feito em `update()` de *background1.script* e *background2.script* abaixo.
 
 ```lua
--- file: background1.script
+-- arquivo: background1.script
 
 function init(self)
     msg.post("@render:", "clear_color", { color = vmath.vector4(0.52, 0.80, 1, 0) } )
@@ -35,7 +35,7 @@ end
 ```
 
 ```lua
--- file: background2.script
+-- arquivo: background2.script
 
 -- o plano de fundo e um tilemap em um gameobject
 -- movemos o gameobject para criar o efeito de parallax
@@ -53,7 +53,7 @@ Ele se move para a esquerda em uma velocidade constante. O movimento para cima e
 
 
 ```lua
--- file: spaceship.script
+-- arquivo: spaceship.script
 
 function init(self)
     -- guarda a posicao y inicial para que possamos

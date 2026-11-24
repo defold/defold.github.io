@@ -5,12 +5,15 @@ layout: manual
 locale: zh
 title: Defold 中的属性
 toc:
-- 属性
-- 游戏对象和组件属性
-- GUI 节点属性
+- anchor: properties
+  title: 属性
+- anchor: game-object-and-component-properties
+  title: 游戏对象和组件属性
+- anchor: gui-node-properties
+  title: GUI 节点属性
 ---
 
-# 属性
+# 属性 {#properties}
 
 Defold 为游戏对象、组件和 GUI 节点暴露了可读取、设置和制作动画的属性。存在以下类型的属性：
 
@@ -49,7 +52,7 @@ local same_color = gui.get(node, "color")
 gui.set(node, "color.x", 1)
 ```
 
-## 游戏对象和组件属性
+## 游戏对象和组件属性 {#game-object-and-component-properties}
 
 所有游戏对象和一些组件类型都具有可在运行时读取和操作的属性。使用 [`go.get()`](/ref/go#go.get) 读取这些值，并使用 [`go.set()`](/ref/go#go.set) 写入它们。根据属性值类型，您可以使用 [`go.animate()`](/ref/go#go.animate) 为这些值制作动画。一小部分属性是只读的。
 
@@ -109,7 +112,7 @@ gui.set(node, "color.x", 1)
 
 | 属性   | 描述                            | 类型            |                  |
 | ---------- | -------------------------------------- | --------------- | ---------------- |
-| *text* | 标签的文本内容。自 Defold 1.13.2 起可用。 | `string` | `get+set` |
+| *text* | 标签的文本内容。 | `string` | `get+set` |
 | *scale* | 标签的缩放。 | `vector3` | `get+set` |
 | *scale.xy* | 标签沿 X 和 Y 轴的缩放。 | `vector3` | `get+set`|
 | *color*     | 标签的颜色。 | `vector4` | `get+set` |
@@ -120,7 +123,7 @@ gui.set(node, "color.x", 1)
 | *font* | 标签使用的字体。 | `hash` | `get+set`|
 
 
-## GUI 节点属性
+## GUI 节点属性 {#gui-node-properties}
 
 GUI 节点具有特定于属性的 getter 和 setter 函数，例如 `gui.get_position()` 和 `gui.set_position()`。下面列出的内置属性也可以使用 `gui.get(node, property)` 读取，并使用 `gui.set(node, property, value)` 写入。其他节点值可能仍需要专用函数。GUI 节点上的材质常量也使用这些通用函数。要定位向量属性的某个分量，请附加其名称，例如 `gui.set(node, "color.x", 1)`。
 

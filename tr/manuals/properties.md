@@ -5,12 +5,15 @@ layout: manual
 locale: tr
 title: Defold'da özellikler
 toc:
-- Özellikler
-- Oyun nesnesi ve bileşen özellikleri
-- GUI düğümü özellikleri
+- anchor: properties
+  title: Özellikler
+- anchor: game-object-and-component-properties
+  title: Oyun nesnesi ve bileşen özellikleri
+- anchor: gui-node-properties
+  title: GUI düğümü özellikleri
 ---
 
-# Özellikler
+# Özellikler {#properties}
 
 Defold, oyun nesneleri (game object), bileşenler (component) ve GUI düğümleri (GUI node) için okunabilen, ayarlanabilen ve animasyon uygulanabilen özellikler (property) sunar. Aşağıdaki özellik türleri bulunur:
 
@@ -49,7 +52,7 @@ local same_color = gui.get(node, "color")
 gui.set(node, "color.x", 1)
 ```
 
-## Oyun nesnesi ve bileşen özellikleri
+## Oyun nesnesi ve bileşen özellikleri {#game-object-and-component-properties}
 
 Tüm oyun nesneleri ve bazı bileşen türleri, çalışma sırasında okunabilen ve değiştirilebilen özelliklere sahiptir. Bu değerleri [`go.get()`](/ref/go#go.get) ile okuyun ve [`go.set()`](/ref/go#go.set) ile yazın. Özellik değerinin türüne bağlı olarak, değerlere [`go.animate()`](/ref/go#go.animate) ile animasyon uygulayabilirsiniz. Özelliklerin küçük bir bölümü salt okunurdur.
 
@@ -109,7 +112,7 @@ Oyun nesnesi dönüşümüyle çalışmak için özel işlevler de bulunur: `go.
 
 | özellik   | açıklama                            | tür            |                  |
 | ---------- | -------------------------------------- | --------------- | ---------------- |
-| *text* | Etiketin (label) metin içeriği. Defold 1.13.2 sürümünden itibaren kullanılabilir. | `string` | `get+set` |
+| *text* | Etiketin (label) metin içeriği. | `string` | `get+set` |
 | *scale* | Etiketin ölçeği. | `vector3` | `get+set` |
 | *scale.xy* | Etiketin X ve Y eksenleri boyunca ölçeği. | `vector3` | `get+set`|
 | *color*     | Etiketin rengi. | `vector4` | `get+set` |
@@ -120,7 +123,7 @@ Oyun nesnesi dönüşümüyle çalışmak için özel işlevler de bulunur: `go.
 | *font* | Etiketin kullandığı yazı tipi. | `hash` | `get+set`|
 
 
-## GUI düğümü özellikleri
+## GUI düğümü özellikleri {#gui-node-properties}
 
 GUI düğümlerinin `gui.get_position()` ve `gui.set_position()` gibi, özellik değerlerini okumaya ve ayarlamaya özgü işlevleri vardır. Aşağıda listelenen yerleşik özellikler, alternatif olarak `gui.get(node, property)` ve `gui.set(node, property, value)` ile de okunup yazılabilir. Diğer düğüm değerleri yine de kendilerine özgü işlevleri gerektirebilir. GUI düğümlerindeki materyal sabitleri de genel amaçlı işlevleri kullanır. Bir vektör özelliğinin tek bir bileşenini adreslemek için sonuna bileşen adını ekleyin; örneğin `gui.set(node, "color.x", 1)`.
 

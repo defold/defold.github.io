@@ -6,10 +6,8 @@ locale: pl
 title: Kształty kolizji
 toc:
 - Kształty kolizji
-- Kształty podstawowe
-- Kształt prostopadłościanu
-- Kształt sfery
-- Kształt kapsuły
+- anchor: collision-shapes-list
+  title: Kształty kolizji
 - Kształty złożone
 - anchor: hull-and-mesh-shapes-in-3d
   title: Kształty Hull i Mesh w 3D
@@ -17,7 +15,8 @@ toc:
 - Kształt wypukły (convex hull)
 - Format pliku
 - Narzędzia zewnętrzne
-- Skalowanie kształtów kolizji
+- anchor: scaling-collision-shapes
+  title: Skalowanie kształtów kolizji
 - Zmienianie rozmiaru kształtów kolizji
 - Obracanie kształtów kolizji
 - Obracanie kształtów kolizji w fizyce 3D
@@ -29,33 +28,51 @@ toc:
 
 Obiekt kolizji może zawierać kilka osadzonych kształtów. W fizyce 3D mogą to być otoczki wypukłe i siatki trójkątów z plików glTF lub GLB. Możesz też używać zasobu mapy kafelków lub kształtu wypukłego przez właściwość *Collision Shape* obiektu kolizji.
 
-### Kształty podstawowe
+Dostępne kształty kolizji różnią się dla fizyki 2D i 3D. Typ fizyki ustawisz w sekcji `Physics` pliku `game.project` za pomocą `Type` (`2D`/`3D`):
 
-Kształty podstawowe to *box*, *sphere* i *capsule*. Aby dodać kształt podstawowy, kliknij prawym przyciskiem myszy obiekt kolizji i wybierz <kbd>Add Shape</kbd>:
+![Ustawienia fizyki](/manuals/images/physics/physics_settings.png)
 
-![Dodawanie kształtu podstawowego](/manuals/images/physics/add_shape.png)
+### Kształty kolizji {#collision-shapes-list}
 
-## Kształt prostopadłościanu
+Aby dodać kształt, kliknij obiekt kolizji <kbd>prawym przyciskiem myszy</kbd> i wybierz <kbd>Add Shape</kbd>:
 
-Kształt prostopadłościanu ma pozycję, obrót i wymiary: szerokość, wysokość oraz głębokość:
+![Dodawanie podstawowego kształtu kolizji w fizyce 2D](/manuals/images/physics/collision_shapes_2d.png)
 
-![Kształt prostopadłościanu](/manuals/images/physics/box.png)
+Kształty dla fizyki 2D:
 
-## Kształt sfery
+- **Circle** (pozycja, obrót, średnica)
 
-Kształt sfery ma pozycję, obrót i średnicę:
+![Kształt kolizji w postaci koła](/manuals/images/physics/circle.png)
 
-![Kształt sfery](/manuals/images/physics/sphere.png)
+- **Rectangle** (pozycja, obrót, 2 wymiary, głębokość jest ignorowana)
 
-## Kształt kapsuły
+![Prostokątny kształt kolizji](/manuals/images/physics/rectangle.png)
 
-Kształt kapsuły ma pozycję, obrót, średnicę i wysokość:
+W fizyce 3D kształty dodaje się w ten sam sposób.
 
-![Kształt kapsuły](/manuals/images/physics/capsule.png)
+![Dodawanie podstawowego kształtu kolizji w fizyce 3D](/manuals/images/physics/collision_shapes_3d.png)
 
-<div class='important' markdown='1'>
-Kształty kapsuły są obsługiwane tylko w fizyce 3D, skonfigurowanej w sekcji Physics pliku *game.project*.
-</div>
+Kształty dla fizyki 3D:
+
+- **Box** (pozycja, obrót, 3 wymiary)
+
+![Kształt kolizji w postaci prostopadłościanu](/manuals/images/physics/box.png)
+
+- **Capsule** (pozycja, obrót, średnica, wysokość)
+
+![Kształt kolizji w postaci kapsuły](/manuals/images/physics/capsule.png)
+
+- **Hull** (pozycja, obrót, scena, siatka)
+
+![Otoczka wypukła jako kształt kolizji](/manuals/images/physics/hull.png)
+
+- **Mesh** (pozycja, obrót, scena, siatka)
+
+![Siatka trójkątów jako kształt kolizji](/manuals/images/physics/mesh.png)
+
+- **Sphere** (pozycja, obrót, średnica)
+
+![Kulisty kształt kolizji](/manuals/images/physics/sphere.png)
 
 ### Kształty złożone
 
@@ -142,9 +159,7 @@ Istnieje kilka narzędzi zewnętrznych, których można użyć do tworzenia kszt
 * [Physics Body Editor](https://selimanac.github.io/physics-body-editor/) również można użyć do tworzenia kształtów convex hull.
 
 
-<a id="scaling-collision-shapes"></a>
-
-# Skalowanie kształtów kolizji
+# Skalowanie kształtów kolizji {#scaling-collision-shapes}
 
 Obiekt kolizji i jego kształty dziedziczą skalę obiektu gry. Aby wyłączyć to zachowanie, odznacz pole [Allow Dynamic Transforms](/pl/manuals/project-settings/#allow-dynamic-transforms) w sekcji Physics pliku *game.project*. Zwróć uwagę, że obsługiwane jest tylko skalowanie jednolite, a jeśli skala nie jest jednolita, użyta zostanie najmniejsza wartość skali.
 

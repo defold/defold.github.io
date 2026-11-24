@@ -5,17 +5,21 @@ layout: manual
 locale: zh
 title: 脚本组件属性
 toc:
-- 脚本属性
-- 定义脚本属性
+- anchor: script-properties
+  title: 脚本属性
+- anchor: defining-a-script-property
+  title: 定义脚本属性
 - anchor: text-properties
   title: 文本属性
-- 访问脚本属性
-- 工厂创建的对象
+- anchor: accessing-script-properties
+  title: 访问脚本属性
+- anchor: factory-created-objects
+  title: 工厂创建的对象
 - anchor: resource-properties
   title: 资源属性
 ---
 
-# 脚本属性
+# 脚本属性 {#script-properties}
 
 脚本属性提供了一种简单而强大的方式，用于定义和暴露特定游戏对象实例的自定义属性。脚本属性可以在编辑器中直接在特定实例上编辑，并且它们的设置可以在代码中使用，以改变游戏对象的行为。在许多情况下，脚本属性非常有用：
 
@@ -26,9 +30,11 @@ toc:
 
 常见的用例是设置特定敌人AI的生命值或速度、拾取对象的色调颜色、精灵的图集，或者按钮对象在被按下时应该发送什么消息---以及/或者发送到哪里。
 
-## 定义脚本属性
+## 定义脚本属性 {#defining-a-script-property}
 
 脚本属性是通过使用`go.property()`特殊函数将它们添加到脚本组件中的。该函数必须在顶层使用---在任何生命周期函数（如`init()`和`update()`）之外。为属性提供的默认值决定了属性的类型：`number`、`boolean`、`string`、`hash`、`msg.url`、`vmath.vector3`、`vmath.vector4`、`vmath.quaternion`和`resource`（见下文）。
+
+![Defold 编辑器中的属性](/manuals/images/script-properties/properties.png)
 
 <div class='important' markdown='1'>
 请注意，哈希值的反转仅在Debug构建中有效，以方便调试。在Release构建中，反转的字符串值不存在，因此对`hash`值使用`tostring()`来从中提取字符串是没有意义的。
@@ -65,7 +71,7 @@ end
 
  在编辑器中的*Outline*视图中选择脚本组件，属性会出现在*Properties*视图中，允许您编辑它们：
 
-![Properties](/manuals/images/script-properties/properties.png)
+![Properties](/manuals/images/script-properties/properties2.png)
 
 任何被新的实例特定值覆盖的属性都会标记为蓝色。单击属性名称旁边的重置按钮可以将值恢复为默认值（在脚本中设置）。
 
@@ -76,7 +82,7 @@ end
 
 ### 文本属性 {#text-properties}
 
-自 Defold 1.13.2 起，使用字符串作为默认值可定义文本属性。文本属性支持 UTF-8 和换行符，并在编辑器中使用多行字段编辑：
+字符串默认值定义文本属性。文本属性支持 UTF-8 和换行符，并在编辑器的多行字段中编辑：
 
 ```lua
 go.property("greeting", "Hello!\nWelcome, José!")
@@ -100,7 +106,7 @@ end
 
 更改脚本属性不会自动更新标签；最后一行显式地将新值复制到标签的 `text` 属性。
 
-## 访问脚本属性
+## 访问脚本属性 {#accessing-script-properties}
 
 任何定义的脚本属性都作为存储的成员在`self`中可用，self是脚本实例引用：
 
@@ -125,11 +131,11 @@ end
 local val = go.get("myobject#my_script", "my_property")
 go.set("myobject#my_script", "my_property", val + 1)
 
--- 为"myobject#script"中的"my_property"创建动画
+-- 为"myobject#my_script"中的"my_property"创建动画
 go.animate("myobject#my_script", "my_property", go.PLAYBACK_LOOP_PINGPONG, 100, go.EASING_LINEAR, 2.0)
 ```
 
-## 工厂创建的对象
+## 工厂创建的对象 {#factory-created-objects}
 
 如果您使用工厂创建游戏对象，可以在创建时设置脚本属性：
 

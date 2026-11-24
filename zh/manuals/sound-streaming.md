@@ -5,7 +5,8 @@ layout: manual
 locale: zh
 title: Defold 中的声音流传输
 toc:
-- 声音流传输
+- anchor: sound-streaming
+  title: 声音流传输
 - 示例
 - 如何启用声音流传输
 - 简单方法
@@ -14,7 +15,7 @@ toc:
 - 声音块缓存
 ---
 
-# 声音流传输
+# 声音流传输 {#sound-streaming}
 
 虽然默认行为是完整加载声音数据，但在使用前分块加载数据可能也是有益的。这通常被称为"流传输"。
 

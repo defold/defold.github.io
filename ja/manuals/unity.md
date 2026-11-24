@@ -15,11 +15,12 @@ toc:
   title: バージョン
 - anchor: welcome-screen
   title: ウェルカム画面
-- Hello World
 - anchor: defold-editor-overview
   title: Defold エディターの概要
 - anchor: editors-comparison
   title: エディターの比較
+- anchor: 2d-and-3d-scene-orientation
+  title: 2D と 3D のシーンの向き
 - anchor: defold-panes-overview
   title: Defold のペインの概要
 - anchor: key-concepts
@@ -150,25 +151,7 @@ Defold を起動すると、Unity Hub に似たウェルカム画面が表示さ
 
 最初のプロジェクトを作成するか、プロジェクトを開くと、Defold エディターに表示されます。
 
-## Hello World
-
-ここでは Defold ですばやく何かを作ってみます。手順に沿って操作した後、マニュアルの続きを読んでください。
-
-1. `Templates` から空のプロジェクトを選択し、`Title` に名前を入力して保存先を選び、`Create New Project` をクリックして作成します。プロジェクトが Defold エディターで開きます。
-![Hello World の手順1](/manuals/images/unity/helloworld_1.png)
-2. 左側の `Assets` ペインで `main` フォルダーを開き、`main.collection` をダブルクリックして開きます。
-3. 右側の `Outline` ペインで `Collection` を右クリックし、`Add Game Object` を選択します。
-![Hello World の手順2](/manuals/images/unity/helloworld_2.png)
-4. 作成した `go` ゲームオブジェクト（game object）を右クリックし、`Add Component`、続いて `Label` を選択します。
-![Hello World の手順3](/manuals/images/unity/helloworld_3.png)
-5. その下の左側にある `Properties` ペインで、`Text` プロパティに何か入力します。
-6. 中央のメインのシーンビューで、ラベルをドラッグして `(480,320,0)` 付近まで移動し、ドロップします。または、`Properties` の `Position` で位置を変更します。
-![Hello World の手順4](/manuals/images/unity/helloworld_4.png)
-7. ラベルの位置を変更したら、`File` -> `Save All` をクリックするか、ショートカット <kbd>Ctrl</kbd>+<kbd>S</kbd>（Mac では <kbd>Cmd</kbd>+<kbd>S</kbd>）でプロジェクトを保存します。
-8. `Project` -> `Build` をクリックするか、ショートカット <kbd>Ctrl</kbd>+<kbd>B</kbd>（Mac では <kbd>Cmd</kbd>+<kbd>B</kbd>）でプロジェクトをビルドします。
-![Hello World の手順5](/manuals/images/unity/helloworld_5.png)
-
-これで Defold で最初のプロジェクトをビルドできました。ウィンドウに入力したテキストが表示されるはずです。ゲームオブジェクトとコンポーネントの概念には、すでになじみがあるでしょう。コレクション（collection）、Outline、Properties、そしてラベルを少し右上に移動する必要があった理由については、以下で説明します。
+{% include shared/ja/hello-world.md %}
 
 ---
 
@@ -182,13 +165,9 @@ Unity と Defold の違いとして最初に気付くのは、エディターの
 
 ![エディターの比較](/manuals/images/unity/defold_unity_editor.png)
 
-既定では、Defold エディターは 2D の正投影プレビューで開きます。3D プロジェクトを作業する場合や、Unity に近い操作感にしたい場合は、ツールバーの `2D` トグルのチェックを外して 2D から 3D に切り替え、`Perspective` トグルにチェックを入れてカメラを透視投影に変更することをお勧めします。
+### 2D と 3D のシーンの向き {#2d-and-3d-scene-orientation}
 
-![Defold のツールバー](/manuals/images/unity/defold_2d.png)
-
-ツールバーの `Grid Settings` を調整して、Unity と同じように `Y` 平面を使うこともできます。
-
-![Defold の 3D 設定](/manuals/images/unity/defold_3d.png)
+{% include shared/ja/2d-and-3d-scene-orientation.md %}
 
 ### Defold のペインの概要 {#defold-panes-overview}
 
@@ -258,7 +237,7 @@ Defold でコンポーネントというと、Unity の組み込みコンポー�
 |---|---|---|
 | [スプライト](/ja/manuals/sprite/) | Sprite Renderer | Defold では、色調（色のプロパティ）はコードからのみ変更できます。 |
 | [タイルマップ](/ja/manuals/tilemap/) | Tilemap / Grid | Defold には正方形のグリッドに対応した組み込みのタイルマップエディターがあります（ただし、たとえば[六角形](https://github.com/selimanac/defold-hexagon/)向けの拡張もあります）。組み込みのオートタイリングルールはありません。[Tiled](https://defold.com/assets/tiled/)、[TileSetter](https://defold.com/assets/tilesetter/)、[Sprite Fusion](https://defold.com/assets/spritefusion/) などのツールには、Defold へのエクスポート機能があります。 |
-| [ラベル](/ja/manuals/label/) | Text / TextMeshPro | Defold 1.13.2 以降では、Label コンポーネントと GUI テキストノードが、色、グラデーション、輪郭、アニメーションエフェクトのための組み込み[リッチテキストマークアップ](/ja/manuals/font-richtext/)をサポートします。別途 [RichText 拡張](https://defold.com/assets/richtext/)も利用できます。 |
+| [Label](/ja/manuals/label/) | Text / TextMeshPro | Label コンポーネントと GUI テキストノードは、色、グラデーション、輪郭線、アニメーション効果を指定する組み込みの[リッチテキストマークアップ](/ja/manuals/font-richtext/)に対応します。別の [RichText 拡張](https://defold.com/assets/richtext/)も利用できます。 |
 | [サウンド](/ja/manuals/sound/) | AudioSource | Defold には、空間的な音源ではなく、グローバルな音源だけがあります。Defold 向けの公式 [FMOD 拡張](https://github.com/defold/extension-fmod)があります。 |
 | [ファクトリー](/ja/manuals/factory/) | Prefab Instantiate() | Defold のファクトリー（factory）は、特定のプロトタイプ（prototype）（プレハブ）を持つコンポーネントです。 |
 | [コレクションファクトリー](/ja/manuals/collection-factory/) | -（直接対応するコンポーネントはありません） | Defold のコレクションファクトリー（collection factory）コンポーネントは、親子関係を持つ複数のゲームオブジェクトを一度に生成できます。 |
@@ -438,7 +417,7 @@ Defold のスクリプトプロパティ、ファクトリー、アドレス指�
 
 Defold エディターには、コード補完、構文の強調表示、すばやいドキュメント参照、lint によるチェック、組み込みのデバッガーを備えたコードエディターが含まれています。
 
-![Defold のコードエディター](/images/editor/code-editor.png)
+![Defold のコードエディター](/manuals/images/editor/code-editor.png)
 
 ### VS Code とその他のエディター {#vs-code-and-other-editors}
 
@@ -684,7 +663,7 @@ Defold にも明確に定義されたアプリケーションのライフサイ�
 |-|-|-|
 | `init()` | `Awake()` / `Start()` / `OnEnable()`| Defold の初期化のエントリーポイントとコールバックは、init() の1つです。各コンポーネントが作成されたときに呼び出されます。 |
 | `on_input` | 入力メソッド | Defold は、[スクリプトに入力フォーカスが設定されている](/ja/manuals/input/#input-focus)ときに入力を受け取ります。更新ループ内で最初に処理されます。 |
-| `fixed_update()` | `FixedUpdate()` | 更新やシミュレーションの時間刻みであるタイムステップが固定された間隔で呼び出されます。Defold で有効にするには、`Use Fixed Timestep` を設定する必要があります。[詳細](https://defold.com/ja/manuals/project-settings/#use-fixed-timestep)をご覧ください。1.12.0 以降は `update()` より前に実行されます。 |
+| `fixed_update()` | `FixedUpdate()` | 固定タイムステップで呼ばれます。Defold で有効にするには、`Use Fixed Timestep` を設定します（[詳細](https://defold.com/ja/manuals/project-settings/#use-fixed-timestep)）。`update()` より前に実行します。 |
 | `update()` | `Update()` | 経過時間を引数として、1フレームに1回呼び出されます。 |
 | `late_update()` | `LateUpdate()` | `update()` の後、フレームが描画される直前に呼び出されます。1.12.0 以降で利用できます。 |
 | `on_message` | メッセージの受信処理 | メッセージを受信するための Defold の中心的なコールバックです。キューにメッセージがあるときに処理されます。 |

@@ -53,7 +53,9 @@
             "language": "",
             "members": [],
             "name": "GetConfigFile",
-            "notes": [],
+            "notes": [
+                "Deprecated. Use dmExtension::AppParamsGetContextRegistry and ContextRegistryGet with CONFIGFILE_CONTEXT_NAME."
+            ],
             "parameters": [
                 {
                     "doc": "The app params sent to the extension dmExtension::AppInitialize / dmExtension::AppInitialize",
@@ -85,7 +87,9 @@
             "language": "",
             "members": [],
             "name": "GetGameObjectRegister",
-            "notes": [],
+            "notes": [
+                "Deprecated. Use dmExtension::AppParamsGetContextRegistry and ContextRegistryGet with GAMEOBJECT_CONTEXT_NAME."
+            ],
             "parameters": [
                 {
                     "doc": "The app params sent to the extension dmExtension::AppInitialize / dmExtension::AppInitialize",
@@ -117,7 +121,9 @@
             "language": "",
             "members": [],
             "name": "GetHIDContext",
-            "notes": [],
+            "notes": [
+                "Deprecated. Use dmExtension::AppParamsGetContextRegistry and ContextRegistryGet with HID_CONTEXT_NAME."
+            ],
             "parameters": [
                 {
                     "doc": "The app params sent to the extension dmExtension::AppInitialize / dmExtension::AppInitialize",
@@ -150,7 +156,8 @@
             "members": [],
             "name": "GetWebServer",
             "notes": [
-                "Only valid in debug builds"
+                "Only valid in debug builds",
+                "Deprecated. Use dmExtension::AppParamsGetContextRegistry and ContextRegistryGet with WEBSERVER_CONTEXT_NAME."
             ],
             "parameters": [
                 {

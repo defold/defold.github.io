@@ -19,6 +19,8 @@ toc:
 
 ![物理のコリジョングループ](/manuals/images/physics/collision_group.png)
 
+![物理のコリジョングループとマスク](/manuals/images/physics/collision_groups.png)
+
 *Mask* フィールドには複数のグループ名を含められるため、複雑な相互作用を実現できます。
 
 ## 衝突の検出 {#detecting-collisions}

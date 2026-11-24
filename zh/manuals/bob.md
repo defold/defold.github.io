@@ -5,14 +5,15 @@ layout: manual
 locale: zh
 title: Defold 项目构建器手册
 toc:
-- 构建器 Bob
+- anchor: bob-the-builder
+  title: 构建器 Bob
 - anchor: usage
   title: 用法
 - anchor: build-server
   title: 构建服务器
 ---
 
-# 构建器 Bob
+# 构建器 Bob {#bob-the-builder}
 
 Bob 是一个命令行工具，用于在正常编辑器工作流程之外构建 Defold 项目。
 
@@ -21,7 +22,7 @@ Bob 能够构建数据（对应于选择编辑器菜单项 <kbd>Project ▸ Buil
 Bob 作为 Java _JAR_ 存档分发，其中包含构建所需的一切。您可以在 [GitHub 发布页面](https://github.com/defold/defold/releases) 上找到最新的 *bob.jar* 分发版本。选择一个发布版本，然后下载 *bob/bob.jar*。您需要 OpenJDK 25 来运行它。
 
 兼容的 OpenJDK 25 镜像：
-* [Microsoft 提供的 OpenJDK 25](https://docs.microsoft.com/en-us/java/openjdk/download#openjdk-25)
+* [Microsoft 提供的 OpenJDK 25](https://learn.microsoft.com/en-us/java/openjdk/download#openjdk-25)
 * [Adoptium 工作组提供的 OpenJDK 25](https://github.com/adoptium/temurin25-binaries/releases) / [Adoptium.net](https://adoptium.net/)
 
 如果您在 Windows 上，您需要 OpenJDK 的 `.msi` 文件安装程序。
@@ -84,6 +85,9 @@ usage: bob [options] [commands]
     --debug-output-wgsl <arg>            Force build WGSL shaders
     --defoldsdk <arg>                    What version of the defold sdk
                                          (sha1) to use
+    --download-size-report <arg>         Filepath where to save the
+                                         estimated Google Play download
+                                         size as JSON (Android)
  -e,--email <arg>                        User email
  -ea,--exclude-archive                   Exclude resource archives from
                                          application bundle. Use this to
@@ -249,7 +253,7 @@ $
 
 ## 构建服务器 {#build-server}
 
-从 Defold 1.14.0 开始，Bob 根据其发行包的发布通道选择默认的原生扩展构建服务器：
+Bob 根据其发行版本所属的发布通道选择默认原生扩展构建服务器：
 
 | Bob 发布通道 | 默认构建服务器 |
 |---|---|

@@ -9,15 +9,18 @@ toc:
 - 编写 Lua 代码
 - 使用可转换为 Lua 的其他语言
 - 编写原生代码
-- 使用内置代码编辑器
-- 代码补全
+- anchor: using-the-built-in-code-editor
+  title: 使用内置代码编辑器
+- anchor: code-completion
+  title: 代码补全
 - anchor: formatting-code
   title: 格式化代码
 - anchor: jump-to-symbol
   title: 跳转到符号
 - anchor: linting-configuration
   title: 代码检查配置
-- 使用外部代码编辑器
+- anchor: using-an-external-code-editor
+  title: 使用外部代码编辑器
 - Visual Studio Code - Defold Kit
 - 文档软件
 ---
@@ -38,24 +41,22 @@ Defold 支持使用可生成 Lua 代码的转换器。安装转换器扩展后�
 
 Defold 允许您使用原生代码扩展游戏引擎，以访问引擎本身未提供的平台特定功能。当 Lua 的性能不足时（例如资源密集型计算、图像处理等），您也可以使用原生代码。请参阅我们的 [原生扩展手册](/zh/manuals/extensions/) 了解更多信息。
 
-## 使用内置代码编辑器
+## 使用内置代码编辑器 {#using-the-built-in-code-editor}
 
 Defold 有一个内置代码编辑器，允许您打开和编辑 Lua 文件（.lua）、Defold 脚本文件（.script、.gui_script 和 .render_script）以及编辑器本身不原生处理的任何其他扩展名文件。此外，该编辑器为 Lua 和脚本文件提供语法高亮。
 
-![](/images/editor/code-editor.png)
+![](/manuals/images/editor/code-editor.png)
 
 
-<a id="code-completion"></a>
-
-### 代码补全
+### 代码补全 {#code-completion}
 
 内置代码编辑器在编写代码时会显示函数的代码补全：
 
-![](/images/editor/codecompletion.png)
+![](/manuals/images/editor/codecompletion.png)
 
 按 <kbd>CTRL</kbd> + <kbd>Space</kbd> 将显示有关函数、参数和返回值的附加信息：
 
-![](/images/editor/apireference.png)
+![](/manuals/images/editor/apireference.png)
 
 内置 Lua 语言服务器包含 Defold API 的类型注解。补全、悬停信息和诊断可以识别 Defold 类型（例如哈希、URL、向量和四元数），以及函数参数和返回值。编辑器为游戏脚本和 `.editor_script` 文件中使用的 `editor.*` API 提供注解。使用 Defold 代码编辑器时，内置 API 无需额外的注解库。
 
@@ -73,7 +74,7 @@ Defold 有一个内置代码编辑器，允许您打开和编辑 Lua 文件（.l
 
 开始输入以对符号进行模糊搜索，使用方向键在结果中移动并在编辑器中预览其位置，然后按 <kbd>Enter</kbd> 跳转到所选符号。按 <kbd>Esc</kbd> 关闭对话框并返回此前的光标和滚动位置。
 
-![](/images/editor/jump-to-symbol.png)
+![](/manuals/images/editor/jump-to-symbol.png)
 
 ### 代码检查配置 {#linting-configuration}
 
@@ -89,7 +90,7 @@ ignore = {
 },
 ```
 
-## 使用外部代码编辑器
+## 使用外部代码编辑器 {#using-an-external-code-editor}
 
 Defold 中的代码编辑器提供了编写代码所需的基本功能，但对于更高级的用例或拥有喜爱代码编辑器的专业用户，可以让 Defold 使用外部编辑器打开文件。在 [首选项窗口的代码选项卡下](/zh/manuals/editor-preferences/#code)，可以定义在编辑代码时应使用的外部编辑器。
 

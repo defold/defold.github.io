@@ -13,6 +13,10 @@ toc:
   title: Mit einem kostenlosen Apple-Entwicklerkonto entwickeln
 - anchor: creating-an-ios-application-bundle
   title: Ein iOS-Anwendungsbundle erstellen
+- anchor: home-indicator-behavior
+  title: Verhalten des Home-Indikators
+- anchor: reserved-areas-and-rotation
+  title: Reservierte Bereiche und Drehung
 - anchor: custom-infoplist-and-local-target-discovery
   title: Benutzerdefinierte Info.plist und Erkennung lokaler Ziele
 - anchor: installing-and-launching-bundle-on-a-connected-iphone
@@ -127,6 +131,23 @@ Klicke auf *Create Bundle*. Anschließend wirst du aufgefordert, den Speicherort
 ![iOS-Anwendungsbundle im IPA-Format](/manuals/images/ios/ipa_file.png)
 
 Das Symbol für die App, das Storyboard für den Startbildschirm und weitere Angaben legst du in der Projekteinstellungsdatei *game.project* im [Abschnitt iOS](/de/manuals/project-settings/#ios) fest.
+
+### Verhalten des Home-Indikators {#home-indicator-behavior}
+
+Du kannst *Home Indicator Mode* im Abschnitt *iOS* von *game.project* auswählen. Der Standardwert *Deferred* schützt alle Bildschirmränder und erfordert zwei Wischgesten, um zum Home-Bildschirm zurückzukehren. Wähle *System* für normale Systemgesten, einschließlich einer einzelnen Wischgeste zum Home-Bildschirm.
+
+Wähle *Auto Hide*, um normale Systemgesten zu verwenden und zusätzlich das automatische Ausblenden des Home-Indikators anzufordern. Du kannst diesen Modus direkt in *game.project* setzen:
+
+```ini
+[ios]
+home_indicator_mode = auto_hide
+```
+
+Erstelle das Bundle neu und teste es auf einem Gerät mit Home-Indikator. iOS entscheidet, wann der Indikator sichtbar ist; *Auto Hide* garantiert nicht, dass er verborgen bleibt. Ab iOS 26 kann das System ihn sowohl im Modus *System* als auch in *Auto Hide* ausblenden. Alle Werte und ihr Gestenverhalten beschreibt [Home Indicator Mode](/de/manuals/project-settings/#home-indicator-mode).
+
+### Reservierte Bereiche und Drehung {#reserved-areas-and-rotation}
+
+`window.get_reserved_areas()` meldet ab iOS 27.1 Kameraaussparungen und die Dynamic Island einschließlich der Interaktionsränder von UIKit. Orientierungswechsel unter iOS senden ebenfalls `window.WINDOW_EVENT_RESIZED`, auch bei Drehungen mit unveränderten Fensterabmessungen und sicheren Randabständen. Aktualisiere bei jedem Resize-Callback jede auf diesen Bereichen beruhende UI-Platzierung. Koordinaten, Einschränkungen und ein Aktualisierungsbeispiel findest du unter [Reservierte Bildschirmbereiche](/de/manuals/porting-guidelines/#reserved-screen-areas).
 
 ### Benutzerdefinierte Info.plist und Erkennung lokaler Ziele {#custom-infoplist-and-local-target-discovery}
 

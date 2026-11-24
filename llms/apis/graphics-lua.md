@@ -132,6 +132,7 @@ Optional graphics-context features
 - `graphics.CONTEXT_FEATURE_ASTC_ARRAY_TEXTURES` - Context feature flag indicating support for ASTC compressed 2D array textures. Some WebGL/GLES drivers fail array texture ASTC uploads while 2D ASTC works.
 - `graphics.CONTEXT_FEATURE_BC_ARRAY_TEXTURES` - Context feature flag indicating support for BC (S3TC/RGTC/BPTC) compressed 2D array and 3D textures. WebGL2 forbids these compressed families on array/3D targets while allowing them on 2D.
 - `graphics.CONTEXT_FEATURE_BLEND_EQUATION_MIN_MAX` - Context feature flag indicating support for min/max blend equations. Requires GLES3+ or EXT_blend_minmax.
+- `graphics.CONTEXT_FEATURE_BACKBUFFER_READBACK` - Context feature flag indicating backbuffer readback support for the current surface. On WebGPU, availability is established when the surface is configured.
 - `graphics.CONTEXT_FEATURE_COMPUTE_SHADER` - Context feature flag indicating support for compute shaders.
 - `graphics.CONTEXT_FEATURE_INSTANCING` - Context feature flag indicating support for hardware instancing.
 - `graphics.CONTEXT_FEATURE_MULTI_TARGET_RENDERING` - Context feature flag indicating support for rendering to multiple color targets simultaneously.

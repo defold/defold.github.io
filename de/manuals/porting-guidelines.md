@@ -33,6 +33,10 @@ toc:
   title: Bildschirmauflösung und Bildwiederholfrequenz
 - anchor: mobile-phones-and-notch-and-hole-punch-cameras
   title: Mobiltelefone mit Notch oder Hole-Punch-Kamera
+- anchor: reserved-screen-areas
+  title: Reservierte Bildschirmbereiche
+- anchor: refreshing-areas-after-window-events
+  title: Bereiche nach Fensterereignissen aktualisieren
 - anchor: platform-specific-guidelines
   title: Plattformspezifische Richtlinien
 - Android
@@ -132,6 +136,53 @@ Es ist immer üblicher geworden, eine kleine Aussparung im Bildschirm für die F
 Defold unterstützt den sicheren Bereich auf Android und iOS von Haus aus. Lege `gui.safe_area_mode` in *game.project* fest, um zu steuern, welche gegenüberliegenden Randabstände des sicheren Bereichs die GUI-Anpassung beeinflussen. `none` ist der Standardwert und ignoriert die Randabstände; `long` wendet im Querformat die linken/rechten und im Hochformat die oberen/unteren Randabstände an; `short` wendet das jeweils andere Paar an; und `both` berücksichtigt alle vier Ränder. Ein GUI-Skript kann den projektweiten Modus für seine Szene mit [`gui.set_safe_area_mode()`](/ref/gui/#gui.set_safe_area_mode) überschreiben. Für eigene GUI- oder Rendering-Logik gibt [`window.get_safe_area()`](/ref/window/#window.get_safe_area) das sichere Rechteck und die einzelnen Randabstände zurück. Plattformen ohne integrierte Randabstände für den sicheren Bereich geben das gesamte Fenster und Randabstände von null zurück.
 
 Die [Safe Area-Erweiterung](/extension-safearea) bleibt eine Alternative für ältere Projekte oder Arbeitsabläufe, die ein Verhalten benötigen, das über die integrierten APIs hinausgeht; für die normale Behandlung des sicheren Bereichs auf Android und iOS ist sie nicht erforderlich.
+
+### Reservierte Bildschirmbereiche {#reserved-screen-areas}
+
+[`window.get_reserved_areas()`](/ref/window/#window.get_reserved_areas) meldet einzelne Bereiche, die das Spielfenster verdecken, etwa Kameraaussparungen und die Dynamic Island. Verwende diese Rechtecke, um Inhalte um einzelne Hindernisse herum zu platzieren. Verwende `window.get_safe_area()`, wenn du ein einzelnes sicheres Layoutrechteck und dessen Randabstände benötigst.
+
+Das Ergebnis ist ein Array von Tabellen mit den Feldern `x`, `y`, `width` und `height`. Jedes Rechteck wird auf das Spielfenster beschnitten. Der Ursprung liegt unten links: `x` ist der linke und `y` der untere Rand, in Fensterpixeln entsprechend [`window.get_size()`](/ref/window/#window.get_size). Diese Koordinaten sind unabhängig von GUI-Anpassung und logischer Auflösung in *game.project*; berücksichtige daher deine GUI-Transformationen, bevor du sie als Knotenpositionen verwendest.
+
+Die Plattformunterstützung ist:
+
+- **iOS 27.1 und neuer:** von UIKit gemeldete aktive Verdeckungen einschließlich seiner Interaktionsränder.
+- **Android 9 (API-Level 28) und neuer:** Rechtecke von Bildschirmaussparungen.
+
+Die Funktion gibt auf nicht unterstützten Plattformen und Betriebssystemversionen oder bei fehlenden gemeldeten Hindernissen im Fenster eine leere Tabelle zurück. Eine leere Tabelle bedeutet nicht, dass das gesamte Fenster für wichtige Inhalte sicher ist: Falten, Systemleisten, Tastaturen und Gestenbereiche liegen außerhalb dieser API. Verwende `window.get_safe_area()` für das sichere Rechteck der Plattform.
+
+### Bereiche nach Fensterereignissen aktualisieren {#refreshing-areas-after-window-events}
+
+Frage reservierte Bereiche bei der Initialisierung und erneut bei jedem Callback für [`window.WINDOW_EVENT_RESIZED`](/ref/window/#window.WINDOW_EVENT_RESIZED) ab. Nach der ersten Abfrage lösen auf unterstützten Plattformen auch Änderungen an der Geometrie reservierter Bereiche dieses Ereignis aus, selbst bei unveränderter Fenstergröße. Jede zurückgegebene Tabelle ist eine Momentaufnahme; gespeicherte Tabellen werden nicht automatisch aktualisiert.
+
+Unter iOS wird dieses Ereignis auch nach Orientierungswechseln und Änderungen der sicheren Randabstände gesendet. Eine Drehung um 180° im Querformat kann eine Kameraaussparung oder die Dynamic Island auf die andere Seite verschieben, obwohl Fensterabmessungen und sichere Randabstände gleich bleiben. Aktualisiere deine Geometrie beim Ereignis auch dann, wenn `data.width` und `data.height` ihren vorherigen Werten entsprechen.
+
+Das folgende Skript hält beide Geometriemengen aktuell:
+
+```lua
+local function refresh_screen_areas(self)
+    self.safe_area = window.get_safe_area()
+    self.reserved_areas = window.get_reserved_areas()
+    -- Update your UI using the new safe rectangle and reserved areas.
+end
+
+local function on_window_event(self, event, data)
+    if event == window.WINDOW_EVENT_RESIZED then
+        -- Refresh even when the width and height have not changed.
+        refresh_screen_areas(self)
+    end
+end
+
+function init(self)
+    refresh_screen_areas(self)
+    window.set_listener(on_window_event)
+end
+
+function final(self)
+    window.set_listener(nil)
+end
+```
+
+Es kann immer nur ein Fensterereignis-Listener registriert sein. Wenn dein Spiel bereits einen hat, ergänze diese Aktualisierungslogik dort. Durch Ersetzen des gespeicherten Arrays bei jeder Aktualisierung werden auch veraltete Rechtecke entfernt, wenn das Ergebnis leer wird.
 
 
 ## Plattformspezifische Richtlinien {#platform-specific-guidelines}

@@ -30,7 +30,7 @@ Defold를 처음 접하는 경우, 이 가이드는 에디터에서 방향을 �
 
 [새 프로젝트](/ko/manuals/project-setup/)를 만들고 에디터에서 여는 것으로 시작합니다. *main/main.collection* 파일을 더블 클릭하면 파일이 열립니다.
 
-![Editor overview](../manuals/images/editor/editor2_overview.png)
+![Editor overview](../manuals/images/editor/editor_overview.png)
 
 에디터는 다음과 같은 주요 영역으로 구성되어 있습니다.
 
@@ -178,7 +178,8 @@ function init(self)
 	self.velocity = vmath.vector3()
 	self.acceleration = vmath.vector3()
 
-	-- 입력 벡터입니다. 나중에 on_input 함수에서 입력을 저장하도록 수정됩니다.
+	-- 입력 벡터입니다. 나중에 on_input 함수에서 수정되어
+	-- 입력을 저장합니다.
 	self.input = vmath.vector3()
 end
 ```
@@ -289,7 +290,7 @@ end
 스크립트 맨 위의 상수 섹션에 다음 상수를 추가합니다.
 
 ```lua
-local drag = 1.1	        -- 항력 상수 <1>
+local drag = 1.1	        --항력 상수 <1>
 ```
 
 그런 다음 `update` 함수에서 아래 줄 바로 위에 다음 줄들을 추가하고 파일을 저장합니다.

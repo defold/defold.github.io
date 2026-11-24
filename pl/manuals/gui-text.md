@@ -7,6 +7,8 @@ title: Węzły tekstowe GUI Defold
 toc:
 - Węzły tekstowe GUI
 - Dodawanie węzłów tekstowych
+- anchor: vector-fonts-and-color-emoji
+  title: Fonty wektorowe i kolorowe emoji
 - Wyrównanie
 - Modyfikowanie węzłów tekstowych w czasie działania
 ---
@@ -33,6 +35,31 @@ Węzły tekstowe mają zestaw specjalnych właściwości:
 
 *Line Break*
 : Wyrównanie tekstu zależy od ustawienia pivot, a włączenie tej właściwości pozwala tekstowi łamać się na kilka linii. Szerokość węzła określa miejsce zawijania tekstu.
+
+## Fonty wektorowe i kolorowe emoji {#vector-fonts-and-color-emoji}
+
+Wykonaj kroki opisane w [konfiguracji fontów wektorowych](/pl/manuals/font/#vector-fonts), dodaj zasób `.font` do *Fonts* sceny GUI i wybierz go we węźle tekstowym. Ustaw *Material* zasobu fontu na `/builtins/fonts/font-vector.material`. Rozmiar wyświetlanego tekstu określa właściwość *Font Size* węzła.
+
+Aby wyświetlać kolorowe emoji, wykonaj również [konfigurację fontu zapasowego COLRv1 i zasobów paczki](/pl/manuals/font/#color-emoji). Utwórz węzeł tekstowy o identyfikatorze `text`, pozostaw jego *Text* puste i dodaj następujący kod do `.gui_script` sceny GUI:
+
+```lua
+function init(self)
+    local node = gui.get_node("text")
+    local text = "Hello 😀 🍎 🚀"
+    local font_resource = gui.get_font_resource(gui.get_font(node))
+    -- Dodaj font zastępczy raz dla tego współdzielonego zasobu fontu.
+    font.add_font(font_resource, "/fonts/NotoColorEmoji-Regular.ttf")
+    font.prewarm_text(font_resource, text, function(self, request_id, result, err)
+        if result then
+            gui.set_text(node, text)
+        else
+            print("Could not prepare GUI text:", err)
+        end
+    end)
+end
+```
+
+[`gui.get_font()`](/ref/gui/#gui.get_font) zwraca nazwę fontu w scenie GUI; [`gui.get_font_resource()`](/ref/gui/#gui.get_font_resource) rozwiązuje tę nazwę do zasobu fontu używanego przez `font.add_font()`. Inne węzły i etykiety korzystające z tego zasobu również otrzymują font zapasowy, dlatego inicjalizuj go tylko raz. Tekst jest ustawiany po pomyślnym przygotowaniu glifów.
 
 ## Wyrównanie
 

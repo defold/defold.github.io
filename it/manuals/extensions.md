@@ -78,7 +78,7 @@ Per creare una nuova estensione, crea una cartella nella radice del progetto. Qu
 : La cartella dell'estensione _deve_ contenere un file *ext.manifest*. Si tratta di un file di configurazione con flag e definizioni usati durante la build di una singola estensione. La definizione del formato del file si trova nel [manuale del manifest delle estensioni](https://defold.com/it/manuals/extensions-ext-manifests/).
 
 *src*
-: Questa cartella deve contenere tutti i file di codice sorgente.
+: Questa cartella deve contenere tutti i file di codice sorgente. Inserisci qui anche i file Swift (`.swift`) per iOS e macOS. Consulta il manuale [Swift nelle estensioni native](/it/manuals/extensions-swift).
 
 *include*
 : Questa cartella facoltativa contiene gli eventuali file di inclusione.
@@ -103,7 +103,10 @@ La cartella facoltativa *manifests* di un'estensione contiene file aggiuntivi us
   * Le estensioni con codice Java dovrebbero includere un [file di regole di conservazione R8](#r8-keep-rules-for-android) (`.keep`) per le classi necessarie a runtime.
 * `ios` - Questa cartella accetta un frammento di file manifest da unire a quello dell'applicazione principale ([come descritto qui](/it/manuals/extensions-manifest-merge-tool)).
   * La cartella può contenere anche un file `Podfile` con dipendenze da [risolvere tramite Cocoapods](/it/manuals/extensions-cocoapods).
+  * La cartella può anche contenere un file `SwiftPackages.json` con dipendenze da [risolvere tramite Swift Package Manager](/it/manuals/extensions-spm).
 * `osx` - Questa cartella accetta un frammento di file manifest da unire a quello dell'applicazione principale ([come descritto qui](/it/manuals/extensions-manifest-merge-tool)).
+  * La cartella può anche contenere un file `Podfile` con dipendenze da [risolvere tramite CocoaPods](/it/manuals/extensions-cocoapods).
+  * La cartella può anche contenere un file `SwiftPackages.json` con dipendenze da [risolvere tramite Swift Package Manager](/it/manuals/extensions-spm).
 * `web` - Questa cartella accetta un frammento di file manifest da unire a quello dell'applicazione principale ([come descritto qui](/it/manuals/extensions-manifest-merge-tool)).
 
 
@@ -125,7 +128,7 @@ Se l'estensione dipende da annotazioni a runtime, includi anche:
 
 Queste regole vengono combinate con il file di conservazione selezionato nel progetto quando [R8 è abilitato](/it/manuals/android/#enabling-r8).
 
-Con Defold 1.14.0 o versioni successive e un server Extender compatibile, R8 rimuove anche le risorse Android inutilizzate. Se l'estensione cerca risorse dinamicamente per nome, aggiungi [regole XML di conservazione delle risorse](/it/manuals/android/#keeping-android-resources) in `res/android/res/raw` nella cartella dell'estensione.
+Con un server Extender compatibile, R8 rimuove anche le risorse Android inutilizzate. Se l'estensione cerca dinamicamente le risorse per nome, aggiungi [regole XML di conservazione delle risorse](/it/manuals/android/#keeping-android-resources) in `res/android/res/raw` nella cartella dell'estensione.
 
 
 ## Risorse personalizzate {#custom-resources}

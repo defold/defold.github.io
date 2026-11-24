@@ -10,9 +10,10 @@ toc:
 - Instalacja
 - Wersje
 - Ekran powitalny
-- Witaj, świecie
 - Przegląd edytora Defold
 - Porównanie edytorów
+- anchor: 2d-and-3d-scene-orientation
+  title: Orientacja sceny 2D i 3D
 - Przegląd paneli Defold
 - Kluczowe pojęcia
 - Elementy składowe
@@ -107,25 +108,7 @@ Możesz też rozpocząć nowy projekt z:
 
 Gdy utworzysz i/lub otworzysz swój pierwszy projekt, zostanie on otwarty w Defold Editor.
 
-## Witaj, świecie
-
-To szybki sposób, aby sprawnie zrobić coś w Defold, wykonać kroki, a potem wrócić do reszty instrukcji.
-
-1. Wybierz pusty projekt z `Templates`, wpisz nazwę w `Title`, wybierz lokalizację i utwórz go, klikając `Create New Project`. Zostanie otwarty w Defold Editor.
-![Krok 1: Hello World](/manuals/images/unity/helloworld_1.png)
-2. Po lewej stronie, w panelu `Assets`, otwórz folder `main` i kliknij dwukrotnie `main.collection`, aby go otworzyć.
-3. Po prawej stronie, w panelu `Outline`, kliknij prawym przyciskiem myszy `Collection` i wybierz `Add Game Object`.
-![Krok 2: Hello World](/manuals/images/unity/helloworld_2.png)
-4. Kliknij prawym przyciskiem myszy utworzony obiekt gry `go` i wybierz `Add Component`, a następnie `Label`.
-![Krok 3: Hello World](/manuals/images/unity/helloworld_3.png)
-5. Niżej, po lewej stronie, w panelu `Properties` wpisz coś we właściwości `Text`.
-6. W głównym, centralnym widoku sceny przeciągnij, przesuń i upuść etykietę tak, aby znalazła się około `(480,320,0)`, albo zmień tę wartość w `Properties`, w polu `Position`.
-![Krok 4: Hello World](/manuals/images/unity/helloworld_4.png)
-7. Po zmianie pozycji etykiety zapisz projekt, klikając `File` -> `Save All` albo używając skrótu <kbd>Ctrl</kbd>+<kbd>S</kbd> (<kbd>Cmd</kbd>+<kbd>S</kbd> na Macu).
-8. Zbuduj projekt, klikając `Project` -> `Build` albo używając skrótu <kbd>Ctrl</kbd>+<kbd>B</kbd> (<kbd>Cmd</kbd>+<kbd>B</kbd> na Macu).
-![Krok 5: Hello World](/manuals/images/unity/helloworld_5.png)
-
-Właśnie zbudowałeś swój pierwszy projekt w Defold i powinieneś zobaczyć tekst w oknie. Pojęcia obiektu gry i komponentu powinny być ci już znane. Kolekcje, Outline, Properties oraz to, dlaczego trzeba było przesunąć etykietę trochę w górę i w prawo, wyjaśniamy poniżej.
+{% include shared/pl/hello-world.md %}
 
 ---
 
@@ -139,13 +122,9 @@ Pierwsza różnica, którą zauważysz między Unity a Defold, to domyślny ukł
 
 ![Porównanie edytorów](/manuals/images/unity/defold_unity_editor.png)
 
-Domyślnie Defold Editor otwiera się w ortograficznym podglądzie 2D. Jeśli będziesz pracować nad projektem 3D albo po prostu chcesz wrażenie bliższe Unity, zalecamy przełączenie z 2D na 3D przez odznaczenie przełącznika `2D` na pasku narzędzi i zmianę projekcji kamery na perspektywiczną przez zaznaczenie przełącznika `Perspective`:
+### Orientacja sceny 2D i 3D {#2d-and-3d-scene-orientation}
 
-![Pasek narzędzi Defold](/manuals/images/unity/defold_2d.png)
-
-Możesz też dostosować `Grid Settings` na pasku narzędzi tak, aby używały płaszczyzny `Y`, tak jak w Unity:
-
-![Ustawienia 3D Defold](/manuals/images/unity/defold_3d.png)
+{% include shared/pl/2d-and-3d-scene-orientation.md %}
 
 ### Przegląd paneli Defold
 
@@ -217,7 +196,7 @@ Poniższa tabela pokazuje podobne komponenty Unity, aby ułatwić szybkie porów
 |---|---|---|
 | [Sprite](/pl/manuals/sprite/) | Sprite Renderer | W Defold tintu (właściwości koloru) można zmieniać tylko z poziomu kodu. |
 | [Tilemap](/pl/manuals/tilemap/) | Tilemap / Grid | Defold ma wbudowany Tilemap Editor obsługujący kwadratowe siatki (ale istnieje rozszerzenie na przykład dla [Hexagon](https://github.com/selimanac/defold-hexagon/)) i nie ma wbudowanych reguł autotilingu. Narzędzia takie jak [Tiled](https://defold.com/assets/tiled/), [TileSetter](https://defold.com/assets/tilesetter/) czy [Sprite Fusion](https://defold.com/assets/spritefusion/) mają opcje eksportu do Defold. |
-| [Label](/pl/manuals/label/) | Text / TextMeshPro | Od wersji Defold 1.13.2 komponenty Label i węzły tekstowe GUI obsługują wbudowane [znaczniki tekstu formatowanego](/pl/manuals/font-richtext/) umożliwiające używanie kolorów, gradientów, obrysów i animowanych efektów. Dostępne jest też osobne rozszerzenie [RichText](https://defold.com/assets/richtext/). |
+| [Label](/pl/manuals/label/) | Text / TextMeshPro | Komponenty Label i węzły tekstowe GUI obsługują wbudowane [znaczniki tekstu formatowanego](/pl/manuals/font-richtext/) umożliwiające używanie kolorów, gradientów, obrysów i animowanych efektów. Dostępne jest też osobne rozszerzenie [RichText](https://defold.com/assets/richtext/). |
 | [Sound](/pl/manuals/sound/) | AudioSource | Defold ma tylko globalne źródło dźwięku, a nie przestrzenne. Dla Defold dostępne jest oficjalne rozszerzenie [FMOD](https://github.com/defold/extension-fmod). |
 | [Factory](/pl/manuals/factory/) | Prefab Instantiate() | W Defold Factory to komponent z określonym prototypem (prefabem). |
 | [Collection Factory](/pl/manuals/collection-factory/) | - (No direct component equivalent) | Komponent Collection Factory w Defold może tworzyć wiele obiektów gry naraz i ustawiać relacje rodzic-dziecko już w momencie tworzenia. |
@@ -273,7 +252,7 @@ Unity i Defold przechowują zawartość gry w katalogu projektu, ale różnią s
 
 ### Assety
 
-Unity trzyma assety w `Assets/` i generuje pliki `meta`. Defold nie ma plików meta. Projekt w Defold to po prostu struktura twoich folderów, dokładnie taka jak na dysku, a panel `Assets` zawsze ją odzwierciedla.
+Unity trzyma assety w `Assets/` i generuje pliki `.meta`. Defold nie ma plików meta. Projekt w Defold to po prostu struktura twoich folderów, dokładnie taka jak na dysku, a panel `Assets` zawsze ją odzwierciedla.
 
 ### Formaty zasobów
 
@@ -395,7 +374,7 @@ Dobre instrukcje o pisaniu kodu:
 
 Defold Editor zawiera wbudowany edytor kodu z podpowiadaniem kodu, podświetlaniem składni, szybkim podglądem dokumentacji, lintingiem i wbudowanym debuggerem.
 
-![Edytor kodu Defold](/images/editor/code-editor.png)
+![Edytor kodu Defold](/manuals/images/editor/code-editor.png)
 
 ### VS Code i inne edytory
 
@@ -491,7 +470,7 @@ socket: /path #fragment
 albo, opisując to bardziej w nazewnictwie Defold:
 
 ```yaml
-collection: /gameobject #component 
+collection: /gameobject #component
 ```
 W powyższych opisach spacje dodano tylko po to, aby wizualnie rozdzielić te 3 części.
 
@@ -529,7 +508,7 @@ Adresowanie względne i skróty pozwalają pisać URL-e, które można ponownie 
 
 Ponieważ Defold oddziela świat GUI od świata obiektów gry, możesz też wysyłać wiadomości z komponentów `.script` w świecie obiektów gry do `.gui_script`.
 
-Możesz również wysyłać wiadomości do specjalnych przestrzeni nazw systemu, używając identyfikatora zaczynającego się od `@`. Na przykład system renderowania można adresować przez `@render:` i użyć tego do sterowania niektórymi wbudowanymi funkcjami renderowania, takimi jak zmiana projekcji w domyślnym skrypcie renderowania:
+Możesz również wysyłać wiadomości do specjalnych przestrzeni nazw systemu, używając identyfikatora zaczynającego się od `@`. Na przykład system renderowania można adresować przez `@render` i użyć tego do sterowania niektórymi wbudowanymi funkcjami renderowania, takimi jak zmiana projekcji w domyślnym skrypcie renderowania:
 
 ```lua
 msg.post("@render:", "use_stretch_projection", { near = -1, far = 1 })
@@ -640,7 +619,7 @@ Oto porównanie:
 |-|-|-|
 | `init()` | `Awake()` / `Start()` / `OnEnable()`| Defold ma jeden punkt wejścia inicjalizacji i jedno wywołanie zwrotne - init(). Jest wywoływane dla każdego komponentu w momencie jego utworzenia. |
 | `on_input` | Input Methods | Defold odbiera wejścia, gdy [ustawiono fokus wejścia dla skryptu](/pl/manuals/input/#input-focus). Jest to przetwarzane jako pierwsze w pętli aktualizacji. |
-| `fixed_update()` | `FixedUpdate()` | Wywoływane ze stałym krokiem czasowym. Aby włączyć to w Defold, musisz ustawić `Use Fixed Timestep` - [szczegóły](https://defold.com/pl/manuals/project-settings/#use-fixed-timestep). Od wersji 1.12.0 uruchamia się przed `update()`. |
+| `fixed_update()` | `FixedUpdate()` | Wywoływane ze stałym krokiem czasowym. Aby włączyć to w Defold, musisz ustawić `Use Fixed Timestep` - [szczegóły](https://defold.com/pl/manuals/project-settings/#use-fixed-timestep). Uruchamia się przed `update()`. |
 | `update()` | `Update()` | Wywoływane raz na klatkę z delta time. |
 | `late_update()` | `LateUpdate()` | Wywoływane po `update()`, tuż przed renderowaniem klatki. Dostępne od 1.12.0. |
 | `on_message` | Message Receiver | Podstawowe wywołanie zwrotne Defold do odbierania wiadomości. Jest przetwarzane, gdy w kolejce znajduje się jakakolwiek wiadomość. |

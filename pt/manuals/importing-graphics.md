@@ -6,6 +6,8 @@ locale: pt
 title: Importando e usando gráficos 2D
 toc:
 - Importando gráficos 2D
+- anchor: ktx2-textures
+  title: Texturas KTX2
 - Criando assets do Defold
 - Usando assets do Defold
 ---
@@ -17,8 +19,18 @@ O Defold oferece suporte a muitos tipos de componentes visuais frequentemente us
 ![Importing files](/manuals/images/graphics/import.png)
 
 <div class='sidenote' markdown='1'>
-O Defold oferece suporte a imagens nos formatos PNG e JPEG. Outros formatos de imagem precisam ser convertidos antes de poderem ser usados.
+Use imagens PNG ou JPEG para atlases e fontes de tiles. Texturas de origem KTX2 também podem ser importadas para uso como texturas de modelos; veja abaixo.
 </div>
+
+## Texturas KTX2 {#ktx2-textures}
+
+Importe um arquivo *.ktx2* independente arrastando-o para o painel *Assets* e atribua-o ao campo de textura de material de um componente Model. [Modelos glTF e GLB](/pt/manuals/importing-models/#ktx2-textures) também podem referenciar arquivos KTX2 externos ou conter imagens KTX2 incorporadas. Entradas de atlas, fontes de tiles e faces de cubemap continuam usando seus formatos de imagem existentes.
+
+As entradas KTX2 aceitas são texturas 2D que usam ETC1S/BasisLZ, UASTC, BC7 ou dados R/RG/RGB/RGBA de 8 bits UNORM ou sRGB. Arrays, cubemaps, volumes e texturas HDR KTX2 não são aceitos. KTX2 é processado durante o build em recursos *.texturec* do Defold; o runtime não lê contêineres KTX2.
+
+Abra um asset KTX2 para inspecionar seu formato de origem, dimensões, espaço de cores, metadados alfa e níveis mip. O painel *Outline* permite selecionar os níveis mip individuais criados no arquivo. Eles mostram as imagens de origem mesmo quando um perfil de textura redimensiona a textura compilada ou desabilita seus mipmaps.
+
+Use [perfis de textura](/pt/manuals/texture-profiles/#ktx2-source-textures) para escolher entre manter o formato de origem e convertê-lo para outros formatos. Escolha formatos de saída compatíveis com seus dispositivos-alvo. Recomprimir uma origem que já tem perdas pode reduzir ainda mais a qualidade, inclusive quando **Keep KTX2 Format** precisa recodificar após o processamento da imagem.
 
 
 ## Criando assets do Defold

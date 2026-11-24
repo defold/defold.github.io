@@ -68,7 +68,15 @@ Font resource information
 
 ### font.prewarm_text
 *Type:* FUNCTION
-prepopulates the font glyph cache with rasterised glyphs
+prepopulates the font glyph cache with generated glyphs
+
+**Notes**
+
+- This function can only be used with fonts whose **Glyph Generation**
+property is set to **Dynamic**.
+Vector fonts can be prewarmed before rendering. When outline/shadow SDF
+effects are enabled, generation uses the Size set in the .font resource,
+independently of label/GUI Font Size. Curve-only fonts use an internal reference.
 
 **Parameters**
 

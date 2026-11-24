@@ -30,7 +30,7 @@ Im gesamten Tutorial sind ausführliche Beschreibungen von Konzepten und einzeln
 
 Erstelle zunächst ein [neues Projekt](/de/manuals/project-setup/) und öffne es im Editor. Wenn du auf die Datei *main/main.collection* doppelklickst, wird sie geöffnet:
 
-![Übersicht des Editors](../manuals/images/editor/editor2_overview.png)
+![Übersicht des Editors](../manuals/images/editor/editor_overview.png)
 
 Der Editor besteht aus den folgenden Hauptbereichen:
 

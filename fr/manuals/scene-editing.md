@@ -15,6 +15,8 @@ toc:
   title: Navigation dans la vue de scène (commandes de caméra)
 - anchor: standard-navigation-all-visual-editors
   title: Navigation standard (tous les éditeurs visuels)
+- anchor: axis-gizmo
+  title: Gizmo des axes
 - anchor: 2d-and-3d-scene-orientation
   title: Orientation de la scène en 2D et en 3D
 - anchor: toolbar-overview
@@ -88,33 +90,43 @@ Ces commandes sont disponibles dans les éditeurs visuels :
 
 Vous pouvez aussi utiliser **Frame Selection** (<kbd>F</kbd>) pour centrer la caméra sur la sélection actuelle.
 
+### Gizmo des axes {#axis-gizmo}
+
+Le **Scene View Axis Gizmo** apparaît dans le coin inférieur droit de la vue de scène en mode 3D. Il indique l'orientation de la caméra par rapport aux axes du monde : **X** en rouge, **Y** en vert et **Z** en bleu.
+
+![Vue de scène avec le gizmo des axes dans le coin inférieur droit](/manuals/images/editor/axis_gizmo.gif)
+
+| Commande | Action |
+| --- | --- |
+| <kbd>Left Mouse Click</kbd> sur une poignée d'axe | Aligne la caméra pour regarder le long de cet axe. Les poignées opposées donnent une vue depuis l'autre côté. |
+| Cliquer sur une poignée d'axe déjà alignée | Passe à la vue opposée le long du même axe. |
+| Maintenir <kbd>Left Mouse Button</kbd> et faire glisser le gizmo | Fait orbiter la caméra autour de son point de visée actuel. Vous pouvez faire glisser depuis une poignée d'axe ou la zone circulaire autour des poignées, sans maintenir de touche de modification. |
+
+L'alignement sur un axe conserve le point de visée, la distance et la projection de la caméra. Utilisez d'abord **Frame Selection** (<kbd>F</kbd>) pour centrer la vue sur un objet, puis le gizmo pour l'inspecter sous différents angles. Les commandes habituelles de déplacement, zoom et orbite avec <kbd>Ctrl</kbd>/<kbd>^ Control</kbd> + <kbd>Left Mouse Button</kbd> restent disponibles.
+
+Le gizmo est disponible avec les projections perspective et orthographique en mode 3D. Il est masqué en mode 2D ; utilisez **Align/Realign Camera 2D/3D** dans la [barre d'outils](#toolbar-overview), ou appuyez sur <kbd>.</kbd>, pour passer en 3D. Utilisez le [bouton distinct de projection de la caméra](#camera-type-perspective-vs-orthographic) pour choisir la projection perspective ou orthographique. Le gizmo contrôle la vue de votre scène dans l'éditeur de scène.
+
 ## Orientation de la scène en 2D et en 3D {#2d-and-3d-scene-orientation}
 
-La vue de scène peut être utilisée dans les flux de travail en 2D comme en 3D :
+{% include shared/fr/2d-and-3d-scene-orientation.md %}
 
-- En **2D**, vous travaillez généralement dans une vue orthographique avec une grille orientée pour la 2D.
-- En **3D**, vous effectuez généralement les opérations suivantes :
-  - Réaligner la vue selon une orientation 3D,
-  - Utiliser une caméra **en perspective**,
-  - Choisir un plan de grille approprié (souvent **Y** pour le « sol »).
-
-Vous pouvez accéder à ces fonctions depuis la barre d'outils et le menu **View**.
-
-![Éditeur de scène en 3D](/manuals/images/editor/3d_scene.png)
+Utilisez le [gizmo des axes](#axis-gizmo) en mode 3D pour aligner la vue sur un axe ou faire orbiter la caméra à la souris.
 
 ## Présentation de la barre d'outils {#toolbar-overview}
 
-En haut à droite de la vue de scène, une barre d'outils rassemble les outils et les options d'affichage courants (de gauche à droite) :
+En haut à droite de la vue de scène se trouve une barre d’outils contenant les outils et options d’affichage courants.
 
-- **Move tool** (<kbd>W</kbd>)
-- **Rotate tool** (<kbd>E</kbd>)
-- **Scale tool** (<kbd>R</kbd>)
-- **Grid Settings** (`▦`)
-- **Align/Realign Camera 2D/3D** (`2D`) — bascule entre les orientations 2D et 3D (raccourci <kbd>.</kbd>)
-- **Camera Perspective/Orthographic**
-- **Visibility Filters** (`👁`)
+![Barre d’outils de l’éditeur de scène avec les commandes numérotées de 1 à 7](/manuals/images/editor/toolbar.png)
 
-![Barre d'outils](/manuals/images/editor/toolbar.png)
+Options numérotées de gauche à droite :
+
+1. **Move tool** (<kbd>W</kbd>) - Déplacer les objets sélectionnés.
+2. **Rotate tool** (<kbd>E</kbd>) - Faire pivoter les objets sélectionnés.
+3. **Scale tool** (<kbd>R</kbd>) - Redimensionner les objets sélectionnés.
+4. **Grid** - Afficher ou masquer la grille. Le menu ouvre Grid Settings.
+5. **2D mode** (`2D`) - Basculer entre les orientations 2D et 3D. Vous pouvez aussi utiliser **Realign Camera** (<kbd>.</kbd>).
+6. **Perspective camera** - Basculer entre les projections perspective et orthographique en 3D. Le menu ouvre les réglages de caméra.
+7. **Visibility filters** - Afficher ou masquer les types de composants et les guides dans la vue de scène.
 
 ## Sélectionner et manipuler des objets {#manipulating-objects}
 
@@ -207,6 +219,8 @@ Utilisez le bouton de bascule de la caméra dans la barre d'outils pour passer d
 ## Mode caméra libre {#free-camera-mode}
 
 Pour naviguer rapidement en 3D, l'éditeur de scène propose un **mode caméra libre**, une caméra à la première personne, de type « FPS ».
+
+![Mode caméra libre](/manuals/images/editor/free_camera.png)
 
 ### Activer le mode caméra libre {#activating-free-camera-mode}
 

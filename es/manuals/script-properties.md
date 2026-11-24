@@ -5,17 +5,21 @@ layout: manual
 locale: es
 title: Propiedades de componentes script
 toc:
-- Propiedades de script
-- Definir una propiedad de script
+- anchor: script-properties
+  title: Propiedades de script
+- anchor: defining-a-script-property
+  title: Definir una propiedad de script
 - anchor: text-properties
   title: Propiedades de texto
-- Acceder a propiedades de script
-- Objetos creados con factory
+- anchor: accessing-script-properties
+  title: Acceder a propiedades de script
+- anchor: factory-created-objects
+  title: Objetos creados con factory
 - anchor: resource-properties
   title: Propiedades de recursos
 ---
 
-# Propiedades de script
+# Propiedades de script {#script-properties}
 
 Las propiedades de script ofrecen una forma simple y potente de definir y exponer propiedades personalizadas para una instancia específica de un objeto de juego. Las propiedades de script pueden editarse en instancias específicas directamente en el editor y sus valores pueden usarse en código para modificar el comportamiento de un objeto de juego. Hay muchos casos en los que las propiedades de script son muy útiles:
 
@@ -26,9 +30,11 @@ Las propiedades de script ofrecen una forma simple y potente de definir y expone
 
 Los casos de uso comunes son definir la salud o la velocidad de una IA enemiga específica, el color de tinte de un objeto pickup, el atlas de un sprite, o qué mensaje debe enviar un objeto botón cuando se presione, y/o adónde enviarlo.
 
-## Definir una propiedad de script
+## Definir una propiedad de script {#defining-a-script-property}
 
 Las propiedades de script se agregan a un componente script definiéndolas con la función especial `go.property()`. La función debe usarse en el nivel superior, fuera de cualquier función de ciclo de vida como `init()` y `update()`. El valor predeterminado proporcionado para la propiedad determina el tipo de la propiedad: `number`, `boolean`, `string`, `hash`, `msg.url`, `vmath.vector3`, `vmath.vector4`, `vmath.quaternion` y `resource` (ver más abajo).
+
+![Propiedades en el editor Defold](/manuals/images/script-properties/properties.png)
 
 <div class='important' markdown='1'>
 Ten en cuenta que la conversión inversa del valor hash funciona solo en la build Debug para facilitar la depuración. En la build Release, el valor de string inverso no existe, por lo que usar `tostring()` en un valor `hash` para extraer el string no tiene sentido.
@@ -65,7 +71,7 @@ Entonces, cualquier instancia de componente script creada a partir de este scrip
 
 Selecciona el componente script en la vista *Outline* del editor y las propiedades aparecerán en la vista *Properties*, lo que permite editarlas:
 
-![Properties](/manuals/images/script-properties/properties.png)
+![Properties](/manuals/images/script-properties/properties2.png)
 
 Cualquier propiedad sobrescrita con un nuevo valor específico de la instancia se marca en azul. Haz click en el botón de restablecer junto al nombre de la propiedad para revertir el valor al predeterminado (tal como se definió en el script).
 
@@ -76,7 +82,7 @@ Las propiedades de script se analizan al crear la build del proyecto. Las expres
 
 ### Propiedades de texto {#text-properties}
 
-Desde Defold 1.13.2, un valor predeterminado de tipo string define una propiedad de texto. Las propiedades de texto admiten UTF-8 y caracteres de salto de línea, y se editan en un campo multilínea en el editor:
+Un valor predeterminado de cadena define una propiedad de texto. Las propiedades de texto admiten UTF-8 y saltos de línea, y se editan en un campo multilínea del editor:
 
 ```lua
 go.property("greeting", "Hello!\nWelcome, José!")
@@ -100,7 +106,7 @@ end
 
 Cambiar la propiedad de script no actualiza automáticamente el label; la última línea copia explícitamente el nuevo valor a la propiedad `text` del label.
 
-## Acceder a propiedades de script
+## Acceder a propiedades de script {#accessing-script-properties}
 
 Cualquier propiedad de script definida está disponible como un miembro almacenado en `self`, la referencia de la instancia del script:
 
@@ -129,7 +135,7 @@ go.set("myobject#my_script", "my_property", val + 1)
 go.animate("myobject#my_script", "my_property", go.PLAYBACK_LOOP_PINGPONG, 100, go.EASING_LINEAR, 2.0)
 ```
 
-## Objetos creados con factory
+## Objetos creados con factory {#factory-created-objects}
 
 Si usas una factory para crear el objeto de juego, es posible definir propiedades de script en el momento de la creación:
 

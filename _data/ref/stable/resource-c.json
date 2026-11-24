@@ -161,7 +161,7 @@
             "members": [],
             "name": "FResourcePostCreate",
             "notes": [
-                "returning RESOURCE_CREATE_RESULT_PENDING will result in a repeated callback the following update."
+                "returning RESOURCE_CREATE_RESULT_PENDING will result in a repeated callback the following update.\nPostCreate must consume its resource's asynchronous results directly. Resource\nloading does not dispatch shared job callbacks, including during synchronous Get.\nOn platforms without workers, PostCreate must advance its own pending work."
             ],
             "parameters": [
                 {
@@ -219,15 +219,15 @@
             "type": "TYPEDEF"
         },
         {
-            "brief": "Resource recreate function. Recreate resource in-p...",
-            "description": "Resource recreate function. Recreate resource in-place.",
+            "brief": "Resource recreate function. Prefer recreating the ...",
+            "description": "Resource recreate function. Prefer recreating the resource in-place.",
             "error": "",
             "examples": "",
             "language": "",
             "members": [],
             "name": "FResourceRecreate",
             "notes": [
-                "Beware that any \"in flight\" resource pointers to the actual resource must remain valid after this call."
+                "Existing resource pointers must remain valid or be updated in resource-reloaded callbacks.\nIf replacing the pointer with ResourceDescriptorSetResource, use ResourceDescriptorSetPrevResource\nto keep the previous resource alive until those callbacks finish. The resource system then destroys it."
             ],
             "parameters": [
                 {
@@ -930,7 +930,9 @@
             "members": [],
             "name": "ResourceGet",
             "notes": [
-                "if successful, it increments the ref count by one"
+                "if successful, it increments the ref count by one",
+                "An in-flight shared load keeps Create/PostCreate on the thread that first\nrequested it. That thread must continue updating its resource requests.",
+                "Resource callbacks can consume already-created dependencies while their\nPostCreate is pending. The owning request retains finalization and its result."
             ],
             "parameters": [
                 {
@@ -1012,7 +1014,7 @@
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "RESOURCE_RESULT_OK on success",
+                    "doc": "RESOURCE_RESULT_OK on success, RESOURCE_RESULT_PENDING while finalization is pending.",
                     "name": "result",
                     "types": [
                         "ResourceResult"
@@ -1068,7 +1070,7 @@
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "RESOURCE_RESULT_OK on success.\n                                      RESOURCE_RESULT_INVALID_FILE_EXTENSION if the path extension doesn't match the required extension.",
+                    "doc": "RESOURCE_RESULT_OK on success, RESOURCE_RESULT_PENDING while finalization is pending.\n                                      RESOURCE_RESULT_INVALID_FILE_EXTENSION if the path extension doesn't match the required extension.",
                     "name": "result",
                     "types": [
                         "ResourceResult"
@@ -1591,8 +1593,8 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "Hint the preloader what to load before Create is c...",
-            "description": "Hint the preloader what to load before Create is called on the resource.\nThe resources are not guaranteed to be loaded before Create is called.\nThis function can be called from a worker thread.",
+            "brief": "Declare a direct dependency while decoding a resou...",
+            "description": "Declare a direct dependency while decoding a resource in Preload.\nThe shared resource scheduler creates accepted dependencies before invoking\nthe resource's Create callback. Create is still called after a dependency\nfailure so that the resource type can release its preload data.\nThis function can be called from a worker thread.",
             "error": "",
             "examples": "",
             "language": "",
@@ -1601,7 +1603,7 @@
             "notes": [],
             "parameters": [
                 {
-                    "doc": "Preloader handle",
+                    "doc": "Dependency-discovery handle supplied to Preload",
                     "is_optional": "False",
                     "name": "preloader",
                     "types": [
@@ -1620,7 +1622,7 @@
             "replaces": "",
             "returnvalues": [
                 {
-                    "doc": "if successfully invoking preloader.",
+                    "doc": "true if accepted, false for an invalid path or dependency cycle.",
                     "name": "result",
                     "types": [
                         "bool"

@@ -132,6 +132,8 @@ A space separated list of directories that should be shared from your project vi
 
 ### Display
 
+On desktop platforms, engine windows opened from the editor can restore a size saved during an earlier run. Choose `Debug ▸ Reset Simulated Resolution` to clear remembered sizes and return to the configured size while keeping saved window positions. See [engine window placement and reset](https://defold.com/llms/manuals/editor.md) for details.
+
 #### Width
 The width in pixels of the application window.
 
@@ -140,6 +142,8 @@ The height in pixels of the application window.
 
 #### High Dpi
 Creates a high dpi back buffer on displays that support it. Typically the game will render in double the resolution than what is set in the *Width* and *Height* settings, which will still be the logical resolution used in scripts and properties.
+
+On HTML5, use [Min Pixel Ratio](#min-pixel-ratio) and [Max Pixel Ratio](#max-pixel-ratio) to bound the rendering scale when this setting is enabled.
 
 #### Samples
 How many samples to use for super sampling anti-aliasing. It sets the `GLFW_FSAA_SAMPLES` window hint. A value of `0` means that anti-aliasing is turned off.
@@ -167,297 +171,268 @@ Check if the app should dynamically switch between portrait and landscape on dev
 #### Display Device Info
 Output GPU info to console at startup.
 
-### Font
+### Physics
 
-#### Runtime Generation
-Use runtime font generation.
+#### Max Collision Object Count
+Max number of collision objects.
 
-### Graphics
+#### Type
+Which type of physics to use, `2D` or `3D`.
 
-#### Default Texture Min Filter
-Specifies which filtering to use for minification filtering.
+#### Gravity X
+World gravity along x-axis. In meters per second.
 
-#### Default Texture Mag Filter
-Specifies which filtering to use for magnification filtering.
+#### Gravity Y
+World gravity along y-axis. In meters per second.
 
-#### Max Draw Calls
-The max number of render calls.
+#### Gravity Z
+World gravity along z-axis. In meters per second.
 
-#### Max Characters:
-The number of characters preallocated in the text rendering buffer, i.e. the number of characters that can be displayed each frame.
+#### Debug
+Check if physics should be visualized for debugging.
 
-#### Max Font Batches
-The maximum number of text batches that can be displayed each frame.
+#### Debug Alpha
+Alpha component value for visualized physics, `0`--`1`.
 
-#### Max Debug Vertices
-The maximum number of debug vertices. Used for physics shape rendering among other things.
+#### World Count
+Max number of concurrent physics worlds, `4` by default. If you load more than 4 worlds simultaneously through collection proxies you need to increase this value. Be aware that each physics world allocates a fair amount of memory.
 
-#### Texture Profiles
-The texture profiles file to use for this project, `/builtins/graphics/default.texture_profiles` by default.
+#### Scale
+Tells the physics engine how to scale the physics worlds in relation to the game world for numerical precision, `0.01`--`1.0`. If the value is set to `0.02`, it means that the physics engine will view 50 units as 1 meter ($1 / 0.02$).
 
-#### Verify Graphics Calls
-Verify the return value after each graphics call and report any errors in the log.
+#### Allow Dynamic Transforms
+Check if the physics engine should apply the transform of a game object to any attached collision object components. This can be used to move, scale and rotate collision shapes, even those that are dynamic.
 
-#### WebGL Version Hint
-`graphics.webgl_version_hint` selects the WebGL context version to request for HTML5. Valid values are `1` (WebGL 1) and `2` (WebGL 2, the default). Set it to `1` to target or test WebGL 1 even on a browser that supports WebGL 2. Keep [Exclude GLES 2.0](#exclude-gles-20) disabled when targeting WebGL 1 so the required shaders are included.
+#### Use Fixed Timestep
+Check if the physics engine should use fixed and framerate independent updates. Use this setting in combination with the `fixed_update(self, dt)` lifecycle function and the `engine.fixed_update_frequency` project setting to interact with the physics engine at regular intervals. For new projects the recommended setting is `true`.
 
-#### OpenGL Version Hint
-OpenGL context version hint. If a specific version is selected, this will be used as the minimum version required (does not apply to OpenGL ES).
+#### Debug Scale
+How big to draw unit objects in physics, like triads and normals.
 
-#### OpenGL Core Profile Hint
-Set the 'core' OpenGL profile hint when creating the context. The core profile removes all deprecated features from OpenGL, such as immediate mode rendering. Does not apply to OpenGL ES.
+#### Max Collisions
+How many collisions that will be reported back to the scripts.
 
-#### Vulkan Version Major
-`graphics.vulkan_version_major` is the Vulkan context/API major version hint. This applies only when the Vulkan graphics backend is selected. The default is `1`.
+#### Max Contacts
+How many contact points that will be reported back to the scripts.
 
-#### Vulkan Version Minor
-`graphics.vulkan_version_minor` is the Vulkan context/API minor version hint. This applies only when the Vulkan graphics backend is selected. The default is `0`.
+#### Contact Impulse Limit
+Ignore contact impulses with values less than this setting.
 
-### Input
+#### Ray Cast Limit 2d
+The max number of 2d ray cast requests per frame.
 
-#### Repeat Delay
-Seconds to wait before a held down input should start repeating itself.
+#### Ray Cast Limit 3d
+The max number of 3d ray cast requests per frame.
 
-#### Repeat Interval
-Seconds to wait between each repetition of a held down input.
+#### Trigger Overlap Capacity
+The maximum number of overlapping physics triggers.
 
-#### Gamepads
-File reference of the gamepads config file, which maps gamepad signals to OS, `/builtins/input/default.gamepads` by default.
+#### Velocity Threshold
+Minimum velocity that will result in elastic collisions.
 
-#### Gamepad Database
-`input.gamepad_database` selects an SDL-format gamepad mapping database (`.txt`). The default is `/builtins/input/gamecontrollerdb.txt`. Its mappings are combined with the *Gamepads* file when building the project.
+#### Max Fixed Timesteps
+Max number of steps in the simulation when using fixed timestep (3D only).
 
-#### Gamepad Deadzone
-`input.gamepad_deadzone` sets the runtime dead zone applied to mappings from the SDL gamepad database. The default is `0.2`.
+### Shader
 
-#### Game Binding
-File reference of the input config file, which maps hardware inputs to actions, `/input/game.input_binding` by default.
+#### Exclude GLES 2.0
+`shader.exclude_gles_sm100` excludes shaders for OpenGLES 2.0 and WebGL 1.0. Enabled by default (`1`).
 
-#### Use Accelerometer
-Check to make the engine receive accelerator input events each frame. Disabling accelerometer input may give some performance benefit.
+To target these graphics APIs or allow fallback to them, uncheck **Shader ▸ Exclude GLES 2.0** in *game.project*, or set:
+```ini
+[shader]
+exclude_gles_sm100 = 0
+```
 
-### Network
+Projects that do not explicitly set this option use the default. Set it to `0` explicitly if the project needs OpenGLES 2.0 or WebGL 1.0 support.
 
-#### Http Timeout
-The HTTP timeout in seconds. Set to `0` to disable timeout.
+#### GLSL ES Default Precision Float
+`shader.glsl_es_default_precision_float` sets the default global precision qualifier for floating-point values in cross-compiled GLSL ES shaders. Valid values are `mediump` and `highp`; the default is `mediump`.
 
-#### Http Thread Count
-The number of worker threads for the HTTP service.
+#### GLSL ES Default Precision Int
+`shader.glsl_es_default_precision_int` sets the default global precision qualifier for integer values in cross-compiled GLSL ES shaders. Valid values are `mediump` and `highp`; the default is `highp`.
 
-#### Http Cache Enabled
-Check to enable the HTTP cache for network requests (using `http.request()`. The HTTP cache will store the response associated with a request and reuse the stored response for subsequent requests. The HTTP cache supports the `ETag` and `Cache-Control: max-age` HTTP response headers.
+### Resource
 
-#### SSL Certificates
-File containing SSL root certificates to use when verifying the certificate chain during SSL handshakes.
+#### Http Cache
+If checked, a HTTP cache is enabled for faster loading of resources over the network to the running engine on device.
 
-### Sound
+#### Uri
+Where to find the project build data, in URI format.
 
-#### Gain
-Global gain (volume), `0`--`1`.
+#### Max Resources
+The max number of resources that can be loaded at the same time.
 
-#### Use Linear Gain
-If enabled, gain is linear. If disabled, uses an exponential curve.
+#### Profile
+`resource.profile` enables resource loading timings and INFO-level logs for each completed or failed load. Disabled by default (`0`). Enable it (`1`) before launching the game to measure startup loads. The resource profiler shows retained initial-load measurements for currently loaded resources; click **Capture**, then **Show load times** to inspect them. See [Resource loading times](https://defold.com/llms/manuals/profiling.md) for the timing columns and how to interpret them.
 
-#### Max Sound Data
-Max number of sound resources, i.e the number of unique sound files at runtime.
+### Collection
 
-#### Max Sound Buffers
-(Currently not used) Max number of concurrent sound buffers.
+#### Max Instances
+Max number of game object instances in a collection, `1024` by default. [(See information about component max count optimizations)](#component-max-count-optimizations).
 
-#### Max Sound Sources
-(Currently not used) Max number of concurrently playing sounds.
+#### Max Input Stack Entries
+Max number of game objects in the input stack.
 
-#### Max Sound Instances
-Max number of concurrent sound instances, i.e. actual sounds played at the same time.
-
-#### Max Component Count
-Max number of sound components per collection.
-
-#### Sample Frame Count
-Number of samples used for each audio update. 0 means automatic (1024 for 48 kHz, 768 for 44.1 kHz).
-
-#### Use Thread
-If checked, the sound system will use threads for sound playback to reduce risk of stutter when the main thread is under heavy load.
-
-#### Stream Enabled
-If checked, the sound system will use streaming to load source files.
-
-#### Stream Cache Size
-The max size of the sound chunk cache containing _all_ chunks. `2097152` bytes by default.
-This number should be larger than the number of loaded sound files times the stream chunk size.
-Otherwise, you risk evicting new chunks each frame.
-
-#### Stream Chunk Size
-The size in bytes of each streamed chunk.
-
-#### Stream Preload Size
-Determines the size in bytes of the initial chunk for sound files read from the archive.
-
-### Tilemap
+### Sprite
 
 #### Max Count
-Max number of tile maps per collection. [(See information about component max count optimizations)](#component-max-count-optimizations).
-
-#### Max Tile Count
-Max number of concurrent visible tiles per collection.
-
-### Mesh
-
-#### Max Count
-Max number of mesh components per collection. [(See information about component max count optimizations)](#component-max-count-optimizations).
-
-### Light
-
-#### Max Count {#light-max-count}
-`light.max_count` sets the maximum number of light components, `64` by default. [(See information about component max count optimizations)](#component-max-count-optimizations).
-
-### Label
-
-#### Max Count
-Max number of labels. [(See information about component max count optimizations)](#component-max-count-optimizations).
+Max number of sprites per collection. [(See information about component max count optimizations)](#component-max-count-optimizations).
 
 #### Subpixels
-Check to allow labels to appear unaligned with respect to pixels.
+Check to allow sprites to appear unaligned with respect to pixels.
 
-### Box2D
-
-#### Velocity Iterations
-Number of velocity iterations for the Box2D 2.2 physics solver.
-
-#### Position Iterations
-Number of position iterations for the Box2D 2.2 physics solver.
-
-#### Sub Step Count
-Number of sub-steps for the Box2D 3.x physics solver.
-
-### Collection factory
+### Spine
 
 #### Max Count
-Max number of collection factories. [(See information about component max count optimizations)](#component-max-count-optimizations).
+Max number of spine model components. [(See information about component max count optimizations)](#component-max-count-optimizations).
 
-### iOS
+### Model
 
-#### App Icon 57x57--180x180
+#### Max Count
+Max number of model components per collection. [(See information about component max count optimizations)](#component-max-count-optimizations).
+
+#### Split Meshes
+Split meshes with more than 65536 vertices into new meshes.
+
+#### Max Bone Matrix Texture Width
+Maximum width of the bone matrix texture. Only the size needed for animations is used, rounded up to nearest power-of-two.
+
+#### Max Bone Matrix Texture Height
+Maximum height of the bone matrix texture. Only the size needed for animations is used, rounded up to nearest power-of-two.
+
+#### Max Morph Target Texture Width
+`model.max_morph_target_texture_width` sets the maximum width in pixels of the texture generated per mesh for morph target position, normal, and tangent deltas. The default is `1024`.
+
+#### Max Morph Target Texture Height
+`model.max_morph_target_texture_height` sets the maximum height in pixels of the texture generated per mesh for morph target position, normal, and tangent deltas. The default is `1024`.
+
+### GUI
+
+#### Max Count
+Max number of GUI components. [(See information about component max count optimizations)](#component-max-count-optimizations).
+
+#### Max Particle Count
+The max number of concurrent particles in GUI.
+
+#### Max Particlefx Count
+`gui.max_particlefx_count` sets the maximum number of particle FX nodes per collection. The default is `64`.
+
+#### Max Animation Count
+The max number of active animations in gui.
+
+#### Safe Area Mode
+`gui.safe_area_mode` selects which safe-area insets affect GUI adjustment:
+
+- `none` (default): Ignore the insets.
+- `long`: Apply left/right insets in landscape and top/bottom insets in portrait.
+- `short`: Apply top/bottom insets in landscape and left/right insets in portrait.
+- `both`: Apply all four insets.
+
+A GUI script can override the mode for its scene with [`gui.set_safe_area_mode()`](https://defold.com/ref/gui/#gui.set_safe_area_mode). See the [safe area guidance](https://defold.com/llms/manuals/porting-guidelines.md) for platform support and custom layouts.
+
+### Particle FX
+
+#### Max Count
+`particle_fx.max_count` sets the maximum number of particle FX components, `64` by default. [(See information about component max count optimizations)](#component-max-count-optimizations).
+
+#### Max Emitter Count
+`particle_fx.max_emitter_count` sets the maximum number of concurrent particle FX emitters. The default is `64`.
+
+#### Max Particle Count
+The max number of concurrent particles. This limits the GPU vertex buffer size, `1024` particles by default.
+
+#### Max Particle Buffer Count
+`particle_fx.max_particle_buffer_count` sets the maximum number of particles per upload to the GPU. This limits the CPU buffer used to generate particle vertices. The default is `1024`.
+
+### Collection proxy
+
+#### Max Count
+Max number of collection proxies. [(See information about component max count optimizations)](#component-max-count-optimizations).
+
+### Factory
+
+#### Max Count
+Max number of game object factories. [(See information about component max count optimizations)](#component-max-count-optimizations).
+
+### Android
+
+#### App Icon 36x36--192x192
 Image file (.png) to use as application icon at given width and height dimensions `W` &times; `H`.
 
-#### Launch Screen
-Storyboard file (.storyboard). Learn more about how to create one in the [iOS manual](https://defold.com/llms/manuals/ios.md).
+#### Push Icon Small--LargeXxxhdpi
+Image files (.png) to be used as custom push notification icon on Android. The icons will automatically be used for both local or remote push notifications. If not set the application icon will be used by default.
 
-#### Icons Asset
-The icons asset file (.car) containing app icons.
+#### Push Field Title
+Specifies which payload JSON field should be used as notification title. Leaving this setting empty makes the pushes default to the application name as title.
 
-#### Prerendered Icons
-(iOS 6 and earlier) Check if your icons are prerendered. If this is unchecked the icons will get a glossy highlight added automatically.
+#### Push Field Text
+Specifies which payload JSON field should be used as notification text. If left empty, the text in the field `alert` is used, just as on iOS.
 
-#### Bundle Identifier
-The bundle identifier lets iOS recognize any updates to your app. Your bundle ID must be registered with Apple and be unique to your app. You cannot use the same identifier for both iOS and macOS apps. Must consist of two or more segments separated by a dot. Each segment must start with a letter. Each segment must only consist of alphanumeric letters, the underscore or hyphen (-) character (see [`CFBundleIdentifier`](https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html#//apple_ref/doc/uid/20001431-130430))
+#### Version Code
+An integer value indicating the version of the app. Increase the value for each subsequent update.
 
-#### Bundle Name
-The bundle short name (15 characters) (see [`CFBundleName`](https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html#//apple_ref/doc/uid/20001431-130430)).
+#### Minimum SDK Version
+The minimum API Level required for the application to run (`android:minSdkVersion`).
 
-#### Bundle Version
-The bundle version, either a number or x.y.z. (see [`CFBundleVersion`](https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html#//apple_ref/doc/uid/20001431-130430))
+#### Target SDK Version
+The API Level that the application targets (`android:targetSdkVersion`).
 
-#### Info.plist
-If specified, use this *`Info.plist`* file instead of the built-in iOS base manifest when bundling your app. The built-in manifest contains the local-network and Bonjour entries needed for Editor target discovery in non-release builds. If you supply a custom manifest and need target discovery, profiling, hot reload, or log streaming on a device, preserve those entries as described in the [iOS manual](https://defold.com/llms/manuals/ios.md).
+#### Package
+Package identifier. Must consist of two or more segments separated by a dot. Each segment must start with a letter. Each segment must only consist of alphanumeric letters or the underscore character.
 
-#### Privacy Manifest
-The Apple Privacy Manifest for the application. The field will default to `/builtins/manifests/ios/PrivacyInfo.xcprivacy`.
+#### GCM Sender Id
+Google Cloud Messaging Sender Id. Set this to the string assigned by Google to enable push notifications.
 
-#### Custom Entitlements
-If specified, the entitlements in the supplied provisioning profile (`.entitlements`, `.xcent`, `.plist`) will be merged with the entitlements from the provisioning profile supplied when bundling the application.
+#### FCM Application Id
+Firebase Cloud Messaging Application Id.
 
-#### Default Language
-The language used if the application doesn't have user's preferred language in `Localizations` list (see [`CFBundleDevelopmentRegion`](https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html#//apple_ref/doc/uid/20001431-130430)). Use the two-letter ISO 639-1 standard if preferred language is available there or the three-letter ISO 639-2.
+#### Manifest
+If set, use the specified Android manifest XML file when bundling. A custom manifest replaces Defold's built-in base manifest. Native-extension manifest fragments are still merged into it, but later changes to the built-in base manifest are not inherited automatically, so compare custom manifests with the current built-in manifest when upgrading. For games, set `android:appCategory="game"` on the `` element. For non-game applications, set `android:appCategory` only if one of Android's defined [application categories](https://developer.android.com/guide/topics/manifest/application-element#appCategory) accurately describes the app.
 
-#### Localizations
-This field contains comma-separated strings identifying the language name or ISO language designator of the supported localizations (see [`CFBundleLocalizations`](https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html#//apple_ref/doc/uid/20001431-109552)).
+#### Iap Provider
+Specifies which store to use. Valid options are `Amazon` and `GooglePlay`. Refer to [extension-iap](/extension-iap/) for more information.
 
-### macOS
+#### Input Method
+Specifies which method to use to get keyboard input on Android devices. Valid options are `KeyEvent` (old method) and `HiddenInputField` (new).
+
+#### Immersive Mode
+If set, hides the navigation and status bars and lets your app capture all touch events on the screen.
+
+#### Display Cutout
+Extend to display cutout.
+
+#### Debuggable
+Whether or not the application can be debugged using tools such as [GAPID](https://github.com/google/gapid) or [Android Studio](https://developer.android.com/studio/profile/android-profiler). This will set the `android:debuggable` flag in the Android manifest ([official documentation](https://developer.android.com/guide/topics/manifest/application-element#debug)).
+
+#### R8 Keep Rules
+`android.r8_keep_rules` selects a `.keep` file to enable R8 shrinking, optimization and obfuscation of Java code in Android builds. Leave the setting empty to use D8 without shrinking.
+
+With a compatible Extender build server, this also removes unused Android resources. Resources loaded dynamically may need separate [XML keep rules](https://defold.com/llms/manuals/android.md).
+
+Select `/builtins/manifests/android/dmengine.keep` to use Defold's default rules directly. Extensions supply their own [keep rules](https://defold.com/llms/manuals/extensions.md), which are combined with this file.
+
+Only copy the built-in file into your project if you need to add project-specific rules. Preserve the built-in rules in the copy: selecting a custom file replaces the complete project rule set.
+
+See the [Android manual](https://defold.com/llms/manuals/android.md) for enabling R8 and retaining its obfuscation mapping with a release bundle.
+
+#### Extract Native Libraries
+Specifies whether the package installer extracts native libraries from the APK to the file system. If set to `false`, your native libraries are stored uncompressed in the APK. Although your APK might be larger, your application loads faster because the libraries load directly from the APK at runtime. This will set the `android:extractNativeLibs` flag in the Android Manifest ([official documentation](https://developer.android.com/guide/topics/manifest/application-element#extractNativeLibs)).
+
+### Windows
 
 #### App Icon
-Bundle icon file (.icns) to use as application icon on macOS.
+Image file (.ico) to use as application icon on Windows. Read more about how to create a .ico file in the [Windows manual](https://defold.com/llms/manuals/windows.md).
 
-#### Info.plist
-If set, use the specified info.plist file when bundling.
+### IAP
 
-#### Privacy Manifest
-The Apple Privacy Manifest for the application. The field will default to `/builtins/manifests/osx/PrivacyInfo.xcprivacy`.
+#### Auto Finish Transactions
+Check to automatically finish IAP transactions. If unchecked, you need to explicitly call `iap.finish()` after a successful transaction.
 
-#### Bundle Identifier
-The bundle identifier lets macOS recognize updates to your app. Your bundle ID must be registered with Apple and be unique to your app. You cannot use the same identifier for both iOS and macOS apps. Must consist of two or more segments separated by a dot. Each segment must start with a letter. Each segment must only consist of alphanumeric letters, the underscore or hyphen (-) character.
+### Native extension
 
-#### Bundle Name {#osx-bundle-name}
-`osx.bundle_name` specifies the short bundle name (`CFBundleName`), limited to 15 characters.
-
-#### Bundle Version {#osx-bundle-version}
-`osx.bundle_version` specifies the build number (`CFBundleVersion`), either a number or `x.y.z`. The default is `1`.
-
-#### Default Language
-The language used if the application doesn't have user's preferred language in `Localizations` list (see [`CFBundleDevelopmentRegion`](https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html#//apple_ref/doc/uid/20001431-130430)). Use the two-letter ISO 639-1 standard if preferred language is available there or the three-letter ISO 639-2.
-
-#### Localizations
-This field contains comma-separated strings identifying the language name or ISO language designator of the supported localizations (see [`CFBundleLocalizations`](https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html#//apple_ref/doc/uid/20001431-109552)).
-
-### HTML5
-
-Refer to the [HTML5 platform manual](https://defold.com/llms/manuals/html5.md) for more information about many of these options.
-
-#### Heap Size
-Heap size in megabytes for Emscripten to use.
-
-#### .html Shell
-Use the specified template HTML file when bundling. By default `/builtins/manifests/web/engine_template.html`.
-
-#### Custom .css
-Use the specified theme CSS file when bundling. By default `/builtins/manifests/web/light_theme.css`.
-
-#### Splash Image
-If set, use the specified splash image on startup when bundling instead of Defold logo.
-
-#### Archive Location Prefix
-When bundling for HTML5 game data is split up into one or more archive data files. When the engine starts the game, these archive files are read into memory. Use this setting to specify the location of the data.
-
-#### Archive Location Suffix
-Suffix to be appended to the archive files. Useful to, for instance, force non-cached content from a CDN (`?version2` for example).
-
-#### Engine Arguments
-List of arguments that will be passed to the engine.
-
-#### Wasm Streaming
-Enable streaming of the wasm file (faster and uses less memory, but requires the `application/wasm` MIME type).
-
-#### Show Fullscreen Button
-Enables Fullscreen Button in `index.html` file.
-
-#### Show Made With Defold
-Enables Made With Defold link in `index.html` file.
-
-#### Show Console Banner
-When enabled this option will print information about the engine and engine version in the browser console (using `console.log()`) when the engine starts.
-
-#### Scale Mode
-Specifies which method to use to scale the game canvas.
-
-#### Retry Count
-The number of retries after a failed download during startup, including network errors, failed HTTP statuses and size mismatches in the engine's JavaScript or WebAssembly file. The initial request is separate. Archive-file verification has its own retry limit; see [download verification](https://defold.com/llms/manuals/html5.md) and `Retry Time`.
-
-#### Retry Time
-The number of seconds to wait between attempts to download a file when the download failed (see `Retry Count`).
-
-#### Verify Downloaded File Size
-`html5.verify_downloaded_file_size` checks downloaded engine and archive files against their expected sizes. Enabled by default (`true`). Set it to `false` only if a server, proxy or CDN intentionally rewrites files and changes their sizes. Failed verification causes download retries before startup fails. The retry limits differ for engine downloads and archive-file verification; see [download verification](https://defold.com/llms/manuals/html5.md).
-
-#### Transparent Graphics Context
-Check if you want the graphics context to have a transparent backdrop.
-
-### Live update
-
-#### Enabled {#liveupdate-enabled}
-`liveupdate.enabled` enables the Live update system at runtime. Enabled by default. See the [Live update manual](https://defold.com/llms/manuals/live-update.md) for how to exclude, download, and mount resources.
-
-#### Settings
-Liveupdate settings resource file to use during bundling.
+#### _App Manifest_
+If set, use the app manifest to customize the engine build. This allows you to remove unused parts from the engine to decrease the final binary size. Learn how to exclude unused feature [in the application manifest manual](https://defold.com/llms/manuals/app-manifest.md).
 
 ### Profiler
 

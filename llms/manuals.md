@@ -8,6 +8,7 @@ These are per-manual files generated for LLM usage.
 - [Installing Defold](https://defold.com/llms/manuals/install.md)
 - [Glossary](https://defold.com/llms/manuals/glossary.md)
 - [Defold for Unity users](https://defold.com/llms/manuals/unity.md)
+- [Defold for Godot users](https://defold.com/llms/manuals/godot.md)
 - [Defold for Flash users](https://defold.com/llms/manuals/flash.md)
 - [Getting help](https://defold.com/llms/manuals/getting-help.md)
 
@@ -188,6 +189,7 @@ These are per-manual files generated for LLM usage.
 - [Debugging native code on Android](https://defold.com/llms/manuals/debugging-native-code-android.md)
 - [Debugging native code on iOS](https://defold.com/llms/manuals/debugging-native-code-ios.md)
 - [Reading game and system logs](https://defold.com/llms/manuals/debugging-game-and-system-logs.md)
+- [Video recording](https://defold.com/llms/manuals/recording.md)
 
 ## Optimization
 
@@ -272,6 +274,8 @@ These are per-manual files generated for LLM usage.
 - [Defold SDK](https://defold.com/llms/manuals/extensions-defold-sdk.md)
 - [Gradle dependencies](https://defold.com/llms/manuals/extensions-gradle.md)
 - [Cocoapod dependencies](https://defold.com/llms/manuals/extensions-cocoapods.md)
+- [Swift Package Manager dependencies](https://defold.com/llms/manuals/extensions-spm.md)
+- [Swift in native extensions](https://defold.com/llms/manuals/extensions-swift.md)
 - [Adding auto-complete definition](https://defold.com/llms/manuals/extensions-script-api.md)
 - [Best Practices](https://defold.com/llms/manuals/extensions-best-practices.md)
 - [Debugging](https://defold.com/llms/manuals/debugging-native-code.md)

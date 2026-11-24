@@ -28,7 +28,7 @@ Bob распространяется в виде Java _JAR_ архива, сод
 
 ## Применение {#usage}
 
-Bob запускается из оболочки или из командной строки, вызовом `java` (или` java.exe` в Windows) и передачей файла java-архива утилиты bob в качестве аргумента:
+Bob запускается из оболочки или из командной строки, вызовом `java` (или`java.exe` в Windows) и передачей файла java-архива утилиты bob в качестве аргумента:
 
 ```text
 $ java -jar bob.jar --help
@@ -84,6 +84,9 @@ usage: bob [options] [commands]
     --debug-output-wgsl <arg>            Force build WGSL shaders
     --defoldsdk <arg>                    What version of the defold sdk
                                          (sha1) to use
+    --download-size-report <arg>         Filepath where to save the
+                                         estimated Google Play download
+                                         size as JSON (Android)
  -e,--email <arg>                        User email
  -ea,--exclude-archive                   Exclude resource archives from
                                          application bundle. Use this to
@@ -249,7 +252,7 @@ $
 
 ## Сервер сборки {#build-server}
 
-Начиная с Defold 1.14.0, Bob выбирает сервер сборки нативных расширений по умолчанию в зависимости от канала выпуска своего дистрибутива:
+Bob выбирает сервер сборки нативных расширений по умолчанию в зависимости от канала выпуска своего дистрибутива:
 
 | Канал выпуска Bob | Сервер сборки по умолчанию |
 |---|---|

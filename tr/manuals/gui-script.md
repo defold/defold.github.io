@@ -5,20 +5,29 @@ layout: manual
 locale: tr
 title: Defold'da GUI betikleri
 toc:
-- GUI betikleri
-- GUI için betik ekleme
-- gui ad alanı
-- İleti aktarımı
-- Düğümleri adresleme
-- Dinamik olarak oluşturulan düğümler
-- Dinamik düğüm tanımlayıcıları
+- anchor: gui-scripts
+  title: GUI betikleri
+- anchor: adding-a-script-to-a-gui
+  title: GUI için betik ekleme
+- anchor: input
+  title: Girdi
+- anchor: the-gui-namespace
+  title: gui ad alanı
+- anchor: message-passing
+  title: İleti aktarımı
+- anchor: addressing-nodes
+  title: Düğümleri adresleme
+- anchor: dynamically-created-nodes
+  title: Dinamik olarak oluşturulan düğümler
+- anchor: dynamic-node-ids
+  title: Dinamik düğüm tanımlayıcıları
 ---
 
-# GUI betikleri
+# GUI betikleri {#gui-scripts}
 
 Grafik kullanıcı arayüzünüzün (GUI) mantığını denetlemek ve düğümleri (node) canlandırmak için Lua betikleri (script) kullanırsınız. GUI betikleri, normal oyun nesnesi (game object) betikleriyle aynı şekilde çalışır; ancak farklı bir dosya türünde kaydedilir ve farklı bir işlev kümesine, yani `gui` modülünün işlevlerine erişir.
 
-## GUI için betik ekleme
+## GUI için betik ekleme {#adding-a-script-to-a-gui}
 
 Bir GUI'ye betik eklemek için önce *Assets* tarayıcısında bir konuma <kbd>sağ tıklayın</kbd> ve açılan bağlam menüsünden <kbd>New ▸ Gui Script</kbd> seçeneğini seçerek bir GUI betik dosyası oluşturun.
 
@@ -62,7 +71,13 @@ Betiği bir GUI bileşenine (component) bağlamak için GUI bileşeninin prototi
 
 GUI bileşeni oyununuzda bir oyun nesnesine eklenmişse betik artık çalışacaktır.
 
-## "gui" ad alanı
+## Girdi {#input}
+
+GUI betiğinde girdi almak için `init()` içinden `msg.post(".", "acquire_input_focus")` iletisini gönderin ve eylemleri `on_input(self, action_id, action)` içinde işleyin.
+
+GUI betikleri, oyun nesnesi betikleriyle aynı `action.source` karma değerlerini kullanır; böylece ilk basma anında bile fiziksel fare tıklamasını dokunmadan ayırt edebilirsiniz. [Girdi cihazının kaynağı](/tr/manuals/input/#input-device-source) bölümüne ve [fare ve dokunma örneğine](/tr/manuals/input-mouse-and-touch/#distinguishing-mouse-clicks-from-touch) bakın. İşaretçi hareketi ve ivmeölçer örneklerinin her ikisinde de `action_id == nil` olur; bunları ayırt etmek için kaynaklarını kullanın.
+
+## "gui" ad alanı {#the-gui-namespace}
 
 GUI betikleri, `gui` ad alanına (namespace) ve [tüm `gui` işlevlerine](/ref/gui) erişebilir. `go` ad alanı kullanılamadığından oyun nesnesi mantığını betik bileşenlerine ayırmanız ve GUI betikleri ile oyun nesnesi betikleri arasında iletişim kurmanız gerekir. `go` işlevlerini kullanmaya yönelik her girişim hataya neden olur:
 
@@ -79,7 +94,7 @@ stack traceback:
    /main/my_gui.gui_script:2: in function </main/my_gui.gui_script:1>
 ```
 
-## İleti aktarımı
+## İleti aktarımı {#message-passing}
 
 Bir betik bağlanmış her GUI bileşeni, ileti aktarımı (message passing) yoluyla oyununuzun çalışma zamanı ortamındaki diğer nesnelerle iletişim kurabilir; diğer betik bileşenleri gibi davranır.
 
@@ -92,7 +107,7 @@ msg.post("hud#gui", "set_stats", stats)
 
 ![İleti aktarımı](/manuals/images/gui-script/message_passing.png)
 
-## Düğümleri adresleme
+## Düğümleri adresleme {#addressing-nodes}
 
 GUI düğümleri, bileşene bağlanmış bir GUI betiğiyle değiştirilebilir. Her düğümün, düzenleyicide ayarlanan benzersiz bir *Id* değeri olması gerekir:
 
@@ -108,7 +123,7 @@ size.x = size.x + 10
 gui.set_size(healthbar_node, size)
 ```
 
-## Dinamik olarak oluşturulan düğümler
+## Dinamik olarak oluşturulan düğümler {#dynamically-created-nodes}
 
 Çalışma sırasında betikle yeni bir düğüm oluşturmak için iki seçeneğiniz vardır. İlk seçenek, `gui.new_[type]_node()` işlevlerini çağırarak sıfırdan düğümler oluşturmaktır. Bu işlevler yeni düğüme ait bir başvuru döndürür; bu başvuruyu düğümü değiştirmek için kullanabilirsiniz:
 
@@ -147,7 +162,7 @@ root_position.x = root_position.x + 300
 gui.set_position(new_root, root_position)
 ```
 
-## Dinamik düğüm tanımlayıcıları
+## Dinamik düğüm tanımlayıcıları {#dynamic-node-ids}
 
 Dinamik olarak oluşturulan düğümlere bir tanımlayıcı atanmaz. Bu, bilinçli bir tasarım tercihidir. Düğümlere erişmek için yalnızca `gui.new_[type]_node()`, `gui.clone()` ve `gui.clone_tree()` işlevlerinden döndürülen başvurular gerekir ve bu başvuruları saklamanız önerilir.
 

@@ -15,12 +15,12 @@ toc:
   title: Версії
 - anchor: welcome-screen
   title: Екран привітання
-- anchor: hello-world
-  title: Привіт, світе
 - anchor: defold-editor-overview
   title: Огляд редактора Defold
 - anchor: editors-comparison
   title: Порівняння редакторів
+- anchor: 2d-and-3d-scene-orientation
+  title: Орієнтація сцени у 2D та 3D
 - anchor: defold-panes-overview
   title: Огляд панелей Defold
 - anchor: key-concepts
@@ -154,25 +154,7 @@ Defold зустрічає вас екраном привітання, подіб
 
 Коли ви створите свій перший проєкт і/або відкриєте його, він відкриється в редакторі Defold.
 
-## Привіт, світе {#hello-world}
-
-Це простий спосіб швидко зробити щось у Defold: виконайте ці кроки, а потім поверніться до решти посібника.
-
-1. Виберіть порожній проєкт у `Templates`, укажіть його назву в `Title`, виберіть розташування та створіть його, натиснувши `Create New Project`. Він відкриється в редакторі Defold.
-![Привіт, світе: крок 1](/manuals/images/unity/helloworld_1.png)
-2. Ліворуч, на панелі `Assets`, відкрийте теку `main` і двічі клацніть `main.collection`, щоб відкрити цей файл.
-3. Праворуч, на панелі `Outline`, клацніть правою кнопкою миші `Collection` і виберіть `Add Game Object`.
-![Привіт, світе: крок 2](/manuals/images/unity/helloworld_2.png)
-4. Клацніть правою кнопкою миші створений ігровий об’єкт (game object) `go` і виберіть `Add Component`, а потім `Label`.
-![Привіт, світе: крок 3](/manuals/images/unity/helloworld_3.png)
-5. Унизу ліворуч, на панелі `Properties`, уведіть щось у властивість `Text`.
-6. У головній центральній області перегляду сцени перетягніть напис приблизно в позицію `(480,320,0)` або змініть її в `Properties`: `Position`.
-![Привіт, світе: крок 4](/manuals/images/unity/helloworld_4.png)
-7. Змінивши позицію напису, збережіть проєкт, вибравши `File` -> `Save All` або натиснувши <kbd>Ctrl</kbd>+<kbd>S</kbd> (<kbd>Cmd</kbd>+<kbd>S</kbd> на Mac).
-8. Зберіть проєкт, вибравши `Project` -> `Build` або натиснувши <kbd>Ctrl</kbd>+<kbd>B</kbd> (<kbd>Cmd</kbd>+<kbd>B</kbd> на Mac).
-![Привіт, світе: крок 5](/manuals/images/unity/helloworld_5.png)
-
-Ви щойно зібрали свій перший проєкт у Defold і маєте побачити свій текст у вікні. Поняття ігрового об’єкта та компонента мають бути вам знайомі. Нижче пояснено колекції (collections), панелі Outline і Properties та причину, з якої нам потрібно було трохи перемістити напис угору й праворуч.
+{% include shared/uk/hello-world.md %}
 
 ---
 
@@ -186,13 +168,9 @@ Defold зустрічає вас екраном привітання, подіб
 
 ![Порівняння редакторів](/manuals/images/unity/defold_unity_editor.png)
 
-За замовчуванням редактор Defold відкривається з ортографічним попереднім переглядом у 2D. Якщо ви працюватимете над 3D-проєктом або просто хочете отримати досвід, ближчий до Unity, — радимо перейти з 2D у 3D, вимкнувши перемикач `2D` на панелі інструментів, і змінити проєкцію камери на перспективну, увімкнувши перемикач `Perspective`:
+### Орієнтація сцени у 2D та 3D {#2d-and-3d-scene-orientation}
 
-![Панель інструментів Defold](/manuals/images/unity/defold_2d.png)
-
-Також можна змінити `Grid Settings` на панелі інструментів, щоб використовувати площину `Y`, як у Unity:
-
-![Налаштування 3D у Defold](/manuals/images/unity/defold_3d.png)
+{% include shared/uk/2d-and-3d-scene-orientation.md %}
 
 ### Огляд панелей Defold {#defold-panes-overview}
 
@@ -262,7 +240,7 @@ Defold використовує **«ігрові об’єкти»**, подіб
 |---|---|---|
 | [Спрайт](/uk/manuals/sprite/) | Sprite Renderer | У Defold відтінок (властивість кольору) можна змінювати лише через код. |
 | [Карта плиток](/uk/manuals/tilemap/) | Tilemap / Grid | Defold має вбудований редактор карт плиток, який підтримує квадратні сітки (але є розширення, наприклад, для [шестикутників](https://github.com/selimanac/defold-hexagon/)), і не має вбудованих правил автоматичного розміщення плиток. Інструменти на кшталт [Tiled](https://defold.com/assets/tiled/), [TileSetter](https://defold.com/assets/tilesetter/) чи [Sprite Fusion](https://defold.com/assets/spritefusion/) підтримують експорт у Defold. |
-| [Напис](/uk/manuals/label/) | Text / TextMeshPro | Починаючи з Defold 1.13.2, компоненти Label і текстові вузли GUI підтримують вбудовану [розмітку форматованого тексту](/uk/manuals/font-richtext/) для кольорів, градієнтів, обведень і анімованих ефектів. Також доступне окреме [розширення RichText](https://defold.com/assets/richtext/). |
+| [Напис](/uk/manuals/label/) | Text / TextMeshPro | Компоненти Label і текстові вузли GUI підтримують вбудовану [розмітку форматованого тексту](/uk/manuals/font-richtext/) для кольорів, градієнтів, обведень і анімованих ефектів. Також доступне окреме [розширення RichText](https://defold.com/assets/richtext/). |
 | [Звук](/uk/manuals/sound/) | AudioSource | У Defold є лише глобальне джерело звуку (не просторове). Для Defold є офіційне [розширення FMOD](https://github.com/defold/extension-fmod). |
 | [Фабрика](/uk/manuals/factory/) | Prefab Instantiate() | У Defold фабрика (factory) — це компонент із певним прототипом (префабом). |
 | [Фабрика колекції](/uk/manuals/collection-factory/) | - (Немає прямого відповідника компонента) | Компонент-фабрика колекції в Defold може одночасно створювати кілька ігрових об’єктів із батьківсько-дочірніми зв’язками. |
@@ -442,7 +420,7 @@ end
 
 Редактор Defold містить вбудований редактор коду з автодоповненням, підсвічуванням синтаксису, швидким пошуком документації, перевіркою коду та вбудованим налагоджувачем.
 
-![Редактор коду Defold](/images/editor/code-editor.png)
+![Редактор коду Defold](/manuals/images/editor/code-editor.png)
 
 ### VS Code та інші редактори {#vs-code-and-other-editors}
 
@@ -688,7 +666,7 @@ Defold також має чітко визначений життєвий цик
 |-|-|-|
 | `init()` | `Awake()` / `Start()` / `OnEnable()`| Defold має єдину точку входу та зворотний виклик для ініціалізації — init(). Він викликається для кожного компонента під час його створення. |
 | `on_input` | Методи введення | Defold отримує введення, коли [скрипт отримав фокус введення](/uk/manuals/input/#input-focus). Обробляється першим у циклі оновлення. |
-| `fixed_update()` | `FixedUpdate()` | Викликається з фіксованим кроком часу. Щоб увімкнути його в Defold, потрібно встановити `Use Fixed Timestep` — [подробиці](https://defold.com/uk/manuals/project-settings/#use-fixed-timestep). Починаючи з версії 1.12.0, виконується перед `update()`. |
+| `fixed_update()` | `FixedUpdate()` | Викликається з фіксованим кроком часу. Щоб увімкнути його в Defold, потрібно встановити `Use Fixed Timestep` — [подробиці](https://defold.com/uk/manuals/project-settings/#use-fixed-timestep). Виконується перед `update()`. |
 | `update()` | `Update()` | Викликається один раз на кадр із дельтою часу. |
 | `late_update()` | `LateUpdate()` | Викликається після `update()`, безпосередньо перед рендерингом кадру. Доступний із версії 1.12.0. |
 | `on_message` | Отримувач повідомлень | Основний зворотний виклик Defold для отримання повідомлень. Обробляється, коли в черзі є будь-яке повідомлення. |

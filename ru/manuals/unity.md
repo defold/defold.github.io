@@ -10,9 +10,10 @@ toc:
 - Установка
 - Версии
 - Экран приветствия
-- Hello World
 - Обзор редактора Defold
 - Сравнение редакторов
+- anchor: 2d-and-3d-scene-orientation
+  title: Ориентация сцены в 2D и 3D
 - Обзор панелей Defold
 - Ключевые концепции
 - Строительные блоки
@@ -107,25 +108,7 @@ Defold встречает вас экраном приветствия, похо
 
 Когда вы создадите первый проект и/или откроете его, он откроется в редакторе Defold.
 
-## Hello World
-
-Это быстрый способ быстро сделать что-то в Defold: выполните шаги, а потом вернитесь и дочитайте остальную часть руководства.
-
-1. Выберите пустой проект в `Templates`, задайте имя в `Title`, выберите расположение и создайте его, нажав `Create New Project`. Проект откроется в редакторе Defold.
-![Hello World Step 1](/manuals/images/unity/helloworld_1.png)
-2. Слева, в панели `Assets`, откройте папку `main` и дважды щелкните по `main.collection`, чтобы открыть ее.
-3. Справа, в панели `Outline`, щелкните правой кнопкой мыши по `Collection` и выберите `Add Game Object`.
-![Hello World Step 2](/manuals/images/unity/helloworld_2.png)
-4. Щелкните правой кнопкой мыши по созданному game object `go`, выберите `Add Component`, а затем `Label`.
-![Hello World Step 3](/manuals/images/unity/helloworld_3.png)
-5. Ниже, слева, в панели `Properties`, введите что-нибудь в свойство `Text`.
-6. В основной центральной сцене перетащите и переместите label в позицию около `(480,320,0)`, либо измените это значение в `Properties`: `Position`.
-![Hello World Step 4](/manuals/images/unity/helloworld_4.png)
-7. После изменения позиции label сохраните проект через `File` -> `Save All` или сочетанием клавиш <kbd>Ctrl</kbd>+<kbd>S</kbd> (<kbd>Cmd</kbd>+<kbd>S</kbd> на Mac).
-8. Соберите проект через `Project` -> `Build` или сочетанием клавиш <kbd>Ctrl</kbd>+<kbd>B</kbd> (<kbd>Cmd</kbd>+<kbd>B</kbd> на Mac).
-![Hello World Step 5](/manuals/images/unity/helloworld_5.png)
-
-Вы только что собрали свой первый проект в Defold и должны увидеть свой текст в окне. Концепции game object и component должны быть вам знакомы. Collections, outline, properties и то, почему нам понадобилось немного сместить label в правый верхний угол, объясняются ниже.
+{% include shared/ru/hello-world.md %}
 
 ---
 
@@ -139,13 +122,9 @@ Defold встречает вас экраном приветствия, похо
 
 ![Сравнение редакторов](/manuals/images/unity/defold_unity_editor.png)
 
-По умолчанию редактор Defold открывается в режиме 2D-ортографического предпросмотра. Если вы собираетесь работать над 3D-проектом или просто хотите получить ощущения, более близкие к Unity, мы рекомендуем переключиться из 2D в 3D, сняв флажок `2D` на панели инструментов и изменив проекцию камеры на перспективную, включив переключатель `Perspective`:
+### Ориентация сцены в 2D и 3D {#2d-and-3d-scene-orientation}
 
-![Панель инструментов Defold](/manuals/images/unity/defold_2d.png)
-
-Вы также можете настроить `Grid Settings` на панели инструментов, чтобы использовать плоскость `Y`, как в Unity:
-
-![Настройки 3D в Defold](/manuals/images/unity/defold_3d.png)
+{% include shared/ru/2d-and-3d-scene-orientation.md %}
 
 ### Обзор панелей Defold
 
@@ -217,7 +196,7 @@ Defold использует **"Game Objects"**, как и Unity. В обоих �
 |---|---|---|
 | [Sprite](/ru/manuals/sprite/) | Sprite Renderer | В Defold tint (color property) можно менять только из кода. |
 | [Tilemap](/ru/manuals/tilemap/) | Tilemap / Grid | В Defold есть встроенный редактор Tilemap, поддерживающий квадратные сетки (но существует расширение, например, для [Hexagon](https://github.com/selimanac/defold-hexagon/)), и отсутствуют встроенные autotiling rules. Такие инструменты как [Tiled](https://defold.com/assets/tiled/), [TileSetter](https://defold.com/assets/tilesetter/) или [Sprite Fusion](https://defold.com/assets/spritefusion/) поддерживают экспорт в Defold. |
-| [Label](/ru/manuals/label/) | Text / TextMeshPro | Начиная с Defold 1.13.2, компоненты Label и GUI-ноды Text поддерживают встроенную [форматированную текстовую разметку](/ru/manuals/font-richtext/) для цветов, градиентов, обводок и анимированных эффектов. Также доступно отдельное расширение [RichText](https://defold.com/assets/richtext/). |
+| [Label](/ru/manuals/label/) | Text / TextMeshPro | Компоненты Label и GUI-ноды Text поддерживают встроенную [форматированную текстовую разметку](/ru/manuals/font-richtext/) для цветов, градиентов, обводок и анимированных эффектов. Также доступно отдельное расширение [RichText](https://defold.com/assets/richtext/). |
 | [Sound](/ru/manuals/sound/) | AudioSource | В Defold звук только глобальный, а не spatial. Для Defold существует официальное [расширение FMOD](https://github.com/defold/extension-fmod). |
 | [Factory](/ru/manuals/factory/) | Prefab Instantiate() | В Defold Factory — это компонент с определенным prototype (prefab). |
 | [Collection Factory](/ru/manuals/collection-factory/) | - (No direct component equivalent) | Компонент Collection Factory в Defold может порождать сразу несколько Game Objects с отношениями parent-child. |
@@ -395,7 +374,7 @@ end
 
 В редактор Defold встроен редактор кода с автодополнением, подсветкой синтаксиса, быстрым доступом к документации, linting'ом и встроенным debugger'ом.
 
-![Редактор кода Defold](/images/editor/code-editor.png)
+![Редактор кода Defold](/manuals/images/editor/code-editor.png)
 
 ### VS Code и другие редакторы
 
@@ -642,7 +621,7 @@ msg.post("#myproxy", "load")
 |-|-|-|
 | `init()` | `Awake()` / `Start()` / `OnEnable()`| В Defold есть единая точка входа и единый callback инициализации — init(). Он вызывается у каждого component'а при его создании. |
 | `on_input` | Input Methods | В Defold ввод поступает, когда [для скрипта установлен input focus](/ru/manuals/input/#input-focus). Обрабатывается первым в update loop. |
-| `fixed_update()` | `FixedUpdate()` | Вызывается с фиксированным timestep. Чтобы включить это в Defold, нужно задать `Use Fixed Timestep` — [подробности](https://defold.com/ru/manuals/project-settings/#use-fixed-timestep). Начиная с 1.12.0, выполняется перед `update()`. |
+| `fixed_update()` | `FixedUpdate()` | Вызывается с фиксированным timestep. Чтобы включить это в Defold, нужно задать `Use Fixed Timestep` — [подробности](https://defold.com/ru/manuals/project-settings/#use-fixed-timestep). Выполняется перед `update()`. |
 | `update()` | `Update()` | Вызывается один раз за кадр с delta time. |
 | `late_update()` | `LateUpdate()` | Вызывается после `update()`, непосредственно перед рендерингом кадра. Доступен начиная с 1.12.0. |
 | `on_message` | Message Receiver | Основной callback Defold для получения сообщений. Вызывается, когда в очереди есть сообщение. |

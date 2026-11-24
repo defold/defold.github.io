@@ -233,7 +233,7 @@ render.set_camera()
 
 
 <div class='sidenote' markdown='1'>
-Defold 1.13.0부터 컴포넌트 프리미티브는 반시계 방향 정점 순서를 사용하며, 프리미티브의 노멀은 카메라를 향합니다. 스프라이트, GUI 노드, 타일맵(타일그리드), Particle FX는 다른 컴포넌트 유형과 동일한 정점 순서를 사용하므로 모든 컴포넌트에 같은 면 컬링 설정을 사용할 수 있습니다.
+컴포넌트 프리미티브는 반시계 방향 버텍스 와인딩을 사용하며 프리미티브 노멀은 카메라를 향합니다. 스프라이트, GUI 노드, 타일맵(타일그리드), Particle FX도 다른 컴포넌트 타입과 같은 와인딩을 사용하므로 모든 컴포넌트에 같은 면 컬링 설정을 사용할 수 있습니다.
 
 이는 모델 이외의 컴포넌트에 면 컬링을 설정한 프로젝트에 영향을 줄 수 있습니다. 컴포넌트가 예기치 않게 컬링되는 경우 `render.set_cull_face(graphics.FACE_TYPE_BACK)`로 뒷면을 선택하거나, `render.set_cull_face()` 호출을 제거하여 기본 `graphics.FACE_TYPE_BACK` 모드를 사용하세요.
 </div>
@@ -426,12 +426,12 @@ self.present_predicate = render.predicate({"present"})
 render.set_render_target(self.offscreen)
 render.set_viewport(0, 0, 1024, 1024)
 render.clear({[graphics.BUFFER_TYPE_COLOR0_BIT] = vmath.vector4(0, 0, 0, 1)})
--- Set the scene view and projection here.
+-- 여기서 씬의 뷰와 투영을 설정합니다.
 render.draw(self.scene_predicate)
 
 render.set_render_target(render.RENDER_TARGET_DEFAULT)
 render.set_viewport(0, 0, render.get_window_width(), render.get_window_height())
--- Set the full-screen quad view and projection here.
+-- 여기서 전체 화면 쿼드의 뷰와 투영을 설정합니다.
 render.enable_texture(0, self.offscreen, graphics.BUFFER_TYPE_COLOR0_BIT)
 render.draw(self.present_predicate)
 render.disable_texture(0)

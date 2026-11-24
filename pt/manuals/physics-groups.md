@@ -15,7 +15,9 @@ A engine de física permite agrupar seus objetos de física e filtrar como eles 
 
 Para que uma colisão entre dois objetos seja registrada, ambos os objetos devem especificar mutuamente os grupos um do outro em seu campo *Mask*.
 
-![Physics collision group](/manuals/images/physics/collision_group.png)
+![Grupo de colisão](/manuals/images/physics/collision_group.png)
+
+![Grupos e máscaras de colisão](/manuals/images/physics/collision_groups.png)
 
 O campo *Mask* pode conter vários nomes de grupos, permitindo cenários de interação complexos.
 

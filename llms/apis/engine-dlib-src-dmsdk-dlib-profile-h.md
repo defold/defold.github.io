@@ -557,8 +557,18 @@ Enum to describe type of a property
 - `PROFILE_PROPERTY_TYPE_F64`
 
 ### ProfilePropertyValue
-*Type:* FUNCTION
+*Type:* STRUCT
 Union to hold a property value
+
+**Members**
+
+- `m_Bool` (bool) - Property value as a bool
+- `m_S32` (int32_t) - Property value as a int32_t
+- `m_U32` (uint32_t) - Property value as an uint32_t
+- `m_F32` (float) - Property value as a float
+- `m_S64` (int64_t) - Property value as a int64_t
+- `m_U64` (uint64_t) - Property value as an uint64_t
+- `m_F64` (double) - Property value as a double
 
 ### ProfileRegisterProfiler
 *Type:* FUNCTION
@@ -566,8 +576,8 @@ Register a new profiler. Can be done after the profiling has started.
 
 **Parameters**
 
-- `name` (const char*) - Name of the profiler
-@ @param profiler <span class="type"> ProfileListener*</span> Instance of the profiler. Keep alive until calling ProfileUnregisterProfiler()!
+- `name` (const char*) - Name of the profiler. Only the first 15 characters are used to identify it.
+- `profiler` (ProfileListener*) - Instance of the profiler. Keep alive until calling ProfileUnregisterProfiler()!
 
 ### ProfileResult
 *Type:* ENUM
@@ -623,4 +633,4 @@ Unregister a profiler
 
 **Parameters**
 
-- `name` (const char*) - Name of the profiler
+- `name` (const char*) - Name of the profiler. Only the first 15 characters are used to identify it.

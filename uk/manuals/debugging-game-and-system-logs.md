@@ -37,7 +37,7 @@ toc:
 
 Коли ви запускаєте гру локально з редактора або підключаєтеся до [мобільного застосунку для розробки](/uk/manuals/dev-app), усе виведення відображається на панелі консолі редактора:
 
-![Редактор 2](/manuals/images/editor/editor2_overview.png)
+![Редактор 2](/manuals/images/editor/editor_overview.png)
 
 ## Читання журналу гри в терміналі {#reading-the-game-log-from-the-terminal}
 

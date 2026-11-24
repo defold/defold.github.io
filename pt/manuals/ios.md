@@ -10,6 +10,10 @@ toc:
 - Desenvolvendo com uma conta gratuita de desenvolvedor Apple
 - anchor: creating-an-ios-application-bundle
   title: Criando um pacote de aplicação iOS
+- anchor: home-indicator-behavior
+  title: Comportamento do indicador de início
+- anchor: reserved-areas-and-rotation
+  title: Áreas reservadas e rotação
 - Info.plist personalizado e descoberta de alvos locais
 - Instalando e iniciando o pacote em um iPhone conectado
 - anchor: creating-a-storyboard
@@ -119,6 +123,23 @@ Pressione *Criar Pacote…* e então será solicitado que você especifique onde
 ![ipa iOS application bundle](/manuals/images/ios/ipa_file.png)
 
 Você especifica qual ícone usar para o app, o storyboard da tela de lançamento e assim por diante no arquivo de configurações do projeto *game.project*, na [seção iOS](/pt/manuals/project-settings/#ios).
+
+### Comportamento do indicador de início {#home-indicator-behavior}
+
+Você pode escolher *Home Indicator Mode* na seção *iOS* de *game.project*. O padrão, *Deferred*, protege todas as bordas da tela e exige dois gestos de deslizar para voltar à tela de início. Escolha *System* para usar os gestos normais do sistema, incluindo um único gesto de deslizar para voltar ao início.
+
+Escolha *Auto Hide* para usar os gestos normais do sistema e também solicitar que o indicador de início seja ocultado automaticamente. Você pode definir esse modo diretamente em *game.project*:
+
+```ini
+[ios]
+home_indicator_mode = auto_hide
+```
+
+Gere o bundle novamente e teste em um dispositivo com indicador de início. O iOS decide quando o indicador fica visível; escolher *Auto Hide* não garante que ele permaneça oculto. No iOS 26 e posteriores, o sistema pode ocultá-lo tanto no modo *System* quanto no *Auto Hide*. Consulte [Home Indicator Mode](/pt/manuals/project-settings/#home-indicator-mode) para conhecer todos os valores e seu comportamento de gestos.
+
+### Áreas reservadas e rotação {#reserved-areas-and-rotation}
+
+`window.get_reserved_areas()` informa recortes de câmera e a Dynamic Island no iOS 27.1 e posteriores, incluindo as margens de interação do UIKit. Transições de orientação no iOS também enviam `window.WINDOW_EVENT_RESIZED`, incluindo rotações que mantêm as dimensões da janela e as margens da área segura inalteradas. Atualize qualquer posicionamento de interface baseado nessas áreas em cada callback de redimensionamento. Consulte [Áreas reservadas da tela](/pt/manuals/porting-guidelines/#reserved-screen-areas) para conhecer as coordenadas, limitações e um exemplo de atualização.
 
 ### Info.plist personalizado e descoberta de alvos locais
 
@@ -255,16 +276,16 @@ O editor grava um arquivo *.ipa*, que é um pacote de aplicação iOS. Para inst
 Você também pode usar a ferramenta de linha de comando `xcrun simctl` para trabalhar com os simuladores iOS disponíveis pelo Xcode:
 
 ```
-# mostrar uma lista de dispositivos disponíveis
+# show a list of available devices
 xcrun simctl list
 
-# iniciar um simulador iPhone X
+# boot an iPhone X simulator
 xcrun simctl boot "iPhone X"
 
-# instalar your.app em um simulador iniciado
+# install your.app to a booted simulator
 xcrun simctl install booted your.app
 
-# iniciar o simulador
+# launch the simulator
 open /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app
 ```
 

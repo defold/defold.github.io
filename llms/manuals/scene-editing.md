@@ -41,29 +41,45 @@ These controls are available in visual editors:
 
 You may also use **Frame Selection** (`F`) to focus the camera on the current selection.
 
+### Axis gizmo
+
+The **Scene View Axis Gizmo** appears in the bottom-right corner of the scene view in 3D mode. It shows the camera's orientation relative to the world axes: **X** is red, **Y** is green and **Z** is blue.
+
+| Control | Action |
+| --- | --- |
+| `Left Mouse Click` on an axis handle | Align the camera to view along that axis. The opposite handles provide views from the other side. |
+| Click an already aligned axis handle | Switch to the opposite view along the same axis. |
+| Hold `Left Mouse Button` and drag the gizmo | Orbit around the camera's current focus point. You can drag from an axis handle or the circular area around the handles, without holding a modifier key. |
+
+Axis alignment preserves the camera's focus point, distance and projection. Use **Frame Selection** (`F`) first to focus on an object, then use the gizmo to inspect it from different directions. Standard pan, zoom and `Ctrl`/`^ Control` + `Left Mouse Button` orbit controls remain available.
+
+The gizmo is available with both perspective and orthographic projection in 3D mode. In 2D mode it is hidden; use **Align/Realign Camera 2D/3D** in the [toolbar](#toolbar-overview), or press `.`, to switch to 3D. Use the separate [camera projection toggle](#camera-type-perspective-vs-orthographic) to choose perspective or orthographic projection. The gizmo controls the Scene Editor's view of your scene.
+
 ## 2D and 3D scene orientation
 
-The scene view can be used in both 2D and 3D workflows:
+The scene view can be used in both 2D and 3D workflows. A typical 2D setup uses an orthographic view with the grid on the X-Y plane:
 
-- In **2D**, you typically work in an orthographic view with a 2D-oriented grid.
-- In **3D**, you typically:
-  - Realign the view to a 3D orientation,
-  - Use a **perspective** camera,
-  - Choose an appropriate grid plane (often **Y** for “ground”).
+To work in 3D, turn off the **2D** toggle in the toolbar. This changes the view orientation and switches to the 3D grid settings. You can use the **Grid Settings** dropdown to adjust the grid plane and appearance.
 
-You can access these functions via the toolbar and the **View** menu.
+For a perspective view, enable **Perspective camera** in the toolbar:
+
+You can also change the view through the **View** menu.
+
+Use the [axis gizmo](#axis-gizmo) in 3D mode to align the view to an axis or orbit with the mouse.
 
 ## Toolbar overview
 
-In the top-right of the scene view there is a toolbar with commonly used tools and view options (left to right):
+In the top-right of the scene view there is a toolbar with commonly used tools and view options.
 
-- **Move tool** (`W`)
-- **Rotate tool** (`E`)
-- **Scale tool** (`R`)
-- **Grid Settings** (`▦`)
-- **Align/Realign Camera 2D/3D** (`2D`) — toggles between 2D and 3D orientation (shortcut `.`)
-- **Camera Perspective/Orthographic**
-- **Visibility Filters** (`👁`)
+The options in the toolbar numbered from left to right are:
+
+1. **Move tool** (`W`) - move selected objects.
+2. **Rotate tool** (`E`) - rotate selected objects.
+3. **Scale tool** (`R`) - resize selected objects.
+4. **Grid** - toggle the grid, or use the dropdown to open Grid Settings.
+5. **2D mode** (`2D`) - switch between 2D and 3D orientation. You can also use **Realign Camera** (`.`).
+6. **Perspective camera** - switch between perspective and orthographic projection in 3D mode. Use the dropdown for camera settings.
+7. **Visibility filters** - show or hide component types and guides in the scene view.
 
 ## Selecting and manipulating objects {#manipulating-objects}
 
