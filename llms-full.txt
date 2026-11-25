@@ -5044,6 +5044,8 @@ Engine Arguments
 --graphics-adapter=vulkan
 ```
 
+From Defold 1.14.2, an explicit `--graphics-adapter` argument disables automatic fallback. The requested backend must be included in the engine and supported by the system; startup fails if it cannot initialize. Remove this argument to use automatic backend selection. Select the included backends in the [application manifest](#manuals:app-manifest).
+
 ## Code
 
 Custom Editor
@@ -15330,13 +15332,15 @@ The Defold render script API translates render operations into the following gra
 | System   | Graphics API               | Note                     |
 |----------|----------------------------|--------------------------|
 | macOS    | Metal, OpenGL 3.3 or Vulkan | Metal is the default; Vulkan via MoltenVK |
-| Windows  | OpenGL 3.3, Vulkan 1.1 or DirectX 12 | OpenGL is the default; select backends in the [app manifest](#manuals:app-manifest) |
-| Linux x86-64 | OpenGL 3.3 or Vulkan 1.1 |                        |
-| Linux ARM64  | OpenGL ES or Vulkan 1.1   | EGL/GLES is the default |
+| Windows  | OpenGL 3.3, Vulkan 1.1 or DirectX 12 | DX12 is the default from 1.14.2; select additional backends in the [app manifest](#manuals:app-manifest) for fallback |
+| Linux x86-64 | OpenGL 3.3 or Vulkan 1.1 | From 1.14.2, Vulkan is preferred with OpenGL fallback |
+| Linux ARM64  | OpenGL ES or Vulkan 1.1   | From 1.14.2, Vulkan is preferred with OpenGL ES fallback |
 | Android  | OpenGLES 3.0 or Vulkan 1.1 | Optional fallback to OpenGLES 2.0 (see below) |
 | iOS devices | OpenGLES 3.0, Metal or Vulkan | OpenGLES is the default; Vulkan via MoltenVK |
 | iOS simulator | Metal                | Always Metal |
 | HTML5    | WebGL 2.0 or WebGPU        | Optional fallback to WebGL 1.0 (see below) |
+
+In Defold 1.14.1, Windows and Linux x86-64 default to OpenGL, and Linux ARM64 defaults to OpenGL ES. See the [application manifest graphics settings](#manuals:app-manifest) for backend selection and fallback behavior.
 
 Since Defold 1.14.1, OpenGLES 2.0 and WebGL 1.0 shaders are excluded by default. To support these graphics APIs, disable [Exclude GLES 2.0](#manuals:project-settings) in *game.project* (`shader.exclude_gles_sm100 = 0`).
 
@@ -16044,6 +16048,7 @@ end
 Defold currently supports compute shaders in the following graphics adapters:
 
 - Vulkan
+- DirectX 12 (Windows)
 - Metal (via MoltenVK)
 - OpenGL 4.3+
 - OpenGL ES 3.1+
@@ -16064,6 +16069,15 @@ local compute_shaders_supported = has_context_feature(
     graphics.CONTEXT_FEATURE_COMPUTE_SHADER
 )
 ```
+
+If a shader also uses storage buffers, check `graphics.CONTEXT_FEATURE_STORAGE_BUFFER` separately with the same helper. Compute-shader support alone does not establish storage-buffer support:
+```lua
+local storage_buffers_supported = has_context_feature(
+    graphics.CONTEXT_FEATURE_STORAGE_BUFFER
+)
+```
+
+From Defold 1.14.2, the Windows DX12 adapter reports its storage-buffer support through this feature flag.
 
 Only supported features are included in the array; it is not a table keyed by the feature constants. Always perform this check before using compute shaders when the game can run with different graphics adapters or on devices with varying driver support. OpenGL and OpenGL ES support depends on the API version and driver. Vulkan and Metal via MoltenVK support compute shaders from version 1.0. Use an [application manifest](#manuals:app-manifest) to select Vulkan on platforms where it is not already the default graphics backend.
 
@@ -20745,6 +20759,16 @@ A: This usually happens when you are using Windows and make a build and commit i
 
 Developing Defold applications for the Linux platform is a straight forward process with very few considerations to make.
 
+## Graphics backends
+
+From Defold 1.14.2, Linux builds include Vulkan and an OpenGL fallback by default. The engine tries Vulkan first, then OpenGL on x86-64 or OpenGL ES on ARM64 if Vulkan is unavailable or graphics startup fails. In 1.14.1, the default is OpenGL on x86-64 and OpenGL ES on ARM64.
+
+Use **Graphics (Linux)** in an [application manifest](#manuals:app-manifest) to select **OpenGL & Vulkan**, **Vulkan**, or **OpenGL**. A single-backend engine cannot fall back to a backend it does not include. An explicit engine argument such as `--graphics-adapter=vulkan` also disables automatic fallback.
+
+The Vulkan runtime is loaded dynamically in 1.14.2. A missing Vulkan loader does not by itself prevent the combined engine from starting with its OpenGL fallback. To run with Vulkan, the system still needs a working Vulkan loader and compatible driver. Check the engine log to see which backend was selected and why an initialization attempt failed.
+
+These defaults describe the game engine. The editor's own graphics requirements are separate; see the FAQ below for editor troubleshooting.
+
 ## FAQ
 #### Q: Why is the Defold editor super small when run on a 4k or HiDPI monitor?
 
@@ -21001,7 +21025,9 @@ Developing Defold applications for the Windows platform is a straight forward pr
 
 ## Graphics backends
 
-Windows builds use OpenGL by default. Use **Graphics (Windows)** in an [application manifest](#manuals:app-manifest) to select OpenGL, Vulkan or DirectX 12 (**DX12**). You can include multiple backends to allow fallback when the preferred backend is unavailable.
+From Defold 1.14.2, Windows builds use DirectX 12 (**DX12**) by default; 1.14.1 uses OpenGL. Use **Graphics (Windows)** in an [application manifest](#manuals:app-manifest) to select OpenGL, Vulkan or DX12. The default includes only DX12. Select a combined choice such as **OpenGL & DX12** to include a fallback, or select **OpenGL** explicitly to keep using it after upgrading. Automatic selection can try another included backend if graphics startup fails; forcing a backend with `--graphics-adapter` disables fallback.
+
+The default DX12 engine requires Windows 10 or later and a graphics device and driver that support DirectX 12. For earlier Windows versions listed in the [engine runtime support matrix](https://defold.com/faq/#q-what-platforms-does-defold-run-on), select **OpenGL** alone in **Graphics (Windows)** and rebundle the game. Those systems cannot use the default DX12-only engine. A combined **OpenGL & DX12** build is useful for graphics-device fallback on systems with the DX12 runtime; use the OpenGL-only choice for systems without that runtime.
 
 ## Project settings
 
@@ -22113,14 +22139,18 @@ Windows and Linux use separate fields. The **DX12** option selects DirectX 12 on
 
 | Field | Platforms | Choices | Default |
 |---|---|---|---|
-| **Graphics (Linux)** | Linux | OpenGL, Vulkan, OpenGL & Vulkan | OpenGL |
-| **Graphics (Windows)** | Windows | OpenGL, Vulkan, DX12, OpenGL & Vulkan, OpenGL & DX12, Vulkan & DX12, OpenGL & Vulkan & DX12 | OpenGL |
+| **Graphics (Linux)** | Linux | OpenGL, Vulkan, OpenGL & Vulkan | OpenGL & Vulkan |
+| **Graphics (Windows)** | Windows | OpenGL, Vulkan, DX12, OpenGL & Vulkan, OpenGL & DX12, Vulkan & DX12, OpenGL & Vulkan & DX12 | DX12 |
 | **Graphics (macOS)** | macOS | OpenGL, Metal, Vulkan, OpenGL & Metal, OpenGL & Vulkan | Metal |
 | **Graphics (iOS)** | iOS | OpenGL, Metal, Vulkan, OpenGL & Metal, OpenGL & Vulkan | OpenGL |
 | **Graphics (Android)** | Android | OpenGL+Vulkan, OpenGL, Vulkan | OpenGL+Vulkan |
 | **Graphics (HTML5)** | HTML5 | WebGL, WebGPU, WebGL & WebGPU | WebGL |
 
-On Linux ARM64, the **OpenGL** choice uses the OpenGL ES backend. The Android combined default prefers Vulkan when available and falls back to OpenGL ES.
+The Linux and Windows defaults in this table apply from Defold 1.14.2. In 1.14.1, Linux defaults to OpenGL (OpenGL ES on ARM64), and Windows defaults to OpenGL. To keep using a specific backend when upgrading, select it explicitly in the application manifest.
+
+On Linux, the combined default prefers Vulkan and falls back to OpenGL on x86-64 or OpenGL ES on ARM64. The **OpenGL** choice on Linux ARM64 uses the OpenGL ES backend. The Android combined default also prefers Vulkan and falls back to OpenGL ES. Windows includes only DX12 by default; select a combined choice such as **OpenGL & DX12** to include a fallback.
+
+From Defold 1.14.2, automatic selection tries another included, supported backend if the preferred backend cannot open its window or create its graphics context. Fallback requires that the engine includes another backend. An explicit engine argument such as `--graphics-adapter=vulkan` requests only that backend and disables automatic fallback; it does not add a backend excluded by the manifest.
 
 macOS uses the native Metal backend by default. The **Vulkan** choice on macOS and iOS uses Vulkan through MoltenVK. The iOS simulator (`arm64_sim-ios`) always uses Metal, regardless of the **Graphics (iOS)** choice for devices.
 
