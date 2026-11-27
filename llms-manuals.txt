@@ -7208,7 +7208,7 @@ For details on how to import 3D data into a Model for animation, see the [Model 
 
 ## Playing animations
 
-Models are animated with the [`model.play_anim()`](https://defold.com/ref/model#model.play_anim) function:
+Models are animated with the [`model.play_anim()`](https://defold.com/ref/model#model.play_anim) function. Without a layer option, the animation plays on the base layer:
 ```lua
 function init(self)
     -- Start the "wiggle" animation back and forth on #model
@@ -7231,7 +7231,7 @@ function init(self)
 end
 ```
 
-Morph target data can be used on its own or together with skeletal animation, but a model component can only play one model animation at a time. This means that you cannot play one skeletal animation and one separate morph target animation at the same time using `model.play_anim()`. If a model has animation data but no skeleton, only morph target animation data will be used.
+Morph target data can be used on its own or together with skeletal animation. Morph weights are animated by the base layer. [Additional animation layers](#playing-multiple-animations) affect only the skeleton and ignore morph weight tracks, so separate morph target clips cannot be played on additional layers. You can play a morph target clip on the base layer while playing skeletal clips on additional layers. If a model has animation data but no skeleton, only morph target animation data will be used, and additional layers are unavailable.
 
 You can still combine skeletal animation playback with morph target changes that come from other sources, for example by setting morph target weights from script with `model.set_blend_weights()`.
 
@@ -7377,9 +7377,111 @@ go.set("#model", "cursor", 0)
 go.animate("#model", "cursor", go.PLAYBACK_LOOP_PINGPONG, 1, go.EASING_INOUTQUAD, 3)
 ```
 
+## Playing multiple animations
+
+Animation layers let a model play several skeletal animations at the same time. For example, a character can run on the base layer while waving on an upper-body layer. Each layer has its own animation, cursor, playback rate and completion callback.
+
+Create a layer definition with [`model.animation_layer()`](https://defold.com/ref/model#model.animation_layer), then pass its numeric handle in the `layer` option to `model.play_anim()`. Creating the definition does not start playback or attach it to a model.
+
+The following example assumes the model's animation set contains `run` and `wave`, and its skeleton has a bone named `spine`. Replace these names with the names from your assets:
+```lua
+local function wave_done(self, message_id, message, sender)
+    if message.layer == hash("upper_body") then
+        -- Reveal the running animation beneath the upper-body layer.
+        model.cancel("#model", { layer = self.upper_body })
+    end
+end
+
+function init(self)
+    self.upper_body = model.animation_layer("upper_body", {
+        order = 1,
+        weight = 1,
+        bones = { "spine" }
+    })
+
+    -- Run on the base layer.
+    model.play_anim("#model", "run", go.PLAYBACK_LOOP_FORWARD)
+
+    -- Wave with the spine and its descendants while the legs keep running.
+    model.play_anim("#model", "wave", go.PLAYBACK_ONCE_FORWARD, {
+        layer = self.upper_body,
+        blend_duration = 0.15
+    }, wave_done)
+end
+
+function final(self)
+    model.destroy_animation_layer(self.upper_body)
+end
+```
+
+### Layer definitions and bone masks
+
+A layer name can be a string or hash. The options passed to `model.animation_layer()` describe how the layer affects the pose:
+
+| Option | Description |
+|---|---|
+| `order` | Required positive integer. The base layer is evaluated first, followed by additional layers in increasing order. |
+| `weight` | Influence from `0` to `1`, defaulting to `1`. A weight of `0` leaves the pose unchanged, but playback and completion still occur. |
+| `bones` | Optional array of bone names, as strings or hashes. Each listed bone and all its descendants are included. Omit the option or use an empty array to affect all bones. |
+
+Names and orders must each be unique among the layers attached to a particular model. Bone names must exist in that model's skeleton. Playing another animation with the same handle replaces playback on that layer; creating a different definition with a conflicting name or order and playing it on the same model raises an error.
+
+The bone mask selects local bone transforms. A selected bone still inherits movement from its parents, even when those parents are animated by another layer. Within the mask, channels missing from the layer's animation use the skeleton's rest transforms.
+
+A layer blends its pose over the result of the layers below it. With a weight of `1`, it fully overrides the selected bones; a smaller weight blends between the underlying pose and the layer's pose. Weights are not normalized across layers, and layers do not add animation offsets together. Later layers can override earlier layers where their masks overlap.
+
+Definitions are immutable: changing the options table after creation does not change the layer. You can reuse one handle on several models, including models with different skeletons if the selected bone names exist in each. Each model keeps independent playback state, so playing, changing the cursor or cancelling the layer on one model does not affect the others. Keep shared definitions alive until all code that uses their handles is finished with them.
+
+### Blending and completion
+
+When a layer first starts playing, `blend_duration` fades its influence from zero to its configured weight. Playing another animation on the same layer uses `blend_duration` to crossfade between that layer's clips. Replacing a clip does not restart the layer's initial fade-in. The base animation and other layers continue playing independently.
+
+Playing an animation without the `layer` option changes only the base animation. It does not remove additional layers.
+
+A layer that finishes a once-mode animation holds its final pose until you play another animation on it or cancel it. Completion does not automatically remove the layer. The example above cancels the waving layer in its completion callback so that the running animation becomes visible again. See [Completion callbacks](#completion-callbacks) for the completion message fields.
+
+### Reading and changing layer playback
+
+Use the layer's **name hash** in the options to `go.get()` and `go.set()`:
+```lua
+local options = { key = hash("upper_body") }
+local animation = go.get("#model", "animation", options)
+local cursor = go.get("#model", "cursor", options)
+local playback_rate = go.get("#model", "playback_rate", options)
+
+go.set("#model", "cursor", 0.5, options)
+go.set("#model", "playback_rate", 0.5, options)
+```
+
+`animation` is read-only. `cursor` is normalized from `0` to `1`, and `playback_rate` is a speed multiplier; setting a negative rate clamps it to `0`. These properties describe playback on the target model, not the shared layer definition. During a crossfade, they address the incoming animation.
+
+Omit the options to access the base animation. Property access uses the layer name, while `model.play_anim()` and `model.cancel()` use the numeric handle. A handle is not a valid property key. The layer must be attached to the target model before you access its properties; an unknown or cancelled layer raises an error.
+
+### Cancelling and destroying layers
+
+Cancel one layer using its handle:
+```lua
+model.cancel("#model", { layer = self.upper_body })
+```
+
+The layer's contribution disappears on the next pose update, revealing the base and remaining layers. Its completion callback is not invoked. The handle stays valid and can be used to play the layer again. Cancelling a valid layer that is not attached to the model has no effect.
+
+Call `model.cancel("#model")` without a layer to cancel all animations on that model, freeze the base pose and remove all additional layers.
+
+When you no longer need a definition, release it with [`model.destroy_animation_layer()`](https://defold.com/ref/model#model.destroy_animation_layer). To remove its contribution on the next pose update, cancel it before destroying the handle:
+```lua
+model.cancel("#model", { layer = self.upper_body })
+model.destroy_animation_layer(self.upper_body)
+self.upper_body = nil
+```
+
+Destroying a handle invalidates it, including for further play, cancel or destroy calls. It does not stop existing playback on any model: models retain the definition while the layer is attached, including when it holds a completed pose. Property access by name remains available while the layer is attached. After destroying the handle, you can remove retained layers with `model.cancel()` without a layer, or by destroying or reloading their model.
+
+Discarding the numeric handle or running Lua garbage collection does not release the definition. Use explicit destruction, as in the `final()` function of the first example. Definitions that have not been explicitly destroyed are released when their script context is finalized.
+
 ## Completion callbacks
 
-The model animation `model.play_anim()`) support an optional Lua callback function as the last argument. This function will be called when the animation has played to the end. The function is never called for looping animations, nor when an animation is manually canceled via `go.cancel_animations()`. The callback can be used to trigger events on animation completion or to chain multiple animations together.
+The `model.play_anim()` function supports an optional Lua callback as its last argument. It is called when a once-mode animation finishes. Looping animations do not invoke it, and cancelling an animation with `model.cancel()` or replacing it with another animation on the same layer does not invoke the old callback. The callback can be used to trigger events on animation completion or to chain animations together.
 ```lua
 local function wiggle_done(self, message_id, message, sender)
     -- Done animating
@@ -7387,6 +7489,21 @@ end
 
 function init(self)
     model.play_anim("#model", "wiggle", go.PLAYBACK_ONCE_FORWARD, nil, wiggle_done)
+end
+```
+
+The callback receives a [`model_animation_done`](https://defold.com/ref/model#model_animation_done) message with `animation_id` and `playback`. For an additional layer, `message.layer` contains the layer's name hash, so you can distinguish the same clip playing on different layers. For the base animation, `message.layer` is absent (`nil`).
+
+If you omit the callback, the message is sent to the script that started the animation and can be handled in `on_message()`:
+```lua
+function on_message(self, message_id, message, sender)
+    if message_id == hash("model_animation_done") then
+        if message.layer == hash("upper_body") then
+            -- A once-mode animation finished on the upper-body layer.
+        elseif message.layer == nil then
+            -- A once-mode animation finished on the base layer.
+        end
+    end
 end
 ```
 
@@ -9202,6 +9319,8 @@ local play_properties = { blend_duration = 0.1 }
 model.play_anim("#model", "jump", go.PLAYBACK_ONCE_FORWARD, play_properties)
 ```
 
+Models can play multiple skeletal animations at the same time using animation layers. For example, play a running animation on the base layer and a waving animation on a layer masked to the upper body. Create a definition with [`model.animation_layer()`](https://defold.com/ref/model#model.animation_layer) and pass its handle in the `layer` option to `model.play_anim()`. See [Playing multiple animations](#manuals:model-animation#playing-multiple-animations) for a complete example, bone masks, blending and layer cleanup.
+
 The animation playback cursor can be animated either by hand or through the property animation system:
 ```lua
 -- set the run animation
@@ -9230,6 +9349,14 @@ A model also has a number of different properties that can be manipulated using 
 
 `textureN`
 : The model textures where N is 0-15 (`hash`). You can read these properties with `go.get()` and change them using a texture resource property and `go.set()`. Defold supports at most 16 textures per draw, but the number usable by a shader may be lower on graphics adapters with a smaller texture-sampler limit.
+
+The `animation`, `cursor` and `playback_rate` properties address the base animation by default. To access an additional layer, use its name hash as the `key`:
+```lua
+local cursor = go.get("#model", "cursor", { key = hash("upper_body") })
+go.set("#model", "playback_rate", 0.5, { key = hash("upper_body") })
+```
+
+The layer must be attached to this model. This includes layers started with `go.PLAYBACK_NONE`, whose properties remain accessible even though playback does not advance automatically. Property access uses the layer name rather than the handle returned by `model.animation_layer()`. See [Reading and changing layer playback](#manuals:model-animation#reading-and-changing-layer-playback).
 
 ## Material
 
@@ -14742,7 +14869,7 @@ end
 ```
 
 update()
-: The `update()` function is called once each frame. Its function is to perform the actual drawing by calling the underlying OpenGL ES APIs (OpenGL Embedded Systems API). To properly understand what's going on in the `update()` function, you need to understand how OpenGL works. There are many great resources on OpenGL ES available. The official site is a good starting place. You find it at https://www.khronos.org/opengles/
+: The `update()` function is called once each frame. It records rendering commands that the engine executes using the active graphics backend. Use it to select cameras, configure render state and draw predicates.
 
   This example contains the setup necessary to draw 3D models. The `init()` function defined a `self.predicates.model` predicate. Elsewhere a material with the tag "model" has been created. There are also some model components that use the material:
 ```lua
@@ -14940,6 +15067,23 @@ end
 ```
 
 There is currently no way of changing which texture a resource should point to, you can only use raw handles like this in the render script.
+
+## Values captured by draw commands
+
+A `render.draw()` command captures its supplied constant-buffer values when the command is recorded. This behavior is already available in Defold 1.13.2. Changing the buffer later in the render script does not change an earlier recorded draw, so you can reuse a constant buffer across passes:
+```lua
+-- self.scene_predicate was created with render.predicate() in init().
+local constants = render.constant_buffer()
+constants.tint = vmath.vector4(1, 0, 0, 1)
+render.draw(self.scene_predicate, { constants = constants })
+
+constants.tint = vmath.vector4(0, 0, 1, 1)
+render.draw(self.scene_predicate, { constants = constants })
+```
+
+The first command uses the red tint and the second uses blue, provided the material uses a `tint` constant. Whether both passes are visible also depends on the depth and blending state. From Defold 1.14.2, draw commands also capture the selected camera values. Changing a selected camera between draws affects subsequent draws, not the camera values captured by earlier ones.
+
+This captures draw values, not copies of texture contents or other GPU resources. Keep normal resource-lifetime rules when replacing or deleting resources. Command recording does not enable multithreaded rendering: production rendering in 1.14.2 still runs inline.
 
 ## Supported graphics APIs
 The Defold render script API translates render operations into the following graphics APIs:
@@ -16382,6 +16526,20 @@ uniform PbrMaterial
 
 Omit unused feature members from the block. If the block or a feature's recognized fields are absent, the corresponding data is not supplied. Texture-presence flags describe the source material's texture references; a custom material still needs matching sampler declarations and texture bindings for the maps it samples.
 
+### Uniform buffers and custom layouts
+
+From Defold 1.14.2, compatible `PbrMaterial` blocks use persistent uniform buffers on graphics backends that support them. Imported material values can then be uploaded once and reused across draws. The built-in PBR layout and the complete feature declarations shown above are designed for this path.
+
+To retain the optimized layout in a custom shader, keep the four common `vec4` fields first, in the order shown above. Keep each included feature struct's recognized member names, types and order, and use its matching block member name, such as `pbrMetallicRoughness`. Whole feature structs may be omitted when unused. Put additional custom controls in a separate uniform block.
+
+Custom PBR layouts that do not match this layout continue to receive recognized values through named constants. The engine also uses that path when the graphics backend does not support uniform buffers. Existing custom shaders do not need a layout rewrite merely to remain compatible.
+
+If you change a PBR block's layout while hot reloading, rebuild and reload the material along with its shaders. A shader-only reload with an incompatible layout can cause the engine to skip its draw and log a request to rebuild the material.
+
+### Batching
+
+Sharing a Defold `.material` resource does not by itself guarantee that models batch together. Different imported glTF material values or material indices can split batches, even when meshes use the same shader. A draw uses one imported PBR material. The other [model instancing requirements](#manuals:material), including matching textures and constants, still apply.
+
 ### Constants
 
 Feature fields use names such as `pbrMetallicRoughness.baseColorFactor`; common fields use names such as `pbrEmissiveFactorAndStrength`. The engine populates these constants from the imported material, or from a default material when the model has no material data. Setting defaults in the `.material` resource does not override the imported values.
@@ -17797,6 +17955,28 @@ Bob selects the default native extension build server from the release channel o
 Run `java -jar bob.jar --version` to display the release channel together with Bob's version and build information. The `--variant` option controls the engine build variant and does not change this release channel.
 
 Pass `--build-server ` to select a server explicitly, including a [self-hosted Extender server](#manuals:extender-local-setup). This option overrides the default for every release channel.
+
+## HLSL output in custom shader compiler integrations
+
+Integrations that call Bob's shader compiler pipeline can select plaintext HLSL when a downstream compiler is responsible for producing the final shader binary. This is a compiler API option, not a Bob command-line option. The existing `--debug-output-hlsl` flag selects HLSL output for the build; it does not select plaintext source instead of binary output.
+
+Pass `ShaderCompilePipeline.Options` to the common compiler factory and set `hLSLOutputMode`:
+```java
+import com.dynamo.bob.Platform;
+import com.dynamo.bob.pipeline.Shaderc;
+import com.dynamo.bob.pipeline.ShaderCompilers;
+import com.dynamo.bob.pipeline.shader.ShaderCompilePipeline;
+
+ShaderCompilePipeline.Options options = new ShaderCompilePipeline.Options();
+options.hLSLOutputMode = Shaderc.HLSLOutputMode.HLSL_OUTPUT_MODE_SOURCE;
+var compiler = ShaderCompilers.GetCommonShaderCompiler(Platform.X86_64Win32, options);
+```
+
+Use the returned compiler through the normal shader build integration. `HLSL_OUTPUT_MODE_BINARY` is the default and retains the normal HLSL binary compilation path. `HLSL_OUTPUT_MODE_SOURCE` skips that binary stage and returns HLSL text for downstream compilation. It also skips binary root-signature generation in the common compiler while preserving vertex/fragment stage interface normalization. The option does not change GLSL, MSL, WGSL or SPIR-V output.
+
+For integrations using the lower-level APIs, set `Shaderc.ShaderCompilerOptions.hLSLOutputMode` in Java or `dmShaderc::ShaderCompilerOptions::m_HLSLOutputMode` in C++. These compiler APIs are part of the engine/build tooling, separate from the runtime extension SDK. Source output still needs downstream compilation before it can replace the binary expected by the DX12 runtime.
+
+See the [shader pipeline options](https://github.com/defold/defold/blob/6cdae55239d20fe3fe6918bf7ffb11aa0917fd4f/com.dynamo.cr/com.dynamo.cr.bob/src/com/dynamo/bob/pipeline/shader/ShaderCompilePipeline.java) and [native compiler options](https://github.com/defold/defold/blob/6cdae55239d20fe3fe6918bf7ffb11aa0917fd4f/engine/shaderc/src/shaderc.h) for the interfaces introduced by this change.
 
 <!-- /manuals/hot-reload -->
 
@@ -21006,6 +21186,36 @@ The aggregate header includes C++ declarations and cannot be included from a C s
 ```
 
 Only part of dmSDK currently has a pure-C interface; not every C++ subsystem has a C equivalent. The available functions and types are documented in the [C API overview](https://defold.com/ref/overview_defoldc/) and [C++ API overview](https://defold.com/ref/overview_defoldcpp/). The Defold SDK headers are included as a separate `defoldsdk_headers.zip` archive for each Defold [release on GitHub](https://github.com/defold/defold/releases). You can use these headers for code completion in your editor of choice.
+
+## Graphics adapter installation in 1.14.2
+
+The engine normally installs its graphics adapter before initializing extensions. The following migration applies to custom engine hosts and native code that owns graphics initialization; ordinary extensions should use the engine's existing graphics context.
+
+From Defold 1.14.2, `dmGraphics::InstallAdapter()` returns `dmGraphics::Result` instead of `bool`. Success is `dmGraphics::RESULT_OK`, whose value is zero. Replace boolean success checks with an explicit comparison:
+```cpp
+#include <dmsdk/graphics/graphics.h>
+
+// Automatic selection before creating a graphics context.
+dmGraphics::Result result = dmGraphics::InstallAdapter();
+if (result != dmGraphics::RESULT_OK)
+{
+    // Report failure and stop graphics initialization.
+}
+```
+
+The results are:
+
+| Result | Meaning |
+|---|---|
+| `RESULT_OK` | An adapter was installed successfully. |
+| `RESULT_ADAPTER_UNAVAILABLE` | No matching adapter is registered; for automatic selection, none are registered. |
+| `RESULT_ADAPTER_UNSUPPORTED` | A matching adapter is registered but unsupported; for automatic selection, none of the registered adapters are supported. |
+
+`InstallAdapter()` without arguments selects the highest-priority supported registered adapter. `InstallAdapter(family)` considers only the requested family and never falls back to another family. `ADAPTER_FAMILY_NONE` does not request automatic selection; use the no-argument overload instead.
+
+Installation checks adapter support but does not create a window or graphics context. A successful return therefore does not guarantee that subsequent context creation will succeed. The engine handles startup fallback separately. Delete an existing graphics context before changing adapters or calling `dmGraphics::Finalize()`; reinstalling the current adapter succeeds without reinitializing it.
+
+See the [graphics SDK declarations](https://github.com/defold/defold/blob/62f039ae1fafc5a036563fd8f44edf269288254f/engine/graphics/src/dmsdk/graphics/graphics.h) for the API introduced by this change.
 
 <!-- /manuals/extensions-gradle -->
 
