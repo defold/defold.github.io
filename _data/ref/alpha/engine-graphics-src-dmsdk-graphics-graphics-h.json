@@ -413,7 +413,7 @@
         },
         {
             "brief": "Clears the render target buffers",
-            "description": "Clears the render target buffers.\nFills the specified buffers with predefined values. Commonly used at the\nbeginning of a frame to clear the screen to a specific color and depth.",
+            "description": "Clears the render target buffers.\nFills the specified buffers with predefined values. Commonly used at the\nbeginning of a frame to clear the screen to a specific color and depth.\nA main framebuffer created without a depth/stencil buffer ignores depth and stencil flags and still clears the requested color buffers.",
             "error": "",
             "examples": "",
             "language": "",
@@ -636,6 +636,11 @@
                 {
                     "doc": "Print graphics device information at startup",
                     "name": "m_PrintDeviceInfo",
+                    "type": "bool"
+                },
+                {
+                    "doc": "Omit depth and stencil attachments from the main framebuffer (default: false)",
+                    "name": "m_DisableDepthStencil",
                     "type": "bool"
                 },
                 {
@@ -1304,8 +1309,8 @@
             "type": "FUNCTION"
         },
         {
-            "brief": "",
-            "description": "",
+            "brief": "Depth and stencil tests have no effect on a main f...",
+            "description": "Depth and stencil tests have no effect on a main framebuffer created without a depth/stencil buffer.",
             "error": "",
             "examples": "",
             "language": "",
@@ -4120,8 +4125,8 @@
             "type": "ENUM"
         },
         {
-            "brief": "Render target binding parameters.",
-            "description": "Render target binding parameters.",
+            "brief": "Render target binding parameters",
+            "description": "Render target binding parameters.\nThe main framebuffer ignores transient depth and stencil flags when its depth/stencil buffer is disabled.",
             "error": "",
             "examples": "",
             "language": "",
